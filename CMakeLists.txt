@@ -47,8 +47,8 @@ pico_sdk_init()
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 #-------------------------------------------------------------------------------------
-# add_subdirectory(src)
-# add_subdirectory(tests)
+add_subdirectory(src)
+add_subdirectory(tests)
 #-------------------------------------------------------------------------------------
 
 # Add executable. Default name is the project name, version 0.1
