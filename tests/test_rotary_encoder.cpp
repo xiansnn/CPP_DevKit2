@@ -44,15 +44,17 @@ std::map<ControlEvent, std::string> event_to_string{
 
 void sw_call_back(uint gpio, uint32_t event_mask);
 
+int number_of_event = 0;
+
 void event_processor(ControlEvent event)
 {
-    printf("Encoder event(%s) \n", event_to_string[event].c_str());
+
+    printf("Encoder event(%s) #%d \n", event_to_string[event].c_str(), number_of_event);
+    number_of_event++;
 };
 
 RotaryEncoder encoder = RotaryEncoder(ENCODER_CLK_GPIO, ENCODER_DT_GPIO,
                                       &sw_call_back, &event_processor, cfg_encoder_clk);
-
-// SwitchButtonWithIRQ encoder_clk = SwitchButtonWithIRQ(ENCODER_CLK_GPIO, &sw_call_back, cfg_encoder_clk);
 
 void sw_call_back(uint gpio, uint32_t event_mask)
 {
