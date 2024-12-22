@@ -1,5 +1,7 @@
 <map id="SwitchButton" name="SwitchButton">
-<area shape="rect" id="Node000001" title="SwitchButton status is sampled periodically by software." alt="" coords="5,5,180,347"/>
-<area shape="rect" id="Node000002" href="$class_switch_button_with_i_r_q.html" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="9,395,177,528"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,362,95,395,90,395,90,362"/>
+<area shape="rect" id="Node000001" title="SwitchButton status is sampled periodically by software." alt="" coords="43,5,223,443"/>
+<area shape="rect" id="Node000002" href="$class_switch_button_with_i_r_q.html" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="5,491,261,768"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,458,136,491,131,491,131,458"/>
+<area shape="rect" id="Node000003" href="$class_rotary_encoder.html" title="The rotary encoder is a device used to control a value the can be incremented/decremented by the user..." alt="" coords="9,816,258,1056"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="136,783,136,816,131,816,131,783"/>
 </map>
