@@ -18,7 +18,7 @@
 #define ENCODER_CLK_GPIO 26
 
 // channel 0 : central switch pin
-Probe pr_D3 = Probe(3); // sw_call_back is running
+Probe pr_D3 = Probe(3); // irq_call_back is running
 Probe pr_D4 = Probe(4); // clk_event != SwitchButtonEvent::NOOP
 Probe pr_D5 = Probe(5); // bounces discarded
 // channel 6 : encoder DT pin
@@ -45,12 +45,12 @@ std::map<ControlEvent, std::string> event_to_string{
     {ControlEvent::DECREMENT, "DECREMENT"},
     {ControlEvent::TIME_OUT, "TIME_OUT"}};
 
-void sw_call_back(uint gpio, uint32_t event_mask);
+void irq_call_back(uint gpio, uint32_t event_mask);
 
 SwitchButton central_switch = SwitchButton(CENTRAL_SWITCH_GPIO, cfg_central_switch);
-SwitchButtonWithIRQ encoder_clk = SwitchButtonWithIRQ(ENCODER_CLK_GPIO, &sw_call_back, cfg_encoder_clk);
+SwitchButtonWithIRQ encoder_clk = SwitchButtonWithIRQ(ENCODER_CLK_GPIO, &irq_call_back, cfg_encoder_clk);
 
-void sw_call_back(uint gpio, uint32_t event_mask)
+void irq_call_back(uint gpio, uint32_t event_mask)
 {
     encoder_clk.irq_enabled(false);
     pr_D3.hi();
@@ -72,6 +72,11 @@ void sw_call_back(uint gpio, uint32_t event_mask)
     encoder_clk.irq_enabled(true);
 };
 
+/**
+ * @brief this test program execises both switch_button classes, with and without IRQ
+ * 
+ * @return int 
+ */
 int main()
 {
     stdio_init_all();
