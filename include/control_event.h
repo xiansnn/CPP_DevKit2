@@ -15,7 +15,7 @@
  * @brief The list of predefined events that a button, or more generally an User Interface Controller, can return, leaving it the responsibility
  * to act as required by its specification.
  */
-enum class ControlEvent
+enum class ControlEvent /// TODO a supprimer. separer les switch_button_event, des inrement decrement
 {
 
     /// @brief null event, no operation expected.
