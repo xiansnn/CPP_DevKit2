@@ -215,7 +215,7 @@ public:
      * @brief Construct a new SwitchButtonWithIRQ object
      *
      * @param gpio The microcontroller GPIO connected to the switch
-     * @param call_back tie ISR (interrupt Service Routine) that process IRQ event
+     * @param call_back The ISR (interrupt Service Routine) that process IRQ event
      * @param conf the configuration value of the switch
      * @param event_mask_config the rising/falling edge configuratio of the irq
      */
