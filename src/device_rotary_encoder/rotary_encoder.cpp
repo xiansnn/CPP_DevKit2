@@ -24,14 +24,14 @@ RotaryEncoder::~RotaryEncoder()
 void RotaryEncoder::interrupt_service_routine(uint32_t current_irq_event_mask)
 {
     irq_enabled(false);
-    ControlEvent clk_event = process_IRQ_event(current_irq_event_mask);
-    if (clk_event == ControlEvent::PUSH)
+    UIControlEvent clk_event = process_IRQ_event(current_irq_event_mask);
+    if (clk_event == UIControlEvent::PUSH)
     {
         bool clockwise_rotation = gpio_get(dt_gpio);
         if (clockwise_rotation)
-            event_processor(ControlEvent::INCREMENT);
+            event_processor(UIControlEvent::INCREMENT);
         else
-            event_processor(ControlEvent::DECREMENT);
+            event_processor(UIControlEvent::DECREMENT);
     }
     irq_enabled(true);
 }

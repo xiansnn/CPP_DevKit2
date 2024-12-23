@@ -5,7 +5,7 @@
 #include "switch_button.h"
 
 /// @brief this is a function pointer used as rotary encoder constructor paramater
-typedef void (*control_event_processor_t)(ControlEvent event);
+typedef void (*control_event_processor_t)(UIControlEvent event);
 
 /**
  * @brief The rotary encoder is a device used to control a value the can be incremented/decremented by the user.
@@ -33,7 +33,7 @@ public:
      * @param encoder_clk_gpio  The GPIO that produces IRQ
      * @param encoder_dt_gpio  The GPIO that read the rotation direction
      * @param call_back  The Interrupt Service Routine call by IRQ
-     * @param event_processor  The pointer to the function in charge of processing the ControlEvent INCREMENT or DECREMENT
+     * @param event_processor  The pointer to the function in charge of processing the UIControlEvent INCREMENT or DECREMENT
      * @param clk_conf  the configuration of the clock, view as a switch (with debouncing issue)
      */
     RotaryEncoder(uint encoder_clk_gpio, uint encoder_dt_gpio,
@@ -46,7 +46,7 @@ public:
      */
     ~RotaryEncoder();
     /**
-     * @brief the ISR that process the IRQ and send ControlEvent to the  UIModelObject currentControlledObject.
+     * @brief the ISR that process the IRQ and send UIControlEvent to the  UIModelObject currentControlledObject.
      * 
      * @param irq_event_mask 
      */

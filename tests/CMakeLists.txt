@@ -32,6 +32,5 @@ target_link_libraries(test_rotary_encoder
                         pico_stdlib  
                         rotary_encoder 
                         debug_probe 
-                        switch_button 
                         )
 # pico_add_extra_outputs(test_rotary_encoder)

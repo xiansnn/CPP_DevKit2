@@ -14,7 +14,7 @@
 #include "pico/stdio.h"
 #include "pico/stdlib.h"
 #include <stdio.h>
-#include "control_event.h"
+#include "ui_control_event.h"
 
 
 
@@ -64,17 +64,17 @@ struct struct_SwitchButtonConfig
      */
     uint debounce_delay_us = DEBOUNCE_us;
     /**
-     * @brief if the switch is released after long_release_delay_us (in microseconds) a ControlEvent::RELEASED_AFTER_LONG_TIME is returned,
-     * else a ControlEvent::RELEASED_AFTER_SHORT_TIME is released.
+     * @brief if the switch is released after long_release_delay_us (in microseconds) a UIControlEvent::RELEASED_AFTER_LONG_TIME is returned,
+     * else a UIControlEvent::RELEASED_AFTER_SHORT_TIME is released.
      */
     uint long_release_delay_us = LONG_RELEASE_DELAY_us;
     /**
-     * @brief when a switch is pushed more than long_push_delay_us (in microseconds) a ControlEvent::LONG_PUSH is returned.
+     * @brief when a switch is pushed more than long_push_delay_us (in microseconds) a UIControlEvent::LONG_PUSH is returned.
      */
     uint long_push_delay_us = LONG_PUSH_DELAY_us;
 
     /**
-     * @brief when a switch is released and not pushed again for time_out_delay_us (in microseconds) a ControlEvent::TIME_OUT is returned.
+     * @brief when a switch is released and not pushed again for time_out_delay_us (in microseconds) a UIControlEvent::TIME_OUT is returned.
      *
      */
     uint time_out_delay_us = TIME_OUT_DELAY_us;
@@ -106,17 +106,17 @@ protected:
     /// @brief The time during which all changes in the switch state is ignored
     uint debounce_delay_us;
 
-    /// @brief when a button is pushed more than long_push_delay_us (in microseconds) a ControlEvent::LONG_PUSH is returned.
+    /// @brief when a button is pushed more than long_push_delay_us (in microseconds) a UIControlEvent::LONG_PUSH is returned.
     uint long_push_delay_us;
 
     /**
-     * @brief if the button is released after long_release_delay_us (in microseconds) a ControlEvent::RELEASED_AFTER_LONG_TIME is returned,
-     * else a ControlEvent::RELEASED_AFTER_SHORT_TIME is released.
+     * @brief if the button is released after long_release_delay_us (in microseconds) a UIControlEvent::RELEASED_AFTER_LONG_TIME is returned,
+     * else a UIControlEvent::RELEASED_AFTER_SHORT_TIME is released.
      */
     uint long_release_delay_us;
 
     /**
-     * @brief if the button is released after time_out_delay_us (in microseconds) a ControlEvent::TIME_OUT is returned,
+     * @brief if the button is released after time_out_delay_us (in microseconds) a UIControlEvent::TIME_OUT is returned,
      *
      */
     uint time_out_delay_us;
@@ -163,9 +163,9 @@ public:
     /**
      * @brief the periodic routine that process deboucing, push and release of the switch.
      *
-     * @return ControlEvent
+     * @return UIControlEvent
      */
-    ControlEvent process_sample_event();
+    UIControlEvent process_sample_event();
 
     /**
      * @brief Get the button status object
@@ -230,9 +230,9 @@ public:
      * @brief Process IRQ event and return the resulting event.
      *
      * @param current_event_mask
-     * @return ControlEvent
+     * @return UIControlEvent
      */
-    ControlEvent process_IRQ_event(uint32_t current_event_mask);
+    UIControlEvent process_IRQ_event(uint32_t current_event_mask);
 };
 
 #endif // SWITCH_BUTTON_H

@@ -9,7 +9,6 @@
  *
  */
 #include "switch_button.h"
-#include "control_event.h"
 #include "probe.h"
 #include <map>
 #include <string>
@@ -34,16 +33,16 @@ struct_SwitchButtonConfig cfg_encoder_clk{
     .debounce_delay_us = 1000,
 };
 
-std::map<ControlEvent, std::string> event_to_string{
-    {ControlEvent::NOOP, "NOOP"},
-    {ControlEvent::PUSH, "PUSH"},
-    {ControlEvent::DOUBLE_PUSH, "DOUBLE_PUSH"},
-    {ControlEvent::LONG_PUSH, "LONG_PUSH"},
-    {ControlEvent::RELEASED_AFTER_LONG_TIME, "RELEASED_AFTER_LONG_TIME"},
-    {ControlEvent::RELEASED_AFTER_SHORT_TIME, "RELEASED_AFTER_SHORT_TIME"},
-    {ControlEvent::INCREMENT, "INCREMENT"},
-    {ControlEvent::DECREMENT, "DECREMENT"},
-    {ControlEvent::TIME_OUT, "TIME_OUT"}};
+std::map<UIControlEvent, std::string> event_to_string{
+    {UIControlEvent::NOOP, "NOOP"},
+    {UIControlEvent::PUSH, "PUSH"},
+    {UIControlEvent::DOUBLE_PUSH, "DOUBLE_PUSH"},
+    {UIControlEvent::LONG_PUSH, "LONG_PUSH"},
+    {UIControlEvent::RELEASED_AFTER_LONG_TIME, "RELEASED_AFTER_LONG_TIME"},
+    {UIControlEvent::RELEASED_AFTER_SHORT_TIME, "RELEASED_AFTER_SHORT_TIME"},
+    {UIControlEvent::INCREMENT, "INCREMENT"},
+    {UIControlEvent::DECREMENT, "DECREMENT"},
+    {UIControlEvent::TIME_OUT, "TIME_OUT"}};
 
 void irq_call_back(uint gpio, uint32_t event_mask);
 
@@ -59,8 +58,8 @@ void irq_call_back(uint gpio, uint32_t event_mask)
 
     if (gpio == ENCODER_CLK_GPIO)
     {
-        ControlEvent clk_event = encoder_clk.process_IRQ_event(event_mask);
-        if (clk_event != ControlEvent::NOOP)
+        UIControlEvent clk_event = encoder_clk.process_IRQ_event(event_mask);
+        if (clk_event != UIControlEvent::NOOP)
         {
             pr_D4.pulse_us(1); // actual IRQ received
             printf("ENCODER_CLK_GPIO IRQ event(%s) mask(%d)\n", event_to_string[clk_event].c_str(), event_mask);
@@ -83,8 +82,8 @@ int main()
 
     while (true)
     {
-        ControlEvent central_switch_event = central_switch.process_sample_event();
-        if (central_switch_event != ControlEvent::NOOP)
+        UIControlEvent central_switch_event = central_switch.process_sample_event();
+        if (central_switch_event != UIControlEvent::NOOP)
             printf("central switch sampled event(%s)\n", event_to_string[central_switch_event].c_str());
     }
 

@@ -12,10 +12,10 @@
 #define CONTROL_EVENT_H
 
 /**
- * @brief The list of predefined events that a button, or more generally an User Interface Controller, can return, leaving it the responsibility
+ * @brief The list of predefined events that a button, or more generally an User Interface Controller, can return, leaving to the application the responsibility
  * to act as required by its specification.
  */
-enum class ControlEvent
+enum class UIControlEvent
 {
 
     /// @brief null event, no operation expected.
