@@ -18,12 +18,9 @@
 #define ENCODER_CLK_GPIO 26
 #define ENCODER_DT_GPIO 21
 
-// Probe pr_D1 = Probe(1); // copy of : encoder_clk.is_button_active()
-// Probe pr_D2 = Probe(2); // copy of : encoder_central_sw.is_button_active()
 Probe pr_D3 = Probe(3); // sw_call_back is running
 Probe pr_D4 = Probe(4); // clk_event != SwitchButtonEvent::NOOP
 Probe pr_D5 = Probe(5); // bounces discarded
-// channel 0 : central switch pin
 // channel 6 : encoder DT pin
 // channel 7 : encoder clk pin
 
@@ -42,7 +39,7 @@ std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::DECREMENT, "DECREMENT"},
     {UIControlEvent::TIME_OUT, "TIME_OUT"}};
 
-/// @brief It seems that we need to declaraand define this ISR at global scope to handle the Interrupt Request atached to the ENCODER_CLK_GPIO
+/// @brief It seems that we need to declare and define this ISR at global scope to handle the Interrupt Request atached to the ENCODER_CLK_GPIO
 /// @param gpio the ENCODER_CLK_GPIO
 /// @param event_mask the event mask returned by the interrupt hardware routine
 void sw_call_back(uint gpio, uint32_t event_mask);

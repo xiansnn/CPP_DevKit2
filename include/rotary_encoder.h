@@ -8,7 +8,7 @@
 typedef void (*control_event_processor_t)(UIControlEvent event);
 
 /**
- * @brief The rotary encoder is a device used to control a value the can be incremented/decremented by the user.
+ * @brief The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user.
  * It can be associated with UIControlledIncrementalValue. 
  * 
  * A rotary encoder has two signals: one can be considered as a clock (clk) , the other as the data (dt).
@@ -20,24 +20,25 @@ typedef void (*control_event_processor_t)(UIControlEvent event);
  * As a UIController, the rotary encoder is associated with a UIModelObject.
  * 
  */
-class RotaryEncoder : public SwitchButtonWithIRQ//, public UIController
+class RotaryEncoder : public SwitchButtonWithIRQ
 {
 private:
     uint dt_gpio;
     control_event_processor_t event_processor;
-
+///TODO comment eviter de creer l'ISR de switch_button_with_irq
 public:
     /**
      * @brief Construct a new Rotary Encoder object
      * 
-     * @param encoder_clk_gpio  The GPIO that produces IRQ
-     * @param encoder_dt_gpio  The GPIO that read the rotation direction
-     * @param call_back  The Interrupt Service Routine call by IRQ
-     * @param event_processor  The pointer to the function in charge of processing the UIControlEvent INCREMENT or DECREMENT
-     * @param clk_conf  the configuration of the clock, view as a switch (with debouncing issue)
+     * @param encoder_clk_gpio
+     * @param encoder_dt_gpio 
+     * @param call_back 
+     * @param event_processor 
+     * @param clk_conf 
      */
-    RotaryEncoder(uint encoder_clk_gpio, uint encoder_dt_gpio,
-                gpio_irq_callback_t call_back, ///TODO comment eviter de crerr l'ISR de switch_button_with_irq
+    RotaryEncoder(uint encoder_clk_gpio, 
+                uint encoder_dt_gpio,
+                gpio_irq_callback_t call_back, 
                 control_event_processor_t event_processor,
                 struct_SwitchButtonConfig clk_conf = {});
     /**
