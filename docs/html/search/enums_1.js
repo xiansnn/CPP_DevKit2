@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['controlevent_0',['ControlEvent',['../control__event_8h.html#afe97f6c9e5f8fc59c735ff67fa2255b4',1,'control_event.h']]]
+  ['uicontrolevent_0',['UIControlEvent',['../ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32',1,'ui_control_event.h']]]
 ];

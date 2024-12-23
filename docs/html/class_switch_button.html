@@ -114,19 +114,13 @@ Inheritance diagram for SwitchButton:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_switch_button__inherit__graph.png" border="0" usemap="#a_switch_button_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_switch_button_inherit__map" id="a_switch_button_inherit__map">
-<area shape="rect" title="SwitchButton status is sampled periodically by software." alt="" coords="5,5,180,347"/>
-<area shape="rect" href="class_switch_button_with_i_r_q.html" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="9,395,177,528"/>
-<area shape="poly" title=" " alt="" coords="95,362,95,395,90,395,90,362"/>
+<area shape="rect" title="SwitchButton status is sampled periodically by software." alt="" coords="31,5,130,32"/>
+<area shape="rect" href="class_switch_button_with_i_r_q.html" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="5,80,156,107"/>
+<area shape="poly" title=" " alt="" coords="83,48,83,80,78,80,78,48"/>
+<area shape="rect" href="class_rotary_encoder.html" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user...." alt="" coords="26,155,135,181"/>
+<area shape="poly" title=" " alt="" coords="83,122,83,154,78,154,78,122"/>
 </map>
-</div>
-<div class="dynheader">
-Collaboration diagram for SwitchButton:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_switch_button__coll__graph.png" border="0" usemap="#a_switch_button_coll__map" alt="Collaboration graph"/></div>
-<map name="a_switch_button_coll__map" id="a_switch_button_coll__map">
-<area shape="rect" title="SwitchButton status is sampled periodically by software." alt="" coords="5,5,180,347"/>
-</map>
-</div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -137,9 +131,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~SwitchButton</b> ()</td></tr>
 <tr class="memdesc:a3aaf08da555f8418572d502e8221fcec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_switch_button.html" title="SwitchButton status is sampled periodically by software.">SwitchButton</a> object. <br /></td></tr>
 <tr class="separator:a3aaf08da555f8418572d502e8221fcec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad488b9db3ed6b1709f1eda137a69f52e" id="r_ad488b9db3ed6b1709f1eda137a69f52e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="control__event_8h.html#afe97f6c9e5f8fc59c735ff67fa2255b4">ControlEvent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad488b9db3ed6b1709f1eda137a69f52e">process_sample_event</a> ()</td></tr>
-<tr class="memdesc:ad488b9db3ed6b1709f1eda137a69f52e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the periodic routine that process deboucing, push and release of the switch.  <br /></td></tr>
-<tr class="separator:ad488b9db3ed6b1709f1eda137a69f52e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7ebc9b37168b233ff9526f770fed49f" id="r_aa7ebc9b37168b233ff9526f770fed49f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32">UIControlEvent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7ebc9b37168b233ff9526f770fed49f">process_sample_event</a> ()</td></tr>
+<tr class="memdesc:aa7ebc9b37168b233ff9526f770fed49f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the periodic routine that process deboucing, push and release of the switch.  <br /></td></tr>
+<tr class="separator:aa7ebc9b37168b233ff9526f770fed49f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b40906d298a665870c30c1359fbea2e" id="r_a6b40906d298a665870c30c1359fbea2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657">ButtonState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b40906d298a665870c30c1359fbea2e">get_button_status</a> ()</td></tr>
 <tr class="memdesc:a6b40906d298a665870c30c1359fbea2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the button status object.  <br /></td></tr>
 <tr class="separator:a6b40906d298a665870c30c1359fbea2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -158,15 +152,15 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>debounce_delay_us</b>
 <tr class="separator:ab52dd7c8fd5e882b29a642c7961d0822"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3efe4e87a09e753245b7b50916169ed" id="r_ac3efe4e87a09e753245b7b50916169ed"><td class="memItemLeft" align="right" valign="top"><a id="ac3efe4e87a09e753245b7b50916169ed" name="ac3efe4e87a09e753245b7b50916169ed"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>long_push_delay_us</b></td></tr>
-<tr class="memdesc:ac3efe4e87a09e753245b7b50916169ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">when a button is pushed more than long_push_delay_us (in microseconds) a <a class="el" href="control__event_8h.html#afe97f6c9e5f8fc59c735ff67fa2255b4a66d354703a5722b875b56431d89fb646" title="event triggered when a button is held more than a configurable duration.">ControlEvent::LONG_PUSH</a> is returned. <br /></td></tr>
+<tr class="memdesc:ac3efe4e87a09e753245b7b50916169ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">when a button is pushed more than long_push_delay_us (in microseconds) a <a class="el" href="ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32a66d354703a5722b875b56431d89fb646" title="event triggered when a button is held more than a configurable duration.">UIControlEvent::LONG_PUSH</a> is returned. <br /></td></tr>
 <tr class="separator:ac3efe4e87a09e753245b7b50916169ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5cf488e4819df6fd8cc5cd3811d33354" id="r_a5cf488e4819df6fd8cc5cd3811d33354"><td class="memItemLeft" align="right" valign="top"><a id="a5cf488e4819df6fd8cc5cd3811d33354" name="a5cf488e4819df6fd8cc5cd3811d33354"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>long_release_delay_us</b></td></tr>
-<tr class="memdesc:a5cf488e4819df6fd8cc5cd3811d33354"><td class="mdescLeft">&#160;</td><td class="mdescRight">if the button is released after long_release_delay_us (in microseconds) a <a class="el" href="control__event_8h.html#afe97f6c9e5f8fc59c735ff67fa2255b4af7e84b3c12997ec227d0c17657261c84" title="event triggered when a button is released after a configurable duration.">ControlEvent::RELEASED_AFTER_LONG_TIME</a> is returned, else a <a class="el" href="control__event_8h.html#afe97f6c9e5f8fc59c735ff67fa2255b4ad384edb3d3d3cb51350c9b2a1451ea90" title="event triggered when a button is released before a configurable duration.">ControlEvent::RELEASED_AFTER_SHORT_TIME</a> is released. <br /></td></tr>
+<tr class="memdesc:a5cf488e4819df6fd8cc5cd3811d33354"><td class="mdescLeft">&#160;</td><td class="mdescRight">if the button is released after long_release_delay_us (in microseconds) a <a class="el" href="ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32af7e84b3c12997ec227d0c17657261c84" title="event triggered when a button is released after a configurable duration.">UIControlEvent::RELEASED_AFTER_LONG_TIME</a> is returned, else a <a class="el" href="ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32ad384edb3d3d3cb51350c9b2a1451ea90" title="event triggered when a button is released before a configurable duration.">UIControlEvent::RELEASED_AFTER_SHORT_TIME</a> is released. <br /></td></tr>
 <tr class="separator:a5cf488e4819df6fd8cc5cd3811d33354"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37e6513061d4466fd101192f60494d2b" id="r_a37e6513061d4466fd101192f60494d2b"><td class="memItemLeft" align="right" valign="top"><a id="a37e6513061d4466fd101192f60494d2b" name="a37e6513061d4466fd101192f60494d2b"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>time_out_delay_us</b></td></tr>
-<tr class="memdesc:a37e6513061d4466fd101192f60494d2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">if the button is released after time_out_delay_us (in microseconds) a <a class="el" href="control__event_8h.html#afe97f6c9e5f8fc59c735ff67fa2255b4aa52c72b25366cc2977dc7c505cf06a98" title="event that signals nothing happens after a configurable period of time.">ControlEvent::TIME_OUT</a> is returned, <br /></td></tr>
+<tr class="memdesc:a37e6513061d4466fd101192f60494d2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">if the button is released after time_out_delay_us (in microseconds) a <a class="el" href="ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32aa52c72b25366cc2977dc7c505cf06a98" title="event that signals nothing happens after a configurable period of time.">UIControlEvent::TIME_OUT</a> is returned, <br /></td></tr>
 <tr class="separator:a37e6513061d4466fd101192f60494d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68fccab1c920eec2fbd4fc2d1f5b29e0" id="r_a68fccab1c920eec2fbd4fc2d1f5b29e0"><td class="memItemLeft" align="right" valign="top"><a id="a68fccab1c920eec2fbd4fc2d1f5b29e0" name="a68fccab1c920eec2fbd4fc2d1f5b29e0"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>gpio</b></td></tr>
@@ -195,7 +189,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>previous_switch_pushe
 <li>Switch status is the status of the physical (i.e. mechanical) switch device.</li>
 <li>Button status is the logical status of the button (regardless if the switch is wired active Lo or HI).</li>
 </ul>
-<p>During each period, the status of the button is compared to the previous status and the function member <a class="el" href="#ad488b9db3ed6b1709f1eda137a69f52e" title="the periodic routine that process deboucing, push and release of the switch.">process_sample_event()</a> return an event accordingly.</p>
+<p>During each period, the status of the button is compared to the previous status and the function member <a class="el" href="#aa7ebc9b37168b233ff9526f770fed49f" title="the periodic routine that process deboucing, push and release of the switch.">process_sample_event()</a> return an event accordingly.</p>
 <p><a class="el" href="class_switch_button.html" title="SwitchButton status is sampled periodically by software.">SwitchButton</a> can be associated with UIController if button belongs to a GUI. In such case a new class must be created that inherits from <a class="el" href="class_switch_button.html" title="SwitchButton status is sampled periodically by software.">SwitchButton</a> and UIController.</p>
 <div class="image">
 <img src="button.png" alt=""/>
@@ -283,14 +277,14 @@ false if switch status is read HI (resp. LO) if active_lo is true (resp. false) 
 
 </div>
 </div>
-<a id="ad488b9db3ed6b1709f1eda137a69f52e" name="ad488b9db3ed6b1709f1eda137a69f52e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad488b9db3ed6b1709f1eda137a69f52e">&#9670;&#160;</a></span>process_sample_event()</h2>
+<a id="aa7ebc9b37168b233ff9526f770fed49f" name="aa7ebc9b37168b233ff9526f770fed49f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7ebc9b37168b233ff9526f770fed49f">&#9670;&#160;</a></span>process_sample_event()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="control__event_8h.html#afe97f6c9e5f8fc59c735ff67fa2255b4">ControlEvent</a> SwitchButton::process_sample_event </td>
+          <td class="memname"><a class="el" href="ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32">UIControlEvent</a> SwitchButton::process_sample_event </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -299,7 +293,7 @@ false if switch status is read HI (resp. LO) if active_lo is true (resp. false) 
 </div><div class="memdoc">
 
 <p>the periodic routine that process deboucing, push and release of the switch. </p>
-<dl class="section return"><dt>Returns</dt><dd>ControlEvent </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>UIControlEvent </dd></dl>
 
 </div>
 </div>
