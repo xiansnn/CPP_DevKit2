@@ -9,7 +9,6 @@
  *
  */
 #include "switch_button.h"
-#include "control_event.h"
 #include "hardware/gpio.h"
 #include "hardware/timer.h"
 
@@ -36,7 +35,7 @@ SwitchButton::~SwitchButton()
 {
 }
 
-ControlEvent SwitchButton::process_sample_event()
+UIControlEvent SwitchButton::process_sample_event()
 {
     uint32_t time_since_previous_change;
     uint32_t current_time_us = time_us_32();
@@ -44,33 +43,33 @@ ControlEvent SwitchButton::process_sample_event()
     if (current_switch_pushed_state == previous_switch_pushed_state)
     {
         if (button_status == ButtonState::IDLE)
-            return ControlEvent::NOOP;
+            return UIControlEvent::NOOP;
         else if (button_status == ButtonState::ACTIVE)
         {
             if (current_time_us - previous_change_time_us >= long_push_delay_us)
             {
                 button_status = ButtonState::RELEASE_PENDING;
-                return ControlEvent::LONG_PUSH;
+                return UIControlEvent::LONG_PUSH;
             }
             else
-                return ControlEvent::NOOP;
+                return UIControlEvent::NOOP;
         }
         else if (button_status == ButtonState::TIME_OUT_PENDING)
         {
             if (current_time_us - previous_change_time_us >= time_out_delay_us)
             {
                 button_status = ButtonState::IDLE;
-                return ControlEvent::TIME_OUT;
+                return UIControlEvent::TIME_OUT;
             }
             else
-                return ControlEvent::NOOP;
+                return UIControlEvent::NOOP;
         }
     }
     else
     {
         time_since_previous_change = current_time_us - previous_change_time_us;
         if (time_since_previous_change < debounce_delay_us)
-            return ControlEvent::NOOP;
+            return UIControlEvent::NOOP;
         else
         {
             previous_switch_pushed_state = current_switch_pushed_state;
@@ -78,16 +77,16 @@ ControlEvent SwitchButton::process_sample_event()
             if (current_switch_pushed_state)
             {
                 button_status = ButtonState::ACTIVE;
-                return ControlEvent::PUSH;
+                return UIControlEvent::PUSH;
             }
             else
             {
                 button_status = ButtonState::TIME_OUT_PENDING;
-                return (time_since_previous_change < long_release_delay_us) ? ControlEvent::RELEASED_AFTER_SHORT_TIME : ControlEvent::RELEASED_AFTER_LONG_TIME;
+                return (time_since_previous_change < long_release_delay_us) ? UIControlEvent::RELEASED_AFTER_SHORT_TIME : UIControlEvent::RELEASED_AFTER_LONG_TIME;
             }
         }
     }
-    return ControlEvent::NOOP;
+    return UIControlEvent::NOOP;
 }
 
 ButtonState SwitchButton::get_button_status()
@@ -112,7 +111,7 @@ SwitchButtonWithIRQ::~SwitchButtonWithIRQ()
 {
 }
 
-ControlEvent SwitchButtonWithIRQ::process_IRQ_event(uint32_t current_event_mask)
+UIControlEvent SwitchButtonWithIRQ::process_IRQ_event(uint32_t current_event_mask)
 {
     bool new_switch_pushed_state = is_switch_pushed(current_event_mask);
     uint32_t current_time_us = time_us_32();
@@ -120,22 +119,22 @@ ControlEvent SwitchButtonWithIRQ::process_IRQ_event(uint32_t current_event_mask)
     previous_change_time_us = current_time_us;
     if (time_since_previous_change <= debounce_delay_us)
     {
-        return ControlEvent::NOOP;
+        return UIControlEvent::NOOP;
     }
     else
     {
         if (new_switch_pushed_state == true)
         {
             button_status = ButtonState::ACTIVE;
-            return ControlEvent::PUSH;
+            return UIControlEvent::PUSH;
         }
         else
         {
             button_status = ButtonState::TIME_OUT_PENDING;
             if (time_since_previous_change < long_release_delay_us)
-                return ControlEvent::RELEASED_AFTER_SHORT_TIME;
+                return UIControlEvent::RELEASED_AFTER_SHORT_TIME;
             else
-                return ControlEvent::RELEASED_AFTER_LONG_TIME;
+                return UIControlEvent::RELEASED_AFTER_LONG_TIME;
         }
     }
 }
