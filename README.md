@@ -6,7 +6,7 @@ they must rebuilt according to the used SDK version et pico platform.
 Up to now, only one display device is available. It is the OLED SSD1306. Most of The code was derived from [Harbys github repository](https://github.com/Harbys/pico-ssd1306) works and framebuffer API aws inspired from mycropython API we can find [here](https://docs.micropython.org/en/latest/library/framebuf.html#module-framebuf).
 
 ## Complete documentation (still in construction)
-Access to the the project web page with external browser [here](https://xiansnn.github.io/CPP_DevKit/).
+Access to the the project web page with external browser [here](https://xiansnn.github.io/CPP_DevKit2/).
 
 After opening this pages with your web browser, you will find doxygen documentation [here](docs/html/index.html)
 
