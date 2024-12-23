@@ -29,10 +29,8 @@ void RotaryEncoder::interrupt_service_routine(uint32_t current_irq_event_mask)
     {
         bool clockwise_rotation = gpio_get(dt_gpio);
         if (clockwise_rotation)
-            // this->current_controlled_object->process_control_event(ControlEvent::INCREMENT);
             event_processor(ControlEvent::INCREMENT);
         else
-            // this->current_controlled_object->process_control_event(ControlEvent::DECREMENT);
             event_processor(ControlEvent::DECREMENT);
     }
     irq_enabled(true);

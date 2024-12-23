@@ -4,6 +4,7 @@
 #include <pico/stdio.h>
 #include "switch_button.h"
 
+/// @brief this is a function pointer used as rotary encoder constructor paramater
 typedef void (*control_event_processor_t)(ControlEvent event);
 
 /**
@@ -17,8 +18,6 @@ typedef void (*control_event_processor_t)(ControlEvent event);
  * Due to the short time between clk and dt, we cannot usually sample the signals. IRQ is more appropriate.
  * 
  * As a UIController, the rotary encoder is associated with a UIModelObject.
- * 
- * The test program for rotary encoder is the one developed for the Switch button with IRQ
  * 
  */
 class RotaryEncoder : public SwitchButtonWithIRQ//, public UIController
@@ -34,11 +33,11 @@ public:
      * @param encoder_clk_gpio  The GPIO that produces IRQ
      * @param encoder_dt_gpio  The GPIO that read the rotation direction
      * @param call_back  The Interrupt Service Routine call by IRQ
-     * @param event_processor  The pointer to the function in charge of precessing the ControlEvent INCREMENT or DECREMENT
+     * @param event_processor  The pointer to the function in charge of processing the ControlEvent INCREMENT or DECREMENT
      * @param clk_conf  the configuration of the clock, view as a switch (with debouncing issue)
      */
     RotaryEncoder(uint encoder_clk_gpio, uint encoder_dt_gpio,
-                gpio_irq_callback_t call_back, 
+                gpio_irq_callback_t call_back, ///TODO comment eviter de crerr l'ISR de switch_button_with_irq
                 control_event_processor_t event_processor,
                 struct_SwitchButtonConfig clk_conf = {});
     /**
