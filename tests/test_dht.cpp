@@ -40,7 +40,7 @@ int main()
     while (1)
     {
         gpio_put(18, 1);
-        dht_reading_t reading;
+        struct_DHTReading reading;
 #ifdef LED_PIN
         gpio_put(LED_PIN, 1);
 #endif

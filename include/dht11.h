@@ -20,7 +20,7 @@
  * @brief the sensor result is given according to this structure:
  * 
  */
-typedef struct
+struct struct_DHTReading
 {
     /// @brief a flag that indicates the reading from DHT11 is valid
     bool is_valid;
@@ -28,7 +28,7 @@ typedef struct
     float humidity;
     /// @brief the converted value in °Celsius
     float temp_celsius;
-} dht_reading_t;
+} ;
 
 
 /**
@@ -45,9 +45,9 @@ public:
     /**
      * @brief the member used to read and convert the values send by DHT11
      * 
-     * @param result according to dht_reading_t structure
+     * @param result according to struct_DHTReading structure
      */
-    void read_from_dht(dht_reading_t *result);
+    void read_from_dht(struct_DHTReading *result);
     /**
      * @brief Construct a new DHT11 object
      * 

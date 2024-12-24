@@ -32,9 +32,9 @@ DHT11::DHT11(uint gpio_in_)
 /**
  * @brief acces to DHT11 sensor
  *
- * @param result humidity and temperature measures according to dht_reading_t structure
+ * @param result humidity and temperature measures according to struct_DHTReading structure
  */
-void DHT11::read_from_dht(dht_reading_t *result)
+void DHT11::read_from_dht(struct_DHTReading *result)
 {
     int data[5] = {0, 0, 0, 0, 0};
     int64_t measures[MAX_TIMING_MEASURE] = {0};
