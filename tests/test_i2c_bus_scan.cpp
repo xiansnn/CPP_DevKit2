@@ -28,8 +28,8 @@ static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event);
 
 struct_ConfigSlaveI2C slave_config{
     .i2c = i2c1,
-    .sda_pin = 18,
-    .scl_pin = 19,
+    .sda_pin = 10,
+    .scl_pin = 11,
     .baud_rate = I2C_STANDARD_MODE,
     .slave_address = 0x15,
     .slave_memory_size = 256,
