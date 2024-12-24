@@ -178,7 +178,7 @@ void HW_I2C_Slave::slave_isr(i2c_slave_event_t event)
         }
         else
         {
-            // ... not the firrst time. This means the slave must copy the received data in its memory
+            // ... not the first time. This means the slave must copy the received data in its memory
             this->context.mem[context.mem_address] = i2c_read_byte_raw(this->i2c);
             this->context.mem_address++; // prepare for the next received data
         }

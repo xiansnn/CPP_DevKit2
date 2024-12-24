@@ -1,3 +1,13 @@
+/**
+ * @file hw_i2c.h
+ * @author xiansnn (xiansnn@hotmail.com)
+ * @brief
+ * @version 0.1
+ * @date 2024-12-24
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #if !defined(HW_I2C_H)
 #define HW_I2C_H
 
@@ -7,10 +17,14 @@
 #include <set>
 #include <string>
 
-#define I2C_STANDARD_MODE 100 * 1000          // <= 100kb/s
-#define I2C_FAST_MODE 400 * 1000              // <= 400kb/s
-#define I2C_FAST_MODE_PLUS 1000 * 1000        // <= 1Mb/s
-#define I2C_SLAVE_DEFAULT_MAX_MEMORY_SIZE 256 // default value used by StructConfigSlaveI2C
+/// @brief I2C standard mode speed 100kb/s
+#define I2C_STANDARD_MODE 100 * 1000
+/// @brief I2C fast mode speed 400kb/s
+#define I2C_FAST_MODE 400 * 1000
+/// @brief I2C fast mode plus speed 1Mb/s
+#define I2C_FAST_MODE_PLUS 1000 * 1000
+/// @brief I2C max buffer memory size, default to 256 words
+#define I2C_SLAVE_DEFAULT_MAX_MEMORY_SIZE 256
 
 /**
  * @brief this data structure collects result when an I2C transfer is done.
@@ -36,7 +50,7 @@ struct struct_I2CXferResult
     std::string context = "";
     /**
      * @brief the number of byte transfered.
-     * 
+     *
      */
     int xfer_size = 0;
 };
@@ -126,12 +140,11 @@ public:
     HW_I2C_Master(struct_ConfigMasterI2C master_config);
     /**
      * @brief a convenient C++ member wrapper to write a block of data starting at a slave memory address.
-     * The operation is bounded by a timeout.
-     *
+     * The operation is bounded by a timeout
      * @param slave_address the slave address
-     * @param slave_mem_addr the slave memory
+     * @param mem_addr the slave memory
      * @param src the address of the block of data
-     * @param len the size of the block of data.
+     * @param len the size of the block of data
      * @return struct_I2CXferResult
      */
     struct_I2CXferResult burst_byte_write(uint8_t slave_address, uint8_t mem_addr, uint8_t *src, size_t len);
@@ -192,8 +205,11 @@ public:
  */
 struct struct_SlaveMemory
 {
+    /// @brief the size of the slave memory buffer
     uint8_t mem[I2C_SLAVE_DEFAULT_MAX_MEMORY_SIZE]{};
-    uint8_t mem_address = I2C_SLAVE_DEFAULT_MAX_MEMORY_SIZE - 1; // init: the slave points to its last memory address
+    /// @brief the addresse where the slave read/write. this chages for each exchange sequence, the slave points to its last memory address
+    uint8_t mem_address = I2C_SLAVE_DEFAULT_MAX_MEMORY_SIZE - 1;
+    /// @brief falg that determine if the slave read or write to its memory buffer
     bool mem_address_written = false;
 };
 
@@ -207,6 +223,10 @@ private:
     i2c_inst_t *i2c;
 
 public:
+    /**
+     * @brief a data structure used to configure the slave device
+     * 
+     */
     struct_SlaveMemory context;
     /**
      * @brief Construct a new hw i2c slave object
