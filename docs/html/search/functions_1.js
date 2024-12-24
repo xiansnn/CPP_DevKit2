@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['get_5fbutton_5fstatus_0',['get_button_status',['../class_switch_button.html#a6b40906d298a665870c30c1359fbea2e',1,'SwitchButton']]]
+  ['copy_0',['copy',['../class_probe.html#a3ca878200b9a6d5744366b23fe0051c9',1,'Probe']]]
 ];

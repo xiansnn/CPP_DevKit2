@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rotaryencoder_0',['RotaryEncoder',['../class_rotary_encoder.html',1,'']]]
+  ['probe_0',['Probe',['../class_probe.html',1,'']]]
 ];
