@@ -1,3 +1,13 @@
+/**
+ * @file dht11.h
+ * @author xiansnn (xiansnn@hotmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2024-12-24
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #ifndef DHT11_H
 #define DHT11_H
 
