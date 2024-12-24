@@ -42,11 +42,11 @@ target_link_libraries(test_i2c_bus_scan
                         debug_probe)
 # pico_add_extra_outputs(test_i2c_bus_scan)
 #-------------------------------------------------------------------------------------
-# add_executable(test_i2c_xchange test_i2c_xchange.cpp)
-# target_link_libraries(test_i2c_xchange 
-#                         hw_i2c 
-#                         debug_probe
-#                         )
+add_executable(test_i2c_xchange test_i2c_xchange.cpp)
+target_link_libraries(test_i2c_xchange 
+                        hw_i2c 
+                        debug_probe
+                        )
 # # pico_add_extra_outputs(test_i2c_xchange)
 #-------------------------------------------------------------------------------------
 
