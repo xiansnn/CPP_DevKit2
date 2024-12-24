@@ -23,4 +23,30 @@ target_link_libraries(test_switch_button
 # pico_add_extra_outputs(test_switch_button)
 
 #-------------------------------------------------------------------------------------
+add_executable(test_rotary_encoder test_rotary_encoder.cpp)
+pico_enable_stdio_uart(test_rotary_encoder 1)
+pico_enable_stdio_usb(test_rotary_encoder 0)
+# pico_set_program_name(test_rotary_encoder "test_rotary_encoder")
+# pico_set_program_version(test_rotary_encoder "0.1")
+target_link_libraries(test_rotary_encoder  
+                        pico_stdlib  
+                        rotary_encoder 
+                        debug_probe 
+                        )
+# pico_add_extra_outputs(test_rotary_encoder)
+
+#-------------------------------------------------------------------------------------
+add_executable(test_i2c_bus_scan test_i2c_bus_scan.cpp)
+target_link_libraries(test_i2c_bus_scan 
+                        hw_i2c 
+                        debug_probe)
+# pico_add_extra_outputs(test_i2c_bus_scan)
+#-------------------------------------------------------------------------------------
+add_executable(test_i2c_xchange test_i2c_xchange.cpp)
+target_link_libraries(test_i2c_xchange 
+                        hw_i2c 
+                        debug_probe
+                        )
+# # pico_add_extra_outputs(test_i2c_xchange)
+#-------------------------------------------------------------------------------------
 
