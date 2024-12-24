@@ -9,5 +9,6 @@ var searchData=
   ['increment_6',['INCREMENT',['../ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32a90cf1f5206b348a822cc1a453a587534',1,'ui_control_event.h']]],
   ['interrupt_5fservice_5froutine_7',['interrupt_service_routine',['../class_rotary_encoder.html#ae7ad35ae64d2b815c25ac72a51702e6f',1,'RotaryEncoder']]],
   ['irq_5fenabled_8',['irq_enabled',['../class_switch_button_with_i_r_q.html#a261dc80eca218e3733c6a0cf637c25e8',1,'SwitchButtonWithIRQ']]],
-  ['is_5fswitch_5fpushed_9',['is_switch_pushed',['../class_switch_button.html#a3361ae31699ad49821d25ee53210f6d7',1,'SwitchButton']]]
+  ['is_5fswitch_5fpushed_9',['is_switch_pushed',['../class_switch_button.html#a3361ae31699ad49821d25ee53210f6d7',1,'SwitchButton']]],
+  ['is_5fvalid_10',['is_valid',['../structstruct___d_h_t_reading.html#ac02a8974d21885a59e1e3552921ccd1b',1,'struct_DHTReading']]]
 ];

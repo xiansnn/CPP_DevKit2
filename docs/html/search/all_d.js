@@ -10,10 +10,11 @@ var searchData=
   ['slave_5fmemory_5fsize_7',['slave_memory_size',['../structstruct___config_slave_i2_c.html#a1205b1fcda3c452180f907d95d47e7c6',1,'struct_ConfigSlaveI2C']]],
   ['struct_5fconfigmasteri2c_8',['struct_ConfigMasterI2C',['../structstruct___config_master_i2_c.html',1,'']]],
   ['struct_5fconfigslavei2c_9',['struct_ConfigSlaveI2C',['../structstruct___config_slave_i2_c.html',1,'']]],
-  ['struct_5fi2cxferresult_10',['struct_I2CXferResult',['../structstruct___i2_c_xfer_result.html',1,'']]],
-  ['struct_5fslavememory_11',['struct_SlaveMemory',['../structstruct___slave_memory.html',1,'']]],
-  ['struct_5fswitchbuttonconfig_12',['struct_SwitchButtonConfig',['../structstruct___switch_button_config.html',1,'']]],
-  ['switch_5fbutton_2eh_13',['switch_button.h',['../switch__button_8h.html',1,'']]],
-  ['switchbutton_14',['SwitchButton',['../class_switch_button.html',1,'SwitchButton'],['../class_switch_button.html#ab26a40e2b63115a23ff499e360768693',1,'SwitchButton::SwitchButton()']]],
-  ['switchbuttonwithirq_15',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html',1,'SwitchButtonWithIRQ'],['../class_switch_button_with_i_r_q.html#af12e2e729834d347fb0f3efdce249bff',1,'SwitchButtonWithIRQ::SwitchButtonWithIRQ()']]]
+  ['struct_5fdhtreading_10',['struct_DHTReading',['../structstruct___d_h_t_reading.html',1,'']]],
+  ['struct_5fi2cxferresult_11',['struct_I2CXferResult',['../structstruct___i2_c_xfer_result.html',1,'']]],
+  ['struct_5fslavememory_12',['struct_SlaveMemory',['../structstruct___slave_memory.html',1,'']]],
+  ['struct_5fswitchbuttonconfig_13',['struct_SwitchButtonConfig',['../structstruct___switch_button_config.html',1,'']]],
+  ['switch_5fbutton_2eh_14',['switch_button.h',['../switch__button_8h.html',1,'']]],
+  ['switchbutton_15',['SwitchButton',['../class_switch_button.html',1,'SwitchButton'],['../class_switch_button.html#ab26a40e2b63115a23ff499e360768693',1,'SwitchButton::SwitchButton()']]],
+  ['switchbuttonwithirq_16',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html',1,'SwitchButtonWithIRQ'],['../class_switch_button_with_i_r_q.html#af12e2e729834d347fb0f3efdce249bff',1,'SwitchButtonWithIRQ::SwitchButtonWithIRQ()']]]
 ];
