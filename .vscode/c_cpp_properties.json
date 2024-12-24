@@ -13,7 +13,7 @@
             "defines": [],
             "compilerPath": "${userHome}/.pico-sdk/toolchain/13_3_Rel1/bin/arm-none-eabi-gcc.exe",
             "compileCommands": "${workspaceFolder}/build/compile_commands.json",
-            "cStandard": "c17",
+            "cStandard": "c23",
             "cppStandard": "c++14",
             "intelliSenseMode": "linux-gcc-arm"
         }
