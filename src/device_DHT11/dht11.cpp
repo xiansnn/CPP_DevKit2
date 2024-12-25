@@ -88,14 +88,13 @@ void DHT11::read_from_dht(struct_DHTReading *result)
     if ((j >= 40) && (data[4] == ((data[0] + data[1] + data[2] + data[3]) & 0xFF)))
     { // check if checksum is correct
         result->is_valid = true;
-        result->humidity = (float)((data[0] << 8) + data[1]) / 10;
-        // result->humidity = data[0] + 0.1*data[1];
+        // result->humidity = (float)((data[0] << 8) + data[1]) / 10;
+        result->humidity = data[0] + 0.1*data[1];
         if (result->humidity > 100)
         {
             result->humidity = data[0];
         }
-        result->temp_celsius = (float)(((data[2] & 0x7F) << 8) + data[3]) / 10;
-        // result->temp_celsius = data[2] + 0.1*data[3] ;
+        result->temp_celsius = data[2] + 0.1*data[3] ;
         if (result->temp_celsius > 125)
             result->temp_celsius = data[2];
 

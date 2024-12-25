@@ -24,19 +24,24 @@ int main()
     DHT11 dht = DHT11(CURRENT_DHT_PIN);
     struct_DHTReading dht_reading;
 
+    gpio_init(PICO_DEFAULT_LED_PIN);
+    gpio_set_dir(PICO_DEFAULT_LED_PIN,GPIO_OUT);
+
     while (true)
     {
         pr_D5.hi();
+        gpio_put(PICO_DEFAULT_LED_PIN,1);
         dht.read_from_dht(&dht_reading);
         if (dht_reading.is_valid)
         {
             float fahrenheit = (dht_reading.temp_celsius * 9 / 5) + 32;
-            printf("Humidity = %.1f%%, Temperature = %.1fC (%.1F)\n",
+            printf("Humidity = %.1f%%, Temperature = %.1f°C (%.1F°F)\n",
                    dht_reading.humidity, dht_reading.temp_celsius, fahrenheit);
         }
         else
             printf("Checksum error\n");
         pr_D5.lo();
+        gpio_put(PICO_DEFAULT_LED_PIN,0);
         sleep_ms(2000);
     }
 }
