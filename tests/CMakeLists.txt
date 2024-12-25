@@ -39,7 +39,8 @@ target_link_libraries(test_rotary_encoder
 add_executable(test_i2c_bus_scan test_i2c_bus_scan.cpp)
 target_link_libraries(test_i2c_bus_scan 
                         hw_i2c 
-                        debug_probe)
+                        debug_probe
+                        )
 # pico_add_extra_outputs(test_i2c_bus_scan)
 #-------------------------------------------------------------------------------------
 add_executable(test_i2c_xchange test_i2c_xchange.cpp)
@@ -52,7 +53,9 @@ target_link_libraries(test_i2c_xchange
 add_executable(test_dht11  test_dht.cpp  )   
 target_link_libraries(test_dht11 
             pico_stdlib 
-            dht11)
+            dht11
+            debug_probe
+            )
 # pico_add_extra_outputs(test_dht11)
 #-------------------------------------------------------------------------------------
 

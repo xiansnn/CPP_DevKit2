@@ -9,31 +9,34 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+#include "dht11.h"
 #include <stdio.h>
 #include <math.h>
-
-#include "dht11.h"
+#include "probe.h"
 
 #define CURRENT_DHT_PIN 16 // to be changed to the actual gpio pin
+
+Probe pr_D5 = Probe(5);
 
 int main()
 {
     stdio_init_all();
     DHT11 dht = DHT11(CURRENT_DHT_PIN);
-    struct_DHTReading reading;
+    struct_DHTReading dht_reading;
 
     while (true)
     {
-        gpio_put(18, 1);
-        dht.read_from_dht(&reading);
-        if (reading.is_valid)
+        pr_D5.hi();
+        dht.read_from_dht(&dht_reading);
+        if (dht_reading.is_valid)
         {
-            float fahrenheit = (reading.temp_celsius * 9 / 5) + 32;
+            float fahrenheit = (dht_reading.temp_celsius * 9 / 5) + 32;
             printf("Humidity = %.1f%%, Temperature = %.1fC (%.1F)\n",
-                   reading.humidity, reading.temp_celsius, fahrenheit);
+                   dht_reading.humidity, dht_reading.temp_celsius, fahrenheit);
         }
         else
             printf("Checksum error\n");
+        pr_D5.lo();
         sleep_ms(2000);
     }
 }
