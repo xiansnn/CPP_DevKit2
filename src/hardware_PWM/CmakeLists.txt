@@ -1,0 +1,6 @@
+add_library(hw_pwm  hw_pwm.cpp)
+target_link_libraries(hw_pwm
+    pico_stdlib
+    hardware_pwm
+    )
+

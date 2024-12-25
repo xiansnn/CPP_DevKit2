@@ -58,4 +58,36 @@ target_link_libraries(test_dht11
             )
 # pico_add_extra_outputs(test_dht11)
 #-------------------------------------------------------------------------------------
+# add_executable(test_pwm test_pwm.cpp  )
+# target_link_libraries(test_pwm
+#             pico_stdlib 
+#             hardware_pwm 
+#             hw_pwm
+#             )
+# pico_add_extra_outputs(test_pwm)
+#-------------------------------------------------------------------------------------
+# add_executable(test_pwm_irq  test_pwm_irq.cpp )
+# target_link_libraries(test_pwm_irq
+#             pico_stdlib
+#             hardware_pwm
+#             debug_probe
+#             hw_pwm
+#             )
+# pico_add_extra_outputs(test_pwm_irq)
+#-------------------------------------------------------------------------------------
+# add_executable(test_pwm_duty  test_pwm_duty.cpp   )
+# target_link_libraries(test_pwm_duty
+#             pico_stdlib
+#             hardware_pwm
+#             debug_probe
+#             hw_pwm
+#             )
+# pico_add_extra_outputs(test_pwm_duty)
+#-------------------------------------------------------------------------------------
+# add_executable(test_sg90 test_sg90.cpp    )
+# target_link_libraries(test_sg90
+#             sg90
+#             )
+# pico_add_extra_outputs(test_sg90)
+#-------------------------------------------------------------------------------------
 
