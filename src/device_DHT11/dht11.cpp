@@ -27,6 +27,7 @@
 DHT11::DHT11(uint gpio_in_)
 {
     this->gpio_in = gpio_in_;
+    gpio_init(gpio_in);
 }
 
 /**
@@ -47,11 +48,10 @@ void DHT11::read_from_dht(struct_DHTReading *result)
 
     // skip Start bit 80usLO + 80usHI
     while (gpio_get(this->gpio_in) == 0)
-    { tight_loop_contents();
-    } // sleep_us(1) or do nothing
+        tight_loop_contents(); // sleep_us(1) or do nothing
+
     while (gpio_get(this->gpio_in) == 1)
-    {tight_loop_contents();
-    } // sleep_us(1) or do nothing
+        tight_loop_contents(); // sleep_us(1) or do nothing
 
     // start data capture.  40 LO-levels + 40 HI-levels  give 80 measures as 5  8-bit words data.
     uint last = gpio_get(this->gpio_in); // first bit acquisition
@@ -97,16 +97,11 @@ void DHT11::read_from_dht(struct_DHTReading *result)
         result->temp_celsius = (float)(((data[2] & 0x7F) << 8) + data[3]) / 10;
         // result->temp_celsius = data[2] + 0.1*data[3] ;
         if (result->temp_celsius > 125)
-        {
             result->temp_celsius = data[2];
-        }
+
         if (data[2] & 0x80)
-        {
             result->temp_celsius = -result->temp_celsius;
-        }
     }
     else
-    {
         result->is_valid = false;
-    }
 }
