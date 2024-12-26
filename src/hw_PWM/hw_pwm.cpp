@@ -10,26 +10,9 @@
  */
 #include "hw_pwm.h"
 
-uint32_t PWM::slice_mask = 0x0;
+uint32_t PWM::slice_mask = 0x0; // initializing the class variable
 
-/**
- * @brief Construct a new PWM::PWM object
- * assuming free running  sys_clk @125 MHz => sys_clk_period = 8 ns
- *   PERIOD = 8ns * (TOP+1)*(CSR_PH_CORRECT + 1)*(DIV_INT + (DIV_FRAC/16))
- *   or
- *   PERIOD = 8ns * (TOP+1)*(CSR_PH_CORRECT + 1)* DIV) with DIV = step_ns/8
- *   TOP = (period_us * 1000 /(ph*step_ns)) -1
- * This means the minimum step_ns is 8 ns and the maximum is 256*8ns = 2.048 us
- * the maximum period is 2.048us*64536 = 132 ms
- * 
- * @param gpio_ch_A  channel A of the current PWM slice
- * @param gpio_ch_B  channel B=A+1 of the current PWM slice. May be configured as Input
- * @param step_ns    the minimal pulse provided by the PWM
- * @param period_us  the period of the signal provided by PWM
- * @param phase_correct true if we want the channels symmetric.
- * @param ch_A_inverted true is we want channel A to be active LO
- * @param ch_B_inverted true is we want channel B to be active LO
- */
+
 PWM::PWM(uint gpio_ch_A,
          uint gpio_ch_B,
          int step_ns,
@@ -60,53 +43,27 @@ PWM::PWM(uint gpio_ch_A,
     PWM::slice_mask |= 0x1 << this->slice;
 }
 
-/**
- * @brief All the defined PWM slices will be synchronised
- * 
- */
 void PWM::StartTogether()
 {
     pwm_set_mask_enabled(PWM::slice_mask);
 }
 
-/**
- * @brief start and stop the current PWM slice
- * 
- * @param enabled 
- */
 void PWM::start(bool enabled)
 {
     pwm_set_enabled(this->slice, enabled);
 }
 
-/**
- * @brief define the pulse width in terms of number of step
- * 
- * @param gpio_pin the related pin
- * @param step_level the required number of steps
- */
 void PWM::set_width_nb_of_step(uint gpio_pin, uint16_t step_level)
 {
     pwm_set_gpio_level(gpio_pin, step_level);
 }
 
-/**
- * @brief define the pulse width in terms of duty cycle
- * 
- * @param gpio_pin the related pin
- * @param duty_cycle the required duty cycle
- */
 void PWM::set_duty_cycle(uint gpio_pin, float duty_cycle)
 {
     uint16_t level = (duty_cycle * this->period_us * 1000) / this->step_ns;
     pwm_set_gpio_level(gpio_pin, level);
 }
 
-/**
- * @brief setup the associated IRQ handler, executed each time the PWM counter wrap to 0.
- * 
- * @param handler 
- */
 void PWM::set_irq(irq_handler_t handler)
 {
     pwm_clear_irq(this->slice);
@@ -116,10 +73,6 @@ void PWM::set_irq(irq_handler_t handler)
     irq_set_enabled(PWM_IRQ_WRAP, true);
 }
 
-/**
- * @brief clear the slice IRQ
- * 
- */
 void PWM::clear_irq()
 {
     pwm_clear_irq(this->slice);
@@ -127,11 +80,10 @@ void PWM::clear_irq()
 
 /**
  * @brief Construct a new PWMgatedMeasure::PWMgatedMeasure object
- * Used to measure time during which the signal on the channel B as input is HI.
  * 
- * @param pin_gate must be the channel B of a slice
- * @param resolution_ns the minimum time slot as measure LSB
- * @param measure_duration_us the observation duration.t 
+ * @param pin_gate 
+ * @param resolution_ns 
+ * @param measure_duration_us 
  */
 PWMgatedMeasure::PWMgatedMeasure(uint pin_gate, uint resolution_ns, uint measure_duration_us)
 {
@@ -153,22 +105,12 @@ PWMgatedMeasure::PWMgatedMeasure(uint pin_gate, uint resolution_ns, uint measure
     pwm_init(this->slice, &device_config, false);
 }
 
-/**
- * @brief compute the time the channel B is HI over the time of observation
- * 
- * @return float 
- */
 float PWMgatedMeasure::measure_duty_cycle()
 {
     float max_possible_count = this->measure_duration_us*1000 / this->resolution_ns;
     return (float)this->count_cycles() / max_possible_count;
 }
 
-/**
- * @brief gives the number of step while the signal on channel B is HI
- * 
- * @return uint16_t 
- */
 uint16_t PWMgatedMeasure::count_cycles()
 {
     pwm_set_counter(this->slice, 0);

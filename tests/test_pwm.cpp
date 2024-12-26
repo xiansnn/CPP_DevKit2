@@ -7,38 +7,35 @@
 #include "pico/stdlib.h"
 #include "hw_pwm.h"
 
-/**
- * @brief 
- * 
- * @return int 
- */
-int main()
-{
-
-#define CH1 6
-#define CH2 8
-#define CH3 16
-#define CH4 27
+#define CH1 6  // PWM slice 3A
+#define CH2 8  // PWM slice 4A
+#define CH3 16 // PWM slice 0A
+#define CH4 26 // PWM slice 5A
 #define STEP_ns 1000
 #define PERIOD_us 20000
 #define PHASE_CORRECT true
 
-    PWM pwm1 = PWM(CH1, CH1+1, STEP_ns, PERIOD_us, PHASE_CORRECT, false, false);
-    pwm1.set_width_nb_of_step(CH1, 1);
-    pwm1.set_duty_cycle(CH1+1, 0.05);
+int main()
+{
 
-    PWM pwm2 = PWM(CH2, CH2+1, STEP_ns, PERIOD_us, PHASE_CORRECT, false, false);
-    pwm2.set_width_nb_of_step(CH2, 1);
-    pwm2.set_duty_cycle(CH2+1, 0.1);
-    
-    PWM pwm3 = PWM(CH3, CH3+1, STEP_ns, PERIOD_us, PHASE_CORRECT, false, false);
-    pwm3.set_width_nb_of_step(CH3, 1);
-    pwm3.set_duty_cycle(CH3+1, 0.5);
-    
-    PWM pwm4 = PWM(CH4, CH4+1, STEP_ns, PERIOD_us, PHASE_CORRECT, false, false);
-    pwm4.set_width_nb_of_step(CH4, 1);
-    pwm4.set_duty_cycle(CH4+1, 0.9);
-   
+    PWM pwm_3 = PWM(CH1, CH1 + 1, STEP_ns, PERIOD_us, PHASE_CORRECT, false, false);
+    pwm_3.set_width_nb_of_step(CH1, 1);
+    pwm_3.set_duty_cycle(CH1 + 1, 0.05);
+
+    PWM pwm_4 = PWM(CH2, CH2 + 1, STEP_ns, PERIOD_us, PHASE_CORRECT, false, false);
+    pwm_4.set_width_nb_of_step(CH2, 1);
+    pwm_4.set_duty_cycle(CH2 + 1, 0.1);
+
+    PWM pwm_0 = PWM(CH3, CH3 + 1, STEP_ns, PERIOD_us, PHASE_CORRECT, false, false);
+    pwm_0.set_width_nb_of_step(CH3, 1);
+    pwm_0.set_duty_cycle(CH3 + 1, 0.5);
+
+    PWM pwm_5 = PWM(CH4, CH4 + 1, STEP_ns, PERIOD_us, PHASE_CORRECT, false, false);
+    pwm_5.set_width_nb_of_step(CH4, 1);
+    pwm_5.set_duty_cycle(CH4 + 1, 0.9);
+
     PWM::StartTogether();
 
+    while (true)
+        sleep_ms(1);
 }

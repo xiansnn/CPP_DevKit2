@@ -58,12 +58,12 @@ target_link_libraries(test_dht11
             )
 # pico_add_extra_outputs(test_dht11)
 #-------------------------------------------------------------------------------------
-# add_executable(test_pwm test_pwm.cpp  )
-# target_link_libraries(test_pwm
-#             pico_stdlib 
-#             hardware_pwm 
-#             hw_pwm
-#             )
+add_executable(test_pwm test_pwm.cpp  )
+target_link_libraries(test_pwm
+            pico_stdlib 
+            hardware_pwm 
+            hw_pwm
+            )
 # pico_add_extra_outputs(test_pwm)
 #-------------------------------------------------------------------------------------
 # add_executable(test_pwm_irq  test_pwm_irq.cpp )
