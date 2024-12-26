@@ -4,6 +4,8 @@ var hierarchy =
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", null ],
     [ "HW_I2C_Slave", "class_h_w___i2_c___slave.html", null ],
     [ "Probe", "class_probe.html", null ],
+    [ "PWM", "class_p_w_m.html", null ],
+    [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],
     [ "struct_ConfigMasterI2C", "structstruct___config_master_i2_c.html", null ],
     [ "struct_ConfigSlaveI2C", "structstruct___config_slave_i2_c.html", null ],
     [ "struct_DHTReading", "structstruct___d_h_t_reading.html", null ],

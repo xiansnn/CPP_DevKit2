@@ -7,5 +7,7 @@ var searchData=
   ['process_5firq_5fevent_4',['process_IRQ_event',['../class_switch_button_with_i_r_q.html#a910cf64b0017e10006df24c4bc44a9c8',1,'SwitchButtonWithIRQ']]],
   ['process_5fsample_5fevent_5',['process_sample_event',['../class_switch_button.html#aa7ebc9b37168b233ff9526f770fed49f',1,'SwitchButton']]],
   ['pulse_5fus_6',['pulse_us',['../class_probe.html#a090879d096db391e958305e2686b2f45',1,'Probe']]],
-  ['push_7',['PUSH',['../ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32a73dabe4437725eedc05a1824a2c31550',1,'ui_control_event.h']]]
+  ['push_7',['PUSH',['../ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32a73dabe4437725eedc05a1824a2c31550',1,'ui_control_event.h']]],
+  ['pwm_8',['PWM',['../class_p_w_m.html',1,'PWM'],['../class_p_w_m.html#a4dedfbb6be96295678d51afffee4a132',1,'PWM::PWM()']]],
+  ['pwmgatedmeasure_9',['PWMgatedMeasure',['../class_p_w_mgated_measure.html',1,'PWMgatedMeasure'],['../class_p_w_mgated_measure.html#a911c1e8d4fa44682c782c5091b4099fe',1,'PWMgatedMeasure::PWMgatedMeasure()']]]
 ];
