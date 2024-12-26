@@ -1,5 +1,5 @@
 /**
- * @file pwm.h
+ * @file hw_pwm.h
  * @author xiansnn (xiansnn@hotmail.com)
  * @brief
  * @version 0.1
@@ -9,8 +9,8 @@
  *
  */
 
-#if !defined(HAL_PWM_H)
-#define HAL_PWM_H
+#if !defined(HW_PWM_H)
+#define HW_PWM_H
 
 #include "pico/stdlib.h"
 #include "hardware/pwm.h"
@@ -142,4 +142,4 @@ public:
     uint16_t count_cycles();
 };
 
-#endif // HAL_PWM_H
+#endif // HW_PWM_H
