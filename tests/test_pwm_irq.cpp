@@ -20,8 +20,8 @@
 #define PERIOD_us 100
 #define PHASE_CORRECT false
 
-Probe pr_irq = Probe(4);
-Probe pr_main = Probe(5);
+Probe pr_D4 = Probe(4);
+Probe pr_D5 = Probe(5);
 
 PWM pwm = PWM(PWM_OUT, PWM_OUT + 1, STEP_ns, PERIOD_us, PHASE_CORRECT);
 
@@ -45,8 +45,7 @@ void on_pwm_wrap()
         duty_cycle -= duty_cycle_step;
         if (duty_cycle <= 0.0)
         {
-            pr_irq.hi(); // trigger placed on the start of duty cycle = 0
-            pr_irq.lo();
+            pr_D4.pulse_us(1);// trigger placed on the start of duty cycle = 0
             duty_cycle = 0.0;
             going_up = true;
         }
@@ -63,9 +62,7 @@ int main()
 
     while (true)
     {
-        pr_main.hi();
-        sleep_us(10);
-        pr_main.lo();
+        pr_D5.pulse_us(10);
         sleep_us(90);
     }
 }
