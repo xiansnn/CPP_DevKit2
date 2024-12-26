@@ -12,7 +12,6 @@
 #if !defined(ROTARY_ENCODER_H)
 #define ROTARY_ENCODER_H
 
-// #include <pico/stdio.h>
 #include "switch_button.h"
 
 /// @brief this is a function pointer used as rotary encoder constructor paramater
