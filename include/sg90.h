@@ -27,23 +27,22 @@
 #define T_MAX_us 2500
 
 /**
- * @brief 
- * 
+ * @brief the data set that configures the SG90 motor
  */
 struct struct_ConfigSG90
 {
-    /// @brief brief description
+    /// @brief the gpio pin used to command the servo motor. Correspond to the B channel of the PWM slice
     uint command_pin;
-    /// @brief brief description
-    uint sync_pin;
-    /// @brief brief description
+    /// @brief an auxilliary pulse that can be used as a synchro signal. Correspond to the A channel of the PWM slice
+    uint sync_pin; 
+    /// @brief minimum position in degrees. Typically 0° or -90°.
     int pos_min_degree = -90;
-    /// @brief brief description
+    /// @brief maximum position in degrees. Typically 180° or +90°.
     int pos_max_degree = +90;
 };
 
 /**
- * @brief 
+ * @brief the class that manages the SG90 step motor
  * 
  */
 class SG90
@@ -64,9 +63,9 @@ public:
      */
     SG90(struct_ConfigSG90 sg90_config);
     /**
-     * @brief Set the pos object
+     * @brief the command to set the position of the motor.
      * 
-     * @param pos 
+     * @param pos position in degrees, between pos_min_deg and pos_max_deg.
      */
     void set_pos(int pos);
 };

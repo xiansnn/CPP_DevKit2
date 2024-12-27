@@ -10,14 +10,6 @@
  */
 #include "sg90.h"
 
-/**
- * @brief Construct a new SG90::SG90 object.
- *
- * @param command // the gpio pin used to command the servo motor.
- * @param sync // an auxilliary pulse that can be used as a synchro signal.
- * @param pos_min_deg // minimum position in degrees. Typically 0° or -90°.
- * @param pos_max_deg // maximum position in degrees. Typically 180° or +90°.
- */
 SG90::SG90(struct_ConfigSG90 cfg)
 {
     this->pwm = new PWM(cfg.command_pin, cfg.sync_pin, STEP_ns, PERIOD_us, PHASE_CORRECT);
@@ -30,11 +22,6 @@ SG90::SG90(struct_ConfigSG90 cfg)
     pwm->start(true);
 }
 
-/**
- * @brief the command to set the position of the motor.
- *
- * @param pos position in degrees, between pos_min_deg and pos_max_deg.
- */
 void SG90::set_pos(int pos)
 {
     int clamp = ((pos >= this->pos_max_deg) ? this->pos_max_deg : ((pos <= this->pos_min_deg) ? this->pos_min_deg : pos));
