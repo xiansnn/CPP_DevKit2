@@ -36,7 +36,7 @@ public:
     /**
      * @brief request a measure from HC_SR04
      *
-     * @return float the measured distance
+     * @return the measured distance in float[cm]. Max = 400cm. If no response, return = -1.
      */
     float get_distance();
 };
