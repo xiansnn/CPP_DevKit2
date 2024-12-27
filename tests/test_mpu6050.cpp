@@ -26,6 +26,13 @@ void print_measures(struct_MPUData measures)
     printf("\n\n");
 }
 
+void print_raw_data(struct_RawData raw_data)
+{
+    printf("Acc [X = %4x\t\tY = %4x\t\tZ = %4x ]", raw_data.g_x, raw_data.g_y, raw_data.g_z);
+    printf("\t\t\tGyro [X = %4x\t\tY = %4x\t\tZ = %4x ]", raw_data.gyro_x, raw_data.gyro_y, raw_data.gyro_z);
+    printf("\n\n");
+};
+
 int main()
 {
     stdio_init_all();
@@ -39,6 +46,8 @@ int main()
         {
             struct_MPUData measures = mpu.get_measures();
             print_measures(measures);
+            struct_RawData raw_data = mpu.get_raw_data();
+            print_raw_data(raw_data);
         }
         sleep_ms(1000);
     }

@@ -214,6 +214,12 @@ struct_MPUData MPU6050::get_measures()
     return this->data;
 }
 
+struct_RawData MPU6050::get_raw_data()
+{
+    this->read_registers_all_raw_data();
+    return this->raw;
+}
+
 uint16_t MPU6050::get_FIFO_count()
 {
     uint8_t read_buf[2] = {FIFO_COUNT_H_RA};
@@ -229,17 +235,4 @@ bool MPU6050::is_data_ready()
     return status[0] & DATA_RDY_INT;
 }
 
-void MPU6050::print_measures()
-{
-    printf("AccX = %+.2f\tY = %+.2f\tZ = %+.2f", this->data.g_x, this->data.g_y, this->data.g_z);
-    printf("\tvecteur G: %+.2f", sqrt(pow(this->data.g_x, 2) + pow(this->data.g_y, 2) + pow(this->data.g_z, 2)));
-    printf("\tGyroX = %+.2f\tY = %+.2f\tZ = %+.2f", this->data.gyro_x, this->data.gyro_y, this->data.gyro_z);
-    printf("\n\n");
-};
 
-void MPU6050::print_raw_data()
-{
-    printf("Acc [X = %4x\t\tY = %4x\t\tZ = %4x ]", this->raw.g_x, this->raw.g_y, this->raw.g_z);
-    printf("\t\t\tGyro [X = %4x\t\tY = %4x\t\tZ = %4x ]", this->raw.gyro_x, this->raw.gyro_y, this->raw.gyro_z);
-    printf("\n\n");
-};

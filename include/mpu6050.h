@@ -125,16 +125,8 @@ public:
      * @return struct_MPUData
      */
     struct_MPUData get_measures();
-    /**
-     * @brief
-     *
-     */
-    void print_measures();
-    /**
-     * @brief
-     *
-     */
-    void print_raw_data();
+
+    struct_RawData get_raw_data();
 };
 
 #endif // MPU6050_H
