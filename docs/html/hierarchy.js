@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "DHT11", "class_d_h_t11.html", null ],
+    [ "HC_SR04", "class_h_c___s_r04.html", null ],
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", null ],
     [ "HW_I2C_Slave", "class_h_w___i2_c___slave.html", null ],
     [ "Probe", "class_probe.html", null ],

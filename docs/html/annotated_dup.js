@@ -1,6 +1,7 @@
 var annotated_dup =
 [
     [ "DHT11", "class_d_h_t11.html", "class_d_h_t11" ],
+    [ "HC_SR04", "class_h_c___s_r04.html", "class_h_c___s_r04" ],
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", "class_h_w___i2_c___master" ],
     [ "HW_I2C_Slave", "class_h_w___i2_c___slave.html", "class_h_w___i2_c___slave" ],
     [ "Probe", "class_probe.html", "class_probe" ],
