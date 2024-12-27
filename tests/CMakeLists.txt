@@ -90,4 +90,10 @@ target_link_libraries(test_sg90
             )
 # pico_add_extra_outputs(test_sg90)
 #-------------------------------------------------------------------------------------
-
+add_executable(test_hc_sr04 test_hc_sr04.cpp )
+target_link_libraries(test_hc_sr04 
+            pico_stdlib 
+            hc_sr04
+            )
+# pico_add_extra_outputs(test_hc_sr04)
+#-------------------------------------------------------------------------------------
