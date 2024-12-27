@@ -4,5 +4,6 @@ var searchData=
   ['sda_5fpin_1',['sda_pin',['../structstruct___config_master_i2_c.html#afd48650ae9d3930c7762d05c53c21206',1,'struct_ConfigMasterI2C::sda_pin'],['../structstruct___config_slave_i2_c.html#acba8fdbc41345f5fb5012e649615f16a',1,'struct_ConfigSlaveI2C::sda_pin']]],
   ['slave_5faddress_2',['slave_address',['../structstruct___config_slave_i2_c.html#af7f59b731d8464999028a1128f646734',1,'struct_ConfigSlaveI2C']]],
   ['slave_5fmemory_5fsize_3',['slave_memory_size',['../structstruct___config_slave_i2_c.html#a1205b1fcda3c452180f907d95d47e7c6',1,'struct_ConfigSlaveI2C']]],
-  ['slice_5fmask_4',['slice_mask',['../class_p_w_m.html#ac95700cb79b54ce3babf273df156b561',1,'PWM']]]
+  ['slice_5fmask_4',['slice_mask',['../class_p_w_m.html#ac95700cb79b54ce3babf273df156b561',1,'PWM']]],
+  ['sync_5fpin_5',['sync_pin',['../structstruct___config_s_g90.html#a1adfe8bff0e581ebf86b11dd97d7153c',1,'struct_ConfigSG90']]]
 ];
