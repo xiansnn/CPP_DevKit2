@@ -150,21 +150,6 @@ bool HW_I2C_Master::device_is_connected(uint8_t slave_address)
     return (nb < 0 ? false : true);
 }
 
-void HW_I2C_Master::show_bus_map()
-{
-    printf("Connected slave's map \n");
-    printf("   0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F\n");
-    std::set<uint8_t> device_address_set = this->bus_scan();
-    for (size_t i = 0; i < 0x80; i++)
-    {
-        if (i % 16 == 0)
-            printf("%02x ", i); // start of lines labels
-        printf(device_address_set.contains(i) ? "@" : ((i < 0x08 || i > 0x78) ? " " : "."));
-        printf(i % 16 == 15 ? "\n" : "  "); // columns interspace and end of lines
-    }
-    printf("done\n");
-}
-
 void HW_I2C_Slave::slave_isr(i2c_slave_event_t event)
 {
     switch (event)

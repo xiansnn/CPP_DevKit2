@@ -191,12 +191,6 @@ public:
      * @return false no response
      */
     bool device_is_connected(uint8_t slave_address);
-    /**
-     * @brief a utility that provides a map of responding devices.
-     *
-     * The map is displayed on the serial terminal
-     */
-    void show_bus_map();
 };
 
 /**
@@ -225,7 +219,7 @@ private:
 public:
     /**
      * @brief a data structure used to configure the slave device
-     * 
+     *
      */
     struct_SlaveMemory context;
     /**
