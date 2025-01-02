@@ -205,13 +205,6 @@ struct_I2CXferResult MPU6050::get_measures()
     return result;
 }
 
-struct_I2CXferResult MPU6050::get_raw_data()
-{
-    struct_I2CXferResult result;
-    result = this->read_registers_all_raw_data();
-    return result;
-}
-
 uint16_t MPU6050::get_FIFO_count()
 {
     uint8_t read_buf[2] = {FIFO_COUNT_H_RA};
