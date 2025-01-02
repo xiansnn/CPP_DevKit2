@@ -96,7 +96,7 @@ struct struct_MPUData
 /**
  * @brief Class that manage the MPU6050 3-axes accelerometer/gyrometer
  */
-class MPU6050
+class MPU6050 // TODO investigate hardware issues, bad I2C signal quality, I2C API SDK ?
 {
 private:
     HW_I2C_Master *master;
