@@ -1,7 +1,7 @@
 #include "mpu6050.h"
-// #include "pico/stdlib.h"
 #include "hardware/gpio.h"
 #include <stdio.h>
+#include <math.h>
 #include "probe.h"
 
 Probe pr_D4 = Probe(4);
@@ -34,25 +34,46 @@ void gpio_callback(uint gpio, uint32_t events)
     pr_D1.lo();
 }
 
+void print_measures(struct_MPUData measures)
+{
+    printf("AccX = %+.2f\tY = %+.2f\tZ = %+.2f", measures.g_x, measures.g_y, measures.g_z);
+    printf("\tvecteur G: %+.2f", sqrt(pow(measures.g_x, 2) + pow(measures.g_y, 2) + pow(measures.g_z, 2)));
+    printf("\tGyroX = %+.2f\tY = %+.2f\tZ = %+.2f", measures.gyro_x, measures.gyro_y, measures.gyro_z);
+    printf("\n\n");
+}
+
+void print_raw_data(struct_RawData raw_data)
+{
+    printf("Acc [X = %4x\t\tY = %4x\t\tZ = %4x ]", raw_data.g_x, raw_data.g_y, raw_data.g_z);
+    printf("\t\t\tGyro [X = %4x\t\tY = %4x\t\tZ = %4x ]", raw_data.gyro_x, raw_data.gyro_y, raw_data.gyro_z);
+    printf("\n\n");
+};
+
 int main()
 {
     stdio_init_all();
+    int32_t sample_period_ms = 1000 / mpu_cfg.SAMPLE_RATE;
+
     printf("temperature : %.2f\n", mpu.get_MPU_temperature());
 
     gpio_set_irq_enabled_with_callback(MPU_INT, GPIO_IRQ_EDGE_FALL, true, &gpio_callback);
 
     while (true)
     {
-        pr_D4.hi();
+        pr_D5.hi();
         if (data_ready)
         {
-            pr_D5.hi();
-            mpu.print_measures();
-            data_ready = false;
-            pr_D5.lo();
+            pr_D4.hi();
+            struct_I2CXferResult result = mpu.get_measures();
+            if (result.error)
+                printf("i2c error : %s \n", result.context.c_str());
+            else
+                print_raw_data(mpu.raw);
+            // print_measures(mpu.data);
+            pr_D4.lo();
         }
-        pr_D4.lo();
-        sleep_ms(100);
+        pr_D5.lo();
+        sleep_ms(sample_period_ms);
     }
     return 0;
 }

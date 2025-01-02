@@ -38,18 +38,25 @@ int main()
     stdio_init_all();
     HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
     MPU6050 mpu = MPU6050(&master, mpu_cfg);
+    int32_t sample_period_ms = 1000 / mpu_cfg.SAMPLE_RATE;
     float t = mpu.get_MPU_temperature();
     printf("temperature : %.2f\n", t);
     while (true)
     {
+        pr_D5.hi();
         if (mpu.is_data_ready())
         {
-            struct_MPUData measures = mpu.get_measures();
-            print_measures(measures);
-            struct_RawData raw_data = mpu.get_raw_data();
-            print_raw_data(raw_data);
+            pr_D4.hi();
+            struct_I2CXferResult result = mpu.get_measures();
+            if (result.error)
+                printf("i2c error : %s \n", result.context.c_str());
+            else
+                print_raw_data(mpu.raw);
+                // print_measures(mpu.data);
+            pr_D4.lo();
         }
-        sleep_ms(1000);
+        pr_D5.lo();
+        sleep_ms(sample_period_ms);
     }
     return 0;
 }

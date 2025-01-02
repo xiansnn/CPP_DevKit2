@@ -13,7 +13,6 @@
 #include <stdio.h>
 #include <math.h>
 
-
 MPU6050::MPU6050(HW_I2C_Master *master, struct_ConfigMPU6050 mpu_config)
 {
     this->master = master;
@@ -23,14 +22,11 @@ MPU6050::MPU6050(HW_I2C_Master *master, struct_ConfigMPU6050 mpu_config)
     this->calibrate();
 }
 
-void MPU6050::read_registers_all_raw_data()
+struct_I2CXferResult MPU6050::read_registers_all_raw_data()
 {
     struct_I2CXferResult result;
     uint8_t read_buf[14];
     result = this->master->burst_byte_read(this->device_config.MPU_ADDR, ACCEL_XOUT_H_RA, read_buf, 14);
-    if ( result.error)
-        this->init_mpu();
-
     this->raw.g_x = (read_buf[0] << 8) + read_buf[1];
     this->raw.g_y = (read_buf[2] << 8) + read_buf[3];
     this->raw.g_z = (read_buf[4] << 8) + read_buf[5];
@@ -38,14 +34,14 @@ void MPU6050::read_registers_all_raw_data()
     this->raw.gyro_x = (read_buf[8] << 8) + read_buf[9];
     this->raw.gyro_y = (read_buf[10] << 8) + read_buf[11];
     this->raw.gyro_z = (read_buf[12] << 8) + read_buf[13];
-
+    return result;
 }
 
 void MPU6050::read_FIFO_all_raw_data()
 {
     uint8_t read_buf[14];
     this->master->burst_byte_read(this->device_config.MPU_ADDR, FIFO_R_W_RA, read_buf, 14);
-    
+
     this->raw.g_x = (read_buf[0] << 8) + read_buf[1];
     this->raw.g_y = (read_buf[2] << 8) + read_buf[3];
     this->raw.g_z = (read_buf[4] << 8) + read_buf[5];
@@ -53,8 +49,7 @@ void MPU6050::read_FIFO_all_raw_data()
     this->raw.gyro_x = (read_buf[8] << 8) + read_buf[9];
     this->raw.gyro_y = (read_buf[10] << 8) + read_buf[11];
     this->raw.gyro_z = (read_buf[12] << 8) + read_buf[13];
-
-    }
+}
 void MPU6050::convert_raw_to_measure()
 {
     this->data.g_x = this->raw.g_x * this->acceleration_factor + this->accel_x_offset;
@@ -64,8 +59,6 @@ void MPU6050::convert_raw_to_measure()
     this->data.gyro_y = this->raw.gyro_y * this->gyro_factor + this->gyro_y_offset;
     this->data.gyro_z = this->raw.gyro_z * this->gyro_factor + this->gyro_z_offset;
     this->data.temp_out = this->raw.temp_out * this->temperature_gain + this->temperature_offset;
-
-
 }
 
 void MPU6050::init_mpu()
@@ -132,29 +125,26 @@ void MPU6050::init_mpu()
     this->master->single_byte_write(this->device_config.MPU_ADDR, INT_ENABLE_RA, this->device_config.INT_ENABLE);
 }
 
-void MPU6050::read_FIFO_g_accel_raw_data() 
+void MPU6050::read_FIFO_g_accel_raw_data()
 {
     uint8_t read_buf[12];
     this->master->burst_byte_read(this->device_config.MPU_ADDR, FIFO_R_W_RA, read_buf, 12);
-    
+
     this->raw.g_x = (read_buf[0] << 8) + read_buf[1];
     this->raw.g_y = (read_buf[2] << 8) + read_buf[3];
     this->raw.g_z = (read_buf[4] << 8) + read_buf[5];
     this->raw.gyro_x = (read_buf[6] << 8) + read_buf[7];
     this->raw.gyro_y = (read_buf[8] << 8) + read_buf[9];
     this->raw.gyro_z = (read_buf[10] << 8) + read_buf[11];
-
 }
 void MPU6050::read_FIFO_accel_raw_data()
 {
     uint8_t read_buf[6];
     this->master->burst_byte_read(this->device_config.MPU_ADDR, FIFO_R_W_RA, read_buf, 6);
-    
+
     this->raw.g_x = (read_buf[0] << 8) + read_buf[1];
     this->raw.g_y = (read_buf[2] << 8) + read_buf[3];
     this->raw.g_z = (read_buf[4] << 8) + read_buf[5];
-
-
 }
 
 void MPU6050::calibrate()
@@ -176,9 +166,9 @@ void MPU6050::calibrate()
             accel_x += (float)this->raw.g_x;
             accel_y += (float)this->raw.g_y;
             accel_z += (float)this->raw.g_z;
-            gyro_x += (float) this->raw.gyro_x;
-            gyro_y += (float) this->raw.gyro_y;
-            gyro_z += (float) this->raw.gyro_z;
+            gyro_x += (float)this->raw.gyro_x;
+            gyro_y += (float)this->raw.gyro_y;
+            gyro_z += (float)this->raw.gyro_z;
             i++;
         }
         sleep_ms(1);
@@ -207,17 +197,19 @@ float MPU6050::get_MPU_temperature()
     return (float)this->raw.temp_out * this->temperature_gain + this->temperature_offset;
 }
 
-struct_MPUData MPU6050::get_measures()
+struct_I2CXferResult MPU6050::get_measures()
 {
-    this->read_registers_all_raw_data();
+    struct_I2CXferResult result;
+    result = this->read_registers_all_raw_data();
     this->convert_raw_to_measure();
-    return this->data;
+    return result;
 }
 
-struct_RawData MPU6050::get_raw_data()
+struct_I2CXferResult MPU6050::get_raw_data()
 {
-    this->read_registers_all_raw_data();
-    return this->raw;
+    struct_I2CXferResult result;
+    result = this->read_registers_all_raw_data();
+    return result;
 }
 
 uint16_t MPU6050::get_FIFO_count()
@@ -234,5 +226,3 @@ bool MPU6050::is_data_ready()
 
     return status[0] & DATA_RDY_INT;
 }
-
-

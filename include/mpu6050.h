@@ -81,11 +81,9 @@ private:
     float gyro_x_offset{};
     float gyro_y_offset{};
     float gyro_z_offset{};
-    struct_MPUData data;
-    struct_RawData raw;
 
     void init_mpu();
-    void read_registers_all_raw_data();
+    struct_I2CXferResult read_registers_all_raw_data();
     void calibrate();
     void convert_raw_to_measure();
     void read_FIFO_all_raw_data();     // FIXME check FIFO data reading.... seems not working well
@@ -106,6 +104,10 @@ public:
      * @return uint16_t
      */
     uint16_t get_FIFO_count();
+    /// @brief  
+    struct_MPUData data;
+    /// @brief 
+    struct_RawData raw;
     /**
      * @brief Get the MPU temperature object
      *
@@ -124,9 +126,9 @@ public:
      *
      * @return struct_MPUData
      */
-    struct_MPUData get_measures();
+    struct_I2CXferResult get_measures();
 
-    struct_RawData get_raw_data();
+    struct_I2CXferResult get_raw_data();
 };
 
 #endif // MPU6050_H
