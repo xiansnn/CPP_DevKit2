@@ -35,7 +35,6 @@ class RotaryEncoder : public SwitchButtonWithIRQ
 private:
     uint dt_gpio;
     control_event_processor_t event_processor;
-///TODO comment eviter de creer l'ISR de switch_button_with_irq
 public:
     /**
      * @brief Construct a new Rotary Encoder object
