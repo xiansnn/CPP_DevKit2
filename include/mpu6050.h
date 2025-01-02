@@ -22,31 +22,31 @@
 struct struct_ConfigMPU6050
 {
     /// @brief MPU address, assuming AD0 pin is low otherwise = 0x69
-    uint8_t MPU_ADDR = 0x68;                                       
+    uint8_t MPU_ADDR = 0x68;
     /// @brief Reg 0x19: set sensors sample rate in Hz
-    uint16_t SAMPLE_RATE = 100;                                      
+    uint16_t SAMPLE_RATE = 100;
     /// @brief Reg 0x1A: Digital Low-Pass Filter bandwidth.  values in { 250, 200, 100, 50, 20, 10, 5}Hz
-    uint8_t DLPF_BW = 50;                                           
-    /// @brief Reg 0x1A: external synchronisation via FSYNC pin. 
-    uint8_t EXT_SYNC = EXT_SYNC_SET_DISABLED;                       
+    uint8_t DLPF_BW = 50;
+    /// @brief Reg 0x1A: external synchronisation via FSYNC pin.
+    uint8_t EXT_SYNC = EXT_SYNC_SET_DISABLED;
     /// @brief Reg 0x1A: in Hz, depending on DLPF value
-    uint16_t GYRO_OUT_RATE = 1000;                                 
+    uint16_t GYRO_OUT_RATE = 1000;
     /// @brief Reg 0x1B: values in { 250, 500, 1000, 2000} DegreePerSecond
-    uint16_t GYRO_FULL_SCALE_RANGE = 250;                           
+    uint16_t GYRO_FULL_SCALE_RANGE = 250;
     /// @brief Reg 0x1C:values in { 2, 4, 8, 16} G
-    uint8_t ACCEL_FULL_SCALE_RANGE = 2;                     
+    uint8_t ACCEL_FULL_SCALE_RANGE = 2;
     /// @brief Reg 0x23:
-    uint8_t FIFO_SELECTED_SENSORS = GYRO_FIFO_EN | ACCEL_FIFO_EN;  
+    uint8_t FIFO_SELECTED_SENSORS = GYRO_FIFO_EN | ACCEL_FIFO_EN;
     /// @brief Reg 0x37: Active LO, open drain, pulsed 50us, cleared any read operation
-    uint8_t INT_PIN_CFG = INT_LEVEL | LATCH_INT_EN | INT_RD_CLEAR;     
+    uint8_t INT_PIN_CFG = INT_LEVEL | LATCH_INT_EN | INT_RD_CLEAR;
     /// @brief Reg 0x38: INT each time a sensor register write occurs
-    uint8_t INT_ENABLE = DATA_RDY_EN;                              
+    uint8_t INT_ENABLE = DATA_RDY_EN;
     /// @brief Reg 0x68: default no reset
-    uint8_t SIGNAL_PATH_RESET = NO_PATH_RESET;     
+    uint8_t SIGNAL_PATH_RESET = NO_PATH_RESET;
     /// @brief Reg 0x6A: FIFO enable
     uint8_t FIFO_OP = FIFO_EN;
-    /// @brief Reg 0x6B:                                     
-    uint8_t PWR_MGMT_1 = CLKSEL_Z_PLL;                        
+    /// @brief Reg 0x6B:
+    uint8_t PWR_MGMT_1 = CLKSEL_Z_PLL;
 };
 
 /**
@@ -95,8 +95,9 @@ struct struct_MPUData
 
 /**
  * @brief Class that manage the MPU6050 3-axes accelerometer/gyrometer
+ * \bug //FIXME investigate hardware issues, bad I2C signal quality, I2C API SDK ?
  */
-class MPU6050 // TODO investigate hardware issues, bad I2C signal quality, I2C API SDK ?
+class MPU6050
 {
 private:
     HW_I2C_Master *master;
@@ -114,12 +115,12 @@ private:
 
     /**
      * @brief initialise the MPU configuration
-     * 
+     *
      */
     void init_mpu();
     /**
      * @brief fill the internal data with raw values from sensors
-     * 
+     *
      * @return struct_I2CXferResult The result of the i2c reading
      */
     struct_I2CXferResult read_registers_all_raw_data();
@@ -131,9 +132,8 @@ private:
      * @brief fill the internal measures by converting the raw data
      */
     void convert_raw_to_measure();
-    void read_FIFO_all_raw_data();     // FIXME check FIFO data reading.... seems not working well
-    void read_FIFO_g_accel_raw_data(); // FIXME check FIFO data reading.... seems not working well
-    void read_FIFO_accel_raw_data();   // FIXME check FIFO data reading.... seems not working well
+    void read_FIFO_g_accel_raw_data();
+    void read_FIFO_accel_raw_data();
 
 public:
     /**
@@ -149,7 +149,7 @@ public:
      * @return uint16_t
      */
     uint16_t get_FIFO_count();
-    /// @brief  the set of measures from sensors 
+    /// @brief  the set of measures from sensors
     struct_MPUData data;
     /// @brief the set of raw data from sensors
     struct_RawData raw;
@@ -171,7 +171,9 @@ public:
      * @return struct_MPUData
      */
     struct_I2CXferResult get_measures();
-
+    /// @brief read raw data from FIFO
+    /// \bug   //FIXME check FIFO data reading.... seems not working well
+    void read_FIFO_all_raw_data();
 };
 
 #endif // MPU6050_H

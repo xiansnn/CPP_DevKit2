@@ -23,7 +23,7 @@ enum class UIControlEvent
     /// @brief event triggered when a button is pushed
     PUSH,
     /// @brief event triggered when a button is double-pushed
-    /// \todo  Not implemented. // TODO  To find a way to do "DOUBLE_PUSH"
+    /// \todo   //TODO Not implemented. To find a way to do "DOUBLE_PUSH"
     DOUBLE_PUSH,
      /// @brief event triggered when a button is held more than a configurable duration.
     LONG_PUSH,
