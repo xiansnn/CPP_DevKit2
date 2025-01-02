@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "C++ DevKit", "index.html", [
+    [ "Bug List", "bug.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

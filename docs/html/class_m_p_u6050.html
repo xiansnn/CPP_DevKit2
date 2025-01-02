@@ -126,6 +126,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa85e641ba4b5653ce5493a6cbd599e89" id="r_aa85e641ba4b5653ce5493a6cbd599e89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstruct___i2_c_xfer_result.html">struct_I2CXferResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa85e641ba4b5653ce5493a6cbd599e89">get_measures</a> ()</td></tr>
 <tr class="memdesc:aa85e641ba4b5653ce5493a6cbd599e89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the raw data, fill the internal <a class="el" href="structstruct___raw_data.html" title="raw data as they are captured by sensor">struct_RawData</a>, converts raw data to real measures according to offset and coversion factor.  <br /></td></tr>
 <tr class="separator:aa85e641ba4b5653ce5493a6cbd599e89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb309403458dddb7424f58b2bef5235b" id="r_afb309403458dddb7424f58b2bef5235b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb309403458dddb7424f58b2bef5235b">read_FIFO_all_raw_data</a> ()</td></tr>
+<tr class="memdesc:afb309403458dddb7424f58b2bef5235b"><td class="mdescLeft">&#160;</td><td class="mdescRight">read raw data from FIFO  <br /></td></tr>
+<tr class="separator:afb309403458dddb7424f58b2bef5235b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -140,6 +143,7 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that manage the <a class="el" href="class_m_p_u6050.html" title="Class that manage the MPU6050 3-axes accelerometer/gyrometer.">MPU6050</a> 3-axes accelerometer/gyrometer. </p>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000001">Bug</a></b></dt><dd>//FIXME investigate hardware issues, bad I2C signal quality, I2C API SDK ? </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a69ff7760846ab8f9b33ab07aa57709cf" name="a69ff7760846ab8f9b33ab07aa57709cf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a69ff7760846ab8f9b33ab07aa57709cf">&#9670;&#160;</a></span>MPU6050()</h2>
@@ -251,6 +255,26 @@ Public Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>true </dd>
 <dd>
 false </dd></dl>
+
+</div>
+</div>
+<a id="afb309403458dddb7424f58b2bef5235b" name="afb309403458dddb7424f58b2bef5235b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb309403458dddb7424f58b2bef5235b">&#9670;&#160;</a></span>read_FIFO_all_raw_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPU6050::read_FIFO_all_raw_data </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>read raw data from FIFO </p>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000002">Bug</a></b></dt><dd>//FIXME check FIFO data reading.... seems not working well </dd></dl>
 
 </div>
 </div>
