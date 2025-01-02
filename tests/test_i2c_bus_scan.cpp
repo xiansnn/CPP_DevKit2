@@ -53,15 +53,27 @@ static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event)
     pr_D4.lo();
 }
 
+void show_i2c_bus_map(std::set<uint8_t> device_address_set)
+{
+    printf("Connected slave's map \n");
+    printf("   0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F\n");
+    for (size_t i = 0; i < 0x80; i++)
+    {
+        if (i % 16 == 0)
+            printf("%02x ", i); // start of lines labels
+        printf(device_address_set.contains(i) ? "@" : ((i < 0x08 || i > 0x78) ? " " : "."));
+        printf(i % 16 == 15 ? "\n" : "  "); // columns interspace and end of lines
+    }
+    printf("done\n");
+}
+
+
 int main()
 {
     stdio_init_all();
     slave.context.mem[slave_config.slave_memory_size-1]=slave_config.slave_address;//just for the fun:the slave answer its address located in its last memory
     printf("test I2C bus scan : ");
-    std::set<uint8_t> slave_set = master.bus_scan();
-    for (auto &&i : slave_set)
-        printf("0x%2x   ", i);
-    printf("\n");
-    master.show_bus_map();
+    show_i2c_bus_map(master.bus_scan());
+
 
 }
