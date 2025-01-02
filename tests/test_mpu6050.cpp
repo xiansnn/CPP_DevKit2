@@ -51,8 +51,8 @@ int main()
             if (result.error)
                 printf("i2c error : %s \n", result.context.c_str());
             else
-                print_raw_data(mpu.raw);
-                // print_measures(mpu.data);
+                // print_raw_data(mpu.raw);
+                print_measures(mpu.data);
             pr_D4.lo();
         }
         pr_D5.lo();
