@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['probe_2eh_0',['probe.h',['../probe_8h.html',1,'']]]
+  ['mpu6050_2eh_0',['mpu6050.h',['../mpu6050_8h.html',1,'']]]
 ];

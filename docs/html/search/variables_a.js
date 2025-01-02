@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['pos_5fmax_5fdegree_0',['pos_max_degree',['../structstruct___config_s_g90.html#a9c349601a83bb7b1a0b42cf927ec4bf5',1,'struct_ConfigSG90']]],
-  ['pos_5fmin_5fdegree_1',['pos_min_degree',['../structstruct___config_s_g90.html#aec659f7a3f081dfbcf34000c9f68d556',1,'struct_ConfigSG90']]],
-  ['previous_5fchange_5ftime_5fus_2',['previous_change_time_us',['../class_switch_button.html#acf1f884508aacadb2bb12ee44e53bf73',1,'SwitchButton']]],
-  ['previous_5fswitch_5fpushed_5fstate_3',['previous_switch_pushed_state',['../class_switch_button.html#a269219187ae2a669ca36aabbb615ce40',1,'SwitchButton']]]
+  ['mem_0',['mem',['../structstruct___slave_memory.html#a541a2516d84c428b9450dc98efdc028d',1,'struct_SlaveMemory']]],
+  ['mem_5faddress_1',['mem_address',['../structstruct___slave_memory.html#a676889062063c62684c4c2bb1f6772ed',1,'struct_SlaveMemory']]],
+  ['mem_5faddress_5fwritten_2',['mem_address_written',['../structstruct___slave_memory.html#a7ffdb875b97e9cb9ca8680e72704621f',1,'struct_SlaveMemory']]],
+  ['mpu_5faddr_3',['MPU_ADDR',['../structstruct___config_m_p_u6050.html#acf79176ed664b066365717df749cacd7',1,'struct_ConfigMPU6050']]]
 ];

@@ -1,0 +1,18 @@
+<map id="C:/Users/chris/OneDrive/MyRP2_CPP/CPP_DevKit/include/mpu6050.h" name="C:/Users/chris/OneDrive/MyRP2_CPP/CPP_DevKit/include/mpu6050.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="149,5,332,64"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,187,97,213"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="209,66,78,179,75,175,206,62"/>
+<area shape="rect" id="Node000003" href="$hw__i2c_8h.html" title=" " alt="" coords="204,112,277,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="243,64,243,96,238,96,238,64"/>
+<area shape="rect" id="Node000008" href="$config___m_p_u6050_8h_source.html" title=" " alt="" coords="302,112,491,139"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="292,62,362,102,360,106,290,67"/>
+<area shape="poly" id="edge5_Node000003_Node000002" title=" " alt="" coords="208,142,99,183,98,178,206,137"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="120,187,227,213"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="231,141,197,177,193,173,227,137"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="251,187,366,213"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="254,137,288,173,284,177,250,141"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="390,187,429,213"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="271,137,377,182,375,187,269,142"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="454,187,507,213"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="278,135,440,183,438,188,277,140"/>
+</map>
