@@ -49,7 +49,7 @@ void print_raw_data(struct_RawData raw_data)
     printf("\n\n");
 };
 
-int main()
+int main() //TODO à vérifier qd pb I2C resra résolu
 {
     stdio_init_all();
     int32_t sample_period_ms = 1000 / mpu_cfg.SAMPLE_RATE;
