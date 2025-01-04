@@ -61,7 +61,6 @@ target_link_libraries(test_dht11
 add_executable(test_pwm test_pwm.cpp  )
 target_link_libraries(test_pwm
             pico_stdlib 
-            hardware_pwm 
             hw_pwm
             )
 # pico_add_extra_outputs(test_pwm)
@@ -69,7 +68,6 @@ target_link_libraries(test_pwm
 add_executable(test_pwm_duty  test_pwm_duty.cpp   )
 target_link_libraries(test_pwm_duty
             pico_stdlib
-            hardware_pwm
             debug_probe
             hw_pwm
             )
@@ -78,7 +76,6 @@ target_link_libraries(test_pwm_duty
 add_executable(test_pwm_irq  test_pwm_irq.cpp )
 target_link_libraries(test_pwm_irq
             pico_stdlib
-            hardware_pwm
             debug_probe
             hw_pwm
             )
@@ -101,7 +98,6 @@ add_executable(test_mpu6050   test_mpu6050.cpp   )
 target_link_libraries(test_mpu6050 
             pico_stdlib 
             mpu6050 
-            hardware_i2c 
             hw_i2c 
             debug_probe
             )
@@ -110,10 +106,30 @@ target_link_libraries(test_mpu6050
 add_executable(test_mpu6050_irq   test_mpu6050_irq.cpp   )
 target_link_libraries(test_mpu6050_irq 
             pico_stdlib 
-            mpu6050 
-            hardware_i2c 
+            mpu6050  
             hw_i2c 
             debug_probe
             )
 # pico_add_extra_outputs(test_mpu6050_irq)
 #-------------------------------------------------------------------------------------
+add_executable(test_ssd1306  test_ssd1306_device.cpp  )
+target_link_libraries(test_ssd1306 
+            ssd1306 
+            pico_stdlib 
+            hw_i2c 
+            framebuffer
+            debug_probe
+            )
+# pico_add_extra_outputs(test_ssd1306)
+#-------------------------------------------------------------------------------------
+add_executable(test_framebuffer_streams test_ssd1306_fb_streams.cpp)
+target_link_libraries(test_framebuffer_streams 
+            pico_stdlib 
+            debug_probe
+            hw_i2c 
+            framebuffer
+            ssd1306 
+            )
+# pico_add_extra_outputs(test_framebuffer_streams)
+#-------------------------------------------------------------------------------------
+
