@@ -25,12 +25,13 @@
 /**
  * @brief configuration data for SSD1306 OLED display.
  * refer to datasheet for more details.
- *
  */
 struct struct_ConfigSSD1306
 
 {
+    /// @brief the i2c address, usually 0x3c
     uint8_t i2c_address = 0x3C;
+    /// @brief multiplex ratio
     uint8_t mux_ratio_value = 64;
     uint8_t vertical_offset = 0;
     uint8_t GDDRAM_start_line = 0;
@@ -59,7 +60,7 @@ struct struct_ConfigScrollSSD1306
 };
 
 /**
- * @brief data used to compute the render area position in the display framebuffer reference, including the size of the reequired buffer.
+ * @brief data used to compute the render area position in the display framebuffer reference, including the size of the required buffer.
  *
  */
 struct struct_RenderArea

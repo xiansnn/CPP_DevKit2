@@ -15,32 +15,49 @@
 
 #include <string>
 #include "pico/stdlib.h"
-
-#define SSD1306_ASCII_FULL
-#define FONT_WIDTH 0
-#define FONT_HEIGHT 1
 #include "ssd1306/5x8_font.h"
 #include "ssd1306/8x8_font.h"
 #include "ssd1306/12x16_font.h"
 #include "ssd1306/16x32_font.h"
+
+/// @brief flag used to generate 127 character font or full extended 255 character font
+#define SSD1306_ASCII_FULL
+/// @brief index of the font width value in the <...>_font.h file
+#define FONT_WIDTH_INDEX 0
+/// @brief index of the font height value in the <...>_font.h file
+#define FONT_HEIGHT_INDEX 1
+/// @brief character code for BACKSPACE
 #define BACKSPACE '\b'
+/// @brief character code for HORIZONTAL_TAB
 #define HORIZONTAL_TAB '\t'
+/// @brief character code for LINE_FEED
 #define LINE_FEED '\n'
+/// @brief character code for VERTICAL_TAB
 #define VERTICAL_TAB '\v'
+/// @brief character code for FORM_FEED
 #define FORM_FEED '\f'
+/// @brief character code for CARRIAGE_RETURN
 #define CARRIAGE_RETURN '\r'
 
+/// @brief enum used to characterize the type of dispaly device memory organisation
 enum class FramebufferFormat
 {
+    /// @brief define monochrome display with pixel arranged vertically, LSB first
     MONO_VLSB,
+    /// @brief define monochrome display with pixel arranged vertically, LSB first
     MONO_HLSB,
+    /// @brief define monochrome display with pixel arranged vertically, MSB first
     MONO_HMSB,
+    /// @brief define color display with pixel coded on 16-bit word, red-5bit,green-6bit, blue-5bit
     RGB565
 };
 
+/// @brief define the binary value for color (limited here to monochome, can be extended later)
 enum class FramebufferColor
 {
+    /// @brief black coded with binary value 0x0
     BLACK = 0,
+    /// @brief white coded with binary value 0x1
     WHITE = 1
 };
 
@@ -110,11 +127,17 @@ private:
     void clear_line();
 protected:
 public:
+    /// @brief the buffer where graphic are drawn
     uint8_t *pixel_buffer;
+    /// @brief the buffer where text are written
     char *text_buffer;
+    /// @brief The number of pixel along the width of the frame. 
     uint8_t frame_width;
+    /// @brief The number of pixel along the height of the frame.
     uint8_t frame_height;
+    /// @brief The max number of line with respect to frame height and font height
     uint8_t max_line{0};
+    /// @brief The max number of column with respect to frame width and font width
     uint8_t max_column{0};
 
     /**
@@ -124,7 +147,7 @@ public:
      * Usually defined by "x" starting at "0" on top upleft corner, running to the left and ending at frame_width-1 position.
      * @param frame_height   The number of pixel along the height of the frame. 
      * Usually defined by "y" starting at "0" on top upleft corner, running downward and ending at frame_height-1 position.
-     * @param frame_format   The way the memory byte are translated by the dispaly driver device.
+     * @param frame_format   The way the memory byte are translated by the display driver device.
      * \image html framebuffer.png 
      */
     Framebuffer(size_t frame_width,

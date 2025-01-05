@@ -80,14 +80,14 @@ void PWM::clear_irq()
 
 /**
  * @brief Construct a new PWMgatedMeasure::PWMgatedMeasure object
+ * // TODO complete the documentation
  * 
- * @param pin_gate 
+ * @param pin_gate NOTICE: Only the PWM B pins can be used as input.
  * @param resolution_ns 
  * @param measure_duration_us 
  */
 PWMgatedMeasure::PWMgatedMeasure(uint pin_gate, uint resolution_ns, uint measure_duration_us)
 {
-    // Only the PWM B pins can be used as inputs.
     assert(pwm_gpio_to_channel(pin_gate) == PWM_CHAN_B);
     gpio_set_function(pin_gate, GPIO_FUNC_PWM); // ch_b
     // gpio_set_function(pin_gate-1, GPIO_FUNC_PWM); // ch_A

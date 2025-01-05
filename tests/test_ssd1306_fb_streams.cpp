@@ -242,8 +242,8 @@ void test_text_and_graph(SSD1306 *display)
     display->clear_full_screen();
     struct_FramebufferText title_config = {
         .font = font_8x8};
-    uint8_t w = title_config.font[FONT_WIDTH];
-    uint8_t h = title_config.font[FONT_HEIGHT];
+    uint8_t w = title_config.font[FONT_WIDTH_INDEX];
+    uint8_t h = title_config.font[FONT_HEIGHT_INDEX];
 
     int title_area_width = w * 8;
     int title_area_height = h * 2;

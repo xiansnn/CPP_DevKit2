@@ -12,7 +12,10 @@
 #define SSD1306_12X16_FONT_H
 
 #ifndef SSD1306_ASCII_FULL
-
+/**
+ * @brief font 12x16 pixel compliant with CodePage437 up to number 127 or 255 original IBM VGA characters
+ * according to SSD1306_ASCII_FULL flag
+ */
 const unsigned char font_12x16[] = {
     0x0C, 0x10, // font width, height
 

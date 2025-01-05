@@ -74,8 +74,8 @@ void Framebuffer::init_text_buffer(struct_FramebufferText _framebuffer_txt_cnf)
 void Framebuffer::set_font(const unsigned char *font)
 {
     this->frame_text_config.font = font;
-    this->max_column = this->frame_width / frame_text_config.font[FONT_WIDTH];
-    this->max_line = this->frame_height / frame_text_config.font[FONT_HEIGHT];
+    this->max_column = this->frame_width / frame_text_config.font[FONT_WIDTH_INDEX];
+    this->max_line = this->frame_height / frame_text_config.font[FONT_HEIGHT_INDEX];
     this->text_buffer_size = max_line * max_column + 1;
     if (text_buffer != nullptr)
         delete[] text_buffer;
@@ -317,8 +317,8 @@ void Framebuffer::drawChar(const unsigned char *font, char c, uint8_t anchor_x, 
     if (!font || c < 32)
         return;
 
-    uint8_t font_width = font[FONT_WIDTH];
-    uint8_t font_height = font[FONT_HEIGHT];
+    uint8_t font_width = font[FONT_WIDTH_INDEX];
+    uint8_t font_height = font[FONT_HEIGHT_INDEX];
 
     uint16_t seek = (c - 32) * (font_width * font_height) / 8 + 2;
 
@@ -345,8 +345,8 @@ void Framebuffer::drawChar(const unsigned char *font, char c, uint8_t anchor_x, 
 
 void Framebuffer::drawChar(char c, uint8_t char_column, uint8_t char_line)
 {
-    uint8_t anchor_x = char_column * frame_text_config.font[FONT_WIDTH];
-    uint8_t anchor_y = char_line * frame_text_config.font[FONT_HEIGHT];
+    uint8_t anchor_x = char_column * frame_text_config.font[FONT_WIDTH_INDEX];
+    uint8_t anchor_y = char_line * frame_text_config.font[FONT_HEIGHT_INDEX];
     drawChar(this->frame_text_config.font, c, anchor_x, anchor_y);
 }
 

@@ -13,6 +13,10 @@
 
 #ifndef SSD1306_ASCII_FULL
 
+/**
+ * @brief font 5x8 pixel compliant with CodePage437 up to number 127 or 255 original IBM VGA characters
+ * according to SSD1306_ASCII_FULL flag
+ */
 const unsigned char font_5x8[] = {
     0x5, 0x8, // font width, height
 
