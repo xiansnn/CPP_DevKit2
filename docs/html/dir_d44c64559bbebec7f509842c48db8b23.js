@@ -8,6 +8,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "hw_i2c.h", "hw__i2c_8h.html", "hw__i2c_8h" ],
     [ "hw_pwm.h", "hw__pwm_8h.html", "hw__pwm_8h" ],
     [ "mpu6050.h", "mpu6050_8h.html", "mpu6050_8h" ],
+    [ "msgeq7.h", "msgeq7_8h.html", "msgeq7_8h" ],
     [ "probe.h", "probe_8h.html", "probe_8h" ],
     [ "rotary_encoder.h", "rotary__encoder_8h.html", "rotary__encoder_8h" ],
     [ "sg90.h", "sg90_8h.html", "sg90_8h" ],

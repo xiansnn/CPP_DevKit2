@@ -10,12 +10,13 @@ var searchData=
   ['get_5fframebuffer_5fformat_7',['get_framebuffer_format',['../class_framebuffer.html#a65d111e29829fef4318d355cb0841e83',1,'Framebuffer']]],
   ['get_5fmeasures_8',['get_measures',['../class_m_p_u6050.html#aa85e641ba4b5653ce5493a6cbd599e89',1,'MPU6050']]],
   ['get_5fmpu_5ftemperature_9',['get_MPU_temperature',['../class_m_p_u6050.html#a30d08e918229e1206c75b3588d2c4cc9',1,'MPU6050']]],
-  ['gpio_10',['gpio',['../class_switch_button.html#a68fccab1c920eec2fbd4fc2d1f5b29e0',1,'SwitchButton']]],
-  ['gpio_5fhi_11',['GPIO_HI',['../switch__button_8h.html#a351026c5378d49b914fb52f066b99b9b',1,'switch_button.h']]],
-  ['gpio_5flo_12',['GPIO_LO',['../switch__button_8h.html#a29625671f0681b84ec222bbb85820168',1,'switch_button.h']]],
-  ['gyro_5ffull_5fscale_5frange_13',['GYRO_FULL_SCALE_RANGE',['../structstruct___config_m_p_u6050.html#a59308ef7dcf69efcacb47e0240b70514',1,'struct_ConfigMPU6050']]],
-  ['gyro_5fout_5frate_14',['GYRO_OUT_RATE',['../structstruct___config_m_p_u6050.html#ae2a99a7cc58f84af8f5f92c65c096290',1,'struct_ConfigMPU6050']]],
-  ['gyro_5fx_15',['gyro_x',['../structstruct___raw_data.html#a3e6d41e50ee94bed2529c10887f581bc',1,'struct_RawData::gyro_x'],['../structstruct___m_p_u_data.html#a0f359bb637cb0bfb198d886880ce5fe3',1,'struct_MPUData::gyro_x']]],
-  ['gyro_5fy_16',['gyro_y',['../structstruct___raw_data.html#ad73b35421c118682e0d11697f6cec91b',1,'struct_RawData::gyro_y'],['../structstruct___m_p_u_data.html#af4ce866a543e1ce6d8f36cd8f7ed9d11',1,'struct_MPUData::gyro_y']]],
-  ['gyro_5fz_17',['gyro_z',['../structstruct___raw_data.html#aed6d37f9da43c198dd5eabaf31701e43',1,'struct_RawData::gyro_z'],['../structstruct___m_p_u_data.html#aa1cfbab5504442f763c74a0a823dd0f1',1,'struct_MPUData::gyro_z']]]
+  ['get_5fspectrum_10',['get_spectrum',['../class_m_s_g_e_q7.html#ac03d0f7a0c833169f67ea4d5a8712c38',1,'MSGEQ7']]],
+  ['gpio_11',['gpio',['../class_switch_button.html#a68fccab1c920eec2fbd4fc2d1f5b29e0',1,'SwitchButton']]],
+  ['gpio_5fhi_12',['GPIO_HI',['../switch__button_8h.html#a351026c5378d49b914fb52f066b99b9b',1,'switch_button.h']]],
+  ['gpio_5flo_13',['GPIO_LO',['../switch__button_8h.html#a29625671f0681b84ec222bbb85820168',1,'switch_button.h']]],
+  ['gyro_5ffull_5fscale_5frange_14',['GYRO_FULL_SCALE_RANGE',['../structstruct___config_m_p_u6050.html#a59308ef7dcf69efcacb47e0240b70514',1,'struct_ConfigMPU6050']]],
+  ['gyro_5fout_5frate_15',['GYRO_OUT_RATE',['../structstruct___config_m_p_u6050.html#ae2a99a7cc58f84af8f5f92c65c096290',1,'struct_ConfigMPU6050']]],
+  ['gyro_5fx_16',['gyro_x',['../structstruct___raw_data.html#a3e6d41e50ee94bed2529c10887f581bc',1,'struct_RawData::gyro_x'],['../structstruct___m_p_u_data.html#a0f359bb637cb0bfb198d886880ce5fe3',1,'struct_MPUData::gyro_x']]],
+  ['gyro_5fy_17',['gyro_y',['../structstruct___raw_data.html#ad73b35421c118682e0d11697f6cec91b',1,'struct_RawData::gyro_y'],['../structstruct___m_p_u_data.html#af4ce866a543e1ce6d8f36cd8f7ed9d11',1,'struct_MPUData::gyro_y']]],
+  ['gyro_5fz_18',['gyro_z',['../structstruct___raw_data.html#aed6d37f9da43c198dd5eabaf31701e43',1,'struct_RawData::gyro_z'],['../structstruct___m_p_u_data.html#aa1cfbab5504442f763c74a0a823dd0f1',1,'struct_MPUData::gyro_z']]]
 ];

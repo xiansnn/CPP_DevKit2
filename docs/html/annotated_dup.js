@@ -6,6 +6,7 @@ var annotated_dup =
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", "class_h_w___i2_c___master" ],
     [ "HW_I2C_Slave", "class_h_w___i2_c___slave.html", "class_h_w___i2_c___slave" ],
     [ "MPU6050", "class_m_p_u6050.html", "class_m_p_u6050" ],
+    [ "MSGEQ7", "class_m_s_g_e_q7.html", "class_m_s_g_e_q7" ],
     [ "Probe", "class_probe.html", "class_probe" ],
     [ "PWM", "class_p_w_m.html", "class_p_w_m" ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", "class_p_w_mgated_measure" ],

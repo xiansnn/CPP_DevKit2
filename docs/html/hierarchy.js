@@ -8,6 +8,7 @@ var hierarchy =
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", null ],
     [ "HW_I2C_Slave", "class_h_w___i2_c___slave.html", null ],
     [ "MPU6050", "class_m_p_u6050.html", null ],
+    [ "MSGEQ7", "class_m_s_g_e_q7.html", null ],
     [ "Probe", "class_probe.html", null ],
     [ "PWM", "class_p_w_m.html", null ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],

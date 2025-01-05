@@ -5,5 +5,6 @@ var searchData=
   ['get_5ffifo_5fcount_2',['get_FIFO_count',['../class_m_p_u6050.html#ae3309784c38c0dde54a7638582dd23c9',1,'MPU6050']]],
   ['get_5fframebuffer_5fformat_3',['get_framebuffer_format',['../class_framebuffer.html#a65d111e29829fef4318d355cb0841e83',1,'Framebuffer']]],
   ['get_5fmeasures_4',['get_measures',['../class_m_p_u6050.html#aa85e641ba4b5653ce5493a6cbd599e89',1,'MPU6050']]],
-  ['get_5fmpu_5ftemperature_5',['get_MPU_temperature',['../class_m_p_u6050.html#a30d08e918229e1206c75b3588d2c4cc9',1,'MPU6050']]]
+  ['get_5fmpu_5ftemperature_5',['get_MPU_temperature',['../class_m_p_u6050.html#a30d08e918229e1206c75b3588d2c4cc9',1,'MPU6050']]],
+  ['get_5fspectrum_6',['get_spectrum',['../class_m_s_g_e_q7.html#ac03d0f7a0c833169f67ea4d5a8712c38',1,'MSGEQ7']]]
 ];
