@@ -18,5 +18,7 @@ var searchData=
   ['framebuffer_15',['Framebuffer',['../class_framebuffer.html',1,'Framebuffer'],['../class_framebuffer.html#a25c9cadebb3531112c5085e981962407',1,'Framebuffer::Framebuffer()']]],
   ['framebuffer_2eh_16',['framebuffer.h',['../framebuffer_8h.html',1,'']]],
   ['framebuffercolor_17',['FramebufferColor',['../framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f',1,'framebuffer.h']]],
-  ['framebufferformat_18',['FramebufferFormat',['../framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79',1,'framebuffer.h']]]
+  ['framebufferformat_18',['FramebufferFormat',['../framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79',1,'framebuffer.h']]],
+  ['frequency_5fdivider_19',['frequency_divider',['../structstruct___config_s_s_d1306.html#a3b094002129dd70ad83fb49097d116e2',1,'struct_ConfigSSD1306']]],
+  ['frequency_5ffactor_20',['frequency_factor',['../structstruct___config_s_s_d1306.html#acf1d9d748c0e5d861f6520f49ca21e37',1,'struct_ConfigSSD1306']]]
 ];

@@ -10,7 +10,8 @@ var searchData=
   ['commands_5fssd1306_2eh_7',['commands_SSD1306.h',['../commands___s_s_d1306_8h.html',1,'']]],
   ['compute_5frender_5farea_8',['compute_render_area',['../class_s_s_d1306.html#a946d97970d11c778a09e0f1305591b3f',1,'SSD1306']]],
   ['context_9',['context',['../structstruct___i2_c_xfer_result.html#ad12c9d3ec59f778d1d9fff8f2ced9387',1,'struct_I2CXferResult::context'],['../class_h_w___i2_c___slave.html#a6537f2f92c2d4f326372b1245707b01b',1,'HW_I2C_Slave::context']]],
-  ['control_5fevent_5fprocessor_5ft_10',['control_event_processor_t',['../rotary__encoder_8h.html#a787371d828d2ed06a5d1842695d04497',1,'rotary_encoder.h']]],
-  ['copy_11',['copy',['../class_probe.html#a3ca878200b9a6d5744366b23fe0051c9',1,'Probe']]],
-  ['count_5fcycles_12',['count_cycles',['../class_p_w_mgated_measure.html#a4f372aa91b889f792b4eb805d0eb5a46',1,'PWMgatedMeasure']]]
+  ['contrast_10',['contrast',['../structstruct___config_s_s_d1306.html#a4e801394115d22be64de7753c835960f',1,'struct_ConfigSSD1306']]],
+  ['control_5fevent_5fprocessor_5ft_11',['control_event_processor_t',['../rotary__encoder_8h.html#a787371d828d2ed06a5d1842695d04497',1,'rotary_encoder.h']]],
+  ['copy_12',['copy',['../class_probe.html#a3ca878200b9a6d5744366b23fe0051c9',1,'Probe']]],
+  ['count_5fcycles_13',['count_cycles',['../class_p_w_mgated_measure.html#a4f372aa91b889f792b4eb805d0eb5a46',1,'PWMgatedMeasure']]]
 ];

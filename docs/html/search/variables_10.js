@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['xfer_5fsize_0',['xfer_size',['../structstruct___i2_c_xfer_result.html#acffcb4de0913c5cbc258c9c685603fc6',1,'struct_I2CXferResult']]]
+  ['width_0',['width',['../structstruct___render_area.html#ae390a957d9f070f47e89e84fbcdb8319',1,'struct_RenderArea']]],
+  ['wrap_1',['wrap',['../structstruct___framebuffer_text.html#a4d8b493ce4f251aaa9bcd5810d3b8138',1,'struct_FramebufferText']]]
 ];

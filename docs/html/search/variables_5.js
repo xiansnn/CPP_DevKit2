@@ -9,5 +9,7 @@ var searchData=
   ['font_5f5x8_6',['font_5x8',['../5x8__font_8h.html#abdc16296a2d8078af08a493845f7194b',1,'5x8_font.h']]],
   ['font_5f8x8_7',['font_8x8',['../8x8__font_8h.html#ac1e257a18f342596519ef4cbc5b673a9',1,'8x8_font.h']]],
   ['frame_5fheight_8',['frame_height',['../class_framebuffer.html#aa346612ecd1e1a0167734b8173bed9db',1,'Framebuffer']]],
-  ['frame_5fwidth_9',['frame_width',['../class_framebuffer.html#a35a041f8b088ee5274aa334d13e4c60e',1,'Framebuffer']]]
+  ['frame_5fwidth_9',['frame_width',['../class_framebuffer.html#a35a041f8b088ee5274aa334d13e4c60e',1,'Framebuffer']]],
+  ['frequency_5fdivider_10',['frequency_divider',['../structstruct___config_s_s_d1306.html#a3b094002129dd70ad83fb49097d116e2',1,'struct_ConfigSSD1306']]],
+  ['frequency_5ffactor_11',['frequency_factor',['../structstruct___config_s_s_d1306.html#acf1d9d748c0e5d861f6520f49ca21e37',1,'struct_ConfigSSD1306']]]
 ];

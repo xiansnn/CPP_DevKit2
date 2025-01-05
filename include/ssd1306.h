@@ -33,30 +33,45 @@ struct struct_ConfigSSD1306
     uint8_t i2c_address = 0x3C;
     /// @brief multiplex ratio
     uint8_t mux_ratio_value = 64;
+    /// @brief refer to datasheet for more details.
     uint8_t vertical_offset = 0;
+    /// @brief refer to datasheet for more details.
     uint8_t GDDRAM_start_line = 0;
+    /// @brief refer to datasheet for more details.
     bool scan_SEG_inverse_direction = false;
+    /// @brief refer to datasheet for more details.
     bool scan_COM_inverse_direction = false;
+    /// @brief refer to datasheet for more details.
     bool sequential_COM = false;
+    /// @brief refer to datasheet for more details.
     bool enable_COM_L_R_remap = false;
+    /// @brief refer to datasheet for more details.
     uint8_t contrast = 127;
+    /// @brief refer to datasheet for more details.
     uint8_t frequency_divider = 1;
+    /// @brief refer to datasheet for more details.
     uint8_t frequency_factor = 0;
 };
 
 /**
  * @brief configuration data for SSD1306 OLED display scrolling feature.
- * refer to datasheet for more details.
- *
+ * 
+ * Refer to datasheet for more details.
  */
 struct struct_ConfigScrollSSD1306
 {
-    bool scroll_H_to_right = true;           // if true SSD1306_SET_R_HORIZ_SCROLL else SSD1306_SET_L_HORIZ_SCROLL
-    bool scroll_V_and_H_to_right = true;     // if true SSD1306_SET_VERTICAL_R_HORIZ_SCROLL else SSD1306_SET_VERTICAL_L_HORIZ_SCROLL
-    uint8_t scroll_H_start_page = 0;         // 0 <= value <= 7
-    uint8_t time_frame_interval = _2_FRAMES; // 0 <= value <= 7
-    uint8_t scroll_H_end_page = 7;           // 0 <= value <= 7
-    uint8_t vertical_scrolling_offset = 5;   // 0 <= value <= 63
+    /// @brief if true SSD1306_SET_R_HORIZ_SCROLL else SSD1306_SET_L_HORIZ_SCROLL
+    bool scroll_H_to_right = true;           
+    /// @brief if true SSD1306_SET_VERTICAL_R_HORIZ_SCROLL else SSD1306_SET_VERTICAL_L_HORIZ_SCROLL
+    bool scroll_V_and_H_to_right = true;     
+    /// @brief 0 <= value <= 7
+    uint8_t scroll_H_start_page = 0;         
+    /// @brief 0 <= value <= 7
+    uint8_t time_frame_interval = _2_FRAMES; 
+    /// @brief 0 <= value <= 7
+    uint8_t scroll_H_end_page = 7;           
+    /// @brief 0 <= value <= 63
+    uint8_t vertical_scrolling_offset = 5;   
 };
 
 /**
@@ -65,12 +80,19 @@ struct struct_ConfigScrollSSD1306
  */
 struct struct_RenderArea
 {
+    /// @brief the pixel x where to start copy of the graphic framebuffer 
     uint8_t start_col{0};
+    /// @brief the pixel x where to end copy of the graphic framebuffer
     uint8_t end_col{SSD1306_WIDTH - 1};
+    /// @brief the page number where to start copy of the graphic framebuffer
     uint8_t start_page{0};
+    /// @brief the page number where to end copy of the graphic framebuffer
     uint8_t end_page{SSD1306_NUM_PAGES - 1};
+    /// @brief the width of the copy area
     size_t width{SSD1306_WIDTH};
+    /// @brief the eight of the copy area
     size_t height{SSD1306_HEIGHT};
+    /// @brief the size of the graphic buffer
     size_t buflen{SSD1306_BUF_LEN};
 };
 
