@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['get_5fbutton_5fstatus_0',['get_button_status',['../class_switch_button.html#a6b40906d298a665870c30c1359fbea2e',1,'SwitchButton']]],
-  ['get_5fdistance_1',['get_distance',['../class_h_c___s_r04.html#a9436304e9e1bc947c2833127b5cd818d',1,'HC_SR04']]],
-  ['get_5ffifo_5fcount_2',['get_FIFO_count',['../class_m_p_u6050.html#ae3309784c38c0dde54a7638582dd23c9',1,'MPU6050']]],
-  ['get_5fmeasures_3',['get_measures',['../class_m_p_u6050.html#aa85e641ba4b5653ce5493a6cbd599e89',1,'MPU6050']]],
-  ['get_5fmpu_5ftemperature_4',['get_MPU_temperature',['../class_m_p_u6050.html#a30d08e918229e1206c75b3588d2c4cc9',1,'MPU6050']]]
+  ['fill_0',['fill',['../class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1',1,'Framebuffer']]],
+  ['fill_5fpattern_5fand_5fshow_5fgddram_1',['fill_pattern_and_show_GDDRAM',['../class_s_s_d1306.html#a764babad3f6a4d12cfa600ce7fd1b751',1,'SSD1306']]],
+  ['framebuffer_2',['Framebuffer',['../class_framebuffer.html#a25c9cadebb3531112c5085e981962407',1,'Framebuffer']]]
 ];

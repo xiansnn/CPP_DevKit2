@@ -1,10 +1,20 @@
 var searchData=
 [
-  ['list_0',['List',['../bug.html',1,'Bug List'],['../todo.html',1,'Todo List']]],
-  ['lo_1',['lo',['../class_probe.html#ade2391514faaee5f3acfffc4d3cb2de8',1,'Probe']]],
-  ['long_5fpush_2',['LONG_PUSH',['../ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32a66d354703a5722b875b56431d89fb646',1,'ui_control_event.h']]],
-  ['long_5fpush_5fdelay_5fus_3',['LONG_PUSH_DELAY_us',['../switch__button_8h.html#a2b652dcbb4a4f6e01ff5f355ec7a0ce6',1,'switch_button.h']]],
-  ['long_5fpush_5fdelay_5fus_4',['long_push_delay_us',['../structstruct___switch_button_config.html#a267e41c2ea127b33612556e8265eb858',1,'struct_SwitchButtonConfig::long_push_delay_us'],['../class_switch_button.html#ac3efe4e87a09e753245b7b50916169ed',1,'SwitchButton::long_push_delay_us']]],
-  ['long_5frelease_5fdelay_5fus_5',['LONG_RELEASE_DELAY_us',['../switch__button_8h.html#a45d63515d5e509cf0cd632d404e6a180',1,'switch_button.h']]],
-  ['long_5frelease_5fdelay_5fus_6',['long_release_delay_us',['../structstruct___switch_button_config.html#a2fada5da9b4aa4aacd549eda8d1fa8b0',1,'struct_SwitchButtonConfig::long_release_delay_us'],['../class_switch_button.html#a5cf488e4819df6fd8cc5cd3811d33354',1,'SwitchButton::long_release_delay_us']]]
+  ['g_5fx_0',['g_x',['../structstruct___raw_data.html#abfeddb38c172fadcf7908648ba04f15c',1,'struct_RawData::g_x'],['../structstruct___m_p_u_data.html#abcf9ad47cb99041c802b1ef176cecf2c',1,'struct_MPUData::g_x']]],
+  ['g_5fy_1',['g_y',['../structstruct___raw_data.html#a5fd968c48507dc26a53a0c513c9d461a',1,'struct_RawData::g_y'],['../structstruct___m_p_u_data.html#a33fad3b983fe3cc62dae063bb32554f9',1,'struct_MPUData::g_y']]],
+  ['g_5fz_2',['g_z',['../structstruct___raw_data.html#a8de901f14ce4eae8f867279dc0ae444b',1,'struct_RawData::g_z'],['../structstruct___m_p_u_data.html#a262f044bd84a7c06148b025d0778d591',1,'struct_MPUData::g_z']]],
+  ['get_5fbutton_5fstatus_3',['get_button_status',['../class_switch_button.html#a6b40906d298a665870c30c1359fbea2e',1,'SwitchButton']]],
+  ['get_5fdistance_4',['get_distance',['../class_h_c___s_r04.html#a9436304e9e1bc947c2833127b5cd818d',1,'HC_SR04']]],
+  ['get_5ffifo_5fcount_5',['get_FIFO_count',['../class_m_p_u6050.html#ae3309784c38c0dde54a7638582dd23c9',1,'MPU6050']]],
+  ['get_5fframebuffer_5fformat_6',['get_framebuffer_format',['../class_framebuffer.html#a65d111e29829fef4318d355cb0841e83',1,'Framebuffer']]],
+  ['get_5fmeasures_7',['get_measures',['../class_m_p_u6050.html#aa85e641ba4b5653ce5493a6cbd599e89',1,'MPU6050']]],
+  ['get_5fmpu_5ftemperature_8',['get_MPU_temperature',['../class_m_p_u6050.html#a30d08e918229e1206c75b3588d2c4cc9',1,'MPU6050']]],
+  ['gpio_9',['gpio',['../class_switch_button.html#a68fccab1c920eec2fbd4fc2d1f5b29e0',1,'SwitchButton']]],
+  ['gpio_5fhi_10',['GPIO_HI',['../switch__button_8h.html#a351026c5378d49b914fb52f066b99b9b',1,'switch_button.h']]],
+  ['gpio_5flo_11',['GPIO_LO',['../switch__button_8h.html#a29625671f0681b84ec222bbb85820168',1,'switch_button.h']]],
+  ['gyro_5ffull_5fscale_5frange_12',['GYRO_FULL_SCALE_RANGE',['../structstruct___config_m_p_u6050.html#a59308ef7dcf69efcacb47e0240b70514',1,'struct_ConfigMPU6050']]],
+  ['gyro_5fout_5frate_13',['GYRO_OUT_RATE',['../structstruct___config_m_p_u6050.html#ae2a99a7cc58f84af8f5f92c65c096290',1,'struct_ConfigMPU6050']]],
+  ['gyro_5fx_14',['gyro_x',['../structstruct___raw_data.html#a3e6d41e50ee94bed2529c10887f581bc',1,'struct_RawData::gyro_x'],['../structstruct___m_p_u_data.html#a0f359bb637cb0bfb198d886880ce5fe3',1,'struct_MPUData::gyro_x']]],
+  ['gyro_5fy_15',['gyro_y',['../structstruct___raw_data.html#ad73b35421c118682e0d11697f6cec91b',1,'struct_RawData::gyro_y'],['../structstruct___m_p_u_data.html#af4ce866a543e1ce6d8f36cd8f7ed9d11',1,'struct_MPUData::gyro_y']]],
+  ['gyro_5fz_16',['gyro_z',['../structstruct___raw_data.html#aed6d37f9da43c198dd5eabaf31701e43',1,'struct_RawData::gyro_z'],['../structstruct___m_p_u_data.html#aa1cfbab5504442f763c74a0a823dd0f1',1,'struct_MPUData::gyro_z']]]
 ];
