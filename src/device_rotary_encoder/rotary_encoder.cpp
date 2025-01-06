@@ -3,9 +3,9 @@
 #include "pico/stdlib.h"
 #include <string>
 
-RotaryEncoder::RotaryEncoder(uint encoder_clk_gpio, uint encoder_dt_gpio, 
+RotaryEncoder::RotaryEncoder(uint encoder_clk_gpio, 
+                            uint encoder_dt_gpio, 
                             gpio_irq_callback_t call_back,
-                            control_event_processor_t event_processor,
                             struct_SwitchButtonConfig clk_conf)
     : SwitchButtonWithIRQ(encoder_clk_gpio, call_back, clk_conf)//, UIController()
 {
@@ -34,4 +34,9 @@ void RotaryEncoder::interrupt_service_routine(uint32_t current_irq_event_mask)
             event_processor(UIControlEvent::DECREMENT);
     }
     irq_enabled(true);
+}
+
+void RotaryEncoder::update_current_event_processor(control_event_processor_t event_processor)
+{
+    this->event_processor = event_processor;
 }
