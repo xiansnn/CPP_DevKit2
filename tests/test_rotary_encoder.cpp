@@ -63,6 +63,7 @@ void event_processor(UIControlEvent event)
 RotaryEncoder encoder = RotaryEncoder(ENCODER_CLK_GPIO, 
                                         ENCODER_DT_GPIO,
                                         &encoder_clk_irq_call_back, 
+                                        &event_processor, 
                                         cfg_encoder_clk);
 
 void encoder_clk_irq_call_back(uint gpio, uint32_t event_mask)
@@ -79,7 +80,6 @@ void encoder_clk_irq_call_back(uint gpio, uint32_t event_mask)
 int main()
 {
     stdio_init_all();
-    encoder.update_current_event_processor(&event_processor);
 
     while (true)
     {

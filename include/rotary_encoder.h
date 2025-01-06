@@ -48,6 +48,7 @@ public:
     RotaryEncoder(uint encoder_clk_gpio, 
                 uint encoder_dt_gpio,
                 gpio_irq_callback_t call_back, 
+                control_event_processor_t event_processor,
                 struct_SwitchButtonConfig clk_conf = {});
     /**
      * @brief Destroy the Rotary Encoder object
@@ -60,13 +61,6 @@ public:
      * @param irq_event_mask 
      */
     void interrupt_service_routine(uint32_t irq_event_mask);
-
-    /**
-     * @brief 
-     * 
-     * @param event_processor 
-     */
-    void update_current_event_processor(control_event_processor_t event_processor);
   };
 
 #endif // ROTARY_ENCODER_H
