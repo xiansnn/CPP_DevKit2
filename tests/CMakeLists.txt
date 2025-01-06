@@ -139,4 +139,15 @@ target_link_libraries(test_msgeq7
             debug_probe)
 # pico_add_extra_outputs(test_msgeq7)
 #-------------------------------------------------------------------------------------
-
+add_executable(test_ui_core 
+                test_ui_core.cpp
+                test_ui_core/t_manager.cpp
+                test_ui_core/t_controlled_value.cpp
+                test_ui_core/t_widget_on_serial_monitor.cpp
+                )
+target_link_libraries(test_ui_core 
+                pico_stdlib
+                rotary_encoder
+                debug_probe
+                )
+pico_add_extra_outputs(test_ui_core)
