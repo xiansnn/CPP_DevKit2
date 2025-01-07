@@ -31,6 +31,10 @@ SwitchButton::SwitchButton(uint gpio, struct_SwitchButtonConfig conf)
     this->previous_switch_pushed_state = false;
 }
 
+SwitchButton::SwitchButton()
+{
+}
+
 SwitchButton::~SwitchButton()
 {
 }
@@ -105,6 +109,10 @@ SwitchButtonWithIRQ::SwitchButtonWithIRQ(uint gpio, gpio_irq_callback_t call_bac
 {
     this->irq_event_mask_config = event_mask_config;
     gpio_set_irq_enabled_with_callback(gpio, irq_event_mask_config, true, call_back);
+}
+
+SwitchButtonWithIRQ::SwitchButtonWithIRQ()
+{
 }
 
 SwitchButtonWithIRQ::~SwitchButtonWithIRQ()

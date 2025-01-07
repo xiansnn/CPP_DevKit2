@@ -154,6 +154,8 @@ public:
      * @param conf the configuration data according struct_SwitchButtonConfig
      */
     SwitchButton(uint gpio, struct_SwitchButtonConfig conf = {});
+
+    SwitchButton();
     /**
      * @brief Destroy the SwitchButton object
      *
@@ -221,6 +223,7 @@ public:
      */
     SwitchButtonWithIRQ(uint gpio, gpio_irq_callback_t call_back, struct_SwitchButtonConfig conf = {},
                         uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
+    SwitchButtonWithIRQ();
     /**
      * @brief Destroy the SwitchButtonWithIRQ object
      *
