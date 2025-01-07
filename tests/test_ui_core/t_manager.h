@@ -22,7 +22,7 @@ public:
      * 
      */
     ~test_Manager();
-    void process_control_event(ControlEvent _event);
+    void process_control_event(UIControlEvent _event);
 };
 
 #endif // TEST_MANAGER_H

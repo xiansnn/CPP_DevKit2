@@ -28,7 +28,7 @@ public:
      * 
      */
     ~test_IncrementalValue();
-    void process_control_event(ControlEvent _event);
+    void process_control_event(UIControlEvent _event);
     /**
      * @brief Get the name object
      * 
@@ -37,4 +37,4 @@ public:
     std::string get_name();
 };
 
-#endif // CONTROLLED_VALUE_H
+#endif // CONTROLLED_VALU

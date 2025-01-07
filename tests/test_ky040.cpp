@@ -47,7 +47,7 @@ std::map<UIControlEvent, std::string> event_to_string{
 
 int number_of_event = 0;
 
-void encoder_event_processor(UIControlEvent event)
+void manager_event_processor(UIControlEvent event)
 {
     printf("Encoder event(%s) #%d \n", event_to_string[event].c_str(), number_of_event);
     number_of_event++;
@@ -67,7 +67,7 @@ int main()
 {
     stdio_init_all();
 
-    ky040.update_UI_control_event_processor(encoder_event_processor);
+    ky040.update_UI_control_event_processor(manager_event_processor);
 
     while (true)
     {

@@ -31,17 +31,17 @@ test_IncrementalValue::~test_IncrementalValue()
  * 
  * @param _event 
  */
-void test_IncrementalValue::process_control_event(ControlEvent _event)
+void test_IncrementalValue::process_control_event(UIControlEvent _event)
 {
     switch (_event)
     {
-    case ControlEvent::LONG_PUSH:
+    case UIControlEvent::LONG_PUSH:
         this->set_clipped_value(0);
         break;
-    case ControlEvent::INCREMENT:
+    case UIControlEvent::INCREMENT:
         increment_value();
         break;
-    case ControlEvent::DECREMENT:
+    case UIControlEvent::DECREMENT:
         decrement_value();
         break;
     default:

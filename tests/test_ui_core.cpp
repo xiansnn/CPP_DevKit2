@@ -17,7 +17,7 @@
 #include "test_ui_core/t_controlled_value.h"
 #include "test_ui_core/t_manager.h"
 #include "test_ui_core/t_widget_on_serial_monitor.h"
-#include "rotary_encoder.h"
+#include "ky040.h"
 #include <map>
 #include <string>
 #include "probe.h"
@@ -25,7 +25,6 @@
 #define CENTRAL_SWITCH_GPIO 6
 #define ENCODER_CLK_GPIO 26
 #define ENCODER_DT_GPIO 21
-
 
 /// @brief  3 probes are create to observe the time execution with a logic analyser
 Probe pr_D1 = Probe(1);
@@ -43,17 +42,17 @@ struct_SwitchButtonConfig cfg_central_switch{
 struct_SwitchButtonConfig cfg_encoder_clk{
     .debounce_delay_us = 5000};
 
-
 void shared_irq_call_back(uint gpio, uint32_t event_mask);
 
 /// @brief create encoder
-RotaryEncoder encoder = RotaryEncoder(ENCODER_CLK_GPIO, 
-                                        ENCODER_DT_GPIO,
-                                        shared_irq_call_back,
-                                        //  control_event_processor_t event_processor,
-                                        cfg_encoder_clk);
-/// @brief create central switch
-SwitchButton central_switch = SwitchButton(CENTRAL_SWITCH_GPIO, cfg_central_switch);
+
+KY040 ky040 = KY040(CENTRAL_SWITCH_GPIO,
+                    ENCODER_CLK_GPIO,
+                    ENCODER_DT_GPIO,
+                    shared_irq_call_back,
+                    cfg_central_switch,
+                    cfg_encoder_clk);
+
 
 /// @brief define the ISR associated with the clock signal of the rotary encoder
 /// @param gpio The gpio number connected to the clock signal
@@ -64,20 +63,23 @@ void shared_irq_call_back(uint gpio, uint32_t event_mask)
     switch (gpio)
     {
     case ENCODER_CLK_GPIO:
-        encoder.interrupt_service_routine(event_mask);
+        ky040.process_encoder_IRQ(event_mask);
         break;
-
     default:
         printf("unknown IRQ\n");
         break;
     };
 }
+void manager_event_processor(UIControlEvent event);
 
 /**
  * @brief test and example program about ui_core, with serial terminal as widget substitute.
  *
  * @return int
  */
+/// 4- create a manager connected to the rotary encoder.
+test_Manager manager = test_Manager(&ky040);
+
 int main()
 {
 
@@ -96,8 +98,7 @@ int main()
     test_CursorWidgetWithIncrementalValue value_1_widget = test_CursorWidgetWithIncrementalValue(&value_1);
     test_CursorWidgetWithIncrementalValue value_2_widget = test_CursorWidgetWithIncrementalValue(&value_2);
 
-    /// 4- create a manager connected to the rotary encoder.
-    test_Manager manager = test_Manager(&encoder);
+    ky040.update_UI_control_event_processor(manager_event_processor);
 
     /// 5- create a widget for the manager
     test_ObjectManagerWidget manager_widget = test_ObjectManagerWidget(&manager);
@@ -123,11 +124,12 @@ int main()
     {
         pr_D4.pulse_us(10);
         /// - sample the rotary encoder central switch
-        ControlEvent event = central_switch.process_sample_event();
+        UIControlEvent event = ky040.process_central_switch_event();
+
         /// - give the sampled event to the manager, to let it process the event
         manager.process_control_event(event);
         pr_D5.hi();
-        /// - let the set_of_widget execute draw_refresh 
+        /// - let the set_of_widget execute draw_refresh
         set_of_widget.draw_refresh();
         pr_D5.lo();
         /// - sleep for 20ms
@@ -135,3 +137,6 @@ int main()
     }
     return 0;
 }
+void manager_event_processor(UIControlEvent event) {
+    manager.process_control_event(event);
+};
