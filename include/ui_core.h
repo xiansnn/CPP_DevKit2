@@ -19,8 +19,8 @@
 #include <map>
 #include <string>
 
-/// @brief the time out used by the UIObjectManager that indicates no more action is required
-#define UI_MANAGER_TIME_OUT_us 3000000
+/// @brief the time out used by the UIObjectManager that indicates there is no more UI_ModelObject Status change.
+#define UI_MODEL_OBJECT_STATUS_TIME_OUT_us 3000000
 
 
 /**
@@ -130,9 +130,8 @@ public:
     /// @return this time in microsecond
     uint32_t get_time_since_last_change();
     /**
-     * @brief
-     *
-     * then the change is effective and the change_flag is set to true.
+     * @brief check if the _new_status change is effective, 
+     * then change it and set the change_flag to true.
      * @param _new_status
      */
     void update_status(ControlledObjectStatus _new_status);
@@ -261,7 +260,7 @@ protected:
      * 
      * @param time_out_us the time out value in microsecond. default to 3000000 (3seconds)
      */
-    void check_time_out(uint32_t time_out_us=UI_MANAGER_TIME_OUT_us);
+    void check_time_out(uint32_t time_out_us=UI_MODEL_OBJECT_STATUS_TIME_OUT_us);
     /**
      * @brief The list of amaged objects
      *

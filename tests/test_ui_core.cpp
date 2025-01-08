@@ -53,10 +53,12 @@ KY040 ky040 = KY040(CENTRAL_SWITCH_GPIO,
                     cfg_central_switch,
                     cfg_encoder_clk);
 
-
-/// @brief define the ISR associated with the clock signal of the rotary encoder
-/// @param gpio The gpio number connected to the clock signal
-/// @param event_mask the IRQ mask, default to GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE
+/**
+ * @brief define the ISR associated with the clock signal of the rotary encoder
+ * 
+ * @param gpio  The gpio number connected to the clock signal
+ * @param event_mask  the IRQ mask, default to GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE
+ */
 void shared_irq_call_back(uint gpio, uint32_t event_mask)
 {
     pr_D1.pulse_us(10);
@@ -73,7 +75,7 @@ void shared_irq_call_back(uint gpio, uint32_t event_mask)
 void manager_event_processor(UIControlEvent event);
 
 /**
- * @brief test and example program about ui_core, with serial terminal as widget substitute.
+ * @brief main test and example program about ui_core, with serial terminal as widget substitute.
  *
  * @return int
  */
