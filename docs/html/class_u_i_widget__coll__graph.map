@@ -1,0 +1,8 @@
+<map id="UIWidget" name="UIWidget">
+<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="22,903,510,1377"/>
+<area shape="rect" id="Node000002" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,5,516,624"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="265,639,267,903,262,903,260,639"/>
+<area shape="rect" id="Node000003" href="$class_u_i_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="282,673,746,839"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="448,635,470,672,465,675,444,638"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="464,840,431,890,426,887,459,837"/>
+</map>

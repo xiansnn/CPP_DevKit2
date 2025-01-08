@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['white_0',['WHITE',['../framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d',1,'framebuffer.h']]],
-  ['width_1',['width',['../structstruct___render_area.html#ae390a957d9f070f47e89e84fbcdb8319',1,'struct_RenderArea']]],
-  ['wrap_2',['wrap',['../structstruct___framebuffer_text.html#a4d8b493ce4f251aaa9bcd5810d3b8138',1,'struct_FramebufferText']]]
+  ['value_0',['value',['../class_u_i_controlled_incremental_value.html#a2664b329f998c9893899f5a897f851f4',1,'UIControlledIncrementalValue']]],
+  ['vertical_5foffset_1',['vertical_offset',['../structstruct___config_s_s_d1306.html#a46285649cc2dec04cd99d29d0cc10706',1,'struct_ConfigSSD1306']]],
+  ['vertical_5fscroll_2',['vertical_scroll',['../class_s_s_d1306.html#a25a4d90a656b9fd2f1b2d220cc9f8e2b',1,'SSD1306']]],
+  ['vertical_5fscrolling_5foffset_3',['vertical_scrolling_offset',['../structstruct___config_scroll_s_s_d1306.html#a8ba6fbb7511ebc6c8b32c4fb1360912b',1,'struct_ConfigScrollSSD1306']]],
+  ['vertical_5ftab_4',['VERTICAL_TAB',['../framebuffer_8h.html#aab5f37f45211c92e4c168deecd26f47a',1,'framebuffer.h']]],
+  ['vline_5',['vline',['../class_framebuffer.html#ae8fb16c32869ebc991bc6fbe1465979d',1,'Framebuffer']]]
 ];

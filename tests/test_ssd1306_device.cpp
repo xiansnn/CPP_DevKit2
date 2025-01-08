@@ -100,9 +100,6 @@ void test_addressing_mode(SSD1306 *display)
         display->clear_full_screen();
     }
     // PAGE_ADDRESSING_MODE
-    /**
-     * \bug// FIXME PAGE_ADDRESSING_MODE seems misbehave depending on what was executed before
-     */
     for (size_t i = 0; i < 8; i++)
     {
         memset(image, 0x55, sizeof(image));

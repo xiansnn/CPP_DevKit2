@@ -1,0 +1,25 @@
+<map id="ui_core.h" name="ui_core.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="292,5,367,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,155,97,181"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="293,34,236,54,175,82,123,114,80,147,76,142,120,110,172,78,234,50,291,29"/>
+<area shape="rect" id="Node000003" href="$framebuffer_8h.html" title="Most of code and algorithms here are derived from https://github.com/Harbys/pico&#45;ssd1306 works about ..." alt="" coords="213,80,310,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="320,34,286,70,282,67,316,31"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="120,155,174,181"/>
+<area shape="poly" id="edge12_Node000001_Node000004" title=" " alt="" coords="293,34,248,53,203,82,178,111,161,142,156,140,174,108,200,78,245,48,291,29"/>
+<area shape="rect" id="Node000009" href="$ui__control__event_8h.html" title=" " alt="" coords="334,80,461,107"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="343,31,377,67,374,70,340,34"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="485,80,542,107"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="363,30,471,73,470,78,361,35"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="566,80,613,107"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="368,27,552,77,551,82,367,32"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="226,110,103,152,101,147,224,105"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="243,109,181,148,179,144,240,105"/>
+<area shape="rect" id="Node000005" href="$5x8__font_8h.html" title=" " alt="" coords="545,155,680,181"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="311,102,537,148,536,154,310,107"/>
+<area shape="rect" id="Node000006" href="$8x8__font_8h.html" title=" " alt="" coords="705,155,840,181"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="311,102,322,104,504,129,689,152,689,157,503,134,321,109,310,107"/>
+<area shape="rect" id="Node000007" href="$12x16__font_8h.html" title=" " alt="" coords="198,155,347,181"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="266,107,271,139,266,140,261,108"/>
+<area shape="rect" id="Node000008" href="$16x32__font_8h.html" title=" " alt="" coords="371,155,520,181"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="295,105,400,146,399,151,293,110"/>
+</map>

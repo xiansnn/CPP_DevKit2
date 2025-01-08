@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['print_5fchar_0',['print_char',['../class_framebuffer.html#ad7b0d1c589fd81e853ae14979d5585be',1,'Framebuffer']]],
-  ['print_5ftext_1',['print_text',['../class_framebuffer.html#a19daac8a65e25c850a057cd99cff202a',1,'Framebuffer::print_text()'],['../class_framebuffer.html#a2d1dbcd1fe29cfed2f54da9f71fd0d63',1,'Framebuffer::print_text(const char *c_str)']]],
-  ['probe_2',['Probe',['../class_probe.html#a3c4f80fa16e1e5e4721b8c18da8a2b7b',1,'Probe']]],
-  ['process_5firq_5fevent_3',['process_IRQ_event',['../class_switch_button_with_i_r_q.html#a910cf64b0017e10006df24c4bc44a9c8',1,'SwitchButtonWithIRQ']]],
-  ['process_5fsample_5fevent_4',['process_sample_event',['../class_switch_button.html#aa7ebc9b37168b233ff9526f770fed49f',1,'SwitchButton']]],
-  ['pulse_5fus_5',['pulse_us',['../class_probe.html#a090879d096db391e958305e2686b2f45',1,'Probe']]],
-  ['pwm_6',['PWM',['../class_p_w_m.html#a4dedfbb6be96295678d51afffee4a132',1,'PWM']]],
-  ['pwmgatedmeasure_7',['PWMgatedMeasure',['../class_p_w_mgated_measure.html#a911c1e8d4fa44682c782c5091b4099fe',1,'PWMgatedMeasure']]]
+  ['make_5fmanaged_5fobject_5factive_0',['make_managed_object_active',['../class_u_i_object_manager.html#a1bab4cf4e46d7dd6347ae8b8c6fb4d4a',1,'UIObjectManager']]],
+  ['make_5fmanager_5factive_1',['make_manager_active',['../class_u_i_object_manager.html#a6d33e1d2261233004012a004b157ec01',1,'UIObjectManager']]],
+  ['measure_5fduty_5fcycle_2',['measure_duty_cycle',['../class_p_w_mgated_measure.html#a11067dc47c6d0cf8a2314fd947db1abf',1,'PWMgatedMeasure']]],
+  ['mpu6050_3',['MPU6050',['../class_m_p_u6050.html#a69ff7760846ab8f9b33ab07aa57709cf',1,'MPU6050']]],
+  ['msgeq7_4',['MSGEQ7',['../class_m_s_g_e_q7.html#a5d30e2ac12bbf4927b3154859d6f1ee0',1,'MSGEQ7']]]
 ];

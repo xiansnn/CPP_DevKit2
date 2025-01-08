@@ -15,7 +15,8 @@
 
 #include <string>
 #include "pico/stdlib.h"
-#include "ssd1306/5x8_font.h"
+/// \todo //TODO : framebuffer should not include a specific display device such SSD1306
+#include "ssd1306/5x8_font.h" 
 #include "ssd1306/8x8_font.h"
 #include "ssd1306/12x16_font.h"
 #include "ssd1306/16x32_font.h"

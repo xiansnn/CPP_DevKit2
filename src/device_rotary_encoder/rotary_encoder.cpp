@@ -17,6 +17,10 @@ RotaryEncoder::RotaryEncoder(uint encoder_clk_gpio, uint encoder_dt_gpio,
     gpio_pull_up(this->dt_gpio);
 }
 
+RotaryEncoder::RotaryEncoder()
+{
+}
+
 RotaryEncoder::~RotaryEncoder()
 {
 }
@@ -34,4 +38,9 @@ void RotaryEncoder::interrupt_service_routine(uint32_t current_irq_event_mask)
             event_processor(UIControlEvent::DECREMENT);
     }
     irq_enabled(true);
+}
+
+void RotaryEncoder::update_event_processor(control_event_processor_t event_processor)
+{
+    this->event_processor = event_processor;
 }

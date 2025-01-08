@@ -1,7 +1,12 @@
 <map id="ui_control_event.h" name="ui_control_event.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,133,32"/>
-<area shape="rect" id="Node000002" href="$switch__button_8h.html" title=" " alt="" coords="12,80,126,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,48,72,80,66,80,66,48"/>
-<area shape="rect" id="Node000003" href="$rotary__encoder_8h.html" title=" " alt="" coords="10,155,128,181"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="72,122,72,154,66,154,66,122"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="60,5,187,32"/>
+<area shape="rect" id="Node000002" href="$switch__button_8h.html" title=" " alt="" coords="20,80,133,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,47,87,81,82,78,105,44"/>
+<area shape="rect" id="Node000005" href="$ui__core_8h.html" title=" " alt="" coords="147,155,222,181"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="137,45,182,153,177,155,132,47"/>
+<area shape="rect" id="Node000003" href="$rotary__encoder_8h.html" title=" " alt="" coords="5,155,124,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="75,123,69,155,64,154,69,122"/>
+<area shape="rect" id="Node000004" href="$ky040_8h.html" title=" " alt="" coords="91,229,158,256"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="87,192,116,227,112,231,82,195"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="167,195,137,231,133,227,162,192"/>
 </map>

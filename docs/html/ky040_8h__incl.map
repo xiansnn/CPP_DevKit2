@@ -1,0 +1,37 @@
+<map id="ky040.h" name="ky040.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="250,5,317,32"/>
+<area shape="rect" id="Node000002" href="$rotary__encoder_8h.html" title=" " alt="" coords="164,80,283,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="275,34,245,70,241,66,271,31"/>
+<area shape="rect" id="Node000008" href="$ui__core_8h.html" title=" " alt="" coords="365,80,439,107"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="306,30,370,69,367,74,303,35"/>
+<area shape="rect" id="Node000003" href="$switch__button_8h.html" title=" " alt="" coords="108,155,222,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="215,109,187,144,182,141,211,106"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="90,229,178,256"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="162,183,148,216,143,214,157,181"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="366,229,457,256"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="209,179,354,222,353,227,207,184"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,229,66,256"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="144,184,73,224,70,219,141,180"/>
+<area shape="rect" id="Node000007" href="$ui__control__event_8h.html" title=" " alt="" coords="202,229,330,256"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="184,180,238,218,234,222,181,184"/>
+<area shape="poly" id="edge8_Node000008_Node000005" title=" " alt="" coords="414,106,428,127,439,154,441,170,439,187,429,217,424,215,434,186,436,170,434,155,423,130,410,109"/>
+<area shape="poly" id="edge16_Node000008_Node000007" title=" " alt="" coords="366,107,324,126,305,140,288,156,275,184,269,214,264,213,270,183,284,153,301,135,322,121,364,102"/>
+<area shape="rect" id="Node000009" href="$framebuffer_8h.html" title="Most of code and algorithms here are derived from https://github.com/Harbys/pico&#45;ssd1306 works about ..." alt="" coords="578,155,675,181"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="440,104,573,147,572,152,439,109"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="481,229,534,256"/>
+<area shape="poly" id="edge19_Node000008_Node000010" title=" " alt="" coords="417,106,459,153,497,214,492,217,455,156,413,109"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="298,155,355,181"/>
+<area shape="poly" id="edge17_Node000008_Node000015" title=" " alt="" coords="391,109,352,146,348,142,387,105"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="379,155,425,181"/>
+<area shape="poly" id="edge18_Node000008_Node000016" title=" " alt="" coords="405,107,405,139,400,139,400,107"/>
+<area shape="poly" id="edge11_Node000009_Node000005" title=" " alt="" coords="590,184,464,226,462,221,588,179"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="607,184,542,223,540,219,604,180"/>
+<area shape="rect" id="Node000011" href="$5x8__font_8h.html" title=" " alt="" coords="1065,229,1200,256"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="676,173,1050,226,1050,232,675,179"/>
+<area shape="rect" id="Node000012" href="$8x8__font_8h.html" title=" " alt="" coords="558,229,694,256"/>
+<area shape="poly" id="edge13_Node000009_Node000012" title=" " alt="" coords="629,182,629,214,624,214,624,182"/>
+<area shape="rect" id="Node000013" href="$12x16__font_8h.html" title=" " alt="" coords="718,229,868,256"/>
+<area shape="poly" id="edge14_Node000009_Node000013" title=" " alt="" coords="656,179,751,220,749,225,654,184"/>
+<area shape="rect" id="Node000014" href="$16x32__font_8h.html" title=" " alt="" coords="892,229,1041,256"/>
+<area shape="poly" id="edge15_Node000009_Node000014" title=" " alt="" coords="676,177,893,223,891,228,675,182"/>
+</map>

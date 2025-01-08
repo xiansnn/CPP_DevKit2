@@ -1,0 +1,5 @@
+<map id="Framebuffer::circle" name="Framebuffer::circle">
+<area shape="rect" id="Node000001" title="draw a cercle of size radius, centered at (x_center, y_center)" alt="" coords="5,5,135,32"/>
+<area shape="rect" id="Node000002" href="$class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1" title="Write all framebuffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)." alt="" coords="183,5,294,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,16,168,16,168,21,135,21"/>
+</map>
