@@ -172,7 +172,7 @@ public:
      */
     struct_I2CXferResult get_measures();
     /// @brief read raw data from FIFO
-    /// \bug   //FIXME check FIFO data reading.... seems not working well
+    /// \bug   //FIXME : check FIFO data reading.... seems not working well
     void read_FIFO_all_raw_data();
 };
 
