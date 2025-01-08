@@ -2,7 +2,9 @@ var hierarchy =
 [
     [ "DHT11", "class_d_h_t11.html", null ],
     [ "Framebuffer", "class_framebuffer.html", [
-      [ "SSD1306", "class_s_s_d1306.html", null ]
+      [ "SSD1306", "class_s_s_d1306.html", null ],
+      [ "UIDisplayDevice", "class_u_i_display_device.html", null ],
+      [ "UIWidget", "class_u_i_widget.html", null ]
     ] ],
     [ "HC_SR04", "class_h_c___s_r04.html", null ],
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", null ],
@@ -30,6 +32,14 @@ var hierarchy =
     [ "SwitchButton", "class_switch_button.html", [
       [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", [
         [ "RotaryEncoder", "class_rotary_encoder.html", null ]
+      ] ]
+    ] ],
+    [ "UIController", "class_u_i_controller.html", [
+      [ "KY040", "class_k_y040.html", null ]
+    ] ],
+    [ "UIModelObject", "class_u_i_model_object.html", [
+      [ "UIControlledIncrementalValue", "class_u_i_controlled_incremental_value.html", [
+        [ "UIObjectManager", "class_u_i_object_manager.html", null ]
       ] ]
     ] ]
 ];

@@ -1,7 +1,7 @@
 <map id="SwitchButton" name="SwitchButton">
-<area shape="rect" id="Node000001" title="SwitchButton status is sampled periodically by software." alt="" coords="31,5,130,32"/>
-<area shape="rect" id="Node000002" href="$class_switch_button_with_i_r_q.html" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="5,80,156,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,48,83,80,78,80,78,48"/>
-<area shape="rect" id="Node000003" href="$class_rotary_encoder.html" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user...." alt="" coords="26,155,135,181"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="83,122,83,154,78,154,78,122"/>
+<area shape="rect" id="Node000001" title="SwitchButton status is sampled periodically by software." alt="" coords="49,5,417,352"/>
+<area shape="rect" id="Node000002" href="$class_switch_button_with_i_r_q.html" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="28,400,437,587"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="235,367,235,400,230,400,230,367"/>
+<area shape="rect" id="Node000003" href="$class_rotary_encoder.html" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user...." alt="" coords="5,635,460,821"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="235,601,235,635,230,635,230,601"/>
 </map>

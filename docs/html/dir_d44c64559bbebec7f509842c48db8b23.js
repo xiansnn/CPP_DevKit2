@@ -7,6 +7,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "hc_sr04.h", "hc__sr04_8h.html", "hc__sr04_8h" ],
     [ "hw_i2c.h", "hw__i2c_8h.html", "hw__i2c_8h" ],
     [ "hw_pwm.h", "hw__pwm_8h.html", "hw__pwm_8h" ],
+    [ "ky040.h", "ky040_8h.html", "ky040_8h" ],
     [ "mpu6050.h", "mpu6050_8h.html", "mpu6050_8h" ],
     [ "msgeq7.h", "msgeq7_8h.html", "msgeq7_8h" ],
     [ "probe.h", "probe_8h.html", "probe_8h" ],
@@ -14,5 +15,6 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "sg90.h", "sg90_8h.html", "sg90_8h" ],
     [ "ssd1306.h", "ssd1306_8h_source.html", null ],
     [ "switch_button.h", "switch__button_8h.html", "switch__button_8h" ],
-    [ "ui_control_event.h", "ui__control__event_8h.html", "ui__control__event_8h" ]
+    [ "ui_control_event.h", "ui__control__event_8h.html", "ui__control__event_8h" ],
+    [ "ui_core.h", "ui__core_8h.html", "ui__core_8h" ]
 ];

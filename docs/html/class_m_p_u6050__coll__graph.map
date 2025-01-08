@@ -1,0 +1,7 @@
+<map id="MPU6050" name="MPU6050">
+<area shape="rect" id="Node000001" title="Class that manage the MPU6050 3&#45;axes accelerometer/gyrometer." alt="" coords="5,267,471,443"/>
+<area shape="rect" id="Node000002" href="$structstruct___m_p_u_data.html" title="measured sensor value after scale correction" alt="" coords="113,5,224,203"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,202,212,250,207,251,193,203"/>
+<area shape="rect" id="Node000003" href="$structstruct___raw_data.html" title="raw data as they are captured by sensor" alt="" coords="249,5,369,203"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="284,203,270,251,265,250,278,202"/>
+</map>

@@ -5,6 +5,7 @@ var annotated_dup =
     [ "HC_SR04", "class_h_c___s_r04.html", "class_h_c___s_r04" ],
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", "class_h_w___i2_c___master" ],
     [ "HW_I2C_Slave", "class_h_w___i2_c___slave.html", "class_h_w___i2_c___slave" ],
+    [ "KY040", "class_k_y040.html", "class_k_y040" ],
     [ "MPU6050", "class_m_p_u6050.html", "class_m_p_u6050" ],
     [ "MSGEQ7", "class_m_s_g_e_q7.html", "class_m_s_g_e_q7" ],
     [ "Probe", "class_probe.html", "class_probe" ],
@@ -28,5 +29,11 @@ var annotated_dup =
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", "structstruct___slave_memory" ],
     [ "struct_SwitchButtonConfig", "structstruct___switch_button_config.html", "structstruct___switch_button_config" ],
     [ "SwitchButton", "class_switch_button.html", "class_switch_button" ],
-    [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", "class_switch_button_with_i_r_q" ]
+    [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", "class_switch_button_with_i_r_q" ],
+    [ "UIControlledIncrementalValue", "class_u_i_controlled_incremental_value.html", "class_u_i_controlled_incremental_value" ],
+    [ "UIController", "class_u_i_controller.html", "class_u_i_controller" ],
+    [ "UIDisplayDevice", "class_u_i_display_device.html", "class_u_i_display_device" ],
+    [ "UIModelObject", "class_u_i_model_object.html", "class_u_i_model_object" ],
+    [ "UIObjectManager", "class_u_i_object_manager.html", "class_u_i_object_manager" ],
+    [ "UIWidget", "class_u_i_widget.html", "class_u_i_widget" ]
 ];

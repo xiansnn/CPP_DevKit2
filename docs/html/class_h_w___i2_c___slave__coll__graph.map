@@ -1,0 +1,5 @@
+<map id="HW_I2C_Slave" name="HW_I2C_Slave">
+<area shape="rect" id="Node000001" title="this is a C++ wrapper for the original pico SDK i2c slave API" alt="" coords="5,181,337,272"/>
+<area shape="rect" id="Node000002" href="$structstruct___slave_memory.html" title="this is the structure of the memory used by the slave i2c interface" alt="" coords="81,5,261,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,117,174,164,169,164,169,117"/>
+</map>

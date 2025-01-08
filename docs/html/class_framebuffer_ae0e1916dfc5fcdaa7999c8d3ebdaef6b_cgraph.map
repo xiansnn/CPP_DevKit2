@@ -1,0 +1,5 @@
+<map id="Framebuffer::rect" name="Framebuffer::rect">
+<area shape="rect" id="Node000001" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="5,5,126,32"/>
+<area shape="rect" id="Node000002" href="$class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1" title="Write all framebuffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)." alt="" coords="174,5,285,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,16,158,16,158,21,126,21"/>
+</map>

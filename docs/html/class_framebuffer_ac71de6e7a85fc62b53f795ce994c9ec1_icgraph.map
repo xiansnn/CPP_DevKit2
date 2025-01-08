@@ -1,0 +1,7 @@
+<map id="Framebuffer::fill" name="Framebuffer::fill">
+<area shape="rect" id="Node000001" title="Write all framebuffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)." alt="" coords="183,31,294,57"/>
+<area shape="rect" id="Node000002" href="$class_framebuffer.html#a4eb865f19596a64e30862697ab737318" title="draw a cercle of size radius, centered at (x_center, y_center)" alt="" coords="5,5,135,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,36,135,31,136,26,168,31"/>
+<area shape="rect" id="Node000003" href="$class_framebuffer.html#ae0e1916dfc5fcdaa7999c8d3ebdaef6b" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="10,56,130,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="168,57,131,63,130,58,167,52"/>
+</map>

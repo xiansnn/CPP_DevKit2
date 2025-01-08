@@ -1,5 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,5,96,32"/>
-<area shape="rect" id="Node000001" href="$class_s_s_d1306.html" title="SSD1306 OLED display device driver." alt="" coords="144,5,221,32"/>
-<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="111,16,143,16,143,21,111,21"/>
+<area shape="rect" id="Node000000" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,56,96,83"/>
+<area shape="rect" id="Node000001" href="$class_s_s_d1306.html" title="SSD1306 OLED display device driver." alt="" coords="165,5,242,32"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="107,48,164,29,166,34,108,53"/>
+<area shape="rect" id="Node000002" href="$class_u_i_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="144,56,264,83"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="111,67,143,67,143,72,111,72"/>
+<area shape="rect" id="Node000003" href="$class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="166,107,242,133"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="108,86,166,105,164,110,107,91"/>
 </map>

@@ -1,0 +1,7 @@
+<map id="Framebuffer::Framebuffer" name="Framebuffer::Framebuffer">
+<area shape="rect" id="Node000001" title="Construct a new Framebuffer object." alt="" coords="213,31,380,57"/>
+<area shape="rect" id="Node000002" href="$class_s_s_d1306.html#a67f56b6c4fd626c6b60488e9aebfc077" title="the SSD1306 implementation of the show function. Used when we need to show a framebuffer in a given r..." alt="" coords="27,5,143,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,35,143,28,144,23,198,30"/>
+<area shape="rect" id="Node000003" href="$class_u_i_display_device.html#aa87594dc5c9085523809519fe0d85f5d" title="This is an pure virtual member function that all final derived class must implement...." alt="" coords="5,56,165,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="198,58,165,62,165,57,197,53"/>
+</map>
