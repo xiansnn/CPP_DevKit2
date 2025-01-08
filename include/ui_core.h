@@ -19,72 +19,22 @@
 #include <map>
 #include <string>
 
-#define TIME_OUT_us 3000000
+/// @brief the time out used by the UIObjectManager that indicates no more action is required
+#define UI_MANAGER_TIME_OUT_us 3000000
 
-// /**
-//  * @brief The list of predefined events that a UIController can send to the controlled UIModelObject, leaving it the responsibility
-//  * to act as required by its specification.
-//  *
-//  */
-// enum class ControlEvent
-// {
-//     /**
-//      * @brief null event, no operation expected.
-//      */
-//     NOOP,
-//     /**
-//      * @brief event triggered when a button is pushed
-//      */
-//     PUSH,
-//     /**
-//      * @brief event triggered when a button is double-pushed
-//      *
-//      * \todo  Not implemented. // TODO  To find a way to do "DOUBLE_PUSH"
-//      */
-//     DOUBLE_PUSH,
-//     /**
-//      * @brief event triggered when a button is held more than a configurable duration.
-//      */
-//     LONG_PUSH,
-//     /**
-//      * @brief event triggered when a button is released after a configurable duration.
-//      */
-//     RELEASED_AFTER_LONG_TIME,
-//     /**
-//      * @brief event triggered when a button is released before a configurable duration.
-//      */
-//     RELEASED_AFTER_SHORT_TIME,
-//     /**
-//      * @brief event that signals the user trig an increment order.
-//      */
-//     INCREMENT,
-//     /**
-//      * @brief event that signals the user trig an decrement order.
-//      */
-//     DECREMENT,
-//     /**
-//      * @brief event that signals nothing happens after a configurable period of time.
-//      */
-//     TIME_OUT
-// };
 
 /**
  * @brief The list of status that a UIModelObject can have.
- *
  */
 enum class ControlledObjectStatus
 {
-    /**
-     * @brief The object is inactive, nothing to do.
-     */
+    /// @brief The object is inactive, nothing to do.
     IS_WAITING,
-    /**
-     * @brief The widget or object manager is pointing to this model
-     */
+
+    /// @brief The widget or object manager is pointing to this model
     HAS_FOCUS,
-    /**
-     * @brief The user has selected (clicked) on this model. ControlEvent are then passed to this model in order to be processed.
-     */
+
+    /// @brief The user has selected (clicked) on this model. ControlEvent are then passed to this model in order to be processed.
     IS_ACTIVE
 };
 
@@ -226,10 +176,16 @@ class UIControlledIncrementalValue : public UIModelObject
 {
 private:
 protected:
+    /// @brief The internal value incremented or decremented by action on the controller
     int value;
+    /// @brief The maximum value that can be reached. Can be either negative or positive.
     int max_value;
+    /// @brief The minimum value that can be reached. Can be either negative or positive.
     int min_value;
+    /// @brief The number that is added or substracted to the current value. Default to 1.
     int increment;
+    /// @brief If true, once the max (resp. min) value is reached, the next one wraps to min (resp*; max) value.
+    /// If false values are clipped on min and max values.
     bool is_wrappable;
 
 public:
@@ -299,13 +255,13 @@ class UIObjectManager : public UIControlledIncrementalValue
 protected:
 
     /**
-     * @brief check if there is a time out either on the managed models than the manager itself.
+     * @brief check if there is a time out either on the managed models or the manager itself.
      * 
      * This means no action on focus control and active status control.
      * 
      * @param time_out_us the time out value in microsecond. default to 3000000 (3seconds)
      */
-    void check_time_out(uint32_t time_out_us=TIME_OUT_us);
+    void check_time_out(uint32_t time_out_us=UI_MANAGER_TIME_OUT_us);
     /**
      * @brief The list of amaged objects
      *
@@ -399,7 +355,7 @@ public:
  * This is why the widget height and the widget_anchor_y must be multiple of 8. Doing so the widget buffer bytes do not ovewrite pixel outside the widget border.
  *
  * IMPORTANT NOTICE 2: The final widget implementation must know what actual model object it displays. This final implementation must have a member (can be private)
- * e.g. <final_type> * actual_displayed_object; of the actual <final_type> implementation of UIModelObject. This can be initialised by the constructor.
+ * e.g. [final_type] * actual_displayed_object; of the actual [final_type] implementation of UIModelObject. This can be initialised by the constructor.
  *
  *
  */
@@ -409,73 +365,51 @@ private:
     int8_t previous_blinking_phase; // should be 0 or 1.
 
 protected:
-    /**
-     * @brief return true if the blinking phase has changed
-     *
-     */
+
+    /// @brief return true if the blinking phase has changed
     bool blinking_phase_has_changed();
-    /**
-     * @brief The period of the blinking, in microseconds
-     *
-     */
+
+    /// @brief The period of the blinking, in microseconds
     uint32_t blink_period_us;
-    /**
-     * @brief
-     *
-     */
+
+    /// @brief location in x of the widget within the hosting framebuffer
     uint8_t widget_anchor_x;
-    /**
-     * @brief
-     *
-     */
+
+    /// @brief location in y of the widget within the hosting framebuffer
     uint8_t widget_anchor_y;
-    /**
-     * @brief
-     *
-     */
+
+    /// @brief the dispaly device where the widget is displayed
     UIDisplayDevice *display_screen{nullptr};
-    /**
-     * @brief
-     *
-     */
+
+    /// @brief if true, the widget is surrounded by a one-pixel border
     bool widget_with_border{true};
-    /**
-     * @brief A widget can be composed by several widget.
-     *
-     */
+
+    /// @brief A widget can be composed by several widget.
     std::vector<UIWidget *> widgets;
-    /**
-     * @brief As a widget can be surrounded by a border, the actual widget width is not the associated framebuffer width.
-     *
-     */
+
+    /// @brief As a widget can be surrounded by a border, the actual widget width is not the associated framebuffer width.
     size_t widget_width{128};
-    /**
-     * @brief As a widget can be surrounded by a border, the actual widget height is not the associated framebuffer height.
-     *
-     */
+
+    /// @brief As a widget can be surrounded by a border, the actual widget height is not the associated framebuffer height.
     size_t widget_height{8};
     /**
      * @brief this is the actual horizontal start of the widget drawing area, taken into account the presence of border.
      *
-     * WARNING: works fine if widget_height is a multiple of 8
+     * WARNING: when the FramebufferFormat format is MONO_VLSB, works fine only if widget_height is a multiple of 8.
      */
     uint8_t widget_start_x;
     /**
      * @brief this is the actual vertical start of the widget drawing area, taken into account the presence of border.
      *
-     * WARNING: works fine if widget_start_y is a multiple of 8
-     *
+     * WARNING: when the FramebufferFormat format is MONO_VLSB, works fine only if widget_start_y is a multiple of 8
      */
     uint8_t widget_start_y;
-    /**
-     * @brief this is the border size of the widget
-     *
-     */
+
+    /// @brief this is the border size of the widget
     uint8_t widget_border_width;
     /**
      * @brief draw a rectangle around the widget.
      * IMPORTANT NOTICE: as the border is a rectangle with fill=false, the border width can only be 1 pixel.
-     *
      */
     void draw_border(FramebufferColor c = FramebufferColor::WHITE);
 
@@ -536,12 +470,17 @@ public:
      * Guidance to implement this function:
      *
      * - First: Scan all contained sub-widgets if any and call draw_refresh() member function of each of them.
+     * 
      * - then: update widget status according to the values of interest in the UIModelObject
+     * 
      * - refresh blinking if needed
+     * 
      * - Then: check if any changes in the model require a screen redraw
+     * 
      * - if redraw() required , execute the effective widget drawing (can be a private member function)
      * - and finally : clear model change flag if needed.
-     *       WARNING : When several widget display one Model, only the last one must clear_change_flag()
+     *
+     *        WARNING : When several widget display one Model, only the last one must clear_change_flag()
      */
     virtual void draw_refresh() = 0;
 };

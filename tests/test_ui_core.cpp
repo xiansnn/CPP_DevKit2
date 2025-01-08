@@ -22,14 +22,14 @@
 #include <string>
 #include "probe.h"
 
-#define CENTRAL_SWITCH_GPIO 6
-#define ENCODER_CLK_GPIO 26
-#define ENCODER_DT_GPIO 21
-
 /// @brief  3 probes are create to observe the time execution with a logic analyser
 Probe pr_D1 = Probe(1);
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
+
+#define CENTRAL_SWITCH_GPIO 6
+#define ENCODER_CLK_GPIO 26
+#define ENCODER_DT_GPIO 21
 
 /// @brief config of the rotary encoder central switch
 struct_SwitchButtonConfig cfg_central_switch{

@@ -5,7 +5,6 @@
 #include "pico/stdlib.h"
 #include "hw_i2c.h"
 #include "framebuffer.h"
-// #include "ui_core.h"
 
 // Time_frame_interval
 #define _2_FRAMES 0b111
@@ -20,7 +19,7 @@
 // addressing mode
 #define HORIZONTAL_ADDRESSING_MODE 0
 #define VERTICAL_ADDRESSING_MODE 1
-#define PAGE_ADDRESSING_MODE 2
+#define PAGE_ADDRESSING_MODE 2 
 
 /**
  * @brief configuration data for SSD1306 OLED display.
@@ -161,6 +160,7 @@ public:
     /**
      * @brief fill a pattern in the device framebuffer. this make it visible as soon as the device transfer the framebuffer to the pixels.
      * The pattern is a vertical byte representing 8 vertical pixels (refer to MONO_VLSB framebuffer format)
+     * \bug// FIXME : PAGE_ADDRESSING_MODE seems misbehave depending on what was executed before
      * @param pattern
      * @param area
      */
