@@ -13,7 +13,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "probe.h", "probe_8h.html", "probe_8h" ],
     [ "rotary_encoder.h", "rotary__encoder_8h.html", "rotary__encoder_8h" ],
     [ "sg90.h", "sg90_8h.html", "sg90_8h" ],
-    [ "ssd1306.h", "ssd1306_8h_source.html", null ],
+    [ "ssd1306.h", "ssd1306_8h.html", "ssd1306_8h" ],
     [ "switch_button.h", "switch__button_8h.html", "switch__button_8h" ],
     [ "ui_control_event.h", "ui__control__event_8h.html", "ui__control__event_8h" ],
     [ "ui_core.h", "ui__core_8h.html", "ui__core_8h" ]

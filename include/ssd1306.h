@@ -1,3 +1,13 @@
+/**
+ * @file ssd1306.h
+ * @author xiansnn (xiansnn@hotmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-09
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #if !defined(SSD1306_H)
 #define SSD1306_H
 

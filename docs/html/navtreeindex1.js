@@ -164,6 +164,7 @@ var NAVTREEINDEX1 =
 "sg90_8h.html#a9aeda26fb02b15f9f6543e4c8431f81c":[3,0,0,12,5],
 "sg90_8h.html#ac359616a325457c8cad32638b19d4f52":[3,0,0,12,3],
 "sg90_8h_source.html":[3,0,0,12],
+"ssd1306_8h.html":[3,0,0,13],
 "ssd1306_8h_source.html":[3,0,0,13],
 "structstruct___config_m_p_u6050.html":[2,0,15],
 "structstruct___config_m_p_u6050.html#a1381c37f4dac6cf4d3846c49a80e1f65":[2,0,15,12],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "structstruct___raw_data.html#ad73b35421c118682e0d11697f6cec91b":[2,0,24,4],
 "structstruct___raw_data.html#aed6d37f9da43c198dd5eabaf31701e43":[2,0,24,5],
 "structstruct___render_area.html":[2,0,25],
-"structstruct___render_area.html#a1b865d1677e21638357766ee175dd3bb":[2,0,25,3],
-"structstruct___render_area.html#a66cef6847c6a4e2d0bf534f588914bd5":[2,0,25,0]
+"structstruct___render_area.html#a1b865d1677e21638357766ee175dd3bb":[2,0,25,3]
 };
