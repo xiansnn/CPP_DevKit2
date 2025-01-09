@@ -10,6 +10,7 @@ var class_u_i_widget =
     [ "set_display_screen", "class_u_i_widget.html#ab0428db23b7794e60579466e62ba4290", null ],
     [ "blink_period_us", "class_u_i_widget.html#aa632ac0145d606c34dc2c2378d5217e7", null ],
     [ "display_screen", "class_u_i_widget.html#a58bdfed0519bf425f1fd35a8fe3ee063", null ],
+    [ "previous_blinking_phase", "class_u_i_widget.html#a7a404a4e2ebcde747ed9fb3657099e45", null ],
     [ "widget_anchor_x", "class_u_i_widget.html#a85a82836dd04ae6a7164d5f213615a4b", null ],
     [ "widget_anchor_y", "class_u_i_widget.html#a2ec9e35c6ee6f3053ed61878cb021680", null ],
     [ "widget_border_width", "class_u_i_widget.html#acd07c6d3c1543f94eca2a3e79ebf636c", null ],

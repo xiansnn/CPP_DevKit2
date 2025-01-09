@@ -120,7 +120,7 @@ Collaboration diagram for MSGEQ7:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5d30e2ac12bbf4927b3154859d6f1ee0" id="r_a5d30e2ac12bbf4927b3154859d6f1ee0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d30e2ac12bbf4927b3154859d6f1ee0">MSGEQ7</a> (uint strobe_gpio, uint reset_gpio, uint signal_out)</td></tr>
+<tr class="memitem:a5d30e2ac12bbf4927b3154859d6f1ee0" id="r_a5d30e2ac12bbf4927b3154859d6f1ee0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d30e2ac12bbf4927b3154859d6f1ee0">MSGEQ7</a> (uint <a class="el" href="#a1e4bace2eceb5c710e45ccea10aa34d2">strobe_gpio</a>, uint <a class="el" href="#a9af5efddd96adebdf9b195b23a97b059">reset_gpio</a>, uint <a class="el" href="#a68a8e5462a9d3303c6c9d0ee924bec64">signal_out</a>)</td></tr>
 <tr class="memdesc:a5d30e2ac12bbf4927b3154859d6f1ee0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_m_s_g_e_q7.html" title="The MSGEQ7 is an 7-band audio filter.">MSGEQ7</a> object.  <br /></td></tr>
 <tr class="separator:a5d30e2ac12bbf4927b3154859d6f1ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13c0ce63c7eff6467a02bea3dcf04f54" id="r_a13c0ce63c7eff6467a02bea3dcf04f54"><td class="memItemLeft" align="right" valign="top"><a id="a13c0ce63c7eff6467a02bea3dcf04f54" name="a13c0ce63c7eff6467a02bea3dcf04f54"></a>
@@ -135,15 +135,19 @@ Public Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a1e4bace2eceb5c710e45ccea10aa34d2" id="r_a1e4bace2eceb5c710e45ccea10aa34d2"><td class="memItemLeft" align="right" valign="top"><a id="a1e4bace2eceb5c710e45ccea10aa34d2" name="a1e4bace2eceb5c710e45ccea10aa34d2"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>strobe_gpio</b></td></tr>
+<tr class="memdesc:a1e4bace2eceb5c710e45ccea10aa34d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the GPIO pin the send strobe signal to the <a class="el" href="class_m_s_g_e_q7.html" title="The MSGEQ7 is an 7-band audio filter.">MSGEQ7</a> device <br /></td></tr>
 <tr class="separator:a1e4bace2eceb5c710e45ccea10aa34d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9af5efddd96adebdf9b195b23a97b059" id="r_a9af5efddd96adebdf9b195b23a97b059"><td class="memItemLeft" align="right" valign="top"><a id="a9af5efddd96adebdf9b195b23a97b059" name="a9af5efddd96adebdf9b195b23a97b059"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>reset_gpio</b></td></tr>
+<tr class="memdesc:a9af5efddd96adebdf9b195b23a97b059"><td class="mdescLeft">&#160;</td><td class="mdescRight">the GPIO pin the send reset signal to the <a class="el" href="class_m_s_g_e_q7.html" title="The MSGEQ7 is an 7-band audio filter.">MSGEQ7</a> device <br /></td></tr>
 <tr class="separator:a9af5efddd96adebdf9b195b23a97b059"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68a8e5462a9d3303c6c9d0ee924bec64" id="r_a68a8e5462a9d3303c6c9d0ee924bec64"><td class="memItemLeft" align="right" valign="top"><a id="a68a8e5462a9d3303c6c9d0ee924bec64" name="a68a8e5462a9d3303c6c9d0ee924bec64"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>signal_out</b></td></tr>
+<tr class="memdesc:a68a8e5462a9d3303c6c9d0ee924bec64"><td class="mdescLeft">&#160;</td><td class="mdescRight">the GPIO pin where the amplitude of the band filter is read <br /></td></tr>
 <tr class="separator:a68a8e5462a9d3303c6c9d0ee924bec64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac92c8b6ae315cc0afc03486f661f1f5" id="r_aac92c8b6ae315cc0afc03486f661f1f5"><td class="memItemLeft" align="right" valign="top"><a id="aac92c8b6ae315cc0afc03486f661f1f5" name="aac92c8b6ae315cc0afc03486f661f1f5"></a>
 std::array&lt; uint16_t, 7 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>band_results</b></td></tr>
+<tr class="memdesc:aac92c8b6ae315cc0afc03486f661f1f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">the 7-band resulting measures <br /></td></tr>
 <tr class="separator:aac92c8b6ae315cc0afc03486f661f1f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

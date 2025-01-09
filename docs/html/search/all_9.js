@@ -13,12 +13,14 @@ var searchData=
   ['font_5fheight_5findex_10',['FONT_HEIGHT_INDEX',['../framebuffer_8h.html#a4ab86d883782b831584c91476841456f',1,'framebuffer.h']]],
   ['font_5fwidth_5findex_11',['FONT_WIDTH_INDEX',['../framebuffer_8h.html#a1b5e690c2929f80821d04e8414fec2c5',1,'framebuffer.h']]],
   ['form_5ffeed_12',['FORM_FEED',['../framebuffer_8h.html#aeaf983986deb16c93fa0bd38080281f8',1,'framebuffer.h']]],
-  ['frame_5fheight_13',['frame_height',['../class_framebuffer.html#aa346612ecd1e1a0167734b8173bed9db',1,'Framebuffer']]],
-  ['frame_5fwidth_14',['frame_width',['../class_framebuffer.html#a35a041f8b088ee5274aa334d13e4c60e',1,'Framebuffer']]],
-  ['framebuffer_15',['Framebuffer',['../class_framebuffer.html',1,'Framebuffer'],['../class_framebuffer.html#a25c9cadebb3531112c5085e981962407',1,'Framebuffer::Framebuffer()']]],
-  ['framebuffer_2eh_16',['framebuffer.h',['../framebuffer_8h.html',1,'']]],
-  ['framebuffercolor_17',['FramebufferColor',['../framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f',1,'framebuffer.h']]],
-  ['framebufferformat_18',['FramebufferFormat',['../framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79',1,'framebuffer.h']]],
-  ['frequency_5fdivider_19',['frequency_divider',['../structstruct___config_s_s_d1306.html#a3b094002129dd70ad83fb49097d116e2',1,'struct_ConfigSSD1306']]],
-  ['frequency_5ffactor_20',['frequency_factor',['../structstruct___config_s_s_d1306.html#acf1d9d748c0e5d861f6520f49ca21e37',1,'struct_ConfigSSD1306']]]
+  ['frame_5fformat_13',['frame_format',['../class_framebuffer.html#ac09b3c586c580074e08fdb5d5b45f598',1,'Framebuffer']]],
+  ['frame_5fheight_14',['frame_height',['../class_framebuffer.html#aa346612ecd1e1a0167734b8173bed9db',1,'Framebuffer']]],
+  ['frame_5ftext_5fconfig_15',['frame_text_config',['../class_framebuffer.html#ad9526c00b4e1e49d7b51860cdda0a03d',1,'Framebuffer']]],
+  ['frame_5fwidth_16',['frame_width',['../class_framebuffer.html#a35a041f8b088ee5274aa334d13e4c60e',1,'Framebuffer']]],
+  ['framebuffer_17',['Framebuffer',['../class_framebuffer.html',1,'Framebuffer'],['../class_framebuffer.html#a25c9cadebb3531112c5085e981962407',1,'Framebuffer::Framebuffer()']]],
+  ['framebuffer_2eh_18',['framebuffer.h',['../framebuffer_8h.html',1,'']]],
+  ['framebuffercolor_19',['FramebufferColor',['../framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f',1,'framebuffer.h']]],
+  ['framebufferformat_20',['FramebufferFormat',['../framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79',1,'framebuffer.h']]],
+  ['frequency_5fdivider_21',['frequency_divider',['../structstruct___config_s_s_d1306.html#a3b094002129dd70ad83fb49097d116e2',1,'struct_ConfigSSD1306']]],
+  ['frequency_5ffactor_22',['frequency_factor',['../structstruct___config_s_s_d1306.html#acf1d9d748c0e5d861f6520f49ca21e37',1,'struct_ConfigSSD1306']]]
 ];

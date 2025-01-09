@@ -120,7 +120,7 @@ Collaboration diagram for PWMgatedMeasure:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a911c1e8d4fa44682c782c5091b4099fe" id="r_a911c1e8d4fa44682c782c5091b4099fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a911c1e8d4fa44682c782c5091b4099fe">PWMgatedMeasure</a> (uint pin_gate, uint resolution_ns, uint measure_duration_us)</td></tr>
+<tr class="memitem:a911c1e8d4fa44682c782c5091b4099fe" id="r_a911c1e8d4fa44682c782c5091b4099fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a911c1e8d4fa44682c782c5091b4099fe">PWMgatedMeasure</a> (uint pin_gate, uint <a class="el" href="#a7f2a2aaa57a108b3790def2b31481218">resolution_ns</a>, uint <a class="el" href="#a6d4f941771cbbd7d72b0c610b6956a97">measure_duration_us</a>)</td></tr>
 <tr class="memdesc:a911c1e8d4fa44682c782c5091b4099fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_p_w_mgated_measure.html" title="the PWM function used to measure time during which the signal on the channel B as input is HI.">PWMgatedMeasure</a> object.  <br /></td></tr>
 <tr class="separator:a911c1e8d4fa44682c782c5091b4099fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11067dc47c6d0cf8a2314fd947db1abf" id="r_a11067dc47c6d0cf8a2314fd947db1abf"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11067dc47c6d0cf8a2314fd947db1abf">measure_duty_cycle</a> ()</td></tr>
@@ -134,12 +134,15 @@ Public Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ae3320668b95885502c9bf87de702cdfb" id="r_ae3320668b95885502c9bf87de702cdfb"><td class="memItemLeft" align="right" valign="top"><a id="ae3320668b95885502c9bf87de702cdfb" name="ae3320668b95885502c9bf87de702cdfb"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>slice</b></td></tr>
+<tr class="memdesc:ae3320668b95885502c9bf87de702cdfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">the hardware <a class="el" href="class_p_w_m.html" title="The basic PWM function.">PWM</a> slice of the Pico that handle this <a class="el" href="class_p_w_m.html" title="The basic PWM function.">PWM</a> signal <br /></td></tr>
 <tr class="separator:ae3320668b95885502c9bf87de702cdfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d4f941771cbbd7d72b0c610b6956a97" id="r_a6d4f941771cbbd7d72b0c610b6956a97"><td class="memItemLeft" align="right" valign="top"><a id="a6d4f941771cbbd7d72b0c610b6956a97" name="a6d4f941771cbbd7d72b0c610b6956a97"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>measure_duration_us</b></td></tr>
+<tr class="memdesc:a6d4f941771cbbd7d72b0c610b6956a97"><td class="mdescLeft">&#160;</td><td class="mdescRight">the operture windows during witch the <a class="el" href="class_p_w_m.html" title="The basic PWM function.">PWM</a> will count signal <br /></td></tr>
 <tr class="separator:a6d4f941771cbbd7d72b0c610b6956a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f2a2aaa57a108b3790def2b31481218" id="r_a7f2a2aaa57a108b3790def2b31481218"><td class="memItemLeft" align="right" valign="top"><a id="a7f2a2aaa57a108b3790def2b31481218" name="a7f2a2aaa57a108b3790def2b31481218"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>resolution_ns</b></td></tr>
+<tr class="memdesc:a7f2a2aaa57a108b3790def2b31481218"><td class="mdescLeft">&#160;</td><td class="mdescRight">the minimum time slot as measure LSB <br /></td></tr>
 <tr class="separator:a7f2a2aaa57a108b3790def2b31481218"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

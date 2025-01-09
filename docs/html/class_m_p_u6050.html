@@ -130,7 +130,7 @@ Collaboration diagram for MPU6050:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a69ff7760846ab8f9b33ab07aa57709cf" id="r_a69ff7760846ab8f9b33ab07aa57709cf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69ff7760846ab8f9b33ab07aa57709cf">MPU6050</a> (<a class="el" href="class_h_w___i2_c___master.html">HW_I2C_Master</a> *master, <a class="el" href="structstruct___config_m_p_u6050.html">struct_ConfigMPU6050</a> default_config)</td></tr>
+<tr class="memitem:a69ff7760846ab8f9b33ab07aa57709cf" id="r_a69ff7760846ab8f9b33ab07aa57709cf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69ff7760846ab8f9b33ab07aa57709cf">MPU6050</a> (<a class="el" href="class_h_w___i2_c___master.html">HW_I2C_Master</a> *<a class="el" href="#ae8bb82d8f3dcde42c69cb9ad9e94614c">master</a>, <a class="el" href="structstruct___config_m_p_u6050.html">struct_ConfigMPU6050</a> default_config)</td></tr>
 <tr class="memdesc:a69ff7760846ab8f9b33ab07aa57709cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_m_p_u6050.html" title="Class that manage the MPU6050 3-axes accelerometer/gyrometer.">MPU6050</a> object.  <br /></td></tr>
 <tr class="separator:a69ff7760846ab8f9b33ab07aa57709cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3309784c38c0dde54a7638582dd23c9" id="r_ae3309784c38c0dde54a7638582dd23c9"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3309784c38c0dde54a7638582dd23c9">get_FIFO_count</a> ()</td></tr>
@@ -179,48 +179,62 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>convert_raw_to_measur
 <tr class="separator:ac1a94f4e63bb11e66159832b3b6fb46c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d09d65fef02c2e555356bb98b0db087" id="r_a6d09d65fef02c2e555356bb98b0db087"><td class="memItemLeft" align="right" valign="top"><a id="a6d09d65fef02c2e555356bb98b0db087" name="a6d09d65fef02c2e555356bb98b0db087"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>read_FIFO_g_accel_raw_data</b> ()</td></tr>
+<tr class="memdesc:a6d09d65fef02c2e555356bb98b0db087"><td class="mdescLeft">&#160;</td><td class="mdescRight">read raw acceleration and gyrometer data from FIFO <br /></td></tr>
 <tr class="separator:a6d09d65fef02c2e555356bb98b0db087"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49b22f088823633b9c7ec23c222e04fd" id="r_a49b22f088823633b9c7ec23c222e04fd"><td class="memItemLeft" align="right" valign="top"><a id="a49b22f088823633b9c7ec23c222e04fd" name="a49b22f088823633b9c7ec23c222e04fd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>read_FIFO_accel_raw_data</b> ()</td></tr>
+<tr class="memdesc:a49b22f088823633b9c7ec23c222e04fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">read raw acceleration data from FIFO <br /></td></tr>
 <tr class="separator:a49b22f088823633b9c7ec23c222e04fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ae8bb82d8f3dcde42c69cb9ad9e94614c" id="r_ae8bb82d8f3dcde42c69cb9ad9e94614c"><td class="memItemLeft" align="right" valign="top"><a id="ae8bb82d8f3dcde42c69cb9ad9e94614c" name="ae8bb82d8f3dcde42c69cb9ad9e94614c"></a>
 <a class="el" href="class_h_w___i2_c___master.html">HW_I2C_Master</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>master</b></td></tr>
+<tr class="memdesc:ae8bb82d8f3dcde42c69cb9ad9e94614c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the I2C master that control the <a class="el" href="class_m_p_u6050.html" title="Class that manage the MPU6050 3-axes accelerometer/gyrometer.">MPU6050</a> device <br /></td></tr>
 <tr class="separator:ae8bb82d8f3dcde42c69cb9ad9e94614c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e890360c47084a24f6869d235d0dc7e" id="r_a5e890360c47084a24f6869d235d0dc7e"><td class="memItemLeft" align="right" valign="top"><a id="a5e890360c47084a24f6869d235d0dc7e" name="a5e890360c47084a24f6869d235d0dc7e"></a>
 <a class="el" href="structstruct___config_m_p_u6050.html">struct_ConfigMPU6050</a>&#160;</td><td class="memItemRight" valign="bottom"><b>device_config</b></td></tr>
+<tr class="memdesc:a5e890360c47084a24f6869d235d0dc7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the <a class="el" href="class_m_p_u6050.html" title="Class that manage the MPU6050 3-axes accelerometer/gyrometer.">MPU6050</a> configuration <br /></td></tr>
 <tr class="separator:a5e890360c47084a24f6869d235d0dc7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b59780323f8aed81bf8a1295bcb865c" id="r_a1b59780323f8aed81bf8a1295bcb865c"><td class="memItemLeft" align="right" valign="top"><a id="a1b59780323f8aed81bf8a1295bcb865c" name="a1b59780323f8aed81bf8a1295bcb865c"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>acceleration_factor</b> {}</td></tr>
+<tr class="memdesc:a1b59780323f8aed81bf8a1295bcb865c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the accelerator proportional factor computed according to the device configuration <br /></td></tr>
 <tr class="separator:a1b59780323f8aed81bf8a1295bcb865c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50ad57c30d423e01225a501b6fec2206" id="r_a50ad57c30d423e01225a501b6fec2206"><td class="memItemLeft" align="right" valign="top"><a id="a50ad57c30d423e01225a501b6fec2206" name="a50ad57c30d423e01225a501b6fec2206"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>gyro_factor</b> {}</td></tr>
+<tr class="memdesc:a50ad57c30d423e01225a501b6fec2206"><td class="mdescLeft">&#160;</td><td class="mdescRight">the gyrometer proportional factor computed according to the device configuration <br /></td></tr>
 <tr class="separator:a50ad57c30d423e01225a501b6fec2206"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3db70a18738a11d089b6d19a5192c19a" id="r_a3db70a18738a11d089b6d19a5192c19a"><td class="memItemLeft" align="right" valign="top"><a id="a3db70a18738a11d089b6d19a5192c19a" name="a3db70a18738a11d089b6d19a5192c19a"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>temperature_gain</b> = 1.0 / 340.0</td></tr>
+<tr class="memdesc:a3db70a18738a11d089b6d19a5192c19a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the proportional factor for the temperature <br /></td></tr>
 <tr class="separator:a3db70a18738a11d089b6d19a5192c19a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe1a965b27197da0110d6a1d4f2f8288" id="r_afe1a965b27197da0110d6a1d4f2f8288"><td class="memItemLeft" align="right" valign="top"><a id="afe1a965b27197da0110d6a1d4f2f8288" name="afe1a965b27197da0110d6a1d4f2f8288"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>temperature_offset</b> = 36.53</td></tr>
+<tr class="memdesc:afe1a965b27197da0110d6a1d4f2f8288"><td class="mdescLeft">&#160;</td><td class="mdescRight">the temperature offset <br /></td></tr>
 <tr class="separator:afe1a965b27197da0110d6a1d4f2f8288"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adba33f1bc1b989d6606dd8fd7f86ddd6" id="r_adba33f1bc1b989d6606dd8fd7f86ddd6"><td class="memItemLeft" align="right" valign="top"><a id="adba33f1bc1b989d6606dd8fd7f86ddd6" name="adba33f1bc1b989d6606dd8fd7f86ddd6"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>accel_x_offset</b> {}</td></tr>
+<tr class="memdesc:adba33f1bc1b989d6606dd8fd7f86ddd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the x-acceleration offset <br /></td></tr>
 <tr class="separator:adba33f1bc1b989d6606dd8fd7f86ddd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8dcab76249a6f8386d489446382a35e6" id="r_a8dcab76249a6f8386d489446382a35e6"><td class="memItemLeft" align="right" valign="top"><a id="a8dcab76249a6f8386d489446382a35e6" name="a8dcab76249a6f8386d489446382a35e6"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>accel_y_offset</b> {}</td></tr>
+<tr class="memdesc:a8dcab76249a6f8386d489446382a35e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the y-acceleration offset <br /></td></tr>
 <tr class="separator:a8dcab76249a6f8386d489446382a35e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ed9808c42e70f1ac753ed0874e67cb3" id="r_a2ed9808c42e70f1ac753ed0874e67cb3"><td class="memItemLeft" align="right" valign="top"><a id="a2ed9808c42e70f1ac753ed0874e67cb3" name="a2ed9808c42e70f1ac753ed0874e67cb3"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>accel_z_offset</b> {}</td></tr>
+<tr class="memdesc:a2ed9808c42e70f1ac753ed0874e67cb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">the z-acceleration offset <br /></td></tr>
 <tr class="separator:a2ed9808c42e70f1ac753ed0874e67cb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a1bc395de632f3856a739de2f1c6729" id="r_a2a1bc395de632f3856a739de2f1c6729"><td class="memItemLeft" align="right" valign="top"><a id="a2a1bc395de632f3856a739de2f1c6729" name="a2a1bc395de632f3856a739de2f1c6729"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>gyro_x_offset</b> {}</td></tr>
+<tr class="memdesc:a2a1bc395de632f3856a739de2f1c6729"><td class="mdescLeft">&#160;</td><td class="mdescRight">the x-gyrometer offset <br /></td></tr>
 <tr class="separator:a2a1bc395de632f3856a739de2f1c6729"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af602865902d31deb4c758637f90c47b3" id="r_af602865902d31deb4c758637f90c47b3"><td class="memItemLeft" align="right" valign="top"><a id="af602865902d31deb4c758637f90c47b3" name="af602865902d31deb4c758637f90c47b3"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>gyro_y_offset</b> {}</td></tr>
+<tr class="memdesc:af602865902d31deb4c758637f90c47b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">the y-gyrometer offset <br /></td></tr>
 <tr class="separator:af602865902d31deb4c758637f90c47b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af655ca65d92ec9cfd6c05bbd8ad7cce1" id="r_af655ca65d92ec9cfd6c05bbd8ad7cce1"><td class="memItemLeft" align="right" valign="top"><a id="af655ca65d92ec9cfd6c05bbd8ad7cce1" name="af655ca65d92ec9cfd6c05bbd8ad7cce1"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>gyro_z_offset</b> {}</td></tr>
+<tr class="memdesc:af655ca65d92ec9cfd6c05bbd8ad7cce1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the z-gyrometer offset <br /></td></tr>
 <tr class="separator:af655ca65d92ec9cfd6c05bbd8ad7cce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -356,7 +370,7 @@ false </dd></dl>
 </div><div class="memdoc">
 
 <p>read raw data from FIFO </p>
-<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000001">Bug</a></b></dt><dd>//FIXME : check FIFO data reading.... seems not working well </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000002">Bug</a></b></dt><dd>//FIXME : check FIFO data reading.... seems not working well </dd></dl>
 
 </div>
 </div>

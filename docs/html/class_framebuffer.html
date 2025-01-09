@@ -138,7 +138,7 @@ Collaboration diagram for Framebuffer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a25c9cadebb3531112c5085e981962407" id="r_a25c9cadebb3531112c5085e981962407"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25c9cadebb3531112c5085e981962407">Framebuffer</a> (size_t <a class="el" href="#a35a041f8b088ee5274aa334d13e4c60e">frame_width</a>, size_t <a class="el" href="#aa346612ecd1e1a0167734b8173bed9db">frame_height</a>, <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a> frame_format=<a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79ab8705fdb146f8f1c9e9d2d8dd6c072ad">FramebufferFormat::MONO_VLSB</a>)</td></tr>
+<tr class="memitem:a25c9cadebb3531112c5085e981962407" id="r_a25c9cadebb3531112c5085e981962407"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25c9cadebb3531112c5085e981962407">Framebuffer</a> (size_t <a class="el" href="#a35a041f8b088ee5274aa334d13e4c60e">frame_width</a>, size_t <a class="el" href="#aa346612ecd1e1a0167734b8173bed9db">frame_height</a>, <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a> <a class="el" href="#ac09b3c586c580074e08fdb5d5b45f598">frame_format</a>=<a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79ab8705fdb146f8f1c9e9d2d8dd6c072ad">FramebufferFormat::MONO_VLSB</a>)</td></tr>
 <tr class="memdesc:a25c9cadebb3531112c5085e981962407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a> object.  <br /></td></tr>
 <tr class="separator:a25c9cadebb3531112c5085e981962407"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a037bf3e17455354d5d907ceea00313dd" id="r_a037bf3e17455354d5d907ceea00313dd"><td class="memItemLeft" align="right" valign="top"><a id="a037bf3e17455354d5d907ceea00313dd" name="a037bf3e17455354d5d907ceea00313dd"></a>
@@ -170,7 +170,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_pixel_buffer</b
 <tr class="memitem:a4eb865f19596a64e30862697ab737318" id="r_a4eb865f19596a64e30862697ab737318"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4eb865f19596a64e30862697ab737318">circle</a> (int radius, int x_center, int y_center, bool <a class="el" href="#ac71de6e7a85fc62b53f795ce994c9ec1">fill</a>=false, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c=<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a>)</td></tr>
 <tr class="memdesc:a4eb865f19596a64e30862697ab737318"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a cercle of size radius, centered at (x_center, y_center)  <br /></td></tr>
 <tr class="separator:a4eb865f19596a64e30862697ab737318"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d2fec25f3bb6f584d239b85e9facd04" id="r_a9d2fec25f3bb6f584d239b85e9facd04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d2fec25f3bb6f584d239b85e9facd04">init_text_buffer</a> (<a class="el" href="structstruct___framebuffer_text.html">struct_FramebufferText</a> frame_text_config)</td></tr>
+<tr class="memitem:a9d2fec25f3bb6f584d239b85e9facd04" id="r_a9d2fec25f3bb6f584d239b85e9facd04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d2fec25f3bb6f584d239b85e9facd04">init_text_buffer</a> (<a class="el" href="structstruct___framebuffer_text.html">struct_FramebufferText</a> <a class="el" href="#ad9526c00b4e1e49d7b51860cdda0a03d">frame_text_config</a>)</td></tr>
 <tr class="memdesc:a9d2fec25f3bb6f584d239b85e9facd04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the textual features of framebuffer, according to the configuration data structure frame_text_config.  <br /></td></tr>
 <tr class="separator:a9d2fec25f3bb6f584d239b85e9facd04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a471d9d9a24d51b9df2a89362abd2e607" id="r_a471d9d9a24d51b9df2a89362abd2e607"><td class="memItemLeft" align="right" valign="top"><a id="a471d9d9a24d51b9df2a89362abd2e607" name="a471d9d9a24d51b9df2a89362abd2e607"></a>
@@ -228,41 +228,48 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>max_column</b> {0}
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a091ac1c60df92f1aefc2353be4e7a076" id="r_a091ac1c60df92f1aefc2353be4e7a076"><td class="memItemLeft" align="right" valign="top"><a id="a091ac1c60df92f1aefc2353be4e7a076" name="a091ac1c60df92f1aefc2353be4e7a076"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ellipse</b> (uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool <a class="el" href="#ac71de6e7a85fc62b53f795ce994c9ec1">fill</a>, uint8_t quadrant, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c)</td></tr>
+<tr class="memitem:a091ac1c60df92f1aefc2353be4e7a076" id="r_a091ac1c60df92f1aefc2353be4e7a076"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a091ac1c60df92f1aefc2353be4e7a076">ellipse</a> (uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool <a class="el" href="#ac71de6e7a85fc62b53f795ce994c9ec1">fill</a>, uint8_t quadrant, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c)</td></tr>
+<tr class="memdesc:a091ac1c60df92f1aefc2353be4e7a076"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic primitive to draw an ellipse  <br /></td></tr>
 <tr class="separator:a091ac1c60df92f1aefc2353be4e7a076"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7016487361a74a6de9183f81a9b96ec3" id="r_a7016487361a74a6de9183f81a9b96ec3"><td class="memItemLeft" align="right" valign="top"><a id="a7016487361a74a6de9183f81a9b96ec3" name="a7016487361a74a6de9183f81a9b96ec3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawChar</b> (const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y)</td></tr>
+<tr class="memitem:a7016487361a74a6de9183f81a9b96ec3" id="r_a7016487361a74a6de9183f81a9b96ec3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7016487361a74a6de9183f81a9b96ec3">drawChar</a> (const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y)</td></tr>
+<tr class="memdesc:a7016487361a74a6de9183f81a9b96ec3"><td class="mdescLeft">&#160;</td><td class="mdescRight">a graphic primitive to draw a character at a pixel position  <br /></td></tr>
 <tr class="separator:a7016487361a74a6de9183f81a9b96ec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74fb0832c9f2fd8f99a794ec499b5d86" id="r_a74fb0832c9f2fd8f99a794ec499b5d86"><td class="memItemLeft" align="right" valign="top"><a id="a74fb0832c9f2fd8f99a794ec499b5d86" name="a74fb0832c9f2fd8f99a794ec499b5d86"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawChar</b> (char c, uint8_t char_column, uint8_t char_line)</td></tr>
+<tr class="memitem:a74fb0832c9f2fd8f99a794ec499b5d86" id="r_a74fb0832c9f2fd8f99a794ec499b5d86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74fb0832c9f2fd8f99a794ec499b5d86">drawChar</a> (char c, uint8_t char_column, uint8_t char_line)</td></tr>
+<tr class="memdesc:a74fb0832c9f2fd8f99a794ec499b5d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">a graphic primitive to draw a character at a character position  <br /></td></tr>
 <tr class="separator:a74fb0832c9f2fd8f99a794ec499b5d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9821acad0cef1fad78540c36f1ac3729" id="r_a9821acad0cef1fad78540c36f1ac3729"><td class="memItemLeft" align="right" valign="top"><a id="a9821acad0cef1fad78540c36f1ac3729" name="a9821acad0cef1fad78540c36f1ac3729"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pixel</b> (int x, int y, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c=<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a>)</td></tr>
+<tr class="memitem:a9821acad0cef1fad78540c36f1ac3729" id="r_a9821acad0cef1fad78540c36f1ac3729"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9821acad0cef1fad78540c36f1ac3729">pixel</a> (int x, int y, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c=<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a>)</td></tr>
+<tr class="memdesc:a9821acad0cef1fad78540c36f1ac3729"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic primitive to draw a pixel  <br /></td></tr>
 <tr class="separator:a9821acad0cef1fad78540c36f1ac3729"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ed07b3254c0295941c461059ccf2463" id="r_a9ed07b3254c0295941c461059ccf2463"><td class="memItemLeft" align="right" valign="top"><a id="a9ed07b3254c0295941c461059ccf2463" name="a9ed07b3254c0295941c461059ccf2463"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_line</b> ()</td></tr>
+<tr class="memdesc:a9ed07b3254c0295941c461059ccf2463"><td class="mdescLeft">&#160;</td><td class="mdescRight">clean th full current line (writing " " in the text buffer) <br /></td></tr>
 <tr class="separator:a9ed07b3254c0295941c461059ccf2463"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ad35b8bf0a6703c6bced3e0bfa65f2102" id="r_ad35b8bf0a6703c6bced3e0bfa65f2102"><td class="memItemLeft" align="right" valign="top"><a id="ad35b8bf0a6703c6bced3e0bfa65f2102" name="ad35b8bf0a6703c6bced3e0bfa65f2102"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</b></td></tr>
+<tr class="memdesc:ad35b8bf0a6703c6bced3e0bfa65f2102"><td class="mdescLeft">&#160;</td><td class="mdescRight">size of the buffer that contains graphics as map of pixels. <br /></td></tr>
 <tr class="separator:ad35b8bf0a6703c6bced3e0bfa65f2102"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad5b8fb316a1f9187b90cd2ef7f0302b" id="r_aad5b8fb316a1f9187b90cd2ef7f0302b"><td class="memItemLeft" align="right" valign="top"><a id="aad5b8fb316a1f9187b90cd2ef7f0302b" name="aad5b8fb316a1f9187b90cd2ef7f0302b"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>text_buffer_size</b></td></tr>
+<tr class="memdesc:aad5b8fb316a1f9187b90cd2ef7f0302b"><td class="mdescLeft">&#160;</td><td class="mdescRight">size of the buffer that contains text as string of characters. <br /></td></tr>
 <tr class="separator:aad5b8fb316a1f9187b90cd2ef7f0302b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac09b3c586c580074e08fdb5d5b45f598" id="r_ac09b3c586c580074e08fdb5d5b45f598"><td class="memItemLeft" align="right" valign="top"><a id="ac09b3c586c580074e08fdb5d5b45f598" name="ac09b3c586c580074e08fdb5d5b45f598"></a>
 <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a>&#160;</td><td class="memItemRight" valign="bottom"><b>frame_format</b></td></tr>
+<tr class="memdesc:ac09b3c586c580074e08fdb5d5b45f598"><td class="mdescLeft">&#160;</td><td class="mdescRight">the arrangement of the pixel on a byte basis. <br /></td></tr>
 <tr class="separator:ac09b3c586c580074e08fdb5d5b45f598"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a049b45dc17e57478b24f423a58b35e5a" id="r_a049b45dc17e57478b24f423a58b35e5a"><td class="memItemLeft" align="right" valign="top"><a id="a049b45dc17e57478b24f423a58b35e5a" name="a049b45dc17e57478b24f423a58b35e5a"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>current_char_line</b> {0}</td></tr>
+<tr class="memdesc:a049b45dc17e57478b24f423a58b35e5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the line number where the next character will be written. <br /></td></tr>
 <tr class="separator:a049b45dc17e57478b24f423a58b35e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a747acebf900c482dfab1b77373b8c0b8" id="r_a747acebf900c482dfab1b77373b8c0b8"><td class="memItemLeft" align="right" valign="top"><a id="a747acebf900c482dfab1b77373b8c0b8" name="a747acebf900c482dfab1b77373b8c0b8"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>current_char_column</b> {0}</td></tr>
+<tr class="memdesc:a747acebf900c482dfab1b77373b8c0b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">the column where the next character will be written. <br /></td></tr>
 <tr class="separator:a747acebf900c482dfab1b77373b8c0b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9526c00b4e1e49d7b51860cdda0a03d" id="r_ad9526c00b4e1e49d7b51860cdda0a03d"><td class="memItemLeft" align="right" valign="top"><a id="ad9526c00b4e1e49d7b51860cdda0a03d" name="ad9526c00b4e1e49d7b51860cdda0a03d"></a>
 <a class="el" href="structstruct___framebuffer_text.html">struct_FramebufferText</a>&#160;</td><td class="memItemRight" valign="bottom"><b>frame_text_config</b> {}</td></tr>
+<tr class="memdesc:ad9526c00b4e1e49d7b51860cdda0a03d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the configuration of the text buffer <br /></td></tr>
 <tr class="separator:ad9526c00b4e1e49d7b51860cdda0a03d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -382,6 +389,179 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a id="a74fb0832c9f2fd8f99a794ec499b5d86" name="a74fb0832c9f2fd8f99a794ec499b5d86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74fb0832c9f2fd8f99a794ec499b5d86">&#9670;&#160;</a></span>drawChar() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Framebuffer::drawChar </td>
+          <td>(</td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>c</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>char_column</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>char_line</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>a graphic primitive to draw a character at a character position </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>the foreground color of the character. The font is given by the frame_text_config </td></tr>
+    <tr><td class="paramname">char_column</td><td>the column position of the character </td></tr>
+    <tr><td class="paramname">char_line</td><td>the line position of the character </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7016487361a74a6de9183f81a9b96ec3" name="a7016487361a74a6de9183f81a9b96ec3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7016487361a74a6de9183f81a9b96ec3">&#9670;&#160;</a></span>drawChar() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Framebuffer::drawChar </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned char *</td>          <td class="paramname"><span class="paramname"><em>font</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>c</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_y</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>a graphic primitive to draw a character at a pixel position </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">font</td><td>the font used to draw the character </td></tr>
+    <tr><td class="paramname">c</td><td>the foreground color of the character </td></tr>
+    <tr><td class="paramname">anchor_x</td><td>the pixel position on x-axis to start drawing the character (upper left corner) </td></tr>
+    <tr><td class="paramname">anchor_y</td><td>the pixel position on y-axis to start drawing the character (upper left corner) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a091ac1c60df92f1aefc2353be4e7a076" name="a091ac1c60df92f1aefc2353be4e7a076"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a091ac1c60df92f1aefc2353be4e7a076">&#9670;&#160;</a></span>ellipse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Framebuffer::ellipse </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>x_center</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>y_center</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>x_radius</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>y_radius</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>fill</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>quadrant</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a></td>          <td class="paramname"><span class="paramname"><em>c</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the graphic primitive to draw an ellipse </p>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000001">Bug</a></b></dt><dd>//FIXME doesn't work ! </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x_center</td><td>the x coordinate of the center </td></tr>
+    <tr><td class="paramname">y_center</td><td>the y coordinate of the center </td></tr>
+    <tr><td class="paramname">x_radius</td><td>the radius along x axis </td></tr>
+    <tr><td class="paramname">y_radius</td><td>the radius along y axis </td></tr>
+    <tr><td class="paramname">fill</td><td>a flag that indicates whether the ellipse is filled or not </td></tr>
+    <tr><td class="paramname">quadrant</td><td>the quadrant of the ellipse to draw (see bresenham algorithm) </td></tr>
+    <tr><td class="paramname">c</td><td>the filling color </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_framebuffer_a091ac1c60df92f1aefc2353be4e7a076_cgraph.png" border="0" usemap="#aclass_framebuffer_a091ac1c60df92f1aefc2353be4e7a076_cgraph" alt=""/></div>
+<map name="aclass_framebuffer_a091ac1c60df92f1aefc2353be4e7a076_cgraph" id="aclass_framebuffer_a091ac1c60df92f1aefc2353be4e7a076_cgraph">
+<area shape="rect" title="the graphic primitive to draw an ellipse" alt="" coords="5,5,123,30"/>
+<area shape="rect" href="class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1" title="Write all framebuffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)." alt="" coords="171,5,268,30"/>
+<area shape="poly" title=" " alt="" coords="123,15,155,15,155,20,123,20"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="ac71de6e7a85fc62b53f795ce994c9ec1" name="ac71de6e7a85fc62b53f795ce994c9ec1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac71de6e7a85fc62b53f795ce994c9ec1">&#9670;&#160;</a></span>fill()</h2>
 
@@ -410,11 +590,13 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_framebuffer_ac71de6e7a85fc62b53f795ce994c9ec1_icgraph.png" border="0" usemap="#aclass_framebuffer_ac71de6e7a85fc62b53f795ce994c9ec1_icgraph" alt=""/></div>
 <map name="aclass_framebuffer_ac71de6e7a85fc62b53f795ce994c9ec1_icgraph" id="aclass_framebuffer_ac71de6e7a85fc62b53f795ce994c9ec1_icgraph">
-<area shape="rect" title="Write all framebuffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)." alt="" coords="166,31,263,55"/>
-<area shape="rect" href="class_framebuffer.html#a4eb865f19596a64e30862697ab737318" title="draw a cercle of size radius, centered at (x_center, y_center)" alt="" coords="5,5,118,30"/>
-<area shape="poly" title=" " alt="" coords="149,35,118,30,119,24,150,30"/>
-<area shape="rect" href="class_framebuffer.html#ae0e1916dfc5fcdaa7999c8d3ebdaef6b" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="8,55,115,79"/>
-<area shape="poly" title=" " alt="" coords="151,56,116,61,115,56,150,50"/>
+<area shape="rect" title="Write all framebuffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)." alt="" coords="171,55,268,79"/>
+<area shape="rect" href="class_framebuffer.html#a4eb865f19596a64e30862697ab737318" title="draw a cercle of size radius, centered at (x_center, y_center)" alt="" coords="8,5,120,30"/>
+<area shape="poly" title=" " alt="" coords="163,52,104,33,106,28,164,47"/>
+<area shape="rect" href="class_framebuffer.html#a091ac1c60df92f1aefc2353be4e7a076" title="the graphic primitive to draw an ellipse" alt="" coords="5,55,123,79"/>
+<area shape="poly" title=" " alt="" coords="155,70,123,70,123,64,155,64"/>
+<area shape="rect" href="class_framebuffer.html#ae0e1916dfc5fcdaa7999c8d3ebdaef6b" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="10,104,118,129"/>
+<area shape="poly" title=" " alt="" coords="164,87,106,106,104,101,163,82"/>
 </map>
 </div>
 
@@ -436,7 +618,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Get the framebuffer format object. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79" title="enum used to characterize the type of dispaly device memory organisation">FramebufferFormat</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79" title="enum used to characterize the type of display device memory organisation">FramebufferFormat</a> </dd></dl>
 
 </div>
 </div>
@@ -549,6 +731,50 @@ Here is the caller graph for this function:</div>
     <tr><td class="paramname">x2</td><td>horizontal end of line </td></tr>
     <tr><td class="paramname">y2</td><td>vertical end of line </td></tr>
     <tr><td class="paramname">c</td><td>color of the line, default to WHITE </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9821acad0cef1fad78540c36f1ac3729" name="a9821acad0cef1fad78540c36f1ac3729"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9821acad0cef1fad78540c36f1ac3729">&#9670;&#160;</a></span>pixel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Framebuffer::pixel </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a></td>          <td class="paramname"><span class="paramname"><em>c</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the graphic primitive to draw a pixel </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>the x position of the pixel </td></tr>
+    <tr><td class="paramname">y</td><td>the y position of the pixel </td></tr>
+    <tr><td class="paramname">c</td><td>the color of the pixel </td></tr>
   </table>
   </dd>
 </dl>

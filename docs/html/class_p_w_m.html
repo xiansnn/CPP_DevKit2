@@ -122,7 +122,7 @@ Collaboration diagram for PWM:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4dedfbb6be96295678d51afffee4a132" id="r_a4dedfbb6be96295678d51afffee4a132"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dedfbb6be96295678d51afffee4a132">PWM</a> (uint gpio_ch_A, uint gpio_ch_B, int step_ns, int period_us, bool phase_correct=false, bool ch_A_inverted=false, bool ch_B_inverted=false)</td></tr>
+<tr class="memitem:a4dedfbb6be96295678d51afffee4a132" id="r_a4dedfbb6be96295678d51afffee4a132"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dedfbb6be96295678d51afffee4a132">PWM</a> (uint gpio_ch_A, uint gpio_ch_B, int <a class="el" href="#ae52dbe8505d763130fd840ef83d494f8">step_ns</a>, int <a class="el" href="#a560bc87c44165d760ed6d6eaf05d30e4">period_us</a>, bool phase_correct=false, bool ch_A_inverted=false, bool ch_B_inverted=false)</td></tr>
 <tr class="memdesc:a4dedfbb6be96295678d51afffee4a132"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_p_w_m.html" title="The basic PWM function.">PWM</a> object assuming free running sys_clk @125 MHz =&gt; sys_clk_period = 8 ns PERIOD = 8ns * (TOP+1)*(CSR_PH_CORRECT + 1)*(DIV_INT + (DIV_FRAC/16)) or PERIOD = 8ns * (TOP+1)*(CSR_PH_CORRECT + 1)* DIV) with DIV = step_ns/8 TOP = (period_us * 1000 /(ph*step_ns)) -1 This means the minimum step_ns is 8 ns and the maximum is 256*8ns = 2.048 us the maximum period is 2.048us*64536 = 132 ms.  <br /></td></tr>
 <tr class="separator:a4dedfbb6be96295678d51afffee4a132"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae21be3a643267ca4f69be8d99fdfb06a" id="r_ae21be3a643267ca4f69be8d99fdfb06a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae21be3a643267ca4f69be8d99fdfb06a">start</a> (bool enabled)</td></tr>
@@ -160,12 +160,15 @@ static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>slice_mask
 Private Attributes</h2></td></tr>
 <tr class="memitem:af68eb4fded848dc321bc6a8e04845b58" id="r_af68eb4fded848dc321bc6a8e04845b58"><td class="memItemLeft" align="right" valign="top"><a id="af68eb4fded848dc321bc6a8e04845b58" name="af68eb4fded848dc321bc6a8e04845b58"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>slice</b></td></tr>
+<tr class="memdesc:af68eb4fded848dc321bc6a8e04845b58"><td class="mdescLeft">&#160;</td><td class="mdescRight">the hardware <a class="el" href="class_p_w_m.html" title="The basic PWM function.">PWM</a> slice of the Pico that handle this <a class="el" href="class_p_w_m.html" title="The basic PWM function.">PWM</a> signal <br /></td></tr>
 <tr class="separator:af68eb4fded848dc321bc6a8e04845b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae52dbe8505d763130fd840ef83d494f8" id="r_ae52dbe8505d763130fd840ef83d494f8"><td class="memItemLeft" align="right" valign="top"><a id="ae52dbe8505d763130fd840ef83d494f8" name="ae52dbe8505d763130fd840ef83d494f8"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>step_ns</b></td></tr>
+<tr class="memdesc:ae52dbe8505d763130fd840ef83d494f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">the minimal pulse provided by the <a class="el" href="class_p_w_m.html" title="The basic PWM function.">PWM</a> <br /></td></tr>
 <tr class="separator:ae52dbe8505d763130fd840ef83d494f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a560bc87c44165d760ed6d6eaf05d30e4" id="r_a560bc87c44165d760ed6d6eaf05d30e4"><td class="memItemLeft" align="right" valign="top"><a id="a560bc87c44165d760ed6d6eaf05d30e4" name="a560bc87c44165d760ed6d6eaf05d30e4"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>period_us</b></td></tr>
+<tr class="memdesc:a560bc87c44165d760ed6d6eaf05d30e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the period of the signal provided by <a class="el" href="class_p_w_m.html" title="The basic PWM function.">PWM</a> <br /></td></tr>
 <tr class="separator:a560bc87c44165d760ed6d6eaf05d30e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

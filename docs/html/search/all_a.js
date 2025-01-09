@@ -21,9 +21,13 @@ var searchData=
   ['gpio_5fhi_18',['GPIO_HI',['../switch__button_8h.html#a351026c5378d49b914fb52f066b99b9b',1,'switch_button.h']]],
   ['gpio_5fin_19',['gpio_in',['../class_d_h_t11.html#ae8073a2b99881697c11ee1a059e57d46',1,'DHT11']]],
   ['gpio_5flo_20',['GPIO_LO',['../switch__button_8h.html#a29625671f0681b84ec222bbb85820168',1,'switch_button.h']]],
-  ['gyro_5ffull_5fscale_5frange_21',['GYRO_FULL_SCALE_RANGE',['../structstruct___config_m_p_u6050.html#a59308ef7dcf69efcacb47e0240b70514',1,'struct_ConfigMPU6050']]],
-  ['gyro_5fout_5frate_22',['GYRO_OUT_RATE',['../structstruct___config_m_p_u6050.html#ae2a99a7cc58f84af8f5f92c65c096290',1,'struct_ConfigMPU6050']]],
-  ['gyro_5fx_23',['gyro_x',['../structstruct___raw_data.html#a3e6d41e50ee94bed2529c10887f581bc',1,'struct_RawData::gyro_x'],['../structstruct___m_p_u_data.html#a0f359bb637cb0bfb198d886880ce5fe3',1,'struct_MPUData::gyro_x']]],
-  ['gyro_5fy_24',['gyro_y',['../structstruct___raw_data.html#ad73b35421c118682e0d11697f6cec91b',1,'struct_RawData::gyro_y'],['../structstruct___m_p_u_data.html#af4ce866a543e1ce6d8f36cd8f7ed9d11',1,'struct_MPUData::gyro_y']]],
-  ['gyro_5fz_25',['gyro_z',['../structstruct___raw_data.html#aed6d37f9da43c198dd5eabaf31701e43',1,'struct_RawData::gyro_z'],['../structstruct___m_p_u_data.html#aa1cfbab5504442f763c74a0a823dd0f1',1,'struct_MPUData::gyro_z']]]
+  ['gyro_5ffactor_21',['gyro_factor',['../class_m_p_u6050.html#a50ad57c30d423e01225a501b6fec2206',1,'MPU6050']]],
+  ['gyro_5ffull_5fscale_5frange_22',['GYRO_FULL_SCALE_RANGE',['../structstruct___config_m_p_u6050.html#a59308ef7dcf69efcacb47e0240b70514',1,'struct_ConfigMPU6050']]],
+  ['gyro_5fout_5frate_23',['GYRO_OUT_RATE',['../structstruct___config_m_p_u6050.html#ae2a99a7cc58f84af8f5f92c65c096290',1,'struct_ConfigMPU6050']]],
+  ['gyro_5fx_24',['gyro_x',['../structstruct___raw_data.html#a3e6d41e50ee94bed2529c10887f581bc',1,'struct_RawData::gyro_x'],['../structstruct___m_p_u_data.html#a0f359bb637cb0bfb198d886880ce5fe3',1,'struct_MPUData::gyro_x']]],
+  ['gyro_5fx_5foffset_25',['gyro_x_offset',['../class_m_p_u6050.html#a2a1bc395de632f3856a739de2f1c6729',1,'MPU6050']]],
+  ['gyro_5fy_26',['gyro_y',['../structstruct___raw_data.html#ad73b35421c118682e0d11697f6cec91b',1,'struct_RawData::gyro_y'],['../structstruct___m_p_u_data.html#af4ce866a543e1ce6d8f36cd8f7ed9d11',1,'struct_MPUData::gyro_y']]],
+  ['gyro_5fy_5foffset_27',['gyro_y_offset',['../class_m_p_u6050.html#af602865902d31deb4c758637f90c47b3',1,'MPU6050']]],
+  ['gyro_5fz_28',['gyro_z',['../structstruct___raw_data.html#aed6d37f9da43c198dd5eabaf31701e43',1,'struct_RawData::gyro_z'],['../structstruct___m_p_u_data.html#aa1cfbab5504442f763c74a0a823dd0f1',1,'struct_MPUData::gyro_z']]],
+  ['gyro_5fz_5foffset_29',['gyro_z_offset',['../class_m_p_u6050.html#af655ca65d92ec9cfd6c05bbd8ad7cce1',1,'MPU6050']]]
 ];
