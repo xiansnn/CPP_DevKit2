@@ -35,7 +35,7 @@ At the root, we found directories:
 -  src : where all xxx.cpp files are located,
 -  tests : where all test files are located.
 
-### sw directory
+### src directories
 this is where we can find all the source code for libraries, organized according to their categories:
 
 ### "devices_xxx" directories
@@ -45,10 +45,13 @@ Derived from switch is the rotary encoder "device_KY0_40", a favorite device to 
 The first display is "device_SSD1306" as promised. MAy be others will come if I need them and I've time.
 
 #### "hw_xxx" directories
-I'll place here C++ classes that abstract in some way the corresponding SDK functions related the HW peripheral of the Pico.
+I'll place here C++ classes that wrap,in OOP some way, the corresponding SDK functions related the Hardware peripheral of the Pico.
 
 #### "sw_xxx" directories
 The abstract classes here are those related to software functions, such as:
+
+##### "sw_framebuffer" directory
+Framebuffer is the base for all text and graphic functions.
 
 ##### "sw_ui_core" directory
 This where the abstract classes that provide UI facilities can be found, together with framebuffer classe that provides all code for drawing texts and graphs.
@@ -57,9 +60,6 @@ Together with a "test_ui_core" directory where a set of test program are develop
 
 ##### "sw_widget_xxx" directories
 The abstract classes here are those related to widgets.
-
-##### "sw_framebuffer" directory
-Framebuffer is the base for all text and graphic functions.
 
 #### "utilities_xxx" directories
 It contains a debug probe classe that can be useful to monitor what's going on the microcontroller thanks to level and pulse generated through some GPIO output.
