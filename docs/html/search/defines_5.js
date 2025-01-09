@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['horizontal_5ftab_0',['HORIZONTAL_TAB',['../framebuffer_8h.html#ab9b41a58308928842d7ee267dbc81e26',1,'framebuffer.h']]]
+  ['gpio_5fhi_0',['GPIO_HI',['../switch__button_8h.html#a351026c5378d49b914fb52f066b99b9b',1,'switch_button.h']]],
+  ['gpio_5flo_1',['GPIO_LO',['../switch__button_8h.html#a29625671f0681b84ec222bbb85820168',1,'switch_button.h']]]
 ];

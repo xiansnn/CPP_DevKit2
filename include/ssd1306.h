@@ -17,18 +17,29 @@
 #include "framebuffer.h"
 
 // Time_frame_interval
+/// @brief refer to data sheet
 #define _2_FRAMES 0b111
+/// @brief refer to data sheet
 #define _3_FRAMES 0b100
+/// @brief refer to data sheet
 #define _4_FRAMES 0b101
+/// @brief refer to data sheet
 #define _5_FRAMES 0b000
+/// @brief refer to data sheet
 #define _25_FRAMES 0b110
+/// @brief refer to data sheet
 #define _64_FRAMES 0b001
+/// @brief refer to data sheet
 #define _128_FRAMES 0b010
+/// @brief refer to data sheet
 #define _256_FRAMES 0b011
 
 // addressing mode
+/// @brief refer to data sheet
 #define HORIZONTAL_ADDRESSING_MODE 0
+/// @brief refer to data sheet
 #define VERTICAL_ADDRESSING_MODE 1
+/// @brief refer to data sheet
 #define PAGE_ADDRESSING_MODE 2 
 
 /**

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['period_5fus_0',['PERIOD_us',['../sg90_8h.html#a69fd28fa4db77094fb62fd05e86037d9',1,'sg90.h']]],
-  ['phase_5fcorrect_1',['PHASE_CORRECT',['../sg90_8h.html#ac359616a325457c8cad32638b19d4f52',1,'sg90.h']]]
+  ['line_5ffeed_0',['LINE_FEED',['../framebuffer_8h.html#a3c2cad5489953de23c5733e6e696a93e',1,'framebuffer.h']]],
+  ['long_5fpush_5fdelay_5fus_1',['LONG_PUSH_DELAY_us',['../switch__button_8h.html#a2b652dcbb4a4f6e01ff5f355ec7a0ce6',1,'switch_button.h']]],
+  ['long_5frelease_5fdelay_5fus_2',['LONG_RELEASE_DELAY_us',['../switch__button_8h.html#a45d63515d5e509cf0cd632d404e6a180',1,'switch_button.h']]]
 ];
