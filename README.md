@@ -28,39 +28,45 @@ Structures are named struct_xxx.
 Classes created for testing or example purpose are named test_xxx.
 Files created for test or example purpose are named t_xxxx/
 
-## Files tree
+## File trees
 At the root, we found directories:
 -  docs : that contains doxygen files,
 -  include : where all xxx.h files are located,
 -  src : where all xxx.cpp files are located,
 -  tests : where all test files are located.
 
-### "utilities_xxx" directories
-It contains a debug probe classe that can be useful to monitor what's going on the microcontroller thanks to level and pulse generated through some GPIO output.
-
-### "hw_xxx" directories
-I'll place here C++ classes that abstract in some way the corresponding SDK functions related the HW peripheral of the Pico.
-
-
-### "sw_xxx" directories
-The abstract classes here are those related to software functions, such as:
-
-#### "sw_ui_core" directory
-This where the abstract classes that provide UI facilities can be found, together with framebuffer classe that provides all code for drawing texts and graphs.
-
-Together with a "test_ui_core" directory where a set of test program are developped : "test_controlled_value" as an exmaple of Model, "test_widget_on serial_monitor" as an exmaple of View, "device_KY_040" already mentionned above as example of Control and "test_manager" as example about how to manage several Model ans View with a single rotary encoder / switch as Control. 
-
-#### "sw_widget_xxx" directories
-The abstract classes here are those related to widgets.
-
-#### "sw_framebuffer" directory
-Framebuffer is the base for all text and graphic functions.
+### sw directory
+this is where we can find all the source code for libraries, organized according to their categories:
 
 ### "devices_xxx" directories
 These are external components that I'll use.
 The first one is "device_switch_button". This will be used to handle any kind of switches, either by IRQ or by cyclic sample. Deboucing is implemented. The device_switch is the good candidate to implement Controller part of MVC.
 Derived from switch is the rotary encoder "device_KY0_40", a favorite device to built universal simple interface to choose menu, set value etc...
 The first display is "device_SSD1306" as promised. MAy be others will come if I need them and I've time.
+
+#### "hw_xxx" directories
+I'll place here C++ classes that abstract in some way the corresponding SDK functions related the HW peripheral of the Pico.
+
+#### "sw_xxx" directories
+The abstract classes here are those related to software functions, such as:
+
+##### "sw_ui_core" directory
+This where the abstract classes that provide UI facilities can be found, together with framebuffer classe that provides all code for drawing texts and graphs.
+
+Together with a "test_ui_core" directory where a set of test program are developped : "test_controlled_value" as an example of Model, "test_widget_on serial_monitor" as an exmaple of View, "device_KY_040" already mentionned above as example of Control and "test_manager" as example about how to manage several Model ans View with a single rotary encoder / switch as Control. 
+
+##### "sw_widget_xxx" directories
+The abstract classes here are those related to widgets.
+
+##### "sw_framebuffer" directory
+Framebuffer is the base for all text and graphic functions.
+
+#### "utilities_xxx" directories
+It contains a debug probe classe that can be useful to monitor what's going on the microcontroller thanks to level and pulse generated through some GPIO output.
+
+
+
+
 
 
 
