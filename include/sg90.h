@@ -48,11 +48,17 @@ struct struct_ConfigSG90
 class SG90
 {
 private:
+    /// @brief the PWM slice that handle the SG90 step motor device
     PWM *pwm;
+    /// @brief the gpio pin used to command the servo motor. Correspond to the B channel of the PWM slice
     uint command;
+    /// @brief n auxilliary pulse that can be used as a synchro signal. Correspond to the A channel of the PWM slice
     uint sync;
+    /// @brief minimum position in degrees. Typically 0° or -90°.
     int pos_min_deg;
+    /// @brief maximum position in degrees. Typically 180° or +90°.
     int pos_max_deg;
+    /// @brief the coversion coefficient in microseconds per degree
     float coef_us_per_degree;
 
 public:

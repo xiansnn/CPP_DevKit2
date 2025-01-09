@@ -26,9 +26,13 @@
 class MSGEQ7
 {
 private:
+    /// @brief the GPIO pin the send strobe signal to the MSGEQ7 device
     uint strobe_gpio;
+    /// @brief the GPIO pin the send reset signal to the MSGEQ7 device
     uint reset_gpio;
+    /// @brief the GPIO pin where the amplitude of the band filter is read
     uint signal_out;
+    /// @brief the 7-band resulting measures
     std::array<uint16_t, 7> band_results;
 
 public:

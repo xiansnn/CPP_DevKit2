@@ -100,17 +100,29 @@ struct struct_MPUData
 class MPU6050
 {
 private:
+    /// @brief the I2C master that control the MPU6050 device
     HW_I2C_Master *master;
+    /// @brief the MPU6050 configuration
     struct_ConfigMPU6050 device_config;
+    /// @brief the accelerator proportional factor computed according to the device configuration
     float acceleration_factor{};
+    /// @brief the gyrometer proportional factor computed according to the device configuration
     float gyro_factor{};
+    /// @brief  the proportional factor for the temperature
     float temperature_gain = 1.0 / 340.0;
+    /// @brief the temperature offset
     float temperature_offset = 36.53;
+    /// @brief the x-acceleration offset
     float accel_x_offset{};
+    /// @brief the y-acceleration offset
     float accel_y_offset{};
+    /// @brief the z-acceleration offset
     float accel_z_offset{};
+    /// @brief the x-gyrometer offset
     float gyro_x_offset{};
+    /// @brief the y-gyrometer offset
     float gyro_y_offset{};
+    /// @brief the z-gyrometer offset
     float gyro_z_offset{};
 
     /**
@@ -132,7 +144,9 @@ private:
      * @brief fill the internal measures by converting the raw data
      */
     void convert_raw_to_measure();
+    /// @brief read raw acceleration and gyrometer data from FIFO
     void read_FIFO_g_accel_raw_data();
+    /// @brief read raw acceleration data from FIFO
     void read_FIFO_accel_raw_data();
 
 public:

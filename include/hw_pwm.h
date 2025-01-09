@@ -23,8 +23,11 @@
 class PWM
 {
 private:
+    /// @brief the hardware PWM slice of the Pico that handle this PWM signal
     uint8_t slice;
+    /// @brief the minimal pulse provided by the PWM
     uint step_ns;
+    /// @brief the period of the signal provided by PWM
     uint period_us;
 
 public:
@@ -110,8 +113,11 @@ public:
 class PWMgatedMeasure
 {
 private:
+    /// @brief the hardware PWM slice of the Pico that handle this PWM signal
     uint8_t slice;
+    /// @brief the operture windows during witch the PWM will count signal 
     uint measure_duration_us;
+    /// @brief the minimum time slot as measure LSB
     uint resolution_ns;
 
 public:

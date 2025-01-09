@@ -128,7 +128,9 @@ struct struct_ConfigSlaveI2C
 class HW_I2C_Master
 {
 private:
+    /// @brief the i2c hardware instance of the Pico that handles the i2c master
     i2c_inst_t *i2c;
+    /// @brief the delay before time-out allowed for reading i2c response. Computed according to actual baud rate.
     uint time_out_us_per_byte;
 
 public:
@@ -214,6 +216,7 @@ struct struct_SlaveMemory
 class HW_I2C_Slave
 {
 private:
+    /// @brief the i2c hardware instance of the Pico that handles the i2c slave
     i2c_inst_t *i2c;
 
 public:

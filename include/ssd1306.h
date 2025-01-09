@@ -102,20 +102,49 @@ struct struct_RenderArea
 class SSD1306 : public Framebuffer
 {
 private:
+    /// @brief the I2C master that control the SSD1306 display
     HW_I2C_Master *i2c_master;
+    /// @brief the SSD1306 device configuration
     struct_ConfigSSD1306 device_config;
 
+    /// @brief the master init functionthat calls all others
     void init();
+    /// @brief refer to SSD1306 data shhet for more details
+    /// @param value refer to SSD1306 data shhet for more details
     void init_MUX_ratio(uint8_t value);
+    /// @brief refer to SSD1306 data shhet for more details
+    /// @param value refer to SSD1306 data shhet for more details
     void init_display_vertical_shift(uint8_t value);
+    /// @brief refer to SSD1306 data shhet for more details
+    /// @param value refer to SSD1306 data shhet for more details
     void init_RAM_start_line(uint8_t value);
+    /// @brief refer to SSD1306 data shhet for more details
+    /// @param inverse refer to SSD1306 data shhet for more details
     void init_SEG_scan_inverse_direction(bool inverse);
+    /// @brief refer to SSD1306 data shhet for more details
+    /// @param inverse refer to SSD1306 data shhet for more details
     void init_COM_scan_inverse_direction(bool inverse);
+    /// @brief refer to SSD1306 data shhet for more details
+    /// @param sequentialCOM refer to SSD1306 data shhet for more details
+    /// @param enableCOMLRremap refer to SSD1306 data shhet for more details
     void init_COM_cfg(bool sequentialCOM, bool enableCOMLRremap);
+    /// @brief refer to SSD1306 data shhet for more details
+    /// @param divide_ratio refer to SSD1306 data shhet for more details
+    /// @param frequency_factor refer to SSD1306 data shhet for more details
     void init_clock_frequency(uint8_t divide_ratio, uint8_t frequency_factor);
+    /// @brief refer to SSD1306 data shhet for more details
+    /// @param enabled refer to SSD1306 data shhet for more details
     void init_charge_pump_enabled(bool enabled);
+    /// @brief refer to SSD1306 data shhet for more details
+    /// @param cmd refer to SSD1306 data shhet for more details
     void send_cmd(uint8_t cmd);
+    /// @brief refer to SSD1306 data shhet for more details
+    /// @param cmd_list refer to SSD1306 data shhet for more details
+    /// @param num refer to SSD1306 data shhet for more details
     void send_cmd_list(uint8_t *cmd_list, int num);
+    /// @brief refer to SSD1306 data shhet for more details
+    /// @param buf refer to SSD1306 data shhet for more details
+    /// @param buflen refer to SSD1306 data shhet for more details
     void send_buf(uint8_t buf[], size_t buflen);
 
 public:

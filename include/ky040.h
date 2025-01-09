@@ -24,7 +24,9 @@
 class KY040 : public UIController
 {
 private:
+    /// @brief the internal part of KY040 that behaves as a simple switch button
     SwitchButton central_switch;
+    /// @brief the internal part of the KY040 that behaves as a rotary encoder
     RotaryEncoder encoder;
 
 public:

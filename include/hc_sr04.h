@@ -20,7 +20,9 @@
 class HC_SR04
 {
 private:
+    /// @brief the GPIO pin that send trigger signal to the HC-SR04 module
     uint trig_pin;
+    /// @brief the GPIO pin where the HC-SR04 return echo signal
     uint echo_pin;
     /// @brief send a trig signal to HC_SR04
     void trig();

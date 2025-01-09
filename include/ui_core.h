@@ -361,11 +361,13 @@ public:
 class UIWidget : public Framebuffer
 {
 private:
-    int8_t previous_blinking_phase; // should be 0 or 1.
+    /// @brief store the value of the previous blinking phase.should be 0 or 1.
+    int8_t previous_blinking_phase;
 
 protected:
 
-    /// @brief return true if the blinking phase has changed
+    /// @brief ask if the blinking phase has changed
+    /// \return true if phase has changed
     bool blinking_phase_has_changed();
 
     /// @brief The period of the blinking, in microseconds
@@ -406,10 +408,10 @@ protected:
 
     /// @brief this is the border size of the widget
     uint8_t widget_border_width;
-    /**
-     * @brief draw a rectangle around the widget.
-     * IMPORTANT NOTICE: as the border is a rectangle with fill=false, the border width can only be 1 pixel.
-     */
+
+    /// @brief draw a rectangle around the widget.
+    /// IMPORTANT NOTICE: as the border is a rectangle with fill=false, the border width can only be 1 pixel.
+    /// @param c the color of the border
     void draw_border(FramebufferColor c = FramebufferColor::WHITE);
 
 public:

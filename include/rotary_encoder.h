@@ -33,7 +33,9 @@ typedef void (*control_event_processor_t)(UIControlEvent event);
 class RotaryEncoder : public SwitchButtonWithIRQ
 {
 private:
+  /// @brief the GPIO pin connected to the Data pin of the rotary encoder
   uint dt_gpio;
+  /// @brief the function pointer that will processes the event such as PUSH, RELEASE, INCREMENT, DECREMENT etc.
   control_event_processor_t event_processor;
 
 public:
@@ -66,7 +68,7 @@ public:
   void interrupt_service_routine(uint32_t irq_event_mask);
 
   /**
-   * @brief This memeber is used to update the function pointer to the UIController.
+   * @brief This member is used to update the function pointer to the UIController.
    * 
    * Notice: we can not directly points to the bound member!
    *
