@@ -99,6 +99,7 @@ $(function(){initNavTree('class_u_i_model_object.html',''); initResizable(true);
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_u_i_model_object-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">UIModelObject Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
 </div><!--header-->
@@ -113,11 +114,11 @@ Inheritance diagram for UIModelObject:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_u_i_model_object__inherit__graph.png" border="0" usemap="#a_u_i_model_object_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_u_i_model_object_inherit__map" id="a_u_i_model_object_inherit__map">
-<area shape="rect" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="21,5,398,288"/>
-<area shape="rect" href="class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of UIModelObject that have special feature such as a value..." alt="" coords="5,336,413,656"/>
-<area shape="poly" title=" " alt="" coords="212,303,212,336,207,336,207,303"/>
-<area shape="rect" href="class_u_i_object_manager.html" title="This is an Abstract class that is used to implement the manager of object on a screen." alt="" coords="33,704,385,944"/>
-<area shape="poly" title=" " alt="" coords="212,671,212,704,207,704,207,671"/>
+<area shape="rect" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="117,5,439,309"/>
+<area shape="rect" href="class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of UIModelObject that have special feature such as a value..." alt="" coords="5,357,551,624"/>
+<area shape="poly" title=" " alt="" coords="281,324,281,358,275,358,275,324"/>
+<area shape="rect" href="class_u_i_object_manager.html" title="This is an Abstract class that is used to implement the manager of object on a screen." alt="" coords="129,672,427,883"/>
+<area shape="poly" title=" " alt="" coords="281,639,281,672,275,672,275,639"/>
 </map>
 </div>
 <div class="dynheader">
@@ -125,7 +126,10 @@ Collaboration diagram for UIModelObject:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_u_i_model_object__coll__graph.png" border="0" usemap="#a_u_i_model_object_coll__map" alt="Collaboration graph"/></div>
 <map name="a_u_i_model_object_coll__map" id="a_u_i_model_object_coll__map">
-<area shape="rect" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,5,383,288"/>
+<area shape="rect" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="50,5,373,291"/>
+<area shape="rect" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="5,353,417,451"/>
+<area shape="poly" title=" " alt="" coords="134,291,127,315,128,338,123,338,122,314,129,290"/>
+<area shape="poly" title=" " alt="" coords="250,352,262,328,267,307,272,308,267,330,255,354"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -168,6 +172,25 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_change_flag</b>
 <tr class="memitem:a9d6b1733713e33acbc10e419eff22863" id="r_a9d6b1733713e33acbc10e419eff22863"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d6b1733713e33acbc10e419eff22863">process_control_event</a> (<a class="el" href="ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32">UIControlEvent</a> _event)=0</td></tr>
 <tr class="memdesc:a9d6b1733713e33acbc10e419eff22863"><td class="mdescLeft">&#160;</td><td class="mdescRight">The purpose of this function is to implement the behavior of the implemented model object when a ControlEvent is received.  <br /></td></tr>
 <tr class="separator:a9d6b1733713e33acbc10e419eff22863"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a5287fb6957dd143020b890ce67b01fa4" id="r_a5287fb6957dd143020b890ce67b01fa4"><td class="memItemLeft" align="right" valign="top"><a id="a5287fb6957dd143020b890ce67b01fa4" name="a5287fb6957dd143020b890ce67b01fa4"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>last_change_time</b></td></tr>
+<tr class="memdesc:a5287fb6957dd143020b890ce67b01fa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the time in microseconds since the last status has changed <br /></td></tr>
+<tr class="separator:a5287fb6957dd143020b890ce67b01fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2cbdcd1232f2d1c4445aa60b75eebcd" id="r_ae2cbdcd1232f2d1c4445aa60b75eebcd"><td class="memItemLeft" align="right" valign="top"><a id="ae2cbdcd1232f2d1c4445aa60b75eebcd" name="ae2cbdcd1232f2d1c4445aa60b75eebcd"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>change_flag</b> {true}</td></tr>
+<tr class="memdesc:ae2cbdcd1232f2d1c4445aa60b75eebcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The semaphore used to trigger the actual drawing of the widget on the screen. <br /></td></tr>
+<tr class="separator:ae2cbdcd1232f2d1c4445aa60b75eebcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada5c2db2618a57622735ad94158d71f3" id="r_ada5c2db2618a57622735ad94158d71f3"><td class="memItemLeft" align="right" valign="top"><a id="ada5c2db2618a57622735ad94158d71f3" name="ada5c2db2618a57622735ad94158d71f3"></a>
+<a class="el" href="ui__core_8h.html#a57c20ec1ef250b4ad060705786762112">ControlledObjectStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><b>status</b> {<a class="el" href="ui__core_8h.html#a57c20ec1ef250b4ad060705786762112a02ca6db02d1c43b09e875c6cc1f51aab">ControlledObjectStatus::IS_WAITING</a>}</td></tr>
+<tr class="memdesc:ada5c2db2618a57622735ad94158d71f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The status of the model, indicating if it is waiting, active or just ahs focus (pointed by the object manager) <br /></td></tr>
+<tr class="separator:ada5c2db2618a57622735ad94158d71f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5c969bd8d600f753744fbed8ccd909f" id="r_aa5c969bd8d600f753744fbed8ccd909f"><td class="memItemLeft" align="right" valign="top"><a id="aa5c969bd8d600f753744fbed8ccd909f" name="aa5c969bd8d600f753744fbed8ccd909f"></a>
+<a class="el" href="class_u_i_controller.html">UIController</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>current_controller</b> {nullptr}</td></tr>
+<tr class="memdesc:aa5c969bd8d600f753744fbed8ccd909f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the controller of this model. <br /></td></tr>
+<tr class="separator:aa5c969bd8d600f753744fbed8ccd909f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the Model abstract class of Model_View_Control design pattern. </p>

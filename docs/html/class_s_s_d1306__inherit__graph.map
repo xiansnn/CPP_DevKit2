@@ -1,5 +1,5 @@
 <map id="SSD1306" name="SSD1306">
-<area shape="rect" id="Node000001" title="SSD1306 OLED display device driver." alt="" coords="20,672,501,1072"/>
-<area shape="rect" id="Node000002" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,5,516,624"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="263,639,263,672,258,672,258,639"/>
+<area shape="rect" id="Node000001" title="SSD1306 OLED display device driver." alt="" coords="5,789,549,1369"/>
+<area shape="rect" id="Node000002" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="54,5,501,741"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="280,756,280,790,275,790,275,756"/>
 </map>

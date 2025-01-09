@@ -1,7 +1,7 @@
 <map id="UIModelObject" name="UIModelObject">
-<area shape="rect" id="Node000001" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="21,5,398,288"/>
-<area shape="rect" id="Node000002" href="$class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of UIModelObject that have special feature such as a value..." alt="" coords="5,336,413,656"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,303,212,336,207,336,207,303"/>
-<area shape="rect" id="Node000003" href="$class_u_i_object_manager.html" title="This is an Abstract class that is used to implement the manager of object on a screen." alt="" coords="33,704,385,944"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="212,671,212,704,207,704,207,671"/>
+<area shape="rect" id="Node000001" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="117,5,439,309"/>
+<area shape="rect" id="Node000002" href="$class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of UIModelObject that have special feature such as a value..." alt="" coords="5,357,551,624"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="281,324,281,358,275,358,275,324"/>
+<area shape="rect" id="Node000003" href="$class_u_i_object_manager.html" title="This is an Abstract class that is used to implement the manager of object on a screen." alt="" coords="129,672,427,883"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="281,639,281,672,275,672,275,639"/>
 </map>

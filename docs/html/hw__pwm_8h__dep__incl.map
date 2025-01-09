@@ -1,5 +1,5 @@
 <map id="hw_pwm.h" name="hw_pwm.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,90,32"/>
-<area shape="rect" id="Node000002" href="$sg90_8h.html" title=" " alt="" coords="17,80,78,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="50,48,50,80,45,80,45,48"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,79,30"/>
+<area shape="rect" id="Node000002" href="$sg90_8h.html" title=" " alt="" coords="15,78,69,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="45,46,45,78,39,78,39,46"/>
 </map>

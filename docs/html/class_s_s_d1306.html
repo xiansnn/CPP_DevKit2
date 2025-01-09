@@ -100,6 +100,8 @@ $(function(){initNavTree('class_s_s_d1306.html',''); initResizable(true); });
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_s_s_d1306-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SSD1306 Class Reference</div></div>
 </div><!--header-->
@@ -114,9 +116,9 @@ Inheritance diagram for SSD1306:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_s_d1306__inherit__graph.png" border="0" usemap="#a_s_s_d1306_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_s_s_d1306_inherit__map" id="a_s_s_d1306_inherit__map">
-<area shape="rect" title="SSD1306 OLED display device driver." alt="" coords="20,672,501,1072"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,5,516,624"/>
-<area shape="poly" title=" " alt="" coords="263,639,263,672,258,672,258,639"/>
+<area shape="rect" title="SSD1306 OLED display device driver." alt="" coords="5,789,549,1369"/>
+<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="54,5,501,741"/>
+<area shape="poly" title=" " alt="" coords="280,756,280,790,275,790,275,756"/>
 </map>
 </div>
 <div class="dynheader">
@@ -124,9 +126,15 @@ Collaboration diagram for SSD1306:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_s_d1306__coll__graph.png" border="0" usemap="#a_s_s_d1306_coll__map" alt="Collaboration graph"/></div>
 <map name="a_s_s_d1306_coll__map" id="a_s_s_d1306_coll__map">
-<area shape="rect" title="SSD1306 OLED display device driver." alt="" coords="20,672,501,1072"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,5,516,624"/>
-<area shape="poly" title=" " alt="" coords="263,639,263,672,258,672,258,639"/>
+<area shape="rect" title="SSD1306 OLED display device driver." alt="" coords="471,1001,1015,1563"/>
+<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,222,452,939"/>
+<area shape="poly" title=" " alt="" coords="463,932,467,938,514,1000,510,1003,463,941,458,935"/>
+<area shape="rect" href="structstruct___framebuffer_text.html" title="Data structure that holds all configuration parameters used by textual primitives." alt="" coords="153,5,304,160"/>
+<area shape="poly" title=" " alt="" coords="231,160,231,205,226,205,226,160"/>
+<area shape="rect" href="class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="477,485,1010,677"/>
+<area shape="poly" title=" " alt="" coords="746,677,746,984,741,984,741,677"/>
+<area shape="rect" href="structstruct___config_s_s_d1306.html" title="configuration data for SSD1306 OLED display. refer to datasheet for more details." alt="" coords="1034,457,1218,705"/>
+<area shape="poly" title=" " alt="" coords="1106,705,1073,822,1051,883,1024,941,997,989,992,986,1020,938,1046,881,1068,820,1101,704"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -245,6 +253,54 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a946d97970d11c778a09e0f1305591b3f" id="r_a946d97970d11c778a09e0f1305591b3f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structstruct___render_area.html">struct_RenderArea</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a946d97970d11c778a09e0f1305591b3f">compute_render_area</a> (uint8_t start_col, uint8_t end_col, uint8_t start_line, uint8_t end_line)</td></tr>
 <tr class="memdesc:a946d97970d11c778a09e0f1305591b3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A static member function that converts the area we want to display into device specific parameters.  <br /></td></tr>
 <tr class="separator:a946d97970d11c778a09e0f1305591b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a3e0efaaaf70d9712057b3fdbc1ee069f" id="r_a3e0efaaaf70d9712057b3fdbc1ee069f"><td class="memItemLeft" align="right" valign="top"><a id="a3e0efaaaf70d9712057b3fdbc1ee069f" name="a3e0efaaaf70d9712057b3fdbc1ee069f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
+<tr class="separator:a3e0efaaaf70d9712057b3fdbc1ee069f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7d610e1d38518a7d467950ec7c48413" id="r_ae7d610e1d38518a7d467950ec7c48413"><td class="memItemLeft" align="right" valign="top"><a id="ae7d610e1d38518a7d467950ec7c48413" name="ae7d610e1d38518a7d467950ec7c48413"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_MUX_ratio</b> (uint8_t value)</td></tr>
+<tr class="separator:ae7d610e1d38518a7d467950ec7c48413"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc821b2c7b46a4872f7198dd59a14e66" id="r_afc821b2c7b46a4872f7198dd59a14e66"><td class="memItemLeft" align="right" valign="top"><a id="afc821b2c7b46a4872f7198dd59a14e66" name="afc821b2c7b46a4872f7198dd59a14e66"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_display_vertical_shift</b> (uint8_t value)</td></tr>
+<tr class="separator:afc821b2c7b46a4872f7198dd59a14e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a784fdb3c2897af4c27ce69f0195bfd80" id="r_a784fdb3c2897af4c27ce69f0195bfd80"><td class="memItemLeft" align="right" valign="top"><a id="a784fdb3c2897af4c27ce69f0195bfd80" name="a784fdb3c2897af4c27ce69f0195bfd80"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_RAM_start_line</b> (uint8_t value)</td></tr>
+<tr class="separator:a784fdb3c2897af4c27ce69f0195bfd80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2197c4965c293100893159d198779846" id="r_a2197c4965c293100893159d198779846"><td class="memItemLeft" align="right" valign="top"><a id="a2197c4965c293100893159d198779846" name="a2197c4965c293100893159d198779846"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_SEG_scan_inverse_direction</b> (bool inverse)</td></tr>
+<tr class="separator:a2197c4965c293100893159d198779846"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49eae32a3832373c003b9d9c3381a3bf" id="r_a49eae32a3832373c003b9d9c3381a3bf"><td class="memItemLeft" align="right" valign="top"><a id="a49eae32a3832373c003b9d9c3381a3bf" name="a49eae32a3832373c003b9d9c3381a3bf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_COM_scan_inverse_direction</b> (bool inverse)</td></tr>
+<tr class="separator:a49eae32a3832373c003b9d9c3381a3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accd5618ae4484f8435ed75b63e58543f" id="r_accd5618ae4484f8435ed75b63e58543f"><td class="memItemLeft" align="right" valign="top"><a id="accd5618ae4484f8435ed75b63e58543f" name="accd5618ae4484f8435ed75b63e58543f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_COM_cfg</b> (bool sequentialCOM, bool enableCOMLRremap)</td></tr>
+<tr class="separator:accd5618ae4484f8435ed75b63e58543f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79b1c2ff4a7842aad1ea1c475d766bfe" id="r_a79b1c2ff4a7842aad1ea1c475d766bfe"><td class="memItemLeft" align="right" valign="top"><a id="a79b1c2ff4a7842aad1ea1c475d766bfe" name="a79b1c2ff4a7842aad1ea1c475d766bfe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_clock_frequency</b> (uint8_t divide_ratio, uint8_t frequency_factor)</td></tr>
+<tr class="separator:a79b1c2ff4a7842aad1ea1c475d766bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80df9a8d75ab48e4e848a77b5e2c1194" id="r_a80df9a8d75ab48e4e848a77b5e2c1194"><td class="memItemLeft" align="right" valign="top"><a id="a80df9a8d75ab48e4e848a77b5e2c1194" name="a80df9a8d75ab48e4e848a77b5e2c1194"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_charge_pump_enabled</b> (bool enabled)</td></tr>
+<tr class="separator:a80df9a8d75ab48e4e848a77b5e2c1194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2d5544f63b5b15c62f74ebf78570d08" id="r_ad2d5544f63b5b15c62f74ebf78570d08"><td class="memItemLeft" align="right" valign="top"><a id="ad2d5544f63b5b15c62f74ebf78570d08" name="ad2d5544f63b5b15c62f74ebf78570d08"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>send_cmd</b> (uint8_t cmd)</td></tr>
+<tr class="separator:ad2d5544f63b5b15c62f74ebf78570d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abba4af0c315a9fdcab52d32acc11ab97" id="r_abba4af0c315a9fdcab52d32acc11ab97"><td class="memItemLeft" align="right" valign="top"><a id="abba4af0c315a9fdcab52d32acc11ab97" name="abba4af0c315a9fdcab52d32acc11ab97"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>send_cmd_list</b> (uint8_t *cmd_list, int num)</td></tr>
+<tr class="separator:abba4af0c315a9fdcab52d32acc11ab97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a617bac0b0002b299b129bc9e84772af7" id="r_a617bac0b0002b299b129bc9e84772af7"><td class="memItemLeft" align="right" valign="top"><a id="a617bac0b0002b299b129bc9e84772af7" name="a617bac0b0002b299b129bc9e84772af7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>send_buf</b> (uint8_t buf[], size_t buflen)</td></tr>
+<tr class="separator:a617bac0b0002b299b129bc9e84772af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ac2a0691d558b4b4d8bd51ddbdd3d0809" id="r_ac2a0691d558b4b4d8bd51ddbdd3d0809"><td class="memItemLeft" align="right" valign="top"><a id="ac2a0691d558b4b4d8bd51ddbdd3d0809" name="ac2a0691d558b4b4d8bd51ddbdd3d0809"></a>
+<a class="el" href="class_h_w___i2_c___master.html">HW_I2C_Master</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>i2c_master</b></td></tr>
+<tr class="separator:ac2a0691d558b4b4d8bd51ddbdd3d0809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c77fc2b876883b63b9f9d403e368e8d" id="r_a8c77fc2b876883b63b9f9d403e368e8d"><td class="memItemLeft" align="right" valign="top"><a id="a8c77fc2b876883b63b9f9d403e368e8d" name="a8c77fc2b876883b63b9f9d403e368e8d"></a>
+<a class="el" href="structstruct___config_s_s_d1306.html">struct_ConfigSSD1306</a>&#160;</td><td class="memItemRight" valign="bottom"><b>device_config</b></td></tr>
+<tr class="separator:a8c77fc2b876883b63b9f9d403e368e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -506,9 +562,9 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_s_d1306_a67f56b6c4fd626c6b60488e9aebfc077_cgraph.png" border="0" usemap="#aclass_s_s_d1306_a67f56b6c4fd626c6b60488e9aebfc077_cgraph" alt=""/></div>
 <map name="aclass_s_s_d1306_a67f56b6c4fd626c6b60488e9aebfc077_cgraph" id="aclass_s_s_d1306_a67f56b6c4fd626c6b60488e9aebfc077_cgraph">
-<area shape="rect" title="the SSD1306 implementation of the show function. Used when we need to show a framebuffer in a given r..." alt="" coords="5,5,122,32"/>
-<area shape="rect" href="class_framebuffer.html#a25c9cadebb3531112c5085e981962407" title="Construct a new Framebuffer object." alt="" coords="170,5,337,32"/>
-<area shape="poly" title=" " alt="" coords="122,16,154,16,154,21,122,21"/>
+<area shape="rect" title="the SSD1306 implementation of the show function. Used when we need to show a framebuffer in a given r..." alt="" coords="5,5,103,30"/>
+<area shape="rect" href="class_framebuffer.html#a25c9cadebb3531112c5085e981962407" title="Construct a new Framebuffer object." alt="" coords="151,5,298,30"/>
+<area shape="poly" title=" " alt="" coords="103,15,135,15,135,20,103,20"/>
 </map>
 </div>
 

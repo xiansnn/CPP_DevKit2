@@ -100,6 +100,8 @@ $(function(){initNavTree('class_framebuffer.html',''); initResizable(true); });
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_framebuffer-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Framebuffer Class Reference</div></div>
 </div><!--header-->
@@ -114,13 +116,13 @@ Inheritance diagram for Framebuffer:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_framebuffer__inherit__graph.png" border="0" usemap="#a_framebuffer_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_framebuffer_inherit__map" id="a_framebuffer_inherit__map">
-<area shape="rect" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="488,5,999,624"/>
-<area shape="rect" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver." alt="" coords="5,720,487,1120"/>
-<area shape="poly" title=" " alt="" coords="482,637,412,722,408,719,478,634"/>
-<area shape="rect" href="class_u_i_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="511,837,975,1003"/>
-<area shape="poly" title=" " alt="" coords="746,639,746,838,741,838,741,639"/>
-<area shape="rect" href="class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="999,672,1487,1168"/>
-<area shape="poly" title=" " alt="" coords="1010,634,1041,670,1037,674,1006,637"/>
+<area shape="rect" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="581,5,1027,741"/>
+<area shape="rect" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver." alt="" coords="5,789,549,1369"/>
+<area shape="poly" title=" " alt="" coords="574,686,495,791,491,788,570,683"/>
+<area shape="rect" href="class_u_i_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="573,1013,1035,1145"/>
+<area shape="poly" title=" " alt="" coords="807,756,807,1013,801,1013,801,756"/>
+<area shape="rect" href="class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="1059,859,1538,1299"/>
+<area shape="poly" title=" " alt="" coords="1038,702,1147,858,1143,861,1033,705"/>
 </map>
 </div>
 <div class="dynheader">
@@ -128,7 +130,9 @@ Collaboration diagram for Framebuffer:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_framebuffer__coll__graph.png" border="0" usemap="#a_framebuffer_coll__map" alt="Collaboration graph"/></div>
 <map name="a_framebuffer_coll__map" id="a_framebuffer_coll__map">
-<area shape="rect" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,5,516,624"/>
+<area shape="rect" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,222,452,939"/>
+<area shape="rect" href="structstruct___framebuffer_text.html" title="Data structure that holds all configuration parameters used by textual primitives." alt="" coords="153,5,304,160"/>
+<area shape="poly" title=" " alt="" coords="231,160,231,205,226,205,226,160"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -221,6 +225,45 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>max_line</b> {0}</
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>max_column</b> {0}</td></tr>
 <tr class="memdesc:abaaff6cacf8f6095b6ae4ba2323ec5e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max number of column with respect to frame width and font width. <br /></td></tr>
 <tr class="separator:abaaff6cacf8f6095b6ae4ba2323ec5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a091ac1c60df92f1aefc2353be4e7a076" id="r_a091ac1c60df92f1aefc2353be4e7a076"><td class="memItemLeft" align="right" valign="top"><a id="a091ac1c60df92f1aefc2353be4e7a076" name="a091ac1c60df92f1aefc2353be4e7a076"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ellipse</b> (uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool <a class="el" href="#ac71de6e7a85fc62b53f795ce994c9ec1">fill</a>, uint8_t quadrant, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c)</td></tr>
+<tr class="separator:a091ac1c60df92f1aefc2353be4e7a076"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7016487361a74a6de9183f81a9b96ec3" id="r_a7016487361a74a6de9183f81a9b96ec3"><td class="memItemLeft" align="right" valign="top"><a id="a7016487361a74a6de9183f81a9b96ec3" name="a7016487361a74a6de9183f81a9b96ec3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>drawChar</b> (const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y)</td></tr>
+<tr class="separator:a7016487361a74a6de9183f81a9b96ec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74fb0832c9f2fd8f99a794ec499b5d86" id="r_a74fb0832c9f2fd8f99a794ec499b5d86"><td class="memItemLeft" align="right" valign="top"><a id="a74fb0832c9f2fd8f99a794ec499b5d86" name="a74fb0832c9f2fd8f99a794ec499b5d86"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>drawChar</b> (char c, uint8_t char_column, uint8_t char_line)</td></tr>
+<tr class="separator:a74fb0832c9f2fd8f99a794ec499b5d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9821acad0cef1fad78540c36f1ac3729" id="r_a9821acad0cef1fad78540c36f1ac3729"><td class="memItemLeft" align="right" valign="top"><a id="a9821acad0cef1fad78540c36f1ac3729" name="a9821acad0cef1fad78540c36f1ac3729"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>pixel</b> (int x, int y, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c=<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a>)</td></tr>
+<tr class="separator:a9821acad0cef1fad78540c36f1ac3729"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ed07b3254c0295941c461059ccf2463" id="r_a9ed07b3254c0295941c461059ccf2463"><td class="memItemLeft" align="right" valign="top"><a id="a9ed07b3254c0295941c461059ccf2463" name="a9ed07b3254c0295941c461059ccf2463"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_line</b> ()</td></tr>
+<tr class="separator:a9ed07b3254c0295941c461059ccf2463"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ad35b8bf0a6703c6bced3e0bfa65f2102" id="r_ad35b8bf0a6703c6bced3e0bfa65f2102"><td class="memItemLeft" align="right" valign="top"><a id="ad35b8bf0a6703c6bced3e0bfa65f2102" name="ad35b8bf0a6703c6bced3e0bfa65f2102"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</b></td></tr>
+<tr class="separator:ad35b8bf0a6703c6bced3e0bfa65f2102"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad5b8fb316a1f9187b90cd2ef7f0302b" id="r_aad5b8fb316a1f9187b90cd2ef7f0302b"><td class="memItemLeft" align="right" valign="top"><a id="aad5b8fb316a1f9187b90cd2ef7f0302b" name="aad5b8fb316a1f9187b90cd2ef7f0302b"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>text_buffer_size</b></td></tr>
+<tr class="separator:aad5b8fb316a1f9187b90cd2ef7f0302b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac09b3c586c580074e08fdb5d5b45f598" id="r_ac09b3c586c580074e08fdb5d5b45f598"><td class="memItemLeft" align="right" valign="top"><a id="ac09b3c586c580074e08fdb5d5b45f598" name="ac09b3c586c580074e08fdb5d5b45f598"></a>
+<a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a>&#160;</td><td class="memItemRight" valign="bottom"><b>frame_format</b></td></tr>
+<tr class="separator:ac09b3c586c580074e08fdb5d5b45f598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a049b45dc17e57478b24f423a58b35e5a" id="r_a049b45dc17e57478b24f423a58b35e5a"><td class="memItemLeft" align="right" valign="top"><a id="a049b45dc17e57478b24f423a58b35e5a" name="a049b45dc17e57478b24f423a58b35e5a"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>current_char_line</b> {0}</td></tr>
+<tr class="separator:a049b45dc17e57478b24f423a58b35e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a747acebf900c482dfab1b77373b8c0b8" id="r_a747acebf900c482dfab1b77373b8c0b8"><td class="memItemLeft" align="right" valign="top"><a id="a747acebf900c482dfab1b77373b8c0b8" name="a747acebf900c482dfab1b77373b8c0b8"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>current_char_column</b> {0}</td></tr>
+<tr class="separator:a747acebf900c482dfab1b77373b8c0b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9526c00b4e1e49d7b51860cdda0a03d" id="r_ad9526c00b4e1e49d7b51860cdda0a03d"><td class="memItemLeft" align="right" valign="top"><a id="ad9526c00b4e1e49d7b51860cdda0a03d" name="ad9526c00b4e1e49d7b51860cdda0a03d"></a>
+<a class="el" href="structstruct___framebuffer_text.html">struct_FramebufferText</a>&#160;</td><td class="memItemRight" valign="bottom"><b>frame_text_config</b> {}</td></tr>
+<tr class="separator:ad9526c00b4e1e49d7b51860cdda0a03d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a> is the basic framework to handle texts and graphics on a digital display. </p>
@@ -270,11 +313,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_framebuffer_a25c9cadebb3531112c5085e981962407_icgraph.png" border="0" usemap="#aclass_framebuffer_a25c9cadebb3531112c5085e981962407_icgraph" alt=""/></div>
 <map name="aclass_framebuffer_a25c9cadebb3531112c5085e981962407_icgraph" id="aclass_framebuffer_a25c9cadebb3531112c5085e981962407_icgraph">
-<area shape="rect" title="Construct a new Framebuffer object." alt="" coords="213,31,380,57"/>
-<area shape="rect" href="class_s_s_d1306.html#a67f56b6c4fd626c6b60488e9aebfc077" title="the SSD1306 implementation of the show function. Used when we need to show a framebuffer in a given r..." alt="" coords="27,5,143,32"/>
-<area shape="poly" title=" " alt="" coords="197,35,143,28,144,23,198,30"/>
-<area shape="rect" href="class_u_i_display_device.html#aa87594dc5c9085523809519fe0d85f5d" title="This is an pure virtual member function that all final derived class must implement...." alt="" coords="5,56,165,83"/>
-<area shape="poly" title=" " alt="" coords="198,58,165,62,165,57,197,53"/>
+<area shape="rect" title="Construct a new Framebuffer object." alt="" coords="183,31,330,55"/>
+<area shape="rect" href="class_s_s_d1306.html#a67f56b6c4fd626c6b60488e9aebfc077" title="the SSD1306 implementation of the show function. Used when we need to show a framebuffer in a given r..." alt="" coords="21,5,119,30"/>
+<area shape="poly" title=" " alt="" coords="167,34,119,27,120,22,168,28"/>
+<area shape="rect" href="class_u_i_display_device.html#aa87594dc5c9085523809519fe0d85f5d" title="This is an pure virtual member function that all final derived class must implement...." alt="" coords="5,55,135,79"/>
+<area shape="poly" title=" " alt="" coords="168,57,135,61,135,56,167,52"/>
 </map>
 </div>
 
@@ -331,9 +374,9 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_framebuffer_a4eb865f19596a64e30862697ab737318_cgraph.png" border="0" usemap="#aclass_framebuffer_a4eb865f19596a64e30862697ab737318_cgraph" alt=""/></div>
 <map name="aclass_framebuffer_a4eb865f19596a64e30862697ab737318_cgraph" id="aclass_framebuffer_a4eb865f19596a64e30862697ab737318_cgraph">
-<area shape="rect" title="draw a cercle of size radius, centered at (x_center, y_center)" alt="" coords="5,5,135,32"/>
-<area shape="rect" href="class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1" title="Write all framebuffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)." alt="" coords="183,5,294,32"/>
-<area shape="poly" title=" " alt="" coords="135,16,168,16,168,21,135,21"/>
+<area shape="rect" title="draw a cercle of size radius, centered at (x_center, y_center)" alt="" coords="5,5,118,30"/>
+<area shape="rect" href="class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1" title="Write all framebuffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)." alt="" coords="166,5,263,30"/>
+<area shape="poly" title=" " alt="" coords="118,15,150,15,150,20,118,20"/>
 </map>
 </div>
 
@@ -367,11 +410,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_framebuffer_ac71de6e7a85fc62b53f795ce994c9ec1_icgraph.png" border="0" usemap="#aclass_framebuffer_ac71de6e7a85fc62b53f795ce994c9ec1_icgraph" alt=""/></div>
 <map name="aclass_framebuffer_ac71de6e7a85fc62b53f795ce994c9ec1_icgraph" id="aclass_framebuffer_ac71de6e7a85fc62b53f795ce994c9ec1_icgraph">
-<area shape="rect" title="Write all framebuffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)." alt="" coords="183,31,294,57"/>
-<area shape="rect" href="class_framebuffer.html#a4eb865f19596a64e30862697ab737318" title="draw a cercle of size radius, centered at (x_center, y_center)" alt="" coords="5,5,135,32"/>
-<area shape="poly" title=" " alt="" coords="167,36,135,31,136,26,168,31"/>
-<area shape="rect" href="class_framebuffer.html#ae0e1916dfc5fcdaa7999c8d3ebdaef6b" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="10,56,130,83"/>
-<area shape="poly" title=" " alt="" coords="168,57,131,63,130,58,167,52"/>
+<area shape="rect" title="Write all framebuffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)." alt="" coords="166,31,263,55"/>
+<area shape="rect" href="class_framebuffer.html#a4eb865f19596a64e30862697ab737318" title="draw a cercle of size radius, centered at (x_center, y_center)" alt="" coords="5,5,118,30"/>
+<area shape="poly" title=" " alt="" coords="149,35,118,30,119,24,150,30"/>
+<area shape="rect" href="class_framebuffer.html#ae0e1916dfc5fcdaa7999c8d3ebdaef6b" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="8,55,115,79"/>
+<area shape="poly" title=" " alt="" coords="151,56,116,61,115,56,150,50"/>
 </map>
 </div>
 
@@ -627,9 +670,9 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_framebuffer_ae0e1916dfc5fcdaa7999c8d3ebdaef6b_cgraph.png" border="0" usemap="#aclass_framebuffer_ae0e1916dfc5fcdaa7999c8d3ebdaef6b_cgraph" alt=""/></div>
 <map name="aclass_framebuffer_ae0e1916dfc5fcdaa7999c8d3ebdaef6b_cgraph" id="aclass_framebuffer_ae0e1916dfc5fcdaa7999c8d3ebdaef6b_cgraph">
-<area shape="rect" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="5,5,126,32"/>
-<area shape="rect" href="class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1" title="Write all framebuffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)." alt="" coords="174,5,285,32"/>
-<area shape="poly" title=" " alt="" coords="126,16,158,16,158,21,126,21"/>
+<area shape="rect" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="5,5,113,30"/>
+<area shape="rect" href="class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1" title="Write all framebuffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)." alt="" coords="161,5,258,30"/>
+<area shape="poly" title=" " alt="" coords="113,15,145,15,145,20,113,20"/>
 </map>
 </div>
 

@@ -99,6 +99,8 @@ $(function(){initNavTree('class_switch_button_with_i_r_q.html',''); initResizabl
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_switch_button_with_i_r_q-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SwitchButtonWithIRQ Class Reference</div></div>
 </div><!--header-->
@@ -113,11 +115,11 @@ Inheritance diagram for SwitchButtonWithIRQ:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_switch_button_with_i_r_q__inherit__graph.png" border="0" usemap="#a_switch_button_with_i_r_q_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_switch_button_with_i_r_q_inherit__map" id="a_switch_button_with_i_r_q_inherit__map">
-<area shape="rect" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="28,400,437,587"/>
-<area shape="rect" href="class_rotary_encoder.html" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user...." alt="" coords="5,635,460,821"/>
-<area shape="poly" title=" " alt="" coords="235,601,235,635,230,635,230,601"/>
-<area shape="rect" href="class_switch_button.html" title="SwitchButton status is sampled periodically by software." alt="" coords="49,5,417,352"/>
-<area shape="poly" title=" " alt="" coords="235,367,235,400,230,400,230,367"/>
+<area shape="rect" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="13,357,461,527"/>
+<area shape="rect" href="class_rotary_encoder.html" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user...." alt="" coords="5,575,469,744"/>
+<area shape="poly" title=" " alt="" coords="240,541,240,575,235,575,235,541"/>
+<area shape="rect" href="class_switch_button.html" title="SwitchButton status is sampled periodically by software." alt="" coords="83,5,391,309"/>
+<area shape="poly" title=" " alt="" coords="240,324,240,358,235,358,235,324"/>
 </map>
 </div>
 <div class="dynheader">
@@ -125,9 +127,9 @@ Collaboration diagram for SwitchButtonWithIRQ:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_switch_button_with_i_r_q__coll__graph.png" border="0" usemap="#a_switch_button_with_i_r_q_coll__map" alt="Collaboration graph"/></div>
 <map name="a_switch_button_with_i_r_q_coll__map" id="a_switch_button_with_i_r_q_coll__map">
-<area shape="rect" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="5,400,415,587"/>
-<area shape="rect" href="class_switch_button.html" title="SwitchButton status is sampled periodically by software." alt="" coords="26,5,394,352"/>
-<area shape="poly" title=" " alt="" coords="213,367,213,400,207,400,207,367"/>
+<area shape="rect" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="5,357,453,527"/>
+<area shape="rect" href="class_switch_button.html" title="SwitchButton status is sampled periodically by software." alt="" coords="75,5,383,309"/>
+<area shape="poly" title=" " alt="" coords="232,324,232,358,227,358,227,324"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -160,6 +162,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6b40906d298a665870c30c1359fbea2e inherit pub_methods_class_switch_button" id="r_a6b40906d298a665870c30c1359fbea2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657">ButtonState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_switch_button.html#a6b40906d298a665870c30c1359fbea2e">get_button_status</a> ()</td></tr>
 <tr class="memdesc:a6b40906d298a665870c30c1359fbea2e inherit pub_methods_class_switch_button"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the button status object.  <br /></td></tr>
 <tr class="separator:a6b40906d298a665870c30c1359fbea2e inherit pub_methods_class_switch_button"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a36babd7863c8831b6ceee97c884024fc" id="r_a36babd7863c8831b6ceee97c884024fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36babd7863c8831b6ceee97c884024fc">is_switch_pushed</a> (uint32_t current_event_mask)</td></tr>
+<tr class="memdesc:a36babd7863c8831b6ceee97c884024fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the logical status of the switch. It process rising and falling edges of the interrupt, according to the active_lo status of the switch.  <br /></td></tr>
+<tr class="separator:a36babd7863c8831b6ceee97c884024fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:af239f30220d2d6b8b82789b43d361629" id="r_af239f30220d2d6b8b82789b43d361629"><td class="memItemLeft" align="right" valign="top"><a id="af239f30220d2d6b8b82789b43d361629" name="af239f30220d2d6b8b82789b43d361629"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>irq_event_mask_config</b></td></tr>
+<tr class="memdesc:af239f30220d2d6b8b82789b43d361629"><td class="mdescLeft">&#160;</td><td class="mdescRight">A memory slot reserved to store the irq_event_mask. <br /></td></tr>
+<tr class="separator:af239f30220d2d6b8b82789b43d361629"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -276,6 +291,42 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>previous_switch_pushe
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a36babd7863c8831b6ceee97c884024fc" name="a36babd7863c8831b6ceee97c884024fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36babd7863c8831b6ceee97c884024fc">&#9670;&#160;</a></span>is_switch_pushed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SwitchButtonWithIRQ::is_switch_pushed </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>current_event_mask</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>return the logical status of the switch. It process rising and falling edges of the interrupt, according to the active_lo status of the switch. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">current_event_mask</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if switch status is read LO (resp. HI) if active_lo is true (resp. false) </dd>
+<dd>
+false if switch status is read HI (resp. LO) if active_lo is true (resp. false) </dd></dl>
 
 </div>
 </div>

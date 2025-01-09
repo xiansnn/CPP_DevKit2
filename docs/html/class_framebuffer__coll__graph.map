@@ -1,3 +1,5 @@
 <map id="Framebuffer" name="Framebuffer">
-<area shape="rect" id="Node000001" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,5,516,624"/>
+<area shape="rect" id="Node000001" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,222,452,939"/>
+<area shape="rect" id="Node000002" href="$structstruct___framebuffer_text.html" title="Data structure that holds all configuration parameters used by textual primitives." alt="" coords="153,5,304,160"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,160,231,205,226,205,226,160"/>
 </map>

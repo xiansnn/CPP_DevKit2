@@ -1,5 +1,5 @@
 <map id="SwitchButtonWithIRQ" name="SwitchButtonWithIRQ">
-<area shape="rect" id="Node000001" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="5,400,415,587"/>
-<area shape="rect" id="Node000002" href="$class_switch_button.html" title="SwitchButton status is sampled periodically by software." alt="" coords="26,5,394,352"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,367,213,400,207,400,207,367"/>
+<area shape="rect" id="Node000001" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="5,357,453,527"/>
+<area shape="rect" id="Node000002" href="$class_switch_button.html" title="SwitchButton status is sampled periodically by software." alt="" coords="75,5,383,309"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,324,232,358,227,358,227,324"/>
 </map>

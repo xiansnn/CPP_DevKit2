@@ -1,13 +1,13 @@
 <map id="hw_i2c.h" name="hw_i2c.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="284,5,358,32"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,112,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="285,33,120,78,118,73,283,28"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="136,80,251,107"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="300,35,230,74,227,70,298,30"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="276,80,367,107"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="324,33,324,64,318,64,318,33"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="391,80,430,107"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="338,30,385,68,382,72,335,35"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="454,80,508,107"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="350,30,442,71,439,76,348,35"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="251,5,314,30"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,78,99,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="251,31,106,76,104,70,250,26"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="122,78,219,103"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="266,33,203,72,201,67,263,28"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="244,78,322,103"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="285,31,285,62,280,62,280,31"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="346,78,385,103"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="298,29,342,66,339,70,295,33"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="409,78,458,103"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="309,28,396,69,394,74,306,33"/>
 </map>

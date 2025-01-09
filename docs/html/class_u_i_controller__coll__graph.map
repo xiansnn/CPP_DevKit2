@@ -1,5 +1,6 @@
 <map id="UIController" name="UIController">
-<area shape="rect" id="Node000001" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="5,352,488,464"/>
-<area shape="rect" id="Node000002" href="$class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="58,5,435,288"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="249,288,249,335,244,335,244,288"/>
+<area shape="rect" id="Node000001" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="5,5,417,104"/>
+<area shape="rect" id="Node000002" href="$class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="50,166,373,451"/>
+<area shape="poly" id="edge2_Node000002_Node000001" title=" " alt="" coords="162,105,149,129,144,150,138,149,144,127,158,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="246,166,242,128,240,121,245,119,247,128,251,166"/>
 </map>

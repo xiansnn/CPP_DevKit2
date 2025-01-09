@@ -1,7 +1,11 @@
 <map id="MPU6050" name="MPU6050">
-<area shape="rect" id="Node000001" title="Class that manage the MPU6050 3&#45;axes accelerometer/gyrometer." alt="" coords="5,267,471,443"/>
-<area shape="rect" id="Node000002" href="$structstruct___m_p_u_data.html" title="measured sensor value after scale correction" alt="" coords="113,5,224,203"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,202,212,250,207,251,193,203"/>
-<area shape="rect" id="Node000003" href="$structstruct___raw_data.html" title="raw data as they are captured by sensor" alt="" coords="249,5,369,203"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="284,203,270,251,265,250,278,202"/>
+<area shape="rect" id="Node000001" title="Class that manage the MPU6050 3&#45;axes accelerometer/gyrometer." alt="" coords="557,353,937,787"/>
+<area shape="rect" id="Node000002" href="$class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="5,52,539,244"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="381,242,546,388,542,392,377,246"/>
+<area shape="rect" id="Node000003" href="$structstruct___config_m_p_u6050.html" title="minimal set of MPU configuration data" alt="" coords="563,5,760,291"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="693,290,702,335,697,336,687,291"/>
+<area shape="rect" id="Node000004" href="$structstruct___m_p_u_data.html" title="measured sensor value after scale correction" alt="" coords="785,61,879,235"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="817,235,797,337,791,336,812,234"/>
+<area shape="rect" id="Node000005" href="$structstruct___raw_data.html" title="raw data as they are captured by sensor" alt="" coords="903,61,1011,235"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="921,236,894,292,871,339,866,337,890,289,916,233"/>
 </map>

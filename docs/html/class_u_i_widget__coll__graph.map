@@ -1,8 +1,10 @@
 <map id="UIWidget" name="UIWidget">
-<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="22,903,510,1377"/>
-<area shape="rect" id="Node000002" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,5,516,624"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="265,639,267,903,262,903,260,639"/>
-<area shape="rect" id="Node000003" href="$class_u_i_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="282,673,746,839"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="448,635,470,672,465,675,444,638"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="464,840,431,890,426,887,459,837"/>
+<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,1183,484,1604"/>
+<area shape="rect" id="Node000002" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="16,222,463,939"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="244,954,246,1183,241,1183,239,954"/>
+<area shape="rect" id="Node000004" href="$class_u_i_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="261,989,722,1121"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="440,951,459,988,455,991,435,954"/>
+<area shape="rect" id="Node000003" href="$structstruct___framebuffer_text.html" title="Data structure that holds all configuration parameters used by textual primitives." alt="" coords="164,5,315,160"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="242,160,242,205,237,205,237,160"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="446,1122,411,1170,406,1167,442,1119"/>
 </map>

@@ -1,13 +1,13 @@
 <map id="rotary_encoder.h" name="rotary_encoder.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="153,5,271,32"/>
-<area shape="rect" id="Node000002" href="$switch__button_8h.html" title=" " alt="" coords="156,80,269,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,33,215,64,210,64,210,33"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,155,94,181"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="185,110,93,150,91,145,183,105"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="117,155,208,181"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="206,109,182,143,178,140,201,106"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="233,155,293,181"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="223,106,248,141,243,144,219,109"/>
-<area shape="rect" id="Node000006" href="$ui__control__event_8h.html" title=" " alt="" coords="316,155,444,181"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="242,105,338,146,336,151,240,110"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="137,5,240,30"/>
+<area shape="rect" id="Node000002" href="$switch__button_8h.html" title=" " alt="" coords="140,78,238,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,31,192,62,186,62,186,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,151,82,175"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="166,106,82,146,80,141,164,101"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="106,151,184,175"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="184,105,162,139,158,136,179,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="208,151,261,175"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="199,102,221,136,216,139,194,105"/>
+<area shape="rect" id="Node000006" href="$ui__control__event_8h.html" title=" " alt="" coords="284,151,395,175"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="215,101,302,141,300,146,213,106"/>
 </map>

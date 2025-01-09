@@ -1,24 +1,8 @@
 var searchData=
 [
-  ['fg_5fcolor_0',['fg_color',['../structstruct___framebuffer_text.html#a3c19c4a2abd368a40bf071452f372cc3',1,'struct_FramebufferText']]],
-  ['fifo_5fop_1',['FIFO_OP',['../structstruct___config_m_p_u6050.html#ab7f05661f12849229e5f12616d4d4e40',1,'struct_ConfigMPU6050']]],
-  ['fifo_5fselected_5fsensors_2',['FIFO_SELECTED_SENSORS',['../structstruct___config_m_p_u6050.html#ac2fb6887c7ef83afec6bf017b574b841',1,'struct_ConfigMPU6050']]],
-  ['fill_3',['fill',['../class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1',1,'Framebuffer']]],
-  ['fill_5fpattern_5fand_5fshow_5fgddram_4',['fill_pattern_and_show_GDDRAM',['../class_s_s_d1306.html#a764babad3f6a4d12cfa600ce7fd1b751',1,'SSD1306']]],
-  ['font_5',['font',['../structstruct___framebuffer_text.html#af9d2a4c9d160910fdd30cbcb92dd554e',1,'struct_FramebufferText']]],
-  ['font_5f12x16_6',['font_12x16',['../12x16__font_8h.html#a348b0e098c08825316c4fb41b3bf0843',1,'12x16_font.h']]],
-  ['font_5f16x32_7',['font_16x32',['../16x32__font_8h.html#a394b1de12fcd7b54cfebb977bdc89b5c',1,'16x32_font.h']]],
-  ['font_5f5x8_8',['font_5x8',['../5x8__font_8h.html#abdc16296a2d8078af08a493845f7194b',1,'5x8_font.h']]],
-  ['font_5f8x8_9',['font_8x8',['../8x8__font_8h.html#ac1e257a18f342596519ef4cbc5b673a9',1,'8x8_font.h']]],
-  ['font_5fheight_5findex_10',['FONT_HEIGHT_INDEX',['../framebuffer_8h.html#a4ab86d883782b831584c91476841456f',1,'framebuffer.h']]],
-  ['font_5fwidth_5findex_11',['FONT_WIDTH_INDEX',['../framebuffer_8h.html#a1b5e690c2929f80821d04e8414fec2c5',1,'framebuffer.h']]],
-  ['form_5ffeed_12',['FORM_FEED',['../framebuffer_8h.html#aeaf983986deb16c93fa0bd38080281f8',1,'framebuffer.h']]],
-  ['frame_5fheight_13',['frame_height',['../class_framebuffer.html#aa346612ecd1e1a0167734b8173bed9db',1,'Framebuffer']]],
-  ['frame_5fwidth_14',['frame_width',['../class_framebuffer.html#a35a041f8b088ee5274aa334d13e4c60e',1,'Framebuffer']]],
-  ['framebuffer_15',['Framebuffer',['../class_framebuffer.html',1,'Framebuffer'],['../class_framebuffer.html#a25c9cadebb3531112c5085e981962407',1,'Framebuffer::Framebuffer()']]],
-  ['framebuffer_2eh_16',['framebuffer.h',['../framebuffer_8h.html',1,'']]],
-  ['framebuffercolor_17',['FramebufferColor',['../framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f',1,'framebuffer.h']]],
-  ['framebufferformat_18',['FramebufferFormat',['../framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79',1,'framebuffer.h']]],
-  ['frequency_5fdivider_19',['frequency_divider',['../structstruct___config_s_s_d1306.html#a3b094002129dd70ad83fb49097d116e2',1,'struct_ConfigSSD1306']]],
-  ['frequency_5ffactor_20',['frequency_factor',['../structstruct___config_s_s_d1306.html#acf1d9d748c0e5d861f6520f49ca21e37',1,'struct_ConfigSSD1306']]]
+  ['enable_5fcom_5fl_5fr_5fremap_0',['enable_COM_L_R_remap',['../structstruct___config_s_s_d1306.html#a7f8be01a0f93321efbb68fd758ca1158',1,'struct_ConfigSSD1306']]],
+  ['end_5fcol_1',['end_col',['../structstruct___render_area.html#a8e5a75689c2f5e0269246e8589578ce8',1,'struct_RenderArea']]],
+  ['end_5fpage_2',['end_page',['../structstruct___render_area.html#af3b7e61cfcaf6ccb395ff60088c15a0a',1,'struct_RenderArea']]],
+  ['error_3',['error',['../structstruct___i2_c_xfer_result.html#a86513dfa496e1f9ef11ff3bbb36aa359',1,'struct_I2CXferResult']]],
+  ['ext_5fsync_4',['EXT_SYNC',['../structstruct___config_m_p_u6050.html#a67e65625df0661354ec2a72fc5c12536',1,'struct_ConfigMPU6050']]]
 ];

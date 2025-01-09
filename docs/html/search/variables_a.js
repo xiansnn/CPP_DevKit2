@@ -1,13 +1,6 @@
 var searchData=
 [
-  ['managed_5fmodels_0',['managed_models',['../class_u_i_object_manager.html#ab1d6f0601a5a4fe8e5609661c349a01c',1,'UIObjectManager']]],
-  ['max_5fcolumn_1',['max_column',['../class_framebuffer.html#abaaff6cacf8f6095b6ae4ba2323ec5e5',1,'Framebuffer']]],
-  ['max_5fline_2',['max_line',['../class_framebuffer.html#a6ed1ffd876febfffcc9d4eb70307085b',1,'Framebuffer']]],
-  ['max_5fvalue_3',['max_value',['../class_u_i_controlled_incremental_value.html#a502ecbf045c5f2b4d2015bad04611a7d',1,'UIControlledIncrementalValue']]],
-  ['mem_4',['mem',['../structstruct___slave_memory.html#a541a2516d84c428b9450dc98efdc028d',1,'struct_SlaveMemory']]],
-  ['mem_5faddress_5',['mem_address',['../structstruct___slave_memory.html#a676889062063c62684c4c2bb1f6772ed',1,'struct_SlaveMemory']]],
-  ['mem_5faddress_5fwritten_6',['mem_address_written',['../structstruct___slave_memory.html#a7ffdb875b97e9cb9ca8680e72704621f',1,'struct_SlaveMemory']]],
-  ['min_5fvalue_7',['min_value',['../class_u_i_controlled_incremental_value.html#ae8b0cdfbfe7f3bc120870d7f9e67fb7a',1,'UIControlledIncrementalValue']]],
-  ['mpu_5faddr_8',['MPU_ADDR',['../structstruct___config_m_p_u6050.html#acf79176ed664b066365717df749cacd7',1,'struct_ConfigMPU6050']]],
-  ['mux_5fratio_5fvalue_9',['mux_ratio_value',['../structstruct___config_s_s_d1306.html#aecebd6411a14e59af2f09302e716bcb9',1,'struct_ConfigSSD1306']]]
+  ['last_5fchange_5ftime_0',['last_change_time',['../class_u_i_model_object.html#a5287fb6957dd143020b890ce67b01fa4',1,'UIModelObject']]],
+  ['long_5fpush_5fdelay_5fus_1',['long_push_delay_us',['../structstruct___switch_button_config.html#a267e41c2ea127b33612556e8265eb858',1,'struct_SwitchButtonConfig::long_push_delay_us'],['../class_switch_button.html#ac3efe4e87a09e753245b7b50916169ed',1,'SwitchButton::long_push_delay_us']]],
+  ['long_5frelease_5fdelay_5fus_2',['long_release_delay_us',['../structstruct___switch_button_config.html#a2fada5da9b4aa4aacd549eda8d1fa8b0',1,'struct_SwitchButtonConfig::long_release_delay_us'],['../class_switch_button.html#a5cf488e4819df6fd8cc5cd3811d33354',1,'SwitchButton::long_release_delay_us']]]
 ];

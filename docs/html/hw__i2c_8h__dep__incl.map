@@ -1,7 +1,7 @@
 <map id="hw_i2c.h" name="hw_i2c.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="65,5,138,32"/>
-<area shape="rect" id="Node000002" href="$mpu6050_8h.html" title=" " alt="" coords="5,80,91,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,46,59,81,55,78,81,43"/>
-<area shape="rect" id="Node000003" href="$ssd1306_8h_source.html" title=" " alt="" coords="115,80,197,107"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="122,43,149,78,144,81,118,46"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="59,5,123,30"/>
+<area shape="rect" id="Node000002" href="$mpu6050_8h.html" title=" " alt="" coords="5,78,81,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,45,53,79,49,76,72,42"/>
+<area shape="rect" id="Node000003" href="$ssd1306_8h_source.html" title=" " alt="" coords="105,78,176,103"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="110,41,135,76,130,79,106,44"/>
 </map>

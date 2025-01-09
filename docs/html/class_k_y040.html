@@ -99,6 +99,7 @@ $(function(){initNavTree('class_k_y040.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_k_y040-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">KY040 Class Reference</div></div>
 </div><!--header-->
@@ -113,9 +114,9 @@ Inheritance diagram for KY040:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_k_y040__inherit__graph.png" border="0" usemap="#a_k_y040_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_k_y040_inherit__map" id="a_k_y040_inherit__map">
-<area shape="rect" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt..." alt="" coords="5,165,527,352"/>
-<area shape="rect" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="25,5,507,117"/>
-<area shape="poly" title=" " alt="" coords="269,132,269,165,263,165,263,132"/>
+<area shape="rect" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt..." alt="" coords="5,152,569,321"/>
+<area shape="rect" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="81,5,493,104"/>
+<area shape="poly" title=" " alt="" coords="290,119,290,152,285,152,285,119"/>
 </map>
 </div>
 <div class="dynheader">
@@ -123,11 +124,19 @@ Collaboration diagram for KY040:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_k_y040__coll__graph.png" border="0" usemap="#a_k_y040_coll__map" alt="Collaboration graph"/></div>
 <map name="a_k_y040_coll__map" id="a_k_y040_coll__map">
-<area shape="rect" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt..." alt="" coords="5,513,527,700"/>
-<area shape="rect" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="25,352,507,464"/>
-<area shape="poly" title=" " alt="" coords="269,479,269,513,263,513,263,479"/>
-<area shape="rect" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="77,5,455,288"/>
-<area shape="poly" title=" " alt="" coords="269,288,269,335,263,335,263,288"/>
+<area shape="rect" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt..." alt="" coords="353,889,917,1039"/>
+<area shape="rect" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="85,625,497,724"/>
+<area shape="poly" title=" " alt="" coords="361,731,548,887,545,891,358,736"/>
+<area shape="rect" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,821,328,1107"/>
+<area shape="poly" title=" " alt="" coords="214,726,186,753,165,785,158,806,153,804,161,782,182,749,210,722"/>
+<area shape="poly" title=" " alt="" coords="248,820,259,796,276,740,281,741,264,798,253,823"/>
+<area shape="rect" href="class_switch_button.html" title="SwitchButton status is sampled periodically by software." alt="" coords="461,5,769,309"/>
+<area shape="poly" title=" " alt="" coords="618,309,627,759,632,871,627,872,621,759,613,309"/>
+<area shape="rect" href="class_switch_button_with_i_r_q.html" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="640,359,1088,528"/>
+<area shape="poly" title=" " alt="" coords="759,318,793,357,789,361,755,322"/>
+<area shape="rect" href="class_rotary_encoder.html" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user...." alt="" coords="636,590,1100,759"/>
+<area shape="poly" title=" " alt="" coords="802,761,708,877,703,874,798,758"/>
+<area shape="poly" title=" " alt="" coords="868,543,869,590,864,590,863,543"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -157,6 +166,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2cc0f0b9952528a65b002f1ed86bb0f2 inherit pub_methods_class_u_i_controller" id="r_a2cc0f0b9952528a65b002f1ed86bb0f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_controller.html#a2cc0f0b9952528a65b002f1ed86bb0f2">update_current_controlled_object</a> (<a class="el" href="class_u_i_model_object.html">UIModelObject</a> *_new_controlled_object)</td></tr>
 <tr class="memdesc:a2cc0f0b9952528a65b002f1ed86bb0f2 inherit pub_methods_class_u_i_controller"><td class="mdescLeft">&#160;</td><td class="mdescRight">if the current controlled object is different from _new_controlled_object, change the current controlled object this new one. By he same time, The controller of the new controlled object is updated.  <br /></td></tr>
 <tr class="separator:a2cc0f0b9952528a65b002f1ed86bb0f2 inherit pub_methods_class_u_i_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aeeacb4eda161ef68b02a2f5799239c64" id="r_aeeacb4eda161ef68b02a2f5799239c64"><td class="memItemLeft" align="right" valign="top"><a id="aeeacb4eda161ef68b02a2f5799239c64" name="aeeacb4eda161ef68b02a2f5799239c64"></a>
+<a class="el" href="class_switch_button.html">SwitchButton</a>&#160;</td><td class="memItemRight" valign="bottom"><b>central_switch</b></td></tr>
+<tr class="separator:aeeacb4eda161ef68b02a2f5799239c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eb8bfa93217c26d2fff46d3d2831be1" id="r_a2eb8bfa93217c26d2fff46d3d2831be1"><td class="memItemLeft" align="right" valign="top"><a id="a2eb8bfa93217c26d2fff46d3d2831be1" name="a2eb8bfa93217c26d2fff46d3d2831be1"></a>
+<a class="el" href="class_rotary_encoder.html">RotaryEncoder</a>&#160;</td><td class="memItemRight" valign="bottom"><b>encoder</b></td></tr>
+<tr class="separator:a2eb8bfa93217c26d2fff46d3d2831be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>

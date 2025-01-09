@@ -101,6 +101,7 @@ $(function(){initNavTree('class_u_i_widget.html',''); initResizable(true); });
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_u_i_widget-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">UIWidget Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
 </div><!--header-->
@@ -115,9 +116,9 @@ Inheritance diagram for UIWidget:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_u_i_widget__inherit__graph.png" border="0" usemap="#a_u_i_widget_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_u_i_widget_inherit__map" id="a_u_i_widget_inherit__map">
-<area shape="rect" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="17,672,505,1168"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,5,516,624"/>
-<area shape="poly" title=" " alt="" coords="263,639,263,672,258,672,258,639"/>
+<area shape="rect" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,789,484,1229"/>
+<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="21,5,468,741"/>
+<area shape="poly" title=" " alt="" coords="247,756,247,789,242,789,242,756"/>
 </map>
 </div>
 <div class="dynheader">
@@ -125,12 +126,14 @@ Collaboration diagram for UIWidget:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_u_i_widget__coll__graph.png" border="0" usemap="#a_u_i_widget_coll__map" alt="Collaboration graph"/></div>
 <map name="a_u_i_widget_coll__map" id="a_u_i_widget_coll__map">
-<area shape="rect" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="22,903,510,1377"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,5,516,624"/>
-<area shape="poly" title=" " alt="" coords="265,639,267,903,262,903,260,639"/>
-<area shape="rect" href="class_u_i_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="282,673,746,839"/>
-<area shape="poly" title=" " alt="" coords="448,635,470,672,465,675,444,638"/>
-<area shape="poly" title=" " alt="" coords="464,840,431,890,426,887,459,837"/>
+<area shape="rect" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,1183,484,1604"/>
+<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="16,222,463,939"/>
+<area shape="poly" title=" " alt="" coords="244,954,246,1183,241,1183,239,954"/>
+<area shape="rect" href="class_u_i_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="261,989,722,1121"/>
+<area shape="poly" title=" " alt="" coords="440,951,459,988,455,991,435,954"/>
+<area shape="rect" href="structstruct___framebuffer_text.html" title="Data structure that holds all configuration parameters used by textual primitives." alt="" coords="164,5,315,160"/>
+<area shape="poly" title=" " alt="" coords="242,160,242,205,237,205,237,160"/>
+<area shape="poly" title=" " alt="" coords="446,1122,411,1170,406,1167,442,1119"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -273,6 +276,12 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_border_widt
 <tr class="memdesc:acd07c6d3c1543f94eca2a3e79ebf636c"><td class="mdescLeft">&#160;</td><td class="mdescRight">this is the border size of the widget <br /></td></tr>
 <tr class="separator:acd07c6d3c1543f94eca2a3e79ebf636c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a7a404a4e2ebcde747ed9fb3657099e45" id="r_a7a404a4e2ebcde747ed9fb3657099e45"><td class="memItemLeft" align="right" valign="top"><a id="a7a404a4e2ebcde747ed9fb3657099e45" name="a7a404a4e2ebcde747ed9fb3657099e45"></a>
+int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>previous_blinking_phase</b></td></tr>
+<tr class="separator:a7a404a4e2ebcde747ed9fb3657099e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_attribs_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
@@ -384,9 +393,9 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_u_i_widget_ae9e9ebf97c6fe90a156b0f91f581b317_icgraph.png" border="0" usemap="#aclass_u_i_widget_ae9e9ebf97c6fe90a156b0f91f581b317_icgraph" alt=""/></div>
 <map name="aclass_u_i_widget_ae9e9ebf97c6fe90a156b0f91f581b317_icgraph" id="aclass_u_i_widget_ae9e9ebf97c6fe90a156b0f91f581b317_icgraph">
-<area shape="rect" title="Construct a new UIWidget object." alt="" coords="204,5,343,32"/>
-<area shape="rect" href="class_u_i_widget.html#a77b60ee8bae791e3239fdc6c27472b83" title="add sub_widget to the current widget" alt="" coords="5,5,156,32"/>
-<area shape="poly" title=" " alt="" coords="188,21,156,21,156,16,188,16"/>
+<area shape="rect" title="Construct a new UIWidget object." alt="" coords="184,5,303,30"/>
+<area shape="rect" href="class_u_i_widget.html#a77b60ee8bae791e3239fdc6c27472b83" title="add sub_widget to the current widget" alt="" coords="5,5,136,30"/>
+<area shape="poly" title=" " alt="" coords="168,20,136,20,136,15,168,15"/>
 </map>
 </div>
 
@@ -420,9 +429,9 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_u_i_widget_a77b60ee8bae791e3239fdc6c27472b83_cgraph.png" border="0" usemap="#aclass_u_i_widget_a77b60ee8bae791e3239fdc6c27472b83_cgraph" alt=""/></div>
 <map name="aclass_u_i_widget_a77b60ee8bae791e3239fdc6c27472b83_cgraph" id="aclass_u_i_widget_a77b60ee8bae791e3239fdc6c27472b83_cgraph">
-<area shape="rect" title="add sub_widget to the current widget" alt="" coords="5,5,156,32"/>
-<area shape="rect" href="class_u_i_widget.html#ae9e9ebf97c6fe90a156b0f91f581b317" title="Construct a new UIWidget object." alt="" coords="204,5,343,32"/>
-<area shape="poly" title=" " alt="" coords="156,16,188,16,188,21,156,21"/>
+<area shape="rect" title="add sub_widget to the current widget" alt="" coords="5,5,136,30"/>
+<area shape="rect" href="class_u_i_widget.html#ae9e9ebf97c6fe90a156b0f91f581b317" title="Construct a new UIWidget object." alt="" coords="184,5,303,30"/>
+<area shape="poly" title=" " alt="" coords="136,15,168,15,168,20,136,20"/>
 </map>
 </div>
 

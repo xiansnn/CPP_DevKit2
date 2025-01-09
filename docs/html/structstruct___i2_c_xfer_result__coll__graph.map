@@ -1,3 +1,3 @@
 <map id="struct_I2CXferResult" name="struct_I2CXferResult">
-<area shape="rect" id="Node000001" title="this data structure collects result when an I2C transfer is done. It gives a more verbose error descr..." alt="" coords="5,5,141,117"/>
+<area shape="rect" id="Node000001" title="this data structure collects result when an I2C transfer is done. It gives a more verbose error descr..." alt="" coords="5,5,117,104"/>
 </map>
