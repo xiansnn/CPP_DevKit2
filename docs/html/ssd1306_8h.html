@@ -106,50 +106,42 @@ $(function(){initNavTree('ssd1306_8h.html',''); initResizable(true); });
 <div class="textblock"><code>#include &quot;<a class="el" href="commands___s_s_d1306_8h_source.html">ssd1306/commands_SSD1306.h</a>&quot;</code><br />
 <code>#include &quot;pico/stdlib.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="hw__i2c_8h_source.html">hw_i2c.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="ui__core_8h_source.html">ui_core.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display__device_8h_source.html">display_device.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ssd1306.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="ssd1306_8h__incl.png" border="0" usemap="#assd1306_8h" alt=""/></div>
 <map name="assd1306_8h" id="assd1306_8h">
-<area shape="rect" title=" " alt="" coords="277,5,348,30"/>
-<area shape="rect" href="commands___s_s_d1306_8h.html" title="This file contains all the defineition of SSD1306 commands." alt="" coords="74,78,250,103"/>
-<area shape="poly" title=" " alt="" coords="289,33,202,73,199,69,287,28"/>
-<area shape="rect" title=" " alt="" coords="305,223,384,248"/>
-<area shape="poly" title=" " alt="" coords="317,30,343,207,338,208,312,31"/>
-<area shape="rect" href="hw__i2c_8h.html" title=" " alt="" coords="222,151,286,175"/>
-<area shape="poly" title=" " alt="" coords="310,31,267,137,262,135,305,29"/>
-<area shape="rect" href="ui__core_8h.html" title=" " alt="" coords="487,78,552,103"/>
-<area shape="poly" title=" " alt="" coords="348,28,473,70,471,75,346,33"/>
-<area shape="poly" title=" " alt="" coords="270,174,320,212,316,216,267,178"/>
-<area shape="rect" title=" " alt="" coords="67,223,161,248"/>
-<area shape="poly" title=" " alt="" coords="232,178,152,218,149,214,230,174"/>
-<area shape="rect" title=" " alt="" coords="184,223,281,248"/>
-<area shape="poly" title=" " alt="" coords="253,177,243,209,238,208,248,175"/>
-<area shape="rect" title=" " alt="" coords="5,223,44,248"/>
-<area shape="poly" title=" " alt="" coords="222,176,59,225,57,220,221,171"/>
-<area shape="rect" title=" " alt="" coords="408,223,457,248"/>
-<area shape="poly" title=" " alt="" coords="284,173,395,217,393,222,282,178"/>
-<area shape="poly" title=" " alt="" coords="507,105,372,216,368,211,504,101"/>
-<area shape="poly" title=" " alt="" coords="508,105,487,126,467,152,452,181,442,209,437,208,447,179,462,149,483,122,504,101"/>
-<area shape="rect" href="framebuffer_8h.html" title="Most of code and algorithms here are derived from https://github.com/Harbys/pico&#45;ssd1306 works about ..." alt="" coords="477,151,562,175"/>
-<area shape="poly" title=" " alt="" coords="522,103,522,135,517,135,517,103"/>
-<area shape="rect" href="ui__control__event_8h.html" title=" " alt="" coords="585,151,696,175"/>
-<area shape="poly" title=" " alt="" coords="541,101,609,140,606,145,538,106"/>
-<area shape="rect" title=" " alt="" coords="720,151,772,175"/>
-<area shape="poly" title=" " alt="" coords="553,99,706,147,704,152,551,104"/>
-<area shape="rect" title=" " alt="" coords="795,151,838,175"/>
-<area shape="poly" title=" " alt="" coords="553,95,651,116,781,148,780,153,650,121,552,101"/>
-<area shape="poly" title=" " alt="" coords="491,178,388,220,386,215,489,173"/>
-<area shape="poly" title=" " alt="" coords="507,178,460,216,457,211,503,174"/>
-<area shape="rect" href="5x8__font_8h.html" title=" " alt="" coords="926,223,1043,248"/>
-<area shape="poly" title=" " alt="" coords="563,171,574,173,741,198,911,220,911,226,740,203,573,178,562,176"/>
-<area shape="rect" href="8x8__font_8h.html" title=" " alt="" coords="481,223,597,248"/>
-<area shape="poly" title=" " alt="" coords="525,175,534,208,529,209,520,177"/>
-<area shape="rect" href="12x16__font_8h.html" title=" " alt="" coords="622,223,750,248"/>
-<area shape="poly" title=" " alt="" coords="548,173,645,214,643,219,546,178"/>
-<area shape="rect" href="16x32__font_8h.html" title=" " alt="" coords="774,223,902,248"/>
-<area shape="poly" title=" " alt="" coords="563,171,771,217,769,222,562,176"/>
+<area shape="rect" title=" " alt="" coords="285,5,355,30"/>
+<area shape="rect" href="commands___s_s_d1306_8h.html" title="This file contains all the defineition of SSD1306 commands." alt="" coords="82,78,257,103"/>
+<area shape="poly" title=" " alt="" coords="296,33,209,73,207,69,294,28"/>
+<area shape="rect" title=" " alt="" coords="306,223,384,248"/>
+<area shape="poly" title=" " alt="" coords="324,30,345,207,340,208,319,31"/>
+<area shape="rect" href="hw__i2c_8h.html" title=" " alt="" coords="238,151,301,175"/>
+<area shape="poly" title=" " alt="" coords="319,31,281,137,276,135,314,29"/>
+<area shape="rect" href="display__device_8h.html" title=" " alt="" coords="440,78,538,103"/>
+<area shape="poly" title=" " alt="" coords="349,28,448,69,446,74,347,33"/>
+<area shape="poly" title=" " alt="" coords="284,174,324,211,320,215,280,178"/>
+<area shape="rect" title=" " alt="" coords="5,223,99,248"/>
+<area shape="poly" title=" " alt="" coords="238,177,104,221,102,215,236,172"/>
+<area shape="rect" title=" " alt="" coords="122,223,219,248"/>
+<area shape="poly" title=" " alt="" coords="255,178,201,216,198,212,251,174"/>
+<area shape="rect" title=" " alt="" coords="243,223,282,248"/>
+<area shape="poly" title=" " alt="" coords="271,176,268,208,263,208,266,176"/>
+<area shape="rect" title=" " alt="" coords="409,223,458,248"/>
+<area shape="poly" title=" " alt="" coords="297,173,396,216,394,220,295,178"/>
+<area shape="rect" href="framebuffer_8h.html" title="Most of code and algorithms here are derived from https://github.com/Harbys/pico&#45;ssd1306 works about ..." alt="" coords="503,151,588,175"/>
+<area shape="poly" title=" " alt="" coords="501,102,529,137,525,140,496,105"/>
+<area shape="poly" title=" " alt="" coords="513,178,394,220,392,215,511,173"/>
+<area shape="poly" title=" " alt="" coords="528,178,466,217,463,212,525,174"/>
+<area shape="rect" href="5x8__font_8h.html" title=" " alt="" coords="634,223,750,248"/>
+<area shape="poly" title=" " alt="" coords="571,173,655,214,653,219,568,178"/>
+<area shape="rect" href="8x8__font_8h.html" title=" " alt="" coords="774,223,890,248"/>
+<area shape="poly" title=" " alt="" coords="589,172,770,217,769,222,588,177"/>
+<area shape="rect" href="12x16__font_8h.html" title=" " alt="" coords="914,223,1043,248"/>
+<area shape="poly" title=" " alt="" coords="589,169,900,219,899,224,588,174"/>
+<area shape="rect" href="16x32__font_8h.html" title=" " alt="" coords="481,223,610,248"/>
+<area shape="poly" title=" " alt="" coords="548,176,548,208,543,208,543,176"/>
 </map>
 </div>
 </div>

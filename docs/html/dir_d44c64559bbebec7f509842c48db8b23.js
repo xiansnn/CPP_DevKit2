@@ -3,6 +3,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "mpu6050", "dir_fd12d3750c3047de98d8a0681d01ed86.html", "dir_fd12d3750c3047de98d8a0681d01ed86" ],
     [ "ssd1306", "dir_78dbc3dc709abd4967a2f87cfbd9237e.html", "dir_78dbc3dc709abd4967a2f87cfbd9237e" ],
     [ "dht11.h", "dht11_8h.html", "dht11_8h" ],
+    [ "display_device.h", "display__device_8h.html", "display__device_8h" ],
     [ "framebuffer.h", "framebuffer_8h.html", "framebuffer_8h" ],
     [ "hc_sr04.h", "hc__sr04_8h.html", "hc__sr04_8h" ],
     [ "hw_i2c.h", "hw__i2c_8h.html", "hw__i2c_8h" ],
@@ -16,5 +17,6 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "ssd1306.h", "ssd1306_8h.html", "ssd1306_8h" ],
     [ "switch_button.h", "switch__button_8h.html", "switch__button_8h" ],
     [ "ui_control_event.h", "ui__control__event_8h.html", "ui__control__event_8h" ],
-    [ "ui_core.h", "ui__core_8h.html", "ui__core_8h" ]
+    [ "ui_core.h", "ui__core_8h.html", "ui__core_8h" ],
+    [ "widget.h", "widget_8h.html", "widget_8h" ]
 ];

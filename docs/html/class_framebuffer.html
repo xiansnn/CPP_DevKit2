@@ -116,11 +116,11 @@ Inheritance diagram for Framebuffer:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_framebuffer__inherit__graph.png" border="0" usemap="#a_framebuffer_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_framebuffer_inherit__map" id="a_framebuffer_inherit__map">
-<area shape="rect" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="301,5,747,741"/>
-<area shape="rect" href="class_u_i_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="47,943,508,1075"/>
-<area shape="poly" title=" " alt="" coords="378,756,305,945,300,943,373,754"/>
-<area shape="rect" href="class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="533,789,1011,1229"/>
-<area shape="poly" title=" " alt="" coords="676,754,689,788,684,790,671,756"/>
+<area shape="rect" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="305,5,751,741"/>
+<area shape="rect" href="class_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="52,943,503,1075"/>
+<area shape="poly" title=" " alt="" coords="380,756,305,945,300,943,375,754"/>
+<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="527,789,1033,1229"/>
+<area shape="poly" title=" " alt="" coords="682,754,695,788,691,790,677,756"/>
 <area shape="rect" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver." alt="" coords="5,1277,549,1857"/>
 <area shape="poly" title=" " alt="" coords="280,1090,280,1278,275,1278,275,1090"/>
 </map>
@@ -238,7 +238,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:a74fb0832c9f2fd8f99a794ec499b5d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">a graphic primitive to draw a character at a character position  <br /></td></tr>
 <tr class="separator:a74fb0832c9f2fd8f99a794ec499b5d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9821acad0cef1fad78540c36f1ac3729" id="r_a9821acad0cef1fad78540c36f1ac3729"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9821acad0cef1fad78540c36f1ac3729">pixel</a> (int x, int y, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c=<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a>)</td></tr>
-<tr class="memdesc:a9821acad0cef1fad78540c36f1ac3729"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic primitive to draw a pixel  <br /></td></tr>
+<tr class="memdesc:a9821acad0cef1fad78540c36f1ac3729"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic primitive to draw a pixel.  <br /></td></tr>
 <tr class="separator:a9821acad0cef1fad78540c36f1ac3729"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ed07b3254c0295941c461059ccf2463" id="r_a9ed07b3254c0295941c461059ccf2463"><td class="memItemLeft" align="right" valign="top"><a id="a9ed07b3254c0295941c461059ccf2463" name="a9ed07b3254c0295941c461059ccf2463"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_line</b> ()</td></tr>
@@ -320,11 +320,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_framebuffer_a25c9cadebb3531112c5085e981962407_icgraph.png" border="0" usemap="#aclass_framebuffer_a25c9cadebb3531112c5085e981962407_icgraph" alt=""/></div>
 <map name="aclass_framebuffer_a25c9cadebb3531112c5085e981962407_icgraph" id="aclass_framebuffer_a25c9cadebb3531112c5085e981962407_icgraph">
-<area shape="rect" title="Construct a new Framebuffer object." alt="" coords="183,31,330,55"/>
-<area shape="rect" href="class_s_s_d1306.html#a67f56b6c4fd626c6b60488e9aebfc077" title="the SSD1306 implementation of the show function. Used when we need to show a framebuffer in a given r..." alt="" coords="21,5,119,30"/>
-<area shape="poly" title=" " alt="" coords="167,34,119,27,120,22,168,28"/>
-<area shape="rect" href="class_u_i_display_device.html#aa87594dc5c9085523809519fe0d85f5d" title="This is an pure virtual member function that all final derived class must implement...." alt="" coords="5,55,135,79"/>
-<area shape="poly" title=" " alt="" coords="168,57,135,61,135,56,167,52"/>
+<area shape="rect" title="Construct a new Framebuffer object." alt="" coords="172,31,319,55"/>
+<area shape="rect" href="class_display_device.html#a834052a46aab0c7f802dba845c444688" title="This is an pure virtual member function that all final derived class must implement...." alt="" coords="5,5,124,30"/>
+<area shape="poly" title=" " alt="" coords="156,33,124,29,125,23,156,28"/>
+<area shape="rect" href="class_s_s_d1306.html#a67f56b6c4fd626c6b60488e9aebfc077" title="the SSD1306 implementation of the show function. Used when we need to show a framebuffer in a given r..." alt="" coords="16,55,113,79"/>
+<area shape="poly" title=" " alt="" coords="156,58,114,63,113,58,156,52"/>
 </map>
 </div>
 
@@ -471,6 +471,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>a graphic primitive to draw a character at a pixel position </p>
+<dl class="section note"><dt>Note</dt><dd>NOTICE: <a class="el" href="#a7016487361a74a6de9183f81a9b96ec3" title="a graphic primitive to draw a character at a pixel position">drawChar()</a> implementation depends strongly on the <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79" title="enum used to characterize the type of display device memory organisation">FramebufferFormat</a>. There should be one code for each format. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">font</td><td>the font used to draw the character </td></tr>
@@ -769,7 +770,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>the graphic primitive to draw a pixel </p>
+<p>the graphic primitive to draw a pixel. </p>
+<dl class="section note"><dt>Note</dt><dd>NOTICE: <a class="el" href="#a9821acad0cef1fad78540c36f1ac3729" title="the graphic primitive to draw a pixel.">pixel()</a> implementation depends strongly on the <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79" title="enum used to characterize the type of display device memory organisation">FramebufferFormat</a>. There should be one code for each format. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">x</td><td>the x position of the pixel </td></tr>
