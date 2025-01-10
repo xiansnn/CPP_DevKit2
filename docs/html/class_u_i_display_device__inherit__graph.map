@@ -1,5 +1,7 @@
 <map id="UIDisplayDevice" name="UIDisplayDevice">
-<area shape="rect" id="Node000001" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="5,789,467,921"/>
-<area shape="rect" id="Node000002" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="13,5,459,741"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="239,756,239,789,233,789,233,756"/>
+<area shape="rect" id="Node000001" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="47,789,508,921"/>
+<area shape="rect" id="Node000003" href="$class_s_s_d1306.html" title="SSD1306 OLED display device driver." alt="" coords="5,969,549,1549"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="280,936,280,969,275,969,275,936"/>
+<area shape="rect" id="Node000002" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="54,5,501,741"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="280,756,280,789,275,789,275,756"/>
 </map>

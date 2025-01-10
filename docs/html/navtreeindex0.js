@@ -13,7 +13,7 @@ var NAVTREEINDEX0 =
 "8x8__font_8h.html#ac1e257a18f342596519ef4cbc5b673a9":[3,0,0,1,3,0],
 "8x8__font_8h_source.html":[3,0,0,1,3],
 "annotated.html":[2,0],
-"bug.html":[1],
+"bug.html":[0],
 "class_d_h_t11.html":[2,0,0],
 "class_d_h_t11.html#abdb9b9dbfeb00fac3826752fff347c16":[2,0,0,0],
 "class_d_h_t11.html#ad72fb9614e231616cc6c3c28cafafca3":[2,0,0,1],

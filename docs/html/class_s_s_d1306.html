@@ -116,9 +116,11 @@ Inheritance diagram for SSD1306:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_s_d1306__inherit__graph.png" border="0" usemap="#a_s_s_d1306_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_s_s_d1306_inherit__map" id="a_s_s_d1306_inherit__map">
-<area shape="rect" title="SSD1306 OLED display device driver." alt="" coords="5,789,549,1369"/>
+<area shape="rect" title="SSD1306 OLED display device driver." alt="" coords="5,969,549,1549"/>
+<area shape="rect" href="class_u_i_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="47,789,508,921"/>
+<area shape="poly" title=" " alt="" coords="280,936,280,969,275,969,275,936"/>
 <area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="54,5,501,741"/>
-<area shape="poly" title=" " alt="" coords="280,756,280,790,275,790,275,756"/>
+<area shape="poly" title=" " alt="" coords="280,756,280,789,275,789,275,756"/>
 </map>
 </div>
 <div class="dynheader">
@@ -126,15 +128,17 @@ Collaboration diagram for SSD1306:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_s_d1306__coll__graph.png" border="0" usemap="#a_s_s_d1306_coll__map" alt="Collaboration graph"/></div>
 <map name="a_s_s_d1306_coll__map" id="a_s_s_d1306_coll__map">
-<area shape="rect" title="SSD1306 OLED display device driver." alt="" coords="471,1001,1015,1563"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,222,452,939"/>
-<area shape="poly" title=" " alt="" coords="463,932,467,938,514,1000,510,1003,463,941,458,935"/>
-<area shape="rect" href="structstruct___framebuffer_text.html" title="Data structure that holds all configuration parameters used by textual primitives." alt="" coords="153,5,304,160"/>
-<area shape="poly" title=" " alt="" coords="231,160,231,205,226,205,226,160"/>
-<area shape="rect" href="class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="477,485,1010,677"/>
-<area shape="poly" title=" " alt="" coords="746,677,746,984,741,984,741,677"/>
-<area shape="rect" href="structstruct___config_s_s_d1306.html" title="configuration data for SSD1306 OLED display. refer to datasheet for more details." alt="" coords="1034,457,1218,705"/>
-<area shape="poly" title=" " alt="" coords="1106,705,1073,822,1051,883,1024,941,997,989,992,986,1020,938,1046,881,1068,820,1101,704"/>
+<area shape="rect" title="SSD1306 OLED display device driver." alt="" coords="485,1299,1029,1860"/>
+<area shape="rect" href="class_u_i_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="5,1047,467,1179"/>
+<area shape="poly" title=" " alt="" coords="322,1187,487,1334,484,1338,318,1191"/>
+<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="13,222,459,939"/>
+<area shape="poly" title=" " alt="" coords="239,954,239,1047,233,1047,233,954"/>
+<area shape="rect" href="structstruct___framebuffer_text.html" title="Data structure that holds all configuration parameters used by textual primitives." alt="" coords="161,5,311,160"/>
+<area shape="poly" title=" " alt="" coords="239,160,239,205,233,205,233,160"/>
+<area shape="rect" href="class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="491,1017,1024,1209"/>
+<area shape="poly" title=" " alt="" coords="760,1208,760,1282,755,1282,755,1208"/>
+<area shape="rect" href="structstruct___config_s_s_d1306.html" title="configuration data for SSD1306 OLED display. refer to datasheet for more details." alt="" coords="1048,989,1232,1237"/>
+<area shape="poly" title=" " alt="" coords="1050,1227,1000,1288,996,1284,1046,1223"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -143,9 +147,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4d8fc891acd28a44e8b2c274c92cd57b" id="r_a4d8fc891acd28a44e8b2c274c92cd57b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d8fc891acd28a44e8b2c274c92cd57b">SSD1306</a> (<a class="el" href="class_h_w___i2_c___master.html">HW_I2C_Master</a> *master, <a class="el" href="structstruct___config_s_s_d1306.html">struct_ConfigSSD1306</a> <a class="el" href="#a8c77fc2b876883b63b9f9d403e368e8d">device_config</a>)</td></tr>
 <tr class="memdesc:a4d8fc891acd28a44e8b2c274c92cd57b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> object.  <br /></td></tr>
 <tr class="separator:a4d8fc891acd28a44e8b2c274c92cd57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9877895dcf33190e2fa712c8bf46bbb8" id="r_a9877895dcf33190e2fa712c8bf46bbb8"><td class="memItemLeft" align="right" valign="top"><a id="a9877895dcf33190e2fa712c8bf46bbb8" name="a9877895dcf33190e2fa712c8bf46bbb8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>show</b> ()</td></tr>
-<tr class="memdesc:a9877895dcf33190e2fa712c8bf46bbb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">the <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> implementation of the show function. Used when we need to show the full device area <br /></td></tr>
+<tr class="memitem:a9877895dcf33190e2fa712c8bf46bbb8" id="r_a9877895dcf33190e2fa712c8bf46bbb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9877895dcf33190e2fa712c8bf46bbb8">show</a> ()</td></tr>
+<tr class="memdesc:a9877895dcf33190e2fa712c8bf46bbb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">the <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> implementation of the show function. Used when we need to show the full device area  <br /></td></tr>
 <tr class="separator:a9877895dcf33190e2fa712c8bf46bbb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67f56b6c4fd626c6b60488e9aebfc077" id="r_a67f56b6c4fd626c6b60488e9aebfc077"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67f56b6c4fd626c6b60488e9aebfc077">show</a> (<a class="el" href="class_framebuffer.html">Framebuffer</a> *frame, uint8_t anchor_x, uint8_t anchor_y)</td></tr>
 <tr class="memdesc:a67f56b6c4fd626c6b60488e9aebfc077"><td class="mdescLeft">&#160;</td><td class="mdescRight">the <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> implementation of the show function. Used when we need to show a framebuffer in a given render area  <br /></td></tr>
@@ -186,6 +189,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_display_ON</b> ()
 <tr class="separator:a3228383e41ea93124a1da0a619dc6b11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25a4d90a656b9fd2f1b2d220cc9f8e2b" id="r_a25a4d90a656b9fd2f1b2d220cc9f8e2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25a4d90a656b9fd2f1b2d220cc9f8e2b">vertical_scroll</a> (bool on, <a class="el" href="structstruct___config_scroll_s_s_d1306.html">struct_ConfigScrollSSD1306</a> scroll_data)</td></tr>
 <tr class="separator:a25a4d90a656b9fd2f1b2d220cc9f8e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_u_i_display_device"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_u_i_display_device')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_u_i_display_device.html">UIDisplayDevice</a></td></tr>
+<tr class="memitem:a3aaaddcf19f1472a593d56b49a546b1d inherit pub_methods_class_u_i_display_device" id="r_a3aaaddcf19f1472a593d56b49a546b1d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_display_device.html#a3aaaddcf19f1472a593d56b49a546b1d">UIDisplayDevice</a> (size_t width, size_t height, <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a> format=<a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79ab8705fdb146f8f1c9e9d2d8dd6c072ad">FramebufferFormat::MONO_VLSB</a>, <a class="el" href="structstruct___framebuffer_text.html">struct_FramebufferText</a> txt_cnf={.font=<a class="el" href="8x8__font_8h.html#ac1e257a18f342596519ef4cbc5b673a9">font_8x8</a>})</td></tr>
+<tr class="memdesc:a3aaaddcf19f1472a593d56b49a546b1d inherit pub_methods_class_u_i_display_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_u_i_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e....">UIDisplayDevice</a> object.  <br /></td></tr>
+<tr class="separator:a3aaaddcf19f1472a593d56b49a546b1d inherit pub_methods_class_u_i_display_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae09d577c3e2fe630bf01379c15e5cc98 inherit pub_methods_class_u_i_display_device" id="r_ae09d577c3e2fe630bf01379c15e5cc98"><td class="memItemLeft" align="right" valign="top">
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~UIDisplayDevice</b> ()</td></tr>
+<tr class="memdesc:ae09d577c3e2fe630bf01379c15e5cc98 inherit pub_methods_class_u_i_display_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_u_i_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e....">UIDisplayDevice</a> object. <br /></td></tr>
+<tr class="separator:ae09d577c3e2fe630bf01379c15e5cc98 inherit pub_methods_class_u_i_display_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
 <tr class="memitem:a25c9cadebb3531112c5085e981962407 inherit pub_methods_class_framebuffer" id="r_a25c9cadebb3531112c5085e981962407"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a25c9cadebb3531112c5085e981962407">Framebuffer</a> (size_t <a class="el" href="class_framebuffer.html#a35a041f8b088ee5274aa334d13e4c60e">frame_width</a>, size_t <a class="el" href="class_framebuffer.html#aa346612ecd1e1a0167734b8173bed9db">frame_height</a>, <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a> <a class="el" href="class_framebuffer.html#ac09b3c586c580074e08fdb5d5b45f598">frame_format</a>=<a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79ab8705fdb146f8f1c9e9d2d8dd6c072ad">FramebufferFormat::MONO_VLSB</a>)</td></tr>
 <tr class="memdesc:a25c9cadebb3531112c5085e981962407 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a> object.  <br /></td></tr>
@@ -217,7 +228,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_pixel_buffer</b
 <tr class="memdesc:ae0e1916dfc5fcdaa7999c8d3ebdaef6b inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a rectangle, starting at frame position (x,y), w wide and h high.  <br /></td></tr>
 <tr class="separator:ae0e1916dfc5fcdaa7999c8d3ebdaef6b inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4eb865f19596a64e30862697ab737318 inherit pub_methods_class_framebuffer" id="r_a4eb865f19596a64e30862697ab737318"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a4eb865f19596a64e30862697ab737318">circle</a> (int radius, int x_center, int y_center, bool <a class="el" href="class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1">fill</a>=false, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c=<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a>)</td></tr>
-<tr class="memdesc:a4eb865f19596a64e30862697ab737318 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a cercle of size radius, centered at (x_center, y_center)  <br /></td></tr>
+<tr class="memdesc:a4eb865f19596a64e30862697ab737318 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a cercle of size radius, centered at (x_center, y_center) <a href="https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham">https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham</a> <a href="https://en.wikipedia.org/wiki/Midpoint_circle_algorithm">https://en.wikipedia.org/wiki/Midpoint_circle_algorithm</a> procédure tracerCercle (entier rayon, entier x_centre, entier y_centre) déclarer entier x, y, m ; x ← 0 ; y ← rayon ; // on se place en haut du cercle m ← 5 - 4*rayon ; // initialisation Tant que x &lt;= y // tant qu'on est dans le second octant tracerPixel( x+x_centre, y+y_centre ) ; tracerPixel( y+x_centre, x+y_centre ) ; tracerPixel( -x+x_centre, y+y_centre ) ; tracerPixel( -y+x_centre, x+y_centre ) ; tracerPixel( x+x_centre, -y+y_centre ) ; tracerPixel( y+x_centre, -x+y_centre ) ; tracerPixel( -x+x_centre, -y+y_centre ) ; tracerPixel( -y+x_centre, -x+y_centre ) ; si m &gt; 0 alors //choix du point F y ← y - 1 ; m ← m - 8*y ; fin si ; x ← x + 1 ; m ← m + 8*x + 4 ; fin tant que ; fin de procédure ;  <br /></td></tr>
 <tr class="separator:a4eb865f19596a64e30862697ab737318 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d2fec25f3bb6f584d239b85e9facd04 inherit pub_methods_class_framebuffer" id="r_a9d2fec25f3bb6f584d239b85e9facd04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a9d2fec25f3bb6f584d239b85e9facd04">init_text_buffer</a> (<a class="el" href="structstruct___framebuffer_text.html">struct_FramebufferText</a> <a class="el" href="class_framebuffer.html#ad9526c00b4e1e49d7b51860cdda0a03d">frame_text_config</a>)</td></tr>
 <tr class="memdesc:a9d2fec25f3bb6f584d239b85e9facd04 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the textual features of framebuffer, according to the configuration data structure frame_text_config.  <br /></td></tr>
@@ -910,11 +921,43 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>max_column</b> {0}
 
 </div>
 </div>
-<a id="a67f56b6c4fd626c6b60488e9aebfc077" name="a67f56b6c4fd626c6b60488e9aebfc077"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67f56b6c4fd626c6b60488e9aebfc077">&#9670;&#160;</a></span>show()</h2>
+<a id="a9877895dcf33190e2fa712c8bf46bbb8" name="a9877895dcf33190e2fa712c8bf46bbb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9877895dcf33190e2fa712c8bf46bbb8">&#9670;&#160;</a></span>show() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::show </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> implementation of the show function. Used when we need to show the full device area </p>
+
+<p>Implements <a class="el" href="class_u_i_display_device.html#aea99bda7a2f1e6744076fce90e28ef57">UIDisplayDevice</a>.</p>
+
+</div>
+</div>
+<a id="a67f56b6c4fd626c6b60488e9aebfc077" name="a67f56b6c4fd626c6b60488e9aebfc077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67f56b6c4fd626c6b60488e9aebfc077">&#9670;&#160;</a></span>show() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void SSD1306::show </td>
@@ -932,6 +975,11 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>max_column</b> {0}
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_y</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>the <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> implementation of the show function. Used when we need to show a framebuffer in a given render area </p>
@@ -943,6 +991,8 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>max_column</b> {0}
   </table>
   </dd>
 </dl>
+
+<p>Implements <a class="el" href="class_u_i_display_device.html#aa87594dc5c9085523809519fe0d85f5d">UIDisplayDevice</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

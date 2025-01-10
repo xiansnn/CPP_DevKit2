@@ -1,5 +1,7 @@
 <map id="ui_core.h" name="ui_core.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,71,30"/>
-<area shape="rect" id="Node000002" href="$ky040_8h.html" title=" " alt="" coords="9,78,67,103"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="41,46,41,78,35,78,35,46"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="46,5,111,30"/>
+<area shape="rect" id="Node000002" href="$ky040_8h.html" title=" " alt="" coords="5,78,64,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,45,44,79,39,76,61,42"/>
+<area shape="rect" id="Node000003" href="$ssd1306_8h.html" title=" " alt="" coords="87,78,158,103"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="96,42,118,76,113,79,92,45"/>
 </map>

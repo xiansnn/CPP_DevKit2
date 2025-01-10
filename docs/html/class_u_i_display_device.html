@@ -113,9 +113,11 @@ Inheritance diagram for UIDisplayDevice:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_u_i_display_device__inherit__graph.png" border="0" usemap="#a_u_i_display_device_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_u_i_display_device_inherit__map" id="a_u_i_display_device_inherit__map">
-<area shape="rect" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="5,789,467,921"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="13,5,459,741"/>
-<area shape="poly" title=" " alt="" coords="239,756,239,789,233,789,233,756"/>
+<area shape="rect" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="47,789,508,921"/>
+<area shape="rect" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver." alt="" coords="5,969,549,1549"/>
+<area shape="poly" title=" " alt="" coords="280,936,280,969,275,969,275,936"/>
+<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="54,5,501,741"/>
+<area shape="poly" title=" " alt="" coords="280,756,280,789,275,789,275,756"/>
 </map>
 </div>
 <div class="dynheader">
@@ -140,9 +142,8 @@ Public Member Functions</h2></td></tr>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~UIDisplayDevice</b> ()</td></tr>
 <tr class="memdesc:ae09d577c3e2fe630bf01379c15e5cc98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_u_i_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e....">UIDisplayDevice</a> object. <br /></td></tr>
 <tr class="separator:ae09d577c3e2fe630bf01379c15e5cc98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea99bda7a2f1e6744076fce90e28ef57" id="r_aea99bda7a2f1e6744076fce90e28ef57"><td class="memItemLeft" align="right" valign="top"><a id="aea99bda7a2f1e6744076fce90e28ef57" name="aea99bda7a2f1e6744076fce90e28ef57"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>show</b> ()=0</td></tr>
-<tr class="memdesc:aea99bda7a2f1e6744076fce90e28ef57"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an pure virtual member function that all final derived class must implement. It transfers the framebuffer buffer to the entire display screen buffer. <br /></td></tr>
+<tr class="memitem:aea99bda7a2f1e6744076fce90e28ef57" id="r_aea99bda7a2f1e6744076fce90e28ef57"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea99bda7a2f1e6744076fce90e28ef57">show</a> ()=0</td></tr>
+<tr class="memdesc:aea99bda7a2f1e6744076fce90e28ef57"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an pure virtual member function that all final derived class must implement. It transfers the framebuffer buffer to the entire display screen buffer.  <br /></td></tr>
 <tr class="separator:aea99bda7a2f1e6744076fce90e28ef57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa87594dc5c9085523809519fe0d85f5d" id="r_aa87594dc5c9085523809519fe0d85f5d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa87594dc5c9085523809519fe0d85f5d">show</a> (<a class="el" href="class_framebuffer.html">Framebuffer</a> *frame, uint8_t anchor_x, uint8_t anchor_y)=0</td></tr>
 <tr class="memdesc:aa87594dc5c9085523809519fe0d85f5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an pure virtual member function that all final derived class must implement. It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.  <br /></td></tr>
@@ -178,7 +179,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_pixel_buffer</b
 <tr class="memdesc:ae0e1916dfc5fcdaa7999c8d3ebdaef6b inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a rectangle, starting at frame position (x,y), w wide and h high.  <br /></td></tr>
 <tr class="separator:ae0e1916dfc5fcdaa7999c8d3ebdaef6b inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4eb865f19596a64e30862697ab737318 inherit pub_methods_class_framebuffer" id="r_a4eb865f19596a64e30862697ab737318"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a4eb865f19596a64e30862697ab737318">circle</a> (int radius, int x_center, int y_center, bool <a class="el" href="class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1">fill</a>=false, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c=<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a>)</td></tr>
-<tr class="memdesc:a4eb865f19596a64e30862697ab737318 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a cercle of size radius, centered at (x_center, y_center)  <br /></td></tr>
+<tr class="memdesc:a4eb865f19596a64e30862697ab737318 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a cercle of size radius, centered at (x_center, y_center) <a href="https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham">https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham</a> <a href="https://en.wikipedia.org/wiki/Midpoint_circle_algorithm">https://en.wikipedia.org/wiki/Midpoint_circle_algorithm</a> procédure tracerCercle (entier rayon, entier x_centre, entier y_centre) déclarer entier x, y, m ; x ← 0 ; y ← rayon ; // on se place en haut du cercle m ← 5 - 4*rayon ; // initialisation Tant que x &lt;= y // tant qu'on est dans le second octant tracerPixel( x+x_centre, y+y_centre ) ; tracerPixel( y+x_centre, x+y_centre ) ; tracerPixel( -x+x_centre, y+y_centre ) ; tracerPixel( -y+x_centre, x+y_centre ) ; tracerPixel( x+x_centre, -y+y_centre ) ; tracerPixel( y+x_centre, -x+y_centre ) ; tracerPixel( -x+x_centre, -y+y_centre ) ; tracerPixel( -y+x_centre, -x+y_centre ) ; si m &gt; 0 alors //choix du point F y ← y - 1 ; m ← m - 8*y ; fin si ; x ← x + 1 ; m ← m + 8*x + 4 ; fin tant que ; fin de procédure ;  <br /></td></tr>
 <tr class="separator:a4eb865f19596a64e30862697ab737318 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d2fec25f3bb6f584d239b85e9facd04 inherit pub_methods_class_framebuffer" id="r_a9d2fec25f3bb6f584d239b85e9facd04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a9d2fec25f3bb6f584d239b85e9facd04">init_text_buffer</a> (<a class="el" href="structstruct___framebuffer_text.html">struct_FramebufferText</a> <a class="el" href="class_framebuffer.html#ad9526c00b4e1e49d7b51860cdda0a03d">frame_text_config</a>)</td></tr>
 <tr class="memdesc:a9d2fec25f3bb6f584d239b85e9facd04 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the textual features of framebuffer, according to the configuration data structure frame_text_config.  <br /></td></tr>
@@ -283,8 +284,37 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>max_column</b> {0}
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="aea99bda7a2f1e6744076fce90e28ef57" name="aea99bda7a2f1e6744076fce90e28ef57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea99bda7a2f1e6744076fce90e28ef57">&#9670;&#160;</a></span>show() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void UIDisplayDevice::show </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This is an pure virtual member function that all final derived class must implement. It transfers the framebuffer buffer to the entire display screen buffer. </p>
+
+<p>Implemented in <a class="el" href="class_s_s_d1306.html#a9877895dcf33190e2fa712c8bf46bbb8">SSD1306</a>.</p>
+
+</div>
+</div>
 <a id="aa87594dc5c9085523809519fe0d85f5d" name="aa87594dc5c9085523809519fe0d85f5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa87594dc5c9085523809519fe0d85f5d">&#9670;&#160;</a></span>show()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa87594dc5c9085523809519fe0d85f5d">&#9670;&#160;</a></span>show() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -324,6 +354,8 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>max_column</b> {0}
   </table>
   </dd>
 </dl>
+
+<p>Implemented in <a class="el" href="class_s_s_d1306.html#a67f56b6c4fd626c6b60488e9aebfc077">SSD1306</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
