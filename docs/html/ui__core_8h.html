@@ -107,6 +107,7 @@ $(function(){initNavTree('ui__core_8h.html',''); initResizable(true); });
 <div class="textblock"><code>#include &quot;pico/stdlib.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="framebuffer_8h_source.html">framebuffer.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ui__control__event_8h_source.html">ui_control_event.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display__device_8h_source.html">display_device.h</a>&quot;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
@@ -115,29 +116,32 @@ Include dependency graph for ui_core.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="ui__core_8h__incl.png" border="0" usemap="#aui__core_8h" alt=""/></div>
 <map name="aui__core_8h" id="aui__core_8h">
-<area shape="rect" title=" " alt="" coords="264,5,329,30"/>
-<area shape="rect" title=" " alt="" coords="5,151,84,175"/>
-<area shape="poly" title=" " alt="" coords="264,33,213,53,158,80,111,112,71,143,67,138,107,107,155,76,211,48,262,28"/>
-<area shape="rect" href="framebuffer_8h.html" title="Most of code and algorithms here are derived from https://github.com/Harbys/pico&#45;ssd1306 works about ..." alt="" coords="194,78,279,103"/>
-<area shape="poly" title=" " alt="" coords="289,32,258,68,254,65,285,29"/>
-<area shape="rect" title=" " alt="" coords="108,151,157,175"/>
-<area shape="poly" title=" " alt="" coords="264,33,223,52,184,80,161,108,145,137,141,135,157,105,180,76,221,47,262,28"/>
-<area shape="rect" href="ui__control__event_8h.html" title=" " alt="" coords="303,78,413,103"/>
-<area shape="poly" title=" " alt="" coords="309,29,340,65,336,68,305,32"/>
-<area shape="rect" title=" " alt="" coords="438,78,489,103"/>
-<area shape="poly" title=" " alt="" coords="325,28,424,70,422,75,323,33"/>
-<area shape="rect" title=" " alt="" coords="513,78,555,103"/>
-<area shape="poly" title=" " alt="" coords="331,26,499,75,497,80,329,31"/>
-<area shape="poly" title=" " alt="" coords="206,106,91,147,90,142,204,101"/>
-<area shape="poly" title=" " alt="" coords="221,105,164,144,161,139,218,101"/>
-<area shape="rect" href="5x8__font_8h.html" title=" " alt="" coords="485,151,601,175"/>
-<area shape="poly" title=" " alt="" coords="280,99,478,144,477,149,279,104"/>
-<area shape="rect" href="8x8__font_8h.html" title=" " alt="" coords="625,151,741,175"/>
-<area shape="poly" title=" " alt="" coords="280,98,292,100,449,125,610,147,609,153,449,130,291,105,279,103"/>
-<area shape="rect" href="12x16__font_8h.html" title=" " alt="" coords="180,151,309,175"/>
-<area shape="poly" title=" " alt="" coords="240,103,244,135,239,135,235,104"/>
-<area shape="rect" href="16x32__font_8h.html" title=" " alt="" coords="332,151,461,175"/>
-<area shape="poly" title=" " alt="" coords="264,101,357,142,355,146,262,106"/>
+<area shape="rect" title=" " alt="" coords="254,5,320,30"/>
+<area shape="rect" title=" " alt="" coords="5,223,84,248"/>
+<area shape="poly" title=" " alt="" coords="255,26,189,43,155,58,124,80,98,110,78,144,53,209,48,207,73,142,93,107,120,76,152,54,188,38,254,21"/>
+<area shape="rect" href="framebuffer_8h.html" title="Most of code and algorithms here are derived from https://github.com/Harbys/pico&#45;ssd1306 works about ..." alt="" coords="223,151,308,175"/>
+<area shape="poly" title=" " alt="" coords="288,31,272,136,267,135,283,30"/>
+<area shape="rect" title=" " alt="" coords="108,223,157,248"/>
+<area shape="poly" title=" " alt="" coords="255,25,226,30,195,40,165,56,141,80,127,111,122,145,124,179,128,208,123,209,118,179,117,145,122,109,137,76,162,52,193,35,225,25,254,19"/>
+<area shape="rect" href="ui__control__event_8h.html" title=" " alt="" coords="324,78,434,103"/>
+<area shape="poly" title=" " alt="" coords="304,28,354,66,351,71,301,33"/>
+<area shape="rect" href="display__device_8h.html" title=" " alt="" coords="151,78,250,103"/>
+<area shape="poly" title=" " alt="" coords="275,33,228,70,225,66,271,28"/>
+<area shape="rect" title=" " alt="" coords="459,78,510,103"/>
+<area shape="poly" title=" " alt="" coords="321,28,445,72,443,77,319,33"/>
+<area shape="rect" title=" " alt="" coords="534,78,576,103"/>
+<area shape="poly" title=" " alt="" coords="321,24,519,75,518,80,320,29"/>
+<area shape="poly" title=" " alt="" coords="230,178,96,221,95,216,228,173"/>
+<area shape="poly" title=" " alt="" coords="245,178,169,218,167,213,243,174"/>
+<area shape="rect" href="5x8__font_8h.html" title=" " alt="" coords="485,223,601,248"/>
+<area shape="poly" title=" " alt="" coords="310,173,483,216,482,222,309,178"/>
+<area shape="rect" href="8x8__font_8h.html" title=" " alt="" coords="625,223,741,248"/>
+<area shape="poly" title=" " alt="" coords="309,169,610,219,609,225,308,174"/>
+<area shape="rect" href="12x16__font_8h.html" title=" " alt="" coords="180,223,309,248"/>
+<area shape="poly" title=" " alt="" coords="265,177,255,209,250,208,260,175"/>
+<area shape="rect" href="16x32__font_8h.html" title=" " alt="" coords="332,223,461,248"/>
+<area shape="poly" title=" " alt="" coords="289,174,363,213,361,218,286,178"/>
+<area shape="poly" title=" " alt="" coords="213,101,247,138,243,141,209,105"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -155,23 +159,17 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_display_device.html">UIDisplayDevice</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the abstract class to handle all generic behavior of physical display devices (e.g. OLED screen <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a>). It derived from <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a>. This allows to draw text and graphics directly into the display framebuffer thanks to Framebuffet class text and graphic primitives indepently from any kind of widget.  <a href="class_u_i_display_device.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_model_object.html">UIModelObject</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the Model abstract class of Model_View_Control design pattern.  <a href="class_u_i_model_object.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the abstract class to handle all generic behavior of physical display devices (e.g. OLED screen <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a>). It derived from <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a>. This allows to draw text and graphics directly into the display framebuffer thanks to Framebuffet class text and graphic primitives indepently from any kind of widget.  <a href="class_u_i_model_object.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_controlled_incremental_value.html">UIControlledIncrementalValue</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of UIModelObject that have special feature such as a value...">UIControlledIncrementalValue</a> is a kind of <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> that have special feature such as a value that can be incremented or decremented. This value runs between a min_value and a max_value.  <a href="class_u_i_controlled_incremental_value.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of UIModelObject that have special feature such as a value...">UIControlledIncrementalValue</a> is a kind of <a class="el" href="class_u_i_model_object.html" title="This is the abstract class to handle all generic behavior of physical display devices (e....">UIModelObject</a> that have special feature such as a value that can be incremented or decremented. This value runs between a min_value and a max_value.  <a href="class_u_i_controlled_incremental_value.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_object_manager.html">UIObjectManager</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an Abstract class that is used to implement the manager of object on a screen.  <a href="class_u_i_object_manager.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_controller.html">UIController</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model-View-Controll design...">UIController</a> is the abstract class that hosts all controller object in the Model-View-Controll design pattern.  <a href="class_u_i_controller.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_widget.html">UIWidget</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A widget is a displayed object on a device screen. It inherits from all framebuffer features, giving it textual and graphical capabilities.  <a href="class_u_i_widget.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -187,7 +185,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="#a57c20ec1ef250b4ad060705786762112ac21f0eab1363c0a1274cd38acea090ac">HAS_FOCUS</a>
 , <a class="el" href="#a57c20ec1ef250b4ad060705786762112a70d794d2a66b3ed4d2b0ff57d41b7089">IS_ACTIVE</a>
  }</td></tr>
-<tr class="memdesc:a57c20ec1ef250b4ad060705786762112"><td class="mdescLeft">&#160;</td><td class="mdescRight">The list of status that a <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> can have.  <a href="#a57c20ec1ef250b4ad060705786762112">More...</a><br /></td></tr>
+<tr class="memdesc:a57c20ec1ef250b4ad060705786762112"><td class="mdescLeft">&#160;</td><td class="mdescRight">The list of status that a <a class="el" href="class_u_i_model_object.html" title="This is the abstract class to handle all generic behavior of physical display devices (e....">UIModelObject</a> can have.  <a href="#a57c20ec1ef250b4ad060705786762112">More...</a><br /></td></tr>
 <tr class="separator:a57c20ec1ef250b4ad060705786762112"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -216,7 +214,7 @@ Enumerations</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The list of status that a <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> can have. </p>
+<p>The list of status that a <a class="el" href="class_u_i_model_object.html" title="This is the abstract class to handle all generic behavior of physical display devices (e....">UIModelObject</a> can have. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a57c20ec1ef250b4ad060705786762112a02ca6db02d1c43b09e875c6cc1f51aab" name="a57c20ec1ef250b4ad060705786762112a02ca6db02d1c43b09e875c6cc1f51aab"></a>IS_WAITING&#160;</td><td class="fielddoc"><p>The object is inactive, nothing to do. </p>
 </td></tr>

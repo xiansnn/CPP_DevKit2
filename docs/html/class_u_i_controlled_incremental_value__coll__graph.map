@@ -1,6 +1,6 @@
 <map id="UIControlledIncrementalValue" name="UIControlledIncrementalValue">
 <area shape="rect" id="Node000001" title="The UIControlledIncrementalValue is a kind of UIModelObject that have special feature such as a value..." alt="" coords="5,353,551,619"/>
-<area shape="rect" id="Node000002" href="$class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="454,5,777,291"/>
+<area shape="rect" id="Node000002" href="$class_u_i_model_object.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="454,5,777,291"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="464,303,413,355,409,351,461,299"/>
 <area shape="rect" id="Node000003" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="575,437,987,535"/>
 <area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="603,290,613,328,629,355,648,381,693,424,689,428,644,384,624,358,609,330,598,291"/>

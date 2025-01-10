@@ -1,0 +1,5 @@
+<map id="Widget" name="Widget">
+<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,789,512,1229"/>
+<area shape="rect" id="Node000002" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="35,5,482,741"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="261,756,261,789,256,789,256,756"/>
+</map>

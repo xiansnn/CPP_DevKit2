@@ -45,7 +45,7 @@ FramebufferFormat Framebuffer::get_framebuffer_format()
 
 void Framebuffer::fill(FramebufferColor c)
 {
-    assert(this->frame_format == FramebufferFormat::MONO_VLSB);
+    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
     if (c == FramebufferColor::BLACK)
         memset(this->pixel_buffer, 0x00, this->pixel_buffer_size);
     else
@@ -176,7 +176,7 @@ void Framebuffer::print_char(char c)
 
 void Framebuffer::pixel(int x, int y, FramebufferColor c)
 {
-    assert(frame_format == FramebufferFormat::MONO_VLSB); // works only if MONO_VLSB
+    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
 
     if (x >= 0 && x < this->frame_width && y >= 0 && y < this->frame_height) // avoid drawing outside the framebuffer
     {
@@ -314,6 +314,8 @@ void Framebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, 
 
 void Framebuffer::drawChar(const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y)
 {
+    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
+
     if (!font || c < 32)
         return;
 
@@ -351,32 +353,7 @@ void Framebuffer::drawChar(char c, uint8_t char_column, uint8_t char_line)
 }
 
 void Framebuffer::circle(int radius, int x_center, int y_center, bool fill, FramebufferColor c)
-/*
-https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham
-https://en.wikipedia.org/wiki/Midpoint_circle_algorithm
-procédure tracerCercle (entier rayon, entier x_centre, entier y_centre)
-    déclarer entier x, y, m ;
-    x ← 0 ;
-    y ← rayon ;             // on se place en haut du cercle
-    m ← 5 - 4*rayon ;       // initialisation
-    Tant que x <= y         // tant qu'on est dans le second octant
-        tracerPixel( x+x_centre, y+y_centre ) ;
-        tracerPixel( y+x_centre, x+y_centre ) ;
-        tracerPixel( -x+x_centre, y+y_centre ) ;
-        tracerPixel( -y+x_centre, x+y_centre ) ;
-        tracerPixel( x+x_centre, -y+y_centre ) ;
-        tracerPixel( y+x_centre, -x+y_centre ) ;
-        tracerPixel( -x+x_centre, -y+y_centre ) ;
-        tracerPixel( -y+x_centre, -x+y_centre ) ;
-        si m > 0 alors	//choix du point F
-            y ← y - 1 ;
-            m ← m - 8*y ;
-        fin si ;
-        x ← x + 1 ;
-        m ← m + 8*x + 4 ;
-    fin tant que ;
-fin de procédure ;
-*/
+
 {
     int x, y, m;
     x = 0;

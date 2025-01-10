@@ -2,9 +2,10 @@ var hierarchy =
 [
     [ "DHT11", "class_d_h_t11.html", null ],
     [ "Framebuffer", "class_framebuffer.html", [
-      [ "SSD1306", "class_s_s_d1306.html", null ],
-      [ "UIDisplayDevice", "class_u_i_display_device.html", null ],
-      [ "UIWidget", "class_u_i_widget.html", null ]
+      [ "DisplayDevice", "class_display_device.html", [
+        [ "SSD1306", "class_s_s_d1306.html", null ]
+      ] ],
+      [ "Widget", "class_widget.html", null ]
     ] ],
     [ "HC_SR04", "class_h_c___s_r04.html", null ],
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", null ],

@@ -1,6 +1,6 @@
 <map id="Framebuffer::fill" name="Framebuffer::fill">
 <area shape="rect" id="Node000001" title="Write all framebuffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)." alt="" coords="171,55,268,79"/>
-<area shape="rect" id="Node000002" href="$class_framebuffer.html#a4eb865f19596a64e30862697ab737318" title="draw a cercle of size radius, centered at (x_center, y_center)" alt="" coords="8,5,120,30"/>
+<area shape="rect" id="Node000002" href="$class_framebuffer.html#a4eb865f19596a64e30862697ab737318" title="draw a cercle of size radius, centered at (x_center, y_center) https://fr.wikipedia...." alt="" coords="8,5,120,30"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,52,104,33,106,28,164,47"/>
 <area shape="rect" id="Node000003" href="$class_framebuffer.html#a091ac1c60df92f1aefc2353be4e7a076" title="the graphic primitive to draw an ellipse" alt="" coords="5,55,123,79"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="155,70,123,70,123,64,155,64"/>

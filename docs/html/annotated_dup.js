@@ -1,6 +1,7 @@
 var annotated_dup =
 [
     [ "DHT11", "class_d_h_t11.html", "class_d_h_t11" ],
+    [ "DisplayDevice", "class_display_device.html", "class_display_device" ],
     [ "Framebuffer", "class_framebuffer.html", "class_framebuffer" ],
     [ "HC_SR04", "class_h_c___s_r04.html", "class_h_c___s_r04" ],
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", "class_h_w___i2_c___master" ],
@@ -32,8 +33,7 @@ var annotated_dup =
     [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", "class_switch_button_with_i_r_q" ],
     [ "UIControlledIncrementalValue", "class_u_i_controlled_incremental_value.html", "class_u_i_controlled_incremental_value" ],
     [ "UIController", "class_u_i_controller.html", "class_u_i_controller" ],
-    [ "UIDisplayDevice", "class_u_i_display_device.html", "class_u_i_display_device" ],
     [ "UIModelObject", "class_u_i_model_object.html", "class_u_i_model_object" ],
     [ "UIObjectManager", "class_u_i_object_manager.html", "class_u_i_object_manager" ],
-    [ "UIWidget", "class_u_i_widget.html", "class_u_i_widget" ]
+    [ "Widget", "class_widget.html", "class_widget" ]
 ];

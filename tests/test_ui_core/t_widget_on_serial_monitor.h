@@ -6,6 +6,7 @@
 #include "t_manager.h"
 
 #include "ui_core.h"
+#include "widget.h"
 
 /**
  * @brief This is an implementation of a pseudo-widget for test_ui_core program.
@@ -13,7 +14,7 @@
  * It write status and value of test_IncrementalValue on the serial monitor
  *
  */
-class test_CursorWidgetWithIncrementalValue : public UIWidget
+class test_CursorWidgetWithIncrementalValue : public Widget
 {
 private:
     float char_position_slope;
@@ -48,7 +49,7 @@ public:
  * It write status and value of Test_Manager on the serial monitor
  *
  */
-class test_ObjectManagerWidget : public UIWidget
+class test_ObjectManagerWidget : public Widget
 {
 private:
     test_Manager *actual_displayed_object;
@@ -77,7 +78,7 @@ public:
  * @brief test the composite widget features
  *
  */
-class test_SetOfWidget : public UIWidget
+class test_SetOfWidget : public Widget
 {
 private:
     /* data */
