@@ -1,13 +1,5 @@
 #include "ui_core.h"
 
-UIDisplayDevice::UIDisplayDevice(size_t width, size_t height, FramebufferFormat format, struct_FramebufferText txt_cnf)
-    : Framebuffer(width, height, format)
-{
-}
-
-UIDisplayDevice::~UIDisplayDevice()
-{
-}
 
 UIModelObject::UIModelObject()
 {
@@ -218,7 +210,7 @@ void UIWidget::draw_border(FramebufferColor c)
     rect(0, 0, frame_width, frame_height);
 }
 
-UIWidget::UIWidget(UIDisplayDevice *_display_screen,
+UIWidget::UIWidget(DisplayDevice *_display_screen,
                    size_t _frame_width,
                    size_t _frame_height,
                    uint8_t _widget_anchor_x,
@@ -247,7 +239,7 @@ UIWidget::~UIWidget()
 {
 }
 
-void UIWidget::set_display_screen(UIDisplayDevice *_new_display_device)
+void UIWidget::set_display_screen(DisplayDevice *_new_display_device)
 {
     this->display_screen = _new_display_device;
 }

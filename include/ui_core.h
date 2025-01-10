@@ -14,6 +14,7 @@
 #include "pico/stdlib.h"
 #include "framebuffer.h"
 #include "ui_control_event.h"
+#include "display_device.h"
 
 #include <vector>
 #include <map>
@@ -40,46 +41,46 @@ enum class ControlledObjectStatus
 
 class UIController;
 
-/**
- * @brief This is the abstract class to handle all generic behavior of physical display devices (e.g. OLED screen SSD1306).
- * It derived from Framebuffer. This allows to draw text and graphics directly into the display framebuffer
- * thanks to Framebuffet class text and graphic primitives indepently from any kind of widget
- *
- */
-class UIDisplayDevice : public Framebuffer
-{
-private:
-public:
-    /**
-     * @brief Construct a new UIDisplayDevice object
-     *
-     * @param width The width of physical screen, in pixel.
-     * @param height The height of physical screen, in pixel.
-     * @param format The framebuffer format ... see Framebuffer class FramebufferFormat enumeration
-     * @param txt_cnf A structure of data that reflect the framebuffer member related to text primitives
-     */
-    UIDisplayDevice(size_t width, size_t height, FramebufferFormat format = FramebufferFormat::MONO_VLSB, struct_FramebufferText txt_cnf = {.font = font_8x8});
-    /**
-     * @brief Destroy the UIDisplayDevice object
-     *
-     */
-    virtual ~UIDisplayDevice();
-    /**
-     * @brief This is an pure virtual member function that all final derived class must implement.
-     * It transfers the framebuffer buffer to the entire display screen buffer.
-     *
-     */
-    virtual void show() = 0;
-    /**
-     * @brief This is an pure virtual member function that all final derived class must implement.
-     * It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.
-     *
-     * @param frame a pointer to the frame to be displayed
-     * @param anchor_x the x (horizontal)starting position of the frame within the display screen, (in pixel)
-     * @param anchor_y the y (vertical) starting position of the frame within the display screen, (in pixel)
-     */
-    virtual void show(Framebuffer *frame, uint8_t anchor_x, uint8_t anchor_y) = 0;
-};
+// /**
+//  * @brief This is the abstract class to handle all generic behavior of physical display devices (e.g. OLED screen SSD1306).
+//  * It derived from Framebuffer. This allows to draw text and graphics directly into the display framebuffer
+//  * thanks to Framebuffet class text and graphic primitives indepently from any kind of widget
+//  *
+//  */
+// class UIDisplayDevice : public Framebuffer
+// {
+// private:
+// public:
+//     /**
+//      * @brief Construct a new UIDisplayDevice object
+//      *
+//      * @param width The width of physical screen, in pixel.
+//      * @param height The height of physical screen, in pixel.
+//      * @param format The framebuffer format ... see Framebuffer class FramebufferFormat enumeration
+//      * @param txt_cnf A structure of data that reflect the framebuffer member related to text primitives
+//      */
+//     UIDisplayDevice(size_t width, size_t height, FramebufferFormat format = FramebufferFormat::MONO_VLSB, struct_FramebufferText txt_cnf = {.font = font_8x8});
+//     /**
+//      * @brief Destroy the UIDisplayDevice object
+//      *
+//      */
+//     virtual ~UIDisplayDevice();
+//     /**
+//      * @brief This is an pure virtual member function that all final derived class must implement.
+//      * It transfers the framebuffer buffer to the entire display screen buffer.
+//      *
+//      */
+//     virtual void show() = 0;
+//     /**
+//      * @brief This is an pure virtual member function that all final derived class must implement.
+//      * It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.
+//      *
+//      * @param frame a pointer to the frame to be displayed
+//      * @param anchor_x the x (horizontal)starting position of the frame within the display screen, (in pixel)
+//      * @param anchor_y the y (vertical) starting position of the frame within the display screen, (in pixel)
+//      */
+//     virtual void show(Framebuffer *frame, uint8_t anchor_x, uint8_t anchor_y) = 0;
+// };
 
 /**
  * @brief This is the Model abstract class of Model_View_Control design pattern.
@@ -379,8 +380,8 @@ protected:
     /// @brief location in y of the widget within the hosting framebuffer
     uint8_t widget_anchor_y;
 
-    /// @brief the dispaly device where the widget is displayed
-    UIDisplayDevice *display_screen{nullptr};
+    /// @brief the display device where the widget is displayed
+    DisplayDevice *display_screen{nullptr};
 
     /// @brief if true, the widget is surrounded by a one-pixel border
     bool widget_with_border{true};
@@ -420,7 +421,7 @@ public:
      *
      * @param _new_display_device
      */
-    void set_display_screen(UIDisplayDevice *_new_display_device);
+    void set_display_screen(DisplayDevice *_new_display_device);
 
     /**
      * @brief Set the blink period in microseconds
@@ -444,7 +445,7 @@ public:
      *
      * \image html widget.png
      */
-    UIWidget(UIDisplayDevice *display_screen,
+    UIWidget(DisplayDevice *display_screen,
              size_t frame_width,
              size_t frame_height,
              uint8_t widget_anchor_x,

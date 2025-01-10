@@ -14,7 +14,7 @@
 #include "ssd1306/commands_SSD1306.h"
 #include "pico/stdlib.h"
 #include "hw_i2c.h"
-#include "ui_core.h"
+#include "display_device.h"
 
 // Time_frame_interval
 /// @brief refer to data sheet
@@ -120,7 +120,7 @@ struct struct_RenderArea
  * @brief SSD1306 OLED display device driver
  * 
  */
-class SSD1306 : public UIDisplayDevice
+class SSD1306 : public DisplayDevice
 {
 private:
     /// @brief the I2C master that control the SSD1306 display
