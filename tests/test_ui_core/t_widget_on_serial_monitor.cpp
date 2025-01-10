@@ -17,7 +17,7 @@ std::map<ControlledObjectStatus, std::string> status_to_string{
     {ControlledObjectStatus::IS_ACTIVE, "IS_ACTIVE"}};
 
 test_CursorWidgetWithIncrementalValue::test_CursorWidgetWithIncrementalValue(test_IncrementalValue *_actual_displayed_object)
-    : UIWidget(nullptr, 128, 8, 0, 0, false)
+    : Widget(nullptr, 128, 8, 0, 0, false)
 {
     this->actual_displayed_object = _actual_displayed_object;
 
@@ -62,7 +62,7 @@ int test_CursorWidgetWithIncrementalValue::value_to_char_position()
 }
 
 test_ObjectManagerWidget::test_ObjectManagerWidget(test_Manager *_manager)
-    : UIWidget(nullptr, 128, 8, 0, 0, false)
+    : Widget(nullptr, 128, 8, 0, 0, false)
 {
     this->actual_displayed_object = _manager;
 }
@@ -93,7 +93,7 @@ void test_SetOfWidget::draw_refresh()
 }
 
 test_SetOfWidget::test_SetOfWidget()
-    : UIWidget(nullptr, 128, 8, 0, 0, false)
+    : Widget(nullptr, 128, 8, 0, 0, false)
 {
 }
 

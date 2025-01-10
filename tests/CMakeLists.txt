@@ -158,5 +158,7 @@ target_link_libraries(test_ui_core
                 pico_stdlib
                 ky040
                 debug_probe
+                widget
+                framebuffer
                 )
 # pico_add_extra_outputs(test_ui_core)
