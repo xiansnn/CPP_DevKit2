@@ -45,7 +45,7 @@ FramebufferFormat Framebuffer::get_framebuffer_format()
 
 void Framebuffer::fill(FramebufferColor c)
 {
-    assert(this->frame_format == FramebufferFormat::MONO_VLSB);
+    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
     if (c == FramebufferColor::BLACK)
         memset(this->pixel_buffer, 0x00, this->pixel_buffer_size);
     else
@@ -176,7 +176,7 @@ void Framebuffer::print_char(char c)
 
 void Framebuffer::pixel(int x, int y, FramebufferColor c)
 {
-    assert(frame_format == FramebufferFormat::MONO_VLSB); // works only if MONO_VLSB
+    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
 
     if (x >= 0 && x < this->frame_width && y >= 0 && y < this->frame_height) // avoid drawing outside the framebuffer
     {
@@ -314,6 +314,8 @@ void Framebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, 
 
 void Framebuffer::drawChar(const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y)
 {
+    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
+
     if (!font || c < 32)
         return;
 

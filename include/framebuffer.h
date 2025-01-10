@@ -15,14 +15,15 @@
 
 #include <string>
 #include "pico/stdlib.h"
-/// \todo //TODO : framebuffer should not include a specific display device such SSD1306
+/// @brief flag used to generate 127 character font or full extended 255 character font.
+///
+/// Must be placed before include "...font..."
+#define SSD1306_ASCII_FULL
 #include "ssd1306/5x8_font.h"
 #include "ssd1306/8x8_font.h"
 #include "ssd1306/12x16_font.h"
 #include "ssd1306/16x32_font.h"
 
-/// @brief flag used to generate 127 character font or full extended 255 character font
-#define SSD1306_ASCII_FULL
 /// @brief index of the font width value in the <...>_font.h file
 #define FONT_WIDTH_INDEX 0
 /// @brief index of the font height value in the <...>_font.h file
@@ -136,22 +137,30 @@ private:
     /// @param quadrant the quadrant of the ellipse to draw (see bresenham algorithm)
     /// @param c the filling color
     void ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, FramebufferColor c);
+
     /// @brief a graphic primitive to draw a character at a pixel position
+    /// \note NOTICE: drawChar() implementation depends strongly on the FramebufferFormat.
+    /// There should be one code for each format.
     /// @param font the font used to draw the character
     /// @param c the foreground color of the character
     /// @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
     /// @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
     void drawChar(const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y);
+
     /// @brief a graphic primitive to draw a character at a character position
     /// @param c the foreground color of the character. The font is given by the frame_text_config
     /// @param char_column the column position of the character
     /// @param char_line the line position of the character
     void drawChar(char c, uint8_t char_column, uint8_t char_line);
-    /// @brief the graphic primitive to draw a pixel
+
+    /// @brief the graphic primitive to draw a pixel.
+    /// \note NOTICE: pixel() implementation depends strongly on the FramebufferFormat.
+    /// There should be one code for each format.
     /// @param x the x position of the pixel
     /// @param y the y position of the pixel
     /// @param c the color of the pixel
     void pixel(int x, int y, FramebufferColor c = FramebufferColor::WHITE);
+
     /// @brief clean th full current line (writing " " in the text buffer)
     void clear_line();
 
