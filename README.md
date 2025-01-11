@@ -38,7 +38,7 @@ At the root, we found directories:
 ### src directories
 this is where we can find all the source code for libraries, organized according to their categories:
 
-### "devices_xxx" directories
+#### "devices_xxx" directories
 These are external components that I'll use.
 The first one is "device_switch_button". This will be used to handle any kind of switches, either by IRQ or by cyclic sample. Deboucing is implemented. The device_switch is the good candidate to implement Controller part of MVC.
 Derived from switch is the rotary encoder "device_KY0_40", a favorite device to built universal simple interface to choose menu, set value etc...
@@ -50,18 +50,21 @@ I'll place here C++ classes that wrap,in OOP some way, the corresponding SDK fun
 #### "sw_xxx" directories
 The abstract classes here are those related to software functions, such as:
 
-##### "sw_framebuffer" directory
+#### "sw_framebuffer" directory
 Framebuffer is the base for all text and graphic functions.
 
-##### "sw_ui_core" directory
+#### "sw_ui_core" directory
 This where the abstract classes that provide UI facilities can be found, together with framebuffer classe that provides all code for drawing texts and graphs.
 
 Together with a "test_ui_core" directory where a set of test program are developped : "test_controlled_value" as an example of Model, "test_widget_on serial_monitor" as an exmaple of View, "device_KY_040" already mentionned above as example of Control and "test_manager" as example about how to manage several Model ans View with a single rotary encoder / switch as Control. 
 
-##### "sw_widget_xxx" directories
-The abstract classes here are those related to widgets.
+#### "sw_widget" directory
+This abstract class gives the main mechanisms to handle widget.
 
-#### "utilities_xxx" directories
+#### "sw_widget_xxx" directories
+This where are all the widgets classes.
+
+### "utilities_xxx" directories
 It contains a debug probe classe that can be useful to monitor what's going on the microcontroller thanks to level and pulse generated through some GPIO output.
 
 
