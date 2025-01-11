@@ -1,3 +1,13 @@
+/**
+ * @file widget_square_led.h
+ * @author xiansnn (xiansnn@hotmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-11
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "widget.h"
 #include "display_device.h"
 

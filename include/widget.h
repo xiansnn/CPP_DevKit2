@@ -12,7 +12,6 @@
 #if !defined(WIDGET_H)
 #define WIDGET_H
 
-// #include "framebuffer.h"
 #include "display_device.h"
 #include <vector>
 

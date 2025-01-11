@@ -1,12 +1,12 @@
 /**
  * @file switch_button.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief
+ * @brief 
  * @version 0.1
- * @date 2024-05-30
- *
- * @copyright Copyright (c) 2024
- *
+ * @date 2025-01-11
+ * 
+ * @copyright Copyright (c) 2025
+ * 
  */
 #if !defined(SWITCH_BUTTON_H)
 #define SWITCH_BUTTON_H
