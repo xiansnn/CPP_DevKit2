@@ -169,3 +169,15 @@ target_link_libraries(test_gpio_irq
             )
 # pico_add_extra_outputs(test_ui_core)
 #-------------------------------------------------------------------------------------
+add_executable(test_square_led test_square_led.cpp )
+target_link_libraries(test_square_led 
+            pico_stdlib
+            widget_square_led
+            hw_i2c
+            ui_core
+            debug_probe
+            ssd1306
+            switch_button
+            )
+# pico_add_extra_outputs(test_ui_core)
+#-------------------------------------------------------------------------------------
