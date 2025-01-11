@@ -1,22 +1,88 @@
 /**
- * @file test_widget_on_serial_monitor.cpp
+ * @file t_widget_on_serial_monitor.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief This is the companion file of test_ui_core program
+ * @brief 
  * @version 0.1
- * @date 2024-05-30
+ * @date 2025-01-11
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+#include "t_controlled_value.cpp"
+#include "t_manager.cpp"
+
+#include "ui_core.h"
+#include "widget.h"
+
+#include <sstream>
+#include <string>
+
+/// @brief This is an implementation of a pseudo-widget for test_ui_core program.
+/// It write status and value of test_IncrementalValue on the serial monitor
+class MyIncrementalValueWidgetOnSerialMonitor : public Widget
+{
+private:
+    float char_position_slope;
+    float char_position_offset;
+    uint8_t max_line_width = 21;
+    int value_to_char_position();
+
+    MyIncrementalValueModel *actual_displayed_object;
+
+public:
+    /// @brief Construct a new Test Cursor Widget With Incremental Value object
+    /// @param _actual_displayed_object 
+    MyIncrementalValueWidgetOnSerialMonitor(MyIncrementalValueModel *_actual_displayed_object);
+
+    ~MyIncrementalValueWidgetOnSerialMonitor();
+
+    /// @brief Implement a draw_refresh function adapted to the current test program with the private function draw()
+    void draw_refresh();
+};
+
+/**
+ * @brief 
  *
- * @copyright Copyright (c) 2024
+ * 
  *
  */
-#include "t_widget_on_serial_monitor.h"
-#include <sstream>
+
+/// @brief This is an implementation of a pseudo-widget for test_ui_core program.
+/// It write status and value of MyManager on the serial monitor
+class MyManagerWidget : public Widget
+{
+private:
+    MyManager *actual_displayed_object;
+
+public:
+    /// @brief Construct a new MyManagerWidget object
+    /// @param _manager 
+    MyManagerWidget(MyManager *_manager);
+
+    ~MyManagerWidget();
+    
+    /// @brief Implement a draw_refresh function adapted to the current test program with the function draw()
+    void draw_refresh();
+
+};
+
+/// @brief test the composite widget features
+class MySetOfWidget : public Widget
+{
+private:
+public:
+    MySetOfWidget();
+    ~MySetOfWidget();
+    void draw_refresh();
+};
+
 
 std::map<ControlledObjectStatus, std::string> status_to_string{
     {ControlledObjectStatus::IS_WAITING, "IS_WAITING"},
     {ControlledObjectStatus::HAS_FOCUS, "HAS_FOCUS"},
     {ControlledObjectStatus::IS_ACTIVE, "IS_ACTIVE"}};
 
-test_CursorWidgetWithIncrementalValue::test_CursorWidgetWithIncrementalValue(test_IncrementalValue *_actual_displayed_object)
+MyIncrementalValueWidgetOnSerialMonitor::MyIncrementalValueWidgetOnSerialMonitor(MyIncrementalValueModel *_actual_displayed_object)
     : Widget(nullptr, 128, 8, 0, 0, false)
 {
     this->actual_displayed_object = _actual_displayed_object;
@@ -25,11 +91,11 @@ test_CursorWidgetWithIncrementalValue::test_CursorWidgetWithIncrementalValue(tes
     char_position_offset = 1 - char_position_slope * actual_displayed_object->get_min_value();
 }
 
-test_CursorWidgetWithIncrementalValue::~test_CursorWidgetWithIncrementalValue()
+MyIncrementalValueWidgetOnSerialMonitor::~MyIncrementalValueWidgetOnSerialMonitor()
 {
 }
 
-void test_CursorWidgetWithIncrementalValue::draw_refresh()
+void MyIncrementalValueWidgetOnSerialMonitor::draw_refresh()
 {
     if (this->actual_displayed_object->has_changed())
     {
@@ -56,22 +122,22 @@ void test_CursorWidgetWithIncrementalValue::draw_refresh()
     }
 }
 
-int test_CursorWidgetWithIncrementalValue::value_to_char_position()
+int MyIncrementalValueWidgetOnSerialMonitor::value_to_char_position()
 {
     return (char_position_slope * actual_displayed_object->get_value() + char_position_offset);
 }
 
-test_ObjectManagerWidget::test_ObjectManagerWidget(test_Manager *_manager)
+MyManagerWidget::MyManagerWidget(MyManager *_manager)
     : Widget(nullptr, 128, 8, 0, 0, false)
 {
     this->actual_displayed_object = _manager;
 }
 
-test_ObjectManagerWidget::~test_ObjectManagerWidget()
+MyManagerWidget::~MyManagerWidget()
 {
 }
 
-void test_ObjectManagerWidget::draw_refresh()
+void MyManagerWidget::draw_refresh()
 {
     if (this->actual_displayed_object->has_changed())
     { /// draw()
@@ -82,7 +148,7 @@ void test_ObjectManagerWidget::draw_refresh()
     }
 }
 
-void test_SetOfWidget::draw_refresh()
+void MySetOfWidget::draw_refresh()
 {
     /// for this specific test, the object test_SetOfWidget has only one purpose : to collect a set of widgets.
     if (widgets.size() != 0)
@@ -92,11 +158,11 @@ void test_SetOfWidget::draw_refresh()
     }
 }
 
-test_SetOfWidget::test_SetOfWidget()
+MySetOfWidget::MySetOfWidget()
     : Widget(nullptr, 128, 8, 0, 0, false)
 {
 }
 
-test_SetOfWidget::~test_SetOfWidget()
+MySetOfWidget::~MySetOfWidget()
 {
 }

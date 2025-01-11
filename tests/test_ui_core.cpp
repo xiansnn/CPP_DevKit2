@@ -14,9 +14,9 @@
  * @copyright Copyright (c) 2024
  *
  */
-#include "test_ui_core/t_controlled_value.h"
-#include "test_ui_core/t_manager.h"
-#include "test_ui_core/t_widget_on_serial_monitor.h"
+#include "test_ui_core/t_controlled_value.cpp"
+#include "test_ui_core/t_manager.cpp"
+#include "test_ui_core/t_widget_on_serial_monitor.cpp"
 #include "ky040.h"
 #include <map>
 #include <string>
@@ -80,7 +80,7 @@ void manager_event_processor(UIControlEvent event);
  * @return int
  */
 /// 4- create a manager connected to the rotary encoder.
-test_Manager manager = test_Manager(&ky040);
+MyManager manager = MyManager(&ky040);
 
 int main()
 {
@@ -91,22 +91,22 @@ int main()
     stdio_init_all();
 
     /// 2- create 3 incremental value object
-    test_IncrementalValue value_0 = test_IncrementalValue("val0", 0, 5, true, 1);
-    test_IncrementalValue value_1 = test_IncrementalValue("val1", 0, 10, false, 1);
-    test_IncrementalValue value_2 = test_IncrementalValue("val2", -20, 3, false, 1);
+    MyIncrementalValueModel value_0 = MyIncrementalValueModel("val0", 0, 5, true, 1);
+    MyIncrementalValueModel value_1 = MyIncrementalValueModel("val1", 0, 10, false, 1);
+    MyIncrementalValueModel value_2 = MyIncrementalValueModel("val2", -20, 3, false, 1);
 
     /// 3- create 3 serial terminal widget associated with incremental value objects.
-    test_CursorWidgetWithIncrementalValue value_0_widget = test_CursorWidgetWithIncrementalValue(&value_0);
-    test_CursorWidgetWithIncrementalValue value_1_widget = test_CursorWidgetWithIncrementalValue(&value_1);
-    test_CursorWidgetWithIncrementalValue value_2_widget = test_CursorWidgetWithIncrementalValue(&value_2);
+    MyIncrementalValueWidgetOnSerialMonitor value_0_widget = MyIncrementalValueWidgetOnSerialMonitor(&value_0);
+    MyIncrementalValueWidgetOnSerialMonitor value_1_widget = MyIncrementalValueWidgetOnSerialMonitor(&value_1);
+    MyIncrementalValueWidgetOnSerialMonitor value_2_widget = MyIncrementalValueWidgetOnSerialMonitor(&value_2);
 
     ky040.update_UI_control_event_processor(manager_event_processor);
 
     /// 5- create a widget for the manager
-    test_ObjectManagerWidget manager_widget = test_ObjectManagerWidget(&manager);
+    MyManagerWidget manager_widget = MyManagerWidget(&manager);
 
     /// 6- create a set of widget and populate it with all above widgets
-    test_SetOfWidget set_of_widget = test_SetOfWidget();
+    MySetOfWidget set_of_widget = MySetOfWidget();
     set_of_widget.add_widget(&manager_widget);
     set_of_widget.add_widget(&value_0_widget);
     set_of_widget.add_widget(&value_1_widget);
