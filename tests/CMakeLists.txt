@@ -162,3 +162,10 @@ target_link_libraries(test_ui_core
                 framebuffer
                 )
 # pico_add_extra_outputs(test_ui_core)
+#-------------------------------------------------------------------------------------
+add_executable(test_gpio_irq test_gpio_irq.cpp )
+target_link_libraries(test_gpio_irq 
+            pico_stdlib
+            )
+# pico_add_extra_outputs(test_ui_core)
+#-------------------------------------------------------------------------------------
