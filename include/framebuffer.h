@@ -1,14 +1,12 @@
 /**
  * @file framebuffer.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief Most of code and algorithms here are derived from https://github.com/Harbys/pico-ssd1306 works about SSD1306 OLED C driver.
- *
- *  API is largely inspired from framebuffer micropython API https://docs.micropython.org/en/latest/library/framebuf.html#module-framebuf.
+ * @brief 
  * @version 0.1
- * @date 2024-05-30
- *
- * @copyright Copyright (c) 2024
- *
+ * @date 2025-01-11
+ * 
+ * @copyright Copyright (c) 2025
+ * 
  */
 #if !defined(FRAMEBUFFER_H)
 #define FRAMEBUFFER_H

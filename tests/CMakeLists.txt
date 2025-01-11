@@ -141,31 +141,38 @@ target_link_libraries(test_msgeq7
 #-------------------------------------------------------------------------------------
 add_executable(test_ky040 test_ky040.cpp)
 target_link_libraries(test_ky040
-                    pico_stdlib
-                    ky040
-                    rotary_encoder
-                    switch_button
-                    debug_probe
-                    )
+            pico_stdlib
+            ky040
+            rotary_encoder
+            switch_button
+            debug_probe
+            )
 #-------------------------------------------------------------------------------------
-add_executable(test_ui_core 
-                test_ui_core.cpp
-                test_ui_core/t_manager.cpp
-                test_ui_core/t_controlled_value.cpp
-                test_ui_core/t_widget_on_serial_monitor.cpp
-                )
+add_executable(test_ui_core  test_ui_core.cpp )               
 target_link_libraries(test_ui_core 
-                pico_stdlib
-                ky040
-                debug_probe
-                widget
-                framebuffer
-                )
+            pico_stdlib
+            ky040
+            debug_probe
+            widget
+            framebuffer
+            )
 # pico_add_extra_outputs(test_ui_core)
 #-------------------------------------------------------------------------------------
 add_executable(test_gpio_irq test_gpio_irq.cpp )
 target_link_libraries(test_gpio_irq 
             pico_stdlib
+            )
+# pico_add_extra_outputs(test_ui_core)
+#-------------------------------------------------------------------------------------
+add_executable(test_square_led test_square_led.cpp )
+target_link_libraries(test_square_led 
+            pico_stdlib
+            widget_square_led
+            hw_i2c
+            ui_core
+            debug_probe
+            ssd1306
+            switch_button
             )
 # pico_add_extra_outputs(test_ui_core)
 #-------------------------------------------------------------------------------------

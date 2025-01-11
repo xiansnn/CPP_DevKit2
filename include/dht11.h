@@ -3,9 +3,9 @@
  * @author xiansnn (xiansnn@hotmail.com)
  * @brief 
  * @version 0.1
- * @date 2024-12-24
+ * @date 2025-01-11
  * 
- * @copyright Copyright (c) 2024
+ * @copyright Copyright (c) 2025
  * 
  */
 #ifndef DHT11_H

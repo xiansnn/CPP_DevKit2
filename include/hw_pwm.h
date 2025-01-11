@@ -1,12 +1,12 @@
 /**
  * @file hw_pwm.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief
+ * @brief 
  * @version 0.1
- * @date 2023-04-21
- *
- * @copyright Copyright (c) 2023
- *
+ * @date 2025-01-11
+ * 
+ * @copyright Copyright (c) 2025
+ * 
  */
 
 #if !defined(HW_PWM_H)

@@ -1,12 +1,12 @@
 /**
  * @file sg90.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief
+ * @brief 
  * @version 0.1
- * @date 2023-05-06
- *
- * @copyright Copyright (c) 2023
- *
+ * @date 2025-01-11
+ * 
+ * @copyright Copyright (c) 2025
+ * 
  */
 #if !defined(SG90_H)
 #define SG90_H

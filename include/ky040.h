@@ -1,12 +1,12 @@
 /**
- * @file KY040.h
+ * @file ky040.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief
+ * @brief 
  * @version 0.1
- * @date 2025-01-06
- *
+ * @date 2025-01-11
+ * 
  * @copyright Copyright (c) 2025
- *
+ * 
  */
 
 #if !defined(KY040_H)

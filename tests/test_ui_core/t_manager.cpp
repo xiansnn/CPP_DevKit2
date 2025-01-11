@@ -1,45 +1,47 @@
 /**
- * @file test_manager.cpp
+ * @file t_manager.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief companion file to test_ui_core.cpp
+ * @brief
  * @version 0.1
- * @date 2024-05-30
- * 
- * @copyright Copyright (c) 2024
- * 
+ * @date 2025-01-11
+ *
+ * @copyright Copyright (c) 2025
+ *
  */
-#include "t_manager.h"
+#pragma once
 
+#include "ui_core.h"
 
-test_Manager::test_Manager(UIController * _controller)
+/// @brief implement a UIObjectManager for test_ui_core program
+class MyManager : public UIObjectManager
+{
+private:
+public:
+    /// @brief Construct a new MyManager object
+    /// @param _controller
+    MyManager(UIController *_controller);
+    ~MyManager();
+    void process_control_event(UIControlEvent _event);
+};
+
+MyManager::MyManager(UIController *_controller)
     : UIObjectManager()
 {
     make_manager_active();
     update_current_controller(_controller);
 }
 
-/**
- * @brief Destroy the test_Manager::test_Manager object
- * 
- */
-test_Manager::~test_Manager()
+MyManager::~MyManager()
 {
 }
 
-/**
- * @brief The event processed by test_Manager for this test are:
- * 
- * - LONG_PUSH: if manager is not active, processed by the current_active_model
- * 
- * - RELEASED_AFTER_SHORT_TIME: switch activation between the manager and the current model.
- * 
- * - INCREMENT: focus to next model
- * 
- * - DECREMENT: focus to previous model
- * 
- * @param _event 
- */
-void test_Manager::process_control_event(UIControlEvent _event)
+/// @brief The event processed by void MyManager for this test are:
+/// - LONG_PUSH: if manager is not active, processed by the current_active_model
+/// - RELEASED_AFTER_SHORT_TIME: switch activation between the manager and the current model.
+/// - INCREMENT: focus to next model
+/// - DECREMENT: focus to previous model
+/// @param _event
+void MyManager::process_control_event(UIControlEvent _event)
 {
     switch (_event)
     {

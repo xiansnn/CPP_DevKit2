@@ -1,0 +1,38 @@
+/**
+ * @file t_switch_button_controller.cpp
+ * @author xiansnn (xiansnn@hotmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-11
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
+#include "switch_button.h"
+#include "ui_core.h"
+
+
+/**
+ * @brief test_switch_button : Example of final implementation of SwitchButton and UIController
+ *
+ */
+class MySwitchButton : public SwitchButton, public UIController
+{
+private:
+    /* data */
+public:
+    MySwitchButton(uint gpio, struct_SwitchButtonConfig conf);
+    ~MySwitchButton();
+};
+
+MySwitchButton::MySwitchButton(uint gpio, 
+                                struct_SwitchButtonConfig conf)
+            : SwitchButton(gpio, conf), 
+            UIController()
+{
+}
+
+MySwitchButton::~MySwitchButton()
+{
+}

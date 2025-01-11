@@ -1,37 +1,55 @@
 /**
- * @file test_controlled_value.cpp
+ * @file t_controlled_value.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief companion file to test_ui_core.cpp
+ * @brief 
  * @version 0.1
- * @date 2024-05-30
+ * @date 2025-01-11
  * 
- * @copyright Copyright (c) 2024
+ * @copyright Copyright (c) 2025
  * 
  */
-#include "t_controlled_value.h"
 
-test_IncrementalValue::test_IncrementalValue(std::string _name, int _min_value, int _max_value, bool _is_wrappable, int increment)
+#pragma once
+#include "ui_core.h"
+
+/// @brief Construct an implementation of UIControlledIncrementalValue for test_ui_core program.
+class MyIncrementalValueModel : public UIControlledIncrementalValue
+{
+private:
+    std::string name;
+public:
+    MyIncrementalValueModel(std::string _name, 
+                            int _min_value = 0, 
+                            int _max_value = 10, 
+                            bool _is_wrappable = false, 
+                            int increment = 1
+                            );
+    ~MyIncrementalValueModel();
+    void process_control_event(UIControlEvent _event);
+    std::string get_name();
+};
+
+
+MyIncrementalValueModel::MyIncrementalValueModel(std::string _name, 
+                                                int _min_value, 
+                                                int _max_value, 
+                                                bool _is_wrappable, 
+                                                int increment)
     : UIControlledIncrementalValue(_min_value, _max_value, _is_wrappable, increment)
 {
     this->name = _name;
 }
 
-test_IncrementalValue::~test_IncrementalValue()
+MyIncrementalValueModel::~MyIncrementalValueModel()
 {
 }
 
-/**
- * @brief The event processed by test_IncrementalValue for this test are:
- * 
- * - LONG_PUSH: set value to 0.
- * 
- * - INCREMENT:
- * 
- * - DECREMENT:
- * 
- * @param _event 
- */
-void test_IncrementalValue::process_control_event(UIControlEvent _event)
+/// @brief The event processed by test_IncrementalValue for this test are:
+/// - LONG_PUSH: set value to 0.
+/// - INCREMENT:
+/// - DECREMENT:
+/// @param _event 
+void MyIncrementalValueModel::process_control_event(UIControlEvent _event)
 {
     switch (_event)
     {
@@ -50,7 +68,7 @@ void test_IncrementalValue::process_control_event(UIControlEvent _event)
     }
 }
 
-std::string test_IncrementalValue::get_name()
+std::string MyIncrementalValueModel::get_name()
 {
     return name;
 }
