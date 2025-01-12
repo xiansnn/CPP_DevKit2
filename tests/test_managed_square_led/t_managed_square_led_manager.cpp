@@ -1,12 +1,12 @@
 /**
  * @file t_managed_square_led_manager.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-01-12
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
 #pragma once
@@ -15,6 +15,12 @@
 #include "t_managed_square_led_models.cpp"
 
 #define MODEL_OBJECT_STATUS_TIME_OUT_us 3000000
+
+std::map<ControlledObjectStatusTimeOutReason, std::string> reason_to_string{
+    {ControlledObjectStatusTimeOutReason::NO_TIME_OUT, "NO_TIME_OUT"},
+    {ControlledObjectStatusTimeOutReason::MANAGER_INACTIVE, "MANAGER_INACTIVE"},
+    {ControlledObjectStatusTimeOutReason::FOCUS_LOST, "FOCUS_LOST"}};
+
 /**
  * @brief MyManager : Example of final implementation of UIObjectManager
  */
@@ -89,5 +95,5 @@ void MyManager::process_control_event(UIControlEvent _event)
     }
     ControlledObjectStatusTimeOutReason reason = check_time_out(MODEL_OBJECT_STATUS_TIME_OUT_us);
     if (reason != ControlledObjectStatusTimeOutReason::NO_TIME_OUT)
-        printf("%d\n", reason);
+        printf("[time out] %s\n", reason_to_string[reason].c_str());
 }
