@@ -155,23 +155,27 @@ void UIObjectManager::decrement_focus()
     }
 }
 
-void UIObjectManager::check_time_out(uint32_t time_out_us)
+ControlledObjectStatusTimeOutReason UIObjectManager::check_time_out(uint32_t managed_object_status_time_out_us)
 {
+    ControlledObjectStatusTimeOutReason reason = ControlledObjectStatusTimeOutReason::NO_TIME_OUT;
     if (current_active_model != this) /// - chek time_out for active model
     {
-        if (current_active_model->get_time_since_last_change() > time_out_us)
+        if (current_active_model->get_time_since_last_change() > managed_object_status_time_out_us)
         {
             get_current_controller()->update_current_controlled_object(this);
             make_manager_active();
+            reason = ControlledObjectStatusTimeOutReason::FOCUS_LOST;
         }
     }
     else /// - check time_out for model under focus
     {
-        if ((get_time_since_last_change() > time_out_us) and (managed_models[value]->get_status() == ControlledObjectStatus::HAS_FOCUS))
+        if ((get_time_since_last_change() > managed_object_status_time_out_us) and (managed_models[value]->get_status() == ControlledObjectStatus::HAS_FOCUS))
         {
             managed_models[value]->update_status(ControlledObjectStatus::IS_WAITING);
+            reason = ControlledObjectStatusTimeOutReason::MANAGER_INACTIVE;
         }
     }
+    return reason;
 }
 
 void UIObjectManager::make_managed_object_active()

@@ -26,6 +26,9 @@
 
 /**
  * @brief The list of status that a UIModelObject can have.
+ * (0) IS_WAITING
+ * (1) HAS_FOCUS
+ * (2) IS_ACTIVE
  */
 enum class ControlledObjectStatus
 {
@@ -37,6 +40,22 @@ enum class ControlledObjectStatus
 
     /// @brief The user has selected (clicked) on this model. ControlEvent are then passed to this model in order to be processed.
     IS_ACTIVE
+};
+
+/**
+ * @brief The list of reason of manager time out.
+ * (0) NO_TIME_OUT
+ * (1) MANAGER_INACTIVE
+ * (3) FOCUS_LOST
+ */
+enum class ControlledObjectStatusTimeOutReason
+{
+    /// @brief no time out
+    NO_TIME_OUT,
+    /// @brief The object is inactive, nothing to do.
+    MANAGER_INACTIVE,
+    /// @brief The widget or object manager is pointing to this model
+    FOCUS_LOST,
 };
 
 class UIController;
@@ -218,9 +237,11 @@ protected:
      * 
      * This means no action on focus control and active status control.
      * 
-     * @param time_out_us the time out value in microsecond. default to 3000000 (3seconds)
+     * NOTICE: this is usefull when controller use IRQ, because we cannot detect no action when no more IRQ are triggered (up to now)
+     * 
+     * @param managed_object_status_time_out_us the time out value in microsecond. default to 3000000 (3seconds)
      */
-    void check_time_out(uint32_t time_out_us=UI_MODEL_OBJECT_STATUS_TIME_OUT_us);
+    ControlledObjectStatusTimeOutReason check_time_out(uint32_t managed_object_status_time_out_us=UI_MODEL_OBJECT_STATUS_TIME_OUT_us);
     /**
      * @brief The list of amaged objects
      *

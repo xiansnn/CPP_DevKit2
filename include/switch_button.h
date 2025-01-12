@@ -28,6 +28,10 @@
 
 /**
  * @brief The logical state of the switch
+ * (0) IDLE
+ * (1) ACTIVE
+ * (2) RELEASE_PENDING
+ * (3) TIME_OUT_PENDING
  *
  */
 enum class ButtonState
@@ -54,6 +58,11 @@ enum class ButtonState
 
 /**
  * @brief These are the values used to configure a switch button
+ * (0) debounce_delay_us
+ * (1) long_release_delay_us
+ * (2) long_push_delay_us
+ * (3) time_out_delay_us
+ * (4) active_lo
  *
  */
 struct struct_SwitchButtonConfig
