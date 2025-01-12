@@ -11,6 +11,8 @@
 #include "widget.h"
 #include "display_device.h"
 
+#pragma once
+
 /**
  * @brief A widget that show a square (it can be a rectangle) on the display.
  * 
