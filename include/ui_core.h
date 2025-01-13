@@ -243,7 +243,7 @@ protected:
      */
     ControlledObjectStatusTimeOutReason check_time_out(uint32_t managed_object_status_time_out_us=UI_MODEL_OBJECT_STATUS_TIME_OUT_us);
     /**
-     * @brief The list of amaged objects
+     * @brief The list of managed objects
      *
      */
     std::vector<UIModelObject *> managed_models;
