@@ -168,4 +168,16 @@ target_link_libraries(test_horizontal_bar
             widget_horizontal_bar
             )    
 #-------------------------------------------------------------------------------------
+add_executable(test_managed_horizontal_bar test_managed_horizontal_bar.cpp)
+target_link_libraries(test_managed_horizontal_bar
+            pico_stdlib
+            hw_i2c
+            ssd1306
+            ui_core
+            debug_probe
+            widget_square_led
+            widget_horizontal_bar
+            ky040
+            )    
+#-------------------------------------------------------------------------------------
    

@@ -78,7 +78,6 @@ void MyModel::process_control_event(UIControlEvent _event)
 int main()
 {
     pr_D4.hi();
-    // stdio_init_all();
     HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
     SSD1306 display = SSD1306(&master, cfg_ssd1306);
 
