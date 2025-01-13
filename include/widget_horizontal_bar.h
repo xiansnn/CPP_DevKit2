@@ -16,7 +16,7 @@
 class WidgetHorizontalBar : public Widget
 {
 private:
-    int bar_value;
+    int level;
     int max_value;
     int min_value;
     uint8_t px_max;

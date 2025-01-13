@@ -12,7 +12,7 @@
 
 void WidgetHorizontalBar::convert_level_value_to_px()
 {
-    px_position = bar_value * level_coef + level_offset;
+    px_position = level * level_coef + level_offset;
     px_position = std::min(px_max, std::max(px_min, px_position));
 }
 
@@ -22,7 +22,7 @@ void WidgetHorizontalBar::draw()
 
     uint8_t bar_start;
     uint8_t bar_end;
-    if (bar_value >= 0)
+    if (level >= 0)
     {
         bar_start = level_offset;
         bar_end = px_position;
@@ -33,7 +33,7 @@ void WidgetHorizontalBar::draw()
         bar_end = level_offset;
     }
 
-    if (bar_value == 0)
+    if (level == 0)
         rect(bar_start, 0, 1, frame_height, true);
     else
         rect(bar_start, 0, bar_end - bar_start, frame_height, true);
@@ -53,10 +53,10 @@ WidgetHorizontalBar::WidgetHorizontalBar(UIModelObject *bar_value_model,
     this->bar_value_model = bar_value_model;
     this->max_value = max_value;
     this->min_value = min_value;
-    this->bar_value = 0;
+    this->level = 0;
     this->px_max = frame_width;
     this->px_min = 0;
-    this->level_coef = (float)(px_max - px_min) / max_value;
+    this->level_coef = (float)(px_max - px_min) / (max_value-min_value);
     this->level_offset = px_max - level_coef * max_value;
 }
 
@@ -68,7 +68,7 @@ WidgetHorizontalBar::~WidgetHorizontalBar()
 
 void WidgetHorizontalBar::set_value(int value)
 {
-    this->bar_value = value;
+    this->level = value;
     convert_level_value_to_px();
 }
 
