@@ -1,12 +1,12 @@
 /**
  * @file t_managed_horizontal_bar_models.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-01-13
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
 #pragma once
@@ -14,76 +14,28 @@
 #include "ui_control_event.h"
 #include "ui_core.h"
 
-/**
- * @brief MySquareLedModel : Example of final implementation of UIModelObject
- */
-class MySquareLedModel : public UIModelObject
+
+class MyHorizontalBarModel : public UIControlledIncrementalValue
 {
-protected:
+private:
 public:
-    /// @brief gives a name to the model. Useful to identify the active model via printf on the serial monitor.
+    MyHorizontalBarModel(std::string _name, int _min_value, int _max_value, bool _is_wrappable, int _increment);
+    ~MyHorizontalBarModel();
     std::string name;
-    /// @brief a bool value, visualised by the associated LED widget as on or off.
-    bool my_bool_value = false;
-    MySquareLedModel(std::string name);
-    ~MySquareLedModel();
-    /// @brief the implementation of the pure virtual member.
-    /// @param _event the signal send by the controller
     void process_control_event(UIControlEvent _event);
 };
-MySquareLedModel::MySquareLedModel(std::string _name)
-    : UIModelObject()
+
+MyHorizontalBarModel::MyHorizontalBarModel(std::string _name, int _min_value, int _max_value, bool _is_wrappable, int _increment)
+    : UIControlledIncrementalValue(_min_value, _max_value, _is_wrappable, _increment)
 {
     this->name = _name;
 }
 
-MySquareLedModel::~MySquareLedModel()
+MyHorizontalBarModel::~MyHorizontalBarModel()
 {
 }
 
-void MySquareLedModel::process_control_event(UIControlEvent _event)
-{
-    /**
-     * @brief only the event INCREMENT and DECREMENT are processed.
-     * They both toggle the boolean my_bool_value of the test_managed_square_led_model, and set the change flag in order to trig the effective display.
-     */
-    switch (_event)
-    {
-    case UIControlEvent::INCREMENT:
-    case UIControlEvent::DECREMENT:
-        if (get_status() == ControlledObjectStatus::IS_ACTIVE)
-        {
-            my_bool_value = !my_bool_value;
-            printf("---> %s on_off=%d\n", this->name.c_str(), my_bool_value);
-            set_change_flag();
-        }
-        break;
-
-    default:
-        break;
-    }
-}
-
-class MyModel : public UIControlledIncrementalValue
-{
-private:
-    /* data */
-public:
-    MyModel(int _min_value, int _max_value, bool _is_wrappable, int _increment);
-    ~MyModel();
-    void process_control_event(UIControlEvent _event);
-};
-
-MyModel::MyModel(int _min_value, int _max_value, bool _is_wrappable, int _increment)
-    : UIControlledIncrementalValue(_min_value, _max_value, _is_wrappable, _increment)
-{
-}
-
-MyModel::~MyModel()
-{
-}
-
-void MyModel::process_control_event(UIControlEvent _event)
+void MyHorizontalBarModel::process_control_event(UIControlEvent _event)
 {
     switch (_event)
     {
@@ -96,4 +48,5 @@ void MyModel::process_control_event(UIControlEvent _event)
     default:
         break;
     }
+    printf("---> %s value=%d\n", this->name.c_str(), this->value);
 }

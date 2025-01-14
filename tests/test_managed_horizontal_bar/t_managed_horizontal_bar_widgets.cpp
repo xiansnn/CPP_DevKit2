@@ -12,8 +12,61 @@
 #pragma once
 
 #include "ui_core.h"
+#include "widget_horizontal_bar.h"
 #include "widget_square_led.h"
 #include "t_managed_horizontal_bar_models.cpp"
+
+
+class MyHorizontalBarWidget : public WidgetHorizontalBar
+{
+private:
+    /* data */
+public:
+    MyHorizontalBarWidget(MyHorizontalBarModel *bar_value_model,
+                                         DisplayDevice *display_screen,
+                                         int max_value, int min_value,
+                                         size_t frame_width, size_t frame_height,
+                                         uint8_t widget_anchor_x, uint8_t widget_anchor_y,
+                                         bool widget_with_border = true,
+                                         uint8_t widget_border_width =1,
+                                         FramebufferColor color =FramebufferColor::WHITE,
+                                         FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
+    ~MyHorizontalBarWidget();
+    void draw_refresh();
+};
+
+MyHorizontalBarWidget::MyHorizontalBarWidget(MyHorizontalBarModel *bar_value_model,
+                                         DisplayDevice *display_screen,
+                                         int max_value, int min_value,
+                                         size_t frame_width, size_t frame_height,
+                                         uint8_t widget_anchor_x, uint8_t widget_anchor_y,
+                                         bool widget_with_border,
+                                         uint8_t widget_border_width,
+                                         FramebufferColor color,
+                                         FramebufferFormat framebuffer_format)
+            : WidgetHorizontalBar (bar_value_model,
+                                         display_screen,
+                                          max_value,  min_value,
+                                          frame_width,  frame_height,
+                                          widget_anchor_x,  widget_anchor_y,
+                                          widget_with_border,
+                                          widget_border_width,
+                                          color,
+                                          framebuffer_format)
+{
+}
+
+MyHorizontalBarWidget::~MyHorizontalBarWidget()
+{
+    delete display_screen;
+    delete bar_value_model;
+}
+
+void MyHorizontalBarWidget::draw_refresh()
+{
+    this->set_value(((MyHorizontalBarModel*)this->bar_value_model)->get_value());
+    WidgetHorizontalBar::draw_refresh();
+}
 
 /**
  * @brief MyFocusLedWidget : this is a special led widget used to show the status of the model.
@@ -22,10 +75,10 @@ class MyFocusLedWidget : public WidgetSquareLed
 {
 private:
     /// @brief the variable that stores the reference to the actual model object.
-    MySquareLedModel *actual_displayed_model = nullptr;
+    UIModelObject *actual_displayed_model = nullptr;
 
 public:
-    MyFocusLedWidget(MySquareLedModel *actual_displayed_model,
+    MyFocusLedWidget(UIModelObject *actual_displayed_model,
                      DisplayDevice *display_screen,
                      size_t width,
                      size_t height,
@@ -34,7 +87,7 @@ public:
     ~MyFocusLedWidget();
     void draw_refresh();
 };
-MyFocusLedWidget::MyFocusLedWidget(MySquareLedModel *actual_displayed_model,
+MyFocusLedWidget::MyFocusLedWidget(UIModelObject *actual_displayed_model,
                                    DisplayDevice *display_screen,
                                    size_t width, size_t height,
                                    uint8_t widget_anchor_x, uint8_t widget_anchor_y)
@@ -100,66 +153,3 @@ void MyFocusLedWidget::draw_refresh()
         }
     }
 }
-
-// /**
-//  * @brief MySquareLedWidget : Example of final implementation of w_SquareLed
-//  */
-// class MySquareLedWidget : public WidgetSquareLed
-// {
-// private:
-//     /// @brief the variable that stores the reference to the actual model object.
-//     MySquareLedModel *actual_displayed_model = nullptr;
-
-// public:
-//     MySquareLedWidget(MySquareLedModel *actual_displayed_model,
-//                       DisplayDevice *display_screen,
-//                       size_t width,
-//                       size_t height,
-//                       uint8_t widget_anchor_x,
-//                       uint8_t widget_anchor_y);
-//     ~MySquareLedWidget();
-//     void draw_refresh();
-// };
-// MySquareLedWidget::MySquareLedWidget(MySquareLedModel *actual_displayed_model,
-//                                      DisplayDevice *display_screen,
-//                                      size_t width,
-//                                      size_t height,
-//                                      uint8_t widget_anchor_x,
-//                                      uint8_t widget_anchor_y)
-//     : WidgetSquareLed(display_screen, width, height, widget_anchor_x, widget_anchor_y)
-// {
-//     this->actual_displayed_model = actual_displayed_model;
-//     this->led_is_blinking = false;
-//     this->led_is_on = true;
-// }
-
-// MySquareLedWidget::~MySquareLedWidget()
-// {
-// }
-// /**
-//  * @brief This function implements a special draw_refresh that takes into account the on/off status of the model.
-//  *
-//  * It insures that the widget consumes processing time only when its on/off status has changed.
-//  * The logic of the visualisation :
-//  *  - if the displayed model my_bool_value is true(resp. false), the widget led is on(resp. off)
-//  */
-// void MySquareLedWidget::draw_refresh()
-// {
-//     assert(this->actual_displayed_model != nullptr);
-//     {
-//         /// main step of the function
-//         if (this->actual_displayed_model->has_changed())
-//         {
-//             if (this->actual_displayed_model->my_bool_value)
-//             {
-//                 rect(widget_start_x, widget_start_y, widget_width, widget_height, true, FramebufferColor::WHITE);
-//             }
-//             else
-//             {
-//                 rect(widget_start_x, widget_start_y, widget_width, widget_height, true, FramebufferColor::BLACK);
-//                 draw_border();
-//             }
-//             this->display_screen->show(this, this->widget_anchor_x, this->widget_anchor_y);
-//         }
-//     }
-// }

@@ -33,7 +33,7 @@ public:
      *
      * @param _controller
      */
-    MyManager(UIController *_controller);
+    MyManager(UIController *_controller, bool is_wrappable);
     /**
      * @brief Destroy the Test_Manager object
      */
@@ -43,8 +43,8 @@ public:
     void process_control_event(UIControlEvent _event);
 };
 
-MyManager::MyManager(UIController *_controller)
-    : UIObjectManager()
+MyManager::MyManager(UIController *_controller, bool is_wrappable)
+    : UIObjectManager(is_wrappable)
 {
     make_manager_active();
     update_current_controller(_controller);
@@ -60,19 +60,19 @@ void MyManager::process_control_event(UIControlEvent _event)
         if (current_active_model == this)
         {
             make_managed_object_active();
-            printf("%s is active \n", ((MySquareLedModel *)this->current_active_model)->name.c_str());
+            printf("%s is active \n", ((MyHorizontalBarModel *)this->current_active_model)->name.c_str());
         }
         else
         {
             make_manager_active();
-            printf("manager is active, %s has focus \n", ((MySquareLedModel *)this->managed_models[this->value])->name.c_str());
+            printf("manager is active, %s has focus \n", ((MyHorizontalBarModel *)this->managed_models[this->value])->name.c_str());
         }
         break;
     case UIControlEvent::INCREMENT:
         if (current_active_model == this)
         {
             increment_focus();
-            printf("[inc] %s has focus\n", ((MySquareLedModel *)this->managed_models[this->value])->name.c_str());
+            printf("[inc] %s has focus\n", ((MyHorizontalBarModel *)this->managed_models[this->value])->name.c_str());
         }
         else
             current_active_model->process_control_event(_event);
@@ -81,7 +81,7 @@ void MyManager::process_control_event(UIControlEvent _event)
         if (current_active_model == this)
         {
             decrement_focus();
-            printf("[dec] %s has focus\n", ((MySquareLedModel *)this->managed_models[this->value])->name.c_str());
+            printf("[dec] %s has focus\n", ((MyHorizontalBarModel *)this->managed_models[this->value])->name.c_str());
         }
         else
             current_active_model->process_control_event(_event);
