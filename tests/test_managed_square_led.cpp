@@ -92,7 +92,7 @@ MyManager manager = MyManager(&ky040);
 
 /// @brief global function necessary to convert bound fonction for control_event_processor_t
 /// @param event
-void manager_event_processor(UIControlEvent event)
+void manager_process_control_event(UIControlEvent event)
 {
     manager.process_control_event(event);
 };
@@ -103,7 +103,7 @@ void manager_event_processor(UIControlEvent event)
  */
 int main()
 {
-    ky040.update_UI_control_event_processor(manager_event_processor);
+    ky040.update_UI_control_event_processor(manager_process_control_event);
     pr_D4.hi(); // start logic probe 4
     /// main steps:
     stdio_init_all();

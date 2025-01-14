@@ -72,7 +72,7 @@ void shared_irq_call_back(uint gpio, uint32_t event_mask)
         break;
     };
 }
-void manager_event_processor(UIControlEvent event);
+void manager_process_control_event(UIControlEvent event);
 
 /**
  * @brief main test and example program about ui_core, with serial terminal as widget substitute.
@@ -100,7 +100,7 @@ int main()
     MyIncrementalValueWidgetOnSerialMonitor value_1_widget = MyIncrementalValueWidgetOnSerialMonitor(&value_1);
     MyIncrementalValueWidgetOnSerialMonitor value_2_widget = MyIncrementalValueWidgetOnSerialMonitor(&value_2);
 
-    ky040.update_UI_control_event_processor(manager_event_processor);
+    ky040.update_UI_control_event_processor(manager_process_control_event);
 
     /// 5- create a widget for the manager
     MyManagerWidget manager_widget = MyManagerWidget(&manager);
@@ -139,6 +139,6 @@ int main()
     }
     return 0;
 }
-void manager_event_processor(UIControlEvent event) {
+void manager_process_control_event(UIControlEvent event) {
     manager.process_control_event(event);
 };

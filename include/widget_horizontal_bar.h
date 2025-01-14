@@ -25,12 +25,12 @@ private:
     float level_coef;
     int level_offset;
 
-    UIModelObject *bar_value_model;
 
     void convert_level_value_to_px();
     void draw();
 
 protected:
+    UIModelObject *bar_value_model;
 public:
     WidgetHorizontalBar(UIModelObject *bar_value_model,
                         DisplayDevice *display_screen,
@@ -44,5 +44,5 @@ public:
 
     ~WidgetHorizontalBar();
     void set_value(int value);
-    void draw_refresh();
+    virtual void draw_refresh();
 };

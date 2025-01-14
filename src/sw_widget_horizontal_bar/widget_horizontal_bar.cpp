@@ -56,7 +56,7 @@ WidgetHorizontalBar::WidgetHorizontalBar(UIModelObject *bar_value_model,
     this->level = 0;
     this->px_max = frame_width;
     this->px_min = 0;
-    this->level_coef = (float)(px_max - px_min) / (max_value-min_value);
+    this->level_coef = (float)(px_max - px_min) / (max_value - min_value);
     this->level_offset = px_max - level_coef * max_value;
 }
 
@@ -75,11 +75,12 @@ void WidgetHorizontalBar::set_value(int value)
 void WidgetHorizontalBar::draw_refresh()
 {
     assert(this->bar_value_model != nullptr);
+
     if (this->bar_value_model->has_changed())
     {
         this->draw();
         this->draw_border();
+        this->display_screen->show(this, this->widget_anchor_x, this->widget_anchor_y);
+        // this->bar_value_model->clear_change_flag(); // this is not the last widget, then we must not clear the change flag
     }
-    this->display_screen->show(this, this->widget_anchor_x, this->widget_anchor_y);
-    this->bar_value_model->clear_change_flag();
 }

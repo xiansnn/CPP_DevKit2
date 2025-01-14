@@ -41,26 +41,26 @@ struct_ConfigSSD1306 cfg_ssd1306{
     .frequency_divider = 1,
     .frequency_factor = 0};
 
-class MyModel : public UIControlledIncrementalValue
+class MyHorizontalBarModel : public UIControlledIncrementalValue
 {
 private:
     /* data */
 public:
-    MyModel(int _min_value, int _max_value, bool _is_wrappable, int _increment);
-    ~MyModel();
+    MyHorizontalBarModel(int _min_value, int _max_value, bool _is_wrappable, int _increment);
+    ~MyHorizontalBarModel();
     void process_control_event(UIControlEvent _event);
 };
 
-MyModel::MyModel(int _min_value, int _max_value, bool _is_wrappable, int _increment)
+MyHorizontalBarModel::MyHorizontalBarModel(int _min_value, int _max_value, bool _is_wrappable, int _increment)
     : UIControlledIncrementalValue(_min_value, _max_value, _is_wrappable, _increment)
 {
 }
 
-MyModel::~MyModel()
+MyHorizontalBarModel::~MyHorizontalBarModel()
 {
 }
 
-void MyModel::process_control_event(UIControlEvent _event)
+void MyHorizontalBarModel::process_control_event(UIControlEvent _event)
 {
     switch (_event)
     {
@@ -78,11 +78,10 @@ void MyModel::process_control_event(UIControlEvent _event)
 int main()
 {
     pr_D4.hi();
-    // stdio_init_all();
     HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
     SSD1306 display = SSD1306(&master, cfg_ssd1306);
 
-    MyModel my_model = MyModel(MIN_VALUE, MAX_VALUE, true, 1);
+    MyHorizontalBarModel my_model = MyHorizontalBarModel(MIN_VALUE, MAX_VALUE, true, 1);
 
     WidgetHorizontalBar my_horizontal_bar = WidgetHorizontalBar(&my_model, &display, MAX_VALUE, MIN_VALUE, 100, 8, 20, 8);
 
