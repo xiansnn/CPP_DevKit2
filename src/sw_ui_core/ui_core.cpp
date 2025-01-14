@@ -8,6 +8,7 @@ UIModelObject::UIModelObject()
 
 UIModelObject::~UIModelObject()
 {
+    delete current_controller;
 }
 
 bool UIModelObject::has_changed()
@@ -125,6 +126,7 @@ UIObjectManager::UIObjectManager()
 
 UIObjectManager::~UIObjectManager()
 {
+    delete current_active_model;
 }
 
 void UIObjectManager::add_managed_model(UIModelObject *_new_model)
@@ -198,6 +200,7 @@ UIController::UIController()
 
 UIController::~UIController()
 {
+    delete current_controlled_object;
 }
 
 void UIController::update_current_controlled_object(UIModelObject *_new_controlled_object)
