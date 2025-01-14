@@ -275,10 +275,11 @@ protected:
 
 public:
     /**
-     * @brief create a new UIObjectManager.
-     *
+     * @brief Construct a new UIObjectManager object
+     * 
+     * @param is_wrappable if true, the scan over managed object wrap.
      */
-    UIObjectManager(/* args */);
+    UIObjectManager(bool is_wrappable);
     /**
      * @brief Destroy the UIObjectManager object
      *

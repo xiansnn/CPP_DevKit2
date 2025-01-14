@@ -1,6 +1,5 @@
 #include "ui_core.h"
 
-
 UIModelObject::UIModelObject()
 {
     last_change_time = time_us_32();
@@ -117,8 +116,8 @@ int UIControlledIncrementalValue::get_max_value()
     return max_value;
 }
 
-UIObjectManager::UIObjectManager()
-    : UIControlledIncrementalValue(0, 0, true, 1)
+UIObjectManager::UIObjectManager(bool is_wrappable)
+    : UIControlledIncrementalValue(0, 0, is_wrappable, 1)
 {
     update_status(ControlledObjectStatus::IS_ACTIVE);
     current_active_model = this;
