@@ -32,7 +32,7 @@ protected:
 
 public:
     /**
-     * @brief Construct a new w SquareLed object
+     * @brief Construct a new WidgetSquareLed
      * 
      * @param display_screen 
      * @param frame_width 
@@ -69,18 +69,19 @@ public:
      * 
      */
     void blink_refresh();
+
     /**
      * @brief set the blinking of the led OFF
      * 
      */
     void blink_off();
+
     /**
      * @brief set the blinking of the led ON
      * 
      */
     void blink_on();
 
-
-
+    void draw_refresh();
 
 };

@@ -16,12 +16,12 @@
 
 /**
  * @brief WidgetFocusIndicator : this is a special led widget used to show the status of the model.
+ * 
+ * It is supposed to work with another widget that shows the expected visualisation of the displayed model.
  */
 class WidgetFocusIndicator : public WidgetSquareLed
 {
 private:
-    /// @brief the variable that stores the reference to the actual model object.
-    UIModelObject *actual_displayed_model = nullptr;
 
 public:
     WidgetFocusIndicator(UIModelObject *actual_displayed_model,

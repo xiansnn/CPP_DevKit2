@@ -1,20 +1,20 @@
 /**
  * @file widget.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-01-10
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
 #if !defined(WIDGET_H)
 #define WIDGET_H
 
 #include "display_device.h"
+#include "ui_core.h"
 #include <vector>
-
 
 /**
  * @brief A widget is a displayed object on a device screen. It inherits from all framebuffer features, giving it textual and graphical capabilities.
@@ -28,7 +28,7 @@
  * This is why the widget height and the widget_anchor_y must be multiple of 8. Doing so the widget buffer bytes do not ovewrite pixel outside the widget border.
  *
  * IMPORTANT NOTICE 2: The final widget implementation must know what actual model object it displays. This final implementation must have a member (can be private)
- * e.g. [final_type] * actual_displayed_object; of the actual [final_type] implementation of UIModelObject. This can be initialised by the constructor.
+ * e.g. [final_type] * actual_displayed_model; of the actual [final_type] implementation of UIModelObject. This can be initialised by the constructor.
  *
  *
  */
@@ -38,7 +38,10 @@ private:
     /// @brief store the value of the previous blinking phase.should be 0 or 1.
     int8_t previous_blinking_phase;
 
+
 protected:
+    /// @brief a pointer to the UIModelObject actually displayed by the widget
+    UIModelObject *actual_displayed_model = nullptr;
 
     /// @brief ask if the blinking phase has changed
     /// \return true if phase has changed
@@ -119,18 +122,22 @@ public:
      * \image html widget.png
      */
     Widget(DisplayDevice *display_screen,
-             size_t frame_width,
-             size_t frame_height,
-             uint8_t widget_anchor_x,
-             uint8_t widget_anchor_y,
-             bool widget_with_border,
-             uint8_t widget_border_width = 1,
-             FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB,
-             struct_FramebufferText framebuffer_txt_cnf = {.font = font_8x8});
+           size_t frame_width,
+           size_t frame_height,
+           uint8_t widget_anchor_x,
+           uint8_t widget_anchor_y,
+           bool widget_with_border,
+           uint8_t widget_border_width = 1,
+           FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB,
+           struct_FramebufferText framebuffer_txt_cnf = {.font = font_8x8});
     /**
      * @brief Destroy the UIWidget object
      */
     ~Widget();
+
+    /// @brief initialise the link to the UIModelObject
+    /// @param displayed_object 
+    void set_actual_displayed_object(UIModelObject* displayed_object);
     /**
      * @brief  add sub_widget to the current widget
      *
@@ -145,13 +152,13 @@ public:
      * Guidance to implement this function:
      *
      * - First: Scan all contained sub-widgets if any and call draw_refresh() member function of each of them.
-     * 
+     *
      * - then: update widget status according to the values of interest in the UIModelObject
-     * 
+     *
      * - refresh blinking if needed
-     * 
+     *
      * - Then: check if any changes in the model require a screen redraw
-     * 
+     *
      * - if redraw() required , execute the effective widget drawing (can be a private member function)
      * - and finally : clear model change flag if needed.
      *
