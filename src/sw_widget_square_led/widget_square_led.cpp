@@ -53,3 +53,7 @@ void WidgetSquareLed::blink_on()
 {
     this->led_is_blinking = true;
 }
+
+void WidgetSquareLed::draw_refresh()
+{
+}

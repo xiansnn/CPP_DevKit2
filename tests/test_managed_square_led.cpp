@@ -104,47 +104,37 @@ void manager_process_control_event(UIControlEvent event)
 int main()
 {
     ky040.update_UI_control_event_processor(manager_process_control_event);
-    pr_D4.hi(); // start logic probe 4
-    /// main steps:
+    pr_D4.hi(); 
+
     stdio_init_all();
-    /// 1- create I2C bus hw peripheral
+
     HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
-    /// 2- create the OLED display, clean up the screen
+
     SSD1306 display = SSD1306(&master, cfg_ssd1306);
     pr_D5.hi();
     display.clear_pixel_buffer();
-    // display.rect(0, 0, 128, 64); //uncomment if a border is needed
+
     display.show();
     pr_D5.lo();
-    /// 3- create 3 MySquareLedModel  as displayed object for MySquareLedWidget
+
     MySquareLedModel test_model_1 = MySquareLedModel("TM1");
     MySquareLedModel test_model_2 = MySquareLedModel("TM2");
     MySquareLedModel test_model_3 = MySquareLedModel("TM3");
-    /// 4- create 3 MySquareLedWidget and the MyFocusLedWidget
-    MySquareLedWidget square_led_1 = MySquareLedWidget(&test_model_1, &display, 20, 8, 6, 0);
-    MySquareLedWidget square_led_2 = MySquareLedWidget(&test_model_2, &display, 20, 8, 6, 8);
-    MySquareLedWidget square_led_3 = MySquareLedWidget(&test_model_3, &display, 20, 8, 6, 16);
-    MyFocusLedWidget focus_led_1 = MyFocusLedWidget(&test_model_1, &display, 3, 8, 0, 0);
-    MyFocusLedWidget focus_led_2 = MyFocusLedWidget(&test_model_2, &display, 3, 8, 0, 8);
-    MyFocusLedWidget focus_led_3 = MyFocusLedWidget(&test_model_3, &display, 3, 8, 0, 16);
 
-    /// 5- set led_is_blinking period of the MyFocusLedWidget
-    focus_led_1.set_blink_us(200000);
-    focus_led_2.set_blink_us(200000);
-    focus_led_3.set_blink_us(200000);
-    /// 6- create a test_switch_button
+    MySquareLEDWidgetWithFocus square_led_1 = MySquareLEDWidgetWithFocus(&test_model_1, &display, 50, 8, 6, 8);
+    MySquareLEDWidgetWithFocus square_led_2 = MySquareLEDWidgetWithFocus(&test_model_2, &display, 50, 8, 6, 24);
+    MySquareLEDWidgetWithFocus square_led_3 = MySquareLEDWidgetWithFocus(&test_model_3, &display, 50, 8, 6, 40);
+
     ky040.update_current_controlled_object(&test_model_1);
 
-    /// 8- populate manager with managed objects
     manager.add_managed_model(&test_model_1);
     manager.add_managed_model(&test_model_2);
     manager.add_managed_model(&test_model_3);
-    pr_D4.lo(); // end logic probe 4
-
+    pr_D4.lo(); 
     while (true)
-    /// 9- start infinite loop
+
     {
-        pr_D5.hi(); // start logic probe 5
+        pr_D5.hi(); 
         /// - get central_switch event and give it to the manager .
         manager.process_control_event(ky040.process_central_switch_event());
 
@@ -152,10 +142,8 @@ int main()
         square_led_1.draw_refresh();
         square_led_2.draw_refresh();
         square_led_3.draw_refresh();
-        focus_led_1.draw_refresh();
-        focus_led_2.draw_refresh();
-        focus_led_3.draw_refresh();
-        pr_D5.lo(); // end logic probe 5
+
+        pr_D5.lo(); 
         /// - sleep for 20ms
         sleep_ms(20);
     }

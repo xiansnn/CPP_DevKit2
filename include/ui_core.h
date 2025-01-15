@@ -279,7 +279,7 @@ public:
      * 
      * @param is_wrappable if true, the scan over managed object wrap.
      */
-    UIObjectManager(bool is_wrappable);
+    UIObjectManager(bool is_wrappable=false);
     /**
      * @brief Destroy the UIObjectManager object
      *
