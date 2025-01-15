@@ -175,7 +175,7 @@ target_link_libraries(test_managed_horizontal_bar
             ssd1306
             ui_core
             debug_probe
-            widget_square_led
+            widget_focus_indicator
             widget_horizontal_bar
             ky040
             )    

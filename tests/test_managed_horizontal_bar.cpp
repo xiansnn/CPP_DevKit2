@@ -9,11 +9,9 @@
  *
  */
 
-#include "widget_square_led.h"
 #include "ssd1306.h"
 #include "probe.h"
 #include "ky040.h"
-#include "widget_horizontal_bar.h"
 
 #include "test_managed_horizontal_bar/t_managed_horizontal_bar_models.cpp"
 #include "test_managed_horizontal_bar/t_managed_horizontal_bar_widgets.cpp"
@@ -105,17 +103,9 @@ int main()
     manager.add_managed_model(&my_horizontal_bar_model_2);
     manager.add_managed_model(&my_horizontal_bar_model_3);
 
-    MyHorizontalBarWidget horizontal_bar_1 = MyHorizontalBarWidget(&my_horizontal_bar_model_1, &display, 10, 0, 100, 8, 20, 8);
-    MyHorizontalBarWidget horizontal_bar_2 = MyHorizontalBarWidget(&my_horizontal_bar_model_2, &display, +10, -10, 100, 8, 20, 24);
-    MyHorizontalBarWidget horizontal_bar_3 = MyHorizontalBarWidget(&my_horizontal_bar_model_3, &display, 3, -20, 100, 8, 20, 40);
-
-    MyFocusLedWidget focus_led_1 = MyFocusLedWidget(&my_horizontal_bar_model_1, &display, 3, 8, 0, 8);
-    MyFocusLedWidget focus_led_2 = MyFocusLedWidget(&my_horizontal_bar_model_2, &display, 3, 8, 0, 24);
-    MyFocusLedWidget focus_led_3 = MyFocusLedWidget(&my_horizontal_bar_model_3, &display, 3, 8, 0, 40);
-
-    focus_led_1.set_blink_us(200000);
-    focus_led_2.set_blink_us(200000);
-    focus_led_3.set_blink_us(200000);
+    MyHorizontalBarWidgetWithFocus horizontal_bar_1 = MyHorizontalBarWidgetWithFocus(&my_horizontal_bar_model_1, &display, 10, 0, 100, 8, 10, 8);
+    MyHorizontalBarWidgetWithFocus horizontal_bar_2 = MyHorizontalBarWidgetWithFocus(&my_horizontal_bar_model_2, &display, +10, -10, 100, 8, 10, 24);
+    MyHorizontalBarWidgetWithFocus horizontal_bar_3 = MyHorizontalBarWidgetWithFocus(&my_horizontal_bar_model_3, &display, 3, -20, 100, 8, 10, 40);
 
     while (true)
     /// 9- start infinite loop
@@ -126,15 +116,12 @@ int main()
 
         pr_D4.hi();
         horizontal_bar_1.draw_refresh();
-        focus_led_1.draw_refresh();
         pr_D4.lo();
         pr_D4.hi();
         horizontal_bar_2.draw_refresh();
-        focus_led_2.draw_refresh();
         pr_D4.lo();
         pr_D4.hi();
         horizontal_bar_3.draw_refresh();
-        focus_led_3.draw_refresh();
         pr_D4.lo();
 
         pr_D5.lo(); // end logic probe 5
