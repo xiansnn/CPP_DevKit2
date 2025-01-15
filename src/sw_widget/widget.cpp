@@ -44,6 +44,13 @@ Widget::Widget(DisplayDevice *_display_screen,
 
 Widget::~Widget()
 {
+    delete actual_displayed_model;
+    delete display_screen;
+}
+
+void Widget::set_actual_displayed_object(UIModelObject *displayed_object)
+{
+    this->actual_displayed_model = displayed_object;
 }
 
 void Widget::set_display_screen(DisplayDevice *_new_display_device)
@@ -67,4 +74,8 @@ bool Widget::blinking_phase_has_changed()
 void Widget::add_widget(Widget *_sub_widget)
 {
     this->widgets.push_back(_sub_widget);
+}
+
+void Widget::draw_refresh()
+{
 }

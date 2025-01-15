@@ -30,7 +30,7 @@ private:
     void draw();
 
 protected:
-    UIModelObject *bar_value_model;
+
 public:
     WidgetHorizontalBar(UIModelObject *bar_value_model,
                         DisplayDevice *display_screen,

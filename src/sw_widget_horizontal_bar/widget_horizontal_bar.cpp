@@ -50,7 +50,7 @@ WidgetHorizontalBar::WidgetHorizontalBar(UIModelObject *bar_value_model,
                                          FramebufferFormat framebuffer_format)
     : Widget(display_screen, frame_width, frame_height, widget_anchor_x, widget_anchor_y, widget_with_border, 1, framebuffer_format)
 {
-    this->bar_value_model = bar_value_model;
+    this->actual_displayed_model = bar_value_model;
     this->max_value = max_value;
     this->min_value = min_value;
     this->level = 0;
@@ -62,8 +62,6 @@ WidgetHorizontalBar::WidgetHorizontalBar(UIModelObject *bar_value_model,
 
 WidgetHorizontalBar::~WidgetHorizontalBar()
 {
-    delete bar_value_model;
-    delete display_screen;
 }
 
 void WidgetHorizontalBar::set_value(int value)
@@ -74,9 +72,9 @@ void WidgetHorizontalBar::set_value(int value)
 
 void WidgetHorizontalBar::draw_refresh()
 {
-    assert(this->bar_value_model != nullptr);
+    assert(this->actual_displayed_model != nullptr);
 
-    if (this->bar_value_model->has_changed())
+    if (this->actual_displayed_model->has_changed())
     {
         this->draw();
         this->draw_border();
