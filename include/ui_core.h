@@ -231,15 +231,15 @@ public:
 class UIObjectManager : public UIControlledIncrementalValue
 {
 protected:
-
     /**
-     * @brief check if there is a time out either on the managed models or the manager itself.
+     * @brief  check if there is a time out either on the managed models or the manager itself.
      * 
      * This means no action on focus control and active status control.
      * 
      * NOTICE: this is usefull when controller use IRQ, because we cannot detect no action when no more IRQ are triggered (up to now)
      * 
      * @param managed_object_status_time_out_us the time out value in microsecond. default to 3000000 (3seconds)
+     * @return ControlledObjectStatusTimeOutReason 
      */
     ControlledObjectStatusTimeOutReason check_time_out(uint32_t managed_object_status_time_out_us=UI_MODEL_OBJECT_STATUS_TIME_OUT_us);
     /**
