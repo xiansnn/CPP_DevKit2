@@ -14,6 +14,7 @@
 #include "ui_control_event.h"
 #include "ui_core.h"
 
+// #define PRINT_DEBUG
 
 class MyHorizontalBarModel : public UIControlledIncrementalValue
 {
@@ -48,5 +49,7 @@ void MyHorizontalBarModel::process_control_event(UIControlEvent _event)
     default:
         break;
     }
+#ifdef PRINT_DEBUG
     printf("---> %s value=%d\n", this->name.c_str(), this->value);
+#endif
 }

@@ -60,19 +60,25 @@ void MyManager::process_control_event(UIControlEvent _event)
         if (current_active_model == this)
         {
             make_managed_object_active();
+#ifdef PRINT_DEBUG
             printf("%s is active \n", ((MySquareLedModel *)this->current_active_model)->name.c_str());
+#endif
         }
         else
         {
             make_manager_active();
+#ifdef PRINT_DEBUG
             printf("manager is active, %s has focus \n", ((MySquareLedModel *)this->managed_models[this->value])->name.c_str());
+#endif
         }
         break;
     case UIControlEvent::INCREMENT:
         if (current_active_model == this)
         {
             increment_focus();
+#ifdef PRINT_DEBUG
             printf("[inc] %s has focus\n", ((MySquareLedModel *)this->managed_models[this->value])->name.c_str());
+#endif
         }
         else
             current_active_model->process_control_event(_event);
@@ -81,19 +87,25 @@ void MyManager::process_control_event(UIControlEvent _event)
         if (current_active_model == this)
         {
             decrement_focus();
+#ifdef PRINT_DEBUG
             printf("[dec] %s has focus\n", ((MySquareLedModel *)this->managed_models[this->value])->name.c_str());
+#endif
         }
         else
             current_active_model->process_control_event(_event);
         break;
     case UIControlEvent::TIME_OUT:
+#ifdef PRINT_DEBUG
         printf("[manager] central switch button time out\n");
+#endif
         break;
 
     default:
         break;
     }
     ControlledObjectStatusTimeOutReason reason = check_time_out(MODEL_OBJECT_STATUS_TIME_OUT_us);
+#ifdef PRINT_DEBUG
     if (reason != ControlledObjectStatusTimeOutReason::NO_TIME_OUT)
         printf("[time out] %s\n", reason_to_string[reason].c_str());
+#endif
 }

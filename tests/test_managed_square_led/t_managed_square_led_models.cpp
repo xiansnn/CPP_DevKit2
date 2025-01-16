@@ -1,18 +1,19 @@
 /**
  * @file t_managed_square_led_models.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-01-12
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
 #pragma once
 
 #include "ui_control_event.h"
 #include "ui_core.h"
+// #define PRINT_DEBUG
 
 /**
  * @brief MySquareLedModel : Example of final implementation of UIModelObject
@@ -54,7 +55,9 @@ void MySquareLedModel::process_control_event(UIControlEvent _event)
         if (get_status() == ControlledObjectStatus::IS_ACTIVE)
         {
             my_bool_value = !my_bool_value;
+#ifdef PRINT_DEBUG
             printf("---> %s on_off=%d\n", this->name.c_str(), my_bool_value);
+#endif
             set_change_flag();
         }
         break;
