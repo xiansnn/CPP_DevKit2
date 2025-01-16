@@ -5,7 +5,12 @@ var hierarchy =
       [ "DisplayDevice", "class_display_device.html", [
         [ "SSD1306", "class_s_s_d1306.html", null ]
       ] ],
-      [ "Widget", "class_widget.html", null ]
+      [ "Widget", "class_widget.html", [
+        [ "WidgetHorizontalBar", "class_widget_horizontal_bar.html", null ],
+        [ "WidgetSquareLed", "class_widget_square_led.html", [
+          [ "WidgetFocusIndicator", "class_widget_focus_indicator.html", null ]
+        ] ]
+      ] ]
     ] ],
     [ "HC_SR04", "class_h_c___s_r04.html", null ],
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", null ],

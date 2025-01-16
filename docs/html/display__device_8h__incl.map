@@ -1,6 +1,6 @@
 <map id="display_device.h" name="display_device.h">
 <area shape="rect" id="Node000001" title=" " alt="" coords="259,5,357,30"/>
-<area shape="rect" id="Node000002" href="$framebuffer_8h.html" title="Most of code and algorithms here are derived from https://github.com/Harbys/pico&#45;ssd1306 works about ..." alt="" coords="266,78,351,103"/>
+<area shape="rect" id="Node000002" href="$framebuffer_8h.html" title=" " alt="" coords="266,78,351,103"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="311,31,311,62,306,62,306,31"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="5,151,54,175"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="265,104,69,153,68,148,264,99"/>

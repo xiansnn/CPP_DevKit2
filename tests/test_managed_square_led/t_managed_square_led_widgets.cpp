@@ -128,7 +128,7 @@ MySquareLEDWidgetWithFocus::~MySquareLEDWidgetWithFocus()
 
 void MySquareLEDWidgetWithFocus::draw_refresh()
 {
-    // this->h_bar_widget->set_value(this->bar_value_model->get_value());
+    // this->h_bar_widget->set_level(this->bar_value_model->get_value());
     for (auto &&w : this->widgets)
     {
         w->draw_refresh();

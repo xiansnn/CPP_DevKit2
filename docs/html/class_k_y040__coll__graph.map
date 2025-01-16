@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt..." alt="" coords="353,889,917,1039"/>
 <area shape="rect" id="Node000002" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="85,625,497,724"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="361,731,548,887,545,891,358,736"/>
-<area shape="rect" id="Node000003" href="$class_u_i_model_object.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="5,821,328,1107"/>
+<area shape="rect" id="Node000003" href="$class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,821,328,1107"/>
 <area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="214,726,186,753,165,785,158,806,153,804,161,782,182,749,210,722"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="248,820,259,796,276,740,281,741,264,798,253,823"/>
 <area shape="rect" id="Node000004" href="$class_switch_button.html" title="SwitchButton status is sampled periodically by software." alt="" coords="461,5,769,309"/>

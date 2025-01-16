@@ -228,7 +228,7 @@ SwitchButton times references</div></div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">gpio</td><td>the microcontroller GPIO that read the switch status </td></tr>
-    <tr><td class="paramname">conf</td><td>the configuration data according <a class="el" href="structstruct___switch_button_config.html" title="These are the values used to configure a switch button.">struct_SwitchButtonConfig</a> </td></tr>
+    <tr><td class="paramname">conf</td><td>the configuration data according <a class="el" href="structstruct___switch_button_config.html" title="These are the values used to configure a switch button (0) debounce_delay_us (1) long_release_delay_u...">struct_SwitchButtonConfig</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -252,7 +252,7 @@ SwitchButton times references</div></div>
 </div><div class="memdoc">
 
 <p>Get the button status object. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657" title="The logical state of the switch.">ButtonState</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657" title="The logical state of the switch (0) IDLE (1) ACTIVE (2) RELEASE_PENDING (3) TIME_OUT_PENDING.">ButtonState</a> </dd></dl>
 
 </div>
 </div>

@@ -54,7 +54,7 @@ var NAVTREEINDEX =
 [
 "12x16__font_8h.html",
 "class_u_i_model_object.html#af89f5a77bc6a17f09ceb7fe603bbe715",
-"structstruct___m_p_u_data.html#aa1cfbab5504442f763c74a0a823dd0f1"
+"structstruct___config_scroll_s_s_d1306.html#afbc95d46153ed4ab6f0a14c2884d5cd3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

@@ -35,5 +35,8 @@ var annotated_dup =
     [ "UIController", "class_u_i_controller.html", "class_u_i_controller" ],
     [ "UIModelObject", "class_u_i_model_object.html", "class_u_i_model_object" ],
     [ "UIObjectManager", "class_u_i_object_manager.html", "class_u_i_object_manager" ],
-    [ "Widget", "class_widget.html", "class_widget" ]
+    [ "Widget", "class_widget.html", "class_widget" ],
+    [ "WidgetFocusIndicator", "class_widget_focus_indicator.html", "class_widget_focus_indicator" ],
+    [ "WidgetHorizontalBar", "class_widget_horizontal_bar.html", "class_widget_horizontal_bar" ],
+    [ "WidgetSquareLed", "class_widget_square_led.html", "class_widget_square_led" ]
 ];

@@ -4,6 +4,12 @@
 <area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="100,30,133,23,134,29,101,35"/>
 <area shape="rect" id="Node000003" href="$class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="149,55,204,79"/>
 <area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="101,50,149,59,148,65,100,56"/>
-<area shape="rect" id="Node000002" href="$class_s_s_d1306.html" title="SSD1306 OLED display device driver." alt="" coords="267,5,331,30"/>
-<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="235,15,266,15,266,20,235,20"/>
+<area shape="rect" id="Node000002" href="$class_s_s_d1306.html" title="SSD1306 OLED display device driver." alt="" coords="294,5,359,30"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="235,15,294,15,294,20,235,20"/>
+<area shape="rect" id="Node000004" href="$class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="267,55,386,79"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="220,64,266,64,266,70,220,70"/>
+<area shape="rect" id="Node000005" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="274,104,380,129"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="220,78,287,101,286,106,218,83"/>
+<area shape="rect" id="Node000006" href="$class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="434,104,560,129"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="395,114,434,114,434,119,395,119"/>
 </map>

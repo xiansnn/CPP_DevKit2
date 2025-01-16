@@ -116,9 +116,15 @@ Inheritance diagram for Widget:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_widget__inherit__graph.png" border="0" usemap="#a_widget_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_widget_inherit__map" id="a_widget_inherit__map">
-<area shape="rect" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,789,512,1229"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="35,5,482,741"/>
-<area shape="poly" title=" " alt="" coords="261,756,261,789,256,789,256,756"/>
+<area shape="rect" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="257,789,764,1267"/>
+<area shape="rect" href="class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="5,1315,480,1656"/>
+<area shape="poly" title=" " alt="" coords="365,1281,344,1317,340,1314,361,1278"/>
+<area shape="rect" href="class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="505,1366,1055,1605"/>
+<area shape="poly" title=" " alt="" coords="661,1278,713,1365,708,1368,657,1281"/>
+<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="287,5,734,741"/>
+<area shape="poly" title=" " alt="" coords="513,756,513,790,508,790,508,756"/>
+<area shape="rect" href="class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="514,1704,1046,1817"/>
+<area shape="poly" title=" " alt="" coords="783,1619,783,1704,777,1704,777,1619"/>
 </map>
 </div>
 <div class="dynheader">
@@ -126,14 +132,19 @@ Collaboration diagram for Widget:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_widget__coll__graph.png" border="0" usemap="#a_widget_coll__map" alt="Collaboration graph"/></div>
 <map name="a_widget_coll__map" id="a_widget_coll__map">
-<area shape="rect" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,1183,512,1604"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="30,222,477,939"/>
-<area shape="poly" title=" " alt="" coords="258,954,260,1183,255,1183,253,954"/>
-<area shape="rect" href="class_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="275,989,725,1121"/>
-<area shape="poly" title=" " alt="" coords="450,951,469,988,464,990,445,954"/>
-<area shape="rect" href="structstruct___framebuffer_text.html" title="Data structure that holds all configuration parameters used by textual primitives." alt="" coords="178,5,329,160"/>
-<area shape="poly" title=" " alt="" coords="256,160,256,205,251,205,251,160"/>
-<area shape="poly" title=" " alt="" coords="456,1122,421,1170,417,1167,452,1119"/>
+<area shape="rect" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="222,1336,729,1776"/>
+<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,222,452,939"/>
+<area shape="poly" title=" " alt="" coords="190,954,193,1035,202,1116,217,1196,240,1273,271,1335,266,1338,236,1275,212,1197,196,1117,188,1035,185,954"/>
+<area shape="rect" href="class_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="250,1065,701,1197"/>
+<area shape="poly" title=" " alt="" coords="398,951,449,1065,444,1067,393,954"/>
+<area shape="rect" href="structstruct___framebuffer_text.html" title="Data structure that holds all configuration parameters used by textual primitives." alt="" coords="153,5,304,160"/>
+<area shape="poly" title=" " alt="" coords="231,160,231,205,226,205,226,160"/>
+<area shape="rect" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="725,989,1047,1274"/>
+<area shape="poly" title=" " alt="" coords="750,1276,727,1300,701,1326,698,1322,723,1296,747,1272"/>
+<area shape="rect" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="799,1507,1211,1605"/>
+<area shape="poly" title=" " alt="" coords="855,1273,860,1311,878,1361,902,1409,956,1492,952,1495,898,1412,873,1363,855,1313,850,1274"/>
+<area shape="poly" title=" " alt="" coords="1009,1507,1012,1409,1008,1353,995,1299,993,1291,998,1289,1001,1297,1013,1352,1018,1409,1014,1507"/>
+<area shape="poly" title=" " alt="" coords="478,1197,478,1319,473,1319,473,1197"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -152,6 +163,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~Widget</b> ()</td></tr>
 <tr class="memdesc:aa24f66bcbaaec6d458b0980e8c8eae65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the UIWidget object. <br /></td></tr>
 <tr class="separator:aa24f66bcbaaec6d458b0980e8c8eae65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa715d3f4cfd0317fc1a021277233ed2" id="r_afa715d3f4cfd0317fc1a021277233ed2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa715d3f4cfd0317fc1a021277233ed2">set_actual_displayed_object</a> (<a class="el" href="class_u_i_model_object.html">UIModelObject</a> *displayed_object)</td></tr>
+<tr class="memdesc:afa715d3f4cfd0317fc1a021277233ed2"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise the link to the <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a>  <br /></td></tr>
+<tr class="separator:afa715d3f4cfd0317fc1a021277233ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d08d01ec5ea290b39ae26963ae7e460" id="r_a6d08d01ec5ea290b39ae26963ae7e460"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d08d01ec5ea290b39ae26963ae7e460">add_widget</a> (<a class="el" href="class_widget.html">Widget</a> *_sub_widget)</td></tr>
 <tr class="memdesc:a6d08d01ec5ea290b39ae26963ae7e460"><td class="mdescLeft">&#160;</td><td class="mdescRight">add sub_widget to the current widget  <br /></td></tr>
 <tr class="separator:a6d08d01ec5ea290b39ae26963ae7e460"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -231,6 +245,10 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr class="memitem:a8b0bef7792608303410cbff0063d7e0a" id="r_a8b0bef7792608303410cbff0063d7e0a"><td class="memItemLeft" align="right" valign="top"><a id="a8b0bef7792608303410cbff0063d7e0a" name="a8b0bef7792608303410cbff0063d7e0a"></a>
+<a class="el" href="class_u_i_model_object.html">UIModelObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>actual_displayed_model</b> = nullptr</td></tr>
+<tr class="memdesc:a8b0bef7792608303410cbff0063d7e0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">a pointer to the <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> actually displayed by the widget <br /></td></tr>
+<tr class="separator:a8b0bef7792608303410cbff0063d7e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d16527adc5cfd8ff6fda332c1f09db0" id="r_a9d16527adc5cfd8ff6fda332c1f09db0"><td class="memItemLeft" align="right" valign="top"><a id="a9d16527adc5cfd8ff6fda332c1f09db0" name="a9d16527adc5cfd8ff6fda332c1f09db0"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>blink_period_us</b></td></tr>
 <tr class="memdesc:a9d16527adc5cfd8ff6fda332c1f09db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The period of the blinking, in microseconds. <br /></td></tr>
@@ -313,7 +331,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>max_column</b> {0}
 <div class="textblock"><p>A widget is a displayed object on a device screen. It inherits from all framebuffer features, giving it textual and graphical capabilities. </p>
 <p>Being a framebuffer, it is defined by a width and a height, line and column of text, and graphics. It is located within the display device screen at an anchor point (x,y).</p>
 <p>IMPORTANT NOTICE 1: The widget is effectively drawn if something has changed in the UIModelObejct it represents. This allows to save drawing processing time. However there is a strong limitation : only the widget buffer is transered to the device GDDRAM, based of its specific addressing scheme. As a result, if the widget is located such that the buffer is written across device pages, the contents of the overwritten pages is lost. This is why the widget height and the widget_anchor_y must be multiple of 8. Doing so the widget buffer bytes do not ovewrite pixel outside the widget border.</p>
-<p>IMPORTANT NOTICE 2: The final widget implementation must know what actual model object it displays. This final implementation must have a member (can be private) e.g. [final_type] * actual_displayed_object; of the actual [final_type] implementation of <a class="el" href="class_u_i_model_object.html" title="This is the abstract class to handle all generic behavior of physical display devices (e....">UIModelObject</a>. This can be initialised by the constructor. </p>
+<p>IMPORTANT NOTICE 2: The final widget implementation must know what actual model object it displays. This final implementation must have a member (can be private) e.g. [final_type] * actual_displayed_model; of the actual [final_type] implementation of <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a>. This can be initialised by the constructor. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a112d0eae494f980a5105dac681941ab6" name="a112d0eae494f980a5105dac681941ab6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a112d0eae494f980a5105dac681941ab6">&#9670;&#160;</a></span>Widget()</h2>
@@ -521,17 +539,44 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>(re)draw the graphical elements of the widget. </p>
-<p>To save running time, we can (re)draw the widget only if the associated <a class="el" href="class_u_i_model_object.html" title="This is the abstract class to handle all generic behavior of physical display devices (e....">UIModelObject</a> has_changed.</p>
+<p>To save running time, we can (re)draw the widget only if the associated <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> has_changed.</p>
 <p>Guidance to implement this function:</p>
 <ul>
 <li>First: Scan all contained sub-widgets if any and call <a class="el" href="#a2c09dd7088b55760256ce6e1cb0dd426" title="(re)draw the graphical elements of the widget.">draw_refresh()</a> member function of each of them.</li>
-<li>then: update widget status according to the values of interest in the <a class="el" href="class_u_i_model_object.html" title="This is the abstract class to handle all generic behavior of physical display devices (e....">UIModelObject</a></li>
+<li>then: update widget status according to the values of interest in the <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a></li>
 <li>refresh blinking if needed</li>
 <li>Then: check if any changes in the model require a screen redraw</li>
 <li>if redraw() required , execute the effective widget drawing (can be a private member function)</li>
 <li>and finally : clear model change flag if needed. <pre class="fragment"> WARNING : When several widget display one Model, only the last one must clear_change_flag()
 </pre> </li>
 </ul>
+
+<p>Implemented in <a class="el" href="class_widget_focus_indicator.html#aba75aa920fb8f124007e75f02b21af5d">WidgetFocusIndicator</a>, <a class="el" href="class_widget_horizontal_bar.html#a64a4029c5a26813db412a5b8811d4c0b">WidgetHorizontalBar</a>, and <a class="el" href="class_widget_square_led.html#ab3835abe42abcad6b3399b009f7ccac5">WidgetSquareLed</a>.</p>
+
+</div>
+</div>
+<a id="afa715d3f4cfd0317fc1a021277233ed2" name="afa715d3f4cfd0317fc1a021277233ed2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa715d3f4cfd0317fc1a021277233ed2">&#9670;&#160;</a></span>set_actual_displayed_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Widget::set_actual_displayed_object </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_u_i_model_object.html">UIModelObject</a> *</td>          <td class="paramname"><span class="paramname"><em>displayed_object</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialise the link to the <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">displayed_object</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

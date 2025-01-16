@@ -105,7 +105,7 @@ $(function(){initNavTree('class_u_i_model_object.html',''); initResizable(true);
 </div><!--header-->
 <div class="contents">
 
-<p>This is the abstract class to handle all generic behavior of physical display devices (e.g. OLED screen <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a>). It derived from <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a>. This allows to draw text and graphics directly into the display framebuffer thanks to Framebuffet class text and graphic primitives indepently from any kind of widget.  
+<p>This is the Model abstract class of Model_View_Control design pattern.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ui__core_8h_source.html">ui_core.h</a>&gt;</code></p>
@@ -114,11 +114,11 @@ Inheritance diagram for UIModelObject:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_u_i_model_object__inherit__graph.png" border="0" usemap="#a_u_i_model_object_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_u_i_model_object_inherit__map" id="a_u_i_model_object_inherit__map">
-<area shape="rect" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="117,5,439,309"/>
-<area shape="rect" href="class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of UIModelObject that have special feature such as a value..." alt="" coords="5,357,551,624"/>
-<area shape="poly" title=" " alt="" coords="281,324,281,358,275,358,275,324"/>
-<area shape="rect" href="class_u_i_object_manager.html" title="This is an Abstract class that is used to implement the manager of object on a screen." alt="" coords="129,672,427,883"/>
-<area shape="poly" title=" " alt="" coords="281,639,281,672,275,672,275,639"/>
+<area shape="rect" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="131,5,454,309"/>
+<area shape="rect" href="class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of UIModelObject that have special feature such as a value..." alt="" coords="20,357,565,624"/>
+<area shape="poly" title=" " alt="" coords="295,324,295,358,290,358,290,324"/>
+<area shape="rect" href="class_u_i_object_manager.html" title="This is an Abstract class that is used to implement the manager of object on a screen." alt="" coords="5,672,580,883"/>
+<area shape="poly" title=" " alt="" coords="295,639,295,672,290,672,290,639"/>
 </map>
 </div>
 <div class="dynheader">
@@ -126,7 +126,7 @@ Collaboration diagram for UIModelObject:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_u_i_model_object__coll__graph.png" border="0" usemap="#a_u_i_model_object_coll__map" alt="Collaboration graph"/></div>
 <map name="a_u_i_model_object_coll__map" id="a_u_i_model_object_coll__map">
-<area shape="rect" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="50,5,373,291"/>
+<area shape="rect" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="50,5,373,291"/>
 <area shape="rect" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="5,353,417,451"/>
 <area shape="poly" title=" " alt="" coords="134,291,127,315,128,338,123,338,122,314,129,290"/>
 <area shape="poly" title=" " alt="" coords="250,352,262,328,267,307,272,308,267,330,255,354"/>
@@ -137,11 +137,11 @@ Collaboration diagram for UIModelObject:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af89f5a77bc6a17f09ceb7fe603bbe715" id="r_af89f5a77bc6a17f09ceb7fe603bbe715"><td class="memItemLeft" align="right" valign="top"><a id="af89f5a77bc6a17f09ceb7fe603bbe715" name="af89f5a77bc6a17f09ceb7fe603bbe715"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>UIModelObject</b> ()</td></tr>
-<tr class="memdesc:af89f5a77bc6a17f09ceb7fe603bbe715"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the <a class="el" href="class_u_i_model_object.html" title="This is the abstract class to handle all generic behavior of physical display devices (e....">UIModelObject</a> object. <br /></td></tr>
+<tr class="memdesc:af89f5a77bc6a17f09ceb7fe603bbe715"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> object. <br /></td></tr>
 <tr class="separator:af89f5a77bc6a17f09ceb7fe603bbe715"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27926030b4ebb2bcd5bf6eb07d85a9c4" id="r_a27926030b4ebb2bcd5bf6eb07d85a9c4"><td class="memItemLeft" align="right" valign="top"><a id="a27926030b4ebb2bcd5bf6eb07d85a9c4" name="a27926030b4ebb2bcd5bf6eb07d85a9c4"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~UIModelObject</b> ()</td></tr>
-<tr class="memdesc:a27926030b4ebb2bcd5bf6eb07d85a9c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_u_i_model_object.html" title="This is the abstract class to handle all generic behavior of physical display devices (e....">UIModelObject</a> object. <br /></td></tr>
+<tr class="memdesc:a27926030b4ebb2bcd5bf6eb07d85a9c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> object. <br /></td></tr>
 <tr class="separator:a27926030b4ebb2bcd5bf6eb07d85a9c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae79a9f2c84215e09309dcefde3711138" id="r_ae79a9f2c84215e09309dcefde3711138"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae79a9f2c84215e09309dcefde3711138">has_changed</a> ()</td></tr>
 <tr class="memdesc:ae79a9f2c84215e09309dcefde3711138"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the change flag status  <br /></td></tr>
@@ -193,29 +193,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>change_flag</b> {true
 <tr class="separator:aa5c969bd8d600f753744fbed8ccd909f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This is the abstract class to handle all generic behavior of physical display devices (e.g. OLED screen <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a>). It derived from <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a>. This allows to draw text and graphics directly into the display framebuffer thanks to Framebuffet class text and graphic primitives indepently from any kind of widget. </p>
-<p>Construct a new UIDisplayDevice object</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">width</td><td>The width of physical screen, in pixel. </td></tr>
-    <tr><td class="paramname">height</td><td>The height of physical screen, in pixel. </td></tr>
-    <tr><td class="paramname">format</td><td>The framebuffer format ... see <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a> class <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79" title="enum used to characterize the type of display device memory organisation">FramebufferFormat</a> enumeration </td></tr>
-    <tr><td class="paramname">txt_cnf</td><td>A structure of data that reflect the framebuffer member related to text primitives</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Destroy the UIDisplayDevice object</p>
-<p>This is an pure virtual member function that all final derived class must implement. It transfers the framebuffer buffer to the entire display screen buffer.</p>
-<p>This is an pure virtual member function that all final derived class must implement. It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">frame</td><td>a pointer to the frame to be displayed </td></tr>
-    <tr><td class="paramname">anchor_x</td><td>the x (horizontal)starting position of the frame within the display screen, (in pixel) </td></tr>
-    <tr><td class="paramname">anchor_y</td><td>the y (vertical) starting position of the frame within the display screen, (in pixel)</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This is the Model abstract class of Model_View_Control design pattern.</p>
+<div class="textblock"><p>This is the Model abstract class of Model_View_Control design pattern. </p>
 <p>It handles change_flag, a semaphore used to indicate that a screen draw_refresh is required.</p>
 <p>The controller or any other entities that modify the model must set the change_flag and the widget in charge of its screen representation must clear the change_flag </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -256,7 +234,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>change_flag</b> {true
 </div><div class="memdoc">
 
 <p>Get the status object. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="ui__core_8h.html#a57c20ec1ef250b4ad060705786762112" title="The list of status that a UIModelObject can have.">ControlledObjectStatus</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="ui__core_8h.html#a57c20ec1ef250b4ad060705786762112" title="The list of status that a UIModelObject can have. (0) IS_WAITING (1) HAS_FOCUS (2) IS_ACTIVE.">ControlledObjectStatus</a> </dd></dl>
 
 </div>
 </div>

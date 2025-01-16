@@ -28,5 +28,8 @@ var searchData=
   ['pwm_25',['PWM',['../class_p_w_m.html',1,'PWM'],['../class_p_w_m.html#a4dedfbb6be96295678d51afffee4a132',1,'PWM::PWM()']]],
   ['pwm_26',['pwm',['../class_s_g90.html#a322f551fa9075bfd65fbd72cb307569b',1,'SG90']]],
   ['pwmgatedmeasure_27',['PWMgatedMeasure',['../class_p_w_mgated_measure.html',1,'PWMgatedMeasure'],['../class_p_w_mgated_measure.html#a911c1e8d4fa44682c782c5091b4099fe',1,'PWMgatedMeasure::PWMgatedMeasure()']]],
-  ['pwr_5fmgmt_5f1_28',['PWR_MGMT_1',['../structstruct___config_m_p_u6050.html#a69f73e2978403f376143fbabe46b8722',1,'struct_ConfigMPU6050']]]
+  ['pwr_5fmgmt_5f1_28',['PWR_MGMT_1',['../structstruct___config_m_p_u6050.html#a69f73e2978403f376143fbabe46b8722',1,'struct_ConfigMPU6050']]],
+  ['px_5fmax_29',['px_max',['../class_widget_horizontal_bar.html#a0788bbdadefbe54e47963d5d7026b7c6',1,'WidgetHorizontalBar']]],
+  ['px_5fmin_30',['px_min',['../class_widget_horizontal_bar.html#a43c5233ff22243b90aa0b50612352a5a',1,'WidgetHorizontalBar']]],
+  ['px_5fposition_31',['px_position',['../class_widget_horizontal_bar.html#ac8158adb2da94bb265e98c213b8e746b',1,'WidgetHorizontalBar']]]
 ];

@@ -64,7 +64,7 @@ WidgetHorizontalBar::~WidgetHorizontalBar()
 {
 }
 
-void WidgetHorizontalBar::set_value(int value)
+void WidgetHorizontalBar::set_level(int value)
 {
     this->level = value;
     convert_level_value_to_px();
