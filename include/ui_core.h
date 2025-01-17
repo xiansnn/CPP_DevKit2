@@ -43,10 +43,10 @@ enum class ControlledObjectStatus
 };
 
 /**
- * @brief The list of reason of manager time out.
+ * @brief The list of reason of manager time out report.
  * (0) NO_TIME_OUT
  * (1) MANAGER_INACTIVE
- * (3) FOCUS_LOST
+ * (3) MANAGED_OBJECT_INACTIVE
  */
 enum class ControlledObjectStatusTimeOutReason
 {
@@ -55,7 +55,7 @@ enum class ControlledObjectStatusTimeOutReason
     /// @brief The object is inactive, nothing to do.
     MANAGER_INACTIVE,
     /// @brief The widget or object manager is pointing to this model
-    FOCUS_LOST,
+    MANAGED_OBJECT_INACTIVE
 };
 
 class UIController;

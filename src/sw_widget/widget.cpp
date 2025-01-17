@@ -76,6 +76,6 @@ void Widget::add_widget(Widget *_sub_widget)
     this->widgets.push_back(_sub_widget);
 }
 
-void Widget::draw_refresh()
-{
-}
+// void Widget::draw_refresh()
+// {
+// }

@@ -165,7 +165,7 @@ ControlledObjectStatusTimeOutReason UIObjectManager::check_time_out(uint32_t man
         {
             get_current_controller()->update_current_controlled_object(this);
             make_manager_active();
-            reason = ControlledObjectStatusTimeOutReason::FOCUS_LOST;
+            reason = ControlledObjectStatusTimeOutReason::MANAGED_OBJECT_INACTIVE;
         }
     }
     else /// - check time_out for model under focus
@@ -183,14 +183,14 @@ void UIObjectManager::make_managed_object_active()
 {
     this->current_active_model = this->managed_models[this->value];
     this->current_active_model->update_status(ControlledObjectStatus::IS_ACTIVE);
-    update_status(ControlledObjectStatus::IS_WAITING);
+    this->update_status(ControlledObjectStatus::IS_WAITING);
 }
 
 void UIObjectManager::make_manager_active()
 {
     current_active_model->update_status(ControlledObjectStatus::IS_WAITING);
     current_active_model = this;
-    update_status(ControlledObjectStatus::IS_ACTIVE);
+    this->update_status(ControlledObjectStatus::IS_ACTIVE);
 }
 
 UIController::UIController()
