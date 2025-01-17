@@ -138,22 +138,18 @@ void UIObjectManager::increment_focus()
 {
     int previous_value = value;
     this->increment_value();
-    if (value != previous_value) // action takes place only when the value changes
-    {
+    this->managed_models[this->value]->update_status(ControlledObjectStatus::HAS_FOCUS);
+    if (value != previous_value)
         this->managed_models[previous_value]->update_status(ControlledObjectStatus::IS_WAITING);
-        this->managed_models[this->value]->update_status(ControlledObjectStatus::HAS_FOCUS);
-    }
 }
 
 void UIObjectManager::decrement_focus()
 {
     int previous_value = value;
     this->decrement_value();
-    if (value != previous_value) // action takes place only when the value changes
-    {
+    this->managed_models[this->value]->update_status(ControlledObjectStatus::HAS_FOCUS);
+    if (value != previous_value)
         this->managed_models[previous_value]->update_status(ControlledObjectStatus::IS_WAITING);
-        this->managed_models[this->value]->update_status(ControlledObjectStatus::HAS_FOCUS);
-    }
 }
 
 ControlledObjectStatusTimeOutReason UIObjectManager::check_time_out(uint32_t managed_object_status_time_out_us)
@@ -165,7 +161,7 @@ ControlledObjectStatusTimeOutReason UIObjectManager::check_time_out(uint32_t man
         {
             get_current_controller()->update_current_controlled_object(this);
             make_manager_active();
-            reason = ControlledObjectStatusTimeOutReason::FOCUS_LOST;
+            reason = ControlledObjectStatusTimeOutReason::MANAGED_OBJECT_INACTIVE;
         }
     }
     else /// - check time_out for model under focus
@@ -183,14 +179,14 @@ void UIObjectManager::make_managed_object_active()
 {
     this->current_active_model = this->managed_models[this->value];
     this->current_active_model->update_status(ControlledObjectStatus::IS_ACTIVE);
-    update_status(ControlledObjectStatus::IS_WAITING);
+    this->update_status(ControlledObjectStatus::IS_WAITING);
 }
 
 void UIObjectManager::make_manager_active()
 {
     current_active_model->update_status(ControlledObjectStatus::IS_WAITING);
     current_active_model = this;
-    update_status(ControlledObjectStatus::IS_ACTIVE);
+    this->update_status(ControlledObjectStatus::IS_ACTIVE);
 }
 
 UIController::UIController()

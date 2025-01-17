@@ -16,6 +16,9 @@
 #include "widget_square_led.h"
 #include "t_managed_horizontal_bar_models.cpp"
 #include "widget_focus_indicator.h"
+#include "probe.h"
+
+Probe pr_D5 = Probe(5);
 
 class MyHorizontalBarWidgetWithFocus : public Widget
 {
@@ -65,8 +68,8 @@ MyHorizontalBarWidgetWithFocus::MyHorizontalBarWidgetWithFocus(MyHorizontalBarMo
                                                   widget_anchor_x, widget_anchor_y, false);
     this->focus_widget->set_blink_us(200000);
 
-    this->add_widget(h_bar_widget);
     this->add_widget(focus_widget);
+    this->add_widget(h_bar_widget);
 }
 
 MyHorizontalBarWidgetWithFocus::~MyHorizontalBarWidgetWithFocus()
@@ -78,7 +81,9 @@ void MyHorizontalBarWidgetWithFocus::draw_refresh()
     this->h_bar_widget->set_level(this->bar_value_model->get_value());
     for (auto &&w : this->widgets)
     {
+        pr_D5.pulse_us(10);
         w->draw_refresh();
+        pr_D5.pulse_us(20);
     }
     this->bar_value_model->clear_change_flag();
 }

@@ -19,7 +19,7 @@
 std::map<ControlledObjectStatusTimeOutReason, std::string> reason_to_string{
     {ControlledObjectStatusTimeOutReason::NO_TIME_OUT, "NO_TIME_OUT"},
     {ControlledObjectStatusTimeOutReason::MANAGER_INACTIVE, "MANAGER_INACTIVE"},
-    {ControlledObjectStatusTimeOutReason::FOCUS_LOST, "FOCUS_LOST"}};
+    {ControlledObjectStatusTimeOutReason::MANAGED_OBJECT_INACTIVE, "MANAGED_OBJECT_INACTIVE, FOCUS_LOST"}};
 
 /**
  * @brief MyManager : Example of final implementation of UIObjectManager
@@ -76,6 +76,7 @@ void MyManager::process_control_event(UIControlEvent _event)
         if (current_active_model == this)
         {
             increment_focus();
+            this->set_change_flag();
 #ifdef PRINT_DEBUG
             printf("[inc] %s has focus\n", ((MyHorizontalBarModel *)this->managed_models[this->value])->name.c_str());
 #endif
@@ -87,6 +88,7 @@ void MyManager::process_control_event(UIControlEvent _event)
         if (current_active_model == this)
         {
             decrement_focus();
+            this->set_change_flag();
 #ifdef PRINT_DEBUG
             printf("[dec] %s has focus\n", ((MyHorizontalBarModel *)this->managed_models[this->value])->name.c_str());
 #endif

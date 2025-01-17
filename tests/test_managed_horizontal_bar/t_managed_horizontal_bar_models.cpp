@@ -14,7 +14,7 @@
 #include "ui_control_event.h"
 #include "ui_core.h"
 
-// #define PRINT_DEBUG
+#define PRINT_DEBUG
 
 class MyHorizontalBarModel : public UIControlledIncrementalValue
 {
