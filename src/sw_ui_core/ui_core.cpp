@@ -138,22 +138,18 @@ void UIObjectManager::increment_focus()
 {
     int previous_value = value;
     this->increment_value();
-    if (value != previous_value) // action takes place only when the value changes
-    {
+    this->managed_models[this->value]->update_status(ControlledObjectStatus::HAS_FOCUS);
+    if (value != previous_value)
         this->managed_models[previous_value]->update_status(ControlledObjectStatus::IS_WAITING);
-        this->managed_models[this->value]->update_status(ControlledObjectStatus::HAS_FOCUS);
-    }
 }
 
 void UIObjectManager::decrement_focus()
 {
     int previous_value = value;
     this->decrement_value();
-    if (value != previous_value) // action takes place only when the value changes
-    {
+    this->managed_models[this->value]->update_status(ControlledObjectStatus::HAS_FOCUS);
+    if (value != previous_value)
         this->managed_models[previous_value]->update_status(ControlledObjectStatus::IS_WAITING);
-        this->managed_models[this->value]->update_status(ControlledObjectStatus::HAS_FOCUS);
-    }
 }
 
 ControlledObjectStatusTimeOutReason UIObjectManager::check_time_out(uint32_t managed_object_status_time_out_us)
