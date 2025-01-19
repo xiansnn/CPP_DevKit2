@@ -1,0 +1,114 @@
+/**
+ * @file widget_horizontal_bargraph.cpp
+ * @author xiansnn (xiansnn@hotmail.com)
+ * @brief
+ * @version 0.1
+ * @date 2025-01-18
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#include "widget_horizontal_bargraph.h"
+#include "pico/stdlib.h"
+
+uint8_t WidgetHorizontalBargraph::convert_level_value_to_px(int level)
+{
+    uint8_t position = level * level_coef + level_offset;
+    position = std::min(px_max, std::max(px_min, position));
+    return position;
+}
+
+void WidgetHorizontalBargraph::draw()
+{
+    for (int i = 0; i < this->bargraph_bin_number; i++)
+        draw_bar(i);
+}
+
+void WidgetHorizontalBargraph::draw_bar(uint8_t bin_number)
+{
+    uint8_t bar_start_y = bin_number * bargraph_bin_height;
+    rect(0, bar_start_y, widget_width, bargraph_bin_height, true, FramebufferColor::BLACK); // erase the bar area
+
+    uint8_t px = convert_level_value_to_px(((ModelHorizontalBargraph *)this->actual_displayed_model)->values[bin_number]);
+    uint16_t p0 = convert_level_value_to_px(0);
+
+    uint8_t bar_start;
+    uint8_t bar_end;
+    if (((ModelHorizontalBargraph *)this->actual_displayed_model)->values[bin_number] >= 0)
+    {
+        bar_start = p0;
+        bar_end = px;
+    }
+    else
+    {
+        bar_start = px;
+        bar_end = p0;
+    }
+
+    if (((ModelHorizontalBargraph *)this->actual_displayed_model)->values[bin_number] == 0)
+        rect(bar_start, bar_start_y + bargraph_bin_spacing, 1, bargraph_bin_height - bargraph_bin_spacing, true);
+    else
+        rect(bar_start, bar_start_y + bargraph_bin_spacing, bar_end - bar_start, bargraph_bin_height - 2 * bargraph_bin_spacing, true);
+}
+
+void WidgetHorizontalBargraph::draw_refresh()
+{
+    assert(this->actual_displayed_model != nullptr);
+
+    if (this->actual_displayed_model->has_changed())
+    {
+        this->draw();
+        this->display_screen->show(this, this->widget_anchor_x, this->widget_anchor_y);
+    }
+
+    this->actual_displayed_model->clear_change_flag();
+}
+
+WidgetHorizontalBargraph::WidgetHorizontalBargraph(ModelHorizontalBargraph *actual_bargraph_model,
+                                                   DisplayDevice *display_screen,
+                                                   size_t frame_width, size_t frame_height,
+                                                   uint8_t widget_anchor_x, uint8_t widget_anchor_y,
+                                                   bool widget_with_border,
+                                                   uint8_t bargraph_bin_number,
+                                                   uint8_t bargraph_bin_spacing,
+                                                   uint8_t widget_border_width,
+                                                   FramebufferFormat framebuffer_format,
+                                                   struct_FramebufferText framebuffer_txt_cnf)
+    : Widget(display_screen, frame_width, frame_height, widget_anchor_x, widget_anchor_y, widget_with_border, widget_border_width, framebuffer_format, framebuffer_txt_cnf)
+{
+    set_actual_displayed_object(actual_bargraph_model);
+    this->bargraph_bin_number = bargraph_bin_number;
+    this->bargraph_bin_spacing = bargraph_bin_spacing;
+
+    this->bargraph_bin_height = std::max(5, (uint8_t)this->widget_height / this->bargraph_bin_number); // less than 5 px height is hard to read!
+    this->widget_height = this->bargraph_bin_height * this->bargraph_bin_number;                       // adjust effective widget height to an exact multiple of bin height
+
+    this->px_max = this->widget_width;
+    this->px_min = this->widget_start_x;
+
+    this->bargraph_bin_width = px_max - px_min;
+    this->level_coef = (float)(px_max - px_min) / (((ModelHorizontalBargraph *)actual_bargraph_model)->max_value - ((ModelHorizontalBargraph *)actual_bargraph_model)->min_value);
+    this->level_offset = px_max - level_coef * ((ModelHorizontalBargraph *)actual_bargraph_model)->max_value;
+}
+
+WidgetHorizontalBargraph::~WidgetHorizontalBargraph()
+{
+}
+
+ModelHorizontalBargraph::ModelHorizontalBargraph(int min_value, int max_value)
+    : UIModelObject()
+{
+    this->max_value = max_value;
+    this->min_value = min_value;
+    values = {0};
+}
+
+ModelHorizontalBargraph::~ModelHorizontalBargraph()
+{
+}
+
+void ModelHorizontalBargraph::process_control_event(UIControlEvent _event)
+{
+    this->set_change_flag();
+}

@@ -181,4 +181,15 @@ target_link_libraries(test_managed_horizontal_bar
             ky040
             )    
 #-------------------------------------------------------------------------------------
+add_executable(test_horizontal_bargraph test_horizontal_bargraph.cpp)
+target_link_libraries(test_horizontal_bargraph
+            pico_stdlib
+            hw_i2c
+            ssd1306
+            ui_core
+            debug_probe
+            widget_horizontal_bargraph
+            widget
+            )    
+#-------------------------------------------------------------------------------------
    

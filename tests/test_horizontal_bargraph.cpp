@@ -1,0 +1,73 @@
+/**
+ * @file test_horizontal_bargraph.cpp
+ * @author xiansnn (xiansnn@hotmail.com)
+ * @brief
+ * @version 0.1
+ * @date 2025-01-19
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#include "ssd1306.h"
+#include "probe.h"
+#include "widget_horizontal_bargraph.h"
+
+Probe pr_D4 = Probe(4);
+Probe pr_D5 = Probe(5);
+
+struct_ConfigMasterI2C cfg_i2c{
+    .i2c = i2c0,
+    .sda_pin = 8,
+    .scl_pin = 9,
+    .baud_rate = I2C_FAST_MODE};
+
+struct_ConfigSSD1306 cfg_ssd1306{
+    .i2c_address = 0x3C,
+    .vertical_offset = 0,
+    .scan_SEG_inverse_direction = true,
+    .scan_COM_inverse_direction = true,
+    .contrast = 128,
+    .frequency_divider = 1,
+    .frequency_factor = 0};
+
+void simulate_values(ModelHorizontalBargraph *model)
+{
+
+    for (int i = 0; i < model->values.size(); i++)
+    {
+        model->values[i] += i + 1;
+        if ((model->values[i] >= model->max_value) or (model->values[i] <= model->min_value))
+            model->values[i] = model->min_value;
+    }
+    model->set_change_flag();
+}
+
+HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
+SSD1306 display = SSD1306(&master, cfg_ssd1306);
+ModelHorizontalBargraph my_model = ModelHorizontalBargraph(0, 10);
+WidgetHorizontalBargraph my_widget = WidgetHorizontalBargraph(&my_model,
+                                                              &display,
+                                                              120, 24,
+                                                              5, 8,
+                                                              true,
+                                                              4);
+
+int main(int argc, char const *argv[])
+{
+    my_model.values[0] = 4;
+    my_model.values[1] = 6;
+    my_model.values[2] = 8;
+    my_model.values[3] = 2;
+    display.clear_pixel_buffer();
+    display.show();
+
+    while (true)
+    {
+        simulate_values(&my_model);
+        my_widget.draw_refresh();
+        sleep_ms(100);
+    }
+
+    return 0;
+}
