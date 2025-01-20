@@ -15,7 +15,6 @@
 #include "widget.h"
 #include "display_device.h"
 
-
 #include "ui_core.h"
 
 class ModelHorizontalBargraph : public UIModelObject
@@ -23,9 +22,10 @@ class ModelHorizontalBargraph : public UIModelObject
 private:
 public:
     std::vector<int> values;
+    size_t number_of_bar;
     int min_value;
     int max_value;
-    ModelHorizontalBargraph(int min_value = 0, int max_value = 10);
+    ModelHorizontalBargraph(size_t number_of_bar, int min_value, int max_value);
     ~ModelHorizontalBargraph();
     void process_control_event(UIControlEvent event = UIControlEvent::NONE);
 };
@@ -49,7 +49,6 @@ private:
 protected:
 
 public:
-    uint8_t bargraph_bin_number;
     WidgetHorizontalBargraph(ModelHorizontalBargraph *actual_bargraph_model,
                              DisplayDevice *display_screen,
                              size_t frame_width,
@@ -57,7 +56,6 @@ public:
                              uint8_t widget_anchor_x,
                              uint8_t widget_anchor_y,
                              bool widget_with_border,
-                             uint8_t bargraph_bin_number,
                              uint8_t bargraph_bin_spacing = 1,
                              uint8_t widget_border_width = 1,
                              FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB,

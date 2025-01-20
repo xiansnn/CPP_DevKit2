@@ -13,6 +13,8 @@
 #include "probe.h"
 #include "widget_horizontal_bargraph.h"
 
+// #define PRINT_DEBUG
+
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
 
@@ -33,33 +35,35 @@ struct_ConfigSSD1306 cfg_ssd1306{
 
 void simulate_values(ModelHorizontalBargraph *model)
 {
-
-    for (int i = 0; i < model->values.size(); i++)
+    for (int i = 0; i < model->number_of_bar; i++)
     {
         model->values[i] += i + 1;
         if ((model->values[i] >= model->max_value) or (model->values[i] <= model->min_value))
             model->values[i] = model->min_value;
+#ifdef PRINT_DEBUG
+        printf("[%d]= %d, ", i, model->values[i]);
+#endif
     }
-    // model->set_change_flag();
+#ifdef PRINT_DEBUG
+    printf("\n");
+#endif
     model->process_control_event();
 }
 
 HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
 SSD1306 display = SSD1306(&master, cfg_ssd1306);
-ModelHorizontalBargraph my_model = ModelHorizontalBargraph(0, 10);
+ModelHorizontalBargraph my_model = ModelHorizontalBargraph(4, 0, 10);
 WidgetHorizontalBargraph my_widget = WidgetHorizontalBargraph(&my_model,
                                                               &display,
                                                               120, 24,
                                                               5, 8,
-                                                              true,
-                                                              4);
+                                                              true);
 
-int main(int argc, char const *argv[])
+int main()
 {
-    my_model.values[0] = 4;
-    my_model.values[1] = 6;
-    my_model.values[2] = 8;
-    my_model.values[3] = 2;
+#ifdef PRINT_DEBUG
+    stdio_init_all();
+#endif
     display.clear_pixel_buffer();
     display.show();
 

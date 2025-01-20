@@ -21,7 +21,7 @@ uint8_t WidgetHorizontalBargraph::convert_level_value_to_px(int level)
 
 void WidgetHorizontalBargraph::draw()
 {
-    for (int i = 0; i < this->bargraph_bin_number; i++)
+    for (int i = 0; i < ((ModelHorizontalBargraph *)this->actual_displayed_model)->number_of_bar; i++)
         draw_bar(i);
 }
 
@@ -70,7 +70,6 @@ WidgetHorizontalBargraph::WidgetHorizontalBargraph(ModelHorizontalBargraph *actu
                                                    size_t frame_width, size_t frame_height,
                                                    uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                                    bool widget_with_border,
-                                                   uint8_t bargraph_bin_number,
                                                    uint8_t bargraph_bin_spacing,
                                                    uint8_t widget_border_width,
                                                    FramebufferFormat framebuffer_format,
@@ -78,15 +77,14 @@ WidgetHorizontalBargraph::WidgetHorizontalBargraph(ModelHorizontalBargraph *actu
     : Widget(display_screen, frame_width, frame_height, widget_anchor_x, widget_anchor_y, widget_with_border, widget_border_width, framebuffer_format, framebuffer_txt_cnf)
 {
     set_actual_displayed_object(actual_bargraph_model);
-    this->bargraph_bin_number = bargraph_bin_number;
     this->bargraph_bin_spacing = bargraph_bin_spacing;
 
-    this->bargraph_bin_height = std::max(5, (uint8_t)this->widget_height / this->bargraph_bin_number); // less than 5 px height is hard to read!
-    this->widget_height = this->bargraph_bin_height * this->bargraph_bin_number;                       // adjust effective widget height to an exact multiple of bin height
+    uint8_t bin_quantity = ((ModelHorizontalBargraph *)actual_bargraph_model)->number_of_bar;
+    this->bargraph_bin_height = std::max(5, (uint8_t)this->widget_height / bin_quantity); // less than 5 px height is hard to read!
+    this->widget_height = this->bargraph_bin_height * bin_quantity;                       // adjust effective widget height to an exact multiple of bin height
 
     this->px_max = this->widget_width;
     this->px_min = this->widget_start_x;
-
     this->bargraph_bin_width = px_max - px_min;
     this->level_coef = (float)(px_max - px_min) / (((ModelHorizontalBargraph *)actual_bargraph_model)->max_value - ((ModelHorizontalBargraph *)actual_bargraph_model)->min_value);
     this->level_offset = px_max - level_coef * ((ModelHorizontalBargraph *)actual_bargraph_model)->max_value;
@@ -96,12 +94,14 @@ WidgetHorizontalBargraph::~WidgetHorizontalBargraph()
 {
 }
 
-ModelHorizontalBargraph::ModelHorizontalBargraph(int min_value, int max_value)
+ModelHorizontalBargraph::ModelHorizontalBargraph(size_t number_of_bar, int min_value, int max_value)
     : UIModelObject()
 {
     this->max_value = max_value;
     this->min_value = min_value;
-    values = {0};
+    this->number_of_bar = number_of_bar;
+    for (size_t i = 0; i < this->number_of_bar; i++)
+        this->values.push_back(0);
 }
 
 ModelHorizontalBargraph::~ModelHorizontalBargraph()
