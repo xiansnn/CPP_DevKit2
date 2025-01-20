@@ -33,9 +33,9 @@ public:
 class WidgetHorizontalBargraph : public Widget
 {
 private:
-    uint8_t bargraph_bin_spacing;
-    uint8_t bargraph_bin_height;
-    uint8_t bargraph_bin_width;
+    uint8_t bar_spacing;
+    uint8_t bar_height;
+    uint8_t bar_width;
 
     uint8_t px_max;
     uint8_t px_min;
@@ -49,14 +49,14 @@ private:
 protected:
 
 public:
-    WidgetHorizontalBargraph(ModelBargraph *actual_bargraph_model,
+    WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
                              DisplayDevice *display_screen,
                              size_t frame_width,
                              size_t frame_height,
                              uint8_t widget_anchor_x,
                              uint8_t widget_anchor_y,
                              bool widget_with_border,
-                             uint8_t bargraph_bin_spacing = 1,
+                             uint8_t bar_spacing = 1,
                              uint8_t widget_border_width = 1,
                              FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB,
                              struct_FramebufferText framebuffer_txt_cnf = {.font = font_8x8});

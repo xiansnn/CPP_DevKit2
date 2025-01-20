@@ -52,11 +52,11 @@ void simulate_values(ModelBargraph *model)
 
 HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
 SSD1306 display = SSD1306(&master, cfg_ssd1306);
-ModelBargraph my_model = ModelBargraph(4, 0, 10);
+ModelBargraph my_model = ModelBargraph(10, 0, 100);
 WidgetHorizontalBargraph my_widget = WidgetHorizontalBargraph(&my_model,
                                                               &display,
-                                                              120, 24,
-                                                              5, 8,
+                                                              56, 56,
+                                                              20, 0,
                                                               true);
 
 int main()
