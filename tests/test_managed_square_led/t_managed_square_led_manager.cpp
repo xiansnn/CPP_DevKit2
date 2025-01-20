@@ -19,7 +19,7 @@
 std::map<ControlledObjectStatusTimeOutReason, std::string> reason_to_string{
     {ControlledObjectStatusTimeOutReason::NO_TIME_OUT, "NO_TIME_OUT"},
     {ControlledObjectStatusTimeOutReason::MANAGER_INACTIVE, "MANAGER_INACTIVE"},
-    {ControlledObjectStatusTimeOutReason::FOCUS_LOST, "FOCUS_LOST"}};
+    {ControlledObjectStatusTimeOutReason::MANAGED_OBJECT_INACTIVE, "MANAGED_OBJECT_INACTIVE"}};
 
 /**
  * @brief MyManager : Example of final implementation of UIObjectManager

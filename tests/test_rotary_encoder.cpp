@@ -19,7 +19,7 @@
 #define ENCODER_DT_GPIO 21
 
 Probe pr_D3 = Probe(3); // encoder_clk_irq_call_back is running
-Probe pr_D4 = Probe(4); // clk_event != SwitchButtonEvent::NOOP
+Probe pr_D4 = Probe(4); // clk_event != SwitchButtonEvent::NONE
 Probe pr_D5 = Probe(5); // bounces discarded
 // channel 6 : encoder DT pin
 // channel 7 : encoder clk pin
@@ -29,7 +29,7 @@ struct_SwitchButtonConfig cfg_encoder_clk{
 };
 
 std::map<UIControlEvent, std::string> event_to_string{
-    {UIControlEvent::NOOP, "NOOP"},
+    {UIControlEvent::NONE, "NONE"},
     {UIControlEvent::PUSH, "PUSH"},
     {UIControlEvent::DOUBLE_PUSH, "DOUBLE_PUSH"},
     {UIControlEvent::LONG_PUSH, "LONG_PUSH"},

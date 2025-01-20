@@ -244,8 +244,16 @@ void Framebuffer::rect(uint8_t x, uint8_t y, size_t w, size_t h, bool fill, Fram
     }
     else
     {
-        for (size_t i = 0; i < h; i++)
-            hline(x, y + i, w, c);
+        if (w > h)
+        {
+            for (size_t i = 0; i < h; i++)
+                hline(x, y + i, w, c);
+        }
+        else
+        {
+            for (size_t i = 0; i < w; i++)
+                vline(x, y + i, h, c);
+        }
     }
 }
 
