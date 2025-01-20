@@ -11,7 +11,7 @@
 
 #include "ssd1306.h"
 #include "probe.h"
-#include "widget_horizontal_bargraph.h"
+#include "widget_bargraph.h"
 
 // #define PRINT_DEBUG
 
@@ -33,7 +33,7 @@ struct_ConfigSSD1306 cfg_ssd1306{
     .frequency_divider = 1,
     .frequency_factor = 0};
 
-void simulate_values(ModelHorizontalBargraph *model)
+void simulate_values(ModelBargraph *model)
 {
     for (int i = 0; i < model->number_of_bar; i++)
     {
@@ -52,7 +52,7 @@ void simulate_values(ModelHorizontalBargraph *model)
 
 HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
 SSD1306 display = SSD1306(&master, cfg_ssd1306);
-ModelHorizontalBargraph my_model = ModelHorizontalBargraph(4, 0, 10);
+ModelBargraph my_model = ModelBargraph(4, 0, 10);
 WidgetHorizontalBargraph my_widget = WidgetHorizontalBargraph(&my_model,
                                                               &display,
                                                               120, 24,

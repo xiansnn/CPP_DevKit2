@@ -17,7 +17,7 @@
 
 #include "ui_core.h"
 
-class ModelHorizontalBargraph : public UIModelObject
+class ModelBargraph : public UIModelObject
 {
 private:
 public:
@@ -25,8 +25,8 @@ public:
     size_t number_of_bar;
     int min_value;
     int max_value;
-    ModelHorizontalBargraph(size_t number_of_bar, int min_value, int max_value);
-    ~ModelHorizontalBargraph();
+    ModelBargraph(size_t number_of_bar, int min_value, int max_value);
+    ~ModelBargraph();
     void process_control_event(UIControlEvent event = UIControlEvent::NONE);
 };
 
@@ -49,7 +49,7 @@ private:
 protected:
 
 public:
-    WidgetHorizontalBargraph(ModelHorizontalBargraph *actual_bargraph_model,
+    WidgetHorizontalBargraph(ModelBargraph *actual_bargraph_model,
                              DisplayDevice *display_screen,
                              size_t frame_width,
                              size_t frame_height,
