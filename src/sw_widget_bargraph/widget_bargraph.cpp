@@ -117,3 +117,35 @@ void ModelBargraph::process_control_event(UIControlEvent event)
 {
     this->set_change_flag();
 }
+
+uint8_t WidgetVerticalBargraph::convert_level_value_to_py(int level) // TODO
+{
+    return 0;
+}
+
+void WidgetVerticalBargraph::draw() // TODO
+{
+}
+
+void WidgetVerticalBargraph::draw_bar(uint8_t bin_number) // TODO
+{
+}
+
+WidgetVerticalBargraph::WidgetVerticalBargraph(ModelBargraph *bargraph_model,
+                                               DisplayDevice *display_screen,
+                                               size_t frame_width, size_t frame_height,
+                                               uint8_t widget_anchor_x, uint8_t widget_anchor_y,
+                                               bool widget_with_border,
+                                               uint8_t bar_spacing, uint8_t widget_border_width,
+                                               FramebufferFormat framebuffer_format, struct_FramebufferText framebuffer_txt_cnf)
+    : Widget(display_screen, frame_width, frame_height, widget_anchor_x, widget_anchor_y, widget_with_border, widget_border_width, framebuffer_format, framebuffer_txt_cnf)
+{ // TODO
+}
+
+WidgetVerticalBargraph::~WidgetVerticalBargraph() // TODO
+{
+}
+
+void WidgetVerticalBargraph::draw_refresh() // TODO
+{
+}
