@@ -35,7 +35,7 @@ struct_SwitchButtonConfig cfg_encoder_clk{
 };
 
 std::map<UIControlEvent, std::string> event_to_string{
-    {UIControlEvent::NOOP, "NOOP"},
+    {UIControlEvent::NONE, "NONE"},
     {UIControlEvent::PUSH, "PUSH"},
     {UIControlEvent::DOUBLE_PUSH, "DOUBLE_PUSH"},
     {UIControlEvent::LONG_PUSH, "LONG_PUSH"},
@@ -72,7 +72,7 @@ int main()
     while (true)
     {
         UIControlEvent central_switch_event = ky040.process_central_switch_event();
-        if (central_switch_event != UIControlEvent::NOOP)
+        if (central_switch_event != UIControlEvent::NONE)
         {
             pr_D3.pulse_us(1);
             printf("central switch sampled event(%s)\n", event_to_string[central_switch_event].c_str());

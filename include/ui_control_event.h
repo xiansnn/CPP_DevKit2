@@ -19,7 +19,7 @@ enum class UIControlEvent
 {
 
     /// @brief null event, no operation expected.
-    NOOP,
+    NONE,
     /// @brief event triggered when a button is pushed
     PUSH,
     /// @brief event triggered when a button is double-pushed

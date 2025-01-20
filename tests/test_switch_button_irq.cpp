@@ -18,7 +18,7 @@
 
 // channel 0 : central switch pin
 Probe pr_D3 = Probe(3); // irq_call_back is running
-Probe pr_D4 = Probe(4); // clk_event != SwitchButtonEvent::NOOP
+Probe pr_D4 = Probe(4); // clk_event != SwitchButtonEvent::NONE
 Probe pr_D5 = Probe(5); // bounces discarded
 // channel 6 : encoder DT pin
 // channel 7 : encoder clk pin
@@ -34,7 +34,7 @@ struct_SwitchButtonConfig cfg_encoder_clk{
 };
 
 std::map<UIControlEvent, std::string> event_to_string{
-    {UIControlEvent::NOOP, "NOOP"},
+    {UIControlEvent::NONE, "NONE"},
     {UIControlEvent::PUSH, "PUSH"},
     {UIControlEvent::DOUBLE_PUSH, "DOUBLE_PUSH"},
     {UIControlEvent::LONG_PUSH, "LONG_PUSH"},
@@ -59,13 +59,13 @@ void irq_call_back(uint gpio, uint32_t event_mask)
     if (gpio == ENCODER_CLK_GPIO)
     {
         UIControlEvent clk_event = encoder_clk.process_IRQ_event(event_mask);
-        if (clk_event != UIControlEvent::NOOP)
+        if (clk_event != UIControlEvent::NONE)
         {
             pr_D4.pulse_us(1); // actual IRQ received
             printf("ENCODER_CLK_GPIO IRQ event(%s) mask(%d)\n", event_to_string[clk_event].c_str(), event_mask);
         }
         else
-            pr_D5.pulse_us(1); // NOOP indicating bounces on clk_event
+            pr_D5.pulse_us(1); // NONE indicating bounces on clk_event
     }
     pr_D3.lo();
     encoder_clk.irq_enabled(true);
@@ -83,7 +83,7 @@ int main()
     while (true)
     {
         UIControlEvent central_switch_event = central_switch.process_sample_event();
-        if (central_switch_event != UIControlEvent::NOOP)
+        if (central_switch_event != UIControlEvent::NONE)
             printf("central switch sampled event(%s)\n", event_to_string[central_switch_event].c_str());
     }
 

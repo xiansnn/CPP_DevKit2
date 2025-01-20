@@ -47,7 +47,7 @@ UIControlEvent SwitchButton::process_sample_event()
     if (current_switch_pushed_state == previous_switch_pushed_state)
     {
         if (button_status == ButtonState::IDLE)
-            return UIControlEvent::NOOP;
+            return UIControlEvent::NONE;
         else if (button_status == ButtonState::ACTIVE)
         {
             if (current_time_us - previous_change_time_us >= long_push_delay_us)
@@ -56,7 +56,7 @@ UIControlEvent SwitchButton::process_sample_event()
                 return UIControlEvent::LONG_PUSH;
             }
             else
-                return UIControlEvent::NOOP;
+                return UIControlEvent::NONE;
         }
         else if (button_status == ButtonState::TIME_OUT_PENDING)
         {
@@ -66,14 +66,14 @@ UIControlEvent SwitchButton::process_sample_event()
                 return UIControlEvent::TIME_OUT;
             }
             else
-                return UIControlEvent::NOOP;
+                return UIControlEvent::NONE;
         }
     }
     else
     {
         time_since_previous_change = current_time_us - previous_change_time_us;
         if (time_since_previous_change < debounce_delay_us)
-            return UIControlEvent::NOOP;
+            return UIControlEvent::NONE;
         else
         {
             previous_switch_pushed_state = current_switch_pushed_state;
@@ -90,7 +90,7 @@ UIControlEvent SwitchButton::process_sample_event()
             }
         }
     }
-    return UIControlEvent::NOOP;
+    return UIControlEvent::NONE;
 }
 
 ButtonState SwitchButton::get_button_status()
@@ -127,7 +127,7 @@ UIControlEvent SwitchButtonWithIRQ::process_IRQ_event(uint32_t current_event_mas
     previous_change_time_us = current_time_us;
     if (time_since_previous_change <= debounce_delay_us)
     {
-        return UIControlEvent::NOOP;
+        return UIControlEvent::NONE;
     }
     else
     {

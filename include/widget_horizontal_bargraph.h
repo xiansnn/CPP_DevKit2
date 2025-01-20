@@ -27,7 +27,7 @@ public:
     int max_value;
     ModelHorizontalBargraph(int min_value = 0, int max_value = 10);
     ~ModelHorizontalBargraph();
-    void process_control_event(UIControlEvent _event);
+    void process_control_event(UIControlEvent event = UIControlEvent::NONE);
 };
 
 class WidgetHorizontalBargraph : public Widget

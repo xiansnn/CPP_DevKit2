@@ -45,7 +45,7 @@ void MyManager::process_control_event(UIControlEvent _event)
 {
     switch (_event)
     {
-    case UIControlEvent::NOOP:
+    case UIControlEvent::NONE:
         /* code */
         break;
     case UIControlEvent::LONG_PUSH:

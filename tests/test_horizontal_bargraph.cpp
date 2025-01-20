@@ -40,7 +40,8 @@ void simulate_values(ModelHorizontalBargraph *model)
         if ((model->values[i] >= model->max_value) or (model->values[i] <= model->min_value))
             model->values[i] = model->min_value;
     }
-    model->set_change_flag();
+    // model->set_change_flag();
+    model->process_control_event();
 }
 
 HW_I2C_Master master = HW_I2C_Master(cfg_i2c);

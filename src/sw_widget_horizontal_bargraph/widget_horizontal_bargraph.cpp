@@ -108,7 +108,7 @@ ModelHorizontalBargraph::~ModelHorizontalBargraph()
 {
 }
 
-void ModelHorizontalBargraph::process_control_event(UIControlEvent _event)
+void ModelHorizontalBargraph::process_control_event(UIControlEvent event)
 {
     this->set_change_flag();
 }
