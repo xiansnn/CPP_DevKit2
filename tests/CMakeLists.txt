@@ -193,7 +193,7 @@ target_link_libraries(test_horizontal_bargraph
             )    
 #-------------------------------------------------------------------------------------
 add_executable(test_vertical_bargraph test_vertical_bargraph.cpp)
-target_link_libraries(test_horizontal_bargraph
+target_link_libraries(test_vertical_bargraph
             pico_stdlib
             hw_i2c
             ssd1306
