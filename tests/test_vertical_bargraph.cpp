@@ -1,12 +1,12 @@
 /**
  * @file test_vertical_bargraph.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-01-21
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
 #include "ssd1306.h"
@@ -52,12 +52,12 @@ void simulate_values(ModelBargraph *model)
 
 HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
 SSD1306 display = SSD1306(&master, cfg_ssd1306);
-ModelBargraph my_model = ModelBargraph(10, 0, 100);
+ModelBargraph my_model = ModelBargraph(10, -50, 50);
 WidgetVerticalBargraph my_widget = WidgetVerticalBargraph(&my_model,
-                                                              &display,
-                                                              56, 56,
-                                                              20, 0,
-                                                              true);
+                                                          &display,
+                                                          56, 56,
+                                                          20, 0,
+                                                          true);
 
 int main()
 {
@@ -69,7 +69,7 @@ int main()
 
     while (true)
     {
-        simulate_values(&my_model);
+        simulate_values(&my_model); // TODO voir pour essayer des configs diferentes avec range -10 +10 et simulate value en mm tps
         my_widget.draw_refresh();
         sleep_ms(100);
     }

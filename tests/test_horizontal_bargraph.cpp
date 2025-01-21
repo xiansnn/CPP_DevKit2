@@ -69,7 +69,7 @@ int main()
 
     while (true)
     {
-        simulate_values(&my_model);
+        simulate_values(&my_model); // TODO voir pour essayer des configs diferentes avec range -10 +10 et simulate value en mm tps
         my_widget.draw_refresh();
         sleep_ms(100);
     }
