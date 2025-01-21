@@ -154,7 +154,7 @@ void WidgetVerticalBargraph::draw_bar(uint8_t bin_index)
     if (((ModelBargraph *)this->actual_displayed_model)->values[bin_index] == 0)
         rect(bar_start_x, p0, bar_width, 1, true);
     else
-        rect(bar_start_x, py, bar_width, py_end - py_start, true);
+        rect(bar_start_x, py_start, bar_width, py_end - py_start, true);
 }
 
 WidgetVerticalBargraph::WidgetVerticalBargraph(ModelBargraph *bargraph_model,
