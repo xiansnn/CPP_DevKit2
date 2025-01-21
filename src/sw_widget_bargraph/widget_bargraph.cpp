@@ -25,17 +25,17 @@ void WidgetHorizontalBargraph::draw()
         draw_bar(i);
 }
 
-void WidgetHorizontalBargraph::draw_bar(uint8_t bin_number)
+void WidgetHorizontalBargraph::draw_bar(uint8_t bin_index)
 {
-    uint8_t bar_start_y = widget_start_y + bar_spacing + bin_number * (bar_height + bar_spacing);
+    uint8_t bar_start_y = widget_start_y + bar_spacing + bin_index * (bar_height + bar_spacing);
     rect(widget_start_x, bar_start_y, widget_width, bar_height, true, FramebufferColor::BLACK); // erase the bar area
 
-    uint8_t px = convert_level_value_to_px(((ModelBargraph *)this->actual_displayed_model)->values[bin_number]);
+    uint8_t px = convert_level_value_to_px(((ModelBargraph *)this->actual_displayed_model)->values[bin_index]);
     uint16_t p0 = convert_level_value_to_px(0);
 
     uint8_t bar_start;
     uint8_t bar_end;
-    if (((ModelBargraph *)this->actual_displayed_model)->values[bin_number] >= 0)
+    if (((ModelBargraph *)this->actual_displayed_model)->values[bin_index] >= 0)
     {
         bar_start = p0;
         bar_end = px;
@@ -46,7 +46,7 @@ void WidgetHorizontalBargraph::draw_bar(uint8_t bin_number)
         bar_end = p0;
     }
 
-    if (((ModelBargraph *)this->actual_displayed_model)->values[bin_number] == 0)
+    if (((ModelBargraph *)this->actual_displayed_model)->values[bin_index] == 0)
         rect(bar_start, bar_start_y, 1, bar_height, true);
     else
         rect(bar_start, bar_start_y, bar_end - bar_start, bar_height, true);
@@ -130,17 +130,17 @@ void WidgetVerticalBargraph::draw()
         draw_bar(i);
 }
 
-void WidgetVerticalBargraph::draw_bar(uint8_t bin_number)
+void WidgetVerticalBargraph::draw_bar(uint8_t bin_index)
 {
-    uint8_t bar_start_x = widget_start_x + bar_spacing + bin_number * (bar_width + bar_spacing);
+    uint8_t bar_start_x = widget_start_x + bar_spacing + bin_index * (bar_width + bar_spacing);
     rect(bar_start_x, widget_start_y, widget_width, bar_height, true, FramebufferColor::BLACK); // erase the bar area
 
-    uint8_t py = convert_level_value_to_py(((ModelBargraph *)this->actual_displayed_model)->values[bin_number]);
+    uint8_t py = convert_level_value_to_py(((ModelBargraph *)this->actual_displayed_model)->values[bin_index]);
     uint16_t p0 = convert_level_value_to_py(0);
 
     uint8_t bar_start;
     uint8_t bar_end;
-    if (((ModelBargraph *)this->actual_displayed_model)->values[bin_number] >= 0)
+    if (((ModelBargraph *)this->actual_displayed_model)->values[bin_index] >= 0)
     {
         bar_start = py;
         bar_end = p0;
@@ -151,7 +151,7 @@ void WidgetVerticalBargraph::draw_bar(uint8_t bin_number)
         bar_end = py;
     }
 
-    if (((ModelBargraph *)this->actual_displayed_model)->values[bin_number] == 0)
+    if (((ModelBargraph *)this->actual_displayed_model)->values[bin_index] == 0)
         rect(bar_start_x, p0, bar_width, 1, true);
     else
         rect(bar_start_x, py, bar_width, bar_end - bar_start, true);
@@ -180,8 +180,8 @@ WidgetVerticalBargraph::WidgetVerticalBargraph(ModelBargraph *bargraph_model,
     this->py_max = this->widget_height;
     this->py_min = this->widget_start_y;
     this->bar_height = py_max - py_min;
-    this->level_coef = (float)(py_max - py_min) / (max_value - min_value);
-    this->level_offset = py_max - level_coef * max_value;
+    this->level_coef = (float)(py_max - py_min) / (min_value - max_value);
+    this->level_offset = py_max - level_coef * min_value;
 }
 
 WidgetVerticalBargraph::~WidgetVerticalBargraph()
