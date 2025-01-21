@@ -33,23 +33,23 @@ void WidgetHorizontalBargraph::draw_bar(uint8_t bin_index)
     uint8_t px = convert_level_value_to_px(((ModelBargraph *)this->actual_displayed_model)->values[bin_index]);
     uint16_t p0 = convert_level_value_to_px(0);
 
-    uint8_t bar_start;
-    uint8_t bar_end;
+    uint8_t px_start;
+    uint8_t px_end;
     if (((ModelBargraph *)this->actual_displayed_model)->values[bin_index] >= 0)
     {
-        bar_start = p0;
-        bar_end = px;
+        px_start = p0;
+        px_end = px;
     }
     else
     {
-        bar_start = px;
-        bar_end = p0;
+        px_start = px;
+        px_end = p0;
     }
 
     if (((ModelBargraph *)this->actual_displayed_model)->values[bin_index] == 0)
-        rect(bar_start, bar_start_y, 1, bar_height, true);
+        rect(px_start, bar_start_y, 1, bar_height, true);
     else
-        rect(bar_start, bar_start_y, bar_end - bar_start, bar_height, true);
+        rect(px_start, bar_start_y, px_end - px_start, bar_height, true);
 }
 
 void WidgetHorizontalBargraph::draw_refresh()
@@ -138,23 +138,23 @@ void WidgetVerticalBargraph::draw_bar(uint8_t bin_index)
     uint8_t py = convert_level_value_to_py(((ModelBargraph *)this->actual_displayed_model)->values[bin_index]);
     uint16_t p0 = convert_level_value_to_py(0);
 
-    uint8_t bar_start;
-    uint8_t bar_end;
+    uint8_t py_start;
+    uint8_t py_end;
     if (((ModelBargraph *)this->actual_displayed_model)->values[bin_index] >= 0)
     {
-        bar_start = py;
-        bar_end = p0;
+        py_start = py;
+        py_end = p0;
     }
     else
     {
-        bar_start = p0;
-        bar_end = py;
+        py_start = p0;
+        py_end = py;
     }
 
     if (((ModelBargraph *)this->actual_displayed_model)->values[bin_index] == 0)
         rect(bar_start_x, p0, bar_width, 1, true);
     else
-        rect(bar_start_x, py, bar_width, bar_end - bar_start, true);
+        rect(bar_start_x, py, bar_width, py_end - py_start, true);
 }
 
 WidgetVerticalBargraph::WidgetVerticalBargraph(ModelBargraph *bargraph_model,
