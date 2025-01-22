@@ -63,3 +63,36 @@ public:
     ~WidgetHorizontalBargraph();
     void draw_refresh();
 };
+
+class WidgetVerticalBargraph : public Widget
+{
+private:
+    uint8_t bar_spacing;
+    uint8_t bar_height;
+    uint8_t bar_width;
+
+    uint8_t py_max;
+    uint8_t py_min;
+    float level_coef;
+    int level_offset;
+
+    uint8_t convert_level_value_to_py(int level);
+    void draw();
+    void draw_bar(uint8_t bin_number);
+public:
+    WidgetVerticalBargraph(ModelBargraph *bargraph_model,
+                             DisplayDevice *display_screen,
+                             size_t frame_width,
+                             size_t frame_height,
+                             uint8_t widget_anchor_x,
+                             uint8_t widget_anchor_y,
+                             bool widget_with_border,
+                             uint8_t bar_spacing = 1,
+                             uint8_t widget_border_width = 1,
+                             FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB,
+                             struct_FramebufferText framebuffer_txt_cnf = {.font = font_8x8});
+    ~WidgetVerticalBargraph();
+    void draw_refresh();
+};
+
+
