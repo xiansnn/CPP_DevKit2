@@ -7,6 +7,7 @@ var annotated_dup =
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", "class_h_w___i2_c___master" ],
     [ "HW_I2C_Slave", "class_h_w___i2_c___slave.html", "class_h_w___i2_c___slave" ],
     [ "KY040", "class_k_y040.html", "class_k_y040" ],
+    [ "ModelBargraph", "class_model_bargraph.html", "class_model_bargraph" ],
     [ "MPU6050", "class_m_p_u6050.html", "class_m_p_u6050" ],
     [ "MSGEQ7", "class_m_s_g_e_q7.html", "class_m_s_g_e_q7" ],
     [ "Probe", "class_probe.html", "class_probe" ],
@@ -38,5 +39,7 @@ var annotated_dup =
     [ "Widget", "class_widget.html", "class_widget" ],
     [ "WidgetFocusIndicator", "class_widget_focus_indicator.html", "class_widget_focus_indicator" ],
     [ "WidgetHorizontalBar", "class_widget_horizontal_bar.html", "class_widget_horizontal_bar" ],
-    [ "WidgetSquareLed", "class_widget_square_led.html", "class_widget_square_led" ]
+    [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html", "class_widget_horizontal_bargraph" ],
+    [ "WidgetSquareLed", "class_widget_square_led.html", "class_widget_square_led" ],
+    [ "WidgetVerticalBargraph", "class_widget_vertical_bargraph.html", "class_widget_vertical_bargraph" ]
 ];

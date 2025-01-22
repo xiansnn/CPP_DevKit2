@@ -13,6 +13,6 @@ var ui__core_8h =
     [ "ControlledObjectStatusTimeOutReason", "ui__core_8h.html#a1b97aab8f67794aef99a8febbf83360f", [
       [ "NO_TIME_OUT", "ui__core_8h.html#a1b97aab8f67794aef99a8febbf83360fa25acbfe2d400c0c58406c136eed29eff", null ],
       [ "MANAGER_INACTIVE", "ui__core_8h.html#a1b97aab8f67794aef99a8febbf83360faa168377e720c2ee7f0be52df4c287497", null ],
-      [ "FOCUS_LOST", "ui__core_8h.html#a1b97aab8f67794aef99a8febbf83360fa490adebb0e34cbd967f13eb478833f28", null ]
+      [ "MANAGED_OBJECT_INACTIVE", "ui__core_8h.html#a1b97aab8f67794aef99a8febbf83360faee1548dc30a1a5d758b67a7ce4c3cc77", null ]
     ] ]
 ];

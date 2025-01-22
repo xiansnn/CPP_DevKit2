@@ -1,7 +1,7 @@
 var ui__control__event_8h =
 [
     [ "UIControlEvent", "ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32", [
-      [ "NOOP", "ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32a722d122e81cbbe543bd5520bb8678c0e", null ],
+      [ "NONE", "ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32ab50339a10e1de285ac99d4c3990b8693", null ],
       [ "PUSH", "ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32a73dabe4437725eedc05a1824a2c31550", null ],
       [ "DOUBLE_PUSH", "ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32a7f9117be5ae4af6fadbf2c87f360c120", null ],
       [ "LONG_PUSH", "ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32a66d354703a5722b875b56431d89fb646", null ],

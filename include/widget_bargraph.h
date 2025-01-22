@@ -1,5 +1,5 @@
 /**
- * @file widget_horizontal_bargraph.h
+ * @file widget_bargraph.h
  * @author xiansnn (xiansnn@hotmail.com)
  * @brief
  * @version 0.1
@@ -17,38 +17,91 @@
 
 #include "ui_core.h"
 
+/**
+ * @brief the UIModelObject used by Bargraph Widget
+ * 
+ */
 class ModelBargraph : public UIModelObject
 {
 private:
 public:
+    /// @brief the vector of values displayed by the bargraph
     std::vector<int> values;
+    /// @brief the  number of bar in the bargraph (and the number of values)
     size_t number_of_bar;
+    /// @brief the min value of the range of values
     int min_value;
+    /// @brief the max value of the range of values
     int max_value;
+    /// @brief conctructor of ModelBargraph
+    /// @param number_of_bar the  number of bar in the bargraph
+    /// @param min_value the min value of the range of values
+    /// @param max_value the max value of the range of values
     ModelBargraph(size_t number_of_bar, int min_value, int max_value);
+    /**
+     * @brief Destroy the Model Bargraph object
+     * 
+     */
     ~ModelBargraph();
+    /**
+     * @brief the overriding memeber required by UIModelObject.
+     * There is no need of UIControlEvent here, this member just trigs the changere flag in order to trig the refresh of the widget
+     * 
+     * @param event Default to NONE
+     */
     void process_control_event(UIControlEvent event = UIControlEvent::NONE);
 };
 
+/**
+ * @brief the widget that display an horizontal bargraph
+ * 
+ */
 class WidgetHorizontalBargraph : public Widget
 {
 private:
+    /// @brief the number of pixel that separates each bar (usually 1 pixel)
     uint8_t bar_spacing;
+    /// @brief  the computed height of each bar, according to the widget height, the number of bar and the space between bars
     uint8_t bar_height;
+    /// @brief the computed bar width. Usually the widget width.
     uint8_t bar_width;
 
+    /// @brief the computed equivalent of max level value of the bar in x-coordinate
     uint8_t px_max;
+    /// @brief the computed equivalent of min level value of the bar in x-coordinate
     uint8_t px_min;
+    /// @brief the computed proportional coeficient of the value to pixel converter
     float level_coef;
+    /// @brief the computed offset of the value to pixel converter
     int level_offset;
-
+    /// @brief the value to pixel x-coordinate converter
+    /// @param level the input value
+    /// @return the x-coordinate
     uint8_t convert_level_value_to_px(int level);
+    /// @brief the function that draw the widget
     void draw();
-    void draw_bar(uint8_t bin_number);
+    /// @brief the function that draw a bar in the widget
+    /// @param bin_index the rank of the bar
+    void draw_bar(uint8_t bin_index);
 
 protected:
 
 public:
+    /**
+     * @brief Construct a new Widget Horizontal Bargraph object
+     * 
+     * @param bargraph_model a pointer to the mactual displayed model
+     * @param display_screen a pointer to the display device on which the widget is drawn
+     * @param frame_width The width of the widget including the border
+     * @param frame_height the height of the widget including the border
+     * @param widget_anchor_x the horizontal position where the widget start on the device screen
+     * @param widget_anchor_y the vertical position where the widget start on the device screen
+     * @param widget_with_border he flag that indicates whether the widget has a border or not
+     * @param bar_spacing the number of pixel between each bar
+     * @param widget_border_width the width of the border. WARNING: can only be 1 pixel.
+     * @param framebuffer_format the addressing format of the actual display device
+     * @param framebuffer_txt_cnf a default textual configuration, with 8x8 font size
+     */
     WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
                              DisplayDevice *display_screen,
                              size_t frame_width,
@@ -60,26 +113,61 @@ public:
                              uint8_t widget_border_width = 1,
                              FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB,
                              struct_FramebufferText framebuffer_txt_cnf = {.font = font_8x8});
+    /**
+     * @brief Destroy the Widget Horizontal Bargraph object
+     * 
+     */
     ~WidgetHorizontalBargraph();
+
     void draw_refresh();
 };
 
+/**
+ * @brief the widget that display a vertical bargraph
+ * 
+ */
 class WidgetVerticalBargraph : public Widget
 {
 private:
+    /// @brief the number of pixel that separates each bar (usually 1 pixel)
     uint8_t bar_spacing;
+    /// @brief the computed bar height. Usually the widget height.
     uint8_t bar_height;
+    /// @brief the computed width of each bar, according to the widget width, the number of bar and the space between bars
     uint8_t bar_width;
-
+    /// @brief the computed equivalent of max level value of the bar in y-coordinate
     uint8_t py_max;
+    /// @brief the computed equivalent of min level value of the bar in y-coordinate
     uint8_t py_min;
+    /// @brief the computed proportional coeficient of the value to pixel converter
     float level_coef;
+    /// @brief the computed offset of the value to pixel converter
     int level_offset;
-
+    /// @brief the value to pixel y-coordinate converter
+    /// @param level the input value
+    /// @return the y-coordinate
     uint8_t convert_level_value_to_py(int level);
+    /// @brief the function that draw the widget
     void draw();
-    void draw_bar(uint8_t bin_number);
+    /// @brief the function that draw a bar in the widget
+    /// @param bin_index the rank of the bar
+    void draw_bar(uint8_t bin_index);
 public:
+    /**
+     * @brief Construct a new Widget Vertical Bargraph object
+     * 
+     * @param bargraph_model 
+     * @param display_screen 
+     * @param frame_width 
+     * @param frame_height 
+     * @param widget_anchor_x 
+     * @param widget_anchor_y 
+     * @param widget_with_border 
+     * @param bar_spacing 
+     * @param widget_border_width 
+     * @param framebuffer_format 
+     * @param framebuffer_txt_cnf 
+     */
     WidgetVerticalBargraph(ModelBargraph *bargraph_model,
                              DisplayDevice *display_screen,
                              size_t frame_width,

@@ -7,9 +7,11 @@ var hierarchy =
       ] ],
       [ "Widget", "class_widget.html", [
         [ "WidgetHorizontalBar", "class_widget_horizontal_bar.html", null ],
+        [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html", null ],
         [ "WidgetSquareLed", "class_widget_square_led.html", [
           [ "WidgetFocusIndicator", "class_widget_focus_indicator.html", null ]
-        ] ]
+        ] ],
+        [ "WidgetVerticalBargraph", "class_widget_vertical_bargraph.html", null ]
       ] ]
     ] ],
     [ "HC_SR04", "class_h_c___s_r04.html", null ],
@@ -44,6 +46,7 @@ var hierarchy =
       [ "KY040", "class_k_y040.html", null ]
     ] ],
     [ "UIModelObject", "class_u_i_model_object.html", [
+      [ "ModelBargraph", "class_model_bargraph.html", null ],
       [ "UIControlledIncrementalValue", "class_u_i_controlled_incremental_value.html", [
         [ "UIObjectManager", "class_u_i_object_manager.html", null ]
       ] ]

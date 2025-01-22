@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['focus_5flost_0',['FOCUS_LOST',['../ui__core_8h.html#a1b97aab8f67794aef99a8febbf83360fa490adebb0e34cbd967f13eb478833f28',1,'ui_core.h']]]
+  ['has_5ffocus_0',['HAS_FOCUS',['../ui__core_8h.html#a57c20ec1ef250b4ad060705786762112ac21f0eab1363c0a1274cd38acea090ac',1,'ui_core.h']]]
 ];

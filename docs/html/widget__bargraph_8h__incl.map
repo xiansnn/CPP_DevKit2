@@ -1,0 +1,37 @@
+<map id="widget_bargraph.h" name="widget_bargraph.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="378,5,490,30"/>
+<area shape="rect" id="Node000002" href="$framebuffer_8h.html" title=" " alt="" coords="352,296,437,321"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="428,32,381,109,355,165,335,224,333,236,335,247,348,267,366,284,362,288,344,271,330,249,328,236,330,223,350,163,376,107,424,29"/>
+<area shape="rect" id="Node000009" href="$widget_8h.html" title=" " alt="" coords="435,78,497,103"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="442,29,457,63,452,65,437,32"/>
+<area shape="rect" id="Node000010" href="$display__device_8h.html" title=" " alt="" coords="345,223,443,248"/>
+<area shape="poly" id="edge20_Node000001_Node000010" title=" " alt="" coords="435,31,402,208,396,207,429,30"/>
+<area shape="rect" id="Node000011" href="$ui__core_8h.html" title=" " alt="" coords="507,151,572,175"/>
+<area shape="poly" id="edge21_Node000001_Node000011" title=" " alt="" coords="456,28,484,49,511,76,527,106,536,135,531,137,522,108,507,80,481,53,453,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="726,369,774,393"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="438,316,711,369,710,375,437,321"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="591,369,669,393"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="434,319,577,361,576,366,432,324"/>
+<area shape="rect" id="Node000005" href="$5x8__font_8h.html" title=" " alt="" coords="451,369,567,393"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="414,319,479,358,476,363,412,324"/>
+<area shape="rect" id="Node000006" href="$8x8__font_8h.html" title=" " alt="" coords="5,369,122,393"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="351,321,134,368,133,362,350,316"/>
+<area shape="rect" id="Node000007" href="$12x16__font_8h.html" title=" " alt="" coords="146,369,274,393"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="365,324,256,365,254,360,363,319"/>
+<area shape="rect" id="Node000008" href="$16x32__font_8h.html" title=" " alt="" coords="298,369,426,393"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="391,322,376,356,371,354,386,320"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="463,104,409,211,404,208,458,102"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="480,101,519,138,515,142,476,105"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="819,223,870,248"/>
+<area shape="poly" id="edge19_Node000009_Node000013" title=" " alt="" coords="497,101,806,217,804,222,496,106"/>
+<area shape="poly" id="edge10_Node000010_Node000002" title=" " alt="" coords="397,249,397,280,392,280,392,249"/>
+<area shape="poly" id="edge13_Node000011_Node000002" title=" " alt="" coords="530,178,457,250,419,287,415,283,454,246,526,174"/>
+<area shape="poly" id="edge18_Node000011_Node000003" title=" " alt="" coords="573,166,678,185,727,201,746,211,759,222,768,237,774,254,776,290,771,325,763,355,758,353,766,324,771,290,769,256,763,240,755,225,743,215,725,206,676,190,572,171"/>
+<area shape="poly" id="edge12_Node000011_Node000004" title=" " alt="" coords="549,175,575,222,604,292,625,353,619,354,599,294,570,224,544,177"/>
+<area shape="poly" id="edge15_Node000011_Node000010" title=" " alt="" coords="517,178,433,219,431,214,514,173"/>
+<area shape="rect" id="Node000012" href="$ui__control__event_8h.html" title=" " alt="" coords="635,223,745,248"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="566,173,653,214,650,219,563,178"/>
+<area shape="poly" id="edge16_Node000011_Node000013" title=" " alt="" coords="573,169,801,221,805,222,804,227,800,226,572,174"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="518,223,561,248"/>
+<area shape="poly" id="edge17_Node000011_Node000014" title=" " alt="" coords="542,176,542,208,537,208,537,176"/>
+</map>

@@ -22,13 +22,14 @@ var searchData=
   ['control_5fevent_5fprocessor_5ft_19',['control_event_processor_t',['../rotary__encoder_8h.html#a787371d828d2ed06a5d1842695d04497',1,'rotary_encoder.h']]],
   ['controlledobjectstatus_20',['ControlledObjectStatus',['../ui__core_8h.html#a57c20ec1ef250b4ad060705786762112',1,'ui_core.h']]],
   ['controlledobjectstatustimeoutreason_21',['ControlledObjectStatusTimeOutReason',['../ui__core_8h.html#a1b97aab8f67794aef99a8febbf83360f',1,'ui_core.h']]],
-  ['convert_5flevel_5fvalue_5fto_5fpx_22',['convert_level_value_to_px',['../class_widget_horizontal_bar.html#aa94c8372969017f613b39dfcd690b014',1,'WidgetHorizontalBar']]],
-  ['convert_5fraw_5fto_5fmeasure_23',['convert_raw_to_measure',['../class_m_p_u6050.html#ac1a94f4e63bb11e66159832b3b6fb46c',1,'MPU6050']]],
-  ['copy_24',['copy',['../class_probe.html#a3ca878200b9a6d5744366b23fe0051c9',1,'Probe']]],
-  ['count_5fcycles_25',['count_cycles',['../class_p_w_mgated_measure.html#a4f372aa91b889f792b4eb805d0eb5a46',1,'PWMgatedMeasure']]],
-  ['current_5factive_5fmodel_26',['current_active_model',['../class_u_i_object_manager.html#a248450861ee5a475f6df3af1001a68be',1,'UIObjectManager']]],
-  ['current_5fchar_5fcolumn_27',['current_char_column',['../class_framebuffer.html#a747acebf900c482dfab1b77373b8c0b8',1,'Framebuffer']]],
-  ['current_5fchar_5fline_28',['current_char_line',['../class_framebuffer.html#a049b45dc17e57478b24f423a58b35e5a',1,'Framebuffer']]],
-  ['current_5fcontrolled_5fobject_29',['current_controlled_object',['../class_u_i_controller.html#a3776f935f634072e9c2a4c91aea11433',1,'UIController']]],
-  ['current_5fcontroller_30',['current_controller',['../class_u_i_model_object.html#aa5c969bd8d600f753744fbed8ccd909f',1,'UIModelObject']]]
+  ['convert_5flevel_5fvalue_5fto_5fpx_22',['convert_level_value_to_px',['../class_widget_horizontal_bargraph.html#a4409c6d882c92ca3d6974eff0bc8579f',1,'WidgetHorizontalBargraph::convert_level_value_to_px()'],['../class_widget_horizontal_bar.html#aa94c8372969017f613b39dfcd690b014',1,'WidgetHorizontalBar::convert_level_value_to_px()']]],
+  ['convert_5flevel_5fvalue_5fto_5fpy_23',['convert_level_value_to_py',['../class_widget_vertical_bargraph.html#a99a7d89fcc4b1c62823b74a65d85b807',1,'WidgetVerticalBargraph']]],
+  ['convert_5fraw_5fto_5fmeasure_24',['convert_raw_to_measure',['../class_m_p_u6050.html#ac1a94f4e63bb11e66159832b3b6fb46c',1,'MPU6050']]],
+  ['copy_25',['copy',['../class_probe.html#a3ca878200b9a6d5744366b23fe0051c9',1,'Probe']]],
+  ['count_5fcycles_26',['count_cycles',['../class_p_w_mgated_measure.html#a4f372aa91b889f792b4eb805d0eb5a46',1,'PWMgatedMeasure']]],
+  ['current_5factive_5fmodel_27',['current_active_model',['../class_u_i_object_manager.html#a248450861ee5a475f6df3af1001a68be',1,'UIObjectManager']]],
+  ['current_5fchar_5fcolumn_28',['current_char_column',['../class_framebuffer.html#a747acebf900c482dfab1b77373b8c0b8',1,'Framebuffer']]],
+  ['current_5fchar_5fline_29',['current_char_line',['../class_framebuffer.html#a049b45dc17e57478b24f423a58b35e5a',1,'Framebuffer']]],
+  ['current_5fcontrolled_5fobject_30',['current_controlled_object',['../class_u_i_controller.html#a3776f935f634072e9c2a4c91aea11433',1,'UIController']]],
+  ['current_5fcontroller_31',['current_controller',['../class_u_i_model_object.html#aa5c969bd8d600f753744fbed8ccd909f',1,'UIModelObject']]]
 ];
