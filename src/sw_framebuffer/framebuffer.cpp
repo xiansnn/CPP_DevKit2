@@ -17,7 +17,7 @@
 
 Framebuffer::Framebuffer(size_t _frame_width,
                          size_t _frame_height,
-                         FramebufferFormat _framebuffer_format)
+                         FramebufferFormat _framebuffer_format)//TODO faire un constructor a partir de line et column
 {
     assert(_framebuffer_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
     this->frame_format = _framebuffer_format;
