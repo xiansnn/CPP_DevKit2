@@ -242,7 +242,7 @@ void Framebuffer::rect(uint8_t x, uint8_t y, size_t w, size_t h, bool fill, Fram
         vline(x, y, h, c);
         vline(x + w - 1, y, h, c);
     }
-    else
+    else//TODO simplifier le scan des pixel
     {
         if (w > h)
         {
