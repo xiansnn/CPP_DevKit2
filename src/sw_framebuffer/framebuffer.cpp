@@ -17,12 +17,12 @@
 
 Framebuffer::Framebuffer(size_t _frame_width,
                          size_t _frame_height,
-                         FramebufferFormat _framebuffer_format)//TODO faire un constructor a partir de line et column
+                         FramebufferFormat _framebuffer_format)
 {
     assert(_framebuffer_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
     this->frame_format = _framebuffer_format;
     this->frame_height = _frame_height;
-    this->frame_width = _frame_width; // MONO_VLDB => 1 Byte = 1 column of 8 pixel
+    this->frame_width = _frame_width; // MONO_VLSB => 1 Byte = 1 column of 8 pixel
     size_t nb_of_pages = _frame_height / BYTE_SIZE;
     if (_frame_height % BYTE_SIZE != 0)
         nb_of_pages += 1;
@@ -30,6 +30,33 @@ Framebuffer::Framebuffer(size_t _frame_width,
     this->pixel_buffer = new uint8_t[this->pixel_buffer_size];
     clear_pixel_buffer();
     this->text_buffer = nullptr;
+}
+
+Framebuffer::Framebuffer(uint8_t number_of_column,
+                         uint8_t number_of_line,
+                         struct_FramebufferText text_cnf,
+                         FramebufferFormat framebuffer_format)
+{
+    assert(framebuffer_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
+    this->max_column = number_of_column;
+    this->max_line = number_of_line;
+    this->frame_text_config = text_cnf;
+
+    this->frame_width = max_column * frame_text_config.font[FONT_WIDTH_INDEX]; // MONO_VLSB => 1 Byte = 1 column of 8 pixel
+    this->frame_height = max_line * frame_text_config.font[FONT_HEIGHT_INDEX];
+
+    size_t nb_of_pages = frame_height / BYTE_SIZE;
+    if (frame_height % BYTE_SIZE != 0)
+        nb_of_pages += 1;
+    this->pixel_buffer_size = frame_width * nb_of_pages;
+    this->pixel_buffer = new uint8_t[this->pixel_buffer_size];
+    clear_pixel_buffer();
+
+    this->text_buffer_size = max_line * max_column + 1;
+    if (text_buffer != nullptr)
+        delete[] text_buffer;
+    this->text_buffer = new char[text_buffer_size];
+    clear_text_buffer();
 }
 
 Framebuffer::~Framebuffer()
@@ -233,28 +260,32 @@ void Framebuffer::line(int x0, int y0, int x1, int y1, FramebufferColor c)
     }
 }
 
-void Framebuffer::rect(uint8_t x, uint8_t y, size_t w, size_t h, bool fill, FramebufferColor c)
+void Framebuffer::rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, bool fill, FramebufferColor c)
 {
     if (!fill)
     {
-        hline(x, y, w, c);
-        hline(x, y + h - 1, w, c);
-        vline(x, y, h, c);
-        vline(x + w - 1, y, h, c);
+        hline(start_x, start_y, w, c);
+        hline(start_x, start_y + h - 1, w, c);
+        vline(start_x, start_y, h, c);
+        vline(start_x + w - 1, start_y, h, c);
     }
-    else//TODO simplifier le scan des pixel
-    {
-        if (w > h)
-        {
-            for (size_t i = 0; i < h; i++)
-                hline(x, y + i, w, c);
-        }
-        else
-        {
-            for (size_t i = 0; i < w; i++)
-                vline(x + i, y, h, c);
-        }
-    }
+    else
+        for (size_t i_x = 0; i_x < w; i_x++)
+            for (size_t i_y = 0; i_y < h; i_y++)
+                this->pixel(start_x + i_x, start_y + i_y, c);
+    // {
+
+    // if (w > h)
+    // {
+    //     for (size_t i = 0; i < h; i++)
+    //         hline(x, y + i, w, c);
+    // }
+    // else
+    // {
+    //     for (size_t i = 0; i < w; i++)
+    //         vline(x + i, y, h, c);
+    // }
+    // }
 }
 
 void Framebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, FramebufferColor c)

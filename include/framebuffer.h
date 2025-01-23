@@ -1,12 +1,12 @@
 /**
  * @file framebuffer.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-01-11
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 #if !defined(FRAMEBUFFER_H)
 #define FRAMEBUFFER_H
@@ -190,6 +190,12 @@ public:
     Framebuffer(size_t frame_width,
                 size_t frame_height,
                 FramebufferFormat frame_format = FramebufferFormat::MONO_VLSB);
+
+    Framebuffer(uint8_t number_of_column,
+                uint8_t number_of_line,
+                struct_FramebufferText text_cnf,
+                FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
+
     /**
      * @brief Destroy the Framebuffer object
      */
@@ -287,15 +293,15 @@ public:
      * @param fill   if true, the circle is filled with color c
      * @param c   color of the border of the circle, default to WHITE
      */
-   void circle(int radius, int x_center, int y_center, bool fill = false, FramebufferColor c = FramebufferColor::WHITE);
+    void circle(int radius, int x_center, int y_center, bool fill = false, FramebufferColor c = FramebufferColor::WHITE);
 
-   /**
-    * @brief   Initialize the textual features of framebuffer, according to the configuration data structure frame_text_config
-    *
-    * @param   frame_text_config
-    */
-        void
-        init_text_buffer(struct_FramebufferText frame_text_config);
+    /**
+     * @brief   Initialize the textual features of framebuffer, according to the configuration data structure frame_text_config
+     *
+     * @param   frame_text_config
+     */
+    void
+    init_text_buffer(struct_FramebufferText frame_text_config);
     /**
      * @brief   Set text buffer memory to "0" and set character line and column to 0
      */
