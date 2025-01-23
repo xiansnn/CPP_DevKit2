@@ -203,4 +203,14 @@ target_link_libraries(test_vertical_bargraph
             widget
             )    
 #-------------------------------------------------------------------------------------
+add_executable(test_tuning_dial test_tuning_dial.cpp)
+target_link_libraries(test_tuning_dial
+            pico_stdlib
+            hw_i2c
+            ssd1306
+            ui_core
+            debug_probe
+            widget_text
+            )    
+#-------------------------------------------------------------------------------------
  
