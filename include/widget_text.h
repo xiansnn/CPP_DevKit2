@@ -13,7 +13,7 @@
 
 #include "ui_core.h"
 
-class WidgetText : Framebuffer
+class WidgetText : public Framebuffer
 {
 private:
     /// @brief store the value of the previous blinking phase.should be 0 or 1.
@@ -111,25 +111,6 @@ public:
      * @param _sub_widget
      */
     void add_widget(WidgetText *_sub_widget);
-    /**
-     * @brief (re)draw the graphical elements of the widget.
-     *
-     * To save running time, we can (re)draw the widget only if the associated UIModelObject has_changed.
-     *
-     * Guidance to implement this function:
-     *
-     * - First: Scan all contained sub-widgets if any and call draw_refresh() member function of each of them.
-     *
-     * - then: update widget status according to the values of interest in the UIModelObject
-     *
-     * - refresh blinking if needed
-     *
-     * - Then: check if any changes in the model require a screen redraw
-     *
-     * - if redraw() required , execute the effective widget drawing (can be a private member function)
-     * - and finally : clear model change flag if needed.
-     *
-     *        WARNING : When several widget display one Model, only the last one must clear_change_flag()
-     */
-    virtual void draw_refresh() = 0;
+
+    void draw_refresh();
 };

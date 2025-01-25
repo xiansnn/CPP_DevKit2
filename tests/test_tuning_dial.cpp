@@ -46,19 +46,28 @@ HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
 SSD1306 display = SSD1306(&master, cfg_ssd1306);
 
 FMFrequencyTuning my_FM_model = FMFrequencyTuning();
-WidgetTextWithFocus my_FM_widget = WidgetTextWithFocus(&my_FM_model, &display, 100, 10, 0, 0, false);
+WidgetText my_FM_widget = WidgetText(&my_FM_model,
+                                     &display,
+                                     fm_text_cnf,
+                                     10, 1,
+                                     0, 0,
+                                     false);
 
 int main()
 {
-    stdio_init_all();
 
-    my_FM_widget.init_text_buffer(fm_text_cnf);
+    display.clear_full_screen();
 
-    sprintf(my_FM_widget.text_buffer, "%c     %5.1f MHz", my_FM_widget.convert_status_to_char(), my_FM_model.current_frequency / 10);
-    my_FM_widget.print_text();
-    display.show();
+    my_FM_model.set_current_frequency( 87.0);
+    while (true)
+    {
+        my_FM_model.process_control_event();
+        sprintf(my_FM_widget.text_buffer, "%5.1f MHz\n", my_FM_model.get_current_frequency());
+        my_FM_widget.draw_refresh();
+        my_FM_model.increment_frequency(0.5);
 
-
+        sleep_ms(500);
+    }
 
     return 0;
 }

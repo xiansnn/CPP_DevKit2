@@ -27,30 +27,32 @@ void WidgetText::set_blink_us(uint32_t blink_period)
     this->blink_period_us = blink_period_us;
 }
 
-WidgetText::WidgetText(UIModelObject *text_model,
-                       DisplayDevice *display_screen,
-                       struct_FramebufferText framebuffer_txt_cnf,
-                       uint8_t number_of_column,
-                       uint8_t number_of_line,
-                       uint8_t widget_anchor_x,
-                       uint8_t widget_anchor_y,
-                       bool widget_with_border,
-                       uint8_t widget_border_width,
-                       FramebufferFormat framebuffer_format)
-    : Framebuffer(number_of_column, number_of_line, framebuffer_txt_cnf)
+WidgetText::WidgetText(UIModelObject *_text_model,
+                       DisplayDevice *_display_screen,
+                       struct_FramebufferText _framebuffer_txt_cnf,
+                       uint8_t _number_of_column,
+                       uint8_t _number_of_line,
+                       uint8_t _widget_anchor_x,
+                       uint8_t _widget_anchor_y,
+                       bool _widget_with_border,
+                       uint8_t _widget_border_width,
+                       FramebufferFormat _framebuffer_format)
+    : Framebuffer(_number_of_column, _number_of_line, _framebuffer_txt_cnf)
 {
-    assert(frame_height % 8 == 0);    // check widget height limitation
-    assert(widget_anchor_y % 8 == 0); // check widget anchor y limitation
-    this->display_screen = display_screen;
-    this->widget_anchor_x = widget_anchor_x;
-    this->widget_anchor_y = widget_anchor_y;
-    this->widget_with_border = widget_with_border;
-    this->widget_border_width = (widget_with_border) ? widget_border_width : 0;
+    assert(this->frame_height % 8 == 0); // check widget height limitation
+    assert(_widget_anchor_y % 8 == 0);   // check widget anchor y limitation
+    this->display_screen = _display_screen;
+    this->actual_displayed_model = _text_model;
 
-    widget_start_x = widget_border_width;
-    widget_start_y = widget_border_width;
-    widget_width = frame_width - 2 * widget_border_width;
-    widget_height = frame_height - 2 * widget_border_width;
+    this->widget_anchor_x = _widget_anchor_x;
+    this->widget_anchor_y = _widget_anchor_y;
+    this->widget_with_border = _widget_with_border;
+    this->widget_border_width = (_widget_with_border) ? _widget_border_width : 0;
+
+    widget_start_x = this->widget_border_width;
+    widget_start_y = this->widget_border_width;
+    widget_width = frame_width - 2 * this->widget_border_width;
+    widget_height = frame_height - 2 * this->widget_border_width;
 }
 
 WidgetText::~WidgetText()
@@ -67,6 +69,19 @@ void WidgetText::set_actual_displayed_object(UIModelObject *model_text)
 void WidgetText::add_widget(WidgetText *_sub_widget)
 {
     this->widgets.push_back(_sub_widget);
+}
+
+void WidgetText::draw_refresh()
+{
+    assert(this->actual_displayed_model != nullptr);
+
+    if (this->actual_displayed_model->has_changed())
+    {
+        this->print_text(this->text_buffer);
+        this->draw_border();
+        this->display_screen->show(this, this->widget_anchor_x, this->widget_anchor_y);
+    }
+    this->actual_displayed_model->clear_change_flag();
 }
 
 bool WidgetText::blinking_phase_has_changed()
