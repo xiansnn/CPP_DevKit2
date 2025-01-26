@@ -29,7 +29,7 @@ Framebuffer::Framebuffer(size_t _frame_width,
     this->pixel_buffer_size = frame_width * nb_of_pages;
     this->pixel_buffer = new uint8_t[this->pixel_buffer_size];
     clear_pixel_buffer();
-    this->text_buffer = nullptr;
+    ;
 }
 
 Framebuffer::Framebuffer(uint8_t number_of_column,
@@ -38,9 +38,6 @@ Framebuffer::Framebuffer(uint8_t number_of_column,
                          FramebufferFormat framebuffer_format)
 {
     assert(framebuffer_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
-    this->max_column = number_of_column;                        // TODO
-    this->max_line = number_of_line;                            // TODO
-    this->frame_text_config = text_cnf;                         // TODO
 
     this->frame_width = number_of_column * text_cnf.font[FONT_WIDTH_INDEX]; // MONO_VLSB => 1 Byte = 1 column of 8 pixel
     this->frame_height = number_of_line * text_cnf.font[FONT_HEIGHT_INDEX]; // TODO verifier qu'on depasse pas la taille de display
@@ -51,18 +48,11 @@ Framebuffer::Framebuffer(uint8_t number_of_column,
     this->pixel_buffer_size = frame_width * nb_of_pages;
     this->pixel_buffer = new uint8_t[this->pixel_buffer_size];
     clear_pixel_buffer();
-
-    this->text_buffer_size = max_line * max_column + 1; // TODO
-    if (text_buffer != nullptr)                         // TODO
-        delete[] text_buffer;                           // TODO
-    this->text_buffer = new char[text_buffer_size];     // TODO
-    clear_text_buffer();                                // TODO
 }
 
 Framebuffer::~Framebuffer()
 {
     delete[] this->pixel_buffer;
-    delete[] this->text_buffer; // TODO
 }
 
 FramebufferFormat Framebuffer::get_framebuffer_format()
@@ -82,123 +72,6 @@ void Framebuffer::fill(FramebufferColor c)
 void Framebuffer::clear_pixel_buffer()
 {
     fill(FramebufferColor::BLACK);
-    current_char_column = 0; // TODO
-    current_char_line = 0;   // TODO
-}
-void Framebuffer::clear_text_buffer()
-{
-    memset(this->text_buffer, '\0', this->text_buffer_size);
-    current_char_column = 0;
-    current_char_line = 0;
-}
-
-void Framebuffer::init_text_buffer(struct_FramebufferText _framebuffer_txt_cnf)
-{
-    this->frame_text_config = _framebuffer_txt_cnf;
-    set_font(_framebuffer_txt_cnf.font);
-}
-
-void Framebuffer::set_font(const unsigned char *font)
-{
-    this->frame_text_config.font = font;
-    this->max_column = this->frame_width / frame_text_config.font[FONT_WIDTH_INDEX];
-    this->max_line = this->frame_height / frame_text_config.font[FONT_HEIGHT_INDEX];
-    this->text_buffer_size = max_line * max_column + 1;
-    if (text_buffer != nullptr)
-        delete[] text_buffer;
-    this->text_buffer = new char[text_buffer_size];
-}
-
-void Framebuffer::next_line()
-{
-    current_char_column = 0;
-    current_char_line++;
-    if (current_char_line >= max_line)
-        current_char_line = 0;
-}
-
-void Framebuffer::next_char()
-{
-    current_char_column++;
-    if (current_char_column >= max_column)
-    {
-        if (this->frame_text_config.wrap)
-        {
-            current_char_column = 0;
-            next_line();
-        }
-    }
-}
-
-void Framebuffer::clear_line()
-{ // TODO ecrire 0x00 dans le pixel_buffer sur la largeur de frame et sur anchor_y
-    for (uint8_t i = 0; i < this->max_column; i++)
-    {
-        drawChar(' ', i, current_char_line);
-    }
-}
-
-void Framebuffer::print_text(const char *c_str)
-{
-    uint16_t n = 0;
-    while (c_str[n] != '\0')
-    {
-        print_char(c_str[n]);
-        n++;
-    }
-}
-
-void Framebuffer::print_text()
-{
-    print_text(this->text_buffer);
-}
-
-void Framebuffer::print_char(char c)
-{
-    switch (c)
-    {
-    case VERTICAL_TAB:
-        break;
-    case LINE_FEED:
-        next_line();
-        current_char_column = 0;
-        break;
-    case BACKSPACE:
-        current_char_column--;
-        drawChar(' ', current_char_column, current_char_line);
-        break;
-    case FORM_FEED: // TO CHECK
-        clear_pixel_buffer();
-        break;
-    case CARRIAGE_RETURN: // TO CHECK
-        current_char_column = 0;
-        break;
-    default:
-        if (current_char_column == 0)
-            clear_line(); // start a new line
-        if (c == HORIZONTAL_TAB)
-        {
-            for (uint8_t i = 0; i < frame_text_config.tab_size; i++)
-            {
-                drawChar(' ', current_char_column, current_char_line);
-                next_char();
-            }
-        }
-        else
-        {
-            if (this->frame_text_config.auto_next_char)
-            {
-                drawChar(c, current_char_column, current_char_line);
-                next_char();
-            }
-            else
-            {
-                drawChar(' ', current_char_column, current_char_line);
-                drawChar(c, current_char_column, current_char_line);
-            }
-        }
-        break;
-    }
 }
 
 void Framebuffer::pixel(int x, int y, FramebufferColor c)
@@ -338,48 +211,7 @@ void Framebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, 
 //     this->pixel_buffer[byte_idx] ^= byte;
 // }
 
-void Framebuffer::drawChar(const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y)
-{
-    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
-
-    if (!font || c < 32)
-        return;
-
-    uint8_t font_width = font[FONT_WIDTH_INDEX];
-    uint8_t font_height = font[FONT_HEIGHT_INDEX];
-
-    uint16_t seek = (c - 32) * (font_width * font_height) / 8 + 2;
-
-    uint8_t b_seek = 0;
-
-    for (uint8_t x = 0; x < font_width; x++)
-    {
-        for (uint8_t y = 0; y < font_height; y++)
-        {
-            if (font[seek] >> b_seek & 0b00000001)
-                this->pixel(x + anchor_x, y + anchor_y, this->frame_text_config.fg_color);
-            else
-                this->pixel(x + anchor_x, y + anchor_y, this->frame_text_config.bg_color);
-
-            b_seek++;
-            if (b_seek == 8)
-            {
-                b_seek = 0;
-                seek++;
-            }
-        }
-    }
-}
-
-void Framebuffer::drawChar(char c, uint8_t char_column, uint8_t char_line)
-{
-    uint8_t anchor_x = char_column * frame_text_config.font[FONT_WIDTH_INDEX];
-    uint8_t anchor_y = char_line * frame_text_config.font[FONT_HEIGHT_INDEX];
-    drawChar(this->frame_text_config.font, c, anchor_x, anchor_y);
-}
-
 void Framebuffer::circle(int radius, int x_center, int y_center, bool fill, FramebufferColor c)
-
 {
     int x, y, m;
     x = 0;
@@ -503,8 +335,6 @@ void TextualFrameBuffer::clear_text_buffer()
 void TextualFrameBuffer::set_font(const unsigned char *font)
 {
     this->frame_text_config.font = font;
-    // this->max_column = this->frame_width / frame_text_config.font[FONT_WIDTH_INDEX]; // TODO inverser le calcul
-    // this->max_line = this->frame_height / frame_text_config.font[FONT_HEIGHT_INDEX]; // TODO inverser le calcul
 
     this->frame_width = this->max_column * frame_text_config.font[FONT_WIDTH_INDEX];
     this->frame_height = this->max_line * frame_text_config.font[FONT_HEIGHT_INDEX];
