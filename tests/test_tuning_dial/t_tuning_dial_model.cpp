@@ -24,6 +24,18 @@ public:
     void process_control_event(UIControlEvent _event = UIControlEvent::NONE);
 };
 
+class FMVolumeModel : public UIControlledIncrementalValue
+{
+private:
+public:
+    FMVolumeModel(int increment = 1,
+                  bool is_wrappable = true,
+                  int min_value = -20,
+                  int max_value = +3);
+    ~FMVolumeModel();
+    void process_control_event(UIControlEvent _event = UIControlEvent::NONE);
+};
+
 FMFrequencyTuningModel::FMFrequencyTuningModel(int increment,
                                                bool is_wrappable,
                                                int min_value,
@@ -37,6 +49,23 @@ FMFrequencyTuningModel::~FMFrequencyTuningModel()
 }
 
 void FMFrequencyTuningModel::process_control_event(UIControlEvent _event)
+{
+    this->increment_value();
+}
+
+FMVolumeModel::FMVolumeModel(int increment,
+                             bool is_wrappable,
+                             int min_value,
+                             int max_value)
+    : UIControlledIncrementalValue(min_value, max_value, is_wrappable, increment)
+{
+}
+
+FMVolumeModel::~FMVolumeModel()
+{
+}
+
+void FMVolumeModel::process_control_event(UIControlEvent _event)
 {
     this->increment_value();
 }

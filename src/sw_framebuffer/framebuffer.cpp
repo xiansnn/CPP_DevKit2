@@ -273,19 +273,6 @@ void Framebuffer::rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, boo
         for (size_t i_x = 0; i_x < w; i_x++)
             for (size_t i_y = 0; i_y < h; i_y++)
                 this->pixel(start_x + i_x, start_y + i_y, c);
-    // {
-
-    // if (w > h)
-    // {
-    //     for (size_t i = 0; i < h; i++)
-    //         hline(x, y + i, w, c);
-    // }
-    // else
-    // {
-    //     for (size_t i = 0; i < w; i++)
-    //         vline(x + i, y, h, c);
-    // }
-    // }
 }
 
 void Framebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, FramebufferColor c)
