@@ -39,13 +39,13 @@ struct_ConfigSSD1306 cfg_ssd1306{
     .frequency_factor = 0};
 
 struct_FramebufferText fm_text_cnf{
-    .font = font_8x8};
+    .font = font_12x16};
 
 ///  1- create I2C bus hw peripheral and display
 HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
 SSD1306 display = SSD1306(&master, cfg_ssd1306);
 
-FMFrequencyTuning my_FM_model = FMFrequencyTuning();
+FMFrequencyTuningModel my_FM_model = FMFrequencyTuningModel(1,true);
 WidgetText my_FM_widget = WidgetText(&my_FM_model,
                                      &display,
                                      fm_text_cnf,
@@ -57,14 +57,14 @@ int main()
 {
 
     display.clear_full_screen();
+    my_FM_model.set_clipped_value(my_FM_model.get_min_value());
 
-    my_FM_model.set_current_frequency( 87.0);
     while (true)
     {
         my_FM_model.process_control_event();
-        sprintf(my_FM_widget.text_buffer, "%5.1f MHz\n", my_FM_model.get_current_frequency());
+        sprintf(my_FM_widget.text_buffer, "%5.1f MHz\n", (float)my_FM_model.get_value()/10);
         my_FM_widget.draw_refresh();
-        my_FM_model.increment_frequency(0.5);
+        my_FM_model.process_control_event();
 
         sleep_ms(500);
     }
