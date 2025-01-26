@@ -37,7 +37,7 @@ WidgetText::WidgetText(UIModelObject *_text_model,
                        bool _widget_with_border,
                        uint8_t _widget_border_width,
                        FramebufferFormat _framebuffer_format)
-    : Framebuffer(_number_of_column, _number_of_line, _framebuffer_txt_cnf)
+    : TextualFrameBuffer(_number_of_column, _number_of_line, _framebuffer_txt_cnf)
 {
     assert(this->frame_height % 8 == 0); // check widget height limitation
     assert(_widget_anchor_y % 8 == 0);   // check widget anchor y limitation

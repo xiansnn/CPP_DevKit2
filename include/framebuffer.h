@@ -8,8 +8,7 @@
  * @copyright Copyright (c) 2025
  *
  */
-#if !defined(FRAMEBUFFER_H)
-#define FRAMEBUFFER_H
+#pragma once
 
 #include <string>
 #include "pico/stdlib.h"
@@ -115,16 +114,6 @@ class Framebuffer
 private:
     /// @brief size of the buffer that contains graphics as map of pixels.
     size_t pixel_buffer_size;
-    /// @brief size of the buffer that contains text as string of characters.
-    size_t text_buffer_size;
-    /// @brief the arrangement of the pixel on a byte basis.
-    FramebufferFormat frame_format;
-    /// @brief the line number where the next character will be written.
-    uint8_t current_char_line{0};
-    /// @brief the column where the next character will be written.
-    uint8_t current_char_column{0};
-    /// @brief the configuration of the text buffer
-    struct_FramebufferText frame_text_config{};
 
     /// @brief the graphic primitive to draw an ellipse \bug //FIXME doesn't work !
     /// @param x_center the x coordinate of the center
@@ -136,20 +125,9 @@ private:
     /// @param c the filling color
     void ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, FramebufferColor c);
 
-    /// @brief a graphic primitive to draw a character at a pixel position
-    /// \note NOTICE: drawChar() implementation depends strongly on the FramebufferFormat.
-    /// There should be one code for each format.
-    /// @param font the font used to draw the character
-    /// @param c the foreground color of the character
-    /// @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
-    /// @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
-    void drawChar(const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y);
-
-    /// @brief a graphic primitive to draw a character at a character position
-    /// @param c the foreground color of the character. The font is given by the frame_text_config
-    /// @param char_column the column position of the character
-    /// @param char_line the line position of the character
-    void drawChar(char c, uint8_t char_column, uint8_t char_line);
+protected:
+    /// @brief the arrangement of the pixel on a byte basis.
+    FramebufferFormat frame_format;
 
     /// @brief the graphic primitive to draw a pixel.
     /// \note NOTICE: pixel() implementation depends strongly on the FramebufferFormat.
@@ -159,23 +137,15 @@ private:
     /// @param c the color of the pixel
     void pixel(int x, int y, FramebufferColor c = FramebufferColor::WHITE);
 
-    /// @brief clean th full current line (writing " " in the text buffer)
-    void clear_line();
-
-protected:
 public:
     /// @brief the buffer where graphic are drawn
     uint8_t *pixel_buffer;
-    /// @brief the buffer where text are written
-    char *text_buffer;
+
     /// @brief The number of pixel along the width of the frame.
     uint8_t frame_width;
+
     /// @brief The number of pixel along the height of the frame.
     uint8_t frame_height;
-    /// @brief The max number of line with respect to frame height and font height
-    uint8_t max_line{0};
-    /// @brief The max number of column with respect to frame width and font width
-    uint8_t max_column{0};
 
     /**
      * @brief Construct a new Framebuffer object
@@ -295,6 +265,56 @@ public:
      */
     void circle(int radius, int x_center, int y_center, bool fill = false, FramebufferColor c = FramebufferColor::WHITE);
 
+};
+
+class TextualFrameBuffer : public Framebuffer
+{
+private:
+    /// @brief size of the buffer that contains text as string of characters.
+    size_t text_buffer_size;
+
+    /// @brief the line number where the next character will be written.
+    uint8_t current_char_line{0};
+
+    /// @brief the column where the next character will be written.
+    uint8_t current_char_column{0};
+
+    /// @brief the configuration of the text buffer
+    struct_FramebufferText frame_text_config{};
+
+    /// @brief a graphic primitive to draw a character at a pixel position
+    /// \note NOTICE: drawChar() implementation depends strongly on the FramebufferFormat.
+    /// There should be one code for each format.
+    /// @param font the font used to draw the character
+    /// @param c the foreground color of the character
+    /// @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
+    /// @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
+    void drawChar(const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y);
+
+    /// @brief a graphic primitive to draw a character at a character position
+    /// @param c the foreground color of the character. The font is given by the frame_text_config
+    /// @param char_column the column position of the character
+    /// @param char_line the line position of the character
+    void drawChar(char c, uint8_t char_column, uint8_t char_line);
+
+    /// @brief clean th full current line (writing " " in the text buffer)
+    void clear_line();
+
+public:
+    /// @brief the buffer where text are written
+    char *text_buffer;
+    /// @brief The max number of line with respect to frame height and font height
+    uint8_t max_line{0};
+    /// @brief The max number of column with respect to frame width and font width
+    uint8_t max_column{0};
+
+    TextualFrameBuffer(uint8_t number_of_column,
+                       uint8_t number_of_line,
+                       struct_FramebufferText text_cnf,
+                       FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
+
+    ~TextualFrameBuffer();
+
     /**
      * @brief   Initialize the textual features of framebuffer, according to the configuration data structure frame_text_config
      *
@@ -351,5 +371,3 @@ public:
      */
     void next_char();
 };
-
-#endif // FRAMEBUFFER_H

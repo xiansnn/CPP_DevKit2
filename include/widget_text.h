@@ -13,7 +13,7 @@
 
 #include "ui_core.h"
 
-class WidgetText : public Framebuffer
+class WidgetText : public TextualFrameBuffer
 {
 private:
     /// @brief store the value of the previous blinking phase.should be 0 or 1.
