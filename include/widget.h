@@ -128,8 +128,8 @@ public:
            uint8_t widget_anchor_y,
            bool widget_with_border,
            uint8_t widget_border_width = 1,
-           FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB,
-           struct_FramebufferText framebuffer_txt_cnf = {.font = font_8x8});
+           FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB
+           );
     /**
      * @brief Destroy the UIWidget object
      */

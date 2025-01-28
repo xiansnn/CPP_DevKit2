@@ -111,8 +111,7 @@ public:
                              bool widget_with_border,
                              uint8_t bar_spacing = 1,
                              uint8_t widget_border_width = 1,
-                             FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB,
-                             struct_FramebufferText framebuffer_txt_cnf = {.font = font_8x8});
+                             FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
     /**
      * @brief Destroy the Widget Horizontal Bargraph object
      * 
@@ -177,8 +176,7 @@ public:
                              bool widget_with_border,
                              uint8_t bar_spacing = 1,
                              uint8_t widget_border_width = 1,
-                             FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB,
-                             struct_FramebufferText framebuffer_txt_cnf = {.font = font_8x8});
+                             FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
     ~WidgetVerticalBargraph();
     void draw_refresh();
 };
