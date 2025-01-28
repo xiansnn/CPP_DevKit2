@@ -77,7 +77,7 @@ struct struct_FramebufferText
     /**
      * @brief The foreground color, default to WHITE
      */
-    FramebufferColor fg_color{FramebufferColor::WHITE};
+    FramebufferColor fg_color{FramebufferColor::WHITE};//TODO fg et bg ne sont pas reserves au texte
     /**
      * @brief The background color, defaul to BLACK
      */
