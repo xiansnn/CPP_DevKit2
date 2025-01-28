@@ -109,7 +109,7 @@ struct struct_FramebufferText
  *
  *
  */
-class Framebuffer
+class Framebuffer //TODO prevoir separation text et graphic, un framebuffer avec ppixel buffer pour heritage displaydevice
 {
 private:
     /// @brief the graphic primitive to draw an ellipse \bug //FIXME doesn't work !
