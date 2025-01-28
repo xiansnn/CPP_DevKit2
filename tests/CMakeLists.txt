@@ -99,15 +99,6 @@ target_link_libraries(test_ssd1306
             debug_probe
             )
 #-------------------------------------------------------------------------------------
-add_executable(test_framebuffer_streams test_ssd1306_fb_streams.cpp)
-target_link_libraries(test_framebuffer_streams 
-            pico_stdlib 
-            debug_probe
-            hw_i2c 
-            framebuffer
-            ssd1306 
-            )
-#-------------------------------------------------------------------------------------
 add_executable(test_msgeq7 test_msgeq7.cpp)
 target_link_libraries(test_msgeq7 
             pico_stdlib 
@@ -213,4 +204,13 @@ target_link_libraries(test_tuning_dial
             widget_text
             )    
 #-------------------------------------------------------------------------------------
- 
+add_executable(test_text_widget test_textual_widget.cpp)
+target_link_libraries(test_text_widget 
+            pico_stdlib 
+            debug_probe
+            hw_i2c 
+            framebuffer
+            ssd1306 
+            widget_text
+            )
+#-------------------------------------------------------------------------------------

@@ -25,7 +25,7 @@ Widget::Widget(DisplayDevice *_display_screen,
                bool _widget_with_border,
                uint8_t _widget_border_width,
                FramebufferFormat _framebuffer_format,
-               struct_FramebufferText _framebuffer_txt_cnf)
+               struct_FramebufferText _framebuffer_txt_cnf)  // TODO pas utilisé
     : Framebuffer(_frame_width, _frame_height, _framebuffer_format)
 {
     assert(_frame_height % 8 == 0);    // check widget height limitation
