@@ -11,7 +11,7 @@
 
 #include "widget.h"
 
-void Widget::draw_border(FramebufferColor c)
+void Widget::draw_border(FramebufferColor c)//TODO en faire un pure virtual pour etre independant de graphic ou text
 {
     if (this->widget_with_border)
         rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width);
@@ -44,7 +44,7 @@ Widget::Widget(DisplayDevice *_display_screen,
 
 Widget::~Widget()
 {
-    delete actual_displayed_model;
+    delete actual_displayed_model;//TODO pas de delete sur des objet hors widget
     delete display_screen;
 }
 
