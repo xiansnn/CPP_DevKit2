@@ -112,9 +112,6 @@ struct struct_FramebufferText
 class Framebuffer
 {
 private:
-    /// @brief size of the buffer that contains graphics as map of pixels.
-    size_t pixel_buffer_size;
-
     /// @brief the graphic primitive to draw an ellipse \bug //FIXME doesn't work !
     /// @param x_center the x coordinate of the center
     /// @param y_center the y coordinate of the center
@@ -126,6 +123,8 @@ private:
     void ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, FramebufferColor c);
 
 protected:
+    /// @brief size of the buffer that contains graphics as map of pixels.
+    size_t pixel_buffer_size;
     /// @brief the arrangement of the pixel on a byte basis.
     FramebufferFormat frame_format;
 
@@ -139,7 +138,7 @@ protected:
 
 public:
     /// @brief the buffer where graphic are drawn
-    uint8_t *pixel_buffer;
+    uint8_t *pixel_buffer = nullptr;
 
     /// @brief The number of pixel along the width of the frame.
     uint8_t frame_width;
@@ -301,7 +300,7 @@ private:
 
 public:
     /// @brief the buffer where text are written
-    char *text_buffer;
+    char *text_buffer = nullptr;
     /// @brief The max number of line with respect to frame height and font height
     uint8_t char_width{0};
     /// @brief The max number of column with respect to frame width and font width
