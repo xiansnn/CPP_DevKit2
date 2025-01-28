@@ -154,12 +154,12 @@ public:
      * Usually defined by "x" starting at "0" on top upleft corner, running to the left and ending at frame_width-1 position.
      * @param frame_height   The number of pixel along the height of the frame.
      * Usually defined by "y" starting at "0" on top upleft corner, running downward and ending at frame_height-1 position.
-     * @param frame_format   The way the memory byte are translated by the display driver device.
+     * @param framebuffer_format   The way the memory byte are translated by the display driver device.
      * \image html framebuffer.png
      */
     Framebuffer(size_t frame_width,
                 size_t frame_height,
-                FramebufferFormat frame_format = FramebufferFormat::MONO_VLSB);
+                FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
 
     Framebuffer(uint8_t number_of_column,
                 uint8_t number_of_line,
@@ -264,7 +264,6 @@ public:
      * @param c   color of the border of the circle, default to WHITE
      */
     void circle(int radius, int x_center, int y_center, bool fill = false, FramebufferColor c = FramebufferColor::WHITE);
-
 };
 
 class TextualFrameBuffer : public Framebuffer
@@ -304,14 +303,19 @@ public:
     /// @brief the buffer where text are written
     char *text_buffer;
     /// @brief The max number of line with respect to frame height and font height
-    uint8_t max_line{0};
+    uint8_t char_width{0};
     /// @brief The max number of column with respect to frame width and font width
-    uint8_t max_column{0};
+    uint8_t char_height{0};
 
     TextualFrameBuffer(uint8_t number_of_column,
                        uint8_t number_of_line,
                        struct_FramebufferText text_cnf,
                        FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
+
+    TextualFrameBuffer(size_t frame_width,
+                       size_t frame_height,
+                       FramebufferFormat frame_format,
+                       struct_FramebufferText text_cnf);
 
     ~TextualFrameBuffer();
 

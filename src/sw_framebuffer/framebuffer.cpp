@@ -19,10 +19,12 @@ Framebuffer::Framebuffer(size_t _frame_width,
                          size_t _frame_height,
                          FramebufferFormat _framebuffer_format)
 {
-    assert(_framebuffer_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
     this->frame_format = _framebuffer_format;
+    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for MONO_VLSB devices
+
     this->frame_height = _frame_height;
     this->frame_width = _frame_width; // MONO_VLSB => 1 Byte = 1 column of 8 pixel
+    
     size_t nb_of_pages = _frame_height / BYTE_SIZE;
     if (_frame_height % BYTE_SIZE != 0)
         nb_of_pages += 1;
@@ -32,12 +34,13 @@ Framebuffer::Framebuffer(size_t _frame_width,
     ;
 }
 
-Framebuffer::Framebuffer(uint8_t number_of_column,
+Framebuffer::Framebuffer(uint8_t number_of_column, // utilisé pour heritage textualframebuffer
                          uint8_t number_of_line,
                          struct_FramebufferText text_cnf,
                          FramebufferFormat framebuffer_format)
 {
-    assert(framebuffer_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
+    this->frame_format = framebuffer_format;
+    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for MONO_VLSB devices
 
     this->frame_width = number_of_column * text_cnf.font[FONT_WIDTH_INDEX]; // MONO_VLSB => 1 Byte = 1 column of 8 pixel
     this->frame_height = number_of_line * text_cnf.font[FONT_HEIGHT_INDEX]; // TODO verifier qu'on depasse pas la taille de display
@@ -62,7 +65,7 @@ FramebufferFormat Framebuffer::get_framebuffer_format()
 
 void Framebuffer::fill(FramebufferColor c)
 {
-    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
+    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for MONO_VLSB devices
     if (c == FramebufferColor::BLACK)
         memset(this->pixel_buffer, 0x00, this->pixel_buffer_size);
     else
@@ -76,7 +79,7 @@ void Framebuffer::clear_pixel_buffer()
 
 void Framebuffer::pixel(int x, int y, FramebufferColor c)
 {
-    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
+    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for MONO_VLSB devices
 
     if (x >= 0 && x < this->frame_width && y >= 0 && y < this->frame_height) // avoid drawing outside the framebuffer
     {
@@ -249,7 +252,7 @@ void Framebuffer::circle(int radius, int x_center, int y_center, bool fill, Fram
 
 void TextualFrameBuffer::drawChar(const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y)
 {
-    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // works only for MONO_VLSB devices
+    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for MONO_VLSB devices
 
     if (!font || c < 32)
         return;
@@ -290,7 +293,7 @@ void TextualFrameBuffer::drawChar(char c, uint8_t char_column, uint8_t char_line
 void TextualFrameBuffer::clear_line()
 {
     // TODO ecrire 0x00 dans le pixel_buffer sur la largeur de frame et sur anchor_y
-    for (uint8_t i = 0; i < this->max_column; i++)
+    for (uint8_t i = 0; i < this->char_height; i++)
     {
         drawChar(' ', i, current_char_line);
     }
@@ -303,15 +306,32 @@ TextualFrameBuffer::TextualFrameBuffer(uint8_t number_of_column,
     : Framebuffer(number_of_column, number_of_line, text_cnf, framebuffer_format)
 {
 
-    this->max_column = number_of_column;
-    this->max_line = number_of_line;
+    this->char_height = number_of_column;
+    this->char_width = number_of_line;
     this->frame_text_config = text_cnf;
 
-    this->text_buffer_size = max_line * max_column + 1;
-    if (text_buffer != nullptr)
-        delete[] text_buffer;
+    this->text_buffer_size = char_width * char_height + 1;
+    // if (text_buffer != nullptr)
+    //     delete[] text_buffer;
     this->text_buffer = new char[text_buffer_size];
     clear_text_buffer();
+}
+
+TextualFrameBuffer::TextualFrameBuffer(size_t frame_width,
+                                       size_t frame_height,
+                                       FramebufferFormat frame_format,
+                                       struct_FramebufferText text_cnf )
+    : Framebuffer(frame_width, frame_height, frame_format)
+{
+    this->frame_text_config = text_cnf;
+    this->char_height = this->frame_width / this->frame_text_config.font[FONT_WIDTH_INDEX];
+    this->char_width = this->frame_height / this->frame_text_config.font[FONT_HEIGHT_INDEX];
+    this->text_buffer_size = char_width * char_height + 1;
+    // if (text_buffer != nullptr)
+    //     delete[] text_buffer;
+    this->text_buffer = new char[text_buffer_size];
+    clear_text_buffer();
+
 }
 
 TextualFrameBuffer::~TextualFrameBuffer()
@@ -336,10 +356,10 @@ void TextualFrameBuffer::set_font(const unsigned char *font)
 {
     this->frame_text_config.font = font;
 
-    this->frame_width = this->max_column * frame_text_config.font[FONT_WIDTH_INDEX];
-    this->frame_height = this->max_line * frame_text_config.font[FONT_HEIGHT_INDEX];
+    this->frame_width = this->char_height * frame_text_config.font[FONT_WIDTH_INDEX];
+    this->frame_height = this->char_width * frame_text_config.font[FONT_HEIGHT_INDEX];
 
-    this->text_buffer_size = max_line * max_column + 1;
+    this->text_buffer_size = char_width * char_height + 1;
     if (text_buffer != nullptr)
         delete[] text_buffer;
     this->text_buffer = new char[text_buffer_size];
@@ -412,14 +432,14 @@ void TextualFrameBuffer::next_line()
 {
     current_char_column = 0;
     current_char_line++;
-    if (current_char_line >= max_line)
+    if (current_char_line >= char_width)
         current_char_line = 0;
 }
 
 void TextualFrameBuffer::next_char()
 {
     current_char_column++;
-    if (current_char_column >= max_column)
+    if (current_char_column >= char_height)
     {
         if (this->frame_text_config.wrap)
         {
