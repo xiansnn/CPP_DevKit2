@@ -24,14 +24,8 @@ Framebuffer::Framebuffer(size_t _frame_width,
 
     this->frame_height = _frame_height;
     this->frame_width = _frame_width; // MONO_VLSB => 1 Byte = 1 column of 8 pixel
-    
-    size_t nb_of_pages = _frame_height / BYTE_SIZE;
-    if (_frame_height % BYTE_SIZE != 0)
-        nb_of_pages += 1;
-    this->pixel_buffer_size = frame_width * nb_of_pages;
-    this->pixel_buffer = new uint8_t[this->pixel_buffer_size];
-    clear_pixel_buffer();
-    ;
+
+    create_pixel_buffer();
 }
 
 Framebuffer::Framebuffer(uint8_t number_of_column, // utilisé pour heritage textualframebuffer
@@ -45,12 +39,7 @@ Framebuffer::Framebuffer(uint8_t number_of_column, // utilisé pour heritage tex
     this->frame_width = number_of_column * text_cnf.font[FONT_WIDTH_INDEX]; // MONO_VLSB => 1 Byte = 1 column of 8 pixel
     this->frame_height = number_of_line * text_cnf.font[FONT_HEIGHT_INDEX]; // TODO verifier qu'on depasse pas la taille de display
 
-    size_t nb_of_pages = frame_height / BYTE_SIZE;
-    if (frame_height % BYTE_SIZE != 0)
-        nb_of_pages += 1;
-    this->pixel_buffer_size = frame_width * nb_of_pages;
-    this->pixel_buffer = new uint8_t[this->pixel_buffer_size];
-    clear_pixel_buffer();
+    create_pixel_buffer();
 }
 
 Framebuffer::~Framebuffer()
@@ -75,6 +64,20 @@ void Framebuffer::fill(FramebufferColor c)
 void Framebuffer::clear_pixel_buffer()
 {
     fill(FramebufferColor::BLACK);
+}
+
+void Framebuffer::create_pixel_buffer()
+{
+    size_t nb_of_pages = frame_height / BYTE_SIZE;
+    if (frame_height % BYTE_SIZE != 0)
+        nb_of_pages += 1;
+
+    this->pixel_buffer_size = frame_width * nb_of_pages;
+    if (this->pixel_buffer != nullptr)
+        delete[] this->pixel_buffer;
+
+    this->pixel_buffer = new uint8_t[this->pixel_buffer_size];
+    clear_pixel_buffer();
 }
 
 void Framebuffer::pixel(int x, int y, FramebufferColor c)
@@ -299,6 +302,15 @@ void TextualFrameBuffer::clear_line()
     }
 }
 
+void TextualFrameBuffer::create_text_buffer()
+{
+    this->text_buffer_size = char_width * char_height + 1;
+    if (text_buffer != nullptr)
+        delete[] text_buffer;
+    this->text_buffer = new char[text_buffer_size];
+    clear_text_buffer();
+}
+
 TextualFrameBuffer::TextualFrameBuffer(uint8_t number_of_column,
                                        uint8_t number_of_line,
                                        struct_FramebufferText text_cnf,
@@ -310,35 +322,26 @@ TextualFrameBuffer::TextualFrameBuffer(uint8_t number_of_column,
     this->char_height = number_of_line;
     this->frame_text_config = text_cnf;
 
-    
 
-    this->text_buffer_size = char_width * char_height + 1;
-    if (text_buffer != nullptr)
-        delete[] text_buffer;
-    this->text_buffer = new char[text_buffer_size];
-    clear_text_buffer();
+    create_text_buffer();
 }
 
 TextualFrameBuffer::TextualFrameBuffer(size_t frame_width,
                                        size_t frame_height,
                                        FramebufferFormat frame_format,
-                                       struct_FramebufferText text_cnf )
+                                       struct_FramebufferText text_cnf)
     : Framebuffer(frame_width, frame_height, frame_format)
 {
     this->frame_text_config = text_cnf;
     this->char_width = this->frame_width / this->frame_text_config.font[FONT_WIDTH_INDEX];
     this->char_height = this->frame_height / this->frame_text_config.font[FONT_HEIGHT_INDEX];
-    this->text_buffer_size = char_width * char_height + 1;
-    if (text_buffer != nullptr)
-        delete[] text_buffer;
-    this->text_buffer = new char[text_buffer_size];
-    clear_text_buffer();
 
+    create_text_buffer();
 }
 
 TextualFrameBuffer::~TextualFrameBuffer()
 {
-    delete this->text_buffer;
+    delete[] this->text_buffer;
 }
 
 void TextualFrameBuffer::init_text_buffer(struct_FramebufferText _frame_text_config)
@@ -358,23 +361,13 @@ void TextualFrameBuffer::set_font(const unsigned char *font)
 {
     assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for SSD1306
     this->frame_text_config.font = font;
-
+    // size the pixel buffer to the required size due to character area
     this->frame_height = this->char_height * frame_text_config.font[FONT_HEIGHT_INDEX];
     this->frame_width = this->char_width * frame_text_config.font[FONT_WIDTH_INDEX];
 
-    size_t nb_of_pages = this->frame_height / BYTE_SIZE;
-    if (frame_height % BYTE_SIZE != 0)
-        nb_of_pages += 1;
-    this->pixel_buffer_size = this->frame_width * nb_of_pages;
-    this->pixel_buffer = new uint8_t[this->pixel_buffer_size];
-    clear_pixel_buffer();
+    create_pixel_buffer();
+    create_text_buffer();
 
-
-
-    this->text_buffer_size = char_width * char_height + 1;
-    if (text_buffer != nullptr)
-        delete[] text_buffer;
-    this->text_buffer = new char[text_buffer_size];
 }
 
 void TextualFrameBuffer::print_text()

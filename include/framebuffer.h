@@ -128,6 +128,9 @@ protected:
     /// @brief the arrangement of the pixel on a byte basis.
     FramebufferFormat frame_format;
 
+    /// @brief a common function where the pixel_buffer is created and deleted if already existing
+    void create_pixel_buffer();
+
     /// @brief the graphic primitive to draw a pixel.
     /// \note NOTICE: pixel() implementation depends strongly on the FramebufferFormat.
     /// There should be one code for each format.
@@ -297,6 +300,10 @@ private:
 
     /// @brief clean th full current line (writing " " in the text buffer)
     void clear_line();
+
+protected:
+    /// @brief create text buffer and delete if already existing
+    void create_text_buffer();
 
 public:
     /// @brief the buffer where text are written
