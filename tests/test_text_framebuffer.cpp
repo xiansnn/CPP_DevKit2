@@ -19,8 +19,8 @@
 #include "probe.h"
 #include "hw_i2c.h"
 #include "ssd1306.h"
-#include "widget_text.h"
-#include "test_text_widget/t_test_text_widget.cpp"
+#include "framebuffer.h"
+
 
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
@@ -55,16 +55,25 @@ void test_font_size(SSD1306 *current_display)
 {
     current_display->clear_full_screen();
     const unsigned char *current_font[4]{font_5x8, font_8x8, font_12x16, font_16x32};
-
-    TextualFrameBuffer current_text_on_screen = TextualFrameBuffer(4, 1, {});
     uint8_t current_x_anchor = 0;
     uint8_t current_y_anchor = 0;
 
-    current_text_on_screen.set_font(current_font[0]);
-    sprintf(current_text_on_screen.text_buffer, "Test");
+    std::string test_string = "Test";
 
-    current_text_on_screen.print_text();
-    current_display->show(&current_text_on_screen, current_x_anchor, current_y_anchor);
+    TextualFrameBuffer *font_text_on_screen_0 = new TextualFrameBuffer(test_string.size(), 1, {.font = current_font[0]});
+
+    sprintf(font_text_on_screen_0->text_buffer, test_string.c_str());
+    font_text_on_screen_0->print_text();
+    current_display->show(font_text_on_screen_0, current_x_anchor, current_y_anchor);
+    delete font_text_on_screen_0;
+
+    TextualFrameBuffer *font_text_on_screen_1 = new TextualFrameBuffer(test_string.size(), 1, {.font = current_font[1]});
+    current_x_anchor = 64;
+    current_y_anchor = 8;
+    sprintf(font_text_on_screen_1->text_buffer, test_string.c_str());
+    font_text_on_screen_1->print_text();
+    current_display->show(font_text_on_screen_1, current_x_anchor, current_y_anchor);
+    delete font_text_on_screen_1;
 
     // Framebuffer *font_size_1 = new Framebuffer(64, 8);
     // font_size_1->set_font(current_font[1]);
@@ -83,7 +92,7 @@ void test_font_size(SSD1306 *current_display)
     // font_size_3.print_text(c_str);
     // current_display->show(&font_size_3, 64, 32);
 
-    delete[] c_str;
+    // delete[] c_str;
 
     sleep_ms(1000);
 }
@@ -91,7 +100,7 @@ void test_font_size(SSD1306 *current_display)
 int main()
 
 {
-    stdio_init_all();
+    // stdio_init_all();
     HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
     SSD1306 left_display = SSD1306(&master, cfg_left_screen);
     SSD1306 right_display = SSD1306(&master, cfg_right_screen);

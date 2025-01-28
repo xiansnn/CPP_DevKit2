@@ -204,13 +204,12 @@ target_link_libraries(test_tuning_dial
             widget_text
             )    
 #-------------------------------------------------------------------------------------
-add_executable(test_text_widget test_textual_widget.cpp)
-target_link_libraries(test_text_widget 
+add_executable(test_text_framebuffer test_text_framebuffer.cpp)
+target_link_libraries(test_text_framebuffer 
             pico_stdlib 
             debug_probe
             hw_i2c 
             framebuffer
             ssd1306 
-            widget_text
             )
 #-------------------------------------------------------------------------------------
