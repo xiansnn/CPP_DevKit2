@@ -41,7 +41,7 @@ Framebuffer::Framebuffer(uint8_t number_of_column, // utilisé pour heritage tex
     assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for MONO_VLSB devices
 
     this->frame_width = number_of_column * text_cnf.font[FONT_WIDTH_INDEX]; // MONO_VLSB => 1 Byte = 1 column of 8 pixel
-    this->frame_height = number_of_line * text_cnf.font[FONT_HEIGHT_INDEX]; // TODO verifier qu'on depasse pas la taille de display
+    this->frame_height = number_of_line * text_cnf.font[FONT_HEIGHT_INDEX]; // TODO verifier qu'on depasse pas la taille de display. il faudrait connaitre le displaydevice !!!
 
     create_pixel_buffer();
 }
@@ -67,7 +67,7 @@ void Framebuffer::fill(FramebufferColor c)
 
 void Framebuffer::clear_pixel_buffer()
 {
-    fill(FramebufferColor::BLACK); // TODO remplacer black par bg_color
+    fill(this->frame_graph_config.bg_color); 
 }
 
 void Framebuffer::create_pixel_buffer()
@@ -362,16 +362,11 @@ void TextualFrameBuffer::update_text_area(const unsigned char *font)
 {
     assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for SSD1306
     this->frame_text_config.font = font;
-    // size the pixel buffer to the required size due to character area
-    // this->frame_height = this->char_height * frame_text_config.font[FONT_HEIGHT_INDEX];
-    // this->frame_width = this->char_width * frame_text_config.font[FONT_WIDTH_INDEX];
 
     // size the text area according to the available room within the frame whidth and height
     this->char_height = this->frame_height / frame_text_config.font[FONT_HEIGHT_INDEX];
     this->char_width = this->frame_width / frame_text_config.font[FONT_WIDTH_INDEX];
 
-    // delete[] this->pixel_buffer;
-    // create_pixel_buffer();
     delete[] this->text_buffer;
     create_text_buffer();
 }
@@ -384,14 +379,10 @@ void TextualFrameBuffer::update_pixel_area(const unsigned char *font)
     this->frame_height = this->char_height * frame_text_config.font[FONT_HEIGHT_INDEX];
     this->frame_width = this->char_width * frame_text_config.font[FONT_WIDTH_INDEX];
 
-    // size the text area according to the available room within the frame whidth and height
-    // this->char_height = this->frame_height / frame_text_config.font[FONT_HEIGHT_INDEX];
-    // this->char_width = this->frame_width / frame_text_config.font[FONT_WIDTH_INDEX];
 
     delete[] this->pixel_buffer;
     create_pixel_buffer();
-    // delete[] this->text_buffer;
-    // create_text_buffer();
+
 }
 
 void TextualFrameBuffer::print_text()
