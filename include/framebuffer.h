@@ -60,10 +60,22 @@ enum class FramebufferColor
     WHITE = 1
 };
 
+struct struct_GraphFramebuffer
+{
+    /**
+     * @brief The foreground color, default to WHITE
+     */
+    FramebufferColor fg_color{FramebufferColor::WHITE}; // TODO fg et bg ne sont pas reserves au texte
+    /**
+     * @brief The background color, defaul to BLACK
+     */
+    FramebufferColor bg_color{FramebufferColor::BLACK};
+};
+
 /**
  * @brief Data structure that holds all configuration parameters used by textual primitives
  */
-struct struct_FramebufferText
+struct struct_TextFramebuffer
 {
     /**
      * @brief The font used. Current font are defined according to IBM CP437. The font files are derived from https://github.com/Harbys/pico-ssd1306 works.
@@ -77,7 +89,7 @@ struct struct_FramebufferText
     /**
      * @brief The foreground color, default to WHITE
      */
-    FramebufferColor fg_color{FramebufferColor::WHITE};//TODO fg et bg ne sont pas reserves au texte
+    FramebufferColor fg_color{FramebufferColor::WHITE};
     /**
      * @brief The background color, defaul to BLACK
      */
@@ -104,12 +116,12 @@ struct struct_FramebufferText
  * The core of framebuffer is the pixel_buffer, a memory space that contains pixel values. This pixel_buffer is computed and initialized by the framebuffer constructor.
  *
  * Optionnally, when framebuffer contains text, a text_buffer that contains characters chain is used. It is created and initialized by
- *  init_text_buffer function member.
+ *  update_text_buffer function member.
  * The configuration of this buffer is defined by struct_FramebufferText.
  *
  *
  */
-class Framebuffer //TODO prevoir separation text et graphic, un framebuffer avec ppixel buffer pour heritage displaydevice
+class Framebuffer // TODO prevoir separation text et graphic, un framebuffer avec ppixel buffer pour heritage displaydevice
 {
 private:
     /// @brief the graphic primitive to draw an ellipse \bug //FIXME doesn't work !
@@ -123,6 +135,7 @@ private:
     void ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, FramebufferColor c);
 
 protected:
+    struct_GraphFramebuffer frame_graph_config{};
     /// @brief size of the buffer that contains graphics as map of pixels.
     size_t pixel_buffer_size;
     /// @brief the arrangement of the pixel on a byte basis.
@@ -161,11 +174,13 @@ public:
      */
     Framebuffer(size_t frame_width,
                 size_t frame_height,
+                struct_GraphFramebuffer graph_cfg = {},
                 FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
 
     Framebuffer(uint8_t number_of_column,
                 uint8_t number_of_line,
-                struct_FramebufferText text_cnf,
+                struct_TextFramebuffer text_cfg,
+                struct_GraphFramebuffer graph_cfg = {},
                 FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
 
     /**
@@ -271,8 +286,6 @@ public:
 class TextualFrameBuffer : public Framebuffer
 {
 private:
-    /// @brief size of the buffer that contains text as string of characters.
-    size_t text_buffer_size;
 
     /// @brief the line number where the next character will be written.
     uint8_t current_char_line{0};
@@ -281,7 +294,7 @@ private:
     uint8_t current_char_column{0};
 
     /// @brief the configuration of the text buffer
-    struct_FramebufferText frame_text_config{};
+    struct_TextFramebuffer frame_text_config{};
 
     /// @brief a graphic primitive to draw a character at a pixel position
     /// \note NOTICE: drawChar() implementation depends strongly on the FramebufferFormat.
@@ -306,6 +319,8 @@ protected:
     void create_text_buffer();
 
 public:
+    /// @brief size of the buffer that contains text as string of characters.
+    size_t text_buffer_size;
     /// @brief the buffer where text are written
     char *text_buffer = nullptr;
     /// @brief The max number of line with respect to frame height and font height
@@ -315,13 +330,15 @@ public:
 
     TextualFrameBuffer(uint8_t number_of_column,
                        uint8_t number_of_line,
-                       struct_FramebufferText text_cnf,
+                       struct_TextFramebuffer text_cfg,
+                       struct_GraphFramebuffer graph_cfg = {},
                        FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
 
     TextualFrameBuffer(size_t frame_width,
                        size_t frame_height,
                        FramebufferFormat frame_format,
-                       struct_FramebufferText text_cnf);
+                       struct_TextFramebuffer text_cfg, 
+                       struct_GraphFramebuffer graph_cfg = {});
 
     ~TextualFrameBuffer();
 
@@ -331,7 +348,7 @@ public:
      * @param   frame_text_config
      */
     void
-    init_text_buffer(struct_FramebufferText frame_text_config);
+    update_text_buffer(struct_TextFramebuffer frame_text_config);
     /**
      * @brief   Set text buffer memory to "0" and set character line and column to 0
      */
@@ -341,7 +358,7 @@ public:
      *
      * @param font
      */
-    void set_font(const unsigned char *font);
+    void update_font(const unsigned char *font);
     /**
      * @brief copy the internal framebuffer text buffer to the device buffer.
      */
