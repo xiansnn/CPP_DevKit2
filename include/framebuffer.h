@@ -358,7 +358,10 @@ public:
      *
      * @param font
      */
-    void update_font(const unsigned char *font);
+    void update_text_area(const unsigned char *font);
+    void update_pixel_area(const unsigned char *font);
+
+
     /**
      * @brief copy the internal framebuffer text buffer to the device buffer.
      */

@@ -348,7 +348,7 @@ TextualFrameBuffer::~TextualFrameBuffer()
 void TextualFrameBuffer::update_text_buffer(struct_TextFramebuffer _frame_text_config)
 {
     this->frame_text_config = _frame_text_config;
-    update_font(this->frame_text_config.font);
+    update_text_area(this->frame_text_config.font);
 }
 
 void TextualFrameBuffer::clear_text_buffer()
@@ -358,7 +358,25 @@ void TextualFrameBuffer::clear_text_buffer()
     current_char_line = 0;
 }
 
-void TextualFrameBuffer::update_font(const unsigned char *font)
+void TextualFrameBuffer::update_text_area(const unsigned char *font)
+{
+    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for SSD1306
+    this->frame_text_config.font = font;
+    // size the pixel buffer to the required size due to character area
+    // this->frame_height = this->char_height * frame_text_config.font[FONT_HEIGHT_INDEX];
+    // this->frame_width = this->char_width * frame_text_config.font[FONT_WIDTH_INDEX];
+
+    // size the text area according to the available room within the frame whidth and height
+    this->char_height = this->frame_height / frame_text_config.font[FONT_HEIGHT_INDEX];
+    this->char_width = this->frame_width / frame_text_config.font[FONT_WIDTH_INDEX];
+
+    // delete[] this->pixel_buffer;
+    // create_pixel_buffer();
+    delete[] this->text_buffer;
+    create_text_buffer();
+}
+
+void TextualFrameBuffer::update_pixel_area(const unsigned char *font)
 {
     assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for SSD1306
     this->frame_text_config.font = font;
@@ -366,10 +384,14 @@ void TextualFrameBuffer::update_font(const unsigned char *font)
     this->frame_height = this->char_height * frame_text_config.font[FONT_HEIGHT_INDEX];
     this->frame_width = this->char_width * frame_text_config.font[FONT_WIDTH_INDEX];
 
+    // size the text area according to the available room within the frame whidth and height
+    // this->char_height = this->frame_height / frame_text_config.font[FONT_HEIGHT_INDEX];
+    // this->char_width = this->frame_width / frame_text_config.font[FONT_WIDTH_INDEX];
+
     delete[] this->pixel_buffer;
     create_pixel_buffer();
-    delete[] this->text_buffer;
-    create_text_buffer();
+    // delete[] this->text_buffer;
+    // create_text_buffer();
 }
 
 void TextualFrameBuffer::print_text()
