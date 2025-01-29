@@ -46,7 +46,7 @@ struct_ConfigSSD1306 cfg_volume_screen{
     .frequency_divider = 1,
     .frequency_factor = 0};
 
-struct_FramebufferText fm_text_cnf{
+struct_TextFramebuffer fm_text_cnf{
     .font = font_12x16};
 
 ///  1- create I2C bus hw peripheral and frequency_display
