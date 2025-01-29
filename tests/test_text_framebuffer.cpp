@@ -21,7 +21,6 @@
 #include "ssd1306.h"
 #include "framebuffer.h"
 
-
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
 Probe pr_D6 = Probe(6);
@@ -75,32 +74,77 @@ void test_font_size(SSD1306 *current_display)
     current_display->show(font_text_on_screen_1, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_1;
 
-    // Framebuffer *font_size_1 = new Framebuffer(64, 8);
-    // font_size_1->set_font(current_font[1]);
-    // font_size_1->print_text(c_str);
-    // current_display->show(font_size_1, 64, 8);
-    // delete font_size_1;
+    TextualFrameBuffer *font_text_on_screen_2 = new TextualFrameBuffer(test_string.size(), 1, {});
+    font_text_on_screen_2->update_font(current_font[2]);
+    current_x_anchor = 0;
+    current_y_anchor = 16;
+    sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
+    font_text_on_screen_2->print_text();
+    current_display->show(font_text_on_screen_2, current_x_anchor, current_y_anchor);
 
-    // Framebuffer *font_size_2 = new Framebuffer(64, 16);
-    // font_size_2->set_font(current_font[2]);
-    // font_size_2->print_text(c_str);
-    // current_display->show(font_size_2, 0, 16);
-    // delete font_size_2;
+    font_text_on_screen_2->update_font(current_font[3]);
+    current_x_anchor = 64;
+    current_y_anchor = 32;
+    sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
+    font_text_on_screen_2->print_text();
+    current_display->show(font_text_on_screen_2, current_x_anchor, current_y_anchor);
 
-    // Framebuffer font_size_3 = Framebuffer(64, 32);
-    // font_size_3.set_font(current_font[3]);
-    // font_size_3.print_text(c_str);
-    // current_display->show(&font_size_3, 64, 32);
+    sleep_ms(1000);
+}
+void test_full_screen_text(SSD1306 *current_display)
+{
+    struct_TextFramebuffer txt_conf = {
+        .font = font_8x8,
+        .wrap = true,
+    };
+    TextualFrameBuffer text_frame = TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, FramebufferFormat::MONO_VLSB, txt_conf);
 
-    // delete[] c_str;
+    text_frame.print_char(FORM_FEED); // equiv. clear full screen
+    current_display->show(&text_frame, 0, 0);
+    uint16_t nb = text_frame.char_height * text_frame.char_width;
 
+    uint16_t n{0};
+    for (uint16_t c = 32; c < 256; c++)
+    {
+        n++;
+        text_frame.print_char(c);
+        current_display->show(&text_frame, 0, 0);
+        if (n == nb)
+        {
+            sleep_ms(500);
+            text_frame.print_char(FORM_FEED);
+        }
+    }
+    sleep_ms(1000);
+}
+void test_auto_next_char(SSD1306 *current_display)
+{
+    struct_TextFramebuffer txt_conf = {
+        .font = font_8x8,
+        .wrap = true,
+        .auto_next_char = false};
+
+    TextualFrameBuffer * text_frame = new TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, FramebufferFormat::MONO_VLSB, txt_conf);
+
+    text_frame->print_char(FORM_FEED);
+
+    uint16_t n{0};
+    for (uint16_t c = 32; c < 128; c++)
+    {
+        n++;
+        text_frame->print_char(c);
+        current_display->show(text_frame,0,0);
+        if (n % 5 == 0)
+        {
+            text_frame->next_char();
+        }
+    }
     sleep_ms(1000);
 }
 
 int main()
 
 {
-    // stdio_init_all();
     HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
     SSD1306 left_display = SSD1306(&master, cfg_left_screen);
     SSD1306 right_display = SSD1306(&master, cfg_right_screen);
@@ -108,11 +152,11 @@ int main()
     while (true)
     {
         test_font_size(&left_display);
+        test_full_screen_text(&right_display);
+        test_auto_next_char(&left_display);
         // test_sprintf_format(&left_display);
         // test_ostringstream_format(&left_display);
         // test_text_and_graph(&left_display);
-        // test_full_screen_text(&left_display);
-        // test_auto_next_char(&left_display);
     }
 }
 
@@ -127,7 +171,7 @@ int main()
 //     struct_FramebufferText txt_conf = {
 //         .font = current_font,
 //         .wrap = false};
-//     left_display->init_text_buffer(txt_conf);
+//     left_display->update_text_buffer(txt_conf);
 
 //     int n = 42;
 //     float f = std::numbers::pi;
@@ -175,7 +219,7 @@ int main()
 //     struct_FramebufferText cfg_fb_txt = {
 //         .font = font_8x8,
 //         .wrap = false};
-//     left_display->init_text_buffer(cfg_fb_txt);
+//     left_display->update_text_buffer(cfg_fb_txt);
 
 //     const char *s = "Hello";
 
@@ -325,7 +369,7 @@ int main()
 //     int title_area_anchor_y = h * 6;
 
 //     Framebuffer title = Framebuffer(title_area_width, title_area_height);
-//     title.init_text_buffer(title_config);
+//     title.update_text_buffer(title_config);
 //     title.print_text("ROLL:\nPITCH:");
 //     left_display->show(&title, title_area_anchor_x, title_area_anchor_y);
 
@@ -381,52 +425,4 @@ int main()
 //     }
 //     delete[] c_str;
 //     sleep_ms(1000);
-// }
-
-// void test_full_screen_text(SSD1306 *left_display)
-// {
-//     struct_FramebufferText txt_conf = {
-//         .font = font_8x8,
-//         .wrap = true,
-//     };
-//     left_display->init_text_buffer(txt_conf);
-
-//     left_display->print_char(FORM_FEED);
-//     uint16_t nb = left_display->max_column * left_display->max_line;
-//     uint16_t n{0};
-//     for (uint16_t c = 32; c < 256; c++)
-//     {
-//         n++;
-//         left_display->print_char(c);
-//         left_display->show();
-//         if (n == nb)
-//         {
-//             sleep_ms(500);
-//             left_display->print_char(FORM_FEED);
-//         }
-//     }
-//     sleep_ms(2000);
-// }
-
-// void test_auto_next_char(SSD1306 *left_display)
-// {
-//     struct_FramebufferText txt_conf = {
-//         .font = font_8x8,
-//         .wrap = true,
-//         .auto_next_char = false};
-//     left_display->init_text_buffer(txt_conf);
-//     left_display->print_char(FORM_FEED);
-
-//     uint16_t n{0};
-//     for (uint16_t c = 32; c < 128; c++)
-//     {
-//         n++;
-//         left_display->print_char(c);
-//         left_display->show();
-//         if (n % 5 == 0)
-//         {
-//             left_display->next_char();
-//         }
-//     }
-//     sleep_ms(2000);
 // }
