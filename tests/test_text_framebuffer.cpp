@@ -278,12 +278,11 @@ void test_sprintf_format(SSD1306 *current_display)
         .wrap = true};
     TextualFrameBuffer *text_frame2 = new TextualFrameBuffer(7, 2, text_frame_cfg);
 
-
     text_frame2->print_text(" 090\b:56\n"); // test effect of BACKSPACE
     text_frame2->print_text("03JAN24");
     current_display->show(text_frame2, 22, 16);
     delete text_frame2;
-    
+
     sleep_ms(INTER_TEST_DELAY);
     /*
     undefined result for the used compiler
@@ -343,6 +342,82 @@ void test_ostringstream_format(SSD1306 *current_display)
     sleep_ms(INTER_TEST_DELAY);
 }
 
+void test_text_and_graph(SSD1306 *left_display)
+{
+#define DEGREE "\xF8"
+    left_display->clear_full_screen();
+    struct_TextFramebuffer title_config = {
+        .font = font_8x8};
+
+    uint8_t w = title_config.font[FONT_WIDTH_INDEX];
+    uint8_t h = title_config.font[FONT_HEIGHT_INDEX];
+
+    int title_char_width = 8;
+    int title_char_height = 2;
+    int title_area_anchor_x = 0;
+    int title_area_anchor_y = h * 6;
+
+    TextualFrameBuffer title = TextualFrameBuffer(title_char_width, title_char_height, title_config);
+    title.print_text("ROLL:\nPITCH:");
+    left_display->show(&title, title_area_anchor_x, title_area_anchor_y);
+
+    // draw values
+    int values_area_anchor_x = w * 8;
+    int values_area_anchor_y = h * 6;
+    int values_char_width =  8;
+    int values_char_height =  2;
+
+title_config.font = font_8x8;
+    TextualFrameBuffer values = TextualFrameBuffer(values_char_width, values_char_height, title_config);
+
+    // draw graph
+    int graph_area_anchor_x = 16;
+    int graph_area_anchor_y = 0;
+    int graph_area_width = w * 12;
+    int graph_area_height = h * 5;
+
+    Framebuffer graph = Framebuffer(graph_area_width, graph_area_height);
+
+    graph.clear_pixel_buffer();
+    left_display->show(&graph, graph_area_anchor_x, graph_area_anchor_y);
+
+    int roll, pitch;
+  
+    char *c_str = new char[values.text_buffer_size];
+
+    for (int i = -90; i < 90; i++)
+    {
+        values.clear_pixel_buffer();
+        roll = i;
+        pitch = i / 3;
+        sprintf(c_str, "%+3d \xF8\n%+3d \xF8", roll, pitch);
+        values.print_text(c_str);
+        left_display->show(&values, values_area_anchor_x, values_area_anchor_y);
+
+        float xc = graph_area_width / 2;
+        float yc = graph_area_height / 2;
+        float yl = graph_area_height / 2 - pitch;
+        float radius = yc - 2; // radius -2 to fit inside the rectangle
+
+        float sin_roll = sin(std::numbers::pi / 180.0 * roll);
+        float cos_roll = cos(std::numbers::pi / 180.0 * roll);
+        int x0 = xc - radius * cos_roll;
+        int y0 = yl - radius * sin_roll;
+        int x1 = xc + radius * cos_roll;
+        int y1 = yl + radius * sin_roll;
+        graph.rect(0, 0, graph_area_width, graph_area_height); // point coordinates are relative to the local frame
+        graph.circle(radius, xc, yl);
+        graph.line(x0, y0, x1, y1);
+        left_display->show(&graph, graph_area_anchor_x, graph_area_anchor_y);
+        left_display->show(&values, values_area_anchor_x, values_area_anchor_y);
+        graph.line(x0, y0, x1, y1, FramebufferColor::BLACK);
+        graph.circle(radius, xc, yl, false, FramebufferColor::BLACK);
+        sleep_ms(50);
+    }
+    delete[] c_str;
+    sleep_ms(1000);
+}
+
 int main()
 
 {
@@ -354,84 +429,11 @@ int main()
 
     while (true)
     {
-        test_font_size(&left_display);
-        test_full_screen_text(&right_display);
-        test_auto_next_char(&left_display);
-        test_sprintf_format(&right_display);
-        test_ostringstream_format(&left_display);
-        // test_text_and_graph(&right_display);
+        // test_font_size(&left_display);
+        // test_full_screen_text(&right_display);
+        // test_auto_next_char(&left_display);
+        // test_sprintf_format(&right_display);
+        // test_ostringstream_format(&left_display);
+        test_text_and_graph(&right_display);
     }
 }
-
-// void test_text_and_graph(SSD1306 *left_display)
-// {
-// #define DEGREE "\xF8"
-//     left_display->clear_full_screen();
-//     struct_FramebufferText title_config = {
-//         .font = font_8x8};
-//     uint8_t w = title_config.font[FONT_WIDTH_INDEX];
-//     uint8_t h = title_config.font[FONT_HEIGHT_INDEX];
-
-//     int title_area_width = w * 8;
-//     int title_area_height = h * 2;
-//     int title_area_anchor_x = 0;
-//     int title_area_anchor_y = h * 6;
-
-//     Framebuffer title = Framebuffer(title_area_width, title_area_height);
-//     title.update_text_buffer(title_config);
-//     title.print_text("ROLL:\nPITCH:");
-//     left_display->show(&title, title_area_anchor_x, title_area_anchor_y);
-
-//     // draw values
-//     int values_area_anchor_x = w * 8;
-//     int values_area_anchor_y = h * 6;
-//     int values_area_width = w * 8;
-//     int values_area_height = h * 2;
-//     Framebuffer values = Framebuffer(values_area_width, values_area_height);
-//     values.set_font(font_8x8);
-
-//     // draw graph
-//     int graph_area_anchor_x = 16;
-//     int graph_area_anchor_y = 0;
-//     int graph_area_width = w * 12;
-//     int graph_area_height = h * 5;
-
-//     Framebuffer graph = Framebuffer(graph_area_width, graph_area_height);
-//     graph.fill(FramebufferColor::BLACK);
-//     left_display->show(&graph, graph_area_anchor_x, graph_area_anchor_y);
-
-//     int roll, pitch;
-//     char *c_str = new char[2 * values.max_line + 1];
-
-//     for (int i = -90; i < 90; i++)
-//     {
-//         values.clear_pixel_buffer();
-//         roll = i;
-//         pitch = i / 3;
-//         sprintf(c_str, "%+3d \xF8\n%+3d \xF8", roll, pitch);
-//         values.print_text(c_str);
-//         left_display->show(&values, values_area_anchor_x, values_area_anchor_y);
-
-//         float xc = graph_area_width / 2;
-//         float yc = graph_area_height / 2;
-//         float yl = graph_area_height / 2 - pitch;
-//         float radius = yc - 2; // radius -2 to fit inside the rectangle
-
-//         float sin_roll = sin(std::numbers::pi / 180.0 * roll);
-//         float cos_roll = cos(std::numbers::pi / 180.0 * roll);
-//         int x0 = xc - radius * cos_roll;
-//         int y0 = yl - radius * sin_roll;
-//         int x1 = xc + radius * cos_roll;
-//         int y1 = yl + radius * sin_roll;
-//         graph.rect(0, 0, graph_area_width, graph_area_height); // point coordinates are relative to the local frame
-//         graph.circle(radius, xc, yl);
-//         graph.line(x0, y0, x1, y1);
-//         left_display->show(&graph, graph_area_anchor_x, graph_area_anchor_y);
-//         left_display->show(&values, values_area_anchor_x, values_area_anchor_y);
-//         graph.line(x0, y0, x1, y1, FramebufferColor::BLACK);
-//         graph.circle(radius, xc, yl, false, FramebufferColor::BLACK);
-//         sleep_ms(50);
-//     }
-//     delete[] c_str;
-//     sleep_ms(1000);
-// }

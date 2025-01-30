@@ -135,7 +135,6 @@ private:
     void ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, FramebufferColor c);
 
 protected:
-    struct_GraphFramebuffer frame_graph_config{};
     /// @brief size of the buffer that contains graphics as map of pixels.
     size_t pixel_buffer_size;
     /// @brief the arrangement of the pixel on a byte basis.
@@ -153,6 +152,7 @@ protected:
     void pixel(int x, int y, FramebufferColor c = FramebufferColor::WHITE);
 
 public:
+    struct_GraphFramebuffer frame_graph_config{};
     /// @brief the buffer where graphic are drawn
     uint8_t *pixel_buffer = nullptr;
 
