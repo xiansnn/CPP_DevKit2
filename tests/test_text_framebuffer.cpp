@@ -144,40 +144,38 @@ void test_auto_next_char(SSD1306 *current_display)
 
 void test_sprintf_format(SSD1306 *current_display)
 {
-    #define DELAY 500
-    #define LONG_DELAY 1000
+#define DELAY 500
+#define LONG_DELAY 1000
     current_display->clear_full_screen();
 
     struct_TextFramebuffer text_frame_cfg = {
         .font = font_8x8,
-        .wrap = false};
+        .wrap = true};
 
     TextualFrameBuffer *text_frame = new TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, FramebufferFormat::MONO_VLSB, text_frame_cfg);
-
-    // text_frame->update_text_buffer(text_frame_cfg);
 
     const char *s = "Hello";
 
     text_frame->print_text("Strings:\n\tpadding:\n");
-    current_display->show(text_frame,0,0);
+    current_display->show(text_frame, 0, 0);
 
     sprintf(text_frame->text_buffer, "\t[%7s]\n", s);
     text_frame->print_text();
-    current_display->show(text_frame,0,0);
+    current_display->show(text_frame, 0, 0);
     sprintf(text_frame->text_buffer, "\t[%-7s]\n", s);
     text_frame->print_text();
-    current_display->show(text_frame,0,0);
+    current_display->show(text_frame, 0, 0);
     sprintf(text_frame->text_buffer, "\t[%*s]\n", 7, s);
     text_frame->print_text();
-    current_display->show(text_frame,0,0);
+    current_display->show(text_frame, 0, 0);
     text_frame->print_text("\ttruncating:\n");
-    current_display->show(text_frame,0,0);
+    current_display->show(text_frame, 0, 0);
     sprintf(text_frame->text_buffer, "\t%.4s\n", s);
     text_frame->print_text();
-    current_display->show(text_frame,0,0);
+    current_display->show(text_frame, 0, 0);
     sprintf(text_frame->text_buffer, "\t\t%.*s\n", 3, s);
     text_frame->print_text();
-    current_display->show(text_frame,0,0);
+    current_display->show(text_frame, 0, 0);
     sleep_ms(LONG_DELAY);
 
     current_display->clear_full_screen();
@@ -205,83 +203,67 @@ void test_sprintf_format(SSD1306 *current_display)
     text_frame->print_text();
     sprintf(text_frame->text_buffer, "\tSci:  %.3E %.1e\n", 1.5, 1.5);
     text_frame->print_text();
-    current_display->show(text_frame,0,0);
+    current_display->show(text_frame, 0, 0);
     sleep_ms(LONG_DELAY);
 
     current_display->clear_full_screen();
-
-
 
     text_frame->update_text_area(font_8x8);
-    pr_D4.hi();
-    text_frame->print_text(" !\"#$%&'()*+,-./0123456789:;<=>?\n"); // ca 1000us -> 2000us
-    pr_D4.lo();
-    current_display->show(text_frame,0,0);
-    sleep_ms(DELAY);
-    pr_D4.hi();
-    text_frame->print_text("@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_\n"); // ca 1000us -> 2000us
-    pr_D4.lo();
-    current_display->show(text_frame,0,0);
-    sleep_ms(DELAY);
-    pr_D4.hi();
-    text_frame->print_text("`abcdefghijklmnopqrstuvwxyz{|}~\x7F\n"); // ca 1000us-> 2000us
-    pr_D4.lo();
-    current_display->show(text_frame,0,0);
-    sleep_ms(DELAY);
-    pr_D4.hi();
+
+    text_frame->print_char(FORM_FEED); // equivalent text_frame->clear_pixel_buffer();
+
+    text_frame->print_text(" !\"#$%&'()*+,-./0123456789:;<=>?"); // ca 1000us -> 2000us
+    text_frame->print_text("@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_"); // ca 1000us -> 2000us
+    text_frame->print_text("`abcdefghijklmnopqrstuvwxyz{|}~\x7F"); // ca 1000us-> 2000us
     text_frame->print_text("1234567890\n"); // ca 400us -> 800us
-    pr_D4.lo();
-    current_display->show(text_frame,0,0);
-    sleep_ms(DELAY);
-    pr_D4.hi();
-    text_frame->print_text("\t1234567890\n"); // ca 400us -> 800us
-    pr_D4.lo();
-    current_display->show(text_frame,0,0);
-    sleep_ms(DELAY);
-    pr_D4.hi();
-    text_frame->print_text("\t\tABCD\t\n"); // ca 400us -> 800us
-    pr_D4.lo();
-    current_display->show(text_frame,0,0);
-    sleep_ms(DELAY);
-    pr_D4.hi();
-    text_frame->print_text("\t\t\tABCD\n"); // ca 400us -> 800us
-    pr_D4.lo();
-    current_display->show(text_frame,0,0);
-    sleep_ms(DELAY);
-    pr_D4.hi();
-    text_frame->print_text("\t\t\t\tABCD\n"); // ca 400us -> 800us
-    pr_D4.lo();
-    current_display->show(text_frame,0,0);
-    sleep_ms(DELAY);
-    pr_D4.hi();
-    text_frame->print_text("\t\t\t\t\tABCDE\n"); // ca 400us -> 800us
-    pr_D4.lo();
-    current_display->show(text_frame,0,0);
-    sleep_ms(DELAY);
-    pr_D4.hi();
-    text_frame->print_text("\t\t\t\tABCDEF\t\n"); // ca 400us -> 800us
-    pr_D4.lo();
-
-    current_display->show(text_frame,0,0);
+    current_display->show(text_frame, 0, 0);
     sleep_ms(LONG_DELAY);
-    current_display->clear_full_screen();
+
+    text_frame->print_char(FORM_FEED);
+
+    text_frame->print_text("\t1TAB\n"); // ca 400us -> 800us
+    current_display->show(text_frame, 0, 0);
+    sleep_ms(DELAY);
+
+    text_frame->print_text("\t\t2TAB\n"); // ca 400us -> 800us
+    current_display->show(text_frame, 0, 0);
+    sleep_ms(DELAY);
+
+    text_frame->print_text("\t\t\t3TAB\n"); // ca 400us -> 800us
+    current_display->show(text_frame, 0, 0);
+    sleep_ms(DELAY);
+
+    text_frame->print_text("\t\t\t\t4TAB\n"); // ca 400us -> 800us
+    current_display->show(text_frame, 0, 0);
+    sleep_ms(DELAY);
+
+    text_frame->print_text("\t\t\t\t\t5TAB\n"); // ca 400us -> 800us
+    current_display->show(text_frame, 0, 0);
+    sleep_ms(DELAY);
+
+    text_frame->print_text("\t1TAB\t\t\t3TAB\n"); // ca 400us -> 800us
+    current_display->show(text_frame, 0, 0);
+
+    sleep_ms(LONG_DELAY);
 
 
+    text_frame->print_char(FORM_FEED);
 
     text_frame->update_text_area(font_12x16);
     text_frame->print_text("090\b:56\n");
     text_frame->print_text("03JAN24");
-    current_display->show(text_frame,0,0);
+    current_display->show(text_frame, 0, 0);
     sleep_ms(LONG_DELAY);
-    current_display->clear_full_screen();
+
+
+    text_frame->print_char(FORM_FEED);
 
     text_frame->update_text_area(font_16x32);
     text_frame->print_text(" 15:06 \n");
     text_frame->print_text("03/01/24");
-    current_display->show(text_frame,0,0);
+    current_display->show(text_frame, 0, 0);
     sleep_ms(LONG_DELAY);
-    current_display->clear_full_screen();
-
+    
     /*
     undefined result for the used compiler
     printf("\tHexadecimal:\t%a %A\n", 1.5, 1.5);
@@ -303,9 +285,9 @@ int main()
 
     while (true)
     {
-        test_font_size(&left_display);
-        test_full_screen_text(&right_display);
-        test_auto_next_char(&left_display);
+        // test_font_size(&left_display);
+        // test_full_screen_text(&right_display);
+        // test_auto_next_char(&left_display);
         test_sprintf_format(&right_display);
         // test_ostringstream_format(&left_display);
         // test_text_and_graph(&left_display);
