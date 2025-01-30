@@ -19,7 +19,7 @@
  * thanks to Framebuffet class text and graphic primitives indepently from any kind of widget
  *
  */
-class DisplayDevice : public Framebuffer
+class DisplayDevice : public Framebuffer//TODO METTRE UN FRAMEBUFFER EN COLLABORATION
 {
 private:
 public:
