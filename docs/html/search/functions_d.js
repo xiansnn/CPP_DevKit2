@@ -1,8 +1,8 @@
 var searchData=
 [
   ['pixel_0',['pixel',['../class_framebuffer.html#a9821acad0cef1fad78540c36f1ac3729',1,'Framebuffer']]],
-  ['print_5fchar_1',['print_char',['../class_framebuffer.html#ad7b0d1c589fd81e853ae14979d5585be',1,'Framebuffer']]],
-  ['print_5ftext_2',['print_text',['../class_framebuffer.html#a19daac8a65e25c850a057cd99cff202a',1,'Framebuffer::print_text()'],['../class_framebuffer.html#a2d1dbcd1fe29cfed2f54da9f71fd0d63',1,'Framebuffer::print_text(const char *c_str)']]],
+  ['print_5fchar_1',['print_char',['../class_textual_frame_buffer.html#a6344ab1d8a77f8c55104b24f9aa70700',1,'TextualFrameBuffer']]],
+  ['print_5ftext_2',['print_text',['../class_textual_frame_buffer.html#a6130daaa3305db9c3ec38714a7c8ca69',1,'TextualFrameBuffer::print_text()'],['../class_textual_frame_buffer.html#a3e6364948941c4849cf5638f144bd2eb',1,'TextualFrameBuffer::print_text(const char *c_str)']]],
   ['probe_3',['Probe',['../class_probe.html#a3c4f80fa16e1e5e4721b8c18da8a2b7b',1,'Probe']]],
   ['process_5fcentral_5fswitch_5fevent_4',['process_central_switch_event',['../class_k_y040.html#a787379f8042811a0b0adeaea0afb44d7',1,'KY040']]],
   ['process_5fcontrol_5fevent_5',['process_control_event',['../class_u_i_model_object.html#a9d6b1733713e33acbc10e419eff22863',1,'UIModelObject::process_control_event()'],['../class_model_bargraph.html#a3a623238b8f90a0a3bdcb02379bce261',1,'ModelBargraph::process_control_event()']]],

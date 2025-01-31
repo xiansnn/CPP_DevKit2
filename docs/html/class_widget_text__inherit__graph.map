@@ -1,0 +1,7 @@
+<map id="WidgetText" name="WidgetText">
+<area shape="rect" id="Node000001" title="the class of widget dedicated to text frame" alt="" coords="51,1068,592,1545"/>
+<area shape="rect" id="Node000002" href="$class_textual_frame_buffer.html" title="the place where all textual primitive are placed" alt="" coords="5,537,637,1020"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="324,1035,324,1068,319,1068,319,1035"/>
+<area shape="rect" id="Node000003" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="92,5,551,489"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="324,504,324,537,319,537,319,504"/>
+</map>

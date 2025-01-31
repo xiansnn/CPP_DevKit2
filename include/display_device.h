@@ -23,13 +23,14 @@ class DisplayDevice : public Framebuffer//TODO METTRE UN FRAMEBUFFER EN COLLABOR
 {
 private:
 public:
+
     /**
-     * @brief Construct a new UIDisplayDevice object
-     *
+     * @brief Construct a new Display Device object
+     * 
      * @param width The width of physical screen, in pixel.
      * @param height The height of physical screen, in pixel.
+     * @param graph_cfg the graphical configuration data structure
      * @param format The framebuffer format ... see Framebuffer class FramebufferFormat enumeration
-     * @param txt_cfg A structure of data that reflect the framebuffer member related to text primitives
      */
     DisplayDevice(size_t width,
                   size_t height,

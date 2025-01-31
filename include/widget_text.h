@@ -13,6 +13,10 @@
 
 #include "ui_core.h"
 
+/**
+ * @brief the class of widget dedicated to text frame
+ * 
+ */
 class WidgetText : public TextualFrameBuffer
 {
 private:
@@ -87,6 +91,20 @@ public:
     void set_blink_us(uint32_t blink_period = 1000000);
 
  
+    /**
+     * @brief Construct a new Widget Text object
+     * 
+     * @param text_model a pointer to the model text
+     * @param display_screen a pointer to the display device
+     * @param framebuffer_txt_cnf the textual configuration data structure
+     * @param number_of_column the number of column of the widget
+     * @param number_of_line the number of line of the widget
+     * @param widget_anchor_x the x-location of the widget on the display screen
+     * @param widget_anchor_y the y-location of the widget on the display screen
+     * @param widget_with_border the flag that indicates if the widget has a border
+     * @param widget_border_width the border width. WARNING: should always be 1
+     * @param framebuffer_format the memory organisation of the display device
+     */
     WidgetText(UIModelObject *text_model,
                DisplayDevice *display_screen,
                struct_TextFramebuffer framebuffer_txt_cnf,
@@ -112,5 +130,6 @@ public:
      */
     void add_widget(WidgetText *_sub_widget);
 
+    /// @brief the implementation of the draw and refresh method
     void draw_refresh();
 };

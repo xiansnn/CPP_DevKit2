@@ -5,6 +5,9 @@ var hierarchy =
       [ "DisplayDevice", "class_display_device.html", [
         [ "SSD1306", "class_s_s_d1306.html", null ]
       ] ],
+      [ "TextualFrameBuffer", "class_textual_frame_buffer.html", [
+        [ "WidgetText", "class_widget_text.html", null ]
+      ] ],
       [ "Widget", "class_widget.html", [
         [ "WidgetHorizontalBar", "class_widget_horizontal_bar.html", null ],
         [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html", null ],
@@ -30,13 +33,14 @@ var hierarchy =
     [ "struct_ConfigSlaveI2C", "structstruct___config_slave_i2_c.html", null ],
     [ "struct_ConfigSSD1306", "structstruct___config_s_s_d1306.html", null ],
     [ "struct_DHTReading", "structstruct___d_h_t_reading.html", null ],
-    [ "struct_FramebufferText", "structstruct___framebuffer_text.html", null ],
+    [ "struct_GraphFramebuffer", "structstruct___graph_framebuffer.html", null ],
     [ "struct_I2CXferResult", "structstruct___i2_c_xfer_result.html", null ],
     [ "struct_MPUData", "structstruct___m_p_u_data.html", null ],
     [ "struct_RawData", "structstruct___raw_data.html", null ],
     [ "struct_RenderArea", "structstruct___render_area.html", null ],
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", null ],
     [ "struct_SwitchButtonConfig", "structstruct___switch_button_config.html", null ],
+    [ "struct_TextFramebuffer", "structstruct___text_framebuffer.html", null ],
     [ "SwitchButton", "class_switch_button.html", [
       [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", [
         [ "RotaryEncoder", "class_rotary_encoder.html", null ]

@@ -1,0 +1,9 @@
+<map id="TextualFrameBuffer" name="TextualFrameBuffer">
+<area shape="rect" id="Node000001" title="the place where all textual primitive are placed" alt="" coords="83,675,715,1139"/>
+<area shape="rect" id="Node000002" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,147,464,613"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="314,626,329,674,324,676,309,628"/>
+<area shape="rect" id="Node000003" href="$structstruct___graph_framebuffer.html" title="The configuration data for graphic primitives." alt="" coords="159,5,310,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="237,85,237,131,232,131,232,85"/>
+<area shape="rect" id="Node000004" href="$structstruct___text_framebuffer.html" title="Data structure that holds all configuration parameters used by textual primitives." alt="" coords="489,303,639,457"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="543,458,479,659,474,657,538,456"/>
+</map>

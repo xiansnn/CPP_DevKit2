@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['widget_0',['Widget',['../class_widget.html',1,'']]],
-  ['widgetfocusindicator_1',['WidgetFocusIndicator',['../class_widget_focus_indicator.html',1,'']]],
-  ['widgethorizontalbar_2',['WidgetHorizontalBar',['../class_widget_horizontal_bar.html',1,'']]],
-  ['widgethorizontalbargraph_3',['WidgetHorizontalBargraph',['../class_widget_horizontal_bargraph.html',1,'']]],
-  ['widgetsquareled_4',['WidgetSquareLed',['../class_widget_square_led.html',1,'']]],
-  ['widgetverticalbargraph_5',['WidgetVerticalBargraph',['../class_widget_vertical_bargraph.html',1,'']]]
+  ['uicontrolledincrementalvalue_0',['UIControlledIncrementalValue',['../class_u_i_controlled_incremental_value.html',1,'']]],
+  ['uicontroller_1',['UIController',['../class_u_i_controller.html',1,'']]],
+  ['uimodelobject_2',['UIModelObject',['../class_u_i_model_object.html',1,'']]],
+  ['uiobjectmanager_3',['UIObjectManager',['../class_u_i_object_manager.html',1,'']]]
 ];

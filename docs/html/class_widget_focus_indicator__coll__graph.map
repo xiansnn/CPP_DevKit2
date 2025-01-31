@@ -1,19 +1,19 @@
 <map id="WidgetFocusIndicator" name="WidgetFocusIndicator">
-<area shape="rect" id="Node000001" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="209,2113,741,2227"/>
-<area shape="rect" id="Node000002" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="200,1825,751,2064"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="478,2079,478,2113,473,2113,473,2079"/>
-<area shape="rect" id="Node000003" href="$class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="222,1336,729,1776"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="478,1791,478,1826,473,1826,473,1791"/>
-<area shape="rect" id="Node000004" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,222,452,939"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="190,954,193,1035,202,1116,217,1196,240,1273,271,1335,266,1338,236,1275,212,1197,196,1117,188,1035,185,954"/>
-<area shape="rect" id="Node000008" href="$class_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="250,1065,701,1197"/>
-<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="398,951,449,1065,444,1067,393,954"/>
-<area shape="rect" id="Node000005" href="$structstruct___framebuffer_text.html" title="Data structure that holds all configuration parameters used by textual primitives." alt="" coords="153,5,304,160"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="231,160,231,205,226,205,226,160"/>
-<area shape="rect" id="Node000006" href="$class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="725,989,1047,1274"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="750,1276,727,1300,701,1326,698,1322,723,1296,747,1272"/>
-<area shape="rect" id="Node000007" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="799,1507,1211,1605"/>
-<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="855,1273,860,1311,878,1361,902,1409,956,1492,952,1495,898,1412,873,1363,855,1313,850,1274"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1009,1507,1012,1409,1008,1353,995,1299,993,1291,998,1289,1001,1297,1013,1352,1018,1409,1014,1507"/>
-<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="478,1197,478,1319,473,1319,473,1197"/>
+<area shape="rect" id="Node000001" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="198,1772,730,1885"/>
+<area shape="rect" id="Node000002" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="189,1484,739,1723"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="467,1738,467,1772,461,1772,461,1738"/>
+<area shape="rect" id="Node000003" href="$class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="226,1009,702,1435"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="467,1449,467,1484,461,1484,461,1449"/>
+<area shape="rect" id="Node000004" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,147,464,613"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="207,628,206,706,212,788,225,869,246,946,276,1008,271,1010,242,948,219,870,206,788,201,706,202,628"/>
+<area shape="rect" id="Node000008" href="$class_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="256,739,672,871"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="370,624,431,737,427,740,365,626"/>
+<area shape="rect" id="Node000005" href="$structstruct___graph_framebuffer.html" title="The configuration data for graphic primitives." alt="" coords="159,5,310,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="237,85,237,131,232,131,232,85"/>
+<area shape="rect" id="Node000006" href="$class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="696,662,1019,947"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="723,949,700,973,675,999,671,996,696,969,719,945"/>
+<area shape="rect" id="Node000007" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="749,1173,1161,1271"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="828,947,833,985,848,1032,868,1078,914,1158,909,1160,863,1080,843,1034,828,986,823,947"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="965,1173,973,1129,979,1078,978,1025,968,972,965,964,970,962,973,971,983,1024,984,1079,979,1130,970,1174"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="467,870,467,992,461,992,461,870"/>
 </map>

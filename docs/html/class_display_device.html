@@ -113,11 +113,11 @@ Inheritance diagram for DisplayDevice:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_display_device__inherit__graph.png" border="0" usemap="#a_display_device_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_display_device_inherit__map" id="a_display_device_inherit__map">
-<area shape="rect" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="52,789,503,921"/>
-<area shape="rect" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver." alt="" coords="5,969,549,1549"/>
-<area shape="poly" title=" " alt="" coords="280,936,280,969,275,969,275,936"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="54,5,501,741"/>
-<area shape="poly" title=" " alt="" coords="280,756,280,789,275,789,275,756"/>
+<area shape="rect" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="69,537,485,669"/>
+<area shape="rect" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver." alt="" coords="5,717,549,1297"/>
+<area shape="poly" title=" " alt="" coords="280,684,280,717,275,717,275,684"/>
+<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="48,5,507,489"/>
+<area shape="poly" title=" " alt="" coords="280,504,280,538,275,538,275,504"/>
 </map>
 </div>
 <div class="dynheader">
@@ -125,19 +125,19 @@ Collaboration diagram for DisplayDevice:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_display_device__coll__graph.png" border="0" usemap="#a_display_device_coll__map" alt="Collaboration graph"/></div>
 <map name="a_display_device_coll__map" id="a_display_device_coll__map">
-<area shape="rect" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="5,989,456,1121"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="7,222,454,939"/>
-<area shape="poly" title=" " alt="" coords="233,954,233,989,228,989,228,954"/>
-<area shape="rect" href="structstruct___framebuffer_text.html" title="Data structure that holds all configuration parameters used by textual primitives." alt="" coords="155,5,306,160"/>
-<area shape="poly" title=" " alt="" coords="233,160,233,205,228,205,228,160"/>
+<area shape="rect" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="27,662,443,794"/>
+<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,147,464,613"/>
+<area shape="poly" title=" " alt="" coords="237,628,237,662,232,662,232,628"/>
+<area shape="rect" href="structstruct___graph_framebuffer.html" title="The configuration data for graphic primitives." alt="" coords="159,5,310,85"/>
+<area shape="poly" title=" " alt="" coords="237,85,237,131,232,131,232,85"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aca0693f830453ed24110c9014f265d46" id="r_aca0693f830453ed24110c9014f265d46"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca0693f830453ed24110c9014f265d46">DisplayDevice</a> (size_t width, size_t height, <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a> format=<a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79ab8705fdb146f8f1c9e9d2d8dd6c072ad">FramebufferFormat::MONO_VLSB</a>, <a class="el" href="structstruct___framebuffer_text.html">struct_FramebufferText</a> txt_cnf={.font=<a class="el" href="8x8__font_8h.html#ac1e257a18f342596519ef4cbc5b673a9">font_8x8</a>})</td></tr>
-<tr class="memdesc:aca0693f830453ed24110c9014f265d46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new UIDisplayDevice object.  <br /></td></tr>
-<tr class="separator:aca0693f830453ed24110c9014f265d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a847f937a3c7eb02ed8731f325b0134f5" id="r_a847f937a3c7eb02ed8731f325b0134f5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a847f937a3c7eb02ed8731f325b0134f5">DisplayDevice</a> (size_t width, size_t height, <a class="el" href="structstruct___graph_framebuffer.html">struct_GraphFramebuffer</a> graph_cfg={}, <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a> format=<a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79ab8705fdb146f8f1c9e9d2d8dd6c072ad">FramebufferFormat::MONO_VLSB</a>)</td></tr>
+<tr class="memdesc:a847f937a3c7eb02ed8731f325b0134f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Display Device object.  <br /></td></tr>
+<tr class="separator:a847f937a3c7eb02ed8731f325b0134f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6be3a5b999255994e402b36cdb09d58" id="r_af6be3a5b999255994e402b36cdb09d58"><td class="memItemLeft" align="right" valign="top"><a id="af6be3a5b999255994e402b36cdb09d58" name="af6be3a5b999255994e402b36cdb09d58"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~DisplayDevice</b> ()</td></tr>
 <tr class="memdesc:af6be3a5b999255994e402b36cdb09d58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the UIDisplayDevice object. <br /></td></tr>
@@ -149,9 +149,12 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~DisplayDevice</b>
 <tr class="memdesc:a834052a46aab0c7f802dba845c444688"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an pure virtual member function that all final derived class must implement. It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.  <br /></td></tr>
 <tr class="separator:a834052a46aab0c7f802dba845c444688"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
-<tr class="memitem:a25c9cadebb3531112c5085e981962407 inherit pub_methods_class_framebuffer" id="r_a25c9cadebb3531112c5085e981962407"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a25c9cadebb3531112c5085e981962407">Framebuffer</a> (size_t <a class="el" href="class_framebuffer.html#a35a041f8b088ee5274aa334d13e4c60e">frame_width</a>, size_t <a class="el" href="class_framebuffer.html#aa346612ecd1e1a0167734b8173bed9db">frame_height</a>, <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a> <a class="el" href="class_framebuffer.html#ac09b3c586c580074e08fdb5d5b45f598">frame_format</a>=<a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79ab8705fdb146f8f1c9e9d2d8dd6c072ad">FramebufferFormat::MONO_VLSB</a>)</td></tr>
-<tr class="memdesc:a25c9cadebb3531112c5085e981962407 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a> object.  <br /></td></tr>
-<tr class="separator:a25c9cadebb3531112c5085e981962407 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac28f79253302885a03149ca7ed75c357 inherit pub_methods_class_framebuffer" id="r_ac28f79253302885a03149ca7ed75c357"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#ac28f79253302885a03149ca7ed75c357">Framebuffer</a> (size_t <a class="el" href="class_framebuffer.html#a35a041f8b088ee5274aa334d13e4c60e">frame_width</a>, size_t <a class="el" href="class_framebuffer.html#aa346612ecd1e1a0167734b8173bed9db">frame_height</a>, <a class="el" href="structstruct___graph_framebuffer.html">struct_GraphFramebuffer</a> graph_cfg={}, <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a> framebuffer_format=<a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79ab8705fdb146f8f1c9e9d2d8dd6c072ad">FramebufferFormat::MONO_VLSB</a>)</td></tr>
+<tr class="memdesc:ac28f79253302885a03149ca7ed75c357 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a> object when frame width and height are given.  <br /></td></tr>
+<tr class="separator:ac28f79253302885a03149ca7ed75c357 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee2c762d70a8357da3b2fa968ce0eb3d inherit pub_methods_class_framebuffer" id="r_aee2c762d70a8357da3b2fa968ce0eb3d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#aee2c762d70a8357da3b2fa968ce0eb3d">Framebuffer</a> (uint8_t number_of_column, uint8_t number_of_line, <a class="el" href="structstruct___text_framebuffer.html">struct_TextFramebuffer</a> text_cfg, <a class="el" href="structstruct___graph_framebuffer.html">struct_GraphFramebuffer</a> graph_cfg={}, <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a> framebuffer_format=<a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79ab8705fdb146f8f1c9e9d2d8dd6c072ad">FramebufferFormat::MONO_VLSB</a>)</td></tr>
+<tr class="memdesc:aee2c762d70a8357da3b2fa968ce0eb3d inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a> object when number of caracter width and height are given.  <br /></td></tr>
+<tr class="separator:aee2c762d70a8357da3b2fa968ce0eb3d inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a037bf3e17455354d5d907ceea00313dd inherit pub_methods_class_framebuffer" id="r_a037bf3e17455354d5d907ceea00313dd"><td class="memItemLeft" align="right" valign="top">
 &#160;</td><td class="memItemRight" valign="bottom"><b>~Framebuffer</b> ()</td></tr>
 <tr class="memdesc:a037bf3e17455354d5d907ceea00313dd inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a> object. <br /></td></tr>
@@ -181,46 +184,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_pixel_buffer</b
 <tr class="memitem:a4eb865f19596a64e30862697ab737318 inherit pub_methods_class_framebuffer" id="r_a4eb865f19596a64e30862697ab737318"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a4eb865f19596a64e30862697ab737318">circle</a> (int radius, int x_center, int y_center, bool <a class="el" href="class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1">fill</a>=false, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c=<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a>)</td></tr>
 <tr class="memdesc:a4eb865f19596a64e30862697ab737318 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a cercle of size radius, centered at (x_center, y_center) <a href="https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham">https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham</a> <a href="https://en.wikipedia.org/wiki/Midpoint_circle_algorithm">https://en.wikipedia.org/wiki/Midpoint_circle_algorithm</a> procédure tracerCercle (entier rayon, entier x_centre, entier y_centre) déclarer entier x, y, m ; x ← 0 ; y ← rayon ; // on se place en haut du cercle m ← 5 - 4*rayon ; // initialisation Tant que x &lt;= y // tant qu'on est dans le second octant tracerPixel( x+x_centre, y+y_centre ) ; tracerPixel( y+x_centre, x+y_centre ) ; tracerPixel( -x+x_centre, y+y_centre ) ; tracerPixel( -y+x_centre, x+y_centre ) ; tracerPixel( x+x_centre, -y+y_centre ) ; tracerPixel( y+x_centre, -x+y_centre ) ; tracerPixel( -x+x_centre, -y+y_centre ) ; tracerPixel( -y+x_centre, -x+y_centre ) ; si m &gt; 0 alors //choix du point F y ← y - 1 ; m ← m - 8*y ; fin si ; x ← x + 1 ; m ← m + 8*x + 4 ; fin tant que ; fin de procédure ;  <br /></td></tr>
 <tr class="separator:a4eb865f19596a64e30862697ab737318 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d2fec25f3bb6f584d239b85e9facd04 inherit pub_methods_class_framebuffer" id="r_a9d2fec25f3bb6f584d239b85e9facd04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a9d2fec25f3bb6f584d239b85e9facd04">init_text_buffer</a> (<a class="el" href="structstruct___framebuffer_text.html">struct_FramebufferText</a> <a class="el" href="class_framebuffer.html#ad9526c00b4e1e49d7b51860cdda0a03d">frame_text_config</a>)</td></tr>
-<tr class="memdesc:a9d2fec25f3bb6f584d239b85e9facd04 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the textual features of framebuffer, according to the configuration data structure frame_text_config.  <br /></td></tr>
-<tr class="separator:a9d2fec25f3bb6f584d239b85e9facd04 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a471d9d9a24d51b9df2a89362abd2e607 inherit pub_methods_class_framebuffer" id="r_a471d9d9a24d51b9df2a89362abd2e607"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_text_buffer</b> ()</td></tr>
-<tr class="memdesc:a471d9d9a24d51b9df2a89362abd2e607 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set text buffer memory to "0" and set character line and column to 0. <br /></td></tr>
-<tr class="separator:a471d9d9a24d51b9df2a89362abd2e607 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad27d96389ab6be3c82fc03a4cb8eaf64 inherit pub_methods_class_framebuffer" id="r_ad27d96389ab6be3c82fc03a4cb8eaf64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#ad27d96389ab6be3c82fc03a4cb8eaf64">set_font</a> (const unsigned char *font)</td></tr>
-<tr class="memdesc:ad27d96389ab6be3c82fc03a4cb8eaf64 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the reference to the font, recompute max number of line, column, the new text buffer size, delete the previous one if any and create a new buffer.  <br /></td></tr>
-<tr class="separator:ad27d96389ab6be3c82fc03a4cb8eaf64 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19daac8a65e25c850a057cd99cff202a inherit pub_methods_class_framebuffer" id="r_a19daac8a65e25c850a057cd99cff202a"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>print_text</b> ()</td></tr>
-<tr class="memdesc:a19daac8a65e25c850a057cd99cff202a inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy the internal framebuffer text buffer to the device buffer. <br /></td></tr>
-<tr class="separator:a19daac8a65e25c850a057cd99cff202a inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d1dbcd1fe29cfed2f54da9f71fd0d63 inherit pub_methods_class_framebuffer" id="r_a2d1dbcd1fe29cfed2f54da9f71fd0d63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a2d1dbcd1fe29cfed2f54da9f71fd0d63">print_text</a> (const char *c_str)</td></tr>
-<tr class="memdesc:a2d1dbcd1fe29cfed2f54da9f71fd0d63 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy the string c_str to the device buffer.  <br /></td></tr>
-<tr class="separator:a2d1dbcd1fe29cfed2f54da9f71fd0d63 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7b0d1c589fd81e853ae14979d5585be inherit pub_methods_class_framebuffer" id="r_ad7b0d1c589fd81e853ae14979d5585be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#ad7b0d1c589fd81e853ae14979d5585be">print_char</a> (char c)</td></tr>
-<tr class="memdesc:ad7b0d1c589fd81e853ae14979d5585be inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy the c character to the current line and column character position.  <br /></td></tr>
-<tr class="separator:ad7b0d1c589fd81e853ae14979d5585be inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a982a7f4b22ea3aa5f8b9a31dc71ca679 inherit pub_methods_class_framebuffer" id="r_a982a7f4b22ea3aa5f8b9a31dc71ca679"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>next_line</b> ()</td></tr>
-<tr class="memdesc:a982a7f4b22ea3aa5f8b9a31dc71ca679 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">character line position steps forward <br /></td></tr>
-<tr class="separator:a982a7f4b22ea3aa5f8b9a31dc71ca679 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e480702cd3607f488ed7c19142c8b36 inherit pub_methods_class_framebuffer" id="r_a7e480702cd3607f488ed7c19142c8b36"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>next_char</b> ()</td></tr>
-<tr class="memdesc:a7e480702cd3607f488ed7c19142c8b36 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">character column position steps forward <br /></td></tr>
-<tr class="separator:a7e480702cd3607f488ed7c19142c8b36 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_attribs_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
+<tr class="memitem:a94ead2a31fa36b1f301315aea0050847 inherit pub_attribs_class_framebuffer" id="r_a94ead2a31fa36b1f301315aea0050847"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="structstruct___graph_framebuffer.html">struct_GraphFramebuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><b>frame_graph_config</b> {}</td></tr>
+<tr class="memdesc:a94ead2a31fa36b1f301315aea0050847 inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic configuration <br /></td></tr>
+<tr class="separator:a94ead2a31fa36b1f301315aea0050847 inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e0f5c7cd63f12bd9980080be6e1ccb8 inherit pub_attribs_class_framebuffer" id="r_a3e0f5c7cd63f12bd9980080be6e1ccb8"><td class="memItemLeft" align="right" valign="top">
-uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer</b></td></tr>
+uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer</b> = nullptr</td></tr>
 <tr class="memdesc:a3e0f5c7cd63f12bd9980080be6e1ccb8 inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the buffer where graphic are drawn <br /></td></tr>
 <tr class="separator:a3e0f5c7cd63f12bd9980080be6e1ccb8 inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3c00a276f3da2d196676edaa11ecc7c inherit pub_attribs_class_framebuffer" id="r_ac3c00a276f3da2d196676edaa11ecc7c"><td class="memItemLeft" align="right" valign="top">
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>text_buffer</b></td></tr>
-<tr class="memdesc:ac3c00a276f3da2d196676edaa11ecc7c inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the buffer where text are written <br /></td></tr>
-<tr class="separator:ac3c00a276f3da2d196676edaa11ecc7c inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35a041f8b088ee5274aa334d13e4c60e inherit pub_attribs_class_framebuffer" id="r_a35a041f8b088ee5274aa334d13e4c60e"><td class="memItemLeft" align="right" valign="top">
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>frame_width</b></td></tr>
 <tr class="memdesc:a35a041f8b088ee5274aa334d13e4c60e inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of pixel along the width of the frame. <br /></td></tr>
@@ -229,20 +204,29 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>frame_width</b></t
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>frame_height</b></td></tr>
 <tr class="memdesc:aa346612ecd1e1a0167734b8173bed9db inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of pixel along the height of the frame. <br /></td></tr>
 <tr class="separator:aa346612ecd1e1a0167734b8173bed9db inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ed1ffd876febfffcc9d4eb70307085b inherit pub_attribs_class_framebuffer" id="r_a6ed1ffd876febfffcc9d4eb70307085b"><td class="memItemLeft" align="right" valign="top">
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>max_line</b> {0}</td></tr>
-<tr class="memdesc:a6ed1ffd876febfffcc9d4eb70307085b inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max number of line with respect to frame height and font height. <br /></td></tr>
-<tr class="separator:a6ed1ffd876febfffcc9d4eb70307085b inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abaaff6cacf8f6095b6ae4ba2323ec5e5 inherit pub_attribs_class_framebuffer" id="r_abaaff6cacf8f6095b6ae4ba2323ec5e5"><td class="memItemLeft" align="right" valign="top">
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>max_column</b> {0}</td></tr>
-<tr class="memdesc:abaaff6cacf8f6095b6ae4ba2323ec5e5 inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max number of column with respect to frame width and font width. <br /></td></tr>
-<tr class="separator:abaaff6cacf8f6095b6ae4ba2323ec5e5 inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
+<tr class="memitem:ae858d08fc7be604593c68221a8d1d20b inherit pro_methods_class_framebuffer" id="r_ae858d08fc7be604593c68221a8d1d20b"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>create_pixel_buffer</b> ()</td></tr>
+<tr class="memdesc:ae858d08fc7be604593c68221a8d1d20b inherit pro_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">a common function where the pixel_buffer is created and deleted if already existing <br /></td></tr>
+<tr class="separator:ae858d08fc7be604593c68221a8d1d20b inherit pro_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9821acad0cef1fad78540c36f1ac3729 inherit pro_methods_class_framebuffer" id="r_a9821acad0cef1fad78540c36f1ac3729"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a9821acad0cef1fad78540c36f1ac3729">pixel</a> (int x, int y, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c=<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a>)</td></tr>
+<tr class="memdesc:a9821acad0cef1fad78540c36f1ac3729 inherit pro_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic primitive to draw a pixel.  <br /></td></tr>
+<tr class="separator:a9821acad0cef1fad78540c36f1ac3729 inherit pro_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
+<tr class="memitem:ad35b8bf0a6703c6bced3e0bfa65f2102 inherit pro_attribs_class_framebuffer" id="r_ad35b8bf0a6703c6bced3e0bfa65f2102"><td class="memItemLeft" align="right" valign="top">
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</b></td></tr>
+<tr class="memdesc:ad35b8bf0a6703c6bced3e0bfa65f2102 inherit pro_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">size of the buffer that contains graphics as map of pixels. <br /></td></tr>
+<tr class="separator:ad35b8bf0a6703c6bced3e0bfa65f2102 inherit pro_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac09b3c586c580074e08fdb5d5b45f598 inherit pro_attribs_class_framebuffer" id="r_ac09b3c586c580074e08fdb5d5b45f598"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a>&#160;</td><td class="memItemRight" valign="bottom"><b>frame_format</b></td></tr>
+<tr class="memdesc:ac09b3c586c580074e08fdb5d5b45f598 inherit pro_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the arrangement of the pixel on a byte basis. <br /></td></tr>
+<tr class="separator:ac09b3c586c580074e08fdb5d5b45f598 inherit pro_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the abstract class to handle all generic behavior of physical display devices (e.g. OLED screen <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a>). It derived from <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a>. This allows to draw text and graphics directly into the display framebuffer thanks to Framebuffet class text and graphic primitives indepently from any kind of widget. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aca0693f830453ed24110c9014f265d46" name="aca0693f830453ed24110c9014f265d46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca0693f830453ed24110c9014f265d46">&#9670;&#160;</a></span>DisplayDevice()</h2>
+<a id="a847f937a3c7eb02ed8731f325b0134f5" name="a847f937a3c7eb02ed8731f325b0134f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a847f937a3c7eb02ed8731f325b0134f5">&#9670;&#160;</a></span>DisplayDevice()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -260,23 +244,23 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>max_column</b> {0}
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a></td>          <td class="paramname"><span class="paramname"><em>format</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79ab8705fdb146f8f1c9e9d2d8dd6c072ad">FramebufferFormat::MONO_VLSB</a></span>, </td>
+          <td class="paramtype"><a class="el" href="structstruct___graph_framebuffer.html">struct_GraphFramebuffer</a></td>          <td class="paramname"><span class="paramname"><em>graph_cfg</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structstruct___framebuffer_text.html">struct_FramebufferText</a></td>          <td class="paramname"><span class="paramname"><em>txt_cnf</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{.font=<a class="el" href="8x8__font_8h.html#ac1e257a18f342596519ef4cbc5b673a9">font_8x8</a>}</span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a></td>          <td class="paramname"><span class="paramname"><em>format</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79ab8705fdb146f8f1c9e9d2d8dd6c072ad">FramebufferFormat::MONO_VLSB</a></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new UIDisplayDevice object. </p>
+<p>Construct a new Display Device object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">width</td><td>The width of physical screen, in pixel. </td></tr>
     <tr><td class="paramname">height</td><td>The height of physical screen, in pixel. </td></tr>
+    <tr><td class="paramname">graph_cfg</td><td>the graphical configuration data structure </td></tr>
     <tr><td class="paramname">format</td><td>The framebuffer format ... see <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a> class <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79" title="enum used to characterize the type of display device memory organisation">FramebufferFormat</a> enumeration </td></tr>
-    <tr><td class="paramname">txt_cnf</td><td>A structure of data that reflect the framebuffer member related to text primitives </td></tr>
   </table>
   </dd>
 </dl>
@@ -362,7 +346,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="class_display_device_a834052a46aab0c7f802dba845c444688_cgraph.png" border="0" usemap="#aclass_display_device_a834052a46aab0c7f802dba845c444688_cgraph" alt=""/></div>
 <map name="aclass_display_device_a834052a46aab0c7f802dba845c444688_cgraph" id="aclass_display_device_a834052a46aab0c7f802dba845c444688_cgraph">
 <area shape="rect" title="This is an pure virtual member function that all final derived class must implement...." alt="" coords="5,5,124,30"/>
-<area shape="rect" href="class_framebuffer.html#a25c9cadebb3531112c5085e981962407" title="Construct a new Framebuffer object." alt="" coords="172,5,319,30"/>
+<area shape="rect" href="class_framebuffer.html#ac28f79253302885a03149ca7ed75c357" title="Construct a new Framebuffer object when frame width and height are given." alt="" coords="172,5,319,30"/>
 <area shape="poly" title=" " alt="" coords="124,15,156,15,156,20,124,20"/>
 </map>
 </div>

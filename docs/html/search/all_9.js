@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['fg_5fcolor_0',['fg_color',['../structstruct___framebuffer_text.html#a3c19c4a2abd368a40bf071452f372cc3',1,'struct_FramebufferText']]],
+  ['fg_5fcolor_0',['fg_color',['../structstruct___graph_framebuffer.html#aafcefaa486d9458d1a13158922913c08',1,'struct_GraphFramebuffer::fg_color'],['../structstruct___text_framebuffer.html#a45e9d125aeab13343b426b86bd8e004f',1,'struct_TextFramebuffer::fg_color']]],
   ['fifo_5fop_1',['FIFO_OP',['../structstruct___config_m_p_u6050.html#ab7f05661f12849229e5f12616d4d4e40',1,'struct_ConfigMPU6050']]],
   ['fifo_5fselected_5fsensors_2',['FIFO_SELECTED_SENSORS',['../structstruct___config_m_p_u6050.html#ac2fb6887c7ef83afec6bf017b574b841',1,'struct_ConfigMPU6050']]],
   ['fill_3',['fill',['../class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1',1,'Framebuffer']]],
   ['fill_5fpattern_5fand_5fshow_5fgddram_4',['fill_pattern_and_show_GDDRAM',['../class_s_s_d1306.html#a764babad3f6a4d12cfa600ce7fd1b751',1,'SSD1306']]],
-  ['font_5',['font',['../structstruct___framebuffer_text.html#af9d2a4c9d160910fdd30cbcb92dd554e',1,'struct_FramebufferText']]],
+  ['font_5',['font',['../structstruct___text_framebuffer.html#ad8e785a7402608d10fd267fcae5abc37',1,'struct_TextFramebuffer']]],
   ['font_5f12x16_6',['font_12x16',['../12x16__font_8h.html#a348b0e098c08825316c4fb41b3bf0843',1,'12x16_font.h']]],
   ['font_5f16x32_7',['font_16x32',['../16x32__font_8h.html#a394b1de12fcd7b54cfebb977bdc89b5c',1,'16x32_font.h']]],
   ['font_5f5x8_8',['font_5x8',['../5x8__font_8h.html#abdc16296a2d8078af08a493845f7194b',1,'5x8_font.h']]],
@@ -14,13 +14,14 @@ var searchData=
   ['font_5fwidth_5findex_11',['FONT_WIDTH_INDEX',['../framebuffer_8h.html#a1b5e690c2929f80821d04e8414fec2c5',1,'framebuffer.h']]],
   ['form_5ffeed_12',['FORM_FEED',['../framebuffer_8h.html#aeaf983986deb16c93fa0bd38080281f8',1,'framebuffer.h']]],
   ['frame_5fformat_13',['frame_format',['../class_framebuffer.html#ac09b3c586c580074e08fdb5d5b45f598',1,'Framebuffer']]],
-  ['frame_5fheight_14',['frame_height',['../class_framebuffer.html#aa346612ecd1e1a0167734b8173bed9db',1,'Framebuffer']]],
-  ['frame_5ftext_5fconfig_15',['frame_text_config',['../class_framebuffer.html#ad9526c00b4e1e49d7b51860cdda0a03d',1,'Framebuffer']]],
-  ['frame_5fwidth_16',['frame_width',['../class_framebuffer.html#a35a041f8b088ee5274aa334d13e4c60e',1,'Framebuffer']]],
-  ['framebuffer_17',['Framebuffer',['../class_framebuffer.html',1,'Framebuffer'],['../class_framebuffer.html#a25c9cadebb3531112c5085e981962407',1,'Framebuffer::Framebuffer()']]],
-  ['framebuffer_2eh_18',['framebuffer.h',['../framebuffer_8h.html',1,'']]],
-  ['framebuffercolor_19',['FramebufferColor',['../framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f',1,'framebuffer.h']]],
-  ['framebufferformat_20',['FramebufferFormat',['../framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79',1,'framebuffer.h']]],
-  ['frequency_5fdivider_21',['frequency_divider',['../structstruct___config_s_s_d1306.html#a3b094002129dd70ad83fb49097d116e2',1,'struct_ConfigSSD1306']]],
-  ['frequency_5ffactor_22',['frequency_factor',['../structstruct___config_s_s_d1306.html#acf1d9d748c0e5d861f6520f49ca21e37',1,'struct_ConfigSSD1306']]]
+  ['frame_5fgraph_5fconfig_14',['frame_graph_config',['../class_framebuffer.html#a94ead2a31fa36b1f301315aea0050847',1,'Framebuffer']]],
+  ['frame_5fheight_15',['frame_height',['../class_framebuffer.html#aa346612ecd1e1a0167734b8173bed9db',1,'Framebuffer']]],
+  ['frame_5ftext_5fconfig_16',['frame_text_config',['../class_textual_frame_buffer.html#a4ee86e47bd91c9208a14668180b243bf',1,'TextualFrameBuffer']]],
+  ['frame_5fwidth_17',['frame_width',['../class_framebuffer.html#a35a041f8b088ee5274aa334d13e4c60e',1,'Framebuffer']]],
+  ['framebuffer_18',['Framebuffer',['../class_framebuffer.html',1,'Framebuffer'],['../class_framebuffer.html#ac28f79253302885a03149ca7ed75c357',1,'Framebuffer::Framebuffer(size_t frame_width, size_t frame_height, struct_GraphFramebuffer graph_cfg={}, FramebufferFormat framebuffer_format=FramebufferFormat::MONO_VLSB)'],['../class_framebuffer.html#aee2c762d70a8357da3b2fa968ce0eb3d',1,'Framebuffer::Framebuffer(uint8_t number_of_column, uint8_t number_of_line, struct_TextFramebuffer text_cfg, struct_GraphFramebuffer graph_cfg={}, FramebufferFormat framebuffer_format=FramebufferFormat::MONO_VLSB)']]],
+  ['framebuffer_2eh_19',['framebuffer.h',['../framebuffer_8h.html',1,'']]],
+  ['framebuffercolor_20',['FramebufferColor',['../framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f',1,'framebuffer.h']]],
+  ['framebufferformat_21',['FramebufferFormat',['../framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79',1,'framebuffer.h']]],
+  ['frequency_5fdivider_22',['frequency_divider',['../structstruct___config_s_s_d1306.html#a3b094002129dd70ad83fb49097d116e2',1,'struct_ConfigSSD1306']]],
+  ['frequency_5ffactor_23',['frequency_factor',['../structstruct___config_s_s_d1306.html#acf1d9d748c0e5d861f6520f49ca21e37',1,'struct_ConfigSSD1306']]]
 ];
