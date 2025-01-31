@@ -57,7 +57,7 @@ protected:
     uint8_t widget_anchor_y;
 
     /// @brief the display device where the widget is displayed
-    DisplayDevice *display_screen{nullptr};
+    DisplayDevice *display_screen{nullptr};//TODO remonter dans framebuffer
 
     /// @brief if true, the widget is surrounded by a one-pixel border
     bool widget_with_border{true};
