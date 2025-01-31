@@ -219,7 +219,7 @@ public:
      * @brief write 0x00 into the device framebuffer
      *
      */
-    void clear_full_screen();
+    void clear_full_screen();//TODO porter dans display device pure virtual
     /**
      * @brief Set the contrast object. refer to datasheet of SSD1306 device.
      *
