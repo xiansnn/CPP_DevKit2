@@ -139,7 +139,7 @@ protected:
     /// @brief size of the buffer that contains graphics as map of pixels.
     size_t pixel_buffer_size;
     /// @brief the arrangement of the pixel on a byte basis.
-    FramebufferFormat frame_format;
+    FramebufferFormat frame_format;//TODO porter dans display device
 
     /// @brief a common function where the pixel_buffer is created and deleted if already existing
     void create_pixel_buffer();
@@ -150,7 +150,7 @@ protected:
     /// @param x the x position of the pixel
     /// @param y the y position of the pixel
     /// @param c the color of the pixel
-    void pixel(int x, int y, FramebufferColor c = FramebufferColor::WHITE);
+    void pixel(int x, int y, FramebufferColor c = FramebufferColor::WHITE);//TODO porter dans display device
 
 public:
     /// @brief the graphic configuration
@@ -206,7 +206,7 @@ public:
      *
      * @return FramebufferFormat
      */
-    FramebufferFormat get_framebuffer_format();
+    FramebufferFormat get_framebuffer_format();//TODO porter dans display device
 
     /**
      * @brief Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0).
@@ -320,7 +320,7 @@ private:
     /// @param c the foreground color of the character
     /// @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
     /// @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
-    void drawChar(const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y);
+    void drawChar(const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y);//TODO porter dans display device
 
     /// @brief a graphic primitive to draw a character at a character position
     /// @param c the foreground color of the character. The font is given by the frame_text_config
