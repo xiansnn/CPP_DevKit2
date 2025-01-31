@@ -364,11 +364,12 @@ void test_text_and_graph(SSD1306 *left_display)
     // draw values
     int values_area_anchor_x = w * 8;
     int values_area_anchor_y = h * 6;
-    int values_char_width =  8;
-    int values_char_height =  2;
+    int values_char_width = 8;
+    int values_char_height = 2;
 
-title_config.font = font_8x8;
+    title_config.font = font_8x8;
     TextualFrameBuffer values = TextualFrameBuffer(values_char_width, values_char_height, title_config);
+    values.print_char(FORM_FEED);
 
     // draw graph
     int graph_area_anchor_x = 16;
@@ -377,28 +378,28 @@ title_config.font = font_8x8;
     int graph_area_height = h * 5;
 
     Framebuffer graph = Framebuffer(graph_area_width, graph_area_height);
-
     graph.clear_pixel_buffer();
+
     left_display->show(&graph, graph_area_anchor_x, graph_area_anchor_y);
 
     int roll, pitch;
-  
-    char *c_str = new char[values.text_buffer_size];
+
+    // char *c_str = new char[values.text_buffer_size];
 
     for (int i = -90; i < 90; i++)
     {
-        values.clear_pixel_buffer();
         roll = i;
         pitch = i / 3;
-        sprintf(c_str, "%+3d \xF8\n%+3d \xF8", roll, pitch);
-        values.print_text(c_str);
+        sprintf(values.text_buffer, "%+3d \xF8\n%+3d \xF8", roll, pitch);
+        values.print_text();
         left_display->show(&values, values_area_anchor_x, values_area_anchor_y);
+        values.print_char(FORM_FEED);
+
 
         float xc = graph_area_width / 2;
         float yc = graph_area_height / 2;
         float yl = graph_area_height / 2 - pitch;
         float radius = yc - 2; // radius -2 to fit inside the rectangle
-
         float sin_roll = sin(std::numbers::pi / 180.0 * roll);
         float cos_roll = cos(std::numbers::pi / 180.0 * roll);
         int x0 = xc - radius * cos_roll;
@@ -409,12 +410,13 @@ title_config.font = font_8x8;
         graph.circle(radius, xc, yl);
         graph.line(x0, y0, x1, y1);
         left_display->show(&graph, graph_area_anchor_x, graph_area_anchor_y);
-        left_display->show(&values, values_area_anchor_x, values_area_anchor_y);
-        graph.line(x0, y0, x1, y1, FramebufferColor::BLACK);
-        graph.circle(radius, xc, yl, false, FramebufferColor::BLACK);
+        graph.line(x0, y0, x1, y1, graph.frame_graph_config.bg_color);
+        graph.circle(radius, xc, yl, false, graph.frame_graph_config.bg_color);
+
+        // left_display->show(&values, values_area_anchor_x, values_area_anchor_y);
         sleep_ms(50);
     }
-    delete[] c_str;
+    // delete[] c_str;
     sleep_ms(1000);
 }
 
