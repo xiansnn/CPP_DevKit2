@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['next_5fchar_0',['next_char',['../class_framebuffer.html#a7e480702cd3607f488ed7c19142c8b36',1,'Framebuffer']]],
-  ['next_5fline_1',['next_line',['../class_framebuffer.html#a982a7f4b22ea3aa5f8b9a31dc71ca679',1,'Framebuffer']]]
+  ['next_5fchar_0',['next_char',['../class_textual_frame_buffer.html#a830763b9967a6b927b9d409df04e0579',1,'TextualFrameBuffer']]],
+  ['next_5fline_1',['next_line',['../class_textual_frame_buffer.html#aa126abf948bd0be798bcad6e6088e6f3',1,'TextualFrameBuffer']]]
 ];

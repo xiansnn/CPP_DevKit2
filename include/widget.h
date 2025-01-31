@@ -117,7 +117,6 @@ public:
      * @param widget_with_border   The flag that indicates whether the widget has a border or not
      * @param widget_border_width   the width of the border. WARNING: can only be 1 pixel.
      * @param framebuffer_format  the addressing format of the actual display device
-     * @param framebuffer_txt_cnf   a default textual configuration, with 8x8 font size
      *
      * \image html widget.png
      */

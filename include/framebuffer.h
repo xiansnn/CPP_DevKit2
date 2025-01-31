@@ -60,6 +60,7 @@ enum class FramebufferColor
     WHITE = 1
 };
 
+/// @brief The configuration data for graphic primitives
 struct struct_GraphFramebuffer
 {
     /**
@@ -121,7 +122,7 @@ struct struct_TextFramebuffer
  *
  *
  */
-class Framebuffer // TODO prevoir separation text et graphic, un framebuffer avec ppixel buffer pour heritage displaydevice
+class Framebuffer // TODO prevoir separation text et graphic, un framebuffer avec pixel buffer pour heritage displaydevice
 {
 private:
     /// @brief the graphic primitive to draw an ellipse \bug //FIXME doesn't work !
@@ -152,6 +153,7 @@ protected:
     void pixel(int x, int y, FramebufferColor c = FramebufferColor::WHITE);
 
 public:
+    /// @brief the graphic configuration
     struct_GraphFramebuffer frame_graph_config{};
     /// @brief the buffer where graphic are drawn
     uint8_t *pixel_buffer = nullptr;
@@ -162,14 +164,16 @@ public:
     /// @brief The number of pixel along the height of the frame.
     uint8_t frame_height;
 
+
     /**
-     * @brief Construct a new Framebuffer object
-     *
-     * @param frame_width   The number of pixel along the width of the frame.
+     * @brief Construct a new Framebuffer object when frame width and height are given
+     * 
+     * @param frame_width The number of pixel along the width of the frame.
      * Usually defined by "x" starting at "0" on top upleft corner, running to the left and ending at frame_width-1 position.
-     * @param frame_height   The number of pixel along the height of the frame.
+     * @param frame_height The number of pixel along the height of the frame.
      * Usually defined by "y" starting at "0" on top upleft corner, running downward and ending at frame_height-1 position.
-     * @param framebuffer_format   The way the memory byte are translated by the display driver device.
+     * @param graph_cfg the graphic configuration data structure
+     * @param framebuffer_format The way the memory byte are translated by the display driver device.
      * \image html framebuffer.png
      */
     Framebuffer(size_t frame_width,
@@ -177,6 +181,15 @@ public:
                 struct_GraphFramebuffer graph_cfg = {},
                 FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
 
+    /**
+     * @brief Construct a new Framebuffer object when number of caracter width and height are given
+     * 
+     * @param number_of_column number of character width
+     * @param number_of_line  number of character height
+     * @param text_cfg textual configuration data structure
+     * @param graph_cfg graphical configuration data structure
+     * @param framebuffer_format The way the memory byte are translated by the display driver device.
+     */
     Framebuffer(uint8_t number_of_column,
                 uint8_t number_of_line,
                 struct_TextFramebuffer text_cfg,
@@ -283,6 +296,10 @@ public:
     void circle(int radius, int x_center, int y_center, bool fill = false, FramebufferColor c = FramebufferColor::WHITE);
 };
 
+/**
+ * @brief the place where all textual primitive are placed
+ * 
+ */
 class TextualFrameBuffer : public Framebuffer
 {
 private:
@@ -328,12 +345,32 @@ public:
     /// @brief The max number of column with respect to frame width and font width
     uint8_t char_height{0};
 
+    /**
+     * @brief Construct a new Textual Frame Buffer object when character width and height are given.
+     * The frame size in pixel is computer
+     * 
+     * @param number_of_column number of character column
+     * @param number_of_line number of character line
+     * @param text_cfg textual configuration data structure
+     * @param graph_cfg graphical configuration data structure
+     * @param framebuffer_format the way that memory is written according to the display device
+     */
     TextualFrameBuffer(uint8_t number_of_column,
                        uint8_t number_of_line,
                        struct_TextFramebuffer text_cfg,
                        struct_GraphFramebuffer graph_cfg = {},
                        FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
 
+    /**
+     * @brief Construct a new Textual Frame Buffer object when the frame size in x and y pixel is given.
+     * The number of character line and column are computed according to the size of font
+     * 
+     * @param frame_width the width in pixel of the frame
+     * @param frame_height the height in pixel of the frame
+     * @param frame_format the display device memory organisation
+     * @param text_cfg the textual configuration data structure
+     * @param graph_cfg the graphical configuration data structure
+     */
     TextualFrameBuffer(size_t frame_width,
                        size_t frame_height,
                        FramebufferFormat frame_format,
@@ -359,6 +396,11 @@ public:
      * @param font
      */
     void update_text_area(const unsigned char *font);
+    /**
+     * @brief Update the reference to the font, recompute graphic pixel width and heightand the coresponding buffer size, delete the previous one if any and create a new buffer.
+     * 
+     * @param font 
+     */
     void update_pixel_area(const unsigned char *font);
 
 

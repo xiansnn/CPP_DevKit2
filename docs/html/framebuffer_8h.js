@@ -1,7 +1,9 @@
 var framebuffer_8h =
 [
-    [ "struct_FramebufferText", "structstruct___framebuffer_text.html", "structstruct___framebuffer_text" ],
+    [ "struct_GraphFramebuffer", "structstruct___graph_framebuffer.html", "structstruct___graph_framebuffer" ],
+    [ "struct_TextFramebuffer", "structstruct___text_framebuffer.html", "structstruct___text_framebuffer" ],
     [ "Framebuffer", "class_framebuffer.html", "class_framebuffer" ],
+    [ "TextualFrameBuffer", "class_textual_frame_buffer.html", "class_textual_frame_buffer" ],
     [ "BACKSPACE", "framebuffer_8h.html#a629568514359445d2fbda71d70eeb1ce", null ],
     [ "CARRIAGE_RETURN", "framebuffer_8h.html#a3b81478c7058ceb6ed610ce8e2ca3822", null ],
     [ "FONT_HEIGHT_INDEX", "framebuffer_8h.html#a4ab86d883782b831584c91476841456f", null ],

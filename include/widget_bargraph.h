@@ -96,11 +96,10 @@ public:
      * @param frame_height the height of the widget including the border
      * @param widget_anchor_x the horizontal position where the widget start on the device screen
      * @param widget_anchor_y the vertical position where the widget start on the device screen
-     * @param widget_with_border he flag that indicates whether the widget has a border or not
+     * @param widget_with_border the flag that indicates whether the widget has a border or not
      * @param bar_spacing the number of pixel between each bar
      * @param widget_border_width the width of the border. WARNING: can only be 1 pixel.
      * @param framebuffer_format the addressing format of the actual display device
-     * @param framebuffer_txt_cnf a default textual configuration, with 8x8 font size
      */
     WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
                              DisplayDevice *display_screen,
@@ -155,17 +154,16 @@ public:
     /**
      * @brief Construct a new Widget Vertical Bargraph object
      * 
-     * @param bargraph_model 
-     * @param display_screen 
-     * @param frame_width 
-     * @param frame_height 
-     * @param widget_anchor_x 
-     * @param widget_anchor_y 
-     * @param widget_with_border 
-     * @param bar_spacing 
-     * @param widget_border_width 
-     * @param framebuffer_format 
-     * @param framebuffer_txt_cnf 
+     * @param bargraph_model a pointer to the mactual displayed model
+     * @param display_screen a pointer to the display device on which the widget is drawn
+     * @param frame_width The width of the widget including the border
+     * @param frame_height the height of the widget including the border
+     * @param widget_anchor_x the horizontal position where the widget start on the device screen
+     * @param widget_anchor_y the vertical position where the widget start on the device screen
+     * @param widget_with_border the flag that indicates whether the widget has a border or not
+     * @param bar_spacing the number of pixel between each bar
+     * @param widget_border_width the width of the border. WARNING: can only be 1 pixel.
+     * @param framebuffer_format the addressing format of the actual display device
      */
     WidgetVerticalBargraph(ModelBargraph *bargraph_model,
                              DisplayDevice *display_screen,
