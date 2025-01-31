@@ -11,7 +11,7 @@
 
 #include "widget.h"
 
-void Widget::draw_border(FramebufferColor c)//TODO en faire un pure virtual pour etre independant de graphic ou text
+void Widget::draw_border(FramebufferColor c) // TODO en faire un pure virtual pour etre independant de graphic ou text
 {
     if (this->widget_with_border)
         rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width);
@@ -24,9 +24,8 @@ Widget::Widget(DisplayDevice *_display_screen,
                uint8_t _widget_anchor_y,
                bool _widget_with_border,
                uint8_t _widget_border_width,
-               FramebufferFormat _framebuffer_format
-               )  
-    : Framebuffer(_frame_width, _frame_height, _framebuffer_format)
+               FramebufferFormat _framebuffer_format)
+    : Framebuffer(_frame_width, _frame_height, {}, _framebuffer_format)
 {
     assert(_frame_height % 8 == 0);    // check widget height limitation
     assert(_widget_anchor_y % 8 == 0); // check widget anchor y limitation
@@ -44,7 +43,7 @@ Widget::Widget(DisplayDevice *_display_screen,
 
 Widget::~Widget()
 {
-    delete actual_displayed_model;//TODO pas de delete sur des objet hors widget
+    delete actual_displayed_model; // TODO pas de delete sur des objet hors widget
     delete display_screen;
 }
 

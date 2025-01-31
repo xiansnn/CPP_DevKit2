@@ -26,6 +26,7 @@ Probe pr_D5 = Probe(5);
 Probe pr_D6 = Probe(6);
 Probe pr_D7 = Probe(7);
 
+#define REFRESH_PERIOD 50
 #define DELAY 500
 #define LONG_DELAY 1000
 #define INTER_TEST_DELAY 2000
@@ -95,6 +96,7 @@ void test_font_size(SSD1306 *current_display)
     delete font_text_on_screen_2;
 
     sleep_ms(INTER_TEST_DELAY);
+    current_display->clear_full_screen();
 }
 
 void test_full_screen_text(SSD1306 *current_display)
@@ -123,6 +125,7 @@ void test_full_screen_text(SSD1306 *current_display)
     }
 
     sleep_ms(INTER_TEST_DELAY);
+    current_display->clear_full_screen();
 }
 
 void test_auto_next_char(SSD1306 *current_display)
@@ -151,6 +154,7 @@ void test_auto_next_char(SSD1306 *current_display)
     delete text_frame;
 
     sleep_ms(INTER_TEST_DELAY);
+    current_display->clear_full_screen();
 }
 
 /**
@@ -233,7 +237,7 @@ void test_sprintf_format(SSD1306 *current_display)
     text_frame->print_text("`abcdefghijklmnopqrstuvwxyz{|}~\x7F"); // ca 1000us-> 2000us
     text_frame->print_text("1234567890\n");                        // ca 400us -> 800us
     current_display->show(text_frame, 0, 0);
-    sleep_ms(LONG_DELAY);
+    sleep_ms(DELAY);
 
     text_frame->print_char(FORM_FEED);
 
@@ -284,6 +288,7 @@ void test_sprintf_format(SSD1306 *current_display)
     delete text_frame2;
 
     sleep_ms(INTER_TEST_DELAY);
+    current_display->clear_full_screen();
     /*
     undefined result for the used compiler
     printf("\tHexadecimal:\t%a %A\n", 1.5, 1.5);
@@ -340,12 +345,13 @@ void test_ostringstream_format(SSD1306 *current_display)
     current_display->show(&text_frame, 0, 0);
 
     sleep_ms(INTER_TEST_DELAY);
+    current_display->clear_full_screen();
 }
 
-void test_text_and_graph(SSD1306 *left_display)
+void test_text_and_graph(SSD1306 *current_display)
 {
 #define DEGREE "\xF8"
-    left_display->clear_full_screen();
+    current_display->clear_full_screen();
     struct_TextFramebuffer title_config = {
         .font = font_8x8};
 
@@ -359,7 +365,7 @@ void test_text_and_graph(SSD1306 *left_display)
 
     TextualFrameBuffer title = TextualFrameBuffer(title_char_width, title_char_height, title_config);
     title.print_text("ROLL:\nPITCH:");
-    left_display->show(&title, title_area_anchor_x, title_area_anchor_y);
+    current_display->show(&title, title_area_anchor_x, title_area_anchor_y);
 
     // draw values
     int values_area_anchor_x = w * 8;
@@ -380,22 +386,21 @@ void test_text_and_graph(SSD1306 *left_display)
     Framebuffer graph = Framebuffer(graph_area_width, graph_area_height);
     graph.clear_pixel_buffer();
 
-    left_display->show(&graph, graph_area_anchor_x, graph_area_anchor_y);
+    current_display->show(&graph, graph_area_anchor_x, graph_area_anchor_y);
 
     int roll, pitch;
 
-    // char *c_str = new char[values.text_buffer_size];
-
     for (int i = -90; i < 90; i++)
     {
+        // compute and show values
         roll = i;
         pitch = i / 3;
         sprintf(values.text_buffer, "%+3d \xF8\n%+3d \xF8", roll, pitch);
         values.print_text();
-        left_display->show(&values, values_area_anchor_x, values_area_anchor_y);
+        current_display->show(&values, values_area_anchor_x, values_area_anchor_y);
         values.print_char(FORM_FEED);
 
-
+        // compute and show the graphic representation
         float xc = graph_area_width / 2;
         float yc = graph_area_height / 2;
         float yl = graph_area_height / 2 - pitch;
@@ -409,15 +414,16 @@ void test_text_and_graph(SSD1306 *left_display)
         graph.rect(0, 0, graph_area_width, graph_area_height); // point coordinates are relative to the local frame
         graph.circle(radius, xc, yl);
         graph.line(x0, y0, x1, y1);
-        left_display->show(&graph, graph_area_anchor_x, graph_area_anchor_y);
+        current_display->show(&graph, graph_area_anchor_x, graph_area_anchor_y);
         graph.line(x0, y0, x1, y1, graph.frame_graph_config.bg_color);
         graph.circle(radius, xc, yl, false, graph.frame_graph_config.bg_color);
 
-        // left_display->show(&values, values_area_anchor_x, values_area_anchor_y);
-        sleep_ms(50);
+        sleep_ms(REFRESH_PERIOD);
     }
-    // delete[] c_str;
-    sleep_ms(1000);
+
+    sleep_ms(INTER_TEST_DELAY);
+
+    current_display->clear_full_screen();
 }
 
 int main()
@@ -431,11 +437,11 @@ int main()
 
     while (true)
     {
-        // test_font_size(&left_display);
-        // test_full_screen_text(&right_display);
-        // test_auto_next_char(&left_display);
-        // test_sprintf_format(&right_display);
-        // test_ostringstream_format(&left_display);
+        test_font_size(&left_display);
+        test_full_screen_text(&right_display);
+        test_auto_next_char(&left_display);
+        test_sprintf_format(&right_display);
+        test_ostringstream_format(&left_display);
         test_text_and_graph(&right_display);
     }
 }
