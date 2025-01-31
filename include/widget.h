@@ -84,12 +84,12 @@ protected:
     uint8_t widget_start_y;
 
     /// @brief this is the border size of the widget
-    uint8_t widget_border_width;
+    uint8_t widget_border_width;//TODO a supprimer car toujour 1.
 
     /// @brief draw a rectangle around the widget.
     /// IMPORTANT NOTICE: as the border is a rectangle with fill=false, the border width can only be 1 pixel.
     /// @param c the color of the border
-    void draw_border(FramebufferColor c = FramebufferColor::WHITE);
+    void draw_border(FramebufferColor c = FramebufferColor::WHITE);//TODO a inclure dans draw qui est dans draw_refresh
 
 public:
     /**
@@ -159,7 +159,7 @@ public:
      *
      * - Then: check if any changes in the model require a screen redraw
      *
-     * - if redraw() required , execute the effective widget drawing (can be a private member function)
+     * - if redraw() required , execute the effective widget drawing including border if required (can be a private member function)
      * - and finally : clear model change flag if needed.
      *
      *        WARNING : When several widget display one Model, only the last one must clear_change_flag()

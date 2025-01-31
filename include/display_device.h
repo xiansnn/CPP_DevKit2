@@ -1,12 +1,12 @@
 /**
  * @file display_device.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-01-11
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 #if !defined(DISPLAY_DEVICE_H)
 #define DISPLAY_DEVICE_H
@@ -19,7 +19,7 @@
  * thanks to Framebuffet class text and graphic primitives indepently from any kind of widget
  *
  */
-class DisplayDevice : public Framebuffer
+class DisplayDevice : public Framebuffer//TODO METTRE UN FRAMEBUFFER EN COLLABORATION
 {
 private:
 public:
@@ -29,9 +29,13 @@ public:
      * @param width The width of physical screen, in pixel.
      * @param height The height of physical screen, in pixel.
      * @param format The framebuffer format ... see Framebuffer class FramebufferFormat enumeration
-     * @param txt_cnf A structure of data that reflect the framebuffer member related to text primitives
+     * @param txt_cfg A structure of data that reflect the framebuffer member related to text primitives
      */
-    DisplayDevice(size_t width, size_t height, FramebufferFormat format = FramebufferFormat::MONO_VLSB, struct_FramebufferText txt_cnf = {.font = font_8x8});
+    DisplayDevice(size_t width,
+                  size_t height,
+                  struct_GraphFramebuffer graph_cfg = {},
+                  FramebufferFormat format = FramebufferFormat::MONO_VLSB);
+
     /**
      * @brief Destroy the UIDisplayDevice object
      *
@@ -53,7 +57,5 @@ public:
      */
     virtual void show(Framebuffer *frame, uint8_t anchor_x, uint8_t anchor_y) = 0;
 };
-
-
 
 #endif // DISPLAY_DEVICE_H

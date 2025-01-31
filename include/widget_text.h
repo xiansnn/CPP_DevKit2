@@ -89,7 +89,7 @@ public:
  
     WidgetText(UIModelObject *text_model,
                DisplayDevice *display_screen,
-               struct_FramebufferText framebuffer_txt_cnf,
+               struct_TextFramebuffer framebuffer_txt_cnf,
                uint8_t number_of_column,
                uint8_t number_of_line,
                uint8_t widget_anchor_x,
