@@ -12,6 +12,7 @@
 
 #include <string>
 #include "pico/stdlib.h"
+// #include "display_device.h"
 /// @brief flag used to generate 127 character font or full extended 255 character font.
 ///
 /// Must be placed before include "...font..."
@@ -139,7 +140,10 @@ protected:
     /// @brief size of the buffer that contains graphics as map of pixels.
     size_t pixel_buffer_size;
     /// @brief the arrangement of the pixel on a byte basis.
-    FramebufferFormat frame_format;//TODO porter dans display device
+    FramebufferFormat frame_format; // TODO porter dans display device
+
+    /// @brief the display device where the widget is displayed
+    DisplayDevice *display_screen{nullptr}; // TODO remonter dans framebuffer
 
     /// @brief a common function where the pixel_buffer is created and deleted if already existing
     void create_pixel_buffer();
@@ -150,7 +154,7 @@ protected:
     /// @param x the x position of the pixel
     /// @param y the y position of the pixel
     /// @param c the color of the pixel
-    void pixel(int x, int y, FramebufferColor c = FramebufferColor::WHITE);//TODO porter dans display device
+    void pixel(int x, int y, FramebufferColor c = FramebufferColor::WHITE); // TODO porter dans display device
 
 public:
     /// @brief the graphic configuration
@@ -164,10 +168,9 @@ public:
     /// @brief The number of pixel along the height of the frame.
     uint8_t frame_height;
 
-
     /**
      * @brief Construct a new Framebuffer object when frame width and height are given
-     * 
+     *
      * @param frame_width The number of pixel along the width of the frame.
      * Usually defined by "x" starting at "0" on top upleft corner, running to the left and ending at frame_width-1 position.
      * @param frame_height The number of pixel along the height of the frame.
@@ -183,7 +186,7 @@ public:
 
     /**
      * @brief Construct a new Framebuffer object when number of caracter width and height are given
-     * 
+     *
      * @param number_of_column number of character width
      * @param number_of_line  number of character height
      * @param text_cfg textual configuration data structure
@@ -206,7 +209,7 @@ public:
      *
      * @return FramebufferFormat
      */
-    FramebufferFormat get_framebuffer_format();//TODO porter dans display device
+    FramebufferFormat get_framebuffer_format(); // TODO porter dans display device
 
     /**
      * @brief Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0).
@@ -298,12 +301,11 @@ public:
 
 /**
  * @brief the place where all textual primitive are placed
- * 
+ *
  */
 class TextualFrameBuffer : public Framebuffer
 {
 private:
-
     /// @brief the line number where the next character will be written.
     uint8_t current_char_line{0};
 
@@ -320,7 +322,7 @@ private:
     /// @param c the foreground color of the character
     /// @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
     /// @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
-    void drawChar(const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y);//TODO porter dans display device
+    void drawChar(const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y); // TODO porter dans display device
 
     /// @brief a graphic primitive to draw a character at a character position
     /// @param c the foreground color of the character. The font is given by the frame_text_config
@@ -348,7 +350,7 @@ public:
     /**
      * @brief Construct a new Textual Frame Buffer object when character width and height are given.
      * The frame size in pixel is computer
-     * 
+     *
      * @param number_of_column number of character column
      * @param number_of_line number of character line
      * @param text_cfg textual configuration data structure
@@ -364,7 +366,7 @@ public:
     /**
      * @brief Construct a new Textual Frame Buffer object when the frame size in x and y pixel is given.
      * The number of character line and column are computed according to the size of font
-     * 
+     *
      * @param frame_width the width in pixel of the frame
      * @param frame_height the height in pixel of the frame
      * @param frame_format the display device memory organisation
@@ -374,7 +376,7 @@ public:
     TextualFrameBuffer(size_t frame_width,
                        size_t frame_height,
                        FramebufferFormat frame_format,
-                       struct_TextFramebuffer text_cfg, 
+                       struct_TextFramebuffer text_cfg,
                        struct_GraphFramebuffer graph_cfg = {});
 
     ~TextualFrameBuffer();
@@ -398,11 +400,10 @@ public:
     void update_text_area(const unsigned char *font);
     /**
      * @brief Update the reference to the font, recompute graphic pixel width and heightand the coresponding buffer size, delete the previous one if any and create a new buffer.
-     * 
-     * @param font 
+     *
+     * @param font
      */
     void update_pixel_area(const unsigned char *font);
-
 
     /**
      * @brief copy the internal framebuffer text buffer to the device buffer.

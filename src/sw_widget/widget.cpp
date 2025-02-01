@@ -43,8 +43,8 @@ Widget::Widget(DisplayDevice *_display_screen,
 
 Widget::~Widget()
 {
-    delete actual_displayed_model; // TODO pas de delete sur des objet hors widget
-    delete display_screen;
+    // delete actual_displayed_model; //  pas de delete sur des objets hors widget
+    // delete display_screen;
 }
 
 void Widget::set_actual_displayed_object(UIModelObject *displayed_object)

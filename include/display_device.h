@@ -19,14 +19,13 @@
  * thanks to Framebuffet class text and graphic primitives indepently from any kind of widget
  *
  */
-class DisplayDevice : public Framebuffer//TODO METTRE UN FRAMEBUFFER EN COLLABORATION
+class DisplayDevice : public Framebuffer // TODO METTRE UN FRAMEBUFFER EN COLLABORATION
 {
 private:
 public:
-
     /**
      * @brief Construct a new Display Device object
-     * 
+     *
      * @param width The width of physical screen, in pixel.
      * @param height The height of physical screen, in pixel.
      * @param graph_cfg the graphical configuration data structure
