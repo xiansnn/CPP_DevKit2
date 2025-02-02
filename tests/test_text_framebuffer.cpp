@@ -384,7 +384,7 @@ void test_text_and_graph(SSD1306 *current_display)
     int graph_area_height = h * 5;
 
     Framebuffer graph = Framebuffer(graph_area_width, graph_area_height);
-    graph.clear_pixel_buffer();
+    current_display->clear_pixel_buffer();
 
     current_display->show(&graph, graph_area_anchor_x, graph_area_anchor_y);
 

@@ -96,6 +96,17 @@ target_link_libraries(test_ssd1306
             pico_stdlib 
             hw_i2c 
             framebuffer
+            display_device
+            debug_probe
+            )
+#-------------------------------------------------------------------------------------
+add_executable(test_graphic_framebuffer  test_graphic_framebuffer.cpp  )
+target_link_libraries(test_graphic_framebuffer 
+            ssd1306 
+            pico_stdlib 
+            hw_i2c 
+            framebuffer
+            display_device
             debug_probe
             )
 #-------------------------------------------------------------------------------------
