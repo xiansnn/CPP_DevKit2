@@ -36,6 +36,7 @@ Framebuffer::Framebuffer(DisplayDevice *device,
 
     this->pixel_memory.frame_width = number_of_column * text_cnf.font[FONT_WIDTH_INDEX];
     this->pixel_memory.frame_height = number_of_line * text_cnf.font[FONT_HEIGHT_INDEX]; // TODO verifier qu'on depasse pas la taille de display. il faudrait connaitre le displaydevice !!!
+    device->create_pixel_buffer(&this->pixel_memory);
 }
 
 Framebuffer::~Framebuffer()
