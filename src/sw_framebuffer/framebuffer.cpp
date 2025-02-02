@@ -43,7 +43,7 @@ Framebuffer::~Framebuffer()
 {
 }
 
-void Framebuffer::fill(struct_PixelMemory *pixel_memory,FramebufferColor c) // TODO works only for MONO_VLSB devices
+void Framebuffer::fill(struct_PixelMemory *pixel_memory,FramebufferColor c)
 {
     assert(this->display_screen->frame_format == FramebufferFormat::MONO_VLSB);
     if (c == FramebufferColor::BLACK)

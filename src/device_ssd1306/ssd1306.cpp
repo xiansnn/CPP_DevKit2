@@ -146,7 +146,7 @@ void SSD1306::clear_pixel_buffer(struct_PixelMemory *pixel_memory)
     memset(pixel_memory->pixel_buffer, 0x00, pixel_memory->pixel_buffer_size);
 }
 
-void SSD1306::fill(FramebufferColor c) // TODO works only for MONO_VLSB devices
+void SSD1306::fill(FramebufferColor c) 
 {
     assert(this->frame_format == FramebufferFormat::MONO_VLSB);
     if (c == FramebufferColor::BLACK)
