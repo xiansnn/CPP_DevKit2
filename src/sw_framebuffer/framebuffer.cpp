@@ -13,104 +13,54 @@
 #include <string.h>
 #include <cstring>
 
-#define BYTE_SIZE 8
-
-Framebuffer::Framebuffer(size_t _frame_width,
+Framebuffer::Framebuffer(DisplayDevice *device,
+                         size_t _frame_width,
                          size_t _frame_height,
-                         struct_GraphFramebuffer graph_cnf,
-                         FramebufferFormat _framebuffer_format)
+                         struct_GraphFramebuffer graph_cnf)
 {
-    this->frame_format = _framebuffer_format;
+    this->display_screen = device;
     this->frame_graph_config = graph_cnf;
-    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for MONO_VLSB devices
-
-    this->frame_height = _frame_height;
-    this->frame_width = _frame_width; // MONO_VLSB => 1 Byte = 1 column of 8 pixel
-
-    create_pixel_buffer();
+    this->pixel_memory.frame_height = _frame_height;
+    this->pixel_memory.frame_width = _frame_width;
+    device->create_pixel_buffer(&this->pixel_memory);
 }
 
-Framebuffer::Framebuffer(uint8_t number_of_column, // utilisé pour heritage textualframebuffer
+Framebuffer::Framebuffer(DisplayDevice *device,
+                         uint8_t number_of_column, // utilisé pour heritage textualframebuffer
                          uint8_t number_of_line,
                          struct_TextFramebuffer text_cnf,
-                         struct_GraphFramebuffer graph_cnf,
-                         FramebufferFormat framebuffer_format)
+                         struct_GraphFramebuffer graph_cnf)
 {
-    this->frame_format = framebuffer_format;
+    this->display_screen = device;
     this->frame_graph_config = graph_cnf;
-    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for MONO_VLSB devices
 
-    this->frame_width = number_of_column * text_cnf.font[FONT_WIDTH_INDEX]; // MONO_VLSB => 1 Byte = 1 column of 8 pixel
-    this->frame_height = number_of_line * text_cnf.font[FONT_HEIGHT_INDEX]; // TODO verifier qu'on depasse pas la taille de display. il faudrait connaitre le displaydevice !!!
-
-    create_pixel_buffer();
+    this->pixel_memory.frame_width = number_of_column * text_cnf.font[FONT_WIDTH_INDEX];
+    this->pixel_memory.frame_height = number_of_line * text_cnf.font[FONT_HEIGHT_INDEX]; // TODO verifier qu'on depasse pas la taille de display. il faudrait connaitre le displaydevice !!!
 }
 
 Framebuffer::~Framebuffer()
 {
-    delete[] this->pixel_buffer;
 }
 
-FramebufferFormat Framebuffer::get_framebuffer_format()
+void Framebuffer::fill(struct_PixelMemory *pixel_memory,FramebufferColor c) // TODO works only for MONO_VLSB devices
 {
-    return this->frame_format;
-}
-
-void Framebuffer::fill(FramebufferColor c)
-{
-    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for MONO_VLSB devices
+    assert(this->display_screen->frame_format == FramebufferFormat::MONO_VLSB);
     if (c == FramebufferColor::BLACK)
-        memset(this->pixel_buffer, 0x00, this->pixel_buffer_size);
+        memset(pixel_memory->pixel_buffer, 0x00, pixel_memory->pixel_buffer_size);
     else
-        memset(this->pixel_buffer, 0xFF, this->pixel_buffer_size);
-}
-
-void Framebuffer::clear_pixel_buffer()
-{
-    fill(this->frame_graph_config.bg_color);
-}
-
-void Framebuffer::create_pixel_buffer()
-{
-    size_t nb_of_pages = frame_height / BYTE_SIZE;
-    if (frame_height % BYTE_SIZE != 0)
-        nb_of_pages += 1;
-
-    this->pixel_buffer_size = frame_width * nb_of_pages;
-
-    this->pixel_buffer = new uint8_t[this->pixel_buffer_size];
-    clear_pixel_buffer();
-}
-
-void Framebuffer::pixel(int x, int y, FramebufferColor c)
-{
-    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for MONO_VLSB devices
-
-    if (x >= 0 && x < this->frame_width && y >= 0 && y < this->frame_height) // avoid drawing outside the framebuffer
-    {
-        const int BytesPerRow = this->frame_width; // x pixels, 1bpp, but each row is 8 pixel high, so (x / 8) * 8
-        int byte_idx = (y / 8) * BytesPerRow + x;
-        uint8_t byte = this->pixel_buffer[byte_idx];
-
-        if (c == FramebufferColor::WHITE)
-            byte |= 1 << (y % 8);
-        else
-            byte &= ~(1 << (y % 8));
-
-        this->pixel_buffer[byte_idx] = byte;
-    }
+        memset(pixel_memory->pixel_buffer, 0xFF, pixel_memory->pixel_buffer_size);
 }
 
 void Framebuffer::hline(uint8_t x, uint8_t y, size_t w, FramebufferColor c)
 {
     for (size_t i = 0; i < w; i++)
-        this->pixel(x + i, y, c);
+        display_screen->pixel(&this->pixel_memory, x + i, y, c);
 }
 
 void Framebuffer::vline(uint8_t x, uint8_t y, size_t h, FramebufferColor c)
 {
     for (size_t i = 0; i < h; i++)
-        this->pixel(x, y + i, c);
+        display_screen->pixel(&this->pixel_memory, x, y + i, c);
 }
 
 void Framebuffer::line(int x0, int y0, int x1, int y1, FramebufferColor c)
@@ -124,7 +74,7 @@ void Framebuffer::line(int x0, int y0, int x1, int y1, FramebufferColor c)
 
     while (true)
     {
-        this->pixel(x0, y0, c);
+        display_screen->pixel(&this->pixel_memory, x0, y0, c);
         if (x0 == x1 && y0 == y1)
             break;
         e2 = 2 * err;
@@ -153,10 +103,10 @@ void Framebuffer::rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, boo
     else
         for (size_t i_x = 0; i_x < w; i_x++)
             for (size_t i_y = 0; i_y < h; i_y++)
-                this->pixel(start_x + i_x, start_y + i_y, c);
+                display_screen->pixel(&this->pixel_memory, start_x + i_x, start_y + i_y, c);
 }
 
-void Framebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, FramebufferColor c)
+void Framebuffer::ellipse( uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, FramebufferColor c)
 {
     int x, y, m;
     x = 0;
@@ -170,10 +120,10 @@ void Framebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, 
     {
         if (!fill)
         {
-            pixel(x_center + x, y_center + y, c);
-            pixel(x_center - x, y_center + y, c);
-            pixel(x_center + x, y_center - y, c);
-            pixel(x_center - x, y_center - y, c);
+            display_screen->pixel(&this->pixel_memory, x_center + x, y_center + y, c);
+            display_screen->pixel(&this->pixel_memory, x_center - x, y_center + y, c);
+            display_screen->pixel(&this->pixel_memory, x_center + x, y_center - y, c);
+            display_screen->pixel(&this->pixel_memory, x_center - x, y_center - y, c);
         }
         else
         {
@@ -219,7 +169,7 @@ void Framebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, 
 //     this->pixel_buffer[byte_idx] ^= byte;
 // }
 
-void Framebuffer::circle(int radius, int x_center, int y_center, bool fill, FramebufferColor c)
+void Framebuffer::circle( int radius, int x_center, int y_center, bool fill, FramebufferColor c)
 {
     int x, y, m;
     x = 0;
@@ -229,18 +179,18 @@ void Framebuffer::circle(int radius, int x_center, int y_center, bool fill, Fram
     {
         if (!fill)
         {
-            pixel(x_center + x, y_center + y, c);
-            pixel(x_center + y, y_center + x, c);
-            pixel(x_center - x, y_center + y, c);
-            pixel(x_center - y, y_center + x, c);
-            pixel(x_center + x, y_center - y, c);
-            pixel(x_center + y, y_center - x, c);
-            pixel(x_center - x, y_center - y, c);
-            pixel(x_center - y, y_center - x, c);
+            display_screen->pixel(&this->pixel_memory, x_center + x, y_center + y, c);
+            display_screen->pixel(&this->pixel_memory, x_center + y, y_center + x, c);
+            display_screen->pixel(&this->pixel_memory, x_center - x, y_center + y, c);
+            display_screen->pixel(&this->pixel_memory, x_center - y, y_center + x, c);
+            display_screen->pixel(&this->pixel_memory, x_center + x, y_center - y, c);
+            display_screen->pixel(&this->pixel_memory, x_center + y, y_center - x, c);
+            display_screen->pixel(&this->pixel_memory, x_center - x, y_center - y, c);
+            display_screen->pixel(&this->pixel_memory, x_center - y, y_center - x, c);
         }
         else
         {
-            hline(x_center - x, y_center + y, 2 * x + 2, c);
+            hline( x_center - x, y_center + y, 2 * x + 2, c);
             hline(x_center - y, y_center + x, 2 * y + 2, c);
             hline(x_center - y, y_center - x, 2 * y + 2, c);
             hline(x_center - x, y_center - y, 2 * x + 2, c);
@@ -255,9 +205,9 @@ void Framebuffer::circle(int radius, int x_center, int y_center, bool fill, Fram
     }
 }
 
-void TextualFrameBuffer::drawChar(const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y) // TODO integrer dans l’autre draw
-{                                                                                                        // TODO voir si possible ne garder qu’un seul drawChar, et rename draw_char
-    assert(this->frame_format == FramebufferFormat::MONO_VLSB);                                          // TODO works only for MONO_VLSB devices
+void TextualFrameBuffer::drawChar( const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y) // TODO integrer dans l’autre draw
+{                                                                                                                             // TODO voir si possible ne garder qu’un seul drawChar, et rename draw_char
+    assert(display_screen->frame_format == FramebufferFormat::MONO_VLSB);                                                     // TODO works only for MONO_VLSB devices
 
     if (!font || c < 32)
         return;
@@ -274,9 +224,9 @@ void TextualFrameBuffer::drawChar(const unsigned char *font, char c, uint8_t anc
         for (uint8_t y = 0; y < font_height; y++)
         {
             if (font[seek] >> b_seek & 0b00000001)
-                this->pixel(x + anchor_x, y + anchor_y, this->frame_text_config.fg_color);
+                display_screen->pixel(&this->pixel_memory, x + anchor_x, y + anchor_y, this->frame_text_config.fg_color);
             else
-                this->pixel(x + anchor_x, y + anchor_y, this->frame_text_config.bg_color);
+                display_screen->pixel(&this->pixel_memory, x + anchor_x, y + anchor_y, this->frame_text_config.bg_color);
 
             b_seek++;
             if (b_seek == 8)
@@ -292,7 +242,7 @@ void TextualFrameBuffer::drawChar(char c, uint8_t char_column, uint8_t char_line
 {
     uint8_t anchor_x = char_column * frame_text_config.font[FONT_WIDTH_INDEX];
     uint8_t anchor_y = char_line * frame_text_config.font[FONT_HEIGHT_INDEX];
-    drawChar(this->frame_text_config.font, c, anchor_x, anchor_y);
+    drawChar( this->frame_text_config.font, c, anchor_x, anchor_y);
 }
 
 void TextualFrameBuffer::clear_line()
@@ -311,12 +261,13 @@ void TextualFrameBuffer::create_text_buffer()
     clear_text_buffer();
 }
 
-TextualFrameBuffer::TextualFrameBuffer(uint8_t number_of_column,
+TextualFrameBuffer::TextualFrameBuffer(DisplayDevice *device,
+                                       uint8_t number_of_column,
                                        uint8_t number_of_line,
                                        struct_TextFramebuffer text_cfg,
                                        struct_GraphFramebuffer graph_cfg,
                                        FramebufferFormat framebuffer_format)
-    : Framebuffer(number_of_column, number_of_line, text_cfg, graph_cfg, framebuffer_format)
+    : Framebuffer(device, number_of_column, number_of_line, text_cfg, graph_cfg)
 {
 
     this->char_width = number_of_column;
@@ -326,16 +277,17 @@ TextualFrameBuffer::TextualFrameBuffer(uint8_t number_of_column,
     create_text_buffer();
 }
 
-TextualFrameBuffer::TextualFrameBuffer(size_t frame_width,
+TextualFrameBuffer::TextualFrameBuffer(DisplayDevice *device,
+                                       size_t frame_width,
                                        size_t frame_height,
                                        FramebufferFormat frame_format,
                                        struct_TextFramebuffer text_cfg,
                                        struct_GraphFramebuffer graph_cfg)
-    : Framebuffer(frame_width, frame_height, graph_cfg, frame_format)
+    : Framebuffer(device, frame_width, frame_height, graph_cfg)
 {
     this->frame_text_config = text_cfg;
-    this->char_width = this->frame_width / this->frame_text_config.font[FONT_WIDTH_INDEX];
-    this->char_height = this->frame_height / this->frame_text_config.font[FONT_HEIGHT_INDEX];
+    this->char_width = this->pixel_memory.frame_width / this->frame_text_config.font[FONT_WIDTH_INDEX];
+    this->char_height = this->pixel_memory.frame_height / this->frame_text_config.font[FONT_HEIGHT_INDEX];
 
     create_text_buffer();
 }
@@ -360,12 +312,11 @@ void TextualFrameBuffer::clear_text_buffer()
 
 void TextualFrameBuffer::update_text_area(const unsigned char *font)
 {
-    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for SSD1306
     this->frame_text_config.font = font;
 
     // size the text area according to the available room within the frame whidth and height
-    this->char_height = this->frame_height / frame_text_config.font[FONT_HEIGHT_INDEX];
-    this->char_width = this->frame_width / frame_text_config.font[FONT_WIDTH_INDEX];
+    this->char_height = this->pixel_memory.frame_height / frame_text_config.font[FONT_HEIGHT_INDEX];
+    this->char_width = this->pixel_memory.frame_width / frame_text_config.font[FONT_WIDTH_INDEX];
 
     delete[] this->text_buffer;
     create_text_buffer();
@@ -373,14 +324,13 @@ void TextualFrameBuffer::update_text_area(const unsigned char *font)
 
 void TextualFrameBuffer::update_pixel_area(const unsigned char *font)
 {
-    assert(this->frame_format == FramebufferFormat::MONO_VLSB); // TODO works only for SSD1306
     this->frame_text_config.font = font;
     // size the pixel buffer to the required size due to character area
-    this->frame_height = this->char_height * frame_text_config.font[FONT_HEIGHT_INDEX];
-    this->frame_width = this->char_width * frame_text_config.font[FONT_WIDTH_INDEX];
+    this->pixel_memory.frame_height = this->char_height * frame_text_config.font[FONT_HEIGHT_INDEX];
+    this->pixel_memory.frame_width = this->char_width * frame_text_config.font[FONT_WIDTH_INDEX];
 
-    delete[] this->pixel_buffer;
-    create_pixel_buffer();
+    delete[] display_screen->pixel_memory.pixel_buffer;
+    display_screen->create_pixel_buffer(&this->pixel_memory);
 }
 
 void TextualFrameBuffer::print_text()
@@ -413,7 +363,7 @@ void TextualFrameBuffer::print_char(char c)
         drawChar(' ', current_char_column, current_char_line);
         break;
     case FORM_FEED:
-        clear_pixel_buffer();
+        display_screen->clear_pixel_buffer(&this->pixel_memory);
         current_char_column = 0;
         current_char_line = 0;
         break;
