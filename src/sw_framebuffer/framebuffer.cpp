@@ -16,10 +16,12 @@
 Framebuffer::Framebuffer(DisplayDevice *device,
                          size_t _frame_width,
                          size_t _frame_height,
-                         struct_GraphFramebuffer graph_cnf)
+                         FramebufferColor fg_color,
+                         FramebufferColor bg_color)
 {
     this->display_screen = device;
-    this->frame_graph_config = graph_cnf;
+    this->fg_color = fg_color;
+    this->bg_color = bg_color;
     this->pixel_memory.frame_height = _frame_height;
     this->pixel_memory.frame_width = _frame_width;
     device->create_pixel_buffer(&this->pixel_memory);
@@ -28,11 +30,11 @@ Framebuffer::Framebuffer(DisplayDevice *device,
 Framebuffer::Framebuffer(DisplayDevice *device,
                          uint8_t number_of_column, // utilisé pour heritage textualframebuffer
                          uint8_t number_of_line,
-                         struct_TextFramebuffer text_cnf,
-                         struct_GraphFramebuffer graph_cnf)
+                         struct_TextFramebuffer text_cnf)
 {
     this->display_screen = device;
-    this->frame_graph_config = graph_cnf;
+    this->fg_color = text_cnf.fg_color;
+    this->bg_color = text_cnf.bg_color;
 
     this->pixel_memory.frame_width = number_of_column * text_cnf.font[FONT_WIDTH_INDEX];
     this->pixel_memory.frame_height = number_of_line * text_cnf.font[FONT_HEIGHT_INDEX]; // TODO verifier qu'on depasse pas la taille de display. il faudrait connaitre le displaydevice !!!
@@ -43,9 +45,8 @@ Framebuffer::~Framebuffer()
 {
 }
 
-void Framebuffer::fill(struct_PixelMemory *pixel_memory,FramebufferColor c)
+void Framebuffer::fill(struct_PixelMemory *pixel_memory, FramebufferColor c)
 {
-    assert(this->display_screen->frame_format == FramebufferFormat::MONO_VLSB);
     if (c == FramebufferColor::BLACK)
         memset(pixel_memory->pixel_buffer, 0x00, pixel_memory->pixel_buffer_size);
     else
@@ -107,7 +108,7 @@ void Framebuffer::rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, boo
                 display_screen->pixel(&this->pixel_memory, start_x + i_x, start_y + i_y, c);
 }
 
-void Framebuffer::ellipse( uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, FramebufferColor c)
+void Framebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, FramebufferColor c)
 {
     int x, y, m;
     x = 0;
@@ -170,7 +171,7 @@ void Framebuffer::ellipse( uint8_t x_center, uint8_t y_center, uint8_t x_radius,
 //     this->pixel_buffer[byte_idx] ^= byte;
 // }
 
-void Framebuffer::circle( int radius, int x_center, int y_center, bool fill, FramebufferColor c)
+void Framebuffer::circle(int radius, int x_center, int y_center, bool fill, FramebufferColor c)
 {
     int x, y, m;
     x = 0;
@@ -191,7 +192,7 @@ void Framebuffer::circle( int radius, int x_center, int y_center, bool fill, Fra
         }
         else
         {
-            hline( x_center - x, y_center + y, 2 * x + 2, c);
+            hline(x_center - x, y_center + y, 2 * x + 2, c);
             hline(x_center - y, y_center + x, 2 * y + 2, c);
             hline(x_center - y, y_center - x, 2 * y + 2, c);
             hline(x_center - x, y_center - y, 2 * x + 2, c);
@@ -206,44 +207,11 @@ void Framebuffer::circle( int radius, int x_center, int y_center, bool fill, Fra
     }
 }
 
-void TextualFrameBuffer::drawChar( const unsigned char *font, char c, uint8_t anchor_x, uint8_t anchor_y) // TODO integrer dans l’autre draw
-{                                                                                                                             // TODO voir si possible ne garder qu’un seul drawChar, et rename draw_char
-    assert(display_screen->frame_format == FramebufferFormat::MONO_VLSB);                                                     // TODO works only for MONO_VLSB devices
-
-    if (!font || c < 32)
-        return;
-
-    uint8_t font_width = font[FONT_WIDTH_INDEX];
-    uint8_t font_height = font[FONT_HEIGHT_INDEX];
-
-    uint16_t seek = (c - 32) * (font_width * font_height) / 8 + 2;
-
-    uint8_t b_seek = 0;
-
-    for (uint8_t x = 0; x < font_width; x++)
-    {
-        for (uint8_t y = 0; y < font_height; y++)
-        {
-            if (font[seek] >> b_seek & 0b00000001)
-                display_screen->pixel(&this->pixel_memory, x + anchor_x, y + anchor_y, this->frame_text_config.fg_color);
-            else
-                display_screen->pixel(&this->pixel_memory, x + anchor_x, y + anchor_y, this->frame_text_config.bg_color);
-
-            b_seek++;
-            if (b_seek == 8)
-            {
-                b_seek = 0;
-                seek++;
-            }
-        }
-    }
-}
-
 void TextualFrameBuffer::drawChar(char c, uint8_t char_column, uint8_t char_line)
 {
     uint8_t anchor_x = char_column * frame_text_config.font[FONT_WIDTH_INDEX];
     uint8_t anchor_y = char_line * frame_text_config.font[FONT_HEIGHT_INDEX];
-    drawChar( this->frame_text_config.font, c, anchor_x, anchor_y);
+    display_screen->drawChar(&this->pixel_memory, &this->frame_text_config, c, anchor_x, anchor_y);
 }
 
 void TextualFrameBuffer::clear_line()
@@ -265,10 +233,8 @@ void TextualFrameBuffer::create_text_buffer()
 TextualFrameBuffer::TextualFrameBuffer(DisplayDevice *device,
                                        uint8_t number_of_column,
                                        uint8_t number_of_line,
-                                       struct_TextFramebuffer text_cfg,
-                                       struct_GraphFramebuffer graph_cfg,
-                                       FramebufferFormat framebuffer_format)
-    : Framebuffer(device, number_of_column, number_of_line, text_cfg, graph_cfg)
+                                       struct_TextFramebuffer text_cfg)
+    : Framebuffer(device, number_of_column, number_of_line, text_cfg)
 {
 
     this->char_width = number_of_column;
@@ -278,13 +244,12 @@ TextualFrameBuffer::TextualFrameBuffer(DisplayDevice *device,
     create_text_buffer();
 }
 
-TextualFrameBuffer::TextualFrameBuffer(DisplayDevice *device,
-                                       size_t frame_width,
-                                       size_t frame_height,
-                                       FramebufferFormat frame_format,
-                                       struct_TextFramebuffer text_cfg,
-                                       struct_GraphFramebuffer graph_cfg)
-    : Framebuffer(device, frame_width, frame_height, graph_cfg)
+TextualFrameBuffer::TextualFrameBuffer(
+    size_t frame_width,
+    size_t frame_height,
+    DisplayDevice *device,
+    struct_TextFramebuffer text_cfg)
+    : Framebuffer(device, frame_width, frame_height, text_cfg.fg_color, text_cfg.bg_color)
 {
     this->frame_text_config = text_cfg;
     this->char_width = this->pixel_memory.frame_width / this->frame_text_config.font[FONT_WIDTH_INDEX];

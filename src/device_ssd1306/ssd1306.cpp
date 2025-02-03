@@ -20,7 +20,7 @@ void SSD1306::send_buf(uint8_t buffer[], size_t buffer_size)
 }
 
 SSD1306::SSD1306(HW_I2C_Master *master, struct_ConfigSSD1306 init_config)
-    : DisplayDevice(SSD1306_WIDTH, SSD1306_HEIGHT, FramebufferFormat::MONO_VLSB)
+    : DisplayDevice(SSD1306_WIDTH, SSD1306_HEIGHT)
 {
     this->i2c_master = master;
     this->device_config = init_config;
@@ -146,9 +146,8 @@ void SSD1306::clear_pixel_buffer(struct_PixelMemory *pixel_memory)
     memset(pixel_memory->pixel_buffer, 0x00, pixel_memory->pixel_buffer_size);
 }
 
-void SSD1306::fill(FramebufferColor c) 
+void SSD1306::fill(FramebufferColor c)
 {
-    assert(this->frame_format == FramebufferFormat::MONO_VLSB);
     if (c == FramebufferColor::BLACK)
         memset(this->pixel_memory.pixel_buffer, 0x00, this->pixel_memory.pixel_buffer_size);
     else
@@ -184,7 +183,6 @@ void SSD1306::pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, Fr
     }
 }
 
-
 void SSD1306::show(struct_PixelMemory *pixel_memory, uint8_t anchor_x, uint8_t anchor_y)
 {
     uint8_t end_col = anchor_x + pixel_memory->frame_width - 1;
@@ -194,6 +192,37 @@ void SSD1306::show(struct_PixelMemory *pixel_memory, uint8_t anchor_x, uint8_t a
     assert(end_line <= SSD1306_HEIGHT - 1);
 
     this->show_render_area(pixel_memory->pixel_buffer, this->compute_render_area(anchor_x, end_col, anchor_y, end_line));
+}
+
+void SSD1306::drawChar(struct_PixelMemory *pixel_memory_structure, struct_TextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y)
+{
+    if (!text_config->font || c < 32) // TODO voir pour construire une classe Font
+        return;
+
+    uint8_t font_width = text_config->font[FONT_WIDTH_INDEX];
+    uint8_t font_height = text_config->font[FONT_HEIGHT_INDEX];
+
+    uint16_t seek = (c - 32) * (font_width * font_height) / 8 + 2;
+
+    uint8_t b_seek = 0;
+
+    for (uint8_t x = 0; x < font_width; x++)
+    {
+        for (uint8_t y = 0; y < font_height; y++)
+        {
+            if (text_config->font[seek] >> b_seek & 0b00000001)
+                pixel(pixel_memory_structure, x + anchor_x, y + anchor_y, text_config->fg_color);
+            else
+                pixel(pixel_memory_structure, x + anchor_x, y + anchor_y, text_config->bg_color);
+
+            b_seek++;
+            if (b_seek == 8)
+            {
+                b_seek = 0;
+                seek++;
+            }
+        }
+    }
 }
 
 void SSD1306::init_display_vertical_shift(uint8_t value)

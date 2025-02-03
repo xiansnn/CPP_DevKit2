@@ -130,7 +130,7 @@ private:
     /// @brief the SSD1306 device configuration
     struct_ConfigSSD1306 device_config;
 
-    /// @brief the master init functionthat calls all others
+    /// @brief the master init function that calls all others
     void init();
     /// @brief refer to SSD1306 data sheet for more details
     /// @param value refer to SSD1306 data shhet for more details
@@ -197,15 +197,16 @@ public:
 
     void pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, FramebufferColor c = FramebufferColor::WHITE);
 
-
     /**
-     * @brief 
-     * 
+     * @brief
+     *
      * @param pixel_memory a pointer to the struct_PixelMemory that contains the pixel_buffer to be displayed
      * @param anchor_x where we want to position (x) the frambuffer
      * @param anchor_y where we want to position (y) the frambuffer
      */
     void show(struct_PixelMemory *pixel_memory, uint8_t anchor_x, uint8_t anchor_y);
+
+    void drawChar(struct_PixelMemory *pixel_memory_structure, struct_TextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y);
 
     /**
      * @brief  when we need to show a render area with a given framebuffer
@@ -224,7 +225,8 @@ public:
      */
     void fill_pattern_and_show_GDDRAM(uint8_t pattern, struct_RenderArea area);
     /**
-     * @brief write 0x00 into the device framebuffer
+     * @brief write 0x00 directly into the device framebuffer.
+     *  Uses fill_pattern_and_show_GDDRAM command.
      *
      */
     void clear_full_screen();

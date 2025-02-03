@@ -12,12 +12,11 @@
 #include "display_device.h"
 
 DisplayDevice::DisplayDevice(size_t width,
-                             size_t height,
-                             FramebufferFormat format)
+                             size_t height)
 {
     this->pixel_memory.frame_height= height;
     this->pixel_memory.frame_width = width;
-    this->frame_format = format;
+
 }
 
 DisplayDevice::~DisplayDevice()

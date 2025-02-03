@@ -105,7 +105,7 @@ void test_full_screen_text(SSD1306 *current_display)
         .font = font_8x8,
         .wrap = true,
     };
-    TextualFrameBuffer text_frame = TextualFrameBuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, FramebufferFormat::MONO_VLSB, txt_conf);
+    TextualFrameBuffer text_frame = TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, current_display, txt_conf);
 
     text_frame.print_char(FORM_FEED); // equiv. clear full screen
     current_display->show(&text_frame.pixel_memory, 0, 0);
@@ -135,7 +135,7 @@ void test_auto_next_char(SSD1306 *current_display)
         .wrap = true,
         .auto_next_char = false};
 
-    TextualFrameBuffer *text_frame = new TextualFrameBuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, FramebufferFormat::MONO_VLSB, txt_conf);
+    TextualFrameBuffer *text_frame = new TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, current_display, txt_conf);
 
     text_frame->print_char(FORM_FEED);
 
@@ -172,7 +172,7 @@ void test_sprintf_format(SSD1306 *current_display)
         .font = font_8x8,
         .wrap = true};
 
-    TextualFrameBuffer *text_frame = new TextualFrameBuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, FramebufferFormat::MONO_VLSB, text_frame_cfg);
+    TextualFrameBuffer *text_frame = new TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, current_display, text_frame_cfg);
 
     const char *s = "Hello";
 
@@ -315,7 +315,7 @@ void test_ostringstream_format(SSD1306 *current_display)
         .font = current_font,
         .wrap = false};
 
-    TextualFrameBuffer text_frame = TextualFrameBuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, FramebufferFormat::MONO_VLSB, txt_conf);
+    TextualFrameBuffer text_frame = TextualFrameBuffer( SSD1306_WIDTH, SSD1306_HEIGHT, current_display, txt_conf);
 
     int n = 42;
     float f = std::numbers::pi;
@@ -415,8 +415,8 @@ void test_text_and_graph(SSD1306 *current_display)
         graph.circle(radius, xc, yl);
         graph.line(x0, y0, x1, y1);
         current_display->show(&graph.pixel_memory, graph_area_anchor_x, graph_area_anchor_y);
-        graph.line(x0, y0, x1, y1, graph.frame_graph_config.bg_color);
-        graph.circle(radius, xc, yl, false, graph.frame_graph_config.bg_color);
+        graph.line(x0, y0, x1, y1, graph.bg_color);
+        graph.circle(radius, xc, yl, false, graph.bg_color);
 
         sleep_ms(REFRESH_PERIOD);
     }
