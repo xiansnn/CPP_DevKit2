@@ -82,11 +82,6 @@ protected:
 
 public:
 
-    /**
-     * @brief Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0).
-     * Usefull when we have a graphic framework
-     */
-    virtual void clear_pixel_buffer(struct_PixelMemory *pixel_memory) = 0;
 
     struct_PixelMemory pixel_memory;
     /**
@@ -101,6 +96,13 @@ public:
                   size_t height);
 
     virtual ~DisplayDevice();
+
+
+    /**
+     * @brief Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0).
+     * Usefull when we have a graphic framework
+     */
+    virtual void clear_pixel_buffer(struct_PixelMemory *pixel_memory) = 0;
 
     /// @brief a common function where the pixel_buffer is created and deleted if already existing
     virtual void create_pixel_buffer(struct_PixelMemory *pixel_memory) = 0;
@@ -135,7 +137,7 @@ public:
     virtual void drawChar(struct_PixelMemory *pixel_memory_structure, struct_TextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y) = 0;
 };
 
-class TextDisplayDevice
+class TextDisplayDevice : public DisplayDevice
 {
 private:
     size_t number_of_char_width;

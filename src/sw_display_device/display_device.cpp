@@ -23,7 +23,8 @@ DisplayDevice::~DisplayDevice()
 {
 }
 
-inline TextDisplayDevice::TextDisplayDevice(size_t number_of_char_width, size_t number_of_char_height)
+TextDisplayDevice::TextDisplayDevice(size_t number_of_char_width, size_t number_of_char_height)
+    :DisplayDevice(number_of_char_width,number_of_char_height)
 {
     this->number_of_char_height = number_of_char_height;
     this->number_of_char_width = number_of_char_width;
