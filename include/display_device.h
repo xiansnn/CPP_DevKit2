@@ -70,7 +70,6 @@ struct struct_TextFramebuffer
     bool auto_next_char{true};
 };
 
-
 /**
  * @brief This is the abstract class to handle all generic behavior of physical display devices (e.g. OLED screen SSD1306).
  * It derived from Framebuffer. This allows to draw text and graphics directly into the display framebuffer
@@ -136,6 +135,21 @@ public:
     /// @param c the foreground color of the character
     /// @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
     /// @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
-    virtual void drawChar(struct_PixelMemory *pixel_memory_structure,struct_TextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y) = 0;
+    virtual void drawChar(struct_PixelMemory *pixel_memory_structure, struct_TextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y) = 0;
+};
+
+class TextDisplayDevice
+{
+private:
+    size_t number_of_char_width;
+    size_t number_of_char_height;
+    size_t text_buffer_size;
+    char *text_buffer = nullptr;
+
+public:
+    TextDisplayDevice(size_t number_of_char_width,
+                      size_t number_of_char_hight);
+    ~TextDisplayDevice();
+    virtual void print(char *text_string) = 0;
 };
 

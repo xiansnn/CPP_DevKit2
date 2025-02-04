@@ -22,3 +22,17 @@ DisplayDevice::DisplayDevice(size_t width,
 DisplayDevice::~DisplayDevice()
 {
 }
+
+inline TextDisplayDevice::TextDisplayDevice(size_t number_of_char_width, size_t number_of_char_height)
+{
+    this->number_of_char_height = number_of_char_height;
+    this->number_of_char_width = number_of_char_width;
+    this->text_buffer_size = number_of_char_width * number_of_char_height + 1;
+
+    this->text_buffer = new char[text_buffer_size];
+}
+
+TextDisplayDevice::~TextDisplayDevice()
+{
+}
+
