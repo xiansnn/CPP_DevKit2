@@ -82,6 +82,8 @@ void manager_process_control_event(UIControlEvent event);
 /// 4- create a manager connected to the rotary encoder.
 MyManager manager = MyManager(&ky040);
 
+MyLinePrinter my_serial_monitor = MyLinePrinter(100);
+
 int main()
 {
 
@@ -96,17 +98,17 @@ int main()
     MyIncrementalValueModel value_2 = MyIncrementalValueModel("val2", -20, 3, false, 1);
 
     /// 3- create 3 serial terminal widget associated with incremental value objects.
-    MyIncrementalValueWidgetOnSerialMonitor value_0_widget = MyIncrementalValueWidgetOnSerialMonitor(&value_0);
-    MyIncrementalValueWidgetOnSerialMonitor value_1_widget = MyIncrementalValueWidgetOnSerialMonitor(&value_1);
-    MyIncrementalValueWidgetOnSerialMonitor value_2_widget = MyIncrementalValueWidgetOnSerialMonitor(&value_2);
+    MyIncrementalValueWidgetOnSerialMonitor value_0_widget = MyIncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_0);
+    MyIncrementalValueWidgetOnSerialMonitor value_1_widget = MyIncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_1);
+    MyIncrementalValueWidgetOnSerialMonitor value_2_widget = MyIncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_2);
 
     ky040.update_UI_control_event_processor(manager_process_control_event);
 
     /// 5- create a widget for the manager
-    MyManagerWidget manager_widget = MyManagerWidget(&manager);
+    MyManagerWidget manager_widget = MyManagerWidget(&my_serial_monitor, &manager);
 
     /// 6- create a set of widget and populate it with all above widgets
-    MySetOfWidget set_of_widget = MySetOfWidget();
+    MySetOfWidget set_of_widget = MySetOfWidget(&my_serial_monitor);
     set_of_widget.add_widget(&manager_widget);
     set_of_widget.add_widget(&value_0_widget);
     set_of_widget.add_widget(&value_1_widget);

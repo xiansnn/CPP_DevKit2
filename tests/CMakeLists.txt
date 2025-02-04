@@ -131,6 +131,7 @@ target_link_libraries(test_ui_core
             ky040
             debug_probe
             widget
+            display_device
             framebuffer
             )
 #-------------------------------------------------------------------------------------
