@@ -63,7 +63,7 @@ private:
     /// @param fill a flag that indicates whether the ellipse is filled or not
     /// @param quadrant the quadrant of the ellipse to draw (see bresenham algorithm)
     /// @param c the filling color
-    void ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, FramebufferColor c);
+    void ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, PixelColor c);
 
 protected:
     /// @brief the display device where the attached to the frame buffer
@@ -71,8 +71,8 @@ protected:
 
 public:
     struct_PixelMemory pixel_memory;
-    FramebufferColor fg_color;
-    FramebufferColor bg_color;
+    PixelColor fg_color;
+    PixelColor bg_color;
 
     /**
      * @brief Construct a new Framebuffer object
@@ -89,8 +89,8 @@ public:
     Framebuffer(DisplayDevice *display_device,
                 size_t frame_width,
                 size_t frame_height,
-                FramebufferColor fg_color = FramebufferColor::WHITE,
-                FramebufferColor bg_color = FramebufferColor::BLACK);
+                PixelColor fg_color = PixelColor::WHITE,
+                PixelColor bg_color = PixelColor::BLACK);
 
     /**
      * @brief Construct a new Framebuffer object
@@ -115,7 +115,7 @@ public:
     /// \note: Works only for monochrome display!
     /// @param pixel_memory the location of the pixel_buffer
     /// @param c
-    void fill(struct_PixelMemory *pixel_memory, FramebufferColor c);
+    void fill(struct_PixelMemory *pixel_memory, PixelColor c);
     /**
      * @brief  Draw a c color horizontal line, starting at frame position (x,y), on w number of pixel.
      *
@@ -124,7 +124,7 @@ public:
      * @param w   length of the line in number of pixel
      * @param c   color of the line, default to WHITE
      */
-    void hline(uint8_t x, uint8_t y, size_t w, FramebufferColor c = FramebufferColor::WHITE);
+    void hline(uint8_t x, uint8_t y, size_t w, PixelColor c = PixelColor::WHITE);
     /**
      * @brief  Draw a c color vertical line, starting at frame position (x,y), on w number of pixel.
      *
@@ -133,7 +133,7 @@ public:
      * @param h   length of the line in number of pixel
      * @param c   color of the line, default to WHITE
      */
-    void vline(uint8_t x, uint8_t y, size_t h, FramebufferColor c = FramebufferColor::WHITE);
+    void vline(uint8_t x, uint8_t y, size_t h, PixelColor c = PixelColor::WHITE);
     /**
      * @brief   Draw a c color line, starting at frame position (x1,y1), ending at frame position (x2,y2)
      *
@@ -143,7 +143,7 @@ public:
      * @param y2   vertical end of line
      * @param c   color of the line, default to WHITE
      */
-    void line(int x1, int y1, int x2, int y2, FramebufferColor c = FramebufferColor::WHITE);
+    void line(int x1, int y1, int x2, int y2, PixelColor c = PixelColor::WHITE);
     /**
      * @brief   Draw a rectangle, starting at frame position (x,y), w wide and h high
      *
@@ -154,7 +154,7 @@ public:
      * @param fill if true, the rectangle is filled with color c
      * @param c color of the border of the rectangle, default to WHITE
      */
-    void rect(uint8_t x, uint8_t y, size_t w, size_t h, bool fill = false, FramebufferColor c = FramebufferColor::WHITE);
+    void rect(uint8_t x, uint8_t y, size_t w, size_t h, bool fill = false, PixelColor c = PixelColor::WHITE);
     /**
      * @brief draw a cercle of size radius, centered at (x_center, y_center)
      * https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham
@@ -189,7 +189,7 @@ public:
      * @param fill   if true, the circle is filled with color c
      * @param c   color of the border of the circle, default to WHITE
      */
-    void circle(int radius, int x_center, int y_center, bool fill = false, FramebufferColor c = FramebufferColor::WHITE);
+    void circle(int radius, int x_center, int y_center, bool fill = false, PixelColor c = PixelColor::WHITE);
 };
 
 /**

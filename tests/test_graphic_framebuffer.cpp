@@ -60,10 +60,10 @@ void test_outofframe_line(SSD1306 *display)
 
     for (int x = -10; x < 138; x++)
     {
-        FramebufferColor c = FramebufferColor::WHITE;
+        PixelColor c = PixelColor::WHITE;
         frame.line(x, y0, x1, y1, c);
         display->show(&frame.pixel_memory, 0, 0);
-        c = FramebufferColor::BLACK;
+        c = PixelColor::BLACK;
         frame.line(x, y0, x1, y1, c);
         display->show(&frame.pixel_memory, 0, 0);
     }
@@ -77,14 +77,14 @@ void test_fb_line(SSD1306 *display)
 {
     display->clear_full_screen();
     Framebuffer frame = Framebuffer(display, SSD1306_WIDTH, SSD1306_HEIGHT);
-    FramebufferColor c = FramebufferColor::BLACK;
+    PixelColor c = PixelColor::BLACK;
     struct_RenderArea full_screen_area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
     for (int i = 0; i < 2; i++)
     {
-        if (c == FramebufferColor::BLACK)
-            c = FramebufferColor::WHITE;
+        if (c == PixelColor::BLACK)
+            c = PixelColor::WHITE;
         else
-            c = FramebufferColor::BLACK;
+            c = PixelColor::BLACK;
 
         for (int x = 0; x < SSD1306_WIDTH; x++)
         {
@@ -104,20 +104,20 @@ void test_fb_line(SSD1306 *display)
     {
         for (int x = 0; x < SSD1306_WIDTH; x++)
         {
-            c = FramebufferColor::WHITE;
+            c = PixelColor::WHITE;
             frame.line(x, 0, SSD1306_WIDTH - 1 - x, SSD1306_HEIGHT - 1, c);
             display->show(& frame.pixel_memory,0,0);
-            c = FramebufferColor::BLACK;
+            c = PixelColor::BLACK;
             frame.line(x, 0, SSD1306_WIDTH - 1 - x, SSD1306_HEIGHT - 1, c);
             display->show(&frame.pixel_memory, 0, 0);
         }
 
         for (int y = SSD1306_HEIGHT - 1; y >= 0; y--)
         {
-            c = FramebufferColor::WHITE;
+            c = PixelColor::WHITE;
             frame.line(0, y, SSD1306_WIDTH - 1, SSD1306_HEIGHT - 1 - y, c);
             display->show_render_area(frame.pixel_memory.pixel_buffer , full_screen_area);
-            c = FramebufferColor::BLACK;
+            c = PixelColor::BLACK;
             frame.line(0, y, SSD1306_WIDTH - 1, SSD1306_HEIGHT - 1 - y, c);
             display->show_render_area(frame.pixel_memory.pixel_buffer, full_screen_area);
         }
@@ -204,7 +204,7 @@ void test_fb_in_fb(SSD1306 *display)
     display->clear_full_screen();
     frame.rect(0, 0, SSD1306_WIDTH, SSD1306_HEIGHT); 
     frame.rect(10, 10, 108, 44, true);               
-    frame.line(5, 60, 120, 5, FramebufferColor::BLACK);
+    frame.line(5, 60, 120, 5, PixelColor::BLACK);
     display->show(&frame.pixel_memory, 0, 0);
     sleep_ms(1000);
     uint8_t small_frame_x_anchor = 20;
@@ -212,7 +212,7 @@ void test_fb_in_fb(SSD1306 *display)
     uint8_t small_frame_width = 88;
     uint8_t small_frame_height = 25;
     Framebuffer small_frame = Framebuffer(display, small_frame_width, small_frame_height); 
-    small_frame.fill(&small_frame.pixel_memory,  FramebufferColor::BLACK);
+    small_frame.fill(&small_frame.pixel_memory,  PixelColor::BLACK);
     small_frame.line(5, 5, 80, 20); 
     small_frame.circle(8, 44, 12);
     display->show(&small_frame.pixel_memory, small_frame_x_anchor, small_frame_y_anchor);

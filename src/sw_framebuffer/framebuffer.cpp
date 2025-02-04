@@ -16,8 +16,8 @@
 Framebuffer::Framebuffer(DisplayDevice *device,
                          size_t _frame_width,
                          size_t _frame_height,
-                         FramebufferColor fg_color,
-                         FramebufferColor bg_color)
+                         PixelColor fg_color,
+                         PixelColor bg_color)
 {
     this->display_screen = device;
     this->fg_color = fg_color;
@@ -45,27 +45,27 @@ Framebuffer::~Framebuffer()
 {
 }
 
-void Framebuffer::fill(struct_PixelMemory *pixel_memory, FramebufferColor c)
+void Framebuffer::fill(struct_PixelMemory *pixel_memory, PixelColor c)
 {
-    if (c == FramebufferColor::BLACK)
+    if (c == PixelColor::BLACK)
         memset(pixel_memory->pixel_buffer, 0x00, pixel_memory->pixel_buffer_size);
     else
         memset(pixel_memory->pixel_buffer, 0xFF, pixel_memory->pixel_buffer_size);
 }
 
-void Framebuffer::hline(uint8_t x, uint8_t y, size_t w, FramebufferColor c)
+void Framebuffer::hline(uint8_t x, uint8_t y, size_t w, PixelColor c)
 {
     for (size_t i = 0; i < w; i++)
         display_screen->pixel(&this->pixel_memory, x + i, y, c);
 }
 
-void Framebuffer::vline(uint8_t x, uint8_t y, size_t h, FramebufferColor c)
+void Framebuffer::vline(uint8_t x, uint8_t y, size_t h, PixelColor c)
 {
     for (size_t i = 0; i < h; i++)
         display_screen->pixel(&this->pixel_memory, x, y + i, c);
 }
 
-void Framebuffer::line(int x0, int y0, int x1, int y1, FramebufferColor c)
+void Framebuffer::line(int x0, int y0, int x1, int y1, PixelColor c)
 {
     int dx = abs(x1 - x0);
     int sx = x0 < x1 ? 1 : -1;
@@ -93,7 +93,7 @@ void Framebuffer::line(int x0, int y0, int x1, int y1, FramebufferColor c)
     }
 }
 
-void Framebuffer::rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, bool fill, FramebufferColor c)
+void Framebuffer::rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, bool fill, PixelColor c)
 {
     if (!fill)
     {
@@ -108,7 +108,7 @@ void Framebuffer::rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, boo
                 display_screen->pixel(&this->pixel_memory, start_x + i_x, start_y + i_y, c);
 }
 
-void Framebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, FramebufferColor c)
+void Framebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, PixelColor c)
 {
     int x, y, m;
     x = 0;
@@ -171,7 +171,7 @@ void Framebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, 
 //     this->pixel_buffer[byte_idx] ^= byte;
 // }
 
-void Framebuffer::circle(int radius, int x_center, int y_center, bool fill, FramebufferColor c)
+void Framebuffer::circle(int radius, int x_center, int y_center, bool fill, PixelColor c)
 {
     int x, y, m;
     x = 0;

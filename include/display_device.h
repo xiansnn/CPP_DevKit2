@@ -8,19 +8,17 @@
  * @copyright Copyright (c) 2025
  *
  */
-#if !defined(DISPLAY_DEVICE_H)
-#define DISPLAY_DEVICE_H
+#pragma once
+
+#include "pico/stdlib.h"
 
 /// @brief index of the font width value in the <...>_font.h file
 #define FONT_WIDTH_INDEX 0
 /// @brief index of the font height value in the <...>_font.h file
 #define FONT_HEIGHT_INDEX 1
 
-
-#include "pico/stdlib.h"
-
 /// @brief define the binary value for color (limited here to monochome, can be extended later)
-enum class FramebufferColor
+enum class PixelColor
 {
     /// @brief black coded with binary value 0x0
     BLACK = 0,
@@ -57,11 +55,11 @@ struct struct_TextFramebuffer
     /**
      * @brief The foreground color, default to WHITE
      */
-    FramebufferColor fg_color{FramebufferColor::WHITE};
+    PixelColor fg_color{PixelColor::WHITE};
     /**
      * @brief The background color, defaul to BLACK
      */
-    FramebufferColor bg_color{FramebufferColor::BLACK};
+    PixelColor bg_color{PixelColor::BLACK};
     /**
      * @brief Wrap flag : if true, text wrap to the next line when end of line is reached.
      */
@@ -129,7 +127,7 @@ public:
      * @param y the y position of the pixel
      * @param c the color of the pixel
      */
-    virtual void pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, FramebufferColor c = FramebufferColor::WHITE) = 0;
+    virtual void pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, PixelColor c = PixelColor::WHITE) = 0;
 
     /// @brief a graphic primitive to draw a character at a pixel position
     /// \note NOTICE: drawChar() implementation depends strongly on the FramebufferFormat.
@@ -141,4 +139,3 @@ public:
     virtual void drawChar(struct_PixelMemory *pixel_memory_structure,struct_TextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y) = 0;
 };
 
-#endif // DISPLAY_DEVICE_H

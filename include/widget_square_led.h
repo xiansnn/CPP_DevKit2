@@ -49,8 +49,8 @@ public:
                 uint8_t widget_anchor_x,
                 uint8_t widget_anchor_y,
                 bool widget_with_border = true,
-                FramebufferColor color = FramebufferColor::WHITE,
-                FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
+                PixelColor fg_color = PixelColor::WHITE,
+                PixelColor bg_color = PixelColor::BLACK);
     ~WidgetSquareLed();
 
     /**
@@ -82,6 +82,6 @@ public:
      */
     void blink_on();
 
-    void draw_refresh();
+    virtual void draw_refresh();
 
 };

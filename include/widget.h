@@ -13,6 +13,7 @@
 #define WIDGET_H
 
 #include "display_device.h"
+#include "framebuffer.h"
 #include "ui_core.h"
 #include <vector>
 
@@ -38,7 +39,6 @@ private:
     /// @brief store the value of the previous blinking phase.should be 0 or 1.
     int8_t previous_blinking_phase;
 
-
 protected:
     /// @brief a pointer to the UIModelObject actually displayed by the widget
     UIModelObject *actual_displayed_model = nullptr;
@@ -50,11 +50,6 @@ protected:
     /// @brief The period of the blinking, in microseconds
     uint32_t blink_period_us;
 
-    /// @brief location in x of the widget within the hosting framebuffer
-    uint8_t widget_anchor_x;
-
-    /// @brief location in y of the widget within the hosting framebuffer
-    uint8_t widget_anchor_y;
 
     // /// @brief the display device where the widget is displayed
     // DisplayDevice *display_screen{nullptr};//TODO remonter dans framebuffer
@@ -83,15 +78,20 @@ protected:
      */
     uint8_t widget_start_y;
 
-    /// @brief this is the border size of the widget
-    uint8_t widget_border_width;//TODO a supprimer car toujour 1.
+    /// @brief this is the border size of the widget. 0 if no border, 1 if border
+    uint8_t widget_border_width; 
 
     /// @brief draw a rectangle around the widget.
     /// IMPORTANT NOTICE: as the border is a rectangle with fill=false, the border width can only be 1 pixel.
     /// @param c the color of the border
-    void draw_border(FramebufferColor c = FramebufferColor::WHITE);//TODO a inclure dans draw qui est dans draw_refresh
+    void draw_border(PixelColor c = PixelColor::WHITE); // TODO a inclure dans draw qui est dans draw_refresh
 
 public:
+    /// @brief location in x of the widget within the hosting framebuffer
+    uint8_t widget_anchor_x;
+
+    /// @brief location in y of the widget within the hosting framebuffer
+    uint8_t widget_anchor_y;
     /**
      * @brief Set the display screen object
      *
@@ -126,17 +126,16 @@ public:
            uint8_t widget_anchor_x,
            uint8_t widget_anchor_y,
            bool widget_with_border,
-           uint8_t widget_border_width = 1,
-           FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB
-           );
+           PixelColor fg_color = PixelColor::WHITE,
+           PixelColor bg_color = PixelColor::BLACK);
     /**
      * @brief Destroy the UIWidget object
      */
     ~Widget();
 
     /// @brief initialise the link to the UIModelObject
-    /// @param displayed_object 
-    void set_actual_displayed_object(UIModelObject* displayed_object);
+    /// @param displayed_object
+    void set_actual_displayed_object(UIModelObject *displayed_object);
     /**
      * @brief  add sub_widget to the current widget
      *

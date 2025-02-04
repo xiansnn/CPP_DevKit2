@@ -146,9 +146,9 @@ void SSD1306::clear_pixel_buffer(struct_PixelMemory *pixel_memory)
     memset(pixel_memory->pixel_buffer, 0x00, pixel_memory->pixel_buffer_size);
 }
 
-void SSD1306::fill(FramebufferColor c)
+void SSD1306::fill(PixelColor c)
 {
-    if (c == FramebufferColor::BLACK)
+    if (c == PixelColor::BLACK)
         memset(this->pixel_memory.pixel_buffer, 0x00, this->pixel_memory.pixel_buffer_size);
     else
         memset(this->pixel_memory.pixel_buffer, 0xFF, this->pixel_memory.pixel_buffer_size);
@@ -166,7 +166,7 @@ void SSD1306::create_pixel_buffer(struct_PixelMemory *pixel_memory)
     clear_pixel_buffer(pixel_memory);
 }
 
-void SSD1306::pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, FramebufferColor c)
+void SSD1306::pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, PixelColor c)
 {
     if (x >= 0 && x < pixel_memory_structure->frame_width && y >= 0 && y < pixel_memory_structure->frame_height) // avoid drawing outside the framebuffer
     {
@@ -174,7 +174,7 @@ void SSD1306::pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, Fr
         int byte_idx = (y / 8) * BytesPerRow + x;
         uint8_t byte = pixel_memory_structure->pixel_buffer[byte_idx];
 
-        if (c == FramebufferColor::WHITE)
+        if (c == PixelColor::WHITE)
             byte |= 1 << (y % 8);
         else
             byte &= ~(1 << (y % 8));

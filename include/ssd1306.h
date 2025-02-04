@@ -191,11 +191,11 @@ public:
 
     void clear_pixel_buffer(struct_PixelMemory *pixel_memory);
 
-    void fill(FramebufferColor c);
+    void fill(PixelColor c);
 
     void create_pixel_buffer(struct_PixelMemory *pixel_memory);
 
-    void pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, FramebufferColor c = FramebufferColor::WHITE);
+    void pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, PixelColor c = PixelColor::WHITE);
 
     /**
      * @brief

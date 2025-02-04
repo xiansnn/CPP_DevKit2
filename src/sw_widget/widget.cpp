@@ -11,7 +11,7 @@
 
 #include "widget.h"
 
-void Widget::draw_border(FramebufferColor c) // TODO en faire un pure virtual pour etre independant de graphic ou text
+void Widget::draw_border(PixelColor c) // TODO en faire un pure virtual pour etre independant de graphic ou text
 {
     if (this->widget_with_border)
         rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width);
@@ -23,22 +23,22 @@ Widget::Widget(DisplayDevice *_display_screen,
                uint8_t _widget_anchor_x,
                uint8_t _widget_anchor_y,
                bool _widget_with_border,
-               uint8_t _widget_border_width,
-               FramebufferFormat _framebuffer_format)
-    : Framebuffer(_frame_width, _frame_height, {}, _framebuffer_format)
+               PixelColor fg_color,
+               PixelColor bg_color)
+    : Framebuffer(_display_screen,_frame_width, _frame_height, fg_color,bg_color)
 {
     assert(_frame_height % 8 == 0);    // check widget height limitation
     assert(_widget_anchor_y % 8 == 0); // check widget anchor y limitation
-    this->display_screen = _display_screen;
+    // this->display_screen = _display_screen;
     this->widget_anchor_x = _widget_anchor_x;
     this->widget_anchor_y = _widget_anchor_y;
     this->widget_with_border = _widget_with_border;
-    this->widget_border_width = (widget_with_border) ? _widget_border_width : 0;
+    this->widget_border_width = (widget_with_border) ? 1 : 0;
 
     widget_start_x = widget_border_width;
     widget_start_y = widget_border_width;
-    widget_width = frame_width - 2 * widget_border_width;
-    widget_height = frame_height - 2 * widget_border_width;
+    widget_width =  pixel_memory.frame_width - 2 * widget_border_width;
+    widget_height = pixel_memory.frame_height - 2 * widget_border_width;
 }
 
 Widget::~Widget()
