@@ -1,12 +1,12 @@
 /**
  * @file t_square_led_widget.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-01-11
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 #include "widget_square_led.h"
 #include "t_square_led_model.cpp"
@@ -22,15 +22,14 @@ private:
 
 public:
     MyWidgetSquareLed(MySquareLedModel *actual_displayed_model,
-                           DisplayDevice *display_screen,
-                           size_t width,
-                           size_t height,
-                           uint8_t widget_anchor_x,
-                           uint8_t widget_anchor_y);
+                      DisplayDevice *display_screen,
+                      size_t width,
+                      size_t height,
+                      uint8_t widget_anchor_x,
+                      uint8_t widget_anchor_y);
     ~MyWidgetSquareLed();
     void draw_refresh();
 };
-
 
 /**
  * @brief Construct a new test square led widget::test square led widget object
@@ -43,11 +42,11 @@ public:
  * @param widget_anchor_y
  */
 MyWidgetSquareLed::MyWidgetSquareLed(MySquareLedModel *actual_displayed_model,
-                                               DisplayDevice *display_screen,
-                                               size_t width,
-                                               size_t height,
-                                               uint8_t widget_anchor_x,
-                                               uint8_t widget_anchor_y)
+                                     DisplayDevice *display_screen,
+                                     size_t width,
+                                     size_t height,
+                                     uint8_t widget_anchor_x,
+                                     uint8_t widget_anchor_y)
     : WidgetSquareLed(display_screen, width, height, widget_anchor_x, widget_anchor_y)
 {
     this->actual_displayed_model = actual_displayed_model;
@@ -78,15 +77,15 @@ void MyWidgetSquareLed::draw_refresh()
         if ((actual_displayed_model->my_bool_value) and (!led_is_on))
         {
             this->light_on();
-            rect(0, 0, frame_width, frame_height, true, FramebufferColor::WHITE);
+            rect(0, 0, pixel_memory.frame_width, pixel_memory.frame_height, true, PixelColor::WHITE);
         }
         if ((!actual_displayed_model->my_bool_value) and (led_is_on))
         {
             this->light_off();
-            rect(0, 0, frame_width, frame_height, true, FramebufferColor::BLACK);
+            rect(0, 0, pixel_memory.frame_width, pixel_memory.frame_height, true, PixelColor::BLACK);
             draw_border();
         }
-        this->display_screen->show(this, this->widget_anchor_x, this->widget_anchor_y);
+        this->display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
         this->actual_displayed_model->clear_change_flag();
     }
 }
