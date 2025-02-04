@@ -56,13 +56,13 @@ void WidgetFocusIndicator::draw_refresh()
     {
         if (this->led_is_on)
         {
-            rect(widget_start_x, widget_start_y, widget_width, widget_height, true, FramebufferColor::WHITE);
+            rect(widget_start_x, widget_start_y, widget_width, widget_height, true, PixelColor::WHITE);
         }
         else
         {
-            rect(widget_start_x, widget_start_y, widget_width, widget_height, true, FramebufferColor::BLACK);
+            rect(widget_start_x, widget_start_y, widget_width, widget_height, true, PixelColor::BLACK);
         }
-        this->display_screen->show(this, this->widget_anchor_x, this->widget_anchor_y);
+        this->display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
         // this->actual_displayed_model->clear_change_flag(); // if the last widget must clear the model change flag
     }
 }

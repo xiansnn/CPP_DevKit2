@@ -109,8 +109,8 @@ public:
                              uint8_t widget_anchor_y,
                              bool widget_with_border,
                              uint8_t bar_spacing = 1,
-                             uint8_t widget_border_width = 1,
-                             FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
+                             PixelColor fg_color = PixelColor::WHITE,
+                             PixelColor bg_color = PixelColor::BLACK);
     /**
      * @brief Destroy the Widget Horizontal Bargraph object
      * 
@@ -173,8 +173,8 @@ public:
                              uint8_t widget_anchor_y,
                              bool widget_with_border,
                              uint8_t bar_spacing = 1,
-                             uint8_t widget_border_width = 1,
-                             FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
+                             PixelColor fg_color = PixelColor::WHITE,
+                             PixelColor bg_color = PixelColor::BLACK);
     ~WidgetVerticalBargraph();
     void draw_refresh();
 };

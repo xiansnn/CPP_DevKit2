@@ -11,7 +11,7 @@
 
 #include "widget_text.h"
 
-void WidgetText::draw_border(FramebufferColor c)
+void WidgetText::draw_border(PixelColor c)
 {
     if (this->widget_with_border)
         rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width);
@@ -34,25 +34,23 @@ WidgetText::WidgetText(UIModelObject *_text_model,
                        uint8_t _number_of_line,
                        uint8_t _widget_anchor_x,
                        uint8_t _widget_anchor_y,
-                       bool _widget_with_border,
-                       uint8_t _widget_border_width,
-                       FramebufferFormat _framebuffer_format)
-    : TextualFrameBuffer(_number_of_column, _number_of_line, _framebuffer_txt_cnf)
+                       bool _widget_with_border)
+    : TextualFrameBuffer(_display_screen, _number_of_column, _number_of_line, _framebuffer_txt_cnf)
 {
-    assert(this->frame_height % 8 == 0); // check widget height limitation
-    assert(_widget_anchor_y % 8 == 0);   // check widget anchor y limitation
+    assert(this->pixel_memory.frame_height % 8 == 0); // check widget height limitation
+    assert(_widget_anchor_y % 8 == 0);                // check widget anchor y limitation
     this->display_screen = _display_screen;
     this->actual_displayed_model = _text_model;
 
     this->widget_anchor_x = _widget_anchor_x;
     this->widget_anchor_y = _widget_anchor_y;
     this->widget_with_border = _widget_with_border;
-    this->widget_border_width = (_widget_with_border) ? _widget_border_width : 0;
+    this->widget_border_width = (_widget_with_border) ? 1 : 0;
 
     widget_start_x = this->widget_border_width;
     widget_start_y = this->widget_border_width;
-    widget_width = frame_width - 2 * this->widget_border_width;
-    widget_height = frame_height - 2 * this->widget_border_width;
+    widget_width = pixel_memory.frame_width - 2 * this->widget_border_width;
+    widget_height = pixel_memory.frame_height - 2 * this->widget_border_width;
 }
 
 WidgetText::~WidgetText()
@@ -79,7 +77,7 @@ void WidgetText::draw_refresh()
     {
         this->print_text(this->text_buffer);
         this->draw_border();
-        this->display_screen->show(this, this->widget_anchor_x, this->widget_anchor_y);
+        this->display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
     }
     this->actual_displayed_model->clear_change_flag();
 }

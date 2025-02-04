@@ -64,35 +64,35 @@ void test_font_size(SSD1306 *current_display)
 
     std::string test_string = "Test";
 
-    TextualFrameBuffer *font_text_on_screen_0 = new TextualFrameBuffer(test_string.size(), 1, {.font = current_font[0]});
+    TextualFrameBuffer *font_text_on_screen_0 = new TextualFrameBuffer(current_display, test_string.size(), 1, {.font = current_font[0]});
 
     sprintf(font_text_on_screen_0->text_buffer, test_string.c_str());
     font_text_on_screen_0->print_text();
-    current_display->show(font_text_on_screen_0, current_x_anchor, current_y_anchor);
+    current_display->show(&font_text_on_screen_0->pixel_memory, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_0;
 
-    TextualFrameBuffer *font_text_on_screen_1 = new TextualFrameBuffer(test_string.size(), 1, {.font = current_font[1]});
+    TextualFrameBuffer *font_text_on_screen_1 = new TextualFrameBuffer(current_display, test_string.size(), 1, {.font = current_font[1]});
     current_x_anchor = 64;
     current_y_anchor = 8;
     sprintf(font_text_on_screen_1->text_buffer, test_string.c_str());
     font_text_on_screen_1->print_text();
-    current_display->show(font_text_on_screen_1, current_x_anchor, current_y_anchor);
+    current_display->show(&font_text_on_screen_1->pixel_memory, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_1;
 
-    TextualFrameBuffer *font_text_on_screen_2 = new TextualFrameBuffer(test_string.size(), 1, {});
+    TextualFrameBuffer *font_text_on_screen_2 = new TextualFrameBuffer(current_display, test_string.size(), 1, {});
     font_text_on_screen_2->update_pixel_area(current_font[2]);
     current_x_anchor = 0;
     current_y_anchor = 16;
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->print_text();
-    current_display->show(font_text_on_screen_2, current_x_anchor, current_y_anchor);
+    current_display->show(&font_text_on_screen_2->pixel_memory, current_x_anchor, current_y_anchor);
 
     font_text_on_screen_2->update_pixel_area(current_font[3]);
     current_x_anchor = 64;
     current_y_anchor = 32;
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->print_text();
-    current_display->show(font_text_on_screen_2, current_x_anchor, current_y_anchor);
+    current_display->show(&font_text_on_screen_2->pixel_memory, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_2;
 
     sleep_ms(INTER_TEST_DELAY);
@@ -105,10 +105,10 @@ void test_full_screen_text(SSD1306 *current_display)
         .font = font_8x8,
         .wrap = true,
     };
-    TextualFrameBuffer text_frame = TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, FramebufferFormat::MONO_VLSB, txt_conf);
+    TextualFrameBuffer text_frame = TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, current_display, txt_conf);
 
     text_frame.print_char(FORM_FEED); // equiv. clear full screen
-    current_display->show(&text_frame, 0, 0);
+    current_display->show(&text_frame.pixel_memory, 0, 0);
     uint16_t nb = text_frame.char_height * text_frame.char_width;
 
     uint16_t n{0};
@@ -116,7 +116,7 @@ void test_full_screen_text(SSD1306 *current_display)
     {
         n++;
         text_frame.print_char(c);
-        current_display->show(&text_frame, 0, 0);
+        current_display->show(&text_frame.pixel_memory, 0, 0);
         if (n == nb)
         {
             sleep_ms(500);
@@ -135,7 +135,7 @@ void test_auto_next_char(SSD1306 *current_display)
         .wrap = true,
         .auto_next_char = false};
 
-    TextualFrameBuffer *text_frame = new TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, FramebufferFormat::MONO_VLSB, txt_conf);
+    TextualFrameBuffer *text_frame = new TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, current_display, txt_conf);
 
     text_frame->print_char(FORM_FEED);
 
@@ -144,7 +144,7 @@ void test_auto_next_char(SSD1306 *current_display)
     {
         n++;
         text_frame->print_char(c);
-        current_display->show(text_frame, 0, 0);
+        current_display->show(&text_frame->pixel_memory, 0, 0);
         if (n % 5 == 0)
         {
             text_frame->next_char();
@@ -172,37 +172,37 @@ void test_sprintf_format(SSD1306 *current_display)
         .font = font_8x8,
         .wrap = true};
 
-    TextualFrameBuffer *text_frame = new TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, FramebufferFormat::MONO_VLSB, text_frame_cfg);
+    TextualFrameBuffer *text_frame = new TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, current_display, text_frame_cfg);
 
     const char *s = "Hello";
 
     text_frame->print_text("Strings:\n\tpadding:\n");
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
 
     sprintf(text_frame->text_buffer, "\t[%7s]\n", s);
     text_frame->print_text();
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
     sprintf(text_frame->text_buffer, "\t[%-7s]\n", s);
     text_frame->print_text();
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
     sprintf(text_frame->text_buffer, "\t[%*s]\n", 7, s);
     text_frame->print_text();
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
     text_frame->print_text("\ttruncating:\n");
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
     sprintf(text_frame->text_buffer, "\t%.4s\n", s);
     text_frame->print_text();
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
     sprintf(text_frame->text_buffer, "\t\t%.*s\n", 3, s);
     text_frame->print_text();
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
     sleep_ms(LONG_DELAY);
 
     current_display->clear_full_screen();
     text_frame->clear_text_buffer();
     sprintf(text_frame->text_buffer, "Characters: %c %%", 'A');
     text_frame->print_text();
-    current_display->show();
+    current_display->show(&text_frame->pixel_memory, 0, 0);
     sleep_ms(LONG_DELAY);
 
     current_display->clear_full_screen();
@@ -223,7 +223,7 @@ void test_sprintf_format(SSD1306 *current_display)
     text_frame->print_text();
     sprintf(text_frame->text_buffer, "\tSci:  %.3E %.1e\n", 1.5, 1.5);
     text_frame->print_text();
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
     sleep_ms(LONG_DELAY);
 
     current_display->clear_full_screen();
@@ -236,33 +236,33 @@ void test_sprintf_format(SSD1306 *current_display)
     text_frame->print_text("@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_");   // ca 1000us -> 2000us
     text_frame->print_text("`abcdefghijklmnopqrstuvwxyz{|}~\x7F"); // ca 1000us-> 2000us
     text_frame->print_text("1234567890\n");                        // ca 400us -> 800us
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
     sleep_ms(DELAY);
 
     text_frame->print_char(FORM_FEED);
 
     text_frame->print_text("\t1TAB\n"); // ca 400us -> 800us
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
     sleep_ms(DELAY);
 
     text_frame->print_text("\t\t2TAB\n"); // ca 400us -> 800us
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
     sleep_ms(DELAY);
 
     text_frame->print_text("\t\t\t3TAB\n"); // ca 400us -> 800us
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
     sleep_ms(DELAY);
 
     text_frame->print_text("\t\t\t\t4TAB\n"); // ca 400us -> 800us
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
     sleep_ms(DELAY);
 
     text_frame->print_text("\t\t\t\t\t5TAB\n"); // ca 400us -> 800us
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
     sleep_ms(DELAY);
 
     text_frame->print_text("\t1TAB\t\t\t3TAB\n"); // ca 400us -> 800us
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
 
     sleep_ms(LONG_DELAY);
     text_frame->print_char(FORM_FEED);
@@ -270,7 +270,7 @@ void test_sprintf_format(SSD1306 *current_display)
     text_frame->update_text_area(font_16x32);
     text_frame->print_text(" 15:06 \n");
     text_frame->print_text("03/01/24");
-    current_display->show(text_frame, 0, 0);
+    current_display->show(&text_frame->pixel_memory, 0, 0);
 
     sleep_ms(LONG_DELAY);
 
@@ -280,11 +280,11 @@ void test_sprintf_format(SSD1306 *current_display)
     text_frame_cfg = {
         .font = font_12x16,
         .wrap = true};
-    TextualFrameBuffer *text_frame2 = new TextualFrameBuffer(7, 2, text_frame_cfg);
+    TextualFrameBuffer *text_frame2 = new TextualFrameBuffer(current_display, 7, 2, text_frame_cfg);
 
     text_frame2->print_text(" 090\b:56\n"); // test effect of BACKSPACE
     text_frame2->print_text("03JAN24");
-    current_display->show(text_frame2, 22, 16);
+    current_display->show(&text_frame2->pixel_memory, 22, 16);
     delete text_frame2;
 
     sleep_ms(INTER_TEST_DELAY);
@@ -315,7 +315,7 @@ void test_ostringstream_format(SSD1306 *current_display)
         .font = current_font,
         .wrap = false};
 
-    TextualFrameBuffer text_frame = TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, FramebufferFormat::MONO_VLSB, txt_conf);
+    TextualFrameBuffer text_frame = TextualFrameBuffer( SSD1306_WIDTH, SSD1306_HEIGHT, current_display, txt_conf);
 
     int n = 42;
     float f = std::numbers::pi;
@@ -330,19 +330,19 @@ void test_ostringstream_format(SSD1306 *current_display)
     stream0 << std::left << std::setw(6) << "test" << std::endl;
     text_frame.print_text(stream0.str().c_str());
 
-    current_display->show(&text_frame, 0, 0);
+    current_display->show(&text_frame.pixel_memory, 0, 0);
     sleep_ms(DELAY);
 
     stream1 << std::setw(5) << std::dec << n << "|" << std::setw(5)
             << std::showbase << std::hex << n << "|" << std::showbase << std::setw(5) << std::oct << n << std::endl;
     text_frame.print_text(stream1.str().c_str());
-    current_display->show(&text_frame, 0, 0);
+    current_display->show(&text_frame.pixel_memory, 0, 0);
 
     sleep_ms(DELAY);
 
     stream2 << "PI = " << std::left << f << std::endl;
     text_frame.print_text(stream2.str().c_str());
-    current_display->show(&text_frame, 0, 0);
+    current_display->show(&text_frame.pixel_memory, 0, 0);
 
     sleep_ms(INTER_TEST_DELAY);
     current_display->clear_full_screen();
@@ -363,9 +363,9 @@ void test_text_and_graph(SSD1306 *current_display)
     int title_area_anchor_x = 0;
     int title_area_anchor_y = h * 6;
 
-    TextualFrameBuffer title = TextualFrameBuffer(title_char_width, title_char_height, title_config);
+    TextualFrameBuffer title = TextualFrameBuffer(current_display, title_char_width, title_char_height, title_config);
     title.print_text("ROLL:\nPITCH:");
-    current_display->show(&title, title_area_anchor_x, title_area_anchor_y);
+    current_display->show(&title.pixel_memory, title_area_anchor_x, title_area_anchor_y);
 
     // draw values
     int values_area_anchor_x = w * 8;
@@ -374,7 +374,7 @@ void test_text_and_graph(SSD1306 *current_display)
     int values_char_height = 2;
 
     title_config.font = font_8x8;
-    TextualFrameBuffer values = TextualFrameBuffer(values_char_width, values_char_height, title_config);
+    TextualFrameBuffer values = TextualFrameBuffer(current_display, values_char_width, values_char_height, title_config);
     values.print_char(FORM_FEED);
 
     // draw graph
@@ -383,10 +383,10 @@ void test_text_and_graph(SSD1306 *current_display)
     int graph_area_width = w * 12;
     int graph_area_height = h * 5;
 
-    Framebuffer graph = Framebuffer(graph_area_width, graph_area_height);
-    graph.clear_pixel_buffer();
+    Framebuffer graph = Framebuffer(current_display, graph_area_width, graph_area_height);
+    current_display->clear_pixel_buffer(&graph.pixel_memory);
 
-    current_display->show(&graph, graph_area_anchor_x, graph_area_anchor_y);
+    current_display->show(&graph.pixel_memory, graph_area_anchor_x, graph_area_anchor_y);
 
     int roll, pitch;
 
@@ -397,7 +397,7 @@ void test_text_and_graph(SSD1306 *current_display)
         pitch = i / 3;
         sprintf(values.text_buffer, "%+3d \xF8\n%+3d \xF8", roll, pitch);
         values.print_text();
-        current_display->show(&values, values_area_anchor_x, values_area_anchor_y);
+        current_display->show(&values.pixel_memory, values_area_anchor_x, values_area_anchor_y);
         values.print_char(FORM_FEED);
 
         // compute and show the graphic representation
@@ -414,9 +414,9 @@ void test_text_and_graph(SSD1306 *current_display)
         graph.rect(0, 0, graph_area_width, graph_area_height); // point coordinates are relative to the local frame
         graph.circle(radius, xc, yl);
         graph.line(x0, y0, x1, y1);
-        current_display->show(&graph, graph_area_anchor_x, graph_area_anchor_y);
-        graph.line(x0, y0, x1, y1, graph.frame_graph_config.bg_color);
-        graph.circle(radius, xc, yl, false, graph.frame_graph_config.bg_color);
+        current_display->show(&graph.pixel_memory, graph_area_anchor_x, graph_area_anchor_y);
+        graph.line(x0, y0, x1, y1, graph.bg_color);
+        graph.circle(radius, xc, yl, false, graph.bg_color);
 
         sleep_ms(REFRESH_PERIOD);
     }

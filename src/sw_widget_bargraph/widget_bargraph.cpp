@@ -28,7 +28,7 @@ void WidgetHorizontalBargraph::draw()
 void WidgetHorizontalBargraph::draw_bar(uint8_t bin_index)
 {
     uint8_t bar_start_y = widget_start_y + bar_spacing + bin_index * (bar_height + bar_spacing);
-    rect(widget_start_x, bar_start_y, widget_width, bar_height, true, FramebufferColor::BLACK); // erase the bar area
+    rect(widget_start_x, bar_start_y, widget_width, bar_height, true, PixelColor::BLACK); // erase the bar area
 
     uint8_t px = convert_level_value_to_px(((ModelBargraph *)this->actual_displayed_model)->values[bin_index]);
     uint16_t p0 = convert_level_value_to_px(0);
@@ -60,7 +60,7 @@ void WidgetHorizontalBargraph::draw_refresh()
     {
         this->draw();
         this->draw_border();
-        this->display_screen->show(this, this->widget_anchor_x, this->widget_anchor_y);
+        this->display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
     }
     this->actual_displayed_model->clear_change_flag();
 }
@@ -71,9 +71,9 @@ WidgetHorizontalBargraph::WidgetHorizontalBargraph(ModelBargraph *bargraph_model
                                                    uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                                    bool widget_with_border,
                                                    uint8_t _bar_spacing,
-                                                   uint8_t widget_border_width,
-                                                   FramebufferFormat framebuffer_format)
-    : Widget(display_screen, frame_width, frame_height, widget_anchor_x, widget_anchor_y, widget_with_border, widget_border_width, framebuffer_format)
+                                                   PixelColor fg_color,
+                                                   PixelColor bg_color)
+    : Widget(display_screen, frame_width, frame_height, widget_anchor_x, widget_anchor_y, widget_with_border, fg_color, bg_color)
 {
     set_actual_displayed_object(bargraph_model);
     this->bar_spacing = _bar_spacing;
@@ -132,7 +132,7 @@ void WidgetVerticalBargraph::draw()
 void WidgetVerticalBargraph::draw_bar(uint8_t bin_index)
 {
     uint8_t bar_start_x = widget_start_x + bar_spacing + bin_index * (bar_width + bar_spacing);
-    rect(bar_start_x, widget_start_y, widget_width, bar_height, true, FramebufferColor::BLACK); // erase the bar area
+    rect(bar_start_x, widget_start_y, widget_width, bar_height, true, PixelColor::BLACK); // erase the bar area
 
     uint8_t py = convert_level_value_to_py(((ModelBargraph *)this->actual_displayed_model)->values[bin_index]);
     uint16_t p0 = convert_level_value_to_py(0);
@@ -161,9 +161,10 @@ WidgetVerticalBargraph::WidgetVerticalBargraph(ModelBargraph *bargraph_model,
                                                size_t frame_width, size_t frame_height,
                                                uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                                bool widget_with_border,
-                                               uint8_t _bar_spacing, uint8_t widget_border_width,
-                                               FramebufferFormat framebuffer_format)
-    : Widget(display_screen, frame_width, frame_height, widget_anchor_x, widget_anchor_y, widget_with_border, widget_border_width, framebuffer_format)
+                                               uint8_t _bar_spacing,
+                                               PixelColor fg_color,
+                                               PixelColor bg_color)
+    : Widget(display_screen, frame_width, frame_height, widget_anchor_x, widget_anchor_y, widget_with_border, fg_color,bg_color)
 {
     set_actual_displayed_object(bargraph_model);
     this->bar_spacing = _bar_spacing;
@@ -195,7 +196,7 @@ void WidgetVerticalBargraph::draw_refresh()
     {
         this->draw();
         this->draw_border();
-        this->display_screen->show(this, this->widget_anchor_x, this->widget_anchor_y);
+        this->display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
     }
     this->actual_displayed_model->clear_change_flag();
 }
