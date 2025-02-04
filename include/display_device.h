@@ -79,8 +79,14 @@ struct struct_TextFramebuffer
 class DisplayDevice
 {
 protected:
+
 public:
-    // FramebufferFormat frame_format;
+
+    /**
+     * @brief Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0).
+     * Usefull when we have a graphic framework
+     */
+    virtual void clear_pixel_buffer(struct_PixelMemory *pixel_memory) = 0;
 
     struct_PixelMemory pixel_memory;
     /**
@@ -94,16 +100,7 @@ public:
     DisplayDevice(size_t width,
                   size_t height);
 
-    /**
-     * @brief Destroy the UIDisplayDevice object
-     *
-     */
     virtual ~DisplayDevice();
-
-    /**
-     * @brief Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0).
-     */
-    virtual void clear_pixel_buffer(struct_PixelMemory *pixel_memory) = 0;
 
     /// @brief a common function where the pixel_buffer is created and deleted if already existing
     virtual void create_pixel_buffer(struct_PixelMemory *pixel_memory) = 0;
@@ -152,4 +149,3 @@ public:
     ~TextDisplayDevice();
     virtual void print(char *text_string) = 0;
 };
-

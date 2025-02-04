@@ -112,9 +112,9 @@ int main()
 
     SSD1306 display = SSD1306(&master, cfg_ssd1306);
     pr_D5.hi();
-    display.clear_pixel_buffer();
+    display.clear_full_screen();
 
-    display.show();
+    // display.show();
     pr_D5.lo();
 
     MySquareLedModel test_model_1 = MySquareLedModel("TM1");

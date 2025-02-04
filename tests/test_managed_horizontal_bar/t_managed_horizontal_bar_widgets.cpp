@@ -32,11 +32,7 @@ public:
                                    DisplayDevice *display_screen,
                                    int max_value, int min_value,
                                    size_t frame_width, size_t frame_height,
-                                   uint8_t widget_anchor_x, uint8_t widget_anchor_y,
-                                   bool widget_with_border = true,
-                                   uint8_t widget_border_width = 1,
-                                   PixelColor color = PixelColor::WHITE,
-                                   FramebufferFormat framebuffer_format = FramebufferFormat::MONO_VLSB);
+                                   uint8_t widget_anchor_x, uint8_t widget_anchor_y);
     ~MyHorizontalBarWidgetWithFocus();
     void draw_refresh();
 };
@@ -45,11 +41,7 @@ MyHorizontalBarWidgetWithFocus::MyHorizontalBarWidgetWithFocus(MyHorizontalBarMo
                                                                DisplayDevice *display_screen,
                                                                int max_value, int min_value,
                                                                size_t frame_width, size_t frame_height,
-                                                               uint8_t widget_anchor_x, uint8_t widget_anchor_y,
-                                                               bool widget_with_border,
-                                                               uint8_t widget_border_width,
-                                                               PixelColor color,
-                                                               FramebufferFormat framebuffer_format)
+                                                               uint8_t widget_anchor_x, uint8_t widget_anchor_y )
     : Widget(display_screen, frame_width, frame_height, widget_anchor_x, widget_anchor_y, false)
 
 {
@@ -58,11 +50,7 @@ MyHorizontalBarWidgetWithFocus::MyHorizontalBarWidgetWithFocus(MyHorizontalBarMo
                                                  display_screen,
                                                  max_value, min_value,
                                                  frame_width - 8, frame_height,
-                                                 widget_anchor_x + 8, widget_anchor_y,
-                                                 widget_with_border,
-                                                 widget_border_width,
-                                                 color,
-                                                 framebuffer_format);
+                                                 widget_anchor_x + 8, widget_anchor_y);
     this->focus_widget = new WidgetFocusIndicator(bar_value_model, display_screen,
                                                   5, frame_height,
                                                   widget_anchor_x, widget_anchor_y, false);

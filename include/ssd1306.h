@@ -171,8 +171,9 @@ private:
     void send_buf(uint8_t buf[], size_t buflen);
 
 public:
+    void clear_pixel_buffer(struct_PixelMemory *pixel_memory);
     /**
-     * @brief Construct a new SSD1306 object
+     * @brief
      *
      * @param master the I2C master interface driver HW_I2C_Master
      * @param device_config the configuration according to struct_ConfigSSD1306
@@ -188,8 +189,6 @@ public:
      * @return struct_RenderArea
      */
     static struct_RenderArea compute_render_area(uint8_t start_col, uint8_t end_col, uint8_t start_line, uint8_t end_line);
-
-    void clear_pixel_buffer(struct_PixelMemory *pixel_memory);
 
     void fill(PixelColor c);
 
@@ -229,7 +228,7 @@ public:
      *  Uses fill_pattern_and_show_GDDRAM command.
      *
      */
-    void clear_full_screen();//TODO porter dans display device pure virtual
+    void clear_full_screen(); 
     /**
      * @brief Set the contrast object. refer to datasheet of SSD1306 device.
      *

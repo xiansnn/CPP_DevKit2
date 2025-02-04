@@ -92,7 +92,8 @@ public:
                                size_t height,
                                uint8_t widget_anchor_x,
                                uint8_t widget_anchor_y,
-                               PixelColor fg_color, PixelColor bg_color);
+                               PixelColor fg_color = PixelColor::WHITE, 
+                               PixelColor bg_color = PixelColor::BLACK);
     ~MySquareLEDWidgetWithFocus();
     void draw_refresh();
 };
