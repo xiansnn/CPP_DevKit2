@@ -25,7 +25,7 @@ Probe pr_D5 = Probe(5);
 Probe pr_D6 = Probe(6);
 Probe pr_D7 = Probe(7);
 
-#define REFRESH_PERIOD 50
+#define REFRESH_PERIOD 20
 
 #define DEGREE \xF8
 
@@ -62,55 +62,60 @@ int main()
     values_display.clear_full_screen();
     visu_display.clear_full_screen();
 
+    struct_TextFramebufferConfig title_config = {
+        .font = font_12x16};
+    uint8_t w = title_config.font[FONT_WIDTH_INDEX];
+    uint8_t h = title_config.font[FONT_HEIGHT_INDEX];
+    int title_char_width = 10;
+    int title_char_height = 1;
+    int title_area_anchor_x = 0;
+    int title_area_anchor_y = h * 0;
+
+    struct_TextFramebufferConfig values_config = {
+        .font = font_12x16};
+    int values_char_width = 10;
+    int values_char_height = 1;
+    int values_area_anchor_x = w * 0;
+    int values_area_anchor_y = h * 2;
+
+    int graph_area_anchor_x = 0;
+    int graph_area_anchor_y = 0;
+    int graph_area_width = 120;
+    int graph_area_height = 60;
+    int roll, pitch;
+
     while (true)
     {
-        struct_TextFramebuffer title_config = {
-            .font = font_12x16};
-
-        uint8_t w = title_config.font[FONT_WIDTH_INDEX];
-        uint8_t h = title_config.font[FONT_HEIGHT_INDEX];
-
-        int title_char_width = 10;
-        int title_char_height = 1;
-        int title_area_anchor_x = 0;
-        int title_area_anchor_y = h * 0;
-
+        pr_D4.hi();
         TextualFrameBuffer title = TextualFrameBuffer(&values_display, title_char_width, title_char_height, title_config);
         title.print_text("ROLL PITCH");
         values_display.show(&title.pixel_memory, title_area_anchor_x, title_area_anchor_y);
+        pr_D4.lo();//9ms
 
         // draw values
-        int values_char_width = 10;
-        int values_char_height = 1;
-        int values_area_anchor_x = w * 0;
-        int values_area_anchor_y = h * 2;
 
-        title_config.font = font_12x16;
-        TextualFrameBuffer values = TextualFrameBuffer(&values_display, values_char_width, values_char_height, title_config);
+        TextualFrameBuffer values = TextualFrameBuffer(&values_display, values_char_width, values_char_height, values_config);
         values.print_char(FORM_FEED);
 
         // draw graph
-        int graph_area_anchor_x = 0;
-        int graph_area_anchor_y = 0;
-        int graph_area_width = 120;
-        int graph_area_height = 60;
 
         GraphicFramebuffer graph = GraphicFramebuffer(&visu_display, graph_area_width, graph_area_height);
         visu_display.clear_pixel_buffer(&graph.pixel_memory);
-
+        pr_D5.hi();
         visu_display.show(&graph.pixel_memory, graph_area_anchor_x, graph_area_anchor_y);
-
-        int roll, pitch;
+        pr_D5.lo();//24ms
 
         for (int i = -90; i < 90; i++)
         {
             // compute and show values
+            pr_D6.hi();
             roll = i;
             pitch = i / 3;
             sprintf(values.text_buffer, "%+3d\xF8  %+3d\xF8", roll, pitch);
             values.print_text();
             values_display.show(&values.pixel_memory, values_area_anchor_x, values_area_anchor_y);
             values.print_char(FORM_FEED);
+            pr_D6.lo();//9ms
 
             // compute and show the graphic representation
             float xc = graph_area_width / 2;
@@ -123,17 +128,18 @@ int main()
             int y0 = yl - radius * sin_roll;
             int x1 = xc + radius * cos_roll;
             int y1 = yl + radius * sin_roll;
+
+            pr_D7.hi();
             graph.rect(0, 0, graph_area_width, graph_area_height); // point coordinates are relative to the local frame
             graph.circle(radius, xc, yl);
             graph.line(x0, y0, x1, y1);
             visu_display.show(&graph.pixel_memory, graph_area_anchor_x, graph_area_anchor_y);
             graph.line(x0, y0, x1, y1, graph.bg_color);
             graph.circle(radius, xc, yl, false, graph.bg_color);
+            pr_D7.lo();//24ms
 
             sleep_ms(REFRESH_PERIOD);
         }
-
-        sleep_ms(REFRESH_PERIOD);
 
         values_display.clear_full_screen();
         visu_display.clear_full_screen();

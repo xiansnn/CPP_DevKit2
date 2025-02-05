@@ -68,7 +68,7 @@ private:
 
 protected:
     /// @brief the display device where the attached to the frame buffer
-    GraphicDisplayDevice *display_screen{nullptr};
+    DisplayDevice *display_screen{nullptr};
 
 public:
     /// @brief the dtat structure that contains the actual pixel buffer, created by the display device.
@@ -89,11 +89,20 @@ public:
      * @param bg_color the background color of the graphic frame
      * \image html framebuffer.png
      */
-    GraphicFramebuffer(GraphicDisplayDevice *display_device,
-                       size_t frame_width,
-                       size_t frame_height,
-                       PixelColor fg_color = PixelColor::WHITE,
-                       PixelColor bg_color = PixelColor::BLACK);
+    GraphicFramebuffer(DisplayDevice *display_device,
+                       //    size_t frame_width,
+                       //    size_t frame_height,
+                       //    PixelColor fg_color = PixelColor::WHITE,
+                       //    PixelColor bg_color = PixelColor::BLACK
+                       struct_GraphicFramebufferConfig graph_cfg);
+    
+    
+    GraphicFramebuffer(DisplayDevice *display_device,
+                          size_t frame_width,
+                          size_t frame_height,
+                       //    PixelColor fg_color = PixelColor::WHITE,
+                       //    PixelColor bg_color = PixelColor::BLACK
+                       struct_TextFramebufferConfig text_cfg);
 
     /**
      * @brief Construct a new Graphic Framebuffer object.
@@ -104,9 +113,9 @@ public:
      * @param text_cfg the configuration file of the textual frame
      */
     GraphicFramebuffer(GraphicDisplayDevice *display_device,
-                       uint8_t number_of_column,
-                       uint8_t number_of_line,
-                       struct_TextFramebuffer text_cfg);
+                       //    uint8_t number_of_column,
+                       //    uint8_t number_of_line,
+                       struct_TextFramebufferConfig text_cfg);
 
     /**
      * @brief Destroy the GraphicFramebuffer object
@@ -209,7 +218,32 @@ private:
     uint8_t current_char_column{0};
 
     /// @brief the configuration of the text buffer
-    struct_TextFramebuffer frame_text_config{};
+    struct_TextFramebufferConfig frame_text_config{};
+    /**
+     * @brief The font used. Current font are defined according to IBM CP437. The font files are derived from https://github.com/Harbys/pico-ssd1306 works.
+     * They come is size 5x8, 8x8, 12x16 and 16x32.
+     */
+    const unsigned char *font{nullptr};
+    /**
+     * @brief  The number of space that ASCII character HT (aka TAB , "\t", 0x9) generates, default to 2
+     */
+    uint8_t tab_size{2};
+    /**
+     * @brief The foreground color, default to WHITE
+     */
+    PixelColor fg_color{PixelColor::WHITE};
+    /**
+     * @brief The background color, defaul to BLACK
+     */
+    PixelColor bg_color{PixelColor::BLACK};
+    /**
+     * @brief Wrap flag : if true, text wrap to the next line when end of line is reached.
+     */
+    bool wrap{true};
+    /**
+     * @brief auto_next_char flag : if true each char steps one position after being written.
+     */
+    bool auto_next_char{true};
 
     /// @brief a graphic primitive to draw a character at a character position
     /// @param c the foreground color of the character. The font is given by the frame_text_config
@@ -230,9 +264,9 @@ public:
     /// @brief the buffer where text are written
     char *text_buffer = nullptr;
     /// @brief The max number of line with respect to frame height and font height
-    uint8_t char_width{0};
+    uint8_t number_of_column{0};
     /// @brief The max number of column with respect to frame width and font width
-    uint8_t char_height{0};
+    uint8_t number_of_line{0};
 
     /**
      * @brief Construct a new Textual Frame Buffer object
@@ -243,9 +277,9 @@ public:
      * @param text_cfg textual configuration data structure
      */
     TextualFrameBuffer(GraphicDisplayDevice *device,
-                       uint8_t number_of_column,
-                       uint8_t number_of_line,
-                       struct_TextFramebuffer text_cfg);
+                       //    uint8_t number_of_column,
+                       //    uint8_t number_of_line,
+                       struct_TextFramebufferConfig text_cfg);
 
     /**
      * @brief Construct a new Textual Frame Buffer object when the frame size in x and y pixel is given.
@@ -256,10 +290,10 @@ public:
      * @param device A pointer to the display device in charge of showing character
      * @param text_cfg the textual configuration data structure
      */
-    TextualFrameBuffer(size_t frame_width,
+    TextualFrameBuffer(GraphicDisplayDevice *device,
+                       size_t frame_width,
                        size_t frame_height,
-                       GraphicDisplayDevice *device,
-                       struct_TextFramebuffer text_cfg);
+                       struct_TextFramebufferConfig text_cfg);
 
     ~TextualFrameBuffer();
 
@@ -269,7 +303,7 @@ public:
      * @param   frame_text_config the textual configuration data structure
      */
     void
-    update_text_buffer(struct_TextFramebuffer frame_text_config);
+    update_text_buffer(struct_TextFramebufferConfig frame_text_config);
     /**
      * @brief   Set text buffer memory to "0" and set character line and column to 0
      */

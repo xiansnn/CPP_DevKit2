@@ -210,7 +210,7 @@ public:
      */
     void show(struct_PixelMemory *pixel_memory, uint8_t anchor_x, uint8_t anchor_y);
 
-    void drawChar(struct_PixelMemory *pixel_memory_structure, struct_TextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y);
+    void drawChar(struct_PixelMemory *pixel_memory_structure, struct_TextFramebufferConfig *text_config, char c, uint8_t anchor_x, uint8_t anchor_y);
 
     /**
      * @brief  when we need to show a render area with a given framebuffer

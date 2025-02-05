@@ -194,7 +194,7 @@ void SSD1306::show(struct_PixelMemory *pixel_memory, uint8_t anchor_x, uint8_t a
     this->show_render_area(pixel_memory->pixel_buffer, this->compute_render_area(anchor_x, end_col, anchor_y, end_line));
 }
 
-void SSD1306::drawChar(struct_PixelMemory *pixel_memory_structure, struct_TextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y)
+void SSD1306::drawChar(struct_PixelMemory *pixel_memory_structure, struct_TextFramebufferConfig *text_config, char c, uint8_t anchor_x, uint8_t anchor_y)
 {
     if (!text_config->font || c < 32) // TODO voir pour construire une classe Font
         return;

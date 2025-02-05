@@ -101,7 +101,7 @@ void test_font_size(SSD1306 *current_display)
 
 void test_full_screen_text(SSD1306 *current_display)
 {
-    struct_TextFramebuffer txt_conf = {
+    struct_TextFramebufferConfig txt_conf = {
         .font = font_8x8,
         .wrap = true,
     };
@@ -109,7 +109,7 @@ void test_full_screen_text(SSD1306 *current_display)
 
     text_frame.print_char(FORM_FEED); // equiv. clear full screen
     current_display->show(&text_frame.pixel_memory, 0, 0);
-    uint16_t nb = text_frame.char_height * text_frame.char_width;
+    uint16_t nb = text_frame.number_of_line * text_frame.number_of_column;
 
     uint16_t n{0};
     for (uint16_t c = 32; c < 256; c++)
@@ -130,7 +130,7 @@ void test_full_screen_text(SSD1306 *current_display)
 
 void test_auto_next_char(SSD1306 *current_display)
 {
-    struct_TextFramebuffer txt_conf = {
+    struct_TextFramebufferConfig txt_conf = {
         .font = font_8x8,
         .wrap = true,
         .auto_next_char = false};
@@ -168,7 +168,7 @@ void test_sprintf_format(SSD1306 *current_display)
 {
     current_display->clear_full_screen();
 
-    struct_TextFramebuffer text_frame_cfg = {
+    struct_TextFramebufferConfig text_frame_cfg = {
         .font = font_8x8,
         .wrap = true};
 
@@ -311,7 +311,7 @@ void test_ostringstream_format(SSD1306 *current_display)
 
     const unsigned char *current_font{font_5x8};
 
-    struct_TextFramebuffer txt_conf = {
+    struct_TextFramebufferConfig txt_conf = {
         .font = current_font,
         .wrap = false};
 

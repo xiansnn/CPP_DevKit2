@@ -42,9 +42,23 @@ struct struct_PixelMemory
     size_t pixel_buffer_size;
 };
 
-/// @brief the data sttructure used to configure textual widget
-struct struct_TextFramebuffer
+struct struct_GraphicFramebufferConfig
 {
+    size_t frame_height;
+    size_t frame_width;
+    PixelColor fg_color{PixelColor::WHITE};
+    PixelColor bg_color{PixelColor::BLACK};
+    };
+
+
+/// @brief the data sttructure used to configure textual widget
+struct struct_TextFramebufferConfig
+{
+    /// @brief The max number of line with respect to frame height and font height
+    uint8_t number_of_column{0};
+    /// @brief The max number of column with respect to frame width and font width
+    uint8_t number_of_line{0};
+
     /**
      * @brief The font used. Current font are defined according to IBM CP437. The font files are derived from https://github.com/Harbys/pico-ssd1306 works.
      * They come is size 5x8, 8x8, 12x16 and 16x32.
@@ -74,7 +88,7 @@ struct struct_TextFramebuffer
 
 /**
  * @brief the generic abstract class for display devices
- * 
+ *
  */
 class DisplayDevice
 {
@@ -160,7 +174,7 @@ public:
      * @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
      * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
      */
-    virtual void drawChar(struct_PixelMemory *pixel_memory_structure, struct_TextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y) = 0;
+    virtual void drawChar(struct_PixelMemory *pixel_memory_structure, struct_TextFramebufferConfig *text_config, char c, uint8_t anchor_x, uint8_t anchor_y) = 0;
 };
 
 /// @brief A pure textual class.
