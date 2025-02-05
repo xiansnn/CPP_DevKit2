@@ -1,6 +1,7 @@
 var annotated_dup =
 [
     [ "DHT11", "class_d_h_t11.html", "class_d_h_t11" ],
+    [ "DisplayDevice", "class_display_device.html", null ],
     [ "GraphicDisplayDevice", "class_graphic_display_device.html", "class_graphic_display_device" ],
     [ "GraphicFramebuffer", "class_graphic_framebuffer.html", "class_graphic_framebuffer" ],
     [ "HC_SR04", "class_h_c___s_r04.html", "class_h_c___s_r04" ],

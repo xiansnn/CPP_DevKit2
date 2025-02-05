@@ -72,6 +72,10 @@ struct struct_TextFramebuffer
     bool auto_next_char{true};
 };
 
+/**
+ * @brief the generic abstract class for display devices
+ * 
+ */
 class DisplayDevice
 {
 private:

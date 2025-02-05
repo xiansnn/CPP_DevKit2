@@ -1,7 +1,9 @@
 <map id="GraphicDisplayDevice" name="GraphicDisplayDevice">
-<area shape="rect" id="Node000001" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="255,5,799,193"/>
-<area shape="rect" id="Node000002" href="$class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,241,549,911"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="473,208,455,243,450,241,469,205"/>
-<area shape="rect" id="Node000003" href="$class_text_display_device.html" title="A pure textual class." alt="" coords="574,499,978,653"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="585,205,738,498,734,500,580,208"/>
+<area shape="rect" id="Node000001" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="255,133,799,321"/>
+<area shape="rect" id="Node000003" href="$class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,369,549,1039"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="473,336,455,371,450,369,469,333"/>
+<area shape="rect" id="Node000004" href="$class_text_display_device.html" title="A pure textual class." alt="" coords="574,627,978,781"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="585,333,738,626,734,628,580,336"/>
+<area shape="rect" id="Node000002" href="$class_display_device.html" title="the generic abstract class for display devices" alt="" coords="475,5,579,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="529,100,529,133,524,133,524,100"/>
 </map>
