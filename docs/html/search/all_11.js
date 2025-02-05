@@ -7,7 +7,7 @@ var searchData=
   ['pixel_4',['pixel',['../class_graphic_display_device.html#a49907f68902af86713d34fbec55fc2b2',1,'GraphicDisplayDevice::pixel()'],['../class_s_s_d1306.html#ab9fdcddc9fe1c4d84be19041bf51cc4a',1,'SSD1306::pixel()']]],
   ['pixel_5fbuffer_5',['pixel_buffer',['../structstruct___pixel_memory.html#a4d28148d4966ebc6b1f1c6247eed5454',1,'struct_PixelMemory']]],
   ['pixel_5fbuffer_5fsize_6',['pixel_buffer_size',['../structstruct___pixel_memory.html#ac246e6e0e7eb76f2539a6e467702d400',1,'struct_PixelMemory']]],
-  ['pixel_5fmemory_7',['pixel_memory',['../class_graphic_display_device.html#a1766b027cb72eee80d89ca460e178e81',1,'GraphicDisplayDevice']]],
+  ['pixel_5fmemory_7',['pixel_memory',['../class_graphic_display_device.html#a1766b027cb72eee80d89ca460e178e81',1,'GraphicDisplayDevice::pixel_memory'],['../class_graphic_framebuffer.html#ac113e87fc222254359c1baf4e48ce120',1,'GraphicFramebuffer::pixel_memory']]],
   ['pixelcolor_8',['PixelColor',['../display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8',1,'display_device.h']]],
   ['pos_5fmax_5fdeg_9',['pos_max_deg',['../class_s_g90.html#a6963c2e0d40f3e574c71f7df014bec85',1,'SG90']]],
   ['pos_5fmax_5fdegree_10',['pos_max_degree',['../structstruct___config_s_g90.html#a9c349601a83bb7b1a0b42cf927ec4bf5',1,'struct_ConfigSG90']]],

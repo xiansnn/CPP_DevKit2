@@ -10,5 +10,8 @@ var class_graphic_framebuffer =
     [ "line", "class_graphic_framebuffer.html#aa752be049cd63d904a41510c8f7f4932", null ],
     [ "rect", "class_graphic_framebuffer.html#a534d81421e9871dae36d92705b01cb59", null ],
     [ "vline", "class_graphic_framebuffer.html#af5e8c043e79f0ace9e269716d8af2aa1", null ],
-    [ "display_screen", "class_graphic_framebuffer.html#a07de25dea4d5eadd113a20f88ad037bb", null ]
+    [ "bg_color", "class_graphic_framebuffer.html#a86a3a81f285a725a05f34c5d2b325bf9", null ],
+    [ "display_screen", "class_graphic_framebuffer.html#a07de25dea4d5eadd113a20f88ad037bb", null ],
+    [ "fg_color", "class_graphic_framebuffer.html#a4e0306731ec2a80a71bc400c42f4a90e", null ],
+    [ "pixel_memory", "class_graphic_framebuffer.html#ac113e87fc222254359c1baf4e48ce120", null ]
 ];

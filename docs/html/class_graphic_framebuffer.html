@@ -99,6 +99,7 @@ $(function(){initNavTree('class_graphic_framebuffer.html',''); initResizable(tru
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="class_graphic_framebuffer-members.html">List of all members</a>  </div>
@@ -115,23 +116,23 @@ Inheritance diagram for GraphicFramebuffer:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_graphic_framebuffer__inherit__graph.png" border="0" usemap="#a_graphic_framebuffer_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_graphic_framebuffer_inherit__map" id="a_graphic_framebuffer_inherit__map">
-<area shape="rect" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="477,5,953,279"/>
-<area shape="rect" href="class_textual_frame_buffer.html" title="the place where all textual primitive are placed" alt="" coords="273,327,697,791"/>
-<area shape="poly" title=" " alt="" coords="635,293,615,328,611,326,630,290"/>
-<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="971,337,1416,781"/>
-<area shape="poly" title=" " alt="" coords="884,286,973,363,969,367,880,290"/>
-<area shape="rect" href="class_widget_text.html" title="the class of widget dedicated to text frame" alt="" coords="5,839,467,1301"/>
-<area shape="poly" title=" " alt="" coords="368,805,351,840,346,838,363,803"/>
-<area shape="rect" href="class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="491,906,939,1234"/>
-<area shape="poly" title=" " alt="" coords="977,793,869,908,865,904,974,790"/>
-<area shape="rect" href="class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="963,915,1423,1225"/>
-<area shape="poly" title=" " alt="" coords="1196,795,1196,915,1191,915,1191,795"/>
-<area shape="rect" href="class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="1447,951,1913,1189"/>
-<area shape="poly" title=" " alt="" coords="1417,790,1569,949,1565,953,1413,793"/>
-<area shape="rect" href="class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="1937,915,2397,1225"/>
-<area shape="poly" title=" " alt="" coords="1431,621,1550,661,1677,710,1805,768,1927,836,1978,873,2026,914,2023,918,1975,877,1924,841,1803,773,1675,715,1548,666,1429,626"/>
-<area shape="rect" href="class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="1464,1349,1896,1476"/>
-<area shape="poly" title=" " alt="" coords="1683,1205,1683,1349,1677,1349,1677,1205"/>
+<area shape="rect" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="477,5,953,335"/>
+<area shape="rect" href="class_textual_frame_buffer.html" title="the place where all textual primitive are placed" alt="" coords="273,383,697,847"/>
+<area shape="poly" title=" " alt="" coords="625,349,607,384,603,382,621,347"/>
+<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="971,393,1416,837"/>
+<area shape="poly" title=" " alt="" coords="904,343,973,406,969,410,901,347"/>
+<area shape="rect" href="class_widget_text.html" title="the class of widget dedicated to text frame" alt="" coords="5,895,467,1357"/>
+<area shape="poly" title=" " alt="" coords="368,861,351,896,346,894,363,859"/>
+<area shape="rect" href="class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="491,962,939,1290"/>
+<area shape="poly" title=" " alt="" coords="977,849,869,964,865,960,974,846"/>
+<area shape="rect" href="class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="963,971,1423,1281"/>
+<area shape="poly" title=" " alt="" coords="1196,851,1196,971,1191,971,1191,851"/>
+<area shape="rect" href="class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="1447,1007,1913,1245"/>
+<area shape="poly" title=" " alt="" coords="1417,846,1569,1005,1565,1009,1413,849"/>
+<area shape="rect" href="class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="1937,971,2397,1281"/>
+<area shape="poly" title=" " alt="" coords="1431,677,1550,717,1677,766,1805,824,1927,892,1978,929,2026,970,2023,974,1975,933,1924,897,1803,829,1675,771,1548,722,1429,682"/>
+<area shape="rect" href="class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="1464,1405,1896,1532"/>
+<area shape="poly" title=" " alt="" coords="1683,1261,1683,1405,1677,1405,1677,1261"/>
 </map>
 </div>
 <div class="dynheader">
@@ -139,17 +140,18 @@ Collaboration diagram for GraphicFramebuffer:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_graphic_framebuffer__coll__graph.png" border="0" usemap="#a_graphic_framebuffer_coll__map" alt="Collaboration graph"/></div>
 <map name="a_graphic_framebuffer_coll__map" id="a_graphic_framebuffer_coll__map">
-<area shape="rect" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="39,435,515,708"/>
-<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,185,549,373"/>
-<area shape="poly" title=" " alt="" coords="280,373,280,418,275,418,275,373"/>
-<area shape="rect" href="structstruct___pixel_memory.html" title="the data structure that describes framebuffer" alt="" coords="211,5,344,123"/>
-<area shape="poly" title=" " alt="" coords="280,122,280,168,275,168,275,122"/>
+<area shape="rect" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,435,481,727"/>
+<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="241,185,785,373"/>
+<area shape="poly" title=" " alt="" coords="431,374,387,424,383,420,427,371"/>
+<area shape="rect" href="structstruct___pixel_memory.html" title="the data structure that describes framebuffer" alt="" coords="94,5,227,123"/>
+<area shape="poly" title=" " alt="" coords="154,122,144,239,145,306,154,372,167,418,162,420,149,373,140,306,139,238,148,122"/>
+<area shape="poly" title=" " alt="" coords="229,103,346,174,343,178,226,108"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abb65b21287a154f2b9226681d8d8a594" id="r_abb65b21287a154f2b9226681d8d8a594"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb65b21287a154f2b9226681d8d8a594">GraphicFramebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *display_device, size_t frame_width, size_t frame_height, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> fg_color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> bg_color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8a08d0012388564e95c3b4a7407cf04965">PixelColor::BLACK</a>)</td></tr>
+<tr class="memitem:abb65b21287a154f2b9226681d8d8a594" id="r_abb65b21287a154f2b9226681d8d8a594"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb65b21287a154f2b9226681d8d8a594">GraphicFramebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *display_device, size_t frame_width, size_t frame_height, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> <a class="el" href="#a4e0306731ec2a80a71bc400c42f4a90e">fg_color</a>=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> <a class="el" href="#a86a3a81f285a725a05f34c5d2b325bf9">bg_color</a>=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8a08d0012388564e95c3b4a7407cf04965">PixelColor::BLACK</a>)</td></tr>
 <tr class="memdesc:abb65b21287a154f2b9226681d8d8a594"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic Framebuffer object.  <br /></td></tr>
 <tr class="separator:abb65b21287a154f2b9226681d8d8a594"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1272c80a0bedf8f0b3143beb3f77470a" id="r_a1272c80a0bedf8f0b3143beb3f77470a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1272c80a0bedf8f0b3143beb3f77470a">GraphicFramebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *display_device, uint8_t number_of_column, uint8_t number_of_line, <a class="el" href="structstruct___text_framebuffer.html">struct_TextFramebuffer</a> text_cfg)</td></tr>
@@ -159,7 +161,7 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~GraphicFramebuffer</b> ()</td></tr>
 <tr class="memdesc:a7f8253e92a4c512ffedd73f0ecf3c553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_graphic_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">GraphicFramebuffer</a> object. <br /></td></tr>
 <tr class="separator:a7f8253e92a4c512ffedd73f0ecf3c553"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a945ee48917d1925f4973bdd14577d8e3" id="r_a945ee48917d1925f4973bdd14577d8e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a945ee48917d1925f4973bdd14577d8e3">fill</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c)</td></tr>
+<tr class="memitem:a945ee48917d1925f4973bdd14577d8e3" id="r_a945ee48917d1925f4973bdd14577d8e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a945ee48917d1925f4973bdd14577d8e3">fill</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *<a class="el" href="#ac113e87fc222254359c1baf4e48ce120">pixel_memory</a>, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c)</td></tr>
 <tr class="memdesc:a945ee48917d1925f4973bdd14577d8e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write all pixel buffer memory with "0" (or "1") if color c is BLACK (resp. WHITE)  <br /></td></tr>
 <tr class="separator:a945ee48917d1925f4973bdd14577d8e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae777b82b8ee37e7f2a97ed1c2cda94cb" id="r_ae777b82b8ee37e7f2a97ed1c2cda94cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae777b82b8ee37e7f2a97ed1c2cda94cb">hline</a> (uint8_t x, uint8_t y, size_t w, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
@@ -177,6 +179,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a61455060176f83944a40478c4e41a21e" id="r_a61455060176f83944a40478c4e41a21e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61455060176f83944a40478c4e41a21e">circle</a> (int radius, int x_center, int y_center, bool <a class="el" href="#a945ee48917d1925f4973bdd14577d8e3">fill</a>=false, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
 <tr class="memdesc:a61455060176f83944a40478c4e41a21e"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a cercle of size radius, centered at (x_center, y_center) <a href="https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham">https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham</a> <a href="https://en.wikipedia.org/wiki/Midpoint_circle_algorithm">https://en.wikipedia.org/wiki/Midpoint_circle_algorithm</a> procédure tracerCercle (entier rayon, entier x_centre, entier y_centre) déclarer entier x, y, m ; x ← 0 ; y ← rayon ; // on se place en haut du cercle m ← 5 - 4*rayon ; // initialisation Tant que x &lt;= y // tant qu'on est dans le second octant tracerPixel( x+x_centre, y+y_centre ) ; tracerPixel( y+x_centre, x+y_centre ) ; tracerPixel( -x+x_centre, y+y_centre ) ; tracerPixel( -y+x_centre, x+y_centre ) ; tracerPixel( x+x_centre, -y+y_centre ) ; tracerPixel( y+x_centre, -x+y_centre ) ; tracerPixel( -x+x_centre, -y+y_centre ) ; tracerPixel( -y+x_centre, -x+y_centre ) ; si m &gt; 0 alors //choix du point F y ← y - 1 ; m ← m - 8*y ; fin si ; x ← x + 1 ; m ← m + 8*x + 4 ; fin tant que ; fin de procédure ;  <br /></td></tr>
 <tr class="separator:a61455060176f83944a40478c4e41a21e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ac113e87fc222254359c1baf4e48ce120" id="r_ac113e87fc222254359c1baf4e48ce120"><td class="memItemLeft" align="right" valign="top"><a id="ac113e87fc222254359c1baf4e48ce120" name="ac113e87fc222254359c1baf4e48ce120"></a>
+<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_memory</b></td></tr>
+<tr class="memdesc:ac113e87fc222254359c1baf4e48ce120"><td class="mdescLeft">&#160;</td><td class="mdescRight">the dtat structure that contains the actual pixel buffer, created by the display device. <br /></td></tr>
+<tr class="separator:ac113e87fc222254359c1baf4e48ce120"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e0306731ec2a80a71bc400c42f4a90e" id="r_a4e0306731ec2a80a71bc400c42f4a90e"><td class="memItemLeft" align="right" valign="top"><a id="a4e0306731ec2a80a71bc400c42f4a90e" name="a4e0306731ec2a80a71bc400c42f4a90e"></a>
+<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fg_color</b></td></tr>
+<tr class="memdesc:a4e0306731ec2a80a71bc400c42f4a90e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the foregroung color of the graphic frame <br /></td></tr>
+<tr class="separator:a4e0306731ec2a80a71bc400c42f4a90e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86a3a81f285a725a05f34c5d2b325bf9" id="r_a86a3a81f285a725a05f34c5d2b325bf9"><td class="memItemLeft" align="right" valign="top"><a id="a86a3a81f285a725a05f34c5d2b325bf9" name="a86a3a81f285a725a05f34c5d2b325bf9"></a>
+<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bg_color</b></td></tr>
+<tr class="memdesc:a86a3a81f285a725a05f34c5d2b325bf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">the background color of the graphic frame <br /></td></tr>
+<tr class="separator:a86a3a81f285a725a05f34c5d2b325bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>

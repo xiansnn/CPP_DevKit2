@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['fg_5fcolor_0',['fg_color',['../structstruct___text_framebuffer.html#a990109dc7d8f36d5ee16cb2ecc7245e2',1,'struct_TextFramebuffer']]],
+  ['fg_5fcolor_0',['fg_color',['../structstruct___text_framebuffer.html#a990109dc7d8f36d5ee16cb2ecc7245e2',1,'struct_TextFramebuffer::fg_color'],['../class_graphic_framebuffer.html#a4e0306731ec2a80a71bc400c42f4a90e',1,'GraphicFramebuffer::fg_color']]],
   ['fifo_5fop_1',['FIFO_OP',['../structstruct___config_m_p_u6050.html#ab7f05661f12849229e5f12616d4d4e40',1,'struct_ConfigMPU6050']]],
   ['fifo_5fselected_5fsensors_2',['FIFO_SELECTED_SENSORS',['../structstruct___config_m_p_u6050.html#ac2fb6887c7ef83afec6bf017b574b841',1,'struct_ConfigMPU6050']]],
   ['fill_3',['fill',['../class_graphic_framebuffer.html#a945ee48917d1925f4973bdd14577d8e3',1,'GraphicFramebuffer::fill()'],['../class_s_s_d1306.html#adc2b08b724a23e4179362183cda8475b',1,'SSD1306::fill(PixelColor c)']]],
