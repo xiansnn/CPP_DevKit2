@@ -71,6 +71,12 @@ protected:
     GraphicDisplayDevice *display_screen{nullptr};
 
 public:
+    /// @brief the dtat structure that contains the actual pixel buffer, created by the display device.
+    struct_PixelMemory pixel_memory;
+    /// @brief the foregroung color of the graphic frame
+    PixelColor fg_color;
+    /// @brief the background color of the graphic frame
+    PixelColor bg_color;
     /**
      * @brief Construct a new Graphic Framebuffer object
      *
