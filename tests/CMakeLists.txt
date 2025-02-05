@@ -225,3 +225,12 @@ target_link_libraries(test_text_framebuffer
             ssd1306 
             )
 #-------------------------------------------------------------------------------------
+add_executable(test_text_and_graph_framebuffer test_text_and_graph_framebuffer.cpp)
+target_link_libraries(test_text_and_graph_framebuffer 
+            pico_stdlib 
+            debug_probe
+            hw_i2c 
+            framebuffer
+            ssd1306 
+            )
+#-------------------------------------------------------------------------------------
