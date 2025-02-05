@@ -20,7 +20,7 @@ void SSD1306::send_buf(uint8_t buffer[], size_t buffer_size)
 }
 
 SSD1306::SSD1306(HW_I2C_Master *master, struct_ConfigSSD1306 init_config)
-    : DisplayDevice(SSD1306_WIDTH, SSD1306_HEIGHT)
+    : GraphicDisplayDevice(SSD1306_WIDTH, SSD1306_HEIGHT)
 {
     this->i2c_master = master;
     this->device_config = init_config;

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['echo_5fpin_0',['echo_pin',['../class_h_c___s_r04.html#ac907530b5d812c7f70bf08815dda8eb7',1,'HC_SR04']]],
-  ['ellipse_1',['ellipse',['../class_framebuffer.html#a091ac1c60df92f1aefc2353be4e7a076',1,'Framebuffer']]],
+  ['ellipse_1',['ellipse',['../class_graphic_framebuffer.html#a815564c42d7016239dacb19ef1fcdf7d',1,'GraphicFramebuffer']]],
   ['enable_5fcom_5fl_5fr_5fremap_2',['enable_COM_L_R_remap',['../structstruct___config_s_s_d1306.html#a7f8be01a0f93321efbb68fd758ca1158',1,'struct_ConfigSSD1306']]],
   ['encoder_3',['encoder',['../class_k_y040.html#a2eb8bfa93217c26d2fff46d3d2831be1',1,'KY040']]],
   ['end_5fcol_4',['end_col',['../structstruct___render_area.html#a8e5a75689c2f5e0269246e8589578ce8',1,'struct_RenderArea']]],

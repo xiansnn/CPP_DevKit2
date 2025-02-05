@@ -5,6 +5,6 @@ var searchData=
   ['read_5ffifo_5fg_5faccel_5fraw_5fdata_2',['read_FIFO_g_accel_raw_data',['../class_m_p_u6050.html#a6d09d65fef02c2e555356bb98b0db087',1,'MPU6050']]],
   ['read_5ffrom_5fdht_3',['read_from_dht',['../class_d_h_t11.html#ad72fb9614e231616cc6c3c28cafafca3',1,'DHT11']]],
   ['read_5fregisters_5fall_5fraw_5fdata_4',['read_registers_all_raw_data',['../class_m_p_u6050.html#aaca71fa3f6e0b72c49dd70544f8fef72',1,'MPU6050']]],
-  ['rect_5',['rect',['../class_framebuffer.html#ae0e1916dfc5fcdaa7999c8d3ebdaef6b',1,'Framebuffer']]],
+  ['rect_5',['rect',['../class_graphic_framebuffer.html#a534d81421e9871dae36d92705b01cb59',1,'GraphicFramebuffer']]],
   ['rotaryencoder_6',['RotaryEncoder',['../class_rotary_encoder.html#a34d4c2355191bc6b4d901f01bc263aa3',1,'RotaryEncoder']]]
 ];

@@ -22,7 +22,7 @@ private:
 
 public:
     MyWidgetSquareLed(MySquareLedModel *actual_displayed_model,
-                      DisplayDevice *display_screen,
+                      GraphicDisplayDevice *display_screen,
                       size_t width,
                       size_t height,
                       uint8_t widget_anchor_x,
@@ -42,7 +42,7 @@ public:
  * @param widget_anchor_y
  */
 MyWidgetSquareLed::MyWidgetSquareLed(MySquareLedModel *actual_displayed_model,
-                                     DisplayDevice *display_screen,
+                                     GraphicDisplayDevice *display_screen,
                                      size_t width,
                                      size_t height,
                                      uint8_t widget_anchor_x,

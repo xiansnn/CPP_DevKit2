@@ -51,7 +51,7 @@ struct_ConfigSSD1306 cfg_ssd1306{
  */
 void test_outofframe_line(SSD1306 *display)
 {
-    Framebuffer frame = Framebuffer(display, SSD1306_WIDTH, SSD1306_HEIGHT);
+    GraphicFramebuffer frame = GraphicFramebuffer(display, SSD1306_WIDTH, SSD1306_HEIGHT);
     int y0, x1, y1;
     display->clear_full_screen();
     x1 = 64;
@@ -76,7 +76,7 @@ void test_outofframe_line(SSD1306 *display)
 void test_fb_line(SSD1306 *display)
 {
     display->clear_full_screen();
-    Framebuffer frame = Framebuffer(display, SSD1306_WIDTH, SSD1306_HEIGHT);
+    GraphicFramebuffer frame = GraphicFramebuffer(display, SSD1306_WIDTH, SSD1306_HEIGHT);
     PixelColor c = PixelColor::BLACK;
     struct_RenderArea full_screen_area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
     for (int i = 0; i < 2; i++)
@@ -132,7 +132,7 @@ void test_fb_line(SSD1306 *display)
  */
 void test_fb_hline(SSD1306 *display)
 {
-    Framebuffer frame = Framebuffer(display, SSD1306_WIDTH, SSD1306_HEIGHT);
+    GraphicFramebuffer frame = GraphicFramebuffer(display, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     display->clear_full_screen();
 
@@ -157,7 +157,7 @@ void test_fb_hline(SSD1306 *display)
  */
 void test_fb_vline(SSD1306 *display)
 {
-    Framebuffer frame = Framebuffer(display, SSD1306_WIDTH, SSD1306_HEIGHT);
+    GraphicFramebuffer frame = GraphicFramebuffer(display, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     display->clear_full_screen();
     frame.vline(0, 0, 16); 
@@ -182,7 +182,7 @@ void test_fb_vline(SSD1306 *display)
  */
 void test_fb_rect(SSD1306 *display)
 {
-    Framebuffer frame = Framebuffer(display, SSD1306_WIDTH, SSD1306_HEIGHT);
+    GraphicFramebuffer frame = GraphicFramebuffer(display, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     display->clear_full_screen();
     frame.rect(0, 0, 128, 64); 
@@ -199,7 +199,7 @@ void test_fb_rect(SSD1306 *display)
  */
 void test_fb_in_fb(SSD1306 *display)
 {
-    Framebuffer frame = Framebuffer(display, SSD1306_WIDTH, SSD1306_HEIGHT);
+    GraphicFramebuffer frame = GraphicFramebuffer(display, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     display->clear_full_screen();
     frame.rect(0, 0, SSD1306_WIDTH, SSD1306_HEIGHT); 
@@ -211,7 +211,7 @@ void test_fb_in_fb(SSD1306 *display)
     uint8_t small_frame_y_anchor = 20;
     uint8_t small_frame_width = 88;
     uint8_t small_frame_height = 25;
-    Framebuffer small_frame = Framebuffer(display, small_frame_width, small_frame_height); 
+    GraphicFramebuffer small_frame = GraphicFramebuffer(display, small_frame_width, small_frame_height); 
     small_frame.fill(&small_frame.pixel_memory,  PixelColor::BLACK);
     small_frame.line(5, 5, 80, 20); 
     small_frame.circle(8, 44, 12);
@@ -226,7 +226,7 @@ void test_fb_in_fb(SSD1306 *display)
  */
 void test_fb_circle(SSD1306 *display)
 {
-    Framebuffer frame = Framebuffer(display, SSD1306_WIDTH, SSD1306_HEIGHT);
+    GraphicFramebuffer frame = GraphicFramebuffer(display, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     display->clear_full_screen();
     frame.circle(50, 63, 31);

@@ -107,7 +107,7 @@ $(function(){initNavTree('class_s_s_d1306.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> OLED display device driver.  
+<p><a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> 128x64 pixel OLED display device driver with I2C interface.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ssd1306_8h_source.html">ssd1306.h</a>&gt;</code></p>
@@ -116,11 +116,9 @@ Inheritance diagram for SSD1306:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_s_d1306__inherit__graph.png" border="0" usemap="#a_s_s_d1306_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_s_s_d1306_inherit__map" id="a_s_s_d1306_inherit__map">
-<area shape="rect" title="SSD1306 OLED display device driver." alt="" coords="5,717,549,1297"/>
-<area shape="rect" href="class_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="69,537,485,669"/>
-<area shape="poly" title=" " alt="" coords="280,684,280,717,275,717,275,684"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="48,5,507,489"/>
-<area shape="poly" title=" " alt="" coords="280,504,280,538,275,538,275,504"/>
+<area shape="rect" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,241,549,911"/>
+<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,5,549,193"/>
+<area shape="poly" title=" " alt="" coords="280,208,280,242,275,242,275,208"/>
 </map>
 </div>
 <div class="dynheader">
@@ -128,31 +126,39 @@ Collaboration diagram for SSD1306:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_s_d1306__coll__graph.png" border="0" usemap="#a_s_s_d1306_coll__map" alt="Collaboration graph"/></div>
 <map name="a_s_s_d1306_coll__map" id="a_s_s_d1306_coll__map">
-<area shape="rect" title="SSD1306 OLED display device driver." alt="" coords="461,972,1005,1533"/>
-<area shape="rect" href="class_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="27,720,443,852"/>
-<area shape="poly" title=" " alt="" coords="317,860,463,996,460,1000,313,864"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,147,464,613"/>
-<area shape="poly" title=" " alt="" coords="237,628,237,720,232,720,232,628"/>
-<area shape="rect" href="structstruct___graph_framebuffer.html" title="The configuration data for graphic primitives." alt="" coords="159,5,310,85"/>
-<area shape="poly" title=" " alt="" coords="237,85,237,131,232,131,232,85"/>
-<area shape="rect" href="class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="467,690,1000,882"/>
-<area shape="poly" title=" " alt="" coords="736,882,736,955,731,955,731,882"/>
-<area shape="rect" href="structstruct___config_s_s_d1306.html" title="configuration data for SSD1306 OLED display. refer to datasheet for more details." alt="" coords="1024,662,1208,910"/>
-<area shape="poly" title=" " alt="" coords="1026,900,976,961,972,957,1022,897"/>
+<area shape="rect" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="568,495,1112,1145"/>
+<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,215,549,403"/>
+<area shape="poly" title=" " alt="" coords="392,410,570,571,566,575,388,414"/>
+<area shape="rect" href="structstruct___pixel_memory.html" title="the data structure that describes framebuffer" alt="" coords="211,5,344,123"/>
+<area shape="poly" title=" " alt="" coords="280,122,280,198,275,198,275,122"/>
+<area shape="rect" href="class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="573,213,1107,405"/>
+<area shape="poly" title=" " alt="" coords="843,404,843,477,837,477,837,404"/>
+<area shape="rect" href="structstruct___config_s_s_d1306.html" title="configuration data for SSD1306 OLED display. refer to datasheet for more details." alt="" coords="1131,185,1315,433"/>
+<area shape="poly" title=" " alt="" coords="1133,433,1096,483,1092,480,1129,430"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ae8806883d7ce6ba32bb5ed8c7a5a1282" id="r_ae8806883d7ce6ba32bb5ed8c7a5a1282"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8806883d7ce6ba32bb5ed8c7a5a1282">clear_pixel_buffer</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *<a class="el" href="class_graphic_display_device.html#a1766b027cb72eee80d89ca460e178e81">pixel_memory</a>)</td></tr>
+<tr class="memdesc:ae8806883d7ce6ba32bb5ed8c7a5a1282"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual method. Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0). Usefull when we have a graphic framework.  <br /></td></tr>
+<tr class="separator:ae8806883d7ce6ba32bb5ed8c7a5a1282"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d8fc891acd28a44e8b2c274c92cd57b" id="r_a4d8fc891acd28a44e8b2c274c92cd57b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d8fc891acd28a44e8b2c274c92cd57b">SSD1306</a> (<a class="el" href="class_h_w___i2_c___master.html">HW_I2C_Master</a> *master, <a class="el" href="structstruct___config_s_s_d1306.html">struct_ConfigSSD1306</a> <a class="el" href="#a8c77fc2b876883b63b9f9d403e368e8d">device_config</a>)</td></tr>
-<tr class="memdesc:a4d8fc891acd28a44e8b2c274c92cd57b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> object.  <br /></td></tr>
 <tr class="separator:a4d8fc891acd28a44e8b2c274c92cd57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9877895dcf33190e2fa712c8bf46bbb8" id="r_a9877895dcf33190e2fa712c8bf46bbb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9877895dcf33190e2fa712c8bf46bbb8">show</a> ()</td></tr>
-<tr class="memdesc:a9877895dcf33190e2fa712c8bf46bbb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">the <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> implementation of the show function. Used when we need to show the full device area  <br /></td></tr>
-<tr class="separator:a9877895dcf33190e2fa712c8bf46bbb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67f56b6c4fd626c6b60488e9aebfc077" id="r_a67f56b6c4fd626c6b60488e9aebfc077"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67f56b6c4fd626c6b60488e9aebfc077">show</a> (<a class="el" href="class_framebuffer.html">Framebuffer</a> *frame, uint8_t anchor_x, uint8_t anchor_y)</td></tr>
-<tr class="memdesc:a67f56b6c4fd626c6b60488e9aebfc077"><td class="mdescLeft">&#160;</td><td class="mdescRight">the <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> implementation of the show function. Used when we need to show a framebuffer in a given render area  <br /></td></tr>
-<tr class="separator:a67f56b6c4fd626c6b60488e9aebfc077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc2b08b724a23e4179362183cda8475b" id="r_adc2b08b724a23e4179362183cda8475b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc2b08b724a23e4179362183cda8475b">fill</a> (<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c)</td></tr>
+<tr class="memdesc:adc2b08b724a23e4179362183cda8475b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill the pixel buffer with the color C.  <br /></td></tr>
+<tr class="separator:adc2b08b724a23e4179362183cda8475b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cd36aaddf2129f31beb3c8119b2d496" id="r_a4cd36aaddf2129f31beb3c8119b2d496"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cd36aaddf2129f31beb3c8119b2d496">create_pixel_buffer</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *<a class="el" href="class_graphic_display_device.html#a1766b027cb72eee80d89ca460e178e81">pixel_memory</a>)</td></tr>
+<tr class="memdesc:a4cd36aaddf2129f31beb3c8119b2d496"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual method. Create a pixel buffer object.  <br /></td></tr>
+<tr class="separator:a4cd36aaddf2129f31beb3c8119b2d496"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9fdcddc9fe1c4d84be19041bf51cc4a" id="r_ab9fdcddc9fe1c4d84be19041bf51cc4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9fdcddc9fe1c4d84be19041bf51cc4a">pixel</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory_structure, int x, int y, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
+<tr class="memdesc:ab9fdcddc9fe1c4d84be19041bf51cc4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic primitive to draw a pixel  <br /></td></tr>
+<tr class="separator:ab9fdcddc9fe1c4d84be19041bf51cc4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbcf73ef1d7c172c65691f91f9a76ae9" id="r_adbcf73ef1d7c172c65691f91f9a76ae9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbcf73ef1d7c172c65691f91f9a76ae9">show</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *<a class="el" href="class_graphic_display_device.html#a1766b027cb72eee80d89ca460e178e81">pixel_memory</a>, uint8_t anchor_x, uint8_t anchor_y)</td></tr>
+<tr class="separator:adbcf73ef1d7c172c65691f91f9a76ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab48bed5466ccf728b38abdd4b29bc976" id="r_ab48bed5466ccf728b38abdd4b29bc976"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab48bed5466ccf728b38abdd4b29bc976">drawChar</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory_structure, <a class="el" href="structstruct___text_framebuffer.html">struct_TextFramebuffer</a> *text_config, char c, uint8_t anchor_x, uint8_t anchor_y)</td></tr>
+<tr class="memdesc:ab48bed5466ccf728b38abdd4b29bc976"><td class="mdescLeft">&#160;</td><td class="mdescRight">a graphic primitive to draw a character at a pixel position  <br /></td></tr>
+<tr class="separator:ab48bed5466ccf728b38abdd4b29bc976"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad26a211970f779290c9a97335fb023fc" id="r_ad26a211970f779290c9a97335fb023fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad26a211970f779290c9a97335fb023fc">show_render_area</a> (uint8_t *data_buffer, <a class="el" href="structstruct___render_area.html">struct_RenderArea</a> screen_area, uint8_t addressing_mode=0)</td></tr>
 <tr class="memdesc:ad26a211970f779290c9a97335fb023fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">when we need to show a render area with a given framebuffer  <br /></td></tr>
 <tr class="separator:ad26a211970f779290c9a97335fb023fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,10 +167,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a764babad3f6a4d12cfa600ce7fd1b751"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad87336fcd8a4b110caf5a96d20e597e8" id="r_ad87336fcd8a4b110caf5a96d20e597e8"><td class="memItemLeft" align="right" valign="top"><a id="ad87336fcd8a4b110caf5a96d20e597e8" name="ad87336fcd8a4b110caf5a96d20e597e8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_full_screen</b> ()</td></tr>
-<tr class="memdesc:ad87336fcd8a4b110caf5a96d20e597e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">write 0x00 into the device framebuffer <br /></td></tr>
+<tr class="memdesc:ad87336fcd8a4b110caf5a96d20e597e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">write 0x00 directly into the device framebuffer. Uses fill_pattern_and_show_GDDRAM command. <br /></td></tr>
 <tr class="separator:ad87336fcd8a4b110caf5a96d20e597e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4322aca81cf05c9f9b9e5f40874cb7b" id="r_ae4322aca81cf05c9f9b9e5f40874cb7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4322aca81cf05c9f9b9e5f40874cb7b">set_contrast</a> (uint8_t value)</td></tr>
-<tr class="memdesc:ae4322aca81cf05c9f9b9e5f40874cb7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the contrast object. refer to datasheet of <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> device.  <br /></td></tr>
+<tr class="memdesc:ae4322aca81cf05c9f9b9e5f40874cb7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the contrast object. refer to datasheet of <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> device.  <br /></td></tr>
 <tr class="separator:ae4322aca81cf05c9f9b9e5f40874cb7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c752a77ba2889496a3f80a937818dff" id="r_a8c752a77ba2889496a3f80a937818dff"><td class="memItemLeft" align="right" valign="top"><a id="a8c752a77ba2889496a3f80a937818dff" name="a8c752a77ba2889496a3f80a937818dff"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_display_from_RAM</b> ()</td></tr>
@@ -189,50 +195,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_display_ON</b> ()
 <tr class="separator:a3228383e41ea93124a1da0a619dc6b11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25a4d90a656b9fd2f1b2d220cc9f8e2b" id="r_a25a4d90a656b9fd2f1b2d220cc9f8e2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25a4d90a656b9fd2f1b2d220cc9f8e2b">vertical_scroll</a> (bool on, <a class="el" href="structstruct___config_scroll_s_s_d1306.html">struct_ConfigScrollSSD1306</a> scroll_data)</td></tr>
 <tr class="separator:a25a4d90a656b9fd2f1b2d220cc9f8e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_display_device"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_display_device')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_display_device.html">DisplayDevice</a></td></tr>
-<tr class="memitem:a847f937a3c7eb02ed8731f325b0134f5 inherit pub_methods_class_display_device" id="r_a847f937a3c7eb02ed8731f325b0134f5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_display_device.html#a847f937a3c7eb02ed8731f325b0134f5">DisplayDevice</a> (size_t width, size_t height, <a class="el" href="structstruct___graph_framebuffer.html">struct_GraphFramebuffer</a> graph_cfg={}, <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a> format=<a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79ab8705fdb146f8f1c9e9d2d8dd6c072ad">FramebufferFormat::MONO_VLSB</a>)</td></tr>
-<tr class="memdesc:a847f937a3c7eb02ed8731f325b0134f5 inherit pub_methods_class_display_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Display Device object.  <br /></td></tr>
-<tr class="separator:a847f937a3c7eb02ed8731f325b0134f5 inherit pub_methods_class_display_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6be3a5b999255994e402b36cdb09d58 inherit pub_methods_class_display_device" id="r_af6be3a5b999255994e402b36cdb09d58"><td class="memItemLeft" align="right" valign="top">
-virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~DisplayDevice</b> ()</td></tr>
-<tr class="memdesc:af6be3a5b999255994e402b36cdb09d58 inherit pub_methods_class_display_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the UIDisplayDevice object. <br /></td></tr>
-<tr class="separator:af6be3a5b999255994e402b36cdb09d58 inherit pub_methods_class_display_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
-<tr class="memitem:ac28f79253302885a03149ca7ed75c357 inherit pub_methods_class_framebuffer" id="r_ac28f79253302885a03149ca7ed75c357"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#ac28f79253302885a03149ca7ed75c357">Framebuffer</a> (size_t <a class="el" href="class_framebuffer.html#a35a041f8b088ee5274aa334d13e4c60e">frame_width</a>, size_t <a class="el" href="class_framebuffer.html#aa346612ecd1e1a0167734b8173bed9db">frame_height</a>, <a class="el" href="structstruct___graph_framebuffer.html">struct_GraphFramebuffer</a> graph_cfg={}, <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a> framebuffer_format=<a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79ab8705fdb146f8f1c9e9d2d8dd6c072ad">FramebufferFormat::MONO_VLSB</a>)</td></tr>
-<tr class="memdesc:ac28f79253302885a03149ca7ed75c357 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a> object when frame width and height are given.  <br /></td></tr>
-<tr class="separator:ac28f79253302885a03149ca7ed75c357 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee2c762d70a8357da3b2fa968ce0eb3d inherit pub_methods_class_framebuffer" id="r_aee2c762d70a8357da3b2fa968ce0eb3d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#aee2c762d70a8357da3b2fa968ce0eb3d">Framebuffer</a> (uint8_t number_of_column, uint8_t number_of_line, <a class="el" href="structstruct___text_framebuffer.html">struct_TextFramebuffer</a> text_cfg, <a class="el" href="structstruct___graph_framebuffer.html">struct_GraphFramebuffer</a> graph_cfg={}, <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a> framebuffer_format=<a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79ab8705fdb146f8f1c9e9d2d8dd6c072ad">FramebufferFormat::MONO_VLSB</a>)</td></tr>
-<tr class="memdesc:aee2c762d70a8357da3b2fa968ce0eb3d inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a> object when number of caracter width and height are given.  <br /></td></tr>
-<tr class="separator:aee2c762d70a8357da3b2fa968ce0eb3d inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a037bf3e17455354d5d907ceea00313dd inherit pub_methods_class_framebuffer" id="r_a037bf3e17455354d5d907ceea00313dd"><td class="memItemLeft" align="right" valign="top">
-&#160;</td><td class="memItemRight" valign="bottom"><b>~Framebuffer</b> ()</td></tr>
-<tr class="memdesc:a037bf3e17455354d5d907ceea00313dd inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">Framebuffer</a> object. <br /></td></tr>
-<tr class="separator:a037bf3e17455354d5d907ceea00313dd inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65d111e29829fef4318d355cb0841e83 inherit pub_methods_class_framebuffer" id="r_a65d111e29829fef4318d355cb0841e83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a65d111e29829fef4318d355cb0841e83">get_framebuffer_format</a> ()</td></tr>
-<tr class="memdesc:a65d111e29829fef4318d355cb0841e83 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the framebuffer format object.  <br /></td></tr>
-<tr class="separator:a65d111e29829fef4318d355cb0841e83 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b470c2ef236fcfbfd371ee800992154 inherit pub_methods_class_framebuffer" id="r_a7b470c2ef236fcfbfd371ee800992154"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_pixel_buffer</b> ()</td></tr>
-<tr class="memdesc:a7b470c2ef236fcfbfd371ee800992154 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0). <br /></td></tr>
-<tr class="separator:a7b470c2ef236fcfbfd371ee800992154 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac71de6e7a85fc62b53f795ce994c9ec1 inherit pub_methods_class_framebuffer" id="r_ac71de6e7a85fc62b53f795ce994c9ec1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1">fill</a> (<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c)</td></tr>
-<tr class="memdesc:ac71de6e7a85fc62b53f795ce994c9ec1 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write all framebuffer memory with "0" (or "1") if color c is BLACK (resp. WHITE).  <br /></td></tr>
-<tr class="separator:ac71de6e7a85fc62b53f795ce994c9ec1 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae464d1772ef80976c1faf8b2abb42903 inherit pub_methods_class_framebuffer" id="r_ae464d1772ef80976c1faf8b2abb42903"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#ae464d1772ef80976c1faf8b2abb42903">hline</a> (uint8_t x, uint8_t y, size_t w, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c=<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a>)</td></tr>
-<tr class="memdesc:ae464d1772ef80976c1faf8b2abb42903 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a c color horizontal line, starting at frame position (x,y), on w number of pixel.  <br /></td></tr>
-<tr class="separator:ae464d1772ef80976c1faf8b2abb42903 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8fb16c32869ebc991bc6fbe1465979d inherit pub_methods_class_framebuffer" id="r_ae8fb16c32869ebc991bc6fbe1465979d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#ae8fb16c32869ebc991bc6fbe1465979d">vline</a> (uint8_t x, uint8_t y, size_t h, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c=<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a>)</td></tr>
-<tr class="memdesc:ae8fb16c32869ebc991bc6fbe1465979d inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a c color vertical line, starting at frame position (x,y), on w number of pixel.  <br /></td></tr>
-<tr class="separator:ae8fb16c32869ebc991bc6fbe1465979d inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b7d45e8d169a9899d124a7f6de9ce16 inherit pub_methods_class_framebuffer" id="r_a8b7d45e8d169a9899d124a7f6de9ce16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a8b7d45e8d169a9899d124a7f6de9ce16">line</a> (int x1, int y1, int x2, int y2, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c=<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a>)</td></tr>
-<tr class="memdesc:a8b7d45e8d169a9899d124a7f6de9ce16 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a c color line, starting at frame position (x1,y1), ending at frame position (x2,y2)  <br /></td></tr>
-<tr class="separator:a8b7d45e8d169a9899d124a7f6de9ce16 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0e1916dfc5fcdaa7999c8d3ebdaef6b inherit pub_methods_class_framebuffer" id="r_ae0e1916dfc5fcdaa7999c8d3ebdaef6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#ae0e1916dfc5fcdaa7999c8d3ebdaef6b">rect</a> (uint8_t x, uint8_t y, size_t w, size_t h, bool <a class="el" href="class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1">fill</a>=false, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c=<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a>)</td></tr>
-<tr class="memdesc:ae0e1916dfc5fcdaa7999c8d3ebdaef6b inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a rectangle, starting at frame position (x,y), w wide and h high.  <br /></td></tr>
-<tr class="separator:ae0e1916dfc5fcdaa7999c8d3ebdaef6b inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4eb865f19596a64e30862697ab737318 inherit pub_methods_class_framebuffer" id="r_a4eb865f19596a64e30862697ab737318"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a4eb865f19596a64e30862697ab737318">circle</a> (int radius, int x_center, int y_center, bool <a class="el" href="class_framebuffer.html#ac71de6e7a85fc62b53f795ce994c9ec1">fill</a>=false, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c=<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a>)</td></tr>
-<tr class="memdesc:a4eb865f19596a64e30862697ab737318 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a cercle of size radius, centered at (x_center, y_center) <a href="https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham">https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham</a> <a href="https://en.wikipedia.org/wiki/Midpoint_circle_algorithm">https://en.wikipedia.org/wiki/Midpoint_circle_algorithm</a> procédure tracerCercle (entier rayon, entier x_centre, entier y_centre) déclarer entier x, y, m ; x ← 0 ; y ← rayon ; // on se place en haut du cercle m ← 5 - 4*rayon ; // initialisation Tant que x &lt;= y // tant qu'on est dans le second octant tracerPixel( x+x_centre, y+y_centre ) ; tracerPixel( y+x_centre, x+y_centre ) ; tracerPixel( -x+x_centre, y+y_centre ) ; tracerPixel( -y+x_centre, x+y_centre ) ; tracerPixel( x+x_centre, -y+y_centre ) ; tracerPixel( y+x_centre, -x+y_centre ) ; tracerPixel( -x+x_centre, -y+y_centre ) ; tracerPixel( -y+x_centre, -x+y_centre ) ; si m &gt; 0 alors //choix du point F y ← y - 1 ; m ← m - 8*y ; fin si ; x ← x + 1 ; m ← m + 8*x + 4 ; fin tant que ; fin de procédure ;  <br /></td></tr>
-<tr class="separator:a4eb865f19596a64e30862697ab737318 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_graphic_display_device"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_graphic_display_device')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a></td></tr>
+<tr class="memitem:a82099f2327fcd342e8b823d87500ab96 inherit pub_methods_class_graphic_display_device" id="r_a82099f2327fcd342e8b823d87500ab96"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_display_device.html#a82099f2327fcd342e8b823d87500ab96">GraphicDisplayDevice</a> (size_t width, size_t height)</td></tr>
+<tr class="memdesc:a82099f2327fcd342e8b823d87500ab96 inherit pub_methods_class_graphic_display_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Display Device object.  <br /></td></tr>
+<tr class="separator:a82099f2327fcd342e8b823d87500ab96 inherit pub_methods_class_graphic_display_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0adf3090be1bd3a09038974df373142b inherit pub_methods_class_graphic_display_device" id="r_a0adf3090be1bd3a09038974df373142b"><td class="memItemLeft" align="right" valign="top">
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~GraphicDisplayDevice</b> ()</td></tr>
+<tr class="memdesc:a0adf3090be1bd3a09038974df373142b inherit pub_methods_class_graphic_display_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the Display Device object. <br /></td></tr>
+<tr class="separator:a0adf3090be1bd3a09038974df373142b inherit pub_methods_class_graphic_display_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -244,92 +214,63 @@ Static Public Member Functions</h2></td></tr>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a3e0efaaaf70d9712057b3fdbc1ee069f" id="r_a3e0efaaaf70d9712057b3fdbc1ee069f"><td class="memItemLeft" align="right" valign="top"><a id="a3e0efaaaf70d9712057b3fdbc1ee069f" name="a3e0efaaaf70d9712057b3fdbc1ee069f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
-<tr class="memdesc:a3e0efaaaf70d9712057b3fdbc1ee069f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the master init functionthat calls all others <br /></td></tr>
+<tr class="memdesc:a3e0efaaaf70d9712057b3fdbc1ee069f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the master init function that calls all others <br /></td></tr>
 <tr class="separator:a3e0efaaaf70d9712057b3fdbc1ee069f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7d610e1d38518a7d467950ec7c48413" id="r_ae7d610e1d38518a7d467950ec7c48413"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7d610e1d38518a7d467950ec7c48413">init_MUX_ratio</a> (uint8_t value)</td></tr>
-<tr class="memdesc:ae7d610e1d38518a7d467950ec7c48413"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details  <br /></td></tr>
+<tr class="memdesc:ae7d610e1d38518a7d467950ec7c48413"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
 <tr class="separator:ae7d610e1d38518a7d467950ec7c48413"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc821b2c7b46a4872f7198dd59a14e66" id="r_afc821b2c7b46a4872f7198dd59a14e66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc821b2c7b46a4872f7198dd59a14e66">init_display_vertical_shift</a> (uint8_t value)</td></tr>
-<tr class="memdesc:afc821b2c7b46a4872f7198dd59a14e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details  <br /></td></tr>
+<tr class="memdesc:afc821b2c7b46a4872f7198dd59a14e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
 <tr class="separator:afc821b2c7b46a4872f7198dd59a14e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a784fdb3c2897af4c27ce69f0195bfd80" id="r_a784fdb3c2897af4c27ce69f0195bfd80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a784fdb3c2897af4c27ce69f0195bfd80">init_RAM_start_line</a> (uint8_t value)</td></tr>
-<tr class="memdesc:a784fdb3c2897af4c27ce69f0195bfd80"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details  <br /></td></tr>
+<tr class="memdesc:a784fdb3c2897af4c27ce69f0195bfd80"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
 <tr class="separator:a784fdb3c2897af4c27ce69f0195bfd80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2197c4965c293100893159d198779846" id="r_a2197c4965c293100893159d198779846"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2197c4965c293100893159d198779846">init_SEG_scan_inverse_direction</a> (bool inverse)</td></tr>
-<tr class="memdesc:a2197c4965c293100893159d198779846"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details  <br /></td></tr>
+<tr class="memdesc:a2197c4965c293100893159d198779846"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
 <tr class="separator:a2197c4965c293100893159d198779846"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49eae32a3832373c003b9d9c3381a3bf" id="r_a49eae32a3832373c003b9d9c3381a3bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49eae32a3832373c003b9d9c3381a3bf">init_COM_scan_inverse_direction</a> (bool inverse)</td></tr>
-<tr class="memdesc:a49eae32a3832373c003b9d9c3381a3bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details  <br /></td></tr>
+<tr class="memdesc:a49eae32a3832373c003b9d9c3381a3bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
 <tr class="separator:a49eae32a3832373c003b9d9c3381a3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accd5618ae4484f8435ed75b63e58543f" id="r_accd5618ae4484f8435ed75b63e58543f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#accd5618ae4484f8435ed75b63e58543f">init_COM_cfg</a> (bool sequentialCOM, bool enableCOMLRremap)</td></tr>
-<tr class="memdesc:accd5618ae4484f8435ed75b63e58543f"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details  <br /></td></tr>
+<tr class="memdesc:accd5618ae4484f8435ed75b63e58543f"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
 <tr class="separator:accd5618ae4484f8435ed75b63e58543f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79b1c2ff4a7842aad1ea1c475d766bfe" id="r_a79b1c2ff4a7842aad1ea1c475d766bfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79b1c2ff4a7842aad1ea1c475d766bfe">init_clock_frequency</a> (uint8_t divide_ratio, uint8_t frequency_factor)</td></tr>
-<tr class="memdesc:a79b1c2ff4a7842aad1ea1c475d766bfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details  <br /></td></tr>
+<tr class="memdesc:a79b1c2ff4a7842aad1ea1c475d766bfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
 <tr class="separator:a79b1c2ff4a7842aad1ea1c475d766bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80df9a8d75ab48e4e848a77b5e2c1194" id="r_a80df9a8d75ab48e4e848a77b5e2c1194"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80df9a8d75ab48e4e848a77b5e2c1194">init_charge_pump_enabled</a> (bool enabled)</td></tr>
-<tr class="memdesc:a80df9a8d75ab48e4e848a77b5e2c1194"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details  <br /></td></tr>
+<tr class="memdesc:a80df9a8d75ab48e4e848a77b5e2c1194"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
 <tr class="separator:a80df9a8d75ab48e4e848a77b5e2c1194"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2d5544f63b5b15c62f74ebf78570d08" id="r_ad2d5544f63b5b15c62f74ebf78570d08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2d5544f63b5b15c62f74ebf78570d08">send_cmd</a> (uint8_t cmd)</td></tr>
-<tr class="memdesc:ad2d5544f63b5b15c62f74ebf78570d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details  <br /></td></tr>
+<tr class="memdesc:ad2d5544f63b5b15c62f74ebf78570d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
 <tr class="separator:ad2d5544f63b5b15c62f74ebf78570d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abba4af0c315a9fdcab52d32acc11ab97" id="r_abba4af0c315a9fdcab52d32acc11ab97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abba4af0c315a9fdcab52d32acc11ab97">send_cmd_list</a> (uint8_t *cmd_list, int num)</td></tr>
-<tr class="memdesc:abba4af0c315a9fdcab52d32acc11ab97"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details  <br /></td></tr>
+<tr class="memdesc:abba4af0c315a9fdcab52d32acc11ab97"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
 <tr class="separator:abba4af0c315a9fdcab52d32acc11ab97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a617bac0b0002b299b129bc9e84772af7" id="r_a617bac0b0002b299b129bc9e84772af7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a617bac0b0002b299b129bc9e84772af7">send_buf</a> (uint8_t buf[], size_t buflen)</td></tr>
-<tr class="memdesc:a617bac0b0002b299b129bc9e84772af7"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details  <br /></td></tr>
+<tr class="memdesc:a617bac0b0002b299b129bc9e84772af7"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
 <tr class="separator:a617bac0b0002b299b129bc9e84772af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ac2a0691d558b4b4d8bd51ddbdd3d0809" id="r_ac2a0691d558b4b4d8bd51ddbdd3d0809"><td class="memItemLeft" align="right" valign="top"><a id="ac2a0691d558b4b4d8bd51ddbdd3d0809" name="ac2a0691d558b4b4d8bd51ddbdd3d0809"></a>
 <a class="el" href="class_h_w___i2_c___master.html">HW_I2C_Master</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>i2c_master</b></td></tr>
-<tr class="memdesc:ac2a0691d558b4b4d8bd51ddbdd3d0809"><td class="mdescLeft">&#160;</td><td class="mdescRight">the I2C master that control the <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> display <br /></td></tr>
+<tr class="memdesc:ac2a0691d558b4b4d8bd51ddbdd3d0809"><td class="mdescLeft">&#160;</td><td class="mdescRight">the I2C master that control the <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> display <br /></td></tr>
 <tr class="separator:ac2a0691d558b4b4d8bd51ddbdd3d0809"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c77fc2b876883b63b9f9d403e368e8d" id="r_a8c77fc2b876883b63b9f9d403e368e8d"><td class="memItemLeft" align="right" valign="top"><a id="a8c77fc2b876883b63b9f9d403e368e8d" name="a8c77fc2b876883b63b9f9d403e368e8d"></a>
 <a class="el" href="structstruct___config_s_s_d1306.html">struct_ConfigSSD1306</a>&#160;</td><td class="memItemRight" valign="bottom"><b>device_config</b></td></tr>
-<tr class="memdesc:a8c77fc2b876883b63b9f9d403e368e8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> device configuration <br /></td></tr>
+<tr class="memdesc:a8c77fc2b876883b63b9f9d403e368e8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> device configuration <br /></td></tr>
 <tr class="separator:a8c77fc2b876883b63b9f9d403e368e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_attribs_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
-<tr class="memitem:a94ead2a31fa36b1f301315aea0050847 inherit pub_attribs_class_framebuffer" id="r_a94ead2a31fa36b1f301315aea0050847"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="structstruct___graph_framebuffer.html">struct_GraphFramebuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><b>frame_graph_config</b> {}</td></tr>
-<tr class="memdesc:a94ead2a31fa36b1f301315aea0050847 inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic configuration <br /></td></tr>
-<tr class="separator:a94ead2a31fa36b1f301315aea0050847 inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e0f5c7cd63f12bd9980080be6e1ccb8 inherit pub_attribs_class_framebuffer" id="r_a3e0f5c7cd63f12bd9980080be6e1ccb8"><td class="memItemLeft" align="right" valign="top">
-uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer</b> = nullptr</td></tr>
-<tr class="memdesc:a3e0f5c7cd63f12bd9980080be6e1ccb8 inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the buffer where graphic are drawn <br /></td></tr>
-<tr class="separator:a3e0f5c7cd63f12bd9980080be6e1ccb8 inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35a041f8b088ee5274aa334d13e4c60e inherit pub_attribs_class_framebuffer" id="r_a35a041f8b088ee5274aa334d13e4c60e"><td class="memItemLeft" align="right" valign="top">
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>frame_width</b></td></tr>
-<tr class="memdesc:a35a041f8b088ee5274aa334d13e4c60e inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of pixel along the width of the frame. <br /></td></tr>
-<tr class="separator:a35a041f8b088ee5274aa334d13e4c60e inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa346612ecd1e1a0167734b8173bed9db inherit pub_attribs_class_framebuffer" id="r_aa346612ecd1e1a0167734b8173bed9db"><td class="memItemLeft" align="right" valign="top">
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>frame_height</b></td></tr>
-<tr class="memdesc:aa346612ecd1e1a0167734b8173bed9db inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of pixel along the height of the frame. <br /></td></tr>
-<tr class="separator:aa346612ecd1e1a0167734b8173bed9db inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_methods_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
-<tr class="memitem:ae858d08fc7be604593c68221a8d1d20b inherit pro_methods_class_framebuffer" id="r_ae858d08fc7be604593c68221a8d1d20b"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>create_pixel_buffer</b> ()</td></tr>
-<tr class="memdesc:ae858d08fc7be604593c68221a8d1d20b inherit pro_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">a common function where the pixel_buffer is created and deleted if already existing <br /></td></tr>
-<tr class="separator:ae858d08fc7be604593c68221a8d1d20b inherit pro_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9821acad0cef1fad78540c36f1ac3729 inherit pro_methods_class_framebuffer" id="r_a9821acad0cef1fad78540c36f1ac3729"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a9821acad0cef1fad78540c36f1ac3729">pixel</a> (int x, int y, <a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1f">FramebufferColor</a> c=<a class="el" href="framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d">FramebufferColor::WHITE</a>)</td></tr>
-<tr class="memdesc:a9821acad0cef1fad78540c36f1ac3729 inherit pro_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic primitive to draw a pixel.  <br /></td></tr>
-<tr class="separator:a9821acad0cef1fad78540c36f1ac3729 inherit pro_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
-<tr class="memitem:ad35b8bf0a6703c6bced3e0bfa65f2102 inherit pro_attribs_class_framebuffer" id="r_ad35b8bf0a6703c6bced3e0bfa65f2102"><td class="memItemLeft" align="right" valign="top">
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</b></td></tr>
-<tr class="memdesc:ad35b8bf0a6703c6bced3e0bfa65f2102 inherit pro_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">size of the buffer that contains graphics as map of pixels. <br /></td></tr>
-<tr class="separator:ad35b8bf0a6703c6bced3e0bfa65f2102 inherit pro_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac09b3c586c580074e08fdb5d5b45f598 inherit pro_attribs_class_framebuffer" id="r_ac09b3c586c580074e08fdb5d5b45f598"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79">FramebufferFormat</a>&#160;</td><td class="memItemRight" valign="bottom"><b>frame_format</b></td></tr>
-<tr class="memdesc:ac09b3c586c580074e08fdb5d5b45f598 inherit pro_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the arrangement of the pixel on a byte basis. <br /></td></tr>
-<tr class="separator:ac09b3c586c580074e08fdb5d5b45f598 inherit pro_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_attribs_class_graphic_display_device"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_class_graphic_display_device')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a></td></tr>
+<tr class="memitem:a1766b027cb72eee80d89ca460e178e81 inherit pub_attribs_class_graphic_display_device" id="r_a1766b027cb72eee80d89ca460e178e81"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_memory</b></td></tr>
+<tr class="memdesc:a1766b027cb72eee80d89ca460e178e81 inherit pub_attribs_class_graphic_display_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">the data structure of the pixel buffer <br /></td></tr>
+<tr class="separator:a1766b027cb72eee80d89ca460e178e81 inherit pub_attribs_class_graphic_display_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> OLED display device driver. </p>
+<div class="textblock"><p><a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> 128x64 pixel OLED display device driver with I2C interface. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4d8fc891acd28a44e8b2c274c92cd57b" name="a4d8fc891acd28a44e8b2c274c92cd57b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4d8fc891acd28a44e8b2c274c92cd57b">&#9670;&#160;</a></span>SSD1306()</h2>
@@ -349,8 +290,6 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Construct a new <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">master</td><td>the I2C master interface driver <a class="el" href="class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API">HW_I2C_Master</a> </td></tr>
@@ -362,6 +301,41 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae8806883d7ce6ba32bb5ed8c7a5a1282" name="ae8806883d7ce6ba32bb5ed8c7a5a1282"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8806883d7ce6ba32bb5ed8c7a5a1282">&#9670;&#160;</a></span>clear_pixel_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::clear_pixel_buffer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *</td>          <td class="paramname"><span class="paramname"><em>pixel_memory</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A pure virtual method. Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0). Usefull when we have a graphic framework. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pixel_memory</td><td>the pixel buffer to fill </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_graphic_display_device.html#a925fa588f6f1174b81396f1dd29cf14d">GraphicDisplayDevice</a>.</p>
+
+</div>
+</div>
 <a id="a946d97970d11c778a09e0f1305591b3f" name="a946d97970d11c778a09e0f1305591b3f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a946d97970d11c778a09e0f1305591b3f">&#9670;&#160;</a></span>compute_render_area()</h2>
 
@@ -410,6 +384,128 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="structstruct___render_area.html" title="data used to compute the render area position in the display framebuffer reference,...">struct_RenderArea</a> </dd></dl>
+
+</div>
+</div>
+<a id="a4cd36aaddf2129f31beb3c8119b2d496" name="a4cd36aaddf2129f31beb3c8119b2d496"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cd36aaddf2129f31beb3c8119b2d496">&#9670;&#160;</a></span>create_pixel_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::create_pixel_buffer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *</td>          <td class="paramname"><span class="paramname"><em>pixel_memory</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A pure virtual method. Create a pixel buffer object. </p>
+<dl class="section note"><dt>Note</dt><dd>: the width and height of the pixel frame must be known before invoking this method. </dd>
+<dd>
+: the graphic framebuffer uses this method to create its pixel frame buffer.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pixel_memory</td><td>the pixel buffer to complete </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_graphic_display_device.html#a0c4dfc52e338d9f3fa66fc36e76f4017">GraphicDisplayDevice</a>.</p>
+
+</div>
+</div>
+<a id="ab48bed5466ccf728b38abdd4b29bc976" name="ab48bed5466ccf728b38abdd4b29bc976"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab48bed5466ccf728b38abdd4b29bc976">&#9670;&#160;</a></span>drawChar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::drawChar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *</td>          <td class="paramname"><span class="paramname"><em>pixel_memory_structure</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct___text_framebuffer.html">struct_TextFramebuffer</a> *</td>          <td class="paramname"><span class="paramname"><em>text_config</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>c</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_y</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>a graphic primitive to draw a character at a pixel position </p>
+<dl class="section note"><dt>Note</dt><dd>: DrawChar() implementation depends strongly on the FramebufferFormat.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pixel_memory_structure</td><td></td></tr>
+    <tr><td class="paramname">text_config</td><td>the configuration file of the text framebuffer </td></tr>
+    <tr><td class="paramname">c</td><td>the character to draw </td></tr>
+    <tr><td class="paramname">anchor_x</td><td>the pixel position on x-axis to start drawing the character (upper left corner) </td></tr>
+    <tr><td class="paramname">anchor_y</td><td>the pixel position on y-axis to start drawing the character (upper left corner) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_graphic_display_device.html#add371334ff6b5db59a2538bf626065cb">GraphicDisplayDevice</a>.</p>
+
+</div>
+</div>
+<a id="adc2b08b724a23e4179362183cda8475b" name="adc2b08b724a23e4179362183cda8475b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc2b08b724a23e4179362183cda8475b">&#9670;&#160;</a></span>fill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::fill </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>          <td class="paramname"><span class="paramname"><em>c</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fill the pixel buffer with the color C. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>the pixel foreground color </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -495,10 +591,10 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
 </table>
 </div><div class="memdoc">
 
-<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </p>
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">enabled</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </td></tr>
+    <tr><td class="paramname">enabled</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
   </table>
   </dd>
 </dl>
@@ -532,11 +628,11 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
 </table>
 </div><div class="memdoc">
 
-<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </p>
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">divide_ratio</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </td></tr>
-    <tr><td class="paramname">frequency_factor</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </td></tr>
+    <tr><td class="paramname">divide_ratio</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+    <tr><td class="paramname">frequency_factor</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
   </table>
   </dd>
 </dl>
@@ -570,11 +666,11 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
 </table>
 </div><div class="memdoc">
 
-<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </p>
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sequentialCOM</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </td></tr>
-    <tr><td class="paramname">enableCOMLRremap</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </td></tr>
+    <tr><td class="paramname">sequentialCOM</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+    <tr><td class="paramname">enableCOMLRremap</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
   </table>
   </dd>
 </dl>
@@ -604,10 +700,10 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
 </table>
 </div><div class="memdoc">
 
-<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </p>
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">inverse</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </td></tr>
+    <tr><td class="paramname">inverse</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
   </table>
   </dd>
 </dl>
@@ -637,10 +733,10 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
 </table>
 </div><div class="memdoc">
 
-<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </p>
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </td></tr>
+    <tr><td class="paramname">value</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
   </table>
   </dd>
 </dl>
@@ -670,10 +766,10 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
 </table>
 </div><div class="memdoc">
 
-<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </p>
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </td></tr>
+    <tr><td class="paramname">value</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data shhet for more details </td></tr>
   </table>
   </dd>
 </dl>
@@ -703,10 +799,10 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
 </table>
 </div><div class="memdoc">
 
-<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </p>
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </td></tr>
+    <tr><td class="paramname">value</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
   </table>
   </dd>
 </dl>
@@ -736,13 +832,65 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
 </table>
 </div><div class="memdoc">
 
-<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </p>
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">inverse</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </td></tr>
+    <tr><td class="paramname">inverse</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ab9fdcddc9fe1c4d84be19041bf51cc4a" name="ab9fdcddc9fe1c4d84be19041bf51cc4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9fdcddc9fe1c4d84be19041bf51cc4a">&#9670;&#160;</a></span>pixel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::pixel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *</td>          <td class="paramname"><span class="paramname"><em>pixel_memory_structure</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>          <td class="paramname"><span class="paramname"><em>c</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the graphic primitive to draw a pixel </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pixel_memory_structure</td><td></td></tr>
+    <tr><td class="paramname">x</td><td>the x position of the pixel </td></tr>
+    <tr><td class="paramname">y</td><td>the y position of the pixel </td></tr>
+    <tr><td class="paramname">c</td><td>the color of the pixel </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_graphic_display_device.html#a49907f68902af86713d34fbec55fc2b2">GraphicDisplayDevice</a>.</p>
 
 </div>
 </div>
@@ -773,11 +921,11 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
 </table>
 </div><div class="memdoc">
 
-<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </p>
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">buf</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </td></tr>
-    <tr><td class="paramname">buflen</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </td></tr>
+    <tr><td class="paramname">buf</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+    <tr><td class="paramname">buflen</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
   </table>
   </dd>
 </dl>
@@ -807,10 +955,10 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
 </table>
 </div><div class="memdoc">
 
-<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </p>
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cmd</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </td></tr>
+    <tr><td class="paramname">cmd</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
   </table>
   </dd>
 </dl>
@@ -844,11 +992,11 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
 </table>
 </div><div class="memdoc">
 
-<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </p>
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cmd_list</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </td></tr>
-    <tr><td class="paramname">num</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> data shhet for more details </td></tr>
+    <tr><td class="paramname">cmd_list</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+    <tr><td class="paramname">num</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
   </table>
   </dd>
 </dl>
@@ -870,7 +1018,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
       </table>
 </div><div class="memdoc">
 
-<p>Set the contrast object. refer to datasheet of <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> device. </p>
+<p>Set the contrast object. refer to datasheet of <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> device. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">value</td><td></td></tr>
@@ -905,8 +1053,8 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
 
 </div>
 </div>
-<a id="a9877895dcf33190e2fa712c8bf46bbb8" name="a9877895dcf33190e2fa712c8bf46bbb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9877895dcf33190e2fa712c8bf46bbb8">&#9670;&#160;</a></span>show() <span class="overload">[1/2]</span></h2>
+<a id="adbcf73ef1d7c172c65691f91f9a76ae9" name="adbcf73ef1d7c172c65691f91f9a76ae9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbcf73ef1d7c172c65691f91f9a76ae9">&#9670;&#160;</a></span>show()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -917,36 +1065,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
         <tr>
           <td class="memname">void SSD1306::show </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>the <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> implementation of the show function. Used when we need to show the full device area </p>
-
-<p>Implements <a class="el" href="class_display_device.html#a62bf74c3080029302b95578f9ddf6ac5">DisplayDevice</a>.</p>
-
-</div>
-</div>
-<a id="a67f56b6c4fd626c6b60488e9aebfc077" name="a67f56b6c4fd626c6b60488e9aebfc077"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67f56b6c4fd626c6b60488e9aebfc077">&#9670;&#160;</a></span>show() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SSD1306::show </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_framebuffer.html">Framebuffer</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *</td>          <td class="paramname"><span class="paramname"><em>pixel_memory</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -965,28 +1084,16 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_buffer_size</
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>the <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> implementation of the show function. Used when we need to show a framebuffer in a given render area </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">frame</td><td>the framebuffer we want to show on the display </td></tr>
+    <tr><td class="paramname">pixel_memory</td><td>a pointer to the <a class="el" href="structstruct___pixel_memory.html" title="the data structure that describes framebuffer">struct_PixelMemory</a> that contains the pixel_buffer to be displayed </td></tr>
     <tr><td class="paramname">anchor_x</td><td>where we want to position (x) the frambuffer </td></tr>
     <tr><td class="paramname">anchor_y</td><td>where we want to position (y) the frambuffer </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_display_device.html#a834052a46aab0c7f802dba845c444688">DisplayDevice</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_s_s_d1306_a67f56b6c4fd626c6b60488e9aebfc077_cgraph.png" border="0" usemap="#aclass_s_s_d1306_a67f56b6c4fd626c6b60488e9aebfc077_cgraph" alt=""/></div>
-<map name="aclass_s_s_d1306_a67f56b6c4fd626c6b60488e9aebfc077_cgraph" id="aclass_s_s_d1306_a67f56b6c4fd626c6b60488e9aebfc077_cgraph">
-<area shape="rect" title="the SSD1306 implementation of the show function. Used when we need to show a framebuffer in a given r..." alt="" coords="5,5,103,30"/>
-<area shape="rect" href="class_framebuffer.html#ac28f79253302885a03149ca7ed75c357" title="Construct a new Framebuffer object when frame width and height are given." alt="" coords="151,5,298,30"/>
-<area shape="poly" title=" " alt="" coords="103,15,135,15,135,20,103,20"/>
-</map>
-</div>
+<p>Implements <a class="el" href="class_graphic_display_device.html#a0fd7fe7d76688694abeca08375acde93">GraphicDisplayDevice</a>.</p>
 
 </div>
 </div>

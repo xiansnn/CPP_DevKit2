@@ -1,23 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,55,86,79"/>
-<area shape="rect" id="Node000001" href="$class_display_device.html" title="This is the abstract class to handle all generic behavior of physical display devices (e...." alt="" coords="148,5,234,30"/>
-<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="98,47,151,28,153,33,100,52"/>
-<area shape="rect" id="Node000003" href="$class_textual_frame_buffer.html" title="the place where all textual primitive are placed" alt="" coords="134,55,248,79"/>
-<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="101,64,133,64,133,70,101,70"/>
-<area shape="rect" id="Node000005" href="$class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="163,153,218,178"/>
-<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="79,86,172,151,169,155,76,91"/>
-<area shape="rect" id="Node000002" href="$class_s_s_d1306.html" title="SSD1306 OLED display device driver." alt="" coords="338,5,402,30"/>
-<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="249,15,337,15,337,20,249,20"/>
-<area shape="rect" id="Node000004" href="$class_widget_text.html" title="the class of widget dedicated to text frame" alt="" coords="332,55,407,79"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="263,64,331,64,331,70,263,70"/>
-<area shape="rect" id="Node000006" href="$class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="310,104,429,129"/>
-<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="233,152,321,127,323,132,234,157"/>
-<area shape="rect" id="Node000007" href="$class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="296,153,443,178"/>
-<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="234,163,296,163,296,168,234,168"/>
-<area shape="rect" id="Node000008" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="316,203,423,227"/>
-<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="234,175,323,199,321,205,233,180"/>
-<area shape="rect" id="Node000010" href="$class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="303,252,436,277"/>
-<area shape="poly" id="edge10_Node000005_Node000010" title=" " alt="" coords="221,186,256,212,297,237,326,249,324,254,295,241,253,216,218,190"/>
-<area shape="rect" id="Node000009" href="$class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="491,203,617,227"/>
-<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="438,212,491,212,491,218,438,218"/>
+<area shape="rect" id="Node000000" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,31,127,55"/>
+<area shape="rect" id="Node000001" href="$class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="195,5,260,30"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="142,28,194,20,195,25,143,34"/>
+<area shape="rect" id="Node000002" href="$class_text_display_device.html" title="A pure textual class." alt="" coords="175,55,280,79"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="143,52,175,57,174,62,142,57"/>
 </map>

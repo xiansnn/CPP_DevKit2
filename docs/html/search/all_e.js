@@ -8,7 +8,7 @@ var searchData=
   ['level_5foffset_5',['level_offset',['../class_widget_horizontal_bargraph.html#a88c0d195853bac577f0d951819e6ac85',1,'WidgetHorizontalBargraph::level_offset'],['../class_widget_vertical_bargraph.html#a37b0ff21f1f0879505a431dac8e79d20',1,'WidgetVerticalBargraph::level_offset'],['../class_widget_horizontal_bar.html#a3dac8a9f17d8e944d15332d916dcc034',1,'WidgetHorizontalBar::level_offset']]],
   ['light_5foff_6',['light_off',['../class_widget_square_led.html#a42346c3328139af27dfe689b18e5c35d',1,'WidgetSquareLed']]],
   ['light_5fon_7',['light_on',['../class_widget_square_led.html#a65f78920b72dd7afd52806032663a469',1,'WidgetSquareLed']]],
-  ['line_8',['line',['../class_framebuffer.html#a8b7d45e8d169a9899d124a7f6de9ce16',1,'Framebuffer']]],
+  ['line_8',['line',['../class_graphic_framebuffer.html#aa752be049cd63d904a41510c8f7f4932',1,'GraphicFramebuffer']]],
   ['line_5ffeed_9',['LINE_FEED',['../framebuffer_8h.html#a3c2cad5489953de23c5733e6e696a93e',1,'framebuffer.h']]],
   ['list_10',['List',['../bug.html',1,'Bug List'],['../todo.html',1,'Todo List']]],
   ['lo_11',['lo',['../class_probe.html#ade2391514faaee5f3acfffc4d3cb2de8',1,'Probe']]],

@@ -34,19 +34,17 @@ private:
     /// @brief the offset of the conversion level-> pixel
     int level_offset;
 
-
     /// @brief the conversion fucntion level -> value
     void convert_level_value_to_px();
-    
+
     /// @brief the draw function of the widget
     void draw();
 
 protected:
-
 public:
     /**
      * @brief Construct a new Widget Horizontal Bar object
-     * 
+     *
      * @param bar_value_model a pointer to the displayed model
      * @param display_screen a pointer to the display device
      * @param max_value max value of the bar
@@ -56,12 +54,11 @@ public:
      * @param widget_anchor_x the pixel x-location of the widget
      * @param widget_anchor_y the pixel y-location of the widget (remind. must be multiple of 8)
      * @param widget_with_border true if the widget has a border( it's prettier with a border)
-     * @param widget_border_width can only be = 1
-     * @param color the color of the widget
-     * @param framebuffer_format the frameformat of the display device
+     * @param fg_color the foreground color
+     * @param bg_color the background color
      */
     WidgetHorizontalBar(UIModelObject *bar_value_model,
-                        DisplayDevice *display_screen,
+                        GraphicDisplayDevice *display_screen,
                         int max_value, int min_value,
                         size_t frame_width, size_t frame_height,
                         uint8_t widget_anchor_x, uint8_t widget_anchor_y,
@@ -71,8 +68,8 @@ public:
 
     ~WidgetHorizontalBar();
     /// @brief set the level to value
-    /// @param value 
+    /// @param value
     void set_level(int value);
-    
+
     virtual void draw_refresh();
 };

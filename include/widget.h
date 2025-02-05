@@ -33,7 +33,7 @@
  *
  *
  */
-class Widget : public Framebuffer
+class Widget : public GraphicFramebuffer
 {
 private:
     /// @brief store the value of the previous blinking phase.should be 0 or 1.
@@ -52,7 +52,7 @@ protected:
 
 
     // /// @brief the display device where the widget is displayed
-    // DisplayDevice *display_screen{nullptr};//TODO remonter dans framebuffer
+    // GraphicDisplayDevice *display_screen{nullptr};//TODO remonter dans framebuffer
 
     /// @brief if true, the widget is surrounded by a one-pixel border
     bool widget_with_border{true};
@@ -97,7 +97,7 @@ public:
      *
      * @param _new_display_device
      */
-    void set_display_screen(DisplayDevice *_new_display_device);
+    void set_display_screen(GraphicDisplayDevice *_new_display_device);
 
     /**
      * @brief Set the blink period in microseconds
@@ -106,21 +106,21 @@ public:
      */
     void set_blink_us(uint32_t blink_period = 1000000);
 
+   
     /**
-     * @brief Construct a new UIWidget object
-     *
-     * @param display_screen   The display device on which the widget is drawn.
-     * @param frame_width The width of the widget including the border
-     * @param frame_height   the height of the widget including the border
+     * @brief Construct a new Widget object
+     * 
+     * @param display_screen    The display device on which the widget is drawn.
+     * @param frame_width  The width of the widget including the border
+     * @param frame_height  the height of the widget including the border
      * @param widget_anchor_x  the horizontal position where the widget start on the device screen
      * @param widget_anchor_y  the vertical position where the widget start on the device screen
-     * @param widget_with_border   The flag that indicates whether the widget has a border or not
-     * @param widget_border_width   the width of the border. WARNING: can only be 1 pixel.
-     * @param framebuffer_format  the addressing format of the actual display device
-     *
+     * @param widget_with_border  The flag that indicates whether the widget has a border or not
+     * @param fg_color the foreground color
+     * @param bg_color the background color
      * \image html widget.png
      */
-    Widget(DisplayDevice *display_screen,
+    Widget(GraphicDisplayDevice *display_screen,
            size_t frame_width,
            size_t frame_height,
            uint8_t widget_anchor_x,

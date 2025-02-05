@@ -40,7 +40,7 @@ void WidgetHorizontalBar::draw()
 }
 
 WidgetHorizontalBar::WidgetHorizontalBar(UIModelObject *bar_value_model,
-                                         DisplayDevice *display_screen,
+                                         GraphicDisplayDevice *display_screen,
                                          int max_value, int min_value,
                                          size_t frame_width, size_t frame_height,
                                          uint8_t widget_anchor_x, uint8_t widget_anchor_y,

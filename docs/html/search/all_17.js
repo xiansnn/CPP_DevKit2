@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['white_0',['WHITE',['../framebuffer_8h.html#a1f53770b596fdf34bb8d3dfbc8a03c1fab5bf627e448384cf3a4c35121ca6008d',1,'framebuffer.h']]],
-  ['widget_1',['Widget',['../class_widget.html',1,'Widget'],['../class_widget.html#a878dec47fdb27b4a29426915ae3e8f5e',1,'Widget::Widget()']]],
+  ['white_0',['WHITE',['../display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d',1,'display_device.h']]],
+  ['widget_1',['Widget',['../class_widget.html',1,'Widget'],['../class_widget.html#a21f136d006375705da70a560a52429bd',1,'Widget::Widget()']]],
   ['widget_2eh_2',['widget.h',['../widget_8h.html',1,'']]],
   ['widget_5fanchor_5fx_3',['widget_anchor_x',['../class_widget.html#aec593e4c3c6af61ca7f74a97bd2387ea',1,'Widget::widget_anchor_x'],['../class_widget_text.html#ac53e031f126f3dae59977b1ecf7a6dfc',1,'WidgetText::widget_anchor_x']]],
   ['widget_5fanchor_5fy_4',['widget_anchor_y',['../class_widget.html#ad54861e21195fc55edf3d0e55bfe3e2b',1,'Widget::widget_anchor_y'],['../class_widget_text.html#a1e777ae00b43eeff462ba10a9586c3e3',1,'WidgetText::widget_anchor_y']]],
@@ -16,13 +16,13 @@ var searchData=
   ['widget_5ftext_2eh_13',['widget_text.h',['../widget__text_8h.html',1,'']]],
   ['widget_5fwidth_14',['widget_width',['../class_widget.html#ad20c81e6b8f3bae73b13b272cac2a932',1,'Widget::widget_width'],['../class_widget_text.html#aff3c6e836ff98a417aabccf2129fbd02',1,'WidgetText::widget_width']]],
   ['widget_5fwith_5fborder_15',['widget_with_border',['../class_widget.html#ae6781210e651d10662938599eb985f2f',1,'Widget::widget_with_border'],['../class_widget_text.html#a8b736bac0a08a1881f43e7a7ab514643',1,'WidgetText::widget_with_border']]],
-  ['widgetfocusindicator_16',['WidgetFocusIndicator',['../class_widget_focus_indicator.html',1,'WidgetFocusIndicator'],['../class_widget_focus_indicator.html#a6aa3507c25cb6eadd7674768077340f4',1,'WidgetFocusIndicator::WidgetFocusIndicator()']]],
-  ['widgethorizontalbar_17',['WidgetHorizontalBar',['../class_widget_horizontal_bar.html',1,'WidgetHorizontalBar'],['../class_widget_horizontal_bar.html#a6e6be83ae32fa9db1b3a3431037f03db',1,'WidgetHorizontalBar::WidgetHorizontalBar()']]],
-  ['widgethorizontalbargraph_18',['WidgetHorizontalBargraph',['../class_widget_horizontal_bargraph.html',1,'WidgetHorizontalBargraph'],['../class_widget_horizontal_bargraph.html#a2e611900ac20925a01dd9d78ba0b60f7',1,'WidgetHorizontalBargraph::WidgetHorizontalBargraph()']]],
+  ['widgetfocusindicator_16',['WidgetFocusIndicator',['../class_widget_focus_indicator.html',1,'WidgetFocusIndicator'],['../class_widget_focus_indicator.html#a1afb23a894634f7b4c150f66e7d33b59',1,'WidgetFocusIndicator::WidgetFocusIndicator()']]],
+  ['widgethorizontalbar_17',['WidgetHorizontalBar',['../class_widget_horizontal_bar.html',1,'WidgetHorizontalBar'],['../class_widget_horizontal_bar.html#a481c0937be5e94537a9dd3b8bcac9d78',1,'WidgetHorizontalBar::WidgetHorizontalBar()']]],
+  ['widgethorizontalbargraph_18',['WidgetHorizontalBargraph',['../class_widget_horizontal_bargraph.html',1,'WidgetHorizontalBargraph'],['../class_widget_horizontal_bargraph.html#a4f9633c9787f1a61d75cab5c6730fc0c',1,'WidgetHorizontalBargraph::WidgetHorizontalBargraph()']]],
   ['widgets_19',['widgets',['../class_widget.html#af4c3a0de546fdcb1038469f5c592e2b6',1,'Widget::widgets'],['../class_widget_text.html#ac422e80a9f12318c8cc6b1e05c22c40e',1,'WidgetText::widgets']]],
-  ['widgetsquareled_20',['WidgetSquareLed',['../class_widget_square_led.html',1,'WidgetSquareLed'],['../class_widget_square_led.html#a3ea8ba9a098c2849563261651522c259',1,'WidgetSquareLed::WidgetSquareLed()']]],
-  ['widgettext_21',['WidgetText',['../class_widget_text.html',1,'WidgetText'],['../class_widget_text.html#abef9490ff1d8123706cd38d78cb92b57',1,'WidgetText::WidgetText()']]],
-  ['widgetverticalbargraph_22',['WidgetVerticalBargraph',['../class_widget_vertical_bargraph.html',1,'WidgetVerticalBargraph'],['../class_widget_vertical_bargraph.html#acc54e2b506a342b9a1dee223dd5ef1d3',1,'WidgetVerticalBargraph::WidgetVerticalBargraph()']]],
+  ['widgetsquareled_20',['WidgetSquareLed',['../class_widget_square_led.html',1,'WidgetSquareLed'],['../class_widget_square_led.html#a71297becb8bf67018ed0c0a2d8c5df97',1,'WidgetSquareLed::WidgetSquareLed()']]],
+  ['widgettext_21',['WidgetText',['../class_widget_text.html',1,'WidgetText'],['../class_widget_text.html#a6ca9c3f03d5f017f033fb9fc63a84e19',1,'WidgetText::WidgetText()']]],
+  ['widgetverticalbargraph_22',['WidgetVerticalBargraph',['../class_widget_vertical_bargraph.html',1,'WidgetVerticalBargraph'],['../class_widget_vertical_bargraph.html#abe6cbc74dea50b7118d430834002896a',1,'WidgetVerticalBargraph::WidgetVerticalBargraph()']]],
   ['width_23',['width',['../structstruct___render_area.html#ae390a957d9f070f47e89e84fbcdb8319',1,'struct_RenderArea']]],
   ['wrap_24',['wrap',['../structstruct___text_framebuffer.html#ad81da6e5bcd39e449dc91ded5461d552',1,'struct_TextFramebuffer']]]
 ];

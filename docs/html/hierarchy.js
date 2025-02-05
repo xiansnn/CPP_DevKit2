@@ -1,10 +1,11 @@
 var hierarchy =
 [
     [ "DHT11", "class_d_h_t11.html", null ],
-    [ "Framebuffer", "class_framebuffer.html", [
-      [ "DisplayDevice", "class_display_device.html", [
-        [ "SSD1306", "class_s_s_d1306.html", null ]
-      ] ],
+    [ "GraphicDisplayDevice", "class_graphic_display_device.html", [
+      [ "SSD1306", "class_s_s_d1306.html", null ],
+      [ "TextDisplayDevice", "class_text_display_device.html", null ]
+    ] ],
+    [ "GraphicFramebuffer", "class_graphic_framebuffer.html", [
       [ "TextualFrameBuffer", "class_textual_frame_buffer.html", [
         [ "WidgetText", "class_widget_text.html", null ]
       ] ],
@@ -33,9 +34,9 @@ var hierarchy =
     [ "struct_ConfigSlaveI2C", "structstruct___config_slave_i2_c.html", null ],
     [ "struct_ConfigSSD1306", "structstruct___config_s_s_d1306.html", null ],
     [ "struct_DHTReading", "structstruct___d_h_t_reading.html", null ],
-    [ "struct_GraphFramebuffer", "structstruct___graph_framebuffer.html", null ],
     [ "struct_I2CXferResult", "structstruct___i2_c_xfer_result.html", null ],
     [ "struct_MPUData", "structstruct___m_p_u_data.html", null ],
+    [ "struct_PixelMemory", "structstruct___pixel_memory.html", null ],
     [ "struct_RawData", "structstruct___raw_data.html", null ],
     [ "struct_RenderArea", "structstruct___render_area.html", null ],
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", null ],

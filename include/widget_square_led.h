@@ -31,19 +31,20 @@ protected:
     
 
 public:
+    
     /**
-     * @brief Construct a new WidgetSquareLed
+     * @brief Construct a new Widget Square Led object
      * 
-     * @param display_screen 
-     * @param frame_width 
-     * @param frame_height 
-     * @param widget_anchor_x 
-     * @param widget_anchor_y 
-     * @param widget_with_border
-     * @param color 
-     * @param framebuffer_format 
+     * @param display_screen The display device on which the widget is drawn.
+     * @param frame_width The width of the widget including the border
+     * @param frame_height the height of the widget including the border
+     * @param widget_anchor_x the horizontal position where the widget start on the device screen
+     * @param widget_anchor_y the vertical position where the widget start on the device screen
+     * @param widget_with_border The flag that indicates whether the widget has a border or not
+     * @param fg_color the foreground color
+     * @param bg_color the background color
      */
-    WidgetSquareLed(DisplayDevice *display_screen,
+    WidgetSquareLed(GraphicDisplayDevice *display_screen,
                 size_t frame_width,
                 size_t frame_height,
                 uint8_t widget_anchor_x,

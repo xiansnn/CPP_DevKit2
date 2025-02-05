@@ -26,6 +26,7 @@ enum class PixelColor
     WHITE = 1
 };
 
+/// @brief the data structure that describes framebuffer
 struct struct_PixelMemory
 {
     /// @brief The number of pixel along the width of the frame.
@@ -41,6 +42,7 @@ struct struct_PixelMemory
     size_t pixel_buffer_size;
 };
 
+/// @brief the data sttructure used to configure textual widget
 struct struct_TextFramebuffer
 {
     /**
@@ -71,44 +73,57 @@ struct struct_TextFramebuffer
 };
 
 /**
- * @brief This is the abstract class to handle all generic behavior of physical display devices (e.g. OLED screen SSD1306).
- * It derived from Framebuffer. This allows to draw text and graphics directly into the display framebuffer
- * thanks to Framebuffet class text and graphic primitives indepently from any kind of widget
+ * @brief This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen SSD1306).
+ * It derived from GraphicFramebuffer. This allows to draw graphics directly into the display framebuffer
+ * thanks to Framebuffet class graphic primitives indepently from any kind of widget
  *
  */
-class DisplayDevice
+class GraphicDisplayDevice
 {
 protected:
 
 public:
 
 
+    /// @brief the data structure of the pixel buffer
     struct_PixelMemory pixel_memory;
+   
     /**
-     * @brief Construct a new UIDisplayDevice object
-     *
-     * @param width The width of physical screen, in pixel.
+     * @brief Construct a new Display Device object
+     * 
+     * @param width The width of physical screen, in pixel
      * @param height The height of physical screen, in pixel.
-     * @param graph_cfg the graphical configuration data structure
-     * @param format The framebuffer format ... see Framebuffer class FramebufferFormat enumeration
      */
-    DisplayDevice(size_t width,
+    GraphicDisplayDevice(size_t width,
                   size_t height);
 
-    virtual ~DisplayDevice();
-
-
     /**
-     * @brief Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0).
+     * @brief Destroy the Display Device object
+     * 
+     */
+    virtual ~GraphicDisplayDevice();
+
+    
+    /**
+     * @brief A pure virtual method. Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0).
      * Usefull when we have a graphic framework
+     * 
+     * @param pixel_memory the pixel buffer to fill
      */
     virtual void clear_pixel_buffer(struct_PixelMemory *pixel_memory) = 0;
 
-    /// @brief a common function where the pixel_buffer is created and deleted if already existing
+   
+    /**
+     * @brief A pure virtual method. Create a pixel buffer object.
+     * \note : the width and height of the pixel frame must be known before invoking this method.
+     * \note : the graphic framebuffer uses this method to create its pixel frame buffer.
+     * 
+     * @param pixel_memory the pixel buffer to complete
+     */
     virtual void create_pixel_buffer(struct_PixelMemory *pixel_memory) = 0;
 
     /**
-     * @brief This is an pure virtual member function that all final derived class must implement.
+     * @brief A pure virtual member function.
      * It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.
      *
      * @param pixel_memory_structure a pointer to the struct_PixelMemory that contains the pixel_buffer to be displayed
@@ -127,27 +142,46 @@ public:
      */
     virtual void pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, PixelColor c = PixelColor::WHITE) = 0;
 
-    /// @brief a graphic primitive to draw a character at a pixel position
-    /// \note NOTICE: drawChar() implementation depends strongly on the FramebufferFormat.
-    /// There should be one code for each format.
-    /// @param font the font used to draw the character
-    /// @param c the foreground color of the character
-    /// @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
-    /// @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
+    /**
+     * @brief a graphic primitive to draw a character at a pixel position
+     * \note : DrawChar() implementation depends strongly on the FramebufferFormat.
+     * 
+     * @param pixel_memory_structure 
+     * @param text_config the configuration file of the text framebuffer
+     * @param c the character to draw
+     * @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
+     * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
+     */
     virtual void drawChar(struct_PixelMemory *pixel_memory_structure, struct_TextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y) = 0;
 };
 
-class TextDisplayDevice : public DisplayDevice
+/// @brief A pure textual class.
+class TextDisplayDevice : public GraphicDisplayDevice
 {
 private:
+    /// @brief the size, in number of character of a line
     size_t number_of_char_width;
+    /// @brief the number of line
     size_t number_of_char_height;
+    /// @brief  the number of characters
     size_t text_buffer_size;
+    /// @brief the effective character buffer
     char *text_buffer = nullptr;
 
 public:
+    /**
+     * @brief Construct a new Text Display Device object
+     * 
+     * @param number_of_char_width the size, in number of character of a line
+     * @param number_of_char_hight the number of line
+     */
     TextDisplayDevice(size_t number_of_char_width,
                       size_t number_of_char_hight);
     ~TextDisplayDevice();
+    /**
+     * @brief A pure virtual method. Simply copy the text characters to the text buffer
+     * 
+     * @param text_string the character string
+     */
     virtual void print(char *text_string) = 0;
 };

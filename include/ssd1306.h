@@ -8,40 +8,40 @@
  * @copyright Copyright (c) 2025
  *
  */
-#if !defined(SSD1306_H)
-#define SSD1306_H
+#pragma once
 
 #include "ssd1306/commands_SSD1306.h"
 #include "pico/stdlib.h"
 #include "hw_i2c.h"
 #include "display_device.h"
 
+///@brief the symbolic value of a byte
 #define BYTE_SIZE 8
 
 // Time_frame_interval
-/// @brief refer to data sheet
+/// @brief refer to SSD1306 data sheet
 #define _2_FRAMES 0b111
-/// @brief refer to data sheet
+/// @brief refer to SSD1306 data sheet
 #define _3_FRAMES 0b100
-/// @brief refer to data sheet
+/// @brief refer to SSD1306 data sheet
 #define _4_FRAMES 0b101
-/// @brief refer to data sheet
+/// @brief refer to SSD1306 data sheet
 #define _5_FRAMES 0b000
-/// @brief refer to data sheet
+/// @brief refer to SSD1306 data sheet
 #define _25_FRAMES 0b110
-/// @brief refer to data sheet
+/// @brief refer to SSD1306 data sheet
 #define _64_FRAMES 0b001
-/// @brief refer to data sheet
+/// @brief refer to SSD1306 data sheet
 #define _128_FRAMES 0b010
-/// @brief refer to data sheet
+/// @brief refer to SSD1306 data sheet
 #define _256_FRAMES 0b011
 
 // addressing mode
-/// @brief refer to data sheet
+/// @brief refer to SSD1306 data sheet
 #define HORIZONTAL_ADDRESSING_MODE 0
-/// @brief refer to data sheet
+/// @brief refer to SSD1306 data sheet
 #define VERTICAL_ADDRESSING_MODE 1
-/// @brief refer to data sheet
+/// @brief refer to SSD1306 data sheet
 #define PAGE_ADDRESSING_MODE 2
 
 /**
@@ -51,34 +51,34 @@
 struct struct_ConfigSSD1306
 
 {
-    /// @brief the i2c address, usually 0x3c
+    /// @brief the i2c address, usually 0x3C, may be 0x3D
     uint8_t i2c_address = 0x3C;
     /// @brief multiplex ratio
     uint8_t mux_ratio_value = 64;
-    /// @brief refer to datasheet for more details.
+    /// @brief refer to SSD1306 datasheet for more details.
     uint8_t vertical_offset = 0;
-    /// @brief refer to datasheet for more details.
+    /// @brief refer to SSD1306 datasheet for more details.
     uint8_t GDDRAM_start_line = 0;
-    /// @brief refer to datasheet for more details.
+    /// @brief refer to SSD1306 datasheet for more details.
     bool scan_SEG_inverse_direction = false;
-    /// @brief refer to datasheet for more details.
+    /// @brief refer to SSD1306 datasheet for more details.
     bool scan_COM_inverse_direction = false;
-    /// @brief refer to datasheet for more details.
+    /// @brief refer to SSD1306 datasheet for more details.
     bool sequential_COM = false;
-    /// @brief refer to datasheet for more details.
+    /// @brief refer to SSD1306 datasheet for more details.
     bool enable_COM_L_R_remap = false;
-    /// @brief refer to datasheet for more details.
+    /// @brief refer to SSD1306 datasheet for more details.
     uint8_t contrast = 127;
-    /// @brief refer to datasheet for more details.
+    /// @brief refer to SSD1306 datasheet for more details.
     uint8_t frequency_divider = 1;
-    /// @brief refer to datasheet for more details.
+    /// @brief refer to SSD1306 datasheet for more details.
     uint8_t frequency_factor = 0;
 };
 
 /**
  * @brief configuration data for SSD1306 OLED display scrolling feature.
  *
- * Refer to datasheet for more details.
+ * Refer to SSD1306 datasheet for more details.
  */
 struct struct_ConfigScrollSSD1306
 {
@@ -119,10 +119,10 @@ struct struct_RenderArea
 };
 
 /**
- * @brief SSD1306 128x64 pixel OLED display device driver witj I2C interface
+ * @brief SSD1306 128x64 pixel OLED display device driver with I2C interface
  *
  */
-class SSD1306 : public DisplayDevice
+class SSD1306 : public GraphicDisplayDevice
 {
 private:
     /// @brief the I2C master that control the SSD1306 display
@@ -190,6 +190,11 @@ public:
      */
     static struct_RenderArea compute_render_area(uint8_t start_col, uint8_t end_col, uint8_t start_line, uint8_t end_line);
 
+    /**
+     * @brief Fill the pixel buffer with the color C
+     * 
+     * @param c the pixel foreground color
+     */
     void fill(PixelColor c);
 
     void create_pixel_buffer(struct_PixelMemory *pixel_memory);
@@ -277,4 +282,3 @@ public:
     void vertical_scroll(bool on, struct_ConfigScrollSSD1306 scroll_data);
 };
 
-#endif // SSD1306_H

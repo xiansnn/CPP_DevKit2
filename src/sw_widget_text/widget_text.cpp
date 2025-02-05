@@ -17,7 +17,7 @@ void WidgetText::draw_border(PixelColor c)
         rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width);
 }
 
-void WidgetText::set_display_screen(DisplayDevice *_new_display_device)
+void WidgetText::set_display_screen(GraphicDisplayDevice *_new_display_device)
 {
     this->display_screen = _new_display_device;
 }
@@ -28,7 +28,7 @@ void WidgetText::set_blink_us(uint32_t blink_period)
 }
 
 WidgetText::WidgetText(UIModelObject *_text_model,
-                       DisplayDevice *_display_screen,
+                       GraphicDisplayDevice *_display_screen,
                        struct_TextFramebuffer _framebuffer_txt_cnf,
                        uint8_t _number_of_column,
                        uint8_t _number_of_line,

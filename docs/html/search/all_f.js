@@ -14,13 +14,10 @@ var searchData=
   ['mem_5faddress_5fwritten_11',['mem_address_written',['../structstruct___slave_memory.html#a7ffdb875b97e9cb9ca8680e72704621f',1,'struct_SlaveMemory']]],
   ['min_5fvalue_12',['min_value',['../class_u_i_controlled_incremental_value.html#ae8b0cdfbfe7f3bc120870d7f9e67fb7a',1,'UIControlledIncrementalValue::min_value'],['../class_model_bargraph.html#ab248b727cd4e7023c6bd29259ca60358',1,'ModelBargraph::min_value'],['../class_widget_horizontal_bar.html#a640d4afcc203d0a32e2139a57e9a1123',1,'WidgetHorizontalBar::min_value']]],
   ['modelbargraph_13',['ModelBargraph',['../class_model_bargraph.html',1,'ModelBargraph'],['../class_model_bargraph.html#a23c8f050b4210741564b0e5d6130a669',1,'ModelBargraph::ModelBargraph()']]],
-  ['mono_5fhlsb_14',['MONO_HLSB',['../framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79a1970320035936767bee33317f867c2f3',1,'framebuffer.h']]],
-  ['mono_5fhmsb_15',['MONO_HMSB',['../framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79af6ffeff77bd8691d7cff05ead253b4e7',1,'framebuffer.h']]],
-  ['mono_5fvlsb_16',['MONO_VLSB',['../framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79ab8705fdb146f8f1c9e9d2d8dd6c072ad',1,'framebuffer.h']]],
-  ['mpu6050_17',['MPU6050',['../class_m_p_u6050.html',1,'MPU6050'],['../class_m_p_u6050.html#a69ff7760846ab8f9b33ab07aa57709cf',1,'MPU6050::MPU6050()']]],
-  ['mpu6050_2eh_18',['mpu6050.h',['../mpu6050_8h.html',1,'']]],
-  ['mpu_5faddr_19',['MPU_ADDR',['../structstruct___config_m_p_u6050.html#acf79176ed664b066365717df749cacd7',1,'struct_ConfigMPU6050']]],
-  ['msgeq7_20',['MSGEQ7',['../class_m_s_g_e_q7.html',1,'MSGEQ7'],['../class_m_s_g_e_q7.html#a5d30e2ac12bbf4927b3154859d6f1ee0',1,'MSGEQ7::MSGEQ7()']]],
-  ['msgeq7_2eh_21',['msgeq7.h',['../msgeq7_8h.html',1,'']]],
-  ['mux_5fratio_5fvalue_22',['mux_ratio_value',['../structstruct___config_s_s_d1306.html#aecebd6411a14e59af2f09302e716bcb9',1,'struct_ConfigSSD1306']]]
+  ['mpu6050_14',['MPU6050',['../class_m_p_u6050.html',1,'MPU6050'],['../class_m_p_u6050.html#a69ff7760846ab8f9b33ab07aa57709cf',1,'MPU6050::MPU6050()']]],
+  ['mpu6050_2eh_15',['mpu6050.h',['../mpu6050_8h.html',1,'']]],
+  ['mpu_5faddr_16',['MPU_ADDR',['../structstruct___config_m_p_u6050.html#acf79176ed664b066365717df749cacd7',1,'struct_ConfigMPU6050']]],
+  ['msgeq7_17',['MSGEQ7',['../class_m_s_g_e_q7.html',1,'MSGEQ7'],['../class_m_s_g_e_q7.html#a5d30e2ac12bbf4927b3154859d6f1ee0',1,'MSGEQ7::MSGEQ7()']]],
+  ['msgeq7_2eh_18',['msgeq7.h',['../msgeq7_8h.html',1,'']]],
+  ['mux_5fratio_5fvalue_19',['mux_ratio_value',['../structstruct___config_s_s_d1306.html#aecebd6411a14e59af2f09302e716bcb9',1,'struct_ConfigSSD1306']]]
 ];

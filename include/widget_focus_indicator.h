@@ -36,7 +36,7 @@ public:
      * @param with_border true, if the widget has a border (usually, it's prettier not to have)
      */
     WidgetFocusIndicator(UIModelObject *actual_displayed_model,
-                     DisplayDevice *display_screen,
+                     GraphicDisplayDevice *display_screen,
                      size_t width,
                      size_t height,
                      uint8_t widget_anchor_x,

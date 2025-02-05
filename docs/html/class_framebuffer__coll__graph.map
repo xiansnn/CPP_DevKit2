@@ -1,5 +1,8 @@
 <map id="Framebuffer" name="Framebuffer">
-<area shape="rect" id="Node000001" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,147,464,613"/>
-<area shape="rect" id="Node000002" href="$structstruct___graph_framebuffer.html" title="The configuration data for graphic primitives." alt="" coords="159,5,310,85"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,85,237,131,232,131,232,85"/>
+<area shape="rect" id="Node000001" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,435,477,727"/>
+<area shape="rect" id="Node000002" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="239,185,783,373"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="429,374,385,424,381,420,425,371"/>
+<area shape="rect" id="Node000003" href="$structstruct___pixel_memory.html" title="the data structure that describes framebuffer" alt="" coords="92,5,225,123"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="152,122,142,239,143,306,152,372,165,418,160,420,147,373,138,306,137,238,146,122"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="227,103,344,174,341,178,224,108"/>
 </map>

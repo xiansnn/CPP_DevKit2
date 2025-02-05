@@ -13,7 +13,7 @@
 #include <string.h>
 #include <cstring>
 
-Framebuffer::Framebuffer(DisplayDevice *device,
+GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *device,
                          size_t _frame_width,
                          size_t _frame_height,
                          PixelColor fg_color,
@@ -27,7 +27,7 @@ Framebuffer::Framebuffer(DisplayDevice *device,
     device->create_pixel_buffer(&this->pixel_memory);
 }
 
-Framebuffer::Framebuffer(DisplayDevice *device,
+GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *device,
                          uint8_t number_of_column, // utilisé pour heritage textualframebuffer
                          uint8_t number_of_line,
                          struct_TextFramebuffer text_cnf)
@@ -41,11 +41,11 @@ Framebuffer::Framebuffer(DisplayDevice *device,
     device->create_pixel_buffer(&this->pixel_memory);
 }
 
-Framebuffer::~Framebuffer()
+GraphicFramebuffer::~GraphicFramebuffer()
 {
 }
 
-void Framebuffer::fill(struct_PixelMemory *pixel_memory, PixelColor c)
+void GraphicFramebuffer::fill(struct_PixelMemory *pixel_memory, PixelColor c)
 {
     if (c == PixelColor::BLACK)
         memset(pixel_memory->pixel_buffer, 0x00, pixel_memory->pixel_buffer_size);
@@ -53,19 +53,19 @@ void Framebuffer::fill(struct_PixelMemory *pixel_memory, PixelColor c)
         memset(pixel_memory->pixel_buffer, 0xFF, pixel_memory->pixel_buffer_size);
 }
 
-void Framebuffer::hline(uint8_t x, uint8_t y, size_t w, PixelColor c)
+void GraphicFramebuffer::hline(uint8_t x, uint8_t y, size_t w, PixelColor c)
 {
     for (size_t i = 0; i < w; i++)
         display_screen->pixel(&this->pixel_memory, x + i, y, c);
 }
 
-void Framebuffer::vline(uint8_t x, uint8_t y, size_t h, PixelColor c)
+void GraphicFramebuffer::vline(uint8_t x, uint8_t y, size_t h, PixelColor c)
 {
     for (size_t i = 0; i < h; i++)
         display_screen->pixel(&this->pixel_memory, x, y + i, c);
 }
 
-void Framebuffer::line(int x0, int y0, int x1, int y1, PixelColor c)
+void GraphicFramebuffer::line(int x0, int y0, int x1, int y1, PixelColor c)
 {
     int dx = abs(x1 - x0);
     int sx = x0 < x1 ? 1 : -1;
@@ -93,7 +93,7 @@ void Framebuffer::line(int x0, int y0, int x1, int y1, PixelColor c)
     }
 }
 
-void Framebuffer::rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, bool fill, PixelColor c)
+void GraphicFramebuffer::rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, bool fill, PixelColor c)
 {
     if (!fill)
     {
@@ -108,7 +108,7 @@ void Framebuffer::rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, boo
                 display_screen->pixel(&this->pixel_memory, start_x + i_x, start_y + i_y, c);
 }
 
-void Framebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, PixelColor c)
+void GraphicFramebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, PixelColor c)
 {
     int x, y, m;
     x = 0;
@@ -149,21 +149,21 @@ void Framebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, 
     }
 }
 
-// void Framebuffer::byteOR(int byte_idx, uint8_t byte)
+// void GraphicFramebuffer::byteOR(int byte_idx, uint8_t byte)
 // {
 //     // return if index outside 0 - pixel_buffer length - 1
 //     if (byte_idx > (this->pixel_buffer_size - 1))
 //         return;
 //     this->pixel_buffer[byte_idx] |= byte;
 // }
-// void Framebuffer::byteAND(int byte_idx, uint8_t byte)
+// void GraphicFramebuffer::byteAND(int byte_idx, uint8_t byte)
 // {
 //     // return if index outside 0 - pixel_buffer length - 1
 //     if (byte_idx > (this->pixel_buffer_size - 1))
 //         return;
 //     this->pixel_buffer[byte_idx] &= byte;
 // }
-// void Framebuffer::byteXOR(int byte_idx, uint8_t byte)
+// void GraphicFramebuffer::byteXOR(int byte_idx, uint8_t byte)
 // {
 //     // return if index outside 0 - pixel_buffer length - 1
 //     if (byte_idx > (this->pixel_buffer_size - 1))
@@ -171,7 +171,7 @@ void Framebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, 
 //     this->pixel_buffer[byte_idx] ^= byte;
 // }
 
-void Framebuffer::circle(int radius, int x_center, int y_center, bool fill, PixelColor c)
+void GraphicFramebuffer::circle(int radius, int x_center, int y_center, bool fill, PixelColor c)
 {
     int x, y, m;
     x = 0;
@@ -230,11 +230,11 @@ void TextualFrameBuffer::create_text_buffer()
     clear_text_buffer();
 }
 
-TextualFrameBuffer::TextualFrameBuffer(DisplayDevice *device,
+TextualFrameBuffer::TextualFrameBuffer(GraphicDisplayDevice *device,
                                        uint8_t number_of_column,
                                        uint8_t number_of_line,
                                        struct_TextFramebuffer text_cfg)
-    : Framebuffer(device, number_of_column, number_of_line, text_cfg)
+    : GraphicFramebuffer(device, number_of_column, number_of_line, text_cfg)
 {
 
     this->char_width = number_of_column;
@@ -247,9 +247,9 @@ TextualFrameBuffer::TextualFrameBuffer(DisplayDevice *device,
 TextualFrameBuffer::TextualFrameBuffer(
     size_t frame_width,
     size_t frame_height,
-    DisplayDevice *device,
+    GraphicDisplayDevice *device,
     struct_TextFramebuffer text_cfg)
-    : Framebuffer(device, frame_width, frame_height, text_cfg.fg_color, text_cfg.bg_color)
+    : GraphicFramebuffer(device, frame_width, frame_height, text_cfg.fg_color, text_cfg.bg_color)
 {
     this->frame_text_config = text_cfg;
     this->char_width = this->pixel_memory.frame_width / this->frame_text_config.font[FONT_WIDTH_INDEX];

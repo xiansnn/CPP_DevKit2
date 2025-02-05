@@ -7,7 +7,7 @@ var searchData=
   ['hc_5fsr04_2eh_4',['hc_sr04.h',['../hc__sr04_8h.html',1,'']]],
   ['height_5',['height',['../structstruct___render_area.html#a1b865d1677e21638357766ee175dd3bb',1,'struct_RenderArea']]],
   ['hi_6',['hi',['../class_probe.html#a493e1f46f0123ae6a18d7bd6e79d74f1',1,'Probe']]],
-  ['hline_7',['hline',['../class_framebuffer.html#ae464d1772ef80976c1faf8b2abb42903',1,'Framebuffer']]],
+  ['hline_7',['hline',['../class_graphic_framebuffer.html#ae777b82b8ee37e7f2a97ed1c2cda94cb',1,'GraphicFramebuffer']]],
   ['horizontal_5faddressing_5fmode_8',['HORIZONTAL_ADDRESSING_MODE',['../ssd1306_8h.html#a33832f7efd11e0c4480e0e2476646141',1,'ssd1306.h']]],
   ['horizontal_5fscroll_9',['horizontal_scroll',['../class_s_s_d1306.html#a3228383e41ea93124a1da0a619dc6b11',1,'SSD1306']]],
   ['horizontal_5ftab_10',['HORIZONTAL_TAB',['../framebuffer_8h.html#ab9b41a58308928842d7ee267dbc81e26',1,'framebuffer.h']]],

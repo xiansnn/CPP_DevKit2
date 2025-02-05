@@ -14,25 +14,24 @@
 #include "pico/stdlib.h"
 #include "display_device.h"
 /// @brief flag used to generate 127 character font or full extended 255 character font.
-///
-/// Must be placed before include "...font..."
+/// \note Must be placed before include "...font..."
 #define SSD1306_ASCII_FULL
 #include "ssd1306/5x8_font.h"
 #include "ssd1306/8x8_font.h"
 #include "ssd1306/12x16_font.h"
 #include "ssd1306/16x32_font.h"
 
-/// @brief character code for BACKSPACE
+/// @brief character code for BACKSPACE ('BS', 0x08)
 #define BACKSPACE '\b'
-/// @brief character code for HORIZONTAL_TAB
+/// @brief character code for HORIZONTAL_TAB ('HT', 0x09)
 #define HORIZONTAL_TAB '\t'
-/// @brief character code for LINE_FEED
+/// @brief character code for LINE_FEED ('LF', 0x0A)
 #define LINE_FEED '\n'
-/// @brief character code for VERTICAL_TAB
+/// @brief character code for VERTICAL_TAB ('VT', 0x0B)
 #define VERTICAL_TAB '\v'
-/// @brief character code for FORM_FEED
+/// @brief character code for FORM_FEED ('FF', 0x0C)
 #define FORM_FEED '\f'
-/// @brief character code for CARRIAGE_RETURN
+/// @brief character code for CARRIAGE_RETURN ('CR', 0x0D)
 #define CARRIAGE_RETURN '\r'
 
 /**
@@ -53,7 +52,7 @@
  *
  */
 
-class Framebuffer // TODO prevoir separation text et graphic
+class GraphicFramebuffer // TODO prevoir separation text et graphic
 
 {
 private:
@@ -69,52 +68,49 @@ private:
 
 protected:
     /// @brief the display device where the attached to the frame buffer
-    DisplayDevice *display_screen{nullptr};
+    GraphicDisplayDevice *display_screen{nullptr};
 
 public:
-    struct_PixelMemory pixel_memory;
-    PixelColor fg_color;
-    PixelColor bg_color;
-
     /**
-     * @brief Construct a new Framebuffer object
+     * @brief Construct a new Graphic Framebuffer object
      *
-     * @param display_device the display device in charge of writing effective pixel in the pixel_buffer
+     * @param display_device A pointer to the display device in charge of writing effective pixel in the pixel_buffer
      * @param frame_width The number of pixel along the width of the frame.
      * Usually defined by "x" starting at "0" on top upleft corner, running to the left and ending at frame_width-1 position.
      * @param frame_height The number of pixel along the height of the frame.
      * Usually defined by "y" starting at "0" on top upleft corner, running downward and ending at frame_height-1 position.
+     * @param fg_color the foreground color of the graphic frame
+     * @param bg_color the background color of the graphic frame
      * \image html framebuffer.png
      */
-    Framebuffer(DisplayDevice *display_device,
-                size_t frame_width,
-                size_t frame_height,
-                PixelColor fg_color = PixelColor::WHITE,
-                PixelColor bg_color = PixelColor::BLACK);
+    GraphicFramebuffer(GraphicDisplayDevice *display_device,
+                       size_t frame_width,
+                       size_t frame_height,
+                       PixelColor fg_color = PixelColor::WHITE,
+                       PixelColor bg_color = PixelColor::BLACK);
 
     /**
-     * @brief Construct a new Framebuffer object
-     *
-     * @param display_device the display device in charge of writing effective pixel in the pixel_buffer
-     * @param number_of_column number of character width
-     * @param number_of_line number of character height
-     * @param text_cfg textual configuration data structure
-     * @param graph_cfg graphical configuration data structure
+     * @brief Construct a new Graphic Framebuffer object.
+     * \todo //TODO separer graphic et text framebuffer
+     * @param display_device A pointer to the display device in charge of writing effective pixel in the pixel_buffer
+     * @param number_of_column the number of character per line
+     * @param number_of_line the number of line
+     * @param text_cfg the configuration file of the textual frame
      */
-    Framebuffer(DisplayDevice *display_device,
-                uint8_t number_of_column,
-                uint8_t number_of_line,
-                struct_TextFramebuffer text_cfg);
+    GraphicFramebuffer(GraphicDisplayDevice *display_device,
+                       uint8_t number_of_column,
+                       uint8_t number_of_line,
+                       struct_TextFramebuffer text_cfg);
 
     /**
-     * @brief Destroy the Framebuffer object
+     * @brief Destroy the GraphicFramebuffer object
      */
-    ~Framebuffer();
+    ~GraphicFramebuffer();
 
     /// @brief Write all pixel buffer memory with "0" (or "1") if color c is BLACK (resp. WHITE)
     /// \note: Works only for monochrome display!
     /// @param pixel_memory the location of the pixel_buffer
-    /// @param c
+    /// @param c the foreground color
     void fill(struct_PixelMemory *pixel_memory, PixelColor c);
 
     /**
@@ -197,7 +193,7 @@ public:
  * @brief the place where all textual primitive are placed
  *
  */
-class TextualFrameBuffer : public Framebuffer
+class TextualFrameBuffer : public GraphicFramebuffer
 {
 private:
     /// @brief the line number where the next character will be written.
@@ -233,16 +229,14 @@ public:
     uint8_t char_height{0};
 
     /**
-     * @brief Construct a new Textual Frame Buffer object when character width and height are given.
-     * The frame size in pixel is computer
+     * @brief Construct a new Textual Frame Buffer object
      *
+     * @param device A pointer to the display device in charge of showing character
      * @param number_of_column number of character column
      * @param number_of_line number of character line
      * @param text_cfg textual configuration data structure
-     * @param graph_cfg graphical configuration data structure
-     * @param framebuffer_format the way that memory is written according to the display device
      */
-    TextualFrameBuffer(DisplayDevice *device,
+    TextualFrameBuffer(GraphicDisplayDevice *device,
                        uint8_t number_of_column,
                        uint8_t number_of_line,
                        struct_TextFramebuffer text_cfg);
@@ -253,22 +247,20 @@ public:
      *
      * @param frame_width the width in pixel of the frame
      * @param frame_height the height in pixel of the frame
-     * @param frame_format the display device memory organisation
+     * @param device A pointer to the display device in charge of showing character
      * @param text_cfg the textual configuration data structure
-     * @param graph_cfg the graphical configuration data structure
      */
-
-    TextualFrameBuffer(
-        size_t frame_width, // TODO penser a differencier les signatures
-        size_t frame_height,DisplayDevice *device,
-        struct_TextFramebuffer text_cfg);
+    TextualFrameBuffer(size_t frame_width,
+                       size_t frame_height,
+                       GraphicDisplayDevice *device,
+                       struct_TextFramebuffer text_cfg);
 
     ~TextualFrameBuffer();
 
     /**
      * @brief   Initialize the textual features of framebuffer, according to the configuration data structure frame_text_config
      *
-     * @param   frame_text_config
+     * @param   frame_text_config the textual configuration data structure
      */
     void
     update_text_buffer(struct_TextFramebuffer frame_text_config);

@@ -27,7 +27,7 @@ private:
 
 public:
     MySquareLedWidget(MySquareLedModel *actual_displayed_model,
-                      DisplayDevice *display_screen,
+                      GraphicDisplayDevice *display_screen,
                       size_t width,
                       size_t height,
                       uint8_t widget_anchor_x,
@@ -36,7 +36,7 @@ public:
     void draw_refresh();
 };
 MySquareLedWidget::MySquareLedWidget(MySquareLedModel *actual_displayed_model,
-                                     DisplayDevice *display_screen,
+                                     GraphicDisplayDevice *display_screen,
                                      size_t width,
                                      size_t height,
                                      uint8_t widget_anchor_x,
@@ -87,7 +87,7 @@ private:
 
 public:
     MySquareLEDWidgetWithFocus(MySquareLedModel *actual_displayed_model,
-                               DisplayDevice *display_screen,
+                               GraphicDisplayDevice *display_screen,
                                size_t width,
                                size_t height,
                                uint8_t widget_anchor_x,
@@ -99,7 +99,7 @@ public:
 };
 
 MySquareLEDWidgetWithFocus::MySquareLEDWidgetWithFocus(MySquareLedModel *actual_displayed_model,
-                                                       DisplayDevice *display_screen,
+                                                       GraphicDisplayDevice *display_screen,
                                                        size_t width,
                                                        size_t height,
                                                        uint8_t widget_anchor_x,
@@ -150,7 +150,7 @@ private:
 
 public:
     MyFocusLedWidget(MySquareLedModel *actual_displayed_model,
-                     DisplayDevice *display_screen,
+                     GraphicDisplayDevice *display_screen,
                      size_t width,
                      size_t height,
                      uint8_t widget_anchor_x,
@@ -159,7 +159,7 @@ public:
     void draw_refresh();
 };
 MyFocusLedWidget::MyFocusLedWidget(MySquareLedModel *actual_displayed_model,
-                                   DisplayDevice *display_screen,
+                                   GraphicDisplayDevice *display_screen,
                                    size_t width, size_t height,
                                    uint8_t widget_anchor_x, uint8_t widget_anchor_y)
     : WidgetSquareLed(display_screen, width, height, widget_anchor_x, widget_anchor_y, false)

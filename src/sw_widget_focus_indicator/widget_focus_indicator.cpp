@@ -12,7 +12,7 @@
 #include "widget_focus_indicator.h"
 
 WidgetFocusIndicator::WidgetFocusIndicator(UIModelObject *actual_displayed_model,
-                                           DisplayDevice *display_screen,
+                                           GraphicDisplayDevice *display_screen,
                                            size_t width, size_t height,
                                            uint8_t widget_anchor_x, uint8_t widget_anchor_y, bool with_border)
     : WidgetSquareLed(display_screen,

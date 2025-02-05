@@ -103,7 +103,7 @@ $(function(){initNavTree('commands___s_s_d1306_8h.html',''); initResizable(true)
 </div><!--header-->
 <div class="contents">
 
-<p>This file contains all the defineition of <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> commands.  
+<p>This file contains all the defineition of <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> commands.  
 <a href="#details">More...</a></p>
 <div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -122,19 +122,19 @@ This graph shows which files directly or indirectly include this file:</div>
 Macros</h2></td></tr>
 <tr class="memitem:a4e9409448a0df95c1686670e09b457b7" id="r_a4e9409448a0df95c1686670e09b457b7"><td class="memItemLeft" align="right" valign="top"><a id="a4e9409448a0df95c1686670e09b457b7" name="a4e9409448a0df95c1686670e09b457b7"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SSD1306_HEIGHT</b>&#160;&#160;&#160;64</td></tr>
-<tr class="memdesc:a4e9409448a0df95c1686670e09b457b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">the height in pixel of <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a>, can be either 32 or 64 <br /></td></tr>
+<tr class="memdesc:a4e9409448a0df95c1686670e09b457b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">the height in pixel of <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a>, can be either 32 or 64 <br /></td></tr>
 <tr class="separator:a4e9409448a0df95c1686670e09b457b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5a2aa8865dd03537b97fd1c9037371b" id="r_ae5a2aa8865dd03537b97fd1c9037371b"><td class="memItemLeft" align="right" valign="top"><a id="ae5a2aa8865dd03537b97fd1c9037371b" name="ae5a2aa8865dd03537b97fd1c9037371b"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SSD1306_WIDTH</b>&#160;&#160;&#160;128</td></tr>
-<tr class="memdesc:ae5a2aa8865dd03537b97fd1c9037371b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the width in pixel of <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> <br /></td></tr>
+<tr class="memdesc:ae5a2aa8865dd03537b97fd1c9037371b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the width in pixel of <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> <br /></td></tr>
 <tr class="separator:ae5a2aa8865dd03537b97fd1c9037371b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc48c4fab3e29b6a3b2e9530cdf681af" id="r_acc48c4fab3e29b6a3b2e9530cdf681af"><td class="memItemLeft" align="right" valign="top"><a id="acc48c4fab3e29b6a3b2e9530cdf681af" name="acc48c4fab3e29b6a3b2e9530cdf681af"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SSD1306_PAGE_HEIGHT</b>&#160;&#160;&#160;_u(8)</td></tr>
-<tr class="memdesc:acc48c4fab3e29b6a3b2e9530cdf681af"><td class="mdescLeft">&#160;</td><td class="mdescRight">the height of <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> page, correspond to one byte since <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79" title="enum used to characterize the type of display device memory organisation">FramebufferFormat</a> is MONO_VLSB <br /></td></tr>
+<tr class="memdesc:acc48c4fab3e29b6a3b2e9530cdf681af"><td class="mdescLeft">&#160;</td><td class="mdescRight">the height of <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> page, correspond to one byte since FramebufferFormat is MONO_VLSB <br /></td></tr>
 <tr class="separator:acc48c4fab3e29b6a3b2e9530cdf681af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c6f188acf37426f4cfe0ac73f11fb7d" id="r_a7c6f188acf37426f4cfe0ac73f11fb7d"><td class="memItemLeft" align="right" valign="top"><a id="a7c6f188acf37426f4cfe0ac73f11fb7d" name="a7c6f188acf37426f4cfe0ac73f11fb7d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SSD1306_NUM_PAGES</b>&#160;&#160;&#160;(<a class="el" href="#a4e9409448a0df95c1686670e09b457b7">SSD1306_HEIGHT</a> / <a class="el" href="#acc48c4fab3e29b6a3b2e9530cdf681af">SSD1306_PAGE_HEIGHT</a>)</td></tr>
-<tr class="memdesc:a7c6f188acf37426f4cfe0ac73f11fb7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Related to <a class="el" href="framebuffer_8h.html#a439a97a179fde4153088c02fa9719c79" title="enum used to characterize the type of display device memory organisation">FramebufferFormat</a>, SSD1306_WIDTH divided by the font height. <br /></td></tr>
+<tr class="memdesc:a7c6f188acf37426f4cfe0ac73f11fb7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Related to FramebufferFormat, SSD1306_WIDTH divided by the font height. <br /></td></tr>
 <tr class="separator:a7c6f188acf37426f4cfe0ac73f11fb7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafee566fd157739d02b21fa6eec3e6cf" id="r_aafee566fd157739d02b21fa6eec3e6cf"><td class="memItemLeft" align="right" valign="top"><a id="aafee566fd157739d02b21fa6eec3e6cf" name="aafee566fd157739d02b21fa6eec3e6cf"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SSD1306_BUF_LEN</b>&#160;&#160;&#160;(<a class="el" href="#a7c6f188acf37426f4cfe0ac73f11fb7d">SSD1306_NUM_PAGES</a> * <a class="el" href="#ae5a2aa8865dd03537b97fd1c9037371b">SSD1306_WIDTH</a>)</td></tr>
@@ -256,7 +256,7 @@ Macros</h2></td></tr>
 <tr class="separator:ac3c4d8ff67b89782a97b874690f37ca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This file contains all the defineition of <a class="el" href="class_s_s_d1306.html" title="SSD1306 OLED display device driver.">SSD1306</a> commands. </p>
+<div class="textblock"><p>This file contains all the defineition of <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> commands. </p>
 <dl class="section author"><dt>Author</dt><dd>xiansnn (<a href="#" onclick="location.href='mai'+'lto:'+'xia'+'ns'+'nn@'+'ho'+'tma'+'il'+'.co'+'m'; return false;">xians<span class="obfuscator">.nosp@m.</span>nn@h<span class="obfuscator">.nosp@m.</span>otmai<span class="obfuscator">.nosp@m.</span>l.co<span class="obfuscator">.nosp@m.</span>m</a>) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2024-08-05</dd></dl>

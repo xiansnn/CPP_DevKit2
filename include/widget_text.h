@@ -41,7 +41,7 @@ protected:
     uint8_t widget_anchor_y;
 
     /// @brief the display device where the widget is displayed
-    DisplayDevice *display_screen{nullptr};
+    GraphicDisplayDevice *display_screen{nullptr};
 
     /// @brief if true, the widget is surrounded by a one-pixel border
     bool widget_with_border{true};
@@ -81,7 +81,7 @@ public:
      *
      * @param _new_display_device
      */
-    void set_display_screen(DisplayDevice *_new_display_device);
+    void set_display_screen(GraphicDisplayDevice *_new_display_device);
 
     /**
      * @brief Set the blink period in microseconds
@@ -90,7 +90,7 @@ public:
      */
     void set_blink_us(uint32_t blink_period = 1000000);
 
- 
+     
     /**
      * @brief Construct a new Widget Text object
      * 
@@ -102,11 +102,9 @@ public:
      * @param widget_anchor_x the x-location of the widget on the display screen
      * @param widget_anchor_y the y-location of the widget on the display screen
      * @param widget_with_border the flag that indicates if the widget has a border
-     * @param widget_border_width the border width. WARNING: should always be 1
-     * @param framebuffer_format the memory organisation of the display device
      */
     WidgetText(UIModelObject *text_model,
-               DisplayDevice *display_screen,
+               GraphicDisplayDevice *display_screen,
                struct_TextFramebuffer framebuffer_txt_cnf,
                uint8_t number_of_column,
                uint8_t number_of_line,

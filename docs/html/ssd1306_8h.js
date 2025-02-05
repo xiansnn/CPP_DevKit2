@@ -12,6 +12,7 @@ var ssd1306_8h =
     [ "_4_FRAMES", "ssd1306_8h.html#a0ad99c454a6c9b56d76a7645cd5e7734", null ],
     [ "_5_FRAMES", "ssd1306_8h.html#ad1c614ef91f3d8045a524bf44283825e", null ],
     [ "_64_FRAMES", "ssd1306_8h.html#a0b2642130eeef03138dec7f002542065", null ],
+    [ "BYTE_SIZE", "ssd1306_8h.html#a86fd4404b140711fdb77326609c0f393", null ],
     [ "HORIZONTAL_ADDRESSING_MODE", "ssd1306_8h.html#a33832f7efd11e0c4480e0e2476646141", null ],
     [ "PAGE_ADDRESSING_MODE", "ssd1306_8h.html#a2c0a40b88061866897ed7d527562e764", null ],
     [ "VERTICAL_ADDRESSING_MODE", "ssd1306_8h.html#a8c56c6f0b31ba4da25b493c4dd1b9d86", null ]

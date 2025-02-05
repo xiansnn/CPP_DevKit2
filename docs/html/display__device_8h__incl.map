@@ -1,17 +1,5 @@
 <map id="display_device.h" name="display_device.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="259,5,357,30"/>
-<area shape="rect" id="Node000002" href="$framebuffer_8h.html" title=" " alt="" coords="266,78,351,103"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="311,31,311,62,306,62,306,31"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,151,54,175"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="265,104,69,153,68,148,264,99"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="78,151,157,175"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="278,106,164,147,162,142,276,101"/>
-<area shape="rect" id="Node000005" href="$5x8__font_8h.html" title=" " alt="" coords="181,151,297,175"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="299,105,262,142,259,138,295,101"/>
-<area shape="rect" id="Node000006" href="$8x8__font_8h.html" title=" " alt="" coords="321,151,437,175"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="322,101,359,138,355,142,318,105"/>
-<area shape="rect" id="Node000007" href="$12x16__font_8h.html" title=" " alt="" coords="461,151,590,175"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="345,101,476,143,474,148,343,106"/>
-<area shape="rect" id="Node000008" href="$16x32__font_8h.html" title=" " alt="" coords="613,151,742,175"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="352,97,602,145,601,150,351,102"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,104,30"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="15,78,94,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,31,57,62,52,62,52,31"/>
 </map>

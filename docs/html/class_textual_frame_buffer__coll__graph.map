@@ -1,9 +1,11 @@
 <map id="TextualFrameBuffer" name="TextualFrameBuffer">
-<area shape="rect" id="Node000001" title="the place where all textual primitive are placed" alt="" coords="83,675,715,1139"/>
-<area shape="rect" id="Node000002" href="$class_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,147,464,613"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="314,626,329,674,324,676,309,628"/>
-<area shape="rect" id="Node000003" href="$structstruct___graph_framebuffer.html" title="The configuration data for graphic primitives." alt="" coords="159,5,310,85"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="237,85,237,131,232,131,232,85"/>
-<area shape="rect" id="Node000004" href="$structstruct___text_framebuffer.html" title="Data structure that holds all configuration parameters used by textual primitives." alt="" coords="489,303,639,457"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="543,458,479,659,474,657,538,456"/>
+<area shape="rect" id="Node000001" title="the place where all textual primitive are placed" alt="" coords="317,770,741,1215"/>
+<area shape="rect" id="Node000002" href="$class_graphic_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="39,435,515,708"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="369,719,399,769,394,772,364,722"/>
+<area shape="rect" id="Node000003" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,185,549,373"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="280,373,280,418,275,418,275,373"/>
+<area shape="rect" id="Node000004" href="$structstruct___pixel_memory.html" title="the data structure that describes framebuffer" alt="" coords="211,5,344,123"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="280,122,280,168,275,168,275,122"/>
+<area shape="rect" id="Node000005" href="$structstruct___text_framebuffer.html" title="the data sttructure used to configure textual widget" alt="" coords="539,494,690,649"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="602,649,580,754,575,753,597,648"/>
 </map>

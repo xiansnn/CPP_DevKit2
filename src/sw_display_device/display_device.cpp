@@ -11,7 +11,7 @@
 
 #include "display_device.h"
 
-DisplayDevice::DisplayDevice(size_t width,
+GraphicDisplayDevice::GraphicDisplayDevice(size_t width,
                              size_t height)
 {
     this->pixel_memory.frame_height= height;
@@ -19,12 +19,12 @@ DisplayDevice::DisplayDevice(size_t width,
 
 }
 
-DisplayDevice::~DisplayDevice()
+GraphicDisplayDevice::~GraphicDisplayDevice()
 {
 }
 
 TextDisplayDevice::TextDisplayDevice(size_t number_of_char_width, size_t number_of_char_height)
-    :DisplayDevice(number_of_char_width,number_of_char_height)
+    :GraphicDisplayDevice(number_of_char_width,number_of_char_height)
 {
     this->number_of_char_height = number_of_char_height;
     this->number_of_char_width = number_of_char_width;

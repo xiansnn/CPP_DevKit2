@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['_7edisplaydevice_0',['~DisplayDevice',['../class_display_device.html#af6be3a5b999255994e402b36cdb09d58',1,'DisplayDevice']]],
-  ['_7eframebuffer_1',['~Framebuffer',['../class_framebuffer.html#a037bf3e17455354d5d907ceea00313dd',1,'Framebuffer']]],
+  ['_7egraphicdisplaydevice_0',['~GraphicDisplayDevice',['../class_graphic_display_device.html#a0adf3090be1bd3a09038974df373142b',1,'GraphicDisplayDevice']]],
+  ['_7egraphicframebuffer_1',['~GraphicFramebuffer',['../class_graphic_framebuffer.html#a7f8253e92a4c512ffedd73f0ecf3c553',1,'GraphicFramebuffer']]],
   ['_7emodelbargraph_2',['~ModelBargraph',['../class_model_bargraph.html#a1c44b39503a6204a2cf5567823ff5289',1,'ModelBargraph']]],
   ['_7emsgeq7_3',['~MSGEQ7',['../class_m_s_g_e_q7.html#a13c0ce63c7eff6467a02bea3dcf04f54',1,'MSGEQ7']]],
   ['_7erotaryencoder_4',['~RotaryEncoder',['../class_rotary_encoder.html#a0956a9ae8731f8e9bae8cb56162237d5',1,'RotaryEncoder']]],

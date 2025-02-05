@@ -66,7 +66,7 @@ void WidgetHorizontalBargraph::draw_refresh()
 }
 
 WidgetHorizontalBargraph::WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
-                                                   DisplayDevice *display_screen,
+                                                   GraphicDisplayDevice *display_screen,
                                                    size_t frame_width, size_t frame_height,
                                                    uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                                    bool widget_with_border,
@@ -157,7 +157,7 @@ void WidgetVerticalBargraph::draw_bar(uint8_t bin_index)
 }
 
 WidgetVerticalBargraph::WidgetVerticalBargraph(ModelBargraph *bargraph_model,
-                                               DisplayDevice *display_screen,
+                                               GraphicDisplayDevice *display_screen,
                                                size_t frame_width, size_t frame_height,
                                                uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                                bool widget_with_border,

@@ -5,7 +5,7 @@ var searchData=
   ['bar_5fspacing_2',['bar_spacing',['../class_widget_horizontal_bargraph.html#ae63bdc531fe4e89b4061003dcac9b422',1,'WidgetHorizontalBargraph::bar_spacing'],['../class_widget_vertical_bargraph.html#a6f2b956838b134ded3a14b8de891d909',1,'WidgetVerticalBargraph::bar_spacing']]],
   ['bar_5fwidth_3',['bar_width',['../class_widget_horizontal_bargraph.html#a7bf503f22c5cff145c183ea0b7edc692',1,'WidgetHorizontalBargraph::bar_width'],['../class_widget_vertical_bargraph.html#a1052a305919908ce30531940c1fc9e57',1,'WidgetVerticalBargraph::bar_width']]],
   ['baud_5frate_4',['baud_rate',['../structstruct___config_master_i2_c.html#a62e5546133c513d337644ed1470872d2',1,'struct_ConfigMasterI2C::baud_rate'],['../structstruct___config_slave_i2_c.html#ae6a465237599f36f69dddb429d5f2da2',1,'struct_ConfigSlaveI2C::baud_rate']]],
-  ['bg_5fcolor_5',['bg_color',['../structstruct___graph_framebuffer.html#a861965848f2a790dea2c0f96e31202e1',1,'struct_GraphFramebuffer::bg_color'],['../structstruct___text_framebuffer.html#a59c42900aee07797a631cd8d1475d2f0',1,'struct_TextFramebuffer::bg_color']]],
+  ['bg_5fcolor_5',['bg_color',['../structstruct___text_framebuffer.html#af109df8e6c8b869abe7c4a83fa852475',1,'struct_TextFramebuffer']]],
   ['blink_5fperiod_5fus_6',['blink_period_us',['../class_widget.html#a9d16527adc5cfd8ff6fda332c1f09db0',1,'Widget::blink_period_us'],['../class_widget_text.html#a2ac58db00bd6aac3e761a6c8100b8dc5',1,'WidgetText::blink_period_us']]],
   ['buflen_7',['buflen',['../structstruct___render_area.html#a66cef6847c6a4e2d0bf534f588914bd5',1,'struct_RenderArea']]],
   ['button_5fstatus_8',['button_status',['../class_switch_button.html#a4b5680f86c7354637f0d7eb77e1edbec',1,'SwitchButton']]]

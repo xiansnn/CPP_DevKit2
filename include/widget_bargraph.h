@@ -98,11 +98,11 @@ public:
      * @param widget_anchor_y the vertical position where the widget start on the device screen
      * @param widget_with_border the flag that indicates whether the widget has a border or not
      * @param bar_spacing the number of pixel between each bar
-     * @param widget_border_width the width of the border. WARNING: can only be 1 pixel.
-     * @param framebuffer_format the addressing format of the actual display device
+     * @param fg_color the foreground color
+     * @param bg_color the background color
      */
     WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
-                             DisplayDevice *display_screen,
+                             GraphicDisplayDevice *display_screen,
                              size_t frame_width,
                              size_t frame_height,
                              uint8_t widget_anchor_x,
@@ -162,11 +162,11 @@ public:
      * @param widget_anchor_y the vertical position where the widget start on the device screen
      * @param widget_with_border the flag that indicates whether the widget has a border or not
      * @param bar_spacing the number of pixel between each bar
-     * @param widget_border_width the width of the border. WARNING: can only be 1 pixel.
-     * @param framebuffer_format the addressing format of the actual display device
+     * @param fg_color the foreground color
+     * @param bg_color the background color
      */
     WidgetVerticalBargraph(ModelBargraph *bargraph_model,
-                             DisplayDevice *display_screen,
+                             GraphicDisplayDevice *display_screen,
                              size_t frame_width,
                              size_t frame_height,
                              uint8_t widget_anchor_x,

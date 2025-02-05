@@ -17,7 +17,7 @@ void Widget::draw_border(PixelColor c) // TODO en faire un pure virtual pour etr
         rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width);
 }
 
-Widget::Widget(DisplayDevice *_display_screen,
+Widget::Widget(GraphicDisplayDevice *_display_screen,
                size_t _frame_width,
                size_t _frame_height,
                uint8_t _widget_anchor_x,
@@ -25,7 +25,7 @@ Widget::Widget(DisplayDevice *_display_screen,
                bool _widget_with_border,
                PixelColor fg_color,
                PixelColor bg_color)
-    : Framebuffer(_display_screen,_frame_width, _frame_height, fg_color,bg_color)
+    : GraphicFramebuffer(_display_screen,_frame_width, _frame_height, fg_color,bg_color)
 {
     assert(_frame_height % 8 == 0);    // check widget height limitation
     assert(_widget_anchor_y % 8 == 0); // check widget anchor y limitation
@@ -52,7 +52,7 @@ void Widget::set_actual_displayed_object(UIModelObject *displayed_object)
     this->actual_displayed_model = displayed_object;
 }
 
-void Widget::set_display_screen(DisplayDevice *_new_display_device)
+void Widget::set_display_screen(GraphicDisplayDevice *_new_display_device)
 {
     this->display_screen = _new_display_device;
 }
