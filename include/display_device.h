@@ -26,29 +26,39 @@ enum class PixelColor
     WHITE = 1
 };
 
-/// @brief the data structure that describes framebuffer
+/// @brief the data structure that characterise the graphic framebuffer
 struct struct_PixelMemory
 {
     /// @brief The number of pixel along the width of the frame.
     uint8_t frame_width;
-
     /// @brief The number of pixel along the height of the frame.
     uint8_t frame_height;
-
-    /// @brief the buffer where graphic are drawn
-    uint8_t *pixel_buffer = nullptr;
-
     /// @brief size of the buffer that contains graphics as map of pixels.
     size_t pixel_buffer_size;
+    /// @brief the buffer where graphic are drawn
+    uint8_t *pixel_buffer = nullptr;
+};
+
+/// @brief the data structure that characterise the text buffer
+struct struct_TextMemory
+{
+    /// @brief the size, in number of character of a line
+    size_t number_of_column;
+    /// @brief the number of line
+    size_t number_of_line;
+    /// @brief  the number of characters
+    size_t text_buffer_size;
+    /// @brief the effective character buffer
+    char *text_buffer = nullptr;
 };
 
 /**
  * @brief data structure used to configure graphic framebuffer
- * 
+ *
  */
 struct struct_ConfigGraphicFramebuffer
 {
-    
+
     /// @brief the frame width of the graphic frame
     size_t frame_width;
     /// @brief the frame height of the graphic frame
@@ -57,8 +67,7 @@ struct struct_ConfigGraphicFramebuffer
     PixelColor fg_color{PixelColor::WHITE};
     /// @brief  the background color
     PixelColor bg_color{PixelColor::BLACK};
-    };
-
+};
 
 /// @brief the data sttructure used to configure textual widget
 struct struct_ConfigTextFramebuffer
@@ -67,7 +76,6 @@ struct struct_ConfigTextFramebuffer
     uint8_t number_of_column{0};
     /// @brief The max number of column with respect to frame width and font width
     uint8_t number_of_line{0};
-
     /**
      * @brief The font used. Current font are defined according to IBM CP437. The font files are derived from https://github.com/Harbys/pico-ssd1306 works.
      * They come is size 5x8, 8x8, 12x16 and 16x32.
@@ -161,7 +169,8 @@ public:
      * @param anchor_x the x (horizontal)starting position of the frame within the display screen, (in pixel)
      * @param anchor_y the y (vertical) starting position of the frame within the display screen, (in pixel)
      */
-    virtual void show(struct_PixelMemory *pixel_memory_structure, uint8_t anchor_x, uint8_t anchor_y) = 0;
+    virtual void show(struct_PixelMemory *pixel_memory_structure,
+                      uint8_t anchor_x, uint8_t anchor_y) = 0;
 
     /**
      * @brief the graphic primitive to draw a pixel
@@ -169,9 +178,11 @@ public:
      * @param pixel_memory_structure
      * @param x the x position of the pixel
      * @param y the y position of the pixel
-     * @param c the color of the pixel
+     * @param color the color of the pixel
      */
-    virtual void pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, PixelColor c = PixelColor::WHITE) = 0;
+    virtual void pixel(struct_PixelMemory *pixel_memory_structure,
+                       int x, int y,
+                       PixelColor color = PixelColor::WHITE) = 0;
 
     /**
      * @brief a graphic primitive to draw a character at a pixel position
@@ -179,26 +190,20 @@ public:
      *
      * @param pixel_memory_structure
      * @param text_config the configuration file of the text framebuffer
-     * @param c the character to draw
+     * @param character the character to draw
      * @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
      * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
      */
-    virtual void drawChar(struct_PixelMemory *pixel_memory_structure, struct_ConfigTextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y) = 0;
+    virtual void drawChar(struct_PixelMemory *pixel_memory_structure,
+                          struct_ConfigTextFramebuffer *text_config,
+                          char character,
+                          uint8_t anchor_x, uint8_t anchor_y) = 0;
 };
 
-/// @brief A pure textual class.
+/// @brief A class used to write text on a graphic display
 class TextDisplayDevice : public GraphicDisplayDevice
 {
 private:
-    /// @brief the size, in number of character of a line
-    size_t number_of_char_width;
-    /// @brief the number of line
-    size_t number_of_char_height;
-    /// @brief  the number of characters
-    size_t text_buffer_size;
-    /// @brief the effective character buffer
-    char *text_buffer = nullptr;
-
 public:
     /**
      * @brief Construct a new Text Display Device object
@@ -215,4 +220,16 @@ public:
      * @param text_string the character string
      */
     virtual void print(char *text_string) = 0;
+};
+
+class PrinterDevice
+{
+private:
+    /// @brief the data structure of the text memory
+    struct_TextMemory text_memory;
+
+public:
+    PrinterDevice(size_t number_of_char_width,
+                  size_t number_of_char_hight);
+    ~PrinterDevice();
 };
