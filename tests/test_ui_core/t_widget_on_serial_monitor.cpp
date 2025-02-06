@@ -31,7 +31,7 @@ public:
     void create_pixel_buffer(struct_PixelMemory *pixel_memory);
     void show(struct_PixelMemory *pixel_memory_structure, uint8_t anchor_x, uint8_t anchor_y);
     void pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, PixelColor c = PixelColor::WHITE);
-    void drawChar(struct_PixelMemory *pixel_memory_structure, struct_TextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y);
+    void drawChar(struct_PixelMemory *pixel_memory_structure, struct_ConfigTextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y);
 
 };
 
@@ -65,7 +65,7 @@ void MyLinePrinter::pixel(struct_PixelMemory *pixel_memory_structure, int x, int
 {
 }
 
-void MyLinePrinter::drawChar(struct_PixelMemory *pixel_memory_structure, struct_TextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y)
+void MyLinePrinter::drawChar(struct_PixelMemory *pixel_memory_structure, struct_ConfigTextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y)
 {
 }
 

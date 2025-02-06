@@ -22,7 +22,7 @@ Probe pr_D1 = Probe(1);
 /// @brief ########## configuration section ##########
 
 /// @brief define central switch config
-struct_SwitchButtonConfig cfg_central_switch{
+struct_ConfigSwitchButton cfg_central_switch{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
     .long_push_delay_us = 1000000,

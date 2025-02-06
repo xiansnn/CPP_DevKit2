@@ -1,6 +1,6 @@
 var class_switch_button =
 [
-    [ "SwitchButton", "class_switch_button.html#ab26a40e2b63115a23ff499e360768693", null ],
+    [ "SwitchButton", "class_switch_button.html#a750d21f333405881df2ef91495885a29", null ],
     [ "~SwitchButton", "class_switch_button.html#a3aaf08da555f8418572d502e8221fcec", null ],
     [ "get_button_status", "class_switch_button.html#a6b40906d298a665870c30c1359fbea2e", null ],
     [ "is_switch_pushed", "class_switch_button.html#a3361ae31699ad49821d25ee53210f6d7", null ],

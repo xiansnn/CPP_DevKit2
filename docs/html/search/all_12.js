@@ -13,5 +13,5 @@ var searchData=
   ['reset_5fgpio_10',['reset_gpio',['../class_m_s_g_e_q7.html#a9af5efddd96adebdf9b195b23a97b059',1,'MSGEQ7']]],
   ['resolution_5fns_11',['resolution_ns',['../class_p_w_mgated_measure.html#a7f2a2aaa57a108b3790def2b31481218',1,'PWMgatedMeasure']]],
   ['rotary_5fencoder_2eh_12',['rotary_encoder.h',['../rotary__encoder_8h.html',1,'']]],
-  ['rotaryencoder_13',['RotaryEncoder',['../class_rotary_encoder.html',1,'RotaryEncoder'],['../class_rotary_encoder.html#a34d4c2355191bc6b4d901f01bc263aa3',1,'RotaryEncoder::RotaryEncoder()']]]
+  ['rotaryencoder_13',['RotaryEncoder',['../class_rotary_encoder.html',1,'RotaryEncoder'],['../class_rotary_encoder.html#a517cabc7498b8b2277c1433142d241a8',1,'RotaryEncoder::RotaryEncoder()']]]
 ];

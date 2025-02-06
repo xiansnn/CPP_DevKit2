@@ -1,6 +1,6 @@
 var class_widget_text =
 [
-    [ "WidgetText", "class_widget_text.html#a6ca9c3f03d5f017f033fb9fc63a84e19", null ],
+    [ "WidgetText", "class_widget_text.html#a63afea0154ec7bc62dd380c30fb4a8ac", null ],
     [ "~WidgetText", "class_widget_text.html#a79f03f0211309dc37eb558efbc3f1509", null ],
     [ "add_widget", "class_widget_text.html#a09ef73d8b1fa413b42ac4185857736e7", null ],
     [ "blinking_phase_has_changed", "class_widget_text.html#a9a23d695e80bf5c4633f81328da12776", null ],

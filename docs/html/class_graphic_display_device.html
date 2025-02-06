@@ -114,11 +114,13 @@ Inheritance diagram for GraphicDisplayDevice:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_graphic_display_device__inherit__graph.png" border="0" usemap="#a_graphic_display_device_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_graphic_display_device_inherit__map" id="a_graphic_display_device_inherit__map">
-<area shape="rect" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="255,5,799,193"/>
-<area shape="rect" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,241,549,911"/>
-<area shape="poly" title=" " alt="" coords="473,208,455,243,450,241,469,205"/>
-<area shape="rect" href="class_text_display_device.html" title="A pure textual class." alt="" coords="574,499,978,653"/>
-<area shape="poly" title=" " alt="" coords="585,205,738,498,734,500,580,208"/>
+<area shape="rect" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="269,133,785,336"/>
+<area shape="rect" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,384,549,1053"/>
+<area shape="poly" title=" " alt="" coords="470,350,452,385,448,383,466,348"/>
+<area shape="rect" href="class_text_display_device.html" title="A class used to write text on a graphic display." alt="" coords="574,669,978,768"/>
+<area shape="poly" title=" " alt="" coords="588,348,754,668,749,671,583,350"/>
+<area shape="rect" href="class_display_device.html" title="the generic abstract class for display devices" alt="" coords="475,5,579,85"/>
+<area shape="poly" title=" " alt="" coords="529,100,529,133,524,133,524,100"/>
 </map>
 </div>
 <div class="dynheader">
@@ -126,9 +128,11 @@ Collaboration diagram for GraphicDisplayDevice:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_graphic_display_device__coll__graph.png" border="0" usemap="#a_graphic_display_device_coll__map" alt="Collaboration graph"/></div>
 <map name="a_graphic_display_device_coll__map" id="a_graphic_display_device_coll__map">
-<area shape="rect" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,185,549,373"/>
-<area shape="rect" href="structstruct___pixel_memory.html" title="the data structure that describes framebuffer" alt="" coords="211,5,344,123"/>
-<area shape="poly" title=" " alt="" coords="280,122,280,168,275,168,275,122"/>
+<area shape="rect" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,185,521,387"/>
+<area shape="rect" href="class_display_device.html" title="the generic abstract class for display devices" alt="" coords="141,24,245,104"/>
+<area shape="poly" title=" " alt="" coords="212,117,234,184,229,186,207,119"/>
+<area shape="rect" href="structstruct___pixel_memory.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="269,5,402,123"/>
+<area shape="poly" title=" " alt="" coords="319,123,304,170,299,168,314,122"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -150,12 +154,12 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~GraphicDisplayDev
 <tr class="memitem:a0fd7fe7d76688694abeca08375acde93" id="r_a0fd7fe7d76688694abeca08375acde93"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fd7fe7d76688694abeca08375acde93">show</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory_structure, uint8_t anchor_x, uint8_t anchor_y)=0</td></tr>
 <tr class="memdesc:a0fd7fe7d76688694abeca08375acde93"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual member function. It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.  <br /></td></tr>
 <tr class="separator:a0fd7fe7d76688694abeca08375acde93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49907f68902af86713d34fbec55fc2b2" id="r_a49907f68902af86713d34fbec55fc2b2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49907f68902af86713d34fbec55fc2b2">pixel</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory_structure, int x, int y, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)=0</td></tr>
-<tr class="memdesc:a49907f68902af86713d34fbec55fc2b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic primitive to draw a pixel  <br /></td></tr>
-<tr class="separator:a49907f68902af86713d34fbec55fc2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add371334ff6b5db59a2538bf626065cb" id="r_add371334ff6b5db59a2538bf626065cb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add371334ff6b5db59a2538bf626065cb">drawChar</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory_structure, <a class="el" href="structstruct___text_framebuffer.html">struct_TextFramebuffer</a> *text_config, char c, uint8_t anchor_x, uint8_t anchor_y)=0</td></tr>
-<tr class="memdesc:add371334ff6b5db59a2538bf626065cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">a graphic primitive to draw a character at a pixel position  <br /></td></tr>
-<tr class="separator:add371334ff6b5db59a2538bf626065cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7ef6574289b020174c41582a45c3631" id="r_ac7ef6574289b020174c41582a45c3631"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7ef6574289b020174c41582a45c3631">pixel</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory_structure, int x, int y, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)=0</td></tr>
+<tr class="memdesc:ac7ef6574289b020174c41582a45c3631"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic primitive to draw a pixel  <br /></td></tr>
+<tr class="separator:ac7ef6574289b020174c41582a45c3631"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74898782eb52759f2dca0db1134892bb" id="r_a74898782eb52759f2dca0db1134892bb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74898782eb52759f2dca0db1134892bb">drawChar</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory_structure, <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> *text_config, char character, uint8_t anchor_x, uint8_t anchor_y)=0</td></tr>
+<tr class="memdesc:a74898782eb52759f2dca0db1134892bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">a graphic primitive to draw a character at a pixel position  <br /></td></tr>
+<tr class="separator:a74898782eb52759f2dca0db1134892bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -271,8 +275,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="add371334ff6b5db59a2538bf626065cb" name="add371334ff6b5db59a2538bf626065cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add371334ff6b5db59a2538bf626065cb">&#9670;&#160;</a></span>drawChar()</h2>
+<a id="a74898782eb52759f2dca0db1134892bb" name="a74898782eb52759f2dca0db1134892bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74898782eb52759f2dca0db1134892bb">&#9670;&#160;</a></span>drawChar()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -288,12 +292,12 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structstruct___text_framebuffer.html">struct_TextFramebuffer</a> *</td>          <td class="paramname"><span class="paramname"><em>text_config</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> *</td>          <td class="paramname"><span class="paramname"><em>text_config</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>c</em></span>, </td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>character</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -319,19 +323,19 @@ Public Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">pixel_memory_structure</td><td></td></tr>
     <tr><td class="paramname">text_config</td><td>the configuration file of the text framebuffer </td></tr>
-    <tr><td class="paramname">c</td><td>the character to draw </td></tr>
+    <tr><td class="paramname">character</td><td>the character to draw </td></tr>
     <tr><td class="paramname">anchor_x</td><td>the pixel position on x-axis to start drawing the character (upper left corner) </td></tr>
     <tr><td class="paramname">anchor_y</td><td>the pixel position on y-axis to start drawing the character (upper left corner) </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_s_s_d1306.html#ab48bed5466ccf728b38abdd4b29bc976">SSD1306</a>.</p>
+<p>Implemented in <a class="el" href="class_s_s_d1306.html#a3323d121695ea6462af79a4ec08f2f43">SSD1306</a>.</p>
 
 </div>
 </div>
-<a id="a49907f68902af86713d34fbec55fc2b2" name="a49907f68902af86713d34fbec55fc2b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49907f68902af86713d34fbec55fc2b2">&#9670;&#160;</a></span>pixel()</h2>
+<a id="ac7ef6574289b020174c41582a45c3631" name="ac7ef6574289b020174c41582a45c3631"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7ef6574289b020174c41582a45c3631">&#9670;&#160;</a></span>pixel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -357,7 +361,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>          <td class="paramname"><span class="paramname"><em>c</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -373,7 +377,7 @@ Public Attributes</h2></td></tr>
     <tr><td class="paramname">pixel_memory_structure</td><td></td></tr>
     <tr><td class="paramname">x</td><td>the x position of the pixel </td></tr>
     <tr><td class="paramname">y</td><td>the y position of the pixel </td></tr>
-    <tr><td class="paramname">c</td><td>the color of the pixel </td></tr>
+    <tr><td class="paramname">color</td><td>the color of the pixel </td></tr>
   </table>
   </dd>
 </dl>
@@ -417,7 +421,7 @@ Public Attributes</h2></td></tr>
 <p>A pure virtual member function. It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pixel_memory_structure</td><td>a pointer to the <a class="el" href="structstruct___pixel_memory.html" title="the data structure that describes framebuffer">struct_PixelMemory</a> that contains the pixel_buffer to be displayed </td></tr>
+    <tr><td class="paramname">pixel_memory_structure</td><td>a pointer to the <a class="el" href="structstruct___pixel_memory.html" title="the data structure that characterise the graphic framebuffer">struct_PixelMemory</a> that contains the pixel_buffer to be displayed </td></tr>
     <tr><td class="paramname">anchor_x</td><td>the x (horizontal)starting position of the frame within the display screen, (in pixel) </td></tr>
     <tr><td class="paramname">anchor_y</td><td>the y (vertical) starting position of the frame within the display screen, (in pixel) </td></tr>
   </table>

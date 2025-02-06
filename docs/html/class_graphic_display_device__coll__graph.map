@@ -1,5 +1,7 @@
 <map id="GraphicDisplayDevice" name="GraphicDisplayDevice">
-<area shape="rect" id="Node000001" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,185,549,373"/>
-<area shape="rect" id="Node000002" href="$structstruct___pixel_memory.html" title="the data structure that describes framebuffer" alt="" coords="211,5,344,123"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="280,122,280,168,275,168,275,122"/>
+<area shape="rect" id="Node000001" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,185,521,387"/>
+<area shape="rect" id="Node000002" href="$class_display_device.html" title="the generic abstract class for display devices" alt="" coords="141,24,245,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,117,234,184,229,186,207,119"/>
+<area shape="rect" id="Node000003" href="$structstruct___pixel_memory.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="269,5,402,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="319,123,304,170,299,168,314,122"/>
 </map>

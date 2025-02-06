@@ -1,15 +1,15 @@
 <map id="Widget" name="Widget">
-<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="728,327,1173,771"/>
-<area shape="rect" id="Node000003" href="$class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="5,819,453,1147"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="716,677,591,747,467,821,455,829,452,824,464,816,589,742,714,672"/>
-<area shape="rect" id="Node000004" href="$class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="478,828,938,1137"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="822,784,796,830,792,827,817,782"/>
-<area shape="rect" id="Node000005" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="962,863,1427,1102"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1085,782,1130,862,1126,865,1080,785"/>
-<area shape="rect" id="Node000007" href="$class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="1451,828,1911,1137"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1188,671,1315,742,1441,816,1457,826,1454,831,1439,821,1312,747,1185,676"/>
-<area shape="rect" id="Node000002" href="$class_graphic_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="713,5,1189,279"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="953,294,953,327,948,327,948,294"/>
-<area shape="rect" id="Node000006" href="$class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="979,1195,1411,1321"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1197,1117,1197,1195,1192,1195,1192,1117"/>
+<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="728,387,1173,831"/>
+<area shape="rect" id="Node000003" href="$class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="5,879,453,1207"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="716,737,591,807,467,881,455,889,452,884,464,876,589,802,714,732"/>
+<area shape="rect" id="Node000004" href="$class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="478,888,938,1197"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="822,844,796,890,792,887,817,842"/>
+<area shape="rect" id="Node000005" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="962,923,1427,1162"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1085,842,1130,922,1126,925,1080,845"/>
+<area shape="rect" id="Node000007" href="$class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="1451,888,1911,1197"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1188,731,1315,802,1441,876,1457,886,1454,891,1439,881,1312,807,1185,736"/>
+<area shape="rect" id="Node000002" href="$class_graphic_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="704,5,1197,339"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="953,354,953,387,948,387,948,354"/>
+<area shape="rect" id="Node000006" href="$class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="979,1255,1411,1381"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1197,1177,1197,1255,1192,1255,1192,1177"/>
 </map>

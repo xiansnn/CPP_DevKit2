@@ -1,6 +1,6 @@
 var switch__button_8h =
 [
-    [ "struct_SwitchButtonConfig", "structstruct___switch_button_config.html", "structstruct___switch_button_config" ],
+    [ "struct_ConfigSwitchButton", "structstruct___config_switch_button.html", "structstruct___config_switch_button" ],
     [ "SwitchButton", "class_switch_button.html", "class_switch_button" ],
     [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", "class_switch_button_with_i_r_q" ],
     [ "DEBOUNCE_us", "switch__button_8h.html#a0eed6f3bf0d7d92034a08d90cb0ef58b", null ],

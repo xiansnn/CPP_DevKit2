@@ -14,8 +14,8 @@ KY040::KY040(uint central_switch_gpio,
         uint encoder_clk_gpio, 
         uint encoder_dt_gpio, 
         gpio_irq_callback_t call_back, 
-        struct_SwitchButtonConfig sw_conf, 
-        struct_SwitchButtonConfig clk_conf  )
+        struct_ConfigSwitchButton sw_conf, 
+        struct_ConfigSwitchButton clk_conf  )
         : UIController()
 {
         this->central_switch = SwitchButton(central_switch_gpio,sw_conf);

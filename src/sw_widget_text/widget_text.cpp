@@ -29,7 +29,7 @@ void WidgetText::set_blink_us(uint32_t blink_period)
 
 WidgetText::WidgetText(UIModelObject *_text_model,
                        GraphicDisplayDevice *_display_screen,
-                       struct_TextFramebuffer _framebuffer_txt_cnf,
+                       struct_ConfigTextFramebuffer _framebuffer_txt_cnf,
                        uint8_t _number_of_column,
                        uint8_t _number_of_line,
                        uint8_t _widget_anchor_x,

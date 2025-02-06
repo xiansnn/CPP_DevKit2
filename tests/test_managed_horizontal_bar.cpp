@@ -41,14 +41,14 @@ struct_ConfigSSD1306 cfg_ssd1306{
     .frequency_divider = 1,
     .frequency_factor = 0};
 
-struct_SwitchButtonConfig cfg_central_switch{
+struct_ConfigSwitchButton cfg_central_switch{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
     .long_push_delay_us = 1000000,
     .time_out_delay_us = CENTRAL_SWITCH_TIME_OUT_us,
     .active_lo = true};
 
-struct_SwitchButtonConfig cfg_encoder_clk{
+struct_ConfigSwitchButton cfg_encoder_clk{
     .debounce_delay_us = 5000};
 
 void shared_irq_call_back(uint gpio, uint32_t event_mask);

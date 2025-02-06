@@ -22,12 +22,12 @@ class MySwitchButton : public SwitchButton, public UIController
 private:
     /* data */
 public:
-    MySwitchButton(uint gpio, struct_SwitchButtonConfig conf);
+    MySwitchButton(uint gpio, struct_ConfigSwitchButton conf);
     ~MySwitchButton();
 };
 
 MySwitchButton::MySwitchButton(uint gpio, 
-                                struct_SwitchButtonConfig conf)
+                                struct_ConfigSwitchButton conf)
             : SwitchButton(gpio, conf), 
             UIController()
 {

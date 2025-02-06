@@ -101,7 +101,7 @@ void test_font_size(SSD1306 *current_display)
 
 void test_full_screen_text(SSD1306 *current_display)
 {
-    struct_TextFramebuffer txt_conf = {
+    struct_ConfigTextFramebuffer txt_conf = {
         .font = font_8x8,
         .wrap = true,
     };
@@ -109,7 +109,7 @@ void test_full_screen_text(SSD1306 *current_display)
 
     text_frame.print_char(FORM_FEED); // equiv. clear full screen
     current_display->show(&text_frame.pixel_memory, 0, 0);
-    uint16_t nb = text_frame.char_height * text_frame.char_width;
+    uint16_t nb = text_frame.number_of_line * text_frame.number_of_column;
 
     uint16_t n{0};
     for (uint16_t c = 32; c < 256; c++)
@@ -130,7 +130,7 @@ void test_full_screen_text(SSD1306 *current_display)
 
 void test_auto_next_char(SSD1306 *current_display)
 {
-    struct_TextFramebuffer txt_conf = {
+    struct_ConfigTextFramebuffer txt_conf = {
         .font = font_8x8,
         .wrap = true,
         .auto_next_char = false};
@@ -168,7 +168,7 @@ void test_sprintf_format(SSD1306 *current_display)
 {
     current_display->clear_full_screen();
 
-    struct_TextFramebuffer text_frame_cfg = {
+    struct_ConfigTextFramebuffer text_frame_cfg = {
         .font = font_8x8,
         .wrap = true};
 
@@ -206,7 +206,7 @@ void test_sprintf_format(SSD1306 *current_display)
     sleep_ms(LONG_DELAY);
 
     current_display->clear_full_screen();
-    text_frame->update_text_area(font_5x8);
+    text_frame->update_text_buffer_size(font_5x8);
     text_frame->clear_text_buffer();
 
     text_frame->print_text("Integers:\n");
@@ -228,7 +228,7 @@ void test_sprintf_format(SSD1306 *current_display)
 
     current_display->clear_full_screen();
 
-    text_frame->update_text_area(font_8x8);
+    text_frame->update_text_buffer_size(font_8x8);
 
     text_frame->print_char(FORM_FEED); // equivalent text_frame->clear_pixel_buffer();
 
@@ -267,7 +267,7 @@ void test_sprintf_format(SSD1306 *current_display)
     sleep_ms(LONG_DELAY);
     text_frame->print_char(FORM_FEED);
 
-    text_frame->update_text_area(font_16x32);
+    text_frame->update_text_buffer_size(font_16x32);
     text_frame->print_text(" 15:06 \n");
     text_frame->print_text("03/01/24");
     current_display->show(&text_frame->pixel_memory, 0, 0);
@@ -311,7 +311,7 @@ void test_ostringstream_format(SSD1306 *current_display)
 
     const unsigned char *current_font{font_5x8};
 
-    struct_TextFramebuffer txt_conf = {
+    struct_ConfigTextFramebuffer txt_conf = {
         .font = current_font,
         .wrap = false};
 
@@ -348,84 +348,6 @@ void test_ostringstream_format(SSD1306 *current_display)
     current_display->clear_full_screen();
 }
 
-void test_text_and_graph(SSD1306 *current_display)
-{
-#define DEGREE "\xF8"
-    current_display->clear_full_screen();
-    struct_TextFramebuffer title_config = {
-        .font = font_8x8};
-
-    uint8_t w = title_config.font[FONT_WIDTH_INDEX];
-    uint8_t h = title_config.font[FONT_HEIGHT_INDEX];
-
-    int title_char_width = 8;
-    int title_char_height = 2;
-    int title_area_anchor_x = 0;
-    int title_area_anchor_y = h * 6;
-
-    TextualFrameBuffer title = TextualFrameBuffer(current_display, title_char_width, title_char_height, title_config);
-    title.print_text("ROLL:\nPITCH:");
-    current_display->show(&title.pixel_memory, title_area_anchor_x, title_area_anchor_y);
-
-    // draw values
-    int values_area_anchor_x = w * 8;
-    int values_area_anchor_y = h * 6;
-    int values_char_width = 8;
-    int values_char_height = 2;
-
-    title_config.font = font_8x8;
-    TextualFrameBuffer values = TextualFrameBuffer(current_display, values_char_width, values_char_height, title_config);
-    values.print_char(FORM_FEED);
-
-    // draw graph
-    int graph_area_anchor_x = 16;
-    int graph_area_anchor_y = 0;
-    int graph_area_width = w * 12;
-    int graph_area_height = h * 5;
-
-    GraphicFramebuffer graph = GraphicFramebuffer(current_display, graph_area_width, graph_area_height);
-    current_display->clear_pixel_buffer(&graph.pixel_memory);
-
-    current_display->show(&graph.pixel_memory, graph_area_anchor_x, graph_area_anchor_y);
-
-    int roll, pitch;
-
-    for (int i = -90; i < 90; i++)
-    {
-        // compute and show values
-        roll = i;
-        pitch = i / 3;
-        sprintf(values.text_buffer, "%+3d \xF8\n%+3d \xF8", roll, pitch);
-        values.print_text();
-        current_display->show(&values.pixel_memory, values_area_anchor_x, values_area_anchor_y);
-        values.print_char(FORM_FEED);
-
-        // compute and show the graphic representation
-        float xc = graph_area_width / 2;
-        float yc = graph_area_height / 2;
-        float yl = graph_area_height / 2 - pitch;
-        float radius = yc - 2; // radius -2 to fit inside the rectangle
-        float sin_roll = sin(std::numbers::pi / 180.0 * roll);
-        float cos_roll = cos(std::numbers::pi / 180.0 * roll);
-        int x0 = xc - radius * cos_roll;
-        int y0 = yl - radius * sin_roll;
-        int x1 = xc + radius * cos_roll;
-        int y1 = yl + radius * sin_roll;
-        graph.rect(0, 0, graph_area_width, graph_area_height); // point coordinates are relative to the local frame
-        graph.circle(radius, xc, yl);
-        graph.line(x0, y0, x1, y1);
-        current_display->show(&graph.pixel_memory, graph_area_anchor_x, graph_area_anchor_y);
-        graph.line(x0, y0, x1, y1, graph.bg_color);
-        graph.circle(radius, xc, yl, false, graph.bg_color);
-
-        sleep_ms(REFRESH_PERIOD);
-    }
-
-    sleep_ms(INTER_TEST_DELAY);
-
-    current_display->clear_full_screen();
-}
-
 int main()
 
 {
@@ -442,6 +364,5 @@ int main()
         test_auto_next_char(&left_display);
         test_sprintf_format(&right_display);
         test_ostringstream_format(&left_display);
-        test_text_and_graph(&right_display);
     }
 }
