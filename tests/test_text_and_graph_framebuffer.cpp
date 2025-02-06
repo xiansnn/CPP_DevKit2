@@ -101,14 +101,17 @@ int main()
     values_display.show(&title.pixel_memory, title_area_anchor_x, title_area_anchor_y);
     pr_D4.lo(); // 9ms
 
+    int sign = 1;
+
     while (true)
     {
+        sign *= -1;
         for (int i = -90; i < 90; i++)
         {
             // compute and show values
             pr_D6.hi();
             roll = i;
-            pitch = i / 2;
+            pitch = sign * i / 4;
             sprintf(values.text_buffer, "%+3d\xF8  %+3d\xF8", roll, pitch);
             values.print_text();
             values_display.show(&values.pixel_memory, values_area_anchor_x, values_area_anchor_y);
