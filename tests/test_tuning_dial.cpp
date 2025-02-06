@@ -15,7 +15,7 @@
 #include "test_tuning_dial/t_tuning_dial_model.cpp"
 
 /// @brief define central switch config
-struct_SwitchButtonConfig cfg_central_switch{
+struct_ConfigSwitchButton cfg_central_switch{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
     .long_push_delay_us = 1000000,
@@ -46,7 +46,7 @@ struct_ConfigSSD1306 cfg_volume_screen{
     .frequency_divider = 1,
     .frequency_factor = 0};
 
-struct_TextFramebufferConfig fm_text_cnf{
+struct_ConfigTextFramebuffer fm_text_cnf{
     .font = font_12x16};
 
 ///  1- create I2C bus hw peripheral and frequency_display

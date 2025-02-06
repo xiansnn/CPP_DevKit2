@@ -24,7 +24,7 @@ Probe pr_D5 = Probe(5); // bounces discarded
 // channel 6 : encoder DT pin
 // channel 7 : encoder clk pin
 
-struct_SwitchButtonConfig cfg_encoder_clk{
+struct_ConfigSwitchButton cfg_encoder_clk{
     .debounce_delay_us = 1000,
 };
 

@@ -44,8 +44,8 @@ public:
           uint encoder_clk_gpio,
           uint encoder_dt_gpio,
           gpio_irq_callback_t call_back = nullptr,
-          struct_SwitchButtonConfig sw_conf = {},
-          struct_SwitchButtonConfig clk_conf = {});
+          struct_ConfigSwitchButton sw_conf = {},
+          struct_ConfigSwitchButton clk_conf = {});
     ~KY040();
     /**
      * @brief the call back function used to hide encoder from KY040 user

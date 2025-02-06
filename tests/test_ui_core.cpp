@@ -32,14 +32,14 @@ Probe pr_D5 = Probe(5);
 #define ENCODER_DT_GPIO 21
 
 /// @brief config of the rotary encoder central switch
-struct_SwitchButtonConfig cfg_central_switch{
+struct_ConfigSwitchButton cfg_central_switch{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
     .long_push_delay_us = 1000000,
     .active_lo = true};
 
 /// @brief config of the rotary encoder clock signal
-struct_SwitchButtonConfig cfg_encoder_clk{
+struct_ConfigSwitchButton cfg_encoder_clk{
     .debounce_delay_us = 5000};
 
 void shared_irq_call_back(uint gpio, uint32_t event_mask);

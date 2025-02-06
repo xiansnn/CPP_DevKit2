@@ -12,7 +12,7 @@
 #include "hardware/gpio.h"
 #include "hardware/timer.h"
 
-SwitchButton::SwitchButton(uint gpio, struct_SwitchButtonConfig conf)
+SwitchButton::SwitchButton(uint gpio, struct_ConfigSwitchButton conf)
 {
     this->gpio = gpio;
     this->debounce_delay_us = conf.debounce_delay_us;
@@ -104,7 +104,7 @@ bool SwitchButton::is_switch_pushed()
     return ((active_lo && !gpio_value) || (!active_lo && gpio_value)) ? true : false;
 }
 
-SwitchButtonWithIRQ::SwitchButtonWithIRQ(uint gpio, gpio_irq_callback_t call_back, struct_SwitchButtonConfig conf, uint32_t event_mask_config)
+SwitchButtonWithIRQ::SwitchButtonWithIRQ(uint gpio, gpio_irq_callback_t call_back, struct_ConfigSwitchButton conf, uint32_t event_mask_config)
     : SwitchButton(gpio, conf)
 {
     this->irq_event_mask_config = event_mask_config;

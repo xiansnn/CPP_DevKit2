@@ -101,7 +101,7 @@ void test_font_size(SSD1306 *current_display)
 
 void test_full_screen_text(SSD1306 *current_display)
 {
-    struct_TextFramebufferConfig txt_conf = {
+    struct_ConfigTextFramebuffer txt_conf = {
         .font = font_8x8,
         .wrap = true,
     };
@@ -130,7 +130,7 @@ void test_full_screen_text(SSD1306 *current_display)
 
 void test_auto_next_char(SSD1306 *current_display)
 {
-    struct_TextFramebufferConfig txt_conf = {
+    struct_ConfigTextFramebuffer txt_conf = {
         .font = font_8x8,
         .wrap = true,
         .auto_next_char = false};
@@ -168,7 +168,7 @@ void test_sprintf_format(SSD1306 *current_display)
 {
     current_display->clear_full_screen();
 
-    struct_TextFramebufferConfig text_frame_cfg = {
+    struct_ConfigTextFramebuffer text_frame_cfg = {
         .font = font_8x8,
         .wrap = true};
 
@@ -311,7 +311,7 @@ void test_ostringstream_format(SSD1306 *current_display)
 
     const unsigned char *current_font{font_5x8};
 
-    struct_TextFramebufferConfig txt_conf = {
+    struct_ConfigTextFramebuffer txt_conf = {
         .font = current_font,
         .wrap = false};
 

@@ -24,13 +24,13 @@ Probe pr_D4 = Probe(4); // irq_call_back is triggered
 // channel 6 : encoder DT pin
 // channel 7 : encoder clk pin
 
-struct_SwitchButtonConfig cfg_central_switch{
+struct_ConfigSwitchButton cfg_central_switch{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
     .long_push_delay_us = 1000000,
     .time_out_delay_us = 4000000};
 
-struct_SwitchButtonConfig cfg_encoder_clk{
+struct_ConfigSwitchButton cfg_encoder_clk{
     .debounce_delay_us = 1000,
 };
 

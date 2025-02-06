@@ -52,7 +52,7 @@ public:
                 uint encoder_dt_gpio,
                 gpio_irq_callback_t call_back,
                 control_event_processor_t event_processor,
-                struct_SwitchButtonConfig clk_conf = {});
+                struct_ConfigSwitchButton clk_conf = {});
 
   RotaryEncoder();
   /**
