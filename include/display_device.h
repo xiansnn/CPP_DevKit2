@@ -222,6 +222,10 @@ public:
     virtual void print(char *text_string) = 0;
 };
 
+/**
+ * @brief A clas dedicated to pure text display such as console, printer, ASCII character line display
+ * 
+ */
 class PrinterDevice
 {
 private:
@@ -229,6 +233,12 @@ private:
     struct_TextMemory text_memory;
 
 public:
+    /**
+     * @brief Construct a new Printer Device object
+     * 
+     * @param number_of_char_width 
+     * @param number_of_char_hight 
+     */
     PrinterDevice(size_t number_of_char_width,
                   size_t number_of_char_hight);
     ~PrinterDevice();
