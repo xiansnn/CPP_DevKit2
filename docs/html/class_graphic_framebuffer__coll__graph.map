@@ -2,6 +2,6 @@
 <area shape="rect" id="Node000001" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,185,499,481"/>
 <area shape="rect" id="Node000002" href="$class_display_device.html" title="the generic abstract class for display devices" alt="" coords="129,24,233,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,103,211,167,206,169,189,104"/>
-<area shape="rect" id="Node000003" href="$structstruct___pixel_memory.html" title="the data structure that describes framebuffer" alt="" coords="257,5,391,123"/>
+<area shape="rect" id="Node000003" href="$structstruct___pixel_memory.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="257,5,391,123"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="311,123,299,169,294,168,306,122"/>
 </map>

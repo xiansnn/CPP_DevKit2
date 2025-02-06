@@ -1,0 +1,5 @@
+<map id="PrinterDevice" name="PrinterDevice">
+<area shape="rect" id="Node000001" title="A clas dedicated to pure text display such as console, printer, ASCII character line display." alt="" coords="5,185,388,265"/>
+<area shape="rect" id="Node000002" href="$structstruct___text_memory.html" title="the data structure that characterise the text buffer" alt="" coords="123,5,270,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,122,199,168,194,168,194,122"/>
+</map>

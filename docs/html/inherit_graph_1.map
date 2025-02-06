@@ -4,6 +4,6 @@
 <area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="106,40,138,40,138,46,106,46"/>
 <area shape="rect" id="Node000002" href="$class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="328,5,393,30"/>
 <area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="275,28,328,20,329,25,276,34"/>
-<area shape="rect" id="Node000003" href="$class_text_display_device.html" title="A pure textual class." alt="" coords="308,55,413,79"/>
+<area shape="rect" id="Node000003" href="$class_text_display_device.html" title="A class used to write text on a graphic display." alt="" coords="308,55,413,79"/>
 <area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="276,52,308,57,307,62,275,57"/>
 </map>

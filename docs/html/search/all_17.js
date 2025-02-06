@@ -24,5 +24,5 @@ var searchData=
   ['widgettext_21',['WidgetText',['../class_widget_text.html',1,'WidgetText'],['../class_widget_text.html#a63afea0154ec7bc62dd380c30fb4a8ac',1,'WidgetText::WidgetText()']]],
   ['widgetverticalbargraph_22',['WidgetVerticalBargraph',['../class_widget_vertical_bargraph.html',1,'WidgetVerticalBargraph'],['../class_widget_vertical_bargraph.html#abe6cbc74dea50b7118d430834002896a',1,'WidgetVerticalBargraph::WidgetVerticalBargraph()']]],
   ['width_23',['width',['../structstruct___render_area.html#ae390a957d9f070f47e89e84fbcdb8319',1,'struct_RenderArea']]],
-  ['wrap_24',['wrap',['../structstruct___config_text_framebuffer.html#a8b455772ce9e7d467d80e9a80e8ebe7f',1,'struct_ConfigTextFramebuffer::wrap'],['../class_textual_frame_buffer.html#adb49b6dc30fbba2b03fbf7f9f986eed6',1,'TextualFrameBuffer::wrap']]]
+  ['wrap_24',['wrap',['../structstruct___config_text_framebuffer.html#a8b455772ce9e7d467d80e9a80e8ebe7f',1,'struct_ConfigTextFramebuffer']]]
 ];

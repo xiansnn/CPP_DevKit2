@@ -12,19 +12,11 @@ var class_textual_frame_buffer =
     [ "print_text", "class_textual_frame_buffer.html#a6130daaa3305db9c3ec38714a7c8ca69", null ],
     [ "print_text", "class_textual_frame_buffer.html#a3e6364948941c4849cf5638f144bd2eb", null ],
     [ "update_pixel_area", "class_textual_frame_buffer.html#aeeba56c72968440545ddaf7a608c995c", null ],
-    [ "update_text_area", "class_textual_frame_buffer.html#aa263287217f9ff25fb46b26c59ce73c5", null ],
     [ "update_text_buffer", "class_textual_frame_buffer.html#aa9d0d75389a08f1c42c08eefe7c2bcb2", null ],
-    [ "auto_next_char", "class_textual_frame_buffer.html#af22d14ca1bead4e28be1115ed226aeb2", null ],
-    [ "bg_color", "class_textual_frame_buffer.html#af5e0524ea08aac8bb14e1eaa19014d8d", null ],
+    [ "update_text_buffer_size", "class_textual_frame_buffer.html#a3a3ed78df1e4731be04fcb234b8d13d9", null ],
     [ "current_char_column", "class_textual_frame_buffer.html#ace706a17008f99b11c0dafe867228ce5", null ],
     [ "current_char_line", "class_textual_frame_buffer.html#ae048671ac62880a605b3eaf82ff3578b", null ],
-    [ "fg_color", "class_textual_frame_buffer.html#afba34fe1f5cb3ad7e47b214430f347e5", null ],
-    [ "font", "class_textual_frame_buffer.html#a61f29ca8dc74578413ee1af837c97825", null ],
     [ "frame_text_config", "class_textual_frame_buffer.html#a5556c0837e9492ced941b5ec1a97426b", null ],
-    [ "number_of_column", "class_textual_frame_buffer.html#a0382525fb1c0730d637a49c69ac80b4d", null ],
-    [ "number_of_line", "class_textual_frame_buffer.html#a919ec89baa8b5240033df3e91c829577", null ],
-    [ "tab_size", "class_textual_frame_buffer.html#a0e6e2dc21926580cb2db6f74c2a5adb1", null ],
     [ "text_buffer", "class_textual_frame_buffer.html#a14bbf5392d4418bcb8336d06f8f71db9", null ],
-    [ "text_buffer_size", "class_textual_frame_buffer.html#a84c04d27d72a2e43e94cf73ccfb339a0", null ],
-    [ "wrap", "class_textual_frame_buffer.html#adb49b6dc30fbba2b03fbf7f9f986eed6", null ]
+    [ "text_buffer_size", "class_textual_frame_buffer.html#a84c04d27d72a2e43e94cf73ccfb339a0", null ]
 ];

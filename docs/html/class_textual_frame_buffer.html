@@ -117,9 +117,9 @@ Inheritance diagram for TextualFrameBuffer:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_textual_frame_buffer__inherit__graph.png" border="0" usemap="#a_textual_frame_buffer_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_textual_frame_buffer_inherit__map" id="a_textual_frame_buffer_inherit__map">
-<area shape="rect" title="the place where all textual primitive are placed" alt="" coords="25,387,479,948"/>
-<area shape="rect" href="class_widget_text.html" title="the class of widget dedicated to text frame" alt="" coords="27,996,477,1459"/>
-<area shape="poly" title=" " alt="" coords="255,963,255,996,249,996,249,963"/>
+<area shape="rect" title="the place where all textual primitive are placed" alt="" coords="25,387,479,799"/>
+<area shape="rect" href="class_widget_text.html" title="the class of widget dedicated to text frame" alt="" coords="27,847,477,1309"/>
+<area shape="poly" title=" " alt="" coords="255,813,255,847,249,847,249,813"/>
 <area shape="rect" href="class_graphic_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,5,499,339"/>
 <area shape="poly" title=" " alt="" coords="255,354,255,387,249,387,249,354"/>
 </map>
@@ -129,22 +129,22 @@ Collaboration diagram for TextualFrameBuffer:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_textual_frame_buffer__coll__graph.png" border="0" usemap="#a_textual_frame_buffer_coll__map" alt="Collaboration graph"/></div>
 <map name="a_textual_frame_buffer_coll__map" id="a_textual_frame_buffer_coll__map">
-<area shape="rect" title="the place where all textual primitive are placed" alt="" coords="199,543,652,1085"/>
+<area shape="rect" title="the place where all textual primitive are placed" alt="" coords="199,543,652,936"/>
 <area shape="rect" href="class_graphic_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,185,499,481"/>
-<area shape="poly" title=" " alt="" coords="313,494,330,542,325,544,308,495"/>
+<area shape="poly" title=" " alt="" coords="323,493,344,542,339,544,318,495"/>
 <area shape="rect" href="class_display_device.html" title="the generic abstract class for display devices" alt="" coords="129,24,233,104"/>
 <area shape="poly" title=" " alt="" coords="194,103,211,167,206,169,189,104"/>
-<area shape="rect" href="structstruct___pixel_memory.html" title="the data structure that describes framebuffer" alt="" coords="257,5,391,123"/>
+<area shape="rect" href="structstruct___pixel_memory.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="257,5,391,123"/>
 <area shape="poly" title=" " alt="" coords="311,123,299,169,294,168,306,122"/>
 <area shape="rect" href="structstruct___config_text_framebuffer.html" title="the data sttructure used to configure textual widget" alt="" coords="523,237,677,429"/>
-<area shape="poly" title=" " alt="" coords="568,429,532,528,527,526,563,428"/>
+<area shape="poly" title=" " alt="" coords="562,429,519,528,514,526,557,427"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9463312be7bab778555d5067212f3261" id="r_a9463312be7bab778555d5067212f3261"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9463312be7bab778555d5067212f3261">TextualFrameBuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *device, <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> text_cfg)</td></tr>
-<tr class="memdesc:a9463312be7bab778555d5067212f3261"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Textual Frame Buffer object.  <br /></td></tr>
+<tr class="memdesc:a9463312be7bab778555d5067212f3261"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max number of line with respect to frame height and font height.  <br /></td></tr>
 <tr class="separator:a9463312be7bab778555d5067212f3261"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaafacf95d5ca17ed15e5328926dabf23" id="r_aaafacf95d5ca17ed15e5328926dabf23"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaafacf95d5ca17ed15e5328926dabf23">TextualFrameBuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *device, size_t frame_width, size_t frame_height, <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> text_cfg)</td></tr>
 <tr class="memdesc:aaafacf95d5ca17ed15e5328926dabf23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Textual Frame Buffer object when the frame size in x and y pixel is given. The number of character line and column are computed according to the size of font.  <br /></td></tr>
@@ -156,11 +156,11 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_text_buffer</b> ()</td></tr>
 <tr class="memdesc:a8f3d8555259e9e7a88211b493888fd5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set text buffer memory to "0" and set character line and column to 0. <br /></td></tr>
 <tr class="separator:a8f3d8555259e9e7a88211b493888fd5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa263287217f9ff25fb46b26c59ce73c5" id="r_aa263287217f9ff25fb46b26c59ce73c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa263287217f9ff25fb46b26c59ce73c5">update_text_area</a> (const unsigned char *<a class="el" href="#a61f29ca8dc74578413ee1af837c97825">font</a>)</td></tr>
-<tr class="memdesc:aa263287217f9ff25fb46b26c59ce73c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the reference to the font, recompute max number of line, column, the new text buffer size, delete the previous one if any and create a new buffer.  <br /></td></tr>
-<tr class="separator:aa263287217f9ff25fb46b26c59ce73c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeeba56c72968440545ddaf7a608c995c" id="r_aeeba56c72968440545ddaf7a608c995c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeeba56c72968440545ddaf7a608c995c">update_pixel_area</a> (const unsigned char *<a class="el" href="#a61f29ca8dc74578413ee1af837c97825">font</a>)</td></tr>
-<tr class="memdesc:aeeba56c72968440545ddaf7a608c995c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the reference to the font, recompute graphic pixel width and heightand the coresponding buffer size, delete the previous one if any and create a new buffer.  <br /></td></tr>
+<tr class="memitem:a3a3ed78df1e4731be04fcb234b8d13d9" id="r_a3a3ed78df1e4731be04fcb234b8d13d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a3ed78df1e4731be04fcb234b8d13d9">update_text_buffer_size</a> (const unsigned char *font)</td></tr>
+<tr class="memdesc:a3a3ed78df1e4731be04fcb234b8d13d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the reference to the font, recompute max number of line, column, the new text buffer size, delete the previous one if any and create a new buffer.  <br /></td></tr>
+<tr class="separator:a3a3ed78df1e4731be04fcb234b8d13d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeeba56c72968440545ddaf7a608c995c" id="r_aeeba56c72968440545ddaf7a608c995c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeeba56c72968440545ddaf7a608c995c">update_pixel_area</a> (const unsigned char *font)</td></tr>
+<tr class="memdesc:aeeba56c72968440545ddaf7a608c995c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the reference to the font, recompute graphic pixel width and height and the corresponding buffer size, delete the previous one if any and create a new buffer.  <br /></td></tr>
 <tr class="separator:aeeba56c72968440545ddaf7a608c995c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6130daaa3305db9c3ec38714a7c8ca69" id="r_a6130daaa3305db9c3ec38714a7c8ca69"><td class="memItemLeft" align="right" valign="top"><a id="a6130daaa3305db9c3ec38714a7c8ca69" name="a6130daaa3305db9c3ec38714a7c8ca69"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>print_text</b> ()</td></tr>
@@ -215,6 +215,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>next_char</b> ()</td>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a5556c0837e9492ced941b5ec1a97426b" id="r_a5556c0837e9492ced941b5ec1a97426b"><td class="memItemLeft" align="right" valign="top"><a id="a5556c0837e9492ced941b5ec1a97426b" name="a5556c0837e9492ced941b5ec1a97426b"></a>
+<a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><b>frame_text_config</b> {}</td></tr>
+<tr class="memdesc:a5556c0837e9492ced941b5ec1a97426b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the configuration of the text buffer <br /></td></tr>
+<tr class="separator:a5556c0837e9492ced941b5ec1a97426b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84c04d27d72a2e43e94cf73ccfb339a0" id="r_a84c04d27d72a2e43e94cf73ccfb339a0"><td class="memItemLeft" align="right" valign="top"><a id="a84c04d27d72a2e43e94cf73ccfb339a0" name="a84c04d27d72a2e43e94cf73ccfb339a0"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>text_buffer_size</b></td></tr>
 <tr class="memdesc:a84c04d27d72a2e43e94cf73ccfb339a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">size of the buffer that contains text as string of characters. <br /></td></tr>
@@ -223,14 +227,6 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>text_buffer_size</b
 char *&#160;</td><td class="memItemRight" valign="bottom"><b>text_buffer</b> = nullptr</td></tr>
 <tr class="memdesc:a14bbf5392d4418bcb8336d06f8f71db9"><td class="mdescLeft">&#160;</td><td class="mdescRight">the buffer where text are written <br /></td></tr>
 <tr class="separator:a14bbf5392d4418bcb8336d06f8f71db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0382525fb1c0730d637a49c69ac80b4d" id="r_a0382525fb1c0730d637a49c69ac80b4d"><td class="memItemLeft" align="right" valign="top"><a id="a0382525fb1c0730d637a49c69ac80b4d" name="a0382525fb1c0730d637a49c69ac80b4d"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>number_of_column</b> {0}</td></tr>
-<tr class="memdesc:a0382525fb1c0730d637a49c69ac80b4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max number of line with respect to frame height and font height. <br /></td></tr>
-<tr class="separator:a0382525fb1c0730d637a49c69ac80b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a919ec89baa8b5240033df3e91c829577" id="r_a919ec89baa8b5240033df3e91c829577"><td class="memItemLeft" align="right" valign="top"><a id="a919ec89baa8b5240033df3e91c829577" name="a919ec89baa8b5240033df3e91c829577"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>number_of_line</b> {0}</td></tr>
-<tr class="memdesc:a919ec89baa8b5240033df3e91c829577"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max number of column with respect to frame width and font width. <br /></td></tr>
-<tr class="separator:a919ec89baa8b5240033df3e91c829577"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_class_graphic_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_class_graphic_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_graphic_framebuffer.html">GraphicFramebuffer</a></td></tr>
 <tr class="memitem:ac113e87fc222254359c1baf4e48ce120 inherit pub_attribs_class_graphic_framebuffer" id="r_ac113e87fc222254359c1baf4e48ce120"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_memory</b></td></tr>
@@ -272,34 +268,6 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>current_char_line<
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>current_char_column</b> {0}</td></tr>
 <tr class="memdesc:ace706a17008f99b11c0dafe867228ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">the column where the next character will be written. <br /></td></tr>
 <tr class="separator:ace706a17008f99b11c0dafe867228ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5556c0837e9492ced941b5ec1a97426b" id="r_a5556c0837e9492ced941b5ec1a97426b"><td class="memItemLeft" align="right" valign="top"><a id="a5556c0837e9492ced941b5ec1a97426b" name="a5556c0837e9492ced941b5ec1a97426b"></a>
-<a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><b>frame_text_config</b> {}</td></tr>
-<tr class="memdesc:a5556c0837e9492ced941b5ec1a97426b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the configuration of the text buffer <br /></td></tr>
-<tr class="separator:a5556c0837e9492ced941b5ec1a97426b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61f29ca8dc74578413ee1af837c97825" id="r_a61f29ca8dc74578413ee1af837c97825"><td class="memItemLeft" align="right" valign="top"><a id="a61f29ca8dc74578413ee1af837c97825" name="a61f29ca8dc74578413ee1af837c97825"></a>
-const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><b>font</b> {nullptr}</td></tr>
-<tr class="memdesc:a61f29ca8dc74578413ee1af837c97825"><td class="mdescLeft">&#160;</td><td class="mdescRight">The font used. Current font are defined according to IBM CP437. The font files are derived from <a href="https://github.com/Harbys/pico-ssd1306">https://github.com/Harbys/pico-ssd1306</a> works. They come is size 5x8, 8x8, 12x16 and 16x32. <br /></td></tr>
-<tr class="separator:a61f29ca8dc74578413ee1af837c97825"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e6e2dc21926580cb2db6f74c2a5adb1" id="r_a0e6e2dc21926580cb2db6f74c2a5adb1"><td class="memItemLeft" align="right" valign="top"><a id="a0e6e2dc21926580cb2db6f74c2a5adb1" name="a0e6e2dc21926580cb2db6f74c2a5adb1"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>tab_size</b> {2}</td></tr>
-<tr class="memdesc:a0e6e2dc21926580cb2db6f74c2a5adb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of space that ASCII character HT (aka TAB , "\t", 0x9) generates, default to 2. <br /></td></tr>
-<tr class="separator:a0e6e2dc21926580cb2db6f74c2a5adb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afba34fe1f5cb3ad7e47b214430f347e5" id="r_afba34fe1f5cb3ad7e47b214430f347e5"><td class="memItemLeft" align="right" valign="top"><a id="afba34fe1f5cb3ad7e47b214430f347e5" name="afba34fe1f5cb3ad7e47b214430f347e5"></a>
-<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fg_color</b> {<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>}</td></tr>
-<tr class="memdesc:afba34fe1f5cb3ad7e47b214430f347e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The foreground color, default to WHITE. <br /></td></tr>
-<tr class="separator:afba34fe1f5cb3ad7e47b214430f347e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5e0524ea08aac8bb14e1eaa19014d8d" id="r_af5e0524ea08aac8bb14e1eaa19014d8d"><td class="memItemLeft" align="right" valign="top"><a id="af5e0524ea08aac8bb14e1eaa19014d8d" name="af5e0524ea08aac8bb14e1eaa19014d8d"></a>
-<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bg_color</b> {<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8a08d0012388564e95c3b4a7407cf04965">PixelColor::BLACK</a>}</td></tr>
-<tr class="memdesc:af5e0524ea08aac8bb14e1eaa19014d8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The background color, defaul to BLACK. <br /></td></tr>
-<tr class="separator:af5e0524ea08aac8bb14e1eaa19014d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb49b6dc30fbba2b03fbf7f9f986eed6" id="r_adb49b6dc30fbba2b03fbf7f9f986eed6"><td class="memItemLeft" align="right" valign="top"><a id="adb49b6dc30fbba2b03fbf7f9f986eed6" name="adb49b6dc30fbba2b03fbf7f9f986eed6"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>wrap</b> {true}</td></tr>
-<tr class="memdesc:adb49b6dc30fbba2b03fbf7f9f986eed6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap flag : if true, text wrap to the next line when end of line is reached. <br /></td></tr>
-<tr class="separator:adb49b6dc30fbba2b03fbf7f9f986eed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af22d14ca1bead4e28be1115ed226aeb2" id="r_af22d14ca1bead4e28be1115ed226aeb2"><td class="memItemLeft" align="right" valign="top"><a id="af22d14ca1bead4e28be1115ed226aeb2" name="af22d14ca1bead4e28be1115ed226aeb2"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>auto_next_char</b> {true}</td></tr>
-<tr class="memdesc:af22d14ca1bead4e28be1115ed226aeb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">auto_next_char flag : if true each char steps one position after being written. <br /></td></tr>
-<tr class="separator:af22d14ca1bead4e28be1115ed226aeb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -331,7 +299,8 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new Textual Frame Buffer object. </p>
+<p>The max number of line with respect to frame height and font height. </p>
+<p>Construct a new Textual Frame Buffer object</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">device</td><td>A pointer to the display device in charge of showing character </td></tr>
@@ -344,7 +313,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_textual_frame_buffer_a9463312be7bab778555d5067212f3261_icgraph.png" border="0" usemap="#aclass_textual_frame_buffer_a9463312be7bab778555d5067212f3261_icgraph" alt=""/></div>
 <map name="aclass_textual_frame_buffer_a9463312be7bab778555d5067212f3261_icgraph" id="aclass_textual_frame_buffer_a9463312be7bab778555d5067212f3261_icgraph">
-<area shape="rect" title="Construct a new Textual Frame Buffer object." alt="" coords="269,5,484,30"/>
+<area shape="rect" title="The max number of line with respect to frame height and font height." alt="" coords="269,5,484,30"/>
 <area shape="rect" href="class_textual_frame_buffer.html#aaafacf95d5ca17ed15e5328926dabf23" title="Construct a new Textual Frame Buffer object when the frame size in x and y pixel is given...." alt="" coords="5,5,221,30"/>
 <area shape="poly" title=" " alt="" coords="253,20,221,20,221,15,253,15"/>
 </map>
@@ -397,7 +366,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="class_textual_frame_buffer_aaafacf95d5ca17ed15e5328926dabf23_cgraph.png" border="0" usemap="#aclass_textual_frame_buffer_aaafacf95d5ca17ed15e5328926dabf23_cgraph" alt=""/></div>
 <map name="aclass_textual_frame_buffer_aaafacf95d5ca17ed15e5328926dabf23_cgraph" id="aclass_textual_frame_buffer_aaafacf95d5ca17ed15e5328926dabf23_cgraph">
 <area shape="rect" title="Construct a new Textual Frame Buffer object when the frame size in x and y pixel is given...." alt="" coords="5,5,221,30"/>
-<area shape="rect" href="class_textual_frame_buffer.html#a9463312be7bab778555d5067212f3261" title="Construct a new Textual Frame Buffer object." alt="" coords="269,5,484,30"/>
+<area shape="rect" href="class_textual_frame_buffer.html#a9463312be7bab778555d5067212f3261" title="The max number of line with respect to frame height and font height." alt="" coords="269,5,484,30"/>
 <area shape="poly" title=" " alt="" coords="221,15,253,15,253,20,221,20"/>
 </map>
 </div>
@@ -523,32 +492,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Update the reference to the font, recompute graphic pixel width and heightand the coresponding buffer size, delete the previous one if any and create a new buffer. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">font</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="aa263287217f9ff25fb46b26c59ce73c5" name="aa263287217f9ff25fb46b26c59ce73c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa263287217f9ff25fb46b26c59ce73c5">&#9670;&#160;</a></span>update_text_area()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void TextualFrameBuffer::update_text_area </td>
-          <td>(</td>
-          <td class="paramtype">const unsigned char *</td>          <td class="paramname"><span class="paramname"><em>font</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Update the reference to the font, recompute max number of line, column, the new text buffer size, delete the previous one if any and create a new buffer. </p>
+<p>Update the reference to the font, recompute graphic pixel width and height and the corresponding buffer size, delete the previous one if any and create a new buffer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">font</td><td></td></tr>
@@ -577,6 +521,31 @@ Here is the call graph for this function:</div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">frame_text_config</td><td>the textual configuration data structure </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3a3ed78df1e4731be04fcb234b8d13d9" name="a3a3ed78df1e4731be04fcb234b8d13d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a3ed78df1e4731be04fcb234b8d13d9">&#9670;&#160;</a></span>update_text_buffer_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TextualFrameBuffer::update_text_buffer_size </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned char *</td>          <td class="paramname"><span class="paramname"><em>font</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update the reference to the font, recompute max number of line, column, the new text buffer size, delete the previous one if any and create a new buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">font</td><td></td></tr>
   </table>
   </dd>
 </dl>

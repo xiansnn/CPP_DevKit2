@@ -116,9 +116,9 @@ Inheritance diagram for SSD1306:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_s_d1306__inherit__graph.png" border="0" usemap="#a_s_s_d1306_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_s_s_d1306_inherit__map" id="a_s_s_d1306_inherit__map">
-<area shape="rect" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,369,549,1039"/>
-<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,133,549,321"/>
-<area shape="poly" title=" " alt="" coords="280,336,280,370,275,370,275,336"/>
+<area shape="rect" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,384,549,1053"/>
+<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="19,133,535,336"/>
+<area shape="poly" title=" " alt="" coords="280,351,280,384,275,384,275,351"/>
 <area shape="rect" href="class_display_device.html" title="the generic abstract class for display devices" alt="" coords="225,5,329,85"/>
 <area shape="poly" title=" " alt="" coords="280,100,280,133,275,133,275,100"/>
 </map>
@@ -128,17 +128,17 @@ Collaboration diagram for SSD1306:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_s_d1306__coll__graph.png" border="0" usemap="#a_s_s_d1306_coll__map" alt="Collaboration graph"/></div>
 <map name="a_s_s_d1306_coll__map" id="a_s_s_d1306_coll__map">
-<area shape="rect" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="568,495,1112,1145"/>
-<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,215,549,403"/>
-<area shape="poly" title=" " alt="" coords="392,410,570,571,566,575,388,414"/>
-<area shape="rect" href="class_display_device.html" title="the generic abstract class for display devices" alt="" coords="155,24,259,104"/>
-<area shape="poly" title=" " alt="" coords="225,117,253,214,248,216,220,119"/>
-<area shape="rect" href="structstruct___pixel_memory.html" title="the data structure that describes framebuffer" alt="" coords="283,5,416,123"/>
-<area shape="poly" title=" " alt="" coords="335,123,312,199,307,198,330,121"/>
-<area shape="rect" href="class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="573,213,1107,405"/>
-<area shape="poly" title=" " alt="" coords="843,404,843,477,837,477,837,404"/>
-<area shape="rect" href="structstruct___config_s_s_d1306.html" title="configuration data for SSD1306 OLED display. refer to datasheet for more details." alt="" coords="1131,185,1315,433"/>
-<area shape="poly" title=" " alt="" coords="1133,433,1096,483,1092,480,1129,430"/>
+<area shape="rect" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="541,495,1085,1145"/>
+<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,207,521,410"/>
+<area shape="poly" title=" " alt="" coords="384,418,543,565,539,569,381,422"/>
+<area shape="rect" href="class_display_device.html" title="the generic abstract class for display devices" alt="" coords="141,24,245,104"/>
+<area shape="poly" title=" " alt="" coords="211,118,237,207,232,208,206,119"/>
+<area shape="rect" href="structstruct___pixel_memory.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="269,5,402,123"/>
+<area shape="poly" title=" " alt="" coords="321,123,301,192,295,190,316,121"/>
+<area shape="rect" href="class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="546,213,1079,405"/>
+<area shape="poly" title=" " alt="" coords="815,404,815,477,810,477,810,404"/>
+<area shape="rect" href="structstruct___config_s_s_d1306.html" title="configuration data for SSD1306 OLED display. refer to datasheet for more details." alt="" coords="1103,185,1287,433"/>
+<area shape="poly" title=" " alt="" coords="1106,433,1069,483,1064,480,1102,430"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -451,7 +451,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>c</em></span>, </td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>character</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -477,14 +477,14 @@ Additional Inherited Members</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">pixel_memory_structure</td><td></td></tr>
     <tr><td class="paramname">text_config</td><td>the configuration file of the text framebuffer </td></tr>
-    <tr><td class="paramname">c</td><td>the character to draw </td></tr>
+    <tr><td class="paramname">character</td><td>the character to draw </td></tr>
     <tr><td class="paramname">anchor_x</td><td>the pixel position on x-axis to start drawing the character (upper left corner) </td></tr>
     <tr><td class="paramname">anchor_y</td><td>the pixel position on y-axis to start drawing the character (upper left corner) </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_graphic_display_device.html#a4a83f6a061a105dd3db8177d8c57d03b">GraphicDisplayDevice</a>.</p>
+<p>Implements <a class="el" href="class_graphic_display_device.html#a74898782eb52759f2dca0db1134892bb">GraphicDisplayDevice</a>.</p>
 
 </div>
 </div>
@@ -873,7 +873,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>          <td class="paramname"><span class="paramname"><em>c</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -889,12 +889,12 @@ Additional Inherited Members</h2></td></tr>
     <tr><td class="paramname">pixel_memory_structure</td><td></td></tr>
     <tr><td class="paramname">x</td><td>the x position of the pixel </td></tr>
     <tr><td class="paramname">y</td><td>the y position of the pixel </td></tr>
-    <tr><td class="paramname">c</td><td>the color of the pixel </td></tr>
+    <tr><td class="paramname">color</td><td>the color of the pixel </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_graphic_display_device.html#a49907f68902af86713d34fbec55fc2b2">GraphicDisplayDevice</a>.</p>
+<p>Implements <a class="el" href="class_graphic_display_device.html#ac7ef6574289b020174c41582a45c3631">GraphicDisplayDevice</a>.</p>
 
 </div>
 </div>
@@ -1090,7 +1090,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pixel_memory</td><td>a pointer to the <a class="el" href="structstruct___pixel_memory.html" title="the data structure that describes framebuffer">struct_PixelMemory</a> that contains the pixel_buffer to be displayed </td></tr>
+    <tr><td class="paramname">pixel_memory</td><td>a pointer to the <a class="el" href="structstruct___pixel_memory.html" title="the data structure that characterise the graphic framebuffer">struct_PixelMemory</a> that contains the pixel_buffer to be displayed </td></tr>
     <tr><td class="paramname">anchor_x</td><td>where we want to position (x) the frambuffer </td></tr>
     <tr><td class="paramname">anchor_y</td><td>where we want to position (y) the frambuffer </td></tr>
   </table>
