@@ -142,9 +142,9 @@ Collaboration diagram for KY040:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad0ea6aca7ef60172697d3f26ff9d9b32" id="r_ad0ea6aca7ef60172697d3f26ff9d9b32"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0ea6aca7ef60172697d3f26ff9d9b32">KY040</a> (uint central_switch_gpio, uint encoder_clk_gpio, uint encoder_dt_gpio, gpio_irq_callback_t call_back=nullptr, <a class="el" href="structstruct___switch_button_config.html">struct_SwitchButtonConfig</a> sw_conf={}, <a class="el" href="structstruct___switch_button_config.html">struct_SwitchButtonConfig</a> clk_conf={})</td></tr>
-<tr class="memdesc:ad0ea6aca7ef60172697d3f26ff9d9b32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_k_y040.html" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt...">KY040</a> object.  <br /></td></tr>
-<tr class="separator:ad0ea6aca7ef60172697d3f26ff9d9b32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67adb64d0d3d1e2bca7f9c8312c06706" id="r_a67adb64d0d3d1e2bca7f9c8312c06706"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67adb64d0d3d1e2bca7f9c8312c06706">KY040</a> (uint central_switch_gpio, uint encoder_clk_gpio, uint encoder_dt_gpio, gpio_irq_callback_t call_back=nullptr, <a class="el" href="structstruct___config_switch_button.html">struct_ConfigSwitchButton</a> sw_conf={}, <a class="el" href="structstruct___config_switch_button.html">struct_ConfigSwitchButton</a> clk_conf={})</td></tr>
+<tr class="memdesc:a67adb64d0d3d1e2bca7f9c8312c06706"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_k_y040.html" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt...">KY040</a> object.  <br /></td></tr>
+<tr class="separator:a67adb64d0d3d1e2bca7f9c8312c06706"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2fed8cbecdc0c14ebc43fcd5ae8dd6e" id="r_ab2fed8cbecdc0c14ebc43fcd5ae8dd6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2fed8cbecdc0c14ebc43fcd5ae8dd6e">process_encoder_IRQ</a> (uint32_t event_mask)</td></tr>
 <tr class="memdesc:ab2fed8cbecdc0c14ebc43fcd5ae8dd6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the call back function used to hide encoder from <a class="el" href="class_k_y040.html" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt...">KY040</a> user  <br /></td></tr>
 <tr class="separator:ab2fed8cbecdc0c14ebc43fcd5ae8dd6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -190,8 +190,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p>This class implement the module device <a class="el" href="class_k_y040.html" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt...">KY040</a> which is a rotary encoder with a centrl switch push button. </p>
 <p>It inherits from <a class="el" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model-View-Controll design...">UIController</a>, because most of the time it will be used in a UI context. Otherwise, a separate implementation of <a class="el" href="class_rotary_encoder.html" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user....">RotaryEncoder</a> aand/or <a class="el" href="class_switch_button.html" title="SwitchButton status is sampled periodically by software.">SwitchButton</a> will be suficient. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ad0ea6aca7ef60172697d3f26ff9d9b32" name="ad0ea6aca7ef60172697d3f26ff9d9b32"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0ea6aca7ef60172697d3f26ff9d9b32">&#9670;&#160;</a></span>KY040()</h2>
+<a id="a67adb64d0d3d1e2bca7f9c8312c06706" name="a67adb64d0d3d1e2bca7f9c8312c06706"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67adb64d0d3d1e2bca7f9c8312c06706">&#9670;&#160;</a></span>KY040()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -219,12 +219,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structstruct___switch_button_config.html">struct_SwitchButtonConfig</a></td>          <td class="paramname"><span class="paramname"><em>sw_conf</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>, </td>
+          <td class="paramtype"><a class="el" href="structstruct___config_switch_button.html">struct_ConfigSwitchButton</a></td>          <td class="paramname"><span class="paramname"><em>sw_conf</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structstruct___switch_button_config.html">struct_SwitchButtonConfig</a></td>          <td class="paramname"><span class="paramname"><em>clk_conf</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structstruct___config_switch_button.html">struct_ConfigSwitchButton</a></td>          <td class="paramname"><span class="paramname"><em>clk_conf</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -28,6 +28,6 @@ var searchData=
   ['ssd1306_25',['SSD1306',['../class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b',1,'SSD1306']]],
   ['start_26',['start',['../class_p_w_m.html#ae21be3a643267ca4f69be8d99fdfb06a',1,'PWM']]],
   ['starttogether_27',['StartTogether',['../class_p_w_m.html#a05de54103744fc750a62fbc0350f60f5',1,'PWM']]],
-  ['switchbutton_28',['SwitchButton',['../class_switch_button.html#ab26a40e2b63115a23ff499e360768693',1,'SwitchButton']]],
-  ['switchbuttonwithirq_29',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html#af12e2e729834d347fb0f3efdce249bff',1,'SwitchButtonWithIRQ']]]
+  ['switchbutton_28',['SwitchButton',['../class_switch_button.html#a750d21f333405881df2ef91495885a29',1,'SwitchButton']]],
+  ['switchbuttonwithirq_29',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html#aafb53c306bcbb5c681caae03b778f517',1,'SwitchButtonWithIRQ']]]
 ];

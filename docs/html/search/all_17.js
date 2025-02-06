@@ -21,8 +21,8 @@ var searchData=
   ['widgethorizontalbargraph_18',['WidgetHorizontalBargraph',['../class_widget_horizontal_bargraph.html',1,'WidgetHorizontalBargraph'],['../class_widget_horizontal_bargraph.html#a4f9633c9787f1a61d75cab5c6730fc0c',1,'WidgetHorizontalBargraph::WidgetHorizontalBargraph()']]],
   ['widgets_19',['widgets',['../class_widget.html#af4c3a0de546fdcb1038469f5c592e2b6',1,'Widget::widgets'],['../class_widget_text.html#ac422e80a9f12318c8cc6b1e05c22c40e',1,'WidgetText::widgets']]],
   ['widgetsquareled_20',['WidgetSquareLed',['../class_widget_square_led.html',1,'WidgetSquareLed'],['../class_widget_square_led.html#a71297becb8bf67018ed0c0a2d8c5df97',1,'WidgetSquareLed::WidgetSquareLed()']]],
-  ['widgettext_21',['WidgetText',['../class_widget_text.html',1,'WidgetText'],['../class_widget_text.html#a6ca9c3f03d5f017f033fb9fc63a84e19',1,'WidgetText::WidgetText()']]],
+  ['widgettext_21',['WidgetText',['../class_widget_text.html',1,'WidgetText'],['../class_widget_text.html#a63afea0154ec7bc62dd380c30fb4a8ac',1,'WidgetText::WidgetText()']]],
   ['widgetverticalbargraph_22',['WidgetVerticalBargraph',['../class_widget_vertical_bargraph.html',1,'WidgetVerticalBargraph'],['../class_widget_vertical_bargraph.html#abe6cbc74dea50b7118d430834002896a',1,'WidgetVerticalBargraph::WidgetVerticalBargraph()']]],
   ['width_23',['width',['../structstruct___render_area.html#ae390a957d9f070f47e89e84fbcdb8319',1,'struct_RenderArea']]],
-  ['wrap_24',['wrap',['../structstruct___text_framebuffer.html#ad81da6e5bcd39e449dc91ded5461d552',1,'struct_TextFramebuffer']]]
+  ['wrap_24',['wrap',['../structstruct___config_text_framebuffer.html#a8b455772ce9e7d467d80e9a80e8ebe7f',1,'struct_ConfigTextFramebuffer::wrap'],['../class_textual_frame_buffer.html#adb49b6dc30fbba2b03fbf7f9f986eed6',1,'TextualFrameBuffer::wrap']]]
 ];

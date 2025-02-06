@@ -10,5 +10,5 @@ var searchData=
   ['widget_5fwith_5fborder_7',['widget_with_border',['../class_widget.html#ae6781210e651d10662938599eb985f2f',1,'Widget::widget_with_border'],['../class_widget_text.html#a8b736bac0a08a1881f43e7a7ab514643',1,'WidgetText::widget_with_border']]],
   ['widgets_8',['widgets',['../class_widget.html#af4c3a0de546fdcb1038469f5c592e2b6',1,'Widget::widgets'],['../class_widget_text.html#ac422e80a9f12318c8cc6b1e05c22c40e',1,'WidgetText::widgets']]],
   ['width_9',['width',['../structstruct___render_area.html#ae390a957d9f070f47e89e84fbcdb8319',1,'struct_RenderArea']]],
-  ['wrap_10',['wrap',['../structstruct___text_framebuffer.html#ad81da6e5bcd39e449dc91ded5461d552',1,'struct_TextFramebuffer']]]
+  ['wrap_10',['wrap',['../structstruct___config_text_framebuffer.html#a8b455772ce9e7d467d80e9a80e8ebe7f',1,'struct_ConfigTextFramebuffer::wrap'],['../class_textual_frame_buffer.html#adb49b6dc30fbba2b03fbf7f9f986eed6',1,'TextualFrameBuffer::wrap']]]
 ];

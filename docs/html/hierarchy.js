@@ -29,12 +29,15 @@ var hierarchy =
     [ "PWM", "class_p_w_m.html", null ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],
     [ "SG90", "class_s_g90.html", null ],
+    [ "struct_ConfigGraphicFramebuffer", "structstruct___config_graphic_framebuffer.html", null ],
     [ "struct_ConfigMasterI2C", "structstruct___config_master_i2_c.html", null ],
     [ "struct_ConfigMPU6050", "structstruct___config_m_p_u6050.html", null ],
     [ "struct_ConfigScrollSSD1306", "structstruct___config_scroll_s_s_d1306.html", null ],
     [ "struct_ConfigSG90", "structstruct___config_s_g90.html", null ],
     [ "struct_ConfigSlaveI2C", "structstruct___config_slave_i2_c.html", null ],
     [ "struct_ConfigSSD1306", "structstruct___config_s_s_d1306.html", null ],
+    [ "struct_ConfigSwitchButton", "structstruct___config_switch_button.html", null ],
+    [ "struct_ConfigTextFramebuffer", "structstruct___config_text_framebuffer.html", null ],
     [ "struct_DHTReading", "structstruct___d_h_t_reading.html", null ],
     [ "struct_I2CXferResult", "structstruct___i2_c_xfer_result.html", null ],
     [ "struct_MPUData", "structstruct___m_p_u_data.html", null ],
@@ -42,8 +45,6 @@ var hierarchy =
     [ "struct_RawData", "structstruct___raw_data.html", null ],
     [ "struct_RenderArea", "structstruct___render_area.html", null ],
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", null ],
-    [ "struct_SwitchButtonConfig", "structstruct___switch_button_config.html", null ],
-    [ "struct_TextFramebuffer", "structstruct___text_framebuffer.html", null ],
     [ "SwitchButton", "class_switch_button.html", [
       [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", [
         [ "RotaryEncoder", "class_rotary_encoder.html", null ]

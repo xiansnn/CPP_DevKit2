@@ -5,7 +5,7 @@ var class_s_s_d1306 =
     [ "clear_pixel_buffer", "class_s_s_d1306.html#ae8806883d7ce6ba32bb5ed8c7a5a1282", null ],
     [ "compute_render_area", "class_s_s_d1306.html#a946d97970d11c778a09e0f1305591b3f", null ],
     [ "create_pixel_buffer", "class_s_s_d1306.html#a4cd36aaddf2129f31beb3c8119b2d496", null ],
-    [ "drawChar", "class_s_s_d1306.html#ab48bed5466ccf728b38abdd4b29bc976", null ],
+    [ "drawChar", "class_s_s_d1306.html#a3323d121695ea6462af79a4ec08f2f43", null ],
     [ "fill", "class_s_s_d1306.html#adc2b08b724a23e4179362183cda8475b", null ],
     [ "fill_pattern_and_show_GDDRAM", "class_s_s_d1306.html#a764babad3f6a4d12cfa600ce7fd1b751", null ],
     [ "horizontal_scroll", "class_s_s_d1306.html#a3228383e41ea93124a1da0a619dc6b11", null ],
