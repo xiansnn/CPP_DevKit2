@@ -41,6 +41,7 @@ DisplayDevice::~DisplayDevice()
 }
 
 PrinterDevice::PrinterDevice(size_t number_of_char_width, size_t number_of_char_height)
+    : DisplayDevice()
 {
     this->text_memory.number_of_line = number_of_char_height;
     this->text_memory.number_of_column = number_of_char_width;

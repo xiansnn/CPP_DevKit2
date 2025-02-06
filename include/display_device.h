@@ -226,7 +226,7 @@ public:
  * @brief A clas dedicated to pure text display such as console, printer, ASCII character line display
  * 
  */
-class PrinterDevice
+class PrinterDevice : DisplayDevice
 {
 private:
     /// @brief the data structure of the text memory
