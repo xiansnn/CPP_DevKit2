@@ -206,7 +206,7 @@ void test_sprintf_format(SSD1306 *current_display)
     sleep_ms(LONG_DELAY);
 
     current_display->clear_full_screen();
-    text_frame->update_text_area(font_5x8);
+    text_frame->update_text_buffer_size(font_5x8);
     text_frame->clear_text_buffer();
 
     text_frame->print_text("Integers:\n");
@@ -228,7 +228,7 @@ void test_sprintf_format(SSD1306 *current_display)
 
     current_display->clear_full_screen();
 
-    text_frame->update_text_area(font_8x8);
+    text_frame->update_text_buffer_size(font_8x8);
 
     text_frame->print_char(FORM_FEED); // equivalent text_frame->clear_pixel_buffer();
 
@@ -267,7 +267,7 @@ void test_sprintf_format(SSD1306 *current_display)
     sleep_ms(LONG_DELAY);
     text_frame->print_char(FORM_FEED);
 
-    text_frame->update_text_area(font_16x32);
+    text_frame->update_text_buffer_size(font_16x32);
     text_frame->print_text(" 15:06 \n");
     text_frame->print_text("03/01/24");
     current_display->show(&text_frame->pixel_memory, 0, 0);

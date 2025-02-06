@@ -100,7 +100,7 @@ int main()
     title.print_text("ROLL PITCH");
     values_display.show(&title.pixel_memory, title_area_anchor_x, title_area_anchor_y);
     pr_D4.lo(); // 9ms
-    
+
     while (true)
     {
         for (int i = -90; i < 90; i++)
@@ -108,7 +108,7 @@ int main()
             // compute and show values
             pr_D6.hi();
             roll = i;
-            pitch = i / 3;
+            pitch = i / 2;
             sprintf(values.text_buffer, "%+3d\xF8  %+3d\xF8", roll, pitch);
             values.print_text();
             values_display.show(&values.pixel_memory, values_area_anchor_x, values_area_anchor_y);
@@ -137,8 +137,5 @@ int main()
             pr_D7.lo(); // 24ms
             sleep_ms(REFRESH_PERIOD);
         }
-
-        // values_display.clear_full_screen();
-        // visu_display.clear_full_screen();
     }
 }
