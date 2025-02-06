@@ -5,7 +5,8 @@ var hierarchy =
       [ "GraphicDisplayDevice", "class_graphic_display_device.html", [
         [ "SSD1306", "class_s_s_d1306.html", null ],
         [ "TextDisplayDevice", "class_text_display_device.html", null ]
-      ] ]
+      ] ],
+      [ "PrinterDevice", "class_printer_device.html", null ]
     ] ],
     [ "GraphicFramebuffer", "class_graphic_framebuffer.html", [
       [ "TextualFrameBuffer", "class_textual_frame_buffer.html", [
@@ -25,7 +26,6 @@ var hierarchy =
     [ "HW_I2C_Slave", "class_h_w___i2_c___slave.html", null ],
     [ "MPU6050", "class_m_p_u6050.html", null ],
     [ "MSGEQ7", "class_m_s_g_e_q7.html", null ],
-    [ "PrinterDevice", "class_printer_device.html", null ],
     [ "Probe", "class_probe.html", null ],
     [ "PWM", "class_p_w_m.html", null ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],
