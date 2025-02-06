@@ -42,17 +42,26 @@ struct struct_PixelMemory
     size_t pixel_buffer_size;
 };
 
-struct struct_GraphicFramebufferConfig
+/**
+ * @brief data structure used to configure graphic framebuffer
+ * 
+ */
+struct struct_ConfigGraphicFramebuffer
 {
-    size_t frame_height;
+    
+    /// @brief the frame width of the graphic frame
     size_t frame_width;
+    /// @brief the frame height of the graphic frame
+    size_t frame_height;
+    /// @brief the foreground color
     PixelColor fg_color{PixelColor::WHITE};
+    /// @brief  the background color
     PixelColor bg_color{PixelColor::BLACK};
     };
 
 
 /// @brief the data sttructure used to configure textual widget
-struct struct_TextFramebufferConfig
+struct struct_ConfigTextFramebuffer
 {
     /// @brief The max number of line with respect to frame height and font height
     uint8_t number_of_column{0};
@@ -174,7 +183,7 @@ public:
      * @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
      * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
      */
-    virtual void drawChar(struct_PixelMemory *pixel_memory_structure, struct_TextFramebufferConfig *text_config, char c, uint8_t anchor_x, uint8_t anchor_y) = 0;
+    virtual void drawChar(struct_PixelMemory *pixel_memory_structure, struct_ConfigTextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y) = 0;
 };
 
 /// @brief A pure textual class.

@@ -105,7 +105,7 @@ public:
      */
     WidgetText(UIModelObject *text_model,
                GraphicDisplayDevice *display_screen,
-               struct_TextFramebufferConfig framebuffer_txt_cnf,
+               struct_ConfigTextFramebuffer framebuffer_txt_cnf,
                uint8_t number_of_column,
                uint8_t number_of_line,
                uint8_t widget_anchor_x,
