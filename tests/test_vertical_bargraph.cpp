@@ -50,12 +50,19 @@ void simulate_values(ModelBargraph *model)
     model->process_control_event();
 }
 
+struct_ConfigGraphicFramebuffer vertical_bargraph_cfg = {
+    .frame_width = 56,
+    .frame_height = 56,
+    .fg_color = PixelColor::WHITE,
+    .bg_color = PixelColor::BLACK};
+
+
 HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
 SSD1306 display = SSD1306(&master, cfg_ssd1306);
 ModelBargraph my_model = ModelBargraph(7, 0, 100);
 WidgetVerticalBargraph my_widget = WidgetVerticalBargraph(&my_model,
                                                           &display,
-                                                          56, 56,
+                                                          vertical_bargraph_cfg,
                                                           20, 0,
                                                           true);
 

@@ -92,25 +92,19 @@ public:
      * 
      * @param bargraph_model a pointer to the mactual displayed model
      * @param display_screen a pointer to the display device on which the widget is drawn
-     * @param frame_width The width of the widget including the border
-     * @param frame_height the height of the widget including the border
+     * @param graph_cfg the configuration data structure of the graphic framebuffer
      * @param widget_anchor_x the horizontal position where the widget start on the device screen
      * @param widget_anchor_y the vertical position where the widget start on the device screen
      * @param widget_with_border the flag that indicates whether the widget has a border or not
      * @param bar_spacing the number of pixel between each bar
-     * @param fg_color the foreground color
-     * @param bg_color the background color
      */
     WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
                              GraphicDisplayDevice *display_screen,
-                             size_t frame_width,
-                             size_t frame_height,
+                             struct_ConfigGraphicFramebuffer graph_cfg,
                              uint8_t widget_anchor_x,
                              uint8_t widget_anchor_y,
                              bool widget_with_border,
-                             uint8_t bar_spacing = 1,
-                             PixelColor fg_color = PixelColor::WHITE,
-                             PixelColor bg_color = PixelColor::BLACK);
+                             uint8_t bar_spacing = 1);
     /**
      * @brief Destroy the Widget Horizontal Bargraph object
      * 
@@ -156,25 +150,19 @@ public:
      * 
      * @param bargraph_model a pointer to the mactual displayed model
      * @param display_screen a pointer to the display device on which the widget is drawn
-     * @param frame_width The width of the widget including the border
-     * @param frame_height the height of the widget including the border
+     * @param graph_cfg the configuration data structure of the graphic framebuffer
      * @param widget_anchor_x the horizontal position where the widget start on the device screen
      * @param widget_anchor_y the vertical position where the widget start on the device screen
      * @param widget_with_border the flag that indicates whether the widget has a border or not
      * @param bar_spacing the number of pixel between each bar
-     * @param fg_color the foreground color
-     * @param bg_color the background color
      */
     WidgetVerticalBargraph(ModelBargraph *bargraph_model,
                              GraphicDisplayDevice *display_screen,
-                             size_t frame_width,
-                             size_t frame_height,
+                             struct_ConfigGraphicFramebuffer graph_cfg,
                              uint8_t widget_anchor_x,
                              uint8_t widget_anchor_y,
                              bool widget_with_border,
-                             uint8_t bar_spacing = 1,
-                             PixelColor fg_color = PixelColor::WHITE,
-                             PixelColor bg_color = PixelColor::BLACK);
+                             uint8_t bar_spacing = 1);
     ~WidgetVerticalBargraph();
     void draw_refresh();
 };
