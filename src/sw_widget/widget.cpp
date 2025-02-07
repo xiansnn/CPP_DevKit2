@@ -18,18 +18,14 @@ void Widget::draw_border(PixelColor c) // TODO en faire un pure virtual pour etr
 }
 
 Widget::Widget(GraphicDisplayDevice *_display_screen,
-               size_t _frame_width,
-               size_t _frame_height,
+               struct_ConfigGraphicFramebuffer graph_cfg,
                uint8_t _widget_anchor_x,
                uint8_t _widget_anchor_y,
-               bool _widget_with_border,
-               PixelColor fg_color,
-               PixelColor bg_color)
-    : GraphicFramebuffer(_display_screen,_frame_width, _frame_height, fg_color,bg_color)
+               bool _widget_with_border )
+    : GraphicFramebuffer(_display_screen, graph_cfg)
 {
-    assert(_frame_height % 8 == 0);    // check widget height limitation
-    assert(_widget_anchor_y % 8 == 0); // check widget anchor y limitation
-    // this->display_screen = _display_screen;
+    assert(graph_cfg.frame_height % 8 == 0);    // TODO a porter dans ssd1306 check widget height limitation
+    assert(_widget_anchor_y % 8 == 0); // TODO a porter dans ssd1306 check widget anchor y limitation
     this->widget_anchor_x = _widget_anchor_x;
     this->widget_anchor_y = _widget_anchor_y;
     this->widget_with_border = _widget_with_border;
@@ -37,7 +33,7 @@ Widget::Widget(GraphicDisplayDevice *_display_screen,
 
     widget_start_x = widget_border_width;
     widget_start_y = widget_border_width;
-    widget_width =  pixel_memory.frame_width - 2 * widget_border_width;
+    widget_width = pixel_memory.frame_width - 2 * widget_border_width;
     widget_height = pixel_memory.frame_height - 2 * widget_border_width;
 }
 

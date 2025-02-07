@@ -114,6 +114,17 @@ private:
 public:
     DisplayDevice();
     ~DisplayDevice();
+    /**
+     * @brief A pure virtual member function.
+     * It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.
+     * This method implements all peculiarities of the actual display device.
+     *
+     * @param pixel_memory_structure a pointer to the struct_PixelMemory that contains the pixel_buffer to be displayed
+     * @param anchor_x the x (horizontal)starting position of the frame within the display screen, (in pixel)
+     * @param anchor_y the y (vertical) starting position of the frame within the display screen, (in pixel)
+     */
+    virtual void show(struct_PixelMemory *pixel_memory_structure,
+                      uint8_t anchor_x, uint8_t anchor_y) = 0;
 };
 
 /**
@@ -160,17 +171,6 @@ public:
      * @param pixel_memory the pixel buffer to complete
      */
     virtual void create_pixel_buffer(struct_PixelMemory *pixel_memory) = 0;
-
-    /**
-     * @brief A pure virtual member function.
-     * It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.
-     *
-     * @param pixel_memory_structure a pointer to the struct_PixelMemory that contains the pixel_buffer to be displayed
-     * @param anchor_x the x (horizontal)starting position of the frame within the display screen, (in pixel)
-     * @param anchor_y the y (vertical) starting position of the frame within the display screen, (in pixel)
-     */
-    virtual void show(struct_PixelMemory *pixel_memory_structure,
-                      uint8_t anchor_x, uint8_t anchor_y) = 0;
 
     /**
      * @brief the graphic primitive to draw a pixel
@@ -224,7 +224,7 @@ public:
 
 /**
  * @brief A clas dedicated to pure text display such as console, printer, ASCII character line display
- * 
+ *
  */
 class PrinterDevice : DisplayDevice
 {
@@ -235,9 +235,9 @@ private:
 public:
     /**
      * @brief Construct a new Printer Device object
-     * 
-     * @param number_of_char_width 
-     * @param number_of_char_hight 
+     *
+     * @param number_of_char_width
+     * @param number_of_char_hight
      */
     PrinterDevice(size_t number_of_char_width,
                   size_t number_of_char_hight);

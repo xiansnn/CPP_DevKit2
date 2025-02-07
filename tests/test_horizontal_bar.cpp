@@ -15,16 +15,11 @@
 #include "widget_horizontal_bar.h"
 #include "ui_core.h"
 
-
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
 
-
-
-
 #define MAX_VALUE 10
 #define MIN_VALUE -10
-
 
 struct_ConfigMasterI2C cfg_i2c{
     .i2c = i2c0,
@@ -81,13 +76,22 @@ int main()
     HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
     SSD1306 display = SSD1306(&master, cfg_ssd1306);
 
+    struct_ConfigGraphicFramebuffer horizontal_bar_cfg = {
+        .frame_width = 100,
+        .frame_height = 8,
+        .fg_color = PixelColor::WHITE,
+        .bg_color = PixelColor::BLACK};
+
     MyHorizontalBarModel my_model = MyHorizontalBarModel(MIN_VALUE, MAX_VALUE, true, 1);
 
-    WidgetHorizontalBar my_horizontal_bar = WidgetHorizontalBar(&my_model, &display, MAX_VALUE, MIN_VALUE, 100, 8, 20, 8);
+    WidgetHorizontalBar my_horizontal_bar = WidgetHorizontalBar(&my_model, &display,
+                                                                MAX_VALUE, MIN_VALUE,
+                                                                horizontal_bar_cfg,
+                                                                20, 8);
 
     display.clear_full_screen();
     my_horizontal_bar.rect(0, 0, 128, 64);
-    display.show(&my_horizontal_bar.pixel_memory,my_horizontal_bar.widget_anchor_x,my_horizontal_bar.widget_anchor_y);
+    display.show(&my_horizontal_bar.pixel_memory, my_horizontal_bar.widget_anchor_x, my_horizontal_bar.widget_anchor_y);
     pr_D4.lo();
 
     while (true)

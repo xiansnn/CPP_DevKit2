@@ -60,11 +60,9 @@ public:
     WidgetHorizontalBar(UIModelObject *bar_value_model,
                         GraphicDisplayDevice *display_screen,
                         int max_value, int min_value,
-                        size_t frame_width, size_t frame_height,
+                        struct_ConfigGraphicFramebuffer graph_cfg,
                         uint8_t widget_anchor_x, uint8_t widget_anchor_y,
-                        bool widget_with_border = true,
-                        PixelColor fg_color = PixelColor::WHITE,
-                        PixelColor bg_color = PixelColor::BLACK);
+                        bool widget_with_border = true);
 
     ~WidgetHorizontalBar();
     /// @brief set the level to value

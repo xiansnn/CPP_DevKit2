@@ -42,18 +42,16 @@ void WidgetHorizontalBar::draw()
 WidgetHorizontalBar::WidgetHorizontalBar(UIModelObject *bar_value_model,
                                          GraphicDisplayDevice *display_screen,
                                          int max_value, int min_value,
-                                         size_t frame_width, size_t frame_height,
+                                         struct_ConfigGraphicFramebuffer graph_cfg,
                                          uint8_t widget_anchor_x, uint8_t widget_anchor_y,
-                                         bool widget_with_border,
-                                         PixelColor fg_color,
-                                         PixelColor bg_color)
-    : Widget(display_screen, frame_width, frame_height, widget_anchor_x, widget_anchor_y, widget_with_border, fg_color, bg_color)
+                                         bool widget_with_border)
+    : Widget(display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
 {
     this->actual_displayed_model = bar_value_model;
     this->max_value = max_value;
     this->min_value = min_value;
     this->level = 0;
-    this->px_max = frame_width;
+    this->px_max = graph_cfg.frame_width;
     this->px_min = 0;
     this->level_coef = (float)(px_max - px_min) / (max_value - min_value);
     this->level_offset = px_max - level_coef * max_value;

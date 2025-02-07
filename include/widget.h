@@ -9,8 +9,7 @@
  *
  */
 
-#if !defined(WIDGET_H)
-#define WIDGET_H
+#pragma once
 
 #include "display_device.h"
 #include "framebuffer.h"
@@ -50,10 +49,6 @@ protected:
     /// @brief The period of the blinking, in microseconds
     uint32_t blink_period_us;
 
-
-    // /// @brief the display device where the widget is displayed
-    // GraphicDisplayDevice *display_screen{nullptr};//TODO remonter dans framebuffer
-
     /// @brief if true, the widget is surrounded by a one-pixel border
     bool widget_with_border{true};
 
@@ -79,7 +74,7 @@ protected:
     uint8_t widget_start_y;
 
     /// @brief this is the border size of the widget. 0 if no border, 1 if border
-    uint8_t widget_border_width; 
+    uint8_t widget_border_width;
 
     /// @brief draw a rectangle around the widget.
     /// IMPORTANT NOTICE: as the border is a rectangle with fill=false, the border width can only be 1 pixel.
@@ -106,28 +101,21 @@ public:
      */
     void set_blink_us(uint32_t blink_period = 1000000);
 
-   
     /**
      * @brief Construct a new Widget object
-     * 
+     *
      * @param display_screen    The display device on which the widget is drawn.
-     * @param frame_width  The width of the widget including the border
-     * @param frame_height  the height of the widget including the border
+     * @param graph_cfg the configuration data structure of the graphic framebuffer
      * @param widget_anchor_x  the horizontal position where the widget start on the device screen
      * @param widget_anchor_y  the vertical position where the widget start on the device screen
      * @param widget_with_border  The flag that indicates whether the widget has a border or not
-     * @param fg_color the foreground color
-     * @param bg_color the background color
      * \image html widget.png
      */
     Widget(GraphicDisplayDevice *display_screen,
-           size_t frame_width,
-           size_t frame_height,
+           struct_ConfigGraphicFramebuffer graph_cfg,
            uint8_t widget_anchor_x,
            uint8_t widget_anchor_y,
-           bool widget_with_border,
-           PixelColor fg_color = PixelColor::WHITE,
-           PixelColor bg_color = PixelColor::BLACK);
+           bool _widget_with_border);
     /**
      * @brief Destroy the UIWidget object
      */
@@ -164,5 +152,3 @@ public:
      */
     virtual void draw_refresh() = 0;
 };
-
-#endif // WIDGET_H
