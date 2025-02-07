@@ -37,8 +37,7 @@ public:
      */
     WidgetFocusIndicator(UIModelObject *actual_displayed_model,
                      GraphicDisplayDevice *display_screen,
-                     size_t width,
-                     size_t height,
+                     struct_ConfigGraphicFramebuffer graph_cfg,
                      uint8_t widget_anchor_x,
                      uint8_t widget_anchor_y,
                      bool with_border);

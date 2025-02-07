@@ -23,13 +23,11 @@ class MySquareLedWidget : public WidgetSquareLed
 {
 private:
     // /// @brief the variable that stores the reference to the actual model object.
-    // MySquareLedModel *actual_displayed_model = nullptr;
 
 public:
     MySquareLedWidget(MySquareLedModel *actual_displayed_model,
                       GraphicDisplayDevice *display_screen,
-                      size_t width,
-                      size_t height,
+                      struct_ConfigGraphicFramebuffer graph_cfg,
                       uint8_t widget_anchor_x,
                       uint8_t widget_anchor_y);
     ~MySquareLedWidget();
@@ -37,11 +35,10 @@ public:
 };
 MySquareLedWidget::MySquareLedWidget(MySquareLedModel *actual_displayed_model,
                                      GraphicDisplayDevice *display_screen,
-                                     size_t width,
-                                     size_t height,
+                                     struct_ConfigGraphicFramebuffer graph_cfg,
                                      uint8_t widget_anchor_x,
                                      uint8_t widget_anchor_y)
-    : WidgetSquareLed(display_screen, width, height, widget_anchor_x, widget_anchor_y)
+    : WidgetSquareLed(actual_displayed_model, display_screen, graph_cfg, widget_anchor_x, widget_anchor_y)
 {
     this->actual_displayed_model = actual_displayed_model;
     this->led_is_blinking = false;
@@ -88,35 +85,43 @@ private:
 public:
     MySquareLEDWidgetWithFocus(MySquareLedModel *actual_displayed_model,
                                GraphicDisplayDevice *display_screen,
-                               size_t width,
-                               size_t height,
+                               struct_ConfigGraphicFramebuffer graph_cfg,
                                uint8_t widget_anchor_x,
-                               uint8_t widget_anchor_y,
-                               PixelColor fg_color = PixelColor::WHITE, 
-                               PixelColor bg_color = PixelColor::BLACK);
+                               uint8_t widget_anchor_y);
     ~MySquareLEDWidgetWithFocus();
     void draw_refresh();
 };
 
 MySquareLEDWidgetWithFocus::MySquareLEDWidgetWithFocus(MySquareLedModel *actual_displayed_model,
                                                        GraphicDisplayDevice *display_screen,
-                                                       size_t width,
-                                                       size_t height,
+                                                       struct_ConfigGraphicFramebuffer graph_cfg,
                                                        uint8_t widget_anchor_x,
-                                                       uint8_t widget_anchor_y,
-                                                       PixelColor fg_color, PixelColor bg_color)
-    : Widget(display_screen, width, height, widget_anchor_x, widget_anchor_y, true, fg_color, bg_color)
+                                                       uint8_t widget_anchor_y)
+    : Widget(display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, true)
 {
+#define FOCUS_OFFSET 8
+#define FOCUS_WIDTH 5
+
+    struct_ConfigGraphicFramebuffer square_led_cfg{
+        .frame_width = graph_cfg.frame_width - FOCUS_OFFSET,
+        .frame_height = graph_cfg.frame_height,
+        .fg_color = PixelColor::WHITE,
+        .bg_color = PixelColor::BLACK};
+
     this->square_led = new MySquareLedWidget(actual_displayed_model,
                                              display_screen,
-                                             width - 8,
-                                             height,
-                                             widget_anchor_x + 8,
+                                             square_led_cfg,
+                                             widget_anchor_x + FOCUS_OFFSET,
                                              widget_anchor_y);
+    struct_ConfigGraphicFramebuffer focus_led_cfg{
+        .frame_width = FOCUS_WIDTH,
+        .frame_height = graph_cfg.frame_height,
+        .fg_color = PixelColor::WHITE,
+        .bg_color = PixelColor::BLACK};
+
     this->focus_led = new WidgetFocusIndicator(actual_displayed_model,
                                                display_screen,
-                                               5,
-                                               height,
+                                               focus_led_cfg,
                                                widget_anchor_x,
                                                widget_anchor_y,
                                                false);
@@ -151,8 +156,7 @@ private:
 public:
     MyFocusLedWidget(MySquareLedModel *actual_displayed_model,
                      GraphicDisplayDevice *display_screen,
-                     size_t width,
-                     size_t height,
+                     struct_ConfigGraphicFramebuffer graph_cfg,
                      uint8_t widget_anchor_x,
                      uint8_t widget_anchor_y);
     ~MyFocusLedWidget();
@@ -160,9 +164,9 @@ public:
 };
 MyFocusLedWidget::MyFocusLedWidget(MySquareLedModel *actual_displayed_model,
                                    GraphicDisplayDevice *display_screen,
-                                   size_t width, size_t height,
+                                   struct_ConfigGraphicFramebuffer graph_cfg,
                                    uint8_t widget_anchor_x, uint8_t widget_anchor_y)
-    : WidgetSquareLed(display_screen, width, height, widget_anchor_x, widget_anchor_y, false)
+    : WidgetSquareLed(actual_displayed_model,display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, false)
 {
     this->actual_displayed_model = actual_displayed_model;
     this->led_is_blinking = false;

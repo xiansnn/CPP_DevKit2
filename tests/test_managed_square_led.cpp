@@ -89,7 +89,6 @@ void shared_irq_call_back(uint gpio, uint32_t event_mask)
 /// 7- create a MyManager connected to the rotary encoder.
 MyManager manager = MyManager(&ky040);
 
-
 /// @brief global function necessary to convert bound fonction for control_event_processor_t
 /// @param event
 void manager_process_control_event(UIControlEvent event)
@@ -97,14 +96,13 @@ void manager_process_control_event(UIControlEvent event)
     manager.process_control_event(event);
 };
 
-
 /**
  * @brief Example of main program of a managed SquareLED widget.
  */
 int main()
 {
     ky040.update_UI_control_event_processor(manager_process_control_event);
-    pr_D4.hi(); 
+    pr_D4.hi();
 
     stdio_init_all();
 
@@ -121,20 +119,26 @@ int main()
     MySquareLedModel test_model_2 = MySquareLedModel("TM2");
     MySquareLedModel test_model_3 = MySquareLedModel("TM3");
 
-    MySquareLEDWidgetWithFocus square_led_1 = MySquareLEDWidgetWithFocus(&test_model_1, &display, 50, 8, 6, 8);
-    MySquareLEDWidgetWithFocus square_led_2 = MySquareLEDWidgetWithFocus(&test_model_2, &display, 50, 8, 6, 24);
-    MySquareLEDWidgetWithFocus square_led_3 = MySquareLEDWidgetWithFocus(&test_model_3, &display, 50, 8, 6, 40);
+    struct_ConfigGraphicFramebuffer square_led_cfg{
+        .frame_width = 50,
+        .frame_height = 8,
+        .fg_color = PixelColor::WHITE,
+        .bg_color = PixelColor::BLACK};
+
+    MySquareLEDWidgetWithFocus square_led_1 = MySquareLEDWidgetWithFocus(&test_model_1, &display, square_led_cfg, 6, 8);
+    MySquareLEDWidgetWithFocus square_led_2 = MySquareLEDWidgetWithFocus(&test_model_2, &display, square_led_cfg, 6, 24);
+    MySquareLEDWidgetWithFocus square_led_3 = MySquareLEDWidgetWithFocus(&test_model_3, &display, square_led_cfg, 6, 40);
 
     ky040.update_current_controlled_object(&test_model_1);
 
     manager.add_managed_model(&test_model_1);
     manager.add_managed_model(&test_model_2);
     manager.add_managed_model(&test_model_3);
-    pr_D4.lo(); 
+    pr_D4.lo();
     while (true)
 
     {
-        pr_D5.hi(); 
+        pr_D5.hi();
         /// - get central_switch event and give it to the manager .
         manager.process_control_event(ky040.process_central_switch_event());
 
@@ -143,7 +147,7 @@ int main()
         square_led_2.draw_refresh();
         square_led_3.draw_refresh();
 
-        pr_D5.lo(); 
+        pr_D5.lo();
         /// - sleep for 20ms
         sleep_ms(20);
     }
