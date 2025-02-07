@@ -1,12 +1,12 @@
 /**
  * @file test_square_led.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-01-11
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 #include "ssd1306.h"
 #include "probe.h"
@@ -45,6 +45,12 @@ struct_ConfigSSD1306 cfg_ssd1306{
     .frequency_divider = 1,
     .frequency_factor = 0};
 
+struct_ConfigGraphicFramebuffer square_led_cfg = {
+    .frame_width = 16,
+    .frame_height = 16,
+    .fg_color = PixelColor::WHITE,
+    .bg_color = PixelColor::BLACK};
+
 /**
  * @brief Example of main program of a SquareLED widget.
  *
@@ -60,7 +66,7 @@ int main()
     /// 2- create test_common_model  as displayed object for blinking_led square_led
     MySquareLedModel my_model = MySquareLedModel();
     /// 3- create square_led as test_square_led_widget
-    MyWidgetSquareLed square_led = MyWidgetSquareLed(&my_model, &display, 16, 16, 60, 32);
+    MyWidgetSquareLed square_led = MyWidgetSquareLed(&my_model, &display, square_led_cfg, 60, 32);
     /// 4- create a switchbutton
     MySwitchButton central_switch = MySwitchButton(CENTRAL_SWITCH_GPIO, cfg_central_switch);
     central_switch.update_current_controlled_object(&my_model);

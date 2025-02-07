@@ -1,18 +1,18 @@
 #include "widget_square_led.h"
 
-WidgetSquareLed::WidgetSquareLed(GraphicDisplayDevice *display_screen,
-                                 size_t frame_width, size_t frame_height,
-                                 uint8_t widget_anchor_x, uint8_t widget_anchor_y,
-                                 bool widget_with_border,
-                                 PixelColor fg_color,
-                                 PixelColor bg_color)
-    : Widget(display_screen, frame_width, frame_height, widget_anchor_x, widget_anchor_y, widget_with_border, fg_color, bg_color)
+WidgetSquareLed::WidgetSquareLed(UIModelObject *actual_displayed_model,
+                                 GraphicDisplayDevice *display_screen,
+                                 struct_ConfigGraphicFramebuffer graph_cfg,
+                                 uint8_t widget_anchor_x,
+                                 uint8_t widget_anchor_y,
+                                 bool widget_with_border)
+    : Widget(display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
 {
+    this->set_actual_displayed_object(actual_displayed_model);
 }
 
 WidgetSquareLed::~WidgetSquareLed()
 {
-    // delete display_screen;
 }
 
 void WidgetSquareLed::light_on()
