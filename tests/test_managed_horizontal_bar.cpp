@@ -89,9 +89,28 @@ HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
 
 SSD1306 display = SSD1306(&master, cfg_ssd1306);
 
-MyHorizontalBarWidgetWithFocus horizontal_bar_1 = MyHorizontalBarWidgetWithFocus(&my_horizontal_bar_model_1, &display, 10, 0, 100, 8, 10, 8);
-MyHorizontalBarWidgetWithFocus horizontal_bar_2 = MyHorizontalBarWidgetWithFocus(&my_horizontal_bar_model_2, &display, +10, -10, 100, 8, 10, 24);
-MyHorizontalBarWidgetWithFocus horizontal_bar_3 = MyHorizontalBarWidgetWithFocus(&my_horizontal_bar_model_3, &display, 3, -20, 100, 8, 10, 40);
+struct_ConfigGraphicFramebuffer h_bar_with_focus_cfg{
+    .frame_width = 100,
+    .frame_height = 8,
+    .fg_color = PixelColor::WHITE,
+    .bg_color = PixelColor::BLACK};
+
+
+MyHorizontalBarWidgetWithFocus horizontal_bar_1 = MyHorizontalBarWidgetWithFocus(&my_horizontal_bar_model_1,
+                                                                                 &display,
+                                                                                 10, 0,
+                                                                                 h_bar_with_focus_cfg,
+                                                                                 10, 8);
+MyHorizontalBarWidgetWithFocus horizontal_bar_2 = MyHorizontalBarWidgetWithFocus(&my_horizontal_bar_model_2,
+                                                                                 &display,
+                                                                                 +10, -10,
+                                                                                 h_bar_with_focus_cfg,
+                                                                                 10, 24);
+MyHorizontalBarWidgetWithFocus horizontal_bar_3 = MyHorizontalBarWidgetWithFocus(&my_horizontal_bar_model_3,
+                                                                                 &display,
+                                                                                 3, -20,
+                                                                                 h_bar_with_focus_cfg,
+                                                                                 10, 40);
 
 int main()
 {
@@ -99,18 +118,18 @@ int main()
 
     ky040.update_UI_control_event_processor(manager_process_control_event);
     ky040.update_current_controlled_object(&my_horizontal_bar_model_1);
-    
+
     manager.add_managed_model(&my_horizontal_bar_model_1);
     manager.add_managed_model(&my_horizontal_bar_model_2);
     manager.add_managed_model(&my_horizontal_bar_model_3);
 
     display.clear_full_screen();
-    // display.show();
+
 
     while (true)
     /// 9- start infinite loop
     {
-        // pr_D5.hi(); // start logic probe 5
+
         /// - get central_switch event and give it to the manager .
         manager.process_control_event(ky040.process_central_switch_event());
 
@@ -124,7 +143,7 @@ int main()
         horizontal_bar_3.draw_refresh();
         pr_D4.lo();
 
-        // pr_D5.lo(); // end logic probe 5
+
         /// - sleep for 20ms
         sleep_ms(20);
     }

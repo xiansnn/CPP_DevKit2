@@ -14,7 +14,7 @@
 #include "ui_control_event.h"
 #include "ui_core.h"
 
-#define PRINT_DEBUG
+// #define PRINT_DEBUG
 
 class MyHorizontalBarModel : public UIControlledIncrementalValue
 {
@@ -26,7 +26,9 @@ public:
     void process_control_event(UIControlEvent _event);
 };
 
-MyHorizontalBarModel::MyHorizontalBarModel(std::string _name, int _min_value, int _max_value, bool _is_wrappable, int _increment)
+MyHorizontalBarModel::MyHorizontalBarModel(std::string _name,
+                                           int _min_value, int _max_value,
+                                           bool _is_wrappable, int _increment)
     : UIControlledIncrementalValue(_min_value, _max_value, _is_wrappable, _increment)
 {
     this->name = _name;

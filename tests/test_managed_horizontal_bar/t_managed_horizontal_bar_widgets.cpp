@@ -31,7 +31,7 @@ public:
     MyHorizontalBarWidgetWithFocus(MyHorizontalBarModel *bar_value_model,
                                    GraphicDisplayDevice *display_screen,
                                    int max_value, int min_value,
-                                   size_t frame_width, size_t frame_height,
+                                   struct_ConfigGraphicFramebuffer graph_cfg,
                                    uint8_t widget_anchor_x, uint8_t widget_anchor_y);
     ~MyHorizontalBarWidgetWithFocus();
     void draw_refresh();
@@ -40,19 +40,37 @@ public:
 MyHorizontalBarWidgetWithFocus::MyHorizontalBarWidgetWithFocus(MyHorizontalBarModel *bar_value_model,
                                                                GraphicDisplayDevice *display_screen,
                                                                int max_value, int min_value,
-                                                               size_t frame_width, size_t frame_height,
-                                                               uint8_t widget_anchor_x, uint8_t widget_anchor_y )
-    : Widget(display_screen, frame_width, frame_height, widget_anchor_x, widget_anchor_y, false)
+                                                               struct_ConfigGraphicFramebuffer graph_cfg,
+                                                               uint8_t widget_anchor_x, uint8_t widget_anchor_y)
+    : Widget(display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, false)
 
 {
     this->bar_value_model = bar_value_model;
+
+#define FOCUS_OFFSET 8
+#define FOCUS_WIDTH 5
+
+    struct_ConfigGraphicFramebuffer h_bar_cfg{
+        .frame_width = graph_cfg.frame_width - FOCUS_OFFSET,
+        .frame_height = graph_cfg.frame_height,
+        .fg_color = PixelColor::WHITE,
+        .bg_color = PixelColor::BLACK};
+
     this->h_bar_widget = new WidgetHorizontalBar(bar_value_model,
                                                  display_screen,
                                                  max_value, min_value,
-                                                 frame_width - 8, frame_height,
-                                                 widget_anchor_x + 8, widget_anchor_y);
-    this->focus_widget = new WidgetFocusIndicator(bar_value_model, display_screen,
-                                                  5, frame_height,
+                                                 h_bar_cfg,
+                                                 widget_anchor_x + FOCUS_OFFSET, widget_anchor_y);
+
+    struct_ConfigGraphicFramebuffer focus_cfg{
+        .frame_width = FOCUS_WIDTH,
+        .frame_height = graph_cfg.frame_height,
+        .fg_color = PixelColor::WHITE,
+        .bg_color = PixelColor::BLACK};
+
+    this->focus_widget = new WidgetFocusIndicator(bar_value_model,
+                                                  display_screen,
+                                                  focus_cfg,
                                                   widget_anchor_x, widget_anchor_y, false);
     this->focus_widget->set_blink_us(200000);
 
