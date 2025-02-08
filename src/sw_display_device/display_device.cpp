@@ -11,12 +11,12 @@
 
 #include "display_device.h"
 
-GraphicDisplayDevice::GraphicDisplayDevice(size_t width,
-                                           size_t height)
-    : DisplayDevice()
+GraphicDisplayDevice::GraphicDisplayDevice(size_t screen_width,
+                                           size_t screen_height)
+    : DisplayDevice(screen_width,screen_height)
 {
-    this->pixel_memory.frame_height = height;
-    this->pixel_memory.frame_width = width;
+    this->pixel_memory.frame_height = screen_height;
+    this->pixel_memory.frame_width = screen_width;
 }
 
 GraphicDisplayDevice::~GraphicDisplayDevice()
@@ -32,8 +32,10 @@ TextDisplayDevice::~TextDisplayDevice()
 {
 }
 
-DisplayDevice::DisplayDevice()
+DisplayDevice::DisplayDevice(size_t screen_width, size_t screen_height)
 {
+    this->screen_height = screen_height;
+    this->screen_width = screen_width;
 }
 
 DisplayDevice::~DisplayDevice()
@@ -41,7 +43,7 @@ DisplayDevice::~DisplayDevice()
 }
 
 PrinterDevice::PrinterDevice(size_t number_of_char_width, size_t number_of_char_height)
-    : DisplayDevice()
+    : DisplayDevice(number_of_char_width,number_of_char_height)
 {
     this->text_memory.number_of_line = number_of_char_height;
     this->text_memory.number_of_column = number_of_char_width;

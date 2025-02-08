@@ -199,7 +199,7 @@ public:
 
     void create_pixel_buffer(struct_PixelMemory *pixel_memory);
 
-    void pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, PixelColor c = PixelColor::WHITE);
+    void pixel(struct_PixelMemory *pixel_memory_structure, const int x, const int y, const PixelColor c = PixelColor::WHITE);
 
     /**
      * @brief
@@ -208,9 +208,12 @@ public:
      * @param anchor_x where we want to position (x) the frambuffer
      * @param anchor_y where we want to position (y) the frambuffer
      */
-    void show(struct_PixelMemory *pixel_memory, uint8_t anchor_x, uint8_t anchor_y);
+    void show(struct_PixelMemory *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y);
 
-    void drawChar(struct_PixelMemory *pixel_memory_structure, struct_ConfigTextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y);
+    void drawChar(struct_PixelMemory *pixel_memory_structure, 
+        const struct_ConfigTextFramebuffer *text_config, 
+        const char c, 
+        const uint8_t anchor_x, const uint8_t anchor_y);
 
     /**
      * @brief  when we need to show a render area with a given framebuffer

@@ -19,53 +19,56 @@
 #include <sstream>
 #include <string>
 
-class MyLinePrinter : public TextDisplayDevice
+class MyDummyDisplayDevice : public GraphicDisplayDevice
 {
 private:
     /* data */
 public:
-    MyLinePrinter(size_t line_width);
-    ~MyLinePrinter();
-    void print(char *text_string);
+    MyDummyDisplayDevice(size_t line_width);
+    ~MyDummyDisplayDevice();
+    void show(struct_PixelMemory *pixel_memory_structure, const uint8_t anchor_x, const uint8_t anchor_y);
     void clear_pixel_buffer(struct_PixelMemory *pixel_memory);
     void create_pixel_buffer(struct_PixelMemory *pixel_memory);
-    void show(struct_PixelMemory *pixel_memory_structure, uint8_t anchor_x, uint8_t anchor_y);
-    void pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, PixelColor c = PixelColor::WHITE);
-    void drawChar(struct_PixelMemory *pixel_memory_structure, struct_ConfigTextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y);
-
+    void pixel(struct_PixelMemory *pixel_memory_structure,
+               const int x, const int y,
+               const PixelColor color = PixelColor::WHITE);
+    void drawChar(struct_PixelMemory *pixel_memory,
+                  const struct_ConfigTextFramebuffer *text_config,
+                  const char character,
+                  const uint8_t anchor_x, const uint8_t anchor_y);
+    void print(char *text_string);
 };
 
-MyLinePrinter::MyLinePrinter(size_t line_width)
-    : TextDisplayDevice(line_width, 1)
+MyDummyDisplayDevice::MyDummyDisplayDevice(size_t line_width)
+    : GraphicDisplayDevice(line_width, 1)
 {
 }
 
-MyLinePrinter::~MyLinePrinter()
+MyDummyDisplayDevice::~MyDummyDisplayDevice()
 {
 }
 
-void MyLinePrinter::print(char *text_string)
-{
-    printf(text_string);
-}
-
-void MyLinePrinter::clear_pixel_buffer(struct_PixelMemory *pixel_memory)
+void MyDummyDisplayDevice::show(struct_PixelMemory *pixel_memory_structure, uint8_t anchor_x, uint8_t anchor_y)
 {
 }
 
-void MyLinePrinter::create_pixel_buffer(struct_PixelMemory *pixel_memory)
+void MyDummyDisplayDevice::clear_pixel_buffer(struct_PixelMemory *pixel_memory)
 {
 }
 
-void MyLinePrinter::show(struct_PixelMemory *pixel_memory_structure, uint8_t anchor_x, uint8_t anchor_y)
+void MyDummyDisplayDevice::create_pixel_buffer(struct_PixelMemory *pixel_memory)
 {
 }
 
-void MyLinePrinter::pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, PixelColor c)
+void MyDummyDisplayDevice::pixel(struct_PixelMemory *pixel_memory_structure, const int x, const int y, const PixelColor color)
 {
 }
 
-void MyLinePrinter::drawChar(struct_PixelMemory *pixel_memory_structure, struct_ConfigTextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y)
+void MyDummyDisplayDevice::drawChar(struct_PixelMemory *pixel_memory, const struct_ConfigTextFramebuffer *text_config, const char character, const uint8_t anchor_x, const uint8_t anchor_y)
+{
+}
+
+void MyDummyDisplayDevice::print(char *text_string)
 {
 }
 
@@ -84,20 +87,13 @@ private:
 public:
     /// @brief Construct a new Test Cursor Widget With Incremental Value object
     /// @param _actual_displayed_object
-    MyIncrementalValueWidgetOnSerialMonitor(MyLinePrinter *line_printer, MyIncrementalValueModel *_actual_displayed_object);
+    MyIncrementalValueWidgetOnSerialMonitor(MyDummyDisplayDevice *line_printer, MyIncrementalValueModel *_actual_displayed_object);
 
     ~MyIncrementalValueWidgetOnSerialMonitor();
 
     /// @brief Implement a draw_refresh function adapted to the current test program with the private function draw()
     void draw_refresh();
 };
-
-/**
- * @brief
- *
- *
- *
- */
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of MyManager on the serial monitor
@@ -108,8 +104,9 @@ private:
 
 public:
     /// @brief Construct a new MyManagerWidget object
-    /// @param _manager
-    MyManagerWidget(MyLinePrinter* _line_printer,  MyManager *_manager);
+    /// @param line_printer
+    /// @param manager
+    MyManagerWidget(MyDummyDisplayDevice *line_printer, MyManager *manager);
 
     ~MyManagerWidget();
 
@@ -122,7 +119,7 @@ class MySetOfWidget : public Widget
 {
 private:
 public:
-    MySetOfWidget(MyLinePrinter* _line_printer);
+    MySetOfWidget(MyDummyDisplayDevice *_line_printer);
     ~MySetOfWidget();
     void draw_refresh();
 };
@@ -132,9 +129,15 @@ std::map<ControlledObjectStatus, std::string> status_to_string{
     {ControlledObjectStatus::HAS_FOCUS, "HAS_FOCUS"},
     {ControlledObjectStatus::IS_ACTIVE, "IS_ACTIVE"}};
 
-MyIncrementalValueWidgetOnSerialMonitor::MyIncrementalValueWidgetOnSerialMonitor(MyLinePrinter *line_printer,
+struct_ConfigGraphicFramebuffer default_cfg{
+    .frame_width = 100,
+    .frame_height = 8,
+    .fg_color = PixelColor::WHITE,
+    .bg_color = PixelColor::BLACK};
+
+MyIncrementalValueWidgetOnSerialMonitor::MyIncrementalValueWidgetOnSerialMonitor(MyDummyDisplayDevice *line_printer,
                                                                                  MyIncrementalValueModel *_actual_displayed_object)
-    : Widget(line_printer, 128, 8, 0, 0, false)
+    : Widget((GraphicDisplayDevice *)line_printer, default_cfg, 0, 0, false)
 {
     this->actual_displayed_object = _actual_displayed_object;
 
@@ -178,8 +181,8 @@ int MyIncrementalValueWidgetOnSerialMonitor::value_to_char_position()
     return (char_position_slope * actual_displayed_object->get_value() + char_position_offset);
 }
 
-MyManagerWidget::MyManagerWidget(MyLinePrinter* _line_printer,MyManager *_manager)
-    : Widget(_line_printer, 128, 8, 0, 0, false)
+MyManagerWidget::MyManagerWidget(MyDummyDisplayDevice *line_printer, MyManager *_manager)
+    : Widget((GraphicDisplayDevice *)line_printer, default_cfg, 0, 0, false)
 {
     this->actual_displayed_object = _manager;
 }
@@ -209,8 +212,8 @@ void MySetOfWidget::draw_refresh()
     }
 }
 
-MySetOfWidget::MySetOfWidget(MyLinePrinter* _line_printer)
-    : Widget(_line_printer, 128, 8, 0, 0, false)
+MySetOfWidget::MySetOfWidget(MyDummyDisplayDevice *line_printer)
+    : Widget((GraphicDisplayDevice *)line_printer, default_cfg, 0, 0, false)
 {
 }
 
