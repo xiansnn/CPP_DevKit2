@@ -215,11 +215,11 @@ void GraphicFramebuffer::circle(int radius, int x_center, int y_center, bool fil
     }
 }
 
-void TextualFrameBuffer::drawChar(char c, uint8_t char_column, uint8_t char_line)
+void TextualFrameBuffer::drawChar(char character, uint8_t char_column, uint8_t char_line)
 {
     uint8_t anchor_x = char_column * frame_text_config.font[FONT_WIDTH_INDEX];
     uint8_t anchor_y = char_line * frame_text_config.font[FONT_HEIGHT_INDEX];
-    graphic_display_screen->drawChar(&this->pixel_memory, &this->frame_text_config, c, anchor_x, anchor_y);
+    graphic_display_screen->drawChar(&this->pixel_memory, &this->frame_text_config, character, anchor_x, anchor_y);
 }
 
 void TextualFrameBuffer::clear_line()
@@ -303,7 +303,7 @@ void TextualFrameBuffer::update_pixel_area(const unsigned char *font)
     graphic_display_screen->create_pixel_buffer(&this->pixel_memory);
 }
 
-void TextualFrameBuffer::print_text()
+void TextualFrameBuffer::print_text_buffer()
 {
     print_text(this->text_buffer);
 }
@@ -318,9 +318,9 @@ void TextualFrameBuffer::print_text(const char *c_str)
     }
 }
 
-void TextualFrameBuffer::print_char(char c)
+void TextualFrameBuffer::print_char(char character)
 {
-    switch (c)
+    switch (character)
     {
     case VERTICAL_TAB:
         break;
@@ -343,7 +343,7 @@ void TextualFrameBuffer::print_char(char c)
     default:
         if (current_char_column == 0)
             clear_line(); // start a new line
-        if (c == HORIZONTAL_TAB)
+        if (character == HORIZONTAL_TAB)
         {
             for (uint8_t i = 0; i < frame_text_config.tab_size; i++)
             {
@@ -355,13 +355,13 @@ void TextualFrameBuffer::print_char(char c)
         {
             if (this->frame_text_config.auto_next_char)
             {
-                drawChar(c, current_char_column, current_char_line);
+                drawChar(character, current_char_column, current_char_line);
                 next_char();
             }
             else
             {
                 drawChar(' ', current_char_column, current_char_line);
-                drawChar(c, current_char_column, current_char_line);
+                drawChar(character, current_char_column, current_char_line);
             }
         }
         break;

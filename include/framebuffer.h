@@ -285,7 +285,7 @@ public:
     /**
      * @brief convert the internal text buffer characters to the pixel buffer.
      */
-    void print_text();
+    void print_text_buffer();
     /**
      * @brief copy the string c_str to the the internal text buffer, then convert it to the pixel buffer.
      *
