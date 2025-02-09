@@ -41,7 +41,7 @@ protected:
     uint8_t widget_anchor_y;
 
     /// @brief the display device where the widget is displayed
-    GraphicDisplayDevice *display_screen{nullptr};
+    GraphicDisplayDevice *graphic_display_screen{nullptr};
 
     /// @brief if true, the widget is surrounded by a one-pixel border
     bool widget_with_border{true};
@@ -95,7 +95,7 @@ public:
      * @brief Construct a new Widget Text object
      * 
      * @param text_model a pointer to the model text
-     * @param display_screen a pointer to the display device
+     * @param graphic_display_screen a pointer to the display device
      * @param framebuffer_txt_cnf the textual configuration data structure
      * @param number_of_column the number of column of the widget
      * @param number_of_line the number of line of the widget
@@ -104,7 +104,7 @@ public:
      * @param widget_with_border the flag that indicates if the widget has a border
      */
     WidgetText(UIModelObject *text_model,
-               GraphicDisplayDevice *display_screen,
+               GraphicDisplayDevice *graphic_display_screen,
                struct_ConfigTextFramebuffer framebuffer_txt_cnf,
                uint8_t number_of_column,
                uint8_t number_of_line,

@@ -46,7 +46,7 @@ public:
      * @brief Construct a new Widget Horizontal Bar object
      *
      * @param bar_value_model a pointer to the displayed model
-     * @param display_screen a pointer to the display device
+     * @param graphic_display_screen a pointer to the display device
      * @param max_value max value of the bar
      * @param min_value min value of the bar
      * @param frame_width the width of the widget
@@ -58,7 +58,7 @@ public:
      * @param bg_color the background color
      */
     WidgetHorizontalBar(UIModelObject *bar_value_model,
-                        GraphicDisplayDevice *display_screen,
+                        GraphicDisplayDevice *graphic_display_screen,
                         int max_value, int min_value,
                         struct_ConfigGraphicFramebuffer graph_cfg,
                         uint8_t widget_anchor_x, uint8_t widget_anchor_y,

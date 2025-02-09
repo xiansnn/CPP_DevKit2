@@ -13,34 +13,34 @@
 #include <string.h>
 #include <cstring>
 
-GraphicFramebuffer::GraphicFramebuffer(DisplayDevice *device,
+GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *device,
                                        struct_ConfigGraphicFramebuffer graph_cfg)
 {
-    this->display_screen = device;
+    this->graphic_display_screen = device;
     this->fg_color = graph_cfg.fg_color;
     this->bg_color = graph_cfg.bg_color;
     this->pixel_memory.frame_height = graph_cfg.frame_height;
     this->pixel_memory.frame_width = graph_cfg.frame_width;
-    ((GraphicDisplayDevice *)device)->create_pixel_buffer(&this->pixel_memory);
+    device->create_pixel_buffer(&this->pixel_memory);
 }
 
-GraphicFramebuffer::GraphicFramebuffer(DisplayDevice *display_device,
+GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *display_device,
                                        size_t frame_width,
                                        size_t frame_height,
                                        struct_ConfigTextFramebuffer text_cfg)
 {
-    this->display_screen = display_device;
+    this->graphic_display_screen = display_device;
     this->fg_color = text_cfg.fg_color;
     this->bg_color = text_cfg.bg_color;
     this->pixel_memory.frame_height = frame_height;
     this->pixel_memory.frame_width = frame_width;
-    ((GraphicDisplayDevice *)display_device)->create_pixel_buffer(&this->pixel_memory);
+    display_device->create_pixel_buffer(&this->pixel_memory);
 }
 
 GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *device,
                                        struct_ConfigTextFramebuffer text_cnf)
 {
-    this->display_screen = device;
+    this->graphic_display_screen = device;
     this->fg_color = text_cnf.fg_color;
     this->bg_color = text_cnf.bg_color;
 
@@ -64,13 +64,13 @@ void GraphicFramebuffer::fill(struct_PixelMemory *pixel_memory, PixelColor c)
 void GraphicFramebuffer::hline(uint8_t x, uint8_t y, size_t w, PixelColor c)
 {
     for (size_t i = 0; i < w; i++)
-        ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, x + i, y, c);
+        ((GraphicDisplayDevice *)graphic_display_screen)->pixel(&this->pixel_memory, x + i, y, c);
 }
 
 void GraphicFramebuffer::vline(uint8_t x, uint8_t y, size_t h, PixelColor c)
 {
     for (size_t i = 0; i < h; i++)
-        ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, x, y + i, c);
+        graphic_display_screen->pixel(&this->pixel_memory, x, y + i, c);
 }
 
 void GraphicFramebuffer::line(int x0, int y0, int x1, int y1, PixelColor c)
@@ -84,7 +84,7 @@ void GraphicFramebuffer::line(int x0, int y0, int x1, int y1, PixelColor c)
 
     while (true)
     {
-        ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, x0, y0, c);
+        graphic_display_screen->pixel(&this->pixel_memory, x0, y0, c);
         if (x0 == x1 && y0 == y1)
             break;
         e2 = 2 * err;
@@ -113,7 +113,7 @@ void GraphicFramebuffer::rect(uint8_t start_x, uint8_t start_y, size_t w, size_t
     else
         for (size_t i_x = 0; i_x < w; i_x++)
             for (size_t i_y = 0; i_y < h; i_y++)
-                ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, start_x + i_x, start_y + i_y, c);
+                graphic_display_screen->pixel(&this->pixel_memory, start_x + i_x, start_y + i_y, c);
 }
 
 void GraphicFramebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, PixelColor c)
@@ -130,10 +130,10 @@ void GraphicFramebuffer::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_r
     {
         if (!fill)
         {
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, x_center + x, y_center + y, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, x_center - x, y_center + y, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, x_center + x, y_center - y, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, x_center - x, y_center - y, c);
+            graphic_display_screen->pixel(&this->pixel_memory, x_center + x, y_center + y, c);
+            graphic_display_screen->pixel(&this->pixel_memory, x_center - x, y_center + y, c);
+            graphic_display_screen->pixel(&this->pixel_memory, x_center + x, y_center - y, c);
+            graphic_display_screen->pixel(&this->pixel_memory, x_center - x, y_center - y, c);
         }
         else
         {
@@ -189,14 +189,14 @@ void GraphicFramebuffer::circle(int radius, int x_center, int y_center, bool fil
     {
         if (!fill)
         {
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, x_center + x, y_center + y, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, x_center + y, y_center + x, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, x_center - x, y_center + y, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, x_center - y, y_center + x, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, x_center + x, y_center - y, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, x_center + y, y_center - x, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, x_center - x, y_center - y, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_memory, x_center - y, y_center - x, c);
+            graphic_display_screen->pixel(&this->pixel_memory, x_center + x, y_center + y, c);
+            graphic_display_screen->pixel(&this->pixel_memory, x_center + y, y_center + x, c);
+            graphic_display_screen->pixel(&this->pixel_memory, x_center - x, y_center + y, c);
+            graphic_display_screen->pixel(&this->pixel_memory, x_center - y, y_center + x, c);
+            graphic_display_screen->pixel(&this->pixel_memory, x_center + x, y_center - y, c);
+            graphic_display_screen->pixel(&this->pixel_memory, x_center + y, y_center - x, c);
+            graphic_display_screen->pixel(&this->pixel_memory, x_center - x, y_center - y, c);
+            graphic_display_screen->pixel(&this->pixel_memory, x_center - y, y_center - x, c);
         }
         else
         {
@@ -219,7 +219,7 @@ void TextualFrameBuffer::drawChar(char c, uint8_t char_column, uint8_t char_line
 {
     uint8_t anchor_x = char_column * frame_text_config.font[FONT_WIDTH_INDEX];
     uint8_t anchor_y = char_line * frame_text_config.font[FONT_HEIGHT_INDEX];
-    ((GraphicDisplayDevice *)display_screen)->drawChar(&this->pixel_memory, &this->frame_text_config, c, anchor_x, anchor_y);
+    graphic_display_screen->drawChar(&this->pixel_memory, &this->frame_text_config, c, anchor_x, anchor_y);
 }
 
 void TextualFrameBuffer::clear_line()
@@ -297,8 +297,8 @@ void TextualFrameBuffer::update_pixel_area(const unsigned char *font)
     this->pixel_memory.frame_height = this->frame_text_config.number_of_line * frame_text_config.font[FONT_HEIGHT_INDEX];
     this->pixel_memory.frame_width = this->frame_text_config.number_of_column * frame_text_config.font[FONT_WIDTH_INDEX];
 
-    delete[] ((GraphicDisplayDevice *)display_screen)->pixel_memory.pixel_buffer;
-    ((GraphicDisplayDevice *)display_screen)->create_pixel_buffer(&this->pixel_memory);
+    delete[] this->pixel_memory.pixel_buffer;
+    graphic_display_screen->create_pixel_buffer(&this->pixel_memory);
 }
 
 void TextualFrameBuffer::print_text()
@@ -331,7 +331,7 @@ void TextualFrameBuffer::print_char(char c)
         drawChar(' ', current_char_column, current_char_line);
         break;
     case FORM_FEED:
-        ((GraphicDisplayDevice *)display_screen)->clear_pixel_buffer(&this->pixel_memory);
+        graphic_display_screen->clear_pixel_buffer(&this->pixel_memory);
         current_char_column = 0;
         current_char_line = 0;
         break;

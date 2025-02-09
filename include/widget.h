@@ -104,14 +104,14 @@ public:
     /**
      * @brief Construct a new Widget object
      *
-     * @param display_screen    The display device on which the widget is drawn.
+     * @param graphic_display_screen    The display device on which the widget is drawn.
      * @param graph_cfg the configuration data structure of the graphic framebuffer
      * @param widget_anchor_x  the horizontal position where the widget start on the device screen
      * @param widget_anchor_y  the vertical position where the widget start on the device screen
      * @param widget_with_border  The flag that indicates whether the widget has a border or not
      * \image html widget.png
      */
-    Widget(GraphicDisplayDevice *display_screen,
+    Widget(GraphicDisplayDevice *graphic_display_screen,
            struct_ConfigGraphicFramebuffer graph_cfg,
            uint8_t widget_anchor_x,
            uint8_t widget_anchor_y,

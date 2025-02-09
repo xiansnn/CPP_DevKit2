@@ -91,7 +91,7 @@ public:
      * @brief Construct a new Widget Horizontal Bargraph object
      * 
      * @param bargraph_model a pointer to the mactual displayed model
-     * @param display_screen a pointer to the display device on which the widget is drawn
+     * @param graphic_display_screen a pointer to the display device on which the widget is drawn
      * @param graph_cfg the configuration data structure of the graphic framebuffer
      * @param widget_anchor_x the horizontal position where the widget start on the device screen
      * @param widget_anchor_y the vertical position where the widget start on the device screen
@@ -99,7 +99,7 @@ public:
      * @param bar_spacing the number of pixel between each bar
      */
     WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
-                             GraphicDisplayDevice *display_screen,
+                             GraphicDisplayDevice *graphic_display_screen,
                              struct_ConfigGraphicFramebuffer graph_cfg,
                              uint8_t widget_anchor_x,
                              uint8_t widget_anchor_y,
@@ -149,7 +149,7 @@ public:
      * @brief Construct a new Widget Vertical Bargraph object
      * 
      * @param bargraph_model a pointer to the mactual displayed model
-     * @param display_screen a pointer to the display device on which the widget is drawn
+     * @param graphic_display_screen a pointer to the display device on which the widget is drawn
      * @param graph_cfg the configuration data structure of the graphic framebuffer
      * @param widget_anchor_x the horizontal position where the widget start on the device screen
      * @param widget_anchor_y the vertical position where the widget start on the device screen
@@ -157,7 +157,7 @@ public:
      * @param bar_spacing the number of pixel between each bar
      */
     WidgetVerticalBargraph(ModelBargraph *bargraph_model,
-                             GraphicDisplayDevice *display_screen,
+                             GraphicDisplayDevice *graphic_display_screen,
                              struct_ConfigGraphicFramebuffer graph_cfg,
                              uint8_t widget_anchor_x,
                              uint8_t widget_anchor_y,

@@ -105,11 +105,11 @@ void test_full_screen_text(SSD1306 *current_display)
         .font = font_8x8,
         .wrap = true,
     };
-    TextualFrameBuffer text_frame = TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, current_display, txt_conf);
+    TextualFrameBuffer text_frame = TextualFrameBuffer(current_display,SSD1306_WIDTH, SSD1306_HEIGHT,  txt_conf);
 
     text_frame.print_char(FORM_FEED); // equiv. clear full screen
     current_display->show(&text_frame.pixel_memory, 0, 0);
-    uint16_t nb = text_frame.number_of_line * text_frame.number_of_column;
+    uint16_t nb = text_frame.frame_text_config.number_of_line * text_frame.frame_text_config.number_of_column;
 
     uint16_t n{0};
     for (uint16_t c = 32; c < 256; c++)
@@ -135,7 +135,7 @@ void test_auto_next_char(SSD1306 *current_display)
         .wrap = true,
         .auto_next_char = false};
 
-    TextualFrameBuffer *text_frame = new TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, current_display, txt_conf);
+    TextualFrameBuffer *text_frame = new TextualFrameBuffer(current_display,SSD1306_WIDTH, SSD1306_HEIGHT,  txt_conf);
 
     text_frame->print_char(FORM_FEED);
 
@@ -172,7 +172,7 @@ void test_sprintf_format(SSD1306 *current_display)
         .font = font_8x8,
         .wrap = true};
 
-    TextualFrameBuffer *text_frame = new TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, current_display, text_frame_cfg);
+    TextualFrameBuffer *text_frame = new TextualFrameBuffer(current_display,SSD1306_WIDTH, SSD1306_HEIGHT,  text_frame_cfg);
 
     const char *s = "Hello";
 
@@ -315,7 +315,7 @@ void test_ostringstream_format(SSD1306 *current_display)
         .font = current_font,
         .wrap = false};
 
-    TextualFrameBuffer text_frame = TextualFrameBuffer( SSD1306_WIDTH, SSD1306_HEIGHT, current_display, txt_conf);
+    TextualFrameBuffer text_frame = TextualFrameBuffer( current_display,SSD1306_WIDTH, SSD1306_HEIGHT,  txt_conf);
 
     int n = 42;
     float f = std::numbers::pi;

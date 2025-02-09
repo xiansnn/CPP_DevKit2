@@ -60,18 +60,18 @@ void WidgetHorizontalBargraph::draw_refresh()
     {
         this->draw();
         this->draw_border();
-        this->display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
+        this->graphic_display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
     }
     this->actual_displayed_model->clear_change_flag();
 }
 
 WidgetHorizontalBargraph::WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
-                                                   GraphicDisplayDevice *display_screen,
+                                                   GraphicDisplayDevice *graphic_display_screen,
                                                    struct_ConfigGraphicFramebuffer graph_cfg,
                                                    uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                                    bool widget_with_border,
                                                    uint8_t _bar_spacing)
-    : Widget(display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
+    : Widget(graphic_display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
 {
     set_actual_displayed_object(bargraph_model);
     this->bar_spacing = _bar_spacing;
@@ -155,12 +155,12 @@ void WidgetVerticalBargraph::draw_bar(uint8_t bin_index)
 }
 
 WidgetVerticalBargraph::WidgetVerticalBargraph(ModelBargraph *bargraph_model,
-                                               GraphicDisplayDevice *display_screen,
+                                               GraphicDisplayDevice *graphic_display_screen,
                                                struct_ConfigGraphicFramebuffer graph_cfg,
                                                uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                                bool widget_with_border,
                                                uint8_t _bar_spacing)
-    : Widget(display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
+    : Widget(graphic_display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
 {
     set_actual_displayed_object(bargraph_model);
     this->bar_spacing = _bar_spacing;
@@ -192,7 +192,7 @@ void WidgetVerticalBargraph::draw_refresh()
     {
         this->draw();
         this->draw_border();
-        this->display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
+        this->graphic_display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
     }
     this->actual_displayed_model->clear_change_flag();
 }

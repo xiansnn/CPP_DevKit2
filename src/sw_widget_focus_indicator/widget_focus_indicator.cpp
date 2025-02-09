@@ -62,7 +62,7 @@ void WidgetFocusIndicator::draw_refresh()
         {
             rect(widget_start_x, widget_start_y, widget_width, widget_height, true, PixelColor::BLACK);
         }
-        this->display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
+        this->graphic_display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
         // this->actual_displayed_model->clear_change_flag(); // if the last widget must clear the model change flag
     }
 }

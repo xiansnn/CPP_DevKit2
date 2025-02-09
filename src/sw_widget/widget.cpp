@@ -39,8 +39,6 @@ Widget::Widget(GraphicDisplayDevice *_display_screen,
 
 Widget::~Widget()
 {
-    // delete actual_displayed_model; //  pas de delete sur des objets hors widget
-    // delete display_screen;
 }
 
 void Widget::set_actual_displayed_object(UIModelObject *displayed_object)
@@ -50,7 +48,7 @@ void Widget::set_actual_displayed_object(UIModelObject *displayed_object)
 
 void Widget::set_display_screen(GraphicDisplayDevice *_new_display_device)
 {
-    this->display_screen = _new_display_device;
+    this->graphic_display_screen = _new_display_device;
 }
 
 void Widget::set_blink_us(uint32_t _blink_period_us)
