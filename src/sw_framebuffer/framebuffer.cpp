@@ -274,6 +274,8 @@ void TextualFrameBuffer::update_text_buffer(struct_ConfigTextFramebuffer _frame_
 void TextualFrameBuffer::clear_text_buffer()
 {
     memset(this->text_buffer, '\0', this->text_buffer_size);
+    this->graphic_display_screen->clear_pixel_buffer(&this->pixel_memory);
+    
     current_char_column = 0;
     current_char_line = 0;
 }
