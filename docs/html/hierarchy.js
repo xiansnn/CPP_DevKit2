@@ -3,8 +3,7 @@ var hierarchy =
     [ "DHT11", "class_d_h_t11.html", null ],
     [ "DisplayDevice", "class_display_device.html", [
       [ "GraphicDisplayDevice", "class_graphic_display_device.html", [
-        [ "SSD1306", "class_s_s_d1306.html", null ],
-        [ "TextDisplayDevice", "class_text_display_device.html", null ]
+        [ "SSD1306", "class_s_s_d1306.html", null ]
       ] ],
       [ "PrinterDevice", "class_printer_device.html", null ]
     ] ],

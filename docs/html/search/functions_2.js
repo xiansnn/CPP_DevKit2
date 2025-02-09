@@ -4,7 +4,7 @@ var searchData=
   ['check_5ftime_5fout_1',['check_time_out',['../class_u_i_object_manager.html#a2a8c98398608968143a893213d084f64',1,'UIObjectManager']]],
   ['circle_2',['circle',['../class_graphic_framebuffer.html#a61455060176f83944a40478c4e41a21e',1,'GraphicFramebuffer']]],
   ['clear_5fchange_5fflag_3',['clear_change_flag',['../class_u_i_model_object.html#aff2fe32c66d4c1637627a253274fd383',1,'UIModelObject']]],
-  ['clear_5ffull_5fscreen_4',['clear_full_screen',['../class_s_s_d1306.html#ad87336fcd8a4b110caf5a96d20e597e8',1,'SSD1306']]],
+  ['clear_5fdevice_5fscreen_5fbuffer_4',['clear_device_screen_buffer',['../class_s_s_d1306.html#a646463128f966a04b1746e3389819711',1,'SSD1306']]],
   ['clear_5firq_5',['clear_irq',['../class_p_w_m.html#a23a7f94507115fdab48b65af6931329e',1,'PWM']]],
   ['clear_5fline_6',['clear_line',['../class_textual_frame_buffer.html#a72835ef9a60d3435ba4abd894a0589c7',1,'TextualFrameBuffer']]],
   ['clear_5fpixel_5fbuffer_7',['clear_pixel_buffer',['../class_graphic_display_device.html#a925fa588f6f1174b81396f1dd29cf14d',1,'GraphicDisplayDevice::clear_pixel_buffer()'],['../class_s_s_d1306.html#ae8806883d7ce6ba32bb5ed8c7a5a1282',1,'SSD1306::clear_pixel_buffer()']]],

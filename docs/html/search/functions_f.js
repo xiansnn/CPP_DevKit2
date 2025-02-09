@@ -20,7 +20,7 @@ var searchData=
   ['set_5fpos_17',['set_pos',['../class_s_g90.html#a0e8036a2f259a972fcb7d0227cb222d6',1,'SG90']]],
   ['set_5fwidth_5fnb_5fof_5fstep_18',['set_width_nb_of_step',['../class_p_w_m.html#a706b0764d77f3b1bca0ff1bfdc99b336',1,'PWM']]],
   ['sg90_19',['SG90',['../class_s_g90.html#a32f812f329b6dc3938faa5f142ea7c0a',1,'SG90']]],
-  ['show_20',['show',['../class_graphic_display_device.html#a0fd7fe7d76688694abeca08375acde93',1,'GraphicDisplayDevice::show()'],['../class_s_s_d1306.html#adbcf73ef1d7c172c65691f91f9a76ae9',1,'SSD1306::show(struct_PixelMemory *pixel_memory, uint8_t anchor_x, uint8_t anchor_y)']]],
+  ['show_20',['show',['../class_graphic_display_device.html#a4425ed83149a72c29a049e6deacda3d8',1,'GraphicDisplayDevice::show()'],['../class_s_s_d1306.html#a8f5ba515b99381c2145861cbe4477273',1,'SSD1306::show(struct_PixelMemory *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y)']]],
   ['show_5frender_5farea_21',['show_render_area',['../class_s_s_d1306.html#ad26a211970f779290c9a97335fb023fc',1,'SSD1306']]],
   ['single_5fbyte_5fread_22',['single_byte_read',['../class_h_w___i2_c___master.html#af75401aef49c0774326f4e318f91a781',1,'HW_I2C_Master']]],
   ['single_5fbyte_5fwrite_23',['single_byte_write',['../class_h_w___i2_c___master.html#a4bafebb5c2b2e2964b2ad83891b8ff7f',1,'HW_I2C_Master']]],

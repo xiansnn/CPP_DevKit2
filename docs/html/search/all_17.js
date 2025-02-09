@@ -1,7 +1,7 @@
 var searchData=
 [
   ['white_0',['WHITE',['../display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d',1,'display_device.h']]],
-  ['widget_1',['Widget',['../class_widget.html',1,'Widget'],['../class_widget.html#a21f136d006375705da70a560a52429bd',1,'Widget::Widget()']]],
+  ['widget_1',['Widget',['../class_widget.html',1,'Widget'],['../class_widget.html#a5b1f0a392f486e938d23e5268e84d3ee',1,'Widget::Widget()']]],
   ['widget_2eh_2',['widget.h',['../widget_8h.html',1,'']]],
   ['widget_5fanchor_5fx_3',['widget_anchor_x',['../class_widget.html#aec593e4c3c6af61ca7f74a97bd2387ea',1,'Widget::widget_anchor_x'],['../class_widget_text.html#ac53e031f126f3dae59977b1ecf7a6dfc',1,'WidgetText::widget_anchor_x']]],
   ['widget_5fanchor_5fy_4',['widget_anchor_y',['../class_widget.html#ad54861e21195fc55edf3d0e55bfe3e2b',1,'Widget::widget_anchor_y'],['../class_widget_text.html#a1e777ae00b43eeff462ba10a9586c3e3',1,'WidgetText::widget_anchor_y']]],
@@ -16,13 +16,13 @@ var searchData=
   ['widget_5ftext_2eh_13',['widget_text.h',['../widget__text_8h.html',1,'']]],
   ['widget_5fwidth_14',['widget_width',['../class_widget.html#ad20c81e6b8f3bae73b13b272cac2a932',1,'Widget::widget_width'],['../class_widget_text.html#aff3c6e836ff98a417aabccf2129fbd02',1,'WidgetText::widget_width']]],
   ['widget_5fwith_5fborder_15',['widget_with_border',['../class_widget.html#ae6781210e651d10662938599eb985f2f',1,'Widget::widget_with_border'],['../class_widget_text.html#a8b736bac0a08a1881f43e7a7ab514643',1,'WidgetText::widget_with_border']]],
-  ['widgetfocusindicator_16',['WidgetFocusIndicator',['../class_widget_focus_indicator.html',1,'WidgetFocusIndicator'],['../class_widget_focus_indicator.html#a1afb23a894634f7b4c150f66e7d33b59',1,'WidgetFocusIndicator::WidgetFocusIndicator()']]],
-  ['widgethorizontalbar_17',['WidgetHorizontalBar',['../class_widget_horizontal_bar.html',1,'WidgetHorizontalBar'],['../class_widget_horizontal_bar.html#a481c0937be5e94537a9dd3b8bcac9d78',1,'WidgetHorizontalBar::WidgetHorizontalBar()']]],
-  ['widgethorizontalbargraph_18',['WidgetHorizontalBargraph',['../class_widget_horizontal_bargraph.html',1,'WidgetHorizontalBargraph'],['../class_widget_horizontal_bargraph.html#a4f9633c9787f1a61d75cab5c6730fc0c',1,'WidgetHorizontalBargraph::WidgetHorizontalBargraph()']]],
+  ['widgetfocusindicator_16',['WidgetFocusIndicator',['../class_widget_focus_indicator.html',1,'WidgetFocusIndicator'],['../class_widget_focus_indicator.html#acab13bb9b5ac8aee417260fbeb9fb957',1,'WidgetFocusIndicator::WidgetFocusIndicator()']]],
+  ['widgethorizontalbar_17',['WidgetHorizontalBar',['../class_widget_horizontal_bar.html',1,'WidgetHorizontalBar'],['../class_widget_horizontal_bar.html#aa99213010a3f5f9ffd4043755879e3c4',1,'WidgetHorizontalBar::WidgetHorizontalBar()']]],
+  ['widgethorizontalbargraph_18',['WidgetHorizontalBargraph',['../class_widget_horizontal_bargraph.html',1,'WidgetHorizontalBargraph'],['../class_widget_horizontal_bargraph.html#a3aa0e18032e745dd3b816a4a2113b81b',1,'WidgetHorizontalBargraph::WidgetHorizontalBargraph()']]],
   ['widgets_19',['widgets',['../class_widget.html#af4c3a0de546fdcb1038469f5c592e2b6',1,'Widget::widgets'],['../class_widget_text.html#ac422e80a9f12318c8cc6b1e05c22c40e',1,'WidgetText::widgets']]],
-  ['widgetsquareled_20',['WidgetSquareLed',['../class_widget_square_led.html',1,'WidgetSquareLed'],['../class_widget_square_led.html#a71297becb8bf67018ed0c0a2d8c5df97',1,'WidgetSquareLed::WidgetSquareLed()']]],
-  ['widgettext_21',['WidgetText',['../class_widget_text.html',1,'WidgetText'],['../class_widget_text.html#a63afea0154ec7bc62dd380c30fb4a8ac',1,'WidgetText::WidgetText()']]],
-  ['widgetverticalbargraph_22',['WidgetVerticalBargraph',['../class_widget_vertical_bargraph.html',1,'WidgetVerticalBargraph'],['../class_widget_vertical_bargraph.html#abe6cbc74dea50b7118d430834002896a',1,'WidgetVerticalBargraph::WidgetVerticalBargraph()']]],
+  ['widgetsquareled_20',['WidgetSquareLed',['../class_widget_square_led.html',1,'WidgetSquareLed'],['../class_widget_square_led.html#a12037e7870c90ab03404c3251f0d737b',1,'WidgetSquareLed::WidgetSquareLed()']]],
+  ['widgettext_21',['WidgetText',['../class_widget_text.html',1,'WidgetText'],['../class_widget_text.html#a7cc8191cbc41ba6a4fb008d4c8fc50dc',1,'WidgetText::WidgetText()']]],
+  ['widgetverticalbargraph_22',['WidgetVerticalBargraph',['../class_widget_vertical_bargraph.html',1,'WidgetVerticalBargraph'],['../class_widget_vertical_bargraph.html#aa4b1d50f441f57313f45c71220341203',1,'WidgetVerticalBargraph::WidgetVerticalBargraph()']]],
   ['width_23',['width',['../structstruct___render_area.html#ae390a957d9f070f47e89e84fbcdb8319',1,'struct_RenderArea']]],
   ['wrap_24',['wrap',['../structstruct___config_text_framebuffer.html#a8b455772ce9e7d467d80e9a80e8ebe7f',1,'struct_ConfigTextFramebuffer']]]
 ];

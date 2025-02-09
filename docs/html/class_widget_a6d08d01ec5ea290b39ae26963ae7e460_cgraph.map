@@ -1,5 +1,5 @@
 <map id="Widget::add_widget" name="Widget::add_widget">
 <area shape="rect" id="Node000001" title="add sub_widget to the current widget" alt="" coords="5,5,125,30"/>
-<area shape="rect" id="Node000002" href="$class_widget.html#a21f136d006375705da70a560a52429bd" title="Construct a new Widget object." alt="" coords="173,5,270,30"/>
+<area shape="rect" id="Node000002" href="$class_widget.html#a5b1f0a392f486e938d23e5268e84d3ee" title="Construct a new Widget object." alt="" coords="173,5,270,30"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,15,157,15,157,20,125,20"/>
 </map>

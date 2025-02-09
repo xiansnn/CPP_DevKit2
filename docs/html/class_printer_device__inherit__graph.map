@@ -1,5 +1,5 @@
 <map id="PrinterDevice" name="PrinterDevice">
-<area shape="rect" id="Node000001" title="A clas dedicated to pure text display such as console, printer, ASCII character line display." alt="" coords="5,133,388,213"/>
-<area shape="rect" id="Node000002" href="$class_display_device.html" title="the generic abstract class for display devices" alt="" coords="145,5,249,85"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,101,199,134,194,134,194,101"/>
+<area shape="rect" id="Node000001" title="A clas dedicated to pure text display such as console, printer, ASCII character line display." alt="" coords="5,152,388,232"/>
+<area shape="rect" id="Node000002" href="$class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="49,5,345,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,119,199,152,194,152,194,119"/>
 </map>

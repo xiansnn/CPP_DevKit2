@@ -1,7 +1,7 @@
 <map id="PrinterDevice" name="PrinterDevice">
-<area shape="rect" id="Node000001" title="A clas dedicated to pure text display such as console, printer, ASCII character line display." alt="" coords="5,185,388,265"/>
-<area shape="rect" id="Node000002" href="$class_display_device.html" title="the generic abstract class for display devices" alt="" coords="70,24,174,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,116,181,184,176,186,144,118"/>
-<area shape="rect" id="Node000003" href="$structstruct___text_memory.html" title="the data structure that characterise the text buffer" alt="" coords="198,5,345,123"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="247,124,224,171,220,169,242,121"/>
+<area shape="rect" id="Node000001" title="A clas dedicated to pure text display such as console, printer, ASCII character line display." alt="" coords="85,185,467,265"/>
+<area shape="rect" id="Node000002" href="$class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="5,15,301,113"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,123,248,184,244,187,197,126"/>
+<area shape="rect" id="Node000003" href="$structstruct___text_memory.html" title="the data structure that characterise the text buffer" alt="" coords="325,5,472,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="356,124,318,173,314,170,352,121"/>
 </map>

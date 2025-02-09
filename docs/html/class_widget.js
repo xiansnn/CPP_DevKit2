@@ -1,6 +1,6 @@
 var class_widget =
 [
-    [ "Widget", "class_widget.html#a21f136d006375705da70a560a52429bd", null ],
+    [ "Widget", "class_widget.html#a5b1f0a392f486e938d23e5268e84d3ee", null ],
     [ "~Widget", "class_widget.html#aa24f66bcbaaec6d458b0980e8c8eae65", null ],
     [ "add_widget", "class_widget.html#a6d08d01ec5ea290b39ae26963ae7e460", null ],
     [ "blinking_phase_has_changed", "class_widget.html#a1e64f6cb46adddfd6a4df1aab5c95b2a", null ],

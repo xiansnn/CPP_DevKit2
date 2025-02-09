@@ -99,7 +99,6 @@ $(function(){initNavTree('class_graphic_display_device.html',''); initResizable(
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_graphic_display_device-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">GraphicDisplayDevice Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
 </div><!--header-->
@@ -114,13 +113,11 @@ Inheritance diagram for GraphicDisplayDevice:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_graphic_display_device__inherit__graph.png" border="0" usemap="#a_graphic_display_device_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_graphic_display_device_inherit__map" id="a_graphic_display_device_inherit__map">
-<area shape="rect" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="269,133,785,336"/>
-<area shape="rect" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,384,549,1053"/>
-<area shape="poly" title=" " alt="" coords="470,350,452,385,448,383,466,348"/>
-<area shape="rect" href="class_text_display_device.html" title="A class used to write text on a graphic display." alt="" coords="574,669,978,768"/>
-<area shape="poly" title=" " alt="" coords="588,348,754,668,749,671,583,350"/>
-<area shape="rect" href="class_display_device.html" title="the generic abstract class for display devices" alt="" coords="475,5,579,85"/>
-<area shape="poly" title=" " alt="" coords="529,100,529,133,524,133,524,100"/>
+<area shape="rect" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="15,152,539,355"/>
+<area shape="rect" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,403,549,1068"/>
+<area shape="poly" title=" " alt="" coords="280,370,280,403,275,403,275,370"/>
+<area shape="rect" href="class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="129,5,425,104"/>
+<area shape="poly" title=" " alt="" coords="280,119,280,152,275,152,275,119"/>
 </map>
 </div>
 <div class="dynheader">
@@ -128,51 +125,58 @@ Collaboration diagram for GraphicDisplayDevice:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_graphic_display_device__coll__graph.png" border="0" usemap="#a_graphic_display_device_coll__map" alt="Collaboration graph"/></div>
 <map name="a_graphic_display_device_coll__map" id="a_graphic_display_device_coll__map">
-<area shape="rect" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,185,521,387"/>
-<area shape="rect" href="class_display_device.html" title="the generic abstract class for display devices" alt="" coords="141,24,245,104"/>
-<area shape="poly" title=" " alt="" coords="212,117,234,184,229,186,207,119"/>
-<area shape="rect" href="structstruct___pixel_memory.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="269,5,402,123"/>
-<area shape="poly" title=" " alt="" coords="319,123,304,170,299,168,314,122"/>
+<area shape="rect" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,152,529,355"/>
+<area shape="rect" href="class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="119,5,415,104"/>
+<area shape="poly" title=" " alt="" coords="270,119,270,152,265,152,265,119"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a82099f2327fcd342e8b823d87500ab96" id="r_a82099f2327fcd342e8b823d87500ab96"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82099f2327fcd342e8b823d87500ab96">GraphicDisplayDevice</a> (size_t width, size_t height)</td></tr>
-<tr class="memdesc:a82099f2327fcd342e8b823d87500ab96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Display Device object.  <br /></td></tr>
-<tr class="separator:a82099f2327fcd342e8b823d87500ab96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4425ed83149a72c29a049e6deacda3d8" id="r_a4425ed83149a72c29a049e6deacda3d8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4425ed83149a72c29a049e6deacda3d8">show</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y)=0</td></tr>
+<tr class="memdesc:a4425ed83149a72c29a049e6deacda3d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual member function. It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel. This method implements all peculiarities of the actual display device.  <br /></td></tr>
+<tr class="separator:a4425ed83149a72c29a049e6deacda3d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcb1b9fe5ab993b41374db60766e8fa1" id="r_adcb1b9fe5ab993b41374db60766e8fa1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcb1b9fe5ab993b41374db60766e8fa1">GraphicDisplayDevice</a> (size_t <a class="el" href="class_display_device.html#a58ea2f03d0b4a7da180de43d30db1a44">screen_width</a>, size_t <a class="el" href="class_display_device.html#a852e346e012cb3389ed915d529da1f34">screen_height</a>)</td></tr>
+<tr class="memdesc:adcb1b9fe5ab993b41374db60766e8fa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Display Device object.  <br /></td></tr>
+<tr class="separator:adcb1b9fe5ab993b41374db60766e8fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0adf3090be1bd3a09038974df373142b" id="r_a0adf3090be1bd3a09038974df373142b"><td class="memItemLeft" align="right" valign="top"><a id="a0adf3090be1bd3a09038974df373142b" name="a0adf3090be1bd3a09038974df373142b"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~GraphicDisplayDevice</b> ()</td></tr>
 <tr class="memdesc:a0adf3090be1bd3a09038974df373142b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the Display Device object. <br /></td></tr>
 <tr class="separator:a0adf3090be1bd3a09038974df373142b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a925fa588f6f1174b81396f1dd29cf14d" id="r_a925fa588f6f1174b81396f1dd29cf14d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a925fa588f6f1174b81396f1dd29cf14d">clear_pixel_buffer</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *<a class="el" href="#a1766b027cb72eee80d89ca460e178e81">pixel_memory</a>)=0</td></tr>
+<tr class="memitem:a925fa588f6f1174b81396f1dd29cf14d" id="r_a925fa588f6f1174b81396f1dd29cf14d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a925fa588f6f1174b81396f1dd29cf14d">clear_pixel_buffer</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory)=0</td></tr>
 <tr class="memdesc:a925fa588f6f1174b81396f1dd29cf14d"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual method. Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0). Usefull when we have a graphic framework.  <br /></td></tr>
 <tr class="separator:a925fa588f6f1174b81396f1dd29cf14d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c4dfc52e338d9f3fa66fc36e76f4017" id="r_a0c4dfc52e338d9f3fa66fc36e76f4017"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c4dfc52e338d9f3fa66fc36e76f4017">create_pixel_buffer</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *<a class="el" href="#a1766b027cb72eee80d89ca460e178e81">pixel_memory</a>)=0</td></tr>
+<tr class="memitem:a0c4dfc52e338d9f3fa66fc36e76f4017" id="r_a0c4dfc52e338d9f3fa66fc36e76f4017"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c4dfc52e338d9f3fa66fc36e76f4017">create_pixel_buffer</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory)=0</td></tr>
 <tr class="memdesc:a0c4dfc52e338d9f3fa66fc36e76f4017"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual method. Create a pixel buffer object.  <br /></td></tr>
 <tr class="separator:a0c4dfc52e338d9f3fa66fc36e76f4017"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fd7fe7d76688694abeca08375acde93" id="r_a0fd7fe7d76688694abeca08375acde93"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fd7fe7d76688694abeca08375acde93">show</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory_structure, uint8_t anchor_x, uint8_t anchor_y)=0</td></tr>
-<tr class="memdesc:a0fd7fe7d76688694abeca08375acde93"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual member function. It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.  <br /></td></tr>
-<tr class="separator:a0fd7fe7d76688694abeca08375acde93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7ef6574289b020174c41582a45c3631" id="r_ac7ef6574289b020174c41582a45c3631"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7ef6574289b020174c41582a45c3631">pixel</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory_structure, int x, int y, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)=0</td></tr>
-<tr class="memdesc:ac7ef6574289b020174c41582a45c3631"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic primitive to draw a pixel  <br /></td></tr>
-<tr class="separator:ac7ef6574289b020174c41582a45c3631"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74898782eb52759f2dca0db1134892bb" id="r_a74898782eb52759f2dca0db1134892bb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74898782eb52759f2dca0db1134892bb">drawChar</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory_structure, <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> *text_config, char character, uint8_t anchor_x, uint8_t anchor_y)=0</td></tr>
-<tr class="memdesc:a74898782eb52759f2dca0db1134892bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">a graphic primitive to draw a character at a pixel position  <br /></td></tr>
-<tr class="separator:a74898782eb52759f2dca0db1134892bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6821c6c967aa02cae6cc168edd4d137f" id="r_a6821c6c967aa02cae6cc168edd4d137f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6821c6c967aa02cae6cc168edd4d137f">pixel</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory, const int x, const int y, const <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)=0</td></tr>
+<tr class="memdesc:a6821c6c967aa02cae6cc168edd4d137f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic primitive to draw a pixel  <br /></td></tr>
+<tr class="separator:a6821c6c967aa02cae6cc168edd4d137f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac434e545840d58f31aff70ada2d2e9a1" id="r_ac434e545840d58f31aff70ada2d2e9a1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac434e545840d58f31aff70ada2d2e9a1">drawChar</a> (<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *pixel_memory, const <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> *text_config, const char character, const uint8_t anchor_x, const uint8_t anchor_y)=0</td></tr>
+<tr class="memdesc:ac434e545840d58f31aff70ada2d2e9a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">a graphic primitive to draw a character at a pixel position  <br /></td></tr>
+<tr class="separator:ac434e545840d58f31aff70ada2d2e9a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_display_device"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_display_device')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_display_device.html">DisplayDevice</a></td></tr>
+<tr class="memitem:a6a68176a4ad047899fe3350438f340df inherit pub_methods_class_display_device" id="r_a6a68176a4ad047899fe3350438f340df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_display_device.html#a6a68176a4ad047899fe3350438f340df">DisplayDevice</a> (size_t <a class="el" href="class_display_device.html#a58ea2f03d0b4a7da180de43d30db1a44">screen_width</a>, size_t <a class="el" href="class_display_device.html#a852e346e012cb3389ed915d529da1f34">screen_height</a>)</td></tr>
+<tr class="memdesc:a6a68176a4ad047899fe3350438f340df inherit pub_methods_class_display_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Display Device object.  <br /></td></tr>
+<tr class="separator:a6a68176a4ad047899fe3350438f340df inherit pub_methods_class_display_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a1766b027cb72eee80d89ca460e178e81" id="r_a1766b027cb72eee80d89ca460e178e81"><td class="memItemLeft" align="right" valign="top"><a id="a1766b027cb72eee80d89ca460e178e81" name="a1766b027cb72eee80d89ca460e178e81"></a>
-<a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_memory</b></td></tr>
-<tr class="memdesc:a1766b027cb72eee80d89ca460e178e81"><td class="mdescLeft">&#160;</td><td class="mdescRight">the data structure of the pixel buffer <br /></td></tr>
-<tr class="separator:a1766b027cb72eee80d89ca460e178e81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_attribs_class_display_device"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_class_display_device')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_display_device.html">DisplayDevice</a></td></tr>
+<tr class="memitem:a58ea2f03d0b4a7da180de43d30db1a44 inherit pub_attribs_class_display_device" id="r_a58ea2f03d0b4a7da180de43d30db1a44"><td class="memItemLeft" align="right" valign="top">
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>screen_width</b></td></tr>
+<tr class="memdesc:a58ea2f03d0b4a7da180de43d30db1a44 inherit pub_attribs_class_display_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">the physical width of the screen (in pixel) <br /></td></tr>
+<tr class="separator:a58ea2f03d0b4a7da180de43d30db1a44 inherit pub_attribs_class_display_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a852e346e012cb3389ed915d529da1f34 inherit pub_attribs_class_display_device" id="r_a852e346e012cb3389ed915d529da1f34"><td class="memItemLeft" align="right" valign="top">
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>screen_height</b></td></tr>
+<tr class="memdesc:a852e346e012cb3389ed915d529da1f34 inherit pub_attribs_class_display_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">the physical height of the screen (in pixel) <br /></td></tr>
+<tr class="separator:a852e346e012cb3389ed915d529da1f34 inherit pub_attribs_class_display_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a>). It derived from <a class="el" href="class_graphic_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display.">GraphicFramebuffer</a>. This allows to draw graphics directly into the display framebuffer thanks to Framebuffet class graphic primitives indepently from any kind of widget. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a82099f2327fcd342e8b823d87500ab96" name="a82099f2327fcd342e8b823d87500ab96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82099f2327fcd342e8b823d87500ab96">&#9670;&#160;</a></span>GraphicDisplayDevice()</h2>
+<a id="adcb1b9fe5ab993b41374db60766e8fa1" name="adcb1b9fe5ab993b41374db60766e8fa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcb1b9fe5ab993b41374db60766e8fa1">&#9670;&#160;</a></span>GraphicDisplayDevice()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -180,12 +184,12 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">GraphicDisplayDevice::GraphicDisplayDevice </td>
           <td>(</td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>screen_width</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>height</em></span>&#160;)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>screen_height</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -193,8 +197,8 @@ Public Attributes</h2></td></tr>
 <p>Construct a new Display Device object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">width</td><td>The width of physical screen, in pixel </td></tr>
-    <tr><td class="paramname">height</td><td>The height of physical screen, in pixel. </td></tr>
+    <tr><td class="paramname">screen_width</td><td>The width of physical screen, in pixel </td></tr>
+    <tr><td class="paramname">screen_height</td><td>The height of physical screen, in pixel. </td></tr>
   </table>
   </dd>
 </dl>
@@ -275,8 +279,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a74898782eb52759f2dca0db1134892bb" name="a74898782eb52759f2dca0db1134892bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74898782eb52759f2dca0db1134892bb">&#9670;&#160;</a></span>drawChar()</h2>
+<a id="ac434e545840d58f31aff70ada2d2e9a1" name="ac434e545840d58f31aff70ada2d2e9a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac434e545840d58f31aff70ada2d2e9a1">&#9670;&#160;</a></span>drawChar()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -287,27 +291,27 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">virtual void GraphicDisplayDevice::drawChar </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *</td>          <td class="paramname"><span class="paramname"><em>pixel_memory_structure</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *</td>          <td class="paramname"><span class="paramname"><em>pixel_memory</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> *</td>          <td class="paramname"><span class="paramname"><em>text_config</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> *</td>          <td class="paramname"><span class="paramname"><em>text_config</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>character</em></span>, </td>
+          <td class="paramtype">const char</td>          <td class="paramname"><span class="paramname"><em>character</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_x</em></span>, </td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_x</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_y</em></span>&#160;)</td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_y</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -321,7 +325,7 @@ Public Attributes</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>: DrawChar() implementation depends strongly on the FramebufferFormat.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pixel_memory_structure</td><td></td></tr>
+    <tr><td class="paramname">pixel_memory</td><td></td></tr>
     <tr><td class="paramname">text_config</td><td>the configuration file of the text framebuffer </td></tr>
     <tr><td class="paramname">character</td><td>the character to draw </td></tr>
     <tr><td class="paramname">anchor_x</td><td>the pixel position on x-axis to start drawing the character (upper left corner) </td></tr>
@@ -330,12 +334,12 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_s_s_d1306.html#a3323d121695ea6462af79a4ec08f2f43">SSD1306</a>.</p>
+<p>Implemented in <a class="el" href="class_s_s_d1306.html#aca25f502267015a78b3aa6d388077468">SSD1306</a>.</p>
 
 </div>
 </div>
-<a id="ac7ef6574289b020174c41582a45c3631" name="ac7ef6574289b020174c41582a45c3631"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7ef6574289b020174c41582a45c3631">&#9670;&#160;</a></span>pixel()</h2>
+<a id="a6821c6c967aa02cae6cc168edd4d137f" name="a6821c6c967aa02cae6cc168edd4d137f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6821c6c967aa02cae6cc168edd4d137f">&#9670;&#160;</a></span>pixel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -346,22 +350,22 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">virtual void GraphicDisplayDevice::pixel </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *</td>          <td class="paramname"><span class="paramname"><em>pixel_memory_structure</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *</td>          <td class="paramname"><span class="paramname"><em>pixel_memory</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -374,7 +378,7 @@ Public Attributes</h2></td></tr>
 <p>the graphic primitive to draw a pixel </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pixel_memory_structure</td><td></td></tr>
+    <tr><td class="paramname">pixel_memory</td><td></td></tr>
     <tr><td class="paramname">x</td><td>the x position of the pixel </td></tr>
     <tr><td class="paramname">y</td><td>the y position of the pixel </td></tr>
     <tr><td class="paramname">color</td><td>the color of the pixel </td></tr>
@@ -382,12 +386,12 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_s_s_d1306.html#ab9fdcddc9fe1c4d84be19041bf51cc4a">SSD1306</a>.</p>
+<p>Implemented in <a class="el" href="class_s_s_d1306.html#abc09938bc1ad96dff3a5983a85206207">SSD1306</a>.</p>
 
 </div>
 </div>
-<a id="a0fd7fe7d76688694abeca08375acde93" name="a0fd7fe7d76688694abeca08375acde93"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0fd7fe7d76688694abeca08375acde93">&#9670;&#160;</a></span>show()</h2>
+<a id="a4425ed83149a72c29a049e6deacda3d8" name="a4425ed83149a72c29a049e6deacda3d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4425ed83149a72c29a049e6deacda3d8">&#9670;&#160;</a></span>show()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -398,17 +402,17 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">virtual void GraphicDisplayDevice::show </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *</td>          <td class="paramname"><span class="paramname"><em>pixel_memory_structure</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structstruct___pixel_memory.html">struct_PixelMemory</a> *</td>          <td class="paramname"><span class="paramname"><em>pixel_memory</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_x</em></span>, </td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_x</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_y</em></span>&#160;)</td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_y</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -418,17 +422,17 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>A pure virtual member function. It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel. </p>
+<p>A pure virtual member function. It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel. This method implements all peculiarities of the actual display device. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pixel_memory_structure</td><td>a pointer to the <a class="el" href="structstruct___pixel_memory.html" title="the data structure that characterise the graphic framebuffer">struct_PixelMemory</a> that contains the pixel_buffer to be displayed </td></tr>
-    <tr><td class="paramname">anchor_x</td><td>the x (horizontal)starting position of the frame within the display screen, (in pixel) </td></tr>
-    <tr><td class="paramname">anchor_y</td><td>the y (vertical) starting position of the frame within the display screen, (in pixel) </td></tr>
+    <tr><td class="paramname">pixel_memory</td><td>a pointer to the <a class="el" href="structstruct___pixel_memory.html" title="the data structure that characterise the graphic framebuffer">struct_PixelMemory</a> that contains the pixel_buffer to be displayed </td></tr>
+    <tr><td class="paramname">anchor_x</td><td>the x(horizontal) starting position of the frame within the display screen,(in pixel) </td></tr>
+    <tr><td class="paramname">anchor_y</td><td></td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_s_s_d1306.html#adbcf73ef1d7c172c65691f91f9a76ae9">SSD1306</a>.</p>
+<p>Implemented in <a class="el" href="class_s_s_d1306.html#a8f5ba515b99381c2145861cbe4477273">SSD1306</a>.</p>
 
 </div>
 </div>

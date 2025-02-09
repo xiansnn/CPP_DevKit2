@@ -1,6 +1,6 @@
 var class_widget_text =
 [
-    [ "WidgetText", "class_widget_text.html#a63afea0154ec7bc62dd380c30fb4a8ac", null ],
+    [ "WidgetText", "class_widget_text.html#a7cc8191cbc41ba6a4fb008d4c8fc50dc", null ],
     [ "~WidgetText", "class_widget_text.html#a79f03f0211309dc37eb558efbc3f1509", null ],
     [ "add_widget", "class_widget_text.html#a09ef73d8b1fa413b42ac4185857736e7", null ],
     [ "blinking_phase_has_changed", "class_widget_text.html#a9a23d695e80bf5c4633f81328da12776", null ],
@@ -11,7 +11,7 @@ var class_widget_text =
     [ "set_display_screen", "class_widget_text.html#a37598d6a0a89ca80a6c98e149f5185b9", null ],
     [ "actual_displayed_model", "class_widget_text.html#a6f0757b222b7a03e5ef848576f185800", null ],
     [ "blink_period_us", "class_widget_text.html#a2ac58db00bd6aac3e761a6c8100b8dc5", null ],
-    [ "display_screen", "class_widget_text.html#afeae1c7972eae35e59d94dc668f1fe5b", null ],
+    [ "graphic_display_screen", "class_widget_text.html#a1253963b679467927ad5d58426d063e7", null ],
     [ "previous_blinking_phase", "class_widget_text.html#aa55de1cb2b4a1af5fd05346b5471c78b", null ],
     [ "widget_anchor_x", "class_widget_text.html#ac53e031f126f3dae59977b1ecf7a6dfc", null ],
     [ "widget_anchor_y", "class_widget_text.html#a1e777ae00b43eeff462ba10a9586c3e3", null ],

@@ -3,7 +3,7 @@ var searchData=
   ['period_5fus_0',['period_us',['../class_p_w_m.html#a560bc87c44165d760ed6d6eaf05d30e4',1,'PWM']]],
   ['pixel_5fbuffer_1',['pixel_buffer',['../structstruct___pixel_memory.html#a4d28148d4966ebc6b1f1c6247eed5454',1,'struct_PixelMemory']]],
   ['pixel_5fbuffer_5fsize_2',['pixel_buffer_size',['../structstruct___pixel_memory.html#ac246e6e0e7eb76f2539a6e467702d400',1,'struct_PixelMemory']]],
-  ['pixel_5fmemory_3',['pixel_memory',['../class_graphic_display_device.html#a1766b027cb72eee80d89ca460e178e81',1,'GraphicDisplayDevice::pixel_memory'],['../class_graphic_framebuffer.html#ac113e87fc222254359c1baf4e48ce120',1,'GraphicFramebuffer::pixel_memory']]],
+  ['pixel_5fmemory_3',['pixel_memory',['../class_graphic_framebuffer.html#ac113e87fc222254359c1baf4e48ce120',1,'GraphicFramebuffer']]],
   ['pos_5fmax_5fdeg_4',['pos_max_deg',['../class_s_g90.html#a6963c2e0d40f3e574c71f7df014bec85',1,'SG90']]],
   ['pos_5fmax_5fdegree_5',['pos_max_degree',['../structstruct___config_s_g90.html#a9c349601a83bb7b1a0b42cf927ec4bf5',1,'struct_ConfigSG90']]],
   ['pos_5fmin_5fdeg_6',['pos_min_deg',['../class_s_g90.html#aee863b2c2c28d494be5e08c18695fd3b',1,'SG90']]],

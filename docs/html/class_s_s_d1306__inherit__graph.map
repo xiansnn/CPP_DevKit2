@@ -1,7 +1,7 @@
 <map id="SSD1306" name="SSD1306">
-<area shape="rect" id="Node000001" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,384,549,1053"/>
-<area shape="rect" id="Node000002" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="19,133,535,336"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="280,351,280,384,275,384,275,351"/>
-<area shape="rect" id="Node000003" href="$class_display_device.html" title="the generic abstract class for display devices" alt="" coords="225,5,329,85"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="280,100,280,133,275,133,275,100"/>
+<area shape="rect" id="Node000001" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,403,549,1068"/>
+<area shape="rect" id="Node000002" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="15,152,539,355"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="280,370,280,403,275,403,275,370"/>
+<area shape="rect" id="Node000003" href="$class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="129,5,425,104"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="280,119,280,152,275,152,275,119"/>
 </map>
