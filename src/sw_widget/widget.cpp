@@ -11,7 +11,7 @@
 
 #include "widget.h"
 
-void Widget::draw_border(PixelColor c) // TODO en faire un pure virtual pour etre independant de graphic ou text
+void Widget::draw_border(PixelColor c) 
 {
     if (this->widget_with_border)
         rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width);

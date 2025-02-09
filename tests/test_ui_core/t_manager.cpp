@@ -41,7 +41,7 @@ MyManager::~MyManager()
 /// - INCREMENT: focus to next model
 /// - DECREMENT: focus to previous model
 /// @param _event
-void MyManager::process_control_event(UIControlEvent _event) // TODO affficher timeout voir comme managed horizontal bar mais printf a la place
+void MyManager::process_control_event(UIControlEvent _event) 
 {
     switch (_event)
     {

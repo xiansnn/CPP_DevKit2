@@ -103,7 +103,6 @@ public:
 
     /**
      * @brief Construct a new Graphic Framebuffer object.
-     * \todo //TODO separer graphic et text framebuffer
      * @param display_device A pointer to the display device in charge of writing effective pixel in the pixel_buffer
      * @param text_cfg the configuration file of the textual frame
      */
