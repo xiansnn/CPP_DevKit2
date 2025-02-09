@@ -24,7 +24,6 @@ SSD1306::SSD1306(HW_I2C_Master *master, struct_ConfigSSD1306 init_config)
 {
     this->i2c_master = master;
     this->device_config = init_config;
-    create_pixel_buffer(&this->pixel_memory);
     this->init();
 }
 
@@ -146,13 +145,13 @@ void SSD1306::clear_pixel_buffer(struct_PixelMemory *pixel_memory)
     memset(pixel_memory->pixel_buffer, 0x00, pixel_memory->pixel_buffer_size);
 }
 
-void SSD1306::fill(PixelColor c)
-{
-    if (c == PixelColor::BLACK)
-        memset(this->pixel_memory.pixel_buffer, 0x00, this->pixel_memory.pixel_buffer_size);
-    else
-        memset(this->pixel_memory.pixel_buffer, 0xFF, this->pixel_memory.pixel_buffer_size);
-}
+// void SSD1306::fill(PixelColor c)
+// {
+//     if (c == PixelColor::BLACK)
+//         memset(this->pixel_memory.pixel_buffer, 0x00, this->pixel_memory.pixel_buffer_size);
+//     else
+//         memset(this->pixel_memory.pixel_buffer, 0xFF, this->pixel_memory.pixel_buffer_size);
+// }
 
 void SSD1306::create_pixel_buffer(struct_PixelMemory *pixel_memory)
 {
@@ -162,7 +161,7 @@ void SSD1306::create_pixel_buffer(struct_PixelMemory *pixel_memory)
 
     pixel_memory->pixel_buffer_size = pixel_memory->frame_width * nb_of_pages;
 
-    pixel_memory->pixel_buffer = new uint8_t[this->pixel_memory.pixel_buffer_size];
+    pixel_memory->pixel_buffer = new uint8_t[pixel_memory->pixel_buffer_size];
     clear_pixel_buffer(pixel_memory);
 }
 

@@ -103,16 +103,16 @@ struct struct_ConfigTextFramebuffer
     bool auto_next_char{true};
 };
 
-/**
- * @brief the generic abstract class for display devices
- *
- */
+/// @brief the generic abstract class for physical display devices
 class DisplayDevice
 {
 private:
-    /* data */
+
 public:
+
+    /// @brief the physical width of the screen (in pixel)
     size_t screen_width;
+    /// @brief the physical height of the screen (in pixel)
     size_t screen_height;
 
     DisplayDevice(size_t screen_width, size_t screen_height);
@@ -129,9 +129,6 @@ class GraphicDisplayDevice : public DisplayDevice
 {
 protected:
 public:
-    /// @brief the data structure of the pixel buffer
-    struct_PixelMemory pixel_memory;
-
     /**
      * @brief A pure virtual member function.
      * It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.
@@ -150,7 +147,6 @@ public:
      * @param width The width of physical screen, in pixel
      * @param height The height of physical screen, in pixel.
      */
-
     GraphicDisplayDevice(size_t screen_width,
                          size_t screen_height);
 
@@ -203,28 +199,6 @@ public:
                           const struct_ConfigTextFramebuffer *text_config,
                           const char character,
                           const uint8_t anchor_x, const uint8_t anchor_y) = 0;
-};
-
-/// @brief A class used to write text on a graphic display
-class TextDisplayDevice : public GraphicDisplayDevice
-{
-private:
-public:
-    /**
-     * @brief Construct a new Text Display Device object
-     *
-     * @param number_of_char_width the size, in number of character of a line
-     * @param number_of_char_hight the number of line
-     */
-    TextDisplayDevice(size_t number_of_char_width,
-                      size_t number_of_char_hight);
-    ~TextDisplayDevice();
-    /**
-     * @brief A pure virtual method. Simply copy the text characters to the text buffer
-     *
-     * @param text_string the character string
-     */
-    virtual void print(char *text_string) = 0;
 };
 
 /**

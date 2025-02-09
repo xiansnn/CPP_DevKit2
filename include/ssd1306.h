@@ -190,13 +190,6 @@ public:
      */
     static struct_RenderArea compute_render_area(uint8_t start_col, uint8_t end_col, uint8_t start_line, uint8_t end_line);
 
-    /**
-     * @brief Fill the pixel buffer with the color C
-     * 
-     * @param c the pixel foreground color
-     */
-    void fill(PixelColor c);
-
     void create_pixel_buffer(struct_PixelMemory *pixel_memory);
 
     void pixel(struct_PixelMemory *pixel_memory_structure, const int x, const int y, const PixelColor c = PixelColor::WHITE);
