@@ -41,23 +41,20 @@ private:
     void draw();
 
 protected:
-public:
+public:   
     /**
      * @brief Construct a new Widget Horizontal Bar object
-     *
+     * 
      * @param bar_value_model a pointer to the displayed model
      * @param graphic_display_screen a pointer to the display device
      * @param max_value max value of the bar
      * @param min_value min value of the bar
-     * @param frame_width the width of the widget
-     * @param frame_height the height of the widget (remind. must be multiple of 8)
+     * @param graph_cfg the configuration data for the graphic framebuffer
      * @param widget_anchor_x the pixel x-location of the widget
      * @param widget_anchor_y the pixel y-location of the widget (remind. must be multiple of 8)
      * @param widget_with_border true if the widget has a border( it's prettier with a border)
-     * @param fg_color the foreground color
-     * @param bg_color the background color
      */
-    WidgetHorizontalBar(UIModelObject *bar_value_model,
+     WidgetHorizontalBar(UIModelObject *bar_value_model,
                         GraphicDisplayDevice *graphic_display_screen,
                         int max_value, int min_value,
                         struct_ConfigGraphicFramebuffer graph_cfg,

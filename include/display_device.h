@@ -114,7 +114,12 @@ public:
     size_t screen_width;
     /// @brief the physical height of the screen (in pixel)
     size_t screen_height;
-
+/**
+ * @brief Construct a new Display Device object
+ * 
+ * @param screen_width the physical width of the screen (in pixel)
+ * @param screen_height he physical height of the screen (in pixel)
+ */
     DisplayDevice(size_t screen_width, size_t screen_height);
     ~DisplayDevice();
 };
@@ -129,6 +134,7 @@ class GraphicDisplayDevice : public DisplayDevice
 {
 protected:
 public:
+
     /**
      * @brief A pure virtual member function.
      * It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.
@@ -136,16 +142,15 @@ public:
      *
      * @param pixel_memory a pointer to the struct_PixelMemory that contains the pixel_buffer to be displayed
      * @param anchor_x the x(horizontal) starting position of the frame within the display screen,(in pixel)
-     * @param anchor_y the y(vertical) starting position of the frame within the display screen, (in pixel)
-     * @return void
+     * @param anchor_y 
      */
-    virtual void show(struct_PixelMemory *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y) = 0;
+     virtual void show(struct_PixelMemory *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y) = 0;
 
     /**
      * @brief Construct a new Display Device object
      *
-     * @param width The width of physical screen, in pixel
-     * @param height The height of physical screen, in pixel.
+     * @param screen_width The width of physical screen, in pixel
+     * @param screen_height The height of physical screen, in pixel.
      */
     GraphicDisplayDevice(size_t screen_width,
                          size_t screen_height);
