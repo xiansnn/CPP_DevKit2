@@ -123,7 +123,7 @@ int main()
     manager.add_managed_model(&my_horizontal_bar_model_2);
     manager.add_managed_model(&my_horizontal_bar_model_3);
 
-    display.clear_full_screen();
+    display.clear_device_screen_buffer();
 
 
     while (true)

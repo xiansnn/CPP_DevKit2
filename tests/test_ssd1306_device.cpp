@@ -53,7 +53,7 @@ struct_ConfigSSD1306 cfg_ssd1306{
  */
 void test_contrast(SSD1306 *display)
 {
-    display->clear_full_screen();
+    display->clear_device_screen_buffer();
     struct_RenderArea area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
     display->fill_pattern_and_show_GDDRAM(0x55, area);
     area = SSD1306::compute_render_area(32, 96, 16, 32);
@@ -80,7 +80,7 @@ void test_addressing_mode(SSD1306 *display)
     uint8_t image[128 * 8]{0x00};
     memset(image, 0xFE, sizeof(image));
     sleep_ms(1000);
-    display->clear_full_screen();
+    display->clear_device_screen_buffer();
     struct_RenderArea area;
     // HORIZONTAL_ADDRESSING_MODE
     for (size_t i = 0; i < 4; i++)
@@ -89,7 +89,7 @@ void test_addressing_mode(SSD1306 *display)
         area = SSD1306::compute_render_area(10 * i, 90 + 10 * i, 8 * i, 2 + 8 * i);
         display->show_render_area(image, area, HORIZONTAL_ADDRESSING_MODE);
         sleep_ms(1000);
-        display->clear_full_screen();
+        display->clear_device_screen_buffer();
     }
     // VERTICAL_ADDRESSING_MODE
     for (size_t i = 0; i < 4; i++)
@@ -98,7 +98,7 @@ void test_addressing_mode(SSD1306 *display)
         area = SSD1306::compute_render_area(40 + 10 * i, 50 + 10 * i, 8 * i, 30 + 8 * i);
         display->show_render_area(image, area, VERTICAL_ADDRESSING_MODE);
         sleep_ms(1000);
-        display->clear_full_screen();
+        display->clear_device_screen_buffer();
     }
     // PAGE_ADDRESSING_MODE
     for (size_t i = 0; i < 8; i++)
@@ -118,7 +118,7 @@ void test_addressing_mode(SSD1306 *display)
 void test_blink(SSD1306 *display)
 {
     struct_RenderArea area;
-    display->clear_full_screen();
+    display->clear_device_screen_buffer();
     area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
     display->fill_pattern_and_show_GDDRAM(0x81, area);
     area = SSD1306::compute_render_area(64, 96, 15, 40);
@@ -138,7 +138,7 @@ void test_blink(SSD1306 *display)
  */
 void test_scrolling(SSD1306 *display)
 {
-    display->clear_full_screen();
+    display->clear_device_screen_buffer();
     // render 3 cute little raspberries
     struct_RenderArea area = SSD1306::compute_render_area(0, IMG_WIDTH - 1, 0, IMG_HEIGHT - 1);
     uint8_t offset = 5 + IMG_WIDTH; // 5px padding

@@ -229,7 +229,7 @@ public:
      *  Uses fill_pattern_and_show_GDDRAM command.
      *
      */
-    void clear_full_screen(); 
+    void clear_device_screen_buffer(); 
     /**
      * @brief Set the contrast object. refer to datasheet of SSD1306 device.
      *

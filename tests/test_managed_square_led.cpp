@@ -110,7 +110,7 @@ int main()
 
     SSD1306 display = SSD1306(&master, cfg_ssd1306);
     pr_D5.hi();
-    display.clear_full_screen();
+    display.clear_device_screen_buffer();
 
     // display.show();
     pr_D5.lo();

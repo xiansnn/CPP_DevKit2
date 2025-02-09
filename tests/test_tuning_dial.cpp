@@ -72,8 +72,8 @@ WidgetText my_FM_volume_widget = WidgetText(&my_FM_volume,
 int main()
 {
 
-    frequency_display.clear_full_screen();
-    volume_display.clear_full_screen();
+    frequency_display.clear_device_screen_buffer();
+    volume_display.clear_device_screen_buffer();
     my_FM_frequency.set_clipped_value(my_FM_frequency.get_min_value());
 
 

@@ -56,7 +56,7 @@ void test_outofframe_line(SSD1306 *display)
 {
     GraphicFramebuffer frame = GraphicFramebuffer(display, SSD1306_framebuffer_cfg);
     int y0, x1, y1;
-    display->clear_full_screen();
+    display->clear_device_screen_buffer();
     x1 = 64;
     y1 = 70;
     y0 = -10;
@@ -78,7 +78,7 @@ void test_outofframe_line(SSD1306 *display)
  */
 void test_fb_line(SSD1306 *display)
 {
-    display->clear_full_screen();
+    display->clear_device_screen_buffer();
     GraphicFramebuffer frame = GraphicFramebuffer(display, SSD1306_framebuffer_cfg);
     PixelColor c = PixelColor::BLACK;
     struct_RenderArea full_screen_area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
@@ -137,7 +137,7 @@ void test_fb_hline(SSD1306 *display)
 {
     GraphicFramebuffer frame = GraphicFramebuffer(display, SSD1306_framebuffer_cfg);
 
-    display->clear_full_screen();
+    display->clear_device_screen_buffer();
 
     frame.hline(0, 0, 32);
     display->show(&frame.pixel_memory, 0, 0);
@@ -162,7 +162,7 @@ void test_fb_vline(SSD1306 *display)
 {
     GraphicFramebuffer frame = GraphicFramebuffer(display, SSD1306_framebuffer_cfg);
 
-    display->clear_full_screen();
+    display->clear_device_screen_buffer();
     frame.vline(0, 0, 16);
     display->show(&frame.pixel_memory, 0, 0);
     sleep_ms(1000);
@@ -187,7 +187,7 @@ void test_fb_rect(SSD1306 *display)
 {
     GraphicFramebuffer frame = GraphicFramebuffer(display, SSD1306_framebuffer_cfg);
 
-    display->clear_full_screen();
+    display->clear_device_screen_buffer();
     frame.rect(0, 0, 128, 64);
     display->show(&frame.pixel_memory, 0, 0);
     sleep_ms(1000);
@@ -204,7 +204,7 @@ void test_fb_in_fb(SSD1306 *display)
 {
     GraphicFramebuffer frame = GraphicFramebuffer(display, SSD1306_framebuffer_cfg);
 
-    display->clear_full_screen();
+    display->clear_device_screen_buffer();
     frame.rect(0, 0, SSD1306_WIDTH, SSD1306_HEIGHT);
     frame.rect(10, 10, 108, 44, true);
     frame.line(5, 60, 120, 5, PixelColor::BLACK);
@@ -236,7 +236,7 @@ void test_fb_circle(SSD1306 *display)
 {
     GraphicFramebuffer frame = GraphicFramebuffer(display, SSD1306_framebuffer_cfg);
 
-    display->clear_full_screen();
+    display->clear_device_screen_buffer();
     frame.circle(50, 63, 31);
     display->show(&frame.pixel_memory, 0, 0);
     sleep_ms(1000);

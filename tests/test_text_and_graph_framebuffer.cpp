@@ -59,8 +59,8 @@ int main()
     HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
     SSD1306 values_display = SSD1306(&master, cfg_left_screen);
     SSD1306 visu_display = SSD1306(&master, cfg_right_screen);
-    values_display.clear_full_screen();
-    visu_display.clear_full_screen();
+    values_display.clear_device_screen_buffer();
+    visu_display.clear_device_screen_buffer();
 
     struct_ConfigTextFramebuffer title_config = {
         .number_of_column = 10,
