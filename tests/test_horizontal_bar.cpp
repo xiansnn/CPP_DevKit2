@@ -89,7 +89,7 @@ int main()
                                                                 horizontal_bar_cfg,
                                                                 20, 8);
 
-    display.clear_full_screen();
+    display.clear_device_screen_buffer();
     my_horizontal_bar.rect(0, 0, 128, 64);
     display.show(&my_horizontal_bar.pixel_memory, my_horizontal_bar.widget_anchor_x, my_horizontal_bar.widget_anchor_y);
     pr_D4.lo();

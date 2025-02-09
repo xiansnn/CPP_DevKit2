@@ -82,7 +82,7 @@ void manager_process_control_event(UIControlEvent event);
 /// 4- create a manager connected to the rotary encoder.
 MyManager manager = MyManager(&ky040);
 
-MyLinePrinter my_serial_monitor = MyLinePrinter(100);
+MyDummyDisplayDevice my_serial_monitor = MyDummyDisplayDevice(100);
 
 int main()
 {

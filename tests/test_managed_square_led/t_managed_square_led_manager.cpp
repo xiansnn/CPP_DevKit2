@@ -76,6 +76,7 @@ void MyManager::process_control_event(UIControlEvent _event)
         if (current_active_model == this)
         {
             increment_focus();
+            this->set_change_flag();
 #ifdef PRINT_DEBUG
             printf("[inc] %s has focus\n", ((MySquareLedModel *)this->managed_models[this->value])->name.c_str());
 #endif
@@ -87,6 +88,7 @@ void MyManager::process_control_event(UIControlEvent _event)
         if (current_active_model == this)
         {
             decrement_focus();
+            this->set_change_flag();
 #ifdef PRINT_DEBUG
             printf("[dec] %s has focus\n", ((MySquareLedModel *)this->managed_models[this->value])->name.c_str());
 #endif

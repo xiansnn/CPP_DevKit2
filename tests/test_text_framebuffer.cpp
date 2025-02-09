@@ -57,46 +57,51 @@ struct_ConfigSSD1306 cfg_right_screen{
 
 void test_font_size(SSD1306 *current_display)
 {
-    current_display->clear_full_screen();
+    current_display->clear_device_screen_buffer();
     const unsigned char *current_font[4]{font_5x8, font_8x8, font_12x16, font_16x32};
     uint8_t current_x_anchor = 0;
     uint8_t current_y_anchor = 0;
 
     std::string test_string = "Test";
 
-    TextualFrameBuffer *font_text_on_screen_0 = new TextualFrameBuffer(current_display, test_string.size(), 1, {.font = current_font[0]});
+    struct_ConfigTextFramebuffer default_text_cfg{
+        .number_of_column = (uint8_t)test_string.size(),
+        .number_of_line = 1,
+        .font = current_font[0]};
 
+    TextualFrameBuffer *font_text_on_screen_0 = new TextualFrameBuffer(current_display, default_text_cfg);
     sprintf(font_text_on_screen_0->text_buffer, test_string.c_str());
-    font_text_on_screen_0->print_text();
+    font_text_on_screen_0->print_text_buffer();
     current_display->show(&font_text_on_screen_0->pixel_memory, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_0;
 
-    TextualFrameBuffer *font_text_on_screen_1 = new TextualFrameBuffer(current_display, test_string.size(), 1, {.font = current_font[1]});
+    TextualFrameBuffer *font_text_on_screen_1 = new TextualFrameBuffer(current_display, default_text_cfg);
+    font_text_on_screen_1->update_pixel_area(current_font[1]);
     current_x_anchor = 64;
     current_y_anchor = 8;
     sprintf(font_text_on_screen_1->text_buffer, test_string.c_str());
-    font_text_on_screen_1->print_text();
+    font_text_on_screen_1->print_text_buffer();
     current_display->show(&font_text_on_screen_1->pixel_memory, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_1;
 
-    TextualFrameBuffer *font_text_on_screen_2 = new TextualFrameBuffer(current_display, test_string.size(), 1, {});
+    TextualFrameBuffer *font_text_on_screen_2 = new TextualFrameBuffer(current_display, default_text_cfg);
     font_text_on_screen_2->update_pixel_area(current_font[2]);
     current_x_anchor = 0;
     current_y_anchor = 16;
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
-    font_text_on_screen_2->print_text();
+    font_text_on_screen_2->print_text_buffer();
     current_display->show(&font_text_on_screen_2->pixel_memory, current_x_anchor, current_y_anchor);
 
     font_text_on_screen_2->update_pixel_area(current_font[3]);
     current_x_anchor = 64;
     current_y_anchor = 32;
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
-    font_text_on_screen_2->print_text();
+    font_text_on_screen_2->print_text_buffer();
     current_display->show(&font_text_on_screen_2->pixel_memory, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_2;
 
     sleep_ms(INTER_TEST_DELAY);
-    current_display->clear_full_screen();
+    current_display->clear_device_screen_buffer();
 }
 
 void test_full_screen_text(SSD1306 *current_display)
@@ -105,11 +110,11 @@ void test_full_screen_text(SSD1306 *current_display)
         .font = font_8x8,
         .wrap = true,
     };
-    TextualFrameBuffer text_frame = TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, current_display, txt_conf);
+    TextualFrameBuffer text_frame = TextualFrameBuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, txt_conf);
 
     text_frame.print_char(FORM_FEED); // equiv. clear full screen
     current_display->show(&text_frame.pixel_memory, 0, 0);
-    uint16_t nb = text_frame.number_of_line * text_frame.number_of_column;
+    uint16_t nb = text_frame.frame_text_config.number_of_line * text_frame.frame_text_config.number_of_column;
 
     uint16_t n{0};
     for (uint16_t c = 32; c < 256; c++)
@@ -125,7 +130,7 @@ void test_full_screen_text(SSD1306 *current_display)
     }
 
     sleep_ms(INTER_TEST_DELAY);
-    current_display->clear_full_screen();
+    current_display->clear_device_screen_buffer();
 }
 
 void test_auto_next_char(SSD1306 *current_display)
@@ -135,7 +140,7 @@ void test_auto_next_char(SSD1306 *current_display)
         .wrap = true,
         .auto_next_char = false};
 
-    TextualFrameBuffer *text_frame = new TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, current_display, txt_conf);
+    TextualFrameBuffer *text_frame = new TextualFrameBuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, txt_conf);
 
     text_frame->print_char(FORM_FEED);
 
@@ -154,7 +159,7 @@ void test_auto_next_char(SSD1306 *current_display)
     delete text_frame;
 
     sleep_ms(INTER_TEST_DELAY);
-    current_display->clear_full_screen();
+    current_display->clear_device_screen_buffer();
 }
 
 /**
@@ -166,13 +171,13 @@ void test_auto_next_char(SSD1306 *current_display)
  */
 void test_sprintf_format(SSD1306 *current_display)
 {
-    current_display->clear_full_screen();
+    current_display->clear_device_screen_buffer();
 
     struct_ConfigTextFramebuffer text_frame_cfg = {
         .font = font_8x8,
         .wrap = true};
 
-    TextualFrameBuffer *text_frame = new TextualFrameBuffer(SSD1306_WIDTH, SSD1306_HEIGHT, current_display, text_frame_cfg);
+    TextualFrameBuffer *text_frame = new TextualFrameBuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, text_frame_cfg);
 
     const char *s = "Hello";
 
@@ -180,53 +185,53 @@ void test_sprintf_format(SSD1306 *current_display)
     current_display->show(&text_frame->pixel_memory, 0, 0);
 
     sprintf(text_frame->text_buffer, "\t[%7s]\n", s);
-    text_frame->print_text();
+    text_frame->print_text_buffer();
     current_display->show(&text_frame->pixel_memory, 0, 0);
     sprintf(text_frame->text_buffer, "\t[%-7s]\n", s);
-    text_frame->print_text();
+    text_frame->print_text_buffer();
     current_display->show(&text_frame->pixel_memory, 0, 0);
     sprintf(text_frame->text_buffer, "\t[%*s]\n", 7, s);
-    text_frame->print_text();
+    text_frame->print_text_buffer();
     current_display->show(&text_frame->pixel_memory, 0, 0);
     text_frame->print_text("\ttruncating:\n");
     current_display->show(&text_frame->pixel_memory, 0, 0);
     sprintf(text_frame->text_buffer, "\t%.4s\n", s);
-    text_frame->print_text();
+    text_frame->print_text_buffer();
     current_display->show(&text_frame->pixel_memory, 0, 0);
     sprintf(text_frame->text_buffer, "\t\t%.*s\n", 3, s);
-    text_frame->print_text();
+    text_frame->print_text_buffer();
     current_display->show(&text_frame->pixel_memory, 0, 0);
     sleep_ms(LONG_DELAY);
 
-    current_display->clear_full_screen();
+    current_display->clear_device_screen_buffer();
     text_frame->clear_text_buffer();
     sprintf(text_frame->text_buffer, "Characters: %c %%", 'A');
-    text_frame->print_text();
+    text_frame->print_text_buffer();
     current_display->show(&text_frame->pixel_memory, 0, 0);
     sleep_ms(LONG_DELAY);
 
-    current_display->clear_full_screen();
+    current_display->clear_device_screen_buffer();
     text_frame->update_text_buffer_size(font_5x8);
     text_frame->clear_text_buffer();
 
     text_frame->print_text("Integers:\n");
     sprintf(text_frame->text_buffer, "\tDec:  %i %d %.3i %i %.0i %+i %i\n", 1, 2, 3, 0, 0, 4, -4);
-    text_frame->print_text();
+    text_frame->print_text_buffer();
     sprintf(text_frame->text_buffer, "\tHex:  %x %x %X %#x\n", 5, 10, 10, 6);
-    text_frame->print_text();
+    text_frame->print_text_buffer();
     sprintf(text_frame->text_buffer, "\tOct:    %o %#o %#o\n", 10, 10, 4);
-    text_frame->print_text();
+    text_frame->print_text_buffer();
     text_frame->print_text("Floating point:\n");
     sprintf(text_frame->text_buffer, "\tRnd:  %f %.0f %.3f\n", 1.5, 1.5, 1.5);
-    text_frame->print_text();
+    text_frame->print_text_buffer();
     sprintf(text_frame->text_buffer, "\tPad:  %05.2f %.2f %5.2f\n", 1.5, 1.5, 1.5);
-    text_frame->print_text();
+    text_frame->print_text_buffer();
     sprintf(text_frame->text_buffer, "\tSci:  %.3E %.1e\n", 1.5, 1.5);
-    text_frame->print_text();
+    text_frame->print_text_buffer();
     current_display->show(&text_frame->pixel_memory, 0, 0);
     sleep_ms(LONG_DELAY);
 
-    current_display->clear_full_screen();
+    current_display->clear_device_screen_buffer();
 
     text_frame->update_text_buffer_size(font_8x8);
 
@@ -273,22 +278,24 @@ void test_sprintf_format(SSD1306 *current_display)
     current_display->show(&text_frame->pixel_memory, 0, 0);
 
     sleep_ms(LONG_DELAY);
+    current_display->clear_device_screen_buffer();
 
     delete text_frame;
-    current_display->clear_full_screen();
 
-    text_frame_cfg = {
+    struct_ConfigTextFramebuffer text_frame2_cfg = {
+        .number_of_column =7,
+        .number_of_line = 2,
         .font = font_12x16,
-        .wrap = true};
-    TextualFrameBuffer *text_frame2 = new TextualFrameBuffer(current_display, 7, 2, text_frame_cfg);
+        .wrap = false};
+    TextualFrameBuffer *text_frame2 = new TextualFrameBuffer(current_display, text_frame2_cfg);
 
-    text_frame2->print_text(" 090\b:56\n"); // test effect of BACKSPACE
+    text_frame2->print_text(" 09:56\n"); 
     text_frame2->print_text("03JAN24");
     current_display->show(&text_frame2->pixel_memory, 22, 16);
     delete text_frame2;
 
     sleep_ms(INTER_TEST_DELAY);
-    current_display->clear_full_screen();
+    current_display->clear_device_screen_buffer();
     /*
     undefined result for the used compiler
     printf("\tHexadecimal:\t%a %A\n", 1.5, 1.5);
@@ -307,7 +314,7 @@ void test_sprintf_format(SSD1306 *current_display)
 void test_ostringstream_format(SSD1306 *current_display)
 {
 
-    current_display->clear_full_screen();
+    current_display->clear_device_screen_buffer();
 
     const unsigned char *current_font{font_5x8};
 
@@ -315,7 +322,7 @@ void test_ostringstream_format(SSD1306 *current_display)
         .font = current_font,
         .wrap = false};
 
-    TextualFrameBuffer text_frame = TextualFrameBuffer( SSD1306_WIDTH, SSD1306_HEIGHT, current_display, txt_conf);
+    TextualFrameBuffer text_frame = TextualFrameBuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, txt_conf);
 
     int n = 42;
     float f = std::numbers::pi;
@@ -345,7 +352,7 @@ void test_ostringstream_format(SSD1306 *current_display)
     current_display->show(&text_frame.pixel_memory, 0, 0);
 
     sleep_ms(INTER_TEST_DELAY);
-    current_display->clear_full_screen();
+    current_display->clear_device_screen_buffer();
 }
 
 int main()
@@ -354,8 +361,8 @@ int main()
     HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
     SSD1306 left_display = SSD1306(&master, cfg_left_screen);
     SSD1306 right_display = SSD1306(&master, cfg_right_screen);
-    left_display.clear_full_screen();
-    right_display.clear_full_screen();
+    left_display.clear_device_screen_buffer();
+    right_display.clear_device_screen_buffer();
 
     while (true)
     {

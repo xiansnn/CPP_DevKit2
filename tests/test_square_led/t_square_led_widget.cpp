@@ -22,7 +22,7 @@ private:
 
 public:
     MyWidgetSquareLed(MySquareLedModel *actual_displayed_model,
-                      GraphicDisplayDevice *display_screen,
+                      GraphicDisplayDevice *graphic_display_screen,
                       struct_ConfigGraphicFramebuffer graph_cfg,
                       uint8_t widget_anchor_x,
                       uint8_t widget_anchor_y);
@@ -34,18 +34,18 @@ public:
  * @brief Construct a new test square led widget::test square led widget object
  *
  * @param actual_displayed_model
- * @param display_screen
+ * @param graphic_display_screen
  * @param width
  * @param height
  * @param widget_anchor_x
  * @param widget_anchor_y
  */
 MyWidgetSquareLed::MyWidgetSquareLed(MySquareLedModel *actual_displayed_model,
-                                     GraphicDisplayDevice *display_screen,
+                                     GraphicDisplayDevice *graphic_display_screen,
                                      struct_ConfigGraphicFramebuffer graph_cfg,
                                      uint8_t widget_anchor_x,
                                      uint8_t widget_anchor_y)
-    : WidgetSquareLed(actual_displayed_model,display_screen, graph_cfg, widget_anchor_x, widget_anchor_y)
+    : WidgetSquareLed(actual_displayed_model,graphic_display_screen, graph_cfg, widget_anchor_x, widget_anchor_y)
 {
     this->actual_displayed_model = actual_displayed_model;
 }
@@ -83,7 +83,7 @@ void MyWidgetSquareLed::draw_refresh()
             rect(0, 0, pixel_memory.frame_width, pixel_memory.frame_height, true, PixelColor::BLACK);
             draw_border();
         }
-        this->display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
+        this->graphic_display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
         this->actual_displayed_model->clear_change_flag();
     }
 }

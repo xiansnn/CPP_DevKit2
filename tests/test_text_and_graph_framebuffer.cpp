@@ -59,8 +59,8 @@ int main()
     HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
     SSD1306 values_display = SSD1306(&master, cfg_left_screen);
     SSD1306 visu_display = SSD1306(&master, cfg_right_screen);
-    values_display.clear_full_screen();
-    visu_display.clear_full_screen();
+    values_display.clear_device_screen_buffer();
+    visu_display.clear_device_screen_buffer();
 
     struct_ConfigTextFramebuffer title_config = {
         .number_of_column = 10,
@@ -113,7 +113,7 @@ int main()
             roll = i;
             pitch = sign * i / 4;
             sprintf(values.text_buffer, "%+3d\xF8  %+3d\xF8", roll, pitch);
-            values.print_text();
+            values.print_text_buffer();
             values_display.show(&values.pixel_memory, values_area_anchor_x, values_area_anchor_y);
             values.print_char(FORM_FEED);
             pr_D6.lo(); // 9ms

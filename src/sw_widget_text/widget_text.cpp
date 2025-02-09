@@ -19,7 +19,7 @@ void WidgetText::draw_border(PixelColor c)
 
 void WidgetText::set_display_screen(GraphicDisplayDevice *_new_display_device)
 {
-    this->display_screen = _new_display_device;
+    this->graphic_display_screen = _new_display_device;
 }
 
 void WidgetText::set_blink_us(uint32_t blink_period)
@@ -39,7 +39,7 @@ WidgetText::WidgetText(UIModelObject *_text_model,
 {
     assert(this->pixel_memory.frame_height % 8 == 0); // check widget height limitation
     assert(_widget_anchor_y % 8 == 0);                // check widget anchor y limitation
-    this->display_screen = _display_screen;
+    this->graphic_display_screen = _display_screen;
     this->actual_displayed_model = _text_model;
 
     this->widget_anchor_x = _widget_anchor_x;
@@ -56,7 +56,7 @@ WidgetText::WidgetText(UIModelObject *_text_model,
 WidgetText::~WidgetText()
 {
     delete actual_displayed_model;
-    delete display_screen;
+    delete graphic_display_screen;
 }
 
 void WidgetText::set_actual_displayed_object(UIModelObject *model_text)
@@ -77,7 +77,7 @@ void WidgetText::draw_refresh()
     {
         this->print_text(this->text_buffer);
         this->draw_border();
-        this->display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
+        this->graphic_display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
     }
     this->actual_displayed_model->clear_change_flag();
 }

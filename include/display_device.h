@@ -103,28 +103,20 @@ struct struct_ConfigTextFramebuffer
     bool auto_next_char{true};
 };
 
-/**
- * @brief the generic abstract class for display devices
- *
- */
+/// @brief the generic abstract class for physical display devices
 class DisplayDevice
 {
 private:
-    /* data */
+
 public:
-    DisplayDevice();
+
+    /// @brief the physical width of the screen (in pixel)
+    size_t screen_width;
+    /// @brief the physical height of the screen (in pixel)
+    size_t screen_height;
+
+    DisplayDevice(size_t screen_width, size_t screen_height);
     ~DisplayDevice();
-    /**
-     * @brief A pure virtual member function.
-     * It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.
-     * This method implements all peculiarities of the actual display device.
-     *
-     * @param pixel_memory_structure a pointer to the struct_PixelMemory that contains the pixel_buffer to be displayed
-     * @param anchor_x the x (horizontal)starting position of the frame within the display screen, (in pixel)
-     * @param anchor_y the y (vertical) starting position of the frame within the display screen, (in pixel)
-     */
-    virtual void show(struct_PixelMemory *pixel_memory_structure,
-                      uint8_t anchor_x, uint8_t anchor_y) = 0;
 };
 
 /**
@@ -137,8 +129,17 @@ class GraphicDisplayDevice : public DisplayDevice
 {
 protected:
 public:
-    /// @brief the data structure of the pixel buffer
-    struct_PixelMemory pixel_memory;
+    /**
+     * @brief A pure virtual member function.
+     * It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.
+     * This method implements all peculiarities of the actual display device.
+     *
+     * @param pixel_memory a pointer to the struct_PixelMemory that contains the pixel_buffer to be displayed
+     * @param anchor_x the x(horizontal) starting position of the frame within the display screen,(in pixel)
+     * @param anchor_y the y(vertical) starting position of the frame within the display screen, (in pixel)
+     * @return void
+     */
+    virtual void show(struct_PixelMemory *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y) = 0;
 
     /**
      * @brief Construct a new Display Device object
@@ -146,8 +147,8 @@ public:
      * @param width The width of physical screen, in pixel
      * @param height The height of physical screen, in pixel.
      */
-    GraphicDisplayDevice(size_t width,
-                         size_t height);
+    GraphicDisplayDevice(size_t screen_width,
+                         size_t screen_height);
 
     /**
      * @brief Destroy the Display Device object
@@ -175,51 +176,29 @@ public:
     /**
      * @brief the graphic primitive to draw a pixel
      *
-     * @param pixel_memory_structure
+     * @param pixel_memory
      * @param x the x position of the pixel
      * @param y the y position of the pixel
      * @param color the color of the pixel
      */
-    virtual void pixel(struct_PixelMemory *pixel_memory_structure,
-                       int x, int y,
-                       PixelColor color = PixelColor::WHITE) = 0;
+    virtual void pixel(struct_PixelMemory *pixel_memory,
+                       const int x, const int y,
+                       const PixelColor color = PixelColor::WHITE) = 0;
 
     /**
      * @brief a graphic primitive to draw a character at a pixel position
      * \note : DrawChar() implementation depends strongly on the FramebufferFormat.
      *
-     * @param pixel_memory_structure
+     * @param pixel_memory
      * @param text_config the configuration file of the text framebuffer
      * @param character the character to draw
      * @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
      * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
      */
-    virtual void drawChar(struct_PixelMemory *pixel_memory_structure,
-                          struct_ConfigTextFramebuffer *text_config,
-                          char character,
-                          uint8_t anchor_x, uint8_t anchor_y) = 0;
-};
-
-/// @brief A class used to write text on a graphic display
-class TextDisplayDevice : public GraphicDisplayDevice
-{
-private:
-public:
-    /**
-     * @brief Construct a new Text Display Device object
-     *
-     * @param number_of_char_width the size, in number of character of a line
-     * @param number_of_char_hight the number of line
-     */
-    TextDisplayDevice(size_t number_of_char_width,
-                      size_t number_of_char_hight);
-    ~TextDisplayDevice();
-    /**
-     * @brief A pure virtual method. Simply copy the text characters to the text buffer
-     *
-     * @param text_string the character string
-     */
-    virtual void print(char *text_string) = 0;
+    virtual void drawChar(struct_PixelMemory *pixel_memory,
+                          const struct_ConfigTextFramebuffer *text_config,
+                          const char character,
+                          const uint8_t anchor_x, const uint8_t anchor_y) = 0;
 };
 
 /**

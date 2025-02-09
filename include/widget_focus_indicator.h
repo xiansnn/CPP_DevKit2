@@ -28,7 +28,7 @@ public:
      * @brief Construct a new Widget Focus Indicator object
      * 
      * @param actual_displayed_model  a pointer to the displayed model
-     * @param display_screen  a pointer to the dispaly device
+     * @param graphic_display_screen  a pointer to the dispaly device
      * @param width the width of the widget
      * @param height the height of the widget
      * @param widget_anchor_x the x-location where is the widget on the display device
@@ -36,9 +36,8 @@ public:
      * @param with_border true, if the widget has a border (usually, it's prettier not to have)
      */
     WidgetFocusIndicator(UIModelObject *actual_displayed_model,
-                     GraphicDisplayDevice *display_screen,
-                     size_t width,
-                     size_t height,
+                     GraphicDisplayDevice *graphic_display_screen,
+                     struct_ConfigGraphicFramebuffer graph_cfg,
                      uint8_t widget_anchor_x,
                      uint8_t widget_anchor_y,
                      bool with_border);

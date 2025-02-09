@@ -75,7 +75,7 @@ int main()
     square_led.set_blink_us(500000);
 
     /// 6- clean up the screen and draw the border of the screen
-    display.clear_full_screen();
+    display.clear_device_screen_buffer();
 
     pr_D4.lo();
 

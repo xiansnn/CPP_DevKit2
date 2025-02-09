@@ -24,7 +24,6 @@ SSD1306::SSD1306(HW_I2C_Master *master, struct_ConfigSSD1306 init_config)
 {
     this->i2c_master = master;
     this->device_config = init_config;
-    create_pixel_buffer(&this->pixel_memory);
     this->init();
 }
 
@@ -76,7 +75,7 @@ void SSD1306::fill_pattern_and_show_GDDRAM(uint8_t pattern, struct_RenderArea ar
     this->show_render_area(image, area);
 }
 
-void SSD1306::clear_full_screen()
+void SSD1306::clear_device_screen_buffer()
 {
     struct_RenderArea area = compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
     fill_pattern_and_show_GDDRAM(0, area);
@@ -146,13 +145,13 @@ void SSD1306::clear_pixel_buffer(struct_PixelMemory *pixel_memory)
     memset(pixel_memory->pixel_buffer, 0x00, pixel_memory->pixel_buffer_size);
 }
 
-void SSD1306::fill(PixelColor c)
-{
-    if (c == PixelColor::BLACK)
-        memset(this->pixel_memory.pixel_buffer, 0x00, this->pixel_memory.pixel_buffer_size);
-    else
-        memset(this->pixel_memory.pixel_buffer, 0xFF, this->pixel_memory.pixel_buffer_size);
-}
+// void SSD1306::fill(PixelColor c)
+// {
+//     if (c == PixelColor::BLACK)
+//         memset(this->pixel_memory.pixel_buffer, 0x00, this->pixel_memory.pixel_buffer_size);
+//     else
+//         memset(this->pixel_memory.pixel_buffer, 0xFF, this->pixel_memory.pixel_buffer_size);
+// }
 
 void SSD1306::create_pixel_buffer(struct_PixelMemory *pixel_memory)
 {
@@ -162,11 +161,11 @@ void SSD1306::create_pixel_buffer(struct_PixelMemory *pixel_memory)
 
     pixel_memory->pixel_buffer_size = pixel_memory->frame_width * nb_of_pages;
 
-    pixel_memory->pixel_buffer = new uint8_t[this->pixel_memory.pixel_buffer_size];
+    pixel_memory->pixel_buffer = new uint8_t[pixel_memory->pixel_buffer_size];
     clear_pixel_buffer(pixel_memory);
 }
 
-void SSD1306::pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, PixelColor c)
+void SSD1306::pixel(struct_PixelMemory *pixel_memory_structure, const int x, const int y, const PixelColor c)
 {
     if (x >= 0 && x < pixel_memory_structure->frame_width && y >= 0 && y < pixel_memory_structure->frame_height) // avoid drawing outside the framebuffer
     {
@@ -183,7 +182,7 @@ void SSD1306::pixel(struct_PixelMemory *pixel_memory_structure, int x, int y, Pi
     }
 }
 
-void SSD1306::show(struct_PixelMemory *pixel_memory, uint8_t anchor_x, uint8_t anchor_y)
+void SSD1306::show(struct_PixelMemory *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y)
 {
     uint8_t end_col = anchor_x + pixel_memory->frame_width - 1;
     uint8_t end_line = anchor_y + pixel_memory->frame_height - 1;
@@ -194,7 +193,9 @@ void SSD1306::show(struct_PixelMemory *pixel_memory, uint8_t anchor_x, uint8_t a
     this->show_render_area(pixel_memory->pixel_buffer, this->compute_render_area(anchor_x, end_col, anchor_y, end_line));
 }
 
-void SSD1306::drawChar(struct_PixelMemory *pixel_memory_structure, struct_ConfigTextFramebuffer *text_config, char c, uint8_t anchor_x, uint8_t anchor_y)
+void SSD1306::drawChar(struct_PixelMemory *pixel_memory_structure,
+                       const struct_ConfigTextFramebuffer *text_config, 
+                       const char c, const uint8_t anchor_x, const uint8_t anchor_y)
 {
     if (!text_config->font || c < 32) // TODO voir pour construire une classe Font
         return;

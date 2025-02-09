@@ -75,7 +75,7 @@ void WidgetHorizontalBar::draw_refresh()
     {
         this->draw();
         this->draw_border();
-        this->display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
+        this->graphic_display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
         // this->bar_value_model->clear_change_flag(); // this is not the last widget, then we must not clear the change flag
     }
 }
