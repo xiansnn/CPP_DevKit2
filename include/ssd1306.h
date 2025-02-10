@@ -171,6 +171,9 @@ private:
     void send_buf(uint8_t buf[], size_t buflen);
 
 public:
+    void check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg,
+                                            uint8_t anchor_x = 0, uint8_t anchor_y = 0);
+
     void clear_pixel_buffer(struct_PixelMemory *pixel_memory);
     /**
      * @brief
@@ -203,10 +206,10 @@ public:
      */
     void show(struct_PixelMemory *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y);
 
-    void drawChar(struct_PixelMemory *pixel_memory_structure, 
-        const struct_ConfigTextFramebuffer *text_config, 
-        const char c, 
-        const uint8_t anchor_x, const uint8_t anchor_y);
+    void drawChar(struct_PixelMemory *pixel_memory_structure,
+                  const struct_ConfigTextFramebuffer *text_config,
+                  const char c,
+                  const uint8_t anchor_x, const uint8_t anchor_y);
 
     /**
      * @brief  when we need to show a render area with a given framebuffer
@@ -229,7 +232,7 @@ public:
      *  Uses fill_pattern_and_show_GDDRAM command.
      *
      */
-    void clear_device_screen_buffer(); 
+    void clear_device_screen_buffer();
     /**
      * @brief Set the contrast object. refer to datasheet of SSD1306 device.
      *
@@ -277,4 +280,3 @@ public:
      */
     void vertical_scroll(bool on, struct_ConfigScrollSSD1306 scroll_data);
 };
-

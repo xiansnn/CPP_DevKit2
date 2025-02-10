@@ -107,19 +107,17 @@ struct struct_ConfigTextFramebuffer
 class DisplayDevice
 {
 private:
-
 public:
-
     /// @brief the physical width of the screen (in pixel)
     size_t screen_width;
     /// @brief the physical height of the screen (in pixel)
     size_t screen_height;
-/**
- * @brief Construct a new Display Device object
- * 
- * @param screen_width the physical width of the screen (in pixel)
- * @param screen_height he physical height of the screen (in pixel)
- */
+    /**
+     * @brief Construct a new Display Device object
+     *
+     * @param screen_width the physical width of the screen (in pixel)
+     * @param screen_height he physical height of the screen (in pixel)
+     */
     DisplayDevice(size_t screen_width, size_t screen_height);
     ~DisplayDevice();
 };
@@ -134,6 +132,7 @@ class GraphicDisplayDevice : public DisplayDevice
 {
 protected:
 public:
+    virtual void check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg, uint8_t anchor_x = 0, uint8_t anchor_y = 0) = 0;
 
     /**
      * @brief A pure virtual member function.
@@ -142,9 +141,9 @@ public:
      *
      * @param pixel_memory a pointer to the struct_PixelMemory that contains the pixel_buffer to be displayed
      * @param anchor_x the x(horizontal) starting position of the frame within the display screen,(in pixel)
-     * @param anchor_y 
+     * @param anchor_y
      */
-     virtual void show(struct_PixelMemory *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y) = 0;
+    virtual void show(struct_PixelMemory *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y) = 0;
 
     /**
      * @brief Construct a new Display Device object

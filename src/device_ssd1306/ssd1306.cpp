@@ -140,18 +140,21 @@ void SSD1306::show_render_area(uint8_t *data_buffer, const struct_RenderArea scr
     }
 }
 
+void SSD1306::check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg, uint8_t anchor_x, uint8_t anchor_y)
+{
+    // check limit of screen
+    assert(anchor_y + framebuffer_cfg.frame_height <= SSD1306_HEIGHT);
+    assert(anchor_x + framebuffer_cfg.frame_width <= SSD1306_WIDTH);
+
+    //check that framebuffer fit on page height boundary
+    assert(framebuffer_cfg.frame_height % BYTE_SIZE == 0);
+    assert(anchor_y % BYTE_SIZE == 0);
+}
+
 void SSD1306::clear_pixel_buffer(struct_PixelMemory *pixel_memory)
 {
     memset(pixel_memory->pixel_buffer, 0x00, pixel_memory->pixel_buffer_size);
 }
-
-// void SSD1306::fill(PixelColor c)
-// {
-//     if (c == PixelColor::BLACK)
-//         memset(this->pixel_memory.pixel_buffer, 0x00, this->pixel_memory.pixel_buffer_size);
-//     else
-//         memset(this->pixel_memory.pixel_buffer, 0xFF, this->pixel_memory.pixel_buffer_size);
-// }
 
 void SSD1306::create_pixel_buffer(struct_PixelMemory *pixel_memory)
 {
@@ -187,14 +190,14 @@ void SSD1306::show(struct_PixelMemory *pixel_memory, const uint8_t anchor_x, con
     uint8_t end_col = anchor_x + pixel_memory->frame_width - 1;
     uint8_t end_line = anchor_y + pixel_memory->frame_height - 1;
 
-    assert(end_col <= SSD1306_WIDTH - 1);
-    assert(end_line <= SSD1306_HEIGHT - 1);
+    assert(anchor_x + pixel_memory->frame_width - 1 <= SSD1306_WIDTH - 1);
+    assert(anchor_y + pixel_memory->frame_height - 1 <= SSD1306_HEIGHT - 1);
 
     this->show_render_area(pixel_memory->pixel_buffer, this->compute_render_area(anchor_x, end_col, anchor_y, end_line));
 }
 
 void SSD1306::drawChar(struct_PixelMemory *pixel_memory_structure,
-                       const struct_ConfigTextFramebuffer *text_config, 
+                       const struct_ConfigTextFramebuffer *text_config,
                        const char c, const uint8_t anchor_x, const uint8_t anchor_y)
 {
     if (!text_config->font || c < 32) // TODO voir pour construire une classe Font
