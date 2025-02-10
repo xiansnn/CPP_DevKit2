@@ -37,6 +37,7 @@ public:
                   const char character,
                   const uint8_t anchor_x, const uint8_t anchor_y);
     void print(char *text_string);
+    void check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg, uint8_t anchor_x = 0, uint8_t anchor_y = 0);
 };
 
 MyDummyDisplayDevice::MyDummyDisplayDevice(size_t line_width)
@@ -71,6 +72,11 @@ void MyDummyDisplayDevice::drawChar(struct_PixelMemory *pixel_memory, const stru
 void MyDummyDisplayDevice::print(char *text_string)
 {
 }
+
+void MyDummyDisplayDevice::check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg, uint8_t anchor_x, uint8_t anchor_y)
+{
+}
+
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of test_IncrementalValue on the serial monitor
@@ -137,7 +143,7 @@ struct_ConfigGraphicFramebuffer default_cfg{
 
 MyIncrementalValueWidgetOnSerialMonitor::MyIncrementalValueWidgetOnSerialMonitor(MyDummyDisplayDevice *line_printer,
                                                                                  MyIncrementalValueModel *_actual_displayed_object)
-    : Widget((GraphicDisplayDevice *)line_printer, default_cfg, 0, 0, false)
+    : Widget((GraphicDisplayDevice *)line_printer, _actual_displayed_object, default_cfg, 0, 0, false)
 {
     this->actual_displayed_object = _actual_displayed_object;
 
@@ -182,7 +188,7 @@ int MyIncrementalValueWidgetOnSerialMonitor::value_to_char_position()
 }
 
 MyManagerWidget::MyManagerWidget(MyDummyDisplayDevice *line_printer, MyManager *_manager)
-    : Widget((GraphicDisplayDevice *)line_printer, default_cfg, 0, 0, false)
+    : Widget((GraphicDisplayDevice *)line_printer, _manager, default_cfg, 0, 0, false)
 {
     this->actual_displayed_object = _manager;
 }
@@ -213,7 +219,7 @@ void MySetOfWidget::draw_refresh()
 }
 
 MySetOfWidget::MySetOfWidget(MyDummyDisplayDevice *line_printer)
-    : Widget((GraphicDisplayDevice *)line_printer, default_cfg, 0, 0, false)
+    : Widget((GraphicDisplayDevice *)line_printer, nullptr, default_cfg, 0, 0, false)
 {
 }
 
