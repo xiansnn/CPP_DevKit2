@@ -290,7 +290,7 @@ public:
      *
      * @param c_str A C_style character string.
      */
-    void print_text(const char *c_str);
+    void print_text(const char *c_str); // TODO a remplacer par un draw
     /**
      * @brief convert the c character to the current line and column character position.
      *

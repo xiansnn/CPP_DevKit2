@@ -34,6 +34,7 @@ GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *display_device,
     this->bg_color = text_cfg.bg_color;
     this->pixel_memory.frame_height = frame_height;
     this->pixel_memory.frame_width = frame_width;
+    //TODO check
     display_device->create_pixel_buffer(&this->pixel_memory);
 }
 
@@ -51,7 +52,8 @@ GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *device,
 
 GraphicFramebuffer::~GraphicFramebuffer()
 {
-}
+    delete[] this->pixel_memory.pixel_buffer;
+} 
 
 void GraphicFramebuffer::fill(struct_PixelMemory *pixel_memory, PixelColor c)
 {
