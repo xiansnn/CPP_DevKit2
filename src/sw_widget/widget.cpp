@@ -11,24 +11,27 @@
 
 #include "widget.h"
 
-void Widget::draw_border(PixelColor c) 
+void Widget::draw_border(PixelColor c)
 {
     if (this->widget_with_border)
         rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width);
 }
 
-Widget::Widget(GraphicDisplayDevice *_display_screen,
+Widget::Widget(GraphicDisplayDevice *display_screen,
+               UIModelObject *displayed_object,
                struct_ConfigGraphicFramebuffer graph_cfg,
-               uint8_t _widget_anchor_x,
-               uint8_t _widget_anchor_y,
-               bool _widget_with_border )
-    : GraphicFramebuffer(_display_screen, graph_cfg)
+               uint8_t widget_anchor_x,
+               uint8_t widget_anchor_y,
+               bool widget_with_border)
+    : GraphicFramebuffer(display_screen, graph_cfg)
 {
-    assert(graph_cfg.frame_height % 8 == 0);    // TODO a porter dans ssd1306 check widget height limitation
-    assert(_widget_anchor_y % 8 == 0); // TODO a porter dans ssd1306 check widget anchor y limitation
-    this->widget_anchor_x = _widget_anchor_x;
-    this->widget_anchor_y = _widget_anchor_y;
-    this->widget_with_border = _widget_with_border;
+    display_screen->check_display_device_compatibility(graph_cfg, widget_anchor_x, widget_anchor_y);
+
+    this->actual_displayed_model = displayed_object;
+
+    this->widget_anchor_x = widget_anchor_x;
+    this->widget_anchor_y = widget_anchor_y;
+    this->widget_with_border = widget_with_border;
     this->widget_border_width = (widget_with_border) ? 1 : 0;
 
     widget_start_x = widget_border_width;
@@ -39,11 +42,6 @@ Widget::Widget(GraphicDisplayDevice *_display_screen,
 
 Widget::~Widget()
 {
-}
-
-void Widget::set_actual_displayed_object(UIModelObject *displayed_object)
-{
-    this->actual_displayed_model = displayed_object;
 }
 
 void Widget::set_display_screen(GraphicDisplayDevice *_new_display_device)

@@ -71,9 +71,8 @@ WidgetHorizontalBargraph::WidgetHorizontalBargraph(ModelBargraph *bargraph_model
                                                    uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                                    bool widget_with_border,
                                                    uint8_t _bar_spacing)
-    : Widget(graphic_display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
+    : Widget(graphic_display_screen, bargraph_model, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
 {
-    set_actual_displayed_object(bargraph_model);
     this->bar_spacing = _bar_spacing;
 
     uint8_t bin_quantity = ((ModelBargraph *)actual_displayed_model)->number_of_bar;
@@ -160,9 +159,8 @@ WidgetVerticalBargraph::WidgetVerticalBargraph(ModelBargraph *bargraph_model,
                                                uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                                bool widget_with_border,
                                                uint8_t _bar_spacing)
-    : Widget(graphic_display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
+    : Widget(graphic_display_screen, bargraph_model, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
 {
-    set_actual_displayed_object(bargraph_model);
     this->bar_spacing = _bar_spacing;
 
     uint8_t bin_quantity = ((ModelBargraph *)actual_displayed_model)->number_of_bar;

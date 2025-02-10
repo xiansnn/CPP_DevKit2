@@ -19,7 +19,6 @@ WidgetFocusIndicator::WidgetFocusIndicator(UIModelObject *actual_displayed_model
                       graph_cfg,
                       widget_anchor_x, widget_anchor_y, with_border)
 {
-    this->actual_displayed_model = actual_displayed_model;
     this->led_is_blinking = false;
     this->led_is_on = true;
 }

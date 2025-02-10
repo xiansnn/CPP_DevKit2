@@ -6,9 +6,9 @@ WidgetSquareLed::WidgetSquareLed(UIModelObject *actual_displayed_model,
                                  uint8_t widget_anchor_x,
                                  uint8_t widget_anchor_y,
                                  bool widget_with_border)
-    : Widget(display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
+    : Widget(display_screen, actual_displayed_model, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
 {
-    this->set_actual_displayed_object(actual_displayed_model);
+
 }
 
 WidgetSquareLed::~WidgetSquareLed()

@@ -79,8 +79,8 @@ protected:
     /// @brief draw a rectangle around the widget.
     /// IMPORTANT NOTICE: as the border is a rectangle with fill=false, the border width can only be 1 pixel.
     /// @param c the color of the border
-    void draw_border(PixelColor c = PixelColor::WHITE); // TODO a inclure dans draw qui est dans draw_refresh
-
+    void draw_border(PixelColor c = PixelColor::WHITE); 
+    
 public:
     /// @brief location in x of the widget within the hosting framebuffer
     uint8_t widget_anchor_x;
@@ -112,6 +112,7 @@ public:
      * \image html widget.png
      */
     Widget(GraphicDisplayDevice *graphic_display_screen,
+           UIModelObject *displayed_object,
            struct_ConfigGraphicFramebuffer graph_cfg,
            uint8_t widget_anchor_x,
            uint8_t widget_anchor_y,
@@ -121,10 +122,7 @@ public:
      */
     ~Widget();
 
-    /// @brief initialise the link to the UIModelObject
-    /// @param displayed_object
-    void set_actual_displayed_object(UIModelObject *displayed_object);
-    /**
+     /**
      * @brief  add sub_widget to the current widget
      *
      * @param _sub_widget
