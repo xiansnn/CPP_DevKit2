@@ -1,6 +1,7 @@
 var class_s_s_d1306 =
 [
     [ "SSD1306", "class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b", null ],
+    [ "check_display_device_compatibility", "class_s_s_d1306.html#a7242be5e60f699b21eb33a5fc399c595", null ],
     [ "clear_device_screen_buffer", "class_s_s_d1306.html#a646463128f966a04b1746e3389819711", null ],
     [ "clear_pixel_buffer", "class_s_s_d1306.html#ae8806883d7ce6ba32bb5ed8c7a5a1282", null ],
     [ "compute_render_area", "class_s_s_d1306.html#a946d97970d11c778a09e0f1305591b3f", null ],

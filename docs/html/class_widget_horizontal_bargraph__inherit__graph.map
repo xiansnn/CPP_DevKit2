@@ -1,7 +1,7 @@
 <map id="WidgetHorizontalBargraph" name="WidgetHorizontalBargraph">
-<area shape="rect" id="Node000001" title="the widget that display an horizontal bargraph" alt="" coords="33,865,497,1160"/>
-<area shape="rect" id="Node000002" href="$class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="38,387,491,817"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="267,832,267,865,262,865,262,832"/>
+<area shape="rect" id="Node000001" title="the widget that display an horizontal bargraph" alt="" coords="33,860,497,1155"/>
+<area shape="rect" id="Node000002" href="$class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="27,387,502,812"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="267,827,267,860,262,860,262,827"/>
 <area shape="rect" id="Node000003" href="$class_graphic_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,5,524,339"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="267,354,267,387,262,387,262,354"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="267,353,267,387,262,387,262,353"/>
 </map>

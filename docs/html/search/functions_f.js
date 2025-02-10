@@ -3,7 +3,7 @@ var searchData=
   ['send_5fbuf_0',['send_buf',['../class_s_s_d1306.html#a617bac0b0002b299b129bc9e84772af7',1,'SSD1306']]],
   ['send_5fcmd_1',['send_cmd',['../class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08',1,'SSD1306']]],
   ['send_5fcmd_5flist_2',['send_cmd_list',['../class_s_s_d1306.html#abba4af0c315a9fdcab52d32acc11ab97',1,'SSD1306']]],
-  ['set_5factual_5fdisplayed_5fobject_3',['set_actual_displayed_object',['../class_widget.html#afa715d3f4cfd0317fc1a021277233ed2',1,'Widget::set_actual_displayed_object()'],['../class_widget_text.html#ac760e83c5e65132dbe69bdb0ef6dc339',1,'WidgetText::set_actual_displayed_object()']]],
+  ['set_5factual_5fdisplayed_5fobject_3',['set_actual_displayed_object',['../class_widget_text.html#ac760e83c5e65132dbe69bdb0ef6dc339',1,'WidgetText']]],
   ['set_5fall_5fpixel_5fon_4',['set_all_pixel_ON',['../class_s_s_d1306.html#aee29b36a9af5d427c0665dfaf942445e',1,'SSD1306']]],
   ['set_5fblink_5fus_5',['set_blink_us',['../class_widget.html#a1b87a3fbf35b6bc94b55ed0934a192d8',1,'Widget::set_blink_us()'],['../class_widget_text.html#a35e300401c68b44f5fd856244999fdf9',1,'WidgetText::set_blink_us()']]],
   ['set_5fchange_5fflag_6',['set_change_flag',['../class_u_i_model_object.html#a2d8608d80b226fde8b31becdc828171b',1,'UIModelObject']]],

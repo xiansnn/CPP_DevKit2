@@ -1,12 +1,11 @@
 var class_widget =
 [
-    [ "Widget", "class_widget.html#a5b1f0a392f486e938d23e5268e84d3ee", null ],
+    [ "Widget", "class_widget.html#a3d2f03b2371a7b4010a65153c2e65a13", null ],
     [ "~Widget", "class_widget.html#aa24f66bcbaaec6d458b0980e8c8eae65", null ],
     [ "add_widget", "class_widget.html#a6d08d01ec5ea290b39ae26963ae7e460", null ],
     [ "blinking_phase_has_changed", "class_widget.html#a1e64f6cb46adddfd6a4df1aab5c95b2a", null ],
     [ "draw_border", "class_widget.html#acd8c9a67a8dff5468525e18f94626d0b", null ],
     [ "draw_refresh", "class_widget.html#a2c09dd7088b55760256ce6e1cb0dd426", null ],
-    [ "set_actual_displayed_object", "class_widget.html#afa715d3f4cfd0317fc1a021277233ed2", null ],
     [ "set_blink_us", "class_widget.html#a1b87a3fbf35b6bc94b55ed0934a192d8", null ],
     [ "set_display_screen", "class_widget.html#a4f2bab8b83b4eec8cad0bd2983905118", null ],
     [ "actual_displayed_model", "class_widget.html#a8b0bef7792608303410cbff0063d7e0a", null ],

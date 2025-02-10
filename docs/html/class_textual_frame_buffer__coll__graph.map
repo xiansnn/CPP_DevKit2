@@ -1,13 +1,13 @@
 <map id="TextualFrameBuffer" name="TextualFrameBuffer">
-<area shape="rect" id="Node000001" title="the place where all textual primitive are placed" alt="" coords="397,776,850,1169"/>
-<area shape="rect" id="Node000002" href="$class_graphic_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="184,418,703,714"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="517,727,539,775,534,777,512,729"/>
-<area shape="rect" id="Node000003" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,153,529,356"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="327,354,354,402,349,405,322,357"/>
+<area shape="rect" id="Node000001" title="the place where all textual primitive are placed" alt="" coords="397,809,850,1203"/>
+<area shape="rect" id="Node000002" href="$class_graphic_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="184,451,703,747"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="517,760,539,809,534,811,512,762"/>
+<area shape="rect" id="Node000003" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,153,529,389"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="333,388,358,435,354,438,328,390"/>
 <area shape="rect" id="Node000004" href="$class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="119,5,415,104"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="270,119,270,153,265,153,265,119"/>
-<area shape="rect" id="Node000005" href="$structstruct___pixel_memory.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="554,196,687,313"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="590,314,538,405,534,402,586,312"/>
-<area shape="rect" id="Node000006" href="$structstruct___config_text_framebuffer.html" title="the data sttructure used to configure textual widget" alt="" coords="727,470,882,662"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="765,663,720,762,715,760,760,660"/>
+<area shape="rect" id="Node000005" href="$structstruct___pixel_memory.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="554,213,687,330"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="592,331,534,437,529,435,587,328"/>
+<area shape="rect" id="Node000006" href="$structstruct___config_text_framebuffer.html" title="the data sttructure used to configure textual widget" alt="" coords="727,503,882,695"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="765,696,720,795,715,793,760,694"/>
 </map>
