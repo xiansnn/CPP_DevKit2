@@ -42,7 +42,7 @@ MyHorizontalBarWidgetWithFocus::MyHorizontalBarWidgetWithFocus(MyHorizontalBarMo
                                                                int max_value, int min_value,
                                                                struct_ConfigGraphicFramebuffer graph_cfg,
                                                                uint8_t widget_anchor_x, uint8_t widget_anchor_y)
-    : Widget(graphic_display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, false)
+    : Widget(graphic_display_screen, bar_value_model, graph_cfg, widget_anchor_x, widget_anchor_y, false)
 
 {
     this->bar_value_model = bar_value_model;

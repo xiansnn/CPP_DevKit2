@@ -97,7 +97,7 @@ MySquareLEDWidgetWithFocus::MySquareLEDWidgetWithFocus(MySquareLedModel *actual_
                                                        struct_ConfigGraphicFramebuffer graph_cfg,
                                                        uint8_t widget_anchor_x,
                                                        uint8_t widget_anchor_y)
-    : Widget(display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, true)
+    : Widget(display_screen, actual_displayed_model, graph_cfg, widget_anchor_x, widget_anchor_y, true)
 {
 #define FOCUS_OFFSET 8
 #define FOCUS_WIDTH 5
@@ -166,9 +166,9 @@ MyFocusLedWidget::MyFocusLedWidget(MySquareLedModel *actual_displayed_model,
                                    GraphicDisplayDevice *display_screen,
                                    struct_ConfigGraphicFramebuffer graph_cfg,
                                    uint8_t widget_anchor_x, uint8_t widget_anchor_y)
-    : WidgetSquareLed(actual_displayed_model,display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, false)
+    : WidgetSquareLed(actual_displayed_model, display_screen, graph_cfg, widget_anchor_x, widget_anchor_y, false)
 {
-    this->actual_displayed_model = actual_displayed_model;
+    // this->actual_displayed_model = actual_displayed_model;
     this->led_is_blinking = false;
     this->led_is_on = true;
 }
