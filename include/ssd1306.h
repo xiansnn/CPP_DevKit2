@@ -171,6 +171,7 @@ private:
     void send_buf(uint8_t buf[], size_t buflen);
 
 public:
+
     void check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg,
                                             uint8_t anchor_x = 0, uint8_t anchor_y = 0);
 

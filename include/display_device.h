@@ -132,7 +132,15 @@ class GraphicDisplayDevice : public DisplayDevice
 {
 protected:
 public:
-    virtual void check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg, uint8_t anchor_x = 0, uint8_t anchor_y = 0) = 0;
+    /**
+     * @brief check the compatibility of the framebuffer and widget parameter with the physical lilitation of the display device
+     *
+     * @param framebuffer_cfg the framebuffer configuration data
+     * @param anchor_x the anchor of the widget along x-axis (default to 0)
+     * @param anchor_y the anchor of the widget along y-axis (default to 0)
+     */
+    virtual void check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg,
+                                                    uint8_t anchor_x = 0, uint8_t anchor_y = 0) = 0;
 
     /**
      * @brief A pure virtual member function.

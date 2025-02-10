@@ -101,17 +101,19 @@ public:
      */
     void set_blink_us(uint32_t blink_period = 1000000);
 
+   
     /**
      * @brief Construct a new Widget object
-     *
-     * @param graphic_display_screen    The display device on which the widget is drawn.
+     * 
+     * @param graphic_display_screen The display device on which the widget is drawn.
+     * @param displayed_object the displayed object of the widget
      * @param graph_cfg the configuration data structure of the graphic framebuffer
-     * @param widget_anchor_x  the horizontal position where the widget start on the device screen
-     * @param widget_anchor_y  the vertical position where the widget start on the device screen
-     * @param widget_with_border  The flag that indicates whether the widget has a border or not
-     * \image html widget.png
-     */
-    Widget(GraphicDisplayDevice *graphic_display_screen,
+     * @param widget_anchor_x the horizontal position where the widget start on the device screen
+     * @param widget_anchor_y the verticaThe flag that indicates whether the widget has a border or notl position where the widget start on the device screen
+     * @param widget_with_border 
+    * \image html widget.png
+    */
+     Widget(GraphicDisplayDevice *graphic_display_screen,
            UIModelObject *displayed_object,
            struct_ConfigGraphicFramebuffer graph_cfg,
            uint8_t widget_anchor_x,
