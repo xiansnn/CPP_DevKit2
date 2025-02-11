@@ -214,10 +214,10 @@ public:
 };
 
 /**
- * @brief A clas dedicated to pure text display such as console, printer, ASCII character line display
+ * @brief A class dedicated to pure text display such as console, printer, ASCII character line display
  *
  */
-class PrinterDevice : DisplayDevice
+class PrinterDevice : public DisplayDevice
 {
 private:
     /// @brief the data structure of the text memory

@@ -19,68 +19,9 @@
 #include <sstream>
 #include <string>
 
-class MyDummyDisplayDevice : public GraphicDisplayDevice
-{
-private:
-    /* data */
-public:
-    MyDummyDisplayDevice(size_t line_width);
-    ~MyDummyDisplayDevice();
-    void show(struct_PixelMemory *pixel_memory_structure, const uint8_t anchor_x, const uint8_t anchor_y);
-    void clear_pixel_buffer(struct_PixelMemory *pixel_memory);
-    void create_pixel_buffer(struct_PixelMemory *pixel_memory);
-    void pixel(struct_PixelMemory *pixel_memory_structure,
-               const int x, const int y,
-               const PixelColor color = PixelColor::WHITE);
-    void drawChar(struct_PixelMemory *pixel_memory,
-                  const struct_ConfigTextFramebuffer *text_config,
-                  const char character,
-                  const uint8_t anchor_x, const uint8_t anchor_y);
-    void print(char *text_string);
-    void check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg, uint8_t anchor_x = 0, uint8_t anchor_y = 0);
-};
-
-MyDummyDisplayDevice::MyDummyDisplayDevice(size_t line_width)
-    : GraphicDisplayDevice(line_width, 1)
-{
-}
-
-MyDummyDisplayDevice::~MyDummyDisplayDevice()
-{
-}
-
-void MyDummyDisplayDevice::show(struct_PixelMemory *pixel_memory_structure, uint8_t anchor_x, uint8_t anchor_y)
-{
-}
-
-void MyDummyDisplayDevice::clear_pixel_buffer(struct_PixelMemory *pixel_memory)
-{
-}
-
-void MyDummyDisplayDevice::create_pixel_buffer(struct_PixelMemory *pixel_memory)
-{
-}
-
-void MyDummyDisplayDevice::pixel(struct_PixelMemory *pixel_memory_structure, const int x, const int y, const PixelColor color)
-{
-}
-
-void MyDummyDisplayDevice::drawChar(struct_PixelMemory *pixel_memory, const struct_ConfigTextFramebuffer *text_config, const char character, const uint8_t anchor_x, const uint8_t anchor_y)
-{
-}
-
-void MyDummyDisplayDevice::print(char *text_string)
-{
-}
-
-void MyDummyDisplayDevice::check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg, uint8_t anchor_x, uint8_t anchor_y)
-{
-}
-
-
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of test_IncrementalValue on the serial monitor
-class MyIncrementalValueWidgetOnSerialMonitor : public Widget
+class MyIncrementalValueWidgetOnSerialMonitor : public DummyWidget
 {
 private:
     float char_position_slope;
@@ -88,12 +29,10 @@ private:
     uint8_t max_line_width = 21;
     int value_to_char_position();
 
-    MyIncrementalValueModel *actual_displayed_object;
-
 public:
     /// @brief Construct a new Test Cursor Widget With Incremental Value object
     /// @param _actual_displayed_object
-    MyIncrementalValueWidgetOnSerialMonitor(MyDummyDisplayDevice *line_printer, MyIncrementalValueModel *_actual_displayed_object);
+    MyIncrementalValueWidgetOnSerialMonitor(PrinterDevice *my_printer, MyIncrementalValueModel *_actual_displayed_object);
 
     ~MyIncrementalValueWidgetOnSerialMonitor();
 
@@ -103,7 +42,7 @@ public:
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of MyManager on the serial monitor
-class MyManagerWidget : public Widget
+class MyManagerWidget : public DummyWidget
 {
 private:
     MyManager *actual_displayed_object;
@@ -112,7 +51,7 @@ public:
     /// @brief Construct a new MyManagerWidget object
     /// @param line_printer
     /// @param manager
-    MyManagerWidget(MyDummyDisplayDevice *line_printer, MyManager *manager);
+    MyManagerWidget(PrinterDevice *my_printer, MyManager *manager);
 
     ~MyManagerWidget();
 
@@ -121,11 +60,11 @@ public:
 };
 
 /// @brief test the composite widget features
-class MySetOfWidget : public Widget
+class MySetOfWidget : public DummyWidget
 {
 private:
 public:
-    MySetOfWidget(MyDummyDisplayDevice *_line_printer);
+    MySetOfWidget(PrinterDevice *my_printer);
     ~MySetOfWidget();
     void draw_refresh();
 };
@@ -141,14 +80,13 @@ struct_ConfigGraphicFramebuffer default_cfg{
     .fg_color = PixelColor::WHITE,
     .bg_color = PixelColor::BLACK};
 
-MyIncrementalValueWidgetOnSerialMonitor::MyIncrementalValueWidgetOnSerialMonitor(MyDummyDisplayDevice *line_printer,
-                                                                                 MyIncrementalValueModel *_actual_displayed_object)
-    : Widget((GraphicDisplayDevice *)line_printer, _actual_displayed_object, default_cfg, 0, 0, false)
+MyIncrementalValueWidgetOnSerialMonitor::MyIncrementalValueWidgetOnSerialMonitor(PrinterDevice *my_printer, MyIncrementalValueModel *_actual_displayed_object)
+    : DummyWidget(my_printer, _actual_displayed_object)
 {
-    this->actual_displayed_object = _actual_displayed_object;
-
-    char_position_slope = (max_line_width - 1.) / (actual_displayed_object->get_max_value() - actual_displayed_object->get_min_value());
-    char_position_offset = 1 - char_position_slope * actual_displayed_object->get_min_value();
+    int max_value = ((UIControlledIncrementalValue *)this->actual_displayed_model)->get_max_value();
+    int min_value = ((UIControlledIncrementalValue *)this->actual_displayed_model)->get_min_value();
+    char_position_slope = (max_line_width - 1.) / (max_value - min_value);
+    char_position_offset = 1 - char_position_slope * min_value;
 }
 
 MyIncrementalValueWidgetOnSerialMonitor::~MyIncrementalValueWidgetOnSerialMonitor()
@@ -157,40 +95,46 @@ MyIncrementalValueWidgetOnSerialMonitor::~MyIncrementalValueWidgetOnSerialMonito
 
 void MyIncrementalValueWidgetOnSerialMonitor::draw_refresh()
 {
-    if (this->actual_displayed_object->has_changed())
+    if (this->actual_displayed_model->has_changed())
     {
         /// draw()
-        switch (actual_displayed_object->get_status())
+        switch (actual_displayed_model->get_status())
         {
         case ControlledObjectStatus::IS_WAITING:
             printf("[%s] %s with value=%d\n",
-                   actual_displayed_object->get_name().c_str(), status_to_string[actual_displayed_object->get_status()].c_str(), actual_displayed_object->get_value());
+                   ((MyIncrementalValueModel *)this->actual_displayed_model)->get_name().c_str(),
+                   status_to_string[actual_displayed_model->get_status()].c_str(),
+                   ((MyIncrementalValueModel *)this->actual_displayed_model)->get_value());
             break;
         case ControlledObjectStatus::HAS_FOCUS:
             printf("[%s] %s with value=%d\n",
-                   actual_displayed_object->get_name().c_str(), status_to_string[actual_displayed_object->get_status()].c_str(), actual_displayed_object->get_value());
+                   ((MyIncrementalValueModel *)this->actual_displayed_model)->get_name().c_str(),
+                   status_to_string[actual_displayed_model->get_status()].c_str(),
+                   ((MyIncrementalValueModel *)this->actual_displayed_model)->get_value());
             break;
         case ControlledObjectStatus::IS_ACTIVE:
             printf("[%s] %s with value= %d %*c\n",
-                   actual_displayed_object->get_name().c_str(), status_to_string[actual_displayed_object->get_status()].c_str(), actual_displayed_object->get_value(), value_to_char_position(), '|');
+                   ((MyIncrementalValueModel *)this->actual_displayed_model)->get_name().c_str(),
+                   status_to_string[actual_displayed_model->get_status()].c_str(),
+                   ((MyIncrementalValueModel *)this->actual_displayed_model)->get_value(),
+                   value_to_char_position(), '|');
             break;
         default:
             break;
         }
         /// end draw()
-        this->actual_displayed_object->clear_change_flag();
+        ((MyIncrementalValueModel *)this->actual_displayed_model)->clear_change_flag();
     }
 }
 
 int MyIncrementalValueWidgetOnSerialMonitor::value_to_char_position()
 {
-    return (char_position_slope * actual_displayed_object->get_value() + char_position_offset);
+    return (char_position_slope * ((MyIncrementalValueModel *)this->actual_displayed_model)->get_value() + char_position_offset);
 }
 
-MyManagerWidget::MyManagerWidget(MyDummyDisplayDevice *line_printer, MyManager *_manager)
-    : Widget((GraphicDisplayDevice *)line_printer, _manager, default_cfg, 0, 0, false)
+MyManagerWidget::MyManagerWidget(PrinterDevice *my_printer, MyManager *_manager)
+    : DummyWidget(my_printer, _manager)
 {
-    this->actual_displayed_object = _manager;
 }
 
 MyManagerWidget::~MyManagerWidget()
@@ -218,8 +162,8 @@ void MySetOfWidget::draw_refresh()
     }
 }
 
-MySetOfWidget::MySetOfWidget(MyDummyDisplayDevice *line_printer)
-    : Widget((GraphicDisplayDevice *)line_printer, nullptr, default_cfg, 0, 0, false)
+MySetOfWidget::MySetOfWidget(PrinterDevice *my_printer)
+    : DummyWidget(my_printer, nullptr)
 {
 }
 

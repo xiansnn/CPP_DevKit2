@@ -41,6 +41,7 @@ PrinterDevice::PrinterDevice(size_t number_of_char_width, size_t number_of_char_
     this->text_memory.text_buffer_size = number_of_char_width * number_of_char_height + 1; // +1 because this is a C-style char[] ended with \x0
 
     this->text_memory.text_buffer = new char[text_memory.text_buffer_size];
+    stdio_printf("PrinterDevice@ : %x\n", this);
 }
 
 PrinterDevice::~PrinterDevice()

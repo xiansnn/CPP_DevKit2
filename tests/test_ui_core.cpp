@@ -55,7 +55,7 @@ KY040 ky040 = KY040(CENTRAL_SWITCH_GPIO,
 
 /**
  * @brief define the ISR associated with the clock signal of the rotary encoder
- * 
+ *
  * @param gpio  The gpio number connected to the clock signal
  * @param event_mask  the IRQ mask, default to GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE
  */
@@ -82,8 +82,6 @@ void manager_process_control_event(UIControlEvent event);
 /// 4- create a manager connected to the rotary encoder.
 MyManager manager = MyManager(&ky040);
 
-MyDummyDisplayDevice my_serial_monitor = MyDummyDisplayDevice(100);
-
 int main()
 {
 
@@ -91,6 +89,8 @@ int main()
     pr_D1.hi();
     /// 1- setup serial terminal that uses printf().
     stdio_init_all();
+
+    PrinterDevice my_serial_monitor = PrinterDevice(100, 1);
 
     /// 2- create 3 incremental value object
     MyIncrementalValueModel value_0 = MyIncrementalValueModel("val0", 0, 5, true, 1);
@@ -141,6 +141,7 @@ int main()
     }
     return 0;
 }
-void manager_process_control_event(UIControlEvent event) {
+void manager_process_control_event(UIControlEvent event)
+{
     manager.process_control_event(event);
 };

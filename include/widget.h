@@ -79,8 +79,8 @@ protected:
     /// @brief draw a rectangle around the widget.
     /// IMPORTANT NOTICE: as the border is a rectangle with fill=false, the border width can only be 1 pixel.
     /// @param c the color of the border
-    void draw_border(PixelColor c = PixelColor::WHITE); 
-    
+    void draw_border(PixelColor c = PixelColor::WHITE);
+
 public:
     /// @brief location in x of the widget within the hosting framebuffer
     uint8_t widget_anchor_x;
@@ -101,30 +101,29 @@ public:
      */
     void set_blink_us(uint32_t blink_period = 1000000);
 
-   
     /**
      * @brief Construct a new GraphicWidget object
-     * 
+     *
      * @param graphic_display_screen The display device on which the widget is drawn.
      * @param displayed_object the displayed object of the widget
      * @param graph_cfg the configuration data structure of the graphic framebuffer
      * @param widget_anchor_x the horizontal position where the widget start on the device screen
      * @param widget_anchor_y the verticaThe flag that indicates whether the widget has a border or notl position where the widget start on the device screen
-     * @param widget_with_border 
-    * \image html widget.png
-    */
-     GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
-           UIModelObject *displayed_object,
-           struct_ConfigGraphicFramebuffer graph_cfg,
-           uint8_t widget_anchor_x,
-           uint8_t widget_anchor_y,
-           bool widget_with_border);
+     * @param widget_with_border
+     * \image html widget.png
+     */
+    GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
+                  UIModelObject *displayed_object,
+                  struct_ConfigGraphicFramebuffer graph_cfg,
+                  uint8_t widget_anchor_x,
+                  uint8_t widget_anchor_y,
+                  bool widget_with_border);
     /**
      * @brief Destroy the UIWidget object
      */
     ~GraphicWidget();
 
-     /**
+    /**
      * @brief  add sub_widget to the current widget
      *
      * @param _sub_widget
@@ -150,5 +149,26 @@ public:
      *
      *        WARNING : When several widget display one Model, only the last one must clear_change_flag()
      */
+    virtual void draw_refresh() = 0;
+};
+
+class DummyWidget
+{
+private:
+protected:
+public:
+    PrinterDevice *display_device;
+    UIModelObject *actual_displayed_model;
+    /// @brief A widget can be composed by several widget.
+    std::vector<DummyWidget *> widgets;
+    DummyWidget(PrinterDevice *display_device, UIModelObject *actual_displayed_model);
+    ~DummyWidget();
+    /**
+     * @brief  add sub_widget to the current widget
+     *
+     * @param _sub_widget
+     */
+    void add_widget(DummyWidget *_sub_widget);
+
     virtual void draw_refresh() = 0;
 };

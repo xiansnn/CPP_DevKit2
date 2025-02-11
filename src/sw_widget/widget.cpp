@@ -66,3 +66,18 @@ void GraphicWidget::add_widget(GraphicWidget *_sub_widget)
 {
     this->widgets.push_back(_sub_widget);
 }
+
+DummyWidget::DummyWidget(PrinterDevice *display_device, UIModelObject *actual_displayed_model)
+{
+    this->display_device = display_device;
+    this->actual_displayed_model = actual_displayed_model;
+}
+
+DummyWidget::~DummyWidget()
+{
+}
+
+void DummyWidget::add_widget(DummyWidget *_sub_widget)
+{
+    this->widgets.push_back(_sub_widget);
+}
