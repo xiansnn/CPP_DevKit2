@@ -17,7 +17,7 @@
  * @brief A widget that show a square (it can be a rectangle) on the display.
  *
  */
-class WidgetSquareLed : public Widget
+class WidgetSquareLed : public GraphicWidget
 {
 protected:
     /**
@@ -31,7 +31,7 @@ protected:
 
 public:
      /**
-      * @brief Construct a new Widget Square Led object
+      * @brief Construct a new GraphicWidget Square Led object
       * 
       * @param actual_displayed_model the actual displayed model
       * @param graphic_display_screen The display device on which the widget is drawn.

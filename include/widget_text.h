@@ -92,7 +92,7 @@ public:
 
      
     /**
-     * @brief Construct a new Widget Text object
+     * @brief Construct a new GraphicWidget Text object
      * 
      * @param text_model a pointer to the model text
      * @param graphic_display_screen a pointer to the display device

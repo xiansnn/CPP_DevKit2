@@ -25,7 +25,7 @@ private:
 
 public:
     /**
-     * @brief Construct a new Widget Focus Indicator object
+     * @brief Construct a new GraphicWidget Focus Indicator object
      * 
      * @param actual_displayed_model a pointer to the displayed model
      * @param graphic_display_screen a pointer to the dispaly device

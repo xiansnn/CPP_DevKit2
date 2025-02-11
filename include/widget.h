@@ -32,7 +32,7 @@
  *
  *
  */
-class Widget : public GraphicFramebuffer
+class GraphicWidget : public GraphicFramebuffer
 {
 private:
     /// @brief store the value of the previous blinking phase.should be 0 or 1.
@@ -53,7 +53,7 @@ protected:
     bool widget_with_border{true};
 
     /// @brief A widget can be composed by several widget.
-    std::vector<Widget *> widgets;
+    std::vector<GraphicWidget *> widgets;
 
     /// @brief As a widget can be surrounded by a border, the actual widget width is not the associated framebuffer width.
     size_t widget_width{128};
@@ -103,7 +103,7 @@ public:
 
    
     /**
-     * @brief Construct a new Widget object
+     * @brief Construct a new GraphicWidget object
      * 
      * @param graphic_display_screen The display device on which the widget is drawn.
      * @param displayed_object the displayed object of the widget
@@ -113,7 +113,7 @@ public:
      * @param widget_with_border 
     * \image html widget.png
     */
-     Widget(GraphicDisplayDevice *graphic_display_screen,
+     GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
            UIModelObject *displayed_object,
            struct_ConfigGraphicFramebuffer graph_cfg,
            uint8_t widget_anchor_x,
@@ -122,14 +122,14 @@ public:
     /**
      * @brief Destroy the UIWidget object
      */
-    ~Widget();
+    ~GraphicWidget();
 
      /**
      * @brief  add sub_widget to the current widget
      *
      * @param _sub_widget
      */
-    void add_widget(Widget *_sub_widget);
+    void add_widget(GraphicWidget *_sub_widget);
     /**
      * @brief (re)draw the graphical elements of the widget.
      *

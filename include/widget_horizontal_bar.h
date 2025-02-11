@@ -14,7 +14,7 @@
 #include "widget.h"
 
 /// @brief a widget that draw an horizontal bar, filled up to the given level value
-class WidgetHorizontalBar : public Widget
+class WidgetHorizontalBar : public GraphicWidget
 {
 private:
     /// @brief the filled level of the widget
@@ -43,7 +43,7 @@ private:
 protected:
 public:   
     /**
-     * @brief Construct a new Widget Horizontal Bar object
+     * @brief Construct a new GraphicWidget Horizontal Bar object
      * 
      * @param bar_value_model a pointer to the displayed model
      * @param graphic_display_screen a pointer to the display device

@@ -18,7 +18,7 @@
 #include "ui_core.h"
 
 /**
- * @brief the UIModelObject used by Bargraph Widget
+ * @brief the UIModelObject used by Bargraph GraphicWidget
  * 
  */
 class ModelBargraph : public UIModelObject
@@ -56,7 +56,7 @@ public:
  * @brief the widget that display an horizontal bargraph
  * 
  */
-class WidgetHorizontalBargraph : public Widget
+class WidgetHorizontalBargraph : public GraphicWidget
 {
 private:
     /// @brief the number of pixel that separates each bar (usually 1 pixel)
@@ -88,7 +88,7 @@ protected:
 
 public:
     /**
-     * @brief Construct a new Widget Horizontal Bargraph object
+     * @brief Construct a new GraphicWidget Horizontal Bargraph object
      * 
      * @param bargraph_model a pointer to the mactual displayed model
      * @param graphic_display_screen a pointer to the display device on which the widget is drawn
@@ -106,7 +106,7 @@ public:
                              bool widget_with_border,
                              uint8_t bar_spacing = 1);
     /**
-     * @brief Destroy the Widget Horizontal Bargraph object
+     * @brief Destroy the GraphicWidget Horizontal Bargraph object
      * 
      */
     ~WidgetHorizontalBargraph();
@@ -118,7 +118,7 @@ public:
  * @brief the widget that display a vertical bargraph
  * 
  */
-class WidgetVerticalBargraph : public Widget
+class WidgetVerticalBargraph : public GraphicWidget
 {
 private:
     /// @brief the number of pixel that separates each bar (usually 1 pixel)
@@ -146,7 +146,7 @@ private:
     void draw_bar(uint8_t bin_index);
 public:
     /**
-     * @brief Construct a new Widget Vertical Bargraph object
+     * @brief Construct a new GraphicWidget Vertical Bargraph object
      * 
      * @param bargraph_model a pointer to the mactual displayed model
      * @param graphic_display_screen a pointer to the display device on which the widget is drawn
