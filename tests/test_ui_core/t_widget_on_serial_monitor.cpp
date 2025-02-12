@@ -21,7 +21,7 @@
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of test_IncrementalValue on the serial monitor
-class MyIncrementalValueWidgetOnSerialMonitor : public DummyWidget
+class MyIncrementalValueWidgetOnSerialMonitor : public PrintWidget
 {
 private:
     float char_position_slope;
@@ -36,17 +36,14 @@ public:
 
     ~MyIncrementalValueWidgetOnSerialMonitor();
 
-    /// @brief Implement a draw_refresh function adapted to the current test program with the private function draw()
-    void draw_refresh();
+    void draw();
 };
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of MyManager on the serial monitor
-class MyManagerWidget : public DummyWidget
+class MyManagerWidget : public PrintWidget
 {
 private:
-    MyManager *actual_displayed_object;
-
 public:
     /// @brief Construct a new MyManagerWidget object
     /// @param line_printer
@@ -55,18 +52,17 @@ public:
 
     ~MyManagerWidget();
 
-    /// @brief Implement a draw_refresh function adapted to the current test program with the function draw()
-    void draw_refresh();
+    void draw();
 };
 
 /// @brief test the composite widget features
-class MySetOfWidget : public DummyWidget
+class MySetOfWidget : public PrintWidget
 {
 private:
 public:
     MySetOfWidget(PrinterDevice *my_printer);
     ~MySetOfWidget();
-    void draw_refresh();
+    void draw();
 };
 
 std::map<ControlledObjectStatus, std::string> status_to_string{
@@ -81,7 +77,7 @@ struct_ConfigGraphicFramebuffer default_cfg{
     .bg_color = PixelColor::BLACK};
 
 MyIncrementalValueWidgetOnSerialMonitor::MyIncrementalValueWidgetOnSerialMonitor(PrinterDevice *my_printer, MyIncrementalValueModel *_actual_displayed_object)
-    : DummyWidget(my_printer, _actual_displayed_object)
+    : PrintWidget(my_printer, _actual_displayed_object)
 {
     int max_value = ((UIControlledIncrementalValue *)this->actual_displayed_model)->get_max_value();
     int min_value = ((UIControlledIncrementalValue *)this->actual_displayed_model)->get_min_value();
@@ -93,37 +89,31 @@ MyIncrementalValueWidgetOnSerialMonitor::~MyIncrementalValueWidgetOnSerialMonito
 {
 }
 
-void MyIncrementalValueWidgetOnSerialMonitor::draw_refresh()
+void MyIncrementalValueWidgetOnSerialMonitor::draw()
 {
-    if (this->actual_displayed_model->has_changed())
+    switch (actual_displayed_model->get_status())
     {
-        /// draw()
-        switch (actual_displayed_model->get_status())
-        {
-        case ControlledObjectStatus::IS_WAITING:
-            printf("[%s] %s with value=%d\n",
-                   ((MyIncrementalValueModel *)this->actual_displayed_model)->get_name().c_str(),
-                   status_to_string[actual_displayed_model->get_status()].c_str(),
-                   ((MyIncrementalValueModel *)this->actual_displayed_model)->get_value());
-            break;
-        case ControlledObjectStatus::HAS_FOCUS:
-            printf("[%s] %s with value=%d\n",
-                   ((MyIncrementalValueModel *)this->actual_displayed_model)->get_name().c_str(),
-                   status_to_string[actual_displayed_model->get_status()].c_str(),
-                   ((MyIncrementalValueModel *)this->actual_displayed_model)->get_value());
-            break;
-        case ControlledObjectStatus::IS_ACTIVE:
-            printf("[%s] %s with value= %d %*c\n",
-                   ((MyIncrementalValueModel *)this->actual_displayed_model)->get_name().c_str(),
-                   status_to_string[actual_displayed_model->get_status()].c_str(),
-                   ((MyIncrementalValueModel *)this->actual_displayed_model)->get_value(),
-                   value_to_char_position(), '|');
-            break;
-        default:
-            break;
-        }
-        /// end draw()
-        ((MyIncrementalValueModel *)this->actual_displayed_model)->clear_change_flag();
+    case ControlledObjectStatus::IS_WAITING:
+        printf("[%s] %s with value=%d\n",
+               ((MyIncrementalValueModel *)this->actual_displayed_model)->get_name().c_str(),
+               status_to_string[actual_displayed_model->get_status()].c_str(),
+               ((MyIncrementalValueModel *)this->actual_displayed_model)->get_value());
+        break;
+    case ControlledObjectStatus::HAS_FOCUS:
+        printf("[%s] %s with value=%d\n",
+               ((MyIncrementalValueModel *)this->actual_displayed_model)->get_name().c_str(),
+               status_to_string[actual_displayed_model->get_status()].c_str(),
+               ((MyIncrementalValueModel *)this->actual_displayed_model)->get_value());
+        break;
+    case ControlledObjectStatus::IS_ACTIVE:
+        printf("[%s] %s with value= %d %*c\n",
+               ((MyIncrementalValueModel *)this->actual_displayed_model)->get_name().c_str(),
+               status_to_string[actual_displayed_model->get_status()].c_str(),
+               ((MyIncrementalValueModel *)this->actual_displayed_model)->get_value(),
+               value_to_char_position(), '|');
+        break;
+    default:
+        break;
     }
 }
 
@@ -133,7 +123,7 @@ int MyIncrementalValueWidgetOnSerialMonitor::value_to_char_position()
 }
 
 MyManagerWidget::MyManagerWidget(PrinterDevice *my_printer, MyManager *_manager)
-    : DummyWidget(my_printer, _manager)
+    : PrintWidget(my_printer, _manager)
 {
 }
 
@@ -141,32 +131,22 @@ MyManagerWidget::~MyManagerWidget()
 {
 }
 
-void MyManagerWidget::draw_refresh()
+void MyManagerWidget::draw()
 {
-    if (this->actual_displayed_object->has_changed())
-    { /// draw()
-        std::string text = "manager " + status_to_string[actual_displayed_object->get_status()] + " with value=" + std::to_string(actual_displayed_object->get_value()) + "\n";
-        printf(text.c_str());
-        /// end draw()
-        this->actual_displayed_object->clear_change_flag();
-    }
-}
-
-void MySetOfWidget::draw_refresh()
-{
-    /// for this specific test, the object test_SetOfWidget has only one purpose : to collect a set of widgets.
-    if (widgets.size() != 0)
-    {
-        for (auto &&w : widgets)
-            w->draw_refresh();
-    }
+    std::string text = "manager " + status_to_string[actual_displayed_model->get_status()] + " with value=" +
+                       std::to_string(((MyIncrementalValueModel *)actual_displayed_model)->get_value()) + "\n";
+    printf(text.c_str());
 }
 
 MySetOfWidget::MySetOfWidget(PrinterDevice *my_printer)
-    : DummyWidget(my_printer, nullptr)
+    : PrintWidget(my_printer, nullptr)
 {
 }
 
 MySetOfWidget::~MySetOfWidget()
+{
+}
+
+void MySetOfWidget::draw()
 {
 }

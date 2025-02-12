@@ -61,7 +61,6 @@ void MyIncrementalValueModel::process_control_event(UIControlEvent _event)
         decrement_value();
         break;
     default:
-        printf("test_IncrementalValue::process_control_event(ControlEvent _event) = default\n");
         break;
     }
 }

@@ -18,11 +18,11 @@ void GraphicWidget::draw_border(PixelColor c)
 }
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
-               UIModelObject *displayed_object,
-               struct_ConfigGraphicFramebuffer graph_cfg,
-               uint8_t widget_anchor_x,
-               uint8_t widget_anchor_y,
-               bool widget_with_border)
+                             UIModelObject *displayed_object,
+                             struct_ConfigGraphicFramebuffer graph_cfg,
+                             uint8_t widget_anchor_x,
+                             uint8_t widget_anchor_y,
+                             bool widget_with_border)
     : GraphicFramebuffer(display_screen, graph_cfg)
 {
     display_screen->check_display_device_compatibility(graph_cfg, widget_anchor_x, widget_anchor_y);
@@ -67,17 +67,34 @@ void GraphicWidget::add_widget(GraphicWidget *_sub_widget)
     this->widgets.push_back(_sub_widget);
 }
 
-DummyWidget::DummyWidget(PrinterDevice *display_device, UIModelObject *actual_displayed_model)
+PrintWidget::PrintWidget(PrinterDevice *display_device, UIModelObject *actual_displayed_model)
 {
     this->display_device = display_device;
     this->actual_displayed_model = actual_displayed_model;
 }
 
-DummyWidget::~DummyWidget()
+PrintWidget::~PrintWidget()
 {
 }
 
-void DummyWidget::add_widget(DummyWidget *_sub_widget)
+void PrintWidget::add_widget(PrintWidget *_sub_widget)
 {
     this->widgets.push_back(_sub_widget);
+}
+
+void PrintWidget::draw_refresh()
+{
+    if (widgets.size() != 0)
+    {
+        for (auto &&w : widgets)
+            w->draw_refresh();
+    }
+    else
+    {
+        if (this->actual_displayed_model->has_changed())
+        {
+            draw();
+            this->actual_displayed_model->clear_change_flag();
+        }
+    }
 }
