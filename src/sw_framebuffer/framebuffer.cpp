@@ -34,7 +34,6 @@ GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *display_device,
     this->bg_color = text_cfg.bg_color;
     this->pixel_memory.frame_height = frame_height;
     this->pixel_memory.frame_width = frame_width;
-    //TODO check
     display_device->create_pixel_buffer(&this->pixel_memory);
 }
 
@@ -46,7 +45,7 @@ GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *device,
     this->bg_color = text_cnf.bg_color;
 
     this->pixel_memory.frame_width = text_cnf.number_of_column * text_cnf.font[FONT_WIDTH_INDEX];
-    this->pixel_memory.frame_height = text_cnf.number_of_line * text_cnf.font[FONT_HEIGHT_INDEX]; // TODO verifier qu'on depasse pas la taille de display. il faudrait connaitre le displaydevice !!!
+    this->pixel_memory.frame_height = text_cnf.number_of_line * text_cnf.font[FONT_HEIGHT_INDEX]; 
     device->create_pixel_buffer(&this->pixel_memory);
 }
 
