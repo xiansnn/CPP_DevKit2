@@ -19,6 +19,14 @@
 #include <sstream>
 #include <string>
 
+#include "probe.h"
+
+/// @brief  3 probes are create to observe the time execution with a logic analyser
+Probe pr_D1 = Probe(1);
+Probe pr_D4 = Probe(4);
+Probe pr_D5 = Probe(5);
+
+
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of test_IncrementalValue on the serial monitor
 class MyIncrementalValueWidgetOnSerialMonitor : public PrintWidget
@@ -91,30 +99,37 @@ MyIncrementalValueWidgetOnSerialMonitor::~MyIncrementalValueWidgetOnSerialMonito
 
 void MyIncrementalValueWidgetOnSerialMonitor::draw()
 {
-    switch (actual_displayed_model->get_status())
+
+    pr_D1.hi();
+    std::string name = ((MyIncrementalValueModel *)this->actual_displayed_model)->get_name();
+    int value = ((MyIncrementalValueModel *)this->actual_displayed_model)->get_value();
+    ControlledObjectStatus model_status = actual_displayed_model->get_status();
+    std::string status = status_to_string[model_status];
+
+    switch (model_status)
     {
     case ControlledObjectStatus::IS_WAITING:
-        printf("[%s] %s with value=%d\n",
-               ((MyIncrementalValueModel *)this->actual_displayed_model)->get_name().c_str(),
-               status_to_string[actual_displayed_model->get_status()].c_str(),
-               ((MyIncrementalValueModel *)this->actual_displayed_model)->get_value());
+        sprintf(this->display_device->text_buffer,
+                "[%s] %s with value=%d\n",
+                name.c_str(), status.c_str(), value);
+        this->display_device->show();
         break;
     case ControlledObjectStatus::HAS_FOCUS:
-        printf("[%s] %s with value=%d\n",
-               ((MyIncrementalValueModel *)this->actual_displayed_model)->get_name().c_str(),
-               status_to_string[actual_displayed_model->get_status()].c_str(),
-               ((MyIncrementalValueModel *)this->actual_displayed_model)->get_value());
+        sprintf(this->display_device->text_buffer,
+                "[%s] %s with value=%d\n",
+                name.c_str(), status.c_str(), value);
+        this->display_device->show();
         break;
     case ControlledObjectStatus::IS_ACTIVE:
-        printf("[%s] %s with value= %d %*c\n",
-               ((MyIncrementalValueModel *)this->actual_displayed_model)->get_name().c_str(),
-               status_to_string[actual_displayed_model->get_status()].c_str(),
-               ((MyIncrementalValueModel *)this->actual_displayed_model)->get_value(),
-               value_to_char_position(), '|');
+        sprintf(this->display_device->text_buffer,
+                "[%s] %s with value= %d %*c\n",
+                name.c_str(), status.c_str(), value, value_to_char_position(), '|');
+        this->display_device->show();
         break;
     default:
         break;
     }
+    pr_D1.lo();
 }
 
 int MyIncrementalValueWidgetOnSerialMonitor::value_to_char_position()
@@ -133,9 +148,11 @@ MyManagerWidget::~MyManagerWidget()
 
 void MyManagerWidget::draw()
 {
+    pr_D4.hi();
     std::string text = "manager " + status_to_string[actual_displayed_model->get_status()] + " with value=" +
                        std::to_string(((MyIncrementalValueModel *)actual_displayed_model)->get_value()) + "\n";
     printf(text.c_str());
+    pr_D4.lo();
 }
 
 MySetOfWidget::MySetOfWidget(PrinterDevice *my_printer)

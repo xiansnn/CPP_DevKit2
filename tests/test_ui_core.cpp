@@ -20,12 +20,6 @@
 #include "ky040.h"
 #include <map>
 #include <string>
-#include "probe.h"
-
-/// @brief  3 probes are create to observe the time execution with a logic analyser
-Probe pr_D1 = Probe(1);
-Probe pr_D4 = Probe(4);
-Probe pr_D5 = Probe(5);
 
 #define CENTRAL_SWITCH_GPIO 6
 #define ENCODER_CLK_GPIO 26
@@ -84,9 +78,8 @@ MyManager manager = MyManager(&ky040);
 
 int main()
 {
-
     /// main steps
-    pr_D1.hi();
+
     /// 1- setup serial terminal that uses printf().
     stdio_init_all();
 
@@ -121,21 +114,21 @@ int main()
     manager.add_managed_model(&value_1);
     manager.add_managed_model(&value_2);
 
-    pr_D1.lo();
+
 
     /// 9- start infinite loop
     while (true)
     {
-        pr_D4.pulse_us(10);
+
         /// - sample the rotary encoder central switch
         UIControlEvent event = ky040.process_central_switch_event();
 
         /// - give the sampled event to the manager, to let it process the event
         manager.process_control_event(event);
-        pr_D5.hi();
+
         /// - let the set_of_widget execute draw_refresh
         set_of_widget.draw_refresh();
-        pr_D5.lo();
+
         /// - sleep for 20ms
         sleep_ms(20);
     }

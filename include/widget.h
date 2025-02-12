@@ -202,7 +202,7 @@ public:
      * - if redraw() required , execute the effective widget drawing including border if required (can be a private member function)
      * - and finally : clear model change flag if needed.
      *
-     *        WARNING : When several widget display one Model, only the last one must clear_change_flag()
+     *        \note WARNING when several widget display one Model, only the last one must clear_change_flag()
      */
     virtual void draw_refresh();
 
