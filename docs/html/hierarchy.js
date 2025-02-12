@@ -8,16 +8,16 @@ var hierarchy =
       [ "PrinterDevice", "class_printer_device.html", null ]
     ] ],
     [ "GraphicFramebuffer", "class_graphic_framebuffer.html", [
-      [ "TextualFrameBuffer", "class_textual_frame_buffer.html", [
-        [ "WidgetText", "class_widget_text.html", null ]
-      ] ],
-      [ "Widget", "class_widget.html", [
+      [ "GraphicWidget", "class_graphic_widget.html", [
         [ "WidgetHorizontalBar", "class_widget_horizontal_bar.html", null ],
         [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html", null ],
         [ "WidgetSquareLed", "class_widget_square_led.html", [
           [ "WidgetFocusIndicator", "class_widget_focus_indicator.html", null ]
         ] ],
         [ "WidgetVerticalBargraph", "class_widget_vertical_bargraph.html", null ]
+      ] ],
+      [ "TextualFrameBuffer", "class_textual_frame_buffer.html", [
+        [ "WidgetText", "class_widget_text.html", null ]
       ] ]
     ] ],
     [ "HC_SR04", "class_h_c___s_r04.html", null ],
@@ -25,6 +25,7 @@ var hierarchy =
     [ "HW_I2C_Slave", "class_h_w___i2_c___slave.html", null ],
     [ "MPU6050", "class_m_p_u6050.html", null ],
     [ "MSGEQ7", "class_m_s_g_e_q7.html", null ],
+    [ "PrintWidget", "class_print_widget.html", null ],
     [ "Probe", "class_probe.html", null ],
     [ "PWM", "class_p_w_m.html", null ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],
