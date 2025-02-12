@@ -241,5 +241,6 @@ public:
                   size_t number_of_char_hight);
     ~PrinterDevice();
 
+    /// @brief the method that actually print the content of text_buffer on the console
     virtual void show();
 };
