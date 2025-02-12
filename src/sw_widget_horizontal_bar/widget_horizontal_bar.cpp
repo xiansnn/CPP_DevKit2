@@ -45,7 +45,7 @@ WidgetHorizontalBar::WidgetHorizontalBar(UIModelObject *bar_value_model,
                                          struct_ConfigGraphicFramebuffer graph_cfg,
                                          uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                          bool widget_with_border)
-    : Widget(display_screen, bar_value_model, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
+    : GraphicWidget(display_screen, bar_value_model, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
 {
     this->max_value = max_value;
     this->min_value = min_value;

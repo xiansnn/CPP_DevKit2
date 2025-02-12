@@ -1,12 +1,12 @@
 /**
  * @file t_controlled_value.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-01-11
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
 #pragma once
@@ -16,25 +16,23 @@
 class MyIncrementalValueModel : public UIControlledIncrementalValue
 {
 private:
-    std::string name;
 public:
-    MyIncrementalValueModel(std::string _name, 
-                            int _min_value = 0, 
-                            int _max_value = 10, 
-                            bool _is_wrappable = false, 
-                            int increment = 1
-                            );
+    std::string name;
+    MyIncrementalValueModel(std::string _name,
+                            int _min_value = 0,
+                            int _max_value = 10,
+                            bool _is_wrappable = false,
+                            int increment = 1);
     ~MyIncrementalValueModel();
     void process_control_event(UIControlEvent _event);
     std::string get_name();
 };
 
-
-MyIncrementalValueModel::MyIncrementalValueModel(std::string _name, 
-                                                int _min_value, 
-                                                int _max_value, 
-                                                bool _is_wrappable, 
-                                                int increment)
+MyIncrementalValueModel::MyIncrementalValueModel(std::string _name,
+                                                 int _min_value,
+                                                 int _max_value,
+                                                 bool _is_wrappable,
+                                                 int increment)
     : UIControlledIncrementalValue(_min_value, _max_value, _is_wrappable, increment)
 {
     this->name = _name;
@@ -48,7 +46,7 @@ MyIncrementalValueModel::~MyIncrementalValueModel()
 /// - LONG_PUSH: set value to 0.
 /// - INCREMENT:
 /// - DECREMENT:
-/// @param _event 
+/// @param _event
 void MyIncrementalValueModel::process_control_event(UIControlEvent _event)
 {
     switch (_event)
@@ -63,7 +61,6 @@ void MyIncrementalValueModel::process_control_event(UIControlEvent _event)
         decrement_value();
         break;
     default:
-        printf("test_IncrementalValue::process_control_event(ControlEvent _event) = default\n");
         break;
     }
 }

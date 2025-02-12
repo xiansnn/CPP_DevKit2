@@ -1,0 +1,6 @@
+<map id="DummyWidget::DummyWidget" name="DummyWidget::DummyWidget">
+<area shape="rect" id="Node000001" title="Construct a new Dummy Widget object." alt="" coords="209,29,378,54"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="330,17,318,11,293,8,271,10,259,15,257,20,263,27,259,31,251,21,255,11,270,5,293,3,320,6,333,13"/>
+<area shape="rect" id="Node000002" href="$class_dummy_widget.html#ad9ee30b8524ce8d58ef028dfc22f4c81" title="add sub_widget to the current widget" alt="" coords="5,29,161,54"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="193,44,161,44,161,39,193,39"/>
+</map>

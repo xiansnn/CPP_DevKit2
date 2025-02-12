@@ -214,16 +214,23 @@ public:
 };
 
 /**
- * @brief A clas dedicated to pure text display such as console, printer, ASCII character line display
+ * @brief A class dedicated to pure text display such as console, printer, ASCII character line display
  *
  */
-class PrinterDevice : DisplayDevice
+class PrinterDevice : public DisplayDevice
 {
 private:
-    /// @brief the data structure of the text memory
-    struct_TextMemory text_memory;
-
 public:
+    /// @brief the size, in number of character of a line
+    size_t number_of_column;
+    /// @brief the number of line
+    size_t number_of_line;
+    /// @brief  the number of characters
+    size_t text_buffer_size;
+    /// @brief the effective character buffer
+    char *text_buffer = nullptr;
+    // /// @brief the data structure of the text memory
+    // struct_TextMemory text_memory;
     /**
      * @brief Construct a new Printer Device object
      *
@@ -233,4 +240,7 @@ public:
     PrinterDevice(size_t number_of_char_width,
                   size_t number_of_char_hight);
     ~PrinterDevice();
+
+    /// @brief the method that actually print the content of text_buffer on the console
+    virtual void show();
 };

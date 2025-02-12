@@ -11,18 +11,18 @@
 
 #include "widget.h"
 
-void Widget::draw_border(PixelColor c)
+void GraphicWidget::draw_border(PixelColor c)
 {
     if (this->widget_with_border)
         rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width);
 }
 
-Widget::Widget(GraphicDisplayDevice *display_screen,
-               UIModelObject *displayed_object,
-               struct_ConfigGraphicFramebuffer graph_cfg,
-               uint8_t widget_anchor_x,
-               uint8_t widget_anchor_y,
-               bool widget_with_border)
+GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
+                             UIModelObject *displayed_object,
+                             struct_ConfigGraphicFramebuffer graph_cfg,
+                             uint8_t widget_anchor_x,
+                             uint8_t widget_anchor_y,
+                             bool widget_with_border)
     : GraphicFramebuffer(display_screen, graph_cfg)
 {
     display_screen->check_display_device_compatibility(graph_cfg, widget_anchor_x, widget_anchor_y);
@@ -40,21 +40,21 @@ Widget::Widget(GraphicDisplayDevice *display_screen,
     widget_height = pixel_memory.frame_height - 2 * widget_border_width;
 }
 
-Widget::~Widget()
+GraphicWidget::~GraphicWidget()
 {
 }
 
-void Widget::set_display_screen(GraphicDisplayDevice *_new_display_device)
+void GraphicWidget::set_display_screen(GraphicDisplayDevice *_new_display_device)
 {
     this->graphic_display_screen = _new_display_device;
 }
 
-void Widget::set_blink_us(uint32_t _blink_period_us)
+void GraphicWidget::set_blink_us(uint32_t _blink_period_us)
 {
     this->blink_period_us = _blink_period_us;
 }
 
-bool Widget::blinking_phase_has_changed()
+bool GraphicWidget::blinking_phase_has_changed()
 {
     int8_t current_blinking_phase = (time_us_32() / (this->blink_period_us / 2)) % 2;
     bool phase_has_changed = (previous_blinking_phase != current_blinking_phase);
@@ -62,7 +62,39 @@ bool Widget::blinking_phase_has_changed()
     return phase_has_changed;
 }
 
-void Widget::add_widget(Widget *_sub_widget)
+void GraphicWidget::add_widget(GraphicWidget *_sub_widget)
 {
     this->widgets.push_back(_sub_widget);
+}
+
+PrintWidget::PrintWidget(PrinterDevice *display_device, UIModelObject *actual_displayed_model)
+{
+    this->display_device = display_device;
+    this->actual_displayed_model = actual_displayed_model;
+}
+
+PrintWidget::~PrintWidget()
+{
+}
+
+void PrintWidget::add_widget(PrintWidget *_sub_widget)
+{
+    this->widgets.push_back(_sub_widget);
+}
+
+void PrintWidget::draw_refresh()
+{
+    if (widgets.size() != 0)
+    {
+        for (auto &&w : widgets)
+            w->draw_refresh();
+    }
+    else
+    {
+        if (this->actual_displayed_model->has_changed())
+        {
+            draw();
+            this->actual_displayed_model->clear_change_flag();
+        }
+    }
 }

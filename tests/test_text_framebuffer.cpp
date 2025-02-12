@@ -242,7 +242,7 @@ void test_sprintf_format(SSD1306 *current_display)
     text_frame->print_text("`abcdefghijklmnopqrstuvwxyz{|}~\x7F"); // ca 1000us-> 2000us
     text_frame->print_text("1234567890\n");                        // ca 400us -> 800us
     current_display->show(&text_frame->pixel_memory, 0, 0);
-    sleep_ms(DELAY);
+    sleep_ms(LONG_DELAY);
 
     text_frame->print_char(FORM_FEED);
 

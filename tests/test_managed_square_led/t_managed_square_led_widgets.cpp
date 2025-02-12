@@ -76,7 +76,7 @@ void MySquareLedWidget::draw_refresh()
     }
 }
 
-class MySquareLEDWidgetWithFocus : Widget
+class MySquareLEDWidgetWithFocus : GraphicWidget
 {
 private:
     MySquareLedWidget *square_led;
@@ -97,7 +97,7 @@ MySquareLEDWidgetWithFocus::MySquareLEDWidgetWithFocus(MySquareLedModel *actual_
                                                        struct_ConfigGraphicFramebuffer graph_cfg,
                                                        uint8_t widget_anchor_x,
                                                        uint8_t widget_anchor_y)
-    : Widget(display_screen, actual_displayed_model, graph_cfg, widget_anchor_x, widget_anchor_y, true)
+    : GraphicWidget(display_screen, actual_displayed_model, graph_cfg, widget_anchor_x, widget_anchor_y, true)
 {
 #define FOCUS_OFFSET 8
 #define FOCUS_WIDTH 5

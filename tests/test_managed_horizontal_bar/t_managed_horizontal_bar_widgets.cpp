@@ -20,7 +20,7 @@
 
 Probe pr_D5 = Probe(5);
 
-class MyHorizontalBarWidgetWithFocus : public Widget
+class MyHorizontalBarWidgetWithFocus : public GraphicWidget
 {
 private:
     WidgetHorizontalBar *h_bar_widget;
@@ -42,7 +42,7 @@ MyHorizontalBarWidgetWithFocus::MyHorizontalBarWidgetWithFocus(MyHorizontalBarMo
                                                                int max_value, int min_value,
                                                                struct_ConfigGraphicFramebuffer graph_cfg,
                                                                uint8_t widget_anchor_x, uint8_t widget_anchor_y)
-    : Widget(graphic_display_screen, bar_value_model, graph_cfg, widget_anchor_x, widget_anchor_y, false)
+    : GraphicWidget(graphic_display_screen, bar_value_model, graph_cfg, widget_anchor_x, widget_anchor_y, false)
 
 {
     this->bar_value_model = bar_value_model;

@@ -32,7 +32,7 @@
  *
  *
  */
-class Widget : public GraphicFramebuffer
+class GraphicWidget : public GraphicFramebuffer
 {
 private:
     /// @brief store the value of the previous blinking phase.should be 0 or 1.
@@ -53,7 +53,7 @@ protected:
     bool widget_with_border{true};
 
     /// @brief A widget can be composed by several widget.
-    std::vector<Widget *> widgets;
+    std::vector<GraphicWidget *> widgets;
 
     /// @brief As a widget can be surrounded by a border, the actual widget width is not the associated framebuffer width.
     size_t widget_width{128};
@@ -79,8 +79,8 @@ protected:
     /// @brief draw a rectangle around the widget.
     /// IMPORTANT NOTICE: as the border is a rectangle with fill=false, the border width can only be 1 pixel.
     /// @param c the color of the border
-    void draw_border(PixelColor c = PixelColor::WHITE); 
-    
+    void draw_border(PixelColor c = PixelColor::WHITE);
+
 public:
     /// @brief location in x of the widget within the hosting framebuffer
     uint8_t widget_anchor_x;
@@ -101,35 +101,34 @@ public:
      */
     void set_blink_us(uint32_t blink_period = 1000000);
 
-   
     /**
-     * @brief Construct a new Widget object
-     * 
+     * @brief Construct a new GraphicWidget object
+     *
      * @param graphic_display_screen The display device on which the widget is drawn.
      * @param displayed_object the displayed object of the widget
      * @param graph_cfg the configuration data structure of the graphic framebuffer
      * @param widget_anchor_x the horizontal position where the widget start on the device screen
      * @param widget_anchor_y the verticaThe flag that indicates whether the widget has a border or notl position where the widget start on the device screen
-     * @param widget_with_border 
-    * \image html widget.png
-    */
-     Widget(GraphicDisplayDevice *graphic_display_screen,
-           UIModelObject *displayed_object,
-           struct_ConfigGraphicFramebuffer graph_cfg,
-           uint8_t widget_anchor_x,
-           uint8_t widget_anchor_y,
-           bool widget_with_border);
+     * @param widget_with_border
+     * \image html widget.png
+     */
+    GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
+                  UIModelObject *displayed_object,
+                  struct_ConfigGraphicFramebuffer graph_cfg,
+                  uint8_t widget_anchor_x,
+                  uint8_t widget_anchor_y,
+                  bool widget_with_border);
     /**
      * @brief Destroy the UIWidget object
      */
-    ~Widget();
+    ~GraphicWidget();
 
-     /**
+    /**
      * @brief  add sub_widget to the current widget
      *
      * @param _sub_widget
      */
-    void add_widget(Widget *_sub_widget);
+    void add_widget(GraphicWidget *_sub_widget);
     /**
      * @brief (re)draw the graphical elements of the widget.
      *
@@ -151,4 +150,62 @@ public:
      *        WARNING : When several widget display one Model, only the last one must clear_change_flag()
      */
     virtual void draw_refresh() = 0;
+};
+
+/**
+ * @brief  A widget used when we need to simply print but still want to take advantage of the status change management.
+ *
+ */
+class PrintWidget
+{
+private:
+protected:
+public:
+    /// @brief a pointer to the printer display device
+    PrinterDevice *display_device;
+    /// @brief the pointer to the displayed model
+    /// \note may require recast to the actual displayed object
+    UIModelObject *actual_displayed_model;
+    /// @brief A widget can be composed by several widget.
+    std::vector<PrintWidget *> widgets;
+
+    /**
+     * @brief Construct a new Dummy Widget object
+     *
+     * @param display_device the pointer to the printer display device
+     * @param actual_displayed_model the pointer to the displayed model
+     */
+    PrintWidget(PrinterDevice *display_device, UIModelObject *actual_displayed_model);
+    ~PrintWidget();
+    /**
+     * @brief  add sub_widget to the current widget
+     *
+     * @param _sub_widget
+     */
+    void add_widget(PrintWidget *_sub_widget);
+
+    /**
+     * @brief (re)draw the graphical elements of the widget.
+     *
+     * To save running time, we can (re)draw the widget only if the associated UIModelObject has_changed.
+     *
+     * Guidance to implement this function:
+     *
+     * - First: Scan all contained sub-widgets if any and call draw_refresh() member function of each of them.
+     *
+     * - then: update widget status according to the values of interest in the UIModelObject
+     *
+     * - refresh blinking if needed
+     *
+     * - Then: check if any changes in the model require a screen redraw
+     *
+     * - if redraw() required , execute the effective widget drawing including border if required (can be a private member function)
+     * - and finally : clear model change flag if needed.
+     *
+     *        \note WARNING when several widget display one Model, only the last one must clear_change_flag()
+     */
+    virtual void draw_refresh();
+
+    /// @brief a pure virtual member that is called by draw_refresh method
+    virtual void draw() = 0;
 };
