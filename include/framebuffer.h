@@ -34,6 +34,39 @@
 /// @brief character code for CARRIAGE_RETURN ('CR', 0x0D)
 #define CARRIAGE_RETURN '\r'
 
+class Framebuffer
+{
+private:
+    /* data */
+protected:
+    /// @brief the display device where the attached to the frame buffer
+    GraphicDisplayDevice *graphic_display_screen{nullptr};
+
+public:
+    Framebuffer(GraphicDisplayDevice *graphic_display_device,
+                struct_ConfigGraphicFramebuffer graph_cfg);
+    Framebuffer(GraphicDisplayDevice *graphic_display_device,
+                size_t frame_width,
+                size_t frame_height,
+                struct_ConfigTextFramebuffer text_cfg);
+    Framebuffer(GraphicDisplayDevice *graphic_display_device,
+                struct_ConfigTextFramebuffer text_cfg);
+    ~Framebuffer();
+
+    /// @brief the dtat structure that contains the actual pixel buffer, created by the display device.
+    struct_PixelMemory pixel_memory;
+    /// @brief the foregroung color of the graphic frame
+    PixelColor fg_color;
+    /// @brief the background color of the graphic frame
+    PixelColor bg_color;
+    /**
+     * @brief Set the display screen object
+     *
+     * @param _new_display_device
+     */
+    void set_display_screen(GraphicDisplayDevice *_new_display_device);
+};
+
 /**
  * @brief Framebuffer is the basic framework to handle texts and graphics on a digital display.
  *
@@ -52,7 +85,7 @@
  *
  */
 
-class GraphicFramebuffer
+class GraphicFramebuffer : public Framebuffer
 
 {
 private:
@@ -67,17 +100,7 @@ private:
     void ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, PixelColor c);
 
 protected:
-    /// @brief the display device where the attached to the frame buffer
-    GraphicDisplayDevice *graphic_display_screen{nullptr};
-
 public:
-    /// @brief the dtat structure that contains the actual pixel buffer, created by the display device.
-    struct_PixelMemory pixel_memory;
-    /// @brief the foregroung color of the graphic frame
-    PixelColor fg_color;
-    /// @brief the background color of the graphic frame
-    PixelColor bg_color;
-
     /**
      * @brief Construct a new Graphic Framebuffer object
      *
@@ -200,7 +223,7 @@ public:
  * @brief the place where all textual primitive are placed
  *
  */
-class TextualFrameBuffer : public GraphicFramebuffer
+class TextualFrameBuffer : public Framebuffer
 {
 private:
     /// @brief the line number where the next character will be written.
@@ -279,7 +302,7 @@ public:
      *
      * @param font
      */
-    void update_pixel_area(const unsigned char *font); 
+    void update_pixel_area(const unsigned char *font);
 
     /**
      * @brief convert the internal text buffer characters to the pixel buffer.
