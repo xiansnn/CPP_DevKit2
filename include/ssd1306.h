@@ -208,7 +208,7 @@ public:
     void show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y);
 
     void drawChar(struct_PixelFrame *pixel_memory_structure,
-                  const struct_ConfigTextFramebuffer *text_config,
+                  const struct_ConfigTextFramebuffer text_config,
                   const char c,
                   const uint8_t anchor_x, const uint8_t anchor_y);
 

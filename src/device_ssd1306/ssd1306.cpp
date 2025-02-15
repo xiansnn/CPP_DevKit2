@@ -197,14 +197,14 @@ void SSD1306::show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, cons
 }
 
 void SSD1306::drawChar(struct_PixelFrame *pixel_memory_structure,
-                       const struct_ConfigTextFramebuffer *text_config,
+                       const struct_ConfigTextFramebuffer text_config,
                        const char c, const uint8_t anchor_x, const uint8_t anchor_y)
 {
-    if (!text_config->font || c < 32) // TODO voir pour construire une classe Font
+    if (!text_config.font || c < 32) // TODO voir pour construire une classe Font
         return;
 
-    uint8_t font_width = text_config->font[FONT_WIDTH_INDEX];
-    uint8_t font_height = text_config->font[FONT_HEIGHT_INDEX];
+    uint8_t font_width = text_config.font[FONT_WIDTH_INDEX];
+    uint8_t font_height = text_config.font[FONT_HEIGHT_INDEX];
 
     uint16_t seek = (c - 32) * (font_width * font_height) / 8 + 2;
 
@@ -214,10 +214,10 @@ void SSD1306::drawChar(struct_PixelFrame *pixel_memory_structure,
     {
         for (uint8_t y = 0; y < font_height; y++)
         {
-            if (text_config->font[seek] >> b_seek & 0b00000001)
-                pixel(pixel_memory_structure, x + anchor_x, y + anchor_y, text_config->fg_color);
+            if (text_config.font[seek] >> b_seek & 0b00000001)
+                pixel(pixel_memory_structure, x + anchor_x, y + anchor_y, text_config.fg_color);
             else
-                pixel(pixel_memory_structure, x + anchor_x, y + anchor_y, text_config->bg_color);
+                pixel(pixel_memory_structure, x + anchor_x, y + anchor_y, text_config.bg_color);
 
             b_seek++;
             if (b_seek == 8)

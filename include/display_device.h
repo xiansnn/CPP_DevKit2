@@ -39,18 +39,18 @@ struct struct_PixelFrame
     uint8_t *pixel_buffer = nullptr;
 };
 
-// /// @brief the data structure that characterise the text buffer
-// struct struct_TextFrame
-// {
-//     /// @brief the size, in number of character of a line
-//     size_t number_of_column;
-//     /// @brief the number of line
-//     size_t number_of_line;
-//     /// @brief  the number of characters
-//     size_t text_buffer_size;
-//     /// @brief the effective character buffer
-//     char *text_buffer = nullptr;
-// };
+/// @brief the data structure that characterise the text buffer
+struct struct_TextFrame
+{
+    /// @brief the size, in number of character of a line
+    size_t number_of_column;
+    /// @brief the number of line
+    size_t number_of_line;
+    /// @brief  the number of characters
+    size_t text_buffer_size;
+    /// @brief the effective character buffer
+    char *text_buffer = nullptr;
+};
 
 /**
  * @brief data structure used to configure graphic framebuffer
@@ -69,7 +69,7 @@ struct struct_ConfigGraphicFramebuffer
     PixelColor bg_color{PixelColor::BLACK};
 };
 
-/// @brief the data sttructure used to configure textual widget
+/// @brief the data structure used to configure textual widget
 struct struct_ConfigTextFramebuffer
 {
     /// @brief The max number of line with respect to frame height and font height
@@ -208,7 +208,7 @@ public:
      * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
      */
     virtual void drawChar(struct_PixelFrame *pixel_memory,
-                          const struct_ConfigTextFramebuffer *text_config,
+                          const struct_ConfigTextFramebuffer text_config,
                           const char character,
                           const uint8_t anchor_x, const uint8_t anchor_y) = 0;
 };
