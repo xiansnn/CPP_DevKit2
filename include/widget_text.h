@@ -76,11 +76,11 @@ protected:
     void draw_border(PixelColor c = PixelColor::WHITE);
 
 public:
-    /**
-     * @brief Set the display screen object
-     *
-     * @param _new_display_device
-     */
+    // /**
+    //  * @brief Set the display screen object
+    //  *
+    //  * @param _new_display_device
+    //  */
     void set_display_screen(GraphicDisplayDevice *_new_display_device);
 
     /**

@@ -34,6 +34,21 @@
 /// @brief character code for CARRIAGE_RETURN ('CR', 0x0D)
 #define CARRIAGE_RETURN '\r'
 
+/**
+ * @brief Framebuffer is the abstract class that contains all common features for text and graphic primitives on a display.
+ *
+ * This framebuffer implementation is derived from the mycropython API and more explanations can be found
+ * there https://docs.micropython.org/en/latest/library/framebuf.html#module-framebuf.
+ *
+ * The current implementation supports only MONO_VLSB frame_format (monochrome display with vertically addressed pixel LSB being on top)
+ *  and tested with OLED SSD1306.
+ *
+ * The core of framebuffer is the pixel_buffer, a memory space that contains pixel values. This pixel_buffer is computed and initialized by the framebuffer constructor.
+ *
+ * Optionnally, when framebuffer contains text, a text_buffer that contains characters chain is used. It is created and initialized by
+ *  update_text_frame_size function member.
+ * The configuration of this buffer is defined by struct_FramebufferText.
+ */
 class Framebuffer
 {
 private:
@@ -43,18 +58,39 @@ protected:
     GraphicDisplayDevice *graphic_display_screen{nullptr};
 
 public:
+    /**
+     * @brief Construct a new Framebuffer object. The basic constructor, used to initiate display size (in pixel) , foregroundg and background color.
+     *
+     * @param graphic_display_device the associated graphic display device
+     * @param graph_cfg the configuration data for graphic feature
+     */
     Framebuffer(GraphicDisplayDevice *graphic_display_device,
                 struct_ConfigGraphicFramebuffer graph_cfg);
+    /**
+     * @brief Construct a new Framebuffer object. Used when we need a TextualFramebuffer defined by its struct_ConfigTextFramebuffer, and the size of the display in pixel.
+     *
+     * @param graphic_display_device the associated graphic display device
+     * @param frame_width the size in x-pixel of the frame
+     * @param frame_height the size in y-pixel of the frame
+     * @param text_cfg the text configuration data
+     */
     Framebuffer(GraphicDisplayDevice *graphic_display_device,
                 size_t frame_width,
                 size_t frame_height,
                 struct_ConfigTextFramebuffer text_cfg);
+    /**
+     * @brief Construct a new Framebuffer object. Starting from the text configuration data, columns x lines of a given bitmap font size,
+     *  the width and height of the frame are computed.
+     *
+     * @param graphic_display_device the associated graphic display device
+     * @param text_cfg the text configuration data
+     */
     Framebuffer(GraphicDisplayDevice *graphic_display_device,
                 struct_ConfigTextFramebuffer text_cfg);
     ~Framebuffer();
 
-    /// @brief the dtat structure that contains the actual pixel buffer, created by the display device.
-    struct_PixelMemory pixel_memory;
+    /// @brief the data structure that contains the actual pixel buffer, created by the display device.
+    struct_PixelFrame pixel_memory;
     /// @brief the foregroung color of the graphic frame
     PixelColor fg_color;
     /// @brief the background color of the graphic frame
@@ -68,25 +104,11 @@ public:
 };
 
 /**
- * @brief Framebuffer is the basic framework to handle texts and graphics on a digital display.
- *
- * This framebuffer implementation is derived from the mycropython API and more explanations can be found
- * there https://docs.micropython.org/en/latest/library/framebuf.html#module-framebuf.
- *
- * The current implementation supports only MONO_VLSB frame_format (monochrome display with vertically addressed pixel LSB being on top)
- *  and tested with OLED SSD1306.
+ * @brief GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in charge of the pixel buffer mamangement.
  *
  * The core of framebuffer is the pixel_buffer, a memory space that contains pixel values. This pixel_buffer is computed and initialized by the framebuffer constructor.
- *
- * Optionnally, when framebuffer contains text, a text_buffer that contains characters chain is used. It is created and initialized by
- *  update_text_buffer function member.
- * The configuration of this buffer is defined by struct_FramebufferText.
- *
- *
  */
-
 class GraphicFramebuffer : public Framebuffer
-
 {
 private:
     /// @brief the graphic primitive to draw an ellipse \bug //FIXME doesn't work !
@@ -141,7 +163,7 @@ public:
     /// \note: Works only for monochrome display!
     /// @param pixel_memory the location of the pixel_buffer
     /// @param c the foreground color
-    void fill(struct_PixelMemory *pixel_memory, PixelColor c);
+    void fill(struct_PixelFrame *pixel_memory, PixelColor c);
 
     /**
      * @brief  Draw a c color horizontal line, starting at frame position (x,y), on w number of pixel.
@@ -280,42 +302,36 @@ public:
     ~TextualFrameBuffer();
 
     /**
-     * @brief   Initialize the textual features of framebuffer, according to the configuration data structure frame_text_config
-     *
+     * @brief   Compute the text size in column x line according to the size of the font and the size of the frame in pixel.
+     * Delete the previous text buffer if any and create a new buffer.
      * @param   frame_text_config the textual configuration data structure
      */
-    void
-    update_text_buffer(struct_ConfigTextFramebuffer frame_text_config);
+    void update_text_frame_size(const unsigned char *font);
     /**
      * @brief   Set text buffer memory to "0" and set character line and column to 0
      */
     void clear_text_buffer();
+
     /**
-     * @brief Update the reference to the font, recompute max number of line, column, the new text buffer size, delete the previous one if any and create a new buffer.
+     * @brief compute graphic pixel width and height according to the size of the text (column x line ) and the size of the bitmap font.
+     * Delete the previous pixel buffer if any and create a new buffer.
      *
      * @param font
      */
-    void update_text_buffer_size(const unsigned char *font);
+    void update_graphic_frame_size(const unsigned char *font);
 
     /**
-     * @brief Update the reference to the font, recompute graphic pixel width and height and the corresponding buffer size, delete the previous one if any and create a new buffer.
-     *
-     * @param font
+     * @brief process the internal text buffer characters and draw it into the pixel buffer.
      */
-    void update_pixel_area(const unsigned char *font);
-
+    void draw_text_buffer();
     /**
-     * @brief convert the internal text buffer characters to the pixel buffer.
-     */
-    void print_text_buffer();
-    /**
-     * @brief copy the string c_str to the the internal text buffer, then convert it to the pixel buffer.
+     * @brief process the string c_str and then draw each character into the pixel buffer.
      *
      * @param c_str A C_style character string.
      */
-    void print_text(const char *c_str); // TODO a remplacer par un draw
+    void draw_text(const char *c_str);
     /**
-     * @brief convert the c character to the current line and column character position.
+     * @brief interpret the character and draw it into the pixel buffer at the current line and column character position.
      *
      * Text wrapping is done if wrap flag is true.
      * Character position steps forward according to auto_next_char flag.
@@ -331,9 +347,9 @@ public:
      *  - "CARRIAGE_RETURN" (\\r  0x0D) : column position is set to 0.
      *
      *  - "HORIZONTAL_TAB"  (\\t  0x09) : " " characters are added according to tab_size configuration value.
-     * @param c
+     * @param character
      */
-    void print_char(char c);
+    void process_char(char character);
     /**
      * @brief character line position steps forward
      */

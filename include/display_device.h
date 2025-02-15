@@ -27,7 +27,7 @@ enum class PixelColor
 };
 
 /// @brief the data structure that characterise the graphic framebuffer
-struct struct_PixelMemory
+struct struct_PixelFrame
 {
     /// @brief The number of pixel along the width of the frame.
     uint8_t frame_width;
@@ -39,18 +39,18 @@ struct struct_PixelMemory
     uint8_t *pixel_buffer = nullptr;
 };
 
-/// @brief the data structure that characterise the text buffer
-struct struct_TextMemory
-{
-    /// @brief the size, in number of character of a line
-    size_t number_of_column;
-    /// @brief the number of line
-    size_t number_of_line;
-    /// @brief  the number of characters
-    size_t text_buffer_size;
-    /// @brief the effective character buffer
-    char *text_buffer = nullptr;
-};
+// /// @brief the data structure that characterise the text buffer
+// struct struct_TextFrame
+// {
+//     /// @brief the size, in number of character of a line
+//     size_t number_of_column;
+//     /// @brief the number of line
+//     size_t number_of_line;
+//     /// @brief  the number of characters
+//     size_t text_buffer_size;
+//     /// @brief the effective character buffer
+//     char *text_buffer = nullptr;
+// };
 
 /**
  * @brief data structure used to configure graphic framebuffer
@@ -147,11 +147,11 @@ public:
      * It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.
      * This method implements all peculiarities of the actual display device.
      *
-     * @param pixel_memory a pointer to the struct_PixelMemory that contains the pixel_buffer to be displayed
+     * @param pixel_memory a pointer to the struct_PixelFrame that contains the pixel_buffer to be displayed
      * @param anchor_x the x(horizontal) starting position of the frame within the display screen,(in pixel)
      * @param anchor_y
      */
-    virtual void show(struct_PixelMemory *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y) = 0;
+    virtual void show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y) = 0;
 
     /**
      * @brief Construct a new Display Device object
@@ -174,7 +174,7 @@ public:
      *
      * @param pixel_memory the pixel buffer to fill
      */
-    virtual void clear_pixel_buffer(struct_PixelMemory *pixel_memory) = 0;
+    virtual void clear_pixel_buffer(struct_PixelFrame *pixel_memory) = 0;
 
     /**
      * @brief A pure virtual method. Create a pixel buffer object.
@@ -183,7 +183,7 @@ public:
      *
      * @param pixel_memory the pixel buffer to complete
      */
-    virtual void create_pixel_buffer(struct_PixelMemory *pixel_memory) = 0;
+    virtual void create_pixel_buffer(struct_PixelFrame *pixel_memory) = 0;
 
     /**
      * @brief the graphic primitive to draw a pixel
@@ -193,7 +193,7 @@ public:
      * @param y the y position of the pixel
      * @param color the color of the pixel
      */
-    virtual void pixel(struct_PixelMemory *pixel_memory,
+    virtual void pixel(struct_PixelFrame *pixel_memory,
                        const int x, const int y,
                        const PixelColor color = PixelColor::WHITE) = 0;
 
@@ -207,7 +207,7 @@ public:
      * @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
      * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
      */
-    virtual void drawChar(struct_PixelMemory *pixel_memory,
+    virtual void drawChar(struct_PixelFrame *pixel_memory,
                           const struct_ConfigTextFramebuffer *text_config,
                           const char character,
                           const uint8_t anchor_x, const uint8_t anchor_y) = 0;
@@ -230,7 +230,7 @@ public:
     /// @brief the effective character buffer
     char *text_buffer = nullptr;
     // /// @brief the data structure of the text memory
-    // struct_TextMemory text_memory;
+    // struct_TextFrame text_memory;
     /**
      * @brief Construct a new Printer Device object
      *
