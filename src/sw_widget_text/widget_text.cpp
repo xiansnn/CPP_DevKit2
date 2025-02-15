@@ -13,8 +13,8 @@
 
 void WidgetText::draw_border(PixelColor c)
 {
-    if (this->widget_with_border)
-        rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width);
+    // if (this->widget_with_border)
+    //     rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width);
 }
 
 void WidgetText::set_display_screen(GraphicDisplayDevice *_new_display_device)
@@ -75,7 +75,7 @@ void WidgetText::draw_refresh()
 
     if (this->actual_displayed_model->has_changed())
     {
-        this->print_text(this->text_buffer);
+        this->draw_text(this->text_buffer);
         this->draw_border();
         this->graphic_display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
     }

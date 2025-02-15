@@ -87,7 +87,7 @@ int main()
     int roll, pitch;
 
     TextualFrameBuffer values = TextualFrameBuffer(&values_display, values_config);
-    values.print_char(FORM_FEED);
+    values.process_char(FORM_FEED);
 
     GraphicFramebuffer graph = GraphicFramebuffer(&visu_display, graph_config);
     visu_display.clear_pixel_buffer(&graph.pixel_memory);
@@ -97,7 +97,7 @@ int main()
 
     pr_D4.hi();
     TextualFrameBuffer title = TextualFrameBuffer(&values_display, title_config);
-    title.print_text("ROLL PITCH");
+    title.draw_text("ROLL PITCH");
     values_display.show(&title.pixel_memory, title_area_anchor_x, title_area_anchor_y);
     pr_D4.lo(); // 9ms
 
@@ -113,9 +113,9 @@ int main()
             roll = i;
             pitch = sign * i / 4;
             sprintf(values.text_buffer, "%+3d\xF8  %+3d\xF8", roll, pitch);
-            values.print_text_buffer();
+            values.draw_text_buffer();
             values_display.show(&values.pixel_memory, values_area_anchor_x, values_area_anchor_y);
-            values.print_char(FORM_FEED);
+            values.process_char(FORM_FEED);
             pr_D6.lo(); // 9ms
 
             // compute and show the graphic representation

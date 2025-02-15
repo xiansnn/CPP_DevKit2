@@ -301,12 +301,13 @@ public:
 
     ~TextualFrameBuffer();
 
-    /**
-     * @brief   Compute the text size in column x line according to the size of the font and the size of the frame in pixel.
+     /**
+      * @brief Compute the text size in column x line according to the size of the font and the size of the frame in pixel.
      * Delete the previous text buffer if any and create a new buffer.
-     * @param   frame_text_config the textual configuration data structure
-     */
-    void update_text_frame_size(const unsigned char *font);
+      * 
+      * @param font the new font
+      */
+     void update_text_frame_size(const unsigned char *font);
     /**
      * @brief   Set text buffer memory to "0" and set character line and column to 0
      */

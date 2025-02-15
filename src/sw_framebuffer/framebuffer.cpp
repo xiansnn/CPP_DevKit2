@@ -17,12 +17,6 @@ GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *device,
                                        struct_ConfigGraphicFramebuffer graph_cfg)
     : Framebuffer(device, graph_cfg)
 {
-    // this->graphic_display_screen = device;
-    // this->fg_color = graph_cfg.fg_color;
-    // this->bg_color = graph_cfg.bg_color;
-    // this->pixel_memory.frame_height = graph_cfg.frame_height;
-    // this->pixel_memory.frame_width = graph_cfg.frame_width;
-    // device->create_pixel_buffer(&this->pixel_memory);
 }
 
 GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *display_device,
@@ -31,33 +25,19 @@ GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *display_device,
                                        struct_ConfigTextFramebuffer text_cfg)
     : Framebuffer(display_device, frame_width, frame_height, text_cfg)
 {
-    // this->graphic_display_screen = display_device;
-    // this->fg_color = text_cfg.fg_color;
-    // this->bg_color = text_cfg.bg_color;
-    // this->pixel_memory.frame_height = frame_height;
-    // this->pixel_memory.frame_width = frame_width;
-    // display_device->create_pixel_buffer(&this->pixel_memory);
 }
 
 GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *device,
                                        struct_ConfigTextFramebuffer text_cfg)
     : Framebuffer(device, text_cfg)
 {
-    // this->graphic_display_screen = device;
-    // this->fg_color = text_cfg.fg_color;
-    // this->bg_color = text_cfg.bg_color;
-
-    // this->pixel_memory.frame_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
-    // this->pixel_memory.frame_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
-    // device->create_pixel_buffer(&this->pixel_memory);
 }
 
 GraphicFramebuffer::~GraphicFramebuffer()
 {
-    // delete[] this->pixel_memory.pixel_buffer;
 }
 
-void GraphicFramebuffer::fill(struct_PixelMemory *pixel_memory, PixelColor c)
+void GraphicFramebuffer::fill(struct_PixelFrame *pixel_memory, PixelColor c)
 {
     if (c == PixelColor::BLACK)
         memset(pixel_memory->pixel_buffer, 0x00, pixel_memory->pixel_buffer_size);
@@ -269,22 +249,7 @@ TextualFrameBuffer::~TextualFrameBuffer()
     delete[] this->text_buffer;
 }
 
-void TextualFrameBuffer::update_text_buffer(struct_ConfigTextFramebuffer _frame_text_config)
-{
-    this->frame_text_config = _frame_text_config;
-    update_text_buffer_size(this->frame_text_config.font);
-}
-
-void TextualFrameBuffer::clear_text_buffer()
-{
-    memset(this->text_buffer, '\0', this->text_buffer_size);
-    this->graphic_display_screen->clear_pixel_buffer(&this->pixel_memory);
-
-    current_char_column = 0;
-    current_char_line = 0;
-}
-
-void TextualFrameBuffer::update_text_buffer_size(const unsigned char *font)
+void TextualFrameBuffer::update_text_frame_size(const unsigned char *font) 
 {
     this->frame_text_config.font = font;
 
@@ -296,7 +261,16 @@ void TextualFrameBuffer::update_text_buffer_size(const unsigned char *font)
     create_text_buffer();
 }
 
-void TextualFrameBuffer::update_pixel_area(const unsigned char *font)
+void TextualFrameBuffer::clear_text_buffer()
+{
+    memset(this->text_buffer, '\0', this->text_buffer_size);
+    this->graphic_display_screen->clear_pixel_buffer(&this->pixel_memory);
+
+    current_char_column = 0;
+    current_char_line = 0;
+}
+
+void TextualFrameBuffer::update_graphic_frame_size(const unsigned char *font)
 {
     this->frame_text_config.font = font;
     // size the pixel buffer to the required size due to character area
@@ -307,22 +281,22 @@ void TextualFrameBuffer::update_pixel_area(const unsigned char *font)
     graphic_display_screen->create_pixel_buffer(&this->pixel_memory);
 }
 
-void TextualFrameBuffer::print_text_buffer()
+void TextualFrameBuffer::draw_text_buffer()
 {
-    print_text(this->text_buffer);
+    draw_text(this->text_buffer);
 }
 
-void TextualFrameBuffer::print_text(const char *c_str)
+void TextualFrameBuffer::draw_text(const char *c_str)
 {
     uint16_t n = 0;
     while (c_str[n] != '\0')
     {
-        print_char(c_str[n]);
+        process_char(c_str[n]);
         n++;
     }
 }
 
-void TextualFrameBuffer::print_char(char character)
+void TextualFrameBuffer::process_char(char character)
 {
     switch (character)
     {
