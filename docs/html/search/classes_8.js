@@ -18,6 +18,7 @@ var searchData=
   ['struct_5frawdata_15',['struct_RawData',['../structstruct___raw_data.html',1,'']]],
   ['struct_5frenderarea_16',['struct_RenderArea',['../structstruct___render_area.html',1,'']]],
   ['struct_5fslavememory_17',['struct_SlaveMemory',['../structstruct___slave_memory.html',1,'']]],
-  ['switchbutton_18',['SwitchButton',['../class_switch_button.html',1,'']]],
-  ['switchbuttonwithirq_19',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html',1,'']]]
+  ['struct_5ftextframe_18',['struct_TextFrame',['../structstruct___text_frame.html',1,'']]],
+  ['switchbutton_19',['SwitchButton',['../class_switch_button.html',1,'']]],
+  ['switchbuttonwithirq_20',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html',1,'']]]
 ];

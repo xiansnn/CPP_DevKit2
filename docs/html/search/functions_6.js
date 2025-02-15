@@ -10,9 +10,10 @@ var searchData=
   ['get_5fmpu_5ftemperature_7',['get_MPU_temperature',['../class_m_p_u6050.html#a30d08e918229e1206c75b3588d2c4cc9',1,'MPU6050']]],
   ['get_5fspectrum_8',['get_spectrum',['../class_m_s_g_e_q7.html#ac03d0f7a0c833169f67ea4d5a8712c38',1,'MSGEQ7']]],
   ['get_5fstatus_9',['get_status',['../class_u_i_model_object.html#a63d6483ff3c6141398213e6eae1be63d',1,'UIModelObject']]],
-  ['get_5ftime_5fsince_5flast_5fchange_10',['get_time_since_last_change',['../class_u_i_model_object.html#a713e9fbb5d1842d2c80764898f60ce26',1,'UIModelObject']]],
-  ['get_5fvalue_11',['get_value',['../class_u_i_controlled_incremental_value.html#a7989979c51969bb665d8539636eb9876',1,'UIControlledIncrementalValue']]],
-  ['graphicdisplaydevice_12',['GraphicDisplayDevice',['../class_graphic_display_device.html#adcb1b9fe5ab993b41374db60766e8fa1',1,'GraphicDisplayDevice']]],
-  ['graphicframebuffer_13',['GraphicFramebuffer',['../class_graphic_framebuffer.html#afe42739400a09683334e3e9528ae699e',1,'GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *display_device, struct_ConfigGraphicFramebuffer graph_cfg)'],['../class_graphic_framebuffer.html#a2d05ac03a65fc6ba35e6234bec3a1647',1,'GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *display_device, size_t frame_width, size_t frame_height, struct_ConfigTextFramebuffer text_cfg)'],['../class_graphic_framebuffer.html#a1c9806337b0c7639e0619d112bd76ed1',1,'GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *display_device, struct_ConfigTextFramebuffer text_cfg)']]],
-  ['graphicwidget_14',['GraphicWidget',['../class_graphic_widget.html#a54b5a1e6b9ed551fcf68c5bb03054876',1,'GraphicWidget']]]
+  ['get_5ftext_5fframe_5fconfig_10',['get_text_frame_config',['../class_textual_frame_buffer.html#a0887c3cfc9d2ae7e440d3676fc841d46',1,'TextualFrameBuffer']]],
+  ['get_5ftime_5fsince_5flast_5fchange_11',['get_time_since_last_change',['../class_u_i_model_object.html#a713e9fbb5d1842d2c80764898f60ce26',1,'UIModelObject']]],
+  ['get_5fvalue_12',['get_value',['../class_u_i_controlled_incremental_value.html#a7989979c51969bb665d8539636eb9876',1,'UIControlledIncrementalValue']]],
+  ['graphicdisplaydevice_13',['GraphicDisplayDevice',['../class_graphic_display_device.html#adcb1b9fe5ab993b41374db60766e8fa1',1,'GraphicDisplayDevice']]],
+  ['graphicframebuffer_14',['GraphicFramebuffer',['../class_graphic_framebuffer.html#afe42739400a09683334e3e9528ae699e',1,'GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *display_device, struct_ConfigGraphicFramebuffer graph_cfg)'],['../class_graphic_framebuffer.html#a2d05ac03a65fc6ba35e6234bec3a1647',1,'GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *display_device, size_t frame_width, size_t frame_height, struct_ConfigTextFramebuffer text_cfg)'],['../class_graphic_framebuffer.html#a1c9806337b0c7639e0619d112bd76ed1',1,'GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *display_device, struct_ConfigTextFramebuffer text_cfg)']]],
+  ['graphicwidget_15',['GraphicWidget',['../class_graphic_widget.html#a54b5a1e6b9ed551fcf68c5bb03054876',1,'GraphicWidget']]]
 ];

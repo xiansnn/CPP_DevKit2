@@ -37,6 +37,7 @@ var annotated_dup =
     [ "struct_RawData", "structstruct___raw_data.html", "structstruct___raw_data" ],
     [ "struct_RenderArea", "structstruct___render_area.html", "structstruct___render_area" ],
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", "structstruct___slave_memory" ],
+    [ "struct_TextFrame", "structstruct___text_frame.html", "structstruct___text_frame" ],
     [ "SwitchButton", "class_switch_button.html", "class_switch_button" ],
     [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", "class_switch_button_with_i_r_q" ],
     [ "TextualFrameBuffer", "class_textual_frame_buffer.html", "class_textual_frame_buffer" ],

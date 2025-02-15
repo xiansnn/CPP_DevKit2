@@ -48,6 +48,7 @@ var hierarchy =
     [ "struct_RawData", "structstruct___raw_data.html", null ],
     [ "struct_RenderArea", "structstruct___render_area.html", null ],
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", null ],
+    [ "struct_TextFrame", "structstruct___text_frame.html", null ],
     [ "SwitchButton", "class_switch_button.html", [
       [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", [
         [ "RotaryEncoder", "class_rotary_encoder.html", null ]

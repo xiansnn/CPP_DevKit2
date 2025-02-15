@@ -10,5 +10,5 @@ var searchData=
   ['widget_5fwith_5fborder_7',['widget_with_border',['../class_graphic_widget.html#afd6b3c92346618f1fdbb501989c15078',1,'GraphicWidget::widget_with_border'],['../class_widget_text.html#a8b736bac0a08a1881f43e7a7ab514643',1,'WidgetText::widget_with_border']]],
   ['widgets_8',['widgets',['../class_graphic_widget.html#ae36e4d29a96873eb28d0327b21bd1551',1,'GraphicWidget::widgets'],['../class_print_widget.html#a290e98c4fafe5bd5ba1cace1eeb192e1',1,'PrintWidget::widgets'],['../class_widget_text.html#ac422e80a9f12318c8cc6b1e05c22c40e',1,'WidgetText::widgets']]],
   ['width_9',['width',['../structstruct___render_area.html#ae390a957d9f070f47e89e84fbcdb8319',1,'struct_RenderArea']]],
-  ['wrap_10',['wrap',['../structstruct___config_text_framebuffer.html#a8b455772ce9e7d467d80e9a80e8ebe7f',1,'struct_ConfigTextFramebuffer']]]
+  ['wrap_10',['wrap',['../structstruct___config_text_framebuffer.html#a8b455772ce9e7d467d80e9a80e8ebe7f',1,'struct_ConfigTextFramebuffer::wrap'],['../class_textual_frame_buffer.html#adb49b6dc30fbba2b03fbf7f9f986eed6',1,'TextualFrameBuffer::wrap']]]
 ];

@@ -7,5 +7,5 @@ var class_framebuffer =
     [ "bg_color", "class_framebuffer.html#aad957cc59bc60b1d0e7b57fb1f565cdd", null ],
     [ "fg_color", "class_framebuffer.html#a21e274954d56bcf1417da39804747d40", null ],
     [ "graphic_display_screen", "class_framebuffer.html#aac2296916f9c9bccbf345ea150e5ce9c", null ],
-    [ "pixel_memory", "class_framebuffer.html#a8db299b69f5ddb26914869cf47fcd336", null ]
+    [ "pixel_frame", "class_framebuffer.html#a1e327d8adaee19de8b5f40b347646e1e", null ]
 ];

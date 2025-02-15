@@ -1,6 +1,7 @@
 var display__device_8h =
 [
     [ "struct_PixelFrame", "structstruct___pixel_frame.html", "structstruct___pixel_frame" ],
+    [ "struct_TextFrame", "structstruct___text_frame.html", "structstruct___text_frame" ],
     [ "struct_ConfigGraphicFramebuffer", "structstruct___config_graphic_framebuffer.html", "structstruct___config_graphic_framebuffer" ],
     [ "struct_ConfigTextFramebuffer", "structstruct___config_text_framebuffer.html", "structstruct___config_text_framebuffer" ],
     [ "DisplayDevice", "class_display_device.html", "class_display_device" ],

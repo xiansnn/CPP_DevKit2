@@ -106,9 +106,10 @@ var searchData=
   ['struct_5frawdata_103',['struct_RawData',['../structstruct___raw_data.html',1,'']]],
   ['struct_5frenderarea_104',['struct_RenderArea',['../structstruct___render_area.html',1,'']]],
   ['struct_5fslavememory_105',['struct_SlaveMemory',['../structstruct___slave_memory.html',1,'']]],
-  ['switch_5fbutton_2eh_106',['switch_button.h',['../switch__button_8h.html',1,'']]],
-  ['switchbutton_107',['SwitchButton',['../class_switch_button.html',1,'SwitchButton'],['../class_switch_button.html#a750d21f333405881df2ef91495885a29',1,'SwitchButton::SwitchButton()']]],
-  ['switchbuttonwithirq_108',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html',1,'SwitchButtonWithIRQ'],['../class_switch_button_with_i_r_q.html#aafb53c306bcbb5c681caae03b778f517',1,'SwitchButtonWithIRQ::SwitchButtonWithIRQ()']]],
-  ['sync_109',['sync',['../class_s_g90.html#aca147d2515d3e09e800a2c49a6671a3d',1,'SG90']]],
-  ['sync_5fpin_110',['sync_pin',['../structstruct___config_s_g90.html#a1adfe8bff0e581ebf86b11dd97d7153c',1,'struct_ConfigSG90']]]
+  ['struct_5ftextframe_106',['struct_TextFrame',['../structstruct___text_frame.html',1,'']]],
+  ['switch_5fbutton_2eh_107',['switch_button.h',['../switch__button_8h.html',1,'']]],
+  ['switchbutton_108',['SwitchButton',['../class_switch_button.html',1,'SwitchButton'],['../class_switch_button.html#a750d21f333405881df2ef91495885a29',1,'SwitchButton::SwitchButton()']]],
+  ['switchbuttonwithirq_109',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html',1,'SwitchButtonWithIRQ'],['../class_switch_button_with_i_r_q.html#aafb53c306bcbb5c681caae03b778f517',1,'SwitchButtonWithIRQ::SwitchButtonWithIRQ()']]],
+  ['sync_110',['sync',['../class_s_g90.html#aca147d2515d3e09e800a2c49a6671a3d',1,'SG90']]],
+  ['sync_5fpin_111',['sync_pin',['../structstruct___config_s_g90.html#a1adfe8bff0e581ebf86b11dd97d7153c',1,'struct_ConfigSG90']]]
 ];

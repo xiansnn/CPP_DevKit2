@@ -10,5 +10,5 @@ var searchData=
   ['actual_5fdisplayed_5fmodel_7',['actual_displayed_model',['../class_graphic_widget.html#a4b710e002ed92f2e5c6f1bf4f2392861',1,'GraphicWidget::actual_displayed_model'],['../class_print_widget.html#a75e6ea8cb78a21c74332917a01f3f09a',1,'PrintWidget::actual_displayed_model'],['../class_widget_text.html#a6f0757b222b7a03e5ef848576f185800',1,'WidgetText::actual_displayed_model']]],
   ['add_5fmanaged_5fmodel_8',['add_managed_model',['../class_u_i_object_manager.html#adccc078134b98fe806047c86369f2e1c',1,'UIObjectManager']]],
   ['add_5fwidget_9',['add_widget',['../class_graphic_widget.html#a778d8b76703927fa2916ba09b6b39f6b',1,'GraphicWidget::add_widget()'],['../class_print_widget.html#a769b083035250ddd922ff1e1629b701f',1,'PrintWidget::add_widget()'],['../class_widget_text.html#a09ef73d8b1fa413b42ac4185857736e7',1,'WidgetText::add_widget()']]],
-  ['auto_5fnext_5fchar_10',['auto_next_char',['../structstruct___config_text_framebuffer.html#a97b344868fdc824f589e9e6bd9fea271',1,'struct_ConfigTextFramebuffer']]]
+  ['auto_5fnext_5fchar_10',['auto_next_char',['../structstruct___config_text_framebuffer.html#a97b344868fdc824f589e9e6bd9fea271',1,'struct_ConfigTextFramebuffer::auto_next_char'],['../class_textual_frame_buffer.html#af22d14ca1bead4e28be1115ed226aeb2',1,'TextualFrameBuffer::auto_next_char']]]
 ];

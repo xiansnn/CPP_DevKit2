@@ -54,7 +54,8 @@ var NAVTREEINDEX =
 [
 "12x16__font_8h.html",
 "class_switch_button.html#acf1f884508aacadb2bb12ee44e53bf73",
-"functions_p.html"
+"functions_h.html",
+"widget__square__led_8h.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
