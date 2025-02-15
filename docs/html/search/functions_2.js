@@ -8,7 +8,7 @@ var searchData=
   ['clear_5fdevice_5fscreen_5fbuffer_5',['clear_device_screen_buffer',['../class_s_s_d1306.html#a646463128f966a04b1746e3389819711',1,'SSD1306']]],
   ['clear_5firq_6',['clear_irq',['../class_p_w_m.html#a23a7f94507115fdab48b65af6931329e',1,'PWM']]],
   ['clear_5fline_7',['clear_line',['../class_textual_frame_buffer.html#a72835ef9a60d3435ba4abd894a0589c7',1,'TextualFrameBuffer']]],
-  ['clear_5fpixel_5fbuffer_8',['clear_pixel_buffer',['../class_graphic_display_device.html#a925fa588f6f1174b81396f1dd29cf14d',1,'GraphicDisplayDevice::clear_pixel_buffer()'],['../class_s_s_d1306.html#ae8806883d7ce6ba32bb5ed8c7a5a1282',1,'SSD1306::clear_pixel_buffer()']]],
+  ['clear_5fpixel_5fbuffer_8',['clear_pixel_buffer',['../class_graphic_display_device.html#a90f329da088d69b0890cb3b7e89424dc',1,'GraphicDisplayDevice::clear_pixel_buffer()'],['../class_s_s_d1306.html#a8432036c46b4de56e4d85ed06f82195a',1,'SSD1306::clear_pixel_buffer()']]],
   ['clear_5ftext_5fbuffer_9',['clear_text_buffer',['../class_textual_frame_buffer.html#a8f3d8555259e9e7a88211b493888fd5a',1,'TextualFrameBuffer']]],
   ['compute_5frender_5farea_10',['compute_render_area',['../class_s_s_d1306.html#a946d97970d11c778a09e0f1305591b3f',1,'SSD1306']]],
   ['convert_5flevel_5fvalue_5fto_5fpx_11',['convert_level_value_to_px',['../class_widget_horizontal_bargraph.html#a4409c6d882c92ca3d6974eff0bc8579f',1,'WidgetHorizontalBargraph::convert_level_value_to_px()'],['../class_widget_horizontal_bar.html#aa94c8372969017f613b39dfcd690b014',1,'WidgetHorizontalBar::convert_level_value_to_px()']]],
@@ -16,6 +16,6 @@ var searchData=
   ['convert_5fraw_5fto_5fmeasure_13',['convert_raw_to_measure',['../class_m_p_u6050.html#ac1a94f4e63bb11e66159832b3b6fb46c',1,'MPU6050']]],
   ['copy_14',['copy',['../class_probe.html#a3ca878200b9a6d5744366b23fe0051c9',1,'Probe']]],
   ['count_5fcycles_15',['count_cycles',['../class_p_w_mgated_measure.html#a4f372aa91b889f792b4eb805d0eb5a46',1,'PWMgatedMeasure']]],
-  ['create_5fpixel_5fbuffer_16',['create_pixel_buffer',['../class_graphic_display_device.html#a0c4dfc52e338d9f3fa66fc36e76f4017',1,'GraphicDisplayDevice::create_pixel_buffer()'],['../class_s_s_d1306.html#a4cd36aaddf2129f31beb3c8119b2d496',1,'SSD1306::create_pixel_buffer()']]],
+  ['create_5fpixel_5fbuffer_16',['create_pixel_buffer',['../class_graphic_display_device.html#ad564b8b39b2e92659a4b8ee01615c6c2',1,'GraphicDisplayDevice::create_pixel_buffer()'],['../class_s_s_d1306.html#a219dc68e8ad7ba244928d5373ca2e8b8',1,'SSD1306::create_pixel_buffer()']]],
   ['create_5ftext_5fbuffer_17',['create_text_buffer',['../class_textual_frame_buffer.html#a4f5fc33457bba9a0a970f44738de68cb',1,'TextualFrameBuffer']]]
 ];

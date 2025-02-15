@@ -7,9 +7,8 @@ var searchData=
   ['update_5fcurrent_5fcontrolled_5fobject_4',['update_current_controlled_object',['../class_u_i_controller.html#a2cc0f0b9952528a65b002f1ed86bb0f2',1,'UIController']]],
   ['update_5fcurrent_5fcontroller_5',['update_current_controller',['../class_u_i_model_object.html#a656066649f529b7472d098637ddcf04f',1,'UIModelObject']]],
   ['update_5fevent_5fprocessor_6',['update_event_processor',['../class_rotary_encoder.html#a20a7d47b8facd264840c4c7e988f5ae3',1,'RotaryEncoder']]],
-  ['update_5fpixel_5farea_7',['update_pixel_area',['../class_textual_frame_buffer.html#aeeba56c72968440545ddaf7a608c995c',1,'TextualFrameBuffer']]],
+  ['update_5fgraphic_5fframe_5fsize_7',['update_graphic_frame_size',['../class_textual_frame_buffer.html#a4815a663de65a0940e7d8e3088e4bdbc',1,'TextualFrameBuffer']]],
   ['update_5fstatus_8',['update_status',['../class_u_i_model_object.html#a23cc738b1244cbc6a52ad7ed6102e688',1,'UIModelObject']]],
-  ['update_5ftext_5fbuffer_9',['update_text_buffer',['../class_textual_frame_buffer.html#aa9d0d75389a08f1c42c08eefe7c2bcb2',1,'TextualFrameBuffer']]],
-  ['update_5ftext_5fbuffer_5fsize_10',['update_text_buffer_size',['../class_textual_frame_buffer.html#a3a3ed78df1e4731be04fcb234b8d13d9',1,'TextualFrameBuffer']]],
-  ['update_5fui_5fcontrol_5fevent_5fprocessor_11',['update_UI_control_event_processor',['../class_k_y040.html#a303f94b37201d12f91fbb349dc649eef',1,'KY040']]]
+  ['update_5ftext_5fframe_5fsize_9',['update_text_frame_size',['../class_textual_frame_buffer.html#a422c9a9af9351df8c60b3127ecd592c4',1,'TextualFrameBuffer']]],
+  ['update_5fui_5fcontrol_5fevent_5fprocessor_10',['update_UI_control_event_processor',['../class_k_y040.html#a303f94b37201d12f91fbb349dc649eef',1,'KY040']]]
 ];

@@ -1,5 +1,6 @@
 var framebuffer_8h =
 [
+    [ "Framebuffer", "class_framebuffer.html", "class_framebuffer" ],
     [ "GraphicFramebuffer", "class_graphic_framebuffer.html", "class_graphic_framebuffer" ],
     [ "TextualFrameBuffer", "class_textual_frame_buffer.html", "class_textual_frame_buffer" ],
     [ "BACKSPACE", "framebuffer_8h.html#a629568514359445d2fbda71d70eeb1ce", null ],
