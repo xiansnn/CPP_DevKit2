@@ -37,12 +37,12 @@ GraphicFramebuffer::~GraphicFramebuffer()
 {
 }
 
-void GraphicFramebuffer::fill(struct_PixelFrame *pixel_memory, PixelColor c)
+void GraphicFramebuffer::fill( PixelColor c)
 {
     if (c == PixelColor::BLACK)
-        memset(pixel_memory->pixel_buffer, 0x00, pixel_memory->pixel_buffer_size);
+        memset(this->pixel_frame.pixel_buffer, 0x00, this->pixel_frame.pixel_buffer_size);
     else
-        memset(pixel_memory->pixel_buffer, 0xFF, pixel_memory->pixel_buffer_size);
+        memset(this->pixel_frame.pixel_buffer, 0xFF, this->pixel_frame.pixel_buffer_size);
 }
 
 void GraphicFramebuffer::hline(uint8_t x, uint8_t y, size_t w, PixelColor c)
@@ -267,10 +267,6 @@ TextualFrameBuffer::TextualFrameBuffer(GraphicDisplayDevice *device,
     this->bg_color = text_cfg.bg_color;
     this->wrap = text_cfg.wrap;
     this->auto_next_char = text_cfg.auto_next_char;
-
-
-
-    // this->frame_text_config = text_cfg;
 
     create_text_buffer();
 }

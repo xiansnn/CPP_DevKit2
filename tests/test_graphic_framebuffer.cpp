@@ -220,7 +220,7 @@ void test_fb_in_fb(SSD1306 *display)
         .frame_height = 25};
 
     GraphicFramebuffer small_frame = GraphicFramebuffer(display, small_frame_cfg);
-    small_frame.fill(&small_frame.pixel_frame, PixelColor::BLACK);
+    small_frame.fill( PixelColor::BLACK);
     small_frame.line(5, 5, 80, 20);
     small_frame.circle(8, 44, 12);
     display->show(&small_frame.pixel_frame, small_frame_x_anchor, small_frame_y_anchor);

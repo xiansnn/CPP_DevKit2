@@ -75,8 +75,7 @@ public:
      * @param text_cfg the text configuration data
      */
     Framebuffer(GraphicDisplayDevice *graphic_display_device,
-                size_t frame_width,
-                size_t frame_height,
+                size_t frame_width, size_t frame_height,
                 struct_ConfigTextFramebuffer text_cfg);
     /**
      * @brief Construct a new Framebuffer object. Starting from the text configuration data, columns x lines of a given bitmap font size,
@@ -161,9 +160,8 @@ public:
 
     /// @brief Write all pixel buffer memory with "0" (or "1") if color c is BLACK (resp. WHITE)
     /// \note: Works only for monochrome display!
-    /// @param pixel_memory the location of the pixel_buffer
     /// @param c the foreground color
-    void fill(struct_PixelFrame *pixel_memory, PixelColor c);
+    void fill( PixelColor c);
 
     /**
      * @brief  Draw a c color horizontal line, starting at frame position (x,y), on w number of pixel.
@@ -286,7 +284,6 @@ protected:
     void create_text_buffer();
 
 public:
-
     /// @brief The max number of line with respect to frame height and font height
     uint8_t number_of_column{0};
     /// @brief The max number of column with respect to frame width and font width
@@ -299,7 +296,7 @@ public:
      */
     struct_ConfigTextFramebuffer get_text_frame_config();
 
-    // /// @brief size of the buffer that contains text as string of characters.
+    /// @brief size of the buffer that contains text as string of characters.
     size_t text_buffer_size;
     /// @brief the buffer where text are written
     char *text_buffer = nullptr;
