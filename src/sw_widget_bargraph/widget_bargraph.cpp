@@ -60,7 +60,7 @@ void WidgetHorizontalBargraph::draw_refresh()
     {
         this->draw();
         this->draw_border();
-        this->graphic_display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
+        this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
     }
     this->actual_displayed_model->clear_change_flag();
 }
@@ -190,7 +190,7 @@ void WidgetVerticalBargraph::draw_refresh()
     {
         this->draw();
         this->draw_border();
-        this->graphic_display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
+        this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
     }
     this->actual_displayed_model->clear_change_flag();
 }

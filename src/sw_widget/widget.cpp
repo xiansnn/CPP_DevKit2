@@ -36,8 +36,8 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
 
     widget_start_x = widget_border_width;
     widget_start_y = widget_border_width;
-    widget_width = pixel_memory.frame_width - 2 * widget_border_width;
-    widget_height = pixel_memory.frame_height - 2 * widget_border_width;
+    widget_width = pixel_frame.frame_width - 2 * widget_border_width;
+    widget_height = pixel_frame.frame_height - 2 * widget_border_width;
 }
 
 GraphicWidget::~GraphicWidget()

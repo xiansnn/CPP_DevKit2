@@ -72,7 +72,7 @@ int main()
     stdio_init_all();
 #endif
     display.clear_device_screen_buffer();
-    display.show(&my_widget.pixel_memory,my_widget.widget_anchor_x,my_widget.widget_anchor_y);
+    display.show(&my_widget.pixel_frame,my_widget.widget_anchor_x,my_widget.widget_anchor_y);
 
     while (true)
     {

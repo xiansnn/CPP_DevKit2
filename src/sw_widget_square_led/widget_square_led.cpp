@@ -33,14 +33,14 @@ void WidgetSquareLed::blink_refresh()
         {
             this->light_on();
             rect(widget_start_x, widget_start_y, widget_width, widget_height, true, PixelColor::WHITE);
-            this->graphic_display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
+            this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
         }
         else
         {
             this->light_off();
             draw_border();
             rect(widget_start_x, widget_start_y, widget_width, widget_height, true, PixelColor::BLACK);
-            this->graphic_display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
+            this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
         }
     }
 }

@@ -75,15 +75,15 @@ void MyWidgetSquareLed::draw_refresh()
         if ((actual_displayed_model->my_bool_value) and (!led_is_on))
         {
             this->light_on();
-            rect(0, 0, pixel_memory.frame_width, pixel_memory.frame_height, true, PixelColor::WHITE);
+            rect(0, 0, pixel_frame.frame_width, pixel_frame.frame_height, true, PixelColor::WHITE);
         }
         if ((!actual_displayed_model->my_bool_value) and (led_is_on))
         {
             this->light_off();
-            rect(0, 0, pixel_memory.frame_width, pixel_memory.frame_height, true, PixelColor::BLACK);
+            rect(0, 0, pixel_frame.frame_width, pixel_frame.frame_height, true, PixelColor::BLACK);
             draw_border();
         }
-        this->graphic_display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
+        this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
         this->actual_displayed_model->clear_change_flag();
     }
 }

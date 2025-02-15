@@ -70,18 +70,19 @@ void test_font_size(SSD1306 *current_display)
         .font = current_font[0]};
 
     TextualFrameBuffer *font_text_on_screen_0 = new TextualFrameBuffer(current_display, default_text_cfg);
-    sprintf(font_text_on_screen_0->text_buffer, test_string.c_str());
-    font_text_on_screen_0->draw_text_buffer();
-    current_display->show(&font_text_on_screen_0->pixel_memory, current_x_anchor, current_y_anchor);
+    // draw text directly from a string to the pixel buffer
+    font_text_on_screen_0->draw_text(test_string.c_str());
+    current_display->show(&font_text_on_screen_0->pixel_frame, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_0;
 
     TextualFrameBuffer *font_text_on_screen_1 = new TextualFrameBuffer(current_display, default_text_cfg);
     font_text_on_screen_1->update_graphic_frame_size(current_font[1]);
     current_x_anchor = 64;
     current_y_anchor = 8;
+    //process first text according to sprintf capabilities then copy to text buffer and finally draw text buffer into pixel buffer
     sprintf(font_text_on_screen_1->text_buffer, test_string.c_str());
     font_text_on_screen_1->draw_text_buffer();
-    current_display->show(&font_text_on_screen_1->pixel_memory, current_x_anchor, current_y_anchor);
+    current_display->show(&font_text_on_screen_1->pixel_frame, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_1;
 
     TextualFrameBuffer *font_text_on_screen_2 = new TextualFrameBuffer(current_display, default_text_cfg);
@@ -90,14 +91,14 @@ void test_font_size(SSD1306 *current_display)
     current_y_anchor = 16;
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->draw_text_buffer();
-    current_display->show(&font_text_on_screen_2->pixel_memory, current_x_anchor, current_y_anchor);
+    current_display->show(&font_text_on_screen_2->pixel_frame, current_x_anchor, current_y_anchor);
 
     font_text_on_screen_2->update_graphic_frame_size(current_font[3]);
     current_x_anchor = 64;
     current_y_anchor = 32;
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->draw_text_buffer();
-    current_display->show(&font_text_on_screen_2->pixel_memory, current_x_anchor, current_y_anchor);
+    current_display->show(&font_text_on_screen_2->pixel_frame, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_2;
 
     sleep_ms(INTER_TEST_DELAY);
@@ -113,15 +114,15 @@ void test_full_screen_text(SSD1306 *current_display)
     TextualFrameBuffer text_frame = TextualFrameBuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, txt_conf);
 
     text_frame.process_char(FORM_FEED); // equiv. clear full screen
-    current_display->show(&text_frame.pixel_memory, 0, 0);
-    uint16_t nb = text_frame.frame_text_config.number_of_line * text_frame.frame_text_config.number_of_column;
+    current_display->show(&text_frame.pixel_frame, 0, 0);
+    uint16_t nb = text_frame.number_of_line * text_frame.number_of_column;
 
     uint16_t n{0};
     for (uint16_t c = 32; c < 256; c++)
     {
         n++;
         text_frame.process_char(c);
-        current_display->show(&text_frame.pixel_memory, 0, 0);
+        current_display->show(&text_frame.pixel_frame, 0, 0);
         if (n == nb)
         {
             sleep_ms(500);
@@ -149,7 +150,7 @@ void test_auto_next_char(SSD1306 *current_display)
     {
         n++;
         text_frame->process_char(c);
-        current_display->show(&text_frame->pixel_memory, 0, 0);
+        current_display->show(&text_frame->pixel_frame, 0, 0);
         if (n % 5 == 0)
         {
             text_frame->next_char();
@@ -182,37 +183,36 @@ void test_sprintf_format(SSD1306 *current_display)
     const char *s = "Hello";
 
     text_frame->draw_text("Strings:\n\tpadding:\n");
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
 
     sprintf(text_frame->text_buffer, "\t[%7s]\n", s);
     text_frame->draw_text_buffer();
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
     sprintf(text_frame->text_buffer, "\t[%-7s]\n", s);
     text_frame->draw_text_buffer();
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
     sprintf(text_frame->text_buffer, "\t[%*s]\n", 7, s);
     text_frame->draw_text_buffer();
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
     text_frame->draw_text("\ttruncating:\n");
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
     sprintf(text_frame->text_buffer, "\t%.4s\n", s);
     text_frame->draw_text_buffer();
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
     sprintf(text_frame->text_buffer, "\t\t%.*s\n", 3, s);
     text_frame->draw_text_buffer();
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
     sleep_ms(LONG_DELAY);
 
     current_display->clear_device_screen_buffer();
     text_frame->clear_text_buffer();
     sprintf(text_frame->text_buffer, "Characters: %c %%", 'A');
     text_frame->draw_text_buffer();
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
     sleep_ms(LONG_DELAY);
 
     current_display->clear_device_screen_buffer();
     text_frame->update_text_frame_size(font_5x8);
-
 
     text_frame->draw_text("Integers:\n");
     sprintf(text_frame->text_buffer, "\tDec:  %i %d %.3i %i %.0i %+i %i\n", 1, 2, 3, 0, 0, 4, -4);
@@ -228,13 +228,12 @@ void test_sprintf_format(SSD1306 *current_display)
     text_frame->draw_text_buffer();
     sprintf(text_frame->text_buffer, "\tSci:  %.3E %.1e\n", 1.5, 1.5);
     text_frame->draw_text_buffer();
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
     sleep_ms(LONG_DELAY);
 
     current_display->clear_device_screen_buffer();
 
     text_frame->update_text_frame_size(font_8x8);
-
 
     text_frame->process_char(FORM_FEED); // equivalent text_frame->clear_pixel_buffer();
 
@@ -242,33 +241,33 @@ void test_sprintf_format(SSD1306 *current_display)
     text_frame->draw_text("@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_");   // ca 1000us -> 2000us
     text_frame->draw_text("`abcdefghijklmnopqrstuvwxyz{|}~\x7F"); // ca 1000us-> 2000us
     text_frame->draw_text("1234567890\n");                        // ca 400us -> 800us
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
     sleep_ms(LONG_DELAY);
 
     text_frame->process_char(FORM_FEED);
 
     text_frame->draw_text("\t1TAB\n"); // ca 400us -> 800us
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
     sleep_ms(DELAY);
 
     text_frame->draw_text("\t\t2TAB\n"); // ca 400us -> 800us
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
     sleep_ms(DELAY);
 
     text_frame->draw_text("\t\t\t3TAB\n"); // ca 400us -> 800us
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
     sleep_ms(DELAY);
 
     text_frame->draw_text("\t\t\t\t4TAB\n"); // ca 400us -> 800us
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
     sleep_ms(DELAY);
 
     text_frame->draw_text("\t\t\t\t\t5TAB\n"); // ca 400us -> 800us
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
     sleep_ms(DELAY);
 
     text_frame->draw_text("\t1TAB\t\t\t3TAB\n"); // ca 400us -> 800us
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
 
     sleep_ms(LONG_DELAY);
     text_frame->process_char(FORM_FEED);
@@ -277,7 +276,7 @@ void test_sprintf_format(SSD1306 *current_display)
 
     text_frame->draw_text(" 15:06 \n");
     text_frame->draw_text("03/01/24");
-    current_display->show(&text_frame->pixel_memory, 0, 0);
+    current_display->show(&text_frame->pixel_frame, 0, 0);
 
     sleep_ms(LONG_DELAY);
     current_display->clear_device_screen_buffer();
@@ -285,15 +284,14 @@ void test_sprintf_format(SSD1306 *current_display)
     delete text_frame;
 
     struct_ConfigTextFramebuffer text_frame2_cfg = {
-        .number_of_column =7,
+        .number_of_column = 7,
         .number_of_line = 2,
         .font = font_12x16,
         .wrap = false};
     TextualFrameBuffer *text_frame2 = new TextualFrameBuffer(current_display, text_frame2_cfg);
 
-    text_frame2->draw_text(" 09:56\n"); 
-    text_frame2->draw_text("03JAN24");
-    current_display->show(&text_frame2->pixel_memory, 22, 16);
+    text_frame2->draw_text(" 09:56\n03JAN24");
+    current_display->show(&text_frame2->pixel_frame, 22, 16);
     delete text_frame2;
 
     sleep_ms(INTER_TEST_DELAY);
@@ -339,19 +337,19 @@ void test_ostringstream_format(SSD1306 *current_display)
     stream0 << std::left << std::setw(6) << "test" << std::endl;
     text_frame.draw_text(stream0.str().c_str());
 
-    current_display->show(&text_frame.pixel_memory, 0, 0);
+    current_display->show(&text_frame.pixel_frame, 0, 0);
     sleep_ms(DELAY);
 
     stream1 << std::setw(5) << std::dec << n << "|" << std::setw(5)
             << std::showbase << std::hex << n << "|" << std::showbase << std::setw(5) << std::oct << n << std::endl;
     text_frame.draw_text(stream1.str().c_str());
-    current_display->show(&text_frame.pixel_memory, 0, 0);
+    current_display->show(&text_frame.pixel_frame, 0, 0);
 
     sleep_ms(DELAY);
 
     stream2 << "PI = " << std::left << f << std::endl;
     text_frame.draw_text(stream2.str().c_str());
-    current_display->show(&text_frame.pixel_memory, 0, 0);
+    current_display->show(&text_frame.pixel_frame, 0, 0);
 
     sleep_ms(INTER_TEST_DELAY);
     current_display->clear_device_screen_buffer();
@@ -368,10 +366,10 @@ int main()
 
     while (true)
     {
-        // test_font_size(&left_display);
-        // test_full_screen_text(&right_display);
-        // test_auto_next_char(&left_display);
-        // test_ostringstream_format(&left_display);
-        test_sprintf_format(&right_display);
+        test_font_size(&left_display);
+        test_full_screen_text(&right_display);
+        test_auto_next_char(&left_display);
+        test_ostringstream_format(&right_display);
+        test_sprintf_format(&left_display);
     }
 }

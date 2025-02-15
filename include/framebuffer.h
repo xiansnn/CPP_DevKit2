@@ -90,7 +90,7 @@ public:
     ~Framebuffer();
 
     /// @brief the data structure that contains the actual pixel buffer, created by the display device.
-    struct_PixelFrame pixel_memory;
+    struct_PixelFrame pixel_frame;
     /// @brief the foregroung color of the graphic frame
     PixelColor fg_color;
     /// @brief the background color of the graphic frame
@@ -263,14 +263,43 @@ private:
     /// @brief clean th full current line (writing " " in the text buffer)
     void clear_line();
 
+    /**
+     * @brief The font used. Current font are defined according to IBM CP437. The font files are derived from https://github.com/Harbys/pico-ssd1306 works.
+     * They come is size 5x8, 8x8, 12x16 and 16x32.
+     */
+    const unsigned char *font{nullptr};
+    /**
+     * @brief  The number of space that ASCII character HT (aka TAB , "\t", 0x9) generates, default to 2
+     */
+    uint8_t tab_size{2};
+    /**
+     * @brief Wrap flag : if true, text wrap to the next line when end of line is reached.
+     */
+    bool wrap{true};
+    /**
+     * @brief auto_next_char flag : if true each char steps one position after being written.
+     */
+    bool auto_next_char{true};
+
 protected:
     /// @brief create text buffer and delete if already existing
     void create_text_buffer();
 
 public:
-    /// @brief the configuration of the text buffer
-    struct_ConfigTextFramebuffer frame_text_config{};
-    /// @brief size of the buffer that contains text as string of characters.
+
+    /// @brief The max number of line with respect to frame height and font height
+    uint8_t number_of_column{0};
+    /// @brief The max number of column with respect to frame width and font width
+    uint8_t number_of_line{0};
+
+    /**
+     * @brief Get the text frame config object
+     *
+     * @return struct_ConfigTextFramebuffer
+     */
+    struct_ConfigTextFramebuffer get_text_frame_config();
+
+    // /// @brief size of the buffer that contains text as string of characters.
     size_t text_buffer_size;
     /// @brief the buffer where text are written
     char *text_buffer = nullptr;
@@ -301,13 +330,13 @@ public:
 
     ~TextualFrameBuffer();
 
-     /**
-      * @brief Compute the text size in column x line according to the size of the font and the size of the frame in pixel.
+    /**
+     * @brief Compute the text size in column x line according to the size of the font and the size of the frame in pixel.
      * Delete the previous text buffer if any and create a new buffer.
-      * 
-      * @param font the new font
-      */
-     void update_text_frame_size(const unsigned char *font);
+     *
+     * @param font the new font
+     */
+    void update_text_frame_size(const unsigned char *font);
     /**
      * @brief   Set text buffer memory to "0" and set character line and column to 0
      */
@@ -326,7 +355,7 @@ public:
      */
     void draw_text_buffer();
     /**
-     * @brief process the string c_str and then draw each character into the pixel buffer.
+     * @brief process the string c_str and then draw each character into the pixel buffer, without using the text buffer.
      *
      * @param c_str A C_style character string.
      */
