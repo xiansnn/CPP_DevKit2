@@ -43,7 +43,7 @@ struct struct_ConfigSG90
 
 /**
  * @brief the class that manages the SG90 step motor
- * \todo //TODO check if step motor is still working
+ * \todo  check if step motor is still working
  */
 class SG90
 {
