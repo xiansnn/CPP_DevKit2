@@ -37,7 +37,7 @@ GraphicFramebuffer::~GraphicFramebuffer()
 {
 }
 
-void GraphicFramebuffer::fill( PixelColor c)
+void GraphicFramebuffer::fill(PixelColor c)
 {
     if (c == PixelColor::BLACK)
         memset(this->pixel_frame.pixel_buffer, 0x00, this->pixel_frame.pixel_buffer_size);
@@ -238,7 +238,7 @@ struct_ConfigTextFramebuffer TextualFrameBuffer::get_text_frame_config()
 
 TextualFrameBuffer::TextualFrameBuffer(GraphicDisplayDevice *device,
                                        struct_ConfigTextFramebuffer text_cfg)
-    : Framebuffer(device, text_cfg)
+    : GraphicFramebuffer(device, text_cfg)
 {
     this->number_of_column = text_cfg.number_of_column;
     this->number_of_line = text_cfg.number_of_line;
@@ -256,7 +256,7 @@ TextualFrameBuffer::TextualFrameBuffer(GraphicDisplayDevice *device,
                                        size_t frame_width,
                                        size_t frame_height,
                                        struct_ConfigTextFramebuffer text_cfg)
-    : Framebuffer(device, frame_width, frame_height, text_cfg)
+    : GraphicFramebuffer(device, frame_width, frame_height, text_cfg)
 {
     this->font = text_cfg.font;
     this->number_of_column = this->pixel_frame.frame_width / this->font[FONT_WIDTH_INDEX];

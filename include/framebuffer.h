@@ -161,7 +161,7 @@ public:
     /// @brief Write all pixel buffer memory with "0" (or "1") if color c is BLACK (resp. WHITE)
     /// \note: Works only for monochrome display!
     /// @param c the foreground color
-    void fill( PixelColor c);
+    void fill(PixelColor c);
 
     /**
      * @brief  Draw a c color horizontal line, starting at frame position (x,y), on w number of pixel.
@@ -243,7 +243,7 @@ public:
  * @brief the place where all textual primitive are placed
  *
  */
-class TextualFrameBuffer : public Framebuffer
+class TextualFrameBuffer : public GraphicFramebuffer
 {
 private:
     /// @brief the line number where the next character will be written.
