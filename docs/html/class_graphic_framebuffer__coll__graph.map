@@ -1,11 +1,11 @@
 <map id="GraphicFramebuffer" name="GraphicFramebuffer">
-<area shape="rect" id="Node000001" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="179,670,698,947"/>
-<area shape="rect" id="Node000002" href="$class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="177,451,701,621"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="441,636,441,670,436,670,436,636"/>
-<area shape="rect" id="Node000003" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,153,523,389"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="344,388,376,436,372,439,339,391"/>
-<area shape="rect" id="Node000004" href="$class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="116,5,412,104"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="267,119,267,153,261,153,261,119"/>
-<area shape="rect" id="Node000005" href="$structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="547,213,680,330"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="578,331,506,439,501,436,573,328"/>
+<area shape="rect" id="Node000001" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="181,670,699,947"/>
+<area shape="rect" id="Node000002" href="$class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="178,451,702,621"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="443,636,443,670,437,670,437,636"/>
+<area shape="rect" id="Node000003" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,153,525,389"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="345,388,377,436,373,439,341,391"/>
+<area shape="rect" id="Node000004" href="$class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="117,5,413,104"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="268,119,268,153,263,153,263,119"/>
+<area shape="rect" id="Node000005" href="$structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="549,213,683,330"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="580,331,508,439,503,436,576,328"/>
 </map>

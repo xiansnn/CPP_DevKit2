@@ -129,15 +129,15 @@ Collaboration diagram for TextualFrameBuffer:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_textual_frame_buffer__coll__graph.png" border="0" usemap="#a_textual_frame_buffer_coll__map" alt="Collaboration graph"/></div>
 <map name="a_textual_frame_buffer_coll__map" id="a_textual_frame_buffer_coll__map">
-<area shape="rect" title="the place where all textual primitive are placed" alt="" coords="212,670,665,1175"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="177,451,701,621"/>
-<area shape="poly" title=" " alt="" coords="441,636,441,670,436,670,436,636"/>
-<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,153,523,389"/>
-<area shape="poly" title=" " alt="" coords="344,388,376,436,372,439,339,391"/>
-<area shape="rect" href="class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="116,5,412,104"/>
-<area shape="poly" title=" " alt="" coords="267,119,267,153,261,153,261,119"/>
-<area shape="rect" href="structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="547,213,680,330"/>
-<area shape="poly" title=" " alt="" coords="578,331,506,439,501,436,573,328"/>
+<area shape="rect" title="the place where all textual primitive are placed" alt="" coords="213,670,667,1175"/>
+<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="178,451,702,621"/>
+<area shape="poly" title=" " alt="" coords="443,636,443,670,437,670,437,636"/>
+<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,153,525,389"/>
+<area shape="poly" title=" " alt="" coords="345,388,377,436,373,439,341,391"/>
+<area shape="rect" href="class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="117,5,413,104"/>
+<area shape="poly" title=" " alt="" coords="268,119,268,153,263,153,263,119"/>
+<area shape="rect" href="structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="549,213,683,330"/>
+<area shape="poly" title=" " alt="" coords="580,331,508,439,503,436,576,328"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -235,9 +235,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>create_text_buffer</b
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a3da7d5205050d8d556b1edfd3a9da22e" id="r_a3da7d5205050d8d556b1edfd3a9da22e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3da7d5205050d8d556b1edfd3a9da22e">drawChar</a> (char character, uint8_t char_column, uint8_t char_line)</td></tr>
-<tr class="memdesc:a3da7d5205050d8d556b1edfd3a9da22e"><td class="mdescLeft">&#160;</td><td class="mdescRight">a graphic primitive to draw a character at a character position  <br /></td></tr>
-<tr class="separator:a3da7d5205050d8d556b1edfd3a9da22e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a3fa74b929745072d874848d5ff719a" id="r_a6a3fa74b929745072d874848d5ff719a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a3fa74b929745072d874848d5ff719a">draw_char</a> (char character, uint8_t char_column, uint8_t char_line)</td></tr>
+<tr class="memdesc:a6a3fa74b929745072d874848d5ff719a"><td class="mdescLeft">&#160;</td><td class="mdescRight">a graphic primitive to draw a character at a character position  <br /></td></tr>
+<tr class="separator:a6a3fa74b929745072d874848d5ff719a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72835ef9a60d3435ba4abd894a0589c7" id="r_a72835ef9a60d3435ba4abd894a0589c7"><td class="memItemLeft" align="right" valign="top"><a id="a72835ef9a60d3435ba4abd894a0589c7" name="a72835ef9a60d3435ba4abd894a0589c7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_line</b> ()</td></tr>
 <tr class="memdesc:a72835ef9a60d3435ba4abd894a0589c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">clean th full current line (writing " " in the text buffer) <br /></td></tr>
@@ -375,33 +375,8 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6472c09b1916d52f5399e5d061312ff3" name="a6472c09b1916d52f5399e5d061312ff3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6472c09b1916d52f5399e5d061312ff3">&#9670;&#160;</a></span>draw_text()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void TextualFrameBuffer::draw_text </td>
-          <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>c_str</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>process the string c_str and then draw each character into the pixel buffer, without using the text buffer. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">c_str</td><td>A C_style character string. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a3da7d5205050d8d556b1edfd3a9da22e" name="a3da7d5205050d8d556b1edfd3a9da22e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3da7d5205050d8d556b1edfd3a9da22e">&#9670;&#160;</a></span>drawChar()</h2>
+<a id="a6a3fa74b929745072d874848d5ff719a" name="a6a3fa74b929745072d874848d5ff719a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a3fa74b929745072d874848d5ff719a">&#9670;&#160;</a></span>draw_char()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -410,7 +385,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void TextualFrameBuffer::drawChar </td>
+          <td class="memname">void TextualFrameBuffer::draw_char </td>
           <td>(</td>
           <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>character</em></span>, </td>
         </tr>
@@ -438,6 +413,31 @@ Here is the call graph for this function:</div>
     <tr><td class="paramname">character</td><td>the foreground color of the character. The font is given by the frame_text_config </td></tr>
     <tr><td class="paramname">char_column</td><td>the column position of the character </td></tr>
     <tr><td class="paramname">char_line</td><td>the line position of the character </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6472c09b1916d52f5399e5d061312ff3" name="a6472c09b1916d52f5399e5d061312ff3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6472c09b1916d52f5399e5d061312ff3">&#9670;&#160;</a></span>draw_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TextualFrameBuffer::draw_text </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>c_str</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>process the string c_str and then draw each character into the pixel buffer, without using the text buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c_str</td><td>A C_style character string. </td></tr>
   </table>
   </dd>
 </dl>

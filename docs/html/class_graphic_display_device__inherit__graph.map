@@ -1,5 +1,5 @@
 <map id="GraphicDisplayDevice" name="GraphicDisplayDevice">
-<area shape="rect" id="Node000001" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="19,152,536,388"/>
+<area shape="rect" id="Node000001" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="17,152,537,388"/>
 <area shape="rect" id="Node000003" href="$class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,436,549,1135"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="280,403,280,436,275,436,275,403"/>
 <area shape="rect" id="Node000002" href="$class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="129,5,425,104"/>

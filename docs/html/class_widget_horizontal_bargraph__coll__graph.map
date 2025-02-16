@@ -1,20 +1,20 @@
 <map id="WidgetHorizontalBargraph" name="WidgetHorizontalBargraph">
-<area shape="rect" id="Node000001" title="the widget that display an horizontal bargraph" alt="" coords="323,1473,787,1768"/>
-<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="331,1017,779,1424"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="557,1439,557,1474,552,1474,552,1439"/>
-<area shape="rect" id="Node000003" href="$class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="179,674,698,951"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="485,965,499,1017,494,1018,480,967"/>
-<area shape="rect" id="Node000004" href="$class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="177,451,701,621"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="441,636,441,674,436,674,436,636"/>
-<area shape="rect" id="Node000005" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,153,523,389"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="344,388,376,436,372,439,339,391"/>
-<area shape="rect" id="Node000006" href="$class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="116,5,412,104"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="267,119,267,153,261,153,261,119"/>
-<area shape="rect" id="Node000007" href="$structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="547,213,680,330"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="578,331,506,439,501,436,573,328"/>
-<area shape="rect" id="Node000008" href="$class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="723,670,1045,955"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="757,957,737,981,717,1006,713,1003,733,978,753,954"/>
-<area shape="rect" id="Node000009" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="823,1171,1235,1270"/>
-<area shape="poly" id="edge9_Node000009_Node000008" title=" " alt="" coords="864,955,872,993,890,1038,916,1082,973,1157,968,1160,911,1085,886,1041,866,994,859,956"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1030,1172,1028,1081,1021,1030,1007,980,1003,971,1008,969,1012,978,1026,1029,1034,1080,1036,1172"/>
+<area shape="rect" id="Node000001" title="the widget that display an horizontal bargraph" alt="" coords="324,1473,788,1768"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="332,1017,780,1424"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="559,1439,559,1474,553,1474,553,1439"/>
+<area shape="rect" id="Node000003" href="$class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="181,674,699,951"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="486,965,501,1017,496,1018,481,967"/>
+<area shape="rect" id="Node000004" href="$class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="178,451,702,621"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="443,636,443,674,437,674,437,636"/>
+<area shape="rect" id="Node000005" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,153,525,389"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="345,388,377,436,373,439,341,391"/>
+<area shape="rect" id="Node000006" href="$class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="117,5,413,104"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="268,119,268,153,263,153,263,119"/>
+<area shape="rect" id="Node000007" href="$structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="549,213,683,330"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="580,331,508,439,503,436,576,328"/>
+<area shape="rect" id="Node000008" href="$class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="724,670,1047,955"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="759,957,738,981,718,1006,714,1003,734,978,754,954"/>
+<area shape="rect" id="Node000009" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="825,1171,1237,1270"/>
+<area shape="poly" id="edge9_Node000009_Node000008" title=" " alt="" coords="866,955,873,993,892,1038,917,1082,974,1157,970,1160,912,1085,887,1041,868,994,861,956"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1032,1172,1030,1081,1022,1030,1008,980,1005,971,1010,969,1013,978,1027,1029,1035,1080,1037,1172"/>
 </map>
