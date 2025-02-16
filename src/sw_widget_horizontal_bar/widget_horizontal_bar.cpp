@@ -66,7 +66,7 @@ void WidgetHorizontalBar::set_level(int value)
     convert_level_value_to_px();
 }
 
-void WidgetHorizontalBar::draw_refresh()
+void WidgetHorizontalBar::draw_refresh() //TODO peut etre remonté dans classes mère
 {
     assert(this->actual_displayed_model != nullptr);
 
