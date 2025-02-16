@@ -196,7 +196,7 @@ void SSD1306::show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, cons
     this->show_render_area(pixel_memory->pixel_buffer, this->compute_render_area(anchor_x, end_col, anchor_y, end_line));
 }
 
-void SSD1306::drawChar(struct_PixelFrame *pixel_memory_structure,
+void SSD1306::draw_char_into_pixel(struct_PixelFrame *pixel_memory_structure,
                        const struct_ConfigTextFramebuffer text_config,
                        const char c, const uint8_t anchor_x, const uint8_t anchor_y)
 {

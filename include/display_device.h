@@ -207,7 +207,7 @@ public:
      * @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
      * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
      */
-    virtual void drawChar(struct_PixelFrame *pixel_memory,
+    virtual void draw_char_into_pixel(struct_PixelFrame *pixel_memory,
                           const struct_ConfigTextFramebuffer text_config,
                           const char character,
                           const uint8_t anchor_x, const uint8_t anchor_y) = 0;

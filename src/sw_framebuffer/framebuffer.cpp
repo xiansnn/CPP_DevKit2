@@ -199,18 +199,18 @@ void GraphicFramebuffer::circle(int radius, int x_center, int y_center, bool fil
     }
 }
 
-void TextualFrameBuffer::drawChar(char character, uint8_t char_column, uint8_t char_line)
+void TextualFrameBuffer::draw_char(char character, uint8_t char_column, uint8_t char_line)
 {
     uint8_t anchor_x = char_column * this->font[FONT_WIDTH_INDEX];
     uint8_t anchor_y = char_line * this->font[FONT_HEIGHT_INDEX];
-    graphic_display_screen->drawChar(&this->pixel_frame, this->get_text_frame_config(), character, anchor_x, anchor_y);
+    graphic_display_screen->draw_char_into_pixel(&this->pixel_frame, this->get_text_frame_config(), character, anchor_x, anchor_y);
 }
 
 void TextualFrameBuffer::clear_line()
 {
     for (uint8_t i = 0; i < number_of_column; i++)
     {
-        drawChar(' ', i, current_char_line);
+        draw_char(' ', i, current_char_line);
     }
 }
 
@@ -335,7 +335,7 @@ void TextualFrameBuffer::process_char(char character)
         break;
     case BACKSPACE:
         current_char_column--;
-        drawChar(' ', current_char_column, current_char_line);
+        draw_char(' ', current_char_column, current_char_line);
         break;
     case FORM_FEED:
         graphic_display_screen->clear_pixel_buffer(&this->pixel_frame);
@@ -352,7 +352,7 @@ void TextualFrameBuffer::process_char(char character)
         {
             for (uint8_t i = 0; i < tab_size; i++)
             {
-                drawChar(' ', current_char_column, current_char_line);
+                draw_char(' ', current_char_column, current_char_line);
                 next_char();
             }
         }
@@ -360,13 +360,13 @@ void TextualFrameBuffer::process_char(char character)
         {
             if (this->auto_next_char)
             {
-                drawChar(character, current_char_column, current_char_line);
+                draw_char(character, current_char_column, current_char_line);
                 next_char();
             }
             else
             {
-                drawChar(' ', current_char_column, current_char_line);
-                drawChar(character, current_char_column, current_char_line);
+                draw_char(' ', current_char_column, current_char_line);
+                draw_char(character, current_char_column, current_char_line);
             }
         }
         break;

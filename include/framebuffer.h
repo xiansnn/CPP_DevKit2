@@ -256,7 +256,7 @@ private:
     /// @param character the foreground color of the character. The font is given by the frame_text_config
     /// @param char_column the column position of the character
     /// @param char_line the line position of the character
-    void drawChar(char character, uint8_t char_column, uint8_t char_line);
+    void draw_char(char character, uint8_t char_column, uint8_t char_line);
 
     /// @brief clean th full current line (writing " " in the text buffer)
     void clear_line();
