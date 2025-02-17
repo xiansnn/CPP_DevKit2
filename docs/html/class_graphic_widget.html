@@ -102,13 +102,12 @@ $(function(){initNavTree('class_graphic_widget.html',''); initResizable(true); }
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_graphic_widget-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">GraphicWidget Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
+  <div class="headertitle"><div class="title">GraphicWidget Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>A widget is a displayed object on a device screen. It inherits from all framebuffer features, giving it textual and graphical capabilities.  
+<p>the widget dedicated to graphics  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="widget_8h_source.html">widget.h</a>&gt;</code></p>
@@ -117,21 +116,23 @@ Inheritance diagram for GraphicWidget:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_graphic_widget__inherit__graph.png" border="0" usemap="#a_graphic_widget_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_graphic_widget_inherit__map" id="a_graphic_widget_inherit__map">
-<area shape="rect" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="729,585,1177,1011"/>
-<area shape="rect" href="class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="5,1059,456,1372"/>
-<area shape="poly" title=" " alt="" coords="717,923,469,1061,457,1068,454,1064,467,1056,715,918"/>
-<area shape="rect" href="class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="480,1068,944,1363"/>
-<area shape="poly" title=" " alt="" coords="825,1025,799,1070,794,1067,821,1022"/>
-<area shape="rect" href="class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="968,1096,1424,1335"/>
-<area shape="poly" title=" " alt="" coords="1087,1022,1129,1095,1125,1098,1082,1025"/>
-<area shape="rect" href="class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="1449,1068,1898,1363"/>
-<area shape="poly" title=" " alt="" coords="1192,919,1437,1056,1453,1066,1451,1071,1435,1061,1189,924"/>
-<area shape="rect" href="class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="694,260,1213,537"/>
-<area shape="poly" title=" " alt="" coords="956,552,956,585,951,585,951,552"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="691,5,1215,212"/>
-<area shape="poly" title=" " alt="" coords="956,227,956,260,951,260,951,227"/>
-<area shape="rect" href="class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="979,1420,1413,1547"/>
-<area shape="poly" title=" " alt="" coords="1199,1350,1199,1420,1193,1420,1193,1350"/>
+<area shape="rect" title="the widget dedicated to graphics" alt="" coords="729,585,1177,843"/>
+<area shape="rect" href="class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="5,891,456,1204"/>
+<area shape="poly" title=" " alt="" coords="716,791,592,838,469,893,457,899,454,895,467,888,590,833,714,786"/>
+<area shape="rect" href="class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="480,900,944,1195"/>
+<area shape="poly" title=" " alt="" coords="854,856,821,902,816,899,850,853"/>
+<area shape="rect" href="class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="968,937,1424,1157"/>
+<area shape="poly" title=" " alt="" coords="1058,853,1119,936,1114,939,1053,856"/>
+<area shape="rect" href="class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="1449,900,1898,1195"/>
+<area shape="poly" title=" " alt="" coords="1192,787,1315,834,1437,888,1456,898,1453,903,1435,893,1313,839,1190,792"/>
+<area shape="rect" href="class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="609,293,879,504"/>
+<area shape="poly" title=" " alt="" coords="824,515,871,584,866,587,820,518"/>
+<area shape="rect" href="class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="903,260,1422,537"/>
+<area shape="poly" title=" " alt="" coords="1065,551,1041,587,1036,584,1060,548"/>
+<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="901,5,1425,212"/>
+<area shape="poly" title=" " alt="" coords="1165,227,1165,260,1160,260,1160,227"/>
+<area shape="rect" href="class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="979,1252,1413,1379"/>
+<area shape="poly" title=" " alt="" coords="1199,1172,1199,1252,1193,1252,1193,1172"/>
 </map>
 </div>
 <div class="dynheader">
@@ -139,46 +140,49 @@ Collaboration diagram for GraphicWidget:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_graphic_widget__coll__graph.png" border="0" usemap="#a_graphic_widget_coll__map" alt="Collaboration graph"/></div>
 <map name="a_graphic_widget_coll__map" id="a_graphic_widget_coll__map">
-<area shape="rect" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="332,1017,780,1424"/>
-<area shape="rect" href="class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="181,674,699,951"/>
-<area shape="poly" title=" " alt="" coords="486,965,501,1017,496,1018,481,967"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="178,451,702,621"/>
-<area shape="poly" title=" " alt="" coords="443,636,443,674,437,674,437,636"/>
-<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,153,525,389"/>
-<area shape="poly" title=" " alt="" coords="345,388,377,436,373,439,341,391"/>
-<area shape="rect" href="class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="117,5,413,104"/>
-<area shape="poly" title=" " alt="" coords="268,119,268,153,263,153,263,119"/>
-<area shape="rect" href="structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="549,213,683,330"/>
-<area shape="poly" title=" " alt="" coords="580,331,508,439,503,436,576,328"/>
-<area shape="rect" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="724,670,1047,955"/>
-<area shape="poly" title=" " alt="" coords="759,957,738,981,718,1006,714,1003,734,978,754,954"/>
-<area shape="rect" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="825,1171,1237,1270"/>
-<area shape="poly" title=" " alt="" coords="866,955,873,993,892,1038,917,1082,974,1157,970,1160,912,1085,887,1041,868,994,861,956"/>
-<area shape="poly" title=" " alt="" coords="1032,1172,1030,1081,1022,1030,1008,980,1005,971,1010,969,1013,978,1027,1029,1035,1080,1037,1172"/>
+<area shape="rect" title="the widget dedicated to graphics" alt="" coords="343,1125,791,1383"/>
+<area shape="rect" href="class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,841,276,1033"/>
+<area shape="poly" title=" " alt="" coords="250,1041,289,1074,358,1123,354,1128,286,1078,246,1045"/>
+<area shape="rect" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="179,451,502,737"/>
+<area shape="poly" title=" " alt="" coords="218,738,203,762,174,827,169,825,199,759,214,735"/>
+<area shape="rect" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="300,888,712,987"/>
+<area shape="poly" title=" " alt="" coords="328,736,339,774,354,803,374,829,421,876,417,879,370,833,350,805,334,776,323,737"/>
+<area shape="poly" title=" " alt="" coords="502,889,494,827,486,793,474,762,470,753,475,750,479,760,491,792,499,826,507,888"/>
+<area shape="rect" href="class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="736,799,1255,1076"/>
+<area shape="poly" title=" " alt="" coords="798,1087,742,1127,739,1123,795,1083"/>
+<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="733,509,1257,679"/>
+<area shape="poly" title=" " alt="" coords="998,693,998,799,993,799,993,693"/>
+<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="510,153,1030,389"/>
+<area shape="poly" title=" " alt="" coords="854,388,929,494,925,497,850,391"/>
+<area shape="rect" href="class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="622,5,918,104"/>
+<area shape="poly" title=" " alt="" coords="773,119,773,153,767,153,767,119"/>
+<area shape="rect" href="structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="1054,213,1187,330"/>
+<area shape="poly" title=" " alt="" coords="1101,331,1037,495,1032,493,1096,329"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9cc51ba18e28a7617edfd6c6e04054f9" id="r_a9cc51ba18e28a7617edfd6c6e04054f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cc51ba18e28a7617edfd6c6e04054f9">set_display_screen</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *_new_display_device)</td></tr>
-<tr class="memdesc:a9cc51ba18e28a7617edfd6c6e04054f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the display screen object.  <br /></td></tr>
-<tr class="separator:a9cc51ba18e28a7617edfd6c6e04054f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7603a481691db7e3bf63d1bc5253bf8c" id="r_a7603a481691db7e3bf63d1bc5253bf8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7603a481691db7e3bf63d1bc5253bf8c">set_blink_us</a> (uint32_t blink_period=1000000)</td></tr>
-<tr class="memdesc:a7603a481691db7e3bf63d1bc5253bf8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the blink period in microseconds.  <br /></td></tr>
-<tr class="separator:a7603a481691db7e3bf63d1bc5253bf8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54b5a1e6b9ed551fcf68c5bb03054876" id="r_a54b5a1e6b9ed551fcf68c5bb03054876"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54b5a1e6b9ed551fcf68c5bb03054876">GraphicWidget</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *<a class="el" href="class_framebuffer.html#aac2296916f9c9bccbf345ea150e5ce9c">graphic_display_screen</a>, <a class="el" href="class_u_i_model_object.html">UIModelObject</a> *displayed_object, <a class="el" href="structstruct___config_graphic_framebuffer.html">struct_ConfigGraphicFramebuffer</a> graph_cfg, uint8_t <a class="el" href="#a61133b1352758000f0f3eef16824bdcb">widget_anchor_x</a>, uint8_t <a class="el" href="#ae4f41f6ccf52025b2c16fc2ec59208ee">widget_anchor_y</a>, bool <a class="el" href="#afd6b3c92346618f1fdbb501989c15078">widget_with_border</a>)</td></tr>
-<tr class="memdesc:a54b5a1e6b9ed551fcf68c5bb03054876"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">GraphicWidget</a> object.  <br /></td></tr>
+<tr class="memdesc:a54b5a1e6b9ed551fcf68c5bb03054876"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_graphic_widget.html" title="the widget dedicated to graphics">GraphicWidget</a> object.  <br /></td></tr>
 <tr class="separator:a54b5a1e6b9ed551fcf68c5bb03054876"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2c0525c8819493eb279e69d54287179" id="r_ae2c0525c8819493eb279e69d54287179"><td class="memItemLeft" align="right" valign="top"><a id="ae2c0525c8819493eb279e69d54287179" name="ae2c0525c8819493eb279e69d54287179"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~GraphicWidget</b> ()</td></tr>
-<tr class="memdesc:ae2c0525c8819493eb279e69d54287179"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the UIWidget object. <br /></td></tr>
+<tr class="memdesc:ae2c0525c8819493eb279e69d54287179"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">UIWidget</a> object. <br /></td></tr>
 <tr class="separator:ae2c0525c8819493eb279e69d54287179"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a778d8b76703927fa2916ba09b6b39f6b" id="r_a778d8b76703927fa2916ba09b6b39f6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a778d8b76703927fa2916ba09b6b39f6b">add_widget</a> (<a class="el" href="class_graphic_widget.html">GraphicWidget</a> *_sub_widget)</td></tr>
-<tr class="memdesc:a778d8b76703927fa2916ba09b6b39f6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">add sub_widget to the current widget  <br /></td></tr>
-<tr class="separator:a778d8b76703927fa2916ba09b6b39f6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20842b4c9a5fbe84cec72be251ec4c0e" id="r_a20842b4c9a5fbe84cec72be251ec4c0e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20842b4c9a5fbe84cec72be251ec4c0e">draw_refresh</a> ()=0</td></tr>
-<tr class="memdesc:a20842b4c9a5fbe84cec72be251ec4c0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">(re)draw the graphical elements of the widget.  <br /></td></tr>
-<tr class="separator:a20842b4c9a5fbe84cec72be251ec4c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_u_i_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_u_i_widget')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_u_i_widget.html">UIWidget</a></td></tr>
+<tr class="memitem:a548d02d573d9323c4c9769726b4728bf inherit pub_methods_class_u_i_widget" id="r_a548d02d573d9323c4c9769726b4728bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_widget.html#a548d02d573d9323c4c9769726b4728bf">UIWidget</a> (<a class="el" href="class_u_i_model_object.html">UIModelObject</a> *<a class="el" href="class_u_i_widget.html#a93793666317887588be6d3b341ab5365">actual_displayed_model</a>)</td></tr>
+<tr class="memdesc:a548d02d573d9323c4c9769726b4728bf inherit pub_methods_class_u_i_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">UIWidget</a> object.  <br /></td></tr>
+<tr class="separator:a548d02d573d9323c4c9769726b4728bf inherit pub_methods_class_u_i_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac59f35621206bdea462a0b7846ddf0ac inherit pub_methods_class_u_i_widget" id="r_ac59f35621206bdea462a0b7846ddf0ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_widget.html#ac59f35621206bdea462a0b7846ddf0ac">set_blink_us</a> (uint32_t blink_period=1000000)</td></tr>
+<tr class="memdesc:ac59f35621206bdea462a0b7846ddf0ac inherit pub_methods_class_u_i_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the blink period in microseconds.  <br /></td></tr>
+<tr class="separator:ac59f35621206bdea462a0b7846ddf0ac inherit pub_methods_class_u_i_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77b60ee8bae791e3239fdc6c27472b83 inherit pub_methods_class_u_i_widget" id="r_a77b60ee8bae791e3239fdc6c27472b83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_widget.html#a77b60ee8bae791e3239fdc6c27472b83">add_widget</a> (<a class="el" href="class_u_i_widget.html">UIWidget</a> *_sub_widget)</td></tr>
+<tr class="memdesc:a77b60ee8bae791e3239fdc6c27472b83 inherit pub_methods_class_u_i_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">add sub_widget to the current widget  <br /></td></tr>
+<tr class="separator:a77b60ee8bae791e3239fdc6c27472b83 inherit pub_methods_class_u_i_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c4ca560410bfc6b07718c4dda7a7586 inherit pub_methods_class_u_i_widget" id="r_a3c4ca560410bfc6b07718c4dda7a7586"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_widget.html#a3c4ca560410bfc6b07718c4dda7a7586">draw_refresh</a> ()=0</td></tr>
+<tr class="memdesc:a3c4ca560410bfc6b07718c4dda7a7586 inherit pub_methods_class_u_i_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">(re)draw the graphical elements of the widget.  <br /></td></tr>
+<tr class="separator:a3c4ca560410bfc6b07718c4dda7a7586 inherit pub_methods_class_u_i_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_graphic_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_graphic_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_graphic_framebuffer.html">GraphicFramebuffer</a></td></tr>
 <tr class="memitem:afe42739400a09683334e3e9528ae699e inherit pub_methods_class_graphic_framebuffer" id="r_afe42739400a09683334e3e9528ae699e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#afe42739400a09683334e3e9528ae699e">GraphicFramebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *display_device, <a class="el" href="structstruct___config_graphic_framebuffer.html">struct_ConfigGraphicFramebuffer</a> graph_cfg)</td></tr>
 <tr class="memdesc:afe42739400a09683334e3e9528ae699e inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic <a class="el" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o...">Framebuffer</a> object.  <br /></td></tr>
@@ -251,31 +255,20 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_anchor_y</b
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a3ed1d544aef6509233cbc0a860945463" id="r_a3ed1d544aef6509233cbc0a860945463"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ed1d544aef6509233cbc0a860945463">blinking_phase_has_changed</a> ()</td></tr>
-<tr class="memdesc:a3ed1d544aef6509233cbc0a860945463"><td class="mdescLeft">&#160;</td><td class="mdescRight">ask if the blinking phase has changed  <br /></td></tr>
-<tr class="separator:a3ed1d544aef6509233cbc0a860945463"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab277aebbaa8bc342711a16736949ac55" id="r_ab277aebbaa8bc342711a16736949ac55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab277aebbaa8bc342711a16736949ac55">draw_border</a> (<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
 <tr class="memdesc:ab277aebbaa8bc342711a16736949ac55"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a rectangle around the widget. IMPORTANT NOTICE: as the border is a rectangle with fill=false, the border width can only be 1 pixel.  <br /></td></tr>
 <tr class="separator:ab277aebbaa8bc342711a16736949ac55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_u_i_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_u_i_widget')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_u_i_widget.html">UIWidget</a></td></tr>
+<tr class="memitem:afad935720833986592d567d77ce3bbbd inherit pro_methods_class_u_i_widget" id="r_afad935720833986592d567d77ce3bbbd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_widget.html#afad935720833986592d567d77ce3bbbd">blinking_phase_has_changed</a> ()</td></tr>
+<tr class="memdesc:afad935720833986592d567d77ce3bbbd inherit pro_methods_class_u_i_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">ask if the blinking phase has changed  <br /></td></tr>
+<tr class="separator:afad935720833986592d567d77ce3bbbd inherit pro_methods_class_u_i_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a4b710e002ed92f2e5c6f1bf4f2392861" id="r_a4b710e002ed92f2e5c6f1bf4f2392861"><td class="memItemLeft" align="right" valign="top"><a id="a4b710e002ed92f2e5c6f1bf4f2392861" name="a4b710e002ed92f2e5c6f1bf4f2392861"></a>
-<a class="el" href="class_u_i_model_object.html">UIModelObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>actual_displayed_model</b> = nullptr</td></tr>
-<tr class="memdesc:a4b710e002ed92f2e5c6f1bf4f2392861"><td class="mdescLeft">&#160;</td><td class="mdescRight">a pointer to the <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> actually displayed by the widget <br /></td></tr>
-<tr class="separator:a4b710e002ed92f2e5c6f1bf4f2392861"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c160768604b2d70ebe3085a2f52d1fe" id="r_a3c160768604b2d70ebe3085a2f52d1fe"><td class="memItemLeft" align="right" valign="top"><a id="a3c160768604b2d70ebe3085a2f52d1fe" name="a3c160768604b2d70ebe3085a2f52d1fe"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>blink_period_us</b></td></tr>
-<tr class="memdesc:a3c160768604b2d70ebe3085a2f52d1fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">The period of the blinking, in microseconds. <br /></td></tr>
-<tr class="separator:a3c160768604b2d70ebe3085a2f52d1fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd6b3c92346618f1fdbb501989c15078" id="r_afd6b3c92346618f1fdbb501989c15078"><td class="memItemLeft" align="right" valign="top"><a id="afd6b3c92346618f1fdbb501989c15078" name="afd6b3c92346618f1fdbb501989c15078"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>widget_with_border</b> {true}</td></tr>
 <tr class="memdesc:afd6b3c92346618f1fdbb501989c15078"><td class="mdescLeft">&#160;</td><td class="mdescRight">if true, the widget is surrounded by a one-pixel border <br /></td></tr>
 <tr class="separator:afd6b3c92346618f1fdbb501989c15078"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae36e4d29a96873eb28d0327b21bd1551" id="r_ae36e4d29a96873eb28d0327b21bd1551"><td class="memItemLeft" align="right" valign="top"><a id="ae36e4d29a96873eb28d0327b21bd1551" name="ae36e4d29a96873eb28d0327b21bd1551"></a>
-std::vector&lt; <a class="el" href="class_graphic_widget.html">GraphicWidget</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>widgets</b></td></tr>
-<tr class="memdesc:ae36e4d29a96873eb28d0327b21bd1551"><td class="mdescLeft">&#160;</td><td class="mdescRight">A widget can be composed by several widget. <br /></td></tr>
-<tr class="separator:ae36e4d29a96873eb28d0327b21bd1551"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ea1e751f7a5c20a1447c477ae1c7a07" id="r_a5ea1e751f7a5c20a1447c477ae1c7a07"><td class="memItemLeft" align="right" valign="top"><a id="a5ea1e751f7a5c20a1447c477ae1c7a07" name="a5ea1e751f7a5c20a1447c477ae1c7a07"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_width</b> {128}</td></tr>
 <tr class="memdesc:a5ea1e751f7a5c20a1447c477ae1c7a07"><td class="mdescLeft">&#160;</td><td class="mdescRight">As a widget can be surrounded by a border, the actual widget width is not the associated framebuffer width. <br /></td></tr>
@@ -294,24 +287,27 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_height</b> {
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_border_width</b></td></tr>
 <tr class="memdesc:ab06cc273f6d42d2527eca35fd5e9b8ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">this is the border size of the widget. 0 if no border, 1 if border <br /></td></tr>
 <tr class="separator:ab06cc273f6d42d2527eca35fd5e9b8ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_class_u_i_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_u_i_widget')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_u_i_widget.html">UIWidget</a></td></tr>
+<tr class="memitem:a93793666317887588be6d3b341ab5365 inherit pro_attribs_class_u_i_widget" id="r_a93793666317887588be6d3b341ab5365"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="class_u_i_model_object.html">UIModelObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>actual_displayed_model</b> = nullptr</td></tr>
+<tr class="memdesc:a93793666317887588be6d3b341ab5365 inherit pro_attribs_class_u_i_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">a pointer to the <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> actually displayed by the widget <br /></td></tr>
+<tr class="separator:a93793666317887588be6d3b341ab5365 inherit pro_attribs_class_u_i_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa632ac0145d606c34dc2c2378d5217e7 inherit pro_attribs_class_u_i_widget" id="r_aa632ac0145d606c34dc2c2378d5217e7"><td class="memItemLeft" align="right" valign="top">
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>blink_period_us</b></td></tr>
+<tr class="memdesc:aa632ac0145d606c34dc2c2378d5217e7 inherit pro_attribs_class_u_i_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">The period of the blinking, in microseconds. <br /></td></tr>
+<tr class="separator:aa632ac0145d606c34dc2c2378d5217e7 inherit pro_attribs_class_u_i_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a723e330610d231171f2b6a71226f5afc inherit pro_attribs_class_u_i_widget" id="r_a723e330610d231171f2b6a71226f5afc"><td class="memItemLeft" align="right" valign="top">
+std::vector&lt; <a class="el" href="class_u_i_widget.html">UIWidget</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>widgets</b></td></tr>
+<tr class="memdesc:a723e330610d231171f2b6a71226f5afc inherit pro_attribs_class_u_i_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">A widget can be composed by several widget. <br /></td></tr>
+<tr class="separator:a723e330610d231171f2b6a71226f5afc inherit pro_attribs_class_u_i_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
 <tr class="memitem:aac2296916f9c9bccbf345ea150e5ce9c inherit pro_attribs_class_framebuffer" id="r_aac2296916f9c9bccbf345ea150e5ce9c"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>graphic_display_screen</b> {nullptr}</td></tr>
 <tr class="memdesc:aac2296916f9c9bccbf345ea150e5ce9c inherit pro_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the display device where the attached to the frame buffer <br /></td></tr>
 <tr class="separator:aac2296916f9c9bccbf345ea150e5ce9c inherit pro_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:ac22c03e648a3f9eea07559e60f7eb65b" id="r_ac22c03e648a3f9eea07559e60f7eb65b"><td class="memItemLeft" align="right" valign="top"><a id="ac22c03e648a3f9eea07559e60f7eb65b" name="ac22c03e648a3f9eea07559e60f7eb65b"></a>
-int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>previous_blinking_phase</b></td></tr>
-<tr class="memdesc:ac22c03e648a3f9eea07559e60f7eb65b"><td class="mdescLeft">&#160;</td><td class="mdescRight">store the value of the previous blinking phase.should be 0 or 1. <br /></td></tr>
-<tr class="separator:ac22c03e648a3f9eea07559e60f7eb65b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A widget is a displayed object on a device screen. It inherits from all framebuffer features, giving it textual and graphical capabilities. </p>
-<p>Being a framebuffer, it is defined by a width and a height, line and column of text, and graphics. It is located within the display device screen at an anchor point (x,y).</p>
-<p>IMPORTANT NOTICE 1: The widget is effectively drawn if something has changed in the UIModelObejct it represents. This allows to save drawing processing time. However there is a strong limitation : only the widget buffer is transered to the device GDDRAM, based of its specific addressing scheme. As a result, if the widget is located such that the buffer is written across device pages, the contents of the overwritten pages is lost. This is why the widget height and the widget_anchor_y must be multiple of 8. Doing so the widget buffer bytes do not ovewrite pixel outside the widget border.</p>
-<p>IMPORTANT NOTICE 2: The final widget implementation must know what actual model object it displays. This final implementation must have a member (can be private) e.g. [final_type] * actual_displayed_model; of the actual [final_type] implementation of <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a>. This can be initialised by the constructor. </p>
+<div class="textblock"><p>the widget dedicated to graphics </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a54b5a1e6b9ed551fcf68c5bb03054876" name="a54b5a1e6b9ed551fcf68c5bb03054876"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a54b5a1e6b9ed551fcf68c5bb03054876">&#9670;&#160;</a></span>GraphicWidget()</h2>
@@ -352,7 +348,7 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>previous_blinking_p
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">GraphicWidget</a> object. </p>
+<p>Construct a new <a class="el" href="class_graphic_widget.html" title="the widget dedicated to graphics">GraphicWidget</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">graphic_display_screen</td><td>The display device on which the widget is drawn. </td></tr>
@@ -367,83 +363,10 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>previous_blinking_p
   </table>
   </dd>
 </dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_graphic_widget_a54b5a1e6b9ed551fcf68c5bb03054876_icgraph.png" border="0" usemap="#aclass_graphic_widget_a54b5a1e6b9ed551fcf68c5bb03054876_icgraph" alt=""/></div>
-<map name="aclass_graphic_widget_a54b5a1e6b9ed551fcf68c5bb03054876_icgraph" id="aclass_graphic_widget_a54b5a1e6b9ed551fcf68c5bb03054876_icgraph">
-<area shape="rect" title="Construct a new GraphicWidget object." alt="" coords="209,5,378,30"/>
-<area shape="rect" href="class_graphic_widget.html#a778d8b76703927fa2916ba09b6b39f6b" title="add sub_widget to the current widget" alt="" coords="5,5,161,30"/>
-<area shape="poly" title=" " alt="" coords="193,20,161,20,161,15,193,15"/>
-</map>
-</div>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a778d8b76703927fa2916ba09b6b39f6b" name="a778d8b76703927fa2916ba09b6b39f6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a778d8b76703927fa2916ba09b6b39f6b">&#9670;&#160;</a></span>add_widget()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void GraphicWidget::add_widget </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_graphic_widget.html">GraphicWidget</a> *</td>          <td class="paramname"><span class="paramname"><em>_sub_widget</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>add sub_widget to the current widget </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">_sub_widget</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_graphic_widget_a778d8b76703927fa2916ba09b6b39f6b_cgraph.png" border="0" usemap="#aclass_graphic_widget_a778d8b76703927fa2916ba09b6b39f6b_cgraph" alt=""/></div>
-<map name="aclass_graphic_widget_a778d8b76703927fa2916ba09b6b39f6b_cgraph" id="aclass_graphic_widget_a778d8b76703927fa2916ba09b6b39f6b_cgraph">
-<area shape="rect" title="add sub_widget to the current widget" alt="" coords="5,5,161,30"/>
-<area shape="rect" href="class_graphic_widget.html#a54b5a1e6b9ed551fcf68c5bb03054876" title="Construct a new GraphicWidget object." alt="" coords="209,5,378,30"/>
-<area shape="poly" title=" " alt="" coords="161,15,193,15,193,20,161,20"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a3ed1d544aef6509233cbc0a860945463" name="a3ed1d544aef6509233cbc0a860945463"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ed1d544aef6509233cbc0a860945463">&#9670;&#160;</a></span>blinking_phase_has_changed()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool GraphicWidget::blinking_phase_has_changed </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>ask if the blinking phase has changed </p>
-<dl class="section return"><dt>Returns</dt><dd>true if phase has changed </dd></dl>
-
-</div>
-</div>
 <a id="ab277aebbaa8bc342711a16736949ac55" name="ab277aebbaa8bc342711a16736949ac55"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab277aebbaa8bc342711a16736949ac55">&#9670;&#160;</a></span>draw_border()</h2>
 
@@ -471,96 +394,6 @@ Here is the call graph for this function:</div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">c</td><td>the color of the border </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a20842b4c9a5fbe84cec72be251ec4c0e" name="a20842b4c9a5fbe84cec72be251ec4c0e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20842b4c9a5fbe84cec72be251ec4c0e">&#9670;&#160;</a></span>draw_refresh()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void GraphicWidget::draw_refresh </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>(re)draw the graphical elements of the widget. </p>
-<p>To save running time, we can (re)draw the widget only if the associated <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> has_changed.</p>
-<p>Guidance to implement this function:</p>
-<ul>
-<li>First: Scan all contained sub-widgets if any and call <a class="el" href="#a20842b4c9a5fbe84cec72be251ec4c0e" title="(re)draw the graphical elements of the widget.">draw_refresh()</a> member function of each of them.</li>
-<li>then: update widget status according to the values of interest in the <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a></li>
-<li>refresh blinking if needed</li>
-<li>Then: check if any changes in the model require a screen redraw</li>
-<li>if redraw() required , execute the effective widget drawing including border if required (can be a private member function)</li>
-<li>and finally : clear model change flag if needed. <pre class="fragment"> WARNING : When several widget display one Model, only the last one must clear_change_flag()
-</pre> </li>
-</ul>
-
-<p>Implemented in <a class="el" href="class_widget_focus_indicator.html#aba75aa920fb8f124007e75f02b21af5d">WidgetFocusIndicator</a>, <a class="el" href="class_widget_horizontal_bar.html#a64a4029c5a26813db412a5b8811d4c0b">WidgetHorizontalBar</a>, <a class="el" href="class_widget_horizontal_bargraph.html#a26f10d3b386ea8eaed10da86f9164873">WidgetHorizontalBargraph</a>, <a class="el" href="class_widget_square_led.html#a8ee1a2e3690bae849af313e33881f0dc">WidgetSquareLed</a>, and <a class="el" href="class_widget_vertical_bargraph.html#a9c50e67dcf8ff3ed986026d8a5ab8ae2">WidgetVerticalBargraph</a>.</p>
-
-</div>
-</div>
-<a id="a7603a481691db7e3bf63d1bc5253bf8c" name="a7603a481691db7e3bf63d1bc5253bf8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7603a481691db7e3bf63d1bc5253bf8c">&#9670;&#160;</a></span>set_blink_us()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void GraphicWidget::set_blink_us </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>blink_period</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1000000</span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set the blink period in microseconds. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">blink_period</td><td>default to 1 second </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a9cc51ba18e28a7617edfd6c6e04054f9" name="a9cc51ba18e28a7617edfd6c6e04054f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cc51ba18e28a7617edfd6c6e04054f9">&#9670;&#160;</a></span>set_display_screen()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void GraphicWidget::set_display_screen </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *</td>          <td class="paramname"><span class="paramname"><em>_new_display_device</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set the display screen object. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">_new_display_device</td><td></td></tr>
   </table>
   </dd>
 </dl>

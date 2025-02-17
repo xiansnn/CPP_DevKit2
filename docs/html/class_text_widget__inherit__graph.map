@@ -1,0 +1,11 @@
+<map id="TextWidget" name="TextWidget">
+<area shape="rect" id="Node000001" title="a dedicated class for text frame only" alt="" coords="89,1139,579,1383"/>
+<area shape="rect" id="Node000002" href="$class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,733,276,943"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,956,281,1138,276,1140,192,958"/>
+<area shape="rect" id="Node000003" href="$class_textual_frame_buffer.html" title="the place where all textual primitive are placed" alt="" coords="301,585,754,1091"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="408,1105,392,1140,387,1138,403,1103"/>
+<area shape="rect" id="Node000004" href="$class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="268,260,787,537"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="530,552,530,585,525,585,525,552"/>
+<area shape="rect" id="Node000005" href="$class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="265,5,789,212"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="530,227,530,260,525,260,525,227"/>
+</map>

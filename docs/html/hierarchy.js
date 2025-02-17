@@ -16,10 +16,10 @@ var hierarchy =
             [ "WidgetFocusIndicator", "class_widget_focus_indicator.html", null ]
           ] ],
           [ "WidgetVerticalBargraph", "class_widget_vertical_bargraph.html", null ]
+        ] ],
+        [ "TextualFrameBuffer", "class_textual_frame_buffer.html", [
+          [ "TextWidget", "class_text_widget.html", null ]
         ] ]
-      ] ],
-      [ "TextualFrameBuffer", "class_textual_frame_buffer.html", [
-        [ "WidgetText", "class_widget_text.html", null ]
       ] ]
     ] ],
     [ "HC_SR04", "class_h_c___s_r04.html", null ],
@@ -62,5 +62,9 @@ var hierarchy =
       [ "UIControlledIncrementalValue", "class_u_i_controlled_incremental_value.html", [
         [ "UIObjectManager", "class_u_i_object_manager.html", null ]
       ] ]
+    ] ],
+    [ "UIWidget", "class_u_i_widget.html", [
+      [ "GraphicWidget", "class_graphic_widget.html", null ],
+      [ "TextWidget", "class_text_widget.html", null ]
     ] ]
 ];

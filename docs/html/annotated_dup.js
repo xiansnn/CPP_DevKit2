@@ -41,14 +41,15 @@ var annotated_dup =
     [ "SwitchButton", "class_switch_button.html", "class_switch_button" ],
     [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", "class_switch_button_with_i_r_q" ],
     [ "TextualFrameBuffer", "class_textual_frame_buffer.html", "class_textual_frame_buffer" ],
+    [ "TextWidget", "class_text_widget.html", "class_text_widget" ],
     [ "UIControlledIncrementalValue", "class_u_i_controlled_incremental_value.html", "class_u_i_controlled_incremental_value" ],
     [ "UIController", "class_u_i_controller.html", "class_u_i_controller" ],
     [ "UIModelObject", "class_u_i_model_object.html", "class_u_i_model_object" ],
     [ "UIObjectManager", "class_u_i_object_manager.html", "class_u_i_object_manager" ],
+    [ "UIWidget", "class_u_i_widget.html", "class_u_i_widget" ],
     [ "WidgetFocusIndicator", "class_widget_focus_indicator.html", "class_widget_focus_indicator" ],
     [ "WidgetHorizontalBar", "class_widget_horizontal_bar.html", "class_widget_horizontal_bar" ],
     [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html", "class_widget_horizontal_bargraph" ],
     [ "WidgetSquareLed", "class_widget_square_led.html", "class_widget_square_led" ],
-    [ "WidgetText", "class_widget_text.html", "class_widget_text" ],
     [ "WidgetVerticalBargraph", "class_widget_vertical_bargraph.html", "class_widget_vertical_bargraph" ]
 ];

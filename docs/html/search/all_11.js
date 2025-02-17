@@ -13,7 +13,7 @@ var searchData=
   ['pos_5fmax_5fdegree_10',['pos_max_degree',['../structstruct___config_s_g90.html#a9c349601a83bb7b1a0b42cf927ec4bf5',1,'struct_ConfigSG90']]],
   ['pos_5fmin_5fdeg_11',['pos_min_deg',['../class_s_g90.html#aee863b2c2c28d494be5e08c18695fd3b',1,'SG90']]],
   ['pos_5fmin_5fdegree_12',['pos_min_degree',['../structstruct___config_s_g90.html#aec659f7a3f081dfbcf34000c9f68d556',1,'struct_ConfigSG90']]],
-  ['previous_5fblinking_5fphase_13',['previous_blinking_phase',['../class_graphic_widget.html#ac22c03e648a3f9eea07559e60f7eb65b',1,'GraphicWidget::previous_blinking_phase'],['../class_widget_text.html#aa55de1cb2b4a1af5fd05346b5471c78b',1,'WidgetText::previous_blinking_phase']]],
+  ['previous_5fblinking_5fphase_13',['previous_blinking_phase',['../class_u_i_widget.html#a7a404a4e2ebcde747ed9fb3657099e45',1,'UIWidget']]],
   ['previous_5fchange_5ftime_5fus_14',['previous_change_time_us',['../class_switch_button.html#acf1f884508aacadb2bb12ee44e53bf73',1,'SwitchButton']]],
   ['previous_5fswitch_5fpushed_5fstate_15',['previous_switch_pushed_state',['../class_switch_button.html#a269219187ae2a669ca36aabbb615ce40',1,'SwitchButton']]],
   ['printerdevice_16',['PrinterDevice',['../class_printer_device.html',1,'PrinterDevice'],['../class_printer_device.html#a267186858ec794b04363b495bb9e5816',1,'PrinterDevice::PrinterDevice()']]],
