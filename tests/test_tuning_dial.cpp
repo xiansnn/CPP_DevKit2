@@ -81,9 +81,10 @@ int main()
         my_FM_volume.process_control_event();
         sprintf(my_FM_frequency_widget.text_buffer, "%5.1f MHz\n", (float)my_FM_frequency.get_value() / 10);
         my_FM_frequency_widget.draw_refresh();
-        // frequency_display.show(&my_FM_frequency_widget.pixel_frame,my_FM_frequency_widget.widget_anchor_x,my_FM_frequency_widget.widget_anchor_y);
+        frequency_display.show(&my_FM_frequency_widget.pixel_frame,my_FM_frequency_widget.widget_anchor_x,my_FM_frequency_widget.widget_anchor_y);//TODO show(*widget)
         sprintf(my_FM_volume_widget.text_buffer, "%*d dB\n", 3, my_FM_volume.get_value());
         my_FM_volume_widget.draw_refresh();
+        volume_display.show(&my_FM_volume_widget.pixel_frame,my_FM_volume_widget.widget_anchor_x,my_FM_volume_widget.widget_anchor_y);
 
         sleep_ms(20);
     }

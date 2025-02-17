@@ -23,11 +23,11 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
                              uint8_t widget_anchor_x,
                              uint8_t widget_anchor_y,
                              bool widget_with_border)
-    : GraphicFramebuffer(display_screen, graph_cfg)
+    : GraphicFramebuffer(display_screen, graph_cfg) , UIWidget(displayed_object)
 {
     display_screen->check_display_device_compatibility(graph_cfg, widget_anchor_x, widget_anchor_y);
 
-    this->actual_displayed_model = displayed_object;
+    
 
     this->widget_anchor_x = widget_anchor_x;
     this->widget_anchor_y = widget_anchor_y;
@@ -42,29 +42,6 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
 
 GraphicWidget::~GraphicWidget()
 {
-}
-
-void GraphicWidget::set_display_screen(GraphicDisplayDevice *_new_display_device)
-{
-    this->graphic_display_screen = _new_display_device;
-}
-
-void GraphicWidget::set_blink_us(uint32_t _blink_period_us)
-{
-    this->blink_period_us = _blink_period_us;
-}
-
-bool GraphicWidget::blinking_phase_has_changed()
-{
-    int8_t current_blinking_phase = (time_us_32() / (this->blink_period_us / 2)) % 2;
-    bool phase_has_changed = (previous_blinking_phase != current_blinking_phase);
-    previous_blinking_phase = current_blinking_phase;
-    return phase_has_changed;
-}
-
-void GraphicWidget::add_widget(GraphicWidget *_sub_widget)
-{
-    this->widgets.push_back(_sub_widget);
 }
 
 PrintWidget::PrintWidget(PrinterDevice *display_device, UIModelObject *actual_displayed_model)
@@ -97,4 +74,73 @@ void PrintWidget::draw_refresh()
             this->actual_displayed_model->clear_change_flag();
         }
     }
+}
+
+TextWidget::TextWidget(GraphicDisplayDevice *device,
+                       struct_ConfigTextFramebuffer text_cfg,
+                       UIModelObject *displayed_model,
+                       uint8_t widget_anchor_x,
+                       uint8_t widget_anchor_y,
+                       bool widget_with_border)
+    : TextualFrameBuffer(device, text_cfg), UIWidget(displayed_model)
+{
+    this->widget_anchor_x = widget_anchor_x;
+    this->widget_anchor_y = widget_anchor_y;
+    this->widget_with_border = widget_with_border;
+
+    this->widget_border_width = (widget_with_border) ? 1 : 0;
+
+    widget_start_x = widget_border_width;
+    widget_start_y = widget_border_width;
+    widget_width = pixel_frame.frame_width - 2 * widget_border_width;
+    widget_height = pixel_frame.frame_height - 2 * widget_border_width;
+
+}
+
+TextWidget::~TextWidget()
+{
+}
+
+void TextWidget::draw_refresh()
+{
+    if (widgets.size() != 0)
+    {
+        for (auto &&w : widgets)
+            w->draw_refresh();
+    }
+    else
+    {
+        if (this->actual_displayed_model->has_changed())
+        {
+            draw_text_buffer();
+            this->actual_displayed_model->clear_change_flag();
+        }
+    }
+}
+
+bool UIWidget::blinking_phase_has_changed()
+{
+    int8_t current_blinking_phase = (time_us_32() / (this->blink_period_us / 2)) % 2;
+    bool phase_has_changed = (previous_blinking_phase != current_blinking_phase);
+    previous_blinking_phase = current_blinking_phase;
+    return phase_has_changed;
+}
+
+UIWidget::UIWidget(UIModelObject *new_displayed_model)
+{
+    this->actual_displayed_model = new_displayed_model;
+}
+
+UIWidget::~UIWidget()
+{
+}
+
+void UIWidget::set_blink_us(uint32_t blink_period)
+{
+    this->blink_period_us = blink_period_us;
+}
+
+void UIWidget::add_widget(UIWidget *_sub_widget)
+{
+    this->widgets.push_back(_sub_widget);
 }
