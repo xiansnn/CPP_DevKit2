@@ -213,7 +213,7 @@ target_link_libraries(test_tuning_dial
             ssd1306
             ui_core
             debug_probe
-            widget_text
+            widget
             )    
 #-------------------------------------------------------------------------------------
 add_executable(test_text_framebuffer test_text_framebuffer.cpp)

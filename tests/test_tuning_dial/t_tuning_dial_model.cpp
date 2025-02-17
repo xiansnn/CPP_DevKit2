@@ -10,7 +10,7 @@
  */
 #pragma once
 #include "ui_core.h"
-#include "widget_text.h"
+#include "widget.h"
 
 class FMFrequencyTuningModel : public UIControlledIncrementalValue
 {

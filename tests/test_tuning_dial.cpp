@@ -9,7 +9,6 @@
  *
  */
 
-#include "widget_text.h"
 #include "ssd1306.h"
 #include "switch_button.h"
 #include "test_tuning_dial/t_tuning_dial_model.cpp"
@@ -47,6 +46,8 @@ struct_ConfigSSD1306 cfg_volume_screen{
     .frequency_factor = 0};
 
 struct_ConfigTextFramebuffer fm_text_cnf{
+    .number_of_column = 10,
+    .number_of_line = 1,
     .font = font_12x16};
 
 ///  1- create I2C bus hw peripheral and frequency_display
@@ -56,16 +57,14 @@ SSD1306 volume_display = SSD1306(&master, cfg_volume_screen);
 
 FMFrequencyTuningModel my_FM_frequency = FMFrequencyTuningModel(1, true);
 FMVolumeModel my_FM_volume = FMVolumeModel(1, true);
-WidgetText my_FM_frequency_widget = WidgetText(&my_FM_frequency,
-                                               &frequency_display,
+TextWidget my_FM_frequency_widget = TextWidget(&frequency_display,
                                                fm_text_cnf,
-                                               10, 1,
+                                               &my_FM_frequency,
                                                0, 0,
                                                false);
-WidgetText my_FM_volume_widget = WidgetText(&my_FM_volume,
-                                            &volume_display,
+TextWidget my_FM_volume_widget = TextWidget(&volume_display,
                                             fm_text_cnf,
-                                            10, 1,
+                                            &my_FM_volume,
                                             0, 0,
                                             false);
 
@@ -76,16 +75,16 @@ int main()
     volume_display.clear_device_screen_buffer();
     my_FM_frequency.set_clipped_value(my_FM_frequency.get_min_value());
 
-
     while (true)
     {
         my_FM_frequency.process_control_event();
         my_FM_volume.process_control_event();
         sprintf(my_FM_frequency_widget.text_buffer, "%5.1f MHz\n", (float)my_FM_frequency.get_value() / 10);
         my_FM_frequency_widget.draw_refresh();
-        sprintf(my_FM_volume_widget.text_buffer,"%*d dB\n", 3,my_FM_volume.get_value());
+        // frequency_display.show(&my_FM_frequency_widget.pixel_frame,my_FM_frequency_widget.widget_anchor_x,my_FM_frequency_widget.widget_anchor_y);
+        sprintf(my_FM_volume_widget.text_buffer, "%*d dB\n", 3, my_FM_volume.get_value());
         my_FM_volume_widget.draw_refresh();
- 
+
         sleep_ms(20);
     }
 
