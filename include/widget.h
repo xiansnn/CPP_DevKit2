@@ -47,10 +47,16 @@ protected:
 
     /// @brief The period of the blinking, in microseconds
     uint32_t blink_period_us;
+
     /// @brief A widget can be composed by several widget.
     std::vector<UIWidget *> widgets;
 
 public:
+    /**
+     * @brief Construct a new UIWidget object
+     *
+     * @param actual_displayed_model
+     */
     UIWidget(UIModelObject *actual_displayed_model);
     ~UIWidget();
     /**
@@ -88,6 +94,10 @@ public:
     virtual void draw_refresh() = 0;
 };
 
+/**
+ * @brief the widget dedicated to graphics
+ * 
+ */
 class GraphicWidget : public UIWidget, public GraphicFramebuffer
 {
 private:
@@ -151,6 +161,12 @@ public:
     ~GraphicWidget();
 };
 
+/**
+ * @brief a dedicated class for text frame only
+ *
+ * \todo simplication expected. check usefulness of members
+ *
+ */
 class TextWidget : public UIWidget, public TextualFrameBuffer
 {
 private:
@@ -181,6 +197,16 @@ protected:
 
     /* data */
 public:
+    /**
+     * @brief Construct a new Text Widget object
+     *
+     * @param device The display device on which the widget is drawn
+     * @param text_cfg the configuration data for the textual frame
+     * @param displayed_model the displayed model of the widget
+     * @param widget_anchor_x the horizontal position where the widget start on the device screen
+     * @param widget_anchor_y the verticaThe flag that indicates whether the widget has a border or notl position where the widget start on the device screen
+     * @param widget_with_border flag that indicates if the frame has a border
+     */
     TextWidget(GraphicDisplayDevice *device,
                struct_ConfigTextFramebuffer text_cfg,
                UIModelObject *displayed_model,

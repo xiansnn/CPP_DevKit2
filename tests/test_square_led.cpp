@@ -91,10 +91,10 @@ int main()
          * NOTICE:There is a simpler way to get event. We can also forget UIController and use directly SwitchButton in
          * the following way:
          * \code
-         * ControlEvent event = central_switch.process_sample_event();
-         * test_common_model.process_control_event(event);
+         * UIControlEvent event = central_switch.process_sample_event();
+         * my_model.process_control_event(event);
          * \endcode
-         *  This avoid the burden of casting UIController and can be used when there is not special need to have UIModelObject aware about wich is displaying its data.
+         *  This avoid the burden of casting UIController and can be used when there is not special need to have UIModelObject aware about which is displaying its data.
          *
          */
 

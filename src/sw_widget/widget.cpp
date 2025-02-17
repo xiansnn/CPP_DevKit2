@@ -11,6 +11,7 @@
 
 #include "widget.h"
 
+
 void GraphicWidget::draw_border(PixelColor c)
 {
     if (this->widget_with_border)
@@ -23,11 +24,9 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
                              uint8_t widget_anchor_x,
                              uint8_t widget_anchor_y,
                              bool widget_with_border)
-    : GraphicFramebuffer(display_screen, graph_cfg) , UIWidget(displayed_object)
+    : GraphicFramebuffer(display_screen, graph_cfg), UIWidget(displayed_object)
 {
     display_screen->check_display_device_compatibility(graph_cfg, widget_anchor_x, widget_anchor_y);
-
-    
 
     this->widget_anchor_x = widget_anchor_x;
     this->widget_anchor_y = widget_anchor_y;
@@ -94,7 +93,6 @@ TextWidget::TextWidget(GraphicDisplayDevice *device,
     widget_start_y = widget_border_width;
     widget_width = pixel_frame.frame_width - 2 * widget_border_width;
     widget_height = pixel_frame.frame_height - 2 * widget_border_width;
-
 }
 
 TextWidget::~TextWidget()
@@ -135,9 +133,9 @@ UIWidget::~UIWidget()
 {
 }
 
-void UIWidget::set_blink_us(uint32_t blink_period)
+void UIWidget::set_blink_us(uint32_t new_blink_period)
 {
-    this->blink_period_us = blink_period_us;
+    this->blink_period_us = new_blink_period;     
 }
 
 void UIWidget::add_widget(UIWidget *_sub_widget)

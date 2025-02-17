@@ -77,5 +77,4 @@ public:
      */
     void blink_on();
 
-    virtual void draw_refresh();
 };
