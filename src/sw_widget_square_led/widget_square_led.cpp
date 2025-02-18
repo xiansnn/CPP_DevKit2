@@ -8,7 +8,6 @@ WidgetSquareLed::WidgetSquareLed(UIModelObject *actual_displayed_model,
                                  bool widget_with_border)
     : GraphicWidget(display_screen, actual_displayed_model, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
 {
-
 }
 
 WidgetSquareLed::~WidgetSquareLed()
@@ -54,4 +53,3 @@ void WidgetSquareLed::blink_on()
 {
     this->led_is_blinking = true;
 }
-

@@ -27,7 +27,7 @@ public:
                       uint8_t widget_anchor_x,
                       uint8_t widget_anchor_y);
     ~MyWidgetSquareLed();
-    void draw_refresh();
+    void draw();
 };
 
 /**
@@ -45,7 +45,7 @@ MyWidgetSquareLed::MyWidgetSquareLed(MySquareLedModel *actual_displayed_model,
                                      struct_ConfigGraphicFramebuffer graph_cfg,
                                      uint8_t widget_anchor_x,
                                      uint8_t widget_anchor_y)
-    : WidgetSquareLed(actual_displayed_model,graphic_display_screen, graph_cfg, widget_anchor_x, widget_anchor_y)
+    : WidgetSquareLed(actual_displayed_model, graphic_display_screen, graph_cfg, widget_anchor_x, widget_anchor_y)
 {
     this->actual_displayed_model = actual_displayed_model;
 }
@@ -54,20 +54,10 @@ MyWidgetSquareLed::~MyWidgetSquareLed()
 {
 }
 
-/**
- * @brief This function implements a special draw_refresh that takes into account the on/off and led_is_blinking status of the model.
- *
- * It insures that the widget consumes processing time only when its on/off status has changed.
- *
- */
-void MyWidgetSquareLed::draw_refresh()
+void MyWidgetSquareLed::draw()
 {
-    assert(this->actual_displayed_model != nullptr);
-    /// main step of the function
     /// - first process the status of the displayed object
     this->led_is_blinking = this->actual_displayed_model->blinking_status;
-    /// - then widget_blink_refresh() if it is appropriate
-    blink_refresh();
 
     if (this->actual_displayed_model->has_changed()) // check if something changed
     {
@@ -84,6 +74,5 @@ void MyWidgetSquareLed::draw_refresh()
             draw_border();
         }
         this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
-        this->actual_displayed_model->clear_change_flag();
     }
 }
