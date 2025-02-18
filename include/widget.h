@@ -55,10 +55,19 @@ public:
     /**
      * @brief Construct a new UIWidget object
      *
-     * @param actual_displayed_model
+     * @param actual_displayed_model a pointer to the UIModelObject actually displayed by the widget
+     * @param widget_anchor_x location in x of the widget within the hosting framebuffer
+     * @param widget_anchor_y location in y of the widget within the hosting framebuffer
      */
-    UIWidget(UIModelObject *actual_displayed_model);
+    UIWidget(UIModelObject *actual_displayed_model, uint8_t widget_anchor_x, uint8_t widget_anchor_y);
     ~UIWidget();
+
+    /// @brief location in x of the widget within the hosting framebuffer
+    uint8_t widget_anchor_x;
+
+    /// @brief location in y of the widget within the hosting framebuffer
+    uint8_t widget_anchor_y;
+
     /**
      * @brief Set the blink period in microseconds
      *
@@ -71,6 +80,7 @@ public:
      * @param _sub_widget
      */
     void add_widget(UIWidget *_sub_widget);
+
     /**
      * @brief (re)draw the graphical elements of the widget.
      *
@@ -92,11 +102,19 @@ public:
      *        WARNING : When several widget display one Model, only the last one must clear_change_flag()
      */
     virtual void draw_refresh() = 0;
+
+    /// @brief a pure virtual member that is called by draw_refresh method
+    virtual void draw() = 0;
+
+    /// @brief draw a rectangle around the widget.
+    /// IMPORTANT NOTICE: as the border is a rectangle with fill=false, the border width can only be 1 pixel.
+    /// @param color the color of the border
+    virtual void draw_border(PixelColor color = PixelColor::WHITE) = 0;
 };
 
 /**
  * @brief the widget dedicated to graphics
- * 
+ *
  */
 class GraphicWidget : public UIWidget, public GraphicFramebuffer
 {
@@ -126,18 +144,10 @@ protected:
     /// @brief this is the border size of the widget. 0 if no border, 1 if border
     uint8_t widget_border_width;
 
-    /// @brief draw a rectangle around the widget.
-    /// IMPORTANT NOTICE: as the border is a rectangle with fill=false, the border width can only be 1 pixel.
-    /// @param c the color of the border
-    void draw_border(PixelColor c = PixelColor::WHITE);
-
 public:
-    /// @brief location in x of the widget within the hosting framebuffer
-    uint8_t widget_anchor_x;
+    void draw_border(PixelColor color = PixelColor::WHITE);
 
-    /// @brief location in y of the widget within the hosting framebuffer
-    uint8_t widget_anchor_y;
-
+    virtual void draw_refresh();
     /**
      * @brief Construct a new GraphicWidget object
      *
