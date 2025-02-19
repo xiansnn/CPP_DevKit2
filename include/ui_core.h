@@ -1,28 +1,28 @@
 /**
  * @file ui_core.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-01-11
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
-#if !defined(UI_CORE_H)
-#define UI_CORE_H
+#pragma once
 
 #include "pico/stdlib.h"
 #include "framebuffer.h"
 #include "ui_control_event.h"
 #include "display_device.h"
+#include "widget.h"
 
 #include <vector>
 #include <map>
 #include <string>
+#include <set>
 
 /// @brief the time out used by the UIObjectManager that indicates there is no more UI_ModelObject Status change.
 #define UI_MODEL_OBJECT_STATUS_TIME_OUT_us 3000000
-
 
 /**
  * @brief The list of status that a UIModelObject can have.
@@ -59,6 +59,7 @@ enum class ControlledObjectStatusTimeOutReason
 };
 
 class UIController;
+class UIWidget;
 
 /**
  * @brief This is the Model abstract class of Model_View_Control design pattern.
@@ -76,13 +77,15 @@ private:
     uint32_t last_change_time;
 
     /// @brief The semaphore used to trigger the actual drawing of the widget on the screen.
-    bool change_flag{true};
+    int change_flag;
 
     /// @brief The status of the model, indicating if it is waiting, active or just ahs focus (pointed by the object manager)
     ControlledObjectStatus status{ControlledObjectStatus::IS_WAITING};
 
     /// @brief A pointer to the controller of this model.
     UIController *current_controller{nullptr};
+
+    std::set<UIWidget *> attached_widgets;
 
 protected:
 public:
@@ -105,11 +108,15 @@ public:
     /// @brief Set the change flag object to false
     void clear_change_flag();
 
+    void update_attached_widgets(UIWidget *new_widget);
+
+    int get_number_of_attached_widget();
+
     /// @brief compute time since the last status change
     /// @return this time in microsecond
     uint32_t get_time_since_last_change();
     /**
-     * @brief check if the _new_status change is effective, 
+     * @brief check if the _new_status change is effective,
      * then change it and set the change_flag to true.
      * @param _new_status
      */
@@ -233,15 +240,15 @@ class UIObjectManager : public UIControlledIncrementalValue
 protected:
     /**
      * @brief  check if there is a time out either on the managed models or the manager itself.
-     * 
+     *
      * This means no action on focus control and active status control.
-     * 
+     *
      * NOTICE: this is usefull when controller use IRQ, because we cannot detect no action when no more IRQ are triggered (up to now)
-     * 
+     *
      * @param managed_object_status_time_out_us the time out value in microsecond. default to 3000000 (3seconds)
-     * @return ControlledObjectStatusTimeOutReason 
+     * @return ControlledObjectStatusTimeOutReason
      */
-    ControlledObjectStatusTimeOutReason check_time_out(uint32_t managed_object_status_time_out_us=UI_MODEL_OBJECT_STATUS_TIME_OUT_us);
+    ControlledObjectStatusTimeOutReason check_time_out(uint32_t managed_object_status_time_out_us = UI_MODEL_OBJECT_STATUS_TIME_OUT_us);
     /**
      * @brief The list of managed objects
      *
@@ -276,10 +283,10 @@ protected:
 public:
     /**
      * @brief Construct a new UIObjectManager object
-     * 
+     *
      * @param is_wrappable if true, the scan over managed object wrap.
      */
-    UIObjectManager(bool is_wrappable=false);
+    UIObjectManager(bool is_wrappable = false);
     /**
      * @brief Destroy the UIObjectManager object
      *
@@ -324,4 +331,3 @@ public:
     void update_current_controlled_object(UIModelObject *_new_controlled_object);
 };
 
-#endif // UI_CORE_H

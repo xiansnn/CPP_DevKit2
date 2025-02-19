@@ -24,15 +24,14 @@ void GraphicWidget::draw_refresh()
         for (auto &&w : widgets)
             w->draw_refresh();
     }
-    else
-    {
-        if (this->actual_displayed_model->has_changed())
-        {
-            draw();
-            this->actual_displayed_model->clear_change_flag();
-        }
-    }
 
+    if (this->actual_displayed_model->has_changed())
+    {
+        draw();
+        draw_border();
+        this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
+        this->actual_displayed_model->clear_change_flag();
+    }
 }
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
@@ -143,6 +142,7 @@ UIWidget::UIWidget(UIModelObject *actual_displayed_model,
                    uint8_t widget_anchor_x, uint8_t widget_anchor_y)
 {
     this->actual_displayed_model = actual_displayed_model;
+    this->actual_displayed_model->update_attached_widgets(this);
     this->widget_anchor_x = widget_anchor_x;
     this->widget_anchor_y = widget_anchor_y;
 }
@@ -161,6 +161,6 @@ void UIWidget::add_widget(UIWidget *_sub_widget)
     this->widgets.push_back(_sub_widget);
 }
 
-void UIWidget::draw_refresh()
-{
- }
+// void UIWidget::draw_refresh()
+// {
+//  }

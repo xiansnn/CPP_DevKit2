@@ -16,6 +16,8 @@
 #include "ui_core.h"
 #include <vector>
 
+class UIModelObject;
+
 /**
  * @brief A widget is a displayed object on a device screen. It inherits from all framebuffer features, giving it textual and graphical capabilities.
  *

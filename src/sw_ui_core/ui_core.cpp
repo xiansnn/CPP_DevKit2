@@ -17,7 +17,17 @@ bool UIModelObject::has_changed()
 
 void UIModelObject::clear_change_flag()
 {
-    this->change_flag = false;
+    this->change_flag -= 1;
+}
+
+void UIModelObject::update_attached_widgets(UIWidget *new_widget)
+{
+    this->attached_widgets.insert(new_widget);
+}
+
+int UIModelObject::get_number_of_attached_widget()
+{
+    return this->attached_widgets.size();
 }
 
 uint32_t UIModelObject::get_time_since_last_change()
@@ -56,7 +66,7 @@ UIController *UIModelObject::get_current_controller()
 void UIModelObject::set_change_flag()
 {
     last_change_time = time_us_32();
-    this->change_flag = true;
+    this->change_flag = this->attached_widgets.size();
 }
 
 UIControlledIncrementalValue::UIControlledIncrementalValue(int _min_value, int _max_value, bool _is_wrappable, int _increment)
