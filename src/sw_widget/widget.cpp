@@ -19,18 +19,15 @@ void GraphicWidget::draw_border(PixelColor c)
 
 void GraphicWidget::draw_refresh()
 {
+    if (this->actual_displayed_model->has_changed())
+    {
+        draw();
+        this->actual_displayed_model->clear_change_flag();
+    }
     if (widgets.size() != 0)
     {
         for (auto &&w : widgets)
             w->draw_refresh();
-    }
-
-    if (this->actual_displayed_model->has_changed())
-    {
-        draw();
-        draw_border();
-        this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
-        this->actual_displayed_model->clear_change_flag();
     }
 }
 
@@ -161,6 +158,3 @@ void UIWidget::add_widget(UIWidget *_sub_widget)
     this->widgets.push_back(_sub_widget);
 }
 
-// void UIWidget::draw_refresh()
-// {
-//  }

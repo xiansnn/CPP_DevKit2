@@ -27,41 +27,17 @@ WidgetFocusIndicator::~WidgetFocusIndicator()
 {
 }
 
-void WidgetFocusIndicator::draw_refresh()
+void WidgetFocusIndicator::draw()
 {
-    assert(this->actual_displayed_model != nullptr);
-    /// - first process the status of the displayed object
-    switch (this->actual_displayed_model->get_status())
+    if (this->led_is_on)
     {
-    case ControlledObjectStatus::HAS_FOCUS:
-        this->blink_off();
-        this->light_on();
-        break;
-    case ControlledObjectStatus::IS_ACTIVE:
-        this->blink_on();
-        break;
-    case ControlledObjectStatus::IS_WAITING:
-        this->blink_off();
-        this->light_off();
-        break;
-
-    default:
-        break;
+        rect(widget_start_x, widget_start_y, widget_width, widget_height, true, PixelColor::WHITE);
     }
-    /// - then widget_blink_refresh() if it is appropriate
-    blink_refresh();
-    /// - and finally visualise how we've decide to represent the status of the model
-    if (this->actual_displayed_model->has_changed())
+    else
     {
-        if (this->led_is_on)
-        {
-            rect(widget_start_x, widget_start_y, widget_width, widget_height, true, PixelColor::WHITE);
-        }
-        else
-        {
-            rect(widget_start_x, widget_start_y, widget_width, widget_height, true, PixelColor::BLACK);
-        }
-        this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
-        // this->actual_displayed_model->clear_change_flag(); // if the last widget must clear the model change flag
+        rect(widget_start_x, widget_start_y, widget_width, widget_height, true, PixelColor::BLACK);
     }
+    this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
 }
+
+

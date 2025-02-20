@@ -41,5 +41,7 @@ public:
                      uint8_t widget_anchor_y,
                      bool with_border);
     ~WidgetFocusIndicator();
-    void draw_refresh();
+
+    void draw();
+
 };
