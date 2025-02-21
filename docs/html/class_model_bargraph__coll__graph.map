@@ -1,8 +1,8 @@
 <map id="ModelBargraph" name="ModelBargraph">
-<area shape="rect" id="Node000001" title="the UIModelObject used by Bargraph GraphicWidget" alt="" coords="5,353,385,507"/>
-<area shape="rect" id="Node000002" href="$class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="289,5,611,291"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="313,304,266,355,262,351,309,300"/>
-<area shape="rect" id="Node000003" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="409,381,821,479"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="435,290,448,327,464,350,485,369,481,373,460,353,443,330,430,291"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="605,382,597,348,584,316,579,306,583,304,588,314,602,347,610,380"/>
+<area shape="rect" id="Node000001" title="the UIModelObject used by Bargraph GraphicWidget" alt="" coords="5,409,385,563"/>
+<area shape="rect" id="Node000002" href="$class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="289,5,611,347"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="302,360,260,411,256,407,298,356"/>
+<area shape="rect" id="Node000003" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="409,437,821,535"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="434,346,448,383,464,406,485,425,481,429,460,409,443,386,429,347"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="604,437,596,404,584,372,579,363,584,361,588,370,601,403,610,436"/>
 </map>

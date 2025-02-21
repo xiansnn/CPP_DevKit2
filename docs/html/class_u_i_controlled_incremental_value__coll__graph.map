@@ -1,8 +1,8 @@
 <map id="UIControlledIncrementalValue" name="UIControlledIncrementalValue">
-<area shape="rect" id="Node000001" title="The UIControlledIncrementalValue is a kind of UIModelObject that have special feature such as a value..." alt="" coords="5,353,551,619"/>
-<area shape="rect" id="Node000002" href="$class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="454,5,777,291"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="464,303,413,355,409,351,461,299"/>
-<area shape="rect" id="Node000003" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="575,437,987,535"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="603,290,613,328,629,355,648,381,693,424,689,428,644,384,624,358,609,330,598,291"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="776,437,768,378,760,346,749,316,745,307,749,304,754,314,765,344,773,377,782,437"/>
+<area shape="rect" id="Node000001" title="The UIControlledIncrementalValue is a kind of UIModelObject that have special feature such as a value..." alt="" coords="5,409,551,675"/>
+<area shape="rect" id="Node000002" href="$class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="454,5,777,347"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="450,359,402,411,398,407,446,355"/>
+<area shape="rect" id="Node000003" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="575,493,987,591"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="602,345,613,384,629,411,648,437,693,480,689,484,644,440,624,414,609,386,597,347"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="775,493,767,434,749,372,745,363,750,361,754,370,772,433,781,493"/>
 </map>

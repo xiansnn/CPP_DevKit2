@@ -1,17 +1,17 @@
 <map id="UIWidget" name="UIWidget">
-<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="1065,5,1335,216"/>
-<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="the widget dedicated to graphics" alt="" coords="729,264,1177,521"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1101,229,1068,266,1064,262,1097,225"/>
-<area shape="rect" id="Node000008" href="$class_text_widget.html" title="a dedicated class for text frame only" alt="" coords="1201,271,1692,515"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1304,225,1342,269,1338,273,1300,229"/>
-<area shape="rect" id="Node000003" href="$class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="5,569,456,883"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="716,470,592,517,469,572,457,578,454,573,467,567,590,512,714,465"/>
-<area shape="rect" id="Node000004" href="$class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="480,579,944,873"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="854,535,821,580,816,577,850,531"/>
-<area shape="rect" id="Node000005" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="968,616,1424,836"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="1058,532,1119,615,1114,618,1053,535"/>
-<area shape="rect" id="Node000007" href="$class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="1449,579,1898,873"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="1192,519,1261,535,1317,541,1371,547,1437,567,1459,576,1457,581,1435,572,1370,552,1316,546,1260,541,1190,524"/>
-<area shape="rect" id="Node000006" href="$class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="979,931,1413,1057"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1199,851,1199,931,1193,931,1193,851"/>
+<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="940,5,1460,291"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="the widget dedicated to graphics" alt="" coords="729,339,1177,577"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1079,304,1050,341,1046,337,1075,301"/>
+<area shape="rect" id="Node000008" href="$class_text_widget.html" title="a dedicated class for text frame only" alt="" coords="1201,355,1692,561"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1325,300,1367,353,1363,357,1321,304"/>
+<area shape="rect" id="Node000003" href="$class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="5,625,456,920"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="716,532,592,576,469,628,457,634,454,629,467,623,590,571,714,527"/>
+<area shape="rect" id="Node000004" href="$class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="480,625,944,920"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="855,591,827,627,823,624,851,588"/>
+<area shape="rect" id="Node000005" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="968,653,1424,892"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="1056,587,1107,652,1102,655,1052,591"/>
+<area shape="rect" id="Node000007" href="$class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="1449,625,1898,920"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="1192,575,1261,591,1317,597,1371,604,1437,623,1450,628,1448,633,1435,628,1370,609,1316,602,1260,596,1190,580"/>
+<area shape="rect" id="Node000006" href="$class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="979,968,1413,1113"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1199,907,1199,968,1193,968,1193,907"/>
 </map>

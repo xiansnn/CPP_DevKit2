@@ -2,8 +2,8 @@ var searchData=
 [
   ['white_0',['WHITE',['../display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d',1,'display_device.h']]],
   ['widget_2eh_1',['widget.h',['../widget_8h.html',1,'']]],
-  ['widget_5fanchor_5fx_2',['widget_anchor_x',['../class_graphic_widget.html#a61133b1352758000f0f3eef16824bdcb',1,'GraphicWidget::widget_anchor_x'],['../class_text_widget.html#ac8c5139a5d8d0437a6d5e7555bf85555',1,'TextWidget::widget_anchor_x']]],
-  ['widget_5fanchor_5fy_3',['widget_anchor_y',['../class_graphic_widget.html#ae4f41f6ccf52025b2c16fc2ec59208ee',1,'GraphicWidget::widget_anchor_y'],['../class_text_widget.html#a82431592f504b7db2483d580f3219f90',1,'TextWidget::widget_anchor_y']]],
+  ['widget_5fanchor_5fx_2',['widget_anchor_x',['../class_u_i_widget.html#a85a82836dd04ae6a7164d5f213615a4b',1,'UIWidget']]],
+  ['widget_5fanchor_5fy_3',['widget_anchor_y',['../class_u_i_widget.html#a2ec9e35c6ee6f3053ed61878cb021680',1,'UIWidget']]],
   ['widget_5fbargraph_2eh_4',['widget_bargraph.h',['../widget__bargraph_8h.html',1,'']]],
   ['widget_5fborder_5fwidth_5',['widget_border_width',['../class_graphic_widget.html#ab06cc273f6d42d2527eca35fd5e9b8ed',1,'GraphicWidget::widget_border_width'],['../class_text_widget.html#aa114eb7cfb73a91c2e3d5a3bd99f5161',1,'TextWidget::widget_border_width']]],
   ['widget_5ffocus_5findicator_2eh_6',['widget_focus_indicator.h',['../widget__focus__indicator_8h.html',1,'']]],

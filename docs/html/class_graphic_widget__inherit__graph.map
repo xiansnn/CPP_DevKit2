@@ -1,19 +1,19 @@
 <map id="GraphicWidget" name="GraphicWidget">
-<area shape="rect" id="Node000001" title="the widget dedicated to graphics" alt="" coords="729,585,1177,843"/>
-<area shape="rect" id="Node000005" href="$class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="5,891,456,1204"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="716,791,592,838,469,893,457,899,454,895,467,888,590,833,714,786"/>
-<area shape="rect" id="Node000006" href="$class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="480,900,944,1195"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="854,856,821,902,816,899,850,853"/>
-<area shape="rect" id="Node000007" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="968,937,1424,1157"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1058,853,1119,936,1114,939,1053,856"/>
-<area shape="rect" id="Node000009" href="$class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="1449,900,1898,1195"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1192,787,1315,834,1437,888,1456,898,1453,903,1435,893,1313,839,1190,792"/>
-<area shape="rect" id="Node000002" href="$class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="609,293,879,504"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="824,515,871,584,866,587,820,518"/>
-<area shape="rect" id="Node000003" href="$class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="903,260,1422,537"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1065,551,1041,587,1036,584,1060,548"/>
-<area shape="rect" id="Node000004" href="$class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="901,5,1425,212"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1165,227,1165,260,1160,260,1160,227"/>
-<area shape="rect" id="Node000008" href="$class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="979,1252,1413,1379"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="1199,1172,1199,1252,1193,1252,1193,1172"/>
+<area shape="rect" id="Node000001" title="the widget dedicated to graphics" alt="" coords="729,593,1177,832"/>
+<area shape="rect" id="Node000005" href="$class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="5,880,456,1175"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="716,786,592,830,469,882,457,888,454,884,467,878,590,826,714,781"/>
+<area shape="rect" id="Node000006" href="$class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="480,880,944,1175"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="855,845,827,882,823,878,851,842"/>
+<area shape="rect" id="Node000007" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="968,908,1424,1147"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1056,842,1107,907,1102,910,1052,845"/>
+<area shape="rect" id="Node000009" href="$class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="1449,880,1898,1175"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1192,782,1315,826,1437,878,1450,884,1448,889,1435,882,1313,831,1191,787"/>
+<area shape="rect" id="Node000002" href="$class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="421,260,941,545"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="818,555,851,592,847,595,814,558"/>
+<area shape="rect" id="Node000003" href="$class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="966,264,1485,541"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1096,554,1060,595,1056,592,1092,551"/>
+<area shape="rect" id="Node000004" href="$class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="963,5,1487,212"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1228,227,1228,264,1223,264,1223,227"/>
+<area shape="rect" id="Node000008" href="$class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="979,1223,1413,1368"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="1199,1162,1199,1223,1193,1223,1193,1162"/>
 </map>

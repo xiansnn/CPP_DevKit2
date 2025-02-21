@@ -1,8 +1,8 @@
 <map id="UIWidget" name="UIWidget">
-<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,353,276,545"/>
-<area shape="rect" id="Node000002" href="$class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="179,5,502,291"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,292,202,316,189,339,184,336,197,313,214,289"/>
-<area shape="rect" id="Node000003" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="300,399,712,498"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="326,290,339,327,362,360,393,388,389,392,358,364,334,330,321,291"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="498,400,490,358,474,316,469,306,474,304,479,314,495,357,504,399"/>
+<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,409,525,675"/>
+<area shape="rect" id="Node000002" href="$class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="429,5,752,347"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="441,348,396,398,392,395,437,344"/>
+<area shape="rect" id="Node000003" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="550,493,962,591"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="577,345,589,384,604,411,623,437,668,480,665,484,619,440,599,414,584,386,572,347"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="751,493,742,434,724,372,720,363,725,361,729,370,748,433,756,493"/>
 </map>

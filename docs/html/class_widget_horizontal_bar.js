@@ -3,7 +3,6 @@ var class_widget_horizontal_bar =
     [ "WidgetHorizontalBar", "class_widget_horizontal_bar.html#aa99213010a3f5f9ffd4043755879e3c4", null ],
     [ "convert_level_value_to_px", "class_widget_horizontal_bar.html#aa94c8372969017f613b39dfcd690b014", null ],
     [ "draw", "class_widget_horizontal_bar.html#a73f6c8198a940ad2803367e5712f3359", null ],
-    [ "draw_refresh", "class_widget_horizontal_bar.html#a64a4029c5a26813db412a5b8811d4c0b", null ],
     [ "set_level", "class_widget_horizontal_bar.html#a463a0d22a9509395fac826be6a8154a4", null ],
     [ "level", "class_widget_horizontal_bar.html#a69a11f9c5023f31a453314def6db7202", null ],
     [ "level_coef", "class_widget_horizontal_bar.html#ab056a752ff665d0c8f1ca10527130885", null ],
