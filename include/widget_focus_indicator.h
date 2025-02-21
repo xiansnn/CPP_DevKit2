@@ -43,5 +43,6 @@ public:
     ~WidgetFocusIndicator();
 
     void draw();
+    void draw_refresh();
 
 };

@@ -29,15 +29,32 @@ WidgetFocusIndicator::~WidgetFocusIndicator()
 
 void WidgetFocusIndicator::draw()
 {
-    if (this->led_is_on)
+    draw_led();
+}
+
+void WidgetFocusIndicator::draw_refresh()
+{
+    ControlledObjectStatus status = this->actual_displayed_model->get_status();
+    switch (status)
     {
-        rect(widget_start_x, widget_start_y, widget_width, widget_height, true, PixelColor::WHITE);
+    case ControlledObjectStatus::HAS_FOCUS:
+        this->blink_off();
+        this->light_on();
+        break;
+    case ControlledObjectStatus::IS_ACTIVE:
+        this->blink_on();
+        break;
+    case ControlledObjectStatus::IS_WAITING:
+        this->blink_off();
+        this->light_off();
+        break;
+
+    default:
+        break;
     }
-    else
-    {
-        rect(widget_start_x, widget_start_y, widget_width, widget_height, true, PixelColor::BLACK);
-    }
-    this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
+    WidgetSquareLed::blink_refresh();
+    GraphicWidget::draw_refresh();
+
 }
 
 

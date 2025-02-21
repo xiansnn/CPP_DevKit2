@@ -61,14 +61,14 @@ void MyManager::process_control_event(UIControlEvent _event)
         {
             make_managed_object_active();
 #ifdef PRINT_DEBUG
-            printf("%s is active \n", ((MySquareLedModel *)this->current_active_model)->name.c_str());
+            printf("%s is active \n", ((MyManagedSquareLedModel *)this->current_active_model)->name.c_str());
 #endif
         }
         else
         {
             make_manager_active();
 #ifdef PRINT_DEBUG
-            printf("manager is active, %s has focus \n", ((MySquareLedModel *)this->managed_models[this->value])->name.c_str());
+            printf("manager is active, %s has focus \n", ((MyManagedSquareLedModel *)this->managed_models[this->value])->name.c_str());
 #endif
         }
         break;
@@ -78,7 +78,7 @@ void MyManager::process_control_event(UIControlEvent _event)
             increment_focus();
             this->set_change_flag();
 #ifdef PRINT_DEBUG
-            printf("[inc] %s has focus\n", ((MySquareLedModel *)this->managed_models[this->value])->name.c_str());
+            printf("[inc] %s has focus\n", ((MyManagedSquareLedModel *)this->managed_models[this->value])->name.c_str());
 #endif
         }
         else
@@ -90,7 +90,7 @@ void MyManager::process_control_event(UIControlEvent _event)
             decrement_focus();
             this->set_change_flag();
 #ifdef PRINT_DEBUG
-            printf("[dec] %s has focus\n", ((MySquareLedModel *)this->managed_models[this->value])->name.c_str());
+            printf("[dec] %s has focus\n", ((MyManagedSquareLedModel *)this->managed_models[this->value])->name.c_str());
 #endif
         }
         else
