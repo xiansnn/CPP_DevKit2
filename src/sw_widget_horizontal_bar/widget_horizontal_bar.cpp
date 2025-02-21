@@ -40,7 +40,7 @@ void WidgetHorizontalBar::draw()
     else
         rect(bar_start, 0, bar_end - bar_start, pixel_frame.frame_height, true);
 
-    this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
+    show();
 }
 
 WidgetHorizontalBar::WidgetHorizontalBar(UIModelObject *bar_value_model,

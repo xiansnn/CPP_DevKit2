@@ -39,7 +39,7 @@ void WidgetSquareLed::draw_led()
     default:
         break;
     }
-    this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
+    show();
 }
 
 void WidgetSquareLed::blink_off()

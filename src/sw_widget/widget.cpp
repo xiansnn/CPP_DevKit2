@@ -31,6 +31,11 @@ void GraphicWidget::draw_refresh()
     }
 }
 
+void GraphicWidget::show()
+{
+    this->graphic_display_screen->show(&this->pixel_frame,this->widget_anchor_x,this->widget_anchor_y);
+}
+
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
                              UIModelObject *displayed_object,
                              struct_ConfigGraphicFramebuffer graph_cfg,

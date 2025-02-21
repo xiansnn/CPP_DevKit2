@@ -150,6 +150,8 @@ public:
     virtual void draw_border(PixelColor color = PixelColor::WHITE);
 
     virtual void draw_refresh();
+
+    void show();
     /**
      * @brief Construct a new GraphicWidget object
      *

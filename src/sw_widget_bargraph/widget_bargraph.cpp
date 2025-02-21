@@ -24,7 +24,7 @@ void WidgetHorizontalBargraph::draw()
     for (int i = 0; i < ((ModelBargraph *)this->actual_displayed_model)->number_of_bar; i++)
         draw_bar(i);
     draw_border();
-    this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
+    show();
 }
 
 void WidgetHorizontalBargraph::draw_bar(uint8_t bin_index)
@@ -115,7 +115,7 @@ void WidgetVerticalBargraph::draw()
     for (int i = 0; i < ((ModelBargraph *)this->actual_displayed_model)->number_of_bar; i++)
         draw_bar(i);
     draw_border();
-    this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
+    show();
 }
 
 void WidgetVerticalBargraph::draw_bar(uint8_t bin_index)
