@@ -72,7 +72,6 @@ int main()
 
     square_led.set_blink_us(500000);
 
-
     display.clear_device_screen_buffer();
 
     pr_D4.lo();
@@ -94,8 +93,6 @@ int main()
          *  This avoid the burden of casting UIController and can be used when there is not special need to have UIModelObject aware about which is displaying its data.
          */
 
-        /// - refresh the widget
-        square_led.blink_refresh();
         square_led.draw_refresh();
 
         pr_D5.lo();

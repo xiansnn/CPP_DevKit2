@@ -2,7 +2,7 @@
 
 UIModelObject::UIModelObject()
 {
-    last_change_time = time_us_32();
+    set_change_flag();
 }
 
 UIModelObject::~UIModelObject()

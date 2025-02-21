@@ -85,6 +85,8 @@ private:
     /// @brief A pointer to the controller of this model.
     UIController *current_controller{nullptr};
 
+    /// @brief the set of widgets that are in charge of viewing this model.
+    /// Used to cont the of widget that need to be refresched
     std::set<UIWidget *> attached_widgets;
 
 protected:
@@ -108,8 +110,15 @@ public:
     /// @brief Set the change flag object to false
     void clear_change_flag();
 
+    /**
+     * @brief add a new widget to the set of attached_widgets
+     * 
+     * @param new_widget 
+     */
     void update_attached_widgets(UIWidget *new_widget);
 
+    /// @brief get the number of attached widgets
+    /// @return 
     int get_number_of_attached_widget();
 
     /// @brief compute time since the last status change

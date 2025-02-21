@@ -147,7 +147,7 @@ protected:
     uint8_t widget_border_width;
 
 public:
-    void draw_border(PixelColor color = PixelColor::WHITE);
+    virtual void draw_border(PixelColor color = PixelColor::WHITE);
 
     virtual void draw_refresh();
     /**
@@ -227,13 +227,13 @@ public:
                bool widget_with_border);
     ~TextWidget();
 
-    /// @brief location in x of the widget within the hosting framebuffer
-    uint8_t widget_anchor_x;
+    // /// @brief location in x of the widget within the hosting framebuffer
+    // uint8_t widget_anchor_x;
 
-    /// @brief location in y of the widget within the hosting framebuffer
-    uint8_t widget_anchor_y;
+    // /// @brief location in y of the widget within the hosting framebuffer
+    // uint8_t widget_anchor_y;
 
-    void draw_refresh();
+    virtual void draw_refresh();
 };
 
 /**

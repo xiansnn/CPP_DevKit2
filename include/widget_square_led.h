@@ -19,7 +19,10 @@
  */
 class WidgetSquareLed : public GraphicWidget
 {
+private:
 protected:
+    /// @brief the member that draw the square led according to the value of led_is_on.
+    void draw_led();
     /**
      * @brief the status of the led, on or off
      */
@@ -30,23 +33,29 @@ protected:
     bool led_is_blinking = false;
 
 public:
-     /**
-      * @brief Construct a new GraphicWidget Square Led object
-      * 
-      * @param actual_displayed_model the actual displayed model
-      * @param graphic_display_screen The display device on which the widget is drawn.
-      * @param graph_cfg the configuration data structure of the graphic framebuffer
-      * @param widget_anchor_x the horizontal position where the widget start on the device screen
-      * @param widget_anchor_y the vertical position where the widget start on the device screen
-      * @param widget_with_border The flag that indicates whether the widget has a border or not
-      */
-     WidgetSquareLed(UIModelObject *actual_displayed_model,
+    /**
+     * @brief Construct a new GraphicWidget Square Led object
+     *
+     * @param actual_displayed_model the actual displayed model
+     * @param graphic_display_screen The display device on which the widget is drawn.
+     * @param graph_cfg the configuration data structure of the graphic framebuffer
+     * @param widget_anchor_x the horizontal position where the widget start on the device screen
+     * @param widget_anchor_y the vertical position where the widget start on the device screen
+     * @param widget_with_border The flag that indicates whether the widget has a border or not
+     */
+    WidgetSquareLed(UIModelObject *actual_displayed_model,
                     GraphicDisplayDevice *graphic_display_screen,
                     struct_ConfigGraphicFramebuffer graph_cfg,
                     uint8_t widget_anchor_x,
                     uint8_t widget_anchor_y,
                     bool widget_with_border = true);
     ~WidgetSquareLed();
+
+    /**
+     * @brief draw the square led ON or OFF on blinking phase change
+     *
+     */
+    void blink_refresh();
 
     /**
      * @brief set the led ON
@@ -60,12 +69,6 @@ public:
     void light_off();
 
     /**
-     * @brief refresh the square led ON or OFF on blinking phase change
-     *
-     */
-    void blink_refresh();
-
-    /**
      * @brief set the blinking of the led OFF
      *
      */
@@ -76,5 +79,4 @@ public:
      *
      */
     void blink_on();
-
 };
