@@ -23,6 +23,8 @@ void WidgetHorizontalBargraph::draw()
 {
     for (int i = 0; i < ((ModelBargraph *)this->actual_displayed_model)->number_of_bar; i++)
         draw_bar(i);
+    draw_border();
+    this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
 }
 
 void WidgetHorizontalBargraph::draw_bar(uint8_t bin_index)
@@ -45,24 +47,10 @@ void WidgetHorizontalBargraph::draw_bar(uint8_t bin_index)
         px_start = px;
         px_end = p0;
     }
-
     if (((ModelBargraph *)this->actual_displayed_model)->values[bin_index] == 0)
         rect(px_start, bar_start_y, 1, bar_height, true);
     else
         rect(px_start, bar_start_y, px_end - px_start, bar_height, true);
-}
-
-void WidgetHorizontalBargraph::draw_refresh()
-{
-    assert(this->actual_displayed_model != nullptr);
-
-    if (this->actual_displayed_model->has_changed())
-    {
-        this->draw();
-        this->draw_border();
-        this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
-    }
-    this->actual_displayed_model->clear_change_flag();
 }
 
 WidgetHorizontalBargraph::WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
@@ -88,6 +76,8 @@ WidgetHorizontalBargraph::WidgetHorizontalBargraph(ModelBargraph *bargraph_model
     this->bar_width = px_max - px_min;
     this->level_coef = (float)(px_max - px_min) / (max_value - min_value);
     this->level_offset = px_max - level_coef * max_value;
+
+    this->actual_displayed_model->set_change_flag();
 }
 
 WidgetHorizontalBargraph::~WidgetHorizontalBargraph()
@@ -124,6 +114,8 @@ void WidgetVerticalBargraph::draw()
 {
     for (int i = 0; i < ((ModelBargraph *)this->actual_displayed_model)->number_of_bar; i++)
         draw_bar(i);
+    draw_border();
+    this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
 }
 
 void WidgetVerticalBargraph::draw_bar(uint8_t bin_index)
@@ -182,15 +174,15 @@ WidgetVerticalBargraph::~WidgetVerticalBargraph()
 {
 }
 
-void WidgetVerticalBargraph::draw_refresh()
-{
-    assert(this->actual_displayed_model != nullptr);
+// void WidgetVerticalBargraph::draw_refresh()
+// {
+//     assert(this->actual_displayed_model != nullptr);
 
-    if (this->actual_displayed_model->has_changed())
-    {
-        this->draw();
-        this->draw_border();
-        this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
-    }
-    this->actual_displayed_model->clear_change_flag();
-}
+//     if (this->actual_displayed_model->has_changed())
+//     {
+//         this->draw();
+//         this->draw_border();
+//         this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
+//     }
+//     this->actual_displayed_model->clear_change_flag();
+// }

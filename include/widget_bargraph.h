@@ -111,7 +111,6 @@ public:
      */
     ~WidgetHorizontalBargraph();
 
-    void draw_refresh();
 };
 
 /**
@@ -164,7 +163,7 @@ public:
                              bool widget_with_border,
                              uint8_t bar_spacing = 1);
     ~WidgetVerticalBargraph();
-    void draw_refresh();
+
 };
 
 
