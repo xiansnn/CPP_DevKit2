@@ -99,8 +99,6 @@ int main()
         pr_D5.hi();
 
         my_model.increment_value();
-
-        my_horizontal_bar.set_level(my_model.get_value());
         my_horizontal_bar.draw_refresh();
 
         pr_D5.lo();
