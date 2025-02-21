@@ -8,11 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#ifndef DHT11_H
-#define DHT11_H
-
-#include "hardware/gpio.h"
-#include "pico/stdlib.h"
+#pragma once
 
 
 
@@ -55,5 +51,3 @@ public:
      */
     DHT11(uint gpio_in_);
 };
-
-#endif // DHT11_H

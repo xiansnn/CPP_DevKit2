@@ -8,8 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#if !defined(MSGEQ7_H)
-#define MSGEQ7_H
+#pragma once
 
 #include "pico/stdlib.h"
 #include <vector>
@@ -57,4 +56,3 @@ public:
     std::array<uint16_t, 7> get_spectrum();
 };
 
-#endif // MSGEQ7_H

@@ -8,8 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#if !defined(CONTROL_EVENT_H)
-#define CONTROL_EVENT_H
+#pragma once
 
 /**
  * @brief The list of predefined events that a button, or more generally an User Interface Controller, can return, leaving to the application the responsibility
@@ -39,4 +38,3 @@ enum class UIControlEvent
     TIME_OUT
 };
 
-#endif // CONTROL_EVENT_H

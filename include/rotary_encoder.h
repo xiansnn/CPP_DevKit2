@@ -9,8 +9,7 @@
  * 
  */
 
-#if !defined(ROTARY_ENCODER_H)
-#define ROTARY_ENCODER_H
+#pragma once
 
 #include "switch_button.h"
 
@@ -77,4 +76,4 @@ public:
   void update_event_processor(control_event_processor_t event_processor);
 };
 
-#endif // ROTARY_ENCODER_H
+

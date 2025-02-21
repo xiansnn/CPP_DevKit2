@@ -9,8 +9,7 @@
  * 
  */
 
-#if !defined(HW_PWM_H)
-#define HW_PWM_H
+#pragma once
 
 #include "pico/stdlib.h"
 #include "hardware/pwm.h"
@@ -148,4 +147,3 @@ public:
     uint16_t count_cycles();
 };
 
-#endif // HW_PWM_H

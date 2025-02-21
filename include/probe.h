@@ -8,8 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#ifndef PROBE_H
-#define PROBE_H
+#pragma once
 
 #include "pico/stdlib.h"
 
@@ -66,5 +65,3 @@ public:
      */
     void copy(bool _value);
 };
-
-#endif

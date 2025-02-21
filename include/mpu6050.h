@@ -8,8 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#if !defined(MPU6050_H)
-#define MPU6050_H
+#pragma once
 
 #include "pico/stdlib.h"
 #include "hw_i2c.h"
@@ -189,5 +188,3 @@ public:
     /// \bug   //FIXME : check FIFO data reading.... seems not working well
     void read_FIFO_all_raw_data();
 };
-
-#endif // MPU6050_H

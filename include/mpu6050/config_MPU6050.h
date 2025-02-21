@@ -1,5 +1,4 @@
-#if !defined(CONFIG_MPU6050_H)
-#define CONFIG_MPU6050_H
+#pragma once
 
 //-----------------------------------------------------------------------------
 //                               MPU device_config
@@ -107,5 +106,3 @@
 // values to be selected as DEVICE_RESET
 #define DEVICE_RESET 0x80
 // end values
-
-#endif // CONFIG_MPU6050_H

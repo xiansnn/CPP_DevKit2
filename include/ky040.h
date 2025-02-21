@@ -9,8 +9,7 @@
  * 
  */
 
-#if !defined(KY040_H)
-#define KY040_H
+#pragma once
 
 #include "rotary_encoder.h"
 #include "ui_core.h"
@@ -67,4 +66,3 @@ public:
     void update_UI_control_event_processor(control_event_processor_t event_processor);
 };
 
-#endif // KY040_H

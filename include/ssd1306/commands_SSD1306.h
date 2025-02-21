@@ -8,8 +8,7 @@
  * @copyright Copyright (c) 2024
  *
  */
-#if !defined(CONFIG_SSD1306_H)
-#define CONFIG_SSD1306_H
+#pragma once
 
 // a definir si besoin
 // #define SSD1306_WRITE_MODE _u(0xFE)
@@ -299,4 +298,3 @@
 #define SSD1306_SET_CHARGE_PUMP _u(0x8D) 
 // ----------------------------------------------------------------------------------------------------
 
-#endif // CONFIG_SSD1306_H

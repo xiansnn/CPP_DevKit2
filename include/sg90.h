@@ -8,8 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#if !defined(SG90_H)
-#define SG90_H
+#pragma once
 
 #include "pico/stdlib.h"
 #include "hw_pwm.h"
@@ -76,4 +75,3 @@ public:
     void set_pos(int pos);
 };
 
-#endif // SG90_H

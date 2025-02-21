@@ -8,8 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#ifndef SSD1306_5X8_FONT_H
-#define SSD1306_5X8_FONT_H
+#pragma once
 
 #ifndef SSD1306_ASCII_FULL
 
@@ -1941,4 +1940,3 @@ const unsigned char font_5x8[] = {
 };
 
 #endif // SSD1306_ASCII_FULL
-#endif // SSD1306_5X8_FONT_H
