@@ -40,7 +40,7 @@ var annotated_dup =
     [ "struct_TextFrame", "structstruct___text_frame.html", "structstruct___text_frame" ],
     [ "SwitchButton", "class_switch_button.html", "class_switch_button" ],
     [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", "class_switch_button_with_i_r_q" ],
-    [ "TextualFrameBuffer", "class_textual_frame_buffer.html", "class_textual_frame_buffer" ],
+    [ "TextFrameBuffer", "class_text_frame_buffer.html", "class_text_frame_buffer" ],
     [ "TextWidget", "class_text_widget.html", "class_text_widget" ],
     [ "UIControlledIncrementalValue", "class_u_i_controlled_incremental_value.html", "class_u_i_controlled_incremental_value" ],
     [ "UIController", "class_u_i_controller.html", "class_u_i_controller" ],

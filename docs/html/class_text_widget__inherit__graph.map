@@ -1,11 +1,11 @@
 <map id="TextWidget" name="TextWidget">
-<area shape="rect" id="Node000001" title="a dedicated class for text frame only" alt="" coords="275,1139,765,1345"/>
+<area shape="rect" id="Node000001" title="a dedicated class for text frame only" alt="" coords="273,1139,764,1401"/>
 <area shape="rect" id="Node000002" href="$class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,695,525,981"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="365,991,458,1138,453,1141,360,994"/>
-<area shape="rect" id="Node000003" href="$class_textual_frame_buffer.html" title="the place where all textual primitive are placed" alt="" coords="549,585,1003,1091"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="610,1105,587,1140,583,1137,605,1102"/>
-<area shape="rect" id="Node000004" href="$class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="517,260,1035,537"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="779,552,779,585,773,585,773,552"/>
-<area shape="rect" id="Node000005" href="$class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="514,5,1038,212"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="779,227,779,260,773,260,773,227"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="358,992,444,1138,440,1140,354,995"/>
+<area shape="rect" id="Node000003" href="$class_text_frame_buffer.html" title="the place where all textual primitive are placed" alt="" coords="550,585,997,1091"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="619,1105,598,1140,593,1138,615,1102"/>
+<area shape="rect" id="Node000004" href="$class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="514,260,1033,537"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="776,552,776,585,771,585,771,552"/>
+<area shape="rect" id="Node000005" href="$class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="511,5,1035,212"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="776,227,776,260,771,260,771,227"/>
 </map>

@@ -10,5 +10,5 @@ var searchData=
   ['widget_5fwith_5fborder_7',['widget_with_border',['../class_graphic_widget.html#afd6b3c92346618f1fdbb501989c15078',1,'GraphicWidget::widget_with_border'],['../class_text_widget.html#a3f8c24522dea1b99cde64172b97c410f',1,'TextWidget::widget_with_border']]],
   ['widgets_8',['widgets',['../class_u_i_widget.html#a723e330610d231171f2b6a71226f5afc',1,'UIWidget::widgets'],['../class_print_widget.html#a290e98c4fafe5bd5ba1cace1eeb192e1',1,'PrintWidget::widgets']]],
   ['width_9',['width',['../structstruct___render_area.html#ae390a957d9f070f47e89e84fbcdb8319',1,'struct_RenderArea']]],
-  ['wrap_10',['wrap',['../structstruct___config_text_framebuffer.html#a8b455772ce9e7d467d80e9a80e8ebe7f',1,'struct_ConfigTextFramebuffer::wrap'],['../class_textual_frame_buffer.html#adb49b6dc30fbba2b03fbf7f9f986eed6',1,'TextualFrameBuffer::wrap']]]
+  ['wrap_10',['wrap',['../structstruct___config_text_framebuffer.html#a8b455772ce9e7d467d80e9a80e8ebe7f',1,'struct_ConfigTextFramebuffer::wrap'],['../class_text_frame_buffer.html#acb87eb1a0c1c870ea2bd22ace921a7a6',1,'TextFrameBuffer::wrap']]]
 ];

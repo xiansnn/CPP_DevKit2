@@ -1,0 +1,5 @@
+<map id="TextFrameBuffer::TextFrameBuffer" name="TextFrameBuffer::TextFrameBuffer">
+<area shape="rect" id="Node000001" title="The max number of line with respect to frame height and font height." alt="" coords="241,5,428,30"/>
+<area shape="rect" id="Node000002" href="$class_text_frame_buffer.html#a27a9d6ea8d8797e862d06a65e8ad6660" title="Construct a new Textual Frame Buffer object when the frame size in x and y pixel is given...." alt="" coords="5,5,193,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="225,20,193,20,193,15,225,15"/>
+</map>

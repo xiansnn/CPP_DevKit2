@@ -17,7 +17,7 @@ var hierarchy =
           ] ],
           [ "WidgetVerticalBargraph", "class_widget_vertical_bargraph.html", null ]
         ] ],
-        [ "TextualFrameBuffer", "class_textual_frame_buffer.html", [
+        [ "TextFrameBuffer", "class_text_frame_buffer.html", [
           [ "TextWidget", "class_text_widget.html", null ]
         ] ]
       ] ]

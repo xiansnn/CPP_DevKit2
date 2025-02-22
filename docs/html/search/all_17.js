@@ -21,5 +21,6 @@ var searchData=
   ['widgetsquareled_18',['WidgetSquareLed',['../class_widget_square_led.html',1,'WidgetSquareLed'],['../class_widget_square_led.html#a12037e7870c90ab03404c3251f0d737b',1,'WidgetSquareLed::WidgetSquareLed()']]],
   ['widgetverticalbargraph_19',['WidgetVerticalBargraph',['../class_widget_vertical_bargraph.html',1,'WidgetVerticalBargraph'],['../class_widget_vertical_bargraph.html#aa4b1d50f441f57313f45c71220341203',1,'WidgetVerticalBargraph::WidgetVerticalBargraph()']]],
   ['width_20',['width',['../structstruct___render_area.html#ae390a957d9f070f47e89e84fbcdb8319',1,'struct_RenderArea']]],
-  ['wrap_21',['wrap',['../structstruct___config_text_framebuffer.html#a8b455772ce9e7d467d80e9a80e8ebe7f',1,'struct_ConfigTextFramebuffer::wrap'],['../class_textual_frame_buffer.html#adb49b6dc30fbba2b03fbf7f9f986eed6',1,'TextualFrameBuffer::wrap']]]
+  ['wrap_21',['wrap',['../structstruct___config_text_framebuffer.html#a8b455772ce9e7d467d80e9a80e8ebe7f',1,'struct_ConfigTextFramebuffer::wrap'],['../class_text_frame_buffer.html#acb87eb1a0c1c870ea2bd22ace921a7a6',1,'TextFrameBuffer::wrap']]],
+  ['write_22',['write',['../class_text_frame_buffer.html#acc8931a64e69b32dc4f520ae78363361',1,'TextFrameBuffer::write(char character, uint8_t char_column, uint8_t char_line)'],['../class_text_frame_buffer.html#a50a2af8b538ee8d394d9f7c3f134f51e',1,'TextFrameBuffer::write()'],['../class_text_frame_buffer.html#a18d5c521ae29f2fb9f58aa0ae75f49f1',1,'TextFrameBuffer::write(const char *c_str)']]]
 ];

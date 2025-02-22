@@ -13,8 +13,8 @@ var searchData=
   ['update_5fcurrent_5fcontrolled_5fobject_10',['update_current_controlled_object',['../class_u_i_controller.html#a2cc0f0b9952528a65b002f1ed86bb0f2',1,'UIController']]],
   ['update_5fcurrent_5fcontroller_11',['update_current_controller',['../class_u_i_model_object.html#a656066649f529b7472d098637ddcf04f',1,'UIModelObject']]],
   ['update_5fevent_5fprocessor_12',['update_event_processor',['../class_rotary_encoder.html#a20a7d47b8facd264840c4c7e988f5ae3',1,'RotaryEncoder']]],
-  ['update_5fgraphic_5fframe_5fsize_13',['update_graphic_frame_size',['../class_textual_frame_buffer.html#a4815a663de65a0940e7d8e3088e4bdbc',1,'TextualFrameBuffer']]],
+  ['update_5fgraphic_5fframe_5fsize_13',['update_graphic_frame_size',['../class_text_frame_buffer.html#aa08e36326eed0d0225479e79e5679fbb',1,'TextFrameBuffer']]],
   ['update_5fstatus_14',['update_status',['../class_u_i_model_object.html#a23cc738b1244cbc6a52ad7ed6102e688',1,'UIModelObject']]],
-  ['update_5ftext_5fframe_5fsize_15',['update_text_frame_size',['../class_textual_frame_buffer.html#a422c9a9af9351df8c60b3127ecd592c4',1,'TextualFrameBuffer']]],
+  ['update_5ftext_5fframe_5fsize_15',['update_text_frame_size',['../class_text_frame_buffer.html#abb26f53e6baec2222f90483bb97e7e32',1,'TextFrameBuffer']]],
   ['update_5fui_5fcontrol_5fevent_5fprocessor_16',['update_UI_control_event_processor',['../class_k_y040.html#a303f94b37201d12f91fbb349dc649eef',1,'KY040']]]
 ];

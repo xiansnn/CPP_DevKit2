@@ -1,13 +1,13 @@
 <map id="WidgetFocusIndicator" name="WidgetFocusIndicator">
-<area shape="rect" id="Node000001" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="321,1167,754,1312"/>
-<area shape="rect" id="Node000002" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="309,880,765,1119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="540,1134,540,1167,535,1167,535,1134"/>
-<area shape="rect" id="Node000003" href="$class_graphic_widget.html" title="the widget dedicated to graphics" alt="" coords="313,593,761,832"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="540,847,540,880,535,880,535,847"/>
+<area shape="rect" id="Node000001" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="321,1185,754,1331"/>
+<area shape="rect" id="Node000002" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="309,899,765,1137"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="540,1152,540,1186,535,1186,535,1152"/>
+<area shape="rect" id="Node000003" href="$class_graphic_widget.html" title="the widget dedicated to graphics" alt="" coords="313,593,761,851"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="540,865,540,899,535,899,535,865"/>
 <area shape="rect" id="Node000004" href="$class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,260,525,545"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="402,555,435,592,431,595,398,558"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="398,555,430,592,426,595,394,558"/>
 <area shape="rect" id="Node000005" href="$class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="550,264,1069,541"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="680,554,644,595,640,592,676,551"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="684,554,649,595,645,592,680,551"/>
 <area shape="rect" id="Node000006" href="$class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="547,5,1071,212"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="812,227,812,264,807,264,807,227"/>
 </map>

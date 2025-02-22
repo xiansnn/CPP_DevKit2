@@ -4,7 +4,6 @@ var class_widget_vertical_bargraph =
     [ "convert_level_value_to_py", "class_widget_vertical_bargraph.html#a99a7d89fcc4b1c62823b74a65d85b807", null ],
     [ "draw", "class_widget_vertical_bargraph.html#a938fef5332131013fe1f7e31f7629f41", null ],
     [ "draw_bar", "class_widget_vertical_bargraph.html#a51e76d94a406956193c15c09adcde58e", null ],
-    [ "draw_refresh", "class_widget_vertical_bargraph.html#a9c50e67dcf8ff3ed986026d8a5ab8ae2", null ],
     [ "bar_height", "class_widget_vertical_bargraph.html#a66e44b85659f8b4e1a4aaece7d315e9a", null ],
     [ "bar_spacing", "class_widget_vertical_bargraph.html#a6f2b956838b134ded3a14b8de891d909", null ],
     [ "bar_width", "class_widget_vertical_bargraph.html#a1052a305919908ce30531940c1fc9e57", null ],

@@ -5,7 +5,7 @@ var searchData=
   ['printwidget_2',['PrintWidget',['../class_print_widget.html#ab96d1916d65604345573f5dba8d3bedc',1,'PrintWidget']]],
   ['probe_3',['Probe',['../class_probe.html#a3c4f80fa16e1e5e4721b8c18da8a2b7b',1,'Probe']]],
   ['process_5fcentral_5fswitch_5fevent_4',['process_central_switch_event',['../class_k_y040.html#a787379f8042811a0b0adeaea0afb44d7',1,'KY040']]],
-  ['process_5fchar_5',['process_char',['../class_textual_frame_buffer.html#a502e0cf9b4d3246f3e0b7fef6be6c8c9',1,'TextualFrameBuffer']]],
+  ['process_5fchar_5',['process_char',['../class_text_frame_buffer.html#affe679963f194b0148270041e8b34091',1,'TextFrameBuffer']]],
   ['process_5fcontrol_5fevent_6',['process_control_event',['../class_u_i_model_object.html#a9d6b1733713e33acbc10e419eff22863',1,'UIModelObject::process_control_event()'],['../class_model_bargraph.html#a3a623238b8f90a0a3bdcb02379bce261',1,'ModelBargraph::process_control_event()']]],
   ['process_5fencoder_5firq_7',['process_encoder_IRQ',['../class_k_y040.html#ab2fed8cbecdc0c14ebc43fcd5ae8dd6e',1,'KY040']]],
   ['process_5firq_5fevent_8',['process_IRQ_event',['../class_switch_button_with_i_r_q.html#a910cf64b0017e10006df24c4bc44a9c8',1,'SwitchButtonWithIRQ']]],

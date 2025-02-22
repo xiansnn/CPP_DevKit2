@@ -32,7 +32,7 @@ var searchData=
   ['set_5fwidth_5fnb_5fof_5fstep_29',['set_width_nb_of_step',['../class_p_w_m.html#a706b0764d77f3b1bca0ff1bfdc99b336',1,'PWM']]],
   ['sg90_30',['SG90',['../class_s_g90.html',1,'SG90'],['../class_s_g90.html#a32f812f329b6dc3938faa5f142ea7c0a',1,'SG90::SG90()']]],
   ['sg90_2eh_31',['sg90.h',['../sg90_8h.html',1,'']]],
-  ['show_32',['show',['../class_graphic_display_device.html#a95e629a89924050010c7b6c0b71f5c36',1,'GraphicDisplayDevice::show()'],['../class_printer_device.html#a8fc2162479eca8abf2d8e4ec25c34d55',1,'PrinterDevice::show()'],['../class_s_s_d1306.html#a335271a156186ef7e54cfb2ebd9c0676',1,'SSD1306::show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y)']]],
+  ['show_32',['show',['../class_graphic_display_device.html#a95e629a89924050010c7b6c0b71f5c36',1,'GraphicDisplayDevice::show()'],['../class_printer_device.html#a8fc2162479eca8abf2d8e4ec25c34d55',1,'PrinterDevice::show()'],['../class_s_s_d1306.html#a335271a156186ef7e54cfb2ebd9c0676',1,'SSD1306::show()'],['../class_graphic_widget.html#a83c221250b9dfdeb8ab03b87a783bf10',1,'GraphicWidget::show()'],['../class_text_widget.html#ae1a1d30875b075e0a5920bf054b952c2',1,'TextWidget::show()']]],
   ['show_5frender_5farea_33',['show_render_area',['../class_s_s_d1306.html#ad26a211970f779290c9a97335fb023fc',1,'SSD1306']]],
   ['signal_5fout_34',['signal_out',['../class_m_s_g_e_q7.html#a68a8e5462a9d3303c6c9d0ee924bec64',1,'MSGEQ7']]],
   ['signal_5fpath_5freset_35',['SIGNAL_PATH_RESET',['../structstruct___config_m_p_u6050.html#a1381c37f4dac6cf4d3846c49a80e1f65',1,'struct_ConfigMPU6050']]],
