@@ -11,10 +11,10 @@
 
 #include "widget.h"
 
-void GraphicWidget::draw_border(PixelColor c)
+void GraphicWidget::draw_border(PixelColor color)
 {
     if (this->widget_with_border)
-        rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width);
+        rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width, false, color);
 }
 
 void GraphicWidget::draw_refresh()
@@ -115,6 +115,11 @@ TextWidget::~TextWidget()
 {
 }
 
+void TextWidget::show()
+{
+    this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
+}
+
 void TextWidget::draw_refresh()
 {
     if (this->actual_displayed_model->has_changed())
@@ -132,10 +137,14 @@ void TextWidget::draw_refresh()
 void TextWidget::draw()
 {
     TextFrameBuffer::write();
+    draw_border();
+    show();
 }
 
 void TextWidget::draw_border(PixelColor color)
 {
+    if (this->widget_with_border)
+        rect(0, 0, pixel_frame.frame_width, pixel_frame.frame_height, false, color);
 }
 
 bool UIWidget::blinking_phase_has_changed()

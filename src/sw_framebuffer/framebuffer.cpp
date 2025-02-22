@@ -311,6 +311,7 @@ void TextFrameBuffer::update_graphic_frame_size(const unsigned char *font)
 void TextFrameBuffer::write()
 {
     write(this->text_buffer);
+    
 }
 
 void TextFrameBuffer::write(const char *c_str)

@@ -151,6 +151,10 @@ public:
 
     virtual void draw_refresh();
 
+    /**
+     * @brief A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y)
+     *
+     */
     void show();
     /**
      * @brief Construct a new GraphicWidget object
@@ -186,7 +190,7 @@ class TextWidget : public UIWidget, public TextFrameBuffer
 private:
 protected:
     /// @brief if true, the widget is surrounded by a one-pixel border
-    bool widget_with_border{true};
+    bool widget_with_border{false};
 
     /// @brief As a widget can be surrounded by a border, the actual widget width is not the associated framebuffer width.
     size_t widget_width{128};
@@ -229,8 +233,28 @@ public:
                bool widget_with_border);
     ~TextWidget();
 
+    /**
+     * @brief A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y)
+     *
+     */
+    void show();
+
     virtual void draw_refresh();
+    /**
+     * @brief we need draw() to be compliant with the pure virtual draw() inherited from UIWidget.
+     *The draw() member call the show() member automatically.
+     * Useful when we mix graphic and text widget in a UI environment.
+     * Otherwise, we can use directly the TextFramebuffer::write(), but in this case we have to call draw_border(), then show() member.
+     *
+     */
     void draw();
+    /**
+     * @brief draw a one-pixel width around the the frame
+     * \note This border can overwrite the characters!
+     * To be improve with the use of pixel frame memory not based on byte page such as the OLED SSD1306.
+     *
+     * @param color
+     */
     void draw_border(PixelColor color = PixelColor::WHITE);
 };
 
