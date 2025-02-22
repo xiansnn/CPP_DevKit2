@@ -243,7 +243,7 @@ public:
  * @brief the place where all textual primitive are placed
  *
  */
-class TextualFrameBuffer : public GraphicFramebuffer
+class TextFrameBuffer : public GraphicFramebuffer
 {
 private:
     /// @brief the line number where the next character will be written.
@@ -256,7 +256,7 @@ private:
     /// @param character the foreground color of the character. The font is given by the frame_text_config
     /// @param char_column the column position of the character
     /// @param char_line the line position of the character
-    void draw_char(char character, uint8_t char_column, uint8_t char_line);
+    void write(char character, uint8_t char_column, uint8_t char_line);
 
     /// @brief clean th full current line (writing " " in the text buffer)
     void clear_line();
@@ -308,7 +308,7 @@ public:
      * @param device A pointer to the display device in charge of showing character
      * @param text_cfg textual configuration data structure
      */
-    TextualFrameBuffer(GraphicDisplayDevice *device,
+    TextFrameBuffer(GraphicDisplayDevice *device,
                        struct_ConfigTextFramebuffer text_cfg);
 
     /**
@@ -320,12 +320,12 @@ public:
      * @param device A pointer to the display device in charge of showing character
      * @param text_cfg the textual configuration data structure
      */
-    TextualFrameBuffer(GraphicDisplayDevice *device,
+    TextFrameBuffer(GraphicDisplayDevice *device,
                        size_t frame_width,
                        size_t frame_height,
                        struct_ConfigTextFramebuffer text_cfg);
 
-    ~TextualFrameBuffer();
+    ~TextFrameBuffer();
 
     /**
      * @brief Compute the text size in column x line according to the size of the font and the size of the frame in pixel.
@@ -350,13 +350,13 @@ public:
     /**
      * @brief process the internal text buffer characters and draw it into the pixel buffer.
      */
-    void draw_text_buffer();
+    void write();
     /**
      * @brief process the string c_str and then draw each character into the pixel buffer, without using the text buffer.
      *
      * @param c_str A C_style character string.
      */
-    void draw_text(const char *c_str);
+    void write(const char *c_str);
     /**
      * @brief interpret the character and draw it into the pixel buffer at the current line and column character position.
      *

@@ -86,7 +86,7 @@ int main()
     int graph_area_anchor_y = 0;
     int roll, pitch;
 
-    TextualFrameBuffer values = TextualFrameBuffer(&values_display, values_config);
+    TextFrameBuffer values = TextFrameBuffer(&values_display, values_config);
     values.process_char(FORM_FEED);
 
     GraphicFramebuffer graph = GraphicFramebuffer(&visu_display, graph_config);
@@ -96,8 +96,8 @@ int main()
     pr_D5.lo(); // 24ms
 
     pr_D4.hi();
-    TextualFrameBuffer title = TextualFrameBuffer(&values_display, title_config);
-    title.draw_text("ROLL PITCH");
+    TextFrameBuffer title = TextFrameBuffer(&values_display, title_config);
+    title.write("ROLL PITCH");
     values_display.show(&title.pixel_frame, title_area_anchor_x, title_area_anchor_y);
     pr_D4.lo(); // 9ms
 

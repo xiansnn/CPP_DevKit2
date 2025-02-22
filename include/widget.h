@@ -181,7 +181,7 @@ public:
  * \todo simplication expected. check usefulness of members
  *
  */
-class TextWidget : public UIWidget, public TextualFrameBuffer
+class TextWidget : public UIWidget, public TextFrameBuffer
 {
 private:
 protected:
@@ -229,13 +229,9 @@ public:
                bool widget_with_border);
     ~TextWidget();
 
-    // /// @brief location in x of the widget within the hosting framebuffer
-    // uint8_t widget_anchor_x;
-
-    // /// @brief location in y of the widget within the hosting framebuffer
-    // uint8_t widget_anchor_y;
-
     virtual void draw_refresh();
+    void draw();
+    void draw_border(PixelColor color = PixelColor::WHITE);
 };
 
 /**

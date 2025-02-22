@@ -199,22 +199,22 @@ void GraphicFramebuffer::circle(int radius, int x_center, int y_center, bool fil
     }
 }
 
-void TextualFrameBuffer::draw_char(char character, uint8_t char_column, uint8_t char_line)
+void TextFrameBuffer::write(char character, uint8_t char_column, uint8_t char_line)
 {
     uint8_t anchor_x = char_column * this->font[FONT_WIDTH_INDEX];
     uint8_t anchor_y = char_line * this->font[FONT_HEIGHT_INDEX];
     graphic_display_screen->draw_char_into_pixel(&this->pixel_frame, this->get_text_frame_config(), character, anchor_x, anchor_y);
 }
 
-void TextualFrameBuffer::clear_line()
+void TextFrameBuffer::clear_line()
 {
     for (uint8_t i = 0; i < number_of_column; i++)
     {
-        draw_char(' ', i, current_char_line);
+        write(' ', i, current_char_line);
     }
 }
 
-void TextualFrameBuffer::create_text_buffer()
+void TextFrameBuffer::create_text_buffer()
 {
     this->text_buffer_size = number_of_column * number_of_line + 1;
 
@@ -222,7 +222,7 @@ void TextualFrameBuffer::create_text_buffer()
     clear_text_buffer();
 }
 
-struct_ConfigTextFramebuffer TextualFrameBuffer::get_text_frame_config()
+struct_ConfigTextFramebuffer TextFrameBuffer::get_text_frame_config()
 {
     struct_ConfigTextFramebuffer conf = {
         .number_of_column = this->number_of_column,
@@ -236,7 +236,7 @@ struct_ConfigTextFramebuffer TextualFrameBuffer::get_text_frame_config()
     return conf;
 }
 
-TextualFrameBuffer::TextualFrameBuffer(GraphicDisplayDevice *device,
+TextFrameBuffer::TextFrameBuffer(GraphicDisplayDevice *device,
                                        struct_ConfigTextFramebuffer text_cfg)
     : GraphicFramebuffer(device, text_cfg)
 {
@@ -252,7 +252,7 @@ TextualFrameBuffer::TextualFrameBuffer(GraphicDisplayDevice *device,
     create_text_buffer();
 }
 
-TextualFrameBuffer::TextualFrameBuffer(GraphicDisplayDevice *device,
+TextFrameBuffer::TextFrameBuffer(GraphicDisplayDevice *device,
                                        size_t frame_width,
                                        size_t frame_height,
                                        struct_ConfigTextFramebuffer text_cfg)
@@ -271,12 +271,12 @@ TextualFrameBuffer::TextualFrameBuffer(GraphicDisplayDevice *device,
     create_text_buffer();
 }
 
-TextualFrameBuffer::~TextualFrameBuffer()
+TextFrameBuffer::~TextFrameBuffer()
 {
     delete[] this->text_buffer;
 }
 
-void TextualFrameBuffer::update_text_frame_size(const unsigned char *font)
+void TextFrameBuffer::update_text_frame_size(const unsigned char *font)
 {
     this->font = font;
 
@@ -288,7 +288,7 @@ void TextualFrameBuffer::update_text_frame_size(const unsigned char *font)
     create_text_buffer();
 }
 
-void TextualFrameBuffer::clear_text_buffer()
+void TextFrameBuffer::clear_text_buffer()
 {
     memset(this->text_buffer, '\0', this->text_buffer_size);
     this->graphic_display_screen->clear_pixel_buffer(&this->pixel_frame);
@@ -297,7 +297,7 @@ void TextualFrameBuffer::clear_text_buffer()
     current_char_line = 0;
 }
 
-void TextualFrameBuffer::update_graphic_frame_size(const unsigned char *font)
+void TextFrameBuffer::update_graphic_frame_size(const unsigned char *font)
 {
     this->font = font;
     // size the pixel buffer to the required size due to character area
@@ -308,12 +308,12 @@ void TextualFrameBuffer::update_graphic_frame_size(const unsigned char *font)
     graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
 }
 
-void TextualFrameBuffer::draw_text_buffer()
+void TextFrameBuffer::write()
 {
-    draw_text(this->text_buffer);
+    write(this->text_buffer);
 }
 
-void TextualFrameBuffer::draw_text(const char *c_str)
+void TextFrameBuffer::write(const char *c_str)
 {
     uint16_t n = 0;
     while (c_str[n] != '\0')
@@ -323,7 +323,7 @@ void TextualFrameBuffer::draw_text(const char *c_str)
     }
 }
 
-void TextualFrameBuffer::process_char(char character)
+void TextFrameBuffer::process_char(char character)
 {
     switch (character)
     {
@@ -335,7 +335,7 @@ void TextualFrameBuffer::process_char(char character)
         break;
     case BACKSPACE:
         current_char_column--;
-        draw_char(' ', current_char_column, current_char_line);
+        write(' ', current_char_column, current_char_line);
         break;
     case FORM_FEED:
         graphic_display_screen->clear_pixel_buffer(&this->pixel_frame);
@@ -352,7 +352,7 @@ void TextualFrameBuffer::process_char(char character)
         {
             for (uint8_t i = 0; i < tab_size; i++)
             {
-                draw_char(' ', current_char_column, current_char_line);
+                write(' ', current_char_column, current_char_line);
                 next_char();
             }
         }
@@ -360,20 +360,20 @@ void TextualFrameBuffer::process_char(char character)
         {
             if (this->auto_next_char)
             {
-                draw_char(character, current_char_column, current_char_line);
+                write(character, current_char_column, current_char_line);
                 next_char();
             }
             else
             {
-                draw_char(' ', current_char_column, current_char_line);
-                draw_char(character, current_char_column, current_char_line);
+                write(' ', current_char_column, current_char_line);
+                write(character, current_char_column, current_char_line);
             }
         }
         break;
     }
 }
 
-void TextualFrameBuffer::next_line()
+void TextFrameBuffer::next_line()
 {
     current_char_column = 0;
     current_char_line++;
@@ -381,7 +381,7 @@ void TextualFrameBuffer::next_line()
         current_char_line = 0;
 }
 
-void TextualFrameBuffer::next_char()
+void TextFrameBuffer::next_char()
 {
     current_char_column++;
     if (current_char_column >= number_of_column)

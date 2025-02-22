@@ -33,7 +33,7 @@ void GraphicWidget::draw_refresh()
 
 void GraphicWidget::show()
 {
-    this->graphic_display_screen->show(&this->pixel_frame,this->widget_anchor_x,this->widget_anchor_y);
+    this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
 }
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
@@ -98,7 +98,7 @@ TextWidget::TextWidget(GraphicDisplayDevice *device,
                        uint8_t widget_anchor_x,
                        uint8_t widget_anchor_y,
                        bool widget_with_border)
-    : TextualFrameBuffer(device, text_cfg),
+    : TextFrameBuffer(device, text_cfg),
       UIWidget(displayed_model, widget_anchor_x, widget_anchor_y)
 {
     this->widget_with_border = widget_with_border;
@@ -117,19 +117,25 @@ TextWidget::~TextWidget()
 
 void TextWidget::draw_refresh()
 {
+    if (this->actual_displayed_model->has_changed())
+    {
+        draw();
+        this->actual_displayed_model->clear_change_flag();
+    }
     if (widgets.size() != 0)
     {
         for (auto &&w : widgets)
             w->draw_refresh();
     }
-    else
-    {
-        if (this->actual_displayed_model->has_changed())
-        {
-            draw_text_buffer();
-            this->actual_displayed_model->clear_change_flag();
-        }
-    }
+}
+
+void TextWidget::draw()
+{
+    TextFrameBuffer::write();
+}
+
+void TextWidget::draw_border(PixelColor color)
+{
 }
 
 bool UIWidget::blinking_phase_has_changed()
@@ -162,4 +168,3 @@ void UIWidget::add_widget(UIWidget *_sub_widget)
 {
     this->widgets.push_back(_sub_widget);
 }
-
