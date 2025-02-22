@@ -95,7 +95,7 @@ TextWidget::TextWidget(GraphicDisplayDevice *device,
                        uint8_t widget_anchor_x,
                        uint8_t widget_anchor_y,
                        bool widget_with_border)
-    : TextFrameBuffer(device, text_cfg),
+    : TextFramebuffer(device, text_cfg),
       UIWidget(displayed_model, widget_anchor_x, widget_anchor_y)
 {
     this->widget_with_border = widget_with_border;
@@ -134,7 +134,7 @@ void TextWidget::draw_refresh()
 
 void TextWidget::draw()
 {
-    TextFrameBuffer::write();
+    TextFramebuffer::write();
     draw_border();
     show();
 }

@@ -15,7 +15,7 @@ var searchData=
   ['get_5fnumber_5fof_5fattached_5fwidget_12',['get_number_of_attached_widget',['../class_u_i_model_object.html#a15397945b61f0aee30978026b5dcaf49',1,'UIModelObject']]],
   ['get_5fspectrum_13',['get_spectrum',['../class_m_s_g_e_q7.html#ac03d0f7a0c833169f67ea4d5a8712c38',1,'MSGEQ7']]],
   ['get_5fstatus_14',['get_status',['../class_u_i_model_object.html#a63d6483ff3c6141398213e6eae1be63d',1,'UIModelObject']]],
-  ['get_5ftext_5fframe_5fconfig_15',['get_text_frame_config',['../class_text_frame_buffer.html#a91ae5fc5f0943b58da23e27152c66344',1,'TextFrameBuffer']]],
+  ['get_5ftext_5fframe_5fconfig_15',['get_text_frame_config',['../class_text_framebuffer.html#a40e49036af2b3c4ca2d67b7be9be30e9',1,'TextFramebuffer']]],
   ['get_5ftime_5fsince_5flast_5fchange_16',['get_time_since_last_change',['../class_u_i_model_object.html#a713e9fbb5d1842d2c80764898f60ce26',1,'UIModelObject']]],
   ['get_5fvalue_17',['get_value',['../class_u_i_controlled_incremental_value.html#a7989979c51969bb665d8539636eb9876',1,'UIControlledIncrementalValue']]],
   ['gpio_18',['gpio',['../class_switch_button.html#a68fccab1c920eec2fbd4fc2d1f5b29e0',1,'SwitchButton']]],

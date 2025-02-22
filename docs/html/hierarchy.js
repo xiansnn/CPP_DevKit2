@@ -17,7 +17,7 @@ var hierarchy =
           ] ],
           [ "WidgetVerticalBargraph", "class_widget_vertical_bargraph.html", null ]
         ] ],
-        [ "TextFrameBuffer", "class_text_frame_buffer.html", [
+        [ "TextFramebuffer", "class_text_framebuffer.html", [
           [ "TextWidget", "class_text_widget.html", null ]
         ] ]
       ] ]
@@ -27,7 +27,6 @@ var hierarchy =
     [ "HW_I2C_Slave", "class_h_w___i2_c___slave.html", null ],
     [ "MPU6050", "class_m_p_u6050.html", null ],
     [ "MSGEQ7", "class_m_s_g_e_q7.html", null ],
-    [ "PrintWidget", "class_print_widget.html", null ],
     [ "Probe", "class_probe.html", null ],
     [ "PWM", "class_p_w_m.html", null ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],
@@ -65,6 +64,7 @@ var hierarchy =
     ] ],
     [ "UIWidget", "class_u_i_widget.html", [
       [ "GraphicWidget", "class_graphic_widget.html", null ],
+      [ "PrintWidget", "class_print_widget.html", null ],
       [ "TextWidget", "class_text_widget.html", null ]
     ] ]
 ];

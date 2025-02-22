@@ -69,13 +69,13 @@ void test_font_size(SSD1306 *current_display)
         .number_of_line = 1,
         .font = current_font[0]};
 
-    TextFrameBuffer *font_text_on_screen_0 = new TextFrameBuffer(current_display, default_text_cfg);
+    TextFramebuffer *font_text_on_screen_0 = new TextFramebuffer(current_display, default_text_cfg);
     // draw text directly from a string to the pixel buffer
     font_text_on_screen_0->write(test_string.c_str());
     current_display->show(&font_text_on_screen_0->pixel_frame, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_0;
 
-    TextFrameBuffer *font_text_on_screen_1 = new TextFrameBuffer(current_display, default_text_cfg);
+    TextFramebuffer *font_text_on_screen_1 = new TextFramebuffer(current_display, default_text_cfg);
     font_text_on_screen_1->update_graphic_frame_size(current_font[1]);
     current_x_anchor = 64;
     current_y_anchor = 8;
@@ -85,7 +85,7 @@ void test_font_size(SSD1306 *current_display)
     current_display->show(&font_text_on_screen_1->pixel_frame, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_1;
 
-    TextFrameBuffer *font_text_on_screen_2 = new TextFrameBuffer(current_display, default_text_cfg);
+    TextFramebuffer *font_text_on_screen_2 = new TextFramebuffer(current_display, default_text_cfg);
     font_text_on_screen_2->update_graphic_frame_size(current_font[2]);
     current_x_anchor = 0;
     current_y_anchor = 16;
@@ -111,7 +111,7 @@ void test_full_screen_text(SSD1306 *current_display)
         .font = font_8x8,
         .wrap = true,
     };
-    TextFrameBuffer text_frame = TextFrameBuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, txt_conf);
+    TextFramebuffer text_frame = TextFramebuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, txt_conf);
 
     text_frame.process_char(FORM_FEED); // equiv. clear full screen
     current_display->show(&text_frame.pixel_frame, 0, 0);
@@ -141,7 +141,7 @@ void test_auto_next_char(SSD1306 *current_display)
         .wrap = true,
         .auto_next_char = false};
 
-    TextFrameBuffer *text_frame = new TextFrameBuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, txt_conf);
+    TextFramebuffer *text_frame = new TextFramebuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, txt_conf);
 
     text_frame->process_char(FORM_FEED);
 
@@ -178,7 +178,7 @@ void test_sprintf_format(SSD1306 *current_display)
         .font = font_8x8,
         .wrap = true};
 
-    TextFrameBuffer *text_frame = new TextFrameBuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, text_frame_cfg);
+    TextFramebuffer *text_frame = new TextFramebuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, text_frame_cfg);
 
     const char *s = "Hello";
 
@@ -288,7 +288,7 @@ void test_sprintf_format(SSD1306 *current_display)
         .number_of_line = 2,
         .font = font_12x16,
         .wrap = false};
-    TextFrameBuffer *text_frame2 = new TextFrameBuffer(current_display, text_frame2_cfg);
+    TextFramebuffer *text_frame2 = new TextFramebuffer(current_display, text_frame2_cfg);
 
     text_frame2->write(" 09:56\n03JAN24");
     current_display->show(&text_frame2->pixel_frame, 22, 16);
@@ -322,7 +322,7 @@ void test_ostringstream_format(SSD1306 *current_display)
         .font = current_font,
         .wrap = false};
 
-    TextFrameBuffer text_frame = TextFrameBuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, txt_conf);
+    TextFramebuffer text_frame = TextFramebuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, txt_conf);
 
     int n = 42;
     float f = std::numbers::pi;

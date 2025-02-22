@@ -5,7 +5,7 @@ var searchData=
   ['fifo_5fselected_5fsensors_2',['FIFO_SELECTED_SENSORS',['../structstruct___config_m_p_u6050.html#ac2fb6887c7ef83afec6bf017b574b841',1,'struct_ConfigMPU6050']]],
   ['fill_3',['fill',['../class_graphic_framebuffer.html#ab3fad7125309e83f2963c8be0a141926',1,'GraphicFramebuffer']]],
   ['fill_5fpattern_5fand_5fshow_5fgddram_4',['fill_pattern_and_show_GDDRAM',['../class_s_s_d1306.html#a764babad3f6a4d12cfa600ce7fd1b751',1,'SSD1306']]],
-  ['font_5',['font',['../structstruct___config_text_framebuffer.html#a3ad265c1ede9e56ca8ce4bf529a5a451',1,'struct_ConfigTextFramebuffer::font'],['../class_text_frame_buffer.html#a64b4efcce4217594806e2140fd061b53',1,'TextFrameBuffer::font']]],
+  ['font_5',['font',['../structstruct___config_text_framebuffer.html#a3ad265c1ede9e56ca8ce4bf529a5a451',1,'struct_ConfigTextFramebuffer::font'],['../class_text_framebuffer.html#a3ac6a64a173284e9a698012149b0e1b2',1,'TextFramebuffer::font']]],
   ['font_5f12x16_6',['font_12x16',['../12x16__font_8h.html#a348b0e098c08825316c4fb41b3bf0843',1,'12x16_font.h']]],
   ['font_5f16x32_7',['font_16x32',['../16x32__font_8h.html#a394b1de12fcd7b54cfebb977bdc89b5c',1,'16x32_font.h']]],
   ['font_5f5x8_8',['font_5x8',['../5x8__font_8h.html#abdc16296a2d8078af08a493845f7194b',1,'5x8_font.h']]],

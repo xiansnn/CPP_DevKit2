@@ -199,14 +199,14 @@ void GraphicFramebuffer::circle(int radius, int x_center, int y_center, bool fil
     }
 }
 
-void TextFrameBuffer::write(char character, uint8_t char_column, uint8_t char_line)
+void TextFramebuffer::write(char character, uint8_t char_column, uint8_t char_line)
 {
     uint8_t anchor_x = char_column * this->font[FONT_WIDTH_INDEX];
     uint8_t anchor_y = char_line * this->font[FONT_HEIGHT_INDEX];
     graphic_display_screen->draw_char_into_pixel(&this->pixel_frame, this->get_text_frame_config(), character, anchor_x, anchor_y);
 }
 
-void TextFrameBuffer::clear_line()
+void TextFramebuffer::clear_line()
 {
     for (uint8_t i = 0; i < number_of_column; i++)
     {
@@ -214,7 +214,7 @@ void TextFrameBuffer::clear_line()
     }
 }
 
-void TextFrameBuffer::create_text_buffer()
+void TextFramebuffer::create_text_buffer()
 {
     this->text_buffer_size = number_of_column * number_of_line + 1;
 
@@ -222,7 +222,7 @@ void TextFrameBuffer::create_text_buffer()
     clear_text_buffer();
 }
 
-struct_ConfigTextFramebuffer TextFrameBuffer::get_text_frame_config()
+struct_ConfigTextFramebuffer TextFramebuffer::get_text_frame_config()
 {
     struct_ConfigTextFramebuffer conf = {
         .number_of_column = this->number_of_column,
@@ -236,7 +236,7 @@ struct_ConfigTextFramebuffer TextFrameBuffer::get_text_frame_config()
     return conf;
 }
 
-TextFrameBuffer::TextFrameBuffer(GraphicDisplayDevice *device,
+TextFramebuffer::TextFramebuffer(GraphicDisplayDevice *device,
                                        struct_ConfigTextFramebuffer text_cfg)
     : GraphicFramebuffer(device, text_cfg)
 {
@@ -252,7 +252,7 @@ TextFrameBuffer::TextFrameBuffer(GraphicDisplayDevice *device,
     create_text_buffer();
 }
 
-TextFrameBuffer::TextFrameBuffer(GraphicDisplayDevice *device,
+TextFramebuffer::TextFramebuffer(GraphicDisplayDevice *device,
                                        size_t frame_width,
                                        size_t frame_height,
                                        struct_ConfigTextFramebuffer text_cfg)
@@ -271,12 +271,12 @@ TextFrameBuffer::TextFrameBuffer(GraphicDisplayDevice *device,
     create_text_buffer();
 }
 
-TextFrameBuffer::~TextFrameBuffer()
+TextFramebuffer::~TextFramebuffer()
 {
     delete[] this->text_buffer;
 }
 
-void TextFrameBuffer::update_text_frame_size(const unsigned char *font)
+void TextFramebuffer::update_text_frame_size(const unsigned char *font)
 {
     this->font = font;
 
@@ -288,7 +288,7 @@ void TextFrameBuffer::update_text_frame_size(const unsigned char *font)
     create_text_buffer();
 }
 
-void TextFrameBuffer::clear_text_buffer()
+void TextFramebuffer::clear_text_buffer()
 {
     memset(this->text_buffer, '\0', this->text_buffer_size);
     this->graphic_display_screen->clear_pixel_buffer(&this->pixel_frame);
@@ -297,7 +297,7 @@ void TextFrameBuffer::clear_text_buffer()
     current_char_line = 0;
 }
 
-void TextFrameBuffer::update_graphic_frame_size(const unsigned char *font)
+void TextFramebuffer::update_graphic_frame_size(const unsigned char *font)
 {
     this->font = font;
     // size the pixel buffer to the required size due to character area
@@ -308,13 +308,13 @@ void TextFrameBuffer::update_graphic_frame_size(const unsigned char *font)
     graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
 }
 
-void TextFrameBuffer::write()
+void TextFramebuffer::write()
 {
     write(this->text_buffer);
     
 }
 
-void TextFrameBuffer::write(const char *c_str)
+void TextFramebuffer::write(const char *c_str)
 {
     uint16_t n = 0;
     while (c_str[n] != '\0')
@@ -324,7 +324,7 @@ void TextFrameBuffer::write(const char *c_str)
     }
 }
 
-void TextFrameBuffer::process_char(char character)
+void TextFramebuffer::process_char(char character)
 {
     switch (character)
     {
@@ -374,7 +374,7 @@ void TextFrameBuffer::process_char(char character)
     }
 }
 
-void TextFrameBuffer::next_line()
+void TextFramebuffer::next_line()
 {
     current_char_column = 0;
     current_char_line++;
@@ -382,7 +382,7 @@ void TextFrameBuffer::next_line()
         current_char_line = 0;
 }
 
-void TextFrameBuffer::next_char()
+void TextFramebuffer::next_char()
 {
     current_char_column++;
     if (current_char_column >= number_of_column)

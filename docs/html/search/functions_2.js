@@ -7,9 +7,9 @@ var searchData=
   ['clear_5fchange_5fflag_4',['clear_change_flag',['../class_u_i_model_object.html#aff2fe32c66d4c1637627a253274fd383',1,'UIModelObject']]],
   ['clear_5fdevice_5fscreen_5fbuffer_5',['clear_device_screen_buffer',['../class_s_s_d1306.html#a646463128f966a04b1746e3389819711',1,'SSD1306']]],
   ['clear_5firq_6',['clear_irq',['../class_p_w_m.html#a23a7f94507115fdab48b65af6931329e',1,'PWM']]],
-  ['clear_5fline_7',['clear_line',['../class_text_frame_buffer.html#a9b7e8215d6ef2a9497429792e6ff5598',1,'TextFrameBuffer']]],
+  ['clear_5fline_7',['clear_line',['../class_text_framebuffer.html#a5278780e7df20715844d84d943118b25',1,'TextFramebuffer']]],
   ['clear_5fpixel_5fbuffer_8',['clear_pixel_buffer',['../class_graphic_display_device.html#a90f329da088d69b0890cb3b7e89424dc',1,'GraphicDisplayDevice::clear_pixel_buffer()'],['../class_s_s_d1306.html#a8432036c46b4de56e4d85ed06f82195a',1,'SSD1306::clear_pixel_buffer()']]],
-  ['clear_5ftext_5fbuffer_9',['clear_text_buffer',['../class_text_frame_buffer.html#a4b64a698534c3cf5506b743a0333942b',1,'TextFrameBuffer']]],
+  ['clear_5ftext_5fbuffer_9',['clear_text_buffer',['../class_text_framebuffer.html#a9e611ed16438076289668f747d6aa6d1',1,'TextFramebuffer']]],
   ['compute_5frender_5farea_10',['compute_render_area',['../class_s_s_d1306.html#a946d97970d11c778a09e0f1305591b3f',1,'SSD1306']]],
   ['convert_5flevel_5fvalue_5fto_5fpx_11',['convert_level_value_to_px',['../class_widget_horizontal_bargraph.html#a4409c6d882c92ca3d6974eff0bc8579f',1,'WidgetHorizontalBargraph::convert_level_value_to_px()'],['../class_widget_horizontal_bar.html#aa94c8372969017f613b39dfcd690b014',1,'WidgetHorizontalBar::convert_level_value_to_px()']]],
   ['convert_5flevel_5fvalue_5fto_5fpy_12',['convert_level_value_to_py',['../class_widget_vertical_bargraph.html#a99a7d89fcc4b1c62823b74a65d85b807',1,'WidgetVerticalBargraph']]],
@@ -17,5 +17,5 @@ var searchData=
   ['copy_14',['copy',['../class_probe.html#a3ca878200b9a6d5744366b23fe0051c9',1,'Probe']]],
   ['count_5fcycles_15',['count_cycles',['../class_p_w_mgated_measure.html#a4f372aa91b889f792b4eb805d0eb5a46',1,'PWMgatedMeasure']]],
   ['create_5fpixel_5fbuffer_16',['create_pixel_buffer',['../class_graphic_display_device.html#ad564b8b39b2e92659a4b8ee01615c6c2',1,'GraphicDisplayDevice::create_pixel_buffer()'],['../class_s_s_d1306.html#a219dc68e8ad7ba244928d5373ca2e8b8',1,'SSD1306::create_pixel_buffer()']]],
-  ['create_5ftext_5fbuffer_17',['create_text_buffer',['../class_text_frame_buffer.html#aee4fcd794e55ec0becaa4a865e0c0f53',1,'TextFrameBuffer']]]
+  ['create_5ftext_5fbuffer_17',['create_text_buffer',['../class_text_framebuffer.html#a05df8f51f7dee0c8cb6018e74d4bf49a',1,'TextFramebuffer']]]
 ];

@@ -183,7 +183,7 @@ public:
  * \todo simplication expected. check usefulness of members
  *
  */
-class TextWidget : public UIWidget, public TextFrameBuffer
+class TextWidget : public UIWidget, public TextFramebuffer
 {
 private:
 protected:

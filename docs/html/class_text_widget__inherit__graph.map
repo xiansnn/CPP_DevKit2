@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="a dedicated class for text frame only" alt="" coords="273,1139,764,1401"/>
 <area shape="rect" id="Node000002" href="$class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,695,525,981"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="358,992,444,1138,440,1140,354,995"/>
-<area shape="rect" id="Node000003" href="$class_text_frame_buffer.html" title="the place where all textual primitive are placed" alt="" coords="550,585,997,1091"/>
+<area shape="rect" id="Node000003" href="$class_text_framebuffer.html" title="the place where all textual primitive are placed" alt="" coords="550,585,997,1091"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="619,1105,598,1140,593,1138,615,1102"/>
 <area shape="rect" id="Node000004" href="$class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="514,260,1033,537"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="776,552,776,585,771,585,771,552"/>

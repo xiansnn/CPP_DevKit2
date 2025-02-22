@@ -46,8 +46,8 @@
  * The core of framebuffer is the pixel_buffer, a memory space that contains pixel values. This pixel_buffer is computed and initialized by the framebuffer constructor.
  *
  * Optionnally, when framebuffer contains text, a text_buffer that contains characters chain is used. It is created and initialized by
- *  update_text_frame_size function member.
- * The configuration of this buffer is defined by struct_FramebufferText.
+ *  update_text_frame_size member function.
+ * The configuration of this buffer is fully defined by struct_ConfigTextFramebuffer.
  */
 class Framebuffer
 {
@@ -59,7 +59,7 @@ protected:
 
 public:
     /**
-     * @brief Construct a new Framebuffer object. The basic constructor, used to initiate display size (in pixel) , foregroundg and background color.
+     * @brief Construct a new Framebuffer object. The basic constructor, used to initiate display size (in pixel) , foreground and background color.
      *
      * @param graphic_display_device the associated graphic display device
      * @param graph_cfg the configuration data for graphic feature
@@ -67,7 +67,7 @@ public:
     Framebuffer(GraphicDisplayDevice *graphic_display_device,
                 struct_ConfigGraphicFramebuffer graph_cfg);
     /**
-     * @brief Construct a new Framebuffer object. Used when we need a TextualFramebuffer defined by its struct_ConfigTextFramebuffer, and the size of the display in pixel.
+     * @brief Construct a new Framebuffer object. Used when we need a TextFramebuffer defined by its struct_ConfigTextFramebuffer, and the size of the display in pixel.
      *
      * @param graphic_display_device the associated graphic display device
      * @param frame_width the size in x-pixel of the frame
@@ -243,7 +243,7 @@ public:
  * @brief the place where all textual primitive are placed
  *
  */
-class TextFrameBuffer : public GraphicFramebuffer
+class TextFramebuffer : public GraphicFramebuffer
 {
 private:
     /// @brief the line number where the next character will be written.
@@ -262,7 +262,9 @@ private:
     void clear_line();
 
     /**
-     * @brief The font used. Current font are defined according to IBM CP437. The font files are derived from https://github.com/Harbys/pico-ssd1306 works.
+     * @brief The font used. Current font are defined according to IBM CP437. 
+     * 
+     * The font files are derived from https://github.com/Harbys/pico-ssd1306 works.
      * They come is size 5x8, 8x8, 12x16 and 16x32.
      */
     const unsigned char *font{nullptr};
@@ -280,7 +282,7 @@ private:
     bool auto_next_char{true};
 
 protected:
-    /// @brief create text buffer and delete if already existing
+    /// @brief create text buffer and delete the old one if already existing
     void create_text_buffer();
 
 public:
@@ -308,7 +310,7 @@ public:
      * @param device A pointer to the display device in charge of showing character
      * @param text_cfg textual configuration data structure
      */
-    TextFrameBuffer(GraphicDisplayDevice *device,
+    TextFramebuffer(GraphicDisplayDevice *device,
                        struct_ConfigTextFramebuffer text_cfg);
 
     /**
@@ -320,12 +322,12 @@ public:
      * @param device A pointer to the display device in charge of showing character
      * @param text_cfg the textual configuration data structure
      */
-    TextFrameBuffer(GraphicDisplayDevice *device,
+    TextFramebuffer(GraphicDisplayDevice *device,
                        size_t frame_width,
                        size_t frame_height,
                        struct_ConfigTextFramebuffer text_cfg);
 
-    ~TextFrameBuffer();
+    ~TextFramebuffer();
 
     /**
      * @brief Compute the text size in column x line according to the size of the font and the size of the frame in pixel.
