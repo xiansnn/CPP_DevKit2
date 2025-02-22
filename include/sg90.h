@@ -8,8 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#if !defined(SG90_H)
-#define SG90_H
+#pragma once
 
 #include "pico/stdlib.h"
 #include "hw_pwm.h"
@@ -43,7 +42,7 @@ struct struct_ConfigSG90
 
 /**
  * @brief the class that manages the SG90 step motor
- * \todo //TODO check if step motor is still working
+ * \todo  check if step motor is still working
  */
 class SG90
 {
@@ -76,4 +75,3 @@ public:
     void set_pos(int pos);
 };
 
-#endif // SG90_H

@@ -27,11 +27,15 @@ WidgetFocusIndicator::~WidgetFocusIndicator()
 {
 }
 
+void WidgetFocusIndicator::draw()
+{
+    draw_led();
+}
+
 void WidgetFocusIndicator::draw_refresh()
 {
-    assert(this->actual_displayed_model != nullptr);
-    /// - first process the status of the displayed object
-    switch (this->actual_displayed_model->get_status())
+    ControlledObjectStatus status = this->actual_displayed_model->get_status();
+    switch (status)
     {
     case ControlledObjectStatus::HAS_FOCUS:
         this->blink_off();
@@ -48,20 +52,9 @@ void WidgetFocusIndicator::draw_refresh()
     default:
         break;
     }
-    /// - then widget_blink_refresh() if it is appropriate
-    blink_refresh();
-    /// - and finally visualise how we've decide to represent the status of the model
-    if (this->actual_displayed_model->has_changed())
-    {
-        if (this->led_is_on)
-        {
-            rect(widget_start_x, widget_start_y, widget_width, widget_height, true, PixelColor::WHITE);
-        }
-        else
-        {
-            rect(widget_start_x, widget_start_y, widget_width, widget_height, true, PixelColor::BLACK);
-        }
-        this->graphic_display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
-        // this->actual_displayed_model->clear_change_flag(); // if the last widget must clear the model change flag
-    }
+    WidgetSquareLed::blink_refresh();
+    GraphicWidget::draw_refresh();
+
 }
+
+

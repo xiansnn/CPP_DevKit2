@@ -1,6 +1,6 @@
 <map id="SSD1306" name="SSD1306">
 <area shape="rect" id="Node000001" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,436,549,1135"/>
-<area shape="rect" id="Node000002" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="15,152,539,388"/>
+<area shape="rect" id="Node000002" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="17,152,537,388"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="280,403,280,436,275,436,275,403"/>
 <area shape="rect" id="Node000003" href="$class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="129,5,425,104"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="280,119,280,152,275,152,275,119"/>

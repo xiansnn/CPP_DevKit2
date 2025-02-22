@@ -66,5 +66,4 @@ public:
     /// @param value
     void set_level(int value);
 
-    virtual void draw_refresh();
 };

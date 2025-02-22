@@ -18,10 +18,12 @@ void WidgetHorizontalBar::convert_level_value_to_px()
 
 void WidgetHorizontalBar::draw()
 {
-    rect(0, 0, pixel_memory.frame_width, pixel_memory.frame_height, true, PixelColor::BLACK); // clear the full framebuffer
-
+    this->set_level(((UIControlledIncrementalValue*)this->actual_displayed_model)->get_value());
     uint8_t bar_start;
     uint8_t bar_end;
+    rect(0, 0, pixel_frame.frame_width, pixel_frame.frame_height, true, PixelColor::BLACK); // clear the full framebuffer
+    
+    draw_border();
     if (level >= 0)
     {
         bar_start = level_offset;
@@ -34,9 +36,11 @@ void WidgetHorizontalBar::draw()
     }
 
     if (level == 0)
-        rect(bar_start, 0, 1, pixel_memory.frame_height, true);
+        rect(bar_start, 0, 1, pixel_frame.frame_height, true);
     else
-        rect(bar_start, 0, bar_end - bar_start, pixel_memory.frame_height, true);
+        rect(bar_start, 0, bar_end - bar_start, pixel_frame.frame_height, true);
+
+    show();
 }
 
 WidgetHorizontalBar::WidgetHorizontalBar(UIModelObject *bar_value_model,
@@ -64,17 +68,4 @@ void WidgetHorizontalBar::set_level(int value)
 {
     this->level = value;
     convert_level_value_to_px();
-}
-
-void WidgetHorizontalBar::draw_refresh()
-{
-    assert(this->actual_displayed_model != nullptr);
-
-    if (this->actual_displayed_model->has_changed())
-    {
-        this->draw();
-        this->draw_border();
-        this->graphic_display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
-        // this->bar_value_model->clear_change_flag(); // this is not the last widget, then we must not clear the change flag
-    }
 }

@@ -6,7 +6,7 @@ var searchData=
   ['gddram_5fstart_5fline_3',['GDDRAM_start_line',['../structstruct___config_s_s_d1306.html#ae2e491066fb1228143f41994132a37c3',1,'struct_ConfigSSD1306']]],
   ['gpio_4',['gpio',['../class_switch_button.html#a68fccab1c920eec2fbd4fc2d1f5b29e0',1,'SwitchButton']]],
   ['gpio_5fin_5',['gpio_in',['../class_d_h_t11.html#ae8073a2b99881697c11ee1a059e57d46',1,'DHT11']]],
-  ['graphic_5fdisplay_5fscreen_6',['graphic_display_screen',['../class_graphic_framebuffer.html#ab239cc5dab71558d41b870f83dc74d74',1,'GraphicFramebuffer::graphic_display_screen'],['../class_widget_text.html#a1253963b679467927ad5d58426d063e7',1,'WidgetText::graphic_display_screen']]],
+  ['graphic_5fdisplay_5fscreen_6',['graphic_display_screen',['../class_framebuffer.html#aac2296916f9c9bccbf345ea150e5ce9c',1,'Framebuffer']]],
   ['gyro_5ffactor_7',['gyro_factor',['../class_m_p_u6050.html#a50ad57c30d423e01225a501b6fec2206',1,'MPU6050']]],
   ['gyro_5ffull_5fscale_5frange_8',['GYRO_FULL_SCALE_RANGE',['../structstruct___config_m_p_u6050.html#a59308ef7dcf69efcacb47e0240b70514',1,'struct_ConfigMPU6050']]],
   ['gyro_5fout_5frate_9',['GYRO_OUT_RATE',['../structstruct___config_m_p_u6050.html#ae2a99a7cc58f84af8f5f92c65c096290',1,'struct_ConfigMPU6050']]],

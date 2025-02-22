@@ -119,25 +119,30 @@ $(function(){initNavTree('hierarchy.html',''); initResizable(true); });
 <area shape="poly" title=" " alt="" coords="276,15,307,15,307,20,276,20"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_2.png" border="0" usemap="#a_graphic_framebuffer" alt=""/>
-<map name="a_graphic_framebuffer" id="a_graphic_framebuffer">
-<area shape="rect" href="class_graphic_framebuffer.html" title="Framebuffer is the basic framework to handle texts and graphics on a digital display." alt="" coords="5,153,122,178"/>
-<area shape="rect" href="class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="181,104,272,129"/>
-<area shape="poly" title=" " alt="" coords="121,146,183,127,184,132,122,151"/>
-<area shape="rect" href="class_textual_frame_buffer.html" title="the place where all textual primitive are placed" alt="" coords="170,177,284,202"/>
-<area shape="poly" title=" " alt="" coords="137,174,170,179,169,184,137,179"/>
-<area shape="rect" href="class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="346,5,465,30"/>
-<area shape="poly" title=" " alt="" coords="254,92,289,66,331,41,360,28,362,33,333,45,292,70,257,96"/>
-<area shape="rect" href="class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="332,55,479,79"/>
-<area shape="poly" title=" " alt="" coords="287,97,358,77,359,82,288,102"/>
-<area shape="rect" href="class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="352,104,459,129"/>
-<area shape="poly" title=" " alt="" coords="288,114,352,114,352,119,288,119"/>
-<area shape="rect" href="class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="339,153,472,178"/>
-<area shape="poly" title=" " alt="" coords="288,130,359,150,358,155,287,136"/>
-<area shape="rect" href="class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="527,104,653,129"/>
-<area shape="poly" title=" " alt="" coords="474,114,527,114,527,119,474,119"/>
-<area shape="rect" href="class_widget_text.html" title="the class of widget dedicated to text frame" alt="" coords="368,203,443,227"/>
-<area shape="poly" title=" " alt="" coords="300,197,368,207,367,212,299,203"/>
+<tr><td><img src="inherit_graph_2.png" border="0" usemap="#a_framebuffer" alt=""/>
+<map name="a_framebuffer" id="a_framebuffer">
+<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="5,179,86,203"/>
+<area shape="rect" href="class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="134,179,250,203"/>
+<area shape="poly" title=" " alt="" coords="101,188,134,188,134,194,101,194"/>
+<area shape="rect" href="class_graphic_widget.html" title="the widget dedicated to graphics" alt="" coords="302,104,394,129"/>
+<area shape="poly" title=" " alt="" coords="235,170,249,163,321,127,324,132,251,168,238,174"/>
+<area shape="rect" href="class_text_frame_buffer.html" title="the place where all textual primitive are placed" alt="" coords="298,203,398,227"/>
+<area shape="poly" title=" " alt="" coords="266,200,298,205,297,210,265,205"/>
+<area shape="rect" href="class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="460,5,580,30"/>
+<area shape="poly" title=" " alt="" coords="374,91,406,65,445,41,474,28,476,33,448,45,410,70,377,95"/>
+<area shape="rect" href="class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="446,55,594,79"/>
+<area shape="poly" title=" " alt="" coords="408,97,474,77,475,82,409,102"/>
+<area shape="rect" href="class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="467,104,573,129"/>
+<area shape="poly" title=" " alt="" coords="409,114,466,114,466,119,409,119"/>
+<area shape="rect" href="class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="453,153,587,178"/>
+<area shape="poly" title=" " alt="" coords="409,131,475,150,474,155,408,136"/>
+<area shape="rect" href="class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="642,104,767,129"/>
+<area shape="poly" title=" " alt="" coords="588,114,641,114,641,119,588,119"/>
+<area shape="rect" href="class_text_widget.html" title="a dedicated class for text frame only" alt="" coords="482,203,558,227"/>
+<area shape="poly" title=" " alt="" coords="414,212,482,212,482,218,414,218"/>
+<area shape="rect" href="class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="159,129,225,154"/>
+<area shape="poly" title=" " alt="" coords="240,131,301,121,302,126,241,137"/>
+<area shape="poly" title=" " alt="" coords="241,150,483,204,481,209,240,155"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_3.png" border="0" usemap="#a_h_c___s_r04" alt=""/>
@@ -232,7 +237,7 @@ $(function(){initNavTree('hierarchy.html',''); initResizable(true); });
 </td></tr>
 <tr><td><img src="inherit_graph_21.png" border="0" usemap="#astruct___config_text_framebuffer" alt=""/>
 <map name="astruct___config_text_framebuffer" id="astruct___config_text_framebuffer">
-<area shape="rect" href="structstruct___config_text_framebuffer.html" title="the data sttructure used to configure textual widget" alt="" coords="5,5,169,30"/>
+<area shape="rect" href="structstruct___config_text_framebuffer.html" title="the data structure used to configure textual widget" alt="" coords="5,5,169,30"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_22.png" border="0" usemap="#astruct___d_h_t_reading" alt=""/>
@@ -250,9 +255,9 @@ $(function(){initNavTree('hierarchy.html',''); initResizable(true); });
 <area shape="rect" href="structstruct___m_p_u_data.html" title="measured sensor value after scale correction" alt="" coords="5,5,105,30"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_25.png" border="0" usemap="#astruct___pixel_memory" alt=""/>
-<map name="astruct___pixel_memory" id="astruct___pixel_memory">
-<area shape="rect" href="structstruct___pixel_memory.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="5,5,120,30"/>
+<tr><td><img src="inherit_graph_25.png" border="0" usemap="#astruct___pixel_frame" alt=""/>
+<map name="astruct___pixel_frame" id="astruct___pixel_frame">
+<area shape="rect" href="structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="5,5,113,30"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_26.png" border="0" usemap="#astruct___raw_data" alt=""/>
@@ -270,9 +275,9 @@ $(function(){initNavTree('hierarchy.html',''); initResizable(true); });
 <area shape="rect" href="structstruct___slave_memory.html" title="this is the structure of the memory used by the slave i2c interface" alt="" coords="5,5,124,30"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_29.png" border="0" usemap="#astruct___text_memory" alt=""/>
-<map name="astruct___text_memory" id="astruct___text_memory">
-<area shape="rect" href="structstruct___text_memory.html" title="the data structure that characterise the text buffer" alt="" coords="5,5,119,30"/>
+<tr><td><img src="inherit_graph_29.png" border="0" usemap="#astruct___text_frame" alt=""/>
+<map name="astruct___text_frame" id="astruct___text_frame">
+<area shape="rect" href="structstruct___text_frame.html" title="the data structure that characterise the text buffer" alt="" coords="5,5,112,30"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_30.png" border="0" usemap="#a_switch_button" alt=""/>

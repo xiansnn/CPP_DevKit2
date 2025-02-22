@@ -23,8 +23,7 @@
 #define CENTRAL_SWITCH_TIME_OUT_us 2000000
 
 /// @brief ########## Debug/Observer Probe for logic analyser section ##########
-Probe pr_D4 = Probe(4);
-Probe pr_D5 = Probe(5);
+
 Probe pr_D1 = Probe(1);
 
 /// @brief ########## configuration section ##########
@@ -102,22 +101,16 @@ void manager_process_control_event(UIControlEvent event)
 int main()
 {
     ky040.update_UI_control_event_processor(manager_process_control_event);
-    pr_D4.hi();
 
     stdio_init_all();
 
     HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
-
     SSD1306 display = SSD1306(&master, cfg_ssd1306);
-    pr_D5.hi();
     display.clear_device_screen_buffer();
 
-    // display.show();
-    pr_D5.lo();
-
-    MySquareLedModel test_model_1 = MySquareLedModel("TM1");
-    MySquareLedModel test_model_2 = MySquareLedModel("TM2");
-    MySquareLedModel test_model_3 = MySquareLedModel("TM3");
+    MyManagedSquareLedModel test_model_1 = MyManagedSquareLedModel("TM1");
+    MyManagedSquareLedModel test_model_2 = MyManagedSquareLedModel("TM2");
+    MyManagedSquareLedModel test_model_3 = MyManagedSquareLedModel("TM3");
 
     struct_ConfigGraphicFramebuffer square_led_cfg{
         .frame_width = 50,
@@ -134,20 +127,18 @@ int main()
     manager.add_managed_model(&test_model_1);
     manager.add_managed_model(&test_model_2);
     manager.add_managed_model(&test_model_3);
-    pr_D4.lo();
-    while (true)
 
+    while (true)
     {
-        pr_D5.hi();
+        pr_D1.hi();
         /// - get central_switch event and give it to the manager .
         manager.process_control_event(ky040.process_central_switch_event());
-
         /// - refresh the widgets
         square_led_1.draw_refresh();
         square_led_2.draw_refresh();
         square_led_3.draw_refresh();
 
-        pr_D5.lo();
+        pr_D1.lo();
         /// - sleep for 20ms
         sleep_ms(20);
     }

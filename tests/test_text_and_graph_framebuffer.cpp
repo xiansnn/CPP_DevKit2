@@ -86,19 +86,19 @@ int main()
     int graph_area_anchor_y = 0;
     int roll, pitch;
 
-    TextualFrameBuffer values = TextualFrameBuffer(&values_display, values_config);
-    values.print_char(FORM_FEED);
+    TextFrameBuffer values = TextFrameBuffer(&values_display, values_config);
+    values.process_char(FORM_FEED);
 
     GraphicFramebuffer graph = GraphicFramebuffer(&visu_display, graph_config);
-    visu_display.clear_pixel_buffer(&graph.pixel_memory);
+    visu_display.clear_pixel_buffer(&graph.pixel_frame);
     pr_D5.hi();
-    visu_display.show(&graph.pixel_memory, graph_area_anchor_x, graph_area_anchor_y);
+    visu_display.show(&graph.pixel_frame, graph_area_anchor_x, graph_area_anchor_y);
     pr_D5.lo(); // 24ms
 
     pr_D4.hi();
-    TextualFrameBuffer title = TextualFrameBuffer(&values_display, title_config);
-    title.print_text("ROLL PITCH");
-    values_display.show(&title.pixel_memory, title_area_anchor_x, title_area_anchor_y);
+    TextFrameBuffer title = TextFrameBuffer(&values_display, title_config);
+    title.write("ROLL PITCH");
+    values_display.show(&title.pixel_frame, title_area_anchor_x, title_area_anchor_y);
     pr_D4.lo(); // 9ms
 
     int sign = 1;
@@ -113,9 +113,9 @@ int main()
             roll = i;
             pitch = sign * i / 4;
             sprintf(values.text_buffer, "%+3d\xF8  %+3d\xF8", roll, pitch);
-            values.print_text_buffer();
-            values_display.show(&values.pixel_memory, values_area_anchor_x, values_area_anchor_y);
-            values.print_char(FORM_FEED);
+            values.draw_text_buffer();
+            values_display.show(&values.pixel_frame, values_area_anchor_x, values_area_anchor_y);
+            values.process_char(FORM_FEED);
             pr_D6.lo(); // 9ms
 
             // compute and show the graphic representation
@@ -134,7 +134,7 @@ int main()
             graph.rect(0, 0, graph_config.frame_width, graph_config.frame_height); // point coordinates are relative to the local frame
             graph.circle(radius, xc, yl, false, graph.fg_color);
             graph.line(x0, y0, x1, y1, graph.fg_color);
-            visu_display.show(&graph.pixel_memory, graph_area_anchor_x, graph_area_anchor_y);
+            visu_display.show(&graph.pixel_frame, graph_area_anchor_x, graph_area_anchor_y);
             graph.line(x0, y0, x1, y1, graph.bg_color);
             graph.circle(radius, xc, yl, false, graph.bg_color);
             pr_D7.lo(); // 24ms

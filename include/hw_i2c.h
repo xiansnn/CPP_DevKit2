@@ -8,8 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#if !defined(HW_I2C_H)
-#define HW_I2C_H
+#pragma once
 
 #include "hardware/i2c.h"
 #include "pico/i2c_slave.h"
@@ -239,4 +238,3 @@ public:
     void slave_isr(i2c_slave_event_t event);
 };
 
-#endif // HW_I2C_H

@@ -16,9 +16,9 @@
 // #define PRINT_DEBUG
 
 /**
- * @brief MySquareLedModel : Example of final implementation of UIModelObject
+ * @brief MyManagedSquareLedModel : Example of final implementation of UIModelObject
  */
-class MySquareLedModel : public UIModelObject
+class MyManagedSquareLedModel : public UIModelObject
 {
 protected:
 public:
@@ -26,23 +26,23 @@ public:
     std::string name;
     /// @brief a bool value, visualised by the associated LED widget as on or off.
     bool my_bool_value = false;
-    MySquareLedModel(std::string name);
-    ~MySquareLedModel();
+    MyManagedSquareLedModel(std::string name);
+    ~MyManagedSquareLedModel();
     /// @brief the implementation of the pure virtual member.
     /// @param _event the signal send by the controller
     void process_control_event(UIControlEvent _event);
 };
-MySquareLedModel::MySquareLedModel(std::string _name)
+MyManagedSquareLedModel::MyManagedSquareLedModel(std::string _name)
     : UIModelObject()
 {
     this->name = _name;
 }
 
-MySquareLedModel::~MySquareLedModel()
+MyManagedSquareLedModel::~MyManagedSquareLedModel()
 {
 }
 
-void MySquareLedModel::process_control_event(UIControlEvent _event)
+void MyManagedSquareLedModel::process_control_event(UIControlEvent _event)
 {
     /**
      * @brief only the event INCREMENT and DECREMENT are processed.
@@ -55,10 +55,10 @@ void MySquareLedModel::process_control_event(UIControlEvent _event)
         if (get_status() == ControlledObjectStatus::IS_ACTIVE)
         {
             my_bool_value = !my_bool_value;
+            set_change_flag();
 #ifdef PRINT_DEBUG
             printf("---> %s on_off=%d\n", this->name.c_str(), my_bool_value);
 #endif
-            set_change_flag();
         }
         break;
 

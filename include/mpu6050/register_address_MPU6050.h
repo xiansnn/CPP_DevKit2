@@ -1,5 +1,4 @@
-#if !defined(REG_ADDR_MPU6050_H)
-#define REG_ADDR_MPU6050_H
+#pragma once
 
 //---define MPU6050 register addresses---
 //---------------------------------------
@@ -53,4 +52,3 @@
 #define WHO_AM_I_RA           0x75 // Register 117 – Who Am I
 
 
-#endif // REG_ADDR_MPU6050_H

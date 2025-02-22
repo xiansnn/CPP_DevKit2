@@ -8,8 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#if !defined(SWITCH_BUTTON_H)
-#define SWITCH_BUTTON_H
+#pragma once
 
 #include "pico/stdio.h"
 #include "pico/stdlib.h"
@@ -247,4 +246,3 @@ public:
     UIControlEvent process_IRQ_event(uint32_t current_event_mask);
 };
 
-#endif // SWITCH_BUTTON_H

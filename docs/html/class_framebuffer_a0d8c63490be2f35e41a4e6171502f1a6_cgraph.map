@@ -1,0 +1,5 @@
+<map id="Framebuffer::Framebuffer" name="Framebuffer::Framebuffer">
+<area shape="rect" id="Node000001" title="Construct a new Framebuffer object. Starting from the text configuration data, columns x lines of a g..." alt="" coords="5,5,153,30"/>
+<area shape="rect" id="Node000002" href="$class_framebuffer.html#aaa5f8dc36f84bfb8ec6c721e2209f74f" title="Construct a new Framebuffer object. The basic constructor, used to initiate display size (in pixel) ,..." alt="" coords="201,5,348,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,15,185,15,185,20,153,20"/>
+</map>

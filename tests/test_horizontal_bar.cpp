@@ -91,7 +91,7 @@ int main()
 
     display.clear_device_screen_buffer();
     my_horizontal_bar.rect(0, 0, 128, 64);
-    display.show(&my_horizontal_bar.pixel_memory, my_horizontal_bar.widget_anchor_x, my_horizontal_bar.widget_anchor_y);
+    display.show(&my_horizontal_bar.pixel_frame, my_horizontal_bar.widget_anchor_x, my_horizontal_bar.widget_anchor_y);
     pr_D4.lo();
 
     while (true)
@@ -99,8 +99,6 @@ int main()
         pr_D5.hi();
 
         my_model.increment_value();
-
-        my_horizontal_bar.set_level(my_model.get_value());
         my_horizontal_bar.draw_refresh();
 
         pr_D5.lo();

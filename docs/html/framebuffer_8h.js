@@ -1,7 +1,8 @@
 var framebuffer_8h =
 [
+    [ "Framebuffer", "class_framebuffer.html", "class_framebuffer" ],
     [ "GraphicFramebuffer", "class_graphic_framebuffer.html", "class_graphic_framebuffer" ],
-    [ "TextualFrameBuffer", "class_textual_frame_buffer.html", "class_textual_frame_buffer" ],
+    [ "TextFrameBuffer", "class_text_frame_buffer.html", "class_text_frame_buffer" ],
     [ "BACKSPACE", "framebuffer_8h.html#a629568514359445d2fbda71d70eeb1ce", null ],
     [ "CARRIAGE_RETURN", "framebuffer_8h.html#a3b81478c7058ceb6ed610ce8e2ca3822", null ],
     [ "FORM_FEED", "framebuffer_8h.html#aeaf983986deb16c93fa0bd38080281f8", null ],

@@ -8,8 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#if !defined(CONTROL_EVENT_H)
-#define CONTROL_EVENT_H
+#pragma once
 
 /**
  * @brief The list of predefined events that a button, or more generally an User Interface Controller, can return, leaving to the application the responsibility
@@ -23,7 +22,7 @@ enum class UIControlEvent
     /// @brief event triggered when a button is pushed
     PUSH,
     /// @brief event triggered when a button is double-pushed
-    /// \todo   //TODO Not implemented. To find a way to do "DOUBLE_PUSH"
+    /// \todo  Not implemented. To find a way to do "DOUBLE_PUSH"
     DOUBLE_PUSH,
      /// @brief event triggered when a button is held more than a configurable duration.
     LONG_PUSH,
@@ -39,4 +38,3 @@ enum class UIControlEvent
     TIME_OUT
 };
 
-#endif // CONTROL_EVENT_H

@@ -1,14 +1,11 @@
 var class_framebuffer =
 [
-    [ "Framebuffer", "class_framebuffer.html#a7ad7b8818693faefda41b2ce36695dc5", null ],
-    [ "Framebuffer", "class_framebuffer.html#a04565a1bf70438a3bef58ca30322a83d", null ],
-    [ "~Framebuffer", "class_framebuffer.html#a037bf3e17455354d5d907ceea00313dd", null ],
-    [ "circle", "class_framebuffer.html#aa352c9be30a07927cbfa3c01811d39f3", null ],
-    [ "ellipse", "class_framebuffer.html#ad6de217a902df5b674cf9f5987c5c24c", null ],
-    [ "fill", "class_framebuffer.html#a0f040da997a04772e7bb6da86a8284ef", null ],
-    [ "hline", "class_framebuffer.html#a02ff17df018ff24c39327e547ecb7a34", null ],
-    [ "line", "class_framebuffer.html#a9d4c4589572452906053434a8f399102", null ],
-    [ "rect", "class_framebuffer.html#a9b47b7d4a70fd7469c74f07ff80549aa", null ],
-    [ "vline", "class_framebuffer.html#a4257ec9cba9a5b08970a5e09038358e7", null ],
-    [ "display_screen", "class_framebuffer.html#ac7a2c2d2b193466be23209b3d60d0e60", null ]
+    [ "Framebuffer", "class_framebuffer.html#aaa5f8dc36f84bfb8ec6c721e2209f74f", null ],
+    [ "Framebuffer", "class_framebuffer.html#a9f75587867978790eff88f5f94ca5c25", null ],
+    [ "Framebuffer", "class_framebuffer.html#a0d8c63490be2f35e41a4e6171502f1a6", null ],
+    [ "set_display_screen", "class_framebuffer.html#a853c3beb49f76a0fe082e27cacd34742", null ],
+    [ "bg_color", "class_framebuffer.html#aad957cc59bc60b1d0e7b57fb1f565cdd", null ],
+    [ "fg_color", "class_framebuffer.html#a21e274954d56bcf1417da39804747d40", null ],
+    [ "graphic_display_screen", "class_framebuffer.html#aac2296916f9c9bccbf345ea150e5ce9c", null ],
+    [ "pixel_frame", "class_framebuffer.html#a1e327d8adaee19de8b5f40b347646e1e", null ]
 ];

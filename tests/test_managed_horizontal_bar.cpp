@@ -134,12 +134,17 @@ int main()
         manager.process_control_event(ky040.process_central_switch_event());
 
         pr_D4.hi();
+        horizontal_bar_1.blink_refresh();
         horizontal_bar_1.draw_refresh();
         pr_D4.lo();
+
         pr_D4.hi();
+        horizontal_bar_2.blink_refresh();
         horizontal_bar_2.draw_refresh();
         pr_D4.lo();
+
         pr_D4.hi();
+        horizontal_bar_3.blink_refresh();
         horizontal_bar_3.draw_refresh();
         pr_D4.lo();
 

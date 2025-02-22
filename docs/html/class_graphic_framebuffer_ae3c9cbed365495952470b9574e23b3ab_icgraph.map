@@ -1,0 +1,9 @@
+<map id="GraphicFramebuffer::fill" name="GraphicFramebuffer::fill">
+<area shape="rect" id="Node000001" title="Write all pixel buffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)" alt="" coords="207,55,340,79"/>
+<area shape="rect" id="Node000002" href="$class_graphic_framebuffer.html#a61455060176f83944a40478c4e41a21e" title="draw a cercle of size radius, centered at (x_center, y_center) https://fr.wikipedia...." alt="" coords="8,5,156,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,53,132,33,133,28,208,48"/>
+<area shape="rect" id="Node000003" href="$class_graphic_framebuffer.html#a815564c42d7016239dacb19ef1fcdf7d" title="the graphic primitive to draw an ellipse" alt="" coords="5,55,159,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="191,70,159,70,159,64,191,64"/>
+<area shape="rect" id="Node000004" href="$class_graphic_framebuffer.html#a534d81421e9871dae36d92705b01cb59" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="10,104,154,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="208,86,133,106,132,101,207,81"/>
+</map>

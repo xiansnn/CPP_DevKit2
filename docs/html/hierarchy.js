@@ -7,17 +7,19 @@ var hierarchy =
       ] ],
       [ "PrinterDevice", "class_printer_device.html", null ]
     ] ],
-    [ "GraphicFramebuffer", "class_graphic_framebuffer.html", [
-      [ "GraphicWidget", "class_graphic_widget.html", [
-        [ "WidgetHorizontalBar", "class_widget_horizontal_bar.html", null ],
-        [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html", null ],
-        [ "WidgetSquareLed", "class_widget_square_led.html", [
-          [ "WidgetFocusIndicator", "class_widget_focus_indicator.html", null ]
+    [ "Framebuffer", "class_framebuffer.html", [
+      [ "GraphicFramebuffer", "class_graphic_framebuffer.html", [
+        [ "GraphicWidget", "class_graphic_widget.html", [
+          [ "WidgetHorizontalBar", "class_widget_horizontal_bar.html", null ],
+          [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html", null ],
+          [ "WidgetSquareLed", "class_widget_square_led.html", [
+            [ "WidgetFocusIndicator", "class_widget_focus_indicator.html", null ]
+          ] ],
+          [ "WidgetVerticalBargraph", "class_widget_vertical_bargraph.html", null ]
         ] ],
-        [ "WidgetVerticalBargraph", "class_widget_vertical_bargraph.html", null ]
-      ] ],
-      [ "TextualFrameBuffer", "class_textual_frame_buffer.html", [
-        [ "WidgetText", "class_widget_text.html", null ]
+        [ "TextFrameBuffer", "class_text_frame_buffer.html", [
+          [ "TextWidget", "class_text_widget.html", null ]
+        ] ]
       ] ]
     ] ],
     [ "HC_SR04", "class_h_c___s_r04.html", null ],
@@ -42,11 +44,11 @@ var hierarchy =
     [ "struct_DHTReading", "structstruct___d_h_t_reading.html", null ],
     [ "struct_I2CXferResult", "structstruct___i2_c_xfer_result.html", null ],
     [ "struct_MPUData", "structstruct___m_p_u_data.html", null ],
-    [ "struct_PixelMemory", "structstruct___pixel_memory.html", null ],
+    [ "struct_PixelFrame", "structstruct___pixel_frame.html", null ],
     [ "struct_RawData", "structstruct___raw_data.html", null ],
     [ "struct_RenderArea", "structstruct___render_area.html", null ],
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", null ],
-    [ "struct_TextMemory", "structstruct___text_memory.html", null ],
+    [ "struct_TextFrame", "structstruct___text_frame.html", null ],
     [ "SwitchButton", "class_switch_button.html", [
       [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", [
         [ "RotaryEncoder", "class_rotary_encoder.html", null ]
@@ -60,5 +62,9 @@ var hierarchy =
       [ "UIControlledIncrementalValue", "class_u_i_controlled_incremental_value.html", [
         [ "UIObjectManager", "class_u_i_object_manager.html", null ]
       ] ]
+    ] ],
+    [ "UIWidget", "class_u_i_widget.html", [
+      [ "GraphicWidget", "class_graphic_widget.html", null ],
+      [ "TextWidget", "class_text_widget.html", null ]
     ] ]
 ];

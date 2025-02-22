@@ -13,8 +13,8 @@
 
 void WidgetText::draw_border(PixelColor c)
 {
-    if (this->widget_with_border)
-        rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width);
+    // if (this->widget_with_border)
+    //     rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width);
 }
 
 void WidgetText::set_display_screen(GraphicDisplayDevice *_new_display_device)
@@ -37,7 +37,7 @@ WidgetText::WidgetText(UIModelObject *_text_model,
                        bool _widget_with_border)
     : TextualFrameBuffer(_display_screen, _number_of_column, _number_of_line, _framebuffer_txt_cnf)
 {
-    assert(this->pixel_memory.frame_height % 8 == 0); // check widget height limitation
+    assert(this->pixel_frame.frame_height % 8 == 0); // check widget height limitation
     assert(_widget_anchor_y % 8 == 0);                // check widget anchor y limitation
     this->graphic_display_screen = _display_screen;
     this->actual_displayed_model = _text_model;
@@ -49,8 +49,8 @@ WidgetText::WidgetText(UIModelObject *_text_model,
 
     widget_start_x = this->widget_border_width;
     widget_start_y = this->widget_border_width;
-    widget_width = pixel_memory.frame_width - 2 * this->widget_border_width;
-    widget_height = pixel_memory.frame_height - 2 * this->widget_border_width;
+    widget_width = pixel_frame.frame_width - 2 * this->widget_border_width;
+    widget_height = pixel_frame.frame_height - 2 * this->widget_border_width;
 }
 
 WidgetText::~WidgetText()
@@ -75,9 +75,9 @@ void WidgetText::draw_refresh()
 
     if (this->actual_displayed_model->has_changed())
     {
-        this->print_text(this->text_buffer);
+        this->draw_text(this->text_buffer);
         this->draw_border();
-        this->graphic_display_screen->show(&this->pixel_memory, this->widget_anchor_x, this->widget_anchor_y);
+        this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
     }
     this->actual_displayed_model->clear_change_flag();
 }

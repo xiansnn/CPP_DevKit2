@@ -8,8 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#if !defined(HC_SR04_H)
-#define HC_SR04_H
+#pragma once
 
 #include "pico/stdlib.h"
 
@@ -43,4 +42,3 @@ public:
     float get_distance();
 };
 
-#endif // HC_SR04_H

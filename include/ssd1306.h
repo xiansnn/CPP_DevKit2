@@ -175,7 +175,7 @@ public:
     void check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg,
                                             uint8_t anchor_x = 0, uint8_t anchor_y = 0);
 
-    void clear_pixel_buffer(struct_PixelMemory *pixel_memory);
+    void clear_pixel_buffer(struct_PixelFrame *pixel_memory);
     /**
      * @brief
      *
@@ -194,21 +194,21 @@ public:
      */
     static struct_RenderArea compute_render_area(uint8_t start_col, uint8_t end_col, uint8_t start_line, uint8_t end_line);
 
-    void create_pixel_buffer(struct_PixelMemory *pixel_memory);
+    void create_pixel_buffer(struct_PixelFrame *pixel_memory);
 
-    void pixel(struct_PixelMemory *pixel_memory_structure, const int x, const int y, const PixelColor c = PixelColor::WHITE);
+    void pixel(struct_PixelFrame *pixel_memory_structure, const int x, const int y, const PixelColor c = PixelColor::WHITE);
 
     /**
      * @brief
      *
-     * @param pixel_memory a pointer to the struct_PixelMemory that contains the pixel_buffer to be displayed
+     * @param pixel_memory a pointer to the struct_PixelFrame that contains the pixel_buffer to be displayed
      * @param anchor_x where we want to position (x) the frambuffer
      * @param anchor_y where we want to position (y) the frambuffer
      */
-    void show(struct_PixelMemory *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y);
+    void show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y);
 
-    void drawChar(struct_PixelMemory *pixel_memory_structure,
-                  const struct_ConfigTextFramebuffer *text_config,
+    void draw_char_into_pixel(struct_PixelFrame *pixel_memory_structure,
+                  const struct_ConfigTextFramebuffer text_config,
                   const char c,
                   const uint8_t anchor_x, const uint8_t anchor_y);
 

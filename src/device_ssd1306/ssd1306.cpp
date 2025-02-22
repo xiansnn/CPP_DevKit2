@@ -151,12 +151,12 @@ void SSD1306::check_display_device_compatibility(struct_ConfigGraphicFramebuffer
     assert(anchor_y % BYTE_SIZE == 0);
 }
 
-void SSD1306::clear_pixel_buffer(struct_PixelMemory *pixel_memory)
+void SSD1306::clear_pixel_buffer(struct_PixelFrame *pixel_memory)
 {
     memset(pixel_memory->pixel_buffer, 0x00, pixel_memory->pixel_buffer_size);
 }
 
-void SSD1306::create_pixel_buffer(struct_PixelMemory *pixel_memory)
+void SSD1306::create_pixel_buffer(struct_PixelFrame *pixel_memory)
 {
     size_t nb_of_pages = pixel_memory->frame_height / BYTE_SIZE;
     if (pixel_memory->frame_height % BYTE_SIZE != 0)
@@ -168,7 +168,7 @@ void SSD1306::create_pixel_buffer(struct_PixelMemory *pixel_memory)
     clear_pixel_buffer(pixel_memory);
 }
 
-void SSD1306::pixel(struct_PixelMemory *pixel_memory_structure, const int x, const int y, const PixelColor c)
+void SSD1306::pixel(struct_PixelFrame *pixel_memory_structure, const int x, const int y, const PixelColor c)
 {
     if (x >= 0 && x < pixel_memory_structure->frame_width && y >= 0 && y < pixel_memory_structure->frame_height) // avoid drawing outside the framebuffer
     {
@@ -185,7 +185,7 @@ void SSD1306::pixel(struct_PixelMemory *pixel_memory_structure, const int x, con
     }
 }
 
-void SSD1306::show(struct_PixelMemory *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y)
+void SSD1306::show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y)
 {
     uint8_t end_col = anchor_x + pixel_memory->frame_width - 1;
     uint8_t end_line = anchor_y + pixel_memory->frame_height - 1;
@@ -196,15 +196,15 @@ void SSD1306::show(struct_PixelMemory *pixel_memory, const uint8_t anchor_x, con
     this->show_render_area(pixel_memory->pixel_buffer, this->compute_render_area(anchor_x, end_col, anchor_y, end_line));
 }
 
-void SSD1306::drawChar(struct_PixelMemory *pixel_memory_structure,
-                       const struct_ConfigTextFramebuffer *text_config,
+void SSD1306::draw_char_into_pixel(struct_PixelFrame *pixel_memory_structure,
+                       const struct_ConfigTextFramebuffer text_config,
                        const char c, const uint8_t anchor_x, const uint8_t anchor_y)
 {
-    if (!text_config->font || c < 32) // TODO voir pour construire une classe Font
+    if (!text_config.font || c < 32) // TODO voir pour construire une classe Font
         return;
 
-    uint8_t font_width = text_config->font[FONT_WIDTH_INDEX];
-    uint8_t font_height = text_config->font[FONT_HEIGHT_INDEX];
+    uint8_t font_width = text_config.font[FONT_WIDTH_INDEX];
+    uint8_t font_height = text_config.font[FONT_HEIGHT_INDEX];
 
     uint16_t seek = (c - 32) * (font_width * font_height) / 8 + 2;
 
@@ -214,10 +214,10 @@ void SSD1306::drawChar(struct_PixelMemory *pixel_memory_structure,
     {
         for (uint8_t y = 0; y < font_height; y++)
         {
-            if (text_config->font[seek] >> b_seek & 0b00000001)
-                pixel(pixel_memory_structure, x + anchor_x, y + anchor_y, text_config->fg_color);
+            if (text_config.font[seek] >> b_seek & 0b00000001)
+                pixel(pixel_memory_structure, x + anchor_x, y + anchor_y, text_config.fg_color);
             else
-                pixel(pixel_memory_structure, x + anchor_x, y + anchor_y, text_config->bg_color);
+                pixel(pixel_memory_structure, x + anchor_x, y + anchor_y, text_config.bg_color);
 
             b_seek++;
             if (b_seek == 8)

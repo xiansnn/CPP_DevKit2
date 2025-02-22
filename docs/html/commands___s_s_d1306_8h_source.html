@@ -101,79 +101,77 @@ $(function(){initNavTree('commands___s_s_d1306_8h_source.html',''); initResizabl
 </div><!--header-->
 <div class="contents">
 <a href="commands___s_s_d1306_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#if !defined(CONFIG_SSD1306_H)</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define CONFIG_SSD1306_H</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// a definir si besoin</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// #define SSD1306_WRITE_MODE _u(0xFE)</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// #define SSD1306_READ_MODE _u(0xFF)</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// ---------- physical screen size ----------</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a4e9409448a0df95c1686670e09b457b7">   20</a></span><span class="preprocessor">#define SSD1306_HEIGHT 64</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#ae5a2aa8865dd03537b97fd1c9037371b">   22</a></span><span class="preprocessor">#define SSD1306_WIDTH 128</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#acc48c4fab3e29b6a3b2e9530cdf681af">   24</a></span><span class="preprocessor">#define SSD1306_PAGE_HEIGHT _u(8)</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a7c6f188acf37426f4cfe0ac73f11fb7d">   26</a></span><span class="preprocessor">#define SSD1306_NUM_PAGES (SSD1306_HEIGHT / SSD1306_PAGE_HEIGHT)</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#aafee566fd157739d02b21fa6eec3e6cf">   28</a></span><span class="preprocessor">#define SSD1306_BUF_LEN (SSD1306_NUM_PAGES * SSD1306_WIDTH)</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">// ---------- SSD1306 commands (see datasheet)----------</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a284e47af21220768eea94c2e68711791">   33</a></span><span class="preprocessor">#define I2C_CMD_FLAG 0x80</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a7192224f52748547fb9c7ffb918db8dc">   36</a></span><span class="preprocessor">#define I2C_DATA_FLAG 0x40</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">// ----- Fundamental Commands -----</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#afe8311a1cf58658999df626f089df45a">   43</a></span><span class="preprocessor">#define SSD1306_SET_CONTRAST _u(0x81)</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#aff18bd9e5c85c0430187a3cc9487ff41">   45</a></span><span class="preprocessor">#define SSD1306_SET_RAM_DISPLAY _u(0xA4)</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a34174dc82161d6c600385f34f5181046">   47</a></span><span class="preprocessor">#define SSD1306_SET_DISPLAY_ON _u(0xA5)</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#acebc478c4f4ca52ba544a80373493785">   49</a></span><span class="preprocessor">#define SSD1306_SET_NORM_DISP _u(0xA6)</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a7e6e5c44e6fe96312f497386445600a0">   51</a></span><span class="preprocessor">#define SSD1306_SET_INV_DISP _u(0xA7)</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a6b147cd4d6ad1e34c9fb82702029f7d9">   53</a></span><span class="preprocessor">#define SSD1306_SET_DISPLAY_SLEEP _u(0xAE)</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#aab0d2ecee103edc2e2fd0aa8988a224a">   55</a></span><span class="preprocessor">#define SSD1306_SET_DISPLAY_NORMAL_ON _u(0xAF)</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">// ----- Scrolling commands -----</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#aeb2f634430eb41bf03b5a03023a313ee">   60</a></span><span class="preprocessor">#define SSD1306_SET_R_HORIZ_SCROLL _u(0x26)</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#afc5bc9f8701b1ba2fa158d220bfd9131">   79</a></span><span class="preprocessor">#define SSD1306_SET_L_HORIZ_SCROLL _u(0x27)</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a36bac52c580209d4f7a6a3105a95cff0">   81</a></span><span class="preprocessor">#define SSD1306_SET_VERTICAL_R_HORIZ_SCROLL _u(0x29)</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#acfe54cfdfe9561c913c5c956fe407f3b">  101</a></span><span class="preprocessor">#define SSD1306_SET_VERTICAL_L_HORIZ_SCROLL _u(0x2A)</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a54b5149c331f6f1d6ec0e84666fc1e5b">  112</a></span><span class="preprocessor">#define SSD1306_SET_SCROLL_ON _u(0x2F) </span><span class="comment">//</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a88392eb66a286e75fbd9b704e985e164">  116</a></span><span class="preprocessor">#define SSD1306_SET_SCROLL_OFF _u(0x2E) </span><span class="comment">//</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a2a98851854770476f4b9758c4c484a11">  147</a></span><span class="preprocessor">#define SSD1306_SET_VERTICAL_SCROLL_AREA _u(0xA3) </span><span class="comment">//</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="comment">// ----- Addressing setting commands -----</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a4c391bc8411c7493dd8c28ed5611f2de">  170</a></span><span class="preprocessor">#define SSD1306_SET_MEM_MODE _u(0x20) </span><span class="comment">//</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment">// ----- Hardware Configuration (Panel resolution &amp; layout related) Command -----</span></div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a1c1807ddf3965c29141c04eb97f1b9aa">  180</a></span><span class="preprocessor">#define SSD1306_SET_DISP_START_LINE _u(0x40) </span><span class="comment">//</span></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span></div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a7337bc8e876beda93b26c1a6782ad397">  189</a></span><span class="preprocessor">#define SSD1306_SET_COL_ADDR _u(0x21)</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#ac3688afcf61a4ffccb0ee6ef165dd7a6">  198</a></span><span class="preprocessor">#define SSD1306_SET_PAGE_ADDR _u(0x22)</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a26703e6437490d29f94c21d42e79cde8">  200</a></span><span class="preprocessor">#define SSD1306_SET_SEG_NO_REMAP _u(0xA0)</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a2b8dd63e62579bbb3e7f0f0701645b37">  202</a></span><span class="preprocessor">#define SSD1306_SET_SEG_REMAP _u(0xA1)</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a0b93a82ad4a012d6f45f41e0f6f8004a">  208</a></span><span class="preprocessor">#define SSD1306_SET_MUX_RATIO _u(0xA8)</span></div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span></div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#ac087c51071227a65eba3d2b5cbb36272">  211</a></span><span class="preprocessor">#define SSD1306_SET_COM_OUT_DIR _u(0xC0)</span></div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a912e33a2585e80b7a0c0843359205ab6">  213</a></span><span class="preprocessor">#define SSD1306_SET_COM_OUT_DIR_REMAP _u(0xC8)</span></div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a39e81bacbdd49cea30183201da4d3a44">  217</a></span><span class="preprocessor">#define SSD1306_SET_DISP_OFFSET _u(0xD3)</span></div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span></div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a729363a10befbb7c0759e51234fee9bf">  244</a></span><span class="preprocessor">#define SSD1306_SET_COM_PIN_CFG _u(0xDA)</span></div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="comment">// ----- Timing &amp; Driving Scheme Setting Command -----</span></div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a563f4ab583de90b92903a718987558e2">  261</a></span><span class="preprocessor">#define SSD1306_SET_DISP_CLK_DIV _u(0xD5) </span><span class="comment">//</span></div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span></div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a9e285eddc84b360c27b56505bed3742b">  270</a></span><span class="preprocessor">#define SSD1306_SET_PRECHARGE _u(0xD9) </span><span class="comment">//</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a7a38076df0ee56420a2ca71a3d4a1f23">  276</a></span><span class="preprocessor">#define SSD1306_SET_VCOM_DESEL _u(0xDB) </span><span class="comment">// </span></div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span></div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a2025fbb02bc4723c93dcc32ca265fc45">  279</a></span><span class="preprocessor">#define SSD1306_NOP _u(0xE3) </span></div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span><span class="comment">// ----- Charge Pump Command -----</span></div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span></div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#ac3c4d8ff67b89782a97b874690f37ca7">  299</a></span><span class="preprocessor">#define SSD1306_SET_CHARGE_PUMP _u(0x8D) </span></div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="comment">// ----------------------------------------------------------------------------------------------------</span></div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="preprocessor">#endif </span><span class="comment">// CONFIG_SSD1306_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// a definir si besoin</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// #define SSD1306_WRITE_MODE _u(0xFE)</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// #define SSD1306_READ_MODE _u(0xFF)</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">// ---------- physical screen size ----------</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a4e9409448a0df95c1686670e09b457b7">   19</a></span><span class="preprocessor">#define SSD1306_HEIGHT 64</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#ae5a2aa8865dd03537b97fd1c9037371b">   21</a></span><span class="preprocessor">#define SSD1306_WIDTH 128</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#acc48c4fab3e29b6a3b2e9530cdf681af">   23</a></span><span class="preprocessor">#define SSD1306_PAGE_HEIGHT _u(8)</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a7c6f188acf37426f4cfe0ac73f11fb7d">   25</a></span><span class="preprocessor">#define SSD1306_NUM_PAGES (SSD1306_HEIGHT / SSD1306_PAGE_HEIGHT)</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#aafee566fd157739d02b21fa6eec3e6cf">   27</a></span><span class="preprocessor">#define SSD1306_BUF_LEN (SSD1306_NUM_PAGES * SSD1306_WIDTH)</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">// ---------- SSD1306 commands (see datasheet)----------</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a284e47af21220768eea94c2e68711791">   32</a></span><span class="preprocessor">#define I2C_CMD_FLAG 0x80</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a7192224f52748547fb9c7ffb918db8dc">   35</a></span><span class="preprocessor">#define I2C_DATA_FLAG 0x40</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">// ----- Fundamental Commands -----</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#afe8311a1cf58658999df626f089df45a">   42</a></span><span class="preprocessor">#define SSD1306_SET_CONTRAST _u(0x81)</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#aff18bd9e5c85c0430187a3cc9487ff41">   44</a></span><span class="preprocessor">#define SSD1306_SET_RAM_DISPLAY _u(0xA4)</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a34174dc82161d6c600385f34f5181046">   46</a></span><span class="preprocessor">#define SSD1306_SET_DISPLAY_ON _u(0xA5)</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#acebc478c4f4ca52ba544a80373493785">   48</a></span><span class="preprocessor">#define SSD1306_SET_NORM_DISP _u(0xA6)</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a7e6e5c44e6fe96312f497386445600a0">   50</a></span><span class="preprocessor">#define SSD1306_SET_INV_DISP _u(0xA7)</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a6b147cd4d6ad1e34c9fb82702029f7d9">   52</a></span><span class="preprocessor">#define SSD1306_SET_DISPLAY_SLEEP _u(0xAE)</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#aab0d2ecee103edc2e2fd0aa8988a224a">   54</a></span><span class="preprocessor">#define SSD1306_SET_DISPLAY_NORMAL_ON _u(0xAF)</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">// ----- Scrolling commands -----</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#aeb2f634430eb41bf03b5a03023a313ee">   59</a></span><span class="preprocessor">#define SSD1306_SET_R_HORIZ_SCROLL _u(0x26)</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#afc5bc9f8701b1ba2fa158d220bfd9131">   78</a></span><span class="preprocessor">#define SSD1306_SET_L_HORIZ_SCROLL _u(0x27)</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a36bac52c580209d4f7a6a3105a95cff0">   80</a></span><span class="preprocessor">#define SSD1306_SET_VERTICAL_R_HORIZ_SCROLL _u(0x29)</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#acfe54cfdfe9561c913c5c956fe407f3b">  100</a></span><span class="preprocessor">#define SSD1306_SET_VERTICAL_L_HORIZ_SCROLL _u(0x2A)</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a54b5149c331f6f1d6ec0e84666fc1e5b">  111</a></span><span class="preprocessor">#define SSD1306_SET_SCROLL_ON _u(0x2F) </span><span class="comment">//</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a88392eb66a286e75fbd9b704e985e164">  115</a></span><span class="preprocessor">#define SSD1306_SET_SCROLL_OFF _u(0x2E) </span><span class="comment">//</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a2a98851854770476f4b9758c4c484a11">  146</a></span><span class="preprocessor">#define SSD1306_SET_VERTICAL_SCROLL_AREA _u(0xA3) </span><span class="comment">//</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">// ----- Addressing setting commands -----</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a4c391bc8411c7493dd8c28ed5611f2de">  169</a></span><span class="preprocessor">#define SSD1306_SET_MEM_MODE _u(0x20) </span><span class="comment">//</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="comment">// ----- Hardware Configuration (Panel resolution &amp; layout related) Command -----</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a1c1807ddf3965c29141c04eb97f1b9aa">  179</a></span><span class="preprocessor">#define SSD1306_SET_DISP_START_LINE _u(0x40) </span><span class="comment">//</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a7337bc8e876beda93b26c1a6782ad397">  188</a></span><span class="preprocessor">#define SSD1306_SET_COL_ADDR _u(0x21)</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#ac3688afcf61a4ffccb0ee6ef165dd7a6">  197</a></span><span class="preprocessor">#define SSD1306_SET_PAGE_ADDR _u(0x22)</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a26703e6437490d29f94c21d42e79cde8">  199</a></span><span class="preprocessor">#define SSD1306_SET_SEG_NO_REMAP _u(0xA0)</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a2b8dd63e62579bbb3e7f0f0701645b37">  201</a></span><span class="preprocessor">#define SSD1306_SET_SEG_REMAP _u(0xA1)</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a0b93a82ad4a012d6f45f41e0f6f8004a">  207</a></span><span class="preprocessor">#define SSD1306_SET_MUX_RATIO _u(0xA8)</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#ac087c51071227a65eba3d2b5cbb36272">  210</a></span><span class="preprocessor">#define SSD1306_SET_COM_OUT_DIR _u(0xC0)</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a912e33a2585e80b7a0c0843359205ab6">  212</a></span><span class="preprocessor">#define SSD1306_SET_COM_OUT_DIR_REMAP _u(0xC8)</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a39e81bacbdd49cea30183201da4d3a44">  216</a></span><span class="preprocessor">#define SSD1306_SET_DISP_OFFSET _u(0xD3)</span></div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a729363a10befbb7c0759e51234fee9bf">  243</a></span><span class="preprocessor">#define SSD1306_SET_COM_PIN_CFG _u(0xDA)</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="comment">// ----- Timing &amp; Driving Scheme Setting Command -----</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a563f4ab583de90b92903a718987558e2">  260</a></span><span class="preprocessor">#define SSD1306_SET_DISP_CLK_DIV _u(0xD5) </span><span class="comment">//</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a9e285eddc84b360c27b56505bed3742b">  269</a></span><span class="preprocessor">#define SSD1306_SET_PRECHARGE _u(0xD9) </span><span class="comment">//</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a7a38076df0ee56420a2ca71a3d4a1f23">  275</a></span><span class="preprocessor">#define SSD1306_SET_VCOM_DESEL _u(0xDB) </span><span class="comment">// </span></div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span></div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#a2025fbb02bc4723c93dcc32ca265fc45">  278</a></span><span class="preprocessor">#define SSD1306_NOP _u(0xE3) </span></div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span><span class="comment">// ----- Charge Pump Command -----</span></div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno"><a class="line" href="commands___s_s_d1306_8h.html#ac3c4d8ff67b89782a97b874690f37ca7">  298</a></span><span class="preprocessor">#define SSD1306_SET_CHARGE_PUMP _u(0x8D) </span></div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="comment">// ----------------------------------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

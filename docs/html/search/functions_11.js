@@ -4,12 +4,13 @@ var searchData=
   ['uicontroller_1',['UIController',['../class_u_i_controller.html#a74aff896bdb3a03be4fcc2ac0772ef11',1,'UIController']]],
   ['uimodelobject_2',['UIModelObject',['../class_u_i_model_object.html#af89f5a77bc6a17f09ceb7fe603bbe715',1,'UIModelObject']]],
   ['uiobjectmanager_3',['UIObjectManager',['../class_u_i_object_manager.html#acac4a5f9fa54efe2eb8069b1381aa82f',1,'UIObjectManager']]],
-  ['update_5fcurrent_5fcontrolled_5fobject_4',['update_current_controlled_object',['../class_u_i_controller.html#a2cc0f0b9952528a65b002f1ed86bb0f2',1,'UIController']]],
-  ['update_5fcurrent_5fcontroller_5',['update_current_controller',['../class_u_i_model_object.html#a656066649f529b7472d098637ddcf04f',1,'UIModelObject']]],
-  ['update_5fevent_5fprocessor_6',['update_event_processor',['../class_rotary_encoder.html#a20a7d47b8facd264840c4c7e988f5ae3',1,'RotaryEncoder']]],
-  ['update_5fpixel_5farea_7',['update_pixel_area',['../class_textual_frame_buffer.html#aeeba56c72968440545ddaf7a608c995c',1,'TextualFrameBuffer']]],
-  ['update_5fstatus_8',['update_status',['../class_u_i_model_object.html#a23cc738b1244cbc6a52ad7ed6102e688',1,'UIModelObject']]],
-  ['update_5ftext_5fbuffer_9',['update_text_buffer',['../class_textual_frame_buffer.html#aa9d0d75389a08f1c42c08eefe7c2bcb2',1,'TextualFrameBuffer']]],
-  ['update_5ftext_5fbuffer_5fsize_10',['update_text_buffer_size',['../class_textual_frame_buffer.html#a3a3ed78df1e4731be04fcb234b8d13d9',1,'TextualFrameBuffer']]],
-  ['update_5fui_5fcontrol_5fevent_5fprocessor_11',['update_UI_control_event_processor',['../class_k_y040.html#a303f94b37201d12f91fbb349dc649eef',1,'KY040']]]
+  ['uiwidget_4',['UIWidget',['../class_u_i_widget.html#adb2bc0435f88c54f206081b799bd47c5',1,'UIWidget']]],
+  ['update_5fattached_5fwidgets_5',['update_attached_widgets',['../class_u_i_model_object.html#aeff62f64d8f981b545683fe720855c0b',1,'UIModelObject']]],
+  ['update_5fcurrent_5fcontrolled_5fobject_6',['update_current_controlled_object',['../class_u_i_controller.html#a2cc0f0b9952528a65b002f1ed86bb0f2',1,'UIController']]],
+  ['update_5fcurrent_5fcontroller_7',['update_current_controller',['../class_u_i_model_object.html#a656066649f529b7472d098637ddcf04f',1,'UIModelObject']]],
+  ['update_5fevent_5fprocessor_8',['update_event_processor',['../class_rotary_encoder.html#a20a7d47b8facd264840c4c7e988f5ae3',1,'RotaryEncoder']]],
+  ['update_5fgraphic_5fframe_5fsize_9',['update_graphic_frame_size',['../class_text_frame_buffer.html#aa08e36326eed0d0225479e79e5679fbb',1,'TextFrameBuffer']]],
+  ['update_5fstatus_10',['update_status',['../class_u_i_model_object.html#a23cc738b1244cbc6a52ad7ed6102e688',1,'UIModelObject']]],
+  ['update_5ftext_5fframe_5fsize_11',['update_text_frame_size',['../class_text_frame_buffer.html#abb26f53e6baec2222f90483bb97e7e32',1,'TextFrameBuffer']]],
+  ['update_5fui_5fcontrol_5fevent_5fprocessor_12',['update_UI_control_event_processor',['../class_k_y040.html#a303f94b37201d12f91fbb349dc649eef',1,'KY040']]]
 ];

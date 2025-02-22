@@ -105,7 +105,7 @@ $(function(){initNavTree('class_model_bargraph.html',''); initResizable(true); }
 </div><!--header-->
 <div class="contents">
 
-<p>the <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> used by Bargraph <a class="el" href="class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">GraphicWidget</a>  
+<p>the <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> used by Bargraph <a class="el" href="class_graphic_widget.html" title="the widget dedicated to graphics">GraphicWidget</a>  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="widget__bargraph_8h_source.html">widget_bargraph.h</a>&gt;</code></p>
@@ -114,9 +114,9 @@ Inheritance diagram for ModelBargraph:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_model_bargraph__inherit__graph.png" border="0" usemap="#a_model_bargraph_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_model_bargraph_inherit__map" id="a_model_bargraph_inherit__map">
-<area shape="rect" title="the UIModelObject used by Bargraph GraphicWidget" alt="" coords="5,357,385,512"/>
-<area shape="rect" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="34,5,357,309"/>
-<area shape="poly" title=" " alt="" coords="198,324,198,357,193,357,193,324"/>
+<area shape="rect" title="the UIModelObject used by Bargraph GraphicWidget" alt="" coords="5,413,385,568"/>
+<area shape="rect" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="34,5,357,365"/>
+<area shape="poly" title=" " alt="" coords="198,380,198,413,193,413,193,380"/>
 </map>
 </div>
 <div class="dynheader">
@@ -124,12 +124,12 @@ Collaboration diagram for ModelBargraph:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_model_bargraph__coll__graph.png" border="0" usemap="#a_model_bargraph_coll__map" alt="Collaboration graph"/></div>
 <map name="a_model_bargraph_coll__map" id="a_model_bargraph_coll__map">
-<area shape="rect" title="the UIModelObject used by Bargraph GraphicWidget" alt="" coords="5,353,385,507"/>
-<area shape="rect" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="289,5,611,291"/>
-<area shape="poly" title=" " alt="" coords="313,304,266,355,262,351,309,300"/>
-<area shape="rect" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="409,381,821,479"/>
-<area shape="poly" title=" " alt="" coords="435,290,448,327,464,350,485,369,481,373,460,353,443,330,430,291"/>
-<area shape="poly" title=" " alt="" coords="605,382,597,348,584,316,579,306,583,304,588,314,602,347,610,380"/>
+<area shape="rect" title="the UIModelObject used by Bargraph GraphicWidget" alt="" coords="5,409,385,563"/>
+<area shape="rect" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="289,5,611,347"/>
+<area shape="poly" title=" " alt="" coords="302,360,260,411,256,407,298,356"/>
+<area shape="rect" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="409,437,821,535"/>
+<area shape="poly" title=" " alt="" coords="434,346,448,383,464,406,485,425,481,429,460,409,443,386,429,347"/>
+<area shape="poly" title=" " alt="" coords="604,437,596,404,584,372,579,363,584,361,588,370,601,403,610,436"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -165,6 +165,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_change_flag</b> (
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_change_flag</b> ()</td></tr>
 <tr class="memdesc:aff2fe32c66d4c1637627a253274fd383 inherit pub_methods_class_u_i_model_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the change flag object to false. <br /></td></tr>
 <tr class="separator:aff2fe32c66d4c1637627a253274fd383 inherit pub_methods_class_u_i_model_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeff62f64d8f981b545683fe720855c0b inherit pub_methods_class_u_i_model_object" id="r_aeff62f64d8f981b545683fe720855c0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_model_object.html#aeff62f64d8f981b545683fe720855c0b">update_attached_widgets</a> (<a class="el" href="class_u_i_widget.html">UIWidget</a> *new_widget)</td></tr>
+<tr class="memdesc:aeff62f64d8f981b545683fe720855c0b inherit pub_methods_class_u_i_model_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">add a new widget to the set of attached_widgets  <br /></td></tr>
+<tr class="separator:aeff62f64d8f981b545683fe720855c0b inherit pub_methods_class_u_i_model_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15397945b61f0aee30978026b5dcaf49 inherit pub_methods_class_u_i_model_object" id="r_a15397945b61f0aee30978026b5dcaf49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_model_object.html#a15397945b61f0aee30978026b5dcaf49">get_number_of_attached_widget</a> ()</td></tr>
+<tr class="memdesc:a15397945b61f0aee30978026b5dcaf49 inherit pub_methods_class_u_i_model_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the number of attached widgets  <br /></td></tr>
+<tr class="separator:a15397945b61f0aee30978026b5dcaf49 inherit pub_methods_class_u_i_model_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a713e9fbb5d1842d2c80764898f60ce26 inherit pub_methods_class_u_i_model_object" id="r_a713e9fbb5d1842d2c80764898f60ce26"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_model_object.html#a713e9fbb5d1842d2c80764898f60ce26">get_time_since_last_change</a> ()</td></tr>
 <tr class="memdesc:a713e9fbb5d1842d2c80764898f60ce26 inherit pub_methods_class_u_i_model_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute time since the last status change  <br /></td></tr>
 <tr class="separator:a713e9fbb5d1842d2c80764898f60ce26 inherit pub_methods_class_u_i_model_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -201,7 +207,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>max_value</b></td></tr
 <tr class="separator:ab5ac71a917bd5563fe3e298e8841a80f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>the <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> used by Bargraph <a class="el" href="class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">GraphicWidget</a> </p>
+<div class="textblock"><p>the <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> used by Bargraph <a class="el" href="class_graphic_widget.html" title="the widget dedicated to graphics">GraphicWidget</a> </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a23c8f050b4210741564b0e5d6130a669" name="a23c8f050b4210741564b0e5d6130a669"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a23c8f050b4210741564b0e5d6130a669">&#9670;&#160;</a></span>ModelBargraph()</h2>
