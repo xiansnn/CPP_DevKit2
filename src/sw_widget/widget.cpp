@@ -19,7 +19,7 @@ void GraphicWidget::draw_border(PixelColor color)
 
 void GraphicWidget::draw_refresh()
 {
-    if (this->actual_displayed_model->has_changed())
+    if ((actual_displayed_model != nullptr) and (this->actual_displayed_model->has_changed()))
     {
         draw();
         this->actual_displayed_model->clear_change_flag();
@@ -61,35 +61,32 @@ GraphicWidget::~GraphicWidget()
 }
 
 PrintWidget::PrintWidget(PrinterDevice *display_device, UIModelObject *actual_displayed_model)
+    : UIWidget(actual_displayed_model, 0, 0)
 {
     this->display_device = display_device;
-    this->actual_displayed_model = actual_displayed_model;
 }
 
 PrintWidget::~PrintWidget()
 {
 }
 
-void PrintWidget::add_widget(PrintWidget *_sub_widget)
-{
-    this->widgets.push_back(_sub_widget);
-}
-
 void PrintWidget::draw_refresh()
 {
+    if ((actual_displayed_model != nullptr) and (actual_displayed_model->has_changed()))
+    {
+        draw();
+        this->actual_displayed_model->clear_change_flag();
+    }
+
     if (widgets.size() != 0)
     {
         for (auto &&w : widgets)
             w->draw_refresh();
     }
-    else
-    {
-        if (this->actual_displayed_model->has_changed())
-        {
-            draw();
-            this->actual_displayed_model->clear_change_flag();
-        }
-    }
+}
+
+void PrintWidget::draw_border(PixelColor color)
+{
 }
 
 TextWidget::TextWidget(GraphicDisplayDevice *device,
@@ -122,11 +119,12 @@ void TextWidget::show()
 
 void TextWidget::draw_refresh()
 {
-    if (this->actual_displayed_model->has_changed())
+    if ((actual_displayed_model != nullptr) and (actual_displayed_model->has_changed()))
     {
         draw();
         this->actual_displayed_model->clear_change_flag();
     }
+
     if (widgets.size() != 0)
     {
         for (auto &&w : widgets)
@@ -158,8 +156,12 @@ bool UIWidget::blinking_phase_has_changed()
 UIWidget::UIWidget(UIModelObject *actual_displayed_model,
                    uint8_t widget_anchor_x, uint8_t widget_anchor_y)
 {
-    this->actual_displayed_model = actual_displayed_model;
-    this->actual_displayed_model->update_attached_widgets(this);
+    if (actual_displayed_model != nullptr)
+    {
+        this->actual_displayed_model = actual_displayed_model;
+        this->actual_displayed_model->update_attached_widgets(this);
+    }
+
     this->widget_anchor_x = widget_anchor_x;
     this->widget_anchor_y = widget_anchor_y;
 }

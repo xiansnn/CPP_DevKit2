@@ -99,9 +99,7 @@ public:
      * - Then: check if any changes in the model require a screen redraw
      *
      * - if redraw() required , execute the effective widget drawing including border if required (can be a private member function)
-     * - and finally : clear model change flag if needed.
-     *
-     *        WARNING : When several widget display one Model, only the last one must clear_change_flag()
+     * - and finally : clear model change flag
      */
     virtual void draw_refresh() = 0;
 
@@ -262,18 +260,13 @@ public:
  * @brief  A widget used when we need to simply print but still want to take advantage of the status change management.
  *
  */
-class PrintWidget
+class PrintWidget : public UIWidget
 {
 private:
 protected:
 public:
     /// @brief a pointer to the printer display device
     PrinterDevice *display_device;
-    /// @brief the pointer to the displayed model
-    /// \note may require recast to the actual displayed object
-    UIModelObject *actual_displayed_model;
-    /// @brief A widget can be composed by several widget.
-    std::vector<PrintWidget *> widgets;
 
     /**
      * @brief Construct a new Dummy Widget object
@@ -283,12 +276,6 @@ public:
      */
     PrintWidget(PrinterDevice *display_device, UIModelObject *actual_displayed_model);
     ~PrintWidget();
-    /**
-     * @brief  add sub_widget to the current widget
-     *
-     * @param _sub_widget
-     */
-    void add_widget(PrintWidget *_sub_widget);
 
     /**
      * @brief (re)draw the graphical elements of the widget.
@@ -308,9 +295,10 @@ public:
      * - if redraw() required , execute the effective widget drawing including border if required (can be a private member function)
      * - and finally : clear model change flag if needed.
      *
-     *        \note WARNING when several widget display one Model, only the last one must clear_change_flag()
      */
     virtual void draw_refresh();
+
+    void draw_border(PixelColor color);
 
     /// @brief a pure virtual member that is called by draw_refresh method
     virtual void draw() = 0;
