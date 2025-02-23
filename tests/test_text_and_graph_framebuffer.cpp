@@ -113,7 +113,7 @@ int main()
             roll = i;
             pitch = sign * i / 4;
             sprintf(values.text_buffer, "%+3d\xF8  %+3d\xF8", roll, pitch);
-            values.draw_text_buffer();
+            values.write();
             values_display.show(&values.pixel_frame, values_area_anchor_x, values_area_anchor_y);
             values.process_char(FORM_FEED);
             pr_D6.lo(); // 9ms

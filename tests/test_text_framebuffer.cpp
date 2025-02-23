@@ -81,7 +81,7 @@ void test_font_size(SSD1306 *current_display)
     current_y_anchor = 8;
     //process first text according to sprintf capabilities then copy to text buffer and finally draw text buffer into pixel buffer
     sprintf(font_text_on_screen_1->text_buffer, test_string.c_str());
-    font_text_on_screen_1->draw_text_buffer();
+    font_text_on_screen_1->write();
     current_display->show(&font_text_on_screen_1->pixel_frame, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_1;
 
@@ -90,14 +90,14 @@ void test_font_size(SSD1306 *current_display)
     current_x_anchor = 0;
     current_y_anchor = 16;
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
-    font_text_on_screen_2->draw_text_buffer();
+    font_text_on_screen_2->write();
     current_display->show(&font_text_on_screen_2->pixel_frame, current_x_anchor, current_y_anchor);
 
     font_text_on_screen_2->update_graphic_frame_size(current_font[3]);
     current_x_anchor = 64;
     current_y_anchor = 32;
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
-    font_text_on_screen_2->draw_text_buffer();
+    font_text_on_screen_2->write();
     current_display->show(&font_text_on_screen_2->pixel_frame, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_2;
 
@@ -151,7 +151,7 @@ void test_auto_next_char(SSD1306 *current_display)
         n++;
         text_frame->process_char(c);
         current_display->show(&text_frame->pixel_frame, 0, 0);
-        if (n % 5 == 0)
+        if (n % 8 == 0)
         {
             text_frame->next_char();
         }
@@ -186,28 +186,28 @@ void test_sprintf_format(SSD1306 *current_display)
     current_display->show(&text_frame->pixel_frame, 0, 0);
 
     sprintf(text_frame->text_buffer, "\t[%7s]\n", s);
-    text_frame->draw_text_buffer();
+    text_frame->write();
     current_display->show(&text_frame->pixel_frame, 0, 0);
     sprintf(text_frame->text_buffer, "\t[%-7s]\n", s);
-    text_frame->draw_text_buffer();
+    text_frame->write();
     current_display->show(&text_frame->pixel_frame, 0, 0);
     sprintf(text_frame->text_buffer, "\t[%*s]\n", 7, s);
-    text_frame->draw_text_buffer();
+    text_frame->write();
     current_display->show(&text_frame->pixel_frame, 0, 0);
     text_frame->write("\ttruncating:\n");
     current_display->show(&text_frame->pixel_frame, 0, 0);
     sprintf(text_frame->text_buffer, "\t%.4s\n", s);
-    text_frame->draw_text_buffer();
+    text_frame->write();
     current_display->show(&text_frame->pixel_frame, 0, 0);
     sprintf(text_frame->text_buffer, "\t\t%.*s\n", 3, s);
-    text_frame->draw_text_buffer();
+    text_frame->write();
     current_display->show(&text_frame->pixel_frame, 0, 0);
     sleep_ms(LONG_DELAY);
 
     current_display->clear_device_screen_buffer();
     text_frame->clear_text_buffer();
     sprintf(text_frame->text_buffer, "Characters: %c %%", 'A');
-    text_frame->draw_text_buffer();
+    text_frame->write();
     current_display->show(&text_frame->pixel_frame, 0, 0);
     sleep_ms(LONG_DELAY);
 
@@ -216,18 +216,18 @@ void test_sprintf_format(SSD1306 *current_display)
 
     text_frame->write("Integers:\n");
     sprintf(text_frame->text_buffer, "\tDec:  %i %d %.3i %i %.0i %+i %i\n", 1, 2, 3, 0, 0, 4, -4);
-    text_frame->draw_text_buffer();
+    text_frame->write();
     sprintf(text_frame->text_buffer, "\tHex:  %x %x %X %#x\n", 5, 10, 10, 6);
-    text_frame->draw_text_buffer();
+    text_frame->write();
     sprintf(text_frame->text_buffer, "\tOct:    %o %#o %#o\n", 10, 10, 4);
-    text_frame->draw_text_buffer();
+    text_frame->write();
     text_frame->write("Floating point:\n");
     sprintf(text_frame->text_buffer, "\tRnd:  %f %.0f %.3f\n", 1.5, 1.5, 1.5);
-    text_frame->draw_text_buffer();
+    text_frame->write();
     sprintf(text_frame->text_buffer, "\tPad:  %05.2f %.2f %5.2f\n", 1.5, 1.5, 1.5);
-    text_frame->draw_text_buffer();
+    text_frame->write();
     sprintf(text_frame->text_buffer, "\tSci:  %.3E %.1e\n", 1.5, 1.5);
-    text_frame->draw_text_buffer();
+    text_frame->write();
     current_display->show(&text_frame->pixel_frame, 0, 0);
     sleep_ms(LONG_DELAY);
 
