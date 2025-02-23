@@ -59,7 +59,9 @@ protected:
 
 public:
     /**
-     * @brief Construct a new Framebuffer object. The basic constructor, used to initiate display size (in pixel) , foreground and background color.
+     * @brief Construct a new Framebuffer object. 
+     * 
+     * USAGE: The basic constructor, used to initiate display size (in pixel) , foreground and background color.
      *
      * @param graphic_display_device the associated graphic display device
      * @param graph_cfg the configuration data for graphic feature
@@ -67,7 +69,9 @@ public:
     Framebuffer(GraphicDisplayDevice *graphic_display_device,
                 struct_ConfigGraphicFramebuffer graph_cfg);
     /**
-     * @brief Construct a new Framebuffer object. Used when we need a TextFramebuffer defined by its struct_ConfigTextFramebuffer, and the size of the display in pixel.
+     * @brief Construct a new Framebuffer object. 
+     * 
+     * USAGE: Used when we need a TextFramebuffer, the frame size in pixel is set, the font size is set (via struct_ConfigTextFramebuffer), the number of char line and column are computed.
      *
      * @param graphic_display_device the associated graphic display device
      * @param frame_width the size in x-pixel of the frame
@@ -78,8 +82,10 @@ public:
                 size_t frame_width, size_t frame_height,
                 struct_ConfigTextFramebuffer text_cfg);
     /**
-     * @brief Construct a new Framebuffer object. Starting from the text configuration data, columns x lines of a given bitmap font size,
-     *  the width and height of the frame are computed.
+     * @brief Construct a new Framebuffer object.
+     *     
+     * USAGE: Used when we need a TextFramebuffer. 
+     * The number of char line and column are set, the font size is set (via struct_ConfigTextFramebuffer), the frame size in pixel is computed.
      *
      * @param graphic_display_device the associated graphic display device
      * @param text_cfg the text configuration data
@@ -124,6 +130,8 @@ protected:
 public:
     /**
      * @brief Construct a new Graphic Framebuffer object
+     * 
+     * USAGE: A pure graphic framebuffer defined via struct_ConfigGraphicFramebuffer. char line and column are ignored
      *
      * @param display_device A pointer to the display device in charge of writing effective pixel in the pixel_buffer
      * @param graph_cfg the graphic configuration structure
@@ -133,7 +141,9 @@ public:
                        struct_ConfigGraphicFramebuffer graph_cfg);
 
     /**
-     * @brief Construct a new Graphic Framebuffer object, as the base class of TextualFramebuffer
+     * @brief Construct a new Graphic Framebuffer object, as a base class of TextFramebuffer.
+     * 
+     * USAGE: the frame size in pixel is set, the font size is set (via struct_ConfigTextFramebuffer), the number of char line and column are computed.
      *
      * @param display_device A pointer to the display device in charge of writing effective pixel in the pixel_buffer
      * @param frame_width the frame width in pixel
@@ -146,7 +156,10 @@ public:
                        struct_ConfigTextFramebuffer text_cfg);
 
     /**
-     * @brief Construct a new Graphic Framebuffer object.
+     * @brief Construct a new Graphic Framebuffer object, as a base class of TextFramebuffer.
+     *     
+     * USAGE: The number of char line and column are set, the font size is set (via struct_ConfigTextFramebuffer), the frame size in pixel is computed.
+     *
      * @param display_device A pointer to the display device in charge of writing effective pixel in the pixel_buffer
      * @param text_cfg the configuration file of the textual frame
      */
@@ -306,6 +319,8 @@ public:
 
     /**
      * @brief Construct a new Textual Frame Buffer object
+     * 
+     * USAGE: the font, number of line and number of column are given. The frame size in pixel is computed.
      *
      * @param device A pointer to the display device in charge of showing character
      * @param text_cfg textual configuration data structure
@@ -315,7 +330,8 @@ public:
 
     /**
      * @brief Construct a new Textual Frame Buffer object when the frame size in x and y pixel is given.
-     * The number of character line and column are computed according to the size of font
+     * 
+     * USAGE: The number of character line and column are computed according to the size of font
      *
      * @param frame_width the width in pixel of the frame
      * @param frame_height the height in pixel of the frame
@@ -337,7 +353,7 @@ public:
      */
     void update_text_frame_size(const unsigned char *font);
     /**
-     * @brief   Set text buffer memory to "0" and set character line and column to 0
+     * @brief   Set text buffer memory to "0" and set  character current line and column to 0
      */
     void clear_text_buffer();
 
@@ -350,7 +366,7 @@ public:
     void update_graphic_frame_size(const unsigned char *font);
 
     /**
-     * @brief process the internal text buffer characters and draw it into the pixel buffer.
+     * @brief process characters in the internal text buffer and draw it into the pixel buffer.
      */
     void write();
     /**
@@ -380,11 +396,11 @@ public:
      */
     void process_char(char character);
     /**
-     * @brief character line position steps forward
+     * @brief character line steps one position downward.
      */
     void next_line();
     /**
-     * @brief character column position steps forward
+     * @brief character column steps forward one position forward.
      */
     void next_char();
 };

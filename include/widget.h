@@ -43,6 +43,7 @@ private:
 protected:
     /// @brief a pointer to the UIModelObject actually displayed by the widget
     UIModelObject *actual_displayed_model = nullptr;
+    
     /// @brief ask if the blinking phase has changed
     /// \return true if phase has changed
     bool blinking_phase_has_changed();
