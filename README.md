@@ -34,7 +34,7 @@ At the root, we found directories:
 -  docs : that contains doxygen files,
 -  include : where all xxx.h files are located,
 -  src : where all xxx.cpp files are located,
--  tests : where all test files are located.
+-  tests : where all test files are located. These files are also good usage examples. 
 
 ### src directories
 This is where we can find all the source code for libraries, organized according to their categories:
