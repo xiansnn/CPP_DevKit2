@@ -47,7 +47,7 @@ void simulate_values(ModelBargraph *model)
 #ifdef PRINT_DEBUG
     printf("\n");
 #endif
-    model->process_control_event();
+    // model->process_control_event(); // pas necessaire car pas UI
 }
 
 struct_ConfigGraphicFramebuffer vertical_bargraph_cfg = {
@@ -76,7 +76,7 @@ int main()
     while (true)
     {
         simulate_values(&my_model);
-        my_widget.draw_refresh();
+        my_widget.draw();
         sleep_ms(100);
     }
 

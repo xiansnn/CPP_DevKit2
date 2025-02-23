@@ -47,7 +47,7 @@ void simulate_values(ModelBargraph *model)
 #ifdef PRINT_DEBUG
     printf("\n");
 #endif
-    model->process_control_event();
+    // model->process_control_event(); // pas besoin UI
 }
 
 struct_ConfigGraphicFramebuffer horizontal_bargraph_cfg = {
@@ -74,8 +74,8 @@ int main()
 
     while (true)
     {
-        simulate_values(&my_model); // TODO voir pour essayer des configs diferentes avec range -10 +10 et simulate value en mm tps
-        my_widget.draw_refresh();
+        simulate_values(&my_model); // TODO voir pour essayer des configs differentes avec range -10 +10 et simulate value en mm tps
+        my_widget.draw(); // suffisant car pas besoin UI
         sleep_ms(100);
     }
 
