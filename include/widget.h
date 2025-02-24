@@ -58,7 +58,8 @@ public:
     /**
      * @brief Construct a new UIWidget object
      *
-     * @param actual_displayed_model a pointer to the UIModelObject actually displayed by the widget
+     * @param actual_displayed_model a pointer to the UIModelObject actually displayed by the widget.
+     * Can be a nullptr if the widget doesn't need a Model (e.g. a pure cosmetic widget)
      * @param widget_anchor_x location in x of the widget within the hosting framebuffer
      * @param widget_anchor_y location in y of the widget within the hosting framebuffer
      */
