@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['last_5fchange_5ftime_0',['last_change_time',['../class_u_i_model_object.html#a5287fb6957dd143020b890ce67b01fa4',1,'UIModelObject']]],
+  ['last_5fchange_5ftime_0',['last_change_time',['../class_u_i_controlled_model.html#a7b9d173f7b9d1fdfc944d73439568a1f',1,'UIControlledModel']]],
   ['led_5fis_5fblinking_1',['led_is_blinking',['../class_widget_square_led.html#a198190bebf9ee0d0def266791f7609e9',1,'WidgetSquareLed']]],
   ['led_5fis_5fon_2',['led_is_on',['../class_widget_square_led.html#a48652cb1b822e40375cf7062ac63863e',1,'WidgetSquareLed']]],
   ['level_3',['level',['../class_widget_horizontal_bar.html#a69a11f9c5023f31a453314def6db7202',1,'WidgetHorizontalBar']]],

@@ -2,9 +2,9 @@ var searchData=
 [
   ['calibrate_0',['calibrate',['../class_m_p_u6050.html#a35657154dd30e206e09ea6407ede106c',1,'MPU6050']]],
   ['check_5fdisplay_5fdevice_5fcompatibility_1',['check_display_device_compatibility',['../class_graphic_display_device.html#a068ad8496f5cca38767dc989fefc1cbb',1,'GraphicDisplayDevice::check_display_device_compatibility()'],['../class_s_s_d1306.html#a7242be5e60f699b21eb33a5fc399c595',1,'SSD1306::check_display_device_compatibility()']]],
-  ['check_5ftime_5fout_2',['check_time_out',['../class_u_i_object_manager.html#a2a8c98398608968143a893213d084f64',1,'UIObjectManager']]],
+  ['check_5ftime_5fout_2',['check_time_out',['../class_u_i_model_manager.html#ab6d7acbc231c5fd6a33e2eecdf9e3641',1,'UIModelManager']]],
   ['circle_3',['circle',['../class_graphic_framebuffer.html#a61455060176f83944a40478c4e41a21e',1,'GraphicFramebuffer']]],
-  ['clear_5fchange_5fflag_4',['clear_change_flag',['../class_u_i_model_object.html#aff2fe32c66d4c1637627a253274fd383',1,'UIModelObject']]],
+  ['clear_5fchange_5fflag_4',['clear_change_flag',['../class_u_i_controlled_model.html#ab280e9620de1ac18665072b10d5393e0',1,'UIControlledModel']]],
   ['clear_5fdevice_5fscreen_5fbuffer_5',['clear_device_screen_buffer',['../class_s_s_d1306.html#a646463128f966a04b1746e3389819711',1,'SSD1306']]],
   ['clear_5firq_6',['clear_irq',['../class_p_w_m.html#a23a7f94507115fdab48b65af6931329e',1,'PWM']]],
   ['clear_5fline_7',['clear_line',['../class_text_framebuffer.html#a5278780e7df20715844d84d943118b25',1,'TextFramebuffer']]],

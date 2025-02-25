@@ -1,9 +1,8 @@
 var class_graphic_widget =
 [
-    [ "GraphicWidget", "class_graphic_widget.html#a54b5a1e6b9ed551fcf68c5bb03054876", null ],
+    [ "GraphicWidget", "class_graphic_widget.html#a0c897e5f069b50d6f39117264b2bdedc", null ],
     [ "~GraphicWidget", "class_graphic_widget.html#ae2c0525c8819493eb279e69d54287179", null ],
     [ "draw_border", "class_graphic_widget.html#a934bc1c1cdf83ed72bf06d1ca5de2e45", null ],
-    [ "draw_refresh", "class_graphic_widget.html#a2d0fa3cec4bef9f350ac6bcc69716bf7", null ],
     [ "show", "class_graphic_widget.html#a83c221250b9dfdeb8ab03b87a783bf10", null ],
     [ "widget_border_width", "class_graphic_widget.html#ab06cc273f6d42d2527eca35fd5e9b8ed", null ],
     [ "widget_height", "class_graphic_widget.html#ac88aea83eb3c637f6ea3546b50074bbd", null ],

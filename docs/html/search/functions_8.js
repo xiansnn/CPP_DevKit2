@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['increment_5ffocus_0',['increment_focus',['../class_u_i_object_manager.html#a6ce916f71a9adc29a66058ce8420a06b',1,'UIObjectManager']]],
+  ['increment_5ffocus_0',['increment_focus',['../class_u_i_model_manager.html#a4e26eae050bd0bdf8f8d834b561292ad',1,'UIModelManager']]],
   ['increment_5fvalue_1',['increment_value',['../class_u_i_controlled_incremental_value.html#af7d90e938d5804e19ed2c420f0c97064',1,'UIControlledIncrementalValue']]],
   ['init_2',['init',['../class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f',1,'SSD1306']]],
   ['init_5fcharge_5fpump_5fenabled_3',['init_charge_pump_enabled',['../class_s_s_d1306.html#a80df9a8d75ab48e4e848a77b5e2c1194',1,'SSD1306']]],

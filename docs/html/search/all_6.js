@@ -3,11 +3,11 @@ var searchData=
   ['calibrate_0',['calibrate',['../class_m_p_u6050.html#a35657154dd30e206e09ea6407ede106c',1,'MPU6050']]],
   ['carriage_5freturn_1',['CARRIAGE_RETURN',['../framebuffer_8h.html#a3b81478c7058ceb6ed610ce8e2ca3822',1,'framebuffer.h']]],
   ['central_5fswitch_2',['central_switch',['../class_k_y040.html#aeeacb4eda161ef68b02a2f5799239c64',1,'KY040']]],
-  ['change_5fflag_3',['change_flag',['../class_u_i_model_object.html#ae99da47988dba0ca512248a43e038c7f',1,'UIModelObject']]],
+  ['change_5fflag_3',['change_flag',['../class_u_i_controlled_model.html#adedc286d8c6c0b6626319724bf53d07a',1,'UIControlledModel']]],
   ['check_5fdisplay_5fdevice_5fcompatibility_4',['check_display_device_compatibility',['../class_graphic_display_device.html#a068ad8496f5cca38767dc989fefc1cbb',1,'GraphicDisplayDevice::check_display_device_compatibility()'],['../class_s_s_d1306.html#a7242be5e60f699b21eb33a5fc399c595',1,'SSD1306::check_display_device_compatibility()']]],
-  ['check_5ftime_5fout_5',['check_time_out',['../class_u_i_object_manager.html#a2a8c98398608968143a893213d084f64',1,'UIObjectManager']]],
+  ['check_5ftime_5fout_5',['check_time_out',['../class_u_i_model_manager.html#ab6d7acbc231c5fd6a33e2eecdf9e3641',1,'UIModelManager']]],
   ['circle_6',['circle',['../class_graphic_framebuffer.html#a61455060176f83944a40478c4e41a21e',1,'GraphicFramebuffer']]],
-  ['clear_5fchange_5fflag_7',['clear_change_flag',['../class_u_i_model_object.html#aff2fe32c66d4c1637627a253274fd383',1,'UIModelObject']]],
+  ['clear_5fchange_5fflag_7',['clear_change_flag',['../class_u_i_controlled_model.html#ab280e9620de1ac18665072b10d5393e0',1,'UIControlledModel']]],
   ['clear_5fdevice_5fscreen_5fbuffer_8',['clear_device_screen_buffer',['../class_s_s_d1306.html#a646463128f966a04b1746e3389819711',1,'SSD1306']]],
   ['clear_5firq_9',['clear_irq',['../class_p_w_m.html#a23a7f94507115fdab48b65af6931329e',1,'PWM']]],
   ['clear_5fline_10',['clear_line',['../class_text_framebuffer.html#a5278780e7df20715844d84d943118b25',1,'TextFramebuffer']]],
@@ -30,9 +30,9 @@ var searchData=
   ['count_5fcycles_27',['count_cycles',['../class_p_w_mgated_measure.html#a4f372aa91b889f792b4eb805d0eb5a46',1,'PWMgatedMeasure']]],
   ['create_5fpixel_5fbuffer_28',['create_pixel_buffer',['../class_graphic_display_device.html#ad564b8b39b2e92659a4b8ee01615c6c2',1,'GraphicDisplayDevice::create_pixel_buffer()'],['../class_s_s_d1306.html#a219dc68e8ad7ba244928d5373ca2e8b8',1,'SSD1306::create_pixel_buffer()']]],
   ['create_5ftext_5fbuffer_29',['create_text_buffer',['../class_text_framebuffer.html#a05df8f51f7dee0c8cb6018e74d4bf49a',1,'TextFramebuffer']]],
-  ['current_5factive_5fmodel_30',['current_active_model',['../class_u_i_object_manager.html#a248450861ee5a475f6df3af1001a68be',1,'UIObjectManager']]],
+  ['current_5factive_5fmodel_30',['current_active_model',['../class_u_i_model_manager.html#a2c82e97efcdecc4df914e491a928e294',1,'UIModelManager']]],
   ['current_5fchar_5fcolumn_31',['current_char_column',['../class_text_framebuffer.html#ac7a590fda2353168e21a3e179360493b',1,'TextFramebuffer']]],
   ['current_5fchar_5fline_32',['current_char_line',['../class_text_framebuffer.html#afeebd9df95fca909ac3dcea486f8cd46',1,'TextFramebuffer']]],
-  ['current_5fcontrolled_5fobject_33',['current_controlled_object',['../class_u_i_controller.html#a3776f935f634072e9c2a4c91aea11433',1,'UIController']]],
-  ['current_5fcontroller_34',['current_controller',['../class_u_i_model_object.html#aa5c969bd8d600f753744fbed8ccd909f',1,'UIModelObject']]]
+  ['current_5fcontrolled_5fobject_33',['current_controlled_object',['../class_u_i_controller.html#ad85b9376c442f057e2cd866254d35f66',1,'UIController']]],
+  ['current_5fcontroller_34',['current_controller',['../class_u_i_controlled_model.html#a7e1d89ff522407ec75e2f95ae38c50ee',1,'UIControlledModel']]]
 ];

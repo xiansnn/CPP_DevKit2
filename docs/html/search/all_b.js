@@ -1,7 +1,7 @@
 var searchData=
 [
   ['handler_0',['handler',['../structstruct___config_slave_i2_c.html#ae2eff28693042d4575cc2c596fec86b4',1,'struct_ConfigSlaveI2C']]],
-  ['has_5fchanged_1',['has_changed',['../class_u_i_model_object.html#ae79a9f2c84215e09309dcefde3711138',1,'UIModelObject']]],
+  ['has_5fchanged_1',['has_changed',['../class_u_i_controlled_model.html#a4c386a1ccc6fabe4ef61389f9fda6fab',1,'UIControlledModel']]],
   ['has_5ffocus_2',['HAS_FOCUS',['../ui__core_8h.html#a57c20ec1ef250b4ad060705786762112ac21f0eab1363c0a1274cd38acea090ac',1,'ui_core.h']]],
   ['hc_5fsr04_3',['HC_SR04',['../class_h_c___s_r04.html',1,'HC_SR04'],['../class_h_c___s_r04.html#a38ef28d37f4390a3bca4a973f98cd8d3',1,'HC_SR04::HC_SR04()']]],
   ['hc_5fsr04_2eh_4',['hc_sr04.h',['../hc__sr04_8h.html',1,'']]],

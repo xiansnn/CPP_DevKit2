@@ -18,9 +18,9 @@
 <area shape="poly" id="edge9_Node000005_Node000006" title=" " alt="" coords="588,114,641,114,641,119,588,119"/>
 <area shape="rect" id="Node000010" href="$class_text_widget.html" title="a dedicated class for text frame only" alt="" coords="482,203,558,227"/>
 <area shape="poly" id="edge12_Node000011_Node000010" title=" " alt="" coords="409,180,483,202,481,207,408,185"/>
-<area shape="rect" id="Node000008" href="$class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="159,203,225,227"/>
+<area shape="rect" id="Node000008" href="$class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="164,203,220,227"/>
 <area shape="poly" id="edge13_Node000008_Node000002" title=" " alt="" coords="221,191,297,139,319,127,322,131,299,144,224,195"/>
-<area shape="poly" id="edge15_Node000008_Node000010" title=" " alt="" coords="241,212,482,212,482,218,241,218"/>
+<area shape="poly" id="edge15_Node000008_Node000010" title=" " alt="" coords="235,212,482,212,482,218,235,218"/>
 <area shape="rect" id="Node000009" href="$class_print_widget.html" title="A widget used when we need to simply print but still want to take advantage of the status change mana..." alt="" coords="310,252,387,277"/>
-<area shape="poly" id="edge14_Node000008_Node000009" title=" " alt="" coords="240,227,310,250,308,255,239,232"/>
+<area shape="poly" id="edge14_Node000008_Node000009" title=" " alt="" coords="235,226,310,250,308,255,233,231"/>
 </map>

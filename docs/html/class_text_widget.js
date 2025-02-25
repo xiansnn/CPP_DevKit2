@@ -1,9 +1,8 @@
 var class_text_widget =
 [
-    [ "TextWidget", "class_text_widget.html#a4d7eccef8d8325c0ede827fe920597e8", null ],
+    [ "TextWidget", "class_text_widget.html#a482de7f75ce5cfa744cbaea5a09d9da3", null ],
     [ "draw", "class_text_widget.html#a34e2f1558ebd76f1dbfb3cbfdf0e7894", null ],
     [ "draw_border", "class_text_widget.html#a8e488a1292f4da21ad368259e9723091", null ],
-    [ "draw_refresh", "class_text_widget.html#a313a775abe2356f34eb788d7fd22bbe0", null ],
     [ "show", "class_text_widget.html#ae1a1d30875b075e0a5920bf054b952c2", null ],
     [ "widget_border_width", "class_text_widget.html#aa114eb7cfb73a91c2e3d5a3bd99f5161", null ],
     [ "widget_height", "class_text_widget.html#ae223e225992a9d78b58e0d61df59c8c7", null ],

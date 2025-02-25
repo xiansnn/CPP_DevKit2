@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['has_5fchanged_0',['has_changed',['../class_u_i_model_object.html#ae79a9f2c84215e09309dcefde3711138',1,'UIModelObject']]],
+  ['has_5fchanged_0',['has_changed',['../class_u_i_controlled_model.html#a4c386a1ccc6fabe4ef61389f9fda6fab',1,'UIControlledModel']]],
   ['hc_5fsr04_1',['HC_SR04',['../class_h_c___s_r04.html#a38ef28d37f4390a3bca4a973f98cd8d3',1,'HC_SR04']]],
   ['hi_2',['hi',['../class_probe.html#a493e1f46f0123ae6a18d7bd6e79d74f1',1,'Probe']]],
   ['hline_3',['hline',['../class_graphic_framebuffer.html#ae777b82b8ee37e7f2a97ed1c2cda94cb',1,'GraphicFramebuffer']]],

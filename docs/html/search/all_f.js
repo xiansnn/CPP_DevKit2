@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['make_5fmanaged_5fobject_5factive_0',['make_managed_object_active',['../class_u_i_object_manager.html#a1bab4cf4e46d7dd6347ae8b8c6fb4d4a',1,'UIObjectManager']]],
-  ['make_5fmanager_5factive_1',['make_manager_active',['../class_u_i_object_manager.html#a6d33e1d2261233004012a004b157ec01',1,'UIObjectManager']]],
-  ['managed_5fmodels_2',['managed_models',['../class_u_i_object_manager.html#ab1d6f0601a5a4fe8e5609661c349a01c',1,'UIObjectManager']]],
+  ['make_5fmanaged_5fmodel_5factive_0',['make_managed_model_active',['../class_u_i_model_manager.html#a167a525bfab97cddeff303c074f7cd75',1,'UIModelManager']]],
+  ['make_5fmanager_5factive_1',['make_manager_active',['../class_u_i_model_manager.html#a124314ea995f923e66c23c1139709c60',1,'UIModelManager']]],
+  ['managed_5fmodels_2',['managed_models',['../class_u_i_model_manager.html#ae583beb457ebe200d56e14f3eb92296b',1,'UIModelManager']]],
   ['managed_5fobject_5finactive_3',['MANAGED_OBJECT_INACTIVE',['../ui__core_8h.html#a1b97aab8f67794aef99a8febbf83360faee1548dc30a1a5d758b67a7ce4c3cc77',1,'ui_core.h']]],
   ['manager_5finactive_4',['MANAGER_INACTIVE',['../ui__core_8h.html#a1b97aab8f67794aef99a8febbf83360faa168377e720c2ee7f0be52df4c287497',1,'ui_core.h']]],
   ['master_5',['master',['../class_m_p_u6050.html#ae8bb82d8f3dcde42c69cb9ad9e94614c',1,'MPU6050']]],
@@ -13,11 +13,12 @@ var searchData=
   ['mem_5faddress_10',['mem_address',['../structstruct___slave_memory.html#a676889062063c62684c4c2bb1f6772ed',1,'struct_SlaveMemory']]],
   ['mem_5faddress_5fwritten_11',['mem_address_written',['../structstruct___slave_memory.html#a7ffdb875b97e9cb9ca8680e72704621f',1,'struct_SlaveMemory']]],
   ['min_5fvalue_12',['min_value',['../class_u_i_controlled_incremental_value.html#ae8b0cdfbfe7f3bc120870d7f9e67fb7a',1,'UIControlledIncrementalValue::min_value'],['../class_model_bargraph.html#ab248b727cd4e7023c6bd29259ca60358',1,'ModelBargraph::min_value'],['../class_widget_horizontal_bar.html#a640d4afcc203d0a32e2139a57e9a1123',1,'WidgetHorizontalBar::min_value']]],
-  ['modelbargraph_13',['ModelBargraph',['../class_model_bargraph.html',1,'ModelBargraph'],['../class_model_bargraph.html#a23c8f050b4210741564b0e5d6130a669',1,'ModelBargraph::ModelBargraph()']]],
-  ['mpu6050_14',['MPU6050',['../class_m_p_u6050.html',1,'MPU6050'],['../class_m_p_u6050.html#a69ff7760846ab8f9b33ab07aa57709cf',1,'MPU6050::MPU6050()']]],
-  ['mpu6050_2eh_15',['mpu6050.h',['../mpu6050_8h.html',1,'']]],
-  ['mpu_5faddr_16',['MPU_ADDR',['../structstruct___config_m_p_u6050.html#acf79176ed664b066365717df749cacd7',1,'struct_ConfigMPU6050']]],
-  ['msgeq7_17',['MSGEQ7',['../class_m_s_g_e_q7.html',1,'MSGEQ7'],['../class_m_s_g_e_q7.html#a5d30e2ac12bbf4927b3154859d6f1ee0',1,'MSGEQ7::MSGEQ7()']]],
-  ['msgeq7_2eh_18',['msgeq7.h',['../msgeq7_8h.html',1,'']]],
-  ['mux_5fratio_5fvalue_19',['mux_ratio_value',['../structstruct___config_s_s_d1306.html#aecebd6411a14e59af2f09302e716bcb9',1,'struct_ConfigSSD1306']]]
+  ['model_13',['Model',['../class_model.html',1,'Model'],['../class_model.html#ae3b375de5f6df4faf74a95d64748e048',1,'Model::Model()']]],
+  ['modelbargraph_14',['ModelBargraph',['../class_model_bargraph.html',1,'ModelBargraph'],['../class_model_bargraph.html#a23c8f050b4210741564b0e5d6130a669',1,'ModelBargraph::ModelBargraph()']]],
+  ['mpu6050_15',['MPU6050',['../class_m_p_u6050.html',1,'MPU6050'],['../class_m_p_u6050.html#a69ff7760846ab8f9b33ab07aa57709cf',1,'MPU6050::MPU6050()']]],
+  ['mpu6050_2eh_16',['mpu6050.h',['../mpu6050_8h.html',1,'']]],
+  ['mpu_5faddr_17',['MPU_ADDR',['../structstruct___config_m_p_u6050.html#acf79176ed664b066365717df749cacd7',1,'struct_ConfigMPU6050']]],
+  ['msgeq7_18',['MSGEQ7',['../class_m_s_g_e_q7.html',1,'MSGEQ7'],['../class_m_s_g_e_q7.html#a5d30e2ac12bbf4927b3154859d6f1ee0',1,'MSGEQ7::MSGEQ7()']]],
+  ['msgeq7_2eh_19',['msgeq7.h',['../msgeq7_8h.html',1,'']]],
+  ['mux_5fratio_5fvalue_20',['mux_ratio_value',['../structstruct___config_s_s_d1306.html#aecebd6411a14e59af2f09302e716bcb9',1,'struct_ConfigSSD1306']]]
 ];

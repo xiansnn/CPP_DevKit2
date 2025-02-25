@@ -20,7 +20,7 @@ var searchData=
   ['slice_5fmask_17',['slice_mask',['../class_p_w_m.html#ac95700cb79b54ce3babf273df156b561',1,'PWM']]],
   ['start_5fcol_18',['start_col',['../structstruct___render_area.html#aaf82ae38396397c4c819495ea98f7bbe',1,'struct_RenderArea']]],
   ['start_5fpage_19',['start_page',['../structstruct___render_area.html#ad3cf4c69b7461c68c5ad187e11362467',1,'struct_RenderArea']]],
-  ['status_20',['status',['../class_u_i_model_object.html#ada5c2db2618a57622735ad94158d71f3',1,'UIModelObject']]],
+  ['status_20',['status',['../class_u_i_controlled_model.html#aab01250b265c175d8fad4ef4ef98011c',1,'UIControlledModel']]],
   ['step_5fns_21',['step_ns',['../class_p_w_m.html#ae52dbe8505d763130fd840ef83d494f8',1,'PWM']]],
   ['strobe_5fgpio_22',['strobe_gpio',['../class_m_s_g_e_q7.html#a1e4bace2eceb5c710e45ccea10aa34d2',1,'MSGEQ7']]],
   ['sync_23',['sync',['../class_s_g90.html#aca147d2515d3e09e800a2c49a6671a3d',1,'SG90']]],

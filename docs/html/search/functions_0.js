@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['add_5fmanaged_5fmodel_0',['add_managed_model',['../class_u_i_object_manager.html#adccc078134b98fe806047c86369f2e1c',1,'UIObjectManager']]],
-  ['add_5fwidget_1',['add_widget',['../class_u_i_widget.html#a77b60ee8bae791e3239fdc6c27472b83',1,'UIWidget']]]
+  ['add_5fmanaged_5fmodel_0',['add_managed_model',['../class_u_i_model_manager.html#a24dec688218673e7d38a5a6cfaa305ad',1,'UIModelManager']]],
+  ['add_5fwidget_1',['add_widget',['../class_widget.html#a6d08d01ec5ea290b39ae26963ae7e460',1,'Widget']]]
 ];

@@ -25,6 +25,14 @@ var hierarchy =
     [ "HC_SR04", "class_h_c___s_r04.html", null ],
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", null ],
     [ "HW_I2C_Slave", "class_h_w___i2_c___slave.html", null ],
+    [ "Model", "class_model.html", [
+      [ "ModelBargraph", "class_model_bargraph.html", null ],
+      [ "UIControlledModel", "class_u_i_controlled_model.html", [
+        [ "UIControlledIncrementalValue", "class_u_i_controlled_incremental_value.html", [
+          [ "UIModelManager", "class_u_i_model_manager.html", null ]
+        ] ]
+      ] ]
+    ] ],
     [ "MPU6050", "class_m_p_u6050.html", null ],
     [ "MSGEQ7", "class_m_s_g_e_q7.html", null ],
     [ "Probe", "class_probe.html", null ],
@@ -56,13 +64,7 @@ var hierarchy =
     [ "UIController", "class_u_i_controller.html", [
       [ "KY040", "class_k_y040.html", null ]
     ] ],
-    [ "UIModelObject", "class_u_i_model_object.html", [
-      [ "ModelBargraph", "class_model_bargraph.html", null ],
-      [ "UIControlledIncrementalValue", "class_u_i_controlled_incremental_value.html", [
-        [ "UIObjectManager", "class_u_i_object_manager.html", null ]
-      ] ]
-    ] ],
-    [ "UIWidget", "class_u_i_widget.html", [
+    [ "Widget", "class_widget.html", [
       [ "GraphicWidget", "class_graphic_widget.html", null ],
       [ "PrintWidget", "class_print_widget.html", null ],
       [ "TextWidget", "class_text_widget.html", null ]

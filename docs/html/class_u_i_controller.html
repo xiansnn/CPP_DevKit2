@@ -114,7 +114,7 @@ Inheritance diagram for UIController:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_u_i_controller__inherit__graph.png" border="0" usemap="#a_u_i_controller_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_u_i_controller_inherit__map" id="a_u_i_controller_inherit__map">
-<area shape="rect" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="81,5,493,104"/>
+<area shape="rect" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="73,5,501,104"/>
 <area shape="rect" href="class_k_y040.html" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt..." alt="" coords="5,152,569,321"/>
 <area shape="poly" title=" " alt="" coords="290,119,290,152,285,152,285,119"/>
 </map>
@@ -124,10 +124,12 @@ Collaboration diagram for UIController:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_u_i_controller__coll__graph.png" border="0" usemap="#a_u_i_controller_coll__map" alt="Collaboration graph"/></div>
 <map name="a_u_i_controller_coll__map" id="a_u_i_controller_coll__map">
-<area shape="rect" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="5,5,417,104"/>
-<area shape="rect" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="50,166,373,507"/>
-<area shape="poly" title=" " alt="" coords="162,105,149,129,143,150,138,149,144,127,158,103"/>
-<area shape="poly" title=" " alt="" coords="246,167,242,128,240,121,245,119,247,128,252,166"/>
+<area shape="rect" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="5,24,433,123"/>
+<area shape="rect" href="class_u_i_controlled_model.html" title="A specialisation of Model that adds User Interface Control features." alt="" coords="182,203,505,507"/>
+<area shape="poly" title=" " alt="" coords="213,123,213,151,218,179,221,187,216,189,213,180,208,151,208,123"/>
+<area shape="poly" title=" " alt="" coords="327,205,312,167,291,136,295,133,316,164,332,203"/>
+<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="458,5,738,141"/>
+<area shape="poly" title=" " alt="" coords="529,154,482,206,478,202,525,150"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -141,22 +143,22 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~UIController</b> ()</td></tr>
 <tr class="memdesc:aaf299e95c332a4d7383693380c945dda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model-View-Controll design...">UIController</a> object. <br /></td></tr>
 <tr class="separator:aaf299e95c332a4d7383693380c945dda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cc0f0b9952528a65b002f1ed86bb0f2" id="r_a2cc0f0b9952528a65b002f1ed86bb0f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cc0f0b9952528a65b002f1ed86bb0f2">update_current_controlled_object</a> (<a class="el" href="class_u_i_model_object.html">UIModelObject</a> *_new_controlled_object)</td></tr>
-<tr class="memdesc:a2cc0f0b9952528a65b002f1ed86bb0f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">if the current controlled object is different from _new_controlled_object, change the current controlled object this new one. By he same time, The controller of the new controlled object is updated.  <br /></td></tr>
-<tr class="separator:a2cc0f0b9952528a65b002f1ed86bb0f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9518d3fe3c15e58cd9b6c66be585a03c" id="r_a9518d3fe3c15e58cd9b6c66be585a03c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9518d3fe3c15e58cd9b6c66be585a03c">update_current_controlled_object</a> (<a class="el" href="class_u_i_controlled_model.html">UIControlledModel</a> *_new_controlled_object)</td></tr>
+<tr class="memdesc:a9518d3fe3c15e58cd9b6c66be585a03c"><td class="mdescLeft">&#160;</td><td class="mdescRight">if the current controlled object is different from _new_controlled_object, change the current controlled object this new one. By he same time, The controller of the new controlled object is updated.  <br /></td></tr>
+<tr class="separator:a9518d3fe3c15e58cd9b6c66be585a03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a3776f935f634072e9c2a4c91aea11433" id="r_a3776f935f634072e9c2a4c91aea11433"><td class="memItemLeft" align="right" valign="top"><a id="a3776f935f634072e9c2a4c91aea11433" name="a3776f935f634072e9c2a4c91aea11433"></a>
-<a class="el" href="class_u_i_model_object.html">UIModelObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>current_controlled_object</b> {nullptr}</td></tr>
-<tr class="memdesc:a3776f935f634072e9c2a4c91aea11433"><td class="mdescLeft">&#160;</td><td class="mdescRight">The reference to the <a class="el" href="class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern.">UIModelObject</a> currently under control. <br /></td></tr>
-<tr class="separator:a3776f935f634072e9c2a4c91aea11433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad85b9376c442f057e2cd866254d35f66" id="r_ad85b9376c442f057e2cd866254d35f66"><td class="memItemLeft" align="right" valign="top"><a id="ad85b9376c442f057e2cd866254d35f66" name="ad85b9376c442f057e2cd866254d35f66"></a>
+<a class="el" href="class_u_i_controlled_model.html">UIControlledModel</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>current_controlled_object</b> {nullptr}</td></tr>
+<tr class="memdesc:ad85b9376c442f057e2cd866254d35f66"><td class="mdescLeft">&#160;</td><td class="mdescRight">The reference to the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> currently under control. <br /></td></tr>
+<tr class="separator:ad85b9376c442f057e2cd866254d35f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model-View-Controll design...">UIController</a> is the abstract class that hosts all controller object in the Model-View-Controll design pattern. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2cc0f0b9952528a65b002f1ed86bb0f2" name="a2cc0f0b9952528a65b002f1ed86bb0f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cc0f0b9952528a65b002f1ed86bb0f2">&#9670;&#160;</a></span>update_current_controlled_object()</h2>
+<a id="a9518d3fe3c15e58cd9b6c66be585a03c" name="a9518d3fe3c15e58cd9b6c66be585a03c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9518d3fe3c15e58cd9b6c66be585a03c">&#9670;&#160;</a></span>update_current_controlled_object()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -164,7 +166,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">void UIController::update_current_controlled_object </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_u_i_model_object.html">UIModelObject</a> *</td>          <td class="paramname"><span class="paramname"><em>_new_controlled_object</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_u_i_controlled_model.html">UIControlledModel</a> *</td>          <td class="paramname"><span class="paramname"><em>_new_controlled_object</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

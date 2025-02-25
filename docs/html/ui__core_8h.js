@@ -1,8 +1,9 @@
 var ui__core_8h =
 [
-    [ "UIModelObject", "class_u_i_model_object.html", "class_u_i_model_object" ],
+    [ "Model", "class_model.html", "class_model" ],
+    [ "UIControlledModel", "class_u_i_controlled_model.html", "class_u_i_controlled_model" ],
     [ "UIControlledIncrementalValue", "class_u_i_controlled_incremental_value.html", "class_u_i_controlled_incremental_value" ],
-    [ "UIObjectManager", "class_u_i_object_manager.html", "class_u_i_object_manager" ],
+    [ "UIModelManager", "class_u_i_model_manager.html", "class_u_i_model_manager" ],
     [ "UIController", "class_u_i_controller.html", "class_u_i_controller" ],
     [ "UI_MODEL_OBJECT_STATUS_TIME_OUT_us", "ui__core_8h.html#a774f72dc3d61be40b9421594b673b2ef", null ],
     [ "ControlledObjectStatus", "ui__core_8h.html#a57c20ec1ef250b4ad060705786762112", [
