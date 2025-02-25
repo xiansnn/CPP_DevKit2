@@ -11,7 +11,7 @@
 
 #include "ui_core.h"
 
-class MyFullScreenText : public UIModelObject
+class MyFullScreenText : public ModelObject
 {
 private:
     /* data */
@@ -21,7 +21,7 @@ public:
     void process_control_event(UIControlEvent _event);
 };
 
-MyFullScreenText::MyFullScreenText(/* args */) : UIModelObject()
+MyFullScreenText::MyFullScreenText(/* args */) : ModelObject()
 {
 }
 

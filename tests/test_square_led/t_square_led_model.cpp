@@ -11,8 +11,8 @@
 #include "ui_core.h"
 #include "ui_control_event.h"
 
-/// @brief MySquareLedModel : Example of final implementation of UIModelObject
-class MySquareLedModel : public UIModelObject
+/// @brief MySquareLedModel : Example of final implementation of ModelObject
+class MySquareLedModel : public ModelObject
 {
 protected:
 public:
@@ -25,7 +25,7 @@ public:
 
 
 MySquareLedModel::MySquareLedModel()
-    : UIModelObject()
+    : ModelObject()
 {
 }
 

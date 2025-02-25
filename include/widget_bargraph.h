@@ -18,10 +18,10 @@
 #include "ui_core.h"
 
 /**
- * @brief the UIModelObject used by Bargraph GraphicWidget
+ * @brief the ModelObject used by Bargraph GraphicWidget
  *
  */
-class ModelBargraph : public UIModelObject  // TODO prevoir ModelObject au lieu de UIModelObject car pas besoin UI
+class ModelBargraph : public ModelObject  // TODO prevoir ModelObject au lieu de ModelObject car pas besoin UI
 {
 private:
 public:
@@ -44,7 +44,7 @@ public:
      */
     ~ModelBargraph();
     /**
-     * @brief the overriding memeber required by UIModelObject.
+     * @brief the overriding memeber required by ModelObject.
      * There is no need of UIControlEvent here, this member just trigs the changere flag in order to trig the refresh of the widget
      *
      * @param event Default to NONE

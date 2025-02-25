@@ -81,9 +81,9 @@ void manager_process_control_event(UIControlEvent event)
     manager.process_control_event(event);
 };
 
-MyHorizontalBarModel my_horizontal_bar_model_1 = MyHorizontalBarModel("HBar1", 0, 10, true, 1);
-MyHorizontalBarModel my_horizontal_bar_model_2 = MyHorizontalBarModel("HBar2", -10, 10, false, 1);
-MyHorizontalBarModel my_horizontal_bar_model_3 = MyHorizontalBarModel("HBar3", -20, 3, false, 1);
+MyControlledHorizontalBarModel my_horizontal_bar_model_1 = MyControlledHorizontalBarModel("HBar1", 0, 10, true, 1);
+MyControlledHorizontalBarModel my_horizontal_bar_model_2 = MyControlledHorizontalBarModel("HBar2", -10, 10, false, 1);
+MyControlledHorizontalBarModel my_horizontal_bar_model_3 = MyControlledHorizontalBarModel("HBar3", -20, 3, false, 1);
 
 HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
 

@@ -11,7 +11,7 @@
 
 #include "widget_focus_indicator.h"
 
-WidgetFocusIndicator::WidgetFocusIndicator(UIModelObject *actual_displayed_model,
+WidgetFocusIndicator::WidgetFocusIndicator(ModelObject *actual_displayed_model,
                                            GraphicDisplayDevice *display_screen,
                                            struct_ConfigGraphicFramebuffer graph_cfg,
                                            uint8_t widget_anchor_x, uint8_t widget_anchor_y, bool with_border)

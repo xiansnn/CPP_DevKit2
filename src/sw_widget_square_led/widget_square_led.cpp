@@ -1,6 +1,6 @@
 #include "widget_square_led.h"
 
-WidgetSquareLed::WidgetSquareLed(UIModelObject *actual_displayed_model,
+WidgetSquareLed::WidgetSquareLed(ModelObject *actual_displayed_model,
                                  GraphicDisplayDevice *display_screen,
                                  struct_ConfigGraphicFramebuffer graph_cfg,
                                  uint8_t widget_anchor_x,

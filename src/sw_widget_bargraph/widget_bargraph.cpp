@@ -76,8 +76,6 @@ WidgetHorizontalBargraph::WidgetHorizontalBargraph(ModelBargraph *bargraph_model
     this->bar_width = px_max - px_min;
     this->level_coef = (float)(px_max - px_min) / (max_value - min_value);
     this->level_offset = px_max - level_coef * max_value;
-
-    this->actual_displayed_model->set_change_flag();
 }
 
 WidgetHorizontalBargraph::~WidgetHorizontalBargraph()
@@ -85,7 +83,7 @@ WidgetHorizontalBargraph::~WidgetHorizontalBargraph()
 }
 
 ModelBargraph::ModelBargraph(size_t number_of_bar, int min_value, int max_value)
-    : UIModelObject()
+    : ModelObject()
 {
     this->max_value = max_value;
     this->min_value = min_value;
@@ -100,7 +98,6 @@ ModelBargraph::~ModelBargraph()
 
 void ModelBargraph::process_control_event(UIControlEvent event)
 {
-    this->set_change_flag();
 }
 
 uint8_t WidgetVerticalBargraph::convert_level_value_to_py(int level)
@@ -173,16 +170,3 @@ WidgetVerticalBargraph::WidgetVerticalBargraph(ModelBargraph *bargraph_model,
 WidgetVerticalBargraph::~WidgetVerticalBargraph()
 {
 }
-
-// void WidgetVerticalBargraph::draw_refresh()
-// {
-//     assert(this->actual_displayed_model != nullptr);
-
-//     if (this->actual_displayed_model->has_changed())
-//     {
-//         this->draw();
-//         this->draw_border();
-//         this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
-//     }
-//     this->actual_displayed_model->clear_change_flag();
-// }

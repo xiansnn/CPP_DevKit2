@@ -17,19 +17,19 @@ void GraphicWidget::draw_border(PixelColor color)
         rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width, false, color);
 }
 
-void GraphicWidget::draw_refresh()
-{
-    if ((actual_displayed_model != nullptr) and (this->actual_displayed_model->has_changed()))
-    {
-        draw();
-        this->actual_displayed_model->clear_change_flag();
-    }
-    if (widgets.size() != 0)
-    {
-        for (auto &&w : widgets)
-            w->draw_refresh();
-    }
-}
+// void GraphicWidget::draw_refresh()
+// {
+//     if ((actual_displayed_model != nullptr) and (this->actual_displayed_model->has_changed()))
+//     {
+//         draw();
+//         this->actual_displayed_model->clear_change_flag();
+//     }
+//     if (widgets.size() != 0)
+//     {
+//         for (auto &&w : widgets)
+//             w->draw_refresh();
+//     }
+// }
 
 void GraphicWidget::show()
 {
@@ -37,7 +37,7 @@ void GraphicWidget::show()
 }
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
-                             UIModelObject *displayed_object,
+                             ModelObject *displayed_object,
                              struct_ConfigGraphicFramebuffer graph_cfg,
                              uint8_t widget_anchor_x,
                              uint8_t widget_anchor_y,
@@ -60,7 +60,7 @@ GraphicWidget::~GraphicWidget()
 {
 }
 
-PrintWidget::PrintWidget(PrinterDevice *display_device, UIModelObject *actual_displayed_model)
+PrintWidget::PrintWidget(PrinterDevice *display_device, ModelObject *actual_displayed_model)
     : UIWidget(actual_displayed_model, 0, 0)
 {
     this->display_device = display_device;
@@ -70,20 +70,20 @@ PrintWidget::~PrintWidget()
 {
 }
 
-void PrintWidget::draw_refresh()
-{
-    if ((actual_displayed_model != nullptr) and (actual_displayed_model->has_changed()))
-    {
-        draw();
-        this->actual_displayed_model->clear_change_flag();
-    }
+// void PrintWidget::draw_refresh()
+// {
+//     if ((actual_displayed_model != nullptr) and (actual_displayed_model->has_changed()))
+//     {
+//         draw();
+//         this->actual_displayed_model->clear_change_flag();
+//     }
 
-    if (widgets.size() != 0)
-    {
-        for (auto &&w : widgets)
-            w->draw_refresh();
-    }
-}
+//     if (widgets.size() != 0)
+//     {
+//         for (auto &&w : widgets)
+//             w->draw_refresh();
+//     }
+// }
 
 void PrintWidget::draw_border(PixelColor color)
 {
@@ -91,7 +91,7 @@ void PrintWidget::draw_border(PixelColor color)
 
 TextWidget::TextWidget(GraphicDisplayDevice *device,
                        struct_ConfigTextFramebuffer text_cfg,
-                       UIModelObject *displayed_model,
+                       ModelObject *displayed_model,
                        uint8_t widget_anchor_x,
                        uint8_t widget_anchor_y,
                        bool widget_with_border)
@@ -117,20 +117,20 @@ void TextWidget::show()
     this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
 }
 
-void TextWidget::draw_refresh()
-{
-    if ((actual_displayed_model != nullptr) and (actual_displayed_model->has_changed()))
-    {
-        draw();
-        this->actual_displayed_model->clear_change_flag();
-    }
+// void TextWidget::draw_refresh()
+// {
+//     if ((actual_displayed_model != nullptr) and (actual_displayed_model->has_changed()))
+//     {
+//         draw();
+//         this->actual_displayed_model->clear_change_flag();
+//     }
 
-    if (widgets.size() != 0)
-    {
-        for (auto &&w : widgets)
-            w->draw_refresh();
-    }
-}
+//     if (widgets.size() != 0)
+//     {
+//         for (auto &&w : widgets)
+//             w->draw_refresh();
+//     }
+// }
 
 void TextWidget::draw()
 {
@@ -153,7 +153,7 @@ bool UIWidget::blinking_phase_has_changed()
     return phase_has_changed;
 }
 
-UIWidget::UIWidget(UIModelObject *actual_displayed_model,
+UIWidget::UIWidget(ModelObject *actual_displayed_model,
                    uint8_t widget_anchor_x, uint8_t widget_anchor_y)
 {
     if (actual_displayed_model != nullptr)

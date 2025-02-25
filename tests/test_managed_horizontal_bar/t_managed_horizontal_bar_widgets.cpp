@@ -25,10 +25,10 @@ class MyHorizontalBarWidgetWithFocus : public GraphicWidget
 private:
     WidgetHorizontalBar *h_bar_widget;
     WidgetFocusIndicator *focus_widget;
-    MyHorizontalBarModel *bar_value_model;
+    MyControlledHorizontalBarModel *bar_value_model;
 
 public:
-    MyHorizontalBarWidgetWithFocus(MyHorizontalBarModel *bar_value_model,
+    MyHorizontalBarWidgetWithFocus(MyControlledHorizontalBarModel *bar_value_model,
                                    GraphicDisplayDevice *graphic_display_screen,
                                    int max_value, int min_value,
                                    struct_ConfigGraphicFramebuffer graph_cfg,
@@ -38,7 +38,7 @@ public:
     void blink_refresh();
 };
 
-MyHorizontalBarWidgetWithFocus::MyHorizontalBarWidgetWithFocus(MyHorizontalBarModel *bar_value_model,
+MyHorizontalBarWidgetWithFocus::MyHorizontalBarWidgetWithFocus(MyControlledHorizontalBarModel *bar_value_model,
                                                                GraphicDisplayDevice *graphic_display_screen,
                                                                int max_value, int min_value,
                                                                struct_ConfigGraphicFramebuffer graph_cfg,

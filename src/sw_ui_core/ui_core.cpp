@@ -1,76 +1,31 @@
 #include "ui_core.h"
 
-UIModelObject::UIModelObject()
+ModelObject::ModelObject()
 {
-    set_change_flag();
 }
 
-UIModelObject::~UIModelObject()
+ModelObject::~ModelObject()
 {
-    delete current_controller;
 }
 
-bool UIModelObject::has_changed()
-{
-    return this->change_flag;
-}
-
-void UIModelObject::clear_change_flag()
-{
-    this->change_flag -= 1;
-}
-
-void UIModelObject::update_attached_widgets(UIWidget *new_widget)
+void ModelObject::update_attached_widgets(UIWidget *new_widget)
 {
     this->attached_widgets.insert(new_widget);
 }
 
-int UIModelObject::get_number_of_attached_widget()
+int ModelObject::get_number_of_attached_widget()
 {
     return this->attached_widgets.size();
 }
 
-uint32_t UIModelObject::get_time_since_last_change()
+void ModelObject::draw_refresh()
 {
-    return time_us_32() - last_change_time;
-}
-
-void UIModelObject::update_current_controller(UIController *_new_controller)
-{
-    if (this->current_controller != _new_controller) // to avoid deadlock with recursive callback
-    {
-        this->current_controller = _new_controller;
-        this->current_controller->update_current_controlled_object(this);
-    }
-}
-
-void UIModelObject::update_status(ControlledObjectStatus _new_status)
-{
-    if (this->status != _new_status)
-    {
-        this->status = _new_status;
-        set_change_flag();
-    }
-}
-
-ControlledObjectStatus UIModelObject::get_status()
-{
-    return this->status;
-}
-
-UIController *UIModelObject::get_current_controller()
-{
-    return this->current_controller;
-}
-
-void UIModelObject::set_change_flag()
-{
-    last_change_time = time_us_32();
-    this->change_flag = this->attached_widgets.size();
+    for (auto &&widget : attached_widgets)
+        widget->draw();
 }
 
 UIControlledIncrementalValue::UIControlledIncrementalValue(int _min_value, int _max_value, bool _is_wrappable, int _increment)
-    : UIModelObject()
+    : UIControlledModel()
 {
     this->value = 0;
     this->min_value = _min_value;
@@ -138,7 +93,7 @@ UIObjectManager::~UIObjectManager()
     delete current_active_model;
 }
 
-void UIObjectManager::add_managed_model(UIModelObject *_new_model)
+void UIObjectManager::add_managed_model(UIControlledModel *_new_model)
 {
     this->managed_models.push_back(_new_model);
     this->max_value = managed_models.size() - 1;
@@ -205,14 +160,83 @@ UIController::UIController()
 
 UIController::~UIController()
 {
-    delete current_controlled_object;
 }
 
-void UIController::update_current_controlled_object(UIModelObject *_new_controlled_object)
+void UIController::update_current_controlled_object(UIControlledModel *_new_controlled_object)
 {
     if (this->current_controlled_object != _new_controlled_object)
     {
         this->current_controlled_object = _new_controlled_object;
         this->current_controlled_object->update_current_controller(this);
     }
+}
+
+UIControlledModel::UIControlledModel()
+{
+    set_change_flag();
+}
+
+UIControlledModel::~UIControlledModel()
+{
+}
+
+void UIControlledModel::update_status(ControlledObjectStatus _new_status)
+{
+    if (this->status != _new_status)
+    {
+        this->status = _new_status;
+        set_change_flag();
+    }
+}
+
+void UIControlledModel::update_current_controller(UIController *_new_controller)
+{
+    if (this->current_controller != _new_controller) // to avoid deadlock with recursive callback
+    {
+        this->current_controller = _new_controller;
+        this->current_controller->update_current_controlled_object(this);
+    }
+}
+
+ControlledObjectStatus UIControlledModel::get_status()
+{
+    return this->status;
+}
+
+UIController *UIControlledModel::get_current_controller()
+{
+    return this->current_controller;
+}
+
+bool UIControlledModel::has_changed()
+{
+    return this->change_flag;
+}
+
+void UIControlledModel::set_change_flag()
+{
+    last_change_time = time_us_32();
+    this->change_flag = true;
+}
+
+void UIControlledModel::clear_change_flag()
+{
+    this->change_flag = false;
+}
+
+uint32_t UIControlledModel::get_time_since_last_change()
+{
+    return time_us_32() - last_change_time;
+}
+
+void UIControlledModel::draw_refresh()
+{
+    if (has_changed())
+    {
+        for (auto &&widget : attached_widgets)
+        {
+            widget->draw();
+        }
+    }
+    clear_change_flag();
 }

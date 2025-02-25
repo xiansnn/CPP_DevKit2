@@ -34,7 +34,7 @@ public:
      * @param widget_anchor_y the y-location where is the widget ont hte display device
      * @param with_border true, if the widget has a border (usually, it's prettier not to have)
      */
-     WidgetFocusIndicator(UIModelObject *actual_displayed_model,
+     WidgetFocusIndicator(ModelObject *actual_displayed_model,
                      GraphicDisplayDevice *graphic_display_screen,
                      struct_ConfigGraphicFramebuffer graph_cfg,
                      uint8_t widget_anchor_x,

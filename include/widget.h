@@ -16,7 +16,7 @@
 #include "ui_core.h"
 #include <vector>
 
-class UIModelObject;
+class ModelObject;
 
 /**
  * @brief A widget is a displayed object on a device screen. It inherits from all framebuffer features, giving it textual and graphical capabilities.
@@ -30,7 +30,7 @@ class UIModelObject;
  * This is why the widget height and the widget_anchor_y must be multiple of 8. Doing so the widget buffer bytes do not ovewrite pixel outside the widget border.
  *
  * IMPORTANT NOTICE 2: The final widget implementation must know what actual model object it displays. This final implementation must have a member (can be private)
- * e.g. [final_type] * actual_displayed_model; of the actual [final_type] implementation of UIModelObject. This can be initialised by the constructor.
+ * e.g. [final_type] * actual_displayed_model; of the actual [final_type] implementation of ModelObject. This can be initialised by the constructor.
  *
  *
  */
@@ -41,29 +41,31 @@ private:
     int8_t previous_blinking_phase;
 
 protected:
-    /// @brief a pointer to the UIModelObject actually displayed by the widget
-    UIModelObject *actual_displayed_model = nullptr;
-    
+    /// @brief a pointer to the ModelObject actually displayed by the widget
+    ModelObject *actual_displayed_model = nullptr;
+
     /// @brief ask if the blinking phase has changed
     /// \return true if phase has changed
     bool blinking_phase_has_changed();
-
+    
     /// @brief The period of the blinking, in microseconds
     uint32_t blink_period_us;
-
+    
     /// @brief A widget can be composed by several widget.
     std::vector<UIWidget *> widgets;
+    
+    virtual void get_value_of_interest() = 0;
 
 public:
     /**
      * @brief Construct a new UIWidget object
      *
-     * @param actual_displayed_model a pointer to the UIModelObject actually displayed by the widget.
+     * @param actual_displayed_model a pointer to the ModelObject actually displayed by the widget.
      * Can be a nullptr if the widget doesn't need a Model (e.g. a pure cosmetic widget)
      * @param widget_anchor_x location in x of the widget within the hosting framebuffer
      * @param widget_anchor_y location in y of the widget within the hosting framebuffer
      */
-    UIWidget(UIModelObject *actual_displayed_model, uint8_t widget_anchor_x, uint8_t widget_anchor_y);
+    UIWidget(ModelObject *actual_displayed_model, uint8_t widget_anchor_x, uint8_t widget_anchor_y);
     ~UIWidget();
 
     /// @brief location in x of the widget within the hosting framebuffer
@@ -85,31 +87,11 @@ public:
      */
     void add_widget(UIWidget *_sub_widget);
 
-    /**
-     * @brief (re)draw the graphical elements of the widget.
-     *
-     * To save running time, we can (re)draw the widget only if the associated UIModelObject has_changed.
-     *
-     * Guidance to implement this function:
-     *
-     * - First: Scan all contained sub-widgets if any and call draw_refresh() member function of each of them.
-     *
-     * - then: update widget status according to the values of interest in the UIModelObject
-     *
-     * - refresh blinking if needed
-     *
-     * - Then: check if any changes in the model require a screen redraw
-     *
-     * - if redraw() required , execute the effective widget drawing including border if required (can be a private member function)
-     * - and finally : clear model change flag
-     */
-    virtual void draw_refresh() = 0;
-
     /// @brief a pure virtual member that is called by draw_refresh method
     virtual void draw() = 0;
 
     /// @brief draw a rectangle around the widget.
-    /// IMPORTANT NOTICE: as the border is a rectangle with fill=false, the border width can only be 1 pixel.
+    ///  \note As the border is a rectangle with fill=false, the border width can only be 1 pixel.
     /// @param color the color of the border
     virtual void draw_border(PixelColor color = PixelColor::WHITE) = 0;
 };
@@ -149,8 +131,6 @@ protected:
 public:
     virtual void draw_border(PixelColor color = PixelColor::WHITE);
 
-    virtual void draw_refresh();
-
     /**
      * @brief A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y)
      *
@@ -168,7 +148,7 @@ public:
      * \image html widget.png
      */
     GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
-                  UIModelObject *displayed_object,
+                  ModelObject *displayed_object,
                   struct_ConfigGraphicFramebuffer graph_cfg,
                   uint8_t widget_anchor_x,
                   uint8_t widget_anchor_y,
@@ -181,8 +161,6 @@ public:
 
 /**
  * @brief a dedicated class for text frame only
- *
- * \todo simplication expected. check usefulness of members
  *
  */
 class TextWidget : public UIWidget, public TextFramebuffer
@@ -213,7 +191,6 @@ protected:
     /// @brief this is the border size of the widget. 0 if no border, 1 if border
     uint8_t widget_border_width;
 
-    /* data */
 public:
     /**
      * @brief Construct a new Text Widget object
@@ -227,7 +204,7 @@ public:
      */
     TextWidget(GraphicDisplayDevice *device,
                struct_ConfigTextFramebuffer text_cfg,
-               UIModelObject *displayed_model,
+               ModelObject *displayed_model,
                uint8_t widget_anchor_x,
                uint8_t widget_anchor_y,
                bool widget_with_border);
@@ -239,7 +216,6 @@ public:
      */
     void show();
 
-    virtual void draw_refresh();
     /**
      * @brief we need draw() to be compliant with the pure virtual draw() inherited from UIWidget.
      *The draw() member call the show() member automatically.
@@ -276,29 +252,9 @@ public:
      * @param display_device the pointer to the printer display device
      * @param actual_displayed_model the pointer to the displayed model
      */
-    PrintWidget(PrinterDevice *display_device, UIModelObject *actual_displayed_model);
+    PrintWidget(PrinterDevice *display_device, ModelObject *actual_displayed_model);
     ~PrintWidget();
 
-    /**
-     * @brief (re)draw the graphical elements of the widget.
-     *
-     * To save running time, we can (re)draw the widget only if the associated UIModelObject has_changed.
-     *
-     * Guidance to implement this function:
-     *
-     * - First: Scan all contained sub-widgets if any and call draw_refresh() member function of each of them.
-     *
-     * - then: update widget status according to the values of interest in the UIModelObject
-     *
-     * - refresh blinking if needed
-     *
-     * - Then: check if any changes in the model require a screen redraw
-     *
-     * - if redraw() required , execute the effective widget drawing including border if required (can be a private member function)
-     * - and finally : clear model change flag if needed.
-     *
-     */
-    virtual void draw_refresh();
 
     void draw_border(PixelColor color);
 

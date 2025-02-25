@@ -16,9 +16,9 @@
 // #define PRINT_DEBUG
 
 /**
- * @brief MyManagedSquareLedModel : Example of final implementation of UIModelObject
+ * @brief MyManagedSquareLedModel : Example of final implementation of ModelObject
  */
-class MyManagedSquareLedModel : public UIModelObject
+class MyManagedSquareLedModel : public ModelObject
 {
 protected:
 public:
@@ -33,7 +33,7 @@ public:
     void process_control_event(UIControlEvent _event);
 };
 MyManagedSquareLedModel::MyManagedSquareLedModel(std::string _name)
-    : UIModelObject()
+    : ModelObject()
 {
     this->name = _name;
 }
