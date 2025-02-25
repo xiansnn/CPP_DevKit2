@@ -16,7 +16,7 @@
 #include "ui_core.h"
 #include <vector>
 
-class ModelObject;
+class Model;
 
 /**
  * @brief A widget is a displayed object on a device screen. It inherits from all framebuffer features, giving it textual and graphical capabilities.
@@ -30,19 +30,19 @@ class ModelObject;
  * This is why the widget height and the widget_anchor_y must be multiple of 8. Doing so the widget buffer bytes do not ovewrite pixel outside the widget border.
  *
  * IMPORTANT NOTICE 2: The final widget implementation must know what actual model object it displays. This final implementation must have a member (can be private)
- * e.g. [final_type] * actual_displayed_model; of the actual [final_type] implementation of ModelObject. This can be initialised by the constructor.
+ * e.g. [final_type] * actual_displayed_model; of the actual [final_type] implementation of Model. This can be initialised by the constructor.
  *
  *
  */
-class UIWidget
+class Widget
 {
 private:
     /// @brief store the value of the previous blinking phase.should be 0 or 1.
     int8_t previous_blinking_phase;
 
 protected:
-    /// @brief a pointer to the ModelObject actually displayed by the widget
-    ModelObject *actual_displayed_model = nullptr;
+    /// @brief a pointer to the Model actually displayed by the widget
+    Model *actual_displayed_model = nullptr;
 
     /// @brief ask if the blinking phase has changed
     /// \return true if phase has changed
@@ -52,21 +52,21 @@ protected:
     uint32_t blink_period_us;
     
     /// @brief A widget can be composed by several widget.
-    std::vector<UIWidget *> widgets;
+    std::vector<Widget *> widgets;
     
     virtual void get_value_of_interest() = 0;
 
 public:
     /**
-     * @brief Construct a new UIWidget object
+     * @brief Construct a new Widget object
      *
-     * @param actual_displayed_model a pointer to the ModelObject actually displayed by the widget.
+     * @param actual_displayed_model a pointer to the Model actually displayed by the widget.
      * Can be a nullptr if the widget doesn't need a Model (e.g. a pure cosmetic widget)
      * @param widget_anchor_x location in x of the widget within the hosting framebuffer
      * @param widget_anchor_y location in y of the widget within the hosting framebuffer
      */
-    UIWidget(ModelObject *actual_displayed_model, uint8_t widget_anchor_x, uint8_t widget_anchor_y);
-    ~UIWidget();
+    Widget(Model *actual_displayed_model, uint8_t widget_anchor_x, uint8_t widget_anchor_y);
+    ~Widget();
 
     /// @brief location in x of the widget within the hosting framebuffer
     uint8_t widget_anchor_x;
@@ -85,7 +85,7 @@ public:
      *
      * @param _sub_widget
      */
-    void add_widget(UIWidget *_sub_widget);
+    void add_widget(Widget *_sub_widget);
 
     /// @brief a pure virtual member that is called by draw_refresh method
     virtual void draw() = 0;
@@ -100,7 +100,7 @@ public:
  * @brief the widget dedicated to graphics
  *
  */
-class GraphicWidget : public UIWidget, public GraphicFramebuffer
+class GraphicWidget : public Widget, public GraphicFramebuffer
 {
 private:
 protected:
@@ -148,13 +148,13 @@ public:
      * \image html widget.png
      */
     GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
-                  ModelObject *displayed_object,
+                  Model *displayed_object,
                   struct_ConfigGraphicFramebuffer graph_cfg,
                   uint8_t widget_anchor_x,
                   uint8_t widget_anchor_y,
                   bool widget_with_border);
     /**
-     * @brief Destroy the UIWidget object
+     * @brief Destroy the Widget object
      */
     ~GraphicWidget();
 };
@@ -163,7 +163,7 @@ public:
  * @brief a dedicated class for text frame only
  *
  */
-class TextWidget : public UIWidget, public TextFramebuffer
+class TextWidget : public Widget, public TextFramebuffer
 {
 private:
 protected:
@@ -204,7 +204,7 @@ public:
      */
     TextWidget(GraphicDisplayDevice *device,
                struct_ConfigTextFramebuffer text_cfg,
-               ModelObject *displayed_model,
+               Model *displayed_model,
                uint8_t widget_anchor_x,
                uint8_t widget_anchor_y,
                bool widget_with_border);
@@ -217,7 +217,7 @@ public:
     void show();
 
     /**
-     * @brief we need draw() to be compliant with the pure virtual draw() inherited from UIWidget.
+     * @brief we need draw() to be compliant with the pure virtual draw() inherited from Widget.
      *The draw() member call the show() member automatically.
      * Useful when we mix graphic and text widget in a UI environment.
      * Otherwise, we can use directly the TextFramebuffer::write(), but in this case we have to call draw_border(), then show() member.
@@ -238,7 +238,7 @@ public:
  * @brief  A widget used when we need to simply print but still want to take advantage of the status change management.
  *
  */
-class PrintWidget : public UIWidget
+class PrintWidget : public Widget
 {
 private:
 protected:
@@ -252,7 +252,7 @@ public:
      * @param display_device the pointer to the printer display device
      * @param actual_displayed_model the pointer to the displayed model
      */
-    PrintWidget(PrinterDevice *display_device, ModelObject *actual_displayed_model);
+    PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model);
     ~PrintWidget();
 
 

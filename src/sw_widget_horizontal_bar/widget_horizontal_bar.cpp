@@ -43,7 +43,7 @@ void WidgetHorizontalBar::draw()
     show();
 }
 
-WidgetHorizontalBar::WidgetHorizontalBar(ModelObject *bar_value_model,
+WidgetHorizontalBar::WidgetHorizontalBar(Model *bar_value_model,
                                          GraphicDisplayDevice *display_screen,
                                          int max_value, int min_value,
                                          struct_ConfigGraphicFramebuffer graph_cfg,

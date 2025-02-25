@@ -21,11 +21,11 @@
 #include <string>
 #include <set>
 
-/// @brief the time out used by the UIObjectManager that indicates there is no more UI_ModelObject Status change.
+/// @brief the time out used by the UIModelManager that indicates there is no more UI_ModelObject Status change.
 #define UI_MODEL_OBJECT_STATUS_TIME_OUT_us 3000000
 
 /**
- * @brief The list of status that a ModelObject can have.
+ * @brief The list of status that a Model can have.
  * (0) IS_WAITING
  * (1) HAS_FOCUS
  * (2) IS_ACTIVE
@@ -59,7 +59,7 @@ enum class ControlledObjectStatusTimeOutReason
 };
 
 class UIController;
-class UIWidget;
+class Widget;
 
 
 /**
@@ -71,27 +71,27 @@ class UIWidget;
  * and the widget in charge of its screen representation must clear the change_flag
  *
  */
-class ModelObject
+class Model
 {
 private:
 protected:
     /// @brief the set of widgets that are in charge of viewing this model.
     /// Used to cont the of widget that need to be refresched
-    std::set<UIWidget *> attached_widgets;
+    std::set<Widget *> attached_widgets;
 
 public:
-    /// @brief Construct the ModelObject object
-    ModelObject(/* args */);
+    /// @brief Construct the Model object
+    Model(/* args */);
 
-    /// @brief Destroy the ModelObject object
-    ~ModelObject();
+    /// @brief Destroy the Model object
+    ~Model();
 
     /**
      * @brief add a new widget to the set of attached_widgets
      *
      * @param new_widget
      */
-    void update_attached_widgets(UIWidget *new_widget);
+    void update_attached_widgets(Widget *new_widget);
 
     /// @brief get the number of attached widgets
     /// @return
@@ -104,7 +104,7 @@ public:
 
 };
 
-class UIControlledModel : public ModelObject
+class UIControlledModel : public Model
 {
 private:
     /// @brief The status of the model, indicating if it is waiting, active or just ahs focus (pointed by the object manager)
@@ -129,7 +129,7 @@ public:
      */
     void update_status(ControlledObjectStatus _new_status);
     /**
-     * @brief if _new_controller is different from the current controller, change the current controller associated to the ModelObject.
+     * @brief if _new_controller is different from the current controller, change the current controller associated to the Model.
      * the new controller has is member current_controlled_object also changed.
      * @param _new_controller
      */
@@ -171,13 +171,13 @@ public:
         /**
      * @brief (re)draw the graphical elements of the widget.
      *
-     * To save running time, we can (re)draw the widget only if the associated ModelObject has_changed.
+     * To save running time, we can (re)draw the widget only if the associated Model has_changed.
      *
      * Guidance to implement this function:
      *
      * - First: Scan all contained sub-widgets if any and call draw_refresh() member function of each of them.
      *
-     * - then: update widget status according to the values of interest in the ModelObject
+     * - then: update widget status according to the values of interest in the Model
      *
      * - refresh blinking if needed
      *
@@ -200,7 +200,7 @@ public:
 
 
 /**
- * @brief The UIControlledIncrementalValue is a kind of ModelObject that have special feature such as a value that can be incremented or decremented.
+ * @brief The UIControlledIncrementalValue is a kind of Model that have special feature such as a value that can be incremented or decremented.
  * This value runs between a min_value and a max_value.
  *
  * The increment value is configurable. A is_wrappable flag indicates how the value behaves once min or max values are reached.
@@ -277,14 +277,14 @@ public:
 /**
  * @brief This is an Abstract class that is used to implement the manager of object on a screen.
  *
- * An UIObjectManager is built from :
+ * An UIModelManager is built from :
  *
- * - ModelObject : It inherits of the status and is controlled by a UIController.
+ * - Model : It inherits of the status and is controlled by a UIController.
  *
- * - UIControlledIncrementalValue : It is associated with a value that represents the current managed ModelObject under focus or active.
+ * - UIControlledIncrementalValue : It is associated with a value that represents the current managed Model under focus or active.
  *
  */
-class UIObjectManager : public UIControlledIncrementalValue
+class UIModelManager : public UIControlledIncrementalValue
 {
 protected:
     /**
@@ -312,7 +312,7 @@ protected:
      * @brief change the status of model object under focus to IS_ACTIVE
      *
      */
-    void make_managed_object_active();
+    void make_managed_model_active();
     /**
      * @brief leave the current managed object and return control to the manager
      *
@@ -331,18 +331,18 @@ protected:
 
 public:
     /**
-     * @brief Construct a new UIObjectManager object
+     * @brief Construct a new UIModelManager object
      *
      * @param is_wrappable if true, the scan over managed object wrap.
      */
-    UIObjectManager(bool is_wrappable = false);
+    UIModelManager(bool is_wrappable = false);
     /**
-     * @brief Destroy the UIObjectManager object
+     * @brief Destroy the UIModelManager object
      *
      */
-    ~UIObjectManager();
+    ~UIModelManager();
     /**
-     * @brief add a new ModelObject to the list of managed objects.
+     * @brief add a new Model to the list of managed objects.
      *
      * @param _new_model
      */
@@ -357,7 +357,7 @@ class UIController
 protected:
 public:
     /**
-     * @brief The reference to the ModelObject currently under control.
+     * @brief The reference to the Model currently under control.
      */
     UIControlledModel *current_controlled_object{nullptr};
     /**

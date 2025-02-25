@@ -37,13 +37,13 @@ void GraphicWidget::show()
 }
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
-                             ModelObject *displayed_object,
+                             Model *displayed_object,
                              struct_ConfigGraphicFramebuffer graph_cfg,
                              uint8_t widget_anchor_x,
                              uint8_t widget_anchor_y,
                              bool widget_with_border)
     : GraphicFramebuffer(display_screen, graph_cfg),
-      UIWidget(displayed_object, widget_anchor_x, widget_anchor_y)
+      Widget(displayed_object, widget_anchor_x, widget_anchor_y)
 {
     display_screen->check_display_device_compatibility(graph_cfg, widget_anchor_x, widget_anchor_y);
 
@@ -60,8 +60,8 @@ GraphicWidget::~GraphicWidget()
 {
 }
 
-PrintWidget::PrintWidget(PrinterDevice *display_device, ModelObject *actual_displayed_model)
-    : UIWidget(actual_displayed_model, 0, 0)
+PrintWidget::PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model)
+    : Widget(actual_displayed_model, 0, 0)
 {
     this->display_device = display_device;
 }
@@ -91,12 +91,12 @@ void PrintWidget::draw_border(PixelColor color)
 
 TextWidget::TextWidget(GraphicDisplayDevice *device,
                        struct_ConfigTextFramebuffer text_cfg,
-                       ModelObject *displayed_model,
+                       Model *displayed_model,
                        uint8_t widget_anchor_x,
                        uint8_t widget_anchor_y,
                        bool widget_with_border)
     : TextFramebuffer(device, text_cfg),
-      UIWidget(displayed_model, widget_anchor_x, widget_anchor_y)
+      Widget(displayed_model, widget_anchor_x, widget_anchor_y)
 {
     this->widget_with_border = widget_with_border;
 
@@ -145,7 +145,7 @@ void TextWidget::draw_border(PixelColor color)
         rect(0, 0, pixel_frame.frame_width, pixel_frame.frame_height, false, color);
 }
 
-bool UIWidget::blinking_phase_has_changed()
+bool Widget::blinking_phase_has_changed()
 {
     int8_t current_blinking_phase = (time_us_32() / (this->blink_period_us / 2)) % 2;
     bool phase_has_changed = (previous_blinking_phase != current_blinking_phase);
@@ -153,7 +153,7 @@ bool UIWidget::blinking_phase_has_changed()
     return phase_has_changed;
 }
 
-UIWidget::UIWidget(ModelObject *actual_displayed_model,
+Widget::Widget(Model *actual_displayed_model,
                    uint8_t widget_anchor_x, uint8_t widget_anchor_y)
 {
     if (actual_displayed_model != nullptr)
@@ -166,16 +166,16 @@ UIWidget::UIWidget(ModelObject *actual_displayed_model,
     this->widget_anchor_y = widget_anchor_y;
 }
 
-UIWidget::~UIWidget()
+Widget::~Widget()
 {
 }
 
-void UIWidget::set_blink_us(uint32_t new_blink_period)
+void Widget::set_blink_us(uint32_t new_blink_period)
 {
     this->blink_period_us = new_blink_period;
 }
 
-void UIWidget::add_widget(UIWidget *_sub_widget)
+void Widget::add_widget(Widget *_sub_widget)
 {
     this->widgets.push_back(_sub_widget);
 }

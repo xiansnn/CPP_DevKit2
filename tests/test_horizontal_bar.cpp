@@ -36,7 +36,7 @@ struct_ConfigSSD1306 cfg_ssd1306{
     .frequency_divider = 1,
     .frequency_factor = 0};
 
-class MySimpleHorizontalBarModel : public ModelObject
+class MySimpleHorizontalBarModel : public Model
 {
 private:
     int value;

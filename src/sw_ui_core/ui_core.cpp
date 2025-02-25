@@ -1,24 +1,24 @@
 #include "ui_core.h"
 
-ModelObject::ModelObject()
+Model::Model()
 {
 }
 
-ModelObject::~ModelObject()
+Model::~Model()
 {
 }
 
-void ModelObject::update_attached_widgets(UIWidget *new_widget)
+void Model::update_attached_widgets(Widget *new_widget)
 {
     this->attached_widgets.insert(new_widget);
 }
 
-int ModelObject::get_number_of_attached_widget()
+int Model::get_number_of_attached_widget()
 {
     return this->attached_widgets.size();
 }
 
-void ModelObject::draw_refresh()
+void Model::draw_refresh()
 {
     for (auto &&widget : attached_widgets)
         widget->draw();
@@ -81,25 +81,25 @@ int UIControlledIncrementalValue::get_max_value()
     return max_value;
 }
 
-UIObjectManager::UIObjectManager(bool is_wrappable)
+UIModelManager::UIModelManager(bool is_wrappable)
     : UIControlledIncrementalValue(0, 0, is_wrappable, 1)
 {
     update_status(ControlledObjectStatus::IS_ACTIVE);
     current_active_model = this;
 }
 
-UIObjectManager::~UIObjectManager()
+UIModelManager::~UIModelManager()
 {
     delete current_active_model;
 }
 
-void UIObjectManager::add_managed_model(UIControlledModel *_new_model)
+void UIModelManager::add_managed_model(UIControlledModel *_new_model)
 {
     this->managed_models.push_back(_new_model);
     this->max_value = managed_models.size() - 1;
 }
 
-void UIObjectManager::increment_focus()
+void UIModelManager::increment_focus()
 {
     int previous_value = value;
     this->increment_value();
@@ -108,7 +108,7 @@ void UIObjectManager::increment_focus()
         this->managed_models[previous_value]->update_status(ControlledObjectStatus::IS_WAITING);
 }
 
-void UIObjectManager::decrement_focus()
+void UIModelManager::decrement_focus()
 {
     int previous_value = value;
     this->decrement_value();
@@ -117,7 +117,7 @@ void UIObjectManager::decrement_focus()
         this->managed_models[previous_value]->update_status(ControlledObjectStatus::IS_WAITING);
 }
 
-ControlledObjectStatusTimeOutReason UIObjectManager::check_time_out(uint32_t managed_object_status_time_out_us)
+ControlledObjectStatusTimeOutReason UIModelManager::check_time_out(uint32_t managed_object_status_time_out_us)
 {
     ControlledObjectStatusTimeOutReason reason = ControlledObjectStatusTimeOutReason::NO_TIME_OUT;
     if (current_active_model != this) /// - chek time_out for active model
@@ -140,14 +140,14 @@ ControlledObjectStatusTimeOutReason UIObjectManager::check_time_out(uint32_t man
     return reason;
 }
 
-void UIObjectManager::make_managed_object_active()
+void UIModelManager::make_managed_model_active()
 {
     this->current_active_model = this->managed_models[this->value];
     this->current_active_model->update_status(ControlledObjectStatus::IS_ACTIVE);
     this->update_status(ControlledObjectStatus::IS_WAITING);
 }
 
-void UIObjectManager::make_manager_active()
+void UIModelManager::make_manager_active()
 {
     current_active_model->update_status(ControlledObjectStatus::IS_WAITING);
     current_active_model = this;

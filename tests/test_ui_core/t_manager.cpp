@@ -12,8 +12,8 @@
 
 #include "ui_core.h"
 
-/// @brief implement a UIObjectManager for test_ui_core program
-class MyManager : public UIObjectManager
+/// @brief implement a UIModelManager for test_ui_core program
+class MyManager : public UIModelManager
 {
 private:
 public:
@@ -25,7 +25,7 @@ public:
 };
 
 MyManager::MyManager(UIController *_controller)
-    : UIObjectManager()
+    : UIModelManager()
 {
     make_manager_active();
     update_current_controller(_controller);
@@ -54,7 +54,7 @@ void MyManager::process_control_event(UIControlEvent _event)
         break;
     case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
         if (current_active_model == this)
-            make_managed_object_active();
+            make_managed_model_active();
         else
             make_manager_active();
         break;

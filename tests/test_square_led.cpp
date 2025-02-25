@@ -90,7 +90,7 @@ int main()
          * UIControlEvent event = central_switch.process_sample_event();
          * my_model.process_control_event(event);
          * \endcode
-         *  This avoid the burden of casting UIController and can be used when there is not special need to have ModelObject aware about which is displaying its data.
+         *  This avoid the burden of casting UIController and can be used when there is not special need to have Model aware about which is displaying its data.
          */
 
         square_led.draw_refresh();

@@ -83,7 +83,7 @@ WidgetHorizontalBargraph::~WidgetHorizontalBargraph()
 }
 
 ModelBargraph::ModelBargraph(size_t number_of_bar, int min_value, int max_value)
-    : ModelObject()
+    : Model()
 {
     this->max_value = max_value;
     this->min_value = min_value;

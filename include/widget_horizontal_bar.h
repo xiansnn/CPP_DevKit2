@@ -53,7 +53,7 @@ public:
      * @param widget_anchor_y the pixel y-location of the widget (remind. must be multiple of 8)
      * @param widget_with_border true if the widget has a border( it's prettier with a border)
      */
-    WidgetHorizontalBar(ModelObject *bar_value_model,
+    WidgetHorizontalBar(Model *bar_value_model,
                         GraphicDisplayDevice *graphic_display_screen,
                         int max_value, int min_value,
                         struct_ConfigGraphicFramebuffer graph_cfg,

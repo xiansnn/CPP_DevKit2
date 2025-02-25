@@ -43,7 +43,7 @@ public:
      * @param widget_anchor_y the vertical position where the widget start on the device screen
      * @param widget_with_border The flag that indicates whether the widget has a border or not
      */
-    WidgetSquareLed(ModelObject *actual_displayed_model,
+    WidgetSquareLed(Model *actual_displayed_model,
                     GraphicDisplayDevice *graphic_display_screen,
                     struct_ConfigGraphicFramebuffer graph_cfg,
                     uint8_t widget_anchor_x,
