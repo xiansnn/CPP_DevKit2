@@ -18,7 +18,7 @@ void WidgetHorizontalBar::convert_level_value_to_px()
 
 void WidgetHorizontalBar::draw()
 {
-    this->set_level(((UIControlledIncrementalValue*)this->actual_displayed_model)->get_value());
+    get_value_of_interest();
     uint8_t bar_start;
     uint8_t bar_end;
     rect(0, 0, pixel_frame.frame_width, pixel_frame.frame_height, true, PixelColor::BLACK); // clear the full framebuffer
@@ -43,7 +43,7 @@ void WidgetHorizontalBar::draw()
     show();
 }
 
-WidgetHorizontalBar::WidgetHorizontalBar(UIModelObject *bar_value_model,
+WidgetHorizontalBar::WidgetHorizontalBar(ModelObject *bar_value_model,
                                          GraphicDisplayDevice *display_screen,
                                          int max_value, int min_value,
                                          struct_ConfigGraphicFramebuffer graph_cfg,
