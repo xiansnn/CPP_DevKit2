@@ -56,54 +56,12 @@ struct_ConfigGraphicFramebuffer vertical_bargraph_cfg = {
     .fg_color = PixelColor::WHITE,
     .bg_color = PixelColor::BLACK};
 
-    class MyVerticalBargraph : public WidgetVerticalBargraph
-{
-private:
-    /* data */
-public:
-    MyVerticalBargraph(ModelBargraph *bargraph_model,
-                         GraphicDisplayDevice *graphic_display_screen,
-                         struct_ConfigGraphicFramebuffer graph_cfg,
-                         uint8_t widget_anchor_x,
-                         uint8_t widget_anchor_y,
-                         bool widget_with_border,
-                         uint8_t bar_spacing = 1);
-    ~MyVerticalBargraph();
-    void get_value_of_interest();
-};
-
-
-MyVerticalBargraph::MyVerticalBargraph(ModelBargraph *bargraph_model,
-                                           GraphicDisplayDevice *graphic_display_screen,
-                                           struct_ConfigGraphicFramebuffer graph_cfg,
-                                           uint8_t widget_anchor_x,
-                                           uint8_t widget_anchor_y,
-                                           bool widget_with_border,
-                                           uint8_t bar_spacing)
-    : WidgetVerticalBargraph(bargraph_model,
-                               graphic_display_screen,
-                               graph_cfg,
-                               widget_anchor_x,
-                               widget_anchor_y,
-                               widget_with_border,
-                               bar_spacing)
-{
-}
-
-MyVerticalBargraph::~MyVerticalBargraph()
-{
-}
-
-void MyVerticalBargraph::get_value_of_interest()
-{
-}
-
 int main()
 {
     HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
     SSD1306 display = SSD1306(&master, cfg_ssd1306);
     ModelBargraph my_model = ModelBargraph(7, 0, 100);
-    MyVerticalBargraph my_widget = MyVerticalBargraph(&my_model,
+    WidgetVerticalBargraph my_widget = WidgetVerticalBargraph(&my_model,
                                                               &display,
                                                               vertical_bargraph_cfg,
                                                               20, 0,

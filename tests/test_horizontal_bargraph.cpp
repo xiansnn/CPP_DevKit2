@@ -56,57 +56,16 @@ struct_ConfigGraphicFramebuffer horizontal_bargraph_cfg = {
     .fg_color = PixelColor::WHITE,
     .bg_color = PixelColor::BLACK};
 
-class MyHorizontalBargraph : public WidgetHorizontalBargraph
-{
-private:
-    /* data */
-public:
-    MyHorizontalBargraph(ModelBargraph *bargraph_model,
-                         GraphicDisplayDevice *graphic_display_screen,
-                         struct_ConfigGraphicFramebuffer graph_cfg,
-                         uint8_t widget_anchor_x,
-                         uint8_t widget_anchor_y,
-                         bool widget_with_border,
-                         uint8_t bar_spacing = 1);
-    ~MyHorizontalBargraph();
-    void get_value_of_interest();
-};
-
-MyHorizontalBargraph::MyHorizontalBargraph(ModelBargraph *bargraph_model,
-                                           GraphicDisplayDevice *graphic_display_screen,
-                                           struct_ConfigGraphicFramebuffer graph_cfg,
-                                           uint8_t widget_anchor_x,
-                                           uint8_t widget_anchor_y,
-                                           bool widget_with_border,
-                                           uint8_t bar_spacing)
-    : WidgetHorizontalBargraph(bargraph_model,
-                               graphic_display_screen,
-                               graph_cfg,
-                               widget_anchor_x,
-                               widget_anchor_y,
-                               widget_with_border,
-                               bar_spacing)
-{
-}
-
-MyHorizontalBargraph::~MyHorizontalBargraph()
-{
-}
-
-void MyHorizontalBargraph::get_value_of_interest()
-{
-}
-
 int main()
 {
     HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
     SSD1306 display = SSD1306(&master, cfg_ssd1306);
     ModelBargraph my_model = ModelBargraph(7, 0, 100);
-    MyHorizontalBargraph my_widget = MyHorizontalBargraph(&my_model,
-                                                          &display,
-                                                          horizontal_bargraph_cfg,
-                                                          20, 0,
-                                                          true);
+    WidgetHorizontalBargraph my_widget = WidgetHorizontalBargraph(&my_model,
+                                                                  &display,
+                                                                  horizontal_bargraph_cfg,
+                                                                  20, 0,
+                                                                  true);
 
 #ifdef PRINT_DEBUG
     stdio_init_all();
@@ -115,8 +74,8 @@ int main()
 
     while (true)
     {
-        simulate_values(&my_model); // TODO voir pour essayer des configs differentes avec range -10 +10 et simulate value en mm tps
-        my_widget.draw();           // suffisant car pas besoin UI
+        simulate_values(&my_model);
+        my_widget.draw(); // suffisant car pas besoin UI
         sleep_ms(100);
     }
 

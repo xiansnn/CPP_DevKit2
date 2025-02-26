@@ -17,20 +17,6 @@ void GraphicWidget::draw_border(PixelColor color)
         rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width, false, color);
 }
 
-// void GraphicWidget::draw_refresh()
-// {
-//     if ((actual_displayed_model != nullptr) and (this->actual_displayed_model->has_changed()))
-//     {
-//         draw();
-//         this->actual_displayed_model->clear_change_flag();
-//     }
-//     if (widgets.size() != 0)
-//     {
-//         for (auto &&w : widgets)
-//             w->draw_refresh();
-//     }
-// }
-
 void GraphicWidget::show()
 {
     this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
@@ -70,21 +56,6 @@ PrintWidget::~PrintWidget()
 {
 }
 
-// void PrintWidget::draw_refresh()
-// {
-//     if ((actual_displayed_model != nullptr) and (actual_displayed_model->has_changed()))
-//     {
-//         draw();
-//         this->actual_displayed_model->clear_change_flag();
-//     }
-
-//     if (widgets.size() != 0)
-//     {
-//         for (auto &&w : widgets)
-//             w->draw_refresh();
-//     }
-// }
-
 void PrintWidget::draw_border(PixelColor color)
 {
 }
@@ -116,21 +87,6 @@ void TextWidget::show()
 {
     this->graphic_display_screen->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
 }
-
-// void TextWidget::draw_refresh()
-// {
-//     if ((actual_displayed_model != nullptr) and (actual_displayed_model->has_changed()))
-//     {
-//         draw();
-//         this->actual_displayed_model->clear_change_flag();
-//     }
-
-//     if (widgets.size() != 0)
-//     {
-//         for (auto &&w : widgets)
-//             w->draw_refresh();
-//     }
-// }
 
 void TextWidget::draw()
 {

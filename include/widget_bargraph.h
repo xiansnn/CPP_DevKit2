@@ -21,9 +21,10 @@
  * @brief the Model used by Bargraph GraphicWidget
  *
  */
-class ModelBargraph : public Model  // TODO prevoir Model au lieu de Model car pas besoin UI
+class ModelBargraph : public Model
 {
 private:
+protected:
 public:
     /// @brief the vector of values displayed by the bargraph
     std::vector<int> values;
@@ -43,13 +44,6 @@ public:
      *
      */
     ~ModelBargraph();
-    /**
-     * @brief the overriding memeber required by Model.
-     * There is no need of UIControlEvent here, this member just trigs the changere flag in order to trig the refresh of the widget
-     *
-     * @param event Default to NONE
-     */
-    void process_control_event(UIControlEvent event = UIControlEvent::NONE);
 };
 
 /**
@@ -83,9 +77,14 @@ private:
     void draw_bar(uint8_t bin_index);
 
 protected:
+    std::vector<int> values;
+    uint8_t number_of_bar;
+
 public:
     /// @brief the function that draw the widget
     void draw();
+
+    virtual void get_value_of_interest();
     /**
      * @brief Construct a new GraphicWidget Horizontal Bargraph object
      *
@@ -139,11 +138,17 @@ private:
     /// @brief the function that draw a bar in the widget
     /// @param bin_index the rank of the bar
     void draw_bar(uint8_t bin_index);
-    
-    public:
+
+protected:
+    std::vector<int> values;
+    uint8_t number_of_bar;
+
+public:
     /// @brief the function that draw the widget
     void draw();
-    
+
+    virtual void get_value_of_interest();
+
     /**
      * @brief Construct a new GraphicWidget Vertical Bargraph object
      *
