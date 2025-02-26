@@ -47,13 +47,13 @@ protected:
     /// @brief ask if the blinking phase has changed
     /// \return true if phase has changed
     bool blinking_phase_has_changed();
-    
+
     /// @brief The period of the blinking, in microseconds
     uint32_t blink_period_us;
-    
+
     /// @brief A widget can be composed by several widget.
     std::vector<Widget *> widgets;
-    
+
     virtual void get_value_of_interest() = 0;
 
 public:
@@ -240,10 +240,15 @@ public:
  * @brief  A widget used when we need to simply print but still want to take advantage of the status change management.
  *
  */
-class PrintWidget : public Widget
+class PrintWidget //: public Widget
 {
 private:
 protected:
+    /// @brief a pointer to the Model actually displayed by the widget
+    Model *actual_displayed_model = nullptr;
+    /// @brief A widget can be composed by several widget.
+    std::vector<PrintWidget *> widgets;
+
 public:
     /// @brief a pointer to the printer display device
     PrinterDevice *display_device;
@@ -257,9 +262,7 @@ public:
     PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model);
     ~PrintWidget();
 
+    void add_widget(PrintWidget* widget);
 
-    void draw_border(PixelColor color);
-
-    /// @brief a pure virtual member that is called by draw_refresh method
-    virtual void draw() = 0;
+    virtual void draw_refresh() = 0;
 };

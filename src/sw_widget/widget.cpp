@@ -47,17 +47,19 @@ GraphicWidget::~GraphicWidget()
 }
 
 PrintWidget::PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model)
-    : Widget(actual_displayed_model, 0, 0)
+//: Widget(actual_displayed_model, 0, 0)
 {
     this->display_device = display_device;
+    this->actual_displayed_model = actual_displayed_model;
 }
 
 PrintWidget::~PrintWidget()
 {
 }
 
-void PrintWidget::draw_border(PixelColor color)
+void PrintWidget::add_widget(PrintWidget *widget)
 {
+    this->widgets.push_back(widget);
 }
 
 TextWidget::TextWidget(GraphicDisplayDevice *device,
@@ -115,7 +117,7 @@ bool Widget::blinking_phase_has_changed()
 }
 
 Widget::Widget(Model *actual_displayed_model,
-                   uint8_t widget_anchor_x, uint8_t widget_anchor_y)
+               uint8_t widget_anchor_x, uint8_t widget_anchor_y)
 {
     if (actual_displayed_model != nullptr)
     {
