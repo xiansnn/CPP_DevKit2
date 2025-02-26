@@ -232,6 +232,8 @@ public:
      * @param color
      */
     void draw_border(PixelColor color = PixelColor::WHITE);
+
+    void get_value_of_interest();
 };
 
 /**

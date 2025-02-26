@@ -57,6 +57,7 @@ SSD1306 volume_display = SSD1306(&master, cfg_volume_screen);
 
 FMFrequencyTuningModel my_FM_frequency = FMFrequencyTuningModel(1, true);
 FMVolumeModel my_FM_volume = FMVolumeModel(1, true);
+
 TextWidget my_FM_frequency_widget = TextWidget(&frequency_display,
                                                fm_text_cnf,
                                                &my_FM_frequency,
@@ -81,9 +82,7 @@ int main()
     {
         my_FM_frequency.increment_value();
         sprintf(my_FM_frequency_widget.text_buffer, "%5.1f MHz\n", (float)my_FM_frequency.get_value() / 10);
-        my_FM_frequency_widget.write();
-        my_FM_frequency_widget.draw_border();
-        my_FM_frequency_widget.show();
+        my_FM_frequency_widget.draw();
         
         my_FM_volume.increment_value();
         sprintf(my_FM_volume_widget.text_buffer, "%*d dB\n", 3, my_FM_volume.get_value());

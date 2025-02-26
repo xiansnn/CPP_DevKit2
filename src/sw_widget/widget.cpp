@@ -90,6 +90,7 @@ void TextWidget::show()
 
 void TextWidget::draw()
 {
+    get_value_of_interest();
     TextFramebuffer::write();
     draw_border();
     show();
@@ -99,6 +100,10 @@ void TextWidget::draw_border(PixelColor color)
 {
     if (this->widget_with_border)
         rect(0, 0, pixel_frame.frame_width, pixel_frame.frame_height, false, color);
+}
+
+void TextWidget::get_value_of_interest()
+{
 }
 
 bool Widget::blinking_phase_has_changed()
