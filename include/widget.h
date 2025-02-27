@@ -240,7 +240,7 @@ public:
  * @brief  A widget used when we need to simply print but still want to take advantage of the status change management.
  *
  */
-class PrintWidget //: public Widget
+class PrintWidget
 {
 private:
 protected:

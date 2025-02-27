@@ -103,14 +103,13 @@ struct struct_ConfigTextFramebuffer
     bool auto_next_char{true};
 };
 
-
 /**
  * @brief This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen SSD1306).
  * It derived from GraphicFramebuffer. This allows to draw graphics directly into the display framebuffer
  * thanks to Framebuffet class graphic primitives indepently from any kind of widget
  *
  */
-class GraphicDisplayDevice 
+class GraphicDisplayDevice
 {
 protected:
 public:
@@ -170,7 +169,7 @@ public:
      *
      * @param pixel_frame the pixel buffer to complete
      */
-    virtual void create_pixel_buffer(struct_PixelFrame *pixel_framey) = 0;
+    virtual void create_pixel_buffer(struct_PixelFrame *pixel_frame) = 0;
 
     /**
      * @brief the graphic primitive to draw a pixel
@@ -195,16 +194,16 @@ public:
      * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
      */
     virtual void draw_char_into_pixel(struct_PixelFrame *pixel_frame,
-                          const struct_ConfigTextFramebuffer text_config,
-                          const char character,
-                          const uint8_t anchor_x, const uint8_t anchor_y) = 0;
+                                      const struct_ConfigTextFramebuffer text_config,
+                                      const char character,
+                                      const uint8_t anchor_x, const uint8_t anchor_y) = 0;
 };
 
 /**
  * @brief A class dedicated to pure text display such as console, printer, ASCII character line display
  *
  */
-class PrinterDevice 
+class PrinterDevice
 {
 private:
 public:
