@@ -1,0 +1,32 @@
+@startuml dependencies
+abstract class DisplayDevice {
+    }
+abstract class GraphicDisplayDevice {
+    screen_height
+    screen_width
+    {abstract} show(&pixel_frame, anchor_x, anchor_y)
+    {abstract} draw_char_into_pixel(&pixel_frame, char, x, y)
+    {abstract} pixel(&pixel_frame, x, y)
+    }
+DisplayDevice <|-- GraphicDisplayDevice
+
+class PrinterDevice {
+    number_of_column
+    number_of_line
+    show()
+    }
+DisplayDevice <|-- PrinterDevice
+class Framebuffer {
+    pixel_frame
+    }
+Framebuffer *-- GraphicDisplayDevice : &graphic_display_device
+class GraphicFramebuffer{
+    graphic_primitives()
+    }
+Framebuffer <|-- GraphicFramebuffer
+class TextFramebuffer{
+    text_primitives()
+    write()
+    }
+GraphicFramebuffer <|-- TextFramebuffer
+@enduml
