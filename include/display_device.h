@@ -103,17 +103,6 @@ struct struct_ConfigTextFramebuffer
     bool auto_next_char{true};
 };
 
-/// @brief the generic abstract class for physical display devices
-class DisplayDevice
-{
-private:
-public:
-    /**
-     * @brief Construct a new Display Device object
-     */
-    DisplayDevice();
-    ~DisplayDevice();
-};
 
 /**
  * @brief This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen SSD1306).
@@ -121,7 +110,7 @@ public:
  * thanks to Framebuffet class graphic primitives indepently from any kind of widget
  *
  */
-class GraphicDisplayDevice : public DisplayDevice
+class GraphicDisplayDevice 
 {
 protected:
 public:
@@ -215,7 +204,7 @@ public:
  * @brief A class dedicated to pure text display such as console, printer, ASCII character line display
  *
  */
-class PrinterDevice : public DisplayDevice
+class PrinterDevice 
 {
 private:
 public:

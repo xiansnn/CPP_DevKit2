@@ -13,7 +13,6 @@
 
 GraphicDisplayDevice::GraphicDisplayDevice(size_t screen_width,
                                            size_t screen_height)
-    : DisplayDevice()
 {
     this->screen_pixel_height = screen_height;
     this->screen_pixel_width = screen_width;
@@ -23,16 +22,8 @@ GraphicDisplayDevice::~GraphicDisplayDevice()
 {
 }
 
-DisplayDevice::DisplayDevice()
-{
-}
-
-DisplayDevice::~DisplayDevice()
-{
-}
 
 PrinterDevice::PrinterDevice(size_t number_of_char_width, size_t number_of_char_height)
-    : DisplayDevice()
 {
     this->number_of_line = number_of_char_height;
     this->number_of_column = number_of_char_width;
