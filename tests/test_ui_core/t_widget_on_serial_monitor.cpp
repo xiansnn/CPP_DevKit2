@@ -43,7 +43,7 @@ public:
 
     ~MyIncrementalValueWidgetOnSerialMonitor();
 
-    void draw_refresh();
+    void print_refresh();
 };
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
@@ -59,7 +59,7 @@ public:
 
     ~MyManagerWidget();
 
-    void draw_refresh();
+    void print_refresh();
 };
 
 /// @brief test the composite widget features
@@ -69,7 +69,7 @@ private:
 public:
     MySetOfWidget(PrinterDevice *my_printer);
     ~MySetOfWidget();
-    void draw_refresh();
+    void print_refresh();
 };
 
 std::map<ControlledObjectStatus, std::string> status_to_string{
@@ -96,7 +96,7 @@ MyIncrementalValueWidgetOnSerialMonitor::~MyIncrementalValueWidgetOnSerialMonito
 {
 }
 
-void MyIncrementalValueWidgetOnSerialMonitor::draw_refresh()
+void MyIncrementalValueWidgetOnSerialMonitor::print_refresh()
 {
     if (((MyIncrementalValueModel *)this->actual_displayed_model)->has_changed())
     {
@@ -147,7 +147,7 @@ MyManagerWidget::~MyManagerWidget()
 {
 }
 
-void MyManagerWidget::draw_refresh()
+void MyManagerWidget::print_refresh()
 {
     if (((MyManager *)this->actual_displayed_model)->has_changed())
     {
@@ -173,11 +173,11 @@ MySetOfWidget::~MySetOfWidget()
 {
 }
 
-void MySetOfWidget::draw_refresh()
+void MySetOfWidget::print_refresh()
 {
     for (auto &&w : widgets)
     {
-        w->draw_refresh();
+        w->print_refresh();
     }
 }
 

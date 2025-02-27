@@ -199,7 +199,7 @@ int main()
         pr_D5.hi();
 
         my_model.increment_value();
-        my_model.draw_refresh();
+        my_model.draw_if_changed();
 
         my_simple_model.increment_value();
         my_simple_model.draw_refresh();

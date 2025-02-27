@@ -264,5 +264,5 @@ public:
 
     void add_widget(PrintWidget* widget);
 
-    virtual void draw_refresh() = 0;
+    virtual void print_refresh() = 0;
 };

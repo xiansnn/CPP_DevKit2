@@ -126,8 +126,8 @@ int main()
         /// - give the sampled event to the manager, to let it process the event
         manager.process_control_event(event);
 
-        /// - let the set_of_widget execute draw_refresh
-        set_of_widget.draw_refresh();
+        /// - let the set_of_widget execute refresh
+        set_of_widget.print_refresh();
 
         /// - sleep for 20ms
         sleep_ms(20);

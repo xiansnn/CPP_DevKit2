@@ -186,7 +186,7 @@ public:
      * - if redraw() required , execute the effective widget drawing including border if required (can be a private member function)
      * - and finally : clear model change flag
      */
-    virtual void draw_refresh();
+    virtual void draw_if_changed();
 
 
 

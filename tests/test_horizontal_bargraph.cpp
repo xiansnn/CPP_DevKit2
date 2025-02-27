@@ -75,7 +75,7 @@ int main()
     while (true)
     {
         simulate_values(&my_model);
-        my_widget.draw(); // suffisant car pas besoin UI
+        my_model.draw_refresh();
         sleep_ms(100);
     }
 

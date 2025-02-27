@@ -229,14 +229,10 @@ uint32_t UIControlledModel::get_time_since_last_change()
     return time_us_32() - last_change_time;
 }
 
-void UIControlledModel::draw_refresh()
+void UIControlledModel::draw_if_changed()
 {
     if (has_changed())
-    {
-        for (auto &&widget : attached_widgets)
-        {
-            widget->draw();
-        }
-    }
+        draw_refresh();
+
     clear_change_flag();
 }
