@@ -108,17 +108,11 @@ class DisplayDevice
 {
 private:
 public:
-    /// @brief the physical width of the screen (in pixel)
-    size_t screen_width;
-    /// @brief the physical height of the screen (in pixel)
-    size_t screen_height;
     /**
      * @brief Construct a new Display Device object
      *
-     * @param screen_width the physical width of the screen (in pixel)
-     * @param screen_height he physical height of the screen (in pixel)
      */
-    DisplayDevice(size_t screen_width, size_t screen_height);
+    DisplayDevice();
     ~DisplayDevice();
 };
 
@@ -132,6 +126,11 @@ class GraphicDisplayDevice : public DisplayDevice
 {
 protected:
 public:
+    /// @brief the physical width of the screen (in pixel)
+    size_t screen_width;
+    /// @brief the physical height of the screen (in pixel)
+    size_t screen_height;
+
     /**
      * @brief check the compatibility of the framebuffer and widget parameter with the physical lilitation of the display device
      *
