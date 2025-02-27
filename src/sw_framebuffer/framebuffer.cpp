@@ -15,26 +15,48 @@
 
 GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *device,
                                        struct_ConfigGraphicFramebuffer graph_cfg)
-    : Framebuffer(device, graph_cfg)
 {
+    this->graphic_display_screen = device;
+    this->fg_color = graph_cfg.fg_color;
+    this->bg_color = graph_cfg.bg_color;
+    this->pixel_frame.pixel_frame_height = graph_cfg.pixel_frame_height;
+    this->pixel_frame.pixel_frame_width = graph_cfg.pixel_frame_width;
+    this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
 }
 
 GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *display_device,
                                        size_t frame_width,
                                        size_t frame_height,
                                        struct_ConfigTextFramebuffer text_cfg)
-    : Framebuffer(display_device, frame_width, frame_height, text_cfg)
 {
+    this->graphic_display_screen = display_device;
+    this->fg_color = text_cfg.fg_color;
+    this->bg_color = text_cfg.bg_color;
+    this->pixel_frame.pixel_frame_height = frame_height;
+    this->pixel_frame.pixel_frame_width = frame_width;
+    this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
 }
 
 GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *device,
                                        struct_ConfigTextFramebuffer text_cfg)
-    : Framebuffer(device, text_cfg)
 {
+    this->graphic_display_screen = device;
+    this->fg_color = text_cfg.fg_color;
+    this->bg_color = text_cfg.bg_color;
+
+    this->pixel_frame.pixel_frame_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
+    this->pixel_frame.pixel_frame_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
+    this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
 }
 
 GraphicFramebuffer::~GraphicFramebuffer()
 {
+    delete[] this->pixel_frame.pixel_frame_buffer;
+}
+
+void GraphicFramebuffer::set_display_screen(GraphicDisplayDevice *_new_display_device)
+{
+    this->graphic_display_screen = _new_display_device;
 }
 
 void GraphicFramebuffer::fill(PixelColor c)
@@ -237,7 +259,7 @@ struct_ConfigTextFramebuffer TextFramebuffer::get_text_frame_config()
 }
 
 TextFramebuffer::TextFramebuffer(GraphicDisplayDevice *device,
-                                       struct_ConfigTextFramebuffer text_cfg)
+                                 struct_ConfigTextFramebuffer text_cfg)
     : GraphicFramebuffer(device, text_cfg)
 {
     this->number_of_column = text_cfg.number_of_column;
@@ -253,9 +275,9 @@ TextFramebuffer::TextFramebuffer(GraphicDisplayDevice *device,
 }
 
 TextFramebuffer::TextFramebuffer(GraphicDisplayDevice *device,
-                                       size_t frame_width,
-                                       size_t frame_height,
-                                       struct_ConfigTextFramebuffer text_cfg)
+                                 size_t frame_width,
+                                 size_t frame_height,
+                                 struct_ConfigTextFramebuffer text_cfg)
     : GraphicFramebuffer(device, frame_width, frame_height, text_cfg)
 {
     this->font = text_cfg.font;
@@ -311,7 +333,6 @@ void TextFramebuffer::update_graphic_frame_size(const unsigned char *font)
 void TextFramebuffer::write()
 {
     write(this->text_buffer);
-    
 }
 
 void TextFramebuffer::write(const char *c_str)
@@ -393,49 +414,4 @@ void TextFramebuffer::next_char()
             next_line();
         }
     }
-}
-
-Framebuffer::Framebuffer(GraphicDisplayDevice *graphic_display_device,
-                         struct_ConfigGraphicFramebuffer graph_cfg)
-{
-    this->graphic_display_screen = graphic_display_device;
-    this->fg_color = graph_cfg.fg_color;
-    this->bg_color = graph_cfg.bg_color;
-    this->pixel_frame.pixel_frame_height = graph_cfg.pixel_frame_height;
-    this->pixel_frame.pixel_frame_width = graph_cfg.pixel_frame_width;
-    this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
-}
-
-Framebuffer::Framebuffer(GraphicDisplayDevice *graphic_display_device,
-                         size_t frame_width, size_t frame_height,
-                         struct_ConfigTextFramebuffer text_cfg)
-{
-    this->graphic_display_screen = graphic_display_device;
-    this->fg_color = text_cfg.fg_color;
-    this->bg_color = text_cfg.bg_color;
-    this->pixel_frame.pixel_frame_height = frame_height;
-    this->pixel_frame.pixel_frame_width = frame_width;
-    this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
-}
-
-Framebuffer::Framebuffer(GraphicDisplayDevice *graphic_display_device,
-                         struct_ConfigTextFramebuffer text_cfg)
-{
-    this->graphic_display_screen = graphic_display_device;
-    this->fg_color = text_cfg.fg_color;
-    this->bg_color = text_cfg.bg_color;
-
-    this->pixel_frame.pixel_frame_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
-    this->pixel_frame.pixel_frame_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
-    this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
-}
-
-Framebuffer::~Framebuffer()
-{
-    delete[] this->pixel_frame.pixel_frame_buffer;
-}
-
-void Framebuffer::set_display_screen(GraphicDisplayDevice *_new_display_device)
-{
-    this->graphic_display_screen = _new_display_device;
 }

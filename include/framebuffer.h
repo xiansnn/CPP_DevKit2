@@ -35,8 +35,8 @@
 #define CARRIAGE_RETURN '\r'
 
 /**
- * @brief Framebuffer is the abstract class that contains all common features for text and graphic primitives on a display.
- *
+ * @brief GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions members in charge of the pixel buffer mamangement.
+ *  
  * This framebuffer implementation is derived from the mycropython API and more explanations can be found
  * there https://docs.micropython.org/en/latest/library/framebuf.html#module-framebuf.
  *
@@ -48,72 +48,10 @@
  * Optionnally, when framebuffer contains text, a text_buffer that contains characters chain is used. It is created and initialized by
  *  update_text_frame_size member function.
  * The configuration of this buffer is fully defined by struct_ConfigTextFramebuffer.
- */
-class Framebuffer
-{
-private:
-    /* data */
-protected:
-    /// @brief the display device where the attached to the frame buffer
-    GraphicDisplayDevice *graphic_display_screen{nullptr};
 
-public:
-    /**
-     * @brief Construct a new Framebuffer object. 
-     * 
-     * USAGE: The basic constructor, used to initiate display size (in pixel) , foreground and background color.
-     *
-     * @param graphic_display_device the associated graphic display device
-     * @param graph_cfg the configuration data for graphic feature
-     */
-    Framebuffer(GraphicDisplayDevice *graphic_display_device,
-                struct_ConfigGraphicFramebuffer graph_cfg);
-    /**
-     * @brief Construct a new Framebuffer object. 
-     * 
-     * USAGE: Used when we need a TextFramebuffer, the frame size in pixel is set, the font size is set (via struct_ConfigTextFramebuffer), the number of char line and column are computed.
-     *
-     * @param graphic_display_device the associated graphic display device
-     * @param frame_width the size in x-pixel of the frame
-     * @param frame_height the size in y-pixel of the frame
-     * @param text_cfg the text configuration data
-     */
-    Framebuffer(GraphicDisplayDevice *graphic_display_device,
-                size_t frame_width, size_t frame_height,
-                struct_ConfigTextFramebuffer text_cfg);
-    /**
-     * @brief Construct a new Framebuffer object.
-     *     
-     * USAGE: Used when we need a TextFramebuffer. 
-     * The number of char line and column are set, the font size is set (via struct_ConfigTextFramebuffer), the frame size in pixel is computed.
-     *
-     * @param graphic_display_device the associated graphic display device
-     * @param text_cfg the text configuration data
-     */
-    Framebuffer(GraphicDisplayDevice *graphic_display_device,
-                struct_ConfigTextFramebuffer text_cfg);
-    ~Framebuffer();
-
-    /// @brief the data structure that contains the actual pixel buffer, created by the display device.
-    struct_PixelFrame pixel_frame;
-    /// @brief the foregroung color of the graphic frame
-    PixelColor fg_color;
-    /// @brief the background color of the graphic frame
-    PixelColor bg_color;
-    /**
-     * @brief Set the display screen object
-     *
-     * @param _new_display_device
-     */
-    void set_display_screen(GraphicDisplayDevice *_new_display_device);
-};
-
-/**
- * @brief GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in charge of the pixel buffer mamangement.
- *
  * The core of framebuffer is the pixel_buffer, a memory space that contains pixel values. This pixel_buffer is computed and initialized by the framebuffer constructor.
  */
-class GraphicFramebuffer : public Framebuffer
+class GraphicFramebuffer
 {
 private:
     /// @brief the graphic primitive to draw an ellipse \bug //FIXME doesn't work !
@@ -127,10 +65,20 @@ private:
     void ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, PixelColor c);
 
 protected:
+    /// @brief the display device where the attached to the frame buffer
+    GraphicDisplayDevice *graphic_display_screen{nullptr};
+
 public:
+    /// @brief the data structure that contains the actual pixel buffer, created by the display device.
+    struct_PixelFrame pixel_frame;
+    /// @brief the foregroung color of the graphic frame
+    PixelColor fg_color;
+    /// @brief the background color of the graphic frame
+    PixelColor bg_color;
+
     /**
      * @brief Construct a new Graphic Framebuffer object
-     * 
+     *
      * USAGE: A pure graphic framebuffer defined via struct_ConfigGraphicFramebuffer. char line and column are ignored
      *
      * @param display_device A pointer to the display device in charge of writing effective pixel in the pixel_buffer
@@ -142,7 +90,7 @@ public:
 
     /**
      * @brief Construct a new Graphic Framebuffer object, as a base class of TextFramebuffer.
-     * 
+     *
      * USAGE: the frame size in pixel is set, the font size is set (via struct_ConfigTextFramebuffer), the number of char line and column are computed.
      *
      * @param display_device A pointer to the display device in charge of writing effective pixel in the pixel_buffer
@@ -157,7 +105,7 @@ public:
 
     /**
      * @brief Construct a new Graphic Framebuffer object, as a base class of TextFramebuffer.
-     *     
+     *
      * USAGE: The number of char line and column are set, the font size is set (via struct_ConfigTextFramebuffer), the frame size in pixel is computed.
      *
      * @param display_device A pointer to the display device in charge of writing effective pixel in the pixel_buffer
@@ -170,6 +118,13 @@ public:
      * @brief Destroy the GraphicFramebuffer object
      */
     ~GraphicFramebuffer();
+
+    /**
+     * @brief Set the display screen object
+     *
+     * @param _new_display_device
+     */
+    void set_display_screen(GraphicDisplayDevice *_new_display_device);
 
     /// @brief Write all pixel buffer memory with "0" (or "1") if color c is BLACK (resp. WHITE)
     /// \note: Works only for monochrome display!
@@ -275,8 +230,8 @@ private:
     void clear_line();
 
     /**
-     * @brief The font used. Current font are defined according to IBM CP437. 
-     * 
+     * @brief The font used. Current font are defined according to IBM CP437.
+     *
      * The font files are derived from https://github.com/Harbys/pico-ssd1306 works.
      * They come is size 5x8, 8x8, 12x16 and 16x32.
      */
@@ -319,18 +274,18 @@ public:
 
     /**
      * @brief Construct a new Textual Frame Buffer object
-     * 
+     *
      * USAGE: the font, number of line and number of column are given. The frame size in pixel is computed.
      *
      * @param device A pointer to the display device in charge of showing character
      * @param text_cfg textual configuration data structure
      */
     TextFramebuffer(GraphicDisplayDevice *device,
-                       struct_ConfigTextFramebuffer text_cfg);
+                    struct_ConfigTextFramebuffer text_cfg);
 
     /**
      * @brief Construct a new Textual Frame Buffer object when the frame size in x and y pixel is given.
-     * 
+     *
      * USAGE: The number of character line and column are computed according to the size of font
      *
      * @param frame_width the width in pixel of the frame
@@ -339,9 +294,9 @@ public:
      * @param text_cfg the textual configuration data structure
      */
     TextFramebuffer(GraphicDisplayDevice *device,
-                       size_t frame_width,
-                       size_t frame_height,
-                       struct_ConfigTextFramebuffer text_cfg);
+                    size_t frame_width,
+                    size_t frame_height,
+                    struct_ConfigTextFramebuffer text_cfg);
 
     ~TextFramebuffer();
 
