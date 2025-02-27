@@ -1,32 +1,96 @@
 @startuml dependencies
+
 abstract class DisplayDevice {
     }
+
 abstract class GraphicDisplayDevice {
-    screen_height
-    screen_width
-    {abstract} show(&pixel_frame, anchor_x, anchor_y)
-    {abstract} draw_char_into_pixel(&pixel_frame, char, x, y)
+    screen_pixel_width
+    screen_pixel_height
+    {abstract} check_display_device_compatibility(struct_graphic_cfg, anchor_x, anchor_y)
+    {abstract} pixel_frame_mgt_primitives()
     {abstract} pixel(&pixel_frame, x, y)
+    {abstract} draw_char_into_pixel(&pixel_frame, char, x, y)
+    {abstract} show(&pixel_frame, anchor_x, anchor_y)
     }
 DisplayDevice <|-- GraphicDisplayDevice
 
 class PrinterDevice {
     number_of_column
     number_of_line
+    text_buffer
     show()
     }
 DisplayDevice <|-- PrinterDevice
+
 class Framebuffer {
     pixel_frame
     }
 Framebuffer *-- GraphicDisplayDevice : &graphic_display_device
+
 class GraphicFramebuffer{
     graphic_primitives()
     }
 Framebuffer <|-- GraphicFramebuffer
+GraphicDisplayDevice <.. GraphicFramebuffer : depends_on
+
 class TextFramebuffer{
     text_primitives()
     write()
     }
 GraphicFramebuffer <|-- TextFramebuffer
+
+
+abstract class Widget {
+    blinking_variables
+    blinking_methods()
+    {abstract} get_value_of_interest()
+    }
+Model "0..1" -o Widget : actual_displayed_model
+Widget "0..*" -* Widget : widgets
+
+class system
+Widget ..> system : depends_on
+
+abstract class GraphicWidget{
+    widget_dimensions
+    draw()
+    draw_border(color)
+    show()
+    }
+Widget <|-- GraphicWidget
+GraphicFramebuffer <|-- GraphicWidget
+GraphicDisplayDevice <.. GraphicWidget : depends_on
+
+class TextWidget{
+    widget_dimensions
+    get_value_of_interest()
+    draw()
+    draw_border(color)
+    show()
+    }
+Widget <|-- TextWidget
+TextFramebuffer <|-- TextWidget
+GraphicDisplayDevice <.. TextWidget : depends_on
+
+class PrintWidget{
+    }
+Model "0..1" -o PrintWidget : actual_displayed_model
+PrintWidget "0..*" -* PrintWidget : widgets
+
+class Model{
+    draw_refresh()
+}
+Widget -* Model : attached_widgets
+
+class UIControlledModel{
+    status
+    change_flag
+    draw_if_changed()
+}
+Model <|-- UIControlledModel
+
+class UIController{
+
+}
+UIControlledModel - UIController : &current_controlled_model
 @enduml
