@@ -21,7 +21,7 @@ void WidgetHorizontalBar::draw()
     get_value_of_interest();
     uint8_t bar_start;
     uint8_t bar_end;
-    rect(0, 0, pixel_frame.frame_width, pixel_frame.frame_height, true, PixelColor::BLACK); // clear the full framebuffer
+    rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, true, PixelColor::BLACK); // clear the full framebuffer
     
     draw_border();
     if (level >= 0)
@@ -36,9 +36,9 @@ void WidgetHorizontalBar::draw()
     }
 
     if (level == 0)
-        rect(bar_start, 0, 1, pixel_frame.frame_height, true);
+        rect(bar_start, 0, 1, pixel_frame.pixel_frame_height, true);
     else
-        rect(bar_start, 0, bar_end - bar_start, pixel_frame.frame_height, true);
+        rect(bar_start, 0, bar_end - bar_start, pixel_frame.pixel_frame_height, true);
 
     show();
 }
@@ -54,7 +54,7 @@ WidgetHorizontalBar::WidgetHorizontalBar(Model *bar_value_model,
     this->max_value = max_value;
     this->min_value = min_value;
     this->level = 0;
-    this->px_max = graph_cfg.frame_width;
+    this->px_max = graph_cfg.pixel_frame_width;
     this->px_min = 0;
     this->level_coef = (float)(px_max - px_min) / (max_value - min_value);
     this->level_offset = px_max - level_coef * max_value;

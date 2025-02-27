@@ -30,13 +30,13 @@ enum class PixelColor
 struct struct_PixelFrame
 {
     /// @brief The number of pixel along the width of the frame.
-    uint8_t frame_width;
+    uint8_t pixel_frame_width;
     /// @brief The number of pixel along the height of the frame.
-    uint8_t frame_height;
+    uint8_t pixel_frame_height;
     /// @brief size of the buffer that contains graphics as map of pixels.
-    size_t pixel_buffer_size;
+    size_t pixel_frame_buffer_size;
     /// @brief the buffer where graphic are drawn
-    uint8_t *pixel_buffer = nullptr;
+    uint8_t *pixel_frame_buffer = nullptr;
 };
 
 /// @brief the data structure that characterise the text buffer
@@ -60,9 +60,9 @@ struct struct_ConfigGraphicFramebuffer
 {
 
     /// @brief the frame width of the graphic frame
-    size_t frame_width;
+    size_t pixel_frame_width;
     /// @brief the frame height of the graphic frame
-    size_t frame_height;
+    size_t pixel_frame_height;
     /// @brief the foreground color
     PixelColor fg_color{PixelColor::WHITE};
     /// @brief  the background color
@@ -110,7 +110,6 @@ private:
 public:
     /**
      * @brief Construct a new Display Device object
-     *
      */
     DisplayDevice();
     ~DisplayDevice();
@@ -127,9 +126,9 @@ class GraphicDisplayDevice : public DisplayDevice
 protected:
 public:
     /// @brief the physical width of the screen (in pixel)
-    size_t screen_width;
+    size_t screen_pixel_width;
     /// @brief the physical height of the screen (in pixel)
-    size_t screen_height;
+    size_t screen_pixel_height;
 
     /**
      * @brief check the compatibility of the framebuffer and widget parameter with the physical lilitation of the display device
@@ -146,11 +145,11 @@ public:
      * It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.
      * This method implements all peculiarities of the actual display device.
      *
-     * @param pixel_memory a pointer to the struct_PixelFrame that contains the pixel_buffer to be displayed
+     * @param pixel_frame a pointer to the struct_PixelFrame that contains the pixel_buffer to be displayed
      * @param anchor_x the x(horizontal) starting position of the frame within the display screen,(in pixel)
      * @param anchor_y
      */
-    virtual void show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y) = 0;
+    virtual void show(struct_PixelFrame *pixel_frame, const uint8_t anchor_x, const uint8_t anchor_y) = 0;
 
     /**
      * @brief Construct a new Display Device object
@@ -171,28 +170,28 @@ public:
      * @brief A pure virtual method. Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0).
      * Usefull when we have a graphic framework
      *
-     * @param pixel_memory the pixel buffer to fill
+     * @param pixel_frame the pixel buffer to fill
      */
-    virtual void clear_pixel_buffer(struct_PixelFrame *pixel_memory) = 0;
+    virtual void clear_pixel_buffer(struct_PixelFrame *pixel_frame) = 0;
 
     /**
      * @brief A pure virtual method. Create a pixel buffer object.
      * \note : the width and height of the pixel frame must be known before invoking this method.
      * \note : the graphic framebuffer uses this method to create its pixel frame buffer.
      *
-     * @param pixel_memory the pixel buffer to complete
+     * @param pixel_frame the pixel buffer to complete
      */
-    virtual void create_pixel_buffer(struct_PixelFrame *pixel_memory) = 0;
+    virtual void create_pixel_buffer(struct_PixelFrame *pixel_framey) = 0;
 
     /**
      * @brief the graphic primitive to draw a pixel
      *
-     * @param pixel_memory
+     * @param pixel_frame
      * @param x the x position of the pixel
      * @param y the y position of the pixel
      * @param color the color of the pixel
      */
-    virtual void pixel(struct_PixelFrame *pixel_memory,
+    virtual void pixel(struct_PixelFrame *pixel_frame,
                        const int x, const int y,
                        const PixelColor color = PixelColor::WHITE) = 0;
 
@@ -200,13 +199,13 @@ public:
      * @brief a graphic primitive to draw a character at a pixel position
      * \note : DrawChar() implementation depends strongly on the FramebufferFormat.
      *
-     * @param pixel_memory
+     * @param pixel_frame
      * @param text_config the configuration file of the text framebuffer
      * @param character the character to draw
      * @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
      * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
      */
-    virtual void draw_char_into_pixel(struct_PixelFrame *pixel_memory,
+    virtual void draw_char_into_pixel(struct_PixelFrame *pixel_frame,
                           const struct_ConfigTextFramebuffer text_config,
                           const char character,
                           const uint8_t anchor_x, const uint8_t anchor_y) = 0;

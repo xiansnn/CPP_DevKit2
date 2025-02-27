@@ -15,8 +15,8 @@ GraphicDisplayDevice::GraphicDisplayDevice(size_t screen_width,
                                            size_t screen_height)
     : DisplayDevice()
 {
-    this->screen_height = screen_height;
-    this->screen_width = screen_width;
+    this->screen_pixel_height = screen_height;
+    this->screen_pixel_width = screen_width;
 }
 
 GraphicDisplayDevice::~GraphicDisplayDevice()

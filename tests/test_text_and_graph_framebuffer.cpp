@@ -79,8 +79,8 @@ int main()
     int values_area_anchor_y = h * 2;
 
     struct_ConfigGraphicFramebuffer graph_config{
-        .frame_width = 120,
-        .frame_height = 60};
+        .pixel_frame_width = 120,
+        .pixel_frame_height = 60};
 
     int graph_area_anchor_x = 0;
     int graph_area_anchor_y = 0;
@@ -119,9 +119,9 @@ int main()
             pr_D6.lo(); // 9ms
 
             // compute and show the graphic representation
-            float xc = graph_config.frame_width / 2;
-            float yc = graph_config.frame_height / 2;
-            float yl = graph_config.frame_height / 2 - pitch;
+            float xc = graph_config.pixel_frame_width / 2;
+            float yc = graph_config.pixel_frame_height / 2;
+            float yl = graph_config.pixel_frame_height / 2 - pitch;
             float radius = yc - 2; // radius -2 to fit inside the rectangle
             float sin_roll = sin(std::numbers::pi / 180.0 * roll);
             float cos_roll = cos(std::numbers::pi / 180.0 * roll);
@@ -131,7 +131,7 @@ int main()
             int y1 = yl + radius * sin_roll;
 
             pr_D7.hi();
-            graph.rect(0, 0, graph_config.frame_width, graph_config.frame_height); // point coordinates are relative to the local frame
+            graph.rect(0, 0, graph_config.pixel_frame_width, graph_config.pixel_frame_height); // point coordinates are relative to the local frame
             graph.circle(radius, xc, yl, false, graph.fg_color);
             graph.line(x0, y0, x1, y1, graph.fg_color);
             visu_display.show(&graph.pixel_frame, graph_area_anchor_x, graph_area_anchor_y);

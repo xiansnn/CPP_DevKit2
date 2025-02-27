@@ -38,8 +38,8 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
 
     widget_start_x = widget_border_width;
     widget_start_y = widget_border_width;
-    widget_width = pixel_frame.frame_width - 2 * widget_border_width;
-    widget_height = pixel_frame.frame_height - 2 * widget_border_width;
+    widget_width = pixel_frame.pixel_frame_width - 2 * widget_border_width;
+    widget_height = pixel_frame.pixel_frame_height - 2 * widget_border_width;
 }
 
 GraphicWidget::~GraphicWidget()
@@ -77,8 +77,8 @@ TextWidget::TextWidget(GraphicDisplayDevice *device,
 
     widget_start_x = widget_border_width;
     widget_start_y = widget_border_width;
-    widget_width = pixel_frame.frame_width - 2 * widget_border_width;
-    widget_height = pixel_frame.frame_height - 2 * widget_border_width;
+    widget_width = pixel_frame.pixel_frame_width - 2 * widget_border_width;
+    widget_height = pixel_frame.pixel_frame_height - 2 * widget_border_width;
 }
 
 TextWidget::~TextWidget()
@@ -101,7 +101,7 @@ void TextWidget::draw()
 void TextWidget::draw_border(PixelColor color)
 {
     if (this->widget_with_border)
-        rect(0, 0, pixel_frame.frame_width, pixel_frame.frame_height, false, color);
+        rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, false, color);
 }
 
 void TextWidget::get_value_of_interest()

@@ -44,8 +44,8 @@ struct_ConfigSSD1306 cfg_ssd1306{
     .frequency_factor = 0};
 
 struct_ConfigGraphicFramebuffer SSD1306_framebuffer_cfg{
-    .frame_width = SSD1306_WIDTH,
-    .frame_height = SSD1306_HEIGHT};
+    .pixel_frame_width = SSD1306_WIDTH,
+    .pixel_frame_height = SSD1306_HEIGHT};
 
 /**
  * @brief  Check that we can draw a line that outfit the framebuffer without consequences
@@ -119,10 +119,10 @@ void test_fb_line(SSD1306 *display)
         {
             c = PixelColor::WHITE;
             frame.line(0, y, SSD1306_WIDTH - 1, SSD1306_HEIGHT - 1 - y, c);
-            display->show_render_area(frame.pixel_frame.pixel_buffer, full_screen_area);
+            display->show_render_area(frame.pixel_frame.pixel_frame_buffer, full_screen_area);
             c = PixelColor::BLACK;
             frame.line(0, y, SSD1306_WIDTH - 1, SSD1306_HEIGHT - 1 - y, c);
-            display->show_render_area(frame.pixel_frame.pixel_buffer, full_screen_area);
+            display->show_render_area(frame.pixel_frame.pixel_frame_buffer, full_screen_area);
         }
     }
     sleep_ms(1000);
@@ -216,8 +216,8 @@ void test_fb_in_fb(SSD1306 *display)
     // uint8_t small_frame_height = 25;
 
     struct_ConfigGraphicFramebuffer small_frame_cfg{
-        .frame_width = 88,
-        .frame_height = 25};
+        .pixel_frame_width = 88,
+        .pixel_frame_height = 25};
 
     GraphicFramebuffer small_frame = GraphicFramebuffer(display, small_frame_cfg);
     small_frame.fill( PixelColor::BLACK);

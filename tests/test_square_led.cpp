@@ -46,8 +46,8 @@ struct_ConfigSSD1306 cfg_ssd1306{
     .frequency_factor = 0};
 
 struct_ConfigGraphicFramebuffer square_led_cfg = {
-    .frame_width = 16,
-    .frame_height = 16,
+    .pixel_frame_width = 16,
+    .pixel_frame_height = 16,
     .fg_color = PixelColor::WHITE,
     .bg_color = PixelColor::BLACK};
 

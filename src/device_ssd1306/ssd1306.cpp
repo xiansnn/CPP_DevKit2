@@ -143,57 +143,57 @@ void SSD1306::show_render_area(uint8_t *data_buffer, const struct_RenderArea scr
 void SSD1306::check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg, uint8_t anchor_x, uint8_t anchor_y)
 {
     // check limit of screen
-    assert(anchor_y + framebuffer_cfg.frame_height <= SSD1306_HEIGHT);
-    assert(anchor_x + framebuffer_cfg.frame_width <= SSD1306_WIDTH);
+    assert(anchor_y + framebuffer_cfg.pixel_frame_height <= SSD1306_HEIGHT);
+    assert(anchor_x + framebuffer_cfg.pixel_frame_width <= SSD1306_WIDTH);
 
     //check that framebuffer fit on page height boundary
-    assert(framebuffer_cfg.frame_height % BYTE_SIZE == 0);
+    assert(framebuffer_cfg.pixel_frame_height % BYTE_SIZE == 0);
     assert(anchor_y % BYTE_SIZE == 0);
 }
 
 void SSD1306::clear_pixel_buffer(struct_PixelFrame *pixel_memory)
 {
-    memset(pixel_memory->pixel_buffer, 0x00, pixel_memory->pixel_buffer_size);
+    memset(pixel_memory->pixel_frame_buffer, 0x00, pixel_memory->pixel_frame_buffer_size);
 }
 
 void SSD1306::create_pixel_buffer(struct_PixelFrame *pixel_memory)
 {
-    size_t nb_of_pages = pixel_memory->frame_height / BYTE_SIZE;
-    if (pixel_memory->frame_height % BYTE_SIZE != 0)
+    size_t nb_of_pages = pixel_memory->pixel_frame_height / BYTE_SIZE;
+    if (pixel_memory->pixel_frame_height % BYTE_SIZE != 0)
         nb_of_pages += 1;
 
-    pixel_memory->pixel_buffer_size = pixel_memory->frame_width * nb_of_pages;
+    pixel_memory->pixel_frame_buffer_size = pixel_memory->pixel_frame_width * nb_of_pages;
 
-    pixel_memory->pixel_buffer = new uint8_t[pixel_memory->pixel_buffer_size];
+    pixel_memory->pixel_frame_buffer = new uint8_t[pixel_memory->pixel_frame_buffer_size];
     clear_pixel_buffer(pixel_memory);
 }
 
 void SSD1306::pixel(struct_PixelFrame *pixel_memory_structure, const int x, const int y, const PixelColor c)
 {
-    if (x >= 0 && x < pixel_memory_structure->frame_width && y >= 0 && y < pixel_memory_structure->frame_height) // avoid drawing outside the framebuffer
+    if (x >= 0 && x < pixel_memory_structure->pixel_frame_width && y >= 0 && y < pixel_memory_structure->pixel_frame_height) // avoid drawing outside the framebuffer
     {
-        const int BytesPerRow = pixel_memory_structure->frame_width; // x pixels, 1bpp, but each row is 8 pixel high, so (x / 8) * 8
+        const int BytesPerRow = pixel_memory_structure->pixel_frame_width; // x pixels, 1bpp, but each row is 8 pixel high, so (x / 8) * 8
         int byte_idx = (y / 8) * BytesPerRow + x;
-        uint8_t byte = pixel_memory_structure->pixel_buffer[byte_idx];
+        uint8_t byte = pixel_memory_structure->pixel_frame_buffer[byte_idx];
 
         if (c == PixelColor::WHITE)
             byte |= 1 << (y % 8);
         else
             byte &= ~(1 << (y % 8));
 
-        pixel_memory_structure->pixel_buffer[byte_idx] = byte;
+        pixel_memory_structure->pixel_frame_buffer[byte_idx] = byte;
     }
 }
 
 void SSD1306::show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y)
 {
-    uint8_t end_col = anchor_x + pixel_memory->frame_width - 1;
-    uint8_t end_line = anchor_y + pixel_memory->frame_height - 1;
+    uint8_t end_col = anchor_x + pixel_memory->pixel_frame_width - 1;
+    uint8_t end_line = anchor_y + pixel_memory->pixel_frame_height - 1;
 
-    assert(anchor_x + pixel_memory->frame_width - 1 <= SSD1306_WIDTH - 1);
-    assert(anchor_y + pixel_memory->frame_height - 1 <= SSD1306_HEIGHT - 1);
+    assert(anchor_x + pixel_memory->pixel_frame_width - 1 <= SSD1306_WIDTH - 1);
+    assert(anchor_y + pixel_memory->pixel_frame_height - 1 <= SSD1306_HEIGHT - 1);
 
-    this->show_render_area(pixel_memory->pixel_buffer, this->compute_render_area(anchor_x, end_col, anchor_y, end_line));
+    this->show_render_area(pixel_memory->pixel_frame_buffer, this->compute_render_area(anchor_x, end_col, anchor_y, end_line));
 }
 
 void SSD1306::draw_char_into_pixel(struct_PixelFrame *pixel_memory_structure,

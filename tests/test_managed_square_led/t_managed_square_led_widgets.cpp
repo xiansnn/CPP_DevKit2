@@ -83,8 +83,8 @@ MySquareLEDWidgetWithFocus::MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *
 #define FOCUS_WIDTH 5
 
     struct_ConfigGraphicFramebuffer square_led_cfg{
-        .frame_width = graph_cfg.frame_width - FOCUS_OFFSET,
-        .frame_height = graph_cfg.frame_height,
+        .pixel_frame_width = graph_cfg.pixel_frame_width - FOCUS_OFFSET,
+        .pixel_frame_height = graph_cfg.pixel_frame_height,
         .fg_color = PixelColor::WHITE,
         .bg_color = PixelColor::BLACK};
 
@@ -94,8 +94,8 @@ MySquareLEDWidgetWithFocus::MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *
                                                     widget_anchor_x + FOCUS_OFFSET,
                                                     widget_anchor_y);
     struct_ConfigGraphicFramebuffer focus_led_cfg{
-        .frame_width = FOCUS_WIDTH,
-        .frame_height = graph_cfg.frame_height,
+        .pixel_frame_width = FOCUS_WIDTH,
+        .pixel_frame_height = graph_cfg.pixel_frame_height,
         .fg_color = PixelColor::WHITE,
         .bg_color = PixelColor::BLACK};
 

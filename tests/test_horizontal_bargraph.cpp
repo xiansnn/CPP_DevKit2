@@ -51,8 +51,8 @@ void simulate_values(ModelBargraph *model)
 }
 
 struct_ConfigGraphicFramebuffer horizontal_bargraph_cfg = {
-    .frame_width = 56,
-    .frame_height = 56,
+    .pixel_frame_width = 56,
+    .pixel_frame_height = 56,
     .fg_color = PixelColor::WHITE,
     .bg_color = PixelColor::BLACK};
 

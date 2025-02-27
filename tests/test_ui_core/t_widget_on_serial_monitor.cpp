@@ -78,8 +78,8 @@ std::map<ControlledObjectStatus, std::string> status_to_string{
     {ControlledObjectStatus::IS_ACTIVE, "IS_ACTIVE"}};
 
 struct_ConfigGraphicFramebuffer default_cfg{
-    .frame_width = 100,
-    .frame_height = 8,
+    .pixel_frame_width = 100,
+    .pixel_frame_height = 8,
     .fg_color = PixelColor::WHITE,
     .bg_color = PixelColor::BLACK};
 
