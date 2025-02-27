@@ -34,7 +34,7 @@ void WidgetFocusIndicator::draw()
 
 void WidgetFocusIndicator::draw_refresh()
 {
-    ControlledObjectStatus status = this->actual_displayed_model->get_status();
+    ControlledObjectStatus status = ((UIControlledModel*)this->actual_displayed_model)->get_status();
     switch (status)
     {
     case ControlledObjectStatus::HAS_FOCUS:
@@ -53,7 +53,7 @@ void WidgetFocusIndicator::draw_refresh()
         break;
     }
     WidgetSquareLed::blink_refresh();
-    GraphicWidget::draw_refresh();
+    GraphicWidget::draw();
 
 }
 
