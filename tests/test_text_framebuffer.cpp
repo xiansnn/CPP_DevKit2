@@ -19,7 +19,7 @@
 #include "probe.h"
 #include "hw_i2c.h"
 #include "ssd1306.h"
-#include "framebuffer.h"
+#include "widget.h"
 
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
@@ -59,46 +59,57 @@ void test_font_size(SSD1306 *current_display)
 {
     current_display->clear_device_screen_buffer();
     const unsigned char *current_font[4]{font_5x8, font_8x8, font_12x16, font_16x32};
-    uint8_t current_x_anchor = 0;
-    uint8_t current_y_anchor = 0;
+    // uint8_t current_x_anchor = 0;
+    // uint8_t current_y_anchor = 0;
 
     std::string test_string = "Test";
 
     struct_ConfigTextWidget default_text_cfg{
         .number_of_column = (uint8_t)test_string.size(),
         .number_of_line = 1,
+        .widget_anchor_x = 0,
+        .widget_anchor_y = 0,
         .font = current_font[0]};
 
-    TextFramebuffer *font_text_on_screen_0 = new TextFramebuffer(current_display, default_text_cfg);
+    TextWidget *font_text_on_screen_0 = new TextWidget(current_display, default_text_cfg);
     // draw text directly from a string to the pixel buffer
     font_text_on_screen_0->write(test_string.c_str());
-    current_display->show(&font_text_on_screen_0->pixel_frame, current_x_anchor, current_y_anchor);
+    font_text_on_screen_0->show();
+    // current_display->show(&font_text_on_screen_0->pixel_frame, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_0;
 
-    TextFramebuffer *font_text_on_screen_1 = new TextFramebuffer(current_display, default_text_cfg);
+    default_text_cfg.widget_anchor_x = 64;
+    default_text_cfg.widget_anchor_y = 8;
+    TextWidget *font_text_on_screen_1 = new TextWidget(current_display, default_text_cfg);
     font_text_on_screen_1->update_graphic_frame_size(current_font[1]);
-    current_x_anchor = 64;
-    current_y_anchor = 8;
-    //process first text according to sprintf capabilities then copy to text buffer and finally draw text buffer into pixel buffer
+    // current_x_anchor = 64;
+    // current_y_anchor = 8;
+    // process first text according to sprintf capabilities then copy to text buffer and finally draw text buffer into pixel buffer
     sprintf(font_text_on_screen_1->text_buffer, test_string.c_str());
     font_text_on_screen_1->write();
-    current_display->show(&font_text_on_screen_1->pixel_frame, current_x_anchor, current_y_anchor);
+    font_text_on_screen_1->show();
+    // current_display->show(&font_text_on_screen_1->pixel_frame, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_1;
 
-    TextFramebuffer *font_text_on_screen_2 = new TextFramebuffer(current_display, default_text_cfg);
+    default_text_cfg.widget_anchor_x = 0;
+    default_text_cfg.widget_anchor_y = 16;
+    TextWidget *font_text_on_screen_2 = new TextWidget(current_display, default_text_cfg);
     font_text_on_screen_2->update_graphic_frame_size(current_font[2]);
-    current_x_anchor = 0;
-    current_y_anchor = 16;
+    // current_x_anchor = 0;
+    // current_y_anchor = 16;
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->write();
-    current_display->show(&font_text_on_screen_2->pixel_frame, current_x_anchor, current_y_anchor);
+    font_text_on_screen_2->show();
+    // current_display->show(&font_text_on_screen_2->pixel_frame, current_x_anchor, current_y_anchor);
 
     font_text_on_screen_2->update_graphic_frame_size(current_font[3]);
-    current_x_anchor = 64;
-    current_y_anchor = 32;
+    font_text_on_screen_2->update_widget_anchor(64, 32);
+    // current_x_anchor = 64;
+    // current_y_anchor = 32;
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->write();
-    current_display->show(&font_text_on_screen_2->pixel_frame, current_x_anchor, current_y_anchor);
+    font_text_on_screen_2->show();
+    // current_display->show(&font_text_on_screen_2->pixel_frame, current_x_anchor, current_y_anchor);
     delete font_text_on_screen_2;
 
     sleep_ms(INTER_TEST_DELAY);
@@ -111,7 +122,7 @@ void test_full_screen_text(SSD1306 *current_display)
         .font = font_8x8,
         .wrap = true,
     };
-    TextFramebuffer text_frame = TextFramebuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, txt_conf);
+    TextWidget text_frame = TextWidget(current_display, txt_conf, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     text_frame.process_char(FORM_FEED); // equiv. clear full screen
     current_display->show(&text_frame.pixel_frame, 0, 0);
@@ -141,7 +152,7 @@ void test_auto_next_char(SSD1306 *current_display)
         .wrap = true,
         .auto_next_char = false};
 
-    TextFramebuffer *text_frame = new TextFramebuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, txt_conf);
+    TextWidget *text_frame = new TextWidget(current_display, txt_conf, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     text_frame->process_char(FORM_FEED);
 
@@ -178,7 +189,7 @@ void test_sprintf_format(SSD1306 *current_display)
         .font = font_8x8,
         .wrap = true};
 
-    TextFramebuffer *text_frame = new TextFramebuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, text_frame_cfg);
+    TextWidget *text_frame = new TextWidget(current_display, text_frame_cfg, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     const char *s = "Hello";
 
@@ -288,7 +299,7 @@ void test_sprintf_format(SSD1306 *current_display)
         .number_of_line = 2,
         .font = font_12x16,
         .wrap = false};
-    TextFramebuffer *text_frame2 = new TextFramebuffer(current_display, text_frame2_cfg);
+    TextWidget *text_frame2 = new TextWidget(current_display, text_frame2_cfg);
 
     text_frame2->write(" 09:56\n03JAN24");
     current_display->show(&text_frame2->pixel_frame, 22, 16);
@@ -322,7 +333,7 @@ void test_ostringstream_format(SSD1306 *current_display)
         .font = current_font,
         .wrap = false};
 
-    TextFramebuffer text_frame = TextFramebuffer(current_display, SSD1306_WIDTH, SSD1306_HEIGHT, txt_conf);
+    TextWidget text_frame = TextWidget(current_display, txt_conf, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     int n = 42;
     float f = std::numbers::pi;

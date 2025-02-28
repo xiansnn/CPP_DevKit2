@@ -71,6 +71,8 @@ struct struct_ConfigGraphicWidget
     uint8_t widget_anchor_x{0};
     /// @brief the y-axis anchor of the widget
     uint8_t widget_anchor_y{0};
+    /// @brief a flag that indicates if the widget has a 1-pixel width border
+    bool widget_with_border{false};
 };
 
 /// @brief the data structure used to configure textual widget
@@ -80,6 +82,10 @@ struct struct_ConfigTextWidget
     uint8_t number_of_column{0};
     /// @brief The max number of column with respect to frame width and font width
     uint8_t number_of_line{0};
+    /// @brief the x_axis anchor of the widget
+    uint8_t widget_anchor_x{0};
+    /// @brief the y-axis anchor of the widget
+    uint8_t widget_anchor_y{0};
     /**
      * @brief The font used. Current font are defined according to IBM CP437. The font files are derived from https://github.com/Harbys/pico-ssd1306 works.
      * They come is size 5x8, 8x8, 12x16 and 16x32.
@@ -105,6 +111,8 @@ struct struct_ConfigTextWidget
      * @brief auto_next_char flag : if true each char steps one position after being written.
      */
     bool auto_next_char{true};
+    /// @brief a flag that indicates if the widget has a 1-pixel width border
+    bool widget_with_border{false};
 };
 
 /**

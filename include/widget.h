@@ -17,7 +17,6 @@
 #include <vector>
 #include <string>
 
-
 #include "pico/stdlib.h"
 /// @brief flag used to generate 127 character font or full extended 255 character font.
 /// \note Must be placed before include "...font..."
@@ -26,7 +25,6 @@
 #include "ssd1306/8x8_font.h"
 #include "ssd1306/12x16_font.h"
 #include "ssd1306/16x32_font.h"
-
 
 /// @brief character code for BACKSPACE ('BS', 0x08)
 #define BACKSPACE '\b'
@@ -40,7 +38,6 @@
 #define FORM_FEED '\f'
 /// @brief character code for CARRIAGE_RETURN ('CR', 0x0D)
 #define CARRIAGE_RETURN '\r'
-
 
 class Model;
 
@@ -132,6 +129,8 @@ public:
     /// @brief location in y of the widget within the hosting framebuffer
     uint8_t widget_anchor_y;
 
+    void update_widget_anchor(uint8_t x, uint8_t y);
+
     /**
      * @brief Set the blink period in microseconds
      *
@@ -174,8 +173,7 @@ public:
      */
     GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                   Model *displayed_object,
-                  struct_ConfigGraphicWidget graph_cfg,
-                  bool widget_with_border);
+                  struct_ConfigGraphicWidget graph_cfg);
     /**
      * @brief Construct a new Graphic Widget object from the TextWidget Constructor
      * USAGE: When we need a textual framebuffer defined by the struct_ConfigTextWidget
@@ -189,10 +187,7 @@ public:
      */
     GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                   Model *displayed_object,
-                  struct_ConfigTextWidget text_cfg,
-                  uint8_t widget_anchor_x,
-                  uint8_t widget_anchor_y,
-                  bool widget_with_border);
+                  struct_ConfigTextWidget text_cfg);
 
     /**
      * @brief Construct a new Graphic Widget object from the TextWidget Constructor.
@@ -211,10 +206,7 @@ public:
     GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                   Model *displayed_object,
                   struct_ConfigTextWidget text_cfg,
-                  size_t frame_width, size_t frame_height,
-                  uint8_t widget_anchor_x,
-                  uint8_t widget_anchor_y,
-                  bool widget_with_border);
+                  size_t frame_width, size_t frame_height);
 
     /**
      * @brief Destroy the Widget object
@@ -391,21 +383,15 @@ public:
      * @param widget_anchor_y the verticaThe flag that indicates whether the widget has a border or notl position where the widget start on the device screen
      * @param widget_with_border flag that indicates if the frame has a border
      */
-    TextWidget(GraphicDisplayDevice *device,
+    TextWidget(GraphicDisplayDevice *graphic_display_screen,
                struct_ConfigTextWidget text_cfg,
-               Model *displayed_model,
-               uint8_t widget_anchor_x,
-               uint8_t widget_anchor_y,
-               bool widget_with_border);
+               Model *displayed_object = nullptr);
 
-    TextWidget(GraphicDisplayDevice *device,
+    TextWidget(GraphicDisplayDevice *graphic_display_screen,
+               struct_ConfigTextWidget text_cfg,
                size_t frame_width,
                size_t frame_height,
-               struct_ConfigTextWidget text_cfg,
-               Model *displayed_model,
-               uint8_t widget_anchor_x,
-               uint8_t widget_anchor_y,
-               bool widget_with_border);
+               Model *displayed_object = nullptr);
     ~TextWidget();
 
     /**

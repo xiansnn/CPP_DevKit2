@@ -222,6 +222,7 @@ target_link_libraries(test_text_framebuffer
             debug_probe
             hw_i2c 
             widget
+            ui_core
             ssd1306 
             )
 #-------------------------------------------------------------------------------------
