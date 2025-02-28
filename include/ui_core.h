@@ -11,7 +11,7 @@
 #pragma once
 
 #include "pico/stdlib.h"
-#include "framebuffer.h"
+// #include "framebuffer.h"
 #include "ui_control_event.h"
 #include "display_device.h"
 #include "widget.h"
@@ -59,7 +59,7 @@ enum class ControlledObjectStatusTimeOutReason
 };
 
 class UIController;
-class Widget;
+class GraphicWidget;
 
 
 /**
@@ -77,7 +77,7 @@ private:
 protected:
     /// @brief the set of widgets that are in charge of viewing this model.
     /// Used to cont the of widget that need to be refresched
-    std::set<Widget *> attached_widgets;
+    std::set<GraphicWidget *> attached_widgets;
 
 public:
     /// @brief Construct the Model object
@@ -91,7 +91,7 @@ public:
      *
      * @param new_widget
      */
-    void update_attached_widgets(Widget *new_widget);
+    void update_attached_widgets(GraphicWidget *new_widget);
 
     /// @brief get the number of attached widgets
     /// @return

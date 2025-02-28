@@ -95,7 +95,7 @@ target_link_libraries(test_ssd1306
             ssd1306 
             pico_stdlib 
             hw_i2c 
-            framebuffer
+            widget
             display_device
             debug_probe
             )
@@ -105,7 +105,8 @@ target_link_libraries(test_graphic_framebuffer
             ssd1306 
             pico_stdlib 
             hw_i2c 
-            framebuffer
+            widget
+            ui_core
             display_device
             debug_probe
             )
@@ -132,7 +133,7 @@ target_link_libraries(test_ui_core
             debug_probe
             widget
             display_device
-            framebuffer
+            widget
             )
 #-------------------------------------------------------------------------------------
 add_executable(test_gpio_irq test_gpio_irq.cpp )
@@ -221,7 +222,7 @@ target_link_libraries(test_text_framebuffer
             pico_stdlib 
             debug_probe
             hw_i2c 
-            framebuffer
+            widget
             ssd1306 
             )
 #-------------------------------------------------------------------------------------
@@ -230,7 +231,7 @@ target_link_libraries(test_text_and_graph_framebuffer
             pico_stdlib 
             debug_probe
             hw_i2c 
-            framebuffer
+            widget
             ssd1306 
             )
 #-------------------------------------------------------------------------------------
