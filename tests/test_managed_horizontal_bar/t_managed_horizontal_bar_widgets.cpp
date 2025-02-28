@@ -31,7 +31,7 @@ public:
     MyHorizontalBarWidgetWithFocus(MyControlledHorizontalBarModel *bar_value_model,
                                    GraphicDisplayDevice *graphic_display_screen,
                                    int max_value, int min_value,
-                                   struct_ConfigGraphicFramebuffer graph_cfg,
+                                   struct_ConfigGraphicWidget graph_cfg,
                                    uint8_t widget_anchor_x, uint8_t widget_anchor_y);
     ~MyHorizontalBarWidgetWithFocus();
     void draw();
@@ -41,7 +41,7 @@ public:
 MyHorizontalBarWidgetWithFocus::MyHorizontalBarWidgetWithFocus(MyControlledHorizontalBarModel *bar_value_model,
                                                                GraphicDisplayDevice *graphic_display_screen,
                                                                int max_value, int min_value,
-                                                               struct_ConfigGraphicFramebuffer graph_cfg,
+                                                               struct_ConfigGraphicWidget graph_cfg,
                                                                uint8_t widget_anchor_x, uint8_t widget_anchor_y)
     : GraphicWidget(graphic_display_screen, bar_value_model, graph_cfg, widget_anchor_x, widget_anchor_y, false)
 
@@ -51,7 +51,7 @@ MyHorizontalBarWidgetWithFocus::MyHorizontalBarWidgetWithFocus(MyControlledHoriz
 #define FOCUS_OFFSET 8
 #define FOCUS_WIDTH 5
 
-    struct_ConfigGraphicFramebuffer h_bar_cfg{
+    struct_ConfigGraphicWidget h_bar_cfg{
         .pixel_frame_width = graph_cfg.pixel_frame_width - FOCUS_OFFSET,
         .pixel_frame_height = graph_cfg.pixel_frame_height,
         .fg_color = PixelColor::WHITE,
@@ -63,7 +63,7 @@ MyHorizontalBarWidgetWithFocus::MyHorizontalBarWidgetWithFocus(MyControlledHoriz
                                                  h_bar_cfg,
                                                  widget_anchor_x + FOCUS_OFFSET, widget_anchor_y);
 
-    struct_ConfigGraphicFramebuffer focus_cfg{
+    struct_ConfigGraphicWidget focus_cfg{
         .pixel_frame_width = FOCUS_WIDTH,
         .pixel_frame_height = graph_cfg.pixel_frame_height,
         .fg_color = PixelColor::WHITE,

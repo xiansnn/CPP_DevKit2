@@ -172,8 +172,7 @@ private:
 
 public:
 
-    void check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg,
-                                            uint8_t anchor_x = 0, uint8_t anchor_y = 0);
+    void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg);
 
     void clear_pixel_buffer(struct_PixelFrame *pixel_memory);
     /**
@@ -208,7 +207,7 @@ public:
     void show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y);
 
     void draw_char_into_pixel(struct_PixelFrame *pixel_memory_structure,
-                  const struct_ConfigTextFramebuffer text_config,
+                  const struct_ConfigTextWidget text_config,
                   const char c,
                   const uint8_t anchor_x, const uint8_t anchor_y);
 

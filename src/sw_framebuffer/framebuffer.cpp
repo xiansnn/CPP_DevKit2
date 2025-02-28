@@ -14,7 +14,7 @@
 #include <cstring>
 
 GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *device,
-                                       struct_ConfigGraphicFramebuffer graph_cfg)
+                                       struct_ConfigGraphicWidget graph_cfg)
 {
     this->graphic_display_screen = device;
     this->fg_color = graph_cfg.fg_color;
@@ -27,7 +27,7 @@ GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *device,
 GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *display_device,
                                        size_t frame_width,
                                        size_t frame_height,
-                                       struct_ConfigTextFramebuffer text_cfg)
+                                       struct_ConfigTextWidget text_cfg)
 {
     this->graphic_display_screen = display_device;
     this->fg_color = text_cfg.fg_color;
@@ -38,7 +38,7 @@ GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *display_device,
 }
 
 GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *device,
-                                       struct_ConfigTextFramebuffer text_cfg)
+                                       struct_ConfigTextWidget text_cfg)
 {
     this->graphic_display_screen = device;
     this->fg_color = text_cfg.fg_color;
@@ -244,9 +244,9 @@ void TextFramebuffer::create_text_buffer()
     clear_text_buffer();
 }
 
-struct_ConfigTextFramebuffer TextFramebuffer::get_text_frame_config()
+struct_ConfigTextWidget TextFramebuffer::get_text_frame_config()
 {
-    struct_ConfigTextFramebuffer conf = {
+    struct_ConfigTextWidget conf = {
         .number_of_column = this->number_of_column,
         .number_of_line = this->number_of_line,
         .font = this->font,
@@ -259,7 +259,7 @@ struct_ConfigTextFramebuffer TextFramebuffer::get_text_frame_config()
 }
 
 TextFramebuffer::TextFramebuffer(GraphicDisplayDevice *device,
-                                 struct_ConfigTextFramebuffer text_cfg)
+                                 struct_ConfigTextWidget text_cfg)
     : GraphicFramebuffer(device, text_cfg)
 {
     this->number_of_column = text_cfg.number_of_column;
@@ -277,7 +277,7 @@ TextFramebuffer::TextFramebuffer(GraphicDisplayDevice *device,
 TextFramebuffer::TextFramebuffer(GraphicDisplayDevice *device,
                                  size_t frame_width,
                                  size_t frame_height,
-                                 struct_ConfigTextFramebuffer text_cfg)
+                                 struct_ConfigTextWidget text_cfg)
     : GraphicFramebuffer(device, frame_width, frame_height, text_cfg)
 {
     this->font = text_cfg.font;

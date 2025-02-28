@@ -43,47 +43,35 @@ struct_ConfigSSD1306 cfg_ssd1306{
     .frequency_divider = 1,
     .frequency_factor = 0};
 
-struct_ConfigGraphicFramebuffer SSD1306_framebuffer_cfg{
+struct_ConfigGraphicWidget SSD1306_framebuffer_cfg{
     .pixel_frame_width = SSD1306_WIDTH,
-    .pixel_frame_height = SSD1306_HEIGHT};
+    .pixel_frame_height = SSD1306_HEIGHT,
+    .widget_anchor_x = 0,
+    .widget_anchor_y = 0};
 
 class my_graphic_widget : public GraphicWidget
 {
 private:
-    /* data */
 public:
     my_graphic_widget(GraphicDisplayDevice *graphic_display_screen,
-                      struct_ConfigGraphicFramebuffer graph_cfg);
+                      struct_ConfigGraphicWidget graph_cfg);
     ~my_graphic_widget();
     void get_value_of_interest();
     void draw();
 };
 
 my_graphic_widget::my_graphic_widget(GraphicDisplayDevice *graphic_display_screen,
-                                     struct_ConfigGraphicFramebuffer graph_cfg)
-    : GraphicWidget(graphic_display_screen,
-                    nullptr,
-                    graph_cfg,
-                    0, 0, false)
-{
-}
-
-my_graphic_widget::~my_graphic_widget()
-{
-}
-
-void my_graphic_widget::get_value_of_interest()
-{
-}
+                                     struct_ConfigGraphicWidget graph_cfg)
+    : GraphicWidget(graphic_display_screen, nullptr, graph_cfg, false) {}
+my_graphic_widget::~my_graphic_widget() {}
+void my_graphic_widget::get_value_of_interest() {}
+void my_graphic_widget::draw() {}
 
 /**
  * @brief  Check that we can draw a line that outfit the framebuffer without consequences
  *
  * @param display
  */
-void my_graphic_widget::draw()
-{
-}
 void test_outofframe_line(SSD1306 *display)
 {
     my_graphic_widget frame = my_graphic_widget(display, SSD1306_framebuffer_cfg);
@@ -97,10 +85,10 @@ void test_outofframe_line(SSD1306 *display)
     {
         PixelColor c = PixelColor::WHITE;
         frame.line(x, y0, x1, y1, c);
-        display->show(&frame.pixel_frame, 0, 0);
+        frame.show();
         c = PixelColor::BLACK;
         frame.line(x, y0, x1, y1, c);
-        display->show(&frame.pixel_frame, 0, 0);
+        frame.show();
     }
 };
 /**
@@ -124,13 +112,13 @@ void test_fb_line(SSD1306 *display)
         for (int x = 0; x < SSD1306_WIDTH; x++)
         {
             frame.line(x, 0, SSD1306_WIDTH - 1 - x, SSD1306_HEIGHT - 1, c);
-            display->show(&frame.pixel_frame, 0, 0);
+            frame.show();
         }
 
         for (int y = SSD1306_HEIGHT - 1; y >= 0; y--)
         {
             frame.line(0, y, SSD1306_WIDTH - 1, SSD1306_HEIGHT - 1 - y, c);
-            display->show(&frame.pixel_frame, 0, 0);
+            frame.show();
         }
     }
 
@@ -141,10 +129,10 @@ void test_fb_line(SSD1306 *display)
         {
             c = PixelColor::WHITE;
             frame.line(x, 0, SSD1306_WIDTH - 1 - x, SSD1306_HEIGHT - 1, c);
-            display->show(&frame.pixel_frame, 0, 0);
+            frame.show();
             c = PixelColor::BLACK;
             frame.line(x, 0, SSD1306_WIDTH - 1 - x, SSD1306_HEIGHT - 1, c);
-            display->show(&frame.pixel_frame, 0, 0);
+            frame.show();
         }
 
         for (int y = SSD1306_HEIGHT - 1; y >= 0; y--)
@@ -172,17 +160,17 @@ void test_fb_hline(SSD1306 *display)
     display->clear_device_screen_buffer();
 
     frame.hline(0, 0, 32);
-    display->show(&frame.pixel_frame, 0, 0);
+    frame.show();
     sleep_ms(1000);
     frame.hline(0, 15, 64);
-    display->show(&frame.pixel_frame, 0, 0);
+    frame.show();
     sleep_ms(1000);
     frame.hline(0, 31, 96);
-    display->show(&frame.pixel_frame, 0, 0);
+    frame.show();
     sleep_ms(1000);
     frame.hline(0, 47, 128);
     frame.hline(0, 63, 128);
-    display->show(&frame.pixel_frame, 0, 0);
+    frame.show();
     sleep_ms(1000);
 }
 /**
@@ -196,17 +184,17 @@ void test_fb_vline(SSD1306 *display)
 
     display->clear_device_screen_buffer();
     frame.vline(0, 0, 16);
-    display->show(&frame.pixel_frame, 0, 0);
+    frame.show();
     sleep_ms(1000);
     frame.vline(15, 0, 32);
-    display->show(&frame.pixel_frame, 0, 0);
+    frame.show();
     sleep_ms(1000);
     frame.vline(31, 0, 48);
-    display->show(&frame.pixel_frame, 0, 0);
+    frame.show();
     sleep_ms(1000);
     frame.vline(64, 0, 64);
     frame.vline(127, 0, 64);
-    display->show(&frame.pixel_frame, 0, 0);
+    frame.show();
     sleep_ms(1000);
 }
 
@@ -221,10 +209,10 @@ void test_fb_rect(SSD1306 *display)
 
     display->clear_device_screen_buffer();
     frame.rect(0, 0, 128, 64);
-    display->show(&frame.pixel_frame, 0, 0);
+    frame.show();
     sleep_ms(1000);
     frame.rect(10, 10, 108, 44, true);
-    display->show(&frame.pixel_frame, 0, 0);
+    frame.show();
     sleep_ms(2000);
 }
 /**
@@ -240,22 +228,20 @@ void test_fb_in_fb(SSD1306 *display)
     frame.rect(0, 0, SSD1306_WIDTH, SSD1306_HEIGHT);
     frame.rect(10, 10, 108, 44, true);
     frame.line(5, 60, 120, 5, PixelColor::BLACK);
-    display->show(&frame.pixel_frame, 0, 0);
+    frame.show();
     sleep_ms(1000);
-    // uint8_t small_frame_width = 88;
-    // uint8_t small_frame_height = 25;
 
-    struct_ConfigGraphicFramebuffer small_frame_cfg{
+    struct_ConfigGraphicWidget small_frame_cfg{
         .pixel_frame_width = 80,
-        .pixel_frame_height = 24};
-    uint8_t small_frame_x_anchor = 20;
-    uint8_t small_frame_y_anchor = 20;
+        .pixel_frame_height = 24,
+        .widget_anchor_x = 24,
+        .widget_anchor_y = 24};
 
     my_graphic_widget small_frame = my_graphic_widget(display, small_frame_cfg);
     small_frame.fill(PixelColor::BLACK);
     small_frame.line(5, 5, 80, 20);
     small_frame.circle(8, 44, 12);
-    display->show(&small_frame.pixel_frame, small_frame_x_anchor, small_frame_y_anchor);
+    small_frame.show();
     sleep_ms(1000);
 }
 
@@ -270,10 +256,10 @@ void test_fb_circle(SSD1306 *display)
 
     display->clear_device_screen_buffer();
     frame.circle(50, 63, 31);
-    display->show(&frame.pixel_frame, 0, 0);
+    frame.show();
     sleep_ms(1000);
     frame.circle(20, 64, 32, true);
-    display->show(&frame.pixel_frame, 0, 0);
+    frame.show();
     sleep_ms(2000);
 }
 
@@ -287,12 +273,12 @@ int main()
 
     while (true)
     {
-        // test_fb_line(&display);
-        // test_outofframe_line(&display);
-        // test_fb_hline(&display);
-        // test_fb_vline(&display);
-        // test_fb_rect(&display);
-        // test_fb_circle(&display);
+        test_fb_line(&display);
+        test_outofframe_line(&display);
+        test_fb_hline(&display);
+        test_fb_vline(&display);
+        test_fb_rect(&display);
+        test_fb_circle(&display);
         test_fb_in_fb(&display);
     }
     return 0;

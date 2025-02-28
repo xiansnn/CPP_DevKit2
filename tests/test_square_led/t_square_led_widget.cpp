@@ -21,7 +21,7 @@ private:
 public:
     MyWidgetSquareLed(MySquareLedModel *actual_displayed_model,
                       GraphicDisplayDevice *graphic_display_screen,
-                      struct_ConfigGraphicFramebuffer graph_cfg,
+                      struct_ConfigGraphicWidget graph_cfg,
                       uint8_t widget_anchor_x,
                       uint8_t widget_anchor_y);
     ~MyWidgetSquareLed();
@@ -41,7 +41,7 @@ public:
  */
 MyWidgetSquareLed::MyWidgetSquareLed(MySquareLedModel *actual_displayed_model,
                                      GraphicDisplayDevice *graphic_display_screen,
-                                     struct_ConfigGraphicFramebuffer graph_cfg,
+                                     struct_ConfigGraphicWidget graph_cfg,
                                      uint8_t widget_anchor_x,
                                      uint8_t widget_anchor_y)
     : WidgetSquareLed(actual_displayed_model, graphic_display_screen, graph_cfg, widget_anchor_x, widget_anchor_y)

@@ -56,7 +56,7 @@ struct struct_TextFrame
  * @brief data structure used to configure graphic framebuffer
  *
  */
-struct struct_ConfigGraphicFramebuffer
+struct struct_ConfigGraphicWidget
 {
 
     /// @brief the frame width of the graphic frame
@@ -67,10 +67,14 @@ struct struct_ConfigGraphicFramebuffer
     PixelColor fg_color{PixelColor::WHITE};
     /// @brief  the background color
     PixelColor bg_color{PixelColor::BLACK};
+    /// @brief the x_axis anchor of the widget
+    uint8_t widget_anchor_x{0};
+    /// @brief the y-axis anchor of the widget
+    uint8_t widget_anchor_y{0};
 };
 
 /// @brief the data structure used to configure textual widget
-struct struct_ConfigTextFramebuffer
+struct struct_ConfigTextWidget
 {
     /// @brief The max number of line with respect to frame height and font height
     uint8_t number_of_column{0};
@@ -122,11 +126,8 @@ public:
      * @brief check the compatibility of the framebuffer and widget parameter with the physical lilitation of the display device
      *
      * @param framebuffer_cfg the framebuffer configuration data
-     * @param anchor_x the anchor of the widget along x-axis (default to 0)
-     * @param anchor_y the anchor of the widget along y-axis (default to 0)
      */
-    virtual void check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg,
-                                                    uint8_t anchor_x = 0, uint8_t anchor_y = 0) = 0;
+    virtual void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg) = 0;
 
     /**
      * @brief A pure virtual member function.
@@ -194,7 +195,7 @@ public:
      * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
      */
     virtual void draw_char_into_pixel(struct_PixelFrame *pixel_frame,
-                                      const struct_ConfigTextFramebuffer text_config,
+                                      const struct_ConfigTextWidget text_config,
                                       const char character,
                                       const uint8_t anchor_x, const uint8_t anchor_y) = 0;
 };

@@ -46,7 +46,7 @@ void WidgetHorizontalBar::draw()
 WidgetHorizontalBar::WidgetHorizontalBar(Model *bar_value_model,
                                          GraphicDisplayDevice *display_screen,
                                          int max_value, int min_value,
-                                         struct_ConfigGraphicFramebuffer graph_cfg,
+                                         struct_ConfigGraphicWidget graph_cfg,
                                          uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                          bool widget_with_border)
     : GraphicWidget(display_screen, bar_value_model, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)

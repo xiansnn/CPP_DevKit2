@@ -86,7 +86,7 @@ public:
      * \image html framebuffer.png
      */
     GraphicFramebuffer(GraphicDisplayDevice *display_device,
-                       struct_ConfigGraphicFramebuffer graph_cfg);
+                       struct_ConfigGraphicWidget graph_cfg);
 
     /**
      * @brief Construct a new Graphic Framebuffer object, as a base class of TextFramebuffer.
@@ -101,7 +101,7 @@ public:
     GraphicFramebuffer(GraphicDisplayDevice *display_device,
                        size_t frame_width,
                        size_t frame_height,
-                       struct_ConfigTextFramebuffer text_cfg);
+                       struct_ConfigTextWidget text_cfg);
 
     /**
      * @brief Construct a new Graphic Framebuffer object, as a base class of TextFramebuffer.
@@ -112,7 +112,7 @@ public:
      * @param text_cfg the configuration file of the textual frame
      */
     GraphicFramebuffer(GraphicDisplayDevice *display_device,
-                       struct_ConfigTextFramebuffer text_cfg);
+                       struct_ConfigTextWidget text_cfg);
 
     /**
      * @brief Destroy the GraphicFramebuffer object
@@ -264,7 +264,7 @@ public:
      *
      * @return struct_ConfigTextFramebuffer
      */
-    struct_ConfigTextFramebuffer get_text_frame_config();
+    struct_ConfigTextWidget get_text_frame_config();
 
     /// @brief size of the buffer that contains text as string of characters.
     size_t text_buffer_size;
@@ -281,7 +281,7 @@ public:
      * @param text_cfg textual configuration data structure
      */
     TextFramebuffer(GraphicDisplayDevice *device,
-                    struct_ConfigTextFramebuffer text_cfg);
+                    struct_ConfigTextWidget text_cfg);
 
     /**
      * @brief Construct a new Textual Frame Buffer object when the frame size in x and y pixel is given.
@@ -296,7 +296,7 @@ public:
     TextFramebuffer(GraphicDisplayDevice *device,
                     size_t frame_width,
                     size_t frame_height,
-                    struct_ConfigTextFramebuffer text_cfg);
+                    struct_ConfigTextWidget text_cfg);
 
     ~TextFramebuffer();
 

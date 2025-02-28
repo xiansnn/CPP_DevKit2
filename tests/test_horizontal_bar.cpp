@@ -61,7 +61,7 @@ public:
     MySimpleHorizontalBarWidget(MySimpleHorizontalBarModel *bar_value_model,
                                 GraphicDisplayDevice *graphic_display_screen,
                                 int max_value, int min_value,
-                                struct_ConfigGraphicFramebuffer graph_cfg,
+                                struct_ConfigGraphicWidget graph_cfg,
                                 uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                 bool widget_with_border = true);
     ~MySimpleHorizontalBarWidget();
@@ -70,7 +70,7 @@ public:
 MySimpleHorizontalBarWidget::MySimpleHorizontalBarWidget(MySimpleHorizontalBarModel *bar_value_model,
                                                          GraphicDisplayDevice *graphic_display_screen,
                                                          int max_value, int min_value,
-                                                         struct_ConfigGraphicFramebuffer graph_cfg,
+                                                         struct_ConfigGraphicWidget graph_cfg,
                                                          uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                                          bool widget_with_border)
     : WidgetHorizontalBar(bar_value_model,
@@ -110,7 +110,7 @@ public:
     MyControlledHorizontalBarWidget(MyControlledHorizontalBarModel *bar_value_model,
                                     GraphicDisplayDevice *graphic_display_screen,
                                     int max_value, int min_value,
-                                    struct_ConfigGraphicFramebuffer graph_cfg,
+                                    struct_ConfigGraphicWidget graph_cfg,
                                     uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                     bool widget_with_border = true);
     ~MyControlledHorizontalBarWidget();
@@ -120,7 +120,7 @@ public:
 MyControlledHorizontalBarWidget::MyControlledHorizontalBarWidget(MyControlledHorizontalBarModel *bar_value_model,
                                                                  GraphicDisplayDevice *graphic_display_screen,
                                                                  int max_value, int min_value,
-                                                                 struct_ConfigGraphicFramebuffer graph_cfg,
+                                                                 struct_ConfigGraphicWidget graph_cfg,
                                                                  uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                                                  bool widget_with_border)
     : WidgetHorizontalBar(bar_value_model,
@@ -171,7 +171,7 @@ int main()
     HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
     SSD1306 display = SSD1306(&master, cfg_ssd1306);
 
-    struct_ConfigGraphicFramebuffer horizontal_bar_cfg = {
+    struct_ConfigGraphicWidget horizontal_bar_cfg = {
         .pixel_frame_width = 100,
         .pixel_frame_height = 8,
         .fg_color = PixelColor::WHITE,

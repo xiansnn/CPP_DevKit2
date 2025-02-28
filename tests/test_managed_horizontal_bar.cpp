@@ -89,7 +89,7 @@ HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
 
 SSD1306 display = SSD1306(&master, cfg_ssd1306);
 
-struct_ConfigGraphicFramebuffer h_bar_with_focus_cfg{
+struct_ConfigGraphicWidget h_bar_with_focus_cfg{
     .pixel_frame_width = 100,
     .pixel_frame_height = 8,
     .fg_color = PixelColor::WHITE,

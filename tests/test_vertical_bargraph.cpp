@@ -50,7 +50,7 @@ void simulate_values(ModelBargraph *model)
     // model->process_control_event(); // pas necessaire car pas UI
 }
 
-struct_ConfigGraphicFramebuffer vertical_bargraph_cfg = {
+struct_ConfigGraphicWidget vertical_bargraph_cfg = {
     .pixel_frame_width = 56,
     .pixel_frame_height = 56,
     .fg_color = PixelColor::WHITE,

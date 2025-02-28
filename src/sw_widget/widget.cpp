@@ -28,13 +28,10 @@ void GraphicWidget::show()
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
                              Model *displayed_object,
-                             struct_ConfigGraphicFramebuffer graph_cfg,
-                             uint8_t widget_anchor_x,
-                             uint8_t widget_anchor_y,
+                             struct_ConfigGraphicWidget graph_cfg,
                              bool widget_with_border)
 {
     this->graphic_display_screen = display_screen;
-    this->graphic_display_screen->check_display_device_compatibility(graph_cfg, widget_anchor_x, widget_anchor_y);
 
     this->fg_color = graph_cfg.fg_color;
     this->bg_color = graph_cfg.bg_color;
@@ -49,8 +46,10 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
         this->actual_displayed_model->update_attached_widgets(this);
     }
 
-    this->widget_anchor_x = widget_anchor_x;
-    this->widget_anchor_y = widget_anchor_y;
+    this->widget_anchor_x = graph_cfg.widget_anchor_x;
+    this->widget_anchor_y = graph_cfg.widget_anchor_y;
+
+    this->graphic_display_screen->check_display_device_compatibility(graph_cfg);
 
     this->widget_with_border = widget_with_border;
     this->widget_border_width = (widget_with_border) ? 1 : 0;
@@ -63,27 +62,30 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              Model *displayed_object,
-                             struct_ConfigTextFramebuffer text_cfg,
+                             struct_ConfigTextWidget text_cfg,
                              uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                              bool widget_with_border)
 {
     this->graphic_display_screen = graphic_display_screen;
-    
+
     this->fg_color = text_cfg.fg_color;
     this->bg_color = text_cfg.bg_color;
-    
+
     this->pixel_frame.pixel_frame_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
     this->pixel_frame.pixel_frame_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
     this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
-    
-    this->graphic_display_screen->check_display_device_compatibility(get_graph_frame_config(), widget_anchor_x, widget_anchor_y);
-    
+
     if (actual_displayed_model != nullptr)
     {
         this->actual_displayed_model = actual_displayed_model;
         this->actual_displayed_model->update_attached_widgets(this);
     }
 
+    this->widget_anchor_x = widget_anchor_x;
+    this->widget_anchor_y = widget_anchor_y;
+
+    this->graphic_display_screen->check_display_device_compatibility(get_graph_frame_config());
+
     this->widget_with_border = widget_with_border;
     this->widget_border_width = (widget_with_border) ? 1 : 0;
 
@@ -95,7 +97,7 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              Model *displayed_object,
-                             struct_ConfigTextFramebuffer text_cfg,
+                             struct_ConfigTextWidget text_cfg,
                              size_t frame_width, size_t frame_height,
                              uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                              bool widget_with_border)
@@ -109,13 +111,15 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     this->pixel_frame.pixel_frame_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
     this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
 
-    this->graphic_display_screen->check_display_device_compatibility(get_graph_frame_config(), widget_anchor_x, widget_anchor_y);
+    this->graphic_display_screen->check_display_device_compatibility(get_graph_frame_config());
 
     if (actual_displayed_model != nullptr)
     {
         this->actual_displayed_model = actual_displayed_model;
         this->actual_displayed_model->update_attached_widgets(this);
     }
+    this->widget_anchor_x = widget_anchor_x;
+    this->widget_anchor_y = widget_anchor_y;
 
     this->widget_with_border = widget_with_border;
     this->widget_border_width = (widget_with_border) ? 1 : 0;
@@ -124,7 +128,6 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     widget_start_y = widget_border_width;
     widget_width = pixel_frame.pixel_frame_width - 2 * widget_border_width;
     widget_height = pixel_frame.pixel_frame_height - 2 * widget_border_width;
-
 }
 
 GraphicWidget::~GraphicWidget()
@@ -137,14 +140,15 @@ void GraphicWidget::set_display_screen(GraphicDisplayDevice *_new_display_device
     this->graphic_display_screen = _new_display_device;
 }
 
-struct_ConfigGraphicFramebuffer GraphicWidget::get_graph_frame_config()
+struct_ConfigGraphicWidget GraphicWidget::get_graph_frame_config()
 {
-    struct_ConfigGraphicFramebuffer cfg = {
+    struct_ConfigGraphicWidget cfg = {
         .pixel_frame_width = this->pixel_frame.pixel_frame_width,
         .pixel_frame_height = this->pixel_frame.pixel_frame_height,
         .fg_color = this->fg_color,
-        .bg_color = this->bg_color
-    };
+        .bg_color = this->bg_color,
+        .widget_anchor_x = this->widget_anchor_x,
+        .widget_anchor_y = this->widget_anchor_y};
     return cfg;
 }
 
@@ -285,9 +289,9 @@ void TextWidget::create_text_buffer()
     clear_text_buffer();
 }
 
-struct_ConfigTextFramebuffer TextWidget::get_text_frame_config()
+struct_ConfigTextWidget TextWidget::get_text_frame_config()
 {
-    struct_ConfigTextFramebuffer conf = {
+    struct_ConfigTextWidget conf = {
         .number_of_column = this->number_of_column,
         .number_of_line = this->number_of_line,
         .font = this->font,
@@ -300,7 +304,7 @@ struct_ConfigTextFramebuffer TextWidget::get_text_frame_config()
 }
 
 TextWidget::TextWidget(GraphicDisplayDevice *device,
-                       struct_ConfigTextFramebuffer text_cfg,
+                       struct_ConfigTextWidget text_cfg,
                        Model *displayed_model,
                        uint8_t widget_anchor_x,
                        uint8_t widget_anchor_y,
@@ -326,7 +330,7 @@ TextWidget::TextWidget(GraphicDisplayDevice *device,
 
 TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
                        size_t frame_width, size_t frame_height,
-                       struct_ConfigTextFramebuffer text_cfg,
+                       struct_ConfigTextWidget text_cfg,
                        Model *displayed_model,
                        uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                        bool widget_with_border)

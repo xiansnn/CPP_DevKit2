@@ -140,15 +140,15 @@ void SSD1306::show_render_area(uint8_t *data_buffer, const struct_RenderArea scr
     }
 }
 
-void SSD1306::check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg, uint8_t anchor_x, uint8_t anchor_y)
+void SSD1306::check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg)
 {
     // check limit of screen
-    assert(anchor_y + framebuffer_cfg.pixel_frame_height <= SSD1306_HEIGHT);
-    assert(anchor_x + framebuffer_cfg.pixel_frame_width <= SSD1306_WIDTH);
+    assert(framebuffer_cfg.widget_anchor_y + framebuffer_cfg.pixel_frame_height <= SSD1306_HEIGHT);
+    assert(framebuffer_cfg.widget_anchor_x + framebuffer_cfg.pixel_frame_width <= SSD1306_WIDTH);
 
     //check that framebuffer fit on page height boundary
     assert(framebuffer_cfg.pixel_frame_height % BYTE_SIZE == 0);
-    assert(anchor_y % BYTE_SIZE == 0);
+    assert(framebuffer_cfg.widget_anchor_y % BYTE_SIZE == 0);
 }
 
 void SSD1306::clear_pixel_buffer(struct_PixelFrame *pixel_memory)
@@ -197,7 +197,7 @@ void SSD1306::show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, cons
 }
 
 void SSD1306::draw_char_into_pixel(struct_PixelFrame *pixel_memory_structure,
-                       const struct_ConfigTextFramebuffer text_config,
+                       const struct_ConfigTextWidget text_config,
                        const char c, const uint8_t anchor_x, const uint8_t anchor_y)
 {
     if (!text_config.font || c < 32) // TODO voir pour construire une classe Font

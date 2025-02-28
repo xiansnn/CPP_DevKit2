@@ -174,13 +174,11 @@ public:
      */
     GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                   Model *displayed_object,
-                  struct_ConfigGraphicFramebuffer graph_cfg,
-                  uint8_t widget_anchor_x,
-                  uint8_t widget_anchor_y,
+                  struct_ConfigGraphicWidget graph_cfg,
                   bool widget_with_border);
     /**
      * @brief Construct a new Graphic Widget object from the TextWidget Constructor
-     * USAGE: When we need a textual framebuffer defined by the struct_ConfigTextFramebuffer
+     * USAGE: When we need a textual framebuffer defined by the struct_ConfigTextWidget
      *
      * @param graphic_display_screen The display device on which the widget is drawn.
      * @param displayed_object the displayed object of the widget
@@ -191,7 +189,7 @@ public:
      */
     GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                   Model *displayed_object,
-                  struct_ConfigTextFramebuffer text_cfg,
+                  struct_ConfigTextWidget text_cfg,
                   uint8_t widget_anchor_x,
                   uint8_t widget_anchor_y,
                   bool widget_with_border);
@@ -212,7 +210,7 @@ public:
      */
     GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                   Model *displayed_object,
-                  struct_ConfigTextFramebuffer text_cfg,
+                  struct_ConfigTextWidget text_cfg,
                   size_t frame_width, size_t frame_height,
                   uint8_t widget_anchor_x,
                   uint8_t widget_anchor_y,
@@ -235,7 +233,7 @@ public:
      *
      * @return struct_ConfigGraphicFramebuffer
      */
-    struct_ConfigGraphicFramebuffer get_graph_frame_config();
+    struct_ConfigGraphicWidget get_graph_frame_config();
 
     /// @brief Write all pixel buffer memory with "0" (or "1") if color c is BLACK (resp. WHITE)
     /// \note: Works only for monochrome display!
@@ -375,7 +373,7 @@ public:
      *
      * @return struct_ConfigTextFramebuffer
      */
-    struct_ConfigTextFramebuffer get_text_frame_config();
+    struct_ConfigTextWidget get_text_frame_config();
 
     /// @brief size of the buffer that contains text as string of characters.
     size_t text_buffer_size;
@@ -394,7 +392,7 @@ public:
      * @param widget_with_border flag that indicates if the frame has a border
      */
     TextWidget(GraphicDisplayDevice *device,
-               struct_ConfigTextFramebuffer text_cfg,
+               struct_ConfigTextWidget text_cfg,
                Model *displayed_model,
                uint8_t widget_anchor_x,
                uint8_t widget_anchor_y,
@@ -403,7 +401,7 @@ public:
     TextWidget(GraphicDisplayDevice *device,
                size_t frame_width,
                size_t frame_height,
-               struct_ConfigTextFramebuffer text_cfg,
+               struct_ConfigTextWidget text_cfg,
                Model *displayed_model,
                uint8_t widget_anchor_x,
                uint8_t widget_anchor_y,

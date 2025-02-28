@@ -45,7 +45,7 @@ struct_ConfigSSD1306 cfg_volume_screen{
     .frequency_divider = 1,
     .frequency_factor = 0};
 
-struct_ConfigTextFramebuffer fm_text_cnf{
+struct_ConfigTextWidget fm_text_cnf{
     .number_of_column = 10,
     .number_of_line = 1,
     .font = font_12x16};

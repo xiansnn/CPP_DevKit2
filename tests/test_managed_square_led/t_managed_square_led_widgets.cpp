@@ -29,7 +29,7 @@ private:
 public:
     MyManagedSquareLedWidget(MyManagedSquareLedModel *actual_displayed_model,
                              GraphicDisplayDevice *display_screen,
-                             struct_ConfigGraphicFramebuffer graph_cfg,
+                             struct_ConfigGraphicWidget graph_cfg,
                              uint8_t widget_anchor_x,
                              uint8_t widget_anchor_y);
     ~MyManagedSquareLedWidget();
@@ -37,7 +37,7 @@ public:
 };
 MyManagedSquareLedWidget::MyManagedSquareLedWidget(MyManagedSquareLedModel *actual_displayed_model,
                                                    GraphicDisplayDevice *display_screen,
-                                                   struct_ConfigGraphicFramebuffer graph_cfg,
+                                                   struct_ConfigGraphicWidget graph_cfg,
                                                    uint8_t widget_anchor_x,
                                                    uint8_t widget_anchor_y)
     : WidgetSquareLed(actual_displayed_model, display_screen, graph_cfg, widget_anchor_x, widget_anchor_y)
@@ -64,7 +64,7 @@ private:
 public:
     MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *actual_displayed_model,
                                GraphicDisplayDevice *display_screen,
-                               struct_ConfigGraphicFramebuffer graph_cfg,
+                               struct_ConfigGraphicWidget graph_cfg,
                                uint8_t widget_anchor_x,
                                uint8_t widget_anchor_y);
     ~MySquareLEDWidgetWithFocus();
@@ -74,7 +74,7 @@ public:
 
 MySquareLEDWidgetWithFocus::MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *actual_displayed_model,
                                                        GraphicDisplayDevice *display_screen,
-                                                       struct_ConfigGraphicFramebuffer graph_cfg,
+                                                       struct_ConfigGraphicWidget graph_cfg,
                                                        uint8_t widget_anchor_x,
                                                        uint8_t widget_anchor_y)
     : GraphicWidget(display_screen, actual_displayed_model, graph_cfg, widget_anchor_x, widget_anchor_y, true)
@@ -82,7 +82,7 @@ MySquareLEDWidgetWithFocus::MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *
 #define FOCUS_OFFSET 8
 #define FOCUS_WIDTH 5
 
-    struct_ConfigGraphicFramebuffer square_led_cfg{
+    struct_ConfigGraphicWidget square_led_cfg{
         .pixel_frame_width = graph_cfg.pixel_frame_width - FOCUS_OFFSET,
         .pixel_frame_height = graph_cfg.pixel_frame_height,
         .fg_color = PixelColor::WHITE,
@@ -93,7 +93,7 @@ MySquareLEDWidgetWithFocus::MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *
                                                     square_led_cfg,
                                                     widget_anchor_x + FOCUS_OFFSET,
                                                     widget_anchor_y);
-    struct_ConfigGraphicFramebuffer focus_led_cfg{
+    struct_ConfigGraphicWidget focus_led_cfg{
         .pixel_frame_width = FOCUS_WIDTH,
         .pixel_frame_height = graph_cfg.pixel_frame_height,
         .fg_color = PixelColor::WHITE,

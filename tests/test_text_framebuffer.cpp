@@ -64,7 +64,7 @@ void test_font_size(SSD1306 *current_display)
 
     std::string test_string = "Test";
 
-    struct_ConfigTextFramebuffer default_text_cfg{
+    struct_ConfigTextWidget default_text_cfg{
         .number_of_column = (uint8_t)test_string.size(),
         .number_of_line = 1,
         .font = current_font[0]};
@@ -107,7 +107,7 @@ void test_font_size(SSD1306 *current_display)
 
 void test_full_screen_text(SSD1306 *current_display)
 {
-    struct_ConfigTextFramebuffer txt_conf = {
+    struct_ConfigTextWidget txt_conf = {
         .font = font_8x8,
         .wrap = true,
     };
@@ -136,7 +136,7 @@ void test_full_screen_text(SSD1306 *current_display)
 
 void test_auto_next_char(SSD1306 *current_display)
 {
-    struct_ConfigTextFramebuffer txt_conf = {
+    struct_ConfigTextWidget txt_conf = {
         .font = font_8x8,
         .wrap = true,
         .auto_next_char = false};
@@ -174,7 +174,7 @@ void test_sprintf_format(SSD1306 *current_display)
 {
     current_display->clear_device_screen_buffer();
 
-    struct_ConfigTextFramebuffer text_frame_cfg = {
+    struct_ConfigTextWidget text_frame_cfg = {
         .font = font_8x8,
         .wrap = true};
 
@@ -283,7 +283,7 @@ void test_sprintf_format(SSD1306 *current_display)
 
     delete text_frame;
 
-    struct_ConfigTextFramebuffer text_frame2_cfg = {
+    struct_ConfigTextWidget text_frame2_cfg = {
         .number_of_column = 7,
         .number_of_line = 2,
         .font = font_12x16,
@@ -318,7 +318,7 @@ void test_ostringstream_format(SSD1306 *current_display)
 
     const unsigned char *current_font{font_5x8};
 
-    struct_ConfigTextFramebuffer txt_conf = {
+    struct_ConfigTextWidget txt_conf = {
         .font = current_font,
         .wrap = false};
 

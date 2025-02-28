@@ -61,7 +61,7 @@ void WidgetHorizontalBargraph::draw_bar(uint8_t bin_index)
 
 WidgetHorizontalBargraph::WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
                                                    GraphicDisplayDevice *graphic_display_screen,
-                                                   struct_ConfigGraphicFramebuffer graph_cfg,
+                                                   struct_ConfigGraphicWidget graph_cfg,
                                                    uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                                    bool widget_with_border,
                                                    uint8_t _bar_spacing)
@@ -152,7 +152,7 @@ void WidgetVerticalBargraph::draw_bar(uint8_t bin_index)
 
 WidgetVerticalBargraph::WidgetVerticalBargraph(ModelBargraph *bargraph_model,
                                                GraphicDisplayDevice *graphic_display_screen,
-                                               struct_ConfigGraphicFramebuffer graph_cfg,
+                                               struct_ConfigGraphicWidget graph_cfg,
                                                uint8_t widget_anchor_x, uint8_t widget_anchor_y,
                                                bool widget_with_border,
                                                uint8_t _bar_spacing)

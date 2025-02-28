@@ -2,7 +2,7 @@
 
 WidgetSquareLed::WidgetSquareLed(Model *actual_displayed_model,
                                  GraphicDisplayDevice *display_screen,
-                                 struct_ConfigGraphicFramebuffer graph_cfg,
+                                 struct_ConfigGraphicWidget graph_cfg,
                                  uint8_t widget_anchor_x,
                                  uint8_t widget_anchor_y,
                                  bool widget_with_border)

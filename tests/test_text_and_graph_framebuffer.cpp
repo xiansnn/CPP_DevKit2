@@ -62,7 +62,7 @@ int main()
     values_display.clear_device_screen_buffer();
     visu_display.clear_device_screen_buffer();
 
-    struct_ConfigTextFramebuffer title_config = {
+    struct_ConfigTextWidget title_config = {
         .number_of_column = 10,
         .number_of_line = 1,
         .font = font_12x16};
@@ -71,14 +71,14 @@ int main()
     int title_area_anchor_x = 0;
     int title_area_anchor_y = h * 0;
 
-    struct_ConfigTextFramebuffer values_config = {
+    struct_ConfigTextWidget values_config = {
         .number_of_column = 10,
         .number_of_line = 1,
         .font = font_12x16};
     int values_area_anchor_x = w * 0;
     int values_area_anchor_y = h * 2;
 
-    struct_ConfigGraphicFramebuffer graph_config{
+    struct_ConfigGraphicWidget graph_config{
         .pixel_frame_width = 120,
         .pixel_frame_height = 60};
 

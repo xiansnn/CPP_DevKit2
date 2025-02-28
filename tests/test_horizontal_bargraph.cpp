@@ -50,7 +50,7 @@ void simulate_values(ModelBargraph *model)
     // model->process_control_event(); // pas besoin UI
 }
 
-struct_ConfigGraphicFramebuffer horizontal_bargraph_cfg = {
+struct_ConfigGraphicWidget horizontal_bargraph_cfg = {
     .pixel_frame_width = 56,
     .pixel_frame_height = 56,
     .fg_color = PixelColor::WHITE,

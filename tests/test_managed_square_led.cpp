@@ -112,7 +112,7 @@ int main()
     MyManagedSquareLedModel test_model_2 = MyManagedSquareLedModel("TM2");
     MyManagedSquareLedModel test_model_3 = MyManagedSquareLedModel("TM3");
 
-    struct_ConfigGraphicFramebuffer square_led_cfg{
+    struct_ConfigGraphicWidget square_led_cfg{
         .pixel_frame_width = 50,
         .pixel_frame_height = 8,
         .fg_color = PixelColor::WHITE,
