@@ -10,7 +10,6 @@
  *
  */
 #include "ssd1306.h"
-#include "framebuffer.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

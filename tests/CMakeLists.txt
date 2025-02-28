@@ -95,7 +95,6 @@ target_link_libraries(test_ssd1306
             ssd1306 
             pico_stdlib 
             hw_i2c 
-            widget
             display_device
             debug_probe
             )
