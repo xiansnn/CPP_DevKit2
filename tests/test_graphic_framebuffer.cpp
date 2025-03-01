@@ -59,10 +59,9 @@ public:
     void get_value_of_interest();
     void draw();
 };
-
 my_graphic_widget::my_graphic_widget(GraphicDisplayDevice *graphic_display_screen,
                                      struct_ConfigGraphicWidget graph_cfg)
-    : GraphicWidget(graphic_display_screen, nullptr, graph_cfg, false) {}
+    : GraphicWidget(graphic_display_screen, graph_cfg) {}
 my_graphic_widget::~my_graphic_widget() {}
 void my_graphic_widget::get_value_of_interest() {}
 void my_graphic_widget::draw() {}

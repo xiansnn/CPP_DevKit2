@@ -27,8 +27,8 @@ void GraphicWidget::show()
 }
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
-                             Model *displayed_object,
-                             struct_ConfigGraphicWidget graph_cfg)
+                             struct_ConfigGraphicWidget graph_cfg,
+                             Model *displayed_object)
 {
     this->graphic_display_screen = display_screen;
 
@@ -60,8 +60,8 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
 }
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
-                             Model *displayed_object,
-                             struct_ConfigTextWidget text_cfg)
+                             struct_ConfigTextWidget text_cfg,
+                             Model *displayed_object)
 {
     this->graphic_display_screen = graphic_display_screen;
 
@@ -93,9 +93,9 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
 }
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
-                             Model *displayed_object,
                              struct_ConfigTextWidget text_cfg,
-                             size_t frame_width, size_t frame_height)
+                             size_t frame_width, size_t frame_height,
+                             Model *displayed_object)
 {
     this->graphic_display_screen = graphic_display_screen;
 
@@ -305,7 +305,7 @@ struct_ConfigTextWidget TextWidget::get_text_frame_config()
 TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
                        struct_ConfigTextWidget text_cfg,
                        Model *displayed_object)
-    : GraphicWidget(graphic_display_screen, displayed_object, text_cfg)
+    : GraphicWidget(graphic_display_screen, text_cfg, displayed_object)
 {
     this->number_of_column = text_cfg.number_of_column;
     this->number_of_line = text_cfg.number_of_line;
@@ -323,7 +323,7 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
                        struct_ConfigTextWidget text_cfg,
                        size_t frame_width, size_t frame_height,
                        Model *displayed_object)
-    : GraphicWidget(graphic_display_screen, displayed_object, text_cfg, frame_width, frame_height)
+    : GraphicWidget(graphic_display_screen, text_cfg, frame_width, frame_height, displayed_object)
 {
     this->font = text_cfg.font;
     this->number_of_column = this->pixel_frame.pixel_frame_width / this->font[FONT_WIDTH_INDEX];
@@ -473,10 +473,6 @@ void TextWidget::draw_border(PixelColor color)
 {
     if (this->widget_with_border)
         rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, false, color);
-}
-
-void TextWidget::get_value_of_interest()
-{
 }
 
 void GraphicWidget::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, PixelColor c)
