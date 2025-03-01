@@ -39,6 +39,7 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
     this->pixel_frame.pixel_frame_width = graph_cfg.pixel_frame_width;
     this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
 
+    this->actual_displayed_model = displayed_object;
     if (actual_displayed_model != nullptr)
     {
         this->actual_displayed_model = actual_displayed_model;
@@ -71,6 +72,8 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     this->pixel_frame.pixel_frame_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
     this->pixel_frame.pixel_frame_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
     this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
+
+    this->actual_displayed_model = displayed_object;
 
     if (actual_displayed_model != nullptr)
     {
@@ -107,6 +110,7 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
 
     this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
 
+    this->actual_displayed_model = displayed_object;
     if (actual_displayed_model != nullptr)
     {
         this->actual_displayed_model = actual_displayed_model;
@@ -358,8 +362,6 @@ void TextWidget::update_text_frame_size(const unsigned char *font)
 void TextWidget::clear_text_buffer()
 {
     memset(this->text_buffer, '\0', this->text_buffer_size);
-    this->graphic_display_screen->clear_pixel_buffer(&this->pixel_frame);
-
     current_char_column = 0;
     current_char_line = 0;
 }
@@ -463,6 +465,7 @@ void TextWidget::next_char()
 
 void TextWidget::draw()
 {
+    clear_text_buffer();
     get_value_of_interest();
     write();
     draw_border();
@@ -522,6 +525,11 @@ bool GraphicWidget::blinking_phase_has_changed()
     bool phase_has_changed = (previous_blinking_phase != current_blinking_phase);
     previous_blinking_phase = current_blinking_phase;
     return phase_has_changed;
+}
+
+void GraphicWidget::clear_pixel_buffer()
+{
+    this->graphic_display_screen->clear_pixel_buffer(&this->pixel_frame);
 }
 
 void GraphicWidget::update_widget_anchor(uint8_t x, uint8_t y)

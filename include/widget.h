@@ -113,6 +113,10 @@ protected:
     /// @brief this is the border size of the widget. 0 if no border, 1 if border
     uint8_t widget_border_width;
 
+    /// @brief fill the graphic pixel buffer with 0x00.
+    /// \note USAGE: used at the begining of the draw() method. 
+    void clear_pixel_buffer();
+
     /// @brief A pure virtual method that results in the transfer of the dispalyed values from the displayed model to the widget.
     virtual void get_value_of_interest() = 0;
 
@@ -138,7 +142,13 @@ public:
     /// @param _sub_widget
     void add_widget(GraphicWidget *_sub_widget);
 
-    /// @brief a pure virtual member that is called by xxxxxxxxxxxxxx method
+    /// @brief a pure virtual member that is called to effectively draw the widget.
+    /// \note USAGE: It is called by the draw_refresh method of the Model
+    /// 1)    clear_pixel_buffer()
+    /// 2)    get_values_of_interest()
+    /// 3)    -- execute all drawing primitives --
+    /// 4)    draw_border()
+    /// 5)    show()
     virtual void draw() = 0;
 
     /// @brief draw a rectangle around the widget.
@@ -392,13 +402,13 @@ public:
 
     /**
      * @brief we need draw() to be compliant with the pure virtual draw() inherited from Widget.
+     * \note USAGE: It is called by the draw_refresh method of the Model
      * The draw() member calls the following method :
-     *
-     *     get_value_of_interest();
-     *     write();
-     *     draw_border();
-     *     show();
-     *
+     * 1)    clear_text_buffer();
+     * 2)    get_value_of_interest();
+     * 3)    write(); -- transfer characters in text_buffer to pixels in the pixel_buffer
+     * 4)    draw_border();
+     * 5)    show();
      */
     void draw();
 
@@ -408,8 +418,6 @@ public:
     /// @param color
     void draw_border(PixelColor color = PixelColor::WHITE);
 };
-
-
 
 /// @brief A widget used when we need to simply print but still want to take advantage of the status change management.
 class PrintWidget
@@ -426,20 +434,20 @@ public:
     PrinterDevice *display_device;
 
     /**
-     * @brief 
+     * @brief
      *
-     * @param display_device 
-     * @param actual_displayed_model 
+     * @param display_device
+     * @param actual_displayed_model
      */
-    
-     /// @brief Construct a new Dummy Widget object
-     /// @param display_device the pointer to the printer display device
-     /// @param actual_displayed_model the pointer to the displayed model. Default to nullptr
-     PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model = nullptr);
+
+    /// @brief Construct a new Dummy Widget object
+    /// @param display_device the pointer to the printer display device
+    /// @param actual_displayed_model the pointer to the displayed model. Default to nullptr
+    PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model = nullptr);
     ~PrintWidget();
 
     /// @brief add a widget to the list of possible sub_widget.
-    /// @param widget 
+    /// @param widget
     void add_widget(PrintWidget *widget);
 
     /// @brief a pure virtual method that must be implement to effectively print somethig to the display.

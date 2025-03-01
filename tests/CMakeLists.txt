@@ -230,8 +230,10 @@ add_executable(test_text_and_graph_framebuffer test_text_and_graph_framebuffer.c
 target_link_libraries(test_text_and_graph_framebuffer 
             pico_stdlib 
             debug_probe
+            ui_core
             hw_i2c 
             widget
             ssd1306 
+            display_device
             )
 #-------------------------------------------------------------------------------------
