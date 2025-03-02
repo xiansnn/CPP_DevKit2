@@ -1,51 +1,50 @@
-@startuml show_pixel_frame
-title method : show()
-skinparam style strictuml
-skinparam SequenceMessageAlignment center
-[-> GraphicWidget ++ : show()
-GraphicWidget -> graphic_display_screen ++: show(pixel_frame, anchor_x, anchor_y)
-return Done
-[<- GraphicWidget :done
-@enduml
-
-@startuml draw_border
-title method : draw_border(color)
-skinparam style strictuml
-skinparam SequenceMessageAlignment center
-[-> GraphicWidget : draw_border(color)
-alt widget_with_border == true
-GraphicWidget -> GraphicFramebuffer ++: rect(x,y,width,height)
-GraphicFramebuffer -> graphic_display_screen ++: pixel()
-return 
-return
-end
-[<-- GraphicWidget
-@enduml
-
 @startuml draw
 title method : draw
 skinparam style strictuml
 skinparam SequenceMessageAlignment center
-ref over implemented_widget : get_value_of_interest()
-ref over implemented_widget : effective widget drawing
-ref over implemented_widget : draw_border(color)
-ref over implemented_widget : show()
-@enduml
+[-> implemented_widget : draw()
+group check if model has changed
+my_model <- implemented_widget ++: has_changed()
+my_model -> implemented_widget --: change_flag
+end
+alt change_flag != 0
 
-@startuml draw_if_changed
-' header HEADER
-' footer Page %page% of %lastpage%
-title scenario : draw_if_changed
-skinparam style strictuml
-skinparam SequenceMessageAlignment center
+group clear pixel buffer
+implemented_widget -> graphic_display_screen ++: clear_pixel_buffer(&pixel_frame)
+return
+end
+group get value of interest from model
+my_model <- implemented_widget ++: get_value_of_interest()
+rnote over implemented_widget : specific to the implemented widget and the attached model
+my_model -> implemented_widget --: value
+end
+group widget drawing
+rnote over implemented_widget : specific to the effective widget drawing
+end
 
-loop while(true)
-model -> implemented_widget ++: draw_refresh()
-alt model_has_changed
-ref over implemented_widget : draw()
-implemented_widget->model ++: clear_change_flag()
-return Done
-return Done
+group draw border if any
+alt widget_with_border == true
+implemented_widget -> implemented_widget ++: rect(around the widget)
+implemented_widget -> graphic_display_screen ++: pixel(x,y)
+return
+deactivate implemented_widget
 end
 end
+group show widget to screen
+implemented_widget-> implemented_widget ++ : show()
+implemented_widget -> graphic_display_screen ++: show(pixel_frame, anchor_x, anchor_y)
+return
+deactivate implemented_widget
+end
+
+group ack draw done 
+implemented_widget -> my_model ++: ack_widget_drawn()
+rnote over my_model : change_flag -= 1
+return
+end
+
+end
+[<- implemented_widget: return
 @enduml
+
+
