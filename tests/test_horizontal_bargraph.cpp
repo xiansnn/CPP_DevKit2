@@ -47,14 +47,17 @@ void simulate_values(ModelBargraph *model)
 #ifdef PRINT_DEBUG
     printf("\n");
 #endif
-    // model->process_control_event(); // pas besoin UI
+    model->set_change_flag();
 }
 
 struct_ConfigGraphicWidget horizontal_bargraph_cfg = {
     .pixel_frame_width = 56,
     .pixel_frame_height = 56,
     .fg_color = PixelColor::WHITE,
-    .bg_color = PixelColor::BLACK};
+    .bg_color = PixelColor::BLACK,
+    .widget_anchor_x = 20,
+    .widget_anchor_y = 0,
+    .widget_with_border = true};
 
 int main()
 {
@@ -63,9 +66,7 @@ int main()
     ModelBargraph my_model = ModelBargraph(7, 0, 100);
     WidgetHorizontalBargraph my_widget = WidgetHorizontalBargraph(&my_model,
                                                                   &display,
-                                                                  horizontal_bargraph_cfg,
-                                                                  20, 0,
-                                                                  true);
+                                                                  horizontal_bargraph_cfg);
 
 #ifdef PRINT_DEBUG
     stdio_init_all();
@@ -75,7 +76,7 @@ int main()
     while (true)
     {
         simulate_values(&my_model);
-        my_model.draw_refresh();
+        my_model.refresh_attached_widgets();
         sleep_ms(100);
     }
 

@@ -11,7 +11,6 @@
 
 #pragma once
 
-#include "framebuffer.h"
 #include "widget.h"
 #include "display_device.h"
 
@@ -99,9 +98,6 @@ public:
     WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
                              GraphicDisplayDevice *graphic_display_screen,
                              struct_ConfigGraphicWidget graph_cfg,
-                             uint8_t widget_anchor_x,
-                             uint8_t widget_anchor_y,
-                             bool widget_with_border,
                              uint8_t bar_spacing = 1);
     /**
      * @brief Destroy the GraphicWidget Horizontal Bargraph object
@@ -163,9 +159,6 @@ public:
     WidgetVerticalBargraph(ModelBargraph *bargraph_model,
                            GraphicDisplayDevice *graphic_display_screen,
                            struct_ConfigGraphicWidget graph_cfg,
-                           uint8_t widget_anchor_x,
-                           uint8_t widget_anchor_y,
-                           bool widget_with_border,
                            uint8_t bar_spacing = 1);
     ~WidgetVerticalBargraph();
 };

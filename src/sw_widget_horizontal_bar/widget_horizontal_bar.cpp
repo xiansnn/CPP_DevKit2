@@ -18,38 +18,41 @@ void WidgetHorizontalBar::convert_level_value_to_px()
 
 void WidgetHorizontalBar::draw()
 {
-    get_value_of_interest();
-    uint8_t bar_start;
-    uint8_t bar_end;
-    rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, true, PixelColor::BLACK); // clear the full framebuffer
-    
-    draw_border();
-    if (level >= 0)
+    if (actual_displayed_model->has_changed())
     {
-        bar_start = level_offset;
-        bar_end = px_position;
-    }
-    else
-    {
-        bar_start = px_position;
-        bar_end = level_offset;
-    }
+        uint8_t bar_start;
+        uint8_t bar_end;
 
-    if (level == 0)
-        rect(bar_start, 0, 1, pixel_frame.pixel_frame_height, true);
-    else
-        rect(bar_start, 0, bar_end - bar_start, pixel_frame.pixel_frame_height, true);
+        clear_pixel_buffer();
+        get_value_of_interest();
+        
+        if (level >= 0)
+        {
+            bar_start = level_offset;
+            bar_end = px_position;
+        }
+        else
+        {
+            bar_start = px_position;
+            bar_end = level_offset;
+        }
 
-    show();
+        if (level == 0)
+            rect(bar_start, 0, 1, pixel_frame.pixel_frame_height, true);
+        else
+            rect(bar_start, 0, bar_end - bar_start, pixel_frame.pixel_frame_height, true);
+
+        draw_border();
+        show();
+        actual_displayed_model->ack_widget_drawn();
+    }
 }
 
 WidgetHorizontalBar::WidgetHorizontalBar(Model *bar_value_model,
                                          GraphicDisplayDevice *display_screen,
                                          int max_value, int min_value,
-                                         struct_ConfigGraphicWidget graph_cfg,
-                                         uint8_t widget_anchor_x, uint8_t widget_anchor_y,
-                                         bool widget_with_border)
-    : GraphicWidget(display_screen, bar_value_model, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
+                                         struct_ConfigGraphicWidget graph_cfg)
+    : GraphicWidget(display_screen, graph_cfg, bar_value_model)
 {
     this->max_value = max_value;
     this->min_value = min_value;

@@ -77,6 +77,7 @@ void my_model::update_cycle(int i, int sign)
 {
     this->roll = i;
     this->pitch = sign * i / 4;
+    set_change_flag();
 }
 
 class my_text_widget : public TextWidget
@@ -128,26 +129,31 @@ void my_graphic_widget::get_value_of_interest()
 }
 void my_graphic_widget::draw()
 {
-    clear_pixel_buffer();
-    get_value_of_interest();
-
-    // compute and show the graphic representation
-    float xc = widget_width / 2;
-    float yc = widget_height / 2;
-    float yl = widget_height / 2 - pitch;
-    float radius = yc - 2 * widget_border_width; // radius -2 to fit inside the rectangle
-    float sin_roll = sin(std::numbers::pi / 180.0 * roll);
-    float cos_roll = cos(std::numbers::pi / 180.0 * roll);
-    int x0 = xc - radius * cos_roll;
-    int y0 = yl - radius * sin_roll;
-    int x1 = xc + radius * cos_roll;
-    int y1 = yl + radius * sin_roll;
-
-    this->circle(radius, xc, yl, false, fg_color);
-    this->line(x0, y0, x1, y1, fg_color);
-
-    draw_border();
-    show();
+    if (actual_displayed_model->has_changed())
+    {
+        clear_pixel_buffer();
+        get_value_of_interest();
+    
+        // compute and show the graphic representation
+        float xc = widget_width / 2;
+        float yc = widget_height / 2;
+        float yl = widget_height / 2 - pitch;
+        float radius = yc - 2 * widget_border_width; // radius -2 to fit inside the rectangle
+        float sin_roll = sin(std::numbers::pi / 180.0 * roll);
+        float cos_roll = cos(std::numbers::pi / 180.0 * roll);
+        int x0 = xc - radius * cos_roll;
+        int y0 = yl - radius * sin_roll;
+        int x1 = xc + radius * cos_roll;
+        int y1 = yl + radius * sin_roll;
+    
+        this->circle(radius, xc, yl, false, fg_color);
+        this->line(x0, y0, x1, y1, fg_color);
+    
+        draw_border();
+        show();
+        actual_displayed_model->ack_widget_drawn();
+    }
+    
 }
 
 int main()

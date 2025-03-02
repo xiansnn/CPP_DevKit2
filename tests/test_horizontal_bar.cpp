@@ -57,28 +57,23 @@ class MySimpleHorizontalBarWidget : public WidgetHorizontalBar
 private:
     /* data */
     void get_value_of_interest();
+
 public:
     MySimpleHorizontalBarWidget(MySimpleHorizontalBarModel *bar_value_model,
                                 GraphicDisplayDevice *graphic_display_screen,
                                 int max_value, int min_value,
-                                struct_ConfigGraphicWidget graph_cfg,
-                                uint8_t widget_anchor_x, uint8_t widget_anchor_y,
-                                bool widget_with_border = true);
+                                struct_ConfigGraphicWidget graph_cfg);
     ~MySimpleHorizontalBarWidget();
 };
 
 MySimpleHorizontalBarWidget::MySimpleHorizontalBarWidget(MySimpleHorizontalBarModel *bar_value_model,
                                                          GraphicDisplayDevice *graphic_display_screen,
                                                          int max_value, int min_value,
-                                                         struct_ConfigGraphicWidget graph_cfg,
-                                                         uint8_t widget_anchor_x, uint8_t widget_anchor_y,
-                                                         bool widget_with_border)
+                                                         struct_ConfigGraphicWidget graph_cfg)
     : WidgetHorizontalBar(bar_value_model,
                           graphic_display_screen,
                           max_value, min_value,
-                          graph_cfg,
-                          widget_anchor_x, widget_anchor_y,
-                          widget_with_border)
+                          graph_cfg)
 {
 }
 
@@ -88,7 +83,7 @@ MySimpleHorizontalBarWidget::~MySimpleHorizontalBarWidget()
 
 void MySimpleHorizontalBarWidget::get_value_of_interest()
 {
-    set_level(((MySimpleHorizontalBarModel*)actual_displayed_model)->get_value());
+    set_level(((MySimpleHorizontalBarModel *)actual_displayed_model)->get_value());
 }
 
 class MyControlledHorizontalBarModel : public UIControlledIncrementalValue
@@ -106,29 +101,23 @@ class MyControlledHorizontalBarWidget : public WidgetHorizontalBar
 private:
     /* data */
     void get_value_of_interest();
+
 public:
     MyControlledHorizontalBarWidget(MyControlledHorizontalBarModel *bar_value_model,
                                     GraphicDisplayDevice *graphic_display_screen,
                                     int max_value, int min_value,
-                                    struct_ConfigGraphicWidget graph_cfg,
-                                    uint8_t widget_anchor_x, uint8_t widget_anchor_y,
-                                    bool widget_with_border = true);
+                                    struct_ConfigGraphicWidget graph_cfg);
     ~MyControlledHorizontalBarWidget();
-
 };
 
 MyControlledHorizontalBarWidget::MyControlledHorizontalBarWidget(MyControlledHorizontalBarModel *bar_value_model,
                                                                  GraphicDisplayDevice *graphic_display_screen,
                                                                  int max_value, int min_value,
-                                                                 struct_ConfigGraphicWidget graph_cfg,
-                                                                 uint8_t widget_anchor_x, uint8_t widget_anchor_y,
-                                                                 bool widget_with_border)
+                                                                 struct_ConfigGraphicWidget graph_cfg)
     : WidgetHorizontalBar(bar_value_model,
                           graphic_display_screen,
                           max_value, min_value,
-                          graph_cfg,
-                          widget_anchor_x, widget_anchor_y,
-                          widget_with_border)
+                          graph_cfg)
 {
 }
 
@@ -138,7 +127,7 @@ MyControlledHorizontalBarWidget::~MyControlledHorizontalBarWidget()
 
 void MyControlledHorizontalBarWidget::get_value_of_interest()
 {
-    set_level(((MyControlledHorizontalBarModel*)actual_displayed_model)->get_value());
+    set_level(((MyControlledHorizontalBarModel *)actual_displayed_model)->get_value());
 }
 
 MyControlledHorizontalBarModel::MyControlledHorizontalBarModel(int _min_value, int _max_value, bool _is_wrappable, int _increment)
@@ -171,11 +160,22 @@ int main()
     HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
     SSD1306 display = SSD1306(&master, cfg_ssd1306);
 
-    struct_ConfigGraphicWidget horizontal_bar_cfg = {
+    struct_ConfigGraphicWidget controlled_horizontal_bar_cfg = {
         .pixel_frame_width = 100,
         .pixel_frame_height = 8,
         .fg_color = PixelColor::WHITE,
-        .bg_color = PixelColor::BLACK};
+        .bg_color = PixelColor::BLACK,
+        .widget_anchor_x = 20,
+        .widget_anchor_y = 8,
+        .widget_with_border = true};
+    struct_ConfigGraphicWidget simple_horizontal_bar_cfg = {
+        .pixel_frame_width = 100,
+        .pixel_frame_height = 8,
+        .fg_color = PixelColor::WHITE,
+        .bg_color = PixelColor::BLACK,
+        .widget_anchor_x = 20,
+        .widget_anchor_y = 32,
+        .widget_with_border = true};
 
     MyControlledHorizontalBarModel my_model = MyControlledHorizontalBarModel(MIN_VALUE, MAX_VALUE, true, 1);
 
@@ -183,12 +183,10 @@ int main()
 
     MyControlledHorizontalBarWidget my_horizontal_bar = MyControlledHorizontalBarWidget(&my_model, &display,
                                                                                         MAX_VALUE, MIN_VALUE,
-                                                                                        horizontal_bar_cfg,
-                                                                                        20, 8);
+                                                                                        controlled_horizontal_bar_cfg);
     MySimpleHorizontalBarWidget my_simple_horizontal_bar = MySimpleHorizontalBarWidget(&my_simple_model, &display,
                                                                                        MAX_VALUE, MIN_VALUE,
-                                                                                       horizontal_bar_cfg,
-                                                                                       20, 32);
+                                                                                       simple_horizontal_bar_cfg);
 
     display.clear_device_screen_buffer();
 
@@ -199,10 +197,10 @@ int main()
         pr_D5.hi();
 
         my_model.increment_value();
-        my_model.draw_if_changed();
+        my_model.refresh_attached_widgets();
 
         my_simple_model.increment_value();
-        my_simple_model.draw_refresh();
+        my_simple_model.refresh_attached_widgets();
 
         pr_D5.lo();
         sleep_ms(500);
@@ -229,6 +227,7 @@ void MySimpleHorizontalBarModel::increment_value()
     value += increment;
     if (value > max_value)
         value = (is_wrappable) ? min_value : max_value;
+    set_change_flag();
 }
 
 int MySimpleHorizontalBarModel::get_value()

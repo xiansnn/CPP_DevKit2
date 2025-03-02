@@ -234,13 +234,16 @@ void test_sprintf_format(SSD1306 *current_display)
     text_frame->show();
 
     text_frame->clear_text_buffer();
+    current_display->clear_pixel_buffer(&text_frame->pixel_frame);
     sprintf(text_frame->text_buffer, "Characters: %c %%", 'A');
     text_frame->write();
     text_frame->show();
 
+    
     sleep_ms(LONG_DELAY);
+    
+    current_display->clear_device_screen_buffer();
 
-    text_frame->show();
 
     text_frame->update_text_frame_size(font_5x8);
 
@@ -406,10 +409,10 @@ int main()
 
     while (true)
     {
-        // test_font_size(&left_display);
-        // test_full_screen_text(&right_display);
-        // test_auto_next_char(&left_display);
-        // test_ostringstream_format(&right_display);
+        test_font_size(&left_display);
+        test_full_screen_text(&right_display);
+        test_auto_next_char(&left_display);
+        test_ostringstream_format(&right_display);
         test_sprintf_format(&left_display);
     }
 }

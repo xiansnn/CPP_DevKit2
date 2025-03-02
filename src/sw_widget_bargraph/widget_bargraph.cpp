@@ -20,12 +20,17 @@ uint8_t WidgetHorizontalBargraph::convert_level_value_to_px(int level)
 }
 
 void WidgetHorizontalBargraph::draw()
+{if (actual_displayed_model->has_changed())
 {
+    clear_pixel_buffer();
     get_value_of_interest();
     for (int i = 0; i < number_of_bar; i++)
         draw_bar(i);
     draw_border();
     show();
+    actual_displayed_model->ack_widget_drawn();
+}
+
 }
 
 void WidgetHorizontalBargraph::get_value_of_interest()
@@ -36,7 +41,6 @@ void WidgetHorizontalBargraph::get_value_of_interest()
 void WidgetHorizontalBargraph::draw_bar(uint8_t bin_index)
 {
     uint8_t bar_start_y = widget_start_y + bar_spacing + bin_index * (bar_height + bar_spacing);
-    rect(widget_start_x, bar_start_y, widget_width, bar_height, true, PixelColor::BLACK); // erase the bar area
 
     uint8_t px = convert_level_value_to_px(values[bin_index]);
     uint16_t p0 = convert_level_value_to_px(0);
@@ -62,10 +66,8 @@ void WidgetHorizontalBargraph::draw_bar(uint8_t bin_index)
 WidgetHorizontalBargraph::WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
                                                    GraphicDisplayDevice *graphic_display_screen,
                                                    struct_ConfigGraphicWidget graph_cfg,
-                                                   uint8_t widget_anchor_x, uint8_t widget_anchor_y,
-                                                   bool widget_with_border,
                                                    uint8_t _bar_spacing)
-    : GraphicWidget(graphic_display_screen, bargraph_model, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
+    : GraphicWidget(graphic_display_screen, graph_cfg, bargraph_model)
 {
     this->bar_spacing = _bar_spacing;
 
@@ -111,11 +113,17 @@ uint8_t WidgetVerticalBargraph::convert_level_value_to_py(int level)
 
 void WidgetVerticalBargraph::draw()
 {
-    get_value_of_interest();
-    for (int i = 0; i < number_of_bar; i++)
-        draw_bar(i);
-    draw_border();
-    show();
+    if (actual_displayed_model->has_changed())
+    {
+        clear_pixel_buffer();
+        get_value_of_interest();
+        for (int i = 0; i < number_of_bar; i++)
+            draw_bar(i);
+        draw_border();
+        show();
+        actual_displayed_model->ack_widget_drawn();
+    }
+    
 }
 
 void WidgetVerticalBargraph::get_value_of_interest()
@@ -126,7 +134,6 @@ void WidgetVerticalBargraph::get_value_of_interest()
 void WidgetVerticalBargraph::draw_bar(uint8_t bin_index)
 {
     uint8_t bar_start_x = widget_start_x + bar_spacing + bin_index * (bar_width + bar_spacing);
-    rect(bar_start_x, widget_start_y, widget_width, bar_height, true, PixelColor::BLACK); // erase the bar area
 
     uint8_t py = convert_level_value_to_py(values[bin_index]);
     uint16_t p0 = convert_level_value_to_py(0);
@@ -153,10 +160,8 @@ void WidgetVerticalBargraph::draw_bar(uint8_t bin_index)
 WidgetVerticalBargraph::WidgetVerticalBargraph(ModelBargraph *bargraph_model,
                                                GraphicDisplayDevice *graphic_display_screen,
                                                struct_ConfigGraphicWidget graph_cfg,
-                                               uint8_t widget_anchor_x, uint8_t widget_anchor_y,
-                                               bool widget_with_border,
                                                uint8_t _bar_spacing)
-    : GraphicWidget(graphic_display_screen, bargraph_model, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
+    : GraphicWidget(graphic_display_screen, graph_cfg,bargraph_model )
 {
     this->bar_spacing = _bar_spacing;
 

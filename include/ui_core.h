@@ -58,7 +58,7 @@ class GraphicWidget;
 
 /// @brief This is the Model abstract class of Model_View_Control design pattern.
 ///
-/// It handles change_flag, a semaphore used to indicate that a screen draw_refresh is required.
+/// It handles change_flag, a semaphore used to indicate that a screen refresh_attached_widgets is required.
 ///
 /// The controller or any other entities that modify the model must set the change_flag
 /// and the widget in charge of its screen representation must clear the change_flag
@@ -107,7 +107,7 @@ public:
     uint32_t get_time_since_last_change();
 
     /// @brief update value of interest for each atttached widgets
-    virtual void draw_refresh();
+    virtual void refresh_attached_widgets();
 };
 
 class UIControlledModel : public Model
@@ -149,26 +149,6 @@ public:
      * @return UIController*
      */
     UIController *get_current_controller();
-
-    /**
-     * @brief (re)draw the graphical elements of the widget.
-     *
-     * To save running time, we can (re)draw the widget only if the associated Model has_changed.
-     *
-     * Guidance to implement this function:
-     *
-     * - First: Scan all contained sub-widgets if any and call draw_refresh() member function of each of them.
-     *
-     * - then: update widget status according to the values of interest in the Model
-     *
-     * - refresh blinking if needed
-     *
-     * - Then: check if any changes in the model require a screen redraw
-     *
-     * - if redraw() required , execute the effective widget drawing including border if required (can be a private member function)
-     * - and finally : clear model change flag
-     */
-    virtual void draw_if_changed();
 
     /**
      * @brief The purpose of this function is to implement the behavior of the implemented model object when a ControlEvent is received.

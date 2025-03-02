@@ -39,7 +39,7 @@ uint32_t Model::get_time_since_last_change()
     return time_us_32() - last_change_time;
 }
 
-void Model::draw_refresh()
+void Model::refresh_attached_widgets()
 {
     for (auto &&widget : attached_widgets)
         widget->draw();
@@ -229,10 +229,3 @@ UIController *UIControlledModel::get_current_controller()
     return this->current_controller;
 }
 
-void UIControlledModel::draw_if_changed()
-{
-    if (has_changed())
-        draw_refresh();
-
-    ack_widget_drawn();
-}

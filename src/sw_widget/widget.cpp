@@ -465,11 +465,16 @@ void TextWidget::next_char()
 
 void TextWidget::draw()
 {
-    clear_text_buffer();
-    get_value_of_interest();
-    write();
-    draw_border();
-    show();
+    if (this->actual_displayed_model->has_changed())
+    {
+        clear_text_buffer();
+        get_value_of_interest();
+        write();
+        draw_border();
+        show();
+        this->actual_displayed_model->ack_widget_drawn();
+    }
+    
 }
 
 void TextWidget::draw_border(PixelColor color)

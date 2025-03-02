@@ -56,9 +56,7 @@ public:
     WidgetHorizontalBar(Model *bar_value_model,
                         GraphicDisplayDevice *graphic_display_screen,
                         int max_value, int min_value,
-                        struct_ConfigGraphicWidget graph_cfg,
-                        uint8_t widget_anchor_x, uint8_t widget_anchor_y,
-                        bool widget_with_border = true);
+                        struct_ConfigGraphicWidget graph_cfg);
 
     ~WidgetHorizontalBar();
     /// @brief set the level to value
