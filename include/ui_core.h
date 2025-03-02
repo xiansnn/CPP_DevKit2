@@ -11,7 +11,6 @@
 #pragma once
 
 #include "pico/stdlib.h"
-// #include "framebuffer.h"
 #include "ui_control_event.h"
 #include "display_device.h"
 #include "widget.h"
@@ -24,12 +23,10 @@
 /// @brief the time out used by the UIModelManager that indicates there is no more UI_ModelObject Status change.
 #define UI_MODEL_OBJECT_STATUS_TIME_OUT_us 3000000
 
-/**
- * @brief The list of status that a Model can have.
- * (0) IS_WAITING
- * (1) HAS_FOCUS
- * (2) IS_ACTIVE
- */
+/// @brief The list of status that a Model can have.
+/// (0) IS_WAITING
+/// (1) HAS_FOCUS
+/// (2) IS_ACTIVE
 enum class ControlledObjectStatus
 {
     /// @brief The object is inactive, nothing to do.
@@ -42,12 +39,10 @@ enum class ControlledObjectStatus
     IS_ACTIVE
 };
 
-/**
- * @brief The list of reason of manager time out report.
- * (0) NO_TIME_OUT
- * (1) MANAGER_INACTIVE
- * (3) MANAGED_OBJECT_INACTIVE
- */
+/// @brief The list of reason of manager time out report.
+/// (0) NO_TIME_OUT
+/// (1) MANAGER_INACTIVE
+/// (3) MANAGED_OBJECT_INACTIVE
 enum class ControlledObjectStatusTimeOutReason
 {
     /// @brief no time out
@@ -61,47 +56,58 @@ enum class ControlledObjectStatusTimeOutReason
 class UIController;
 class GraphicWidget;
 
-
-/**
- * @brief This is the Model abstract class of Model_View_Control design pattern.
- *
- * It handles change_flag, a semaphore used to indicate that a screen draw_refresh is required.
- *
- *The controller or any other entities that modify the model must set the change_flag
- * and the widget in charge of its screen representation must clear the change_flag
- *
- */
+/// @brief This is the Model abstract class of Model_View_Control design pattern.
+///
+/// It handles change_flag, a semaphore used to indicate that a screen draw_refresh is required.
+///
+/// The controller or any other entities that modify the model must set the change_flag
+/// and the widget in charge of its screen representation must clear the change_flag
 class Model
 {
 private:
+    /// @brief the time in microseconds since the last status has changed
+    uint32_t last_change_time;
+
+    /// @brief The semaphore used to trigger the actual drawing of the widget on the screen.
+    /// It is set with the number of widget attached to this model
+    int change_flag;
+
 protected:
     /// @brief the set of widgets that are in charge of viewing this model.
-    /// Used to cont the of widget that need to be refresched
+    /// \note USAGE: Used to count the number of widget that need to be refresched
     std::set<GraphicWidget *> attached_widgets;
 
 public:
     /// @brief Construct the Model object
-    Model(/* args */);
+    Model();
 
     /// @brief Destroy the Model object
     ~Model();
 
-    /**
-     * @brief add a new widget to the set of attached_widgets
-     *
-     * @param new_widget
-     */
+    /// @brief add a new widget to the set of attached_widgets
+    /// @param new_widget
     void update_attached_widgets(GraphicWidget *new_widget);
 
     /// @brief get the number of attached widgets
     /// @return
     int get_number_of_attached_widget();
 
-        /**
-     * @brief update value of interest for each atttached widgets
-     */
-    virtual void draw_refresh();
+    /// @brief get the change flag status
+    /// @return true means the redraw is required
+    bool has_changed();
 
+    /// @brief Set the change flag object to true
+    void set_change_flag();
+
+    /// @brief Set the change flag object to false
+    void ack_widget_drawn();
+
+    /// @brief compute time since the last status change
+    /// @return this time in microsecond
+    uint32_t get_time_since_last_change();
+
+    /// @brief update value of interest for each atttached widgets
+    virtual void draw_refresh();
 };
 
 class UIControlledModel : public Model
@@ -112,12 +118,6 @@ private:
 
     /// @brief A pointer to the controller of this model.
     UIController *current_controller{nullptr};
-
-    /// @brief the time in microseconds since the last status has changed
-    uint32_t last_change_time;
-
-    /// @brief The semaphore used to trigger the actual drawing of the widget on the screen.
-    bool change_flag;
 
 public:
     UIControlledModel(/* args */);
@@ -151,24 +151,6 @@ public:
     UIController *get_current_controller();
 
     /**
-     * @brief get the change flag status
-     *
-     * @return true means the redraw is required
-     * @return false means the model is unchanged
-     */
-    bool has_changed();
-
-    /// @brief Set the change flag object to true
-    void set_change_flag();
-
-    /// @brief Set the change flag object to false
-    void clear_change_flag();
-
-    /// @brief compute time since the last status change
-    /// @return this time in microsecond
-    uint32_t get_time_since_last_change();
-
-        /**
      * @brief (re)draw the graphical elements of the widget.
      *
      * To save running time, we can (re)draw the widget only if the associated Model has_changed.
@@ -188,8 +170,6 @@ public:
      */
     virtual void draw_if_changed();
 
-
-
     /**
      * @brief The purpose of this function is to implement the behavior of the implemented model object when a ControlEvent is received.
      *
@@ -197,7 +177,6 @@ public:
      */
     virtual void process_control_event(UIControlEvent _event) = 0;
 };
-
 
 /**
  * @brief The UIControlledIncrementalValue is a kind of Model that have special feature such as a value that can be incremented or decremented.

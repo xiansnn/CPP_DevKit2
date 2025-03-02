@@ -18,6 +18,27 @@ int Model::get_number_of_attached_widget()
     return this->attached_widgets.size();
 }
 
+bool Model::has_changed()
+{
+    return this->change_flag;
+}
+
+void Model::set_change_flag()
+{
+    last_change_time = time_us_32();
+    this->change_flag = attached_widgets.size();
+}
+
+void Model::ack_widget_drawn()
+{
+    this->change_flag -= 1;
+}
+
+uint32_t Model::get_time_since_last_change()
+{
+    return time_us_32() - last_change_time;
+}
+
 void Model::draw_refresh()
 {
     for (auto &&widget : attached_widgets)
@@ -208,31 +229,10 @@ UIController *UIControlledModel::get_current_controller()
     return this->current_controller;
 }
 
-bool UIControlledModel::has_changed()
-{
-    return this->change_flag;
-}
-
-void UIControlledModel::set_change_flag()
-{
-    last_change_time = time_us_32();
-    this->change_flag = true;
-}
-
-void UIControlledModel::clear_change_flag()
-{
-    this->change_flag = false;
-}
-
-uint32_t UIControlledModel::get_time_since_last_change()
-{
-    return time_us_32() - last_change_time;
-}
-
 void UIControlledModel::draw_if_changed()
 {
     if (has_changed())
         draw_refresh();
 
-    clear_change_flag();
+    ack_widget_drawn();
 }

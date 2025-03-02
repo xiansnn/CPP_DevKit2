@@ -127,7 +127,7 @@ void MyIncrementalValueWidgetOnSerialMonitor::print_refresh()
             break;
         }
         this->display_device->show();
-        ((MyIncrementalValueModel *)this->actual_displayed_model)->clear_change_flag();
+        ((MyIncrementalValueModel *)this->actual_displayed_model)->ack_widget_drawn();
         pr_D1.lo();
     }
 }
@@ -158,7 +158,7 @@ void MyManagerWidget::print_refresh()
 
         this->display_device->show();
         
-        ((MyManager *)this->actual_displayed_model)->clear_change_flag();
+        ((MyManager *)this->actual_displayed_model)->ack_widget_drawn();
 
         pr_D4.lo();
     }
