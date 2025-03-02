@@ -4,8 +4,8 @@ skinparam style strictuml
 skinparam SequenceMessageAlignment center
 [-> implemented_widget : draw()
 group check if model has changed
-my_model <- implemented_widget ++: has_changed()
-my_model -> implemented_widget --: change_flag
+actual_displayed_model <- implemented_widget ++: has_changed()
+actual_displayed_model -> implemented_widget --: change_flag
 end
 alt change_flag != 0
 
@@ -14,9 +14,9 @@ implemented_widget -> graphic_display_screen ++: clear_pixel_buffer(&pixel_frame
 return
 end
 group get value of interest from model
-my_model <- implemented_widget ++: get_value_of_interest()
+actual_displayed_model <- implemented_widget ++: get_value_of_interest()
 rnote over implemented_widget : specific to the implemented widget and the attached model
-my_model -> implemented_widget --: value
+actual_displayed_model -> implemented_widget --: value
 end
 group widget drawing
 rnote over implemented_widget : specific to the effective widget drawing
@@ -38,8 +38,8 @@ deactivate implemented_widget
 end
 
 group ack draw done 
-implemented_widget -> my_model ++: ack_widget_drawn()
-rnote over my_model : change_flag -= 1
+implemented_widget -> actual_displayed_model ++: ack_widget_drawn()
+rnote over actual_displayed_model : change_flag -= 1
 return
 end
 
