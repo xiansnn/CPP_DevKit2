@@ -43,6 +43,7 @@ public:
     ~WidgetFocusIndicator();
 
     void draw();
+    /// @brief //TODO to be documented
     void draw_refresh();
 
 };

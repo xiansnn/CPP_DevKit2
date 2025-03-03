@@ -110,6 +110,7 @@ public:
     virtual void refresh_attached_widgets();
 };
 
+/// @brief Class that adds UI Controller to the basic Model class
 class UIControlledModel : public Model
 {
 private:

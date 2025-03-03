@@ -41,6 +41,7 @@
 
 class Model;
 
+/// @brief the generic class for all widget
 class Widget
 {
 protected:
@@ -54,6 +55,9 @@ protected:
     std::vector<Widget *> widgets;
 
 public:
+    /// @brief contructor for generic widget
+    /// @param actual_displayed_model the displayed object of the widget
+    /// @param graphic_display_screen The display device on which the widget is drawn.
     Widget(Model *actual_displayed_model,
            GraphicDisplayDevice *graphic_display_screen = nullptr);
 
@@ -168,9 +172,9 @@ public:
 
     /// @brief Construct a new Graphic Widget object
     /// \note USAGE: when we need a pure graphic widget defined by the struct_ConfigGraphicFramebuffer
-    /// @param graphic_display_screen
+    /// @param graphic_display_screen The display device on which the widget is drawn.
     /// @param graph_cfg the configuration data structure of the graphic framebuffer
-    /// @param displayed_object The display device on which the widget is drawn.
+    /// @param displayed_object  the displayed object of the widget
     /// \image html widget.png
     GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                   struct_ConfigGraphicWidget graph_cfg,
@@ -439,13 +443,6 @@ protected:
 public:
     /// @brief a pointer to the printer display device
     PrinterDevice *display_device;
-
-    /**
-     * @brief
-     *
-     * @param display_device
-     * @param actual_displayed_model
-     */
 
     /// @brief Construct a new Dummy Widget object
     /// @param display_device the pointer to the printer display device

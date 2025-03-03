@@ -115,7 +115,7 @@ struct struct_ConfigTextWidget
     bool widget_with_border{false};
 };
 
-
+/// @brief A generic class for all display device
 class DisplayDevice
 {
 private:
