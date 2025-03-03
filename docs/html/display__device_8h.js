@@ -2,9 +2,9 @@ var display__device_8h =
 [
     [ "struct_PixelFrame", "structstruct___pixel_frame.html", "structstruct___pixel_frame" ],
     [ "struct_TextFrame", "structstruct___text_frame.html", "structstruct___text_frame" ],
-    [ "struct_ConfigGraphicFramebuffer", "structstruct___config_graphic_framebuffer.html", "structstruct___config_graphic_framebuffer" ],
-    [ "struct_ConfigTextFramebuffer", "structstruct___config_text_framebuffer.html", "structstruct___config_text_framebuffer" ],
-    [ "DisplayDevice", "class_display_device.html", "class_display_device" ],
+    [ "struct_ConfigGraphicWidget", "structstruct___config_graphic_widget.html", "structstruct___config_graphic_widget" ],
+    [ "struct_ConfigTextWidget", "structstruct___config_text_widget.html", "structstruct___config_text_widget" ],
+    [ "DisplayDevice", "class_display_device.html", null ],
     [ "GraphicDisplayDevice", "class_graphic_display_device.html", "class_graphic_display_device" ],
     [ "PrinterDevice", "class_printer_device.html", "class_printer_device" ],
     [ "FONT_HEIGHT_INDEX", "display__device_8h.html#a4ab86d883782b831584c91476841456f", null ],

@@ -99,13 +99,17 @@ $(function(){initNavTree('class_graphic_widget.html',''); initResizable(true); }
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_graphic_widget-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">GraphicWidget Class Reference</div></div>
+  <div class="headertitle"><div class="title">GraphicWidget Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>the widget dedicated to graphics  
+<p>A widget is a displayed object on a device screen. It inherits from all framebuffer features, giving it textual and graphical capabilities. USAGE: //TODO commenter le processus d'usage de <a class="el" href="class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">GraphicWidget</a> Being a framebuffer, it is defined by a width and a height, line and column of text, and graphics. It is located within the display device screen at an anchor point (x,y).  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="widget_8h_source.html">widget.h</a>&gt;</code></p>
@@ -114,23 +118,21 @@ Inheritance diagram for GraphicWidget:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_graphic_widget__inherit__graph.png" border="0" usemap="#a_graphic_widget_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_graphic_widget_inherit__map" id="a_graphic_widget_inherit__map">
-<area shape="rect" title="the widget dedicated to graphics" alt="" coords="726,593,1170,832"/>
-<area shape="rect" href="class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="5,880,451,1175"/>
-<area shape="poly" title=" " alt="" coords="713,785,588,830,464,882,451,888,449,884,462,878,586,825,711,780"/>
-<area shape="rect" href="class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="475,889,939,1165"/>
-<area shape="poly" title=" " alt="" coords="850,846,814,891,810,888,845,842"/>
-<area shape="rect" href="class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="963,908,1415,1147"/>
-<area shape="poly" title=" " alt="" coords="1050,842,1100,907,1096,910,1046,845"/>
-<area shape="rect" href="class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="1439,889,1889,1165"/>
-<area shape="poly" title=" " alt="" coords="1185,781,1307,826,1429,878,1448,887,1446,892,1427,882,1306,831,1183,786"/>
-<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="456,260,923,545"/>
-<area shape="poly" title=" " alt="" coords="820,555,851,592,847,595,816,558"/>
-<area shape="rect" href="class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="947,264,1466,541"/>
-<area shape="poly" title=" " alt="" coords="1084,554,1049,595,1045,592,1080,551"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="945,5,1469,212"/>
-<area shape="poly" title=" " alt="" coords="1209,227,1209,264,1204,264,1204,227"/>
-<area shape="rect" href="class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="968,1223,1411,1368"/>
-<area shape="poly" title=" " alt="" coords="1192,1162,1192,1223,1187,1223,1187,1162"/>
+<area shape="rect" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="872,208,1420,907"/>
+<area shape="rect" href="class_text_widget.html" title="a dedicated class for text frame only" alt="" coords="5,955,433,1512"/>
+<area shape="poly" title=" " alt="" coords="860,693,757,748,650,811,546,881,448,957,435,968,431,964,444,953,543,877,647,807,754,744,857,688"/>
+<area shape="rect" href="class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="458,1093,890,1374"/>
+<area shape="poly" title=" " alt="" coords="896,920,774,1094,769,1091,892,917"/>
+<area shape="rect" href="class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="914,1074,1378,1393"/>
+<area shape="poly" title=" " alt="" coords="1149,921,1149,1074,1143,1074,1143,921"/>
+<area shape="rect" href="class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="1403,1114,1855,1353"/>
+<area shape="poly" title=" " alt="" coords="1406,917,1546,1113,1542,1116,1402,920"/>
+<area shape="rect" href="class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="1879,1074,2328,1393"/>
+<area shape="poly" title=" " alt="" coords="1435,684,1543,740,1655,804,1765,875,1869,953,1931,1010,1988,1072,1984,1076,1927,1014,1866,957,1762,879,1652,808,1540,744,1432,689"/>
+<area shape="rect" href="class_widget.html" title="the generic class for all widget" alt="" coords="906,5,1386,160"/>
+<area shape="poly" title=" " alt="" coords="1149,175,1149,208,1143,208,1143,175"/>
+<area shape="rect" href="class_widget_focus_indicator.html" title="WidgetFocusIndicator : this is a special led widget used to show the status of the model." alt="" coords="1407,1560,1851,1705"/>
+<area shape="poly" title=" " alt="" coords="1631,1368,1631,1560,1626,1560,1626,1368"/>
 </map>
 </div>
 <div class="dynheader">
@@ -138,26 +140,25 @@ Collaboration diagram for GraphicWidget:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_graphic_widget__coll__graph.png" border="0" usemap="#a_graphic_widget_coll__map" alt="Collaboration graph"/></div>
 <map name="a_graphic_widget_coll__map" id="a_graphic_widget_coll__map">
-<area shape="rect" title="the widget dedicated to graphics" alt="" coords="274,1009,718,1248"/>
-<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,688,472,955"/>
-<area shape="poly" title=" " alt="" coords="362,964,399,1008,395,1011,358,968"/>
-<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="99,468,379,604"/>
-<area shape="poly" title=" " alt="" coords="241,604,241,671,236,671,236,604"/>
-<area shape="rect" href="class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="497,683,1015,960"/>
-<area shape="poly" title=" " alt="" coords="631,973,599,1011,595,1008,627,969"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="494,451,1018,621"/>
-<area shape="poly" title=" " alt="" coords="759,636,759,683,753,683,753,636"/>
-<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="271,153,791,389"/>
-<area shape="poly" title=" " alt="" coords="633,387,676,437,672,441,629,391"/>
-<area shape="rect" href="class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="383,5,679,104"/>
-<area shape="poly" title=" " alt="" coords="533,119,533,153,528,153,528,119"/>
-<area shape="rect" href="structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="815,213,948,330"/>
-<area shape="poly" title=" " alt="" coords="857,331,806,437,801,435,852,328"/>
+<area shape="rect" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="366,624,914,1304"/>
+<area shape="rect" href="class_widget.html" title="the generic class for all widget" alt="" coords="227,445,707,562"/>
+<area shape="poly" title=" " alt="" coords="496,575,514,623,509,625,491,577"/>
+<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,139,512,379"/>
+<area shape="poly" title=" " alt="" coords="363,377,409,430,405,434,359,380"/>
+<area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="207,5,311,85"/>
+<area shape="poly" title=" " alt="" coords="261,101,261,139,256,139,256,101"/>
+<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="536,135,816,383"/>
+<area shape="poly" title=" " alt="" coords="572,384,529,434,525,430,568,381"/>
+<area shape="rect" href="structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="731,445,899,562"/>
+<area shape="poly" title=" " alt="" coords="795,563,778,609,773,607,790,561"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a9059637b35c4e26bca54a77ae9c25b0d" id="r_a9059637b35c4e26bca54a77ae9c25b0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9059637b35c4e26bca54a77ae9c25b0d">update_widget_anchor</a> (uint8_t x, uint8_t y)</td></tr>
+<tr class="memdesc:a9059637b35c4e26bca54a77ae9c25b0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modify the anchor of the widget on the display screen.  <br /></td></tr>
+<tr class="separator:a9059637b35c4e26bca54a77ae9c25b0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a934bc1c1cdf83ed72bf06d1ca5de2e45" id="r_a934bc1c1cdf83ed72bf06d1ca5de2e45"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a934bc1c1cdf83ed72bf06d1ca5de2e45">draw_border</a> (<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
 <tr class="memdesc:a934bc1c1cdf83ed72bf06d1ca5de2e45"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a rectangle around the widget.  <br /></td></tr>
 <tr class="separator:a934bc1c1cdf83ed72bf06d1ca5de2e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,76 +166,90 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>show</b> ()</td></tr>
 <tr class="memdesc:a83c221250b9dfdeb8ab03b87a783bf10"><td class="mdescLeft">&#160;</td><td class="mdescRight">A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y) <br /></td></tr>
 <tr class="separator:a83c221250b9dfdeb8ab03b87a783bf10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c897e5f069b50d6f39117264b2bdedc" id="r_a0c897e5f069b50d6f39117264b2bdedc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c897e5f069b50d6f39117264b2bdedc">GraphicWidget</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *<a class="el" href="class_framebuffer.html#aac2296916f9c9bccbf345ea150e5ce9c">graphic_display_screen</a>, <a class="el" href="class_model.html">Model</a> *displayed_object, <a class="el" href="structstruct___config_graphic_framebuffer.html">struct_ConfigGraphicFramebuffer</a> graph_cfg, uint8_t <a class="el" href="class_widget.html#aec593e4c3c6af61ca7f74a97bd2387ea">widget_anchor_x</a>, uint8_t <a class="el" href="class_widget.html#ad54861e21195fc55edf3d0e55bfe3e2b">widget_anchor_y</a>, bool <a class="el" href="#afd6b3c92346618f1fdbb501989c15078">widget_with_border</a>)</td></tr>
-<tr class="memdesc:a0c897e5f069b50d6f39117264b2bdedc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_graphic_widget.html" title="the widget dedicated to graphics">GraphicWidget</a> object.  <br /></td></tr>
-<tr class="separator:a0c897e5f069b50d6f39117264b2bdedc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67702cc24dce6d6b04681567efd64f48" id="r_a67702cc24dce6d6b04681567efd64f48"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67702cc24dce6d6b04681567efd64f48">GraphicWidget</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *<a class="el" href="class_widget.html#ad1a8361eeea9edee2df48440ac2b5211">graphic_display_screen</a>, <a class="el" href="structstruct___config_graphic_widget.html">struct_ConfigGraphicWidget</a> graph_cfg, <a class="el" href="class_model.html">Model</a> *displayed_object=nullptr)</td></tr>
+<tr class="memdesc:a67702cc24dce6d6b04681567efd64f48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a> object.  <br /></td></tr>
+<tr class="separator:a67702cc24dce6d6b04681567efd64f48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47a9bfa5c199c23fae155b47bfe9cde2" id="r_a47a9bfa5c199c23fae155b47bfe9cde2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47a9bfa5c199c23fae155b47bfe9cde2">GraphicWidget</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *<a class="el" href="class_widget.html#ad1a8361eeea9edee2df48440ac2b5211">graphic_display_screen</a>, <a class="el" href="structstruct___config_text_widget.html">struct_ConfigTextWidget</a> text_cfg, <a class="el" href="class_model.html">Model</a> *displayed_object=nullptr)</td></tr>
+<tr class="memdesc:a47a9bfa5c199c23fae155b47bfe9cde2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a> object from the <a class="el" href="class_text_widget.html" title="a dedicated class for text frame only">TextWidget</a> Constructor.  <br /></td></tr>
+<tr class="separator:a47a9bfa5c199c23fae155b47bfe9cde2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f075779b4d7c86bc128f9615a62e901" id="r_a5f075779b4d7c86bc128f9615a62e901"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f075779b4d7c86bc128f9615a62e901">GraphicWidget</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *<a class="el" href="class_widget.html#ad1a8361eeea9edee2df48440ac2b5211">graphic_display_screen</a>, <a class="el" href="structstruct___config_text_widget.html">struct_ConfigTextWidget</a> text_cfg, size_t frame_width, size_t frame_height, <a class="el" href="class_model.html">Model</a> *displayed_object=nullptr)</td></tr>
+<tr class="memdesc:a5f075779b4d7c86bc128f9615a62e901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a> object from the <a class="el" href="class_text_widget.html" title="a dedicated class for text frame only">TextWidget</a> Constructor.  <br /></td></tr>
+<tr class="separator:a5f075779b4d7c86bc128f9615a62e901"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2c0525c8819493eb279e69d54287179" id="r_ae2c0525c8819493eb279e69d54287179"><td class="memItemLeft" align="right" valign="top"><a id="ae2c0525c8819493eb279e69d54287179" name="ae2c0525c8819493eb279e69d54287179"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~GraphicWidget</b> ()</td></tr>
-<tr class="memdesc:ae2c0525c8819493eb279e69d54287179"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">Widget</a> object. <br /></td></tr>
+<tr class="memdesc:ae2c0525c8819493eb279e69d54287179"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a> object. <br /></td></tr>
 <tr class="separator:ae2c0525c8819493eb279e69d54287179"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cc51ba18e28a7617edfd6c6e04054f9" id="r_a9cc51ba18e28a7617edfd6c6e04054f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cc51ba18e28a7617edfd6c6e04054f9">set_display_screen</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *_new_display_device)</td></tr>
+<tr class="memdesc:a9cc51ba18e28a7617edfd6c6e04054f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the display screen object.  <br /></td></tr>
+<tr class="separator:a9cc51ba18e28a7617edfd6c6e04054f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49c9ebded2dc14246284662e13713a05" id="r_a49c9ebded2dc14246284662e13713a05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstruct___config_graphic_widget.html">struct_ConfigGraphicWidget</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49c9ebded2dc14246284662e13713a05">get_graph_frame_config</a> ()</td></tr>
+<tr class="memdesc:a49c9ebded2dc14246284662e13713a05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the graphic frame config object.  <br /></td></tr>
+<tr class="separator:a49c9ebded2dc14246284662e13713a05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44156ede281f3c11dd89756f4bbd4ebb" id="r_a44156ede281f3c11dd89756f4bbd4ebb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44156ede281f3c11dd89756f4bbd4ebb">fill</a> (<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color)</td></tr>
+<tr class="memdesc:a44156ede281f3c11dd89756f4bbd4ebb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write all pixel buffer memory with "0" (or "1") if color c is BLACK (resp. WHITE)  <br /></td></tr>
+<tr class="separator:a44156ede281f3c11dd89756f4bbd4ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5099c45a85d86703b2c12d0d3a901c8e" id="r_a5099c45a85d86703b2c12d0d3a901c8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5099c45a85d86703b2c12d0d3a901c8e">hline</a> (uint8_t x, uint8_t y, size_t w, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
+<tr class="memdesc:a5099c45a85d86703b2c12d0d3a901c8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a color horizontal line, starting at frame position (x,y), on w number of pixel.  <br /></td></tr>
+<tr class="separator:a5099c45a85d86703b2c12d0d3a901c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52bd84668c5f613f363f2c68c0cb5f28" id="r_a52bd84668c5f613f363f2c68c0cb5f28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52bd84668c5f613f363f2c68c0cb5f28">vline</a> (uint8_t x, uint8_t y, size_t h, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
+<tr class="memdesc:a52bd84668c5f613f363f2c68c0cb5f28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a color vertical line, starting at frame position (x,y), on w number of pixel.  <br /></td></tr>
+<tr class="separator:a52bd84668c5f613f363f2c68c0cb5f28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a486f223706f90218336d4fa3747ef76c" id="r_a486f223706f90218336d4fa3747ef76c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a486f223706f90218336d4fa3747ef76c">line</a> (int x0, int y0, int x1, int y1, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
+<tr class="memdesc:a486f223706f90218336d4fa3747ef76c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a color line, starting at frame position (x0,y0), ending at frame position (x1,y1)  <br /></td></tr>
+<tr class="separator:a486f223706f90218336d4fa3747ef76c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2bb85ff122ed402b8467e179611eda2" id="r_ac2bb85ff122ed402b8467e179611eda2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2bb85ff122ed402b8467e179611eda2">rect</a> (uint8_t start_x, uint8_t start_y, size_t w, size_t h, bool <a class="el" href="#a44156ede281f3c11dd89756f4bbd4ebb">fill</a>=false, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
+<tr class="memdesc:ac2bb85ff122ed402b8467e179611eda2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a rectangle, starting at frame position (x,y), w wide and h high.  <br /></td></tr>
+<tr class="separator:ac2bb85ff122ed402b8467e179611eda2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f4bf7831c9c22c2a13daa2acf4d71e4" id="r_a2f4bf7831c9c22c2a13daa2acf4d71e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f4bf7831c9c22c2a13daa2acf4d71e4">circle</a> (int radius, int x_center, int y_center, bool <a class="el" href="#a44156ede281f3c11dd89756f4bbd4ebb">fill</a>=false, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
+<tr class="memdesc:a2f4bf7831c9c22c2a13daa2acf4d71e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a cercle of size radius, centered at (x_center, y_center) <a href="https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham">https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham</a> <a href="https://en.wikipedia.org/wiki/Midpoint_circle_algorithm">https://en.wikipedia.org/wiki/Midpoint_circle_algorithm</a> procédure tracerCercle (entier rayon, entier x_centre, entier y_centre) déclarer entier x, y, m ; x ← 0 ; y ← rayon ; // on se place en haut du cercle m ← 5 - 4*rayon ; // initialisation Tant que x &lt;= y // tant qu'on est dans le second octant tracerPixel( x+x_centre, y+y_centre ) ; tracerPixel( y+x_centre, x+y_centre ) ; tracerPixel( -x+x_centre, y+y_centre ) ; tracerPixel( -y+x_centre, x+y_centre ) ; tracerPixel( x+x_centre, -y+y_centre ) ; tracerPixel( y+x_centre, -x+y_centre ) ; tracerPixel( -x+x_centre, -y+y_centre ) ; tracerPixel( -y+x_centre, -x+y_centre ) ; si m &gt; 0 alors //choix du point F y ← y - 1 ; m ← m - 8*y ; fin si ; x ← x + 1 ; m ← m + 8*x + 4 ; fin tant que ; fin de procédure ;  <br /></td></tr>
+<tr class="separator:a2f4bf7831c9c22c2a13daa2acf4d71e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_widget')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_widget.html">Widget</a></td></tr>
-<tr class="memitem:aa077048d87d0ac705df66d5fd6a27f1e inherit pub_methods_class_widget" id="r_aa077048d87d0ac705df66d5fd6a27f1e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_widget.html#aa077048d87d0ac705df66d5fd6a27f1e">Widget</a> (<a class="el" href="class_model.html">Model</a> *<a class="el" href="class_widget.html#a41ae2c77c95867d80f15cc722d32ce86">actual_displayed_model</a>, uint8_t <a class="el" href="class_widget.html#aec593e4c3c6af61ca7f74a97bd2387ea">widget_anchor_x</a>, uint8_t <a class="el" href="class_widget.html#ad54861e21195fc55edf3d0e55bfe3e2b">widget_anchor_y</a>)</td></tr>
-<tr class="memdesc:aa077048d87d0ac705df66d5fd6a27f1e inherit pub_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">Widget</a> object.  <br /></td></tr>
-<tr class="separator:aa077048d87d0ac705df66d5fd6a27f1e inherit pub_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b87a3fbf35b6bc94b55ed0934a192d8 inherit pub_methods_class_widget" id="r_a1b87a3fbf35b6bc94b55ed0934a192d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_widget.html#a1b87a3fbf35b6bc94b55ed0934a192d8">set_blink_us</a> (uint32_t blink_period=1000000)</td></tr>
-<tr class="memdesc:a1b87a3fbf35b6bc94b55ed0934a192d8 inherit pub_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the blink period in microseconds.  <br /></td></tr>
-<tr class="separator:a1b87a3fbf35b6bc94b55ed0934a192d8 inherit pub_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2acfa25813c29eb8c4012345c51e41a6 inherit pub_methods_class_widget" id="r_a2acfa25813c29eb8c4012345c51e41a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_widget.html#a2acfa25813c29eb8c4012345c51e41a6">Widget</a> (<a class="el" href="class_model.html">Model</a> *<a class="el" href="class_widget.html#a41ae2c77c95867d80f15cc722d32ce86">actual_displayed_model</a>, <a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *<a class="el" href="class_widget.html#ad1a8361eeea9edee2df48440ac2b5211">graphic_display_screen</a>=nullptr)</td></tr>
+<tr class="memdesc:a2acfa25813c29eb8c4012345c51e41a6 inherit pub_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">contructor for generic widget  <br /></td></tr>
+<tr class="separator:a2acfa25813c29eb8c4012345c51e41a6 inherit pub_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d08d01ec5ea290b39ae26963ae7e460 inherit pub_methods_class_widget" id="r_a6d08d01ec5ea290b39ae26963ae7e460"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_widget.html#a6d08d01ec5ea290b39ae26963ae7e460">add_widget</a> (<a class="el" href="class_widget.html">Widget</a> *_sub_widget)</td></tr>
 <tr class="memdesc:a6d08d01ec5ea290b39ae26963ae7e460 inherit pub_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">add sub_widget to the current widget  <br /></td></tr>
 <tr class="separator:a6d08d01ec5ea290b39ae26963ae7e460 inherit pub_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae48262adfd76a5df4fcc892485d942a6 inherit pub_methods_class_widget" id="r_ae48262adfd76a5df4fcc892485d942a6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_widget.html#ae48262adfd76a5df4fcc892485d942a6">draw</a> ()=0</td></tr>
-<tr class="memdesc:ae48262adfd76a5df4fcc892485d942a6 inherit pub_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">a pure virtual member that is called by draw_refresh method  <br /></td></tr>
+<tr class="memdesc:ae48262adfd76a5df4fcc892485d942a6 inherit pub_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">a pure virtual member that is called to effectively draw the widget.  <br /></td></tr>
 <tr class="separator:ae48262adfd76a5df4fcc892485d942a6 inherit pub_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_graphic_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_graphic_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_graphic_framebuffer.html">GraphicFramebuffer</a></td></tr>
-<tr class="memitem:afe42739400a09683334e3e9528ae699e inherit pub_methods_class_graphic_framebuffer" id="r_afe42739400a09683334e3e9528ae699e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#afe42739400a09683334e3e9528ae699e">GraphicFramebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *display_device, <a class="el" href="structstruct___config_graphic_framebuffer.html">struct_ConfigGraphicFramebuffer</a> graph_cfg)</td></tr>
-<tr class="memdesc:afe42739400a09683334e3e9528ae699e inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic <a class="el" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o...">Framebuffer</a> object.  <br /></td></tr>
-<tr class="separator:afe42739400a09683334e3e9528ae699e inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d05ac03a65fc6ba35e6234bec3a1647 inherit pub_methods_class_graphic_framebuffer" id="r_a2d05ac03a65fc6ba35e6234bec3a1647"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#a2d05ac03a65fc6ba35e6234bec3a1647">GraphicFramebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *display_device, size_t frame_width, size_t frame_height, <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> text_cfg)</td></tr>
-<tr class="memdesc:a2d05ac03a65fc6ba35e6234bec3a1647 inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic <a class="el" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o...">Framebuffer</a> object, as a base class of <a class="el" href="class_text_framebuffer.html" title="the place where all textual primitive are placed">TextFramebuffer</a>.  <br /></td></tr>
-<tr class="separator:a2d05ac03a65fc6ba35e6234bec3a1647 inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c9806337b0c7639e0619d112bd76ed1 inherit pub_methods_class_graphic_framebuffer" id="r_a1c9806337b0c7639e0619d112bd76ed1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#a1c9806337b0c7639e0619d112bd76ed1">GraphicFramebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *display_device, <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> text_cfg)</td></tr>
-<tr class="memdesc:a1c9806337b0c7639e0619d112bd76ed1 inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic <a class="el" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o...">Framebuffer</a> object, as a base class of <a class="el" href="class_text_framebuffer.html" title="the place where all textual primitive are placed">TextFramebuffer</a>.  <br /></td></tr>
-<tr class="separator:a1c9806337b0c7639e0619d112bd76ed1 inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f8253e92a4c512ffedd73f0ecf3c553 inherit pub_methods_class_graphic_framebuffer" id="r_a7f8253e92a4c512ffedd73f0ecf3c553"><td class="memItemLeft" align="right" valign="top">
-&#160;</td><td class="memItemRight" valign="bottom"><b>~GraphicFramebuffer</b> ()</td></tr>
-<tr class="memdesc:a7f8253e92a4c512ffedd73f0ecf3c553 inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in...">GraphicFramebuffer</a> object. <br /></td></tr>
-<tr class="separator:a7f8253e92a4c512ffedd73f0ecf3c553 inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3fad7125309e83f2963c8be0a141926 inherit pub_methods_class_graphic_framebuffer" id="r_ab3fad7125309e83f2963c8be0a141926"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#ab3fad7125309e83f2963c8be0a141926">fill</a> (<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c)</td></tr>
-<tr class="memdesc:ab3fad7125309e83f2963c8be0a141926 inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write all pixel buffer memory with "0" (or "1") if color c is BLACK (resp. WHITE)  <br /></td></tr>
-<tr class="separator:ab3fad7125309e83f2963c8be0a141926 inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae777b82b8ee37e7f2a97ed1c2cda94cb inherit pub_methods_class_graphic_framebuffer" id="r_ae777b82b8ee37e7f2a97ed1c2cda94cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#ae777b82b8ee37e7f2a97ed1c2cda94cb">hline</a> (uint8_t x, uint8_t y, size_t w, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
-<tr class="memdesc:ae777b82b8ee37e7f2a97ed1c2cda94cb inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a c color horizontal line, starting at frame position (x,y), on w number of pixel.  <br /></td></tr>
-<tr class="separator:ae777b82b8ee37e7f2a97ed1c2cda94cb inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5e8c043e79f0ace9e269716d8af2aa1 inherit pub_methods_class_graphic_framebuffer" id="r_af5e8c043e79f0ace9e269716d8af2aa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#af5e8c043e79f0ace9e269716d8af2aa1">vline</a> (uint8_t x, uint8_t y, size_t h, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
-<tr class="memdesc:af5e8c043e79f0ace9e269716d8af2aa1 inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a c color vertical line, starting at frame position (x,y), on w number of pixel.  <br /></td></tr>
-<tr class="separator:af5e8c043e79f0ace9e269716d8af2aa1 inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa752be049cd63d904a41510c8f7f4932 inherit pub_methods_class_graphic_framebuffer" id="r_aa752be049cd63d904a41510c8f7f4932"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#aa752be049cd63d904a41510c8f7f4932">line</a> (int x1, int y1, int x2, int y2, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
-<tr class="memdesc:aa752be049cd63d904a41510c8f7f4932 inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a c color line, starting at frame position (x1,y1), ending at frame position (x2,y2)  <br /></td></tr>
-<tr class="separator:aa752be049cd63d904a41510c8f7f4932 inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a534d81421e9871dae36d92705b01cb59 inherit pub_methods_class_graphic_framebuffer" id="r_a534d81421e9871dae36d92705b01cb59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#a534d81421e9871dae36d92705b01cb59">rect</a> (uint8_t x, uint8_t y, size_t w, size_t h, bool <a class="el" href="class_graphic_framebuffer.html#ab3fad7125309e83f2963c8be0a141926">fill</a>=false, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
-<tr class="memdesc:a534d81421e9871dae36d92705b01cb59 inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a rectangle, starting at frame position (x,y), w wide and h high.  <br /></td></tr>
-<tr class="separator:a534d81421e9871dae36d92705b01cb59 inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61455060176f83944a40478c4e41a21e inherit pub_methods_class_graphic_framebuffer" id="r_a61455060176f83944a40478c4e41a21e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#a61455060176f83944a40478c4e41a21e">circle</a> (int radius, int x_center, int y_center, bool <a class="el" href="class_graphic_framebuffer.html#ab3fad7125309e83f2963c8be0a141926">fill</a>=false, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
-<tr class="memdesc:a61455060176f83944a40478c4e41a21e inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a cercle of size radius, centered at (x_center, y_center) <a href="https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham">https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham</a> <a href="https://en.wikipedia.org/wiki/Midpoint_circle_algorithm">https://en.wikipedia.org/wiki/Midpoint_circle_algorithm</a> procédure tracerCercle (entier rayon, entier x_centre, entier y_centre) déclarer entier x, y, m ; x ← 0 ; y ← rayon ; // on se place en haut du cercle m ← 5 - 4*rayon ; // initialisation Tant que x &lt;= y // tant qu'on est dans le second octant tracerPixel( x+x_centre, y+y_centre ) ; tracerPixel( y+x_centre, x+y_centre ) ; tracerPixel( -x+x_centre, y+y_centre ) ; tracerPixel( -y+x_centre, x+y_centre ) ; tracerPixel( x+x_centre, -y+y_centre ) ; tracerPixel( y+x_centre, -x+y_centre ) ; tracerPixel( -x+x_centre, -y+y_centre ) ; tracerPixel( -y+x_centre, -x+y_centre ) ; si m &gt; 0 alors //choix du point F y ← y - 1 ; m ← m - 8*y ; fin si ; x ← x + 1 ; m ← m + 8*x + 4 ; fin tant que ; fin de procédure ;  <br /></td></tr>
-<tr class="separator:a61455060176f83944a40478c4e41a21e inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
-<tr class="memitem:aaa5f8dc36f84bfb8ec6c721e2209f74f inherit pub_methods_class_framebuffer" id="r_aaa5f8dc36f84bfb8ec6c721e2209f74f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#aaa5f8dc36f84bfb8ec6c721e2209f74f">Framebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *graphic_display_device, <a class="el" href="structstruct___config_graphic_framebuffer.html">struct_ConfigGraphicFramebuffer</a> graph_cfg)</td></tr>
-<tr class="memdesc:aaa5f8dc36f84bfb8ec6c721e2209f74f inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o...">Framebuffer</a> object.  <br /></td></tr>
-<tr class="separator:aaa5f8dc36f84bfb8ec6c721e2209f74f inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f75587867978790eff88f5f94ca5c25 inherit pub_methods_class_framebuffer" id="r_a9f75587867978790eff88f5f94ca5c25"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a9f75587867978790eff88f5f94ca5c25">Framebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *graphic_display_device, size_t frame_width, size_t frame_height, <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> text_cfg)</td></tr>
-<tr class="memdesc:a9f75587867978790eff88f5f94ca5c25 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o...">Framebuffer</a> object.  <br /></td></tr>
-<tr class="separator:a9f75587867978790eff88f5f94ca5c25 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d8c63490be2f35e41a4e6171502f1a6 inherit pub_methods_class_framebuffer" id="r_a0d8c63490be2f35e41a4e6171502f1a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a0d8c63490be2f35e41a4e6171502f1a6">Framebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *graphic_display_device, <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> text_cfg)</td></tr>
-<tr class="memdesc:a0d8c63490be2f35e41a4e6171502f1a6 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o...">Framebuffer</a> object.  <br /></td></tr>
-<tr class="separator:a0d8c63490be2f35e41a4e6171502f1a6 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a853c3beb49f76a0fe082e27cacd34742 inherit pub_methods_class_framebuffer" id="r_a853c3beb49f76a0fe082e27cacd34742"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a853c3beb49f76a0fe082e27cacd34742">set_display_screen</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *_new_display_device)</td></tr>
-<tr class="memdesc:a853c3beb49f76a0fe082e27cacd34742 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the display screen object.  <br /></td></tr>
-<tr class="separator:a853c3beb49f76a0fe082e27cacd34742 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a66963a7e8eefb7a212ca5fc595ec6382" id="r_a66963a7e8eefb7a212ca5fc595ec6382"><td class="memItemLeft" align="right" valign="top"><a id="a66963a7e8eefb7a212ca5fc595ec6382" name="a66963a7e8eefb7a212ca5fc595ec6382"></a>
+<a class="el" href="structstruct___pixel_frame.html">struct_PixelFrame</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_frame</b></td></tr>
+<tr class="memdesc:a66963a7e8eefb7a212ca5fc595ec6382"><td class="mdescLeft">&#160;</td><td class="mdescRight">the data structure that contains the actual pixel buffer, created by the display device. <br /></td></tr>
+<tr class="separator:a66963a7e8eefb7a212ca5fc595ec6382"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38884af0d399c0bec49500d978d1ea81" id="r_a38884af0d399c0bec49500d978d1ea81"><td class="memItemLeft" align="right" valign="top"><a id="a38884af0d399c0bec49500d978d1ea81" name="a38884af0d399c0bec49500d978d1ea81"></a>
+<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fg_color</b></td></tr>
+<tr class="memdesc:a38884af0d399c0bec49500d978d1ea81"><td class="mdescLeft">&#160;</td><td class="mdescRight">the foregroung color of the graphic frame <br /></td></tr>
+<tr class="separator:a38884af0d399c0bec49500d978d1ea81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0e94b95652214a6e2c5d48129c9eba2" id="r_ad0e94b95652214a6e2c5d48129c9eba2"><td class="memItemLeft" align="right" valign="top"><a id="ad0e94b95652214a6e2c5d48129c9eba2" name="ad0e94b95652214a6e2c5d48129c9eba2"></a>
+<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bg_color</b></td></tr>
+<tr class="memdesc:ad0e94b95652214a6e2c5d48129c9eba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the background color of the graphic frame <br /></td></tr>
+<tr class="separator:ad0e94b95652214a6e2c5d48129c9eba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61133b1352758000f0f3eef16824bdcb" id="r_a61133b1352758000f0f3eef16824bdcb"><td class="memItemLeft" align="right" valign="top"><a id="a61133b1352758000f0f3eef16824bdcb" name="a61133b1352758000f0f3eef16824bdcb"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_anchor_x</b></td></tr>
+<tr class="memdesc:a61133b1352758000f0f3eef16824bdcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">location in x of the widget within the hosting framebuffer <br /></td></tr>
+<tr class="separator:a61133b1352758000f0f3eef16824bdcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4f41f6ccf52025b2c16fc2ec59208ee" id="r_ae4f41f6ccf52025b2c16fc2ec59208ee"><td class="memItemLeft" align="right" valign="top"><a id="ae4f41f6ccf52025b2c16fc2ec59208ee" name="ae4f41f6ccf52025b2c16fc2ec59208ee"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_anchor_y</b></td></tr>
+<tr class="memdesc:ae4f41f6ccf52025b2c16fc2ec59208ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">location in y of the widget within the hosting framebuffer <br /></td></tr>
+<tr class="separator:ae4f41f6ccf52025b2c16fc2ec59208ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a32888852eb8d37759b1d88534ca34d56" id="r_a32888852eb8d37759b1d88534ca34d56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32888852eb8d37759b1d88534ca34d56">clear_pixel_buffer</a> ()</td></tr>
+<tr class="memdesc:a32888852eb8d37759b1d88534ca34d56"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill the graphic pixel buffer with 0x00.  <br /></td></tr>
+<tr class="separator:a32888852eb8d37759b1d88534ca34d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a012e42d45d29004e6e93e46782dcb284" id="r_a012e42d45d29004e6e93e46782dcb284"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a012e42d45d29004e6e93e46782dcb284">get_value_of_interest</a> ()=0</td></tr>
+<tr class="memdesc:a012e42d45d29004e6e93e46782dcb284"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual method that results in the transfer of the dispalyed values from the displayed model to the widget.  <br /></td></tr>
+<tr class="separator:a012e42d45d29004e6e93e46782dcb284"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:afd6b3c92346618f1fdbb501989c15078" id="r_afd6b3c92346618f1fdbb501989c15078"><td class="memItemLeft" align="right" valign="top"><a id="afd6b3c92346618f1fdbb501989c15078" name="afd6b3c92346618f1fdbb501989c15078"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>widget_with_border</b> {true}</td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>widget_with_border</b> {false}</td></tr>
 <tr class="memdesc:afd6b3c92346618f1fdbb501989c15078"><td class="mdescLeft">&#160;</td><td class="mdescRight">if true, the widget is surrounded by a one-pixel border <br /></td></tr>
 <tr class="separator:afd6b3c92346618f1fdbb501989c15078"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ea1e751f7a5c20a1447c477ae1c7a07" id="r_a5ea1e751f7a5c20a1447c477ae1c7a07"><td class="memItemLeft" align="right" valign="top"><a id="a5ea1e751f7a5c20a1447c477ae1c7a07" name="a5ea1e751f7a5c20a1447c477ae1c7a07"></a>
@@ -256,62 +271,49 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_border_widt
 <tr class="memdesc:ab06cc273f6d42d2527eca35fd5e9b8ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">this is the border size of the widget. 0 if no border, 1 if border <br /></td></tr>
 <tr class="separator:ab06cc273f6d42d2527eca35fd5e9b8ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_widget')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_widget.html">Widget</a></td></tr>
+<tr class="memitem:ad1a8361eeea9edee2df48440ac2b5211 inherit pro_attribs_class_widget" id="r_ad1a8361eeea9edee2df48440ac2b5211"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>graphic_display_screen</b> {nullptr}</td></tr>
+<tr class="memdesc:ad1a8361eeea9edee2df48440ac2b5211 inherit pro_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">the display device where the attached to the frame buffer <br /></td></tr>
+<tr class="separator:ad1a8361eeea9edee2df48440ac2b5211 inherit pro_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41ae2c77c95867d80f15cc722d32ce86 inherit pro_attribs_class_widget" id="r_a41ae2c77c95867d80f15cc722d32ce86"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="class_model.html">Model</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>actual_displayed_model</b> = nullptr</td></tr>
+<a class="el" href="class_model.html">Model</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>actual_displayed_model</b> {nullptr}</td></tr>
 <tr class="memdesc:a41ae2c77c95867d80f15cc722d32ce86 inherit pro_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">a pointer to the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> actually displayed by the widget <br /></td></tr>
 <tr class="separator:a41ae2c77c95867d80f15cc722d32ce86 inherit pro_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d16527adc5cfd8ff6fda332c1f09db0 inherit pro_attribs_class_widget" id="r_a9d16527adc5cfd8ff6fda332c1f09db0"><td class="memItemLeft" align="right" valign="top">
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>blink_period_us</b></td></tr>
-<tr class="memdesc:a9d16527adc5cfd8ff6fda332c1f09db0 inherit pro_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">The period of the blinking, in microseconds. <br /></td></tr>
-<tr class="separator:a9d16527adc5cfd8ff6fda332c1f09db0 inherit pro_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4c3a0de546fdcb1038469f5c592e2b6 inherit pro_attribs_class_widget" id="r_af4c3a0de546fdcb1038469f5c592e2b6"><td class="memItemLeft" align="right" valign="top">
 std::vector&lt; <a class="el" href="class_widget.html">Widget</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>widgets</b></td></tr>
-<tr class="memdesc:af4c3a0de546fdcb1038469f5c592e2b6 inherit pro_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">A widget can be composed by several widget. <br /></td></tr>
+<tr class="memdesc:af4c3a0de546fdcb1038469f5c592e2b6 inherit pro_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">A widget can be composed by several widgets. <br /></td></tr>
 <tr class="separator:af4c3a0de546fdcb1038469f5c592e2b6 inherit pro_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
-<tr class="memitem:aac2296916f9c9bccbf345ea150e5ce9c inherit pro_attribs_class_framebuffer" id="r_aac2296916f9c9bccbf345ea150e5ce9c"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>graphic_display_screen</b> {nullptr}</td></tr>
-<tr class="memdesc:aac2296916f9c9bccbf345ea150e5ce9c inherit pro_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the display device where the attached to the frame buffer <br /></td></tr>
-<tr class="separator:aac2296916f9c9bccbf345ea150e5ce9c inherit pro_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_attribs_class_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_class_widget')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_widget.html">Widget</a></td></tr>
-<tr class="memitem:aec593e4c3c6af61ca7f74a97bd2387ea inherit pub_attribs_class_widget" id="r_aec593e4c3c6af61ca7f74a97bd2387ea"><td class="memItemLeft" align="right" valign="top">
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_anchor_x</b></td></tr>
-<tr class="memdesc:aec593e4c3c6af61ca7f74a97bd2387ea inherit pub_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">location in x of the widget within the hosting framebuffer <br /></td></tr>
-<tr class="separator:aec593e4c3c6af61ca7f74a97bd2387ea inherit pub_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad54861e21195fc55edf3d0e55bfe3e2b inherit pub_attribs_class_widget" id="r_ad54861e21195fc55edf3d0e55bfe3e2b"><td class="memItemLeft" align="right" valign="top">
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_anchor_y</b></td></tr>
-<tr class="memdesc:ad54861e21195fc55edf3d0e55bfe3e2b inherit pub_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">location in y of the widget within the hosting framebuffer <br /></td></tr>
-<tr class="separator:ad54861e21195fc55edf3d0e55bfe3e2b inherit pub_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_attribs_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
-<tr class="memitem:a1e327d8adaee19de8b5f40b347646e1e inherit pub_attribs_class_framebuffer" id="r_a1e327d8adaee19de8b5f40b347646e1e"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="structstruct___pixel_frame.html">struct_PixelFrame</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_frame</b></td></tr>
-<tr class="memdesc:a1e327d8adaee19de8b5f40b347646e1e inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the data structure that contains the actual pixel buffer, created by the display device. <br /></td></tr>
-<tr class="separator:a1e327d8adaee19de8b5f40b347646e1e inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21e274954d56bcf1417da39804747d40 inherit pub_attribs_class_framebuffer" id="r_a21e274954d56bcf1417da39804747d40"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fg_color</b></td></tr>
-<tr class="memdesc:a21e274954d56bcf1417da39804747d40 inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the foregroung color of the graphic frame <br /></td></tr>
-<tr class="separator:a21e274954d56bcf1417da39804747d40 inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad957cc59bc60b1d0e7b57fb1f565cdd inherit pub_attribs_class_framebuffer" id="r_aad957cc59bc60b1d0e7b57fb1f565cdd"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bg_color</b></td></tr>
-<tr class="memdesc:aad957cc59bc60b1d0e7b57fb1f565cdd inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the background color of the graphic frame <br /></td></tr>
-<tr class="separator:aad957cc59bc60b1d0e7b57fb1f565cdd inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_methods_class_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_widget')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_widget.html">Widget</a></td></tr>
-<tr class="memitem:a1e64f6cb46adddfd6a4df1aab5c95b2a inherit pro_methods_class_widget" id="r_a1e64f6cb46adddfd6a4df1aab5c95b2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_widget.html#a1e64f6cb46adddfd6a4df1aab5c95b2a">blinking_phase_has_changed</a> ()</td></tr>
-<tr class="memdesc:a1e64f6cb46adddfd6a4df1aab5c95b2a inherit pro_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">ask if the blinking phase has changed  <br /></td></tr>
-<tr class="separator:a1e64f6cb46adddfd6a4df1aab5c95b2a inherit pro_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9d36f6ae878ce03d54f771df3a38af0 inherit pro_methods_class_widget" id="r_ae9d36f6ae878ce03d54f771df3a38af0"><td class="memItemLeft" align="right" valign="top">
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>get_value_of_interest</b> ()=0</td></tr>
-<tr class="memdesc:ae9d36f6ae878ce03d54f771df3a38af0 inherit pro_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual method used to update the widget with the values of the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> the the <a class="el" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">Widget</a> displays. <br /></td></tr>
-<tr class="separator:ae9d36f6ae878ce03d54f771df3a38af0 inherit pro_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a3ed1d544aef6509233cbc0a860945463" id="r_a3ed1d544aef6509233cbc0a860945463"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ed1d544aef6509233cbc0a860945463">blinking_phase_has_changed</a> ()</td></tr>
+<tr class="memdesc:a3ed1d544aef6509233cbc0a860945463"><td class="mdescLeft">&#160;</td><td class="mdescRight">ask if the blinking phase has changed  <br /></td></tr>
+<tr class="separator:a3ed1d544aef6509233cbc0a860945463"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7603a481691db7e3bf63d1bc5253bf8c" id="r_a7603a481691db7e3bf63d1bc5253bf8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7603a481691db7e3bf63d1bc5253bf8c">set_blink_us</a> (uint32_t blink_period=1000000)</td></tr>
+<tr class="memdesc:a7603a481691db7e3bf63d1bc5253bf8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the blink period in microseconds.  <br /></td></tr>
+<tr class="separator:a7603a481691db7e3bf63d1bc5253bf8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e76200a892052c20372f0fdd0848aef" id="r_a4e76200a892052c20372f0fdd0848aef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e76200a892052c20372f0fdd0848aef">ellipse</a> (uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool <a class="el" href="#a44156ede281f3c11dd89756f4bbd4ebb">fill</a>, uint8_t quadrant, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color)</td></tr>
+<tr class="memdesc:a4e76200a892052c20372f0fdd0848aef"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic primitive to draw an ellipse  <br /></td></tr>
+<tr class="separator:a4e76200a892052c20372f0fdd0848aef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ac22c03e648a3f9eea07559e60f7eb65b" id="r_ac22c03e648a3f9eea07559e60f7eb65b"><td class="memItemLeft" align="right" valign="top"><a id="ac22c03e648a3f9eea07559e60f7eb65b" name="ac22c03e648a3f9eea07559e60f7eb65b"></a>
+int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>previous_blinking_phase</b></td></tr>
+<tr class="memdesc:ac22c03e648a3f9eea07559e60f7eb65b"><td class="mdescLeft">&#160;</td><td class="mdescRight">store the value of the previous blinking phase.should be 0 or 1. <br /></td></tr>
+<tr class="separator:ac22c03e648a3f9eea07559e60f7eb65b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c160768604b2d70ebe3085a2f52d1fe" id="r_a3c160768604b2d70ebe3085a2f52d1fe"><td class="memItemLeft" align="right" valign="top"><a id="a3c160768604b2d70ebe3085a2f52d1fe" name="a3c160768604b2d70ebe3085a2f52d1fe"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>blink_period_us</b></td></tr>
+<tr class="memdesc:a3c160768604b2d70ebe3085a2f52d1fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">The period of the blinking, in microseconds. <br /></td></tr>
+<tr class="separator:a3c160768604b2d70ebe3085a2f52d1fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>the widget dedicated to graphics </p>
+<div class="textblock"><p>A widget is a displayed object on a device screen. It inherits from all framebuffer features, giving it textual and graphical capabilities. USAGE: //TODO commenter le processus d'usage de <a class="el" href="class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">GraphicWidget</a> Being a framebuffer, it is defined by a width and a height, line and column of text, and graphics. It is located within the display device screen at an anchor point (x,y). </p>
+<p>IMPORTANT NOTICE 1: The widget is effectively drawn if something has changed in the UIModelObejct it represents. This allows to save drawing processing time. However there is a strong limitation : only the widget buffer is transered to the device GDDRAM, based of its specific addressing scheme. As a result, if the widget is located such that the buffer is written across device pages, the contents of the overwritten pages is lost. This is why the widget height and the widget_anchor_y must be multiple of 8. Doing so the widget buffer bytes do not ovewrite pixel outside the widget border.</p>
+<p>IMPORTANT NOTICE 2: The final widget implementation must know what actual model object it displays. This final implementation must have a member (can be private) e.g. [final_type] * actual_displayed_model; of the actual [final_type] implementation of <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a>. This can be initialised by the constructor. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0c897e5f069b50d6f39117264b2bdedc" name="a0c897e5f069b50d6f39117264b2bdedc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c897e5f069b50d6f39117264b2bdedc">&#9670;&#160;</a></span>GraphicWidget()</h2>
+<a id="a67702cc24dce6d6b04681567efd64f48" name="a67702cc24dce6d6b04681567efd64f48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67702cc24dce6d6b04681567efd64f48">&#9670;&#160;</a></span>GraphicWidget() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -324,40 +326,23 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>get_value_of_
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_model.html">Model</a> *</td>          <td class="paramname"><span class="paramname"><em>displayed_object</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structstruct___config_graphic_widget.html">struct_ConfigGraphicWidget</a></td>          <td class="paramname"><span class="paramname"><em>graph_cfg</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structstruct___config_graphic_framebuffer.html">struct_ConfigGraphicFramebuffer</a></td>          <td class="paramname"><span class="paramname"><em>graph_cfg</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>widget_anchor_x</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>widget_anchor_y</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>widget_with_border</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="class_model.html">Model</a> *</td>          <td class="paramname"><span class="paramname"><em>displayed_object</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="class_graphic_widget.html" title="the widget dedicated to graphics">GraphicWidget</a> object. </p>
+<p>Construct a new Graphic <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a> object. </p>
+<dl class="section note"><dt>Note</dt><dd>USAGE: when we need a pure graphic widget defined by the struct_ConfigGraphicFramebuffer </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">graphic_display_screen</td><td>The display device on which the widget is drawn. </td></tr>
-    <tr><td class="paramname">displayed_object</td><td>the displayed object of the widget </td></tr>
     <tr><td class="paramname">graph_cfg</td><td>the configuration data structure of the graphic framebuffer </td></tr>
-    <tr><td class="paramname">widget_anchor_x</td><td>the horizontal position where the widget start on the device screen </td></tr>
-    <tr><td class="paramname">widget_anchor_y</td><td>the verticaThe flag that indicates whether the widget has a border or notl position where the widget start on the device screen </td></tr>
-    <tr><td class="paramname">widget_with_border</td><td><div class="image">
+    <tr><td class="paramname">displayed_object</td><td>the displayed object of the widget <div class="image">
 <img src="widget.png" alt=""/>
 </div>
  </td></tr>
@@ -367,7 +352,207 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>get_value_of_
 
 </div>
 </div>
+<a id="a47a9bfa5c199c23fae155b47bfe9cde2" name="a47a9bfa5c199c23fae155b47bfe9cde2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47a9bfa5c199c23fae155b47bfe9cde2">&#9670;&#160;</a></span>GraphicWidget() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GraphicWidget::GraphicWidget </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *</td>          <td class="paramname"><span class="paramname"><em>graphic_display_screen</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct___config_text_widget.html">struct_ConfigTextWidget</a></td>          <td class="paramname"><span class="paramname"><em>text_cfg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_model.html">Model</a> *</td>          <td class="paramname"><span class="paramname"><em>displayed_object</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new Graphic <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a> object from the <a class="el" href="class_text_widget.html" title="a dedicated class for text frame only">TextWidget</a> Constructor. </p>
+<dl class="section note"><dt>Note</dt><dd>USAGE: When we need a textual framebuffer defined by the <a class="el" href="structstruct___config_text_widget.html" title="the data structure used to configure textual widget">struct_ConfigTextWidget</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">graphic_display_screen</td><td>The display device on which the widget is drawn. </td></tr>
+    <tr><td class="paramname">text_cfg</td><td>the configuration data structure of the text framebuffer </td></tr>
+    <tr><td class="paramname">displayed_object</td><td>the displayed object of the widget </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5f075779b4d7c86bc128f9615a62e901" name="a5f075779b4d7c86bc128f9615a62e901"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f075779b4d7c86bc128f9615a62e901">&#9670;&#160;</a></span>GraphicWidget() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GraphicWidget::GraphicWidget </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *</td>          <td class="paramname"><span class="paramname"><em>graphic_display_screen</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct___config_text_widget.html">struct_ConfigTextWidget</a></td>          <td class="paramname"><span class="paramname"><em>text_cfg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>frame_width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>frame_height</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_model.html">Model</a> *</td>          <td class="paramname"><span class="paramname"><em>displayed_object</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new Graphic <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a> object from the <a class="el" href="class_text_widget.html" title="a dedicated class for text frame only">TextWidget</a> Constructor. </p>
+<dl class="section note"><dt>Note</dt><dd>When we need a textual framebuffer defined by the pixel size frame_width, frame_height. The number of column and line are computed with regard to the size of the font </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">graphic_display_screen</td><td></td></tr>
+    <tr><td class="paramname">text_cfg</td><td>the configuration data structure of the text framebuffer </td></tr>
+    <tr><td class="paramname">frame_width</td><td>the frame width in pixel </td></tr>
+    <tr><td class="paramname">frame_height</td><td>the frame height in pixel </td></tr>
+    <tr><td class="paramname">displayed_object</td><td>the displayed object of the widget </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3ed1d544aef6509233cbc0a860945463" name="a3ed1d544aef6509233cbc0a860945463"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ed1d544aef6509233cbc0a860945463">&#9670;&#160;</a></span>blinking_phase_has_changed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GraphicWidget::blinking_phase_has_changed </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ask if the blinking phase has changed </p>
+<dl class="section return"><dt>Returns</dt><dd>true if phase has changed </dd></dl>
+
+</div>
+</div>
+<a id="a2f4bf7831c9c22c2a13daa2acf4d71e4" name="a2f4bf7831c9c22c2a13daa2acf4d71e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f4bf7831c9c22c2a13daa2acf4d71e4">&#9670;&#160;</a></span>circle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GraphicWidget::circle </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>radius</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x_center</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y_center</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>fill</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>draw a cercle of size radius, centered at (x_center, y_center) <a href="https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham">https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham</a> <a href="https://en.wikipedia.org/wiki/Midpoint_circle_algorithm">https://en.wikipedia.org/wiki/Midpoint_circle_algorithm</a> procédure tracerCercle (entier rayon, entier x_centre, entier y_centre) déclarer entier x, y, m ; x ← 0 ; y ← rayon ; // on se place en haut du cercle m ← 5 - 4*rayon ; // initialisation Tant que x &lt;= y // tant qu'on est dans le second octant tracerPixel( x+x_centre, y+y_centre ) ; tracerPixel( y+x_centre, x+y_centre ) ; tracerPixel( -x+x_centre, y+y_centre ) ; tracerPixel( -y+x_centre, x+y_centre ) ; tracerPixel( x+x_centre, -y+y_centre ) ; tracerPixel( y+x_centre, -x+y_centre ) ; tracerPixel( -x+x_centre, -y+y_centre ) ; tracerPixel( -y+x_centre, -x+y_centre ) ; si m &gt; 0 alors //choix du point F y ← y - 1 ; m ← m - 8*y ; fin si ; x ← x + 1 ; m ← m + 8*x + 4 ; fin tant que ; fin de procédure ; </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">radius</td><td>radius, in pixel, of the circle </td></tr>
+    <tr><td class="paramname">x_center</td><td>horizontal position of the center of the cercle </td></tr>
+    <tr><td class="paramname">y_center</td><td>vertical position of the center on the cercle </td></tr>
+    <tr><td class="paramname">fill</td><td>if true, the circle is filled with color c </td></tr>
+    <tr><td class="paramname">color</td><td>color of the border of the circle, default to WHITE </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_graphic_widget_a2f4bf7831c9c22c2a13daa2acf4d71e4_cgraph.png" border="0" usemap="#aclass_graphic_widget_a2f4bf7831c9c22c2a13daa2acf4d71e4_cgraph" alt=""/></div>
+<map name="aclass_graphic_widget_a2f4bf7831c9c22c2a13daa2acf4d71e4_cgraph" id="aclass_graphic_widget_a2f4bf7831c9c22c2a13daa2acf4d71e4_cgraph">
+<area shape="rect" title="draw a cercle of size radius, centered at (x_center, y_center) https://fr.wikipedia...." alt="" coords="5,5,129,30"/>
+<area shape="rect" href="class_graphic_widget.html#a44156ede281f3c11dd89756f4bbd4ebb" title="Write all pixel buffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)" alt="" coords="177,5,285,30"/>
+<area shape="poly" title=" " alt="" coords="129,15,161,15,161,20,129,20"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a32888852eb8d37759b1d88534ca34d56" name="a32888852eb8d37759b1d88534ca34d56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32888852eb8d37759b1d88534ca34d56">&#9670;&#160;</a></span>clear_pixel_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GraphicWidget::clear_pixel_buffer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>fill the graphic pixel buffer with 0x00. </p>
+<dl class="section note"><dt>Note</dt><dd>USAGE: used at the begining of the <a class="el" href="class_widget.html#ae48262adfd76a5df4fcc892485d942a6" title="a pure virtual member that is called to effectively draw the widget.">draw()</a> method. </dd></dl>
+
+</div>
+</div>
 <a id="a934bc1c1cdf83ed72bf06d1ca5de2e45" name="a934bc1c1cdf83ed72bf06d1ca5de2e45"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a934bc1c1cdf83ed72bf06d1ca5de2e45">&#9670;&#160;</a></span>draw_border()</h2>
 
@@ -400,7 +585,459 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>get_value_of_
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_widget.html#afbee1ae750f2522eeebae62bb73703f6">Widget</a>.</p>
+<p>Reimplemented in <a class="el" href="class_text_widget.html#a8e488a1292f4da21ad368259e9723091">TextWidget</a>.</p>
+
+</div>
+</div>
+<a id="a4e76200a892052c20372f0fdd0848aef" name="a4e76200a892052c20372f0fdd0848aef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e76200a892052c20372f0fdd0848aef">&#9670;&#160;</a></span>ellipse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GraphicWidget::ellipse </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>x_center</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>y_center</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>x_radius</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>y_radius</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>fill</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>quadrant</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the graphic primitive to draw an ellipse </p>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000003">Bug</a></b></dt><dd>//FIXME doesn't work ! </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x_center</td><td>the x coordinate of the center </td></tr>
+    <tr><td class="paramname">y_center</td><td>the y coordinate of the center </td></tr>
+    <tr><td class="paramname">x_radius</td><td>the radius along x axis </td></tr>
+    <tr><td class="paramname">y_radius</td><td>the radius along y axis </td></tr>
+    <tr><td class="paramname">fill</td><td>a flag that indicates whether the ellipse is filled or not </td></tr>
+    <tr><td class="paramname">quadrant</td><td>the quadrant of the ellipse to draw (see bresenham algorithm) </td></tr>
+    <tr><td class="paramname">color</td><td>the filling color </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_graphic_widget_a4e76200a892052c20372f0fdd0848aef_cgraph.png" border="0" usemap="#aclass_graphic_widget_a4e76200a892052c20372f0fdd0848aef_cgraph" alt=""/></div>
+<map name="aclass_graphic_widget_a4e76200a892052c20372f0fdd0848aef_cgraph" id="aclass_graphic_widget_a4e76200a892052c20372f0fdd0848aef_cgraph">
+<area shape="rect" title="the graphic primitive to draw an ellipse" alt="" coords="5,5,134,30"/>
+<area shape="rect" href="class_graphic_widget.html#a44156ede281f3c11dd89756f4bbd4ebb" title="Write all pixel buffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)" alt="" coords="182,5,290,30"/>
+<area shape="poly" title=" " alt="" coords="134,15,166,15,166,20,134,20"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a44156ede281f3c11dd89756f4bbd4ebb" name="a44156ede281f3c11dd89756f4bbd4ebb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44156ede281f3c11dd89756f4bbd4ebb">&#9670;&#160;</a></span>fill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GraphicWidget::fill </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write all pixel buffer memory with "0" (or "1") if color c is BLACK (resp. WHITE) </p>
+<dl class="section note"><dt>Note</dt><dd>: Works only for monochrome display! </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">color</td><td>the foreground color </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_graphic_widget_a44156ede281f3c11dd89756f4bbd4ebb_icgraph.png" border="0" usemap="#aclass_graphic_widget_a44156ede281f3c11dd89756f4bbd4ebb_icgraph" alt=""/></div>
+<map name="aclass_graphic_widget_a44156ede281f3c11dd89756f4bbd4ebb_icgraph" id="aclass_graphic_widget_a44156ede281f3c11dd89756f4bbd4ebb_icgraph">
+<area shape="rect" title="Write all pixel buffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)" alt="" coords="182,55,290,79"/>
+<area shape="rect" href="class_graphic_widget.html#a2f4bf7831c9c22c2a13daa2acf4d71e4" title="draw a cercle of size radius, centered at (x_center, y_center) https://fr.wikipedia...." alt="" coords="8,5,131,30"/>
+<area shape="poly" title=" " alt="" coords="176,52,113,33,114,28,178,47"/>
+<area shape="rect" href="class_graphic_widget.html#a4e76200a892052c20372f0fdd0848aef" title="the graphic primitive to draw an ellipse" alt="" coords="5,55,134,79"/>
+<area shape="poly" title=" " alt="" coords="166,70,134,70,134,64,166,64"/>
+<area shape="rect" href="class_graphic_widget.html#ac2bb85ff122ed402b8467e179611eda2" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="10,104,129,129"/>
+<area shape="poly" title=" " alt="" coords="178,87,114,106,113,101,176,82"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a49c9ebded2dc14246284662e13713a05" name="a49c9ebded2dc14246284662e13713a05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49c9ebded2dc14246284662e13713a05">&#9670;&#160;</a></span>get_graph_frame_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structstruct___config_graphic_widget.html">struct_ConfigGraphicWidget</a> GraphicWidget::get_graph_frame_config </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the graphic frame config object. </p>
+<dl class="section return"><dt>Returns</dt><dd>struct_ConfigGraphicFramebuffer </dd></dl>
+
+</div>
+</div>
+<a id="a012e42d45d29004e6e93e46782dcb284" name="a012e42d45d29004e6e93e46782dcb284"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a012e42d45d29004e6e93e46782dcb284">&#9670;&#160;</a></span>get_value_of_interest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void GraphicWidget::get_value_of_interest </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A pure virtual method that results in the transfer of the dispalyed values from the displayed model to the widget. </p>
+
+<p>Implemented in <a class="el" href="class_widget_horizontal_bargraph.html#af45b95aae6fede2fcd53f32fcf746ec7">WidgetHorizontalBargraph</a>, and <a class="el" href="class_widget_vertical_bargraph.html#a524a354a35ac4e0a803d6e7d9f9ef176">WidgetVerticalBargraph</a>.</p>
+
+</div>
+</div>
+<a id="a5099c45a85d86703b2c12d0d3a901c8e" name="a5099c45a85d86703b2c12d0d3a901c8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5099c45a85d86703b2c12d0d3a901c8e">&#9670;&#160;</a></span>hline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GraphicWidget::hline </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>w</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draw a color horizontal line, starting at frame position (x,y), on w number of pixel. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>horizontal start of line </td></tr>
+    <tr><td class="paramname">y</td><td>vertical start of line </td></tr>
+    <tr><td class="paramname">w</td><td>length of the line in number of pixel </td></tr>
+    <tr><td class="paramname">color</td><td>color of the line, default to WHITE </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a486f223706f90218336d4fa3747ef76c" name="a486f223706f90218336d4fa3747ef76c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a486f223706f90218336d4fa3747ef76c">&#9670;&#160;</a></span>line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GraphicWidget::line </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draw a color line, starting at frame position (x0,y0), ending at frame position (x1,y1) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x0</td><td>horizontal start of line </td></tr>
+    <tr><td class="paramname">y0</td><td>vertical start of line </td></tr>
+    <tr><td class="paramname">x1</td><td>horizontal end of line </td></tr>
+    <tr><td class="paramname">y1</td><td>vertical end of line </td></tr>
+    <tr><td class="paramname">color</td><td>color of the line, default to WHITE </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac2bb85ff122ed402b8467e179611eda2" name="ac2bb85ff122ed402b8467e179611eda2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2bb85ff122ed402b8467e179611eda2">&#9670;&#160;</a></span>rect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GraphicWidget::rect </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>start_x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>start_y</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>w</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>h</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>fill</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draw a rectangle, starting at frame position (x,y), w wide and h high. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start_x</td><td>horizontal start of the rectangle </td></tr>
+    <tr><td class="paramname">start_y</td><td>vertical start of the rectangle </td></tr>
+    <tr><td class="paramname">w</td><td>number of pixel of the rectangle width </td></tr>
+    <tr><td class="paramname">h</td><td>number of pixel of the rectangle height </td></tr>
+    <tr><td class="paramname">fill</td><td>if true, the rectangle is filled with color </td></tr>
+    <tr><td class="paramname">color</td><td>color of the border of the rectangle, default to WHITE </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_graphic_widget_ac2bb85ff122ed402b8467e179611eda2_cgraph.png" border="0" usemap="#aclass_graphic_widget_ac2bb85ff122ed402b8467e179611eda2_cgraph" alt=""/></div>
+<map name="aclass_graphic_widget_ac2bb85ff122ed402b8467e179611eda2_cgraph" id="aclass_graphic_widget_ac2bb85ff122ed402b8467e179611eda2_cgraph">
+<area shape="rect" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="5,5,124,30"/>
+<area shape="rect" href="class_graphic_widget.html#a44156ede281f3c11dd89756f4bbd4ebb" title="Write all pixel buffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)" alt="" coords="172,5,280,30"/>
+<area shape="poly" title=" " alt="" coords="124,15,156,15,156,20,124,20"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7603a481691db7e3bf63d1bc5253bf8c" name="a7603a481691db7e3bf63d1bc5253bf8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7603a481691db7e3bf63d1bc5253bf8c">&#9670;&#160;</a></span>set_blink_us()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GraphicWidget::set_blink_us </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>blink_period</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1000000</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the blink period in microseconds. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">blink_period</td><td>default to 1 second </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9cc51ba18e28a7617edfd6c6e04054f9" name="a9cc51ba18e28a7617edfd6c6e04054f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cc51ba18e28a7617edfd6c6e04054f9">&#9670;&#160;</a></span>set_display_screen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GraphicWidget::set_display_screen </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *</td>          <td class="paramname"><span class="paramname"><em>_new_display_device</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the display screen object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_new_display_device</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9059637b35c4e26bca54a77ae9c25b0d" name="a9059637b35c4e26bca54a77ae9c25b0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9059637b35c4e26bca54a77ae9c25b0d">&#9670;&#160;</a></span>update_widget_anchor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GraphicWidget::update_widget_anchor </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modify the anchor of the widget on the display screen. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>anchor x coordinate </td></tr>
+    <tr><td class="paramname">y</td><td>anchor y coordinate </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a52bd84668c5f613f363f2c68c0cb5f28" name="a52bd84668c5f613f363f2c68c0cb5f28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52bd84668c5f613f363f2c68c0cb5f28">&#9670;&#160;</a></span>vline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GraphicWidget::vline </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>h</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draw a color vertical line, starting at frame position (x,y), on w number of pixel. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>horizontal start of line </td></tr>
+    <tr><td class="paramname">y</td><td>vertical start of line </td></tr>
+    <tr><td class="paramname">h</td><td>length of the line in number of pixel </td></tr>
+    <tr><td class="paramname">color</td><td>color of the line, default to WHITE </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -426,7 +1063,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>get_value_of_
 </div><div class="memdoc">
 
 <p>this is the actual horizontal start of the widget drawing area, taken into account the presence of border. </p>
-<p>WARNING: when the FramebufferFormat format is MONO_VLSB, works fine only if widget_height is a multiple of 8. </p>
+<dl class="section note"><dt>Note</dt><dd>WARNING: when the FramebufferFormat format is MONO_VLSB, works fine only if widget_height is a multiple of 8. </dd></dl>
 
 </div>
 </div>
@@ -451,7 +1088,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>get_value_of_
 </div><div class="memdoc">
 
 <p>this is the actual vertical start of the widget drawing area, taken into account the presence of border. </p>
-<p>WARNING: when the FramebufferFormat format is MONO_VLSB, works fine only if widget_start_y is a multiple of 8 </p>
+<dl class="section note"><dt>Note</dt><dd>when the FramebufferFormat format is MONO_VLSB, works fine only if widget_start_y is a multiple of 8 </dd></dl>
 
 </div>
 </div>

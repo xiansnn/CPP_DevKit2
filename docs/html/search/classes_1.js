@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['framebuffer_0',['Framebuffer',['../class_framebuffer.html',1,'']]]
+  ['graphicdisplaydevice_0',['GraphicDisplayDevice',['../class_graphic_display_device.html',1,'']]],
+  ['graphicwidget_1',['GraphicWidget',['../class_graphic_widget.html',1,'']]]
 ];

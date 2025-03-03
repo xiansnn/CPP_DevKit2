@@ -1,6 +1,6 @@
 var class_widget_square_led =
 [
-    [ "WidgetSquareLed", "class_widget_square_led.html#a22db2c2acabfebd1ea79838a48fbcedf", null ],
+    [ "WidgetSquareLed", "class_widget_square_led.html#a0c4be2a58ef709a3d01f01a107b4be63", null ],
     [ "blink_off", "class_widget_square_led.html#a867716af2dad6aaac4ac6c6243016417", null ],
     [ "blink_on", "class_widget_square_led.html#a742070bf59b7b28f8b1e840b600b6223", null ],
     [ "blink_refresh", "class_widget_square_led.html#a1d61ce1c1eed9165e8758d7bc3bbfcb8", null ],

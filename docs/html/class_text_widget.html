@@ -99,7 +99,10 @@ $(function(){initNavTree('class_text_widget.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_text_widget-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">TextWidget Class Reference</div></div>
 </div><!--header-->
@@ -114,15 +117,11 @@ Inheritance diagram for TextWidget:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_text_widget__inherit__graph.png" border="0" usemap="#a_text_widget_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_text_widget_inherit__map" id="a_text_widget_inherit__map">
-<area shape="rect" title="a dedicated class for text frame only" alt="" coords="233,1139,724,1383"/>
-<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,695,472,981"/>
-<area shape="poly" title=" " alt="" coords="329,992,412,1137,407,1140,324,994"/>
-<area shape="rect" href="class_text_framebuffer.html" title="the place where all textual primitive are placed" alt="" coords="497,585,943,1091"/>
-<area shape="poly" title=" " alt="" coords="571,1105,550,1140,546,1137,566,1102"/>
-<area shape="rect" href="class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="461,260,979,537"/>
-<area shape="poly" title=" " alt="" coords="723,552,723,585,717,585,717,552"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="458,5,982,212"/>
-<area shape="poly" title=" " alt="" coords="723,227,723,260,717,260,717,227"/>
+<area shape="rect" title="a dedicated class for text frame only" alt="" coords="65,955,493,1512"/>
+<area shape="rect" href="class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,208,553,907"/>
+<area shape="poly" title=" " alt="" coords="282,921,282,955,277,955,277,921"/>
+<area shape="rect" href="class_widget.html" title="the generic class for all widget" alt="" coords="39,5,519,160"/>
+<area shape="poly" title=" " alt="" coords="282,175,282,208,277,208,277,175"/>
 </map>
 </div>
 <div class="dynheader">
@@ -130,238 +129,258 @@ Collaboration diagram for TextWidget:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_text_widget__coll__graph.png" border="0" usemap="#a_text_widget_coll__map" alt="Collaboration graph"/></div>
 <map name="a_text_widget_coll__map" id="a_text_widget_coll__map">
-<area shape="rect" title="a dedicated class for text frame only" alt="" coords="233,1564,724,1808"/>
-<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,1129,472,1395"/>
-<area shape="poly" title=" " alt="" coords="323,1406,412,1563,408,1565,319,1409"/>
-<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="99,741,379,877"/>
-<area shape="poly" title=" " alt="" coords="241,876,241,1112,236,1112,236,876"/>
-<area shape="rect" href="class_text_framebuffer.html" title="the place where all textual primitive are placed" alt="" coords="497,1009,943,1515"/>
-<area shape="poly" title=" " alt="" coords="571,1529,550,1566,545,1563,566,1526"/>
-<area shape="rect" href="class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="461,670,979,947"/>
-<area shape="poly" title=" " alt="" coords="723,962,723,1009,717,1009,717,962"/>
-<area shape="rect" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="458,451,982,621"/>
-<area shape="poly" title=" " alt="" coords="723,636,723,670,717,670,717,636"/>
-<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="285,153,805,389"/>
-<area shape="poly" title=" " alt="" coords="625,388,657,436,653,439,621,391"/>
-<area shape="rect" href="class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="397,5,693,104"/>
-<area shape="poly" title=" " alt="" coords="548,119,548,153,543,153,543,119"/>
-<area shape="rect" href="structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="829,213,963,330"/>
-<area shape="poly" title=" " alt="" coords="860,331,788,439,783,436,856,328"/>
+<area shape="rect" title="a dedicated class for text frame only" alt="" coords="426,1353,854,1911"/>
+<area shape="rect" href="class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="366,624,914,1304"/>
+<area shape="poly" title=" " alt="" coords="643,1319,643,1354,637,1354,637,1319"/>
+<area shape="rect" href="class_widget.html" title="the generic class for all widget" alt="" coords="227,445,707,562"/>
+<area shape="poly" title=" " alt="" coords="496,575,514,623,509,625,491,577"/>
+<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,139,512,379"/>
+<area shape="poly" title=" " alt="" coords="363,377,409,430,405,434,359,380"/>
+<area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="207,5,311,85"/>
+<area shape="poly" title=" " alt="" coords="261,101,261,139,256,139,256,101"/>
+<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="536,135,816,383"/>
+<area shape="poly" title=" " alt="" coords="572,384,529,434,525,430,568,381"/>
+<area shape="rect" href="structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="731,445,899,562"/>
+<area shape="poly" title=" " alt="" coords="795,563,778,609,773,607,790,561"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a482de7f75ce5cfa744cbaea5a09d9da3" id="r_a482de7f75ce5cfa744cbaea5a09d9da3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a482de7f75ce5cfa744cbaea5a09d9da3">TextWidget</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *device, <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> text_cfg, <a class="el" href="class_model.html">Model</a> *displayed_model, uint8_t <a class="el" href="class_widget.html#aec593e4c3c6af61ca7f74a97bd2387ea">widget_anchor_x</a>, uint8_t <a class="el" href="class_widget.html#ad54861e21195fc55edf3d0e55bfe3e2b">widget_anchor_y</a>, bool <a class="el" href="#a3f8c24522dea1b99cde64172b97c410f">widget_with_border</a>)</td></tr>
-<tr class="memdesc:a482de7f75ce5cfa744cbaea5a09d9da3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Text <a class="el" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">Widget</a> object.  <br /></td></tr>
-<tr class="separator:a482de7f75ce5cfa744cbaea5a09d9da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1a1d30875b075e0a5920bf054b952c2" id="r_ae1a1d30875b075e0a5920bf054b952c2"><td class="memItemLeft" align="right" valign="top"><a id="ae1a1d30875b075e0a5920bf054b952c2" name="ae1a1d30875b075e0a5920bf054b952c2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>show</b> ()</td></tr>
-<tr class="memdesc:ae1a1d30875b075e0a5920bf054b952c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y) <br /></td></tr>
-<tr class="separator:ae1a1d30875b075e0a5920bf054b952c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad59aca3e9c6adb5b24fdbb94c4ccea26" id="r_ad59aca3e9c6adb5b24fdbb94c4ccea26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstruct___config_text_widget.html">struct_ConfigTextWidget</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad59aca3e9c6adb5b24fdbb94c4ccea26">get_text_frame_config</a> ()</td></tr>
+<tr class="memdesc:ad59aca3e9c6adb5b24fdbb94c4ccea26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the text frame config object.  <br /></td></tr>
+<tr class="separator:ad59aca3e9c6adb5b24fdbb94c4ccea26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc16a5863871d87c9cd009e567b9df39" id="r_afc16a5863871d87c9cd009e567b9df39"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc16a5863871d87c9cd009e567b9df39">TextWidget</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *<a class="el" href="class_widget.html#ad1a8361eeea9edee2df48440ac2b5211">graphic_display_screen</a>, <a class="el" href="structstruct___config_text_widget.html">struct_ConfigTextWidget</a> text_cfg, <a class="el" href="class_model.html">Model</a> *displayed_object=nullptr)</td></tr>
+<tr class="memdesc:afc16a5863871d87c9cd009e567b9df39"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max number of line with respect to frame height and font height.  <br /></td></tr>
+<tr class="separator:afc16a5863871d87c9cd009e567b9df39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8d4456a66543ca1938588eff17a0d92" id="r_ac8d4456a66543ca1938588eff17a0d92"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8d4456a66543ca1938588eff17a0d92">TextWidget</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *<a class="el" href="class_widget.html#ad1a8361eeea9edee2df48440ac2b5211">graphic_display_screen</a>, <a class="el" href="structstruct___config_text_widget.html">struct_ConfigTextWidget</a> text_cfg, size_t frame_width, size_t frame_height, <a class="el" href="class_model.html">Model</a> *displayed_object=nullptr)</td></tr>
+<tr class="memdesc:ac8d4456a66543ca1938588eff17a0d92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Text <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a> object.  <br /></td></tr>
+<tr class="separator:ac8d4456a66543ca1938588eff17a0d92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5236b5dabb05f7a53ab9a021bc57e413" id="r_a5236b5dabb05f7a53ab9a021bc57e413"><td class="memItemLeft" align="right" valign="top"><a id="a5236b5dabb05f7a53ab9a021bc57e413" name="a5236b5dabb05f7a53ab9a021bc57e413"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~TextWidget</b> ()</td></tr>
+<tr class="memdesc:a5236b5dabb05f7a53ab9a021bc57e413"><td class="mdescLeft">&#160;</td><td class="mdescRight">the destructor of <a class="el" href="class_text_widget.html" title="a dedicated class for text frame only">TextWidget</a> <br /></td></tr>
+<tr class="separator:a5236b5dabb05f7a53ab9a021bc57e413"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90e41e7b1954c812001292dcc8b4dc51" id="r_a90e41e7b1954c812001292dcc8b4dc51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90e41e7b1954c812001292dcc8b4dc51">update_text_frame_size</a> (const unsigned char *<a class="el" href="#a6f9e90b07bdd553e7b0833c2679d513a">font</a>)</td></tr>
+<tr class="memdesc:a90e41e7b1954c812001292dcc8b4dc51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the text size in column x line according to the size of the font and the size of the frame in pixel. Delete the previous text buffer if any and create a new buffer.  <br /></td></tr>
+<tr class="separator:a90e41e7b1954c812001292dcc8b4dc51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0eff5956c8b16178e7eb3572a86e57d" id="r_ad0eff5956c8b16178e7eb3572a86e57d"><td class="memItemLeft" align="right" valign="top"><a id="ad0eff5956c8b16178e7eb3572a86e57d" name="ad0eff5956c8b16178e7eb3572a86e57d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_text_buffer</b> ()</td></tr>
+<tr class="memdesc:ad0eff5956c8b16178e7eb3572a86e57d"><td class="mdescLeft">&#160;</td><td class="mdescRight">et text buffer memory to "0" and set character current line and column to 0 <br /></td></tr>
+<tr class="separator:ad0eff5956c8b16178e7eb3572a86e57d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34c23baf9e2a633803ff709b42ad4ff5" id="r_a34c23baf9e2a633803ff709b42ad4ff5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34c23baf9e2a633803ff709b42ad4ff5">update_graphic_frame_size</a> (const unsigned char *<a class="el" href="#a6f9e90b07bdd553e7b0833c2679d513a">font</a>)</td></tr>
+<tr class="memdesc:a34c23baf9e2a633803ff709b42ad4ff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute graphic pixel width and height according to the size of the text (column x line ) and the size of the bitmap font. Delete the previous pixel buffer if any and create a new buffer.  <br /></td></tr>
+<tr class="separator:a34c23baf9e2a633803ff709b42ad4ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ce8f540e45844b22efa9f18c3c85eab" id="r_a3ce8f540e45844b22efa9f18c3c85eab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ce8f540e45844b22efa9f18c3c85eab">write</a> ()</td></tr>
+<tr class="memdesc:a3ce8f540e45844b22efa9f18c3c85eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">process characters in the internal text buffer and draw it into the pixel buffer.  <br /></td></tr>
+<tr class="separator:a3ce8f540e45844b22efa9f18c3c85eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9524e4f93739352b7fe0915e038c1fb" id="r_ab9524e4f93739352b7fe0915e038c1fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9524e4f93739352b7fe0915e038c1fb">write</a> (const char *c_str)</td></tr>
+<tr class="memdesc:ab9524e4f93739352b7fe0915e038c1fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">process the string c_str and then draw each character into the pixel buffer, without using the text buffer.  <br /></td></tr>
+<tr class="separator:ab9524e4f93739352b7fe0915e038c1fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7a5603a5a769cad07cd3a102fb808f1" id="r_ae7a5603a5a769cad07cd3a102fb808f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7a5603a5a769cad07cd3a102fb808f1">process_char</a> (char character)</td></tr>
+<tr class="memdesc:ae7a5603a5a769cad07cd3a102fb808f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">interpret the character and draw it into the pixel buffer at the current line and column character position.  <br /></td></tr>
+<tr class="separator:ae7a5603a5a769cad07cd3a102fb808f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8192cc012e92157d8e47b4d8569f9529" id="r_a8192cc012e92157d8e47b4d8569f9529"><td class="memItemLeft" align="right" valign="top"><a id="a8192cc012e92157d8e47b4d8569f9529" name="a8192cc012e92157d8e47b4d8569f9529"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>next_line</b> ()</td></tr>
+<tr class="memdesc:a8192cc012e92157d8e47b4d8569f9529"><td class="mdescLeft">&#160;</td><td class="mdescRight">character line steps one position downward. <br /></td></tr>
+<tr class="separator:a8192cc012e92157d8e47b4d8569f9529"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3712ffd3288da6a64d22e57177ee4beb" id="r_a3712ffd3288da6a64d22e57177ee4beb"><td class="memItemLeft" align="right" valign="top"><a id="a3712ffd3288da6a64d22e57177ee4beb" name="a3712ffd3288da6a64d22e57177ee4beb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>next_char</b> ()</td></tr>
+<tr class="memdesc:a3712ffd3288da6a64d22e57177ee4beb"><td class="mdescLeft">&#160;</td><td class="mdescRight">character column steps forward one position forward. <br /></td></tr>
+<tr class="separator:a3712ffd3288da6a64d22e57177ee4beb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34e2f1558ebd76f1dbfb3cbfdf0e7894" id="r_a34e2f1558ebd76f1dbfb3cbfdf0e7894"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34e2f1558ebd76f1dbfb3cbfdf0e7894">draw</a> ()</td></tr>
-<tr class="memdesc:a34e2f1558ebd76f1dbfb3cbfdf0e7894"><td class="mdescLeft">&#160;</td><td class="mdescRight">we need <a class="el" href="#a34e2f1558ebd76f1dbfb3cbfdf0e7894" title="we need draw() to be compliant with the pure virtual draw() inherited from Widget....">draw()</a> to be compliant with the pure virtual <a class="el" href="#a34e2f1558ebd76f1dbfb3cbfdf0e7894" title="we need draw() to be compliant with the pure virtual draw() inherited from Widget....">draw()</a> inherited from <a class="el" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">Widget</a>. The <a class="el" href="#a34e2f1558ebd76f1dbfb3cbfdf0e7894" title="we need draw() to be compliant with the pure virtual draw() inherited from Widget....">draw()</a> member call the <a class="el" href="#ae1a1d30875b075e0a5920bf054b952c2" title="A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y)">show()</a> member automatically. Useful when we mix graphic and text widget in a UI environment. Otherwise, we can use directly the <a class="el" href="class_text_framebuffer.html#a827adce94a2e72b1b9939ee366a49df0" title="process characters in the internal text buffer and draw it into the pixel buffer.">TextFramebuffer::write()</a>, but in this case we have to call <a class="el" href="#a8e488a1292f4da21ad368259e9723091" title="draw a one-pixel width around the the frame">draw_border()</a>, then <a class="el" href="#ae1a1d30875b075e0a5920bf054b952c2" title="A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y)">show()</a> member.  <br /></td></tr>
+<tr class="memdesc:a34e2f1558ebd76f1dbfb3cbfdf0e7894"><td class="mdescLeft">&#160;</td><td class="mdescRight">we need <a class="el" href="#a34e2f1558ebd76f1dbfb3cbfdf0e7894" title="we need draw() to be compliant with the pure virtual draw() inherited from Widget.">draw()</a> to be compliant with the pure virtual <a class="el" href="#a34e2f1558ebd76f1dbfb3cbfdf0e7894" title="we need draw() to be compliant with the pure virtual draw() inherited from Widget.">draw()</a> inherited from <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a>.  <br /></td></tr>
 <tr class="separator:a34e2f1558ebd76f1dbfb3cbfdf0e7894"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e488a1292f4da21ad368259e9723091" id="r_a8e488a1292f4da21ad368259e9723091"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e488a1292f4da21ad368259e9723091">draw_border</a> (<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
 <tr class="memdesc:a8e488a1292f4da21ad368259e9723091"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a one-pixel width around the the frame  <br /></td></tr>
 <tr class="separator:a8e488a1292f4da21ad368259e9723091"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_graphic_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_graphic_widget')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_graphic_widget.html">GraphicWidget</a></td></tr>
+<tr class="memitem:a9059637b35c4e26bca54a77ae9c25b0d inherit pub_methods_class_graphic_widget" id="r_a9059637b35c4e26bca54a77ae9c25b0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a9059637b35c4e26bca54a77ae9c25b0d">update_widget_anchor</a> (uint8_t x, uint8_t y)</td></tr>
+<tr class="memdesc:a9059637b35c4e26bca54a77ae9c25b0d inherit pub_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modify the anchor of the widget on the display screen.  <br /></td></tr>
+<tr class="separator:a9059637b35c4e26bca54a77ae9c25b0d inherit pub_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83c221250b9dfdeb8ab03b87a783bf10 inherit pub_methods_class_graphic_widget" id="r_a83c221250b9dfdeb8ab03b87a783bf10"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>show</b> ()</td></tr>
+<tr class="memdesc:a83c221250b9dfdeb8ab03b87a783bf10 inherit pub_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y) <br /></td></tr>
+<tr class="separator:a83c221250b9dfdeb8ab03b87a783bf10 inherit pub_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67702cc24dce6d6b04681567efd64f48 inherit pub_methods_class_graphic_widget" id="r_a67702cc24dce6d6b04681567efd64f48"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a67702cc24dce6d6b04681567efd64f48">GraphicWidget</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *<a class="el" href="class_widget.html#ad1a8361eeea9edee2df48440ac2b5211">graphic_display_screen</a>, <a class="el" href="structstruct___config_graphic_widget.html">struct_ConfigGraphicWidget</a> graph_cfg, <a class="el" href="class_model.html">Model</a> *displayed_object=nullptr)</td></tr>
+<tr class="memdesc:a67702cc24dce6d6b04681567efd64f48 inherit pub_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a> object.  <br /></td></tr>
+<tr class="separator:a67702cc24dce6d6b04681567efd64f48 inherit pub_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47a9bfa5c199c23fae155b47bfe9cde2 inherit pub_methods_class_graphic_widget" id="r_a47a9bfa5c199c23fae155b47bfe9cde2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a47a9bfa5c199c23fae155b47bfe9cde2">GraphicWidget</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *<a class="el" href="class_widget.html#ad1a8361eeea9edee2df48440ac2b5211">graphic_display_screen</a>, <a class="el" href="structstruct___config_text_widget.html">struct_ConfigTextWidget</a> text_cfg, <a class="el" href="class_model.html">Model</a> *displayed_object=nullptr)</td></tr>
+<tr class="memdesc:a47a9bfa5c199c23fae155b47bfe9cde2 inherit pub_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a> object from the <a class="el" href="class_text_widget.html" title="a dedicated class for text frame only">TextWidget</a> Constructor.  <br /></td></tr>
+<tr class="separator:a47a9bfa5c199c23fae155b47bfe9cde2 inherit pub_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f075779b4d7c86bc128f9615a62e901 inherit pub_methods_class_graphic_widget" id="r_a5f075779b4d7c86bc128f9615a62e901"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a5f075779b4d7c86bc128f9615a62e901">GraphicWidget</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *<a class="el" href="class_widget.html#ad1a8361eeea9edee2df48440ac2b5211">graphic_display_screen</a>, <a class="el" href="structstruct___config_text_widget.html">struct_ConfigTextWidget</a> text_cfg, size_t frame_width, size_t frame_height, <a class="el" href="class_model.html">Model</a> *displayed_object=nullptr)</td></tr>
+<tr class="memdesc:a5f075779b4d7c86bc128f9615a62e901 inherit pub_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a> object from the <a class="el" href="class_text_widget.html" title="a dedicated class for text frame only">TextWidget</a> Constructor.  <br /></td></tr>
+<tr class="separator:a5f075779b4d7c86bc128f9615a62e901 inherit pub_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2c0525c8819493eb279e69d54287179 inherit pub_methods_class_graphic_widget" id="r_ae2c0525c8819493eb279e69d54287179"><td class="memItemLeft" align="right" valign="top">
+&#160;</td><td class="memItemRight" valign="bottom"><b>~GraphicWidget</b> ()</td></tr>
+<tr class="memdesc:ae2c0525c8819493eb279e69d54287179 inherit pub_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a> object. <br /></td></tr>
+<tr class="separator:ae2c0525c8819493eb279e69d54287179 inherit pub_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cc51ba18e28a7617edfd6c6e04054f9 inherit pub_methods_class_graphic_widget" id="r_a9cc51ba18e28a7617edfd6c6e04054f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a9cc51ba18e28a7617edfd6c6e04054f9">set_display_screen</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *_new_display_device)</td></tr>
+<tr class="memdesc:a9cc51ba18e28a7617edfd6c6e04054f9 inherit pub_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the display screen object.  <br /></td></tr>
+<tr class="separator:a9cc51ba18e28a7617edfd6c6e04054f9 inherit pub_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49c9ebded2dc14246284662e13713a05 inherit pub_methods_class_graphic_widget" id="r_a49c9ebded2dc14246284662e13713a05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstruct___config_graphic_widget.html">struct_ConfigGraphicWidget</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a49c9ebded2dc14246284662e13713a05">get_graph_frame_config</a> ()</td></tr>
+<tr class="memdesc:a49c9ebded2dc14246284662e13713a05 inherit pub_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the graphic frame config object.  <br /></td></tr>
+<tr class="separator:a49c9ebded2dc14246284662e13713a05 inherit pub_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44156ede281f3c11dd89756f4bbd4ebb inherit pub_methods_class_graphic_widget" id="r_a44156ede281f3c11dd89756f4bbd4ebb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a44156ede281f3c11dd89756f4bbd4ebb">fill</a> (<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color)</td></tr>
+<tr class="memdesc:a44156ede281f3c11dd89756f4bbd4ebb inherit pub_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write all pixel buffer memory with "0" (or "1") if color c is BLACK (resp. WHITE)  <br /></td></tr>
+<tr class="separator:a44156ede281f3c11dd89756f4bbd4ebb inherit pub_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5099c45a85d86703b2c12d0d3a901c8e inherit pub_methods_class_graphic_widget" id="r_a5099c45a85d86703b2c12d0d3a901c8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a5099c45a85d86703b2c12d0d3a901c8e">hline</a> (uint8_t x, uint8_t y, size_t w, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
+<tr class="memdesc:a5099c45a85d86703b2c12d0d3a901c8e inherit pub_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a color horizontal line, starting at frame position (x,y), on w number of pixel.  <br /></td></tr>
+<tr class="separator:a5099c45a85d86703b2c12d0d3a901c8e inherit pub_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52bd84668c5f613f363f2c68c0cb5f28 inherit pub_methods_class_graphic_widget" id="r_a52bd84668c5f613f363f2c68c0cb5f28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a52bd84668c5f613f363f2c68c0cb5f28">vline</a> (uint8_t x, uint8_t y, size_t h, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
+<tr class="memdesc:a52bd84668c5f613f363f2c68c0cb5f28 inherit pub_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a color vertical line, starting at frame position (x,y), on w number of pixel.  <br /></td></tr>
+<tr class="separator:a52bd84668c5f613f363f2c68c0cb5f28 inherit pub_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a486f223706f90218336d4fa3747ef76c inherit pub_methods_class_graphic_widget" id="r_a486f223706f90218336d4fa3747ef76c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a486f223706f90218336d4fa3747ef76c">line</a> (int x0, int y0, int x1, int y1, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
+<tr class="memdesc:a486f223706f90218336d4fa3747ef76c inherit pub_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a color line, starting at frame position (x0,y0), ending at frame position (x1,y1)  <br /></td></tr>
+<tr class="separator:a486f223706f90218336d4fa3747ef76c inherit pub_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2bb85ff122ed402b8467e179611eda2 inherit pub_methods_class_graphic_widget" id="r_ac2bb85ff122ed402b8467e179611eda2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#ac2bb85ff122ed402b8467e179611eda2">rect</a> (uint8_t start_x, uint8_t start_y, size_t w, size_t h, bool <a class="el" href="class_graphic_widget.html#a44156ede281f3c11dd89756f4bbd4ebb">fill</a>=false, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
+<tr class="memdesc:ac2bb85ff122ed402b8467e179611eda2 inherit pub_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a rectangle, starting at frame position (x,y), w wide and h high.  <br /></td></tr>
+<tr class="separator:ac2bb85ff122ed402b8467e179611eda2 inherit pub_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f4bf7831c9c22c2a13daa2acf4d71e4 inherit pub_methods_class_graphic_widget" id="r_a2f4bf7831c9c22c2a13daa2acf4d71e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a2f4bf7831c9c22c2a13daa2acf4d71e4">circle</a> (int radius, int x_center, int y_center, bool <a class="el" href="class_graphic_widget.html#a44156ede281f3c11dd89756f4bbd4ebb">fill</a>=false, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> color=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
+<tr class="memdesc:a2f4bf7831c9c22c2a13daa2acf4d71e4 inherit pub_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a cercle of size radius, centered at (x_center, y_center) <a href="https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham">https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham</a> <a href="https://en.wikipedia.org/wiki/Midpoint_circle_algorithm">https://en.wikipedia.org/wiki/Midpoint_circle_algorithm</a> procédure tracerCercle (entier rayon, entier x_centre, entier y_centre) déclarer entier x, y, m ; x ← 0 ; y ← rayon ; // on se place en haut du cercle m ← 5 - 4*rayon ; // initialisation Tant que x &lt;= y // tant qu'on est dans le second octant tracerPixel( x+x_centre, y+y_centre ) ; tracerPixel( y+x_centre, x+y_centre ) ; tracerPixel( -x+x_centre, y+y_centre ) ; tracerPixel( -y+x_centre, x+y_centre ) ; tracerPixel( x+x_centre, -y+y_centre ) ; tracerPixel( y+x_centre, -x+y_centre ) ; tracerPixel( -x+x_centre, -y+y_centre ) ; tracerPixel( -y+x_centre, -x+y_centre ) ; si m &gt; 0 alors //choix du point F y ← y - 1 ; m ← m - 8*y ; fin si ; x ← x + 1 ; m ← m + 8*x + 4 ; fin tant que ; fin de procédure ;  <br /></td></tr>
+<tr class="separator:a2f4bf7831c9c22c2a13daa2acf4d71e4 inherit pub_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_widget')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_widget.html">Widget</a></td></tr>
-<tr class="memitem:aa077048d87d0ac705df66d5fd6a27f1e inherit pub_methods_class_widget" id="r_aa077048d87d0ac705df66d5fd6a27f1e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_widget.html#aa077048d87d0ac705df66d5fd6a27f1e">Widget</a> (<a class="el" href="class_model.html">Model</a> *<a class="el" href="class_widget.html#a41ae2c77c95867d80f15cc722d32ce86">actual_displayed_model</a>, uint8_t <a class="el" href="class_widget.html#aec593e4c3c6af61ca7f74a97bd2387ea">widget_anchor_x</a>, uint8_t <a class="el" href="class_widget.html#ad54861e21195fc55edf3d0e55bfe3e2b">widget_anchor_y</a>)</td></tr>
-<tr class="memdesc:aa077048d87d0ac705df66d5fd6a27f1e inherit pub_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">Widget</a> object.  <br /></td></tr>
-<tr class="separator:aa077048d87d0ac705df66d5fd6a27f1e inherit pub_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b87a3fbf35b6bc94b55ed0934a192d8 inherit pub_methods_class_widget" id="r_a1b87a3fbf35b6bc94b55ed0934a192d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_widget.html#a1b87a3fbf35b6bc94b55ed0934a192d8">set_blink_us</a> (uint32_t blink_period=1000000)</td></tr>
-<tr class="memdesc:a1b87a3fbf35b6bc94b55ed0934a192d8 inherit pub_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the blink period in microseconds.  <br /></td></tr>
-<tr class="separator:a1b87a3fbf35b6bc94b55ed0934a192d8 inherit pub_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2acfa25813c29eb8c4012345c51e41a6 inherit pub_methods_class_widget" id="r_a2acfa25813c29eb8c4012345c51e41a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_widget.html#a2acfa25813c29eb8c4012345c51e41a6">Widget</a> (<a class="el" href="class_model.html">Model</a> *<a class="el" href="class_widget.html#a41ae2c77c95867d80f15cc722d32ce86">actual_displayed_model</a>, <a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *<a class="el" href="class_widget.html#ad1a8361eeea9edee2df48440ac2b5211">graphic_display_screen</a>=nullptr)</td></tr>
+<tr class="memdesc:a2acfa25813c29eb8c4012345c51e41a6 inherit pub_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">contructor for generic widget  <br /></td></tr>
+<tr class="separator:a2acfa25813c29eb8c4012345c51e41a6 inherit pub_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d08d01ec5ea290b39ae26963ae7e460 inherit pub_methods_class_widget" id="r_a6d08d01ec5ea290b39ae26963ae7e460"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_widget.html#a6d08d01ec5ea290b39ae26963ae7e460">add_widget</a> (<a class="el" href="class_widget.html">Widget</a> *_sub_widget)</td></tr>
 <tr class="memdesc:a6d08d01ec5ea290b39ae26963ae7e460 inherit pub_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">add sub_widget to the current widget  <br /></td></tr>
 <tr class="separator:a6d08d01ec5ea290b39ae26963ae7e460 inherit pub_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_text_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_text_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_text_framebuffer.html">TextFramebuffer</a></td></tr>
-<tr class="memitem:a40e49036af2b3c4ca2d67b7be9be30e9 inherit pub_methods_class_text_framebuffer" id="r_a40e49036af2b3c4ca2d67b7be9be30e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_text_framebuffer.html#a40e49036af2b3c4ca2d67b7be9be30e9">get_text_frame_config</a> ()</td></tr>
-<tr class="memdesc:a40e49036af2b3c4ca2d67b7be9be30e9 inherit pub_methods_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the text frame config object.  <br /></td></tr>
-<tr class="separator:a40e49036af2b3c4ca2d67b7be9be30e9 inherit pub_methods_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d73cb8fde13631fe867fb7baef40a9e inherit pub_methods_class_text_framebuffer" id="r_a9d73cb8fde13631fe867fb7baef40a9e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_text_framebuffer.html#a9d73cb8fde13631fe867fb7baef40a9e">TextFramebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *device, <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> text_cfg)</td></tr>
-<tr class="memdesc:a9d73cb8fde13631fe867fb7baef40a9e inherit pub_methods_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max number of line with respect to frame height and font height.  <br /></td></tr>
-<tr class="separator:a9d73cb8fde13631fe867fb7baef40a9e inherit pub_methods_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a90d4a6e43f3ce6046413413fb54ed3 inherit pub_methods_class_text_framebuffer" id="r_a0a90d4a6e43f3ce6046413413fb54ed3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_text_framebuffer.html#a0a90d4a6e43f3ce6046413413fb54ed3">TextFramebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *device, size_t frame_width, size_t frame_height, <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> text_cfg)</td></tr>
-<tr class="memdesc:a0a90d4a6e43f3ce6046413413fb54ed3 inherit pub_methods_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Textual Frame Buffer object when the frame size in x and y pixel is given.  <br /></td></tr>
-<tr class="separator:a0a90d4a6e43f3ce6046413413fb54ed3 inherit pub_methods_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fefabe36eaddfd1fde83fbdfe191a73 inherit pub_methods_class_text_framebuffer" id="r_a4fefabe36eaddfd1fde83fbdfe191a73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_text_framebuffer.html#a4fefabe36eaddfd1fde83fbdfe191a73">update_text_frame_size</a> (const unsigned char *<a class="el" href="class_text_framebuffer.html#a3ac6a64a173284e9a698012149b0e1b2">font</a>)</td></tr>
-<tr class="memdesc:a4fefabe36eaddfd1fde83fbdfe191a73 inherit pub_methods_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the text size in column x line according to the size of the font and the size of the frame in pixel. Delete the previous text buffer if any and create a new buffer.  <br /></td></tr>
-<tr class="separator:a4fefabe36eaddfd1fde83fbdfe191a73 inherit pub_methods_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e611ed16438076289668f747d6aa6d1 inherit pub_methods_class_text_framebuffer" id="r_a9e611ed16438076289668f747d6aa6d1"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_text_buffer</b> ()</td></tr>
-<tr class="memdesc:a9e611ed16438076289668f747d6aa6d1 inherit pub_methods_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set text buffer memory to "0" and set character current line and column to 0. <br /></td></tr>
-<tr class="separator:a9e611ed16438076289668f747d6aa6d1 inherit pub_methods_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7f0cbbc8761906f26f92dadbacd87bc inherit pub_methods_class_text_framebuffer" id="r_ad7f0cbbc8761906f26f92dadbacd87bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_text_framebuffer.html#ad7f0cbbc8761906f26f92dadbacd87bc">update_graphic_frame_size</a> (const unsigned char *<a class="el" href="class_text_framebuffer.html#a3ac6a64a173284e9a698012149b0e1b2">font</a>)</td></tr>
-<tr class="memdesc:ad7f0cbbc8761906f26f92dadbacd87bc inherit pub_methods_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute graphic pixel width and height according to the size of the text (column x line ) and the size of the bitmap font. Delete the previous pixel buffer if any and create a new buffer.  <br /></td></tr>
-<tr class="separator:ad7f0cbbc8761906f26f92dadbacd87bc inherit pub_methods_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a827adce94a2e72b1b9939ee366a49df0 inherit pub_methods_class_text_framebuffer" id="r_a827adce94a2e72b1b9939ee366a49df0"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> ()</td></tr>
-<tr class="memdesc:a827adce94a2e72b1b9939ee366a49df0 inherit pub_methods_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">process characters in the internal text buffer and draw it into the pixel buffer. <br /></td></tr>
-<tr class="separator:a827adce94a2e72b1b9939ee366a49df0 inherit pub_methods_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae58e5e35fc839d827a53f5cb9d2ab71b inherit pub_methods_class_text_framebuffer" id="r_ae58e5e35fc839d827a53f5cb9d2ab71b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_text_framebuffer.html#ae58e5e35fc839d827a53f5cb9d2ab71b">write</a> (const char *c_str)</td></tr>
-<tr class="memdesc:ae58e5e35fc839d827a53f5cb9d2ab71b inherit pub_methods_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">process the string c_str and then draw each character into the pixel buffer, without using the text buffer.  <br /></td></tr>
-<tr class="separator:ae58e5e35fc839d827a53f5cb9d2ab71b inherit pub_methods_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7525a1555dc95b5de2c9f6e9ee7b8632 inherit pub_methods_class_text_framebuffer" id="r_a7525a1555dc95b5de2c9f6e9ee7b8632"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_text_framebuffer.html#a7525a1555dc95b5de2c9f6e9ee7b8632">process_char</a> (char character)</td></tr>
-<tr class="memdesc:a7525a1555dc95b5de2c9f6e9ee7b8632 inherit pub_methods_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">interpret the character and draw it into the pixel buffer at the current line and column character position.  <br /></td></tr>
-<tr class="separator:a7525a1555dc95b5de2c9f6e9ee7b8632 inherit pub_methods_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05ff41a7798d508e35593e73e2dcf9b3 inherit pub_methods_class_text_framebuffer" id="r_a05ff41a7798d508e35593e73e2dcf9b3"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>next_line</b> ()</td></tr>
-<tr class="memdesc:a05ff41a7798d508e35593e73e2dcf9b3 inherit pub_methods_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">character line steps one position downward. <br /></td></tr>
-<tr class="separator:a05ff41a7798d508e35593e73e2dcf9b3 inherit pub_methods_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c885f00abb4bdf9c04a9f1bedea2011 inherit pub_methods_class_text_framebuffer" id="r_a9c885f00abb4bdf9c04a9f1bedea2011"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>next_char</b> ()</td></tr>
-<tr class="memdesc:a9c885f00abb4bdf9c04a9f1bedea2011 inherit pub_methods_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">character column steps forward one position forward. <br /></td></tr>
-<tr class="separator:a9c885f00abb4bdf9c04a9f1bedea2011 inherit pub_methods_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_graphic_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_graphic_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_graphic_framebuffer.html">GraphicFramebuffer</a></td></tr>
-<tr class="memitem:afe42739400a09683334e3e9528ae699e inherit pub_methods_class_graphic_framebuffer" id="r_afe42739400a09683334e3e9528ae699e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#afe42739400a09683334e3e9528ae699e">GraphicFramebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *display_device, <a class="el" href="structstruct___config_graphic_framebuffer.html">struct_ConfigGraphicFramebuffer</a> graph_cfg)</td></tr>
-<tr class="memdesc:afe42739400a09683334e3e9528ae699e inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic <a class="el" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o...">Framebuffer</a> object.  <br /></td></tr>
-<tr class="separator:afe42739400a09683334e3e9528ae699e inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d05ac03a65fc6ba35e6234bec3a1647 inherit pub_methods_class_graphic_framebuffer" id="r_a2d05ac03a65fc6ba35e6234bec3a1647"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#a2d05ac03a65fc6ba35e6234bec3a1647">GraphicFramebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *display_device, size_t frame_width, size_t frame_height, <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> text_cfg)</td></tr>
-<tr class="memdesc:a2d05ac03a65fc6ba35e6234bec3a1647 inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic <a class="el" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o...">Framebuffer</a> object, as a base class of <a class="el" href="class_text_framebuffer.html" title="the place where all textual primitive are placed">TextFramebuffer</a>.  <br /></td></tr>
-<tr class="separator:a2d05ac03a65fc6ba35e6234bec3a1647 inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c9806337b0c7639e0619d112bd76ed1 inherit pub_methods_class_graphic_framebuffer" id="r_a1c9806337b0c7639e0619d112bd76ed1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#a1c9806337b0c7639e0619d112bd76ed1">GraphicFramebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *display_device, <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> text_cfg)</td></tr>
-<tr class="memdesc:a1c9806337b0c7639e0619d112bd76ed1 inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic <a class="el" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o...">Framebuffer</a> object, as a base class of <a class="el" href="class_text_framebuffer.html" title="the place where all textual primitive are placed">TextFramebuffer</a>.  <br /></td></tr>
-<tr class="separator:a1c9806337b0c7639e0619d112bd76ed1 inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f8253e92a4c512ffedd73f0ecf3c553 inherit pub_methods_class_graphic_framebuffer" id="r_a7f8253e92a4c512ffedd73f0ecf3c553"><td class="memItemLeft" align="right" valign="top">
-&#160;</td><td class="memItemRight" valign="bottom"><b>~GraphicFramebuffer</b> ()</td></tr>
-<tr class="memdesc:a7f8253e92a4c512ffedd73f0ecf3c553 inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in...">GraphicFramebuffer</a> object. <br /></td></tr>
-<tr class="separator:a7f8253e92a4c512ffedd73f0ecf3c553 inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3fad7125309e83f2963c8be0a141926 inherit pub_methods_class_graphic_framebuffer" id="r_ab3fad7125309e83f2963c8be0a141926"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#ab3fad7125309e83f2963c8be0a141926">fill</a> (<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c)</td></tr>
-<tr class="memdesc:ab3fad7125309e83f2963c8be0a141926 inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write all pixel buffer memory with "0" (or "1") if color c is BLACK (resp. WHITE)  <br /></td></tr>
-<tr class="separator:ab3fad7125309e83f2963c8be0a141926 inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae777b82b8ee37e7f2a97ed1c2cda94cb inherit pub_methods_class_graphic_framebuffer" id="r_ae777b82b8ee37e7f2a97ed1c2cda94cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#ae777b82b8ee37e7f2a97ed1c2cda94cb">hline</a> (uint8_t x, uint8_t y, size_t w, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
-<tr class="memdesc:ae777b82b8ee37e7f2a97ed1c2cda94cb inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a c color horizontal line, starting at frame position (x,y), on w number of pixel.  <br /></td></tr>
-<tr class="separator:ae777b82b8ee37e7f2a97ed1c2cda94cb inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5e8c043e79f0ace9e269716d8af2aa1 inherit pub_methods_class_graphic_framebuffer" id="r_af5e8c043e79f0ace9e269716d8af2aa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#af5e8c043e79f0ace9e269716d8af2aa1">vline</a> (uint8_t x, uint8_t y, size_t h, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
-<tr class="memdesc:af5e8c043e79f0ace9e269716d8af2aa1 inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a c color vertical line, starting at frame position (x,y), on w number of pixel.  <br /></td></tr>
-<tr class="separator:af5e8c043e79f0ace9e269716d8af2aa1 inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa752be049cd63d904a41510c8f7f4932 inherit pub_methods_class_graphic_framebuffer" id="r_aa752be049cd63d904a41510c8f7f4932"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#aa752be049cd63d904a41510c8f7f4932">line</a> (int x1, int y1, int x2, int y2, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
-<tr class="memdesc:aa752be049cd63d904a41510c8f7f4932 inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a c color line, starting at frame position (x1,y1), ending at frame position (x2,y2)  <br /></td></tr>
-<tr class="separator:aa752be049cd63d904a41510c8f7f4932 inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a534d81421e9871dae36d92705b01cb59 inherit pub_methods_class_graphic_framebuffer" id="r_a534d81421e9871dae36d92705b01cb59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#a534d81421e9871dae36d92705b01cb59">rect</a> (uint8_t x, uint8_t y, size_t w, size_t h, bool <a class="el" href="class_graphic_framebuffer.html#ab3fad7125309e83f2963c8be0a141926">fill</a>=false, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
-<tr class="memdesc:a534d81421e9871dae36d92705b01cb59 inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a rectangle, starting at frame position (x,y), w wide and h high.  <br /></td></tr>
-<tr class="separator:a534d81421e9871dae36d92705b01cb59 inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61455060176f83944a40478c4e41a21e inherit pub_methods_class_graphic_framebuffer" id="r_a61455060176f83944a40478c4e41a21e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_framebuffer.html#a61455060176f83944a40478c4e41a21e">circle</a> (int radius, int x_center, int y_center, bool <a class="el" href="class_graphic_framebuffer.html#ab3fad7125309e83f2963c8be0a141926">fill</a>=false, <a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> c=<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>)</td></tr>
-<tr class="memdesc:a61455060176f83944a40478c4e41a21e inherit pub_methods_class_graphic_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a cercle of size radius, centered at (x_center, y_center) <a href="https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham">https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham</a> <a href="https://en.wikipedia.org/wiki/Midpoint_circle_algorithm">https://en.wikipedia.org/wiki/Midpoint_circle_algorithm</a> procédure tracerCercle (entier rayon, entier x_centre, entier y_centre) déclarer entier x, y, m ; x ← 0 ; y ← rayon ; // on se place en haut du cercle m ← 5 - 4*rayon ; // initialisation Tant que x &lt;= y // tant qu'on est dans le second octant tracerPixel( x+x_centre, y+y_centre ) ; tracerPixel( y+x_centre, x+y_centre ) ; tracerPixel( -x+x_centre, y+y_centre ) ; tracerPixel( -y+x_centre, x+y_centre ) ; tracerPixel( x+x_centre, -y+y_centre ) ; tracerPixel( y+x_centre, -x+y_centre ) ; tracerPixel( -x+x_centre, -y+y_centre ) ; tracerPixel( -y+x_centre, -x+y_centre ) ; si m &gt; 0 alors //choix du point F y ← y - 1 ; m ← m - 8*y ; fin si ; x ← x + 1 ; m ← m + 8*x + 4 ; fin tant que ; fin de procédure ;  <br /></td></tr>
-<tr class="separator:a61455060176f83944a40478c4e41a21e inherit pub_methods_class_graphic_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
-<tr class="memitem:aaa5f8dc36f84bfb8ec6c721e2209f74f inherit pub_methods_class_framebuffer" id="r_aaa5f8dc36f84bfb8ec6c721e2209f74f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#aaa5f8dc36f84bfb8ec6c721e2209f74f">Framebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *graphic_display_device, <a class="el" href="structstruct___config_graphic_framebuffer.html">struct_ConfigGraphicFramebuffer</a> graph_cfg)</td></tr>
-<tr class="memdesc:aaa5f8dc36f84bfb8ec6c721e2209f74f inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o...">Framebuffer</a> object.  <br /></td></tr>
-<tr class="separator:aaa5f8dc36f84bfb8ec6c721e2209f74f inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f75587867978790eff88f5f94ca5c25 inherit pub_methods_class_framebuffer" id="r_a9f75587867978790eff88f5f94ca5c25"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a9f75587867978790eff88f5f94ca5c25">Framebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *graphic_display_device, size_t frame_width, size_t frame_height, <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> text_cfg)</td></tr>
-<tr class="memdesc:a9f75587867978790eff88f5f94ca5c25 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o...">Framebuffer</a> object.  <br /></td></tr>
-<tr class="separator:a9f75587867978790eff88f5f94ca5c25 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d8c63490be2f35e41a4e6171502f1a6 inherit pub_methods_class_framebuffer" id="r_a0d8c63490be2f35e41a4e6171502f1a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a0d8c63490be2f35e41a4e6171502f1a6">Framebuffer</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *graphic_display_device, <a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a> text_cfg)</td></tr>
-<tr class="memdesc:a0d8c63490be2f35e41a4e6171502f1a6 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o...">Framebuffer</a> object.  <br /></td></tr>
-<tr class="separator:a0d8c63490be2f35e41a4e6171502f1a6 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a853c3beb49f76a0fe082e27cacd34742 inherit pub_methods_class_framebuffer" id="r_a853c3beb49f76a0fe082e27cacd34742"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_framebuffer.html#a853c3beb49f76a0fe082e27cacd34742">set_display_screen</a> (<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *_new_display_device)</td></tr>
-<tr class="memdesc:a853c3beb49f76a0fe082e27cacd34742 inherit pub_methods_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the display screen object.  <br /></td></tr>
-<tr class="separator:a853c3beb49f76a0fe082e27cacd34742 inherit pub_methods_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a3f8c24522dea1b99cde64172b97c410f" id="r_a3f8c24522dea1b99cde64172b97c410f"><td class="memItemLeft" align="right" valign="top"><a id="a3f8c24522dea1b99cde64172b97c410f" name="a3f8c24522dea1b99cde64172b97c410f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>widget_with_border</b> {false}</td></tr>
-<tr class="memdesc:a3f8c24522dea1b99cde64172b97c410f"><td class="mdescLeft">&#160;</td><td class="mdescRight">if true, the widget is surrounded by a one-pixel border <br /></td></tr>
-<tr class="separator:a3f8c24522dea1b99cde64172b97c410f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf475d8e24881005f95a248f0b88e7dd" id="r_abf475d8e24881005f95a248f0b88e7dd"><td class="memItemLeft" align="right" valign="top"><a id="abf475d8e24881005f95a248f0b88e7dd" name="abf475d8e24881005f95a248f0b88e7dd"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_width</b> {128}</td></tr>
-<tr class="memdesc:abf475d8e24881005f95a248f0b88e7dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">As a widget can be surrounded by a border, the actual widget width is not the associated framebuffer width. <br /></td></tr>
-<tr class="separator:abf475d8e24881005f95a248f0b88e7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae223e225992a9d78b58e0d61df59c8c7" id="r_ae223e225992a9d78b58e0d61df59c8c7"><td class="memItemLeft" align="right" valign="top"><a id="ae223e225992a9d78b58e0d61df59c8c7" name="ae223e225992a9d78b58e0d61df59c8c7"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_height</b> {8}</td></tr>
-<tr class="memdesc:ae223e225992a9d78b58e0d61df59c8c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">As a widget can be surrounded by a border, the actual widget height is not the associated framebuffer height. <br /></td></tr>
-<tr class="separator:ae223e225992a9d78b58e0d61df59c8c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3094cc2d87771130f0a57faaced1dae" id="r_ac3094cc2d87771130f0a57faaced1dae"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3094cc2d87771130f0a57faaced1dae">widget_start_x</a></td></tr>
-<tr class="memdesc:ac3094cc2d87771130f0a57faaced1dae"><td class="mdescLeft">&#160;</td><td class="mdescRight">this is the actual horizontal start of the widget drawing area, taken into account the presence of border.  <br /></td></tr>
-<tr class="separator:ac3094cc2d87771130f0a57faaced1dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00469273f1ebe1d8e672c232703d4153" id="r_a00469273f1ebe1d8e672c232703d4153"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00469273f1ebe1d8e672c232703d4153">widget_start_y</a></td></tr>
-<tr class="memdesc:a00469273f1ebe1d8e672c232703d4153"><td class="mdescLeft">&#160;</td><td class="mdescRight">this is the actual vertical start of the widget drawing area, taken into account the presence of border.  <br /></td></tr>
-<tr class="separator:a00469273f1ebe1d8e672c232703d4153"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa114eb7cfb73a91c2e3d5a3bd99f5161" id="r_aa114eb7cfb73a91c2e3d5a3bd99f5161"><td class="memItemLeft" align="right" valign="top"><a id="aa114eb7cfb73a91c2e3d5a3bd99f5161" name="aa114eb7cfb73a91c2e3d5a3bd99f5161"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_border_width</b></td></tr>
-<tr class="memdesc:aa114eb7cfb73a91c2e3d5a3bd99f5161"><td class="mdescLeft">&#160;</td><td class="mdescRight">this is the border size of the widget. 0 if no border, 1 if border <br /></td></tr>
-<tr class="separator:aa114eb7cfb73a91c2e3d5a3bd99f5161"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_class_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_widget')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_widget.html">Widget</a></td></tr>
-<tr class="memitem:a41ae2c77c95867d80f15cc722d32ce86 inherit pro_attribs_class_widget" id="r_a41ae2c77c95867d80f15cc722d32ce86"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="class_model.html">Model</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>actual_displayed_model</b> = nullptr</td></tr>
-<tr class="memdesc:a41ae2c77c95867d80f15cc722d32ce86 inherit pro_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">a pointer to the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> actually displayed by the widget <br /></td></tr>
-<tr class="separator:a41ae2c77c95867d80f15cc722d32ce86 inherit pro_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d16527adc5cfd8ff6fda332c1f09db0 inherit pro_attribs_class_widget" id="r_a9d16527adc5cfd8ff6fda332c1f09db0"><td class="memItemLeft" align="right" valign="top">
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>blink_period_us</b></td></tr>
-<tr class="memdesc:a9d16527adc5cfd8ff6fda332c1f09db0 inherit pro_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">The period of the blinking, in microseconds. <br /></td></tr>
-<tr class="separator:a9d16527adc5cfd8ff6fda332c1f09db0 inherit pro_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4c3a0de546fdcb1038469f5c592e2b6 inherit pro_attribs_class_widget" id="r_af4c3a0de546fdcb1038469f5c592e2b6"><td class="memItemLeft" align="right" valign="top">
-std::vector&lt; <a class="el" href="class_widget.html">Widget</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>widgets</b></td></tr>
-<tr class="memdesc:af4c3a0de546fdcb1038469f5c592e2b6 inherit pro_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">A widget can be composed by several widget. <br /></td></tr>
-<tr class="separator:af4c3a0de546fdcb1038469f5c592e2b6 inherit pro_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
-<tr class="memitem:aac2296916f9c9bccbf345ea150e5ce9c inherit pro_attribs_class_framebuffer" id="r_aac2296916f9c9bccbf345ea150e5ce9c"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>graphic_display_screen</b> {nullptr}</td></tr>
-<tr class="memdesc:aac2296916f9c9bccbf345ea150e5ce9c inherit pro_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the display device where the attached to the frame buffer <br /></td></tr>
-<tr class="separator:aac2296916f9c9bccbf345ea150e5ce9c inherit pro_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ac5dbe29b323b9ca3ec658261bbca54b2" id="r_ac5dbe29b323b9ca3ec658261bbca54b2"><td class="memItemLeft" align="right" valign="top"><a id="ac5dbe29b323b9ca3ec658261bbca54b2" name="ac5dbe29b323b9ca3ec658261bbca54b2"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>number_of_column</b> {0}</td></tr>
+<tr class="memdesc:ac5dbe29b323b9ca3ec658261bbca54b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max number of line with respect to frame height and font height. <br /></td></tr>
+<tr class="separator:ac5dbe29b323b9ca3ec658261bbca54b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae87e4aa5aa4076fa0d1f03e08c1d7a9c" id="r_ae87e4aa5aa4076fa0d1f03e08c1d7a9c"><td class="memItemLeft" align="right" valign="top"><a id="ae87e4aa5aa4076fa0d1f03e08c1d7a9c" name="ae87e4aa5aa4076fa0d1f03e08c1d7a9c"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>number_of_line</b> {0}</td></tr>
+<tr class="memdesc:ae87e4aa5aa4076fa0d1f03e08c1d7a9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max number of column with respect to frame width and font width. <br /></td></tr>
+<tr class="separator:ae87e4aa5aa4076fa0d1f03e08c1d7a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfd92491668798cee817a5964823a411" id="r_adfd92491668798cee817a5964823a411"><td class="memItemLeft" align="right" valign="top"><a id="adfd92491668798cee817a5964823a411" name="adfd92491668798cee817a5964823a411"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>text_buffer_size</b></td></tr>
+<tr class="memdesc:adfd92491668798cee817a5964823a411"><td class="mdescLeft">&#160;</td><td class="mdescRight">size of the buffer that contains text as string of characters. <br /></td></tr>
+<tr class="separator:adfd92491668798cee817a5964823a411"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad736dbe25c45386c7c7c02608ba2f3d4" id="r_ad736dbe25c45386c7c7c02608ba2f3d4"><td class="memItemLeft" align="right" valign="top"><a id="ad736dbe25c45386c7c7c02608ba2f3d4" name="ad736dbe25c45386c7c7c02608ba2f3d4"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>text_buffer</b> = nullptr</td></tr>
+<tr class="memdesc:ad736dbe25c45386c7c7c02608ba2f3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the buffer where text are written <br /></td></tr>
+<tr class="separator:ad736dbe25c45386c7c7c02608ba2f3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_attribs_class_graphic_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_class_graphic_widget')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_graphic_widget.html">GraphicWidget</a></td></tr>
+<tr class="memitem:a66963a7e8eefb7a212ca5fc595ec6382 inherit pub_attribs_class_graphic_widget" id="r_a66963a7e8eefb7a212ca5fc595ec6382"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="structstruct___pixel_frame.html">struct_PixelFrame</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_frame</b></td></tr>
+<tr class="memdesc:a66963a7e8eefb7a212ca5fc595ec6382 inherit pub_attribs_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">the data structure that contains the actual pixel buffer, created by the display device. <br /></td></tr>
+<tr class="separator:a66963a7e8eefb7a212ca5fc595ec6382 inherit pub_attribs_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38884af0d399c0bec49500d978d1ea81 inherit pub_attribs_class_graphic_widget" id="r_a38884af0d399c0bec49500d978d1ea81"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fg_color</b></td></tr>
+<tr class="memdesc:a38884af0d399c0bec49500d978d1ea81 inherit pub_attribs_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">the foregroung color of the graphic frame <br /></td></tr>
+<tr class="separator:a38884af0d399c0bec49500d978d1ea81 inherit pub_attribs_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0e94b95652214a6e2c5d48129c9eba2 inherit pub_attribs_class_graphic_widget" id="r_ad0e94b95652214a6e2c5d48129c9eba2"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bg_color</b></td></tr>
+<tr class="memdesc:ad0e94b95652214a6e2c5d48129c9eba2 inherit pub_attribs_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">the background color of the graphic frame <br /></td></tr>
+<tr class="separator:ad0e94b95652214a6e2c5d48129c9eba2 inherit pub_attribs_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61133b1352758000f0f3eef16824bdcb inherit pub_attribs_class_graphic_widget" id="r_a61133b1352758000f0f3eef16824bdcb"><td class="memItemLeft" align="right" valign="top">
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_anchor_x</b></td></tr>
+<tr class="memdesc:a61133b1352758000f0f3eef16824bdcb inherit pub_attribs_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">location in x of the widget within the hosting framebuffer <br /></td></tr>
+<tr class="separator:a61133b1352758000f0f3eef16824bdcb inherit pub_attribs_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4f41f6ccf52025b2c16fc2ec59208ee inherit pub_attribs_class_graphic_widget" id="r_ae4f41f6ccf52025b2c16fc2ec59208ee"><td class="memItemLeft" align="right" valign="top">
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_anchor_y</b></td></tr>
+<tr class="memdesc:ae4f41f6ccf52025b2c16fc2ec59208ee inherit pub_attribs_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">location in y of the widget within the hosting framebuffer <br /></td></tr>
+<tr class="separator:ae4f41f6ccf52025b2c16fc2ec59208ee inherit pub_attribs_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a25231a80633db702af090c590d5fabc7" id="r_a25231a80633db702af090c590d5fabc7"><td class="memItemLeft" align="right" valign="top"><a id="a25231a80633db702af090c590d5fabc7" name="a25231a80633db702af090c590d5fabc7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>create_text_buffer</b> ()</td></tr>
+<tr class="memdesc:a25231a80633db702af090c590d5fabc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">create text buffer and delete the old one if already existing <br /></td></tr>
+<tr class="separator:a25231a80633db702af090c590d5fabc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_graphic_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_graphic_widget')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_graphic_widget.html">GraphicWidget</a></td></tr>
+<tr class="memitem:a32888852eb8d37759b1d88534ca34d56 inherit pro_methods_class_graphic_widget" id="r_a32888852eb8d37759b1d88534ca34d56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a32888852eb8d37759b1d88534ca34d56">clear_pixel_buffer</a> ()</td></tr>
+<tr class="memdesc:a32888852eb8d37759b1d88534ca34d56 inherit pro_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill the graphic pixel buffer with 0x00.  <br /></td></tr>
+<tr class="separator:a32888852eb8d37759b1d88534ca34d56 inherit pro_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a012e42d45d29004e6e93e46782dcb284 inherit pro_methods_class_graphic_widget" id="r_a012e42d45d29004e6e93e46782dcb284"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a012e42d45d29004e6e93e46782dcb284">get_value_of_interest</a> ()=0</td></tr>
+<tr class="memdesc:a012e42d45d29004e6e93e46782dcb284 inherit pro_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual method that results in the transfer of the dispalyed values from the displayed model to the widget.  <br /></td></tr>
+<tr class="separator:a012e42d45d29004e6e93e46782dcb284 inherit pro_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a237b451ce7140f32676109f637fb215d" id="r_a237b451ce7140f32676109f637fb215d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a237b451ce7140f32676109f637fb215d">write</a> (char character, uint8_t char_column, uint8_t char_line)</td></tr>
+<tr class="memdesc:a237b451ce7140f32676109f637fb215d"><td class="mdescLeft">&#160;</td><td class="mdescRight">a graphic primitive to draw a character at a character position  <br /></td></tr>
+<tr class="separator:a237b451ce7140f32676109f637fb215d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad78f8aeaf711b85731d697092bae94b1" id="r_ad78f8aeaf711b85731d697092bae94b1"><td class="memItemLeft" align="right" valign="top"><a id="ad78f8aeaf711b85731d697092bae94b1" name="ad78f8aeaf711b85731d697092bae94b1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_line</b> ()</td></tr>
+<tr class="memdesc:ad78f8aeaf711b85731d697092bae94b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">clean th full current line (writing " " in the text buffer) <br /></td></tr>
+<tr class="separator:ad78f8aeaf711b85731d697092bae94b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:acafdf1bdb34e585fe8a2dcabda337deb" id="r_acafdf1bdb34e585fe8a2dcabda337deb"><td class="memItemLeft" align="right" valign="top"><a id="acafdf1bdb34e585fe8a2dcabda337deb" name="acafdf1bdb34e585fe8a2dcabda337deb"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>current_char_line</b> {0}</td></tr>
+<tr class="memdesc:acafdf1bdb34e585fe8a2dcabda337deb"><td class="mdescLeft">&#160;</td><td class="mdescRight">the line number where the next character will be written. <br /></td></tr>
+<tr class="separator:acafdf1bdb34e585fe8a2dcabda337deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8251cc036e15a7c182a4b2c156d6686" id="r_af8251cc036e15a7c182a4b2c156d6686"><td class="memItemLeft" align="right" valign="top"><a id="af8251cc036e15a7c182a4b2c156d6686" name="af8251cc036e15a7c182a4b2c156d6686"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>current_char_column</b> {0}</td></tr>
+<tr class="memdesc:af8251cc036e15a7c182a4b2c156d6686"><td class="mdescLeft">&#160;</td><td class="mdescRight">the column where the next character will be written. <br /></td></tr>
+<tr class="separator:af8251cc036e15a7c182a4b2c156d6686"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f9e90b07bdd553e7b0833c2679d513a" id="r_a6f9e90b07bdd553e7b0833c2679d513a"><td class="memItemLeft" align="right" valign="top"><a id="a6f9e90b07bdd553e7b0833c2679d513a" name="a6f9e90b07bdd553e7b0833c2679d513a"></a>
+const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><b>font</b> {nullptr}</td></tr>
+<tr class="memdesc:a6f9e90b07bdd553e7b0833c2679d513a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The font used. Current font are defined according to IBM CP437. The font files are derived from <a href="https://github.com/Harbys/pico-ssd1306">https://github.com/Harbys/pico-ssd1306</a> works. They come is size 5x8, 8x8, 12x16 and 16x32. <br /></td></tr>
+<tr class="separator:a6f9e90b07bdd553e7b0833c2679d513a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a104e81d58512b0c52e50878ad82b3b95" id="r_a104e81d58512b0c52e50878ad82b3b95"><td class="memItemLeft" align="right" valign="top"><a id="a104e81d58512b0c52e50878ad82b3b95" name="a104e81d58512b0c52e50878ad82b3b95"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>tab_size</b> {2}</td></tr>
+<tr class="memdesc:a104e81d58512b0c52e50878ad82b3b95"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of space that ASCII character HT (aka TAB , "\t", 0x9) generates, default to 2. <br /></td></tr>
+<tr class="separator:a104e81d58512b0c52e50878ad82b3b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb9b2312bbf201662d7c8ea1691a49b8" id="r_aeb9b2312bbf201662d7c8ea1691a49b8"><td class="memItemLeft" align="right" valign="top"><a id="aeb9b2312bbf201662d7c8ea1691a49b8" name="aeb9b2312bbf201662d7c8ea1691a49b8"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>wrap</b> {true}</td></tr>
+<tr class="memdesc:aeb9b2312bbf201662d7c8ea1691a49b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap flag : if true, text wrap to the next line when end of line is reached. <br /></td></tr>
+<tr class="separator:aeb9b2312bbf201662d7c8ea1691a49b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fd38fb14e38400bed765a067c9f5a32" id="r_a5fd38fb14e38400bed765a067c9f5a32"><td class="memItemLeft" align="right" valign="top"><a id="a5fd38fb14e38400bed765a067c9f5a32" name="a5fd38fb14e38400bed765a067c9f5a32"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>auto_next_char</b> {true}</td></tr>
+<tr class="memdesc:a5fd38fb14e38400bed765a067c9f5a32"><td class="mdescLeft">&#160;</td><td class="mdescRight">auto_next_char flag : if true each char steps one position after being written. <br /></td></tr>
+<tr class="separator:a5fd38fb14e38400bed765a067c9f5a32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_attribs_class_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_class_widget')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_widget.html">Widget</a></td></tr>
-<tr class="memitem:aec593e4c3c6af61ca7f74a97bd2387ea inherit pub_attribs_class_widget" id="r_aec593e4c3c6af61ca7f74a97bd2387ea"><td class="memItemLeft" align="right" valign="top">
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_anchor_x</b></td></tr>
-<tr class="memdesc:aec593e4c3c6af61ca7f74a97bd2387ea inherit pub_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">location in x of the widget within the hosting framebuffer <br /></td></tr>
-<tr class="separator:aec593e4c3c6af61ca7f74a97bd2387ea inherit pub_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad54861e21195fc55edf3d0e55bfe3e2b inherit pub_attribs_class_widget" id="r_ad54861e21195fc55edf3d0e55bfe3e2b"><td class="memItemLeft" align="right" valign="top">
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_anchor_y</b></td></tr>
-<tr class="memdesc:ad54861e21195fc55edf3d0e55bfe3e2b inherit pub_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">location in y of the widget within the hosting framebuffer <br /></td></tr>
-<tr class="separator:ad54861e21195fc55edf3d0e55bfe3e2b inherit pub_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_attribs_class_text_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_class_text_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_text_framebuffer.html">TextFramebuffer</a></td></tr>
-<tr class="memitem:ab86e9bbff3bc5a00aa3691d0492567a9 inherit pub_attribs_class_text_framebuffer" id="r_ab86e9bbff3bc5a00aa3691d0492567a9"><td class="memItemLeft" align="right" valign="top">
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>number_of_column</b> {0}</td></tr>
-<tr class="memdesc:ab86e9bbff3bc5a00aa3691d0492567a9 inherit pub_attribs_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max number of line with respect to frame height and font height. <br /></td></tr>
-<tr class="separator:ab86e9bbff3bc5a00aa3691d0492567a9 inherit pub_attribs_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa568dbdc3fcbf7ae23cd88086501c01e inherit pub_attribs_class_text_framebuffer" id="r_aa568dbdc3fcbf7ae23cd88086501c01e"><td class="memItemLeft" align="right" valign="top">
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>number_of_line</b> {0}</td></tr>
-<tr class="memdesc:aa568dbdc3fcbf7ae23cd88086501c01e inherit pub_attribs_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max number of column with respect to frame width and font width. <br /></td></tr>
-<tr class="separator:aa568dbdc3fcbf7ae23cd88086501c01e inherit pub_attribs_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a942ee23fe9362a4270aec4acefb6a2 inherit pub_attribs_class_text_framebuffer" id="r_a9a942ee23fe9362a4270aec4acefb6a2"><td class="memItemLeft" align="right" valign="top">
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>text_buffer_size</b></td></tr>
-<tr class="memdesc:a9a942ee23fe9362a4270aec4acefb6a2 inherit pub_attribs_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">size of the buffer that contains text as string of characters. <br /></td></tr>
-<tr class="separator:a9a942ee23fe9362a4270aec4acefb6a2 inherit pub_attribs_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a733e16f79708948e32eb66fdd20d7d3a inherit pub_attribs_class_text_framebuffer" id="r_a733e16f79708948e32eb66fdd20d7d3a"><td class="memItemLeft" align="right" valign="top">
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>text_buffer</b> = nullptr</td></tr>
-<tr class="memdesc:a733e16f79708948e32eb66fdd20d7d3a inherit pub_attribs_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the buffer where text are written <br /></td></tr>
-<tr class="separator:a733e16f79708948e32eb66fdd20d7d3a inherit pub_attribs_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_attribs_class_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_class_framebuffer')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_framebuffer.html">Framebuffer</a></td></tr>
-<tr class="memitem:a1e327d8adaee19de8b5f40b347646e1e inherit pub_attribs_class_framebuffer" id="r_a1e327d8adaee19de8b5f40b347646e1e"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="structstruct___pixel_frame.html">struct_PixelFrame</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pixel_frame</b></td></tr>
-<tr class="memdesc:a1e327d8adaee19de8b5f40b347646e1e inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the data structure that contains the actual pixel buffer, created by the display device. <br /></td></tr>
-<tr class="separator:a1e327d8adaee19de8b5f40b347646e1e inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21e274954d56bcf1417da39804747d40 inherit pub_attribs_class_framebuffer" id="r_a21e274954d56bcf1417da39804747d40"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fg_color</b></td></tr>
-<tr class="memdesc:a21e274954d56bcf1417da39804747d40 inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the foregroung color of the graphic frame <br /></td></tr>
-<tr class="separator:a21e274954d56bcf1417da39804747d40 inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad957cc59bc60b1d0e7b57fb1f565cdd inherit pub_attribs_class_framebuffer" id="r_aad957cc59bc60b1d0e7b57fb1f565cdd"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bg_color</b></td></tr>
-<tr class="memdesc:aad957cc59bc60b1d0e7b57fb1f565cdd inherit pub_attribs_class_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">the background color of the graphic frame <br /></td></tr>
-<tr class="separator:aad957cc59bc60b1d0e7b57fb1f565cdd inherit pub_attribs_class_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_methods_class_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_widget')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_widget.html">Widget</a></td></tr>
-<tr class="memitem:a1e64f6cb46adddfd6a4df1aab5c95b2a inherit pro_methods_class_widget" id="r_a1e64f6cb46adddfd6a4df1aab5c95b2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_widget.html#a1e64f6cb46adddfd6a4df1aab5c95b2a">blinking_phase_has_changed</a> ()</td></tr>
-<tr class="memdesc:a1e64f6cb46adddfd6a4df1aab5c95b2a inherit pro_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">ask if the blinking phase has changed  <br /></td></tr>
-<tr class="separator:a1e64f6cb46adddfd6a4df1aab5c95b2a inherit pro_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9d36f6ae878ce03d54f771df3a38af0 inherit pro_methods_class_widget" id="r_ae9d36f6ae878ce03d54f771df3a38af0"><td class="memItemLeft" align="right" valign="top">
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>get_value_of_interest</b> ()=0</td></tr>
-<tr class="memdesc:ae9d36f6ae878ce03d54f771df3a38af0 inherit pro_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual method used to update the widget with the values of the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> the the <a class="el" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">Widget</a> displays. <br /></td></tr>
-<tr class="separator:ae9d36f6ae878ce03d54f771df3a38af0 inherit pro_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_methods_class_text_framebuffer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_text_framebuffer')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_text_framebuffer.html">TextFramebuffer</a></td></tr>
-<tr class="memitem:a05df8f51f7dee0c8cb6018e74d4bf49a inherit pro_methods_class_text_framebuffer" id="r_a05df8f51f7dee0c8cb6018e74d4bf49a"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>create_text_buffer</b> ()</td></tr>
-<tr class="memdesc:a05df8f51f7dee0c8cb6018e74d4bf49a inherit pro_methods_class_text_framebuffer"><td class="mdescLeft">&#160;</td><td class="mdescRight">create text buffer and delete the old one if already existing <br /></td></tr>
-<tr class="separator:a05df8f51f7dee0c8cb6018e74d4bf49a inherit pro_methods_class_text_framebuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_class_graphic_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_graphic_widget')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_graphic_widget.html">GraphicWidget</a></td></tr>
+<tr class="memitem:afd6b3c92346618f1fdbb501989c15078 inherit pro_attribs_class_graphic_widget" id="r_afd6b3c92346618f1fdbb501989c15078"><td class="memItemLeft" align="right" valign="top">
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>widget_with_border</b> {false}</td></tr>
+<tr class="memdesc:afd6b3c92346618f1fdbb501989c15078 inherit pro_attribs_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">if true, the widget is surrounded by a one-pixel border <br /></td></tr>
+<tr class="separator:afd6b3c92346618f1fdbb501989c15078 inherit pro_attribs_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ea1e751f7a5c20a1447c477ae1c7a07 inherit pro_attribs_class_graphic_widget" id="r_a5ea1e751f7a5c20a1447c477ae1c7a07"><td class="memItemLeft" align="right" valign="top">
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_width</b> {128}</td></tr>
+<tr class="memdesc:a5ea1e751f7a5c20a1447c477ae1c7a07 inherit pro_attribs_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">As a widget can be surrounded by a border, the actual widget width is not the associated framebuffer width. <br /></td></tr>
+<tr class="separator:a5ea1e751f7a5c20a1447c477ae1c7a07 inherit pro_attribs_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac88aea83eb3c637f6ea3546b50074bbd inherit pro_attribs_class_graphic_widget" id="r_ac88aea83eb3c637f6ea3546b50074bbd"><td class="memItemLeft" align="right" valign="top">
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_height</b> {8}</td></tr>
+<tr class="memdesc:ac88aea83eb3c637f6ea3546b50074bbd inherit pro_attribs_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">As a widget can be surrounded by a border, the actual widget height is not the associated framebuffer height. <br /></td></tr>
+<tr class="separator:ac88aea83eb3c637f6ea3546b50074bbd inherit pro_attribs_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6009fcb1fbee0806b484a49537e33334 inherit pro_attribs_class_graphic_widget" id="r_a6009fcb1fbee0806b484a49537e33334"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a6009fcb1fbee0806b484a49537e33334">widget_start_x</a></td></tr>
+<tr class="memdesc:a6009fcb1fbee0806b484a49537e33334 inherit pro_attribs_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">this is the actual horizontal start of the widget drawing area, taken into account the presence of border.  <br /></td></tr>
+<tr class="separator:a6009fcb1fbee0806b484a49537e33334 inherit pro_attribs_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38224084bf20dafdc08dd08a0b79791c inherit pro_attribs_class_graphic_widget" id="r_a38224084bf20dafdc08dd08a0b79791c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a38224084bf20dafdc08dd08a0b79791c">widget_start_y</a></td></tr>
+<tr class="memdesc:a38224084bf20dafdc08dd08a0b79791c inherit pro_attribs_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">this is the actual vertical start of the widget drawing area, taken into account the presence of border.  <br /></td></tr>
+<tr class="separator:a38224084bf20dafdc08dd08a0b79791c inherit pro_attribs_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab06cc273f6d42d2527eca35fd5e9b8ed inherit pro_attribs_class_graphic_widget" id="r_ab06cc273f6d42d2527eca35fd5e9b8ed"><td class="memItemLeft" align="right" valign="top">
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_border_width</b></td></tr>
+<tr class="memdesc:ab06cc273f6d42d2527eca35fd5e9b8ed inherit pro_attribs_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">this is the border size of the widget. 0 if no border, 1 if border <br /></td></tr>
+<tr class="separator:ab06cc273f6d42d2527eca35fd5e9b8ed inherit pro_attribs_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_class_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_widget')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_widget.html">Widget</a></td></tr>
+<tr class="memitem:ad1a8361eeea9edee2df48440ac2b5211 inherit pro_attribs_class_widget" id="r_ad1a8361eeea9edee2df48440ac2b5211"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>graphic_display_screen</b> {nullptr}</td></tr>
+<tr class="memdesc:ad1a8361eeea9edee2df48440ac2b5211 inherit pro_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">the display device where the attached to the frame buffer <br /></td></tr>
+<tr class="separator:ad1a8361eeea9edee2df48440ac2b5211 inherit pro_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41ae2c77c95867d80f15cc722d32ce86 inherit pro_attribs_class_widget" id="r_a41ae2c77c95867d80f15cc722d32ce86"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="class_model.html">Model</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>actual_displayed_model</b> {nullptr}</td></tr>
+<tr class="memdesc:a41ae2c77c95867d80f15cc722d32ce86 inherit pro_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">a pointer to the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> actually displayed by the widget <br /></td></tr>
+<tr class="separator:a41ae2c77c95867d80f15cc722d32ce86 inherit pro_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4c3a0de546fdcb1038469f5c592e2b6 inherit pro_attribs_class_widget" id="r_af4c3a0de546fdcb1038469f5c592e2b6"><td class="memItemLeft" align="right" valign="top">
+std::vector&lt; <a class="el" href="class_widget.html">Widget</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>widgets</b></td></tr>
+<tr class="memdesc:af4c3a0de546fdcb1038469f5c592e2b6 inherit pro_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">A widget can be composed by several widgets. <br /></td></tr>
+<tr class="separator:af4c3a0de546fdcb1038469f5c592e2b6 inherit pro_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>a dedicated class for text frame only </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a482de7f75ce5cfa744cbaea5a09d9da3" name="a482de7f75ce5cfa744cbaea5a09d9da3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a482de7f75ce5cfa744cbaea5a09d9da3">&#9670;&#160;</a></span>TextWidget()</h2>
+<a id="afc16a5863871d87c9cd009e567b9df39" name="afc16a5863871d87c9cd009e567b9df39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc16a5863871d87c9cd009e567b9df39">&#9670;&#160;</a></span>TextWidget() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -369,66 +388,80 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>create_text_buffer</b
         <tr>
           <td class="memname">TextWidget::TextWidget </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *</td>          <td class="paramname"><span class="paramname"><em>device</em></span>, </td>
+          <td class="paramtype"><a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *</td>          <td class="paramname"><span class="paramname"><em>graphic_display_screen</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structstruct___config_text_framebuffer.html">struct_ConfigTextFramebuffer</a></td>          <td class="paramname"><span class="paramname"><em>text_cfg</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structstruct___config_text_widget.html">struct_ConfigTextWidget</a></td>          <td class="paramname"><span class="paramname"><em>text_cfg</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_model.html">Model</a> *</td>          <td class="paramname"><span class="paramname"><em>displayed_model</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>widget_anchor_x</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>widget_anchor_y</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>widget_with_border</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="class_model.html">Model</a> *</td>          <td class="paramname"><span class="paramname"><em>displayed_object</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new Text <a class="el" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">Widget</a> object. </p>
+<p>The max number of line with respect to frame height and font height. </p>
+<p>Construct a new Text <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a> object </p><dl class="section note"><dt>Note</dt><dd>USAGE: when the text frame is defined by the number of characters width and height. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">device</td><td>The display device on which the widget is drawn </td></tr>
+    <tr><td class="paramname">graphic_display_screen</td><td>The display device on which the widget is drawn </td></tr>
     <tr><td class="paramname">text_cfg</td><td>the configuration data for the textual frame </td></tr>
-    <tr><td class="paramname">displayed_model</td><td>the displayed model of the widget </td></tr>
-    <tr><td class="paramname">widget_anchor_x</td><td>the horizontal position where the widget start on the device screen </td></tr>
-    <tr><td class="paramname">widget_anchor_y</td><td>the verticaThe flag that indicates whether the widget has a border or notl position where the widget start on the device screen </td></tr>
-    <tr><td class="paramname">widget_with_border</td><td>flag that indicates if the frame has a border </td></tr>
+    <tr><td class="paramname">displayed_object</td><td>the displayed model of the widget. Default to nullptr </td></tr>
   </table>
   </dd>
 </dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_text_widget_a482de7f75ce5cfa744cbaea5a09d9da3_cgraph.png" border="0" usemap="#aclass_text_widget_a482de7f75ce5cfa744cbaea5a09d9da3_cgraph" alt=""/></div>
-<map name="aclass_text_widget_a482de7f75ce5cfa744cbaea5a09d9da3_cgraph" id="aclass_text_widget_a482de7f75ce5cfa744cbaea5a09d9da3_cgraph">
-<area shape="rect" title="Construct a new Text Widget object." alt="" coords="5,29,143,54"/>
-<area shape="poly" title=" " alt="" coords="50,30,46,21,48,11,58,5,74,3,91,5,100,12,97,16,89,10,74,8,60,10,53,14,51,20,55,28"/>
-</map>
+
 </div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_text_widget_a482de7f75ce5cfa744cbaea5a09d9da3_icgraph.png" border="0" usemap="#aclass_text_widget_a482de7f75ce5cfa744cbaea5a09d9da3_icgraph" alt=""/></div>
-<map name="aclass_text_widget_a482de7f75ce5cfa744cbaea5a09d9da3_icgraph" id="aclass_text_widget_a482de7f75ce5cfa744cbaea5a09d9da3_icgraph">
-<area shape="rect" title="Construct a new Text Widget object." alt="" coords="5,29,143,54"/>
-<area shape="poly" title=" " alt="" coords="97,16,89,10,74,8,60,10,53,14,51,20,55,28,50,30,46,21,48,11,58,5,74,3,91,5,100,12"/>
-</map>
 </div>
+<a id="ac8d4456a66543ca1938588eff17a0d92" name="ac8d4456a66543ca1938588eff17a0d92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8d4456a66543ca1938588eff17a0d92">&#9670;&#160;</a></span>TextWidget() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TextWidget::TextWidget </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *</td>          <td class="paramname"><span class="paramname"><em>graphic_display_screen</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct___config_text_widget.html">struct_ConfigTextWidget</a></td>          <td class="paramname"><span class="paramname"><em>text_cfg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>frame_width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>frame_height</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_model.html">Model</a> *</td>          <td class="paramname"><span class="paramname"><em>displayed_object</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new Text <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a> object. </p>
+<dl class="section note"><dt>Note</dt><dd>USAGE: when the text frame is defined by the frame size width and height in pixel. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">graphic_display_screen</td><td>The display device on which the widget is drawn </td></tr>
+    <tr><td class="paramname">text_cfg</td><td>the configuration data for the textual frame </td></tr>
+    <tr><td class="paramname">frame_width</td><td>the frame size width </td></tr>
+    <tr><td class="paramname">frame_height</td><td>the frame size height </td></tr>
+    <tr><td class="paramname">displayed_object</td><td>the displayed model of the widget. Default to nullptr </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -456,7 +489,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>we need <a class="el" href="#a34e2f1558ebd76f1dbfb3cbfdf0e7894" title="we need draw() to be compliant with the pure virtual draw() inherited from Widget....">draw()</a> to be compliant with the pure virtual <a class="el" href="#a34e2f1558ebd76f1dbfb3cbfdf0e7894" title="we need draw() to be compliant with the pure virtual draw() inherited from Widget....">draw()</a> inherited from <a class="el" href="class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,...">Widget</a>. The <a class="el" href="#a34e2f1558ebd76f1dbfb3cbfdf0e7894" title="we need draw() to be compliant with the pure virtual draw() inherited from Widget....">draw()</a> member call the <a class="el" href="#ae1a1d30875b075e0a5920bf054b952c2" title="A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y)">show()</a> member automatically. Useful when we mix graphic and text widget in a UI environment. Otherwise, we can use directly the <a class="el" href="class_text_framebuffer.html#a827adce94a2e72b1b9939ee366a49df0" title="process characters in the internal text buffer and draw it into the pixel buffer.">TextFramebuffer::write()</a>, but in this case we have to call <a class="el" href="#a8e488a1292f4da21ad368259e9723091" title="draw a one-pixel width around the the frame">draw_border()</a>, then <a class="el" href="#ae1a1d30875b075e0a5920bf054b952c2" title="A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y)">show()</a> member. </p>
+<p>we need <a class="el" href="#a34e2f1558ebd76f1dbfb3cbfdf0e7894" title="we need draw() to be compliant with the pure virtual draw() inherited from Widget.">draw()</a> to be compliant with the pure virtual <a class="el" href="#a34e2f1558ebd76f1dbfb3cbfdf0e7894" title="we need draw() to be compliant with the pure virtual draw() inherited from Widget.">draw()</a> inherited from <a class="el" href="class_widget.html" title="the generic class for all widget">Widget</a>. </p>
+<dl class="section note"><dt>Note</dt><dd>USAGE: It is called by the draw_refresh method of the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> The <a class="el" href="#a34e2f1558ebd76f1dbfb3cbfdf0e7894" title="we need draw() to be compliant with the pure virtual draw() inherited from Widget.">draw()</a> member calls the following method : 1) <a class="el" href="#ad0eff5956c8b16178e7eb3572a86e57d" title="et text buffer memory to &quot;0&quot; and set character current line and column to 0">clear_text_buffer()</a>; 2) <a class="el" href="class_graphic_widget.html#a012e42d45d29004e6e93e46782dcb284" title="A pure virtual method that results in the transfer of the dispalyed values from the displayed model t...">get_value_of_interest()</a>; 3) <a class="el" href="#a3ce8f540e45844b22efa9f18c3c85eab" title="process characters in the internal text buffer and draw it into the pixel buffer.">write()</a>; &ndash; transfer characters in text_buffer to pixels in the pixel_buffer 4) <a class="el" href="#a8e488a1292f4da21ad368259e9723091" title="draw a one-pixel width around the the frame">draw_border()</a>; 5) <a class="el" href="class_graphic_widget.html#a83c221250b9dfdeb8ab03b87a783bf10" title="A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y)">show()</a>; </dd></dl>
 
 <p>Implements <a class="el" href="class_widget.html#ae48262adfd76a5df4fcc892485d942a6">Widget</a>.</p>
 
@@ -486,7 +520,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>draw a one-pixel width around the the frame </p>
-<dl class="section note"><dt>Note</dt><dd>This border can overwrite the characters! To be improve with the use of pixel frame memory not based on byte page such as the OLED <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This border can overwrite the characters! To be improve with the use of pixel frame memory not based on byte page such as the OLED <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a>. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">color</td><td></td></tr>
@@ -494,13 +528,136 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_widget.html#afbee1ae750f2522eeebae62bb73703f6">Widget</a>.</p>
+<p>Reimplemented from <a class="el" href="class_graphic_widget.html#a934bc1c1cdf83ed72bf06d1ca5de2e45">GraphicWidget</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="ac3094cc2d87771130f0a57faaced1dae" name="ac3094cc2d87771130f0a57faaced1dae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3094cc2d87771130f0a57faaced1dae">&#9670;&#160;</a></span>widget_start_x</h2>
+<a id="ad59aca3e9c6adb5b24fdbb94c4ccea26" name="ad59aca3e9c6adb5b24fdbb94c4ccea26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad59aca3e9c6adb5b24fdbb94c4ccea26">&#9670;&#160;</a></span>get_text_frame_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structstruct___config_text_widget.html">struct_ConfigTextWidget</a> TextWidget::get_text_frame_config </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the text frame config object. </p>
+<dl class="section return"><dt>Returns</dt><dd>struct_ConfigTextFramebuffer </dd></dl>
+
+</div>
+</div>
+<a id="ae7a5603a5a769cad07cd3a102fb808f1" name="ae7a5603a5a769cad07cd3a102fb808f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7a5603a5a769cad07cd3a102fb808f1">&#9670;&#160;</a></span>process_char()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TextWidget::process_char </td>
+          <td>(</td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>character</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>interpret the character and draw it into the pixel buffer at the current line and column character position. </p>
+<p>Text wrapping is done if wrap flag is true. Character position steps forward according to auto_next_char flag.</p>
+<p>Some special characters are processed:</p>
+<ul>
+<li>"LINE_FEED" (\n 0x0A) : line position steps forward, column position is set to 0.</li>
+<li>"BACKSPACE" (\b 0x08) : column position steps backward, a space (" ") character is overwritten.</li>
+<li>"FORM_FEED" (\f 0x0C) : the text buffer is cleared.</li>
+<li>"CARRIAGE_RETURN" (\r 0x0D) : column position is set to 0.</li>
+<li>"HORIZONTAL_TAB" (\t 0x09) : " " characters are added according to tab_size configuration value. <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">character</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+</li>
+</ul>
+
+</div>
+</div>
+<a id="a34c23baf9e2a633803ff709b42ad4ff5" name="a34c23baf9e2a633803ff709b42ad4ff5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34c23baf9e2a633803ff709b42ad4ff5">&#9670;&#160;</a></span>update_graphic_frame_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TextWidget::update_graphic_frame_size </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned char *</td>          <td class="paramname"><span class="paramname"><em>font</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>compute graphic pixel width and height according to the size of the text (column x line ) and the size of the bitmap font. Delete the previous pixel buffer if any and create a new buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">font</td><td>the new font </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a90e41e7b1954c812001292dcc8b4dc51" name="a90e41e7b1954c812001292dcc8b4dc51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90e41e7b1954c812001292dcc8b4dc51">&#9670;&#160;</a></span>update_text_frame_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TextWidget::update_text_frame_size </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned char *</td>          <td class="paramname"><span class="paramname"><em>font</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compute the text size in column x line according to the size of the font and the size of the frame in pixel. Delete the previous text buffer if any and create a new buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">font</td><td>the new font </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3ce8f540e45844b22efa9f18c3c85eab" name="a3ce8f540e45844b22efa9f18c3c85eab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ce8f540e45844b22efa9f18c3c85eab">&#9670;&#160;</a></span>write() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TextWidget::write </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>process characters in the internal text buffer and draw it into the pixel buffer. </p>
+<dl class="section note"><dt>Note</dt><dd>USAGE: this is useful if we have to fill the text_buffer, e.g. with sprintf and formatted text. </dd></dl>
+
+</div>
+</div>
+<a id="a237b451ce7140f32676109f637fb215d" name="a237b451ce7140f32676109f637fb215d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a237b451ce7140f32676109f637fb215d">&#9670;&#160;</a></span>write() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -509,43 +666,62 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t TextWidget::widget_start_x</td>
+          <td class="memname">void TextWidget::write </td>
+          <td>(</td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>character</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>char_column</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>char_line</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>this is the actual horizontal start of the widget drawing area, taken into account the presence of border. </p>
-<p>WARNING: when the FramebufferFormat format is MONO_VLSB, works fine only if widget_height is a multiple of 8. </p>
+<p>a graphic primitive to draw a character at a character position </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">character</td><td>the foreground color of the character. The font is given by the frame_text_config </td></tr>
+    <tr><td class="paramname">char_column</td><td>the column position of the character </td></tr>
+    <tr><td class="paramname">char_line</td><td>the line position of the character </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a00469273f1ebe1d8e672c232703d4153" name="a00469273f1ebe1d8e672c232703d4153"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00469273f1ebe1d8e672c232703d4153">&#9670;&#160;</a></span>widget_start_y</h2>
+<a id="ab9524e4f93739352b7fe0915e038c1fb" name="ab9524e4f93739352b7fe0915e038c1fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9524e4f93739352b7fe0915e038c1fb">&#9670;&#160;</a></span>write() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t TextWidget::widget_start_y</td>
+          <td class="memname">void TextWidget::write </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>c_str</em></span></td><td>)</td>
+          <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>this is the actual vertical start of the widget drawing area, taken into account the presence of border. </p>
-<p>WARNING: when the FramebufferFormat format is MONO_VLSB, works fine only if widget_start_y is a multiple of 8 </p>
+<p>process the string c_str and then draw each character into the pixel buffer, without using the text buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c_str</td><td>A C_style character string. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

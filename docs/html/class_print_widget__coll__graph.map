@@ -1,11 +1,9 @@
 <map id="PrintWidget" name="PrintWidget">
-<area shape="rect" id="Node000001" title="A widget used when we need to simply print but still want to take advantage of the status change mana..." alt="" coords="271,532,655,649"/>
-<area shape="rect" id="Node000002" href="$class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,203,472,470"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="368,479,414,531,410,534,364,483"/>
-<area shape="rect" id="Node000003" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="99,5,379,141"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="241,141,241,186,236,186,236,141"/>
-<area shape="rect" id="Node000004" href="$class_printer_device.html" title="A class dedicated to pure text display such as console, printer, ASCII character line display." alt="" coords="497,259,879,414"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="622,416,527,521,523,518,618,412"/>
-<area shape="rect" id="Node000005" href="$class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="540,24,836,123"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="691,138,691,260,685,260,685,138"/>
+<area shape="rect" id="Node000001" title="A widget used when we need to simply print but still want to take advantage of the status change mana..." alt="" coords="11,445,434,562"/>
+<area shape="rect" id="Node000002" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,135,285,383"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,382,202,427,197,429,182,383"/>
+<area shape="rect" id="Node000003" href="$class_printer_device.html" title="A class dedicated to pure text display such as console, printer, ASCII character line display." alt="" coords="310,181,693,336"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="423,338,327,423,311,436,308,432,324,419,419,334"/>
+<area shape="rect" id="Node000004" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="449,5,553,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="504,101,504,181,499,181,499,101"/>
 </map>

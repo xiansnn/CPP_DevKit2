@@ -1,12 +1,12 @@
 var class_s_s_d1306 =
 [
     [ "SSD1306", "class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b", null ],
-    [ "check_display_device_compatibility", "class_s_s_d1306.html#a7242be5e60f699b21eb33a5fc399c595", null ],
+    [ "check_display_device_compatibility", "class_s_s_d1306.html#ae86de55b157bce1451499d8b18e879f5", null ],
     [ "clear_device_screen_buffer", "class_s_s_d1306.html#a646463128f966a04b1746e3389819711", null ],
     [ "clear_pixel_buffer", "class_s_s_d1306.html#a8432036c46b4de56e4d85ed06f82195a", null ],
     [ "compute_render_area", "class_s_s_d1306.html#a946d97970d11c778a09e0f1305591b3f", null ],
     [ "create_pixel_buffer", "class_s_s_d1306.html#a219dc68e8ad7ba244928d5373ca2e8b8", null ],
-    [ "draw_char_into_pixel", "class_s_s_d1306.html#a77603aad66bd26684306d3c4c8a55b18", null ],
+    [ "draw_char_into_pixel", "class_s_s_d1306.html#a3bbec956a8ffebc6445f9b83b334e8a2", null ],
     [ "fill_pattern_and_show_GDDRAM", "class_s_s_d1306.html#a764babad3f6a4d12cfa600ce7fd1b751", null ],
     [ "horizontal_scroll", "class_s_s_d1306.html#a3228383e41ea93124a1da0a619dc6b11", null ],
     [ "init", "class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f", null ],

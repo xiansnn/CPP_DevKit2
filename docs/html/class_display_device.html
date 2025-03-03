@@ -98,14 +98,12 @@ $(function(){initNavTree('class_display_device.html',''); initResizable(true); }
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_display_device-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">DisplayDevice Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>the generic abstract class for physical display devices  
+<p>A generic class for all display device.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="display__device_8h_source.html">display_device.h</a>&gt;</code></p>
@@ -114,13 +112,13 @@ Inheritance diagram for DisplayDevice:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_display_device__inherit__graph.png" border="0" usemap="#a_display_device_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_display_device_inherit__map" id="a_display_device_inherit__map">
-<area shape="rect" title="the generic abstract class for physical display devices" alt="" coords="367,5,663,104"/>
-<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="17,152,537,388"/>
-<area shape="poly" title=" " alt="" coords="452,116,409,154,406,150,448,112"/>
-<area shape="rect" href="class_printer_device.html" title="A class dedicated to pure text display such as console, printer, ASCII character line display." alt="" coords="562,193,945,347"/>
-<area shape="poly" title=" " alt="" coords="581,112,670,191,666,195,578,116"/>
-<area shape="rect" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,436,549,1135"/>
-<area shape="poly" title=" " alt="" coords="280,403,280,436,275,436,275,403"/>
+<area shape="rect" title="A generic class for all display device." alt="" coords="460,5,564,85"/>
+<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="24,133,531,373"/>
+<area shape="poly" title=" " alt="" coords="458,97,415,135,411,131,455,93"/>
+<area shape="rect" href="class_printer_device.html" title="A class dedicated to pure text display such as console, printer, ASCII character line display." alt="" coords="555,176,938,331"/>
+<area shape="poly" title=" " alt="" coords="569,93,662,174,658,178,566,97"/>
+<area shape="rect" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,421,549,1105"/>
+<area shape="poly" title=" " alt="" coords="280,388,280,422,275,422,275,388"/>
 </map>
 </div>
 <div class="dynheader">
@@ -128,79 +126,12 @@ Collaboration diagram for DisplayDevice:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_display_device__coll__graph.png" border="0" usemap="#a_display_device_coll__map" alt="Collaboration graph"/></div>
 <map name="a_display_device_coll__map" id="a_display_device_coll__map">
-<area shape="rect" title="the generic abstract class for physical display devices" alt="" coords="5,5,301,104"/>
+<area shape="rect" title="A generic class for all display device." alt="" coords="5,5,109,85"/>
 </map>
 </div>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a6a68176a4ad047899fe3350438f340df" id="r_a6a68176a4ad047899fe3350438f340df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a68176a4ad047899fe3350438f340df">DisplayDevice</a> (size_t <a class="el" href="#a58ea2f03d0b4a7da180de43d30db1a44">screen_width</a>, size_t <a class="el" href="#a852e346e012cb3389ed915d529da1f34">screen_height</a>)</td></tr>
-<tr class="memdesc:a6a68176a4ad047899fe3350438f340df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Display Device object.  <br /></td></tr>
-<tr class="separator:a6a68176a4ad047899fe3350438f340df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a58ea2f03d0b4a7da180de43d30db1a44" id="r_a58ea2f03d0b4a7da180de43d30db1a44"><td class="memItemLeft" align="right" valign="top"><a id="a58ea2f03d0b4a7da180de43d30db1a44" name="a58ea2f03d0b4a7da180de43d30db1a44"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>screen_width</b></td></tr>
-<tr class="memdesc:a58ea2f03d0b4a7da180de43d30db1a44"><td class="mdescLeft">&#160;</td><td class="mdescRight">the physical width of the screen (in pixel) <br /></td></tr>
-<tr class="separator:a58ea2f03d0b4a7da180de43d30db1a44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a852e346e012cb3389ed915d529da1f34" id="r_a852e346e012cb3389ed915d529da1f34"><td class="memItemLeft" align="right" valign="top"><a id="a852e346e012cb3389ed915d529da1f34" name="a852e346e012cb3389ed915d529da1f34"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>screen_height</b></td></tr>
-<tr class="memdesc:a852e346e012cb3389ed915d529da1f34"><td class="mdescLeft">&#160;</td><td class="mdescRight">the physical height of the screen (in pixel) <br /></td></tr>
-<tr class="separator:a852e346e012cb3389ed915d529da1f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>the generic abstract class for physical display devices </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a6a68176a4ad047899fe3350438f340df" name="a6a68176a4ad047899fe3350438f340df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a68176a4ad047899fe3350438f340df">&#9670;&#160;</a></span>DisplayDevice()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">DisplayDevice::DisplayDevice </td>
-          <td>(</td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>screen_width</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>screen_height</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Construct a new Display Device object. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">screen_width</td><td>the physical width of the screen (in pixel) </td></tr>
-    <tr><td class="paramname">screen_height</td><td>he physical height of the screen (in pixel) </td></tr>
-  </table>
-  </dd>
-</dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_display_device_a6a68176a4ad047899fe3350438f340df_cgraph.png" border="0" usemap="#aclass_display_device_a6a68176a4ad047899fe3350438f340df_cgraph" alt=""/></div>
-<map name="aclass_display_device_a6a68176a4ad047899fe3350438f340df_cgraph" id="aclass_display_device_a6a68176a4ad047899fe3350438f340df_cgraph">
-<area shape="rect" title="Construct a new Display Device object." alt="" coords="5,29,163,54"/>
-<area shape="poly" title=" " alt="" coords="57,30,52,21,55,11,66,5,84,3,103,5,114,12,111,16,102,10,84,8,68,10,59,15,57,20,62,28"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_display_device_a6a68176a4ad047899fe3350438f340df_icgraph.png" border="0" usemap="#aclass_display_device_a6a68176a4ad047899fe3350438f340df_icgraph" alt=""/></div>
-<map name="aclass_display_device_a6a68176a4ad047899fe3350438f340df_icgraph" id="aclass_display_device_a6a68176a4ad047899fe3350438f340df_icgraph">
-<area shape="rect" title="Construct a new Display Device object." alt="" coords="5,29,163,54"/>
-<area shape="poly" title=" " alt="" coords="111,16,102,10,84,8,68,10,59,15,57,20,62,28,57,30,52,21,55,11,66,5,84,3,103,5,114,12"/>
-</map>
-</div>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>A generic class for all display device. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="display__device_8h_source.html">display_device.h</a></li>
 </ul>
 </div><!-- contents -->

@@ -100,6 +100,7 @@ $(function(){initNavTree('class_model.html',''); initResizable(true); });
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_model-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Model Class Reference</div></div>
 </div><!--header-->
@@ -114,15 +115,15 @@ Inheritance diagram for Model:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_model__inherit__graph.png" border="0" usemap="#a_model_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_model_inherit__map" id="a_model_inherit__map">
-<area shape="rect" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="243,5,523,141"/>
-<area shape="rect" href="class_model_bargraph.html" title="the Model used by Bargraph GraphicWidget" alt="" coords="5,273,385,428"/>
-<area shape="poly" title=" " alt="" coords="331,155,249,275,245,272,327,152"/>
-<area shape="rect" href="class_u_i_controlled_model.html" title="A specialisation of Model that adds User Interface Control features." alt="" coords="410,189,733,512"/>
-<area shape="poly" title=" " alt="" coords="440,152,464,188,460,191,435,155"/>
-<area shape="rect" href="class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of Model that have special feature such as a value that ca..." alt="" coords="299,560,844,827"/>
-<area shape="poly" title=" " alt="" coords="574,527,574,560,569,560,569,527"/>
-<area shape="rect" href="class_u_i_model_manager.html" title="This is an Abstract class that is used to implement the manager of object on a screen." alt="" coords="284,875,859,1085"/>
-<area shape="poly" title=" " alt="" coords="574,842,574,875,569,875,569,842"/>
+<area shape="rect" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="217,5,497,253"/>
+<area shape="rect" href="class_model_bargraph.html" title="the Model used by Bargraph GraphicWidget" alt="" coords="5,329,352,465"/>
+<area shape="poly" title=" " alt="" coords="269,267,226,331,221,328,264,264"/>
+<area shape="rect" href="class_u_i_controlled_model.html" title="Class that adds UI Controller to the basic Model class." alt="" coords="376,301,699,493"/>
+<area shape="poly" title=" " alt="" coords="451,264,475,300,471,303,447,267"/>
+<area shape="rect" href="class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of Model that have special feature such as a value that ca..." alt="" coords="265,541,810,808"/>
+<area shape="poly" title=" " alt="" coords="540,508,540,542,535,542,535,508"/>
+<area shape="rect" href="class_u_i_model_manager.html" title="This is an Abstract class that is used to implement the manager of object on a screen." alt="" coords="250,856,825,1067"/>
+<area shape="poly" title=" " alt="" coords="540,823,540,856,535,856,535,823"/>
 </map>
 </div>
 <div class="dynheader">
@@ -130,7 +131,7 @@ Collaboration diagram for Model:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_model__coll__graph.png" border="0" usemap="#a_model_coll__map" alt="Collaboration graph"/></div>
 <map name="a_model_coll__map" id="a_model_coll__map">
-<area shape="rect" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,5,285,141"/>
+<area shape="rect" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,5,285,253"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -150,51 +151,47 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a319451534c131307f5450c9d3d008b38" id="r_a319451534c131307f5450c9d3d008b38"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a319451534c131307f5450c9d3d008b38">get_number_of_attached_widget</a> ()</td></tr>
 <tr class="memdesc:a319451534c131307f5450c9d3d008b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the number of attached widgets  <br /></td></tr>
 <tr class="separator:a319451534c131307f5450c9d3d008b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e8d630d59d22b92c86fc1551321ad55" id="r_a3e8d630d59d22b92c86fc1551321ad55"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e8d630d59d22b92c86fc1551321ad55">draw_refresh</a> ()</td></tr>
-<tr class="memdesc:a3e8d630d59d22b92c86fc1551321ad55"><td class="mdescLeft">&#160;</td><td class="mdescRight">update value of interest for each atttached widgets  <br /></td></tr>
-<tr class="separator:a3e8d630d59d22b92c86fc1551321ad55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6581f694a68e74228507591a3dbaccdf" id="r_a6581f694a68e74228507591a3dbaccdf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6581f694a68e74228507591a3dbaccdf">has_changed</a> ()</td></tr>
+<tr class="memdesc:a6581f694a68e74228507591a3dbaccdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the change flag status  <br /></td></tr>
+<tr class="separator:a6581f694a68e74228507591a3dbaccdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47406db888c07c179881ce00cbd3937f" id="r_a47406db888c07c179881ce00cbd3937f"><td class="memItemLeft" align="right" valign="top"><a id="a47406db888c07c179881ce00cbd3937f" name="a47406db888c07c179881ce00cbd3937f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_change_flag</b> ()</td></tr>
+<tr class="memdesc:a47406db888c07c179881ce00cbd3937f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the change flag object to true. <br /></td></tr>
+<tr class="separator:a47406db888c07c179881ce00cbd3937f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf47431b2171d17c209c7a386a8916ae" id="r_adf47431b2171d17c209c7a386a8916ae"><td class="memItemLeft" align="right" valign="top"><a id="adf47431b2171d17c209c7a386a8916ae" name="adf47431b2171d17c209c7a386a8916ae"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ack_widget_drawn</b> ()</td></tr>
+<tr class="memdesc:adf47431b2171d17c209c7a386a8916ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the change flag object to false. <br /></td></tr>
+<tr class="separator:adf47431b2171d17c209c7a386a8916ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ee45cbfe5a4d7f80bc5ccb1815d6789" id="r_a6ee45cbfe5a4d7f80bc5ccb1815d6789"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ee45cbfe5a4d7f80bc5ccb1815d6789">get_time_since_last_change</a> ()</td></tr>
+<tr class="memdesc:a6ee45cbfe5a4d7f80bc5ccb1815d6789"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute time since the last status change  <br /></td></tr>
+<tr class="separator:a6ee45cbfe5a4d7f80bc5ccb1815d6789"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae39ad8d3579d867295ea209f9a3314cb" id="r_ae39ad8d3579d867295ea209f9a3314cb"><td class="memItemLeft" align="right" valign="top"><a id="ae39ad8d3579d867295ea209f9a3314cb" name="ae39ad8d3579d867295ea209f9a3314cb"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>refresh_attached_widgets</b> ()</td></tr>
+<tr class="memdesc:ae39ad8d3579d867295ea209f9a3314cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">update value of interest for each atttached widgets <br /></td></tr>
+<tr class="separator:ae39ad8d3579d867295ea209f9a3314cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a764d7bc0d5d7ce1cb6c5cd27410f7425" id="r_a764d7bc0d5d7ce1cb6c5cd27410f7425"><td class="memItemLeft" align="right" valign="top"><a id="a764d7bc0d5d7ce1cb6c5cd27410f7425" name="a764d7bc0d5d7ce1cb6c5cd27410f7425"></a>
-std::set&lt; <a class="el" href="class_widget.html">Widget</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>attached_widgets</b></td></tr>
-<tr class="memdesc:a764d7bc0d5d7ce1cb6c5cd27410f7425"><td class="mdescLeft">&#160;</td><td class="mdescRight">the set of widgets that are in charge of viewing this model. Used to cont the of widget that need to be refresched <br /></td></tr>
+<tr class="memitem:a764d7bc0d5d7ce1cb6c5cd27410f7425" id="r_a764d7bc0d5d7ce1cb6c5cd27410f7425"><td class="memItemLeft" align="right" valign="top">std::set&lt; <a class="el" href="class_widget.html">Widget</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a764d7bc0d5d7ce1cb6c5cd27410f7425">attached_widgets</a></td></tr>
+<tr class="memdesc:a764d7bc0d5d7ce1cb6c5cd27410f7425"><td class="mdescLeft">&#160;</td><td class="mdescRight">the set of widgets that are in charge of viewing this model.  <br /></td></tr>
 <tr class="separator:a764d7bc0d5d7ce1cb6c5cd27410f7425"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ac1e989ec9c1491b4f1b3075ad4d753f7" id="r_ac1e989ec9c1491b4f1b3075ad4d753f7"><td class="memItemLeft" align="right" valign="top"><a id="ac1e989ec9c1491b4f1b3075ad4d753f7" name="ac1e989ec9c1491b4f1b3075ad4d753f7"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>last_change_time</b></td></tr>
+<tr class="memdesc:ac1e989ec9c1491b4f1b3075ad4d753f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">the time in microseconds since the last status has changed <br /></td></tr>
+<tr class="separator:ac1e989ec9c1491b4f1b3075ad4d753f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f016cc7631ec55f950511a44b8b1327" id="r_a8f016cc7631ec55f950511a44b8b1327"><td class="memItemLeft" align="right" valign="top"><a id="a8f016cc7631ec55f950511a44b8b1327" name="a8f016cc7631ec55f950511a44b8b1327"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>change_flag</b></td></tr>
+<tr class="memdesc:a8f016cc7631ec55f950511a44b8b1327"><td class="mdescLeft">&#160;</td><td class="mdescRight">The semaphore used to trigger the actual drawing of the widget on the screen. It is set with the number of widget attached to this model. <br /></td></tr>
+<tr class="separator:a8f016cc7631ec55f950511a44b8b1327"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> abstract class of Model_View_Control design pattern. </p>
-<p>It handles change_flag, a semaphore used to indicate that a screen draw_refresh is required.</p>
+<p>It handles change_flag, a semaphore used to indicate that a screen refresh_attached_widgets is required.</p>
 <p>The controller or any other entities that modify the model must set the change_flag and the widget in charge of its screen representation must clear the change_flag </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3e8d630d59d22b92c86fc1551321ad55" name="a3e8d630d59d22b92c86fc1551321ad55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e8d630d59d22b92c86fc1551321ad55">&#9670;&#160;</a></span>draw_refresh()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void Model::draw_refresh </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>update value of interest for each atttached widgets </p>
-
-<p>Reimplemented in <a class="el" href="class_u_i_controlled_model.html#ac0a65ae70fc9013d15514d3f0693b08a">UIControlledModel</a>.</p>
-
-</div>
-</div>
 <a id="a319451534c131307f5450c9d3d008b38" name="a319451534c131307f5450c9d3d008b38"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a319451534c131307f5450c9d3d008b38">&#9670;&#160;</a></span>get_number_of_attached_widget()</h2>
 
@@ -212,6 +209,46 @@ std::set&lt; <a class="el" href="class_widget.html">Widget</a> * &gt;&#160;</td>
 
 <p>get the number of attached widgets </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a6ee45cbfe5a4d7f80bc5ccb1815d6789" name="a6ee45cbfe5a4d7f80bc5ccb1815d6789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ee45cbfe5a4d7f80bc5ccb1815d6789">&#9670;&#160;</a></span>get_time_since_last_change()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Model::get_time_since_last_change </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>compute time since the last status change </p>
+<dl class="section return"><dt>Returns</dt><dd>this time in microsecond </dd></dl>
+
+</div>
+</div>
+<a id="a6581f694a68e74228507591a3dbaccdf" name="a6581f694a68e74228507591a3dbaccdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6581f694a68e74228507591a3dbaccdf">&#9670;&#160;</a></span>has_changed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Model::has_changed </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the change flag status </p>
+<dl class="section return"><dt>Returns</dt><dd>true means the redraw is required </dd></dl>
 
 </div>
 </div>
@@ -237,6 +274,32 @@ std::set&lt; <a class="el" href="class_widget.html">Widget</a> * &gt;&#160;</td>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a764d7bc0d5d7ce1cb6c5cd27410f7425" name="a764d7bc0d5d7ce1cb6c5cd27410f7425"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a764d7bc0d5d7ce1cb6c5cd27410f7425">&#9670;&#160;</a></span>attached_widgets</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::set&lt;<a class="el" href="class_widget.html">Widget</a> *&gt; Model::attached_widgets</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the set of widgets that are in charge of viewing this model. </p>
+<dl class="section note"><dt>Note</dt><dd>USAGE: Used to count the number of widget that need to be refresched </dd></dl>
 
 </div>
 </div>

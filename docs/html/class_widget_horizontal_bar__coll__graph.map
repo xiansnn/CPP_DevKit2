@@ -1,19 +1,15 @@
 <map id="WidgetHorizontalBar" name="WidgetHorizontalBar">
-<area shape="rect" id="Node000001" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="273,1297,719,1592"/>
-<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="the widget dedicated to graphics" alt="" coords="274,1009,718,1248"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="499,1263,499,1298,493,1298,493,1263"/>
-<area shape="rect" id="Node000003" href="$class_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,688,472,955"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="362,964,399,1008,395,1011,358,968"/>
-<area shape="rect" id="Node000004" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="99,468,379,604"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="241,604,241,671,236,671,236,604"/>
-<area shape="rect" id="Node000005" href="$class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="497,683,1015,960"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="631,973,599,1011,595,1008,627,969"/>
-<area shape="rect" id="Node000006" href="$class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="494,451,1018,621"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="759,636,759,683,753,683,753,636"/>
-<area shape="rect" id="Node000007" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="271,153,791,389"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="633,387,676,437,672,441,629,391"/>
-<area shape="rect" id="Node000008" href="$class_display_device.html" title="the generic abstract class for physical display devices" alt="" coords="383,5,679,104"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="533,119,533,153,528,153,528,119"/>
-<area shape="rect" id="Node000009" href="$structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="815,213,948,330"/>
-<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="857,331,806,437,801,435,852,328"/>
+<area shape="rect" id="Node000001" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="424,1353,856,1635"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="366,624,914,1304"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="643,1319,643,1354,637,1354,637,1319"/>
+<area shape="rect" id="Node000003" href="$class_widget.html" title="the generic class for all widget" alt="" coords="227,445,707,562"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="496,575,514,623,509,625,491,577"/>
+<area shape="rect" id="Node000004" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,139,512,379"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="363,377,409,430,405,434,359,380"/>
+<area shape="rect" id="Node000005" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="207,5,311,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="261,101,261,139,256,139,256,101"/>
+<area shape="rect" id="Node000006" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="536,135,816,383"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="572,384,529,434,525,430,568,381"/>
+<area shape="rect" id="Node000007" href="$structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="731,445,899,562"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="795,563,778,609,773,607,790,561"/>
 </map>

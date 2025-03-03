@@ -1,7 +1,5 @@
 <map id="dht11.h" name="dht11.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="82,5,141,30"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="26,5,85,30"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,78,106,103"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,32,76,68,72,64,100,29"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="130,78,208,103"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="123,29,152,64,148,68,119,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="58,31,58,62,53,62,53,31"/>
 </map>

@@ -1,5 +1,5 @@
 <map id="ModelBargraph" name="ModelBargraph">
-<area shape="rect" id="Node000001" title="the Model used by Bargraph GraphicWidget" alt="" coords="5,189,385,344"/>
-<area shape="rect" id="Node000002" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="55,5,335,141"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,156,198,189,193,189,193,156"/>
+<area shape="rect" id="Node000001" title="the Model used by Bargraph GraphicWidget" alt="" coords="5,301,352,437"/>
+<area shape="rect" id="Node000002" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="39,5,319,253"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,268,181,302,176,302,176,268"/>
 </map>
