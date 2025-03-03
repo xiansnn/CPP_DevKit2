@@ -41,6 +41,35 @@
 
 class Model;
 
+class Widget
+{
+protected:
+    /// @brief the display device where the attached to the frame buffer
+    GraphicDisplayDevice *graphic_display_screen{nullptr};
+
+    /// @brief a pointer to the Model actually displayed by the widget
+    Model *actual_displayed_model{nullptr};
+
+    /// @brief A widget can be composed by several widgets.
+    std::vector<Widget *> widgets;
+
+public:
+    Widget(Model *actual_displayed_model,
+           GraphicDisplayDevice *graphic_display_screen = nullptr);
+
+    ~Widget();
+
+    /// @brief add sub_widget to the current widget
+    /// @param _sub_widget
+    void add_widget(Widget *_sub_widget);
+
+    /// @brief a pure virtual member that is called to effectively draw the widget.
+    /// \note USAGE: It is called by the draw_refresh method of the Model
+    /// Refer to the following diagram
+    /// \image html draw.svg
+    virtual void draw() = 0;
+};
+
 /**
  * @brief A widget is a displayed object on a device screen. It inherits from all framebuffer features, giving it textual and graphical capabilities.
  * USAGE: //TODO commenter le processus d'usage de GraphicWidget
@@ -56,7 +85,7 @@ class Model;
  * e.g. [final_type] * actual_displayed_model; of the actual [final_type] implementation of Model. This can be initialised by the constructor.
  *
  */
-class GraphicWidget
+class GraphicWidget : public Widget
 {
 private:
     /// @brief store the value of the previous blinking phase.should be 0 or 1.
@@ -84,15 +113,6 @@ private:
     void ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, PixelColor color);
 
 protected:
-    /// @brief the display device where the attached to the frame buffer
-    GraphicDisplayDevice *graphic_display_screen{nullptr};
-
-    /// @brief a pointer to the Model actually displayed by the widget
-    Model *actual_displayed_model{nullptr};
-
-    /// @brief A widget can be composed by several widgets.
-    std::vector<GraphicWidget *> widgets;
-
     /// @brief if true, the widget is surrounded by a one-pixel border
     bool widget_with_border{false};
 
@@ -114,7 +134,7 @@ protected:
     uint8_t widget_border_width;
 
     /// @brief fill the graphic pixel buffer with 0x00.
-    /// \note USAGE: used at the begining of the draw() method. 
+    /// \note USAGE: used at the begining of the draw() method.
     void clear_pixel_buffer();
 
     /// @brief A pure virtual method that results in the transfer of the dispalyed values from the displayed model to the widget.
@@ -137,19 +157,6 @@ public:
     /// @param x anchor x coordinate
     /// @param y anchor y coordinate
     void update_widget_anchor(uint8_t x, uint8_t y);
-
-    /// @brief add sub_widget to the current widget
-    /// @param _sub_widget
-    void add_widget(GraphicWidget *_sub_widget);
-
-    /// @brief a pure virtual member that is called to effectively draw the widget.
-    /// \note USAGE: It is called by the draw_refresh method of the Model
-    /// 1)    clear_pixel_buffer()
-    /// 2)    get_values_of_interest()
-    /// 3)    -- execute all drawing primitives --
-    /// 4)    draw_border()
-    /// 5)    show()
-    virtual void draw() = 0;
 
     /// @brief draw a rectangle around the widget.
     ///  \note As the border is a rectangle with fill=false, the border width can only be 1 pixel.

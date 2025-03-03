@@ -15,6 +15,25 @@
 #include <string.h>
 #include <cstring>
 
+Widget::Widget(Model *actual_displayed_model, GraphicDisplayDevice *graphic_display_screen)
+{
+    this->graphic_display_screen = graphic_display_screen;
+    if (actual_displayed_model != nullptr)
+    {
+        this->actual_displayed_model = actual_displayed_model;
+        this->actual_displayed_model->update_attached_widgets(this);
+    }
+}
+
+Widget::~Widget()
+{
+}
+
+void Widget::add_widget(Widget *_sub_widget)
+{
+    this->widgets.push_back(_sub_widget);
+}
+
 void GraphicWidget::draw_border(PixelColor color)
 {
     if (this->widget_with_border)
@@ -29,22 +48,14 @@ void GraphicWidget::show()
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
                              struct_ConfigGraphicWidget graph_cfg,
                              Model *displayed_object)
+    : Widget(displayed_object, display_screen)
 {
-    this->graphic_display_screen = display_screen;
-
     this->fg_color = graph_cfg.fg_color;
     this->bg_color = graph_cfg.bg_color;
 
     this->pixel_frame.pixel_frame_height = graph_cfg.pixel_frame_height;
     this->pixel_frame.pixel_frame_width = graph_cfg.pixel_frame_width;
     this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
-
-    this->actual_displayed_model = displayed_object;
-    if (actual_displayed_model != nullptr)
-    {
-        this->actual_displayed_model = actual_displayed_model;
-        this->actual_displayed_model->update_attached_widgets(this);
-    }
 
     this->widget_anchor_x = graph_cfg.widget_anchor_x;
     this->widget_anchor_y = graph_cfg.widget_anchor_y;
@@ -63,23 +74,14 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              struct_ConfigTextWidget text_cfg,
                              Model *displayed_object)
+    : Widget(displayed_object, graphic_display_screen)
 {
-    this->graphic_display_screen = graphic_display_screen;
-
     this->fg_color = text_cfg.fg_color;
     this->bg_color = text_cfg.bg_color;
 
     this->pixel_frame.pixel_frame_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
     this->pixel_frame.pixel_frame_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
     this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
-
-    this->actual_displayed_model = displayed_object;
-
-    if (actual_displayed_model != nullptr)
-    {
-        this->actual_displayed_model = actual_displayed_model;
-        this->actual_displayed_model->update_attached_widgets(this);
-    }
 
     this->widget_anchor_x = text_cfg.widget_anchor_x;
     this->widget_anchor_y = text_cfg.widget_anchor_y;
@@ -99,9 +101,8 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              struct_ConfigTextWidget text_cfg,
                              size_t frame_width, size_t frame_height,
                              Model *displayed_object)
+    : Widget(displayed_object, graphic_display_screen)
 {
-    this->graphic_display_screen = graphic_display_screen;
-
     this->fg_color = text_cfg.fg_color;
     this->bg_color = text_cfg.bg_color;
 
@@ -110,12 +111,6 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
 
     this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
 
-    this->actual_displayed_model = displayed_object;
-    if (actual_displayed_model != nullptr)
-    {
-        this->actual_displayed_model = actual_displayed_model;
-        this->actual_displayed_model->update_attached_widgets(this);
-    }
     this->widget_anchor_x = text_cfg.widget_anchor_x;
     this->widget_anchor_y = text_cfg.widget_anchor_y;
 
@@ -474,7 +469,6 @@ void TextWidget::draw()
         show();
         this->actual_displayed_model->ack_widget_drawn();
     }
-    
 }
 
 void TextWidget::draw_border(PixelColor color)
@@ -546,11 +540,6 @@ void GraphicWidget::update_widget_anchor(uint8_t x, uint8_t y)
 void GraphicWidget::set_blink_us(uint32_t new_blink_period)
 {
     this->blink_period_us = new_blink_period;
-}
-
-void GraphicWidget::add_widget(GraphicWidget *_sub_widget)
-{
-    this->widgets.push_back(_sub_widget);
 }
 
 // void GraphicFramebuffer::byteOR(int byte_idx, uint8_t byte)

@@ -54,7 +54,7 @@ enum class ControlledObjectStatusTimeOutReason
 };
 
 class UIController;
-class GraphicWidget;
+class Widget;
 
 /// @brief This is the Model abstract class of Model_View_Control design pattern.
 ///
@@ -75,7 +75,7 @@ private:
 protected:
     /// @brief the set of widgets that are in charge of viewing this model.
     /// \note USAGE: Used to count the number of widget that need to be refresched
-    std::set<GraphicWidget *> attached_widgets;
+    std::set<Widget *> attached_widgets;
 
 public:
     /// @brief Construct the Model object
@@ -86,7 +86,7 @@ public:
 
     /// @brief add a new widget to the set of attached_widgets
     /// @param new_widget
-    void update_attached_widgets(GraphicWidget *new_widget);
+    void update_attached_widgets(Widget *new_widget);
 
     /// @brief get the number of attached widgets
     /// @return

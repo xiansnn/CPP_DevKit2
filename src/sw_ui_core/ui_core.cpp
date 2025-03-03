@@ -8,7 +8,7 @@ Model::~Model()
 {
 }
 
-void Model::update_attached_widgets(GraphicWidget *new_widget)
+void Model::update_attached_widgets(Widget *new_widget)
 {
     this->attached_widgets.insert(new_widget);
 }
