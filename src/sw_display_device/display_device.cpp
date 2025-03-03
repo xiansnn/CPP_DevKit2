@@ -41,3 +41,11 @@ void PrinterDevice::show()
 {
     stdio_printf(this->text_buffer);
 }
+
+DisplayDevice::DisplayDevice()
+{
+}
+
+DisplayDevice::~DisplayDevice()
+{
+}

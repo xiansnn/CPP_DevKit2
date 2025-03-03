@@ -77,6 +77,7 @@ void FMFrequencyTuningModel::increment_value()
     value += increment;
     if (value > max_value)
         value = (is_wrappable) ? min_value : max_value;
+    set_change_flag();
 }
 
 void FMFrequencyTuningModel::set_clipped_value(int _new_value)
@@ -117,6 +118,7 @@ void FMVolumeModel::increment_value()
     value += increment;
     if (value > max_value)
         value = (is_wrappable) ? min_value : max_value;
+    set_change_flag();
 }
 
 void FMVolumeModel::set_clipped_value(int _new_value)
