@@ -2,49 +2,59 @@
 title method : draw
 skinparam style strictuml
 skinparam SequenceMessageAlignment center
-[-> implemented_widget : draw()
+
+[-> my_widget : draw()
+    
+loop for each widget
+group check blinking
+rnote over my_widget : specific to widget with blinking feature
+my_widget -> system_clock++ : blinking_phase_has_changed
+my_widget <- system_clock-- : phase_changed_flag
+end
+
+
 group check if model has changed
-actual_displayed_model <- implemented_widget ++: has_changed()
-actual_displayed_model -> implemented_widget --: change_flag
+actual_displayed_model <- my_widget ++: has_changed()
+actual_displayed_model -> my_widget --: change_flag
 end
 alt change_flag != 0
 
 group clear pixel buffer
-implemented_widget -> graphic_display_screen ++: clear_pixel_buffer(&pixel_frame)
+my_widget -> graphic_display_screen ++: clear_pixel_buffer(&pixel_frame)
 return
 end
 group get value of interest from model
-actual_displayed_model <- implemented_widget ++: get_value_of_interest()
-rnote over implemented_widget : specific to the implemented widget and the attached model
-actual_displayed_model -> implemented_widget --: value
+actual_displayed_model <- my_widget ++: get_value_of_interest()
+rnote over my_widget : specific to the implemented widget and the attached model
+actual_displayed_model -> my_widget --: value
 end
 group widget drawing
-rnote over implemented_widget : specific to the effective widget drawing
+rnote over my_widget : specific to the effective widget drawing
 end
 
 group draw border if any
 alt widget_with_border == true
-implemented_widget -> implemented_widget ++: rect(around the widget)
-implemented_widget -> graphic_display_screen ++: pixel(x,y)
+my_widget -> my_widget ++: rect(around the widget)
+my_widget -> graphic_display_screen ++: pixel(x,y)
 return
-deactivate implemented_widget
+deactivate my_widget
 end
 end
 group show widget to screen
-implemented_widget-> implemented_widget ++ : show()
-implemented_widget -> graphic_display_screen ++: show(pixel_frame, anchor_x, anchor_y)
+my_widget-> my_widget ++ : show()
+my_widget -> graphic_display_screen ++: show(pixel_frame, anchor_x, anchor_y)
 return
-deactivate implemented_widget
+deactivate my_widget
 end
 
 group ack draw done 
-implemented_widget -> actual_displayed_model ++: ack_widget_drawn()
+my_widget -> actual_displayed_model ++: ack_widget_drawn()
 rnote over actual_displayed_model : change_flag -= 1
 return
 end
-
 end
-[<- implemented_widget: return
+end
+[<- my_widget: return
 @enduml
 
 
