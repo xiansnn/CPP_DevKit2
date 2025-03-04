@@ -13,24 +13,28 @@
 
 #pragma once
 
+enum class LEDStatus
+{
+    LED_IS_BLINKING,
+    LED_IS_ON,
+    LED_IS_OFF
+};
+
 /**
  * @brief A widget that show a square (it can be a rectangle) on the display.
  *
  */
-class WidgetSquareLed : public GraphicWidget
+class WidgetBlinkingSquareLed : public GraphicWidget, public Blinker
 {
 private:
 protected:
-    /// @brief the member that draw the square led according to the value of led_is_on.
-    void draw_led();
+    LEDStatus led_status;
+
     /**
      * @brief the status of the led, on or off
      */
-    bool led_is_on = true;
-    /**
-     * @brief the blinking status of the led
-     */
-    bool led_is_blinking = false;
+    bool led_is_on;
+
 
 public:
     /**
@@ -39,17 +43,11 @@ public:
      * @param actual_displayed_model the actual displayed model
      * @param graphic_display_screen The display device on which the widget is drawn.
      * @param graph_cfg the configuration data structure of the graphic framebuffer
-     * @param widget_anchor_x the horizontal position where the widget start on the device screen
-     * @param widget_anchor_y the vertical position where the widget start on the device screen
-     * @param widget_with_border The flag that indicates whether the widget has a border or not
      */
-    WidgetSquareLed(Model *actual_displayed_model,
-                    GraphicDisplayDevice *graphic_display_screen,
-                    struct_ConfigGraphicWidget graph_cfg,
-                    uint8_t widget_anchor_x,
-                    uint8_t widget_anchor_y,
-                    bool widget_with_border = true);
-    ~WidgetSquareLed();
+    WidgetBlinkingSquareLed(Model *actual_displayed_model,
+                            GraphicDisplayDevice *graphic_display_screen,
+                            struct_ConfigGraphicWidget graph_cfg);
+    ~WidgetBlinkingSquareLed();
 
     /**
      * @brief draw the square led ON or OFF on blinking phase change
@@ -57,26 +55,5 @@ public:
      */
     void blink_refresh();
 
-    /**
-     * @brief set the led ON
-     *
-     */
-    void light_on();
-    /**
-     * @brief set the led OFF
-     *
-     */
-    void light_off();
-
-    /**
-     * @brief set the blinking of the led OFF
-     *
-     */
-    void blink_off();
-
-    /**
-     * @brief set the blinking of the led ON
-     *
-     */
-    void blink_on();
+    void draw();
 };

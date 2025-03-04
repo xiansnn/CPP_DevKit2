@@ -22,6 +22,7 @@ Widget::Widget(Model *actual_displayed_model, DisplayDevice *graphic_display_scr
     {
         this->actual_displayed_model = actual_displayed_model;
         this->actual_displayed_model->update_attached_widgets(this);
+        actual_displayed_model->set_change_flag();
     }
 }
 
@@ -517,14 +518,6 @@ void GraphicWidget::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius
     }
 }
 
-bool GraphicWidget::blinking_phase_has_changed()
-{
-    int8_t current_blinking_phase = (time_us_32() / (this->blink_period_us / 2)) % 2;
-    bool phase_has_changed = (previous_blinking_phase != current_blinking_phase);
-    previous_blinking_phase = current_blinking_phase;
-    return phase_has_changed;
-}
-
 void GraphicWidget::clear_pixel_buffer()
 {
     ((GraphicDisplayDevice *)display_screen)->clear_pixel_buffer(&this->pixel_frame);
@@ -534,11 +527,6 @@ void GraphicWidget::update_widget_anchor(uint8_t x, uint8_t y)
 {
     this->widget_anchor_x = x;
     this->widget_anchor_y = y;
-}
-
-void GraphicWidget::set_blink_us(uint32_t new_blink_period)
-{
-    this->blink_period_us = new_blink_period;
 }
 
 // void GraphicFramebuffer::byteOR(int byte_idx, uint8_t byte)
@@ -562,3 +550,24 @@ void GraphicWidget::set_blink_us(uint32_t new_blink_period)
 //         return;
 //     this->pixel_buffer[byte_idx] ^= byte;
 // }
+
+bool Blinker::blinking_phase_has_changed()
+{
+    int8_t current_blinking_phase = (time_us_32() / (this->blink_period_us / 2)) % 2;
+    bool phase_has_changed = (previous_blinking_phase != current_blinking_phase);
+    previous_blinking_phase = current_blinking_phase;
+    return phase_has_changed;
+}
+
+Blinker::Blinker()
+{
+}
+
+Blinker::~Blinker()
+{
+}
+
+void Blinker::set_blink_us(uint32_t blink_period)
+{
+    this->blink_period_us = blink_period;
+}

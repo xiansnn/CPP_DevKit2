@@ -1,62 +1,53 @@
 #include "widget_square_led.h"
 
-WidgetSquareLed::WidgetSquareLed(Model *actual_displayed_model,
-                                 GraphicDisplayDevice *display_screen,
-                                 struct_ConfigGraphicWidget graph_cfg,
-                                 uint8_t widget_anchor_x,
-                                 uint8_t widget_anchor_y,
-                                 bool widget_with_border)
-    : GraphicWidget(display_screen, actual_displayed_model, graph_cfg, widget_anchor_x, widget_anchor_y, widget_with_border)
+WidgetBlinkingSquareLed::WidgetBlinkingSquareLed(Model *actual_displayed_model,
+                                                 GraphicDisplayDevice *display_screen,
+                                                 struct_ConfigGraphicWidget graph_cfg)
+    : GraphicWidget(display_screen, graph_cfg, actual_displayed_model), Blinker()
 {
 }
 
-WidgetSquareLed::~WidgetSquareLed()
+WidgetBlinkingSquareLed::~WidgetBlinkingSquareLed()
 {
 }
 
-void WidgetSquareLed::blink_refresh()
+void WidgetBlinkingSquareLed::blink_refresh()
 {
-    if (this->led_is_blinking and this->blinking_phase_has_changed())
+    if ((led_status == LEDStatus::LED_IS_BLINKING) and (this->blinking_phase_has_changed()))
     {
-        led_is_on = !led_is_on;
-        draw_led();
+        actual_displayed_model->set_change_flag();
     }
 }
 
-void WidgetSquareLed::draw_led()
+void WidgetBlinkingSquareLed::draw()
 {
-    PixelColor color = (this->led_is_on) ? PixelColor::WHITE : PixelColor::BLACK;
-    switch (color)
+    blink_refresh();
+    if (actual_displayed_model->has_changed())
     {
-    case PixelColor::WHITE:
-        rect(widget_start_x, widget_start_y, widget_width, widget_height, true, color);
-        break;
-    case PixelColor::BLACK:
-        rect(widget_start_x, widget_start_y, widget_width, widget_height, true, PixelColor::BLACK);
-        draw_border();
-        break;
+        clear_pixel_buffer();
+        get_value_of_interest();
+        switch (led_status)
+        {
+        case LEDStatus::LED_IS_BLINKING:
+            led_is_on = !led_is_on;
+            break;
+        case LEDStatus::LED_IS_ON:
+            led_is_on = true;
+            break;
+        case LEDStatus::LED_IS_OFF:
+            led_is_on = false;
+            break;
 
-    default:
-        break;
+        default:
+            break;
+        }
+        if (led_is_on)
+            rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, true, fg_color);
+        else
+            draw_border();
+        // rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, false, fg_color);
+
+        show();
+        actual_displayed_model->ack_widget_drawn();
     }
-    show();
-}
-
-void WidgetSquareLed::blink_off()
-{
-    this->led_is_blinking = false;
-}
-
-void WidgetSquareLed::blink_on()
-{
-    this->led_is_blinking = true;
-}
-void WidgetSquareLed::light_on()
-{
-    this->led_is_on = true;
-}
-
-void WidgetSquareLed::light_off()
-{
-    this->led_is_on = false;
 }

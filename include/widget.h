@@ -41,6 +41,29 @@
 
 class Model;
 
+class Blinker
+{
+private:
+    /// @brief store the value of the previous blinking phase.should be 0 or 1.
+    int8_t previous_blinking_phase;
+
+    /// @brief The period of the blinking, in microseconds
+    uint32_t blink_period_us;
+
+protected:
+    /// @brief ask if the blinking phase has changed
+    /// \return true if phase has changed
+    bool blinking_phase_has_changed();
+
+public:
+    Blinker();
+    ~Blinker();
+    /// @brief Set the blink period in microseconds
+    /// @param blink_period default to 1 second
+    void set_blink_us(uint32_t blink_period = 1000000);
+    virtual void blink_refresh() = 0;
+};
+
 /// @brief the generic class for all widget
 class Widget
 {
@@ -71,8 +94,6 @@ public:
     /// @param _new_display_device
     void set_display_screen(DisplayDevice *_new_display_device);
 
-
-
     /// @brief a pure virtual member that is called to effectively draw the widget.
     /// \note USAGE: It is called by the draw_refresh method of the Model
     /// Refer to the following diagram
@@ -98,20 +119,6 @@ public:
 class GraphicWidget : public Widget
 {
 private:
-    /// @brief store the value of the previous blinking phase.should be 0 or 1.
-    int8_t previous_blinking_phase;
-
-    /// @brief ask if the blinking phase has changed
-    /// \return true if phase has changed
-    bool blinking_phase_has_changed();
-
-    /// @brief The period of the blinking, in microseconds
-    uint32_t blink_period_us;
-
-    /// @brief Set the blink period in microseconds
-    /// @param blink_period default to 1 second
-    void set_blink_us(uint32_t blink_period = 1000000);
-
     /// @brief the graphic primitive to draw an ellipse \bug //FIXME doesn't work !
     /// @param x_center the x coordinate of the center
     /// @param y_center the y coordinate of the center
@@ -210,7 +217,6 @@ public:
 
     /// @brief Destroy the Widget object
     ~GraphicWidget();
-
 
     /// @brief Get the graphic frame config object
     /// @return struct_ConfigGraphicFramebuffer
