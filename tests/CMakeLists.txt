@@ -99,8 +99,8 @@ target_link_libraries(test_ssd1306
             debug_probe
             )
 #-------------------------------------------------------------------------------------
-add_executable(test_graphic_framebuffer  test_graphic_framebuffer.cpp  )
-target_link_libraries(test_graphic_framebuffer 
+add_executable(test_graphic_primitives  test_graphic_primitives.cpp  )
+target_link_libraries(test_graphic_primitives 
             ssd1306 
             pico_stdlib 
             hw_i2c 
@@ -216,8 +216,8 @@ target_link_libraries(test_tuning_dial
             widget
             )    
 #-------------------------------------------------------------------------------------
-add_executable(test_text_framebuffer test_text_framebuffer.cpp)
-target_link_libraries(test_text_framebuffer 
+add_executable(test_text_primitives test_text_primitives.cpp)
+target_link_libraries(test_text_primitives 
             pico_stdlib 
             debug_probe
             hw_i2c 
@@ -226,8 +226,8 @@ target_link_libraries(test_text_framebuffer
             ssd1306 
             )
 #-------------------------------------------------------------------------------------
-add_executable(test_text_and_graph_framebuffer test_text_and_graph_framebuffer.cpp)
-target_link_libraries(test_text_and_graph_framebuffer 
+add_executable(test_text_and_graph_widgets test_text_and_graph_widgets.cpp)
+target_link_libraries(test_text_and_graph_widgets 
             pico_stdlib 
             debug_probe
             ui_core
