@@ -13,48 +13,11 @@
 
 WidgetFocusIndicator::WidgetFocusIndicator(Model *actual_displayed_model,
                                            GraphicDisplayDevice *display_screen,
-                                           struct_ConfigGraphicWidget graph_cfg,
-                                           uint8_t widget_anchor_x, uint8_t widget_anchor_y, bool with_border)
-    : WidgetSquareLed(actual_displayed_model, display_screen,
-                      graph_cfg,
-                      widget_anchor_x, widget_anchor_y, with_border)
+                                           struct_ConfigGraphicWidget graph_cfg)
+    : WidgetBlinkingSquareLed(actual_displayed_model, display_screen, graph_cfg)
 {
-    this->led_is_blinking = false;
-    this->led_is_on = true;
 }
 
 WidgetFocusIndicator::~WidgetFocusIndicator()
 {
 }
-
-void WidgetFocusIndicator::draw()
-{
-    draw_led();
-}
-
-void WidgetFocusIndicator::draw_refresh()
-{
-    ControlledObjectStatus status = ((UIControlledModel*)this->actual_displayed_model)->get_status();
-    switch (status)
-    {
-    case ControlledObjectStatus::HAS_FOCUS:
-        this->blink_off();
-        this->light_on();
-        break;
-    case ControlledObjectStatus::IS_ACTIVE:
-        this->blink_on();
-        break;
-    case ControlledObjectStatus::IS_WAITING:
-        this->blink_off();
-        this->light_off();
-        break;
-
-    default:
-        break;
-    }
-    WidgetSquareLed::blink_refresh();
-    GraphicWidget::draw();
-
-}
-
-

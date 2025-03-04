@@ -19,7 +19,7 @@
  * 
  * It is supposed to work with another widget that shows the expected visualisation of the displayed model.
  */
-class WidgetFocusIndicator : public WidgetSquareLed
+class WidgetFocusIndicator : public WidgetBlinkingSquareLed
 {
 private:
 
@@ -30,20 +30,10 @@ public:
      * @param actual_displayed_model a pointer to the displayed model
      * @param graphic_display_screen a pointer to the dispaly device
      * @param graph_cfg the configuration data for the graphic framebuffer
-     * @param widget_anchor_x the x-location where is the widget on the display device
-     * @param widget_anchor_y the y-location where is the widget ont hte display device
-     * @param with_border true, if the widget has a border (usually, it's prettier not to have)
      */
      WidgetFocusIndicator(Model *actual_displayed_model,
                      GraphicDisplayDevice *graphic_display_screen,
-                     struct_ConfigGraphicWidget graph_cfg,
-                     uint8_t widget_anchor_x,
-                     uint8_t widget_anchor_y,
-                     bool with_border);
+                     struct_ConfigGraphicWidget graph_cfg);
     ~WidgetFocusIndicator();
-
-    void draw();
-    /// @brief //TODO to be documented
-    void draw_refresh();
 
 };

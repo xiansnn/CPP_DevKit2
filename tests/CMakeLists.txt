@@ -155,7 +155,6 @@ add_executable(test_managed_square_led test_managed_square_led.cpp )
 target_link_libraries(test_managed_square_led 
             pico_stdlib
             widget_square_led
-            widget_focus_indicator
             hw_i2c
             ui_core
             debug_probe
@@ -179,7 +178,6 @@ target_link_libraries(test_managed_horizontal_bar
             ssd1306
             ui_core
             debug_probe
-            widget_focus_indicator
             widget_horizontal_bar
             ky040
             )    
