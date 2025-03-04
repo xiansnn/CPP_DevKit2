@@ -7,9 +7,13 @@ skinparam SequenceMessageAlignment center
     
 loop for each widget
 group check blinking
+my_widget -> my_widget ++ : blink_refresh()
 rnote over my_widget : specific to widget with blinking feature
-my_widget -> system_clock++ : blinking_phase_has_changed
-my_widget <- system_clock-- : phase_changed_flag
+my_widget -> system_clock ++ : blinking_phase_has_changed
+my_widget <- system_clock --: phase_changed_flag
+my_widget -> actual_displayed_model ++ : set_change_flag
+return
+deactivate my_widget
 end
 
 
@@ -20,13 +24,17 @@ end
 alt change_flag != 0
 
 group clear pixel buffer
+my_widget -> my_widget ++: clear_pixel_buffer()
 my_widget -> graphic_display_screen ++: clear_pixel_buffer(&pixel_frame)
 return
+deactivate my_widget
 end
 group get value of interest from model
-actual_displayed_model <- my_widget ++: get_value_of_interest()
+my_widget->my_widget ++: get_value_of_interest()
+actual_displayed_model <- my_widget ++: read values and process them
 rnote over my_widget : specific to the implemented widget and the attached model
-actual_displayed_model -> my_widget --: value
+actual_displayed_model -> my_widget --: values
+deactivate my_widget
 end
 group widget drawing
 rnote over my_widget : specific to the effective widget drawing
