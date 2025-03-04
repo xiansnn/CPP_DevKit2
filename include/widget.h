@@ -46,7 +46,7 @@ class Widget
 {
 protected:
     /// @brief the display device where the attached to the frame buffer
-    GraphicDisplayDevice *graphic_display_screen{nullptr};
+    DisplayDevice *display_screen{nullptr};
 
     /// @brief a pointer to the Model actually displayed by the widget
     Model *actual_displayed_model{nullptr};
@@ -59,13 +59,19 @@ public:
     /// @param actual_displayed_model the displayed object of the widget
     /// @param graphic_display_screen The display device on which the widget is drawn.
     Widget(Model *actual_displayed_model,
-           GraphicDisplayDevice *graphic_display_screen = nullptr);
+           DisplayDevice *graphic_display_screen = nullptr);
 
     ~Widget();
 
     /// @brief add sub_widget to the current widget
     /// @param _sub_widget
     void add_widget(Widget *_sub_widget);
+
+    /// @brief Set the display screen object
+    /// @param _new_display_device
+    void set_display_screen(DisplayDevice *_new_display_device);
+
+
 
     /// @brief a pure virtual member that is called to effectively draw the widget.
     /// \note USAGE: It is called by the draw_refresh method of the Model
@@ -205,9 +211,6 @@ public:
     /// @brief Destroy the Widget object
     ~GraphicWidget();
 
-    /// @brief Set the display screen object
-    /// @param _new_display_device
-    void set_display_screen(GraphicDisplayDevice *_new_display_device);
 
     /// @brief Get the graphic frame config object
     /// @return struct_ConfigGraphicFramebuffer
@@ -430,30 +433,24 @@ public:
     void draw_border(PixelColor color = PixelColor::WHITE);
 };
 
-/// @brief A widget used when we need to simply print but still want to take advantage of the status change management.
-class PrintWidget
-{
-private:
-protected:
-    /// @brief a pointer to the Model actually displayed by the widget
-    Model *actual_displayed_model = nullptr;
-    /// @brief A widget can be composed by several widget.
-    std::vector<PrintWidget *> widgets;
+// /// @brief A widget used when we need to simply print but still want to take advantage of the status change management.
+// class PrintWidget : public Widget
+// {
+// private:
+// protected:
 
-public:
-    /// @brief a pointer to the printer display device
-    PrinterDevice *display_device;
+// public:
 
-    /// @brief Construct a new Dummy Widget object
-    /// @param display_device the pointer to the printer display device
-    /// @param actual_displayed_model the pointer to the displayed model. Default to nullptr
-    PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model = nullptr);
-    ~PrintWidget();
+//     /// @brief Construct a new Dummy Widget object
+//     /// @param display_device the pointer to the printer display device
+//     /// @param actual_displayed_model the pointer to the displayed model. Default to nullptr
+//     PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model = nullptr);
+//     ~PrintWidget();
 
-    /// @brief add a widget to the list of possible sub_widget.
-    /// @param widget
-    void add_widget(PrintWidget *widget);
+//     /// @brief add a widget to the list of possible sub_widget.
+//     /// @param widget
+//     void add_widget(PrintWidget *widget);
 
-    /// @brief a pure virtual method that must be implement to effectively print somethig to the display.
-    virtual void print_refresh() = 0;
-};
+//     /// @brief a pure virtual method that must be implement to effectively print somethig to the display.
+//     virtual void print_refresh() = 0;
+// };
