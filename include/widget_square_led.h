@@ -76,11 +76,5 @@ public:
                             struct_ConfigGraphicWidget graph_cfg);
     ~WidgetBlinkingSquareLed();
 
-    /**
-     * @brief draw the square led ON or OFF on blinking phase change
-     *
-     */
-    void blink_refresh();
-
     void draw();
 };

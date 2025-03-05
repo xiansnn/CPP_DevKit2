@@ -91,6 +91,6 @@ void MyHorizontalBarWidgetWithFocus::draw()
 
 void MyHorizontalBarWidgetWithFocus::blink_refresh()
 {
-    this->focus_widget->blink_refresh();
+    this->focus_widget->compute_blinking_phase();
 }
 

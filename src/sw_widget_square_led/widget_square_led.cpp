@@ -11,18 +11,12 @@ WidgetBlinkingSquareLed::~WidgetBlinkingSquareLed()
 {
 }
 
-void WidgetBlinkingSquareLed::blink_refresh()
-{
-    if ((led_status == LEDStatus::LED_IS_BLINKING) and (this->blinking_phase_has_changed()))
-    {
-        actual_displayed_model->set_change_flag();
-    }
-}
+
 void WidgetBlinkingSquareLed::draw()
 {
-    update_blink_phase_change();
+    compute_blinking_phase();
     get_value_of_interest();
-    if ((led_status == LEDStatus::LED_IS_BLINKING) and (blink_triggered))
+    if ((led_status == LEDStatus::LED_IS_BLINKING) and (has_blinking_changed()))
     {
         clear_pixel_buffer();
         led_is_on = !led_is_on;
@@ -31,7 +25,7 @@ void WidgetBlinkingSquareLed::draw()
         else
         draw_border();
         show();
-        blink_triggered = false;
+        clear_blinking_phase_change();
     }
     else
     {

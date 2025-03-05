@@ -150,19 +150,20 @@ MySquareLEDWidgetWithFocus::~MySquareLEDWidgetWithFocus()
 
 void MySquareLEDWidgetWithFocus::draw()
 {
-
-    // focus_led->blink_refresh();
-    // focus_led->update_blink_phase_change();
-    pr_D4.hi();
-    focus_led->draw();
-    pr_D4.lo();
-    pr_D5.hi();
-    square_led->draw();
-    pr_D5.lo();
+    get_value_of_interest(); 
     if (actual_displayed_model->has_changed())
+    //nothing to draw
         actual_displayed_model->draw_widget_done();
+
+    for (auto &&widget : widgets)
+    {
+        pr_D4.hi();
+        widget->draw();
+        pr_D4.lo();
+    }
 }
 
 void MySquareLEDWidgetWithFocus::get_value_of_interest()
 {
+    //nothing to get
 }

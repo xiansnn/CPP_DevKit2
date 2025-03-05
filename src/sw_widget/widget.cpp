@@ -551,18 +551,11 @@ void GraphicWidget::update_widget_anchor(uint8_t x, uint8_t y)
 //     this->pixel_buffer[byte_idx] ^= byte;
 // }
 
-bool Blinker::blinking_phase_has_changed()
-{
-    int8_t current_blinking_phase = (time_us_32() / (this->blink_period_us / 2)) % 2;
-    bool phase_has_changed = (previous_blinking_phase != current_blinking_phase);
-    previous_blinking_phase = current_blinking_phase;
-    return phase_has_changed;
-}
 
-void Blinker::update_blink_phase_change()
+void Blinker::compute_blinking_phase()
 {
     int8_t current_blinking_phase = (time_us_32() / (this->blink_period_us / 2)) % 2;
-    blink_triggered = (previous_blinking_phase != current_blinking_phase);
+    blink_phase_changed = (previous_blinking_phase != current_blinking_phase);
     previous_blinking_phase = current_blinking_phase;
 }
 
@@ -577,4 +570,14 @@ Blinker::~Blinker()
 void Blinker::set_blink_us(uint32_t blink_period)
 {
     this->blink_period_us = blink_period;
+}
+
+bool Blinker::has_blinking_changed()
+{
+    return blink_phase_changed;
+}
+
+void Blinker::clear_blinking_phase_change()
+{
+    blink_phase_changed = false;
 }
