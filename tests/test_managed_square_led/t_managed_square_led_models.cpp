@@ -13,12 +13,12 @@
 
 #include "ui_control_event.h"
 #include "ui_core.h"
-// #define PRINT_DEBUG
+#define PRINT_DEBUG
 
 /**
  * @brief MyManagedSquareLedModel : Example of final implementation of ModelObject
  */
-class MyManagedSquareLedModel : public Model
+class MyManagedSquareLedModel : public UIControlledModel
 {
 protected:
 public:
@@ -33,7 +33,7 @@ public:
     void process_control_event(UIControlEvent _event);
 };
 MyManagedSquareLedModel::MyManagedSquareLedModel(std::string _name)
-    : Model()
+    : UIControlledModel()
 {
     this->name = _name;
 }

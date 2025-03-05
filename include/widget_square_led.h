@@ -24,6 +24,34 @@ enum class LEDStatus
  * @brief A widget that show a square (it can be a rectangle) on the display.
  *
  */
+class WidgetSquareLed : public GraphicWidget
+{
+private:
+protected:
+    /**
+     * @brief the status of the led, on or off
+     */
+    bool led_is_on;
+
+public:
+    /**
+     * @brief Construct a new GraphicWidget Square Led object
+     *
+     * @param actual_displayed_model the actual displayed model
+     * @param graphic_display_screen The display device on which the widget is drawn.
+     * @param graph_cfg the configuration data structure of the graphic framebuffer
+     */
+    WidgetSquareLed(Model *actual_displayed_model,
+                    GraphicDisplayDevice *graphic_display_screen,
+                    struct_ConfigGraphicWidget graph_cfg);
+    ~WidgetSquareLed();
+
+    void draw();
+};
+/**
+ * @brief A widget that show a square (it can be a rectangle) on the display.
+ *
+ */
 class WidgetBlinkingSquareLed : public GraphicWidget, public Blinker
 {
 private:
@@ -34,7 +62,6 @@ protected:
      * @brief the status of the led, on or off
      */
     bool led_is_on;
-
 
 public:
     /**

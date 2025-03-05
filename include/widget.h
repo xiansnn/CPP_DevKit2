@@ -50,17 +50,20 @@ private:
     /// @brief The period of the blinking, in microseconds
     uint32_t blink_period_us;
 
-protected:
+    
+    protected:
     /// @brief ask if the blinking phase has changed
     /// \return true if phase has changed
     bool blinking_phase_has_changed();
-
-public:
+    
+    public:
     Blinker();
     ~Blinker();
     /// @brief Set the blink period in microseconds
     /// @param blink_period default to 1 second
     void set_blink_us(uint32_t blink_period = 1000000);
+    void update_blink_phase_change();
+    bool blink_triggered;
     virtual void blink_refresh() = 0;
 };
 

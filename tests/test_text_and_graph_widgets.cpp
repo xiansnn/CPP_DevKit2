@@ -151,7 +151,7 @@ void my_graphic_widget::draw()
     
         draw_border();
         show();
-        actual_displayed_model->ack_widget_drawn();
+        actual_displayed_model->draw_widget_done();
     }
     
 }

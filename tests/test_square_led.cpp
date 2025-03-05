@@ -17,7 +17,7 @@
 /// @brief ########## Debug/Observer Probe for logic analyser section ##########
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
-Probe pr_D1 = Probe(1);
+// Probe pr_D1 = Probe(1);
 
 /// @brief ########## configuration section ##########
 

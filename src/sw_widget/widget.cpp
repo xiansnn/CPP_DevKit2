@@ -467,7 +467,7 @@ void TextWidget::draw()
         write();
         draw_border();
         show();
-        this->actual_displayed_model->ack_widget_drawn();
+        this->actual_displayed_model->draw_widget_done();
     }
 }
 
@@ -557,6 +557,13 @@ bool Blinker::blinking_phase_has_changed()
     bool phase_has_changed = (previous_blinking_phase != current_blinking_phase);
     previous_blinking_phase = current_blinking_phase;
     return phase_has_changed;
+}
+
+void Blinker::update_blink_phase_change()
+{
+    int8_t current_blinking_phase = (time_us_32() / (this->blink_period_us / 2)) % 2;
+    blink_triggered = (previous_blinking_phase != current_blinking_phase);
+    previous_blinking_phase = current_blinking_phase;
 }
 
 Blinker::Blinker()

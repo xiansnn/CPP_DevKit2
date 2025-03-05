@@ -29,7 +29,7 @@ void Model::set_change_flag()
     this->change_flag = attached_widgets.size();
 }
 
-void Model::ack_widget_drawn()
+void Model::draw_widget_done()
 {
     this->change_flag -= 1;
 }

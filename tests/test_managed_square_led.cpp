@@ -13,8 +13,8 @@
 #include "probe.h"
 #include "ky040.h"
 
-#include "test_managed_square_led/t_managed_square_led_manager.cpp"
 #include "test_managed_square_led/t_managed_square_led_models.cpp"
+#include "test_managed_square_led/t_managed_square_led_manager.cpp"
 #include "test_managed_square_led/t_managed_square_led_widgets.cpp"
 
 #define CENTRAL_SWITCH_GPIO 6
@@ -24,7 +24,7 @@
 
 /// @brief ########## Debug/Observer Probe for logic analyser section ##########
 
-Probe pr_D1 = Probe(1);
+// Probe pr_D1 = Probe(1);
 
 /// @brief ########## configuration section ##########
 
@@ -73,7 +73,7 @@ KY040 ky040 = KY040(CENTRAL_SWITCH_GPIO,
 /// @param event_mask the IRQ mask, default to GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE
 void shared_irq_call_back(uint gpio, uint32_t event_mask)
 {
-    pr_D1.pulse_us(10);
+    // pr_D1.pulse_us(10);
     switch (gpio)
     {
     case ENCODER_CLK_GPIO:
@@ -112,15 +112,35 @@ int main()
     MyManagedSquareLedModel test_model_2 = MyManagedSquareLedModel("TM2");
     MyManagedSquareLedModel test_model_3 = MyManagedSquareLedModel("TM3");
 
-    struct_ConfigGraphicWidget square_led_cfg{
+    struct_ConfigGraphicWidget square_led_1_cfg{
         .pixel_frame_width = 50,
         .pixel_frame_height = 8,
         .fg_color = PixelColor::WHITE,
-        .bg_color = PixelColor::BLACK};
+        .bg_color = PixelColor::BLACK,
+        .widget_anchor_x = 6,
+        .widget_anchor_y = 8,
+        .widget_with_border = false};
+    MySquareLEDWidgetWithFocus square_led_1 = MySquareLEDWidgetWithFocus(&test_model_1, &display, square_led_1_cfg);
 
-    MySquareLEDWidgetWithFocus square_led_1 = MySquareLEDWidgetWithFocus(&test_model_1, &display, square_led_cfg, 6, 8);
-    MySquareLEDWidgetWithFocus square_led_2 = MySquareLEDWidgetWithFocus(&test_model_2, &display, square_led_cfg, 6, 24);
-    MySquareLEDWidgetWithFocus square_led_3 = MySquareLEDWidgetWithFocus(&test_model_3, &display, square_led_cfg, 6, 40);
+    struct_ConfigGraphicWidget square_led_2_cfg{
+        .pixel_frame_width = 50,
+        .pixel_frame_height = 8,
+        .fg_color = PixelColor::WHITE,
+        .bg_color = PixelColor::BLACK,
+        .widget_anchor_x = 6,
+        .widget_anchor_y = 24,
+        .widget_with_border = false};
+    MySquareLEDWidgetWithFocus square_led_2 = MySquareLEDWidgetWithFocus(&test_model_2, &display, square_led_2_cfg);
+
+    struct_ConfigGraphicWidget square_led_3_cfg{
+        .pixel_frame_width = 50,
+        .pixel_frame_height = 8,
+        .fg_color = PixelColor::WHITE,
+        .bg_color = PixelColor::BLACK,
+        .widget_anchor_x = 6,
+        .widget_anchor_y = 40,
+        .widget_with_border = false};
+    MySquareLEDWidgetWithFocus square_led_3 = MySquareLEDWidgetWithFocus(&test_model_3, &display, square_led_3_cfg);
 
     ky040.update_current_controlled_object(&test_model_1);
 
@@ -130,15 +150,15 @@ int main()
 
     while (true)
     {
-        pr_D1.hi();
+        // pr_D1.hi();
         /// - get central_switch event and give it to the manager .
         manager.process_control_event(ky040.process_central_switch_event());
         /// - refresh the widgets
-        square_led_1.draw_refresh();
-        square_led_2.draw_refresh();
-        square_led_3.draw_refresh();
+        square_led_1.draw();
+        square_led_2.draw();
+        square_led_3.draw();
 
-        pr_D1.lo();
+        // pr_D1.lo();
         /// - sleep for 20ms
         sleep_ms(20);
     }

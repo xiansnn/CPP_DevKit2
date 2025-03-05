@@ -100,7 +100,7 @@ public:
     void set_change_flag();
 
     /// @brief Set the change flag object to false
-    void ack_widget_drawn();
+    void draw_widget_done();
 
     /// @brief compute time since the last status change
     /// @return this time in microsecond
