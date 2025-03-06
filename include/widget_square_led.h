@@ -86,12 +86,11 @@ class WidgetFocusIndicator : public WidgetBlinkingSquareLed
 private:
     /* data */
 public:
-    
-/// @brief constructor for the UICOntrolledModel focus indicator
-/// @param actual_displayed_model the actual displayed model
-/// @param graphic_display_screen The display device on which the widget is drawn.
-/// @param graph_cfg the configuration data structure of the graphic framebuffer
-WidgetFocusIndicator(Model *actual_displayed_model,
+    /// @brief constructor for the UICOntrolledModel focus indicator
+    /// @param actual_displayed_model the actual displayed model
+    /// @param graphic_display_screen The display device on which the widget is drawn.
+    /// @param graph_cfg the configuration data structure of the graphic framebuffer
+    WidgetFocusIndicator(Model *actual_displayed_model,
                          GraphicDisplayDevice *graphic_display_screen,
                          struct_ConfigGraphicWidget graph_cfg);
     ~WidgetFocusIndicator();

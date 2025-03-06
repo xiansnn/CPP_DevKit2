@@ -89,28 +89,43 @@ HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
 
 SSD1306 display = SSD1306(&master, cfg_ssd1306);
 
-struct_ConfigGraphicWidget h_bar_with_focus_cfg{
+struct_ConfigGraphicWidget h_bar1_with_focus_cfg{
     .pixel_frame_width = 100,
     .pixel_frame_height = 8,
     .fg_color = PixelColor::WHITE,
-    .bg_color = PixelColor::BLACK};
+    .bg_color = PixelColor::BLACK,
+    .widget_anchor_x = 10,
+    .widget_anchor_y = 8,
+    .widget_with_border = true};
+struct_ConfigGraphicWidget h_bar2_with_focus_cfg{
+    .pixel_frame_width = 100,
+    .pixel_frame_height = 8,
+    .fg_color = PixelColor::WHITE,
+    .bg_color = PixelColor::BLACK,
+    .widget_anchor_x = 10,
+    .widget_anchor_y = 24,
+    .widget_with_border = true};
+struct_ConfigGraphicWidget h_bar3_with_focus_cfg{
+    .pixel_frame_width = 100,
+    .pixel_frame_height = 8,
+    .fg_color = PixelColor::WHITE,
+    .bg_color = PixelColor::BLACK,
+    .widget_anchor_x = 10,
+    .widget_anchor_y = 40,
+    .widget_with_border = true};
 
-
-MyHorizontalBarWidgetWithFocus horizontal_bar_1 = MyHorizontalBarWidgetWithFocus(&my_horizontal_bar_model_1,
-                                                                                 &display,
-                                                                                 10, 0,
-                                                                                 h_bar_with_focus_cfg,
-                                                                                 10, 8);
-MyHorizontalBarWidgetWithFocus horizontal_bar_2 = MyHorizontalBarWidgetWithFocus(&my_horizontal_bar_model_2,
-                                                                                 &display,
-                                                                                 +10, -10,
-                                                                                 h_bar_with_focus_cfg,
-                                                                                 10, 24);
-MyHorizontalBarWidgetWithFocus horizontal_bar_3 = MyHorizontalBarWidgetWithFocus(&my_horizontal_bar_model_3,
-                                                                                 &display,
-                                                                                 3, -20,
-                                                                                 h_bar_with_focus_cfg,
-                                                                                 10, 40);
+My_Horizontal_Bar_Widget_With_Focus horizontal_bar_1 = My_Horizontal_Bar_Widget_With_Focus(&my_horizontal_bar_model_1,
+                                                                                           &display,
+                                                                                           10, 0,
+                                                                                           h_bar1_with_focus_cfg);
+My_Horizontal_Bar_Widget_With_Focus horizontal_bar_2 = My_Horizontal_Bar_Widget_With_Focus(&my_horizontal_bar_model_2,
+                                                                                           &display,
+                                                                                           +10, -10,
+                                                                                           h_bar2_with_focus_cfg);
+My_Horizontal_Bar_Widget_With_Focus horizontal_bar_3 = My_Horizontal_Bar_Widget_With_Focus(&my_horizontal_bar_model_3,
+                                                                                           &display,
+                                                                                           3, -20,
+                                                                                           h_bar3_with_focus_cfg);
 
 int main()
 {
@@ -125,7 +140,6 @@ int main()
 
     display.clear_device_screen_buffer();
 
-
     while (true)
     /// 9- start infinite loop
     {
@@ -134,20 +148,18 @@ int main()
         manager.process_control_event(ky040.process_central_switch_event());
 
         pr_D4.hi();
-        horizontal_bar_1.blink_refresh();
-        horizontal_bar_1.draw_refresh();
+        horizontal_bar_1.draw();
         pr_D4.lo();
 
         pr_D4.hi();
-        horizontal_bar_2.blink_refresh();
-        horizontal_bar_2.draw_refresh();
+
+        horizontal_bar_2.draw();
         pr_D4.lo();
 
         pr_D4.hi();
-        horizontal_bar_3.blink_refresh();
-        horizontal_bar_3.draw_refresh();
-        pr_D4.lo();
 
+        horizontal_bar_3.draw();
+        pr_D4.lo();
 
         /// - sleep for 20ms
         sleep_ms(20);

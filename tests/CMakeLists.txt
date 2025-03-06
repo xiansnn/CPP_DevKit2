@@ -179,6 +179,7 @@ target_link_libraries(test_managed_horizontal_bar
             ui_core
             debug_probe
             widget_horizontal_bar
+            widget_square_led
             ky040
             )    
 #-------------------------------------------------------------------------------------
