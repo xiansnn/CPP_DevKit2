@@ -42,6 +42,8 @@
 class Model;
 
 /// @brief A class used to add blinking feature to widgets
+/// In such case, the following sequence apply for the drw() method implementation
+/// \image html draw_with_blinking.svg
 class Blinker
 {
 private:
@@ -104,7 +106,7 @@ public:
     void set_display_screen(DisplayDevice *_new_display_device);
 
     /// @brief a pure virtual member that is called to effectively draw the widget.
-    /// \note USAGE: It is called by the draw_refresh method of the Model
+    /// \note USAGE: It can be called by the draw_refresh_all_attached_widgets() method of the Model
     /// Refer to the following diagram
     /// \image html draw.svg
     virtual void draw() = 0;
