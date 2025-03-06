@@ -13,7 +13,7 @@
 
 #pragma once
 
-/// @brief enumearion of the stauts of a blinking LED
+/// @brief enumeration of the status of a blinking LED
 enum class LEDStatus
 {
     /// @brief LED is blinking
@@ -63,7 +63,6 @@ protected:
     /// @brief the operating status of the LED (blinking, ON, OFF)
     LEDStatus led_status;
 
-
 public:
     /**
      * @brief Construct a new GraphicWidget Square Led object
@@ -78,4 +77,16 @@ public:
     ~WidgetBlinkingSquareLed();
 
     virtual void draw();
+};
+
+class WidgetFocusIndicator : public WidgetBlinkingSquareLed
+{
+private:
+    /* data */
+public:
+    WidgetFocusIndicator(UIControlledModel *actual_displayed_model,
+                         GraphicDisplayDevice *graphic_display_screen,
+                         struct_ConfigGraphicWidget graph_cfg);
+    ~WidgetFocusIndicator();
+    virtual void get_value_of_interest();
 };

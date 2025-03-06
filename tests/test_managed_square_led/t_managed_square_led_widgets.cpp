@@ -19,16 +19,6 @@
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
 
-class my_focus_led_widget : public WidgetBlinkingSquareLed
-{
-private:
-public:
-    my_focus_led_widget(MyManagedSquareLedModel *actual_displayed_model,
-                        GraphicDisplayDevice *graphic_display_screen,
-                        struct_ConfigGraphicWidget graph_cfg);
-    ~my_focus_led_widget();
-    void get_value_of_interest();
-};
 class my_simple_led_widget : public WidgetSquareLed
 {
 private:
@@ -43,7 +33,7 @@ class MySquareLEDWidgetWithFocus : public GraphicWidget
 {
 private:
     my_simple_led_widget *square_led;
-    my_focus_led_widget *focus_led;
+    WidgetFocusIndicator *focus_led;
 
 public:
     MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *actual_displayed_model,
@@ -53,42 +43,6 @@ public:
     void draw();
     void get_value_of_interest();
 };
-
-//==============================================
-
-my_focus_led_widget::my_focus_led_widget(MyManagedSquareLedModel *actual_displayed_model,
-                                         GraphicDisplayDevice *graphic_display_screen,
-                                         struct_ConfigGraphicWidget graph_cfg)
-    : WidgetBlinkingSquareLed(actual_displayed_model, graphic_display_screen, graph_cfg)
-{
-    set_blink_us(300000);
-}
-
-my_focus_led_widget::~my_focus_led_widget()
-{
-}
-
-void my_focus_led_widget::get_value_of_interest()
-{
-    ControlledObjectStatus model_status = ((MyManagedSquareLedModel *)this->actual_displayed_model)->get_status();
-
-    switch (model_status)
-    {
-    case ControlledObjectStatus::IS_ACTIVE:
-        this->led_status = LEDStatus::LED_IS_BLINKING;
-        break;
-    case ControlledObjectStatus::IS_WAITING:
-        this->led_status = LEDStatus::LED_IS_OFF;
-        break;
-    case ControlledObjectStatus::HAS_FOCUS:
-        this->led_status = LEDStatus::LED_IS_ON;
-        break;
-
-    default:
-        break;
-    }
-    // actual_displayed_model->set_change_flag();
-}
 
 my_simple_led_widget::my_simple_led_widget(MyManagedSquareLedModel *actual_displayed_model,
                                            GraphicDisplayDevice *graphic_display_screen,
@@ -134,14 +88,14 @@ MySquareLEDWidgetWithFocus::MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *
         .widget_anchor_y = graph_cfg.widget_anchor_y,
         .widget_with_border = false};
 
-    this->focus_led = new my_focus_led_widget(actual_displayed_model,
+    this->focus_led = new WidgetFocusIndicator(actual_displayed_model,
                                               display_screen,
                                               focus_led_cfg);
     this->focus_led->set_blink_us(200000);
     add_widget(this->square_led);
     add_widget(this->focus_led);
 
-    this->actual_displayed_model->set_change_flag(); // otherwise nothing is drawn before we act on the rotary encoder
+    // this->actual_displayed_model->set_change_flag(); // otherwise nothing is drawn before we act on the rotary encoder
 }
 
 MySquareLEDWidgetWithFocus::~MySquareLEDWidgetWithFocus()
