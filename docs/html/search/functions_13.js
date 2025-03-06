@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['widgetfocusindicator_0',['WidgetFocusIndicator',['../class_widget_focus_indicator.html#acab13bb9b5ac8aee417260fbeb9fb957',1,'WidgetFocusIndicator']]],
-  ['widgethorizontalbar_1',['WidgetHorizontalBar',['../class_widget_horizontal_bar.html#aa99213010a3f5f9ffd4043755879e3c4',1,'WidgetHorizontalBar']]],
-  ['widgethorizontalbargraph_2',['WidgetHorizontalBargraph',['../class_widget_horizontal_bargraph.html#a3aa0e18032e745dd3b816a4a2113b81b',1,'WidgetHorizontalBargraph']]],
-  ['widgetsquareled_3',['WidgetSquareLed',['../class_widget_square_led.html#a12037e7870c90ab03404c3251f0d737b',1,'WidgetSquareLed']]],
-  ['widgetverticalbargraph_4',['WidgetVerticalBargraph',['../class_widget_vertical_bargraph.html#aa4b1d50f441f57313f45c71220341203',1,'WidgetVerticalBargraph']]],
-  ['write_5',['write',['../class_text_framebuffer.html#a4bfafa7af41347f7e90a047423db33e8',1,'TextFramebuffer::write(char character, uint8_t char_column, uint8_t char_line)'],['../class_text_framebuffer.html#a827adce94a2e72b1b9939ee366a49df0',1,'TextFramebuffer::write()'],['../class_text_framebuffer.html#ae58e5e35fc839d827a53f5cb9d2ab71b',1,'TextFramebuffer::write(const char *c_str)']]]
+  ['widget_0',['Widget',['../class_widget.html#ad5e064ca0379c0b4160fc1e180cc75e6',1,'Widget']]],
+  ['widgetblinkingsquareled_1',['WidgetBlinkingSquareLed',['../class_widget_blinking_square_led.html#a08e2705e3b28e1ac02034fbd7d858137',1,'WidgetBlinkingSquareLed']]],
+  ['widgetfocusindicator_2',['WidgetFocusIndicator',['../class_widget_focus_indicator.html#a3ea2c82f5631a9acd72fe37fbfddd213',1,'WidgetFocusIndicator']]],
+  ['widgethorizontalbar_3',['WidgetHorizontalBar',['../class_widget_horizontal_bar.html#a6dcb899c0eae14ebf8d990c4f6f81a9f',1,'WidgetHorizontalBar']]],
+  ['widgethorizontalbargraph_4',['WidgetHorizontalBargraph',['../class_widget_horizontal_bargraph.html#a39ac89c7be8ca3e57592a3139d02c286',1,'WidgetHorizontalBargraph']]],
+  ['widgetsquareled_5',['WidgetSquareLed',['../class_widget_square_led.html#a9219d0635dc0f3fb2d696fa66eee5283',1,'WidgetSquareLed']]],
+  ['widgetverticalbargraph_6',['WidgetVerticalBargraph',['../class_widget_vertical_bargraph.html#ab320535b2b55805a9bdc2f7dba09cf4c',1,'WidgetVerticalBargraph']]],
+  ['write_7',['write',['../class_text_widget.html#a237b451ce7140f32676109f637fb215d',1,'TextWidget::write(char character, uint8_t char_column, uint8_t char_line)'],['../class_text_widget.html#a3ce8f540e45844b22efa9f18c3c85eab',1,'TextWidget::write()'],['../class_text_widget.html#ab9524e4f93739352b7fe0915e038c1fb',1,'TextWidget::write(const char *c_str)']]]
 ];

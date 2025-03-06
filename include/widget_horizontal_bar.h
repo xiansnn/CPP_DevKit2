@@ -37,33 +37,24 @@ private:
     /// @brief the conversion fucntion level -> value
     void convert_level_value_to_px();
 
+protected:
+public:
     /// @brief the draw function of the widget
     void draw();
 
-protected:
-public:   
-    /**
-     * @brief Construct a new GraphicWidget Horizontal Bar object
-     * 
-     * @param bar_value_model a pointer to the displayed model
-     * @param graphic_display_screen a pointer to the display device
-     * @param max_value max value of the bar
-     * @param min_value min value of the bar
-     * @param graph_cfg the configuration data for the graphic framebuffer
-     * @param widget_anchor_x the pixel x-location of the widget
-     * @param widget_anchor_y the pixel y-location of the widget (remind. must be multiple of 8)
-     * @param widget_with_border true if the widget has a border( it's prettier with a border)
-     */
-     WidgetHorizontalBar(UIModelObject *bar_value_model,
+    /// @brief Construct a new GraphicWidget Horizontal Bar object
+    /// @param bar_value_model a pointer to the displayed model
+    /// @param graphic_display_screen a pointer to the display device
+    /// @param max_value max value of the bar
+    /// @param min_value min value of the bar
+    /// @param graph_cfg the configuration data for the graphic framebuffer
+    WidgetHorizontalBar(Model *bar_value_model,
                         GraphicDisplayDevice *graphic_display_screen,
                         int max_value, int min_value,
-                        struct_ConfigGraphicFramebuffer graph_cfg,
-                        uint8_t widget_anchor_x, uint8_t widget_anchor_y,
-                        bool widget_with_border = true);
+                        struct_ConfigGraphicWidget graph_cfg);
 
     ~WidgetHorizontalBar();
     /// @brief set the level to value
     /// @param value
     void set_level(int value);
-
 };

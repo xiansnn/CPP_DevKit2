@@ -13,103 +13,89 @@
 
 #include "ui_core.h"
 #include "widget_square_led.h"
-#include "widget_focus_indicator.h"
 #include "t_managed_square_led_models.cpp"
 #include "probe.h"
 
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
 
-/**
- * @brief MyManagedSquareLedWidget : Example of final implementation of WidgetSquareLed
- */
-class MyManagedSquareLedWidget : public WidgetSquareLed
+class my_simple_led_widget : public WidgetSquareLed
 {
 private:
 public:
-    MyManagedSquareLedWidget(MyManagedSquareLedModel *actual_displayed_model,
-                             GraphicDisplayDevice *display_screen,
-                             struct_ConfigGraphicFramebuffer graph_cfg,
-                             uint8_t widget_anchor_x,
-                             uint8_t widget_anchor_y);
-    ~MyManagedSquareLedWidget();
-    void draw();
+    my_simple_led_widget(MyManagedSquareLedModel *actual_displayed_model,
+                         GraphicDisplayDevice *graphic_display_screen,
+                         struct_ConfigGraphicWidget graph_cfg);
+    ~my_simple_led_widget();
+    void get_value_of_interest();
 };
-MyManagedSquareLedWidget::MyManagedSquareLedWidget(MyManagedSquareLedModel *actual_displayed_model,
-                                                   GraphicDisplayDevice *display_screen,
-                                                   struct_ConfigGraphicFramebuffer graph_cfg,
-                                                   uint8_t widget_anchor_x,
-                                                   uint8_t widget_anchor_y)
-    : WidgetSquareLed(actual_displayed_model, display_screen, graph_cfg, widget_anchor_x, widget_anchor_y)
-{
-    this->led_is_on = true;
-}
-
-MyManagedSquareLedWidget::~MyManagedSquareLedWidget()
-{
-}
-
-void MyManagedSquareLedWidget::draw()
-{
-    this->led_is_on = ((MyManagedSquareLedModel *)this->actual_displayed_model)->my_bool_value;
-    draw_led();
-}
-
 class MySquareLEDWidgetWithFocus : public GraphicWidget
 {
 private:
-    MyManagedSquareLedWidget *square_led;
+    my_simple_led_widget *square_led;
     WidgetFocusIndicator *focus_led;
 
 public:
     MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *actual_displayed_model,
                                GraphicDisplayDevice *display_screen,
-                               struct_ConfigGraphicFramebuffer graph_cfg,
-                               uint8_t widget_anchor_x,
-                               uint8_t widget_anchor_y);
+                               struct_ConfigGraphicWidget graph_cfg);
     ~MySquareLEDWidgetWithFocus();
     void draw();
-    void draw_refresh();
+    void get_value_of_interest();
 };
+
+my_simple_led_widget::my_simple_led_widget(MyManagedSquareLedModel *actual_displayed_model,
+                                           GraphicDisplayDevice *graphic_display_screen,
+                                           struct_ConfigGraphicWidget graph_cfg)
+    : WidgetSquareLed(actual_displayed_model, graphic_display_screen, graph_cfg)
+{
+}
+
+my_simple_led_widget::~my_simple_led_widget()
+{
+}
+
+void my_simple_led_widget::get_value_of_interest() // le valeu bool
+{
+    this->led_is_on = ((MyManagedSquareLedModel *)this->actual_displayed_model)->my_bool_value;
+}
 
 MySquareLEDWidgetWithFocus::MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *actual_displayed_model,
                                                        GraphicDisplayDevice *display_screen,
-                                                       struct_ConfigGraphicFramebuffer graph_cfg,
-                                                       uint8_t widget_anchor_x,
-                                                       uint8_t widget_anchor_y)
-    : GraphicWidget(display_screen, actual_displayed_model, graph_cfg, widget_anchor_x, widget_anchor_y, true)
+                                                       struct_ConfigGraphicWidget graph_cfg)
+    : GraphicWidget(display_screen, graph_cfg, actual_displayed_model)
 {
-#define FOCUS_OFFSET 8
-#define FOCUS_WIDTH 5
+#define FOCUS_OFFSET 8u
+#define FOCUS_WIDTH 5u
+    uint8_t anchor_x = graph_cfg.widget_anchor_x + FOCUS_OFFSET;
 
-    struct_ConfigGraphicFramebuffer square_led_cfg{
-        .frame_width = graph_cfg.frame_width - FOCUS_OFFSET,
-        .frame_height = graph_cfg.frame_height,
-        .fg_color = PixelColor::WHITE,
-        .bg_color = PixelColor::BLACK};
+    struct_ConfigGraphicWidget square_led_cfg{
+        .pixel_frame_width = graph_cfg.pixel_frame_width - FOCUS_OFFSET,
+        .pixel_frame_height = graph_cfg.pixel_frame_height,
+        .fg_color = graph_cfg.fg_color,
+        .bg_color = graph_cfg.bg_color,
+        .widget_anchor_x = anchor_x,
+        .widget_anchor_y = graph_cfg.widget_anchor_y,
+        .widget_with_border = true};
+    this->square_led = new my_simple_led_widget(actual_displayed_model, display_screen, square_led_cfg);
 
-    this->square_led = new MyManagedSquareLedWidget(actual_displayed_model,
-                                                    display_screen,
-                                                    square_led_cfg,
-                                                    widget_anchor_x + FOCUS_OFFSET,
-                                                    widget_anchor_y);
-    struct_ConfigGraphicFramebuffer focus_led_cfg{
-        .frame_width = FOCUS_WIDTH,
-        .frame_height = graph_cfg.frame_height,
-        .fg_color = PixelColor::WHITE,
-        .bg_color = PixelColor::BLACK};
+    struct_ConfigGraphicWidget focus_led_cfg{
+        .pixel_frame_width = FOCUS_WIDTH,
+        .pixel_frame_height = graph_cfg.pixel_frame_height,
+        .fg_color = graph_cfg.fg_color,
+        .bg_color = graph_cfg.bg_color,
+        .widget_anchor_x = FOCUS_OFFSET,
+        .widget_anchor_y = graph_cfg.widget_anchor_y,
+        .widget_with_border = false};
 
     this->focus_led = new WidgetFocusIndicator(actual_displayed_model,
-                                               display_screen,
-                                               focus_led_cfg,
-                                               widget_anchor_x,
-                                               widget_anchor_y,
-                                               false);
+                                              display_screen,
+                                              focus_led_cfg);
     this->focus_led->set_blink_us(200000);
     add_widget(this->square_led);
     add_widget(this->focus_led);
 
-    this->actual_displayed_model->set_change_flag(); // otehrwise nothing is drawn before we act on the rotary encoder
+    // this->actual_displayed_model->set_change_flag(); // otherwise nothing is drawn before we act on the rotary encoder
 }
 
 MySquareLEDWidgetWithFocus::~MySquareLEDWidgetWithFocus()
@@ -118,14 +104,20 @@ MySquareLEDWidgetWithFocus::~MySquareLEDWidgetWithFocus()
 
 void MySquareLEDWidgetWithFocus::draw()
 {
+    get_value_of_interest(); 
+    if (actual_displayed_model->has_changed())
+    //nothing to draw
+        actual_displayed_model->draw_widget_done();
+
+    for (auto &&widget : widgets)
+    {
+        pr_D4.hi();
+        widget->draw();
+        pr_D4.lo();
+    }
 }
 
-void MySquareLEDWidgetWithFocus::draw_refresh()
+void MySquareLEDWidgetWithFocus::get_value_of_interest()
 {
-    pr_D4.hi();
-    focus_led->draw_refresh();
-    pr_D4.lo();
-    pr_D5.hi();
-    square_led->draw_refresh();
-    pr_D5.lo();
+    //nothing to get
 }

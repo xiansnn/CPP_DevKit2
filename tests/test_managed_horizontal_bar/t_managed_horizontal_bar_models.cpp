@@ -16,17 +16,17 @@
 
 // #define PRINT_DEBUG
 
-class MyHorizontalBarModel : public UIControlledIncrementalValue
+class MyControlledHorizontalBarModel : public UIControlledIncrementalValue
 {
 private:
 public:
-    MyHorizontalBarModel(std::string _name, int _min_value, int _max_value, bool _is_wrappable, int _increment);
-    ~MyHorizontalBarModel();
+    MyControlledHorizontalBarModel(std::string _name, int _min_value, int _max_value, bool _is_wrappable, int _increment);
+    ~MyControlledHorizontalBarModel();
     std::string name;
     void process_control_event(UIControlEvent _event);
 };
 
-MyHorizontalBarModel::MyHorizontalBarModel(std::string _name,
+MyControlledHorizontalBarModel::MyControlledHorizontalBarModel(std::string _name,
                                            int _min_value, int _max_value,
                                            bool _is_wrappable, int _increment)
     : UIControlledIncrementalValue(_min_value, _max_value, _is_wrappable, _increment)
@@ -34,11 +34,11 @@ MyHorizontalBarModel::MyHorizontalBarModel(std::string _name,
     this->name = _name;
 }
 
-MyHorizontalBarModel::~MyHorizontalBarModel()
+MyControlledHorizontalBarModel::~MyControlledHorizontalBarModel()
 {
 }
 
-void MyHorizontalBarModel::process_control_event(UIControlEvent _event)
+void MyControlledHorizontalBarModel::process_control_event(UIControlEvent _event)
 {
     switch (_event)
     {

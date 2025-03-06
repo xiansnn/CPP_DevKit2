@@ -22,9 +22,9 @@ std::map<ControlledObjectStatusTimeOutReason, std::string> reason_to_string{
     {ControlledObjectStatusTimeOutReason::MANAGED_OBJECT_INACTIVE, "MANAGED_OBJECT_INACTIVE"}};
 
 /**
- * @brief MyManager : Example of final implementation of UIObjectManager
+ * @brief MyManager : Example of final implementation of UIModelManager
  */
-class MyManager : public UIObjectManager
+class MyManager : public UIModelManager
 {
 private:
 public:
@@ -44,7 +44,7 @@ public:
 };
 
 MyManager::MyManager(UIController *_controller)
-    : UIObjectManager()
+    : UIModelManager()
 {
     make_manager_active();
     update_current_controller(_controller);
@@ -59,7 +59,7 @@ void MyManager::process_control_event(UIControlEvent _event)
     case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
         if (current_active_model == this)
         {
-            make_managed_object_active();
+            make_managed_model_active();
 #ifdef PRINT_DEBUG
             printf("%s is active \n", ((MyManagedSquareLedModel *)this->current_active_model)->name.c_str());
 #endif

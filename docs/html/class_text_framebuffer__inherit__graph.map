@@ -1,6 +1,6 @@
 <map id="TextFramebuffer" name="TextFramebuffer">
 <area shape="rect" id="Node000001" title="the place where all textual primitive are placed" alt="" coords="44,585,491,1091"/>
-<area shape="rect" id="Node000004" href="$class_text_widget.html" title="a dedicated class for text frame only" alt="" coords="22,1139,513,1401"/>
+<area shape="rect" id="Node000004" href="$class_text_widget.html" title="a dedicated class for text frame only" alt="" coords="22,1139,513,1383"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="270,1105,270,1139,265,1139,265,1105"/>
 <area shape="rect" id="Node000002" href="$class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="8,260,527,537"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="270,552,270,585,265,585,265,552"/>

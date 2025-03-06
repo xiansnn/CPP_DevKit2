@@ -12,6 +12,7 @@
 #include "ssd1306.h"
 #include "switch_button.h"
 #include "test_tuning_dial/t_tuning_dial_model.cpp"
+#include "test_tuning_dial/t_tuning_dial_widget.cpp"
 
 /// @brief define central switch config
 struct_ConfigSwitchButton cfg_central_switch{
@@ -45,32 +46,29 @@ struct_ConfigSSD1306 cfg_volume_screen{
     .frequency_divider = 1,
     .frequency_factor = 0};
 
-struct_ConfigTextFramebuffer fm_text_cnf{
+struct_ConfigTextWidget fm_text_cnf{
     .number_of_column = 10,
     .number_of_line = 1,
-    .font = font_12x16};
-
-///  1- create I2C bus hw peripheral and frequency_display
-HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
-SSD1306 frequency_display = SSD1306(&master, cfg_frequency_screen);
-SSD1306 volume_display = SSD1306(&master, cfg_volume_screen);
-
-FMFrequencyTuningModel my_FM_frequency = FMFrequencyTuningModel(1, true);
-FMVolumeModel my_FM_volume = FMVolumeModel(1, true);
-TextWidget my_FM_frequency_widget = TextWidget(&frequency_display,
-                                               fm_text_cnf,
-                                               &my_FM_frequency,
-                                               0, 0,
-                                               true);
-TextWidget my_FM_volume_widget = TextWidget(&volume_display,
-                                            fm_text_cnf,
-                                            &my_FM_volume,
-                                            0, 0,
-                                            true);
-                                           
+    .widget_anchor_x = 0,
+    .widget_anchor_y = 0,
+    .font = font_12x16,
+    .widget_with_border = true};
 
 int main()
 {
+    HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
+    SSD1306 frequency_display = SSD1306(&master, cfg_frequency_screen);
+    SSD1306 volume_display = SSD1306(&master, cfg_volume_screen);
+
+    FMFrequencyTuningModel my_FM_frequency = FMFrequencyTuningModel(1, true);
+    FMVolumeModel my_FM_volume = FMVolumeModel(1, true);
+
+    FMFrequencyWidget my_FM_frequency_widget = FMFrequencyWidget(&frequency_display,
+                                                                 fm_text_cnf,
+                                                                 &my_FM_frequency);
+    FMVolumeWidget my_FM_volume_widget = FMVolumeWidget(&volume_display,
+                                                        fm_text_cnf,
+                                                        &my_FM_volume);
 
     frequency_display.clear_device_screen_buffer();
     volume_display.clear_device_screen_buffer();
@@ -80,15 +78,13 @@ int main()
     while (true)
     {
         my_FM_frequency.increment_value();
-        sprintf(my_FM_frequency_widget.text_buffer, "%5.1f MHz\n", (float)my_FM_frequency.get_value() / 10);
-        my_FM_frequency_widget.write();
-        my_FM_frequency_widget.draw_border();
-        my_FM_frequency_widget.show();
-        
+
+        my_FM_frequency_widget.draw();
+
         my_FM_volume.increment_value();
-        sprintf(my_FM_volume_widget.text_buffer, "%*d dB\n", 3, my_FM_volume.get_value());
+
         my_FM_volume_widget.draw();
-        
+
         sleep_ms(100);
     }
 

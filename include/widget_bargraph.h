@@ -11,19 +11,19 @@
 
 #pragma once
 
-#include "framebuffer.h"
 #include "widget.h"
 #include "display_device.h"
 
 #include "ui_core.h"
 
 /**
- * @brief the UIModelObject used by Bargraph GraphicWidget
+ * @brief the Model used by Bargraph GraphicWidget
  *
  */
-class ModelBargraph : public UIModelObject  // TODO prevoir ModelObject au lieu de UIModelObject car pas besoin UI
+class ModelBargraph : public Model
 {
 private:
+protected:
 public:
     /// @brief the vector of values displayed by the bargraph
     std::vector<int> values;
@@ -43,13 +43,6 @@ public:
      *
      */
     ~ModelBargraph();
-    /**
-     * @brief the overriding memeber required by UIModelObject.
-     * There is no need of UIControlEvent here, this member just trigs the changere flag in order to trig the refresh of the widget
-     *
-     * @param event Default to NONE
-     */
-    void process_control_event(UIControlEvent event = UIControlEvent::NONE);
 };
 
 /**
@@ -83,26 +76,25 @@ private:
     void draw_bar(uint8_t bin_index);
 
 protected:
+    /// @brief the set of values for the bargraph
+    std::vector<int> values;
+    /// @brief number of values in the bargraph
+    uint8_t number_of_bar;
+
 public:
     /// @brief the function that draw the widget
     void draw();
-    /**
-     * @brief Construct a new GraphicWidget Horizontal Bargraph object
-     *
-     * @param bargraph_model a pointer to the mactual displayed model
-     * @param graphic_display_screen a pointer to the display device on which the widget is drawn
-     * @param graph_cfg the configuration data structure of the graphic framebuffer
-     * @param widget_anchor_x the horizontal position where the widget start on the device screen
-     * @param widget_anchor_y the vertical position where the widget start on the device screen
-     * @param widget_with_border the flag that indicates whether the widget has a border or not
-     * @param bar_spacing the number of pixel between each bar
-     */
+
+    virtual void get_value_of_interest();
+
+    /// @brief Construct a new GraphicWidget Horizontal Bargraph object
+    /// @param bargraph_model a pointer to the mactual displayed model
+    /// @param graphic_display_screen a pointer to the display device on which the widget is drawn
+    /// @param graph_cfg the configuration data structure of the graphic framebuffer
+    /// @param bar_spacing the number of pixel between each bar. Default to 1.
     WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
                              GraphicDisplayDevice *graphic_display_screen,
-                             struct_ConfigGraphicFramebuffer graph_cfg,
-                             uint8_t widget_anchor_x,
-                             uint8_t widget_anchor_y,
-                             bool widget_with_border,
+                             struct_ConfigGraphicWidget graph_cfg,
                              uint8_t bar_spacing = 1);
     /**
      * @brief Destroy the GraphicWidget Horizontal Bargraph object
@@ -139,28 +131,27 @@ private:
     /// @brief the function that draw a bar in the widget
     /// @param bin_index the rank of the bar
     void draw_bar(uint8_t bin_index);
-    
-    public:
+
+protected:
+    /// @brief the set of values for the bargraph
+    std::vector<int> values;
+    /// @brief number of values in the bargraph
+    uint8_t number_of_bar;
+
+public:
     /// @brief the function that draw the widget
     void draw();
-    
-    /**
-     * @brief Construct a new GraphicWidget Vertical Bargraph object
-     *
-     * @param bargraph_model a pointer to the mactual displayed model
-     * @param graphic_display_screen a pointer to the display device on which the widget is drawn
-     * @param graph_cfg the configuration data structure of the graphic framebuffer
-     * @param widget_anchor_x the horizontal position where the widget start on the device screen
-     * @param widget_anchor_y the vertical position where the widget start on the device screen
-     * @param widget_with_border the flag that indicates whether the widget has a border or not
-     * @param bar_spacing the number of pixel between each bar
-     */
+
+    virtual void get_value_of_interest();
+
+    /// @brief Construct a new GraphicWidget Vertical Bargraph object
+    /// @param bargraph_model a pointer to the mactual displayed model
+    /// @param graphic_display_screen a pointer to the display device on which the widget is drawn
+    /// @param graph_cfg the configuration data structure of the graphic framebuffer
+    /// @param bar_spacing the number of pixel between each bar. Default to 1.
     WidgetVerticalBargraph(ModelBargraph *bargraph_model,
                            GraphicDisplayDevice *graphic_display_screen,
-                           struct_ConfigGraphicFramebuffer graph_cfg,
-                           uint8_t widget_anchor_x,
-                           uint8_t widget_anchor_y,
-                           bool widget_with_border,
+                           struct_ConfigGraphicWidget graph_cfg,
                            uint8_t bar_spacing = 1);
     ~WidgetVerticalBargraph();
 };

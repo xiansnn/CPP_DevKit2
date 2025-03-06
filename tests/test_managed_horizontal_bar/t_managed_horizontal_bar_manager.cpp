@@ -24,7 +24,7 @@ std::map<ControlledObjectStatusTimeOutReason, std::string> reason_to_string{
 /**
  * @brief MyManager : Example of final implementation of UIObjectManager
  */
-class MyManager : public UIObjectManager
+class MyManager : public UIModelManager
 {
 private:
 public:
@@ -44,7 +44,7 @@ public:
 };
 
 MyManager::MyManager(UIController *_controller, bool is_wrappable)
-    : UIObjectManager(is_wrappable)
+    : UIModelManager(is_wrappable)
 {
     make_manager_active();
     update_current_controller(_controller);
@@ -59,7 +59,7 @@ void MyManager::process_control_event(UIControlEvent _event)
     case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
         if (current_active_model == this)
         {
-            make_managed_object_active();
+            make_managed_model_active();
 #ifdef PRINT_DEBUG
             printf("%s is active \n", ((MyHorizontalBarModel *)this->current_active_model)->name.c_str());
 #endif

@@ -14,35 +14,57 @@
 #include <cstring>
 
 GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *device,
-                                       struct_ConfigGraphicFramebuffer graph_cfg)
-    : Framebuffer(device, graph_cfg)
+                                       struct_ConfigGraphicWidget graph_cfg)
 {
+    this->graphic_display_screen = device;
+    this->fg_color = graph_cfg.fg_color;
+    this->bg_color = graph_cfg.bg_color;
+    this->pixel_frame.pixel_frame_height = graph_cfg.pixel_frame_height;
+    this->pixel_frame.pixel_frame_width = graph_cfg.pixel_frame_width;
+    this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
 }
 
 GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *display_device,
                                        size_t frame_width,
                                        size_t frame_height,
-                                       struct_ConfigTextFramebuffer text_cfg)
-    : Framebuffer(display_device, frame_width, frame_height, text_cfg)
+                                       struct_ConfigTextWidget text_cfg)
 {
+    this->graphic_display_screen = display_device;
+    this->fg_color = text_cfg.fg_color;
+    this->bg_color = text_cfg.bg_color;
+    this->pixel_frame.pixel_frame_height = frame_height;
+    this->pixel_frame.pixel_frame_width = frame_width;
+    this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
 }
 
 GraphicFramebuffer::GraphicFramebuffer(GraphicDisplayDevice *device,
-                                       struct_ConfigTextFramebuffer text_cfg)
-    : Framebuffer(device, text_cfg)
+                                       struct_ConfigTextWidget text_cfg)
 {
+    this->graphic_display_screen = device;
+    this->fg_color = text_cfg.fg_color;
+    this->bg_color = text_cfg.bg_color;
+
+    this->pixel_frame.pixel_frame_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
+    this->pixel_frame.pixel_frame_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
+    this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
 }
 
 GraphicFramebuffer::~GraphicFramebuffer()
 {
+    delete[] this->pixel_frame.pixel_frame_buffer;
+}
+
+void GraphicFramebuffer::set_display_screen(GraphicDisplayDevice *_new_display_device)
+{
+    this->graphic_display_screen = _new_display_device;
 }
 
 void GraphicFramebuffer::fill(PixelColor c)
 {
     if (c == PixelColor::BLACK)
-        memset(this->pixel_frame.pixel_buffer, 0x00, this->pixel_frame.pixel_buffer_size);
+        memset(this->pixel_frame.pixel_frame_buffer, 0x00, this->pixel_frame.pixel_frame_buffer_size);
     else
-        memset(this->pixel_frame.pixel_buffer, 0xFF, this->pixel_frame.pixel_buffer_size);
+        memset(this->pixel_frame.pixel_frame_buffer, 0xFF, this->pixel_frame.pixel_frame_buffer_size);
 }
 
 void GraphicFramebuffer::hline(uint8_t x, uint8_t y, size_t w, PixelColor c)
@@ -222,9 +244,9 @@ void TextFramebuffer::create_text_buffer()
     clear_text_buffer();
 }
 
-struct_ConfigTextFramebuffer TextFramebuffer::get_text_frame_config()
+struct_ConfigTextWidget TextFramebuffer::get_text_frame_config()
 {
-    struct_ConfigTextFramebuffer conf = {
+    struct_ConfigTextWidget conf = {
         .number_of_column = this->number_of_column,
         .number_of_line = this->number_of_line,
         .font = this->font,
@@ -237,7 +259,7 @@ struct_ConfigTextFramebuffer TextFramebuffer::get_text_frame_config()
 }
 
 TextFramebuffer::TextFramebuffer(GraphicDisplayDevice *device,
-                                       struct_ConfigTextFramebuffer text_cfg)
+                                 struct_ConfigTextWidget text_cfg)
     : GraphicFramebuffer(device, text_cfg)
 {
     this->number_of_column = text_cfg.number_of_column;
@@ -253,14 +275,14 @@ TextFramebuffer::TextFramebuffer(GraphicDisplayDevice *device,
 }
 
 TextFramebuffer::TextFramebuffer(GraphicDisplayDevice *device,
-                                       size_t frame_width,
-                                       size_t frame_height,
-                                       struct_ConfigTextFramebuffer text_cfg)
+                                 size_t frame_width,
+                                 size_t frame_height,
+                                 struct_ConfigTextWidget text_cfg)
     : GraphicFramebuffer(device, frame_width, frame_height, text_cfg)
 {
     this->font = text_cfg.font;
-    this->number_of_column = this->pixel_frame.frame_width / this->font[FONT_WIDTH_INDEX];
-    this->number_of_line = this->pixel_frame.frame_height / this->font[FONT_HEIGHT_INDEX];
+    this->number_of_column = this->pixel_frame.pixel_frame_width / this->font[FONT_WIDTH_INDEX];
+    this->number_of_line = this->pixel_frame.pixel_frame_height / this->font[FONT_HEIGHT_INDEX];
 
     this->tab_size = text_cfg.tab_size;
     this->fg_color = text_cfg.fg_color;
@@ -281,8 +303,8 @@ void TextFramebuffer::update_text_frame_size(const unsigned char *font)
     this->font = font;
 
     // size the text area according to the available room within the frame whidth and height
-    this->number_of_line = this->pixel_frame.frame_height / font[FONT_HEIGHT_INDEX];
-    this->number_of_column = this->pixel_frame.frame_width / font[FONT_WIDTH_INDEX];
+    this->number_of_line = this->pixel_frame.pixel_frame_height / font[FONT_HEIGHT_INDEX];
+    this->number_of_column = this->pixel_frame.pixel_frame_width / font[FONT_WIDTH_INDEX];
 
     delete[] this->text_buffer;
     create_text_buffer();
@@ -301,17 +323,16 @@ void TextFramebuffer::update_graphic_frame_size(const unsigned char *font)
 {
     this->font = font;
     // size the pixel buffer to the required size due to character area
-    this->pixel_frame.frame_height = number_of_line * font[FONT_HEIGHT_INDEX];
-    this->pixel_frame.frame_width = number_of_column * font[FONT_WIDTH_INDEX];
+    this->pixel_frame.pixel_frame_height = number_of_line * font[FONT_HEIGHT_INDEX];
+    this->pixel_frame.pixel_frame_width = number_of_column * font[FONT_WIDTH_INDEX];
 
-    delete[] this->pixel_frame.pixel_buffer;
+    delete[] this->pixel_frame.pixel_frame_buffer;
     graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
 }
 
 void TextFramebuffer::write()
 {
     write(this->text_buffer);
-    
 }
 
 void TextFramebuffer::write(const char *c_str)
@@ -393,49 +414,4 @@ void TextFramebuffer::next_char()
             next_line();
         }
     }
-}
-
-Framebuffer::Framebuffer(GraphicDisplayDevice *graphic_display_device,
-                         struct_ConfigGraphicFramebuffer graph_cfg)
-{
-    this->graphic_display_screen = graphic_display_device;
-    this->fg_color = graph_cfg.fg_color;
-    this->bg_color = graph_cfg.bg_color;
-    this->pixel_frame.frame_height = graph_cfg.frame_height;
-    this->pixel_frame.frame_width = graph_cfg.frame_width;
-    this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
-}
-
-Framebuffer::Framebuffer(GraphicDisplayDevice *graphic_display_device,
-                         size_t frame_width, size_t frame_height,
-                         struct_ConfigTextFramebuffer text_cfg)
-{
-    this->graphic_display_screen = graphic_display_device;
-    this->fg_color = text_cfg.fg_color;
-    this->bg_color = text_cfg.bg_color;
-    this->pixel_frame.frame_height = frame_height;
-    this->pixel_frame.frame_width = frame_width;
-    this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
-}
-
-Framebuffer::Framebuffer(GraphicDisplayDevice *graphic_display_device,
-                         struct_ConfigTextFramebuffer text_cfg)
-{
-    this->graphic_display_screen = graphic_display_device;
-    this->fg_color = text_cfg.fg_color;
-    this->bg_color = text_cfg.bg_color;
-
-    this->pixel_frame.frame_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
-    this->pixel_frame.frame_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
-    this->graphic_display_screen->create_pixel_buffer(&this->pixel_frame);
-}
-
-Framebuffer::~Framebuffer()
-{
-    delete[] this->pixel_frame.pixel_buffer;
-}
-
-void Framebuffer::set_display_screen(GraphicDisplayDevice *_new_display_device)
-{
-    this->graphic_display_screen = _new_display_device;
 }

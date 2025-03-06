@@ -1,11 +1,7 @@
 <map id="WidgetHorizontalBargraph" name="WidgetHorizontalBargraph">
-<area shape="rect" id="Node000001" title="the widget that display an horizontal bargraph" alt="" coords="305,899,769,1175"/>
-<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="the widget dedicated to graphics" alt="" coords="313,593,761,851"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="540,865,540,899,535,899,535,865"/>
-<area shape="rect" id="Node000003" href="$class_u_i_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,260,525,545"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="398,555,430,592,426,595,394,558"/>
-<area shape="rect" id="Node000004" href="$class_graphic_framebuffer.html" title="GraphicFramebuffer is the basic framework to handle graphics primitives and all fucntions memebers in..." alt="" coords="550,264,1069,541"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="684,554,649,595,645,592,680,551"/>
-<area shape="rect" id="Node000005" href="$class_framebuffer.html" title="Framebuffer is the abstract class that contains all common features for text and graphic primitives o..." alt="" coords="547,5,1071,212"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="812,227,812,264,807,264,807,227"/>
+<area shape="rect" id="Node000001" title="the widget that display an horizontal bargraph" alt="" coords="47,880,511,1199"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,227,553,832"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="282,847,282,880,277,880,277,847"/>
+<area shape="rect" id="Node000003" href="$class_widget.html" title="the generic class for all widget" alt="" coords="57,5,501,179"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="282,193,282,227,277,227,277,193"/>
 </map>

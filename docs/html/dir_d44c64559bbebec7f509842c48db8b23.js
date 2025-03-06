@@ -4,7 +4,6 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "ssd1306", "dir_78dbc3dc709abd4967a2f87cfbd9237e.html", "dir_78dbc3dc709abd4967a2f87cfbd9237e" ],
     [ "dht11.h", "dht11_8h.html", "dht11_8h" ],
     [ "display_device.h", "display__device_8h.html", "display__device_8h" ],
-    [ "framebuffer.h", "framebuffer_8h.html", "framebuffer_8h" ],
     [ "hc_sr04.h", "hc__sr04_8h.html", "hc__sr04_8h" ],
     [ "hw_i2c.h", "hw__i2c_8h.html", "hw__i2c_8h" ],
     [ "hw_pwm.h", "hw__pwm_8h.html", "hw__pwm_8h" ],
@@ -20,7 +19,6 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "ui_core.h", "ui__core_8h.html", "ui__core_8h" ],
     [ "widget.h", "widget_8h.html", "widget_8h" ],
     [ "widget_bargraph.h", "widget__bargraph_8h.html", "widget__bargraph_8h" ],
-    [ "widget_focus_indicator.h", "widget__focus__indicator_8h.html", "widget__focus__indicator_8h" ],
     [ "widget_horizontal_bar.h", "widget__horizontal__bar_8h.html", "widget__horizontal__bar_8h" ],
     [ "widget_square_led.h", "widget__square__led_8h.html", "widget__square__led_8h" ]
 ];

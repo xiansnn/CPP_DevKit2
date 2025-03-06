@@ -1,76 +1,52 @@
 #include "ui_core.h"
 
-UIModelObject::UIModelObject()
+Model::Model()
 {
-    set_change_flag();
 }
 
-UIModelObject::~UIModelObject()
+Model::~Model()
 {
-    delete current_controller;
 }
 
-bool UIModelObject::has_changed()
-{
-    return this->change_flag;
-}
-
-void UIModelObject::clear_change_flag()
-{
-    this->change_flag -= 1;
-}
-
-void UIModelObject::update_attached_widgets(UIWidget *new_widget)
+void Model::update_attached_widgets(Widget *new_widget)
 {
     this->attached_widgets.insert(new_widget);
 }
 
-int UIModelObject::get_number_of_attached_widget()
+int Model::get_number_of_attached_widget()
 {
     return this->attached_widgets.size();
 }
 
-uint32_t UIModelObject::get_time_since_last_change()
+bool Model::has_changed()
+{
+    return this->change_flag;
+}
+
+void Model::set_change_flag()
+{
+    last_change_time = time_us_32();
+    this->change_flag = attached_widgets.size();
+}
+
+void Model::draw_widget_done()
+{
+    this->change_flag -= 1;
+}
+
+uint32_t Model::get_time_since_last_change()
 {
     return time_us_32() - last_change_time;
 }
 
-void UIModelObject::update_current_controller(UIController *_new_controller)
+void Model::draw_refresh_all_attached_widgets()
 {
-    if (this->current_controller != _new_controller) // to avoid deadlock with recursive callback
-    {
-        this->current_controller = _new_controller;
-        this->current_controller->update_current_controlled_object(this);
-    }
-}
-
-void UIModelObject::update_status(ControlledObjectStatus _new_status)
-{
-    if (this->status != _new_status)
-    {
-        this->status = _new_status;
-        set_change_flag();
-    }
-}
-
-ControlledObjectStatus UIModelObject::get_status()
-{
-    return this->status;
-}
-
-UIController *UIModelObject::get_current_controller()
-{
-    return this->current_controller;
-}
-
-void UIModelObject::set_change_flag()
-{
-    last_change_time = time_us_32();
-    this->change_flag = this->attached_widgets.size();
+    for (auto &&widget : attached_widgets)
+        widget->draw();
 }
 
 UIControlledIncrementalValue::UIControlledIncrementalValue(int _min_value, int _max_value, bool _is_wrappable, int _increment)
-    : UIModelObject()
+    : UIControlledModel()
 {
     this->value = 0;
     this->min_value = _min_value;
@@ -126,25 +102,25 @@ int UIControlledIncrementalValue::get_max_value()
     return max_value;
 }
 
-UIObjectManager::UIObjectManager(bool is_wrappable)
+UIModelManager::UIModelManager(bool is_wrappable)
     : UIControlledIncrementalValue(0, 0, is_wrappable, 1)
 {
     update_status(ControlledObjectStatus::IS_ACTIVE);
     current_active_model = this;
 }
 
-UIObjectManager::~UIObjectManager()
+UIModelManager::~UIModelManager()
 {
     delete current_active_model;
 }
 
-void UIObjectManager::add_managed_model(UIModelObject *_new_model)
+void UIModelManager::add_managed_model(UIControlledModel *_new_model)
 {
     this->managed_models.push_back(_new_model);
     this->max_value = managed_models.size() - 1;
 }
 
-void UIObjectManager::increment_focus()
+void UIModelManager::increment_focus()
 {
     int previous_value = value;
     this->increment_value();
@@ -153,7 +129,7 @@ void UIObjectManager::increment_focus()
         this->managed_models[previous_value]->update_status(ControlledObjectStatus::IS_WAITING);
 }
 
-void UIObjectManager::decrement_focus()
+void UIModelManager::decrement_focus()
 {
     int previous_value = value;
     this->decrement_value();
@@ -162,7 +138,7 @@ void UIObjectManager::decrement_focus()
         this->managed_models[previous_value]->update_status(ControlledObjectStatus::IS_WAITING);
 }
 
-ControlledObjectStatusTimeOutReason UIObjectManager::check_time_out(uint32_t managed_object_status_time_out_us)
+ControlledObjectStatusTimeOutReason UIModelManager::check_time_out(uint32_t managed_object_status_time_out_us)
 {
     ControlledObjectStatusTimeOutReason reason = ControlledObjectStatusTimeOutReason::NO_TIME_OUT;
     if (current_active_model != this) /// - chek time_out for active model
@@ -185,14 +161,14 @@ ControlledObjectStatusTimeOutReason UIObjectManager::check_time_out(uint32_t man
     return reason;
 }
 
-void UIObjectManager::make_managed_object_active()
+void UIModelManager::make_managed_model_active()
 {
     this->current_active_model = this->managed_models[this->value];
     this->current_active_model->update_status(ControlledObjectStatus::IS_ACTIVE);
     this->update_status(ControlledObjectStatus::IS_WAITING);
 }
 
-void UIObjectManager::make_manager_active()
+void UIModelManager::make_manager_active()
 {
     current_active_model->update_status(ControlledObjectStatus::IS_WAITING);
     current_active_model = this;
@@ -205,10 +181,9 @@ UIController::UIController()
 
 UIController::~UIController()
 {
-    delete current_controlled_object;
 }
 
-void UIController::update_current_controlled_object(UIModelObject *_new_controlled_object)
+void UIController::update_current_controlled_object(UIControlledModel *_new_controlled_object)
 {
     if (this->current_controlled_object != _new_controlled_object)
     {
@@ -216,3 +191,41 @@ void UIController::update_current_controlled_object(UIModelObject *_new_controll
         this->current_controlled_object->update_current_controller(this);
     }
 }
+
+UIControlledModel::UIControlledModel()
+{
+    set_change_flag();
+}
+
+UIControlledModel::~UIControlledModel()
+{
+}
+
+void UIControlledModel::update_status(ControlledObjectStatus _new_status)
+{
+    if (this->status != _new_status)
+    {
+        this->status = _new_status;
+        set_change_flag();
+    }
+}
+
+void UIControlledModel::update_current_controller(UIController *_new_controller)
+{
+    if (this->current_controller != _new_controller) // to avoid deadlock with recursive callback
+    {
+        this->current_controller = _new_controller;
+        this->current_controller->update_current_controlled_object(this);
+    }
+}
+
+ControlledObjectStatus UIControlledModel::get_status()
+{
+    return this->status;
+}
+
+UIController *UIControlledModel::get_current_controller()
+{
+    return this->current_controller;
+}
+

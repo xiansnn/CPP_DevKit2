@@ -1,8 +1,10 @@
 <map id="UIControlledIncrementalValue" name="UIControlledIncrementalValue">
-<area shape="rect" id="Node000001" title="The UIControlledIncrementalValue is a kind of UIModelObject that have special feature such as a value..." alt="" coords="5,409,551,675"/>
-<area shape="rect" id="Node000002" href="$class_u_i_model_object.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="454,5,777,347"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="450,359,402,411,398,407,446,355"/>
-<area shape="rect" id="Node000003" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="575,493,987,591"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="602,345,613,384,629,411,648,437,693,480,689,484,644,440,624,414,609,386,597,347"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="775,493,767,434,749,372,745,363,750,361,754,370,772,433,781,493"/>
+<area shape="rect" id="Node000001" title="The UIControlledIncrementalValue is a kind of Model that have special feature such as a value that ca..." alt="" coords="5,538,551,805"/>
+<area shape="rect" id="Node000002" href="$class_u_i_controlled_model.html" title="Class that adds UI Controller to the basic Model class." alt="" coords="462,303,785,476"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="508,487,442,540,439,536,505,483"/>
+<area shape="rect" id="Node000004" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="575,622,1003,721"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="613,475,621,513,637,540,656,566,701,610,697,614,652,569,632,543,617,515,608,476"/>
+<area shape="rect" id="Node000003" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="483,5,763,253"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="626,269,626,303,621,303,621,269"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="787,623,779,562,771,531,757,501,750,491,755,488,762,499,776,529,785,561,792,622"/>
 </map>

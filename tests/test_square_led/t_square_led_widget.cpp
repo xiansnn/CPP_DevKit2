@@ -15,18 +15,15 @@
  * @brief test_square_led_widget : Example of final implementation of w_SquareLed
  *
  */
-class MyWidgetSquareLed : public WidgetSquareLed
+class my_blinking_square_led_widget : public WidgetBlinkingSquareLed
 {
 private:
 public:
-    MyWidgetSquareLed(MySquareLedModel *actual_displayed_model,
-                      GraphicDisplayDevice *graphic_display_screen,
-                      struct_ConfigGraphicFramebuffer graph_cfg,
-                      uint8_t widget_anchor_x,
-                      uint8_t widget_anchor_y);
-    ~MyWidgetSquareLed();
-    void draw_refresh();
-    void draw();
+    my_blinking_square_led_widget(MySquareLedModel *actual_displayed_model,
+                                  GraphicDisplayDevice *graphic_display_screen,
+                                  struct_ConfigGraphicWidget graph_cfg);
+    ~my_blinking_square_led_widget();
+    void get_value_of_interest();
 };
 
 /**
@@ -39,28 +36,36 @@ public:
  * @param widget_anchor_x
  * @param widget_anchor_y
  */
-MyWidgetSquareLed::MyWidgetSquareLed(MySquareLedModel *actual_displayed_model,
-                                     GraphicDisplayDevice *graphic_display_screen,
-                                     struct_ConfigGraphicFramebuffer graph_cfg,
-                                     uint8_t widget_anchor_x,
-                                     uint8_t widget_anchor_y)
-    : WidgetSquareLed(actual_displayed_model, graphic_display_screen, graph_cfg, widget_anchor_x, widget_anchor_y)
+my_blinking_square_led_widget::my_blinking_square_led_widget(MySquareLedModel *actual_displayed_model,
+                                                             GraphicDisplayDevice *graphic_display_screen,
+                                                             struct_ConfigGraphicWidget graph_cfg)
+    : WidgetBlinkingSquareLed(actual_displayed_model, graphic_display_screen, graph_cfg)
 {
 }
 
-MyWidgetSquareLed::~MyWidgetSquareLed()
+my_blinking_square_led_widget::~my_blinking_square_led_widget()
 {
 }
 
-void MyWidgetSquareLed::draw()
-{
-    this->led_is_on = ((MySquareLedModel *)this->actual_displayed_model)->my_bool_value;
-    draw_led();
-}
 
-void MyWidgetSquareLed::draw_refresh()
+
+void my_blinking_square_led_widget::get_value_of_interest()
 {
-    this->led_is_blinking = ((MySquareLedModel *)this->actual_displayed_model)->blinking_status;
-    WidgetSquareLed::blink_refresh();
-    GraphicWidget::draw_refresh();
+    ControlledObjectStatus model_status = ((MySquareLedModel *)this->actual_displayed_model)->get_status();
+
+    switch (model_status)
+    {
+    case ControlledObjectStatus::IS_ACTIVE:
+        this->led_status = LEDStatus::LED_IS_BLINKING;
+        break;
+    case ControlledObjectStatus::IS_WAITING:
+        this->led_status = LEDStatus::LED_IS_OFF;
+        break;
+    case ControlledObjectStatus::HAS_FOCUS:
+        this->led_status = LEDStatus::LED_IS_ON;
+        break;
+
+    default:
+        break;
+    }
 }

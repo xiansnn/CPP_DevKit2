@@ -1,0 +1,11 @@
+<map id="Model" name="Model">
+<area shape="rect" id="Node000001" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="217,5,497,253"/>
+<area shape="rect" id="Node000002" href="$class_model_bargraph.html" title="the Model used by Bargraph GraphicWidget" alt="" coords="5,329,352,465"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="269,267,226,331,221,328,264,264"/>
+<area shape="rect" id="Node000003" href="$class_u_i_controlled_model.html" title="Class that adds UI Controller to the basic Model class." alt="" coords="376,301,699,493"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="451,264,475,300,471,303,447,267"/>
+<area shape="rect" id="Node000004" href="$class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of Model that have special feature such as a value that ca..." alt="" coords="265,541,810,808"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="540,508,540,542,535,542,535,508"/>
+<area shape="rect" id="Node000005" href="$class_u_i_model_manager.html" title="This is an Abstract class that is used to implement the manager of object on a screen." alt="" coords="250,856,825,1067"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="540,823,540,856,535,856,535,823"/>
+</map>

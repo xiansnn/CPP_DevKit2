@@ -30,13 +30,13 @@ enum class PixelColor
 struct struct_PixelFrame
 {
     /// @brief The number of pixel along the width of the frame.
-    uint8_t frame_width;
+    uint8_t pixel_frame_width;
     /// @brief The number of pixel along the height of the frame.
-    uint8_t frame_height;
+    uint8_t pixel_frame_height;
     /// @brief size of the buffer that contains graphics as map of pixels.
-    size_t pixel_buffer_size;
+    size_t pixel_frame_buffer_size;
     /// @brief the buffer where graphic are drawn
-    uint8_t *pixel_buffer = nullptr;
+    uint8_t *pixel_frame_buffer = nullptr;
 };
 
 /// @brief the data structure that characterise the text buffer
@@ -56,26 +56,36 @@ struct struct_TextFrame
  * @brief data structure used to configure graphic framebuffer
  *
  */
-struct struct_ConfigGraphicFramebuffer
+struct struct_ConfigGraphicWidget
 {
 
     /// @brief the frame width of the graphic frame
-    size_t frame_width;
+    size_t pixel_frame_width;
     /// @brief the frame height of the graphic frame
-    size_t frame_height;
+    size_t pixel_frame_height;
     /// @brief the foreground color
     PixelColor fg_color{PixelColor::WHITE};
     /// @brief  the background color
     PixelColor bg_color{PixelColor::BLACK};
+    /// @brief the x_axis anchor of the widget
+    uint8_t widget_anchor_x{0};
+    /// @brief the y-axis anchor of the widget
+    uint8_t widget_anchor_y{0};
+    /// @brief a flag that indicates if the widget has a 1-pixel width border
+    bool widget_with_border{false};
 };
 
 /// @brief the data structure used to configure textual widget
-struct struct_ConfigTextFramebuffer
+struct struct_ConfigTextWidget
 {
     /// @brief The max number of line with respect to frame height and font height
     uint8_t number_of_column{0};
     /// @brief The max number of column with respect to frame width and font width
     uint8_t number_of_line{0};
+    /// @brief the x_axis anchor of the widget
+    uint8_t widget_anchor_x{0};
+    /// @brief the y-axis anchor of the widget
+    uint8_t widget_anchor_y{0};
     /**
      * @brief The font used. Current font are defined according to IBM CP437. The font files are derived from https://github.com/Harbys/pico-ssd1306 works.
      * They come is size 5x8, 8x8, 12x16 and 16x32.
@@ -101,26 +111,21 @@ struct struct_ConfigTextFramebuffer
      * @brief auto_next_char flag : if true each char steps one position after being written.
      */
     bool auto_next_char{true};
+    /// @brief a flag that indicates if the widget has a 1-pixel width border
+    bool widget_with_border{false};
 };
 
-/// @brief the generic abstract class for physical display devices
+/// @brief A generic class for all display device
 class DisplayDevice
 {
 private:
+    /* data */
 public:
-    /// @brief the physical width of the screen (in pixel)
-    size_t screen_width;
-    /// @brief the physical height of the screen (in pixel)
-    size_t screen_height;
-    /**
-     * @brief Construct a new Display Device object
-     *
-     * @param screen_width the physical width of the screen (in pixel)
-     * @param screen_height he physical height of the screen (in pixel)
-     */
-    DisplayDevice(size_t screen_width, size_t screen_height);
+    DisplayDevice(/* args */);
     ~DisplayDevice();
 };
+
+
 
 /**
  * @brief This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen SSD1306).
@@ -132,26 +137,28 @@ class GraphicDisplayDevice : public DisplayDevice
 {
 protected:
 public:
+    /// @brief the physical width of the screen (in pixel)
+    size_t screen_pixel_width;
+    /// @brief the physical height of the screen (in pixel)
+    size_t screen_pixel_height;
+
     /**
      * @brief check the compatibility of the framebuffer and widget parameter with the physical lilitation of the display device
      *
      * @param framebuffer_cfg the framebuffer configuration data
-     * @param anchor_x the anchor of the widget along x-axis (default to 0)
-     * @param anchor_y the anchor of the widget along y-axis (default to 0)
      */
-    virtual void check_display_device_compatibility(struct_ConfigGraphicFramebuffer framebuffer_cfg,
-                                                    uint8_t anchor_x = 0, uint8_t anchor_y = 0) = 0;
+    virtual void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg) = 0;
 
     /**
      * @brief A pure virtual member function.
      * It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.
      * This method implements all peculiarities of the actual display device.
      *
-     * @param pixel_memory a pointer to the struct_PixelFrame that contains the pixel_buffer to be displayed
+     * @param pixel_frame a pointer to the struct_PixelFrame that contains the pixel_buffer to be displayed
      * @param anchor_x the x(horizontal) starting position of the frame within the display screen,(in pixel)
      * @param anchor_y
      */
-    virtual void show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y) = 0;
+    virtual void show(struct_PixelFrame *pixel_frame, const uint8_t anchor_x, const uint8_t anchor_y) = 0;
 
     /**
      * @brief Construct a new Display Device object
@@ -172,28 +179,28 @@ public:
      * @brief A pure virtual method. Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0).
      * Usefull when we have a graphic framework
      *
-     * @param pixel_memory the pixel buffer to fill
+     * @param pixel_frame the pixel buffer to fill
      */
-    virtual void clear_pixel_buffer(struct_PixelFrame *pixel_memory) = 0;
+    virtual void clear_pixel_buffer(struct_PixelFrame *pixel_frame) = 0;
 
     /**
      * @brief A pure virtual method. Create a pixel buffer object.
      * \note : the width and height of the pixel frame must be known before invoking this method.
      * \note : the graphic framebuffer uses this method to create its pixel frame buffer.
      *
-     * @param pixel_memory the pixel buffer to complete
+     * @param pixel_frame the pixel buffer to complete
      */
-    virtual void create_pixel_buffer(struct_PixelFrame *pixel_memory) = 0;
+    virtual void create_pixel_buffer(struct_PixelFrame *pixel_frame) = 0;
 
     /**
      * @brief the graphic primitive to draw a pixel
      *
-     * @param pixel_memory
+     * @param pixel_frame
      * @param x the x position of the pixel
      * @param y the y position of the pixel
      * @param color the color of the pixel
      */
-    virtual void pixel(struct_PixelFrame *pixel_memory,
+    virtual void pixel(struct_PixelFrame *pixel_frame,
                        const int x, const int y,
                        const PixelColor color = PixelColor::WHITE) = 0;
 
@@ -201,16 +208,16 @@ public:
      * @brief a graphic primitive to draw a character at a pixel position
      * \note : DrawChar() implementation depends strongly on the FramebufferFormat.
      *
-     * @param pixel_memory
+     * @param pixel_frame
      * @param text_config the configuration file of the text framebuffer
      * @param character the character to draw
      * @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
      * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
      */
-    virtual void draw_char_into_pixel(struct_PixelFrame *pixel_memory,
-                          const struct_ConfigTextFramebuffer text_config,
-                          const char character,
-                          const uint8_t anchor_x, const uint8_t anchor_y) = 0;
+    virtual void draw_char_into_pixel(struct_PixelFrame *pixel_frame,
+                                      const struct_ConfigTextWidget text_config,
+                                      const char character,
+                                      const uint8_t anchor_x, const uint8_t anchor_y) = 0;
 };
 
 /**

@@ -12,7 +12,7 @@ var searchData=
   ['idle_9',['IDLE',['../switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657aa5daf7f2ebbba4975d61dab1c40188c7',1,'switch_button.h']]],
   ['increment_10',['INCREMENT',['../ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32a90cf1f5206b348a822cc1a453a587534',1,'ui_control_event.h']]],
   ['increment_11',['increment',['../class_u_i_controlled_incremental_value.html#a02a7a8031bd9fee1ecaabc5cbcac48c7',1,'UIControlledIncrementalValue']]],
-  ['increment_5ffocus_12',['increment_focus',['../class_u_i_object_manager.html#a6ce916f71a9adc29a66058ce8420a06b',1,'UIObjectManager']]],
+  ['increment_5ffocus_12',['increment_focus',['../class_u_i_model_manager.html#a4e26eae050bd0bdf8f8d834b561292ad',1,'UIModelManager']]],
   ['increment_5fvalue_13',['increment_value',['../class_u_i_controlled_incremental_value.html#af7d90e938d5804e19ed2c420f0c97064',1,'UIControlledIncrementalValue']]],
   ['init_14',['init',['../class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f',1,'SSD1306']]],
   ['init_5fcharge_5fpump_5fenabled_15',['init_charge_pump_enabled',['../class_s_s_d1306.html#a80df9a8d75ab48e4e848a77b5e2c1194',1,'SSD1306']]],

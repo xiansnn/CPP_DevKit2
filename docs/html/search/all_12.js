@@ -6,7 +6,7 @@ var searchData=
   ['read_5ffifo_5fg_5faccel_5fraw_5fdata_3',['read_FIFO_g_accel_raw_data',['../class_m_p_u6050.html#a6d09d65fef02c2e555356bb98b0db087',1,'MPU6050']]],
   ['read_5ffrom_5fdht_4',['read_from_dht',['../class_d_h_t11.html#ad72fb9614e231616cc6c3c28cafafca3',1,'DHT11']]],
   ['read_5fregisters_5fall_5fraw_5fdata_5',['read_registers_all_raw_data',['../class_m_p_u6050.html#aaca71fa3f6e0b72c49dd70544f8fef72',1,'MPU6050']]],
-  ['rect_6',['rect',['../class_graphic_framebuffer.html#a534d81421e9871dae36d92705b01cb59',1,'GraphicFramebuffer']]],
+  ['rect_6',['rect',['../class_graphic_widget.html#ac2bb85ff122ed402b8467e179611eda2',1,'GraphicWidget']]],
   ['release_5fpending_7',['RELEASE_PENDING',['../switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657aa75feecb8d43431756d243e3e3e95321',1,'switch_button.h']]],
   ['released_5fafter_5flong_5ftime_8',['RELEASED_AFTER_LONG_TIME',['../ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32af7e84b3c12997ec227d0c17657261c84',1,'ui_control_event.h']]],
   ['released_5fafter_5fshort_5ftime_9',['RELEASED_AFTER_SHORT_TIME',['../ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32ad384edb3d3d3cb51350c9b2a1451ea90',1,'ui_control_event.h']]],

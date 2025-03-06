@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['managed_5fmodels_0',['managed_models',['../class_u_i_object_manager.html#ab1d6f0601a5a4fe8e5609661c349a01c',1,'UIObjectManager']]],
+  ['managed_5fmodels_0',['managed_models',['../class_u_i_model_manager.html#ae583beb457ebe200d56e14f3eb92296b',1,'UIModelManager']]],
   ['master_1',['master',['../class_m_p_u6050.html#ae8bb82d8f3dcde42c69cb9ad9e94614c',1,'MPU6050']]],
   ['max_5fvalue_2',['max_value',['../class_u_i_controlled_incremental_value.html#a502ecbf045c5f2b4d2015bad04611a7d',1,'UIControlledIncrementalValue::max_value'],['../class_model_bargraph.html#ab5ac71a917bd5563fe3e298e8841a80f',1,'ModelBargraph::max_value'],['../class_widget_horizontal_bar.html#adc3cd2ef29476f94e66b424d380d621e',1,'WidgetHorizontalBar::max_value']]],
   ['measure_5fduration_5fus_3',['measure_duration_us',['../class_p_w_mgated_measure.html#a6d4f941771cbbd7d72b0c610b6956a97',1,'PWMgatedMeasure']]],

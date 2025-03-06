@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['ssd1306_5fascii_5ffull_0',['SSD1306_ASCII_FULL',['../framebuffer_8h.html#a54606436c94af760ce89b0acc23cbd8f',1,'framebuffer.h']]],
+  ['ssd1306_5fascii_5ffull_0',['SSD1306_ASCII_FULL',['../widget_8h.html#a54606436c94af760ce89b0acc23cbd8f',1,'widget.h']]],
   ['ssd1306_5fbuf_5flen_1',['SSD1306_BUF_LEN',['../commands___s_s_d1306_8h.html#aafee566fd157739d02b21fa6eec3e6cf',1,'commands_SSD1306.h']]],
   ['ssd1306_5fheight_2',['SSD1306_HEIGHT',['../commands___s_s_d1306_8h.html#a4e9409448a0df95c1686670e09b457b7',1,'commands_SSD1306.h']]],
   ['ssd1306_5fnop_3',['SSD1306_NOP',['../commands___s_s_d1306_8h.html#a2025fbb02bc4723c93dcc32ca265fc45',1,'commands_SSD1306.h']]],

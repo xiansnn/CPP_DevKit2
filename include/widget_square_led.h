@@ -13,6 +13,17 @@
 
 #pragma once
 
+/// @brief enumeration of the status of a blinking LED
+enum class LEDStatus
+{
+    /// @brief LED is blinking
+    LED_IS_BLINKING,
+    /// @brief LED is switched ON
+    LED_IS_ON,
+    /// @brief LED is switched OFF
+    LED_IS_OFF
+};
+
 /**
  * @brief A widget that show a square (it can be a rectangle) on the display.
  *
@@ -21,16 +32,10 @@ class WidgetSquareLed : public GraphicWidget
 {
 private:
 protected:
-    /// @brief the member that draw the square led according to the value of led_is_on.
-    void draw_led();
     /**
      * @brief the status of the led, on or off
      */
-    bool led_is_on = true;
-    /**
-     * @brief the blinking status of the led
-     */
-    bool led_is_blinking = false;
+    bool led_is_on;
 
 public:
     /**
@@ -39,44 +44,55 @@ public:
      * @param actual_displayed_model the actual displayed model
      * @param graphic_display_screen The display device on which the widget is drawn.
      * @param graph_cfg the configuration data structure of the graphic framebuffer
-     * @param widget_anchor_x the horizontal position where the widget start on the device screen
-     * @param widget_anchor_y the vertical position where the widget start on the device screen
-     * @param widget_with_border The flag that indicates whether the widget has a border or not
      */
-    WidgetSquareLed(UIModelObject *actual_displayed_model,
+    WidgetSquareLed(Model *actual_displayed_model,
                     GraphicDisplayDevice *graphic_display_screen,
-                    struct_ConfigGraphicFramebuffer graph_cfg,
-                    uint8_t widget_anchor_x,
-                    uint8_t widget_anchor_y,
-                    bool widget_with_border = true);
+                    struct_ConfigGraphicWidget graph_cfg);
     ~WidgetSquareLed();
 
-    /**
-     * @brief draw the square led ON or OFF on blinking phase change
-     *
-     */
-    void blink_refresh();
+    virtual void draw();
+};
+/**
+ * @brief A widget that show a square (it can be a rectangle) on the display.
+ *
+ */
+class WidgetBlinkingSquareLed : public WidgetSquareLed, public Blinker
+{
+private:
+protected:
+    /// @brief the operating status of the LED (blinking, ON, OFF)
+    LEDStatus led_status;
 
+public:
     /**
-     * @brief set the led ON
+     * @brief Construct a new GraphicWidget Square Led object
      *
+     * @param actual_displayed_model the actual displayed model
+     * @param graphic_display_screen The display device on which the widget is drawn.
+     * @param graph_cfg the configuration data structure of the graphic framebuffer
      */
-    void light_on();
-    /**
-     * @brief set the led OFF
-     *
-     */
-    void light_off();
+    WidgetBlinkingSquareLed(Model *actual_displayed_model,
+                            GraphicDisplayDevice *graphic_display_screen,
+                            struct_ConfigGraphicWidget graph_cfg);
+    ~WidgetBlinkingSquareLed();
 
-    /**
-     * @brief set the blinking of the led OFF
-     *
-     */
-    void blink_off();
+    virtual void draw();
+};
 
-    /**
-     * @brief set the blinking of the led ON
-     *
-     */
-    void blink_on();
+/// @brief A specific class dedicated to indicate the status of an UIControlledModel.
+/// Not an abstract class, can be implemented.
+class WidgetFocusIndicator : public WidgetBlinkingSquareLed
+{
+private:
+    /* data */
+public:
+    /// @brief constructor for the UICOntrolledModel focus indicator
+    /// @param actual_displayed_model the actual displayed model
+    /// @param graphic_display_screen The display device on which the widget is drawn.
+    /// @param graph_cfg the configuration data structure of the graphic framebuffer
+    WidgetFocusIndicator(Model *actual_displayed_model,
+                         GraphicDisplayDevice *graphic_display_screen,
+                         struct_ConfigGraphicWidget graph_cfg);
+    ~WidgetFocusIndicator();
+    virtual void get_value_of_interest();
 };

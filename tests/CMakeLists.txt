@@ -95,17 +95,17 @@ target_link_libraries(test_ssd1306
             ssd1306 
             pico_stdlib 
             hw_i2c 
-            framebuffer
             display_device
             debug_probe
             )
 #-------------------------------------------------------------------------------------
-add_executable(test_graphic_framebuffer  test_graphic_framebuffer.cpp  )
-target_link_libraries(test_graphic_framebuffer 
+add_executable(test_graphic_primitives  test_graphic_primitives.cpp  )
+target_link_libraries(test_graphic_primitives 
             ssd1306 
             pico_stdlib 
             hw_i2c 
-            framebuffer
+            widget
+            ui_core
             display_device
             debug_probe
             )
@@ -132,7 +132,7 @@ target_link_libraries(test_ui_core
             debug_probe
             widget
             display_device
-            framebuffer
+            widget
             )
 #-------------------------------------------------------------------------------------
 add_executable(test_gpio_irq test_gpio_irq.cpp )
@@ -155,7 +155,6 @@ add_executable(test_managed_square_led test_managed_square_led.cpp )
 target_link_libraries(test_managed_square_led 
             pico_stdlib
             widget_square_led
-            widget_focus_indicator
             hw_i2c
             ui_core
             debug_probe
@@ -179,8 +178,8 @@ target_link_libraries(test_managed_horizontal_bar
             ssd1306
             ui_core
             debug_probe
-            widget_focus_indicator
             widget_horizontal_bar
+            widget_square_led
             ky040
             )    
 #-------------------------------------------------------------------------------------
@@ -216,21 +215,24 @@ target_link_libraries(test_tuning_dial
             widget
             )    
 #-------------------------------------------------------------------------------------
-add_executable(test_text_framebuffer test_text_framebuffer.cpp)
-target_link_libraries(test_text_framebuffer 
+add_executable(test_text_primitives test_text_primitives.cpp)
+target_link_libraries(test_text_primitives 
             pico_stdlib 
             debug_probe
             hw_i2c 
-            framebuffer
+            widget
+            ui_core
             ssd1306 
             )
 #-------------------------------------------------------------------------------------
-add_executable(test_text_and_graph_framebuffer test_text_and_graph_framebuffer.cpp)
-target_link_libraries(test_text_and_graph_framebuffer 
+add_executable(test_text_and_graph_widgets test_text_and_graph_widgets.cpp)
+target_link_libraries(test_text_and_graph_widgets 
             pico_stdlib 
             debug_probe
+            ui_core
             hw_i2c 
-            framebuffer
+            widget
             ssd1306 
+            display_device
             )
 #-------------------------------------------------------------------------------------

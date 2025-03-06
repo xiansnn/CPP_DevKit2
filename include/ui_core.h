@@ -11,7 +11,6 @@
 #pragma once
 
 #include "pico/stdlib.h"
-#include "framebuffer.h"
 #include "ui_control_event.h"
 #include "display_device.h"
 #include "widget.h"
@@ -21,15 +20,13 @@
 #include <string>
 #include <set>
 
-/// @brief the time out used by the UIObjectManager that indicates there is no more UI_ModelObject Status change.
+/// @brief the time out used by the UIModelManager that indicates there is no more UI_ModelObject Status change.
 #define UI_MODEL_OBJECT_STATUS_TIME_OUT_us 3000000
 
-/**
- * @brief The list of status that a UIModelObject can have.
- * (0) IS_WAITING
- * (1) HAS_FOCUS
- * (2) IS_ACTIVE
- */
+/// @brief The list of status that a Model can have.
+/// (0) IS_WAITING
+/// (1) HAS_FOCUS
+/// (2) IS_ACTIVE
 enum class ControlledObjectStatus
 {
     /// @brief The object is inactive, nothing to do.
@@ -42,12 +39,10 @@ enum class ControlledObjectStatus
     IS_ACTIVE
 };
 
-/**
- * @brief The list of reason of manager time out report.
- * (0) NO_TIME_OUT
- * (1) MANAGER_INACTIVE
- * (3) MANAGED_OBJECT_INACTIVE
- */
+/// @brief The list of reason of manager time out report.
+/// (0) NO_TIME_OUT
+/// (1) MANAGER_INACTIVE
+/// (3) MANAGED_OBJECT_INACTIVE
 enum class ControlledObjectStatusTimeOutReason
 {
     /// @brief no time out
@@ -59,71 +54,75 @@ enum class ControlledObjectStatusTimeOutReason
 };
 
 class UIController;
-class UIWidget;
+class Widget;
 
-/**
- * @brief This is the Model abstract class of Model_View_Control design pattern.
- *
- * It handles change_flag, a semaphore used to indicate that a screen draw_refresh is required.
- *
- *The controller or any other entities that modify the model must set the change_flag
- * and the widget in charge of its screen representation must clear the change_flag
- *
- */
-class UIModelObject
+/// @brief This is the Model abstract class of Model_View_Control design pattern.
+///
+/// It handles change_flag, a semaphore used to indicate that a screen refresh_attached_widgets is required.
+///
+/// The controller or any other entities that modify the model must set the change_flag
+/// and the widget in charge of its screen representation must clear the change_flag
+class Model
 {
 private:
     /// @brief the time in microseconds since the last status has changed
     uint32_t last_change_time;
 
     /// @brief The semaphore used to trigger the actual drawing of the widget on the screen.
+    /// It is set with the number of widget attached to this model
     int change_flag;
 
-    /// @brief The status of the model, indicating if it is waiting, active or just ahs focus (pointed by the object manager)
-    ControlledObjectStatus status{ControlledObjectStatus::IS_WAITING};
-
-    /// @brief A pointer to the controller of this model.
-    UIController *current_controller{nullptr};
-
-    /// @brief the set of widgets that are in charge of viewing this model.
-    /// Used to cont the of widget that need to be refresched
-    std::set<UIWidget *> attached_widgets;
-
 protected:
-public:
-    /// @brief Construct the UIModelObject object
-    UIModelObject(/* args */);
+    /// @brief the set of widgets that are in charge of viewing this model.
+    /// \note USAGE: Used to count the number of widget that need to be refreshed
+    std::set<Widget *> attached_widgets;
 
-    /// @brief Destroy the UIModelObject object
-    ~UIModelObject();
-    /**
-     * @brief get the change flag status
-     *
-     * @return true means the redraw is required
-     * @return false means the model is unchanged
-     */
+public:
+    /// @brief Construct the Model object
+    Model();
+
+    /// @brief Destroy the Model object
+    ~Model();
+
+    /// @brief add a new widget to the set of attached_widgets
+    /// @param new_widget
+    void update_attached_widgets(Widget *new_widget);
+
+    /// @brief get the number of attached widgets
+    /// @return
+    int get_number_of_attached_widget();
+
+    /// @brief get the change flag status
+    /// @return true means the redraw is required
     bool has_changed();
 
     /// @brief Set the change flag object to true
     void set_change_flag();
 
     /// @brief Set the change flag object to false
-    void clear_change_flag();
-
-    /**
-     * @brief add a new widget to the set of attached_widgets
-     * 
-     * @param new_widget 
-     */
-    void update_attached_widgets(UIWidget *new_widget);
-
-    /// @brief get the number of attached widgets
-    /// @return 
-    int get_number_of_attached_widget();
+    void draw_widget_done();
 
     /// @brief compute time since the last status change
     /// @return this time in microsecond
     uint32_t get_time_since_last_change();
+
+    /// @brief update drawing for each attached widgets
+    virtual void draw_refresh_all_attached_widgets();
+};
+
+/// @brief Class that adds UI Controller to the basic Model class
+class UIControlledModel : public Model
+{
+private:
+    /// @brief The status of the model, indicating if it is waiting, active or just ahs focus (pointed by the object manager)
+    ControlledObjectStatus status{ControlledObjectStatus::IS_WAITING};
+
+    /// @brief A pointer to the controller of this model.
+    UIController *current_controller{nullptr};
+
+public:
+    UIControlledModel(/* args */);
+    ~UIControlledModel();
     /**
      * @brief check if the _new_status change is effective,
      * then change it and set the change_flag to true.
@@ -131,7 +130,7 @@ public:
      */
     void update_status(ControlledObjectStatus _new_status);
     /**
-     * @brief if _new_controller is different from the current controller, change the current controller associated to the ModelObject.
+     * @brief if _new_controller is different from the current controller, change the current controller associated to the Model.
      * the new controller has is member current_controlled_object also changed.
      * @param _new_controller
      */
@@ -151,6 +150,7 @@ public:
      * @return UIController*
      */
     UIController *get_current_controller();
+
     /**
      * @brief The purpose of this function is to implement the behavior of the implemented model object when a ControlEvent is received.
      *
@@ -160,13 +160,13 @@ public:
 };
 
 /**
- * @brief The UIControlledIncrementalValue is a kind of UIModelObject that have special feature such as a value that can be incremented or decremented.
+ * @brief The UIControlledIncrementalValue is a kind of Model that have special feature such as a value that can be incremented or decremented.
  * This value runs between a min_value and a max_value.
  *
  * The increment value is configurable. A is_wrappable flag indicates how the value behaves once min or max values are reached.
  *
  */
-class UIControlledIncrementalValue : public UIModelObject
+class UIControlledIncrementalValue : public UIControlledModel
 {
 private:
 protected:
@@ -237,14 +237,14 @@ public:
 /**
  * @brief This is an Abstract class that is used to implement the manager of object on a screen.
  *
- * An UIObjectManager is built from :
+ * An UIModelManager is built from :
  *
- * - UIModelObject : It inherits of the status and is controlled by a UIController.
+ * - Model : It inherits of the status and is controlled by a UIController.
  *
- * - UIControlledIncrementalValue : It is associated with a value that represents the current managed UIModelObject under focus or active.
+ * - UIControlledIncrementalValue : It is associated with a value that represents the current managed Model under focus or active.
  *
  */
-class UIObjectManager : public UIControlledIncrementalValue
+class UIModelManager : public UIControlledIncrementalValue
 {
 protected:
     /**
@@ -262,17 +262,17 @@ protected:
      * @brief The list of managed objects
      *
      */
-    std::vector<UIModelObject *> managed_models;
+    std::vector<UIControlledModel *> managed_models;
     /**
      * @brief the reference to the current active model object
      *
      */
-    UIModelObject *current_active_model;
+    UIControlledModel *current_active_model;
     /**
      * @brief change the status of model object under focus to IS_ACTIVE
      *
      */
-    void make_managed_object_active();
+    void make_managed_model_active();
     /**
      * @brief leave the current managed object and return control to the manager
      *
@@ -291,22 +291,22 @@ protected:
 
 public:
     /**
-     * @brief Construct a new UIObjectManager object
+     * @brief Construct a new UIModelManager object
      *
      * @param is_wrappable if true, the scan over managed object wrap.
      */
-    UIObjectManager(bool is_wrappable = false);
+    UIModelManager(bool is_wrappable = false);
     /**
-     * @brief Destroy the UIObjectManager object
+     * @brief Destroy the UIModelManager object
      *
      */
-    ~UIObjectManager();
+    ~UIModelManager();
     /**
-     * @brief add a new UIModelObject to the list of managed objects.
+     * @brief add a new Model to the list of managed objects.
      *
      * @param _new_model
      */
-    void add_managed_model(UIModelObject *_new_model);
+    void add_managed_model(UIControlledModel *_new_model);
 };
 
 /**
@@ -317,9 +317,9 @@ class UIController
 protected:
 public:
     /**
-     * @brief The reference to the UIModelObject currently under control.
+     * @brief The reference to the Model currently under control.
      */
-    UIModelObject *current_controlled_object{nullptr};
+    UIControlledModel *current_controlled_object{nullptr};
     /**
      * @brief create a UIController object
      */
@@ -337,6 +337,5 @@ public:
      *
      * @param _new_controlled_object
      */
-    void update_current_controlled_object(UIModelObject *_new_controlled_object);
+    void update_current_controlled_object(UIControlledModel *_new_controlled_object);
 };
-

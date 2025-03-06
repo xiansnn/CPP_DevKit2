@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pixelcolor_0',['PixelColor',['../display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8',1,'display_device.h']]]
+  ['ledstatus_0',['LEDStatus',['../widget__square__led_8h.html#aa7a6bd52125294400522ef059731eec1',1,'widget_square_led.h']]]
 ];
