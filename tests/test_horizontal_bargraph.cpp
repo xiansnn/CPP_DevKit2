@@ -76,7 +76,7 @@ int main()
     while (true)
     {
         simulate_values(&my_model);
-        my_model.refresh_attached_widgets();
+        my_model.draw_refresh_all_attached_widgets();
         sleep_ms(100);
     }
 

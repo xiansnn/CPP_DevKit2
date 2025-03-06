@@ -39,7 +39,7 @@ uint32_t Model::get_time_since_last_change()
     return time_us_32() - last_change_time;
 }
 
-void Model::refresh_attached_widgets()
+void Model::draw_refresh_all_attached_widgets()
 {
     for (auto &&widget : attached_widgets)
         widget->draw();

@@ -197,10 +197,10 @@ int main()
         pr_D5.hi();
 
         my_model.increment_value();
-        my_model.refresh_attached_widgets();
+        my_model.draw_refresh_all_attached_widgets();
 
         my_simple_model.increment_value();
-        my_simple_model.refresh_attached_widgets();
+        my_simple_model.draw_refresh_all_attached_widgets();
 
         pr_D5.lo();
         sleep_ms(500);

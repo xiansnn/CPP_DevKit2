@@ -79,7 +79,7 @@ void WidgetSquareLed::draw()
     }
 }
 
-WidgetFocusIndicator::WidgetFocusIndicator(UIControlledModel *actual_displayed_model,
+WidgetFocusIndicator::WidgetFocusIndicator(Model *actual_displayed_model,
                                            GraphicDisplayDevice *graphic_display_screen,
                                            struct_ConfigGraphicWidget graph_cfg)
     : WidgetBlinkingSquareLed(actual_displayed_model, graphic_display_screen, graph_cfg)

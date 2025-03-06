@@ -74,7 +74,7 @@ private:
 
 protected:
     /// @brief the set of widgets that are in charge of viewing this model.
-    /// \note USAGE: Used to count the number of widget that need to be refresched
+    /// \note USAGE: Used to count the number of widget that need to be refreshed
     std::set<Widget *> attached_widgets;
 
 public:
@@ -106,8 +106,8 @@ public:
     /// @return this time in microsecond
     uint32_t get_time_since_last_change();
 
-    /// @brief update value of interest for each atttached widgets
-    virtual void refresh_attached_widgets();
+    /// @brief update drawing for each attached widgets
+    virtual void draw_refresh_all_attached_widgets();
 };
 
 /// @brief Class that adds UI Controller to the basic Model class
