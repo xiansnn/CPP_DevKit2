@@ -1,5 +1,6 @@
 var annotated_dup =
 [
+    [ "Blinker", "class_blinker.html", "class_blinker" ],
     [ "DHT11", "class_d_h_t11.html", "class_d_h_t11" ],
     [ "DisplayDevice", "class_display_device.html", null ],
     [ "GraphicDisplayDevice", "class_graphic_display_device.html", "class_graphic_display_device" ],
@@ -13,7 +14,6 @@ var annotated_dup =
     [ "MPU6050", "class_m_p_u6050.html", "class_m_p_u6050" ],
     [ "MSGEQ7", "class_m_s_g_e_q7.html", "class_m_s_g_e_q7" ],
     [ "PrinterDevice", "class_printer_device.html", "class_printer_device" ],
-    [ "PrintWidget", "class_print_widget.html", "class_print_widget" ],
     [ "Probe", "class_probe.html", "class_probe" ],
     [ "PWM", "class_p_w_m.html", "class_p_w_m" ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", "class_p_w_mgated_measure" ],
@@ -45,6 +45,7 @@ var annotated_dup =
     [ "UIController", "class_u_i_controller.html", "class_u_i_controller" ],
     [ "UIModelManager", "class_u_i_model_manager.html", "class_u_i_model_manager" ],
     [ "Widget", "class_widget.html", "class_widget" ],
+    [ "WidgetBlinkingSquareLed", "class_widget_blinking_square_led.html", "class_widget_blinking_square_led" ],
     [ "WidgetFocusIndicator", "class_widget_focus_indicator.html", "class_widget_focus_indicator" ],
     [ "WidgetHorizontalBar", "class_widget_horizontal_bar.html", "class_widget_horizontal_bar" ],
     [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html", "class_widget_horizontal_bargraph" ],

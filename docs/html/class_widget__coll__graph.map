@@ -1,9 +1,7 @@
 <map id="Widget" name="Widget">
-<area shape="rect" id="Node000001" title="the generic class for all widget" alt="" coords="227,445,707,562"/>
-<area shape="rect" id="Node000002" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,139,512,379"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="363,377,409,430,405,434,359,380"/>
-<area shape="rect" id="Node000003" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="207,5,311,85"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="261,101,261,139,256,139,256,101"/>
-<area shape="rect" id="Node000004" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="536,135,816,383"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="572,384,529,434,525,430,568,381"/>
+<area shape="rect" id="Node000001" title="the generic class for all widget" alt="" coords="5,315,449,451"/>
+<area shape="rect" id="Node000002" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="67,89,171,169"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,168,194,299,190,301,133,170"/>
+<area shape="rect" id="Node000003" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="195,5,475,253"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="291,254,275,292,271,301,266,299,270,290,286,252"/>
 </map>

@@ -1,5 +1,10 @@
 var hierarchy =
 [
+    [ "Blinker", "class_blinker.html", [
+      [ "WidgetBlinkingSquareLed", "class_widget_blinking_square_led.html", [
+        [ "WidgetFocusIndicator", "class_widget_focus_indicator.html", null ]
+      ] ]
+    ] ],
     [ "DHT11", "class_d_h_t11.html", null ],
     [ "DisplayDevice", "class_display_device.html", [
       [ "GraphicDisplayDevice", "class_graphic_display_device.html", [
@@ -20,7 +25,6 @@ var hierarchy =
     ] ],
     [ "MPU6050", "class_m_p_u6050.html", null ],
     [ "MSGEQ7", "class_m_s_g_e_q7.html", null ],
-    [ "PrintWidget", "class_print_widget.html", null ],
     [ "Probe", "class_probe.html", null ],
     [ "PWM", "class_p_w_m.html", null ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],
@@ -56,7 +60,7 @@ var hierarchy =
         [ "WidgetHorizontalBar", "class_widget_horizontal_bar.html", null ],
         [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html", null ],
         [ "WidgetSquareLed", "class_widget_square_led.html", [
-          [ "WidgetFocusIndicator", "class_widget_focus_indicator.html", null ]
+          [ "WidgetBlinkingSquareLed", "class_widget_blinking_square_led.html", null ]
         ] ],
         [ "WidgetVerticalBargraph", "class_widget_vertical_bargraph.html", null ]
       ] ]

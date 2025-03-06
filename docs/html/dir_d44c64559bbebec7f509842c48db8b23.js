@@ -19,7 +19,6 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "ui_core.h", "ui__core_8h.html", "ui__core_8h" ],
     [ "widget.h", "widget_8h.html", "widget_8h" ],
     [ "widget_bargraph.h", "widget__bargraph_8h.html", "widget__bargraph_8h" ],
-    [ "widget_focus_indicator.h", "widget__focus__indicator_8h.html", "widget__focus__indicator_8h" ],
     [ "widget_horizontal_bar.h", "widget__horizontal__bar_8h.html", "widget__horizontal__bar_8h" ],
     [ "widget_square_led.h", "widget__square__led_8h.html", "widget__square__led_8h" ]
 ];

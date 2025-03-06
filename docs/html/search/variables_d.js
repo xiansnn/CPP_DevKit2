@@ -10,7 +10,7 @@ var searchData=
   ['pos_5fmax_5fdegree_7',['pos_max_degree',['../structstruct___config_s_g90.html#a9c349601a83bb7b1a0b42cf927ec4bf5',1,'struct_ConfigSG90']]],
   ['pos_5fmin_5fdeg_8',['pos_min_deg',['../class_s_g90.html#aee863b2c2c28d494be5e08c18695fd3b',1,'SG90']]],
   ['pos_5fmin_5fdegree_9',['pos_min_degree',['../structstruct___config_s_g90.html#aec659f7a3f081dfbcf34000c9f68d556',1,'struct_ConfigSG90']]],
-  ['previous_5fblinking_5fphase_10',['previous_blinking_phase',['../class_graphic_widget.html#ac22c03e648a3f9eea07559e60f7eb65b',1,'GraphicWidget']]],
+  ['previous_5fblinking_5fphase_10',['previous_blinking_phase',['../class_blinker.html#a3997ad8aaa3381ba09001f31ea758cc5',1,'Blinker']]],
   ['previous_5fchange_5ftime_5fus_11',['previous_change_time_us',['../class_switch_button.html#acf1f884508aacadb2bb12ee44e53bf73',1,'SwitchButton']]],
   ['previous_5fswitch_5fpushed_5fstate_12',['previous_switch_pushed_state',['../class_switch_button.html#a269219187ae2a669ca36aabbb615ce40',1,'SwitchButton']]],
   ['pwm_13',['pwm',['../class_s_g90.html#a322f551fa9075bfd65fbd72cb307569b',1,'SG90']]],

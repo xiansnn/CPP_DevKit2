@@ -158,17 +158,17 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_change_flag</b> ()</td></tr>
 <tr class="memdesc:a47406db888c07c179881ce00cbd3937f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the change flag object to true. <br /></td></tr>
 <tr class="separator:a47406db888c07c179881ce00cbd3937f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf47431b2171d17c209c7a386a8916ae" id="r_adf47431b2171d17c209c7a386a8916ae"><td class="memItemLeft" align="right" valign="top"><a id="adf47431b2171d17c209c7a386a8916ae" name="adf47431b2171d17c209c7a386a8916ae"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ack_widget_drawn</b> ()</td></tr>
-<tr class="memdesc:adf47431b2171d17c209c7a386a8916ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the change flag object to false. <br /></td></tr>
-<tr class="separator:adf47431b2171d17c209c7a386a8916ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a617d6bc4132350008952369a96cdc4d0" id="r_a617d6bc4132350008952369a96cdc4d0"><td class="memItemLeft" align="right" valign="top"><a id="a617d6bc4132350008952369a96cdc4d0" name="a617d6bc4132350008952369a96cdc4d0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_widget_done</b> ()</td></tr>
+<tr class="memdesc:a617d6bc4132350008952369a96cdc4d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the change flag object to false. <br /></td></tr>
+<tr class="separator:a617d6bc4132350008952369a96cdc4d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ee45cbfe5a4d7f80bc5ccb1815d6789" id="r_a6ee45cbfe5a4d7f80bc5ccb1815d6789"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ee45cbfe5a4d7f80bc5ccb1815d6789">get_time_since_last_change</a> ()</td></tr>
 <tr class="memdesc:a6ee45cbfe5a4d7f80bc5ccb1815d6789"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute time since the last status change  <br /></td></tr>
 <tr class="separator:a6ee45cbfe5a4d7f80bc5ccb1815d6789"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae39ad8d3579d867295ea209f9a3314cb" id="r_ae39ad8d3579d867295ea209f9a3314cb"><td class="memItemLeft" align="right" valign="top"><a id="ae39ad8d3579d867295ea209f9a3314cb" name="ae39ad8d3579d867295ea209f9a3314cb"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>refresh_attached_widgets</b> ()</td></tr>
-<tr class="memdesc:ae39ad8d3579d867295ea209f9a3314cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">update value of interest for each atttached widgets <br /></td></tr>
-<tr class="separator:ae39ad8d3579d867295ea209f9a3314cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73bf01145256402f062f3391eb6b386d" id="r_a73bf01145256402f062f3391eb6b386d"><td class="memItemLeft" align="right" valign="top"><a id="a73bf01145256402f062f3391eb6b386d" name="a73bf01145256402f062f3391eb6b386d"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_refresh_all_attached_widgets</b> ()</td></tr>
+<tr class="memdesc:a73bf01145256402f062f3391eb6b386d"><td class="mdescLeft">&#160;</td><td class="mdescRight">update drawing for each attached widgets <br /></td></tr>
+<tr class="separator:a73bf01145256402f062f3391eb6b386d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -299,7 +299,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>change_flag</b></td></
 </div><div class="memdoc">
 
 <p>the set of widgets that are in charge of viewing this model. </p>
-<dl class="section note"><dt>Note</dt><dd>USAGE: Used to count the number of widget that need to be refresched </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>USAGE: Used to count the number of widget that need to be refreshed </dd></dl>
 
 </div>
 </div>

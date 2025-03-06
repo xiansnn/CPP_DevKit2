@@ -1,0 +1,4 @@
+<map id="WidgetBlinkingSquareLed::WidgetBlinkingSquareLed" name="WidgetBlinkingSquareLed::WidgetBlinkingSquareLed">
+<area shape="rect" id="Node000001" title="Construct a new GraphicWidget Square Led object." alt="" coords="5,29,275,54"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="188,18,174,11,140,8,111,10,95,15,92,20,100,27,97,31,87,21,92,11,110,5,140,3,175,6,191,14"/>
+</map>
