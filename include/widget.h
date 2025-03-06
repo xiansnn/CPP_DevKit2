@@ -63,8 +63,13 @@ private:
     /// @brief Set the blink period in microseconds
     /// @param blink_period default to 1 second
     void set_blink_us(uint32_t blink_period = 1000000);
+
+    /// @brief return the status of the the flag blink_phase_changed
+    /// @return blink_phase_changed
     bool has_blinking_changed();
+    /// @brief  set blink_phase_changed = False
     void clear_blinking_phase_change();
+    /// @brief compute if there system clock divided by the blink_perio d is odd or even and if this has changed since the last cycle.
     virtual void compute_blinking_phase();
 };
 

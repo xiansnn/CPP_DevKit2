@@ -13,10 +13,14 @@
 
 #pragma once
 
+/// @brief enumearion of the stauts of a blinking LED
 enum class LEDStatus
 {
+    /// @brief LED is blinking
     LED_IS_BLINKING,
+    /// @brief LED is switched ON
     LED_IS_ON,
+    /// @brief LED is switched OFF
     LED_IS_OFF
 };
 
@@ -46,22 +50,19 @@ public:
                     struct_ConfigGraphicWidget graph_cfg);
     ~WidgetSquareLed();
 
-    void draw();
+    virtual void draw();
 };
 /**
  * @brief A widget that show a square (it can be a rectangle) on the display.
  *
  */
-class WidgetBlinkingSquareLed : public GraphicWidget, public Blinker
+class WidgetBlinkingSquareLed : public WidgetSquareLed, public Blinker
 {
 private:
 protected:
+    /// @brief the operating status of the LED (blinking, ON, OFF)
     LEDStatus led_status;
 
-    /**
-     * @brief the status of the led, on or off
-     */
-    bool led_is_on;
 
 public:
     /**
@@ -76,5 +77,5 @@ public:
                             struct_ConfigGraphicWidget graph_cfg);
     ~WidgetBlinkingSquareLed();
 
-    void draw();
+    virtual void draw();
 };
