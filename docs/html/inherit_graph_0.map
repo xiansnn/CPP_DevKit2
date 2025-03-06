@@ -1,5 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$class_blinker.html" title="A class used to add blinking feature to widgets In such case, the following sequence apply for the dr..." alt="" coords="296,5,348,30"/>
+<area shape="rect" id="Node000000" href="$class_blinker.html" title="A class used to add blinking feature to widgets." alt="" coords="296,5,348,30"/>
 <area shape="rect" id="Node000001" href="$class_widget_blinking_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="443,104,585,129"/>
 <area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="364,27,396,41,452,72,497,101,494,106,449,76,394,45,362,32"/>
 <area shape="rect" id="Node000002" href="$class_widget_focus_indicator.html" title="A specific class dedicated to indicate the status of an UIControlledModel. Not an abstract class,..." alt="" coords="633,104,758,129"/>
