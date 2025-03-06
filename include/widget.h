@@ -42,7 +42,7 @@
 class Model;
 
 /// @brief A class used to add blinking feature to widgets
-/// In such case, the following sequence apply for the drw() method implementation
+/// \note : USAGE: In such case, the following sequence apply for the drw() method implementation
 /// \image html draw_with_blinking.svg
 class Blinker
 {
