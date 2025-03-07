@@ -62,7 +62,6 @@ KY040 ky040 = KY040(CENTRAL_SWITCH_GPIO,
 
 void shared_irq_call_back(uint gpio, uint32_t event_mask)
 {
-    pr_D1.pulse_us(10);
     switch (gpio)
     {
     case ENCODER_CLK_GPIO:
@@ -141,10 +140,7 @@ int main()
     display.clear_device_screen_buffer();
 
     while (true)
-    /// 9- start infinite loop
     {
-
-        /// - get central_switch event and give it to the manager .
         manager.process_control_event(ky040.process_central_switch_event());
 
         pr_D4.hi();
@@ -152,12 +148,10 @@ int main()
         pr_D4.lo();
 
         pr_D4.hi();
-
         horizontal_bar_2.draw();
         pr_D4.lo();
 
         pr_D4.hi();
-
         horizontal_bar_3.draw();
         pr_D4.lo();
 
