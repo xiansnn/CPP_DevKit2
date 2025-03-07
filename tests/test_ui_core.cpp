@@ -73,6 +73,7 @@ void manager_process_control_event(UIControlEvent event);
  *
  * @return int
  */
+
 /// 4- create a manager connected to the rotary encoder.
 MyManager manager = MyManager(&ky040);
 
@@ -101,11 +102,12 @@ int main()
     MyManagerWidget manager_widget = MyManagerWidget(&my_serial_monitor, &manager);
 
     /// 6- create a set of widget and populate it with all above widgets
-    MySetOfWidget set_of_widget = MySetOfWidget(&my_serial_monitor);
-    set_of_widget.add_widget(&manager_widget);
-    set_of_widget.add_widget(&value_0_widget);
-    set_of_widget.add_widget(&value_1_widget);
-    set_of_widget.add_widget(&value_2_widget);
+
+    std::vector<Widget *> all_widgets;
+    all_widgets.push_back(&manager_widget);
+    all_widgets.push_back(&value_0_widget);
+    all_widgets.push_back(&value_1_widget);
+    all_widgets.push_back(&value_2_widget);
 
     /// 7- set focus on the first incremental value object
     value_0.update_status(ControlledObjectStatus::HAS_FOCUS);
@@ -113,8 +115,6 @@ int main()
     manager.add_managed_model(&value_0);
     manager.add_managed_model(&value_1);
     manager.add_managed_model(&value_2);
-
-
 
     /// 9- start infinite loop
     while (true)
@@ -127,7 +127,8 @@ int main()
         manager.process_control_event(event);
 
         /// - let the set_of_widget execute refresh
-        set_of_widget.print_refresh();
+        for (auto &&widget : all_widgets)
+            widget->draw();
 
         /// - sleep for 20ms
         sleep_ms(20);
