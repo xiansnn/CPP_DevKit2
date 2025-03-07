@@ -248,20 +248,6 @@ void GraphicWidget::circle(int radius, int x_center, int y_center, bool fill, Pi
     }
 }
 
-// PrintWidget::PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model)
-//     : Widget(actual_displayed_model, display_device)
-// {
-// }
-
-// PrintWidget::~PrintWidget()
-// {
-// }
-
-// void PrintWidget::add_widget(PrintWidget *widget)
-// {
-//     this->widgets.push_back(widget);
-// }
-
 void TextWidget::write(char character, uint8_t char_column, uint8_t char_line)
 {
     uint8_t anchor_x = char_column * this->font[FONT_WIDTH_INDEX];
@@ -581,3 +567,13 @@ void Blinker::clear_blinking_phase_change()
 {
     blink_phase_changed = false;
 }
+
+PrintWidget::PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model)
+    : Widget(actual_displayed_model, display_device)
+{
+}
+
+PrintWidget::~PrintWidget()
+{
+}
+

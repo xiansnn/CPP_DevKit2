@@ -43,7 +43,7 @@ public:
 
     ~MyIncrementalValueWidgetOnSerialMonitor();
 
-    void print_refresh();
+    void draw();
 };
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
@@ -59,17 +59,7 @@ public:
 
     ~MyManagerWidget();
 
-    void print_refresh();
-};
-
-/// @brief test the composite widget features
-class MySetOfWidget : public PrintWidget
-{
-private:
-public:
-    MySetOfWidget(PrinterDevice *my_printer);
-    ~MySetOfWidget();
-    void print_refresh();
+    void draw();
 };
 
 std::map<ControlledObjectStatus, std::string> status_to_string{
@@ -96,42 +86,45 @@ MyIncrementalValueWidgetOnSerialMonitor::~MyIncrementalValueWidgetOnSerialMonito
 {
 }
 
-void MyIncrementalValueWidgetOnSerialMonitor::print_refresh()
+void MyIncrementalValueWidgetOnSerialMonitor::draw()
 {
     if (((MyIncrementalValueModel *)this->actual_displayed_model)->has_changed())
     {
         pr_D1.hi();
+        //====get_value_of_interest
         std::string name = ((MyIncrementalValueModel *)this->actual_displayed_model)->get_name();
         int value = ((MyIncrementalValueModel *)this->actual_displayed_model)->get_value();
         ControlledObjectStatus model_status = ((MyIncrementalValueModel *)actual_displayed_model)->get_status();
         std::string status = status_to_string[model_status];
 
+        //====draw
         switch (model_status)
         {
         case ControlledObjectStatus::IS_WAITING:
-            sprintf(this->display_device->text_buffer,
+            sprintf(((PrinterDevice *)this->display_screen)->text_buffer,
                     "[%s] %s with value=%d\n",
                     name.c_str(), status.c_str(), value);
             break;
         case ControlledObjectStatus::HAS_FOCUS:
-            sprintf(this->display_device->text_buffer,
+            sprintf(((PrinterDevice *)this->display_screen)->text_buffer,
                     "[%s] %s with value=%d\n",
                     name.c_str(), status.c_str(), value);
             break;
         case ControlledObjectStatus::IS_ACTIVE:
-            sprintf(this->display_device->text_buffer,
+            sprintf(((PrinterDevice *)this->display_screen)->text_buffer,
                     "[%s] %s with value= %d %*c\n",
                     name.c_str(), status.c_str(), value, value_to_char_position(), '|');
             break;
         default:
             break;
         }
-        this->display_device->show();
-        ((MyIncrementalValueModel *)this->actual_displayed_model)->ack_widget_drawn();
+        //====show
+        ((PrinterDevice *)this->display_screen)->show();
+        //====clear change_flag
+        this->actual_displayed_model->draw_widget_done();
         pr_D1.lo();
     }
 }
-
 
 int MyIncrementalValueWidgetOnSerialMonitor::value_to_char_position()
 {
@@ -147,37 +140,21 @@ MyManagerWidget::~MyManagerWidget()
 {
 }
 
-void MyManagerWidget::print_refresh()
+void MyManagerWidget::draw()
 {
     if (((MyManager *)this->actual_displayed_model)->has_changed())
     {
         pr_D4.hi();
+        //====get_value_of_interest
         std::string text = "manager " + status_to_string[((MyIncrementalValueModel *)actual_displayed_model)->get_status()] + " with value=" +
                            std::to_string(((MyIncrementalValueModel *)actual_displayed_model)->get_value()) + "\n";
-        sprintf(this->display_device->text_buffer,text.c_str());
-
-        this->display_device->show();
-        
-        ((MyManager *)this->actual_displayed_model)->ack_widget_drawn();
+        //====draw
+        sprintf(((PrinterDevice *)this->display_screen)->text_buffer, text.c_str());
+        //====show
+        ((PrinterDevice *)this->display_screen)->show();
+        //====clear change_flag
+        this->actual_displayed_model->draw_widget_done();
 
         pr_D4.lo();
     }
 }
-
-MySetOfWidget::MySetOfWidget(PrinterDevice *my_printer)
-    : PrintWidget(my_printer, nullptr)
-{
-}
-
-MySetOfWidget::~MySetOfWidget()
-{
-}
-
-void MySetOfWidget::print_refresh()
-{
-    for (auto &&w : widgets)
-    {
-        w->print_refresh();
-    }
-}
-

@@ -22,7 +22,6 @@ Probe pr_D5 = Probe(5);
 class My_Horizontal_Bar_Widget : public WidgetHorizontalBar
 {
 private:
-    /* data */
 public:
     My_Horizontal_Bar_Widget(Model *bar_value_model,
                              GraphicDisplayDevice *graphic_display_screen,
@@ -65,7 +64,6 @@ public:
     ~My_Horizontal_Bar_Widget_With_Focus();
     void draw();
     void get_value_of_interest();
-    // void blink_refresh();
 };
 
 My_Horizontal_Bar_Widget_With_Focus::My_Horizontal_Bar_Widget_With_Focus(MyControlledHorizontalBarModel *bar_value_model,
@@ -122,6 +120,7 @@ My_Horizontal_Bar_Widget_With_Focus::~My_Horizontal_Bar_Widget_With_Focus()
 
 void My_Horizontal_Bar_Widget_With_Focus::draw()
 {
+
     get_value_of_interest();
     if (actual_displayed_model->has_changed())
     {
@@ -131,9 +130,9 @@ void My_Horizontal_Bar_Widget_With_Focus::draw()
     {
         widget->draw();
     }
+
 }
 
 void My_Horizontal_Bar_Widget_With_Focus::get_value_of_interest()
 {
 }
-

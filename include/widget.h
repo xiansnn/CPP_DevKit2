@@ -42,7 +42,7 @@
 class Model;
 
 /// @brief A class used to add blinking feature to widgets
-/// In such case, the following sequence apply for the drw() method implementation
+/// \note : USAGE: In such case, the following sequence apply for the drw() method implementation
 /// \image html draw_with_blinking.svg
 class Blinker
 {
@@ -450,24 +450,17 @@ public:
     void draw_border(PixelColor color = PixelColor::WHITE);
 };
 
-// /// @brief A widget used when we need to simply print but still want to take advantage of the status change management.
-// class PrintWidget : public Widget
-// {
-// private:
-// protected:
+/// @brief A widget used when we need to simply print but still want to take advantage of the status change management.
+class PrintWidget : public Widget
+{
+private:
+protected:
 
-// public:
+public:
 
-//     /// @brief Construct a new Dummy Widget object
-//     /// @param display_device the pointer to the printer display device
-//     /// @param actual_displayed_model the pointer to the displayed model. Default to nullptr
-//     PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model = nullptr);
-//     ~PrintWidget();
-
-//     /// @brief add a widget to the list of possible sub_widget.
-//     /// @param widget
-//     void add_widget(PrintWidget *widget);
-
-//     /// @brief a pure virtual method that must be implement to effectively print somethig to the display.
-//     virtual void print_refresh() = 0;
-// };
+    /// @brief Construct a new Dummy Widget object
+    /// @param display_device the pointer to the printer display device
+    /// @param actual_displayed_model the pointer to the displayed model. Default to nullptr
+    PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model = nullptr);
+    ~PrintWidget();
+};

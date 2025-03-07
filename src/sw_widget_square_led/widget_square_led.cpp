@@ -14,9 +14,32 @@ WidgetBlinkingSquareLed::~WidgetBlinkingSquareLed()
 void WidgetBlinkingSquareLed::draw()
 {
     get_value_of_interest();
+
+    //================ draw widget
+    if (actual_displayed_model->has_changed())
+    {
+        switch (led_status)
+        {
+        case LEDStatus::LED_IS_BLINKING:
+            break;
+        case LEDStatus::LED_IS_OFF:
+            clear_pixel_buffer();
+            led_is_on = false;
+            draw_border();
+            break;
+        case LEDStatus::LED_IS_ON:
+            clear_pixel_buffer();
+            led_is_on = true;
+            rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, true, fg_color);
+            break;
+        default:
+            break;
+        }
+        show();
+        actual_displayed_model->draw_widget_done();
+    }
     //==============process blinking
     compute_blinking_phase();
-
     if ((led_status == LEDStatus::LED_IS_BLINKING) and has_blinking_changed())
     {
         clear_pixel_buffer();
@@ -27,29 +50,6 @@ void WidgetBlinkingSquareLed::draw()
             draw_border();
         clear_blinking_phase_change();
         show();
-    }
-    //================ draw widget
-    else
-    {
-        if (actual_displayed_model->has_changed())
-        {
-            clear_pixel_buffer();
-            switch (led_status)
-            {
-            case LEDStatus::LED_IS_OFF:
-                led_is_on = false;
-                draw_border();
-                break;
-            case LEDStatus::LED_IS_ON:
-                led_is_on = true;
-                rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, true, fg_color);
-                break;
-            default:
-                break;
-            }
-            show();
-            actual_displayed_model->draw_widget_done();
-        }
     }
 }
 

@@ -21,13 +21,14 @@ deactivate my_widget
 end
 
 alt blink_phase_changed = true
-my_widget -> my_widget ++: make the widget blink
+my_widget -> my_widget --++: make the widget blink
+my_widget -> my_widget --++: clear blink_phase_changed
+return
 deactivate my_widget
     
+
+
 else blink_phase_changed = false
-    
-
-
 group check if model has changed
 actual_displayed_model <- my_widget ++: has_changed()
 actual_displayed_model -> my_widget --: change_flag
