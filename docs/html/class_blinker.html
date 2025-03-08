@@ -105,7 +105,7 @@ $(function(){initNavTree('class_blinker.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>A class used to add blinking feature to widgets.  
+<p>A base class used to add blinking feature to widgets. To do so, this widget must inherit from <a class="el" href="class_blinker.html" title="A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker...">Blinker</a>.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="widget_8h_source.html">widget.h</a>&gt;</code></p>
@@ -114,7 +114,7 @@ Inheritance diagram for Blinker:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_blinker__inherit__graph.png" border="0" usemap="#a_blinker_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_blinker_inherit__map" id="a_blinker_inherit__map">
-<area shape="rect" title="A class used to add blinking feature to widgets." alt="" coords="98,5,361,197"/>
+<area shape="rect" title="A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker..." alt="" coords="98,5,361,197"/>
 <area shape="rect" href="class_widget_blinking_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="5,245,453,359"/>
 <area shape="poly" title=" " alt="" coords="232,212,232,246,227,246,227,212"/>
 <area shape="rect" href="class_widget_focus_indicator.html" title="A specific class dedicated to indicate the status of an UIControlledModel. Not an abstract class,..." alt="" coords="13,407,445,520"/>
@@ -126,7 +126,7 @@ Collaboration diagram for Blinker:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_blinker__coll__graph.png" border="0" usemap="#a_blinker_coll__map" alt="Collaboration graph"/></div>
 <map name="a_blinker_coll__map" id="a_blinker_coll__map">
-<area shape="rect" title="A class used to add blinking feature to widgets." alt="" coords="5,5,268,197"/>
+<area shape="rect" title="A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker..." alt="" coords="5,5,268,197"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -136,7 +136,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a55d1c93f8b1e2492b1948944d1462665"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the blink period in microseconds.  <br /></td></tr>
 <tr class="separator:a55d1c93f8b1e2492b1948944d1462665"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae36b06b6ad8e5b5e14f5a95c1f4d3471" id="r_ae36b06b6ad8e5b5e14f5a95c1f4d3471"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae36b06b6ad8e5b5e14f5a95c1f4d3471">has_blinking_changed</a> ()</td></tr>
-<tr class="memdesc:ae36b06b6ad8e5b5e14f5a95c1f4d3471"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the status of the the flag blink_phase_changed  <br /></td></tr>
+<tr class="memdesc:ae36b06b6ad8e5b5e14f5a95c1f4d3471"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the status of the flag blink_phase_changed  <br /></td></tr>
 <tr class="separator:ae36b06b6ad8e5b5e14f5a95c1f4d3471"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6a97a7779716d6a9a4954e9491d2985" id="r_ae6a97a7779716d6a9a4954e9491d2985"><td class="memItemLeft" align="right" valign="top"><a id="ae6a97a7779716d6a9a4954e9491d2985" name="ae6a97a7779716d6a9a4954e9491d2985"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_blinking_phase_change</b> ()</td></tr>
@@ -144,7 +144,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_blinking_phase_
 <tr class="separator:ae6a97a7779716d6a9a4954e9491d2985"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53b79b0d151d778d39b9c2498bbef392" id="r_a53b79b0d151d778d39b9c2498bbef392"><td class="memItemLeft" align="right" valign="top"><a id="a53b79b0d151d778d39b9c2498bbef392" name="a53b79b0d151d778d39b9c2498bbef392"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>compute_blinking_phase</b> ()</td></tr>
-<tr class="memdesc:a53b79b0d151d778d39b9c2498bbef392"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute if there system clock divided by the blink_perio d is odd or even and if this has changed since the last cycle. <br /></td></tr>
+<tr class="memdesc:a53b79b0d151d778d39b9c2498bbef392"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute if the system clock divided by the blink_period is odd or even and if this has changed since the last cycle. <br /></td></tr>
 <tr class="separator:a53b79b0d151d778d39b9c2498bbef392"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -163,8 +163,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>blink_phase_changed</
 <tr class="separator:a1f19ca4e7fdcfe8d47f068683851f98f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A class used to add blinking feature to widgets. </p>
-<dl class="section note"><dt>Note</dt><dd>: USAGE: In such case, the following sequence apply for the drw() method implementation <div class="image">
+<div class="textblock"><p>A base class used to add blinking feature to widgets. To do so, this widget must inherit from <a class="el" href="class_blinker.html" title="A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker...">Blinker</a>. </p>
+<dl class="section note"><dt>Note</dt><dd>: USAGE: To perform the blinking drawing, the following sequence applies for the draw() method implementation. <div class="image">
 <object type="image/svg+xml" data="draw_with_blinking.svg" style="pointer-events: none;"></object>
 </div>
  </dd></dl>
@@ -184,7 +184,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>blink_phase_changed</
       </table>
 </div><div class="memdoc">
 
-<p>return the status of the the flag blink_phase_changed </p>
+<p>return the status of the flag blink_phase_changed </p>
 <dl class="section return"><dt>Returns</dt><dd>blink_phase_changed </dd></dl>
 
 </div>

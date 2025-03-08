@@ -1,9 +1,9 @@
 <map id="PrintWidget" name="PrintWidget">
-<area shape="rect" id="Node000001" title="A widget used when we need to simply print but still want to take advantage of the status change mana..." alt="" coords="11,445,434,562"/>
-<area shape="rect" id="Node000002" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,135,285,383"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,382,202,427,197,429,182,383"/>
-<area shape="rect" id="Node000003" href="$class_printer_device.html" title="A class dedicated to pure text display such as console, printer, ASCII character line display." alt="" coords="310,181,693,336"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="423,338,327,423,311,436,308,432,324,419,419,334"/>
-<area shape="rect" id="Node000004" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="449,5,553,85"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="504,101,504,181,499,181,499,101"/>
+<area shape="rect" id="Node000001" title="A widget used when we need to simply print but still want to take advantage of the status change mana..." alt="" coords="16,501,439,581"/>
+<area shape="rect" id="Node000002" href="$class_widget.html" title="the generic class for all widget" alt="" coords="5,315,449,451"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,466,230,501,225,501,225,466"/>
+<area shape="rect" id="Node000003" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="67,89,171,169"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="138,168,194,299,190,301,133,170"/>
+<area shape="rect" id="Node000004" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="195,5,475,253"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="291,254,275,292,271,301,266,299,270,290,286,252"/>
 </map>

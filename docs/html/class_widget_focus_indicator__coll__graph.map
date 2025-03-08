@@ -14,6 +14,6 @@
 <area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="291,254,275,292,271,301,266,299,270,290,286,252"/>
 <area shape="rect" id="Node000008" href="$structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="474,325,642,442"/>
 <area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="538,443,516,499,511,497,533,441"/>
-<area shape="rect" id="Node000009" href="$class_blinker.html" title="A class used to add blinking feature to widgets." alt="" coords="643,1149,905,1341"/>
+<area shape="rect" id="Node000009" href="$class_blinker.html" title="A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker..." alt="" coords="643,1149,905,1341"/>
 <area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="675,1354,638,1393,634,1389,671,1350"/>
 </map>

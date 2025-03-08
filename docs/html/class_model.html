@@ -184,12 +184,12 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>last_change_time<
 <tr class="separator:ac1e989ec9c1491b4f1b3075ad4d753f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f016cc7631ec55f950511a44b8b1327" id="r_a8f016cc7631ec55f950511a44b8b1327"><td class="memItemLeft" align="right" valign="top"><a id="a8f016cc7631ec55f950511a44b8b1327" name="a8f016cc7631ec55f950511a44b8b1327"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>change_flag</b></td></tr>
-<tr class="memdesc:a8f016cc7631ec55f950511a44b8b1327"><td class="mdescLeft">&#160;</td><td class="mdescRight">The semaphore used to trigger the actual drawing of the widget on the screen. It is set with the number of widget attached to this model. <br /></td></tr>
+<tr class="memdesc:a8f016cc7631ec55f950511a44b8b1327"><td class="mdescLeft">&#160;</td><td class="mdescRight">The semaphore used to trigger the actual drawing of the widget on the screen. It is set with the number of widget attached to this model. Doing so, each time an attached widget is refreshed, the the change_flag is decrement by 1. When all attached widget are done, the change_flag = 0 (i.e. false). <br /></td></tr>
 <tr class="separator:a8f016cc7631ec55f950511a44b8b1327"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> abstract class of Model_View_Control design pattern. </p>
-<p>It handles change_flag, a semaphore used to indicate that a screen refresh_attached_widgets is required.</p>
+<p>It handles change_flag, a semaphore used to indicate that a redraw is required for all attached widgets.</p>
 <p>The controller or any other entities that modify the model must set the change_flag and the widget in charge of its screen representation must clear the change_flag </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a319451534c131307f5450c9d3d008b38" name="a319451534c131307f5450c9d3d008b38"></a>

@@ -41,8 +41,8 @@
 
 class Model;
 
-/// @brief A class used to add blinking feature to widgets
-/// \note : USAGE: In such case, the following sequence apply for the drw() method implementation
+/// @brief A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker.
+/// \note : USAGE: To perform the blinking drawing, the following sequence applies for the draw() method implementation.
 /// \image html draw_with_blinking.svg
 class Blinker
 {
@@ -55,23 +55,23 @@ private:
 
     /// @brief a flag that indicates the blinking phase has changed
     bool blink_phase_changed;
-    
-    protected:
 
-    
-    public:
+protected:
+public:
     Blinker();
     ~Blinker();
     /// @brief Set the blink period in microseconds
     /// @param blink_period default to 1 second
     void set_blink_us(uint32_t blink_period = 1000000);
 
-    /// @brief return the status of the the flag blink_phase_changed
+    /// @brief return the status of the flag blink_phase_changed
     /// @return blink_phase_changed
     bool has_blinking_changed();
+
     /// @brief  set blink_phase_changed = False
     void clear_blinking_phase_change();
-    /// @brief compute if there system clock divided by the blink_perio d is odd or even and if this has changed since the last cycle.
+
+    /// @brief compute if the system clock divided by the blink_period is odd or even and if this has changed since the last cycle.
     virtual void compute_blinking_phase();
 };
 
@@ -106,8 +106,8 @@ public:
     void set_display_screen(DisplayDevice *_new_display_device);
 
     /// @brief a pure virtual member that is called to effectively draw the widget.
-    /// \note USAGE: It can be called by the draw_refresh_all_attached_widgets() method of the Model
-    /// Refer to the following diagram
+    /// \note USAGE: It can be called by the draw_refresh_all_attached_widgets() method of the Model.
+    /// Refer to the following diagram.
     /// \image html draw.svg
     virtual void draw() = 0;
 };
@@ -455,9 +455,7 @@ class PrintWidget : public Widget
 {
 private:
 protected:
-
 public:
-
     /// @brief Construct a new Dummy Widget object
     /// @param display_device the pointer to the printer display device
     /// @param actual_displayed_model the pointer to the displayed model. Default to nullptr

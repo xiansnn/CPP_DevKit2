@@ -1,6 +1,4 @@
 <map id="PrintWidget::PrintWidget" name="PrintWidget::PrintWidget">
-<area shape="rect" id="Node000001" title="Construct a new Dummy Widget object." alt="" coords="195,29,336,54"/>
-<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="298,17,287,10,265,8,245,10,235,15,233,20,238,27,234,31,227,21,231,11,244,5,265,3,289,5,301,12"/>
-<area shape="rect" id="Node000002" href="$class_print_widget.html#a4dc49b2832b859ab8221e07395bd0bfc" title="add a widget to the list of possible sub_widget." alt="" coords="5,29,147,54"/>
-<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="179,44,147,44,147,39,179,39"/>
+<area shape="rect" id="Node000001" title="Construct a new Dummy Widget object." alt="" coords="5,29,147,54"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="100,16,92,10,76,8,61,10,54,14,52,20,57,28,52,30,47,21,50,11,60,5,76,3,94,5,103,12"/>
 </map>

@@ -143,10 +143,10 @@ Collaboration diagram for SSD1306:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae86de55b157bce1451499d8b18e879f5" id="r_ae86de55b157bce1451499d8b18e879f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae86de55b157bce1451499d8b18e879f5">check_display_device_compatibility</a> (<a class="el" href="structstruct___config_graphic_widget.html">struct_ConfigGraphicWidget</a> framebuffer_cfg)</td></tr>
-<tr class="memdesc:ae86de55b157bce1451499d8b18e879f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">check the compatibility of the framebuffer and widget parameter with the physical lilitation of the display device  <br /></td></tr>
+<tr class="memdesc:ae86de55b157bce1451499d8b18e879f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual member function. Each device must implement this method and check the compatibility of the widget parameter with the its physical limitations.  <br /></td></tr>
 <tr class="separator:ae86de55b157bce1451499d8b18e879f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8432036c46b4de56e4d85ed06f82195a" id="r_a8432036c46b4de56e4d85ed06f82195a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8432036c46b4de56e4d85ed06f82195a">clear_pixel_buffer</a> (<a class="el" href="structstruct___pixel_frame.html">struct_PixelFrame</a> *pixel_memory)</td></tr>
-<tr class="memdesc:a8432036c46b4de56e4d85ed06f82195a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual method. Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0). Usefull when we have a graphic framework.  <br /></td></tr>
+<tr class="memdesc:a8432036c46b4de56e4d85ed06f82195a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual method. Usefull when to clear the pixel buffer. It fills the pixel_buffer with "0" (BLACK). Reset also character position to (0,0).  <br /></td></tr>
 <tr class="separator:a8432036c46b4de56e4d85ed06f82195a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d8fc891acd28a44e8b2c274c92cd57b" id="r_a4d8fc891acd28a44e8b2c274c92cd57b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d8fc891acd28a44e8b2c274c92cd57b">SSD1306</a> (<a class="el" href="class_h_w___i2_c___master.html">HW_I2C_Master</a> *master, <a class="el" href="structstruct___config_s_s_d1306.html">struct_ConfigSSD1306</a> <a class="el" href="#a8c77fc2b876883b63b9f9d403e368e8d">device_config</a>)</td></tr>
 <tr class="separator:a4d8fc891acd28a44e8b2c274c92cd57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -330,10 +330,10 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>screen_pixel_height
 </table>
 </div><div class="memdoc">
 
-<p>check the compatibility of the framebuffer and widget parameter with the physical lilitation of the display device </p>
+<p>A pure virtual member function. Each device must implement this method and check the compatibility of the widget parameter with the its physical limitations. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">framebuffer_cfg</td><td>the framebuffer configuration data </td></tr>
+    <tr><td class="paramname">framebuffer_cfg</td><td>the widget configuration data </td></tr>
   </table>
   </dd>
 </dl>
@@ -365,7 +365,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>screen_pixel_height
 </table>
 </div><div class="memdoc">
 
-<p>A pure virtual method. Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0). Usefull when we have a graphic framework. </p>
+<p>A pure virtual method. Usefull when to clear the pixel buffer. It fills the pixel_buffer with "0" (BLACK). Reset also character position to (0,0). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pixel_frame</td><td>the pixel buffer to fill </td></tr>
@@ -454,7 +454,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>screen_pixel_height
 <p>A pure virtual method. Create a pixel buffer object. </p>
 <dl class="section note"><dt>Note</dt><dd>: the width and height of the pixel frame must be known before invoking this method. </dd>
 <dd>
-: the graphic framebuffer uses this method to create its pixel frame buffer.</dd></dl>
+: the graphic widget uses this method to create its pixel frame buffer.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pixel_frame</td><td>the pixel buffer to complete </td></tr>
@@ -509,7 +509,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>screen_pixel_height
 </div><div class="memdoc">
 
 <p>a graphic primitive to draw a character at a pixel position </p>
-<dl class="section note"><dt>Note</dt><dd>: DrawChar() implementation depends strongly on the FramebufferFormat.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>: DrawChar() implementation depends strongly on the memory structure of the display device.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pixel_frame</td><td></td></tr>

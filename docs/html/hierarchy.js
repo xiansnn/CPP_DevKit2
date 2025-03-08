@@ -63,6 +63,7 @@ var hierarchy =
           [ "WidgetBlinkingSquareLed", "class_widget_blinking_square_led.html", null ]
         ] ],
         [ "WidgetVerticalBargraph", "class_widget_vertical_bargraph.html", null ]
-      ] ]
+      ] ],
+      [ "PrintWidget", "class_print_widget.html", null ]
     ] ]
 ];

@@ -164,7 +164,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A generic class for all display device.  <a href="class_display_device.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a>). It derived from GraphicFramebuffer. This allows to draw graphics directly into the display framebuffer thanks to Framebuffet class graphic primitives indepently from any kind of widget.  <a href="class_graphic_display_device.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a>).  <a href="class_graphic_display_device.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printer_device.html">PrinterDevice</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class dedicated to pure text display such as console, printer, ASCII character line display.  <a href="class_printer_device.html#details">More...</a><br /></td></tr>
@@ -186,7 +186,7 @@ Enumerations</h2></td></tr>
 <tr class="memitem:ad83e4ed8a472ffb9b7a07383eb669cf8" id="r_ad83e4ed8a472ffb9b7a07383eb669cf8"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> { <a class="el" href="#ad83e4ed8a472ffb9b7a07383eb669cf8a08d0012388564e95c3b4a7407cf04965">BLACK</a> = 0
 , <a class="el" href="#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">WHITE</a> = 1
  }</td></tr>
-<tr class="memdesc:ad83e4ed8a472ffb9b7a07383eb669cf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">define the binary value for color (limited here to monochome, can be extended later)  <a href="#ad83e4ed8a472ffb9b7a07383eb669cf8">More...</a><br /></td></tr>
+<tr class="memdesc:ad83e4ed8a472ffb9b7a07383eb669cf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">define the code value for color (limited here to monochome, can be extended later)  <a href="#ad83e4ed8a472ffb9b7a07383eb669cf8">More...</a><br /></td></tr>
 <tr class="separator:ad83e4ed8a472ffb9b7a07383eb669cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -215,11 +215,11 @@ Enumerations</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>define the binary value for color (limited here to monochome, can be extended later) </p>
+<p>define the code value for color (limited here to monochome, can be extended later) </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad83e4ed8a472ffb9b7a07383eb669cf8a08d0012388564e95c3b4a7407cf04965" name="ad83e4ed8a472ffb9b7a07383eb669cf8a08d0012388564e95c3b4a7407cf04965"></a>BLACK&#160;</td><td class="fielddoc"><p>black coded with binary value 0x0 </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad83e4ed8a472ffb9b7a07383eb669cf8a08d0012388564e95c3b4a7407cf04965" name="ad83e4ed8a472ffb9b7a07383eb669cf8a08d0012388564e95c3b4a7407cf04965"></a>BLACK&#160;</td><td class="fielddoc"><p>"black" coded with code 0x0 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d" name="ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d"></a>WHITE&#160;</td><td class="fielddoc"><p>white coded with binary value 0x1 </p>
+<tr><td class="fieldname"><a id="ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d" name="ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d"></a>WHITE&#160;</td><td class="fielddoc"><p>"white" coded with code 0x1 </p>
 </td></tr>
 </table>
 

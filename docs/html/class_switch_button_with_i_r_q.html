@@ -136,7 +136,7 @@ Collaboration diagram for SwitchButtonWithIRQ:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a261dc80eca218e3733c6a0cf637c25e8" id="r_a261dc80eca218e3733c6a0cf637c25e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a261dc80eca218e3733c6a0cf637c25e8">irq_enabled</a> (bool enabled)</td></tr>
-<tr class="memdesc:a261dc80eca218e3733c6a0cf637c25e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">and function used to enable/disable interrupt during Interrupt Service Routine (ISR)  <br /></td></tr>
+<tr class="memdesc:a261dc80eca218e3733c6a0cf637c25e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">"AND" function used to enable/disable interrupt during Interrupt Service Routine (ISR)  <br /></td></tr>
 <tr class="separator:a261dc80eca218e3733c6a0cf637c25e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafb53c306bcbb5c681caae03b778f517" id="r_aafb53c306bcbb5c681caae03b778f517"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafb53c306bcbb5c681caae03b778f517">SwitchButtonWithIRQ</a> (uint <a class="el" href="class_switch_button.html#a68fccab1c920eec2fbd4fc2d1f5b29e0">gpio</a>, gpio_irq_callback_t call_back, <a class="el" href="structstruct___config_switch_button.html">struct_ConfigSwitchButton</a> conf={}, uint32_t event_mask_config=GPIO_IRQ_EDGE_FALL|GPIO_IRQ_EDGE_RISE)</td></tr>
 <tr class="memdesc:aafb53c306bcbb5c681caae03b778f517"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_switch_button_with_i_r_q.html" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt...">SwitchButtonWithIRQ</a> object.  <br /></td></tr>
@@ -222,9 +222,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>previous_switch_pushe
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_switch_button_with_i_r_q.html" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt...">SwitchButtonWithIRQ</a> status is processed by an Interrupt Service Routine. It is derived from SwithButton, but debouncing, press and release are processed differently. </p>
-<p>NOTICE: LONG_PUSH and TIME_OUT cannot be implemented by processing IRQ.</p>
-<p><a class="el" href="class_switch_button_with_i_r_q.html" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt...">SwitchButtonWithIRQ</a> can be associated with <a class="el" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model-View-Controll design...">UIController</a> only if button belongs to a UI.</p>
-<p>NOTICE: the test program for switch button with IRQ is implmented with the rotary encoder device, wich is a good example of what can be done with and without IRQ </p>
+<dl class="section note"><dt>Note</dt><dd>WARNING: LONG_PUSH and TIME_OUT cannot be implemented by processing IRQ. NOTICE: <a class="el" href="class_switch_button_with_i_r_q.html" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt...">SwitchButtonWithIRQ</a> can be associated with <a class="el" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model-View-Controll design...">UIController</a> only if button belongs to a UI.</dd></dl>
+<p>NOTICE: the test program for switch button with IRQ is implemented with the rotary encoder device, which is a good example of what can be done with and without IRQ </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aafb53c306bcbb5c681caae03b778f517" name="aafb53c306bcbb5c681caae03b778f517"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aafb53c306bcbb5c681caae03b778f517">&#9670;&#160;</a></span>SwitchButtonWithIRQ()</h2>
@@ -284,7 +283,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>previous_switch_pushe
       </table>
 </div><div class="memdoc">
 
-<p>and function used to enable/disable interrupt during Interrupt Service Routine (ISR) </p>
+<p>"AND" function used to enable/disable interrupt during Interrupt Service Routine (ISR) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">enabled</td><td></td></tr>
