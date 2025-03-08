@@ -51,22 +51,19 @@ I'll place here C++ classes that wrap, according to OOP, the corresponding SDK f
 #### "sw_xxx" directories
 The abstract classes here are those related to software functions, such as:
 
-#### "sw_framebuffer" directory
-Framebuffer is the base for all text and graphic related functions.
+#### "sw_widget_xxx" directories
+Widget is the base for all text and graphic related functions.The derived classes GraphicWidget and TextWidget give the main mechanisms to text and graphics.
 
 #### "sw_ui_core" directory
 This where the abstract classes, that provides UI facilities, can be found, together with framebuffer classes that provides all code for drawing texts and graphs.
 
-Together with a "test_ui_core" directory where a set of test program are developped : "t_controlled_value" as an example of Model, "t_widget_on serial_monitor" as an exmaple of View, "device_KY040" already mentionned above as example of Control and "t_manager" as example about how to manage several Models and View with a single rotary encoder / switch as Control. 
-
-#### "sw_widget" directory
-This abstract class gives the main mechanisms to handle widget.
+Together with a "test_ui_core" directory where a set of test program are developped : "t_controlled_value" as an example of Model, "t_widget_on serial_monitor" as an example of View, "device_KY040" already mentionned above as example of Control and "t_manager" as example about how to manage several Models and View with a single rotary encoder / switch as Control. 
 
 #### "sw_widget_xxx" directories
 This where are all the widgets classes.
 
 ### "utilities_xxx" directories
-It contains a debug probe classe that can be useful to monitor what's going on the microcontroller thanks to level and pulse generated through some GPIO output.
+It contains a debug probe classe that can be useful to monitor what's going on the microcontroller thanks to level and pulse generated through some GPIO outputs.
 
 
 
