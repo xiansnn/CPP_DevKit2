@@ -104,7 +104,8 @@ struct struct_ConfigSwitchButton
  *
  * SwitchButton can be associated with UIController if button belongs to a GUI. In such case a new class must be created that inherits from SwitchButton and UIController.
  *
- * \image html button.png "SwitchButton times references"
+ * \image html button_short_release.svg "SwitchButton times references for short release"
+ * \image html button_long_release.svg "SwitchButton times references for long release"
  */
 class SwitchButton
 {
@@ -189,11 +190,11 @@ public:
  * @brief SwitchButtonWithIRQ status is processed by an Interrupt Service Routine.
  * It is derived from SwithButton, but debouncing, press and release are processed differently.
  * 
- * NOTICE: LONG_PUSH and TIME_OUT cannot be implemented by processing IRQ.
- *
- * SwitchButtonWithIRQ can be associated with UIController only if button belongs to a UI.
+ * \note 
+ * WARNING: LONG_PUSH and TIME_OUT cannot be implemented by processing IRQ.
+ * NOTICE: SwitchButtonWithIRQ can be associated with UIController only if button belongs to a UI.
  * 
- * NOTICE: the test program for switch button with IRQ is implmented with the rotary encoder device, wich is a good example of what can be done
+ * NOTICE: the test program for switch button with IRQ is implemented with the rotary encoder device, which is a good example of what can be done
  * with and without IRQ
  *
  */
@@ -216,7 +217,7 @@ private:
 protected:
 public:
     /**
-     * @brief and function used to enable/disable interrupt during Interrupt Service Routine (ISR)
+     * @brief "AND" function used to enable/disable interrupt during Interrupt Service Routine (ISR)
      *
      * @param enabled
      */

@@ -17,12 +17,12 @@
 /// @brief index of the font height value in the <...>_font.h file
 #define FONT_HEIGHT_INDEX 1
 
-/// @brief define the binary value for color (limited here to monochome, can be extended later)
+/// @brief define the code value for color (limited here to monochome, can be extended later)
 enum class PixelColor
 {
-    /// @brief black coded with binary value 0x0
+    /// @brief "black" coded with code 0x0
     BLACK = 0,
-    /// @brief white coded with binary value 0x1
+    /// @brief "white" coded with code 0x1
     WHITE = 1
 };
 
@@ -126,13 +126,7 @@ public:
 };
 
 
-
-/**
- * @brief This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen SSD1306).
- * It derived from GraphicFramebuffer. This allows to draw graphics directly into the display framebuffer
- * thanks to Framebuffet class graphic primitives indepently from any kind of widget
- *
- */
+/// @brief This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen SSD1306).
 class GraphicDisplayDevice : public DisplayDevice
 {
 protected:
@@ -143,16 +137,16 @@ public:
     size_t screen_pixel_height;
 
     /**
-     * @brief check the compatibility of the framebuffer and widget parameter with the physical lilitation of the display device
+     * @brief A pure virtual member function. Each device must implement this method and check the compatibility of the widget parameter with the its physical limitations.
      *
-     * @param framebuffer_cfg the framebuffer configuration data
+     * @param framebuffer_cfg the widget configuration data
      */
     virtual void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg) = 0;
 
     /**
      * @brief A pure virtual member function.
-     * It transfers the framebuffer buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.
-     * This method implements all peculiarities of the actual display device.
+     * It transfers the pixel buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.
+     * This method takes into account the specific addressing scheme and memory structure of the actual display device.
      *
      * @param pixel_frame a pointer to the struct_PixelFrame that contains the pixel_buffer to be displayed
      * @param anchor_x the x(horizontal) starting position of the frame within the display screen,(in pixel)
@@ -176,9 +170,8 @@ public:
     virtual ~GraphicDisplayDevice();
 
     /**
-     * @brief A pure virtual method. Fill the pixel_buffer with "0" (BLACK). Reset also character position to (0,0).
-     * Usefull when we have a graphic framework
-     *
+     * @brief A pure virtual method. Usefull when to clear the pixel buffer.
+     * It fills the pixel_buffer with "0" (BLACK). Reset also character position to (0,0).
      * @param pixel_frame the pixel buffer to fill
      */
     virtual void clear_pixel_buffer(struct_PixelFrame *pixel_frame) = 0;
@@ -186,7 +179,7 @@ public:
     /**
      * @brief A pure virtual method. Create a pixel buffer object.
      * \note : the width and height of the pixel frame must be known before invoking this method.
-     * \note : the graphic framebuffer uses this method to create its pixel frame buffer.
+     * \note : the graphic widget uses this method to create its pixel frame buffer.
      *
      * @param pixel_frame the pixel buffer to complete
      */
@@ -206,7 +199,7 @@ public:
 
     /**
      * @brief a graphic primitive to draw a character at a pixel position
-     * \note : DrawChar() implementation depends strongly on the FramebufferFormat.
+     * \note : DrawChar() implementation depends strongly on the memory structure of the display device.
      *
      * @param pixel_frame
      * @param text_config the configuration file of the text framebuffer

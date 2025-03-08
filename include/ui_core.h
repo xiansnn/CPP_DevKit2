@@ -58,7 +58,7 @@ class Widget;
 
 /// @brief This is the Model abstract class of Model_View_Control design pattern.
 ///
-/// It handles change_flag, a semaphore used to indicate that a screen refresh_attached_widgets is required.
+/// It handles change_flag, a semaphore used to indicate that a redraw is required for all attached widgets.
 ///
 /// The controller or any other entities that modify the model must set the change_flag
 /// and the widget in charge of its screen representation must clear the change_flag
@@ -69,7 +69,8 @@ private:
     uint32_t last_change_time;
 
     /// @brief The semaphore used to trigger the actual drawing of the widget on the screen.
-    /// It is set with the number of widget attached to this model
+    /// It is set with the number of widget attached to this model. Doing so, each time an attached widget is refreshed, the the change_flag is decrement by 1.
+    /// When all attached widget are done, the change_flag = 0 (i.e. false).
     int change_flag;
 
 protected:
