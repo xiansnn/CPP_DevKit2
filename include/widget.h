@@ -75,7 +75,23 @@ public:
     virtual void compute_blinking_phase();
 };
 
-/// @brief the generic class for all widget
+/**
+ * @brief A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicWidget with graphical capabilities and GraphicWidget is derived as 
+ * TextWidget that adds textual capabilities.
+ * 
+ *
+ * USAGE: A widget is defined by a frame with width and height in pixel, and line and column of text if derived as TextualWidget.
+ * This frame is located within the display device screen at an anchor point (x,y).
+ * 
+ * \image html widget.png "The widget frame inside the display screen frame"
+ *
+ * \note IMPORTANT NOTICE 1:  The widget is only drawn if something has changed in the Model it represents. This allows to save drawing processing time.
+ * However there is a strong limitation : only the widget buffer is transfered to the device GDDRAM, based of its specific addressing scheme.
+ * As a result, if the widget is located such that the buffer is written across device pages, the contents of the overwritten pages is lost.
+ * This is why the widget height and the widget_anchor_y must be multiple of 8. Doing so the widget buffer bytes do not ovewrite pixel outside the widget border.
+ *
+ * 
+ */
 class Widget
 {
 protected:
@@ -90,8 +106,8 @@ protected:
 
 public:
     /// @brief contructor for generic widget
-    /// @param actual_displayed_model the displayed object of the widget
-    /// @param graphic_display_screen The display device on which the widget is drawn.
+    /// @param actual_displayed_model the displayed model of the widget
+    /// @param graphic_display_screen The display device on which the widget is drawn. This device can be "null".
     Widget(Model *actual_displayed_model,
            DisplayDevice *graphic_display_screen = nullptr);
 
@@ -106,27 +122,14 @@ public:
     void set_display_screen(DisplayDevice *_new_display_device);
 
     /// @brief a pure virtual member that is called to effectively draw the widget.
-    /// \note USAGE: It can be called by the draw_refresh_all_attached_widgets() method of the Model.
+    /// \note USAGE: This member function can be called by the draw_refresh_all_attached_widgets() method of the Model.
     /// Refer to the following diagram.
     /// \image html draw.svg
     virtual void draw() = 0;
 };
 
-/**
- * @brief A widget is a displayed object on a device screen. It inherits from all framebuffer features, giving it textual and graphical capabilities.
- * USAGE: //TODO commenter le processus d'usage de GraphicWidget
- * Being a framebuffer, it is defined by a width and a height, line and column of text, and graphics.
- * It is located within the display device screen at an anchor point (x,y).
- *
- * IMPORTANT NOTICE 1:  The widget is effectively drawn if something has changed in the UIModelObejct it represents. This allows to save drawing processing time.
- * However there is a strong limitation : only the widget buffer is transered to the device GDDRAM, based of its specific addressing scheme.
- * As a result, if the widget is located such that the buffer is written across device pages, the contents of the overwritten pages is lost.
- * This is why the widget height and the widget_anchor_y must be multiple of 8. Doing so the widget buffer bytes do not ovewrite pixel outside the widget border.
- *
- * IMPORTANT NOTICE 2: The final widget implementation must know what actual model object it displays. This final implementation must have a member (can be private)
- * e.g. [final_type] * actual_displayed_model; of the actual [final_type] implementation of Model. This can be initialised by the constructor.
- *
- */
+
+/// @brief The graphical version of a Widget.
 class GraphicWidget : public Widget
 {
 private:
@@ -165,7 +168,7 @@ protected:
     /// \note USAGE: used at the begining of the draw() method.
     void clear_pixel_buffer();
 
-    /// @brief A pure virtual method that results in the transfer of the dispalyed values from the displayed model to the widget.
+    /// @brief A pure virtual method that results in the transfer of the displayed values of the displayed model to the widget.
     virtual void get_value_of_interest() = 0;
 
 public:
