@@ -3,7 +3,6 @@ var class_text_widget =
     [ "TextWidget", "class_text_widget.html#afc16a5863871d87c9cd009e567b9df39", null ],
     [ "TextWidget", "class_text_widget.html#ac8d4456a66543ca1938588eff17a0d92", null ],
     [ "~TextWidget", "class_text_widget.html#a5236b5dabb05f7a53ab9a021bc57e413", null ],
-    [ "clear_line", "class_text_widget.html#ad78f8aeaf711b85731d697092bae94b1", null ],
     [ "clear_text_buffer", "class_text_widget.html#ad0eff5956c8b16178e7eb3572a86e57d", null ],
     [ "create_text_buffer", "class_text_widget.html#a25231a80633db702af090c590d5fabc7", null ],
     [ "draw", "class_text_widget.html#a34e2f1558ebd76f1dbfb3cbfdf0e7894", null ],
@@ -15,16 +14,9 @@ var class_text_widget =
     [ "update_graphic_frame_size", "class_text_widget.html#a34c23baf9e2a633803ff709b42ad4ff5", null ],
     [ "update_text_frame_size", "class_text_widget.html#a90e41e7b1954c812001292dcc8b4dc51", null ],
     [ "write", "class_text_widget.html#a3ce8f540e45844b22efa9f18c3c85eab", null ],
-    [ "write", "class_text_widget.html#a237b451ce7140f32676109f637fb215d", null ],
     [ "write", "class_text_widget.html#ab9524e4f93739352b7fe0915e038c1fb", null ],
-    [ "auto_next_char", "class_text_widget.html#a5fd38fb14e38400bed765a067c9f5a32", null ],
-    [ "current_char_column", "class_text_widget.html#af8251cc036e15a7c182a4b2c156d6686", null ],
-    [ "current_char_line", "class_text_widget.html#acafdf1bdb34e585fe8a2dcabda337deb", null ],
-    [ "font", "class_text_widget.html#a6f9e90b07bdd553e7b0833c2679d513a", null ],
     [ "number_of_column", "class_text_widget.html#ac5dbe29b323b9ca3ec658261bbca54b2", null ],
     [ "number_of_line", "class_text_widget.html#ae87e4aa5aa4076fa0d1f03e08c1d7a9c", null ],
-    [ "tab_size", "class_text_widget.html#a104e81d58512b0c52e50878ad82b3b95", null ],
     [ "text_buffer", "class_text_widget.html#ad736dbe25c45386c7c7c02608ba2f3d4", null ],
-    [ "text_buffer_size", "class_text_widget.html#adfd92491668798cee817a5964823a411", null ],
-    [ "wrap", "class_text_widget.html#aeb9b2312bbf201662d7c8ea1691a49b8", null ]
+    [ "text_buffer_size", "class_text_widget.html#adfd92491668798cee817a5964823a411", null ]
 ];

@@ -1,11 +1,11 @@
 <map id="WidgetSquareLed" name="WidgetSquareLed">
-<area shape="rect" id="Node000001" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="53,880,505,993"/>
-<area shape="rect" id="Node000004" href="$class_widget_blinking_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="55,1041,503,1155"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="282,1008,282,1042,277,1042,277,1008"/>
-<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="5,227,553,832"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="282,847,282,880,277,880,277,847"/>
-<area shape="rect" id="Node000003" href="$class_widget.html" title="the generic class for all widget" alt="" coords="57,5,501,179"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="282,193,282,227,277,227,277,193"/>
-<area shape="rect" id="Node000005" href="$class_widget_focus_indicator.html" title="A specific class dedicated to indicate the status of an UIControlledModel. Not an abstract class,..." alt="" coords="63,1203,495,1316"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="282,1169,282,1203,277,1203,277,1169"/>
+<area shape="rect" id="Node000001" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="53,847,505,960"/>
+<area shape="rect" id="Node000004" href="$class_widget_blinking_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="55,1008,503,1121"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="282,975,282,1008,277,1008,277,975"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="5,227,553,799"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="282,814,282,847,277,847,277,814"/>
+<area shape="rect" id="Node000003" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="57,5,501,179"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="282,194,282,227,277,227,277,194"/>
+<area shape="rect" id="Node000005" href="$class_widget_focus_indicator.html" title="A specific class dedicated to indicate the status of an UIControlledModel. Not an abstract class,..." alt="" coords="63,1169,495,1283"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="282,1136,282,1170,277,1170,277,1136"/>
 </map>

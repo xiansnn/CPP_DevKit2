@@ -1,32 +1,4 @@
 var searchData=
 [
-  ['send_5fbuf_0',['send_buf',['../class_s_s_d1306.html#a617bac0b0002b299b129bc9e84772af7',1,'SSD1306']]],
-  ['send_5fcmd_1',['send_cmd',['../class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08',1,'SSD1306']]],
-  ['send_5fcmd_5flist_2',['send_cmd_list',['../class_s_s_d1306.html#abba4af0c315a9fdcab52d32acc11ab97',1,'SSD1306']]],
-  ['set_5fall_5fpixel_5fon_3',['set_all_pixel_ON',['../class_s_s_d1306.html#aee29b36a9af5d427c0665dfaf942445e',1,'SSD1306']]],
-  ['set_5fblink_5fus_4',['set_blink_us',['../class_blinker.html#a55d1c93f8b1e2492b1948944d1462665',1,'Blinker']]],
-  ['set_5fchange_5fflag_5',['set_change_flag',['../class_model.html#a47406db888c07c179881ce00cbd3937f',1,'Model']]],
-  ['set_5fclipped_5fvalue_6',['set_clipped_value',['../class_u_i_controlled_incremental_value.html#a428e1f2a8063a48f04ec45c4050af36d',1,'UIControlledIncrementalValue']]],
-  ['set_5fcontrast_7',['set_contrast',['../class_s_s_d1306.html#ae4322aca81cf05c9f9b9e5f40874cb7b',1,'SSD1306']]],
-  ['set_5fdisplay_5ffrom_5fram_8',['set_display_from_RAM',['../class_s_s_d1306.html#a8c752a77ba2889496a3f80a937818dff',1,'SSD1306']]],
-  ['set_5fdisplay_5foff_9',['set_display_OFF',['../class_s_s_d1306.html#a6fdcc8d92ed79a2af902d6e1e8d0ea07',1,'SSD1306']]],
-  ['set_5fdisplay_5fon_10',['set_display_ON',['../class_s_s_d1306.html#ae1ff6651fa144bacc2e9ab192f8b313a',1,'SSD1306']]],
-  ['set_5fdisplay_5fscreen_11',['set_display_screen',['../class_widget.html#a4ff5c22b2d69aabaeae5cd0f0c28784c',1,'Widget']]],
-  ['set_5fduty_5fcycle_12',['set_duty_cycle',['../class_p_w_m.html#acd8e937801a9144aaefaf77e741cba86',1,'PWM']]],
-  ['set_5finverse_5fcolor_13',['set_inverse_color',['../class_s_s_d1306.html#a7dd92a993f881125bd81057c35d82c87',1,'SSD1306']]],
-  ['set_5firq_14',['set_irq',['../class_p_w_m.html#a882cd8b81dee59ccc83b7b731fc786be',1,'PWM']]],
-  ['set_5flevel_15',['set_level',['../class_widget_horizontal_bar.html#a463a0d22a9509395fac826be6a8154a4',1,'WidgetHorizontalBar']]],
-  ['set_5fpos_16',['set_pos',['../class_s_g90.html#a0e8036a2f259a972fcb7d0227cb222d6',1,'SG90']]],
-  ['set_5fwidth_5fnb_5fof_5fstep_17',['set_width_nb_of_step',['../class_p_w_m.html#a706b0764d77f3b1bca0ff1bfdc99b336',1,'PWM']]],
-  ['sg90_18',['SG90',['../class_s_g90.html#a32f812f329b6dc3938faa5f142ea7c0a',1,'SG90']]],
-  ['show_19',['show',['../class_graphic_display_device.html#a3e01d3b241612be9029e1519bb96228a',1,'GraphicDisplayDevice::show()'],['../class_printer_device.html#a8fc2162479eca8abf2d8e4ec25c34d55',1,'PrinterDevice::show()'],['../class_s_s_d1306.html#a335271a156186ef7e54cfb2ebd9c0676',1,'SSD1306::show()'],['../class_graphic_widget.html#a83c221250b9dfdeb8ab03b87a783bf10',1,'GraphicWidget::show()']]],
-  ['show_5frender_5farea_20',['show_render_area',['../class_s_s_d1306.html#ad26a211970f779290c9a97335fb023fc',1,'SSD1306']]],
-  ['single_5fbyte_5fread_21',['single_byte_read',['../class_h_w___i2_c___master.html#af75401aef49c0774326f4e318f91a781',1,'HW_I2C_Master']]],
-  ['single_5fbyte_5fwrite_22',['single_byte_write',['../class_h_w___i2_c___master.html#a4bafebb5c2b2e2964b2ad83891b8ff7f',1,'HW_I2C_Master']]],
-  ['slave_5fisr_23',['slave_isr',['../class_h_w___i2_c___slave.html#ad1cd7139bba4bb865c6da8d08ff7dacd',1,'HW_I2C_Slave']]],
-  ['ssd1306_24',['SSD1306',['../class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b',1,'SSD1306']]],
-  ['start_25',['start',['../class_p_w_m.html#ae21be3a643267ca4f69be8d99fdfb06a',1,'PWM']]],
-  ['starttogether_26',['StartTogether',['../class_p_w_m.html#a05de54103744fc750a62fbc0350f60f5',1,'PWM']]],
-  ['switchbutton_27',['SwitchButton',['../class_switch_button.html#a750d21f333405881df2ef91495885a29',1,'SwitchButton']]],
-  ['switchbuttonwithirq_28',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html#aafb53c306bcbb5c681caae03b778f517',1,'SwitchButtonWithIRQ']]]
+  ['textwidget_0',['TextWidget',['../class_text_widget.html#afc16a5863871d87c9cd009e567b9df39',1,'TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen, struct_ConfigTextWidget text_cfg, Model *displayed_object=nullptr)'],['../class_text_widget.html#ac8d4456a66543ca1938588eff17a0d92',1,'TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen, struct_ConfigTextWidget text_cfg, size_t frame_width, size_t frame_height, Model *displayed_object=nullptr)']]]
 ];

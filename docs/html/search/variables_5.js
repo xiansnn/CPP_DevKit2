@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['echo_5fpin_0',['echo_pin',['../class_h_c___s_r04.html#ac907530b5d812c7f70bf08815dda8eb7',1,'HC_SR04']]],
-  ['enable_5fcom_5fl_5fr_5fremap_1',['enable_COM_L_R_remap',['../structstruct___config_s_s_d1306.html#a7f8be01a0f93321efbb68fd758ca1158',1,'struct_ConfigSSD1306']]],
-  ['encoder_2',['encoder',['../class_k_y040.html#a2eb8bfa93217c26d2fff46d3d2831be1',1,'KY040']]],
-  ['end_5fcol_3',['end_col',['../structstruct___render_area.html#a8e5a75689c2f5e0269246e8589578ce8',1,'struct_RenderArea']]],
-  ['end_5fpage_4',['end_page',['../structstruct___render_area.html#af3b7e61cfcaf6ccb395ff60088c15a0a',1,'struct_RenderArea']]],
-  ['error_5',['error',['../structstruct___i2_c_xfer_result.html#a86513dfa496e1f9ef11ff3bbb36aa359',1,'struct_I2CXferResult']]],
-  ['event_5fprocessor_6',['event_processor',['../class_rotary_encoder.html#a3cc27778f8ec392b57b191540f588478',1,'RotaryEncoder']]],
-  ['ext_5fsync_7',['EXT_SYNC',['../structstruct___config_m_p_u6050.html#a67e65625df0661354ec2a72fc5c12536',1,'struct_ConfigMPU6050']]]
+  ['fg_5fcolor_0',['fg_color',['../structstruct___config_graphic_widget.html#a00cfbe59f3789fba00da4ada4aa22eee',1,'struct_ConfigGraphicWidget::fg_color'],['../structstruct___config_text_widget.html#a86676492c58b5f3169669ddea61540dd',1,'struct_ConfigTextWidget::fg_color'],['../class_graphic_widget.html#a38884af0d399c0bec49500d978d1ea81',1,'GraphicWidget::fg_color']]],
+  ['fifo_5fop_1',['FIFO_OP',['../structstruct___config_m_p_u6050.html#ab7f05661f12849229e5f12616d4d4e40',1,'struct_ConfigMPU6050']]],
+  ['fifo_5fselected_5fsensors_2',['FIFO_SELECTED_SENSORS',['../structstruct___config_m_p_u6050.html#ac2fb6887c7ef83afec6bf017b574b841',1,'struct_ConfigMPU6050']]],
+  ['font_3',['font',['../structstruct___config_text_widget.html#a84cd4fa29c41809259ec431685df06ff',1,'struct_ConfigTextWidget']]],
+  ['font_5f12x16_4',['font_12x16',['../12x16__font_8h.html#a348b0e098c08825316c4fb41b3bf0843',1,'12x16_font.h']]],
+  ['font_5f16x32_5',['font_16x32',['../16x32__font_8h.html#a394b1de12fcd7b54cfebb977bdc89b5c',1,'16x32_font.h']]],
+  ['font_5f5x8_6',['font_5x8',['../5x8__font_8h.html#abdc16296a2d8078af08a493845f7194b',1,'5x8_font.h']]],
+  ['font_5f8x8_7',['font_8x8',['../8x8__font_8h.html#ac1e257a18f342596519ef4cbc5b673a9',1,'8x8_font.h']]],
+  ['frequency_5fdivider_8',['frequency_divider',['../structstruct___config_s_s_d1306.html#a3b094002129dd70ad83fb49097d116e2',1,'struct_ConfigSSD1306']]],
+  ['frequency_5ffactor_9',['frequency_factor',['../structstruct___config_s_s_d1306.html#acf1d9d748c0e5d861f6520f49ca21e37',1,'struct_ConfigSSD1306']]]
 ];

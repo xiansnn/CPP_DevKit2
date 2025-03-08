@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['data_0',['data',['../class_m_p_u6050.html#a524c486b1dc1716814f62dea03a62577',1,'MPU6050']]],
-  ['debounce_5fdelay_5fus_1',['debounce_delay_us',['../structstruct___config_switch_button.html#aee259e85dca55b408d3e81a9982b4efa',1,'struct_ConfigSwitchButton::debounce_delay_us'],['../class_switch_button.html#ab52dd7c8fd5e882b29a642c7961d0822',1,'SwitchButton::debounce_delay_us']]],
-  ['device_5fconfig_2',['device_config',['../class_m_p_u6050.html#a5e890360c47084a24f6869d235d0dc7e',1,'MPU6050::device_config'],['../class_s_s_d1306.html#a8c77fc2b876883b63b9f9d403e368e8d',1,'SSD1306::device_config']]],
-  ['display_5fscreen_3',['display_screen',['../class_widget.html#a663196c33c5eafd024dccd2b9e6084ae',1,'Widget']]],
-  ['dlpf_5fbw_4',['DLPF_BW',['../structstruct___config_m_p_u6050.html#afefb9507ba1cf36365f5108a28723820',1,'struct_ConfigMPU6050']]],
-  ['dt_5fgpio_5',['dt_gpio',['../class_rotary_encoder.html#adf6c9f3a9e7a9aa8b9dab7a2ca8049e3',1,'RotaryEncoder']]]
+  ['enable_5fcom_5fl_5fr_5fremap_0',['enable_COM_L_R_remap',['../structstruct___config_s_s_d1306.html#a7f8be01a0f93321efbb68fd758ca1158',1,'struct_ConfigSSD1306']]],
+  ['end_5fcol_1',['end_col',['../structstruct___render_area.html#a8e5a75689c2f5e0269246e8589578ce8',1,'struct_RenderArea']]],
+  ['end_5fpage_2',['end_page',['../structstruct___render_area.html#af3b7e61cfcaf6ccb395ff60088c15a0a',1,'struct_RenderArea']]],
+  ['error_3',['error',['../structstruct___i2_c_xfer_result.html#a86513dfa496e1f9ef11ff3bbb36aa359',1,'struct_I2CXferResult']]],
+  ['ext_5fsync_4',['EXT_SYNC',['../structstruct___config_m_p_u6050.html#a67e65625df0661354ec2a72fc5c12536',1,'struct_ConfigMPU6050']]]
 ];

@@ -22,6 +22,6 @@ var searchData=
   ['widgetsquareled_19',['WidgetSquareLed',['../class_widget_square_led.html',1,'WidgetSquareLed'],['../class_widget_square_led.html#a9219d0635dc0f3fb2d696fa66eee5283',1,'WidgetSquareLed::WidgetSquareLed()']]],
   ['widgetverticalbargraph_20',['WidgetVerticalBargraph',['../class_widget_vertical_bargraph.html',1,'WidgetVerticalBargraph'],['../class_widget_vertical_bargraph.html#ab320535b2b55805a9bdc2f7dba09cf4c',1,'WidgetVerticalBargraph::WidgetVerticalBargraph()']]],
   ['width_21',['width',['../structstruct___render_area.html#ae390a957d9f070f47e89e84fbcdb8319',1,'struct_RenderArea']]],
-  ['wrap_22',['wrap',['../structstruct___config_text_widget.html#a6b31afc67527af0820b6dcc8a0c329cb',1,'struct_ConfigTextWidget::wrap'],['../class_text_widget.html#aeb9b2312bbf201662d7c8ea1691a49b8',1,'TextWidget::wrap']]],
-  ['write_23',['write',['../class_text_widget.html#a237b451ce7140f32676109f637fb215d',1,'TextWidget::write(char character, uint8_t char_column, uint8_t char_line)'],['../class_text_widget.html#a3ce8f540e45844b22efa9f18c3c85eab',1,'TextWidget::write()'],['../class_text_widget.html#ab9524e4f93739352b7fe0915e038c1fb',1,'TextWidget::write(const char *c_str)']]]
+  ['wrap_22',['wrap',['../structstruct___config_text_widget.html#a6b31afc67527af0820b6dcc8a0c329cb',1,'struct_ConfigTextWidget']]],
+  ['write_23',['write',['../class_text_widget.html#a3ce8f540e45844b22efa9f18c3c85eab',1,'TextWidget::write()'],['../class_text_widget.html#ab9524e4f93739352b7fe0915e038c1fb',1,'TextWidget::write(const char *c_str)']]]
 ];

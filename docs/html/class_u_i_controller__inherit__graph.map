@@ -1,5 +1,5 @@
 <map id="UIController" name="UIController">
 <area shape="rect" id="Node000001" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="73,5,501,104"/>
-<area shape="rect" id="Node000002" href="$class_k_y040.html" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt..." alt="" coords="5,152,569,321"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="290,119,290,152,285,152,285,119"/>
+<area shape="rect" id="Node000002" href="$class_k_y040.html" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt..." alt="" coords="5,152,569,303"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="290,119,290,153,285,153,285,119"/>
 </map>

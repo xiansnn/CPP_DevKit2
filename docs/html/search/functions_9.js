@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ky040_0',['KY040',['../class_k_y040.html#a67adb64d0d3d1e2bca7f9c8312c06706',1,'KY040']]]
+  ['line_0',['line',['../class_graphic_widget.html#a486f223706f90218336d4fa3747ef76c',1,'GraphicWidget']]],
+  ['lo_1',['lo',['../class_probe.html#ade2391514faaee5f3acfffc4d3cb2de8',1,'Probe']]]
 ];

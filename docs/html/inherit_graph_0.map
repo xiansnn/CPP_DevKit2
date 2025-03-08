@@ -4,8 +4,8 @@
 <area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="364,27,396,41,452,72,497,101,494,106,449,76,394,45,362,32"/>
 <area shape="rect" id="Node000002" href="$class_widget_focus_indicator.html" title="A specific class dedicated to indicate the status of an UIControlledModel. Not an abstract class,..." alt="" coords="633,104,758,129"/>
 <area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="600,114,632,114,632,119,600,119"/>
-<area shape="rect" id="Node000009" href="$class_widget.html" title="the generic class for all widget" alt="" coords="5,179,61,203"/>
-<area shape="rect" id="Node000004" href="$class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="109,153,200,178"/>
+<area shape="rect" id="Node000009" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="5,179,61,203"/>
+<area shape="rect" id="Node000004" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="109,153,200,178"/>
 <area shape="poly" id="edge3_Node000009_Node000004" title=" " alt="" coords="76,179,107,173,109,178,77,185"/>
 <area shape="rect" id="Node000010" href="$class_print_widget.html" title="A widget used when we need to simply print but still want to take advantage of the status change mana..." alt="" coords="116,203,193,227"/>
 <area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="77,197,116,205,115,210,76,202"/>

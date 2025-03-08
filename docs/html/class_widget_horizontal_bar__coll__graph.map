@@ -1,13 +1,13 @@
 <map id="WidgetHorizontalBar" name="WidgetHorizontalBar">
-<area shape="rect" id="Node000001" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="177,1149,609,1431"/>
-<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="A widget is a displayed object on a device screen. It inherits from all framebuffer features,..." alt="" coords="119,513,667,1100"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="395,1115,395,1150,390,1150,390,1115"/>
-<area shape="rect" id="Node000003" href="$class_widget.html" title="the generic class for all widget" alt="" coords="5,315,449,451"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="261,464,281,513,276,515,256,466"/>
-<area shape="rect" id="Node000004" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="67,89,171,169"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="138,168,194,299,190,301,133,170"/>
-<area shape="rect" id="Node000005" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="195,5,475,253"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="291,254,275,292,271,301,266,299,270,290,286,252"/>
-<area shape="rect" id="Node000006" href="$structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="474,325,642,442"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="538,443,516,499,511,497,533,441"/>
+<area shape="rect" id="Node000001" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="177,1079,609,1211"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="119,476,667,1029"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="395,1045,395,1079,390,1079,390,1045"/>
+<area shape="rect" id="Node000003" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="5,278,449,414"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="263,426,282,475,278,477,258,428"/>
+<area shape="rect" id="Node000004" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="67,71,171,151"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="140,149,192,262,187,264,135,152"/>
+<area shape="rect" id="Node000005" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="195,5,475,216"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="290,217,272,255,268,264,264,262,268,253,285,215"/>
+<area shape="rect" id="Node000006" href="$structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="474,287,642,405"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="537,405,514,461,509,459,532,403"/>
 </map>
