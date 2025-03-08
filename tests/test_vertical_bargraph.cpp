@@ -47,7 +47,7 @@ void simulate_values(ModelBargraph *model)
 #ifdef PRINT_DEBUG
     printf("\n");
 #endif
-    // model->process_control_event(); // pas necessaire car pas UI
+    model->set_change_flag();
 }
 
 struct_ConfigGraphicWidget vertical_bargraph_cfg = {
