@@ -6,6 +6,7 @@ skinparam SequenceMessageAlignment center
 [-> my_widget : draw()
     
 loop for each widget
+
 group get value of interest from model
 my_widget->my_widget ++: get_value_of_interest()
 actual_displayed_model <- my_widget ++: read values and process them
@@ -13,27 +14,13 @@ rnote over my_widget : specific to the implemented widget and the attached model
 actual_displayed_model -> my_widget --: values
 deactivate my_widget
 end
-group check blinking
-my_widget -> my_widget ++ : compute_blinking_phase()
-my_widget -> system_clock ++ : get system time
-my_widget <- system_clock --: blink_phase_changed = true | false
-deactivate my_widget
-end
 
-alt blink_phase_changed = true
-my_widget -> my_widget --++: make the widget blink
-my_widget -> my_widget --++: clear blink_phase_changed
-return
-deactivate my_widget
-    
-
-
-else blink_phase_changed = false
 group check if model has changed
 actual_displayed_model <- my_widget ++: has_changed()
 actual_displayed_model -> my_widget --: change_flag
 end
-alt change_flag != 0
+
+alt change_flag is true
 
 group clear pixel buffer
 my_widget -> my_widget ++: clear_pixel_buffer()
@@ -41,6 +28,7 @@ my_widget -> graphic_display_screen ++: clear_pixel_buffer(&pixel_frame)
 return
 deactivate my_widget
 end
+
 group widget drawing
 rnote over my_widget : specific to the effective widget drawing
 end
@@ -53,6 +41,8 @@ return
 deactivate my_widget
 end
 end
+
+
 group show widget to screen
 my_widget-> my_widget ++ : show()
 my_widget -> graphic_display_screen ++: show(pixel_frame, anchor_x, anchor_y)
@@ -66,10 +56,28 @@ rnote over actual_displayed_model : change_flag -= 1
 return
 end
 end
+
+
+group check if blink phase has changed
+my_widget -> Blinker++: compute_phase()
+my_widget <- Blinker--: blink phase has changed = true|false
 end
+
+alt blink_phase_changed is true
+my_widget -> my_widget ++ : make widget blinking
+deactivate my_widget
+my_widget -> Blinker ++ : clear_blinking_phase_change()
+return
+end
+
 end
 [<- my_widget: return
 @enduml
+
+
+
+
+
 
 @startuml draw
 title method : draw
@@ -90,6 +98,7 @@ group check if model has changed
 actual_displayed_model <- my_widget ++: has_changed()
 actual_displayed_model -> my_widget --: change_flag
 end
+
 alt change_flag != 0
 
 group clear pixel buffer
@@ -97,6 +106,7 @@ my_widget -> my_widget ++: clear_pixel_buffer()
 my_widget -> graphic_display_screen ++: clear_pixel_buffer(&pixel_frame)
 return
 deactivate my_widget
+
 end
 group widget drawing
 rnote over my_widget : specific to the effective widget drawing
@@ -110,6 +120,7 @@ return
 deactivate my_widget
 end
 end
+
 group show widget to screen
 my_widget-> my_widget ++ : show()
 my_widget -> graphic_display_screen ++: show(pixel_frame, anchor_x, anchor_y)
@@ -123,6 +134,21 @@ rnote over actual_displayed_model : change_flag -= 1
 return
 end
 end
+
+group check blinking
+my_widget -> my_widget ++ : compute_blinking_phase()
+my_widget -> system_clock ++ : get system time
+my_widget <- system_clock --: blink_phase_changed = true | false
+deactivate my_widget
+end
+
+alt blink_phase_changed = true
+my_widget -> my_widget --++: make the widget blink
+my_widget -> my_widget --++: clear blink_phase_changed
+return
+deactivate my_widget
+end
+
 end
 [<- my_widget: return
 @enduml

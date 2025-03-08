@@ -1,0 +1,84 @@
+@startuml button_short_release
+robust "physical button" as switch
+robust "logical button" as button
+concise ButtonState
+robust event
+switch is low
+button is RELEASED
+ButtonState is IDLE
+event is NOOP
+
+highlight 0 to 5 : DEBOUNCE
+highlight 15 to 20 : DEBOUNCE
+
+@switch
+0 is {low,high}
+5 is high
+15 is {high,low}
+20 is low
+
+@button
+@5 <-> @+20 : {long_release_delay_us}
+@20 <-> @+25 : {time_out_delay_us}
+5 is PUSHED
+20 is RELEASED
+
+@event
+5 is PUSH
+10 is NOOP
+20 is RELEASE_AFTER_SHORT_TIME
+25 is NOOP
+45 is TIME_OUT
+50 is NOOP
+
+
+@ButtonState
+10 is Active
+25 is TIME_OUT_PENDING
+50 is IDLE
+
+@enduml
+
+@startuml button_long_release
+robust "physical button" as switch
+robust "logical button" as button
+concise ButtonState
+robust event
+switch is low
+button is RELEASED
+ButtonState is IDLE
+event is NONE
+
+highlight 0 to 5 : DEBOUNCE
+highlight 35 to 40 : DEBOUNCE
+
+@switch
+0 is {low,high}
+5 is high
+35 is {high,low}
+40 is low
+
+@button
+@5 <-> @+20 : {LONG_RELEASE_DELAY_us}
+@40 <-> @+25 : {TIME_OUT_DELAY_us}
+5 is PRESSED
+40 is RELEASED
+
+@event
+5 is PUSH
+10 is NONE
+30 is LONG_PUSH
+35 is NONE
+40 is RELEASE_AFTER_LONG_TIME
+45 is NONE
+65 is TIME_OUT
+70 is NONE
+
+@ButtonState
+@5 <-> @+25 : {LONG_PUSH_DELAY_us}
+5 is ACTIVE
+30 is RELEASE_PENDING
+40 is TIME_OUT_PENDING
+65 is IDLE
+
+@enduml
