@@ -8,16 +8,16 @@
  * @copyright Copyright (c) 2025
  *
  */
-#include "ssd1306.h"
-#include "widget.h"
+#include "device_SSD1306/ssd1306.h"
+#include "sw_widget/widget.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <string>
-#include "ssd1306/raspberry26x32.h"
+#include "device_SSD1306/ssd1306/raspberry26x32.h"
 #include <math.h>
 #include <numbers>
-#include "probe.h"
+#include "utilities_debug_probe/probe.h"
 #include <sstream>
 #include <iomanip>
 

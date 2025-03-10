@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2025
  *
  */
-#include "widget_square_led.h"
+#include "sw_widget_square_led/widget_square_led.h"
 #include "t_square_led_model.cpp"
 
 /**
@@ -46,8 +46,6 @@ my_blinking_square_led_widget::my_blinking_square_led_widget(MySquareLedModel *a
 my_blinking_square_led_widget::~my_blinking_square_led_widget()
 {
 }
-
-
 
 void my_blinking_square_led_widget::get_value_of_interest()
 {

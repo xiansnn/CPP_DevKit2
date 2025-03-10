@@ -11,7 +11,7 @@
 
 #pragma once
 
-#include "ui_core.h"
+#include "sw_ui_core/ui_core.h"
 #include "t_managed_horizontal_bar_models.cpp"
 
 #define MODEL_OBJECT_STATUS_TIME_OUT_us 3000000

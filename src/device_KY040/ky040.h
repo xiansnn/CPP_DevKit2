@@ -11,8 +11,9 @@
 
 #pragma once
 
-#include "rotary_encoder.h"
-#include "ui_core.h"
+#include "device_rotary_encoder/rotary_encoder.h"
+#include "sw_ui_core/ui_core.h"
+
 /**
  * @brief This class implement the module device KY040 which is a rotary encoder with a centrl switch push button.
  * 

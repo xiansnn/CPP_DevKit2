@@ -9,7 +9,7 @@
  *
  */
 #include "pico/stdlib.h"
-#include "sg90.h"
+#include "device_SG90/sg90.h"
 
 struct_ConfigSG90 motor_config{
     .command_pin = 7,

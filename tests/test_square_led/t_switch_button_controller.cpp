@@ -9,8 +9,8 @@
  * 
  */
 
-#include "switch_button.h"
-#include "ui_core.h"
+#include "device_switch_button/switch_button.h"
+#include "sw_ui_core/ui_core.h"
 
 
 /**

@@ -11,7 +11,7 @@
 
 #pragma once
 
-#include "switch_button.h"
+#include "device_switch_button/switch_button.h"
 
 /// @brief this is a function pointer used as rotary encoder constructor paramater
 typedef void (*control_event_processor_t)(UIControlEvent event);

@@ -11,7 +11,7 @@
 #pragma once
 
 #include "pico/stdlib.h"
-#include "hw_i2c.h"
+#include "hw_I2C/hw_i2c.h"
 #include "mpu6050/config_MPU6050.h"
 
 /**

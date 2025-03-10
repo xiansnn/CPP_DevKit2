@@ -5,8 +5,9 @@
  */
 
 #include <stdio.h>
-#include "hw_pwm.h"
-#include "probe.h"
+#include "hw_PWM/hw_pwm.h"
+#include "utilities_debug_probe/probe.h"
+
 
 // This example drives a PWM output at a range of duty cycles, and uses
 // another PWM slice in input mode to measure the duty cycle. You'll need to

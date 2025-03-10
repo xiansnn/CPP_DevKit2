@@ -1,6 +1,7 @@
-#include "msgeq7.h"
 #include <array>
-#include "probe.h"
+#include "device_MSGEQ7/msgeq7.h"
+#include "utilities_debug_probe/probe.h"
+
 Probe pr_D4 = Probe(4);
 
 #define MSGEQ7_STROBE 19

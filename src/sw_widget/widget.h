@@ -11,8 +11,8 @@
 
 #pragma once
 
-#include "display_device.h"
-#include "ui_core.h"
+#include "sw_display_device/display_device.h"
+#include "sw_ui_core/ui_core.h"
 
 #include <vector>
 #include <string>
@@ -21,10 +21,10 @@
 /// @brief flag used to generate 127 character font or full extended 255 character font.
 /// \note Must be placed before include "...font..."
 #define SSD1306_ASCII_FULL
-#include "ssd1306/5x8_font.h"
-#include "ssd1306/8x8_font.h"
-#include "ssd1306/12x16_font.h"
-#include "ssd1306/16x32_font.h"
+#include "device_SSD1306/ssd1306/5x8_font.h"
+#include "device_SSD1306/ssd1306/8x8_font.h"
+#include "device_SSD1306/ssd1306/12x16_font.h"
+#include "device_SSD1306/ssd1306/16x32_font.h"
 
 /// @brief character code for BACKSPACE ('BS', 0x08)
 #define BACKSPACE '\b'

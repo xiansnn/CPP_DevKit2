@@ -8,14 +8,14 @@
  * @copyright Copyright (c) 2025
  *
  */
-#include "widget_square_led.h"
-#include "ssd1306.h"
-#include "probe.h"
-#include "ky040.h"
+#include "sw_widget_square_led/widget_square_led.h"
+#include "device_SSD1306/ssd1306.h"
+#include "device_KY040/ky040.h"
+#include "utilities_debug_probe/probe.h"
 
-#include "test_managed_square_led/t_managed_square_led_models.cpp"
-#include "test_managed_square_led/t_managed_square_led_manager.cpp"
-#include "test_managed_square_led/t_managed_square_led_widgets.cpp"
+#include "t_managed_square_led_models.cpp"
+#include "t_managed_square_led_manager.cpp"
+#include "t_managed_square_led_widgets.cpp"
 
 #define CENTRAL_SWITCH_GPIO 6
 #define ENCODER_CLK_GPIO 26

@@ -9,10 +9,10 @@
  *
  */
 
-#include "ssd1306.h"
-#include "switch_button.h"
-#include "test_tuning_dial/t_tuning_dial_model.cpp"
-#include "test_tuning_dial/t_tuning_dial_widget.cpp"
+#include "device_SSD1306/ssd1306.h"
+#include "device_switch_button/switch_button.h"
+#include "t_tuning_dial_model.cpp"
+#include "t_tuning_dial_widget.cpp"
 
 /// @brief define central switch config
 struct_ConfigSwitchButton cfg_central_switch{

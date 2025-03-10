@@ -10,8 +10,9 @@
  */
 #pragma once
 
-#include "ui_core.h"
-#include "widget.h"
+#include "sw_ui_core/ui_core.h"
+#include "sw_widget/widget.h"
+
 
 /// @brief a widget that draw an horizontal bar, filled up to the given level value
 class WidgetHorizontalBar : public GraphicWidget

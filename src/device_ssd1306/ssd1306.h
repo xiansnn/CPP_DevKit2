@@ -12,8 +12,8 @@
 
 #include "ssd1306/commands_SSD1306.h"
 #include "pico/stdlib.h"
-#include "hw_i2c.h"
-#include "display_device.h"
+#include "hw_I2C/hw_i2c.h"
+#include "sw_display_device/display_device.h"
 
 ///@brief the symbolic value of a byte
 #define BYTE_SIZE 8

@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2025
  *
  */
-#include "ui_core.h"
-#include "ui_control_event.h"
+#include "sw_ui_core/ui_core.h"
+#include "sw_ui_core/ui_control_event.h"
 
 /// @brief MySquareLedModel : Example of final implementation of Model
 class MySquareLedModel : public UIControlledModel

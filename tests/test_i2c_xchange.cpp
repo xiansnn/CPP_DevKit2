@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-#include "hw_i2c.h"
-#include "probe.h"
+#include "hw_I2C/hw_i2c.h"
+#include "utilities_debug_probe/probe.h"
 
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);

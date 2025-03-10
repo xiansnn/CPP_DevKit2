@@ -8,11 +8,11 @@
  * @copyright Copyright (c) 2025
  *
  */
-#include "ssd1306.h"
-#include "probe.h"
+#include "device_SSD1306/ssd1306.h"
+#include "utilities_debug_probe/probe.h"
 
-#include "test_square_led/t_switch_button_controller.cpp"
-#include "test_square_led/t_square_led_widget.cpp"
+#include "t_switch_button_controller.cpp"
+#include "t_square_led_widget.cpp"
 
 /// @brief ########## Debug/Observer Probe for logic analyser section ##########
 Probe pr_D4 = Probe(4);

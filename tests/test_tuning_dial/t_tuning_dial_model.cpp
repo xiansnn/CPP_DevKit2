@@ -9,7 +9,8 @@
  *
  */
 #pragma once
-#include "widget.h"
+
+#include "sw_widget/widget.h"
 
 class FMFrequencyTuningModel : public Model
 {

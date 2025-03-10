@@ -43,8 +43,7 @@ endif()
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
-# Add the standard include files to the build
-include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/src)
 
 #-------------------------------------------------------------------------------------
 add_subdirectory(src)

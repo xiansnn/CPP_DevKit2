@@ -9,10 +9,10 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#include "dht11.h"
+#include "device_DHT11/dht11.h"
 #include <stdio.h>
 #include <math.h>
-#include "probe.h"
+#include "utilities_debug_probe/probe.h"
 
 #define CURRENT_DHT_PIN 16 // to be changed to the actual gpio pin
 

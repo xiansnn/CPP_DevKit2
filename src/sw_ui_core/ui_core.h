@@ -12,8 +12,8 @@
 
 #include "pico/stdlib.h"
 #include "ui_control_event.h"
-#include "display_device.h"
-#include "widget.h"
+#include "sw_display_device/display_device.h"
+#include "sw_widget/widget.h"
 
 #include <vector>
 #include <map>

@@ -9,13 +9,13 @@
  *
  */
 
-#include "ssd1306.h"
-#include "probe.h"
-#include "ky040.h"
+#include "device_SSD1306/ssd1306.h"
+#include "device_KY040/ky040.h"
+#include "utilities_debug_probe/probe.h"
 
-#include "test_managed_horizontal_bar/t_managed_horizontal_bar_models.cpp"
-#include "test_managed_horizontal_bar/t_managed_horizontal_bar_widgets.cpp"
-#include "test_managed_horizontal_bar/t_managed_horizontal_bar_manager.cpp"
+#include "t_managed_horizontal_bar_models.cpp"
+#include "t_managed_horizontal_bar_widgets.cpp"
+#include "t_managed_horizontal_bar_manager.cpp"
 
 #define CENTRAL_SWITCH_GPIO 6
 #define ENCODER_CLK_GPIO 26

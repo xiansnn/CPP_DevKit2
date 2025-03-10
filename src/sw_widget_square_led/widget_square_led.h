@@ -8,8 +8,9 @@
  * @copyright Copyright (c) 2025
  *
  */
-#include "widget.h"
-#include "display_device.h"
+
+#include "sw_widget/widget.h"
+#include "sw_display_device/display_device.h"
 
 #pragma once
 

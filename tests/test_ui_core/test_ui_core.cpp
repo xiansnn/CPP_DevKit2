@@ -14,12 +14,12 @@
  * @copyright Copyright (c) 2024
  *
  */
-#include "test_ui_core/t_controlled_value.cpp"
-#include "test_ui_core/t_manager.cpp"
-#include "test_ui_core/t_widget_on_serial_monitor.cpp"
-#include "ky040.h"
 #include <map>
 #include <string>
+#include "t_controlled_value.cpp"
+#include "t_manager.cpp"
+#include "t_widget_on_serial_monitor.cpp"
+#include "device_KY040/ky040.h"
 
 #define CENTRAL_SWITCH_GPIO 6
 #define ENCODER_CLK_GPIO 26

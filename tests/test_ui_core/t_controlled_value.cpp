@@ -10,7 +10,7 @@
  */
 
 #pragma once
-#include "ui_core.h"
+#include "sw_ui_core/ui_core.h"
 
 /// @brief Construct an implementation of UIControlledIncrementalValue for test_ui_core program.
 class MyIncrementalValueModel : public UIControlledIncrementalValue
