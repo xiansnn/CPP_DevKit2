@@ -80,7 +80,6 @@ void PWM::clear_irq()
 
 /**
  * @brief Construct a new PWMgatedMeasure::PWMgatedMeasure object
- * // TODO complete the documentation
  * 
  * @param pin_gate NOTICE: Only the PWM B pins can be used as input.
  * @param resolution_ns 

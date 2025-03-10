@@ -200,7 +200,7 @@ void SSD1306::draw_char_into_pixel(struct_PixelFrame *pixel_memory_structure,
                        const struct_ConfigTextWidget text_config,
                        const char c, const uint8_t anchor_x, const uint8_t anchor_y)
 {
-    if (!text_config.font || c < 32) // TODO voir pour construire une classe Font
+    if (!text_config.font || c < 32) 
         return;
 
     uint8_t font_width = text_config.font[FONT_WIDTH_INDEX];
