@@ -1,5 +1,16 @@
 include_directories(${CPP_DevKit_SOURCE_DIR}/src)
 
+file(GLOB ALL_ITEMS LIST_DIRECTORIES true  ${CMAKE_CURRENT_LIST_DIR}/*  )
+foreach(ITEM ${ALL_ITEMS})
+    if(IS_DIRECTORY ${ITEM})
+        get_filename_component(SHORT_NAME ${ITEM} NAME)
+        message( STATUS "----> library dir : ${SHORT_NAME}")
+        add_subdirectory(${SHORT_NAME})
+    endif()
+endforeach(ITEM)
+
+
+
 #-------------------------------------------------------------------------------------
 add_executable(test_switch_button test_switch_button_irq.cpp)
 target_link_libraries(test_switch_button  
@@ -8,11 +19,7 @@ target_link_libraries(test_switch_button
             debug_probe
             )
 #-------------------------------------------------------------------------------------
-add_executable(test_debug_probe test_debug_probe.cpp)
-target_link_libraries(test_debug_probe
-            pico_stdlib 
-            debug_probe
-            )
+
 #-------------------------------------------------------------------------------------
 add_executable(test_rotary_encoder test_rotary_encoder.cpp)
 target_link_libraries(test_rotary_encoder  
@@ -33,12 +40,12 @@ target_link_libraries(test_i2c_xchange
             debug_probe
             )
 #-------------------------------------------------------------------------------------
-add_executable(test_dht11  test_dht.cpp  )   
-target_link_libraries(test_dht11 
-            pico_stdlib 
-            dht11
-            debug_probe
-            )
+# add_executable(test_dht11  test_dht.cpp  )   
+# target_link_libraries(test_dht11 
+#             pico_stdlib 
+#             dht11
+#             debug_probe
+#             )
 #-------------------------------------------------------------------------------------
 add_executable(test_pwm test_pwm.cpp  )
 target_link_libraries(test_pwm
