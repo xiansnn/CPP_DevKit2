@@ -9,8 +9,8 @@
  *
  */
 
-#include "rotary_encoder.h"
-#include "probe.h"
+#include "device_rotary_encoder/rotary_encoder.h"
+#include "utilities_debug_probe/probe.h"
 #include <map>
 #include <string>
 

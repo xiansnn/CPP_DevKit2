@@ -12,8 +12,8 @@
 #include "pico/time.h"
 #include "hardware/irq.h"
 #include "hardware/pwm.h"
-#include "probe.h"
-#include "hw_pwm.h"
+#include "hw_PWM/hw_pwm.h"
+#include "utilities_debug_probe/probe.h"
 
 #define PWM_OUT 6
 #define STEP_ns 500

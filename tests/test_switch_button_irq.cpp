@@ -8,10 +8,10 @@
  * @copyright Copyright (c) 2024
  *
  */
-#include "switch_button.h"
-#include "probe.h"
 #include <map>
 #include <string>
+#include "device_switch_button/switch_button.h"
+#include "utilities_debug_probe/probe.h"
 
 #define CENTRAL_SWITCH_GPIO 6
 #define ENCODER_CLK_GPIO 26

@@ -1,8 +1,9 @@
-#include "mpu6050.h"
+#include "device_MPU6050/mpu6050.h"
 #include "hardware/gpio.h"
 #include <stdio.h>
 #include <math.h>
-#include "probe.h"
+#include "utilities_debug_probe/probe.h"
+
 
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);

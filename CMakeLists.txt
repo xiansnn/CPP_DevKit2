@@ -43,12 +43,9 @@ endif()
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
-# Add the standard include files to the build
-include_directories(${PROJECT_SOURCE_DIR}/include)
-
 #-------------------------------------------------------------------------------------
 add_subdirectory(src)
-add_subdirectory(tests)
+# add_subdirectory(tests)
 #-------------------------------------------------------------------------------------
 
 # Add executable. Default name is the project name, version 0.1

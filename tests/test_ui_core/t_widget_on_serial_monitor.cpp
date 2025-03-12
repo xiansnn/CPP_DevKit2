@@ -8,18 +8,15 @@
  * @copyright Copyright (c) 2025
  *
  */
-#include "t_controlled_value.cpp"
-#include "t_manager.cpp"
-
-#include "ui_core.h"
-#include "widget.h"
-
-#include "display_device.h"
-
 #include <sstream>
 #include <string>
 
-#include "probe.h"
+#include "t_controlled_value.cpp"
+#include "t_manager.cpp"
+#include "sw_ui_core/ui_core.h"
+#include "sw_widget/widget.h"
+#include "sw_display_device/display_device.h"
+#include "utilities_debug_probe/probe.h"
 
 /// @brief  3 probes are create to observe the time execution with a logic analyser
 Probe pr_D1 = Probe(1);

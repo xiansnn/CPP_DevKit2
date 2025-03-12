@@ -9,17 +9,19 @@
  * @copyright Copyright (c) 2024
  *
  */
-#include "ssd1306.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <string>
-#include "ssd1306/raspberry26x32.h"
 #include <math.h>
 #include <numbers>
-#include "probe.h"
 #include <sstream>
 #include <iomanip>
+
+#include "device_SSD1306/ssd1306.h"
+#include "device_SSD1306/ssd1306/raspberry26x32.h"
+#include "utilities_debug_probe/probe.h"
 
 #define DEGREE "\xF8"
 

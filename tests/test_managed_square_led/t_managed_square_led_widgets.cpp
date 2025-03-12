@@ -11,10 +11,11 @@
 
 #pragma once
 
-#include "ui_core.h"
-#include "widget_square_led.h"
+#include "sw_ui_core/ui_core.h"
+#include "sw_widget_square_led/widget_square_led.h"
+#include "utilities_debug_probe/probe.h"
+
 #include "t_managed_square_led_models.cpp"
-#include "probe.h"
 
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);

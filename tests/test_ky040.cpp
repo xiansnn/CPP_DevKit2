@@ -9,8 +9,8 @@
  *
  */
 
-#include "ky040.h"
-#include "probe.h"
+#include "device_KY040/ky040.h"
+#include "utilities_debug_probe/probe.h"
 #include <map>
 #include <string>
 

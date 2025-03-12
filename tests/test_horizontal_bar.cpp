@@ -9,11 +9,11 @@
  *
  */
 
-#include "ssd1306.h"
-#include "probe.h"
+#include "device_SSD1306/ssd1306.h"
+#include "utilities_debug_probe/probe.h"
+#include "sw_widget_horizontal_bar/widget_horizontal_bar.h"
+#include "sw_ui_core/ui_core.h"
 
-#include "widget_horizontal_bar.h"
-#include "ui_core.h"
 
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);

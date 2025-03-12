@@ -1,14 +1,16 @@
-#-------------------------------------------------------------------------------------
-add_executable(test_debug_probe test_debug_probe.cpp)
-pico_enable_stdio_uart(test_debug_probe 1)
-pico_enable_stdio_usb(test_debug_probe 0)
-# pico_set_program_name(test_debug_probe "test_debug_probe")
-# pico_set_program_version(test_debug_probe "0.1")
-target_link_libraries(test_debug_probe
-            pico_stdlib 
-            debug_probe
-            )
-# pico_add_extra_outputs(test_debug_probe)
+include_directories(${CPP_DevKit_SOURCE_DIR}/src)
+
+file(GLOB ALL_ITEMS LIST_DIRECTORIES true  ${CMAKE_CURRENT_LIST_DIR}/*  )
+foreach(ITEM ${ALL_ITEMS})
+    if(IS_DIRECTORY ${ITEM})
+        get_filename_component(SHORT_NAME ${ITEM} NAME)
+        message( STATUS "----> library dir : ${SHORT_NAME}")
+        add_subdirectory(${SHORT_NAME})
+    endif()
+endforeach(ITEM)
+
+
+
 #-------------------------------------------------------------------------------------
 add_executable(test_switch_button test_switch_button_irq.cpp)
 target_link_libraries(test_switch_button  
@@ -16,6 +18,8 @@ target_link_libraries(test_switch_button
             switch_button
             debug_probe
             )
+#-------------------------------------------------------------------------------------
+
 #-------------------------------------------------------------------------------------
 add_executable(test_rotary_encoder test_rotary_encoder.cpp)
 target_link_libraries(test_rotary_encoder  
@@ -36,12 +40,12 @@ target_link_libraries(test_i2c_xchange
             debug_probe
             )
 #-------------------------------------------------------------------------------------
-add_executable(test_dht11  test_dht.cpp  )   
-target_link_libraries(test_dht11 
-            pico_stdlib 
-            dht11
-            debug_probe
-            )
+# add_executable(test_dht11  test_dht.cpp  )   
+# target_link_libraries(test_dht11 
+#             pico_stdlib 
+#             dht11
+#             debug_probe
+#             )
 #-------------------------------------------------------------------------------------
 add_executable(test_pwm test_pwm.cpp  )
 target_link_libraries(test_pwm
@@ -125,7 +129,7 @@ target_link_libraries(test_ky040
             debug_probe
             )
 #-------------------------------------------------------------------------------------
-add_executable(test_ui_core  test_ui_core.cpp )               
+add_executable(test_ui_core  test_ui_core/test_ui_core.cpp )               
 target_link_libraries(test_ui_core 
             pico_stdlib
             ky040
@@ -140,7 +144,7 @@ target_link_libraries(test_gpio_irq
             pico_stdlib
             )
 #-------------------------------------------------------------------------------------
-add_executable(test_square_led test_square_led.cpp )
+add_executable(test_square_led test_square_led/test_square_led.cpp )
 target_link_libraries(test_square_led 
             pico_stdlib
             widget_square_led
@@ -151,7 +155,7 @@ target_link_libraries(test_square_led
             switch_button
             )
 #-------------------------------------------------------------------------------------
-add_executable(test_managed_square_led test_managed_square_led.cpp )
+add_executable(test_managed_square_led test_managed_square_led/test_managed_square_led.cpp )
 target_link_libraries(test_managed_square_led 
             pico_stdlib
             widget_square_led
@@ -171,7 +175,7 @@ target_link_libraries(test_horizontal_bar
             widget_horizontal_bar
             )    
 #-------------------------------------------------------------------------------------
-add_executable(test_managed_horizontal_bar test_managed_horizontal_bar.cpp)
+add_executable(test_managed_horizontal_bar  test_managed_horizontal_bar/test_managed_horizontal_bar.cpp)
 target_link_libraries(test_managed_horizontal_bar
             pico_stdlib
             hw_i2c
@@ -205,7 +209,7 @@ target_link_libraries(test_vertical_bargraph
             widget
             )    
 #-------------------------------------------------------------------------------------
-add_executable(test_tuning_dial test_tuning_dial.cpp)
+add_executable(test_tuning_dial test_tuning_dial/test_tuning_dial.cpp)
 target_link_libraries(test_tuning_dial
             pico_stdlib
             hw_i2c
