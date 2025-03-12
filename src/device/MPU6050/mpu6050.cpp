@@ -1,13 +1,4 @@
-/**
- * @file mpu6050.cpp
- * @author xiansnn (xiansnn@hotmail.com)
- * @brief
- * @version 0.1
- * @date 2023-05-02
- *
- * @copyright Copyright (c) 2023
- *
- */
+
 #include "include/register_address_MPU6050.h"
 #include "include/mpu6050.h"
 #include <stdio.h>

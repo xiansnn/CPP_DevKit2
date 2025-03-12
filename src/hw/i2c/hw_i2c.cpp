@@ -1,14 +1,4 @@
-/**
- * @file hw_i2c.cpp
- * @author xiansnn (xiansnn@hotmail.com)
- * @brief this file provides an abstract view of the I2C hardware instances.
- * It must be considered as a set of helper to the official pico-sdk.
- * @version 0.1
- * @date 2023-05-02
- *
- * @copyright Copyright (c) 2023
- *
- */
+
 #include "include/hw_i2c.h"
 #include <cstring>
 #include <stdio.h>

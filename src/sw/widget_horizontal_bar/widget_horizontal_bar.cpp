@@ -1,13 +1,4 @@
-/**
- * @file widget_horizontal_bar.cpp
- * @author xiansnn (xiansnn@hotmail.com)
- * @brief
- * @version 0.1
- * @date 2025-01-13
- *
- * @copyright Copyright (c) 2025
- *
- */
+
 #include "include/widget_horizontal_bar.h"
 
 void WidgetHorizontalBar::convert_level_value_to_px()

@@ -1,13 +1,3 @@
-/**
- * @file ky040.cpp
- * @author xiansnn (xiansnn@hotmail.com)
- * @brief
- * @version 0.1
- * @date 2025-01-06
- *
- * @copyright Copyright (c) 2025
- *
- */
 #include "include/ky040.h"
 
 KY040::KY040(uint central_switch_gpio, 

@@ -1,13 +1,4 @@
-/**
- * @file sg90.cpp
- * @author xiansnn (xiansnn@hotmail.com)
- * @brief
- * @version 0.1
- * @date 2023-05-06
- *
- * @copyright Copyright (c) 2023
- *
- */
+
 #include "include/sg90.h"
 
 SG90::SG90(struct_ConfigSG90 cfg)

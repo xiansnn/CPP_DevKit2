@@ -1,13 +1,4 @@
-/**
- * @file hw_pwm.cpp
- * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
- * @version 0.1
- * @date 2024-12-25
- * 
- * @copyright Copyright (c) 2024
- * 
- */
+
 #include "include/hw_pwm.h"
 
 uint32_t PWM::slice_mask = 0x0; // initializing the class variable
@@ -78,13 +69,6 @@ void PWM::clear_irq()
     pwm_clear_irq(this->slice);
 }
 
-/**
- * @brief Construct a new PWMgatedMeasure::PWMgatedMeasure object
- * 
- * @param pin_gate NOTICE: Only the PWM B pins can be used as input.
- * @param resolution_ns 
- * @param measure_duration_us 
- */
 PWMgatedMeasure::PWMgatedMeasure(uint pin_gate, uint resolution_ns, uint measure_duration_us)
 {
     assert(pwm_gpio_to_channel(pin_gate) == PWM_CHAN_B);

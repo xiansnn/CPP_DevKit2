@@ -1,13 +1,3 @@
-/**
- * @file widget_horizontal_bargraph.cpp
- * @author xiansnn (xiansnn@hotmail.com)
- * @brief
- * @version 0.1
- * @date 2025-01-18
- *
- * @copyright Copyright (c) 2025
- *
- */
 
 #include "include/widget_bargraph.h"
 #include "pico/stdlib.h"

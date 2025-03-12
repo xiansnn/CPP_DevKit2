@@ -1,13 +1,3 @@
-/**
- * @file switch_button.cpp
- * @author xiansnn (xiansnn@hotmail.com)
- * @brief
- * @version 0.1
- * @date 2024-05-30
- *
- * @copyright Copyright (c) 2024
- *
- */
 #include "include/switch_button.h"
 #include "hardware/gpio.h"
 #include "hardware/timer.h"

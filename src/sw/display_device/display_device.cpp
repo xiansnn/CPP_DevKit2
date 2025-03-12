@@ -1,13 +1,3 @@
-/**
- * @file display_device.cpp
- * @author xiansnn (xiansnn@hotmail.com)
- * @brief
- * @version 0.1
- * @date 2025-02-02
- *
- * @copyright Copyright (c) 2025
- *
- */
 
 #include "include/display_device.h"
 

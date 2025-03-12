@@ -1,13 +1,3 @@
-/**
- * @file hc_sr04.cpp
- * @author xiansnn (xiansnn@hotmail.com)
- * @brief a class that manages ultrasonic ranging device HC_SR04
- * @version 0.1
- * @date 2023-05-03
- *
- * @copyright Copyright (c) 2023
- *
- */
 #include "include/hc_sr04.h"
 #include "pico/stdio.h"
 #include "pico/stdlib.h"
