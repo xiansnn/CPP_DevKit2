@@ -1,4 +1,4 @@
-include_directories(${PROJECT_SOURCE_DIR}/src)
+include_directories(${CPP_DevKit_SOURCE_DIR}/src)
 
 #-------------------------------------------------------------------------------------
 add_executable(test_switch_button test_switch_button_irq.cpp)

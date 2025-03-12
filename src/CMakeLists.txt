@@ -1,4 +1,4 @@
-include_directories(${PROJECT_SOURCE_DIR}/src)
+include_directories(${CPP_DevKit_SOURCE_DIR}/src)
 
 file(GLOB ALL_ITEMS LIST_DIRECTORIES true  ${CMAKE_CURRENT_LIST_DIR}/*  )
 foreach(ITEM ${ALL_ITEMS})
