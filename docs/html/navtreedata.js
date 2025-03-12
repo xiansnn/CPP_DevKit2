@@ -24,12 +24,37 @@
 */
 var NAVTREE =
 [
-  [ "C++ DevKit", "index.html", ]
+  [ "C++ DevKit", "index.html", [
+    [ "Bug List", "bug.html", null ],
+    [ "Todo List", "todo.html", null ],
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
+      ] ]
+    ] ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Variables", "globals_vars.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
+        [ "Macros", "globals_defs.html", null ]
+      ] ]
+    ] ]
+  ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"12x16__font_8h.html",
+"class_widget.html#ad5e064ca0379c0b4160fc1e180cc75e6",
+"structstruct___config_scroll_s_s_d1306.html#afbc95d46153ed4ab6f0a14c2884d5cd3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

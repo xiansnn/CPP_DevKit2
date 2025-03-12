@@ -3,7 +3,7 @@ var searchData=
   ['page_5faddressing_5fmode_0',['PAGE_ADDRESSING_MODE',['../ssd1306_8h.html#a2c0a40b88061866897ed7d527562e764',1,'ssd1306.h']]],
   ['period_5fus_1',['PERIOD_us',['../sg90_8h.html#a69fd28fa4db77094fb62fd05e86037d9',1,'sg90.h']]],
   ['phase_5fcorrect_2',['PHASE_CORRECT',['../sg90_8h.html#ac359616a325457c8cad32638b19d4f52',1,'sg90.h']]],
-  ['pixel_3',['pixel',['../class_graphic_display_device.html#a1371631b35dd79ab7fe99a342b20d2cd',1,'GraphicDisplayDevice::pixel()'],['../class_s_s_d1306.html#a4dab9e96f0d0be41f73d2b556f629554',1,'SSD1306::pixel()']]],
+  ['pixel_3',['pixel',['../class_s_s_d1306.html#a4dab9e96f0d0be41f73d2b556f629554',1,'SSD1306::pixel()'],['../class_graphic_display_device.html#a1371631b35dd79ab7fe99a342b20d2cd',1,'GraphicDisplayDevice::pixel()']]],
   ['pixel_5fframe_4',['pixel_frame',['../class_graphic_widget.html#a66963a7e8eefb7a212ca5fc595ec6382',1,'GraphicWidget']]],
   ['pixel_5fframe_5fbuffer_5',['pixel_frame_buffer',['../structstruct___pixel_frame.html#aa053a88a45604b5d697fe4b8c505732b',1,'struct_PixelFrame']]],
   ['pixel_5fframe_5fbuffer_5fsize_6',['pixel_frame_buffer_size',['../structstruct___pixel_frame.html#a738b02f5e74fcd765bce175479f320d8',1,'struct_PixelFrame']]],

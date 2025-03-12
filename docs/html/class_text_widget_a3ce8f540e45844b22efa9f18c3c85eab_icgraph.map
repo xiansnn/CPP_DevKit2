@@ -1,0 +1,10 @@
+<map id="TextWidget::write" name="TextWidget::write">
+<area shape="rect" id="Node000001" title="process characters in the internal text buffer and draw it into the pixel buffer." alt="" coords="356,31,463,55"/>
+<area shape="poly" id="edge4_Node000001_Node000001" title=" " alt="" coords="440,18,430,12,410,9,391,11,382,16,380,21,385,29,380,32,374,22,378,12,390,6,410,4,432,7,443,14"/>
+<area shape="rect" id="Node000002" href="$class_text_widget.html#a34e2f1558ebd76f1dbfb3cbfdf0e7894" title="we need draw() to be compliant with the pure virtual draw() inherited from Widget." alt="" coords="181,5,288,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="340,36,288,28,288,23,341,30"/>
+<area shape="rect" id="Node000003" href="$class_text_widget.html#ae7a5603a5a769cad07cd3a102fb808f1" title="interpret the character and draw it into the pixel buffer at the current line and column character po..." alt="" coords="161,55,308,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="341,55,309,60,308,54,340,50"/>
+<area shape="rect" id="Node000004" href="$class_text_widget.html#ab9524e4f93739352b7fe0915e038c1fb" title="process the string c_str and then draw each character into the pixel buffer, without using the text b..." alt="" coords="5,55,113,79"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="145,70,113,70,113,64,145,64"/>
+</map>

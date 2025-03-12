@@ -1,0 +1,5 @@
+<map id="SwitchButtonWithIRQ::process_IRQ_event" name="SwitchButtonWithIRQ::process_IRQ_event">
+<area shape="rect" id="Node000001" title="Process IRQ event and return the resulting event." alt="" coords="275,5,503,30"/>
+<area shape="rect" id="Node000002" href="$class_rotary_encoder.html#ae7ad35ae64d2b815c25ac72a51702e6f" title="the ISR that process the IRQ and send UIControlEvent to the Model currentControlledObject." alt="" coords="5,5,227,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="259,20,227,20,227,15,259,15"/>
+</map>

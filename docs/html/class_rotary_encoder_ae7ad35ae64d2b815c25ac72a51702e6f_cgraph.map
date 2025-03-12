@@ -1,0 +1,9 @@
+<map id="RotaryEncoder::interrupt_service_routine" name="RotaryEncoder::interrupt_service_routine">
+<area shape="rect" id="Node000001" title="the ISR that process the IRQ and send UIControlEvent to the Model currentControlledObject." alt="" coords="5,31,227,55"/>
+<area shape="rect" id="Node000002" href="$class_switch_button_with_i_r_q.html#a261dc80eca218e3733c6a0cf637c25e8" title="&quot;AND&quot; function used to enable/disable interrupt during Interrupt Service Routine (ISR)" alt="" coords="294,5,484,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,30,279,25,279,31,227,35"/>
+<area shape="rect" id="Node000003" href="$class_switch_button_with_i_r_q.html#a910cf64b0017e10006df24c4bc44a9c8" title="Process IRQ event and return the resulting event." alt="" coords="275,55,503,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="227,50,259,53,259,58,227,55"/>
+<area shape="rect" id="Node000004" href="$class_switch_button.html#a3361ae31699ad49821d25ee53210f6d7" title="return the status of the switch." alt="" coords="551,55,727,79"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="503,64,535,64,535,70,503,70"/>
+</map>

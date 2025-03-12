@@ -1,0 +1,9 @@
+<map id="GraphicWidget::GraphicWidget" name="GraphicWidget::GraphicWidget">
+<area shape="rect" id="Node000001" title="Construct a new Graphic Widget object from the TextWidget Constructor." alt="" coords="5,31,175,55"/>
+<area shape="rect" id="Node000002" href="$class_widget.html#ad5e064ca0379c0b4160fc1e180cc75e6" title="contructor for generic widget" alt="" coords="283,5,380,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,31,267,22,267,27,175,37"/>
+<area shape="rect" id="Node000004" href="$class_graphic_widget.html#a49c9ebded2dc14246284662e13713a05" title="Get the graphic frame config object." alt="" coords="223,55,440,79"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="175,49,207,52,207,57,175,54"/>
+<area shape="rect" id="Node000003" href="$class_model.html#a39c2d857bbad88b8fb04eb54820ae08f" title="add a new widget to the set of attached_widgets" alt="" coords="488,5,671,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="381,15,473,15,473,20,381,20"/>
+</map>

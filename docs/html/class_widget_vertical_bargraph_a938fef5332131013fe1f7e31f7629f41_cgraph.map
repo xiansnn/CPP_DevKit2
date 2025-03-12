@@ -1,0 +1,19 @@
+<map id="WidgetVerticalBargraph::draw" name="WidgetVerticalBargraph::draw">
+<area shape="rect" id="Node000001" title="the function that draw the widget" alt="" coords="5,80,170,105"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html#a32888852eb8d37759b1d88534ca34d56" title="fill the graphic pixel buffer with 0x00." alt="" coords="249,5,432,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,77,217,40,252,31,253,37,218,46,119,82"/>
+<area shape="rect" id="Node000003" href="$class_graphic_widget.html#ae20a208f76132724ee39234b5f12d0d8" title="draw a rectangle around the widget." alt="" coords="260,55,420,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="170,81,245,74,245,79,170,87"/>
+<area shape="rect" id="Node000008" href="$class_widget_vertical_bargraph.html#aa3881be6be2c17e6310e9d4561940054" title="A pure virtual method that results in the transfer of the displayed values of the displayed model to ..." alt="" coords="218,104,463,129"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="170,97,203,101,202,106,170,103"/>
+<area shape="rect" id="Node000009" href="$class_graphic_widget.html#a83c221250b9dfdeb8ab03b87a783bf10" title="A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y)" alt="" coords="278,153,402,178"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="121,103,218,138,264,149,263,154,217,143,119,108"/>
+<area shape="rect" id="Node000004" href="$class_graphic_widget.html#ac2bb85ff122ed402b8467e179611eda2" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="511,55,629,79"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="421,64,495,64,495,70,421,70"/>
+<area shape="rect" id="Node000005" href="$class_graphic_widget.html#a44156ede281f3c11dd89756f4bbd4ebb" title="Write all pixel buffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)" alt="" coords="684,5,792,30"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="614,51,679,32,680,37,616,57"/>
+<area shape="rect" id="Node000006" href="$class_graphic_widget.html#a5099c45a85d86703b2c12d0d3a901c8e" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="677,55,799,79"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="630,64,662,64,662,70,630,70"/>
+<area shape="rect" id="Node000007" href="$class_graphic_widget.html#a52bd84668c5f613f363f2c68c0cb5f28" title="Draw a color vertical line, starting at frame position (x,y), on w number of pixel." alt="" coords="678,104,798,129"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="616,77,680,97,679,102,614,83"/>
+</map>

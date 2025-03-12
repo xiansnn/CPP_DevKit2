@@ -1,0 +1,5 @@
+<map id="TextWidget::process_char" name="TextWidget::process_char">
+<area shape="rect" id="Node000001" title="interpret the character and draw it into the pixel buffer at the current line and column character po..." alt="" coords="161,5,308,30"/>
+<area shape="rect" id="Node000002" href="$class_text_widget.html#ab9524e4f93739352b7fe0915e038c1fb" title="process the string c_str and then draw each character into the pixel buffer, without using the text b..." alt="" coords="5,5,113,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,20,113,20,113,15,145,15"/>
+</map>

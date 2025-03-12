@@ -1,11 +1,11 @@
 <map id="mpu6050.h" name="mpu6050.h">
 <area shape="rect" id="Node000001" title=" " alt="" coords="175,5,250,30"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,151,84,175"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,32,71,142,68,138,198,28"/>
-<area shape="rect" id="Node000003" href="$hw__i2c_8h.html" title=" " alt="" coords="181,78,244,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,33,134,80,68,142,64,138,131,76,194,28"/>
+<area shape="rect" id="Node000003" href="$hw__i2c_8h.html" title=" " alt="" coords="145,78,280,103"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="215,31,215,62,210,62,210,31"/>
-<area shape="rect" id="Node000008" href="$config___m_p_u6050_8h_source.html" title=" " alt="" coords="268,78,426,103"/>
-<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="236,28,313,68,310,73,234,33"/>
+<area shape="rect" id="Node000008" href="$config___m_p_u6050_8h_source.html" title=" " alt="" coords="304,78,414,103"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="238,28,322,68,320,73,236,33"/>
 <area shape="poly" id="edge5_Node000003_Node000002" title=" " alt="" coords="186,106,87,147,85,142,184,101"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="107,151,200,175"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="205,105,175,140,171,137,201,102"/>
@@ -14,5 +14,5 @@
 <area shape="rect" id="Node000006" title=" " alt="" coords="345,151,384,175"/>
 <area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="239,101,332,144,330,149,236,106"/>
 <area shape="rect" id="Node000007" title=" " alt="" coords="408,151,457,175"/>
-<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="245,99,394,147,393,152,244,104"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="250,101,394,147,392,152,248,106"/>
 </map>

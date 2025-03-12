@@ -1,0 +1,7 @@
+<map id="SwitchButtonWithIRQ::SwitchButtonWithIRQ" name="SwitchButtonWithIRQ::SwitchButtonWithIRQ">
+<area shape="rect" id="Node000001" title="Construct a new SwitchButtonWithIRQ object." alt="" coords="5,29,243,54"/>
+<area shape="poly" id="edge3_Node000001_Node000001" title=" " alt="" coords="84,31,76,21,80,11,97,5,124,3,155,6,170,13,167,18,154,11,124,8,98,10,84,15,81,20,88,27"/>
+<area shape="rect" id="Node000002" href="$class_switch_button.html#a750d21f333405881df2ef91495885a29" title="Construct a new SwitchButton object." alt="" coords="291,29,446,54"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="243,39,275,39,275,44,243,44"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="329,31,320,21,325,11,341,5,368,3,400,6,414,13,412,18,398,11,368,8,342,10,328,15,325,20,333,27"/>
+</map>

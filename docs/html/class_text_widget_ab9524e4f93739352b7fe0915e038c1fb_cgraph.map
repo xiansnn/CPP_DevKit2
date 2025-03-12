@@ -1,0 +1,13 @@
+<map id="TextWidget::write" name="TextWidget::write">
+<area shape="rect" id="Node000001" title="process the string c_str and then draw each character into the pixel buffer, without using the text b..." alt="" coords="5,55,113,79"/>
+<area shape="rect" id="Node000002" href="$class_text_widget.html#ae7a5603a5a769cad07cd3a102fb808f1" title="interpret the character and draw it into the pixel buffer at the current line and column character po..." alt="" coords="161,55,308,79"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,64,145,64,145,70,113,70"/>
+<area shape="rect" id="Node000003" href="$class_text_widget.html#a3712ffd3288da6a64d22e57177ee4beb" title="character column steps forward one position forward." alt="" coords="356,5,487,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="283,51,357,32,358,37,285,57"/>
+<area shape="rect" id="Node000004" href="$class_text_widget.html#a8192cc012e92157d8e47b4d8569f9529" title="character line steps one position downward." alt="" coords="535,31,662,55"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="308,60,520,45,520,51,309,65"/>
+<area shape="rect" id="Node000005" href="$class_text_widget.html#a3ce8f540e45844b22efa9f18c3c85eab" title="process characters in the internal text buffer and draw it into the pixel buffer." alt="" coords="368,128,475,153"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="269,77,375,120,373,124,267,82"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="488,24,521,29,520,34,487,30"/>
+<area shape="poly" id="edge6_Node000005_Node000005" title=" " alt="" coords="392,129,386,119,389,110,402,104,422,101,444,104,455,111,452,116,442,109,422,107,403,109,393,113,391,119,397,126"/>
+</map>

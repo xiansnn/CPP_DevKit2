@@ -1,0 +1,26 @@
+<map id="mpu6050.cpp" name="mpu6050.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="295,5,382,30"/>
+<area shape="rect" id="Node000002" href="$register__address___m_p_u6050_8h_source.html" title=" " alt="" coords="5,78,205,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="301,33,159,76,157,71,299,28"/>
+<area shape="rect" id="Node000003" href="$mpu6050_8h.html" title=" " alt="" coords="229,78,341,103"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="332,32,305,67,301,64,327,29"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="365,78,418,103"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="349,29,376,64,372,67,345,32"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="443,78,498,103"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="361,28,436,68,434,73,359,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="78,223,156,248"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="270,105,207,153,140,214,137,210,203,149,266,101"/>
+<area shape="rect" id="Node000005" href="$hw__i2c_8h.html" title=" " alt="" coords="217,151,353,175"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="288,103,288,135,282,135,282,103"/>
+<area shape="rect" id="Node000010" href="$config___m_p_u6050_8h_source.html" title=" " alt="" coords="377,151,486,175"/>
+<area shape="poly" id="edge10_Node000003_Node000010" title=" " alt="" coords="310,101,395,141,392,146,308,106"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="258,178,160,219,158,214,256,173"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="180,223,273,248"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="277,178,248,213,244,210,273,174"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="297,223,393,248"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="297,174,328,210,324,213,293,178"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="418,223,456,248"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="311,173,404,216,402,221,309,178"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="481,223,529,248"/>
+<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="322,173,467,219,465,224,321,178"/>
+</map>

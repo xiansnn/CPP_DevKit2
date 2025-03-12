@@ -1,0 +1,5 @@
+<map id="Model::get_time_since_last_change" name="Model::get_time_since_last_change">
+<area shape="rect" id="Node000001" title="compute time since the last status change" alt="" coords="240,5,434,30"/>
+<area shape="rect" id="Node000002" href="$class_u_i_model_manager.html#ab6d7acbc231c5fd6a33e2eecdf9e3641" title="check if there is a time out either on the managed models or the manager itself." alt="" coords="5,5,192,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="224,20,192,20,192,15,224,15"/>
+</map>

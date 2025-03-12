@@ -1,0 +1,5 @@
+<map id="SSD1306::fill_pattern_and_show_GDDRAM" name="SSD1306::fill_pattern_and_show_GDDRAM">
+<area shape="rect" id="Node000001" title="fill a pattern in the device framebuffer. this make it visible as soon as the device transfer the fra..." alt="" coords="5,5,232,30"/>
+<area shape="rect" id="Node000002" href="$class_s_s_d1306.html#ad26a211970f779290c9a97335fb023fc" title="when we need to show a render area with a given framebuffer" alt="" coords="280,5,443,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,15,264,15,264,20,232,20"/>
+</map>

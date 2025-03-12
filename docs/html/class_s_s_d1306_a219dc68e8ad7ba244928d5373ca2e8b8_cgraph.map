@@ -1,0 +1,5 @@
+<map id="SSD1306::create_pixel_buffer" name="SSD1306::create_pixel_buffer">
+<area shape="rect" id="Node000001" title="A pure virtual method. Create a pixel buffer object." alt="" coords="5,5,170,30"/>
+<area shape="rect" id="Node000002" href="$class_s_s_d1306.html#a8432036c46b4de56e4d85ed06f82195a" title="A pure virtual method. Usefull when to clear the pixel buffer. It fills the pixel_buffer with &quot;0&quot; (BL..." alt="" coords="218,5,374,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,15,202,15,202,20,170,20"/>
+</map>

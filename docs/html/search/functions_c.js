@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['pixel_0',['pixel',['../class_graphic_display_device.html#a1371631b35dd79ab7fe99a342b20d2cd',1,'GraphicDisplayDevice::pixel()'],['../class_s_s_d1306.html#a4dab9e96f0d0be41f73d2b556f629554',1,'SSD1306::pixel()']]],
+  ['pixel_0',['pixel',['../class_s_s_d1306.html#a4dab9e96f0d0be41f73d2b556f629554',1,'SSD1306::pixel()'],['../class_graphic_display_device.html#a1371631b35dd79ab7fe99a342b20d2cd',1,'GraphicDisplayDevice::pixel()']]],
   ['printerdevice_1',['PrinterDevice',['../class_printer_device.html#a267186858ec794b04363b495bb9e5816',1,'PrinterDevice']]],
   ['printwidget_2',['PrintWidget',['../class_print_widget.html#a7d6894663d351fb3c71235115faf86da',1,'PrintWidget']]],
   ['probe_3',['Probe',['../class_probe.html#a3c4f80fa16e1e5e4721b8c18da8a2b7b',1,'Probe']]],

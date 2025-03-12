@@ -1,5 +1,9 @@
 <map id="GraphicWidget::rect" name="GraphicWidget::rect">
-<area shape="rect" id="Node000001" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="5,5,124,30"/>
-<area shape="rect" id="Node000002" href="$class_graphic_widget.html#a44156ede281f3c11dd89756f4bbd4ebb" title="Write all pixel buffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)" alt="" coords="172,5,280,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,15,156,15,156,20,124,20"/>
+<area shape="rect" id="Node000001" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="5,55,124,79"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html#a44156ede281f3c11dd89756f4bbd4ebb" title="Write all pixel buffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)" alt="" coords="178,5,286,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,51,173,32,174,37,110,57"/>
+<area shape="rect" id="Node000003" href="$class_graphic_widget.html#a5099c45a85d86703b2c12d0d3a901c8e" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="172,55,293,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="124,64,156,64,156,70,124,70"/>
+<area shape="rect" id="Node000004" href="$class_graphic_widget.html#a52bd84668c5f613f363f2c68c0cb5f28" title="Draw a color vertical line, starting at frame position (x,y), on w number of pixel." alt="" coords="172,104,292,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="110,77,174,97,173,102,108,83"/>
 </map>

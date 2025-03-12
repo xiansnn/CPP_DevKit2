@@ -1,0 +1,10 @@
+<map id="RotaryEncoder::RotaryEncoder" name="RotaryEncoder::RotaryEncoder">
+<area shape="rect" id="Node000001" title="Construct a new Rotary Encoder object." alt="" coords="5,29,177,54"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="50,31,41,21,46,11,63,5,91,3,123,6,138,13,136,18,122,11,91,8,64,10,49,15,47,20,54,27"/>
+<area shape="rect" id="Node000002" href="$class_switch_button_with_i_r_q.html#aafb53c306bcbb5c681caae03b778f517" title="Construct a new SwitchButtonWithIRQ object." alt="" coords="225,29,462,54"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="177,39,209,39,209,44,177,44"/>
+<area shape="poly" id="edge5_Node000002_Node000002" title=" " alt="" coords="304,31,295,21,300,11,316,5,343,3,375,6,389,13,387,18,373,11,343,8,317,10,303,15,300,20,308,27"/>
+<area shape="rect" id="Node000003" href="$class_switch_button.html#a750d21f333405881df2ef91495885a29" title="Construct a new SwitchButton object." alt="" coords="510,29,665,54"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="462,39,494,39,494,44,462,44"/>
+<area shape="poly" id="edge4_Node000003_Node000003" title=" " alt="" coords="548,31,539,21,544,11,560,5,588,3,619,6,634,13,631,18,617,11,588,8,561,10,547,15,545,20,552,27"/>
+</map>

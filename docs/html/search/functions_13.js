@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['_7egraphicdisplaydevice_0',['~GraphicDisplayDevice',['../class_graphic_display_device.html#a0adf3090be1bd3a09038974df373142b',1,'GraphicDisplayDevice']]],
+  ['_7egraphicdisplaydevice_0',['~GraphicDisplayDevice',['../class_graphic_display_device.html#a0db5f37455a2f8d1393e63178c857505',1,'GraphicDisplayDevice']]],
   ['_7egraphicwidget_1',['~GraphicWidget',['../class_graphic_widget.html#ae2c0525c8819493eb279e69d54287179',1,'GraphicWidget']]],
   ['_7emodel_2',['~Model',['../class_model.html#ad6ebd2062a0b823db841a0b88baac4c0',1,'Model']]],
   ['_7emodelbargraph_3',['~ModelBargraph',['../class_model_bargraph.html#a1c44b39503a6204a2cf5567823ff5289',1,'ModelBargraph']]],
