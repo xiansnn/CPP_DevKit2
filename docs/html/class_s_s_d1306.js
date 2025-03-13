@@ -4,7 +4,7 @@ var class_s_s_d1306 =
     [ "check_display_device_compatibility", "class_s_s_d1306.html#ae86de55b157bce1451499d8b18e879f5", null ],
     [ "clear_device_screen_buffer", "class_s_s_d1306.html#a646463128f966a04b1746e3389819711", null ],
     [ "clear_pixel_buffer", "class_s_s_d1306.html#a8432036c46b4de56e4d85ed06f82195a", null ],
-    [ "compute_render_area", "class_s_s_d1306.html#a077e87e76e6c5ad59e2ad5ecd11e21fa", null ],
+    [ "compute_render_area", "class_s_s_d1306.html#a946d97970d11c778a09e0f1305591b3f", null ],
     [ "create_pixel_buffer", "class_s_s_d1306.html#a219dc68e8ad7ba244928d5373ca2e8b8", null ],
     [ "draw_char_into_pixel", "class_s_s_d1306.html#a3bbec956a8ffebc6445f9b83b334e8a2", null ],
     [ "fill_pattern_and_show_GDDRAM", "class_s_s_d1306.html#a764babad3f6a4d12cfa600ce7fd1b751", null ],

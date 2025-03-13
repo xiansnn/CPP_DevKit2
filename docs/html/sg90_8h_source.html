@@ -104,7 +104,7 @@ $(function(){initNavTree('sg90_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;pico/stdlib.h&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="hw__pwm_8h.html">hw/pwm/include/hw_pwm.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="hw__pwm_8h.html">hw/hw_pwm.h</a>&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="sg90_8h.html#a82e88ba52ec85018ed2323a077fe9e19">   18</a></span><span class="preprocessor">#define STEP_ns 2000 </span></div>
@@ -135,14 +135,14 @@ $(function(){initNavTree('sg90_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">float</span> coef_us_per_degree;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_function" href="class_s_g90.html#a32f812f329b6dc3938faa5f142ea7c0a">SG90</a>(<a class="code hl_struct" href="structstruct___config_s_g90.html">struct_ConfigSG90</a> sg90_config);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_s_g90.html#a0e8036a2f259a972fcb7d0227cb222d6">set_pos</a>(<span class="keywordtype">int</span> pos);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="class_s_g90.html#a32f812f329b6dc3938faa5f142ea7c0a">   69</a></span>    <a class="code hl_function" href="class_s_g90.html#a32f812f329b6dc3938faa5f142ea7c0a">SG90</a>(<a class="code hl_struct" href="structstruct___config_s_g90.html">struct_ConfigSG90</a> sg90_config);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="class_s_g90.html#a0e8036a2f259a972fcb7d0227cb222d6">   75</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_s_g90.html#a0e8036a2f259a972fcb7d0227cb222d6">set_pos</a>(<span class="keywordtype">int</span> pos);</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>};</div>
 </div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
 <div class="ttc" id="aclass_p_w_m_html"><div class="ttname"><a href="class_p_w_m.html">PWM</a></div><div class="ttdoc">The basic PWM function.</div><div class="ttdef"><b>Definition</b> hw_pwm.h:23</div></div>
-<div class="ttc" id="aclass_s_g90_html_a0e8036a2f259a972fcb7d0227cb222d6"><div class="ttname"><a href="class_s_g90.html#a0e8036a2f259a972fcb7d0227cb222d6">SG90::set_pos</a></div><div class="ttdeci">void set_pos(int pos)</div><div class="ttdoc">the command to set the position of the motor.</div><div class="ttdef"><b>Definition</b> sg90.cpp:16</div></div>
-<div class="ttc" id="aclass_s_g90_html_a32f812f329b6dc3938faa5f142ea7c0a"><div class="ttname"><a href="class_s_g90.html#a32f812f329b6dc3938faa5f142ea7c0a">SG90::SG90</a></div><div class="ttdeci">SG90(struct_ConfigSG90 sg90_config)</div><div class="ttdoc">Construct a new SG90 object.</div><div class="ttdef"><b>Definition</b> sg90.cpp:4</div></div>
+<div class="ttc" id="aclass_s_g90_html_a0e8036a2f259a972fcb7d0227cb222d6"><div class="ttname"><a href="class_s_g90.html#a0e8036a2f259a972fcb7d0227cb222d6">SG90::set_pos</a></div><div class="ttdeci">void set_pos(int pos)</div><div class="ttdoc">the command to set the position of the motor.</div></div>
+<div class="ttc" id="aclass_s_g90_html_a32f812f329b6dc3938faa5f142ea7c0a"><div class="ttname"><a href="class_s_g90.html#a32f812f329b6dc3938faa5f142ea7c0a">SG90::SG90</a></div><div class="ttdeci">SG90(struct_ConfigSG90 sg90_config)</div><div class="ttdoc">Construct a new SG90 object.</div></div>
 <div class="ttc" id="ahw__pwm_8h_html"><div class="ttname"><a href="hw__pwm_8h.html">hw_pwm.h</a></div></div>
 <div class="ttc" id="astructstruct___config_s_g90_html"><div class="ttname"><a href="structstruct___config_s_g90.html">struct_ConfigSG90</a></div><div class="ttdoc">the data set that configures the SG90 motor</div><div class="ttdef"><b>Definition</b> sg90.h:32</div></div>
 <div class="ttc" id="astructstruct___config_s_g90_html_a1adfe8bff0e581ebf86b11dd97d7153c"><div class="ttname"><a href="structstruct___config_s_g90.html#a1adfe8bff0e581ebf86b11dd97d7153c">struct_ConfigSG90::sync_pin</a></div><div class="ttdeci">uint sync_pin</div><div class="ttdoc">an auxilliary pulse that can be used as a synchro signal. Correspond to the A channel of the PWM slic...</div><div class="ttdef"><b>Definition</b> sg90.h:36</div></div>
@@ -154,7 +154,7 @@ $(function(){initNavTree('sg90_8h_source.html',''); initResizable(true); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_16dc92632bab467dc50b01bd02b3341a.html">device</a></li><li class="navelem"><a class="el" href="dir_0625d5ea7b07f97131d30c9d9efdee9e.html">SG90</a></li><li class="navelem"><a class="el" href="dir_58cca7c0f11a5cff1dc0b4bc861b55f4.html">include</a></li><li class="navelem"><a class="el" href="sg90_8h.html">sg90.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_00639e50a5e06ba932c41b2ae621276d.html">device</a></li><li class="navelem"><a class="el" href="sg90_8h.html">sg90.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.1 </li>
   </ul>
 </div>

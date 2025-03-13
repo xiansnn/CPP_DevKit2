@@ -1,7 +1,4 @@
 <map id="WidgetSquareLed::WidgetSquareLed" name="WidgetSquareLed::WidgetSquareLed">
-<area shape="rect" id="Node000001" title="Construct a new GraphicWidget Square Led object." alt="" coords="608,5,807,30"/>
-<area shape="rect" id="Node000002" href="$class_widget_blinking_square_led.html#a08e2705e3b28e1ac02034fbd7d858137" title="Construct a new GraphicWidget Square Led object." alt="" coords="291,5,560,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="592,20,560,20,560,15,592,15"/>
-<area shape="rect" id="Node000003" href="$class_widget_focus_indicator.html#a3ea2c82f5631a9acd72fe37fbfddd213" title="constructor for the UICOntrolledModel focus indicator" alt="" coords="5,5,243,30"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="275,20,243,20,243,15,275,15"/>
+<area shape="rect" id="Node000001" title="Construct a new GraphicWidget Square Led object." alt="" coords="5,29,205,54"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="140,17,128,10,105,8,84,10,73,15,70,20,76,27,72,31,65,21,69,11,82,5,105,3,130,5,142,12"/>
 </map>
