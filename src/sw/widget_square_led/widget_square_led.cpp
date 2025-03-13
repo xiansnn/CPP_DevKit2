@@ -1,4 +1,4 @@
-#include "include/widget_square_led.h"
+#include "sw/widget_square_led.h"
 
 WidgetBlinkingSquareLed::WidgetBlinkingSquareLed(Model *actual_displayed_model,
                                                  GraphicDisplayDevice *display_screen,

@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "hw/i2c/include/hw_i2c.h"
-#include "utilities/probe/include/probe.h"
+#include "hw/hw_i2c.h"
+#include "utilities/probe.h"
 
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);

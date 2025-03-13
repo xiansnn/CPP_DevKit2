@@ -9,7 +9,7 @@
  *
  */
 
-#include "sw/widget_square_led/include/widget_square_led.h"
+#include "sw/widget_square_led.h"
 #include "t_square_led_model.cpp"
 
 /**

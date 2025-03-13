@@ -13,7 +13,7 @@
 #include "pico/stdio.h"
 #include "pico/stdlib.h"
 #include <stdio.h>
-#include "sw/ui_core/include/ui_control_event.h"
+#include "sw/ui_control_event.h"
 
 /// @brief the boolean meaning for GPIO_HI
 #define GPIO_HI true

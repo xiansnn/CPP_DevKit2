@@ -9,10 +9,10 @@
  *
  */
 
-#include "device/SSD1306/include/ssd1306.h"
-#include "sw/ui_core/include/ui_core.h"
-#include "sw/widget_horizontal_bar/include/widget_horizontal_bar.h"
-#include "utilities/probe/include/probe.h"
+#include "device/ssd1306.h"
+#include "sw/ui_core.h"
+#include "sw/widget_horizontal_bar.h"
+#include "utilities/probe.h"
 
 
 Probe pr_D4 = Probe(4);

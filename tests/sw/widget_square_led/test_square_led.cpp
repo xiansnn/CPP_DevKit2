@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2025
  *
  */
-#include "device/SSD1306/include/ssd1306.h"
-#include "utilities/probe/include/probe.h"
+#include "device/ssd1306.h"
+#include "utilities/probe.h"
 #include "t_switch_button_controller.cpp"
 #include "t_square_led_widget.cpp"
 

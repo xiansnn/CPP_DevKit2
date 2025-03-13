@@ -9,9 +9,9 @@
  *
  */
 
-#include "device/SSD1306/include/ssd1306.h"
-#include "sw/widget_bar_graph/include/widget_bargraph.h"
-#include "utilities/probe/include/probe.h"
+#include "device/ssd1306.h"
+#include "sw/widget_bargraph.h"
+#include "utilities/probe.h"
 
 // #define PRINT_DEBUG
 

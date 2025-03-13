@@ -1,4 +1,4 @@
-#include "device/HC_SR04/include/hc_sr04.h"
+#include "device/hc_sr04.h"
 #include <stdio.h>
 
 #define TRIG_PIN 21

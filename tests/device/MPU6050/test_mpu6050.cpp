@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "device/MPU6050/include/mpu6050.h"
-#include "utilities/probe/include/probe.h"
+#include "device/mpu6050.h"
+#include "utilities/probe.h"
 
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);

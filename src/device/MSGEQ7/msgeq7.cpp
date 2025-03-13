@@ -1,4 +1,4 @@
-#include "include/msgeq7.h"
+#include "device/msgeq7.h"
 
 MSGEQ7::MSGEQ7(uint strobe_gpio, uint reset_gpio, uint signal_out)
 {

@@ -17,10 +17,10 @@
 #include <sstream>
 #include <iomanip>
 
-#include "device/SSD1306/include/ssd1306.h"
-#include "device/SSD1306/include/raspberry26x32.h"
-#include "sw/widget/include/widget.h"
-#include "utilities/probe/include/probe.h"
+#include "device/ssd1306.h"
+#include "device/font/raspberry26x32.h"
+#include "sw/widget.h"
+#include "utilities/probe.h"
 
 #define DEGREE "\xF8"
 

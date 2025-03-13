@@ -11,8 +11,8 @@
 
 #pragma once
 
-#include "sw/ui_core/include/ui_core.h"
-#include "sw/widget/include/widget.h"
+#include "sw/ui_core.h"
+#include "sw/widget.h"
 #include "t_tuning_dial_model.cpp"
 class FMVolumeWidget : public TextWidget
 {

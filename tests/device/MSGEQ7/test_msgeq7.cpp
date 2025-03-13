@@ -1,7 +1,7 @@
 #include <array>
 
-#include "device/MSGEQ7/include/msgeq7.h"
-#include "utilities/probe/include/probe.h"
+#include "device/msgeq7.h"
+#include "utilities/probe.h"
 
 
 Probe pr_D4 = Probe(4);

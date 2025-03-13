@@ -1,4 +1,4 @@
-#include "include/ky040.h"
+#include "device/ky040.h"
 
 KY040::KY040(uint central_switch_gpio, 
         uint encoder_clk_gpio, 

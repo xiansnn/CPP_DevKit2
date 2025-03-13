@@ -20,7 +20,7 @@
 #include "t_manager.cpp"
 #include "t_widget_on_serial_monitor.cpp"
 
-#include "device/KY040/include/ky040.h"
+#include "device/ky040.h"
 
 
 #define CENTRAL_SWITCH_GPIO 6

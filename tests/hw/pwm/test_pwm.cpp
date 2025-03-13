@@ -6,7 +6,7 @@
 
 #include "pico/stdlib.h"
 
-#include "hw/pwm/include/hw_pwm.h"
+#include "hw/hw_pwm.h"
 
 #define CH1 6  // PWM slice 3A
 #define CH2 8  // PWM slice 4A

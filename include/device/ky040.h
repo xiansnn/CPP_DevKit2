@@ -11,8 +11,8 @@
 
 #pragma once
 
-#include "device/rotary_encoder/include/rotary_encoder.h"
-#include "sw/ui_core/include/ui_core.h"
+#include "device/rotary_encoder.h"
+#include "sw/ui_core.h"
 
 
 /**

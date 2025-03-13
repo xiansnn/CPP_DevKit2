@@ -11,8 +11,8 @@
 
 #pragma once
 
-#include "sw/display_device/include/display_device.h"
-#include "sw/ui_core/include/ui_core.h"
+#include "sw/display_device.h"
+#include "sw/ui_core.h"
 
 #include <vector>
 #include <string>
@@ -22,10 +22,10 @@
 /// \note Must be placed before include "...font..."
 #define SSD1306_ASCII_FULL
 
-#include "device/SSD1306/include/5x8_font.h"
-#include "device/SSD1306/include/8x8_font.h"
-#include "device/SSD1306/include/12x16_font.h"
-#include "device/SSD1306/include/16x32_font.h"
+#include "device/font/5x8_font.h"
+#include "device/font/8x8_font.h"
+#include "device/font/12x16_font.h"
+#include "device/font/16x32_font.h"
 
 /// @brief character code for BACKSPACE ('BS', 0x08)
 #define BACKSPACE '\b'

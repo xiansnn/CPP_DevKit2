@@ -1,5 +1,5 @@
 
-#include "include/widget_bargraph.h"
+#include "sw/widget_bargraph.h"
 #include "pico/stdlib.h"
 
 uint8_t WidgetHorizontalBargraph::convert_level_value_to_px(int level)

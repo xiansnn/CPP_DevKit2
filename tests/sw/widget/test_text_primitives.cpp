@@ -16,10 +16,10 @@
 #include <iomanip>
 #include <string>
 
-#include "sw/widget/include/widget.h"
-#include "hw/i2c/include/hw_i2c.h"
-#include "device/SSD1306/include/ssd1306.h"
-#include "utilities/probe/include/probe.h"
+#include "sw/widget.h"
+#include "hw/hw_i2c.h"
+#include "device/ssd1306.h"
+#include "utilities/probe.h"
 
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);

@@ -1,7 +1,7 @@
-#include "include/hc_sr04.h"
 #include "pico/stdio.h"
 #include "pico/stdlib.h"
 #include <stdio.h>
+#include "device/hc_sr04.h"
 
 HC_SR04::HC_SR04(uint trig_pin, uint echo_pin)
 {

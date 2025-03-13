@@ -1,5 +1,5 @@
 
-#include "include/widget_horizontal_bar.h"
+#include "sw/widget_horizontal_bar.h"
 
 void WidgetHorizontalBar::convert_level_value_to_px()
 {
