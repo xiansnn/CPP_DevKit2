@@ -1,6 +1,6 @@
 
-#include "include/register_address_MPU6050.h"
-#include "include/mpu6050.h"
+#include "device/register_address_MPU6050.h"
+#include "device/mpu6050.h"
 #include <stdio.h>
 #include <math.h>
 

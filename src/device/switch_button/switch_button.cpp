@@ -1,4 +1,4 @@
-#include "include/switch_button.h"
+#include "device/switch_button.h"
 #include "hardware/gpio.h"
 #include "hardware/timer.h"
 

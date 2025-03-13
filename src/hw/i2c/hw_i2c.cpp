@@ -1,5 +1,5 @@
 
-#include "include/hw_i2c.h"
+#include "hw/hw_i2c.h"
 #include <cstring>
 #include <stdio.h>
 #include <string>
