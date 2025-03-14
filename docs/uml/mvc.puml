@@ -1,0 +1,21 @@
+@startuml mvc_core
+
+abstract class UIController{
+}
+abstract class Model {
+    has_changed()
+    set_change_flag()
+    }
+abstract class Widget
+
+abstract UIControlledModel
+
+abstract DisplayDevice
+
+Model o- "0..*"Widget : attached_widgets
+Model <|-- UIControlledModel
+UIController o- "1"UIControlledModel :current_controlled_model
+Widget *-- "1"DisplayDevice : display_screen
+Widget o-- "1"Model : actual_displayed_model
+
+@enduml
