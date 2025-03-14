@@ -20,7 +20,7 @@
  * 
  * It inherits from UIController, because most of the time it will be used in a UI context. 
  * Otherwise, a separate implementation of RotaryEncoder aand/or SwitchButton will be suficient.
- * 
+ * \ingroup control
  */
 class KY040 : public UIController
 {

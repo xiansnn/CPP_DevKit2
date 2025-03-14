@@ -185,10 +185,10 @@ UIController::~UIController()
 
 void UIController::update_current_controlled_object(UIControlledModel *_new_controlled_object)
 {
-    if (this->current_controlled_object != _new_controlled_object)
+    if (this->current_controlled_model != _new_controlled_object)
     {
-        this->current_controlled_object = _new_controlled_object;
-        this->current_controlled_object->update_current_controller(this);
+        this->current_controlled_model = _new_controlled_object;
+        this->current_controlled_model->update_current_controller(this);
     }
 }
 

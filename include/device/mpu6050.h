@@ -16,7 +16,7 @@
 
 /**
  * @brief minimal set of MPU configuration data
- *
+ * 
  */
 struct struct_ConfigMPU6050
 {
@@ -94,6 +94,7 @@ struct struct_MPUData
 
 /**
  * @brief Class that manage the MPU6050 3-axes accelerometer/gyrometer
+ * \ingroup sensor
  * \note I2C signals are very sensitive. May not work properly when wiring is not clean 
  */
 class MPU6050

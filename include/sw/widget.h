@@ -43,6 +43,7 @@
 class Model;
 
 /// @brief A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker.
+/// \ingroup view
 /// \note : USAGE: To perform the blinking drawing, the following sequence applies for the draw() method implementation.
 /// \image html draw_with_blinking.svg
 class Blinker
@@ -91,7 +92,7 @@ public:
  * As a result, if the widget is located such that the buffer is written across device pages, the contents of the overwritten pages is lost.
  * This is why the widget height and the widget_anchor_y must be multiple of 8. Doing so the widget buffer bytes do not ovewrite pixel outside the widget border.
  *
- * 
+ * \ingroup view
  */
 class Widget
 {
@@ -131,6 +132,7 @@ public:
 
 
 /// @brief The graphical version of a Widget.
+/// \ingroup view
 class GraphicWidget : public Widget
 {
 private:
@@ -310,6 +312,7 @@ public:
 };
 
 /// @brief a dedicated class for text frame only
+/// \ingroup view
 class TextWidget : public GraphicWidget
 {
 private:
@@ -455,6 +458,7 @@ public:
 };
 
 /// @brief A widget used when we need to simply print but still want to take advantage of the status change management.
+/// \ingroup view
 class PrintWidget : public Widget
 {
 private:

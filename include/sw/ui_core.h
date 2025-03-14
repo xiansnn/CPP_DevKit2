@@ -62,6 +62,7 @@ class Widget;
 ///
 /// The controller or any other entities that modify the model must set the change_flag
 /// and the widget in charge of its screen representation must clear the change_flag
+/// \ingroup model
 class Model
 {
 private:
@@ -112,6 +113,7 @@ public:
 };
 
 /// @brief Class that adds UI Controller to the basic Model class
+/// \ingroup model
 class UIControlledModel : public Model
 {
 private:
@@ -132,7 +134,7 @@ public:
     void update_status(ControlledObjectStatus _new_status);
     /**
      * @brief if _new_controller is different from the current controller, change the current controller associated to the Model.
-     * the new controller has is member current_controlled_object also changed.
+     * the new controller has is member current_controlled_model also changed.
      * @param _new_controller
      */
     void update_current_controller(UIController *_new_controller);
@@ -165,7 +167,7 @@ public:
  * This value runs between a min_value and a max_value.
  *
  * The increment value is configurable. A is_wrappable flag indicates how the value behaves once min or max values are reached.
- *
+ *  \ingroup model
  */
 class UIControlledIncrementalValue : public UIControlledModel
 {
@@ -243,7 +245,7 @@ public:
  * - Model : It inherits of the status and is controlled by a UIController.
  *
  * - UIControlledIncrementalValue : It is associated with a value that represents the current managed Model under focus or active.
- *
+ * \ingroup model
  */
 class UIModelManager : public UIControlledIncrementalValue
 {
@@ -312,6 +314,7 @@ public:
 
 /**
  * @brief UIController is the abstract class that hosts all controller object in the Model-View-Controll design pattern.
+ * \ingroup control
  */
 class UIController
 {
@@ -320,7 +323,7 @@ public:
     /**
      * @brief The reference to the Model currently under control.
      */
-    UIControlledModel *current_controlled_object{nullptr};
+    UIControlledModel *current_controlled_model{nullptr};
     /**
      * @brief create a UIController object
      */

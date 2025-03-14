@@ -32,7 +32,7 @@ struct struct_DHTReading
 
 /**
  * @brief the Class manages the DHT11 humidity and temperature sensor
- * 
+ * \ingroup sensor
  */
 class DHT11
 {

@@ -17,29 +17,6 @@ Most of The code was derived from [Harbys github repository](https://github.com/
 ## Background
 During my professional period of activities, I've got knowledge about Model Based Engineering, Object Oriented Design, and Mathematical Abstractions in general. This is why I've based this development according to MVC design rules (Model View Control).
 
-## File trees
-At the root, we found directories:
--  docs : that contains doxygen files,
--  external : contains the CMAke file that helps to FetchContent the source code and headers into an expernal project.
--  include : where all xxx.h files are located,
--  src : where all xxx.cpp files are located,
--  tests : where all test files are located. These files are also good usage examples.
-
-The directories include, src, and tests contain the following sub-directories:
-- device : dedicated to the small PCB module we usually find in DIY projects : e.g.  rotary encoder, switch with debouce, short press, long press, time-out features, display screen...
-- hw : it an abstraction layers to the hardware peripheral provided by the RP204O MCU. I2C management and PWM are the first ones I've needed.
-- sw : this where all pure software features are located : UI core mechanisms, graphical and text widget
-- utilities : It contains a debug probe classe that can be useful to monitor what's going on the microcontroller thanks to level and pulse generated through some GPIO outputs.
-
-# Files naming
-The file directories have been inspired by the Pico SDK.
-- source file are named "xxx.cpp"
-- hearder files are names "xxx.h" . they are called be an #include "rep/xxx.h" where "rep" is either "device", "hw", "sw", or "utilities"
-- libraries are named rep_xxx
-- Structures are named struct_xxx.
-- Classes created for testing (or example) purpose are named test_xxx.
-- Files created for test or example purpose are named t_xxxx/
-
 # USAGE
 
 ## Complete documentation
@@ -51,13 +28,6 @@ After opening this pages with your web browser, you will find doxygen documentat
 A CMake file "fetch_cpp_devkit.cmake" is provided. it set up include directories to the include directories of all provided libraries.
 It mus be included in the top level CMakeLists.txt after the project() command.
 
-## HOWTO use MVC
-MVC has three parts:
-- Model : where is the core of the application.
-- View : supported by widgets, its mission is only to show the values, datas of the Model. Several widget can be attached to a Model, showing different data of a same data viewed by different way.
-- Control : supported by any means (switch, rotary encoder, ...). It allow the User to change something in the Model.
-
-The Model maintains a flag that indicates when something has changes and must be viewed. This is a signal that triggs the efective (re)drawing of the display. Otherwise nothing happens, savin time of processing.
 
 
 

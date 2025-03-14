@@ -120,7 +120,7 @@ struct struct_RenderArea
 
 /**
  * @brief SSD1306 128x64 pixel OLED display device driver with I2C interface
- *
+ * \ingroup view
  */
 class SSD1306 : public GraphicDisplayDevice
 {

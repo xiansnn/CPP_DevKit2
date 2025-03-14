@@ -123,6 +123,7 @@ struct struct_ConfigSlaveI2C
 
 /**
  * @brief this is a C++ wrapper for the original pico SDK i2c master API
+ * \ingroup hw
  */
 class HW_I2C_Master
 {
@@ -210,6 +211,7 @@ struct struct_SlaveMemory
 
 /**
  * @brief this is a C++ wrapper for the original pico SDK i2c slave API
+ * \ingroup hw
  *
  */
 class HW_I2C_Slave

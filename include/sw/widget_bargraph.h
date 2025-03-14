@@ -17,7 +17,7 @@
 
 /**
  * @brief the Model used by Bargraph GraphicWidget
- *
+ * \ingroup model
  */
 class ModelBargraph : public Model
 {
@@ -46,7 +46,7 @@ public:
 
 /**
  * @brief the widget that display an horizontal bargraph
- *
+ * \ingroup view
  */
 class WidgetHorizontalBargraph : public GraphicWidget
 {
@@ -104,7 +104,7 @@ public:
 
 /**
  * @brief the widget that display a vertical bargraph
- *
+ * \ingroup view
  */
 class WidgetVerticalBargraph : public GraphicWidget
 {

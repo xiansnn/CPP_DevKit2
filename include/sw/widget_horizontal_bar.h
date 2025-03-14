@@ -15,6 +15,7 @@
 
 
 /// @brief a widget that draw an horizontal bar, filled up to the given level value
+/// \ingroup view
 class WidgetHorizontalBar : public GraphicWidget
 {
 private:

@@ -27,7 +27,7 @@ typedef void (*control_event_processor_t)(UIControlEvent event);
  * Due to the short time between clk and dt, we cannot usually sample the signals. IRQ is more appropriate.
  *
  * As a UIController, the rotary encoder is associated with a Model.
- *
+ * \ingroup control
  */
 class RotaryEncoder : public SwitchButtonWithIRQ
 {

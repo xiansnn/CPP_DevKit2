@@ -20,7 +20,7 @@
  *
  * The band frequencies are centered around: 63Hz, 160Hz, 400Hz, 1000Hz, 2500Hz, 6250Hz, 16000Hz.
  * After a pulse on "reset_gpio" pin, a peak detector for each band is multiplexed on the pin "signal_out" at each pulse on pin "strobe_gpio".
- *
+ * \ingroup sensor
  */
 class MSGEQ7
 {

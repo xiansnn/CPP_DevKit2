@@ -14,7 +14,7 @@
 
 /**
  * @brief class for the ultrasonic ranging module HC-SR04
- *
+ * \ingroup sensor
  */
 class HC_SR04
 {

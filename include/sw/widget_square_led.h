@@ -27,7 +27,7 @@ enum class LEDStatus
 
 /**
  * @brief A widget that show a square (it can be a rectangle) on the display.
- *
+ * \ingroup view
  */
 class WidgetSquareLed : public GraphicWidget
 {
@@ -55,7 +55,7 @@ public:
 };
 /**
  * @brief A widget that show a square (it can be a rectangle) on the display.
- *
+ * \ingroup view
  */
 class WidgetBlinkingSquareLed : public WidgetSquareLed, public Blinker
 {
@@ -82,6 +82,7 @@ public:
 
 /// @brief A specific class dedicated to indicate the status of an UIControlledModel.
 /// Not an abstract class, can be implemented.
+/// \ingroup view
 class WidgetFocusIndicator : public WidgetBlinkingSquareLed
 {
 private:

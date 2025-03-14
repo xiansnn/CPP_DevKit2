@@ -17,7 +17,7 @@
 
 /**
  * @brief The basic PWM function
- *
+ * \ingroup hw
  */
 class PWM
 {
@@ -107,7 +107,7 @@ public:
 
 /**
  * @brief the PWM function used to measure time during which the signal on the channel B as input is HI.
- * 
+ * \ingroup hw
  */
 class PWMgatedMeasure
 {

@@ -98,7 +98,7 @@ struct struct_ConfigSwitchButton
  * During each period, the status of the button is compared to the previous status and the function member process_sample_event() return an event accordingly.
  *
  * SwitchButton can be associated with UIController if button belongs to a GUI. In such case a new class must be created that inherits from SwitchButton and UIController.
- *
+ * \ingroup control
  * \image html button_short_release.svg "SwitchButton times references for short release"
  * \image html button_long_release.svg "SwitchButton times references for long release"
  */
@@ -191,7 +191,7 @@ public:
  *
  * NOTICE: the test program for switch button with IRQ is implemented with the rotary encoder device, which is a good example of what can be done
  * with and without IRQ
- *
+ * \ingroup control
  */
 class SwitchButtonWithIRQ : public SwitchButton
 {

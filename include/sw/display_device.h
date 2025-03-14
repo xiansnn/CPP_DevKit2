@@ -116,6 +116,7 @@ struct struct_ConfigTextWidget
 };
 
 /// @brief A generic class for all display device
+/// \ingroup view
 class DisplayDevice
 {
 private:
@@ -127,6 +128,7 @@ public:
 
 
 /// @brief This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen SSD1306).
+/// \ingroup view
 class GraphicDisplayDevice : public DisplayDevice
 {
 protected:
@@ -215,7 +217,7 @@ public:
 
 /**
  * @brief A class dedicated to pure text display such as console, printer, ASCII character line display
- *
+ * \ingroup view
  */
 class PrinterDevice : public DisplayDevice
 {
