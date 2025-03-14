@@ -1,8 +1,6 @@
 var switch__button_8h =
 [
     [ "struct_ConfigSwitchButton", "structstruct___config_switch_button.html", "structstruct___config_switch_button" ],
-    [ "SwitchButton", "class_switch_button.html", "class_switch_button" ],
-    [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", "class_switch_button_with_i_r_q" ],
     [ "DEBOUNCE_us", "switch__button_8h.html#a0eed6f3bf0d7d92034a08d90cb0ef58b", null ],
     [ "GPIO_HI", "switch__button_8h.html#a351026c5378d49b914fb52f066b99b9b", null ],
     [ "GPIO_LO", "switch__button_8h.html#a29625671f0681b84ec222bbb85820168", null ],

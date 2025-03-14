@@ -3,7 +3,6 @@ var ssd1306_8h =
     [ "struct_ConfigSSD1306", "structstruct___config_s_s_d1306.html", "structstruct___config_s_s_d1306" ],
     [ "struct_ConfigScrollSSD1306", "structstruct___config_scroll_s_s_d1306.html", "structstruct___config_scroll_s_s_d1306" ],
     [ "struct_RenderArea", "structstruct___render_area.html", "structstruct___render_area" ],
-    [ "SSD1306", "class_s_s_d1306.html", "class_s_s_d1306" ],
     [ "_128_FRAMES", "ssd1306_8h.html#afaebcce6aa92e300ecf7ab8cb96109b5", null ],
     [ "_256_FRAMES", "ssd1306_8h.html#abc16361b5708d5664f6f5e73e1307f3d", null ],
     [ "_25_FRAMES", "ssd1306_8h.html#ad5c5958e0d0cac031fb26d3fa6def59e", null ],

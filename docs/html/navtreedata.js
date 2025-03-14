@@ -25,8 +25,10 @@
 var NAVTREE =
 [
   [ "C++ DevKit", "index.html", [
+    [ "Introduction to CPP_DevKit documentation", "index.html", "index" ],
     [ "Bug List", "bug.html", null ],
     [ "Todo List", "todo.html", null ],
+    [ "Topics", "topics.html", "topics" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -54,7 +56,7 @@ var NAVTREEINDEX =
 [
 "12x16__font_8h.html",
 "class_widget.html#ad5e064ca0379c0b4160fc1e180cc75e6",
-"structstruct___m_p_u_data.html"
+"structstruct___config_text_widget.html#ae8ba9d0f0eb78ae9726b387b0a36e24c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

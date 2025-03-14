@@ -7,5 +7,7 @@ var searchData=
   ['vertical_5fscroll_4',['vertical_scroll',['../class_s_s_d1306.html#a25a4d90a656b9fd2f1b2d220cc9f8e2b',1,'SSD1306']]],
   ['vertical_5fscrolling_5foffset_5',['vertical_scrolling_offset',['../structstruct___config_scroll_s_s_d1306.html#a8ba6fbb7511ebc6c8b32c4fb1360912b',1,'struct_ConfigScrollSSD1306']]],
   ['vertical_5ftab_6',['VERTICAL_TAB',['../widget_8h.html#aab5f37f45211c92e4c168deecd26f47a',1,'widget.h']]],
-  ['vline_7',['vline',['../class_graphic_widget.html#a52bd84668c5f613f363f2c68c0cb5f28',1,'GraphicWidget']]]
+  ['view_7',['&quot;View&quot;',['../group__view.html',1,'']]],
+  ['view_20control_20principles_8',['Model-View-Control principles',['../index.html#autotoc_md2',1,'']]],
+  ['vline_9',['vline',['../class_graphic_widget.html#a52bd84668c5f613f363f2c68c0cb5f28',1,'GraphicWidget']]]
 ];

@@ -1,10 +1,5 @@
 var widget_8h =
 [
-    [ "Blinker", "class_blinker.html", "class_blinker" ],
-    [ "Widget", "class_widget.html", "class_widget" ],
-    [ "GraphicWidget", "class_graphic_widget.html", "class_graphic_widget" ],
-    [ "TextWidget", "class_text_widget.html", "class_text_widget" ],
-    [ "PrintWidget", "class_print_widget.html", "class_print_widget" ],
     [ "BACKSPACE", "widget_8h.html#a629568514359445d2fbda71d70eeb1ce", null ],
     [ "CARRIAGE_RETURN", "widget_8h.html#a3b81478c7058ceb6ed610ce8e2ca3822", null ],
     [ "FORM_FEED", "widget_8h.html#aeaf983986deb16c93fa0bd38080281f8", null ],
