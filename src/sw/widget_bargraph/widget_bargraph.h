@@ -11,9 +11,9 @@
 
 #pragma once
 
-#include "sw/display_device.h"
-#include "sw/ui_core.h"
-#include "sw/widget.h"
+#include "sw/display_device/display_device.h"
+#include "sw/ui_core/ui_core.h"
+#include "sw//widget/widget.h"
 
 /**
  * @brief the Model used by Bargraph GraphicWidget

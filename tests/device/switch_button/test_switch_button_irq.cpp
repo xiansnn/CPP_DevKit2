@@ -11,8 +11,8 @@
 #include <map>
 #include <string>
 
-#include "device/switch_button.h"
-#include "utilities/probe.h"
+#include "device/switch_button/switch_button.h"
+#include "utilities/probe/probe.h"
 
 #define CENTRAL_SWITCH_GPIO 6
 #define ENCODER_CLK_GPIO 26

@@ -43,9 +43,18 @@ endif()
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
+if(NOT PROJECT_IS_TOP_LEVEL)
+    set(CPP_DEVKIT_INC_PATH ${CMAKE_CURRENT_LIST_DIR}/src PARENT_SCOPE)
+    message("-CPP_DEVKIT_INC_PATH_PARENT_SCOPE-> : ${CPP_DEVKIT_INC_PATH}")
+    include_directories(${CPP_DEVKIT_INC_PATH})
+    add_subdirectory(src)
+endif()
 #-------------------------------------------------------------------------------------
-add_subdirectory(src)
-add_subdirectory(tests)
+if(PROJECT_IS_TOP_LEVEL)
+    include_directories(${CMAKE_CURRENT_LIST_DIR}/src)
+    add_subdirectory(src)
+    add_subdirectory(tests)
+endif()
 #-------------------------------------------------------------------------------------
 
 # Add executable. Default name is the project name, version 0.1

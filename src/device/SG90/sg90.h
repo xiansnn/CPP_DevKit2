@@ -11,7 +11,7 @@
 #pragma once
 
 #include "pico/stdlib.h"
-#include "hw/hw_pwm.h"
+#include "hw/pwm/hw_pwm.h"
 
 
 /// @brief arbitrary value, gives resolution step_ns/(pos_max_us - pos_min_us) = 100ppm.

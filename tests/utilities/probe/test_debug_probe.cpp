@@ -10,7 +10,7 @@
  */
 
 #include "pico/time.h"
-#include "utilities/probe.h"
+#include "utilities/probe/probe.h"
 
 
 

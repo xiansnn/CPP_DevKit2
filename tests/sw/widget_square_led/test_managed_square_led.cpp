@@ -9,13 +9,13 @@
  *
  */
 
-#include "device/ssd1306.h"
-#include "device/ky040.h"
-#include "sw/widget_square_led.h"
+#include "device/SSD1306/ssd1306.h"
+#include "device/KY040/ky040.h"
+#include "sw/widget_square_led/widget_square_led.h"
 #include "t_managed_square_led_models.cpp"
 #include "t_managed_square_led_manager.cpp"
 #include "t_managed_square_led_widgets.cpp"
-#include "utilities/probe.h"
+#include "utilities/probe/probe.h"
 
 #define CENTRAL_SWITCH_GPIO 6
 #define ENCODER_CLK_GPIO 26

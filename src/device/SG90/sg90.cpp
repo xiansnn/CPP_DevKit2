@@ -1,5 +1,5 @@
 
-#include "device/sg90.h"
+#include "sg90.h"
 
 SG90::SG90(struct_ConfigSG90 cfg)
 {

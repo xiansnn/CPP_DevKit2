@@ -12,8 +12,8 @@
 #include "t_tuning_dial_model.cpp"
 #include "t_tuning_dial_widget.cpp"
 
-#include "device/ssd1306.h"
-#include "device/switch_button.h"
+#include "device/SSD1306/ssd1306.h"
+#include "device/switch_button/switch_button.h"
 
 /// @brief define central switch config
 struct_ConfigSwitchButton cfg_central_switch{

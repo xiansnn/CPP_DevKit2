@@ -1,5 +1,5 @@
 
-#include "sw/widget.h"
+#include "widget.h"
 
 #include "pico/stdlib.h"
 #include <string.h>

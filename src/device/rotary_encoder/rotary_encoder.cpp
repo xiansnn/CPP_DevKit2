@@ -1,4 +1,4 @@
-#include "device/rotary_encoder.h"
+#include "rotary_encoder.h"
 #include "hardware/gpio.h"
 #include "pico/stdlib.h"
 #include <string>

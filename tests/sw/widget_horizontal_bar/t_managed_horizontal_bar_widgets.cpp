@@ -11,10 +11,10 @@
 
 #pragma once
 
-#include "sw/ui_core.h"
-#include "sw/widget_horizontal_bar.h"
-#include "sw/widget_square_led.h"
-#include "utilities/probe.h"
+#include "sw/ui_core/ui_core.h"
+#include "sw/widget_horizontal_bar/widget_horizontal_bar.h"
+#include "sw/widget_square_led/widget_square_led.h"
+#include "utilities/probe/probe.h"
 #include "t_managed_horizontal_bar_models.cpp"
 
 Probe pr_D5 = Probe(5);

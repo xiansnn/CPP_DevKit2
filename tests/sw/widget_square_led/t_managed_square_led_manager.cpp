@@ -11,7 +11,7 @@
 
 #pragma once
 
-#include "sw/ui_core.h"
+#include "sw/ui_core/ui_core.h"
 #include "t_managed_square_led_models.cpp"
 
 #define MODEL_OBJECT_STATUS_TIME_OUT_us 3000000

@@ -14,10 +14,10 @@
 #include "t_controlled_value.cpp"
 #include "t_manager.cpp"
 
-#include "sw/ui_core.h"
-#include "sw/widget.h"
-#include "sw/display_device.h"
-#include "utilities/probe.h"
+#include "sw/ui_core/ui_core.h"
+#include "sw/widget/widget.h"
+#include "sw/display_device/display_device.h"
+#include "utilities/probe/probe.h"
 
 /// @brief  3 probes are create to observe the time execution with a logic analyser
 Probe pr_D1 = Probe(1);

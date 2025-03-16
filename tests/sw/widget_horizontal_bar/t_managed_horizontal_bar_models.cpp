@@ -11,8 +11,8 @@
 
 #pragma once
 
-#include "sw/ui_control_event.h"
-#include "sw/ui_core.h"
+#include "sw/ui_core/ui_control_event.h"
+#include "sw/ui_core/ui_core.h"
 
 // #define PRINT_DEBUG
 

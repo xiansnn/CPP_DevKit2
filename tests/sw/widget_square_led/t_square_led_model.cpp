@@ -9,8 +9,8 @@
  *
  */
 
- #include "sw/ui_core.h"
-#include "sw/ui_control_event.h"
+#include "sw/ui_core/ui_core.h"
+#include "sw/ui_core/ui_control_event.h"
 
 /// @brief MySquareLedModel : Example of final implementation of Model
 class MySquareLedModel : public UIControlledModel

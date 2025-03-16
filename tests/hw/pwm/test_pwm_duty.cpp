@@ -6,8 +6,8 @@
 
 #include <stdio.h>
 
-#include "hw/hw_pwm.h"
-#include "utilities/probe.h"
+#include "hw/pwm/hw_pwm.h"
+#include "utilities/probe/probe.h"
 
 
 // This example drives a PWM output at a range of duty cycles, and uses

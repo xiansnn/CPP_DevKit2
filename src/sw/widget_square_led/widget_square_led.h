@@ -9,8 +9,8 @@
  *
  */
 
-#include "sw/widget.h"
-#include "sw/display_device.h"
+#include "sw/widget/widget.h"
+#include "sw/display_device/display_device.h"
 
 #pragma once
 

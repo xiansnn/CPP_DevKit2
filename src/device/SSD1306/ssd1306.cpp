@@ -1,4 +1,4 @@
-#include "device/ssd1306.h"
+#include "ssd1306.h"
 #include <string.h>
 
 void SSD1306::send_cmd(uint8_t cmd)

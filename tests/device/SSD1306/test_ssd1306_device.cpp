@@ -19,9 +19,9 @@
 #include <sstream>
 #include <iomanip>
 
-#include "device/ssd1306.h"
-#include "device/font/raspberry26x32.h"
-#include "utilities/probe.h"
+#include "device/SSD1306/ssd1306.h"
+#include "font/raspberry26x32.h"
+#include "utilities/probe/probe.h"
 
 
 #define DEGREE "\xF8"

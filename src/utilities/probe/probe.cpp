@@ -1,4 +1,4 @@
-#include "utilities/probe.h"
+#include "probe.h"
 #include "hardware/gpio.h"
 
 Probe::Probe(uint _channel)

@@ -1,5 +1,5 @@
 
-#include "hw/hw_pwm.h"
+#include "hw_pwm.h"
 
 uint32_t PWM::slice_mask = 0x0; // initializing the class variable
 

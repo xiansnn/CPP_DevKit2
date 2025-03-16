@@ -11,8 +11,8 @@
 #include <map>
 #include <string>
 
-#include "device/rotary_encoder.h"
-#include "utilities/probe.h"
+#include "device/rotary_encoder/rotary_encoder.h"
+#include "utilities/probe/probe.h"
 
 #define CENTRAL_SWITCH_GPIO 6
 #define ENCODER_CLK_GPIO 26

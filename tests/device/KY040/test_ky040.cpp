@@ -9,10 +9,10 @@
  *
  */
 
-#include "device/ky040.h"
-#include "utilities/probe.h"
 #include <map>
 #include <string>
+#include "device/KY040/ky040.h"
+#include "utilities/probe/probe.h"
 
 #define CENTRAL_SWITCH_GPIO 6
 #define ENCODER_CLK_GPIO 26

@@ -14,9 +14,9 @@
 #include "t_managed_horizontal_bar_manager.cpp"
 
 
-#include "device/ssd1306.h"
-#include "device/ky040.h"
-#include "utilities/probe.h"
+#include "device/SSD1306/ssd1306.h"
+#include "device/KY040/ky040.h"
+#include "utilities/probe/probe.h"
 
 #define CENTRAL_SWITCH_GPIO 6
 #define ENCODER_CLK_GPIO 26

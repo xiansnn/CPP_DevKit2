@@ -13,8 +13,8 @@
 #include "hardware/irq.h"
 #include "hardware/pwm.h"
 
-#include "hw/hw_pwm.h"
-#include "utilities/probe.h"
+#include "hw/pwm/hw_pwm.h"
+#include "utilities/probe/probe.h"
 
 #define PWM_OUT 6
 #define STEP_ns 500

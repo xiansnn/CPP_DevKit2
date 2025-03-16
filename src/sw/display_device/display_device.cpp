@@ -1,5 +1,5 @@
 
-#include "sw/display_device.h"
+#include "display_device.h"
 
 GraphicDisplayDevice::GraphicDisplayDevice(size_t screen_width,
                                            size_t screen_height)

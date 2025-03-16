@@ -4,7 +4,7 @@
 
 #include "pico/time.h"
 
-#include "device/dht11.h"
+#include "dht11.h"
 
 #define MAX_TIMING_MEASURE 80
 
