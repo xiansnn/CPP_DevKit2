@@ -28,8 +28,9 @@ private:
 protected:
 public:
     /// @brief get internal values of the bargraph model
-    /// @return
+    /// @return internal values
     std::vector<int> get_values();
+    
     /// @brief update internal values of the bargraph and set_change_flag
     /// @param values 
     void update_values(std::vector<int> values);
