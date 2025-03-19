@@ -35,19 +35,20 @@ struct_ConfigSSD1306 cfg_ssd1306{
 
 void simulate_values(ModelBargraph *model)
 {
+    std::vector<int> current_values = model->get_values();
     for (int i = 0; i < model->number_of_bar; i++)
     {
-        model->values[i] += i + 1;
-        if ((model->values[i] >= model->max_value) or (model->values[i] <= model->min_value))
-            model->values[i] = model->min_value;
+        current_values[i] += i + 1;
+        if ((current_values[i] >= model->max_value) or (current_values[i] <= model->min_value))
+            current_values[i] = model->min_value;
 #ifdef PRINT_DEBUG
-        printf("[%d]= %d, ", i, model->values[i]);
+        printf("[%d]= %d, ", i, current_values[i]);
 #endif
     }
 #ifdef PRINT_DEBUG
     printf("\n");
 #endif
-    model->set_change_flag();
+    model->update_values(current_values);
 }
 
 struct_ConfigGraphicWidget horizontal_bargraph_cfg = {

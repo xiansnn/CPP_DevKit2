@@ -22,10 +22,17 @@
 class ModelBargraph : public Model
 {
 private:
-protected:
-public:
     /// @brief the vector of values displayed by the bargraph
     std::vector<int> values;
+
+protected:
+public:
+    /// @brief get internal values of the bargraph model
+    /// @return
+    std::vector<int> get_values();
+    /// @brief update internal values of the bargraph and set_change_flag
+    /// @param values 
+    void update_values(std::vector<int> values);
     /// @brief the  number of bar in the bargraph (and the number of values)
     size_t number_of_bar;
     /// @brief the min value of the range of values

@@ -10,22 +10,22 @@ uint8_t WidgetHorizontalBargraph::convert_level_value_to_px(int level)
 }
 
 void WidgetHorizontalBargraph::draw()
-{if (actual_displayed_model->has_changed())
 {
-    clear_pixel_buffer();
-    get_value_of_interest();
-    for (int i = 0; i < number_of_bar; i++)
-        draw_bar(i);
-    draw_border();
-    show();
-    actual_displayed_model->draw_widget_done();
-}
-
+    if (actual_displayed_model->has_changed())
+    {
+        clear_pixel_buffer();
+        get_value_of_interest();
+        for (int i = 0; i < number_of_bar; i++)
+            draw_bar(i);
+        draw_border();
+        show();
+        actual_displayed_model->draw_widget_done();
+    }
 }
 
 void WidgetHorizontalBargraph::get_value_of_interest()
 {
-    this->values = ((ModelBargraph *)this->actual_displayed_model)->values;
+    this->values = ((ModelBargraph *)this->actual_displayed_model)->get_values();
 }
 
 void WidgetHorizontalBargraph::draw_bar(uint8_t bin_index)
@@ -80,6 +80,18 @@ WidgetHorizontalBargraph::~WidgetHorizontalBargraph()
 {
 }
 
+
+std::vector<int> ModelBargraph::get_values()
+{
+    return this->values;
+}
+
+void ModelBargraph::update_values(std::vector<int> values)
+{
+    this->values = values;
+    set_change_flag();
+}
+
 ModelBargraph::ModelBargraph(size_t number_of_bar, int min_value, int max_value)
     : Model()
 {
@@ -113,12 +125,11 @@ void WidgetVerticalBargraph::draw()
         show();
         actual_displayed_model->draw_widget_done();
     }
-    
 }
 
 void WidgetVerticalBargraph::get_value_of_interest()
 {
-    this->values = ((ModelBargraph *)this->actual_displayed_model)->values;
+    this->values = ((ModelBargraph *)this->actual_displayed_model)->get_values();
 }
 
 void WidgetVerticalBargraph::draw_bar(uint8_t bin_index)
@@ -151,7 +162,7 @@ WidgetVerticalBargraph::WidgetVerticalBargraph(ModelBargraph *bargraph_model,
                                                GraphicDisplayDevice *graphic_display_screen,
                                                struct_ConfigGraphicWidget graph_cfg,
                                                uint8_t _bar_spacing)
-    : GraphicWidget(graphic_display_screen, graph_cfg,bargraph_model )
+    : GraphicWidget(graphic_display_screen, graph_cfg, bargraph_model)
 {
     this->bar_spacing = _bar_spacing;
 
