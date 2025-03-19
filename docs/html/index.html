@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>C++ DevKit: Introduction to CPP_DevKit documentation</title>
+<title>C++ DevKit: Main Page</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -96,48 +96,10 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </div>
 </div>
 
-<div><div class="header">
-  <div class="headertitle"><div class="title">Introduction to CPP_DevKit documentation </div></div>
+<div class="header">
+  <div class="headertitle"><div class="title">C++ DevKit Documentation</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md0"></a>
-File trees</h1>
-<p>At the root, we found directories:</p><ul>
-<li>docs : that contains doxygen files,</li>
-<li>external : contains the CMAke file that helps to FetchContent the source code and headers into an expernal project.</li>
-<li>include : where all xxx.h files are located,</li>
-<li>src : where all xxx.cpp files are located,</li>
-<li>tests : where all test files are located. These files are also good usage examples.</li>
-</ul>
-<p>The directories include, src, and tests contain the following sub-directories:</p><ul>
-<li>device : dedicated to the small PCB module we usually find in DIY projects : e.g. rotary encoder, switch with debouce, short press, long press, time-out features, display screen...</li>
-<li>hw : it an abstraction layers to the hardware peripheral provided by the RP204O MCU. I2C management and <a class="el" href="class_p_w_m.html" title="The basic PWM function.">PWM</a> are the first ones I've needed.</li>
-<li>sw : this where all pure software features are located : UI core mechanisms, graphical and text widget</li>
-<li>utilities : It contains a debug probe classe that can be useful to monitor what's going on the microcontroller thanks to level and pulse generated through some GPIO outputs.</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md1"></a>
-Files naming</h1>
-<p>The file directories have been inspired by the Pico SDK.</p><ul>
-<li>source file are named "xxx.cpp"</li>
-<li>header files are names "xxx.h" . they are called be an include rep/xxx.h where rep is either device, hw, sw, or utilities <br  />
-</li>
-<li>libraries are named rep_xxx</li>
-<li>Structures are named struct_xxx.</li>
-<li>Classes created for testing (or example) purpose are named test_xxx.</li>
-<li>Files created for test or example purpose are named t_xxxx/ </li>
-</ul>
-<h1><a class="anchor" id="autotoc_md2"></a>
-Model-View-Control principles</h1>
-<p>MVC has three parts:</p><ul>
-<li><a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> : where is the core of the application.</li>
-<li>View : supported by widgets, its mission is only to show the values, datas of the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a>. Several widget can be attached to a <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a>, showing different data of a same data viewed by different way.</li>
-<li>Control : supported by any means (switch, rotary encoder, ...). It allow the User to change something in the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a>.</li>
-</ul>
-<p>The <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> maintains a flag that indicates when something has changes and must be viewed. This is a signal that triggs the efective (re)drawing of the display. Otherwise nothing happens, savin time of processing. </p><div class="image">
-<object type="image/svg+xml" data="mvc_core.svg" style="pointer-events: none;"></object>
-<div class="caption">
-Interrelations between Model-View(Widget)-Control</div></div>
- </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->
 </div><!-- doc-content -->
