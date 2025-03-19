@@ -1,12 +1,12 @@
 <map id="sg90.h" name="sg90.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="75,5,128,30"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="74,5,127,30"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,151,84,175"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,31,57,137,52,135,95,29"/>
-<area shape="rect" id="Node000003" href="$hw__pwm_8h.html" title=" " alt="" coords="106,78,197,103"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="112,29,137,64,132,67,108,32"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="135,105,76,144,73,139,132,101"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,31,57,137,52,135,94,29"/>
+<area shape="rect" id="Node000003" href="$hw__pwm_8h.html" title=" " alt="" coords="95,78,213,103"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="111,29,138,64,134,67,107,32"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="137,105,77,144,74,140,134,101"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="108,151,211,175"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="155,103,159,135,153,135,150,104"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="157,103,160,135,154,135,152,103"/>
 <area shape="rect" id="Node000005" title=" " alt="" coords="234,151,343,175"/>
-<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="175,101,253,141,251,146,173,106"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="177,101,254,141,252,145,175,106"/>
 </map>

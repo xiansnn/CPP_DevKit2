@@ -24,12 +24,39 @@
 */
 var NAVTREE =
 [
-  [ "C++ DevKit", "index.html", ]
+  [ "C++ DevKit", "index.html", [
+    [ "Introduction to CPP_DevKit documentation", "index.html", "index" ],
+    [ "Bug List", "bug.html", null ],
+    [ "Todo List", "todo.html", null ],
+    [ "Topics", "topics.html", "topics" ],
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
+      ] ]
+    ] ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Variables", "globals_vars.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
+        [ "Macros", "globals_defs.html", null ]
+      ] ]
+    ] ]
+  ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"12x16__font_8h.html",
+"class_widget.html#a6d08d01ec5ea290b39ae26963ae7e460",
+"structstruct___config_slave_i2_c.html#acba8fdbc41345f5fb5012e649615f16a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

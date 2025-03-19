@@ -5,7 +5,7 @@ var group__view =
       [ "check_display_device_compatibility", "class_s_s_d1306.html#ae86de55b157bce1451499d8b18e879f5", null ],
       [ "clear_device_screen_buffer", "class_s_s_d1306.html#a646463128f966a04b1746e3389819711", null ],
       [ "clear_pixel_buffer", "class_s_s_d1306.html#a8432036c46b4de56e4d85ed06f82195a", null ],
-      [ "compute_render_area", "class_s_s_d1306.html#a946d97970d11c778a09e0f1305591b3f", null ],
+      [ "compute_render_area", "class_s_s_d1306.html#a077e87e76e6c5ad59e2ad5ecd11e21fa", null ],
       [ "create_pixel_buffer", "class_s_s_d1306.html#a219dc68e8ad7ba244928d5373ca2e8b8", null ],
       [ "draw_char_into_pixel", "class_s_s_d1306.html#a3bbec956a8ffebc6445f9b83b334e8a2", null ],
       [ "fill_pattern_and_show_GDDRAM", "class_s_s_d1306.html#a764babad3f6a4d12cfa600ce7fd1b751", null ],
@@ -24,7 +24,7 @@ var group__view =
     [ "DisplayDevice", "class_display_device.html", null ],
     [ "GraphicDisplayDevice", "class_graphic_display_device.html", [
       [ "GraphicDisplayDevice", "class_graphic_display_device.html#adcb1b9fe5ab993b41374db60766e8fa1", null ],
-      [ "~GraphicDisplayDevice", "class_graphic_display_device.html#a0adf3090be1bd3a09038974df373142b", null ],
+      [ "~GraphicDisplayDevice", "class_graphic_display_device.html#a0db5f37455a2f8d1393e63178c857505", null ],
       [ "check_display_device_compatibility", "class_graphic_display_device.html#a23a5e34f719cb1847c9b306855f2b29e", null ],
       [ "clear_pixel_buffer", "class_graphic_display_device.html#ac92685b40ec74b952eed4f3bdb1d9000", null ],
       [ "create_pixel_buffer", "class_graphic_display_device.html#a36fa0d9c24464180363b62fa03e4a099", null ],
@@ -36,7 +36,7 @@ var group__view =
     ] ],
     [ "PrinterDevice", "class_printer_device.html", [
       [ "PrinterDevice", "class_printer_device.html#a267186858ec794b04363b495bb9e5816", null ],
-      [ "show", "class_printer_device.html#a8fc2162479eca8abf2d8e4ec25c34d55", null ],
+      [ "show", "class_printer_device.html#ac36519bc40779e67778c59d8c6877b77", null ],
       [ "number_of_column", "class_printer_device.html#aca372413990e542237a9435fd6abd270", null ],
       [ "number_of_line", "class_printer_device.html#a902ed740216a00839529aa34eddc8a28", null ],
       [ "text_buffer", "class_printer_device.html#a49e0129f9f7661fa416c9cfe84f6b9b0", null ],
@@ -44,7 +44,7 @@ var group__view =
     ] ],
     [ "Blinker", "class_blinker.html", [
       [ "clear_blinking_phase_change", "class_blinker.html#ae6a97a7779716d6a9a4954e9491d2985", null ],
-      [ "compute_blinking_phase", "class_blinker.html#a53b79b0d151d778d39b9c2498bbef392", null ],
+      [ "compute_blinking_phase", "class_blinker.html#a813d28ac666e9d76aebd1385a23b1b54", null ],
       [ "has_blinking_changed", "class_blinker.html#ae36b06b6ad8e5b5e14f5a95c1f4d3471", null ],
       [ "set_blink_us", "class_blinker.html#a55d1c93f8b1e2492b1948944d1462665", null ]
     ] ],
@@ -64,7 +64,7 @@ var group__view =
       [ "~GraphicWidget", "class_graphic_widget.html#ae2c0525c8819493eb279e69d54287179", null ],
       [ "circle", "class_graphic_widget.html#a2f4bf7831c9c22c2a13daa2acf4d71e4", null ],
       [ "clear_pixel_buffer", "class_graphic_widget.html#a32888852eb8d37759b1d88534ca34d56", null ],
-      [ "draw_border", "class_graphic_widget.html#a934bc1c1cdf83ed72bf06d1ca5de2e45", null ],
+      [ "draw_border", "class_graphic_widget.html#ae20a208f76132724ee39234b5f12d0d8", null ],
       [ "fill", "class_graphic_widget.html#a44156ede281f3c11dd89756f4bbd4ebb", null ],
       [ "get_graph_frame_config", "class_graphic_widget.html#a49c9ebded2dc14246284662e13713a05", null ],
       [ "get_value_of_interest", "class_graphic_widget.html#a012e42d45d29004e6e93e46782dcb284", null ],
@@ -114,14 +114,14 @@ var group__view =
       [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html#a39ac89c7be8ca3e57592a3139d02c286", null ],
       [ "~WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html#af60d1b0ba4b8bff1a461c77033a4c619", null ],
       [ "draw", "class_widget_horizontal_bargraph.html#ac51fc7454f00e12c47c507b449a1b0b0", null ],
-      [ "get_value_of_interest", "class_widget_horizontal_bargraph.html#af45b95aae6fede2fcd53f32fcf746ec7", null ],
+      [ "get_value_of_interest", "class_widget_horizontal_bargraph.html#ab2e10c8e29c33233ec2a78e4a2838e92", null ],
       [ "number_of_bar", "class_widget_horizontal_bargraph.html#a1e7d8db03c625b052cd4e8b54c36a95d", null ],
       [ "values", "class_widget_horizontal_bargraph.html#a49f9913076330612c4512c12cb22cd53", null ]
     ] ],
     [ "WidgetVerticalBargraph", "class_widget_vertical_bargraph.html", [
       [ "WidgetVerticalBargraph", "class_widget_vertical_bargraph.html#ab320535b2b55805a9bdc2f7dba09cf4c", null ],
       [ "draw", "class_widget_vertical_bargraph.html#a938fef5332131013fe1f7e31f7629f41", null ],
-      [ "get_value_of_interest", "class_widget_vertical_bargraph.html#a524a354a35ac4e0a803d6e7d9f9ef176", null ],
+      [ "get_value_of_interest", "class_widget_vertical_bargraph.html#aa3881be6be2c17e6310e9d4561940054", null ],
       [ "number_of_bar", "class_widget_vertical_bargraph.html#af7cccb54e229667c6b08bfeae64bffbb", null ],
       [ "values", "class_widget_vertical_bargraph.html#a34e7d8ae5dda9f7b377ac7847258e19a", null ]
     ] ],
@@ -132,16 +132,16 @@ var group__view =
     ] ],
     [ "WidgetSquareLed", "class_widget_square_led.html", [
       [ "WidgetSquareLed", "class_widget_square_led.html#a9219d0635dc0f3fb2d696fa66eee5283", null ],
-      [ "draw", "class_widget_square_led.html#a112233c285ec7e804ac107ccfda60d31", null ],
+      [ "draw", "class_widget_square_led.html#a73764f45091e9a4dde223262cd63256b", null ],
       [ "led_is_on", "class_widget_square_led.html#a48652cb1b822e40375cf7062ac63863e", null ]
     ] ],
     [ "WidgetBlinkingSquareLed", "class_widget_blinking_square_led.html", [
       [ "WidgetBlinkingSquareLed", "class_widget_blinking_square_led.html#a08e2705e3b28e1ac02034fbd7d858137", null ],
-      [ "draw", "class_widget_blinking_square_led.html#a922d3feda4cab6fbe5729fadfe694251", null ],
+      [ "draw", "class_widget_blinking_square_led.html#a61b2b883fa16f46dbdc510133b378459", null ],
       [ "led_status", "class_widget_blinking_square_led.html#af84365c4913a06b4f872ecc8a3420269", null ]
     ] ],
     [ "WidgetFocusIndicator", "class_widget_focus_indicator.html", [
       [ "WidgetFocusIndicator", "class_widget_focus_indicator.html#a3ea2c82f5631a9acd72fe37fbfddd213", null ],
-      [ "get_value_of_interest", "class_widget_focus_indicator.html#a39762cefb2e6a700bbb0481a6f36a7e0", null ]
+      [ "get_value_of_interest", "class_widget_focus_indicator.html#a4b2992039d5ef385df41ea2d30a15de0", null ]
     ] ]
 ];

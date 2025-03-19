@@ -16,6 +16,7 @@ var searchData=
   ['update_5fstatus_13',['update_status',['../class_u_i_controlled_model.html#a4c95a5deec65814e1ea03d6340b8fd42',1,'UIControlledModel']]],
   ['update_5ftext_5fframe_5fsize_14',['update_text_frame_size',['../class_text_widget.html#a90e41e7b1954c812001292dcc8b4dc51',1,'TextWidget']]],
   ['update_5fui_5fcontrol_5fevent_5fprocessor_15',['update_UI_control_event_processor',['../class_k_y040.html#a303f94b37201d12f91fbb349dc649eef',1,'KY040']]],
-  ['update_5fwidget_5fanchor_16',['update_widget_anchor',['../class_graphic_widget.html#a9059637b35c4e26bca54a77ae9c25b0d',1,'GraphicWidget']]],
-  ['utilities_20debug_20library_17',['&quot;Utilities/Debug library&quot;',['../group__debug.html',1,'']]]
+  ['update_5fvalues_16',['update_values',['../class_model_bargraph.html#a09745898ed3756ae6c27f50cb12ff74f',1,'ModelBargraph']]],
+  ['update_5fwidget_5fanchor_17',['update_widget_anchor',['../class_graphic_widget.html#a9059637b35c4e26bca54a77ae9c25b0d',1,'GraphicWidget']]],
+  ['utilities_20debug_20library_18',['&quot;Utilities/Debug library&quot;',['../group__debug.html',1,'']]]
 ];

@@ -11,5 +11,6 @@ var searchData=
   ['update_5fstatus_8',['update_status',['../class_u_i_controlled_model.html#a4c95a5deec65814e1ea03d6340b8fd42',1,'UIControlledModel']]],
   ['update_5ftext_5fframe_5fsize_9',['update_text_frame_size',['../class_text_widget.html#a90e41e7b1954c812001292dcc8b4dc51',1,'TextWidget']]],
   ['update_5fui_5fcontrol_5fevent_5fprocessor_10',['update_UI_control_event_processor',['../class_k_y040.html#a303f94b37201d12f91fbb349dc649eef',1,'KY040']]],
-  ['update_5fwidget_5fanchor_11',['update_widget_anchor',['../class_graphic_widget.html#a9059637b35c4e26bca54a77ae9c25b0d',1,'GraphicWidget']]]
+  ['update_5fvalues_11',['update_values',['../class_model_bargraph.html#a09745898ed3756ae6c27f50cb12ff74f',1,'ModelBargraph']]],
+  ['update_5fwidget_5fanchor_12',['update_widget_anchor',['../class_graphic_widget.html#a9059637b35c4e26bca54a77ae9c25b0d',1,'GraphicWidget']]]
 ];

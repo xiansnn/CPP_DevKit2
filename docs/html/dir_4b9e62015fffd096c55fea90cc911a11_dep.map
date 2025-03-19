@@ -1,13 +1,10 @@
 <map id="SSD1306" name="SSD1306">
-<area shape="rect" id="node2" href="dir_0ce2fdb53f4151c70c392bdf8d60ff8a.html" title="include" alt="" coords="42,135,96,159"/>
-<area shape="poly" id="edge1" href="dir_000032_000013.html" alt="" coords="72,87,72,119,67,119,67,87"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000032_000013.html" title="1" alt="" coords="75,109,81,123"/>
-<area shape="rect" id="node3" href="dir_14c55e0c8ed72074091b44a64439906f.html" title="hw" alt="" coords="18,207,57,232"/>
-<area shape="poly" id="edge2" href="dir_000013_000004.html" alt="" coords="66,161,51,194,46,192,62,159"/>
-<area shape="rect" id="edge2-headlabel" href="dir_000013_000004.html" title="1" alt="" coords="55,187,61,201"/>
-<area shape="rect" id="node4" href="dir_384e345ba276260039517aa2781936b6.html" title="sw" alt="" coords="81,207,119,232"/>
-<area shape="poly" id="edge3" href="dir_000013_000033.html" alt="" coords="77,159,91,192,86,194,72,161"/>
-<area shape="rect" id="edge3-headlabel" href="dir_000013_000033.html" title="1" alt="" coords="92,180,98,194"/>
-<area shape="rect" id="clust2" href="dir_4b9e62015fffd096c55fea90cc911a11.html" alt="" coords="27,51,112,170"/>
-<area shape="rect" id="clust1" href="dir_16dc92632bab467dc50b01bd02b3341a.html" title="device" alt="" coords="16,16,123,181"/>
+<area shape="rect" id="node1" href="dir_4b9e62015fffd096c55fea90cc911a11.html" title="SSD1306" alt="" coords="26,51,91,76"/>
+<area shape="rect" id="node2" href="dir_14c55e0c8ed72074091b44a64439906f.html" title="hw" alt="" coords="7,124,46,149"/>
+<area shape="poly" id="edge1" href="dir_000015_000005.html" alt="" coords="56,78,41,111,36,109,51,75"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000015_000005.html" title="1" alt="" coords="44,104,50,118"/>
+<area shape="rect" id="node3" href="dir_384e345ba276260039517aa2781936b6.html" title="sw" alt="" coords="70,124,109,149"/>
+<area shape="poly" id="edge2" href="dir_000015_000016.html" alt="" coords="66,75,81,109,76,111,61,78"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000015_000016.html" title="1" alt="" coords="82,97,88,111"/>
+<area shape="rect" id="clust1" href="dir_16dc92632bab467dc50b01bd02b3341a.html" title="device" alt="" coords="16,16,101,87"/>
 </map>
