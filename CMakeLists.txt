@@ -30,28 +30,29 @@ include(pico_sdk_import.cmake)
 
 project(CPP_DevKit C CXX ASM)
 
-# Find Doxygen 
-find_package(Doxygen) 
-if(DOXYGEN_FOUND) # Set input and output files 
-    set(DOXYGEN_CNF ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile_cnf) 
-    add_custom_target(doc_doxygen 
-    COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_CNF}        
-        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-        COMMENT "Generating API documentation with Doxygen" VERBATIM) 
-endif()
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 #-------------------------------------------------------------------------------------
 if(NOT PROJECT_IS_TOP_LEVEL)
-    # the fetch_cpp_devkit.cmake list should have set the ENV{CPP_DEVKIT_INC_PATH}
-    message("-cpp_devkit-ENV{CPP_DEVKIT_INC_PATH}-> : $ENV{CPP_DEVKIT_INC_PATH}" )
-    include_directories($ENV{CPP_DEVKIT_INC_PATH})
-    add_subdirectory(src)
+# the fetch_cpp_devkit.cmake list should have set the ENV{CPP_DEVKIT_INC_PATH}
+message("-cpp_devkit-ENV{CPP_DEVKIT_INC_PATH}-> : $ENV{CPP_DEVKIT_INC_PATH}" )
+include_directories($ENV{CPP_DEVKIT_INC_PATH})
+add_subdirectory(src)
 endif()
 #-------------------------------------------------------------------------------------
 if(PROJECT_IS_TOP_LEVEL)
+    # Find Doxygen 
+    find_package(Doxygen) 
+    if(DOXYGEN_FOUND) # Set input and output files 
+        set(DOXYGEN_CNF ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile_cnf) 
+        add_custom_target(doc_doxygen 
+        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_CNF}        
+            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+            COMMENT "Generating API documentation with Doxygen" VERBATIM) 
+    endif()
+
     set(CPP_DEVKIT_INC_PATH ${CMAKE_CURRENT_LIST_DIR}/src)
     include_directories(${CPP_DEVKIT_INC_PATH})
     add_subdirectory(src)
