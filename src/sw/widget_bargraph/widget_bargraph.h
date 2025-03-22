@@ -22,10 +22,10 @@
 class ModelBargraph : public Model
 {
 private:
-    /// @brief the vector of values displayed by the bargraph
-    std::vector<int> values;
 
 protected:
+/// @brief the vector of values displayed by the bargraph
+std::vector<int> values;
 public:
     /// @brief get internal values of the bargraph model
     /// @return internal values
