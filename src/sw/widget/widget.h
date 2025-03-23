@@ -55,7 +55,7 @@ private:
     int8_t previous_blinking_phase;
 
     /// @brief The period of the blinking, in microseconds
-    uint32_t blink_period_us;
+    uint32_t blink_period_us{1000000};
 
     /// @brief a flag that indicates the blinking phase has changed
     bool blink_phase_changed;
