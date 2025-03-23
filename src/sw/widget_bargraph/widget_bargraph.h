@@ -22,17 +22,17 @@
 class ModelBargraph : public Model
 {
 private:
-
 protected:
-/// @brief the vector of values displayed by the bargraph
-std::vector<int> values;
+    /// @brief the vector of values displayed by the bargraph
+    std::vector<int> values;
+
 public:
     /// @brief get internal values of the bargraph model
     /// @return internal values
     std::vector<int> get_values();
-    
+
     /// @brief update internal values of the bargraph and set_change_flag
-    /// @param values 
+    /// @param values
     void update_values(std::vector<int> values);
     /// @brief the  number of bar in the bargraph (and the number of values)
     size_t number_of_bar;
@@ -117,12 +117,6 @@ public:
 class WidgetVerticalBargraph : public GraphicWidget
 {
 private:
-    /// @brief the number of pixel that separates each bar (usually 1 pixel)
-    uint8_t bar_spacing;
-    /// @brief the computed bar height. Usually the widget height.
-    uint8_t bar_height;
-    /// @brief the computed width of each bar, according to the widget width, the number of bar and the space between bars
-    uint8_t bar_width;
     /// @brief the computed equivalent of max level value of the bar in y-coordinate
     uint8_t py_max;
     /// @brief the computed equivalent of min level value of the bar in y-coordinate
@@ -146,6 +140,12 @@ protected:
     uint8_t number_of_bar;
 
 public:
+    /// @brief the number of pixel that separates each bar (usually 1 pixel)
+    uint8_t bar_spacing;
+    /// @brief the computed bar height. Usually the widget height.
+    uint8_t bar_height;
+    /// @brief the computed width of each bar, according to the widget width, the number of bar and the space between bars
+    uint8_t bar_width;
     /// @brief the function that draw the widget
     void draw();
 
