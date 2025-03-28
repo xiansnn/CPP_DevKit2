@@ -13,7 +13,6 @@
 #include "t_managed_horizontal_bar_widgets.cpp"
 #include "t_managed_horizontal_bar_manager.cpp"
 
-
 #include "device/SSD1306/ssd1306.h"
 #include "device/KY040/ky040.h"
 #include "utilities/probe/probe.h"
@@ -63,6 +62,7 @@ KY040 ky040 = KY040(CENTRAL_SWITCH_GPIO,
 
 void shared_irq_call_back(uint gpio, uint32_t event_mask)
 {
+    pr_D1.hi();
     switch (gpio)
     {
     case ENCODER_CLK_GPIO:
@@ -72,6 +72,7 @@ void shared_irq_call_back(uint gpio, uint32_t event_mask)
         printf("unknown IRQ\n");
         break;
     };
+    pr_D1.lo();
 }
 
 MyManager manager = MyManager(&ky040, false);
