@@ -32,6 +32,11 @@
  *       12 CS_   connected to SPI1-CS  / GPIO13
  *       13 VSS_3 connected to GND 
  *       14 GND_2 connected to GND
+ * signal D/Cx R/W
+ * [Cx/W] Command/Write
+ * [D/W]  Data/Write
+ * [D/R]  Data/Read
+ * Some commands are desactivated because for the used device, the corresponding input/output is not wired
  *     
  * 
  * @version 0.1
@@ -50,10 +55,6 @@
 #define ST7735_WIDTH 128 // can be 160
 
 // ---------- system function commands ----------
-// [Cx/W] Command/Write
-// [D/W]  Data/Write
-// [D/R]  Data/Read
-// Read command are commented because read SPI is not wired on the PCB modules
 
 
 #define ST7735_NOP        0x00u // [Cx/W] No Operation 
@@ -91,8 +92,8 @@
 
 
 #define ST7735_PTLAR      0x30u // [Cx/W] Partial Start/End Address Set  (followed by 4[D/W] )
-#define ST7735_TEOFF      0x34u // [Cx/W] Tearing effect line off 
-#define ST7735_TEON       0x35u // [Cx/W] Tearing Effect Mode Set & on  (followed by 1[D/W] )
+// #define ST7735_TEOFF      0x34u // [Cx/W] Tearing effect line off 
+// #define ST7735_TEON       0x35u // [Cx/W] Tearing Effect Mode Set & on  (followed by 1[D/W] )
 
 #define ST7735_MADCTL     0x36u // [Cx/W] Memory Data Access Control  (followed by 1[D/W] )
 
@@ -109,4 +110,39 @@
 // #define ST7735_RDID2      0xDBu // [Cx/W] ) Read ID2 (followed by 1[D/R] )
 // #define ST7735_RDID3      0xDCu // [Cx/W] ) Read ID3 (followed by 1[D/R] )
 
+// ---------- panel function commands ----------
+// ---------- Frame Rate Control
+#define ST7735_FRMCTR1    0xB1u // [Cx/W] ) In normal mode (Full Colors) (followed by 3[D/W] )
+#define ST7735_FRMCTR2    0xB2u // [Cx/W] ) In normal mode (8-colors) (followed by 3[D/W] )
+#define ST7735_FRMCTR3    0xB3u // [Cx/W] ) In Partial mode + Full Colors (followed by 6[D/W] )
 
+// // ---------- Display Inversion Control
+#define ST7735_INVCTR     0xB4u // [Cx/W] ) Display Inversion Control (followed by 1[D/W] )
+#define ST7735_DISSET5    0xB6u // [Cx/W] ) Display Function set 5 (followed by 2[D/W] ) NOTICE: for ST7735 only, not available on ST7735S
+
+// // ---------- Power Control
+#define ST7735_PWCTR1     0xC0u // [Cx/W] ) Power Control Setting  (followed by 3[D/W] )
+#define ST7735_PWCTR2     0xC1u // [Cx/W] ) Power Control Setting  (followed by 1[D/W] )
+#define ST7735_PWCTR3     0xC2u // [Cx/W] ) Power Control Setting  (followed by 2[D/W] )
+#define ST7735_PWCTR4     0xC3u // [Cx/W] ) Power Control Setting in Idle Mode (8-colors)  (followed by 2[D/W] )
+#define ST7735_PWCTR5     0xC4u // [Cx/W] ) Power Control Setting in Partial Mode + Full COlors (followed by 2[D/W] )
+
+// // ---------- VCOM
+#define ST7735_VMCTR1     0xC5u // [Cx/W] ) VCOM Control 1 (followed by 1[D/W] )
+#define ST7735_VMOFTR     0xC7u // [Cx/W] ) Set VCOM Offset Control (followed by 1[D/W] )
+
+// // ---------- ID
+#define ST7735_WRID2      0xD1u // [Cx/W] ) Set LCM Version Code (followed by 1[D/W] )
+#define ST7735_WRID3      0xD2u // [Cx/W] ) Customer Project COde (followed by 1[D/W] )
+
+// // ---------- NVM
+#define ST7735_NVCTR1     0xD9u // [Cx/W] ) NVM Control Status (followed by 1[D/W] )
+// #define ST7735_NVCTR2     0xDEu // [Cx/W] ) NVM Read Command (followed by [D/W]0xF5,[D/W]0xA5 )
+#define ST7735_NVCTR3     0xDFu // [Cx/W] ) NVM Write Command (followed by [D/W]<command code>,[D/W]0xA5 )
+
+// // ---------- Gamma
+#define ST7735_GAMCTRP1   0xE0u // [Cx/W] ) Set Gamma adjustment (+polarity) (followed by 16[D/W] )
+#define ST7735_GAMCTRN1   0xE1u // [Cx/W] ) Set Gamma adjustment (-polarity) (followed by 16[D/W] )
+
+// // ---------- Gate pump
+#define ST7735_GCV        0xFCu // [Cx/W] ) Gate Pump Clock Frequency Variable (followed by 1[D/W] )
