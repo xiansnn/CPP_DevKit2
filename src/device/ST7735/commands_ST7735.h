@@ -48,15 +48,8 @@
 
 #pragma once
 
-// ---------- physical screen size ----------
-/// @brief the height in pixel of ST7735
-#define ST7735_HEIGHT 128
-/// @brief the width in pixel of ST7735
-#define ST7735_WIDTH 128 // can be 160
 
 // ---------- system function commands ----------
-
-
 #define ST7735_NOP        0x00u // [Cx/W] No Operation 
 #define ST7735_SWRESET    0x01u // [Cx/W] Software Reset
 

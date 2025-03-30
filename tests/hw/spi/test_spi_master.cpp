@@ -25,7 +25,6 @@
 
 #include <stdio.h>
 #include "pico/stdlib.h"
-// #include "hardware/spi.h"
 #include "hw/spi/hw_spi.h"
 
 #define BUF_LEN 0x100
@@ -62,23 +61,7 @@ int main()
     HW_SPI_Master master = HW_SPI_Master(cfg);
     // Enable UART so we can print
     stdio_init_all();
-    // #if !defined(spi_default) || !defined(PICO_DEFAULT_SPI_SCK_PIN) || !defined(PICO_DEFAULT_SPI_TX_PIN) || !defined(PICO_DEFAULT_SPI_RX_PIN) || !defined(PICO_DEFAULT_SPI_CSN_PIN)
-    // #warning spi/spi_master example requires a board with SPI pins
-    //     puts("Default SPI pins were not defined");
-    // #else
-
-    printf("SPI master example\n");
-
-
-
-    // Enable SPI 1 at 1 MHz and connect to GPIOs
-    // spi_init(spi1, 1000 * 1000);
-    // gpio_set_function(12, GPIO_FUNC_SPI);
-    // gpio_set_function(10, GPIO_FUNC_SPI);
-    // gpio_set_function(11, GPIO_FUNC_SPI);
-    // gpio_set_function(13, GPIO_FUNC_SPI);
-    // Make the SPI pins available to picotool
-    // bi_decl(bi_4pins_with_func(PICO_DEFAULT_SPI_RX_PIN, PICO_DEFAULT_SPI_TX_PIN, PICO_DEFAULT_SPI_SCK_PIN, PICO_DEFAULT_SPI_CSN_PIN, GPIO_FUNC_SPI));
+     printf("SPI master example\n");
 
     uint8_t out_buf[BUF_LEN], in_buf[BUF_LEN];
 
@@ -95,8 +78,7 @@ int main()
     {
         // Write the output buffer to MOSI, and at the same time read from MISO.
         master.burst_byte_write_read(out_buf,in_buf,BUF_LEN);
-        // spi_write_read_blocking(spi1, out_buf, in_buf, BUF_LEN);
-
+ 
         // Write to stdio whatever came in on the MISO line.
         printf("SPI master says: read page %d from the MISO line:\n", i);
         printbuf(in_buf, BUF_LEN);
