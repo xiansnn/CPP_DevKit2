@@ -54,8 +54,8 @@ void simulate_values(ModelBargraph *model)
 struct_ConfigGraphicWidget vertical_bargraph_cfg = {
     .pixel_frame_width = 56,
     .pixel_frame_height = 56,
-    .fg_color = PixelColor::WHITE,
-    .bg_color = PixelColor::BLACK,
+    .fg_color = ColorIndex::WHITE,
+    .bg_color = ColorIndex::BLACK,
     .widget_anchor_x = 20,
     .widget_anchor_y = 0,
     .widget_with_border = true};

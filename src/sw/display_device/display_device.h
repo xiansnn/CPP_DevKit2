@@ -18,7 +18,7 @@
 #define FONT_HEIGHT_INDEX 1
 
 /// @brief define the code value for color (limited here to monochome, can be extended later)
-enum class PixelColor
+enum class ColorIndex
 {
     /// @brief "black" coded with code 0x0
     BLACK = 0,
@@ -64,9 +64,9 @@ struct struct_ConfigGraphicWidget
     /// @brief the frame height of the graphic frame
     size_t pixel_frame_height;
     /// @brief the foreground color
-    PixelColor fg_color{PixelColor::WHITE};
+    ColorIndex fg_color{ColorIndex::WHITE};
     /// @brief  the background color
-    PixelColor bg_color{PixelColor::BLACK};
+    ColorIndex bg_color{ColorIndex::BLACK};
     /// @brief the x_axis anchor of the widget
     uint8_t widget_anchor_x{0};
     /// @brief the y-axis anchor of the widget
@@ -98,11 +98,11 @@ struct struct_ConfigTextWidget
     /**
      * @brief The foreground color, default to WHITE
      */
-    PixelColor fg_color{PixelColor::WHITE};
+    ColorIndex fg_color{ColorIndex::WHITE};
     /**
      * @brief The background color, defaul to BLACK
      */
-    PixelColor bg_color{PixelColor::BLACK};
+    ColorIndex bg_color{ColorIndex::BLACK};
     /**
      * @brief Wrap flag : if true, text wrap to the next line when end of line is reached.
      */
@@ -197,7 +197,7 @@ public:
      */
     virtual void pixel(struct_PixelFrame *pixel_frame,
                        const int x, const int y,
-                       const PixelColor color = PixelColor::WHITE) = 0;
+                       const ColorIndex color = ColorIndex::WHITE) = 0;
 
     /**
      * @brief a graphic primitive to draw a character at a pixel position

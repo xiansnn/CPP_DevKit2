@@ -115,8 +115,8 @@ int main()
     struct_ConfigGraphicWidget square_led_1_cfg{
         .pixel_frame_width = 50,
         .pixel_frame_height = 8,
-        .fg_color = PixelColor::WHITE,
-        .bg_color = PixelColor::BLACK,
+        .fg_color = ColorIndex::WHITE,
+        .bg_color = ColorIndex::BLACK,
         .widget_anchor_x = 6,
         .widget_anchor_y = 8,
         .widget_with_border = false};
@@ -125,8 +125,8 @@ int main()
     struct_ConfigGraphicWidget square_led_2_cfg{
         .pixel_frame_width = 50,
         .pixel_frame_height = 8,
-        .fg_color = PixelColor::WHITE,
-        .bg_color = PixelColor::BLACK,
+        .fg_color = ColorIndex::WHITE,
+        .bg_color = ColorIndex::BLACK,
         .widget_anchor_x = 6,
         .widget_anchor_y = 24,
         .widget_with_border = false};
@@ -135,8 +135,8 @@ int main()
     struct_ConfigGraphicWidget square_led_3_cfg{
         .pixel_frame_width = 50,
         .pixel_frame_height = 8,
-        .fg_color = PixelColor::WHITE,
-        .bg_color = PixelColor::BLACK,
+        .fg_color = ColorIndex::WHITE,
+        .bg_color = ColorIndex::BLACK,
         .widget_anchor_x = 6,
         .widget_anchor_y = 40,
         .widget_with_border = false};

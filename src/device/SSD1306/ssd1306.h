@@ -195,7 +195,7 @@ public:
 
     void create_pixel_buffer(struct_PixelFrame *pixel_memory);
 
-    void pixel(struct_PixelFrame *pixel_memory_structure, const int x, const int y, const PixelColor c = PixelColor::WHITE);
+    void pixel(struct_PixelFrame *pixel_memory_structure, const int x, const int y, const ColorIndex c = ColorIndex::WHITE);
 
     /**
      * @brief

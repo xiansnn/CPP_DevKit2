@@ -146,7 +146,7 @@ private:
     /// @param fill a flag that indicates whether the ellipse is filled or not
     /// @param quadrant the quadrant of the ellipse to draw (see bresenham algorithm)
     /// @param color the filling color
-    void ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, PixelColor color);
+    void ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, ColorIndex color);
 
 protected:
     /// @brief if true, the widget is surrounded by a one-pixel border
@@ -180,9 +180,9 @@ public:
     /// @brief the data structure that contains the actual pixel buffer, created by the display device.
     struct_PixelFrame pixel_frame;
     /// @brief the foregroung color of the graphic frame
-    PixelColor fg_color;
+    ColorIndex fg_color;
     /// @brief the background color of the graphic frame
-    PixelColor bg_color;
+    ColorIndex bg_color;
 
     /// @brief location in x of the widget within the hosting framebuffer
     uint8_t widget_anchor_x;
@@ -197,7 +197,7 @@ public:
     /// @brief draw a rectangle around the widget.
     ///  \note As the border is a rectangle with fill=false, the border width can only be 1 pixel.
     /// @param color the color of the border
-    virtual void draw_border(PixelColor color = PixelColor::WHITE);
+    virtual void draw_border(ColorIndex color = ColorIndex::WHITE);
 
     /// @brief A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y)
     void show();
@@ -244,21 +244,21 @@ public:
     /// @brief Write all pixel buffer memory with "0" (or "1") if color c is BLACK (resp. WHITE)
     /// \note: Works only for monochrome display!
     /// @param color the foreground color
-    void fill(PixelColor color);
+    void fill(ColorIndex color);
 
     /// @brief Draw a color horizontal line, starting at frame position (x,y), on w number of pixel.
     /// @param x horizontal start of line
     /// @param y vertical start of line
     /// @param w length of the line in number of pixel
     /// @param color color of the line, default to WHITE
-    void hline(uint8_t x, uint8_t y, size_t w, PixelColor color = PixelColor::WHITE);
+    void hline(uint8_t x, uint8_t y, size_t w, ColorIndex color = ColorIndex::WHITE);
 
     /// @brief Draw a color vertical line, starting at frame position (x,y), on w number of pixel.
     /// @param x horizontal start of line
     /// @param y vertical start of line
     /// @param h length of the line in number of pixel
     /// @param color color of the line, default to WHITE
-    void vline(uint8_t x, uint8_t y, size_t h, PixelColor color = PixelColor::WHITE);
+    void vline(uint8_t x, uint8_t y, size_t h, ColorIndex color = ColorIndex::WHITE);
 
     /// @brief Draw a color line, starting at frame position (x0,y0), ending at frame position (x1,y1)
     /// @param x0 horizontal start of line
@@ -266,7 +266,7 @@ public:
     /// @param x1 horizontal end of line
     /// @param y1 vertical end of line
     /// @param color color of the line, default to WHITE
-    void line(int x0, int y0, int x1, int y1, PixelColor color = PixelColor::WHITE);
+    void line(int x0, int y0, int x1, int y1, ColorIndex color = ColorIndex::WHITE);
 
     /// @brief Draw a rectangle, starting at frame position (x,y), w wide and h high
     /// @param start_x horizontal start of the rectangle
@@ -275,7 +275,7 @@ public:
     /// @param h number of pixel of the rectangle height
     /// @param fill if true, the rectangle is filled with color
     /// @param color color of the border of the rectangle, default to WHITE
-    void rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, bool fill = false, PixelColor color = PixelColor::WHITE);
+    void rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, bool fill = false, ColorIndex color = ColorIndex::WHITE);
     /**
      * @brief draw a cercle of size radius, centered at (x_center, y_center)
      * https://fr.wikipedia.org/wiki/Algorithme_de_trac%C3%A9_d%27arc_de_cercle_de_Bresenham
@@ -310,7 +310,7 @@ public:
      * @param fill   if true, the circle is filled with color c
      * @param color   color of the border of the circle, default to WHITE
      */
-    void circle(int radius, int x_center, int y_center, bool fill = false, PixelColor color = PixelColor::WHITE);
+    void circle(int radius, int x_center, int y_center, bool fill = false, ColorIndex color = ColorIndex::WHITE);
 };
 
 /// @brief a dedicated class for text frame only
@@ -456,7 +456,7 @@ public:
     ///  \note This border can overwrite the characters!
     /// To be improve with the use of pixel frame memory not based on byte page such as the OLED SSD1306.
     /// @param color
-    void draw_border(PixelColor color = PixelColor::WHITE);
+    void draw_border(ColorIndex color = ColorIndex::WHITE);
 };
 
 /// @brief A widget used when we need to simply print but still want to take advantage of the status change management.

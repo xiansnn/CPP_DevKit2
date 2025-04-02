@@ -68,8 +68,8 @@ std::map<ControlledObjectStatus, std::string> status_to_string{
 struct_ConfigGraphicWidget default_cfg{
     .pixel_frame_width = 100,
     .pixel_frame_height = 8,
-    .fg_color = PixelColor::WHITE,
-    .bg_color = PixelColor::BLACK};
+    .fg_color = ColorIndex::WHITE,
+    .bg_color = ColorIndex::BLACK};
 
 MyIncrementalValueWidgetOnSerialMonitor::MyIncrementalValueWidgetOnSerialMonitor(PrinterDevice *my_printer, MyIncrementalValueModel *_actual_displayed_object)
     : PrintWidget(my_printer, _actual_displayed_object)

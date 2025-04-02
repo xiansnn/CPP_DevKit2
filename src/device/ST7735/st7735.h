@@ -100,7 +100,7 @@ public:
     void create_pixel_buffer(struct_PixelFrame *pixel_frame);
     void pixel(struct_PixelFrame *pixel_frame,
                const int x, const int y,
-               const PixelColor color = PixelColor::WHITE);
+               const ColorIndex color = ColorIndex::WHITE);
     void draw_char_into_pixel(struct_PixelFrame *pixel_frame,
                               const struct_ConfigTextWidget text_config,
                               const char character,

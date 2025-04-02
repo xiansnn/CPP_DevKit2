@@ -398,7 +398,7 @@ void ST7735::create_pixel_buffer(struct_PixelFrame *pixel_frame)
 }
 
 void ST7735::pixel(struct_PixelFrame *pixel_frame,
-                   const int x, const int y, const PixelColor color)
+                   const int x, const int y, const ColorIndex color)
 {
 }
 

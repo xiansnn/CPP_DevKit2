@@ -30,7 +30,7 @@ void Widget::set_display_screen(DisplayDevice *_new_display_device)
     this->display_screen = _new_display_device;
 }
 
-void GraphicWidget::draw_border(PixelColor color)
+void GraphicWidget::draw_border(ColorIndex color)
 {
     if (this->widget_with_border)
         rect(0, 0, widget_width + 2 * widget_border_width, widget_height + 2 * widget_border_width, false, color);
@@ -139,27 +139,27 @@ struct_ConfigGraphicWidget GraphicWidget::get_graph_frame_config()
     return cfg;
 }
 
-void GraphicWidget::fill(PixelColor c)
+void GraphicWidget::fill(ColorIndex c)
 {
-    if (c == PixelColor::BLACK)
+    if (c == ColorIndex::BLACK)
         memset(this->pixel_frame.pixel_frame_buffer, 0x00, this->pixel_frame.pixel_frame_buffer_size);
     else
         memset(this->pixel_frame.pixel_frame_buffer, 0xFF, this->pixel_frame.pixel_frame_buffer_size);
 }
 
-void GraphicWidget::hline(uint8_t x, uint8_t y, size_t w, PixelColor c)
+void GraphicWidget::hline(uint8_t x, uint8_t y, size_t w, ColorIndex c)
 {
     for (size_t i = 0; i < w; i++)
         ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x + i, y, c);
 }
 
-void GraphicWidget::vline(uint8_t x, uint8_t y, size_t h, PixelColor c)
+void GraphicWidget::vline(uint8_t x, uint8_t y, size_t h, ColorIndex c)
 {
     for (size_t i = 0; i < h; i++)
         ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x, y + i, c);
 }
 
-void GraphicWidget::line(int x0, int y0, int x1, int y1, PixelColor c)
+void GraphicWidget::line(int x0, int y0, int x1, int y1, ColorIndex c)
 {
     int dx = abs(x1 - x0);
     int sx = x0 < x1 ? 1 : -1;
@@ -187,7 +187,7 @@ void GraphicWidget::line(int x0, int y0, int x1, int y1, PixelColor c)
     }
 }
 
-void GraphicWidget::rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, bool fill, PixelColor c)
+void GraphicWidget::rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, bool fill, ColorIndex c)
 {
     if (!fill)
     {
@@ -202,7 +202,7 @@ void GraphicWidget::rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, b
                 ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, start_x + i_x, start_y + i_y, c);
 }
 
-void GraphicWidget::circle(int radius, int x_center, int y_center, bool fill, PixelColor c)
+void GraphicWidget::circle(int radius, int x_center, int y_center, bool fill, ColorIndex c)
 {
     int x, y, m;
     x = 0;
@@ -447,13 +447,13 @@ void TextWidget::draw()
     }
 }
 
-void TextWidget::draw_border(PixelColor color)
+void TextWidget::draw_border(ColorIndex color)
 {
     if (this->widget_with_border)
         rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, false, color);
 }
 
-void GraphicWidget::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, PixelColor c)
+void GraphicWidget::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, ColorIndex c)
 {
     int x, y, m;
     x = 0;

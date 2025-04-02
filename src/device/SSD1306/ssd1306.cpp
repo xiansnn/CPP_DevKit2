@@ -168,7 +168,7 @@ void SSD1306::create_pixel_buffer(struct_PixelFrame *pixel_memory)
     clear_pixel_buffer(pixel_memory);
 }
 
-void SSD1306::pixel(struct_PixelFrame *pixel_memory_structure, const int x, const int y, const PixelColor c)
+void SSD1306::pixel(struct_PixelFrame *pixel_memory_structure, const int x, const int y, const ColorIndex c)
 {
     if (x >= 0 && x < pixel_memory_structure->pixel_frame_width && y >= 0 && y < pixel_memory_structure->pixel_frame_height) // avoid drawing outside the framebuffer
     {
@@ -176,7 +176,7 @@ void SSD1306::pixel(struct_PixelFrame *pixel_memory_structure, const int x, cons
         int byte_idx = (y / 8) * BytesPerRow + x;
         uint8_t byte = pixel_memory_structure->pixel_frame_buffer[byte_idx];
 
-        if (c == PixelColor::WHITE)
+        if (c == ColorIndex::WHITE)
             byte |= 1 << (y % 8);
         else
             byte &= ~(1 << (y % 8));

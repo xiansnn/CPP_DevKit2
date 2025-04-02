@@ -53,8 +53,8 @@ int main()
     struct_ConfigGraphicWidget frame = {
         .pixel_frame_width = display.screen_pixel_width,
         .pixel_frame_height = display.screen_pixel_height,
-        .fg_color = PixelColor::WHITE,
-        .bg_color = PixelColor::BLACK,
+        .fg_color = ColorIndex::WHITE,
+        .bg_color = ColorIndex::BLACK,
         .widget_anchor_x = 0,
         .widget_anchor_y = 0,
         .widget_with_border = false};

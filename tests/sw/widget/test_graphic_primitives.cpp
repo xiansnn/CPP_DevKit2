@@ -83,10 +83,10 @@ void test_outofframe_line(SSD1306 *display)
 
     for (int x = -10; x < 138; x++)
     {
-        PixelColor c = PixelColor::WHITE;
+        ColorIndex c = ColorIndex::WHITE;
         frame.line(x, y0, x1, y1, c);
         frame.show();
-        c = PixelColor::BLACK;
+        c = ColorIndex::BLACK;
         frame.line(x, y0, x1, y1, c);
         frame.show();
     }
@@ -100,14 +100,14 @@ void test_fb_line(SSD1306 *display)
 {
     display->clear_device_screen_buffer();
     my_graphic_widget frame = my_graphic_widget(display, SSD1306_framebuffer_cfg);
-    PixelColor c = PixelColor::BLACK;
+    ColorIndex c = ColorIndex::BLACK;
     struct_RenderArea full_screen_area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
     for (int i = 0; i < 2; i++)
     {
-        if (c == PixelColor::BLACK)
-            c = PixelColor::WHITE;
+        if (c == ColorIndex::BLACK)
+            c = ColorIndex::WHITE;
         else
-            c = PixelColor::BLACK;
+            c = ColorIndex::BLACK;
 
         for (int x = 0; x < SSD1306_WIDTH; x++)
         {
@@ -127,20 +127,20 @@ void test_fb_line(SSD1306 *display)
     {
         for (int x = 0; x < SSD1306_WIDTH; x++)
         {
-            c = PixelColor::WHITE;
+            c = ColorIndex::WHITE;
             frame.line(x, 0, SSD1306_WIDTH - 1 - x, SSD1306_HEIGHT - 1, c);
             frame.show();
-            c = PixelColor::BLACK;
+            c = ColorIndex::BLACK;
             frame.line(x, 0, SSD1306_WIDTH - 1 - x, SSD1306_HEIGHT - 1, c);
             frame.show();
         }
 
         for (int y = SSD1306_HEIGHT - 1; y >= 0; y--)
         {
-            c = PixelColor::WHITE;
+            c = ColorIndex::WHITE;
             frame.line(0, y, SSD1306_WIDTH - 1, SSD1306_HEIGHT - 1 - y, c);
             display->show_render_area(frame.pixel_frame.pixel_frame_buffer, full_screen_area);
-            c = PixelColor::BLACK;
+            c = ColorIndex::BLACK;
             frame.line(0, y, SSD1306_WIDTH - 1, SSD1306_HEIGHT - 1 - y, c);
             display->show_render_area(frame.pixel_frame.pixel_frame_buffer, full_screen_area);
         }
@@ -227,7 +227,7 @@ void test_fb_in_fb(SSD1306 *display)
     display->clear_device_screen_buffer();
     frame.rect(0, 0, SSD1306_WIDTH, SSD1306_HEIGHT);
     frame.rect(10, 10, 108, 44, true);
-    frame.line(5, 60, 120, 5, PixelColor::BLACK);
+    frame.line(5, 60, 120, 5, ColorIndex::BLACK);
     frame.show();
     sleep_ms(1000);
 
@@ -238,7 +238,7 @@ void test_fb_in_fb(SSD1306 *display)
         .widget_anchor_y = 24};
 
     my_graphic_widget small_frame = my_graphic_widget(display, small_frame_cfg);
-    small_frame.fill(PixelColor::BLACK);
+    small_frame.fill(ColorIndex::BLACK);
     small_frame.line(5, 5, 80, 20);
     small_frame.circle(8, 44, 12);
     small_frame.show();
