@@ -77,7 +77,7 @@ int main()
     for (size_t i = 0;; ++i)
     {
         // Write the output buffer to MOSI, and at the same time read from MISO.
-        master.burst_byte_write_read(out_buf,in_buf,BUF_LEN);
+        master.burst_write_read_8(out_buf,in_buf,BUF_LEN);
  
         // Write to stdio whatever came in on the MISO line.
         printf("SPI master says: read page %d from the MISO line:\n", i);

@@ -1,6 +1,6 @@
 #include "st7735.h"
 
-void ST7735::command_pin_enable(bool enable)
+void ST7735::enable_command_pin(bool enable)
 {
     gpio_put(dc_pin, enable ? DCX_COMMAND : DCX_DATA);
 }
@@ -8,7 +8,7 @@ void ST7735::command_pin_enable(bool enable)
 void ST7735::hardware_reset()
 {
     gpio_put(hw_reset_pin, 0);
-    sleep_us(15);
+    sleep_us(20);
     gpio_put(hw_reset_pin, 1);
     sleep_ms(120);
 }
@@ -18,10 +18,12 @@ void ST7735::init_pins()
     gpio_init(dc_pin);
     gpio_set_dir(dc_pin, GPIO_OUT);
     gpio_pull_up(dc_pin);
+    gpio_put(dc_pin, 1);
 
     gpio_init(hw_reset_pin);
     gpio_set_dir(hw_reset_pin, GPIO_OUT);
     gpio_pull_up(hw_reset_pin);
+    gpio_put(hw_reset_pin, 1);
 
     gpio_init(backlight_pin);
     gpio_set_dir(backlight_pin, GPIO_OUT);
@@ -33,29 +35,48 @@ void ST7735::init_pins()
  * SW_reset, sleep 150us
  * SLPOUT, sleep 150us
  */
-void ST7735::init_wakeup()
+void ST7735::device_wakeup()
 {
     hardware_reset();
-    soft_reset();
-    send_cmd(ST7735_SLPOUT);
+    enable_sleep(false);
 }
 
 /**
  * @brief _Frame rate control_
- * FRMCTR1 , [0x01, 0x2C, 0x2D] fastest refresh, 6 lines front, 3 lines back
- * FRMCTR2 , [0x01, 0x2C, 0x2D]
- * FRMCTR3 , [0x01, 0x2c, 0x2d, 0x01, 0x2c, 0x2d], sleep 10us
+ * -Set the frame frequency of the full colors normal mode.
+ * - Frame rate=fosc/((param[1] x 2 + 40) x (LINE + param[2] + param[3] +2))
+ * -fosc = 850kHz
+ * -FPA > 0, BPA > 0
+ * FRMCTR1 , [0x01, 0x2C, 0x2D] normal mode fastest refresh, 6 lines front, 3 lines back
+ * FRMCTR2 , [0x01, 0x2C, 0x2D] idle mode fastest refresh, 6 lines front, 3 lines back
+ * FRMCTR3 , [0x01, 0x2c, 0x2d, 0x01, 0x2c, 0x2d],  partial mode sleep 10us
  */
-void ST7735::init_frame_rate_control()
+void ST7735::config_frame_rate_control()
 {
+    uint8_t cmd_list[7];
+    cmd_list[1] = 0x01;
+    cmd_list[2] = 0x2C;
+    cmd_list[3] = 0x2D;
+    cmd_list[4] = 0x01;
+    cmd_list[5] = 0x2C;
+    cmd_list[6] = 0x2D;
+
+    cmd_list[0] = ST7735_FRMCTR1;
+    send_cmd_list(cmd_list, 4);
+    cmd_list[0] = ST7735_FRMCTR2;
+    send_cmd_list(cmd_list, 4);
+    cmd_list[0] = ST7735_FRMCTR3;
+    send_cmd_list(cmd_list, 7);
 }
 
 /**
  * @brief  _display inversion control_
- * INVCTR , [0x07]
+ * INVCTR , [0x07] column inversion and no dot inversion for Normal, Idle and partial mode
  */
-void ST7735::init_inversion_control()
+void ST7735::config_inversion_control()
 {
+    uint8_t cmd_list[] = {ST7735_INVCTR, 0x07};
+    send_cmd_list(cmd_list, 2);
 }
 
 /**
@@ -67,17 +88,78 @@ void ST7735::init_inversion_control()
  * PWCTR5 , [0x8A, 0xEE] opamp current small, boost frequency
  * VMCTR1 , [0x0E]
  */
-void ST7735::init_power_control()
+void ST7735::config_power_control()
 {
+    uint8_t cmd_list[4];
+    cmd_list[0] = ST7735_PWCTR1;
+    cmd_list[1] = 0xA2; // AVDD = 5V ; GVDD = 4.6V
+    cmd_list[2] = 0x02; // GVCL = -4.6V
+    cmd_list[3] = 0x84; // Mode = Auto
+    send_cmd_list(cmd_list, 4);
+
+    cmd_list[0] = ST7735_PWCTR2;
+    cmd_list[1] = 0xC5; // VGH25 = 2.4V ; VGLSEL = -10V ; VGHBT = 3*AVDD-0.5 V
+    send_cmd_list(cmd_list, 2);
+
+    cmd_list[0] = ST7735_PWCTR3; // power control in normal mode
+    cmd_list[1] = 0x0A;          // amount of current in Opamp = medium low ; amount of current in Opamp = small
+    cmd_list[2] = 0x00;          // set up boost circuit
+    send_cmd_list(cmd_list, 3);
+
+    cmd_list[0] = ST7735_PWCTR4; // power control in idle mode
+    cmd_list[1] = 0x8A;          // amount of current in Opamp = medium low ; amount of current in Opamp = small
+    cmd_list[2] = 0x2A;          // set up boost circuit
+    send_cmd_list(cmd_list, 3);
+
+    cmd_list[0] = ST7735_PWCTR5; // power control in partial mode
+    cmd_list[1] = 0x8A;
+    cmd_list[2] = 0xEE;
+    send_cmd_list(cmd_list, 3);
+
+    cmd_list[0] = ST7735_VMCTR1; // VCOM voltage
+    cmd_list[1] = 0x0E;          // VCOM = -0.775 V
+    send_cmd_list(cmd_list, 2);
 }
 
 /**
  * @brief  _set rotation and color_
- * MADCTL , [rotation and RBG]
- * COLMOD , [0x05]
  */
-void ST7735::init_rotation_and_color()
+void ST7735::config_rotation_and_color(struct_ConfigST7735 device_config)
 {
+    uint8_t cmd_list[2]{0};
+    cmd_list[0] = ST7735_MADCTL;
+    switch (device_config.rotation)
+    {
+    case ST7735Rotation::_0:
+        this->device_start_x = this->device_start_column_offset;
+        this->device_start_y = this->device_start_row_offset;
+        break;
+    case ST7735Rotation::_90:
+        cmd_list[1] = MADCTL_MV | MADCTL_MX;
+        this->device_start_x = this->device_start_row_offset;
+        this->device_start_y = this->device_start_column_offset;
+        break;
+    case ST7735Rotation::_180:
+        cmd_list[1] = MADCTL_MX | MADCTL_MY;
+        this->device_start_x = this->device_start_column_offset;
+        this->device_start_y = this->device_start_row_offset;
+        break;
+    case ST7735Rotation::_270:
+        cmd_list[1] = MADCTL_MV | MADCTL_MY;
+        this->device_start_x = this->device_start_row_offset;
+        this->device_start_y = this->device_start_column_offset;
+        break;
+    default:
+        break;
+    }
+    if (!rgb_order)
+        cmd_list[1] |= MADCTL_BGR;
+
+    send_cmd_list(cmd_list, 2);
+
+    cmd_list[0] = ST7735_COLMOD;
+    cmd_list[1] = 0x05; // 16-bit/pixel
+    send_cmd_list(cmd_list, 2);
 }
 
 /**
@@ -85,79 +167,203 @@ void ST7735::init_rotation_and_color()
  * CASET , [0x00,0x01,0x00, width-1]
  * RASET , [0x00,0x01,0x00, height-1]
  * we start column 1
+ *
+ * ST77XX_CASET,   4,              //  1: Column addr set, 4 args, no delay:
+      0x00, 0x02,                   //     XSTART = 0
+      0x00, 0x7F+0x02,              //     XEND = 127
+    ST77XX_RASET,   4,              //  2: Row addr set, 4 args, no delay:
+      0x00, 0x01,                   //     XSTART = 0
+      0x00, 0x9F+0x01 },            //     XEND = 159
  */
-void ST7735::init_column_row_address()
+void ST7735::init_column_row_address(struct_ConfigST7735 device_config)
 {
+    uint8_t cmd_list[5];
+    switch (device_config.display_type)
+    {
+    case ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB:
+        cmd_list[0] = ST7735_CASET;
+        cmd_list[1] = 0x00;
+        cmd_list[2] = device_start_x;
+        cmd_list[3] = 0x00;
+        cmd_list[4] = 0x7F + device_start_x;
+        send_cmd_list(cmd_list, 5);
+        cmd_list[0] = ST7735_RASET;
+        cmd_list[1] = 0x00;
+        cmd_list[2] = device_start_y;
+        cmd_list[3] = 0x00;
+        cmd_list[4] = 0x7F + device_start_y;
+        send_cmd_list(cmd_list, 5);
+        break;
+    case ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB:
+        cmd_list[0] = ST7735_CASET;
+        cmd_list[1] = 0x00;
+        cmd_list[2] = device_start_column_offset;
+        cmd_list[3] = 0x00;
+        cmd_list[4] = 0x7F +  device_start_column_offset;
+        send_cmd_list(cmd_list, 5);
+        cmd_list[0] = ST7735_RASET;
+        cmd_list[1] = 0x00;
+        cmd_list[2] = device_start_row_offset;
+        cmd_list[3] = 0x00;
+        cmd_list[4] = 0x9F + device_start_row_offset;
+        send_cmd_list(cmd_list, 5);
+
+        break;
+
+    default:
+        break;
+    }
 }
 
 /**
- * @brief _gamma_
+ * @brief _gamma correction_
  * GMCTRP1 , [0x02, 0x1c, 0x07, 0x12, 0x37, 0x32, 0x29, 0x2d, 0x29, 0x25, 0x2b, 0x39, 0x00, 0x01, 0x03, 0x10]
  * GMCTRN1 , [0x03, 0x1d, 0x07, 0x06, 0x2e, 0x2c, 0x29, 0x2d, 0x2e, 0x2e, 0x37, 0x3f, 0x00, 0x00, 0x02, 0x10]
  */
-void ST7735::init_gamma()
+void ST7735::config_gamma()
 {
+    // uint8_t cmd_list[17] = {ST7735_GAMCTRP1, 0x02, 0x1c, 0x07, 0x12, 0x37, 0x32, 0x29, 0x2d, 0x29, 0x25, 0x2b, 0x39, 0x00, 0x01, 0x03, 0x10};
+    // send_cmd_list(cmd_list, 17);
+    // cmd_list[17] = {ST7735_GAMCTRN1, 0x03, 0x1d, 0x07, 0x06, 0x2e, 0x2c, 0x29, 0x2d, 0x2e, 0x2e, 0x37, 0x3f, 0x00, 0x00, 0x02, 0x10};
+    // send_cmd_list(cmd_list, 17);
 }
 
 /**
  * @brief  _set display normal ON
- * NORON , sleep 10us
+ * NORON , sleep 10ms
+ * DISPON , sleep 100ms
  */
-void ST7735::init_normal_display_on()
+void ST7735::set_normal_display_on()
 {
+    send_cmd(ST7735_NORON);
+    sleep_ms(10);
+    send_cmd(ST7735_DISPON);
+    sleep_ms(100);
 }
 
-/**
- * @brief init for "green tab" version of display ... I don't know why
- */
-void ST7735::init_green_tab()
-{
-    init_wakeup();
-    init_frame_rate_control();
-    init_inversion_control();
-    init_power_control();
-    init_rotation_and_color();
-    init_column_row_address();
-    init_gamma();
-    init_normal_display_on();
-}
-
+// /**
+//  * @brief init for "green tab" version of display ... I don't know why
+//  */
+// void ST7735::init_green_tab()
+// {
+//     // common init
+//     init_wakeup();
+//     init_frame_rate_control();
+//     init_inversion_control();
+//     init_power_control();
+//     init_rotation_and_color();
+//     // greentab specific
+//     init_column_row_address();
+//     // optional but improve color
+//     init_gamma();
+//     // start device
+//     init_normal_display_on();
+// }
 
 void ST7735::send_cmd(uint8_t cmd)
 {
-    command_pin_enable(true);
-    spi->single_byte_write(cmd);
-    command_pin_enable(false);
+    enable_command_pin(true);
+    spi->single_write_8(cmd);
+    enable_command_pin(false);
 }
 
-void ST7735::send_cmd_list(uint8_t cmd, size_t len)
+void ST7735::send_cmd_list(uint8_t *cmd, size_t len)
 {
+    enable_command_pin(true);
+    spi->single_write_8(cmd[0]);
+    enable_command_pin(false);
+    for (size_t i = 1; i < len; i++)
+        spi->single_write_8(cmd[i]);
 }
 
 void ST7735::send_buffer(uint8_t *buffer, size_t buffer_len)
 {
+    spi->burst_write_8(buffer, buffer_len);
+    send_cmd(ST7735_NOP);
 }
 
 ST7735::ST7735(HW_SPI_Master *spi, struct_ConfigST7735 device_config)
-    : GraphicDisplayDevice(device_config.device_width, device_config.device_height)
+    : GraphicDisplayDevice(0, 0)
 {
     this->spi = spi;
     this->dc_pin = device_config.dc_pin;
     this->backlight_pin = device_config.backlight_pin;
     this->hw_reset_pin = device_config.hw_reset_pin;
+    // init hardware pins
     init_pins();
     set_backlight(true);
-    hardware_reset();
+    // common init
+    device_wakeup();
+    config_frame_rate_control();
+    config_inversion_control();
+    config_power_control();
+    // device specific init
+    config_device_specific_size_and_offsets(device_config);
+    config_rotation_and_color(device_config);
+    init_column_row_address(device_config);
+    // optional but improve color
+    config_gamma();
+    // start device
+    set_normal_display_on();
+}
+
+void ST7735::config_device_specific_size_and_offsets(struct_ConfigST7735 device_config)
+{
+    switch (device_config.display_type)
+    {
+    case ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB:
+        this->screen_pixel_width = 128;
+        this->screen_pixel_height = 128;
+        this->rgb_order = true;
+        this->device_start_column_offset = 2;
+        this->device_start_row_offset = 3;
+        break;
+    case ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB:
+        this->rgb_order = true;
+        this->device_start_column_offset = 2;
+        this->device_start_row_offset = 1;
+        switch (device_config.rotation)
+        {
+        case ST7735Rotation::_0:
+            this->screen_pixel_width = 128;
+            this->screen_pixel_height = 160;
+            break;
+        case ST7735Rotation::_90:
+            this->screen_pixel_width = 160;
+            this->screen_pixel_height = 128;
+            break;
+        case ST7735Rotation::_180:
+            this->screen_pixel_width = 128;
+            this->screen_pixel_height = 160;
+            break;
+        case ST7735Rotation::_270:
+            this->screen_pixel_width = 160;
+            this->screen_pixel_height = 128;
+            break;
+        default:
+            break;
+        }
+        break;
+
+    default:
+        break;
+    }
 }
 
 ST7735::~ST7735()
 {
 }
 
-void ST7735::display_on(bool on)
+void ST7735::enable_display(bool enable)
 {
-    uint8_t cmd = on ? ST7735_DISPON : ST7735_DISPOFF;
-    send_cmd(cmd);
+    send_cmd(enable ? ST7735_DISPON : ST7735_DISPOFF);
+    sleep_ms(120);
+}
+
+void ST7735::enable_sleep(bool enable)
+{
+    send_cmd(enable ? ST7735_SLPIN : ST7735_SLPOUT);
+    sleep_ms(120);
 }
 
 void ST7735::set_backlight(bool on)
@@ -223,12 +429,12 @@ void ST7735::draw_char_into_pixel(struct_PixelFrame *pixel_frame,
  * VMCTR1 , [0x0E]
  * _set rotation and color_
  * ---> MADCTL , [rotation and RBG] [0xC8]
- * 
+ *
  * COLMOD , [0x05]
  * _column row address set_
  * ---> CASET , [0x00,0x0_0_,0x00, width-1]
  * ---> RASET , [0x00,0x0_0_,0x00, height-1]
- * 
+ *
  * _gamma_
  * ---> GMCTRP1 , [0x0f, 0x1a, 0x0f, 0x18, 0x2f, 0x28, 0x20, 0x22, 0x1f, 0x1b, 0x23, 0x37, 0x00, 0x07, 0x02, 0x10]
  * ---> GMCTRN1 , [0x0f, 0x1b, 0x0f, 0x17, 0x33, 0x2c, 0x29, 0x2e, 0x30, 0x30, 0x39, 0x3f, 0x00, 0x07, 0x03, 0x10]

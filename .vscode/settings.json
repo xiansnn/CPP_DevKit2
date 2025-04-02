@@ -40,5 +40,6 @@
         "streambuf": "cpp",
         "map": "cpp",
         "sstream": "cpp"
-    }
+    },
+    "cortex-debug.variableUseNaturalFormat": false
 }

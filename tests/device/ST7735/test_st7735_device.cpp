@@ -37,12 +37,11 @@ struct_ConfigMasterSPI cfg_spi = {
     .baud_rate_Hz = 1000 * 1000};
 
 struct_ConfigST7735 cfg_st7735{
-    .device_width = 128,
-    .device_height = 128,
-    .dc_pin = 14,
+    .display_type = ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB,
     .backlight_pin = 5,
-    .rotation = ST7735Rotation::_0,
-    .hw_reset_pin = 15};
+    .hw_reset_pin = 15,
+    .dc_pin = 14,
+    .rotation = ST7735Rotation::_0};
 
 int main()
 {
@@ -62,15 +61,14 @@ int main()
 
     while (true)
     {
-
     }
     return 0;
 }
 
 void test_display_on(ST7735 &display)
 {
-    display.display_on(true);
+    display.enable_display(true);
     sleep_ms(500);
-    display.display_on(false);
+    display.enable_display(false);
     sleep_ms(500);
 }
