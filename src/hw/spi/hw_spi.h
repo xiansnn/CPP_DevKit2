@@ -62,6 +62,7 @@ public:
     int burst_write_read_8(uint8_t *src, uint8_t *dest, size_t len);
 
     int single_write_8(uint8_t byte_value);
+    int single_write_16(uint16_t word_value);
 
     int single_read_8(uint8_t *dest);
 

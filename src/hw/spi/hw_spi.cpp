@@ -37,6 +37,12 @@ int HW_SPI_Master::single_write_8(uint8_t byte_value)
     return spi_write_blocking(spi, bytes, 1);
 }
 
+int HW_SPI_Master::single_write_16(uint16_t word_value)
+{
+    uint16_t words[1]= {word_value};
+    return spi_write16_blocking(spi, words,1);
+}
+
 int HW_SPI_Master::single_read_8(uint8_t *dest)
 {
     return spi_read_blocking(spi, 0x00, dest, 1);
