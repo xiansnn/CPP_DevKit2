@@ -89,7 +89,12 @@
 // #define ST7735_TEON       0x35u // [Cx/W] Tearing Effect Mode Set & on  (followed by 1[D/W] )
 
 #define ST7735_MADCTL     0x36u // [Cx/W] Memory Data Access Control  (followed by 1[D/W] )
-
+#define MADCTL_MY         0x80 // mirror row address order
+#define MADCTL_MX         0x40 // mirror column address order
+#define MADCTL_MV         0x20 // swap row/column
+#define MADCTL_MH         0x04 // LCD horizontal refresh right to left
+#define MADCTL_ML         0x10 // LCD vertical refresh Bottom to Top
+#define MADCTL_BGR        0x08 // BGR color filter order
 // scrolling definition
 #define ST7735_SCRLAR     0x33u // [Cx/W] Scroll area set   (followed by 6[D/W] )
 #define ST7735_VSCSAD     0x37u // [Cx/W] Scroll Start Address of RAM  (followed by 2[D/W] )
