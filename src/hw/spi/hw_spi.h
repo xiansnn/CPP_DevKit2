@@ -56,15 +56,16 @@ public:
     HW_SPI_Master(struct_ConfigMasterSPI master_config);
     ~HW_SPI_Master();
 
-    int burst_byte_write(uint8_t *src, size_t len);
+    int burst_write_8(uint8_t *src, size_t len);
+    int burst_write_16(uint16_t *src, size_t len);
 
-    int burst_byte_write_read(uint8_t *src, uint8_t *dest, size_t len);
+    int burst_write_read_8(uint8_t *src, uint8_t *dest, size_t len);
 
-    int single_byte_write(uint8_t byte_value);
+    int single_write_8(uint8_t byte_value);
 
-    int single_byte_read(uint8_t *dest);
+    int single_read_8(uint8_t *dest);
 
-    int burst_byte_read(uint8_t repeated_tx_data,  uint8_t *dest, size_t len);
+    int burst_read_8(uint8_t repeated_tx_data,  uint8_t *dest, size_t len);
 
     bool device_is_connected(uint8_t slave_address);
 };
