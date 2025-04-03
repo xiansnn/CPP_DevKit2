@@ -1,0 +1,35 @@
+/**
+ * @file color_palette.h
+ * @author xiansnn (xiansnn@hotmail.com)
+ * @brief
+ * @version 0.1
+ * @date 2025-04-03
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#pragma once
+
+#include "sw/display_device/display_device.h"
+
+color_palette_t color_palette{
+    {ColorIndex::BLACK, {0x00, 0x00, 0x00}},
+    {ColorIndex::WHITE, {0xFF, 0xFF, 0xFF}},
+    {ColorIndex::RED, {0xFF, 0x00, 0x00}},
+    {ColorIndex::LIME, {0x00, 0xFF, 0x00}},
+    {ColorIndex::BLUE, {0x00, 0x00, 0xFF}},
+    {ColorIndex::YELLOW, {0xFF, 0xFF, 0x00}},
+    {ColorIndex::CYAN, {0x00, 0xFF, 0xFF}},
+    {ColorIndex::MAGENTA, {0xFF, 0x00, 0xFF}},
+    {ColorIndex::SILVER, {0xC0, 0xC0, 0xC0}},
+    {ColorIndex::GRAY, {0x80, 0x80, 0x80}},
+    {ColorIndex::MAROON, {0x80, 0x00, 0x00}},
+    {ColorIndex::OLIVE, {0x80, 0x80, 0x00}},
+    {ColorIndex::GREEN, {0x00, 0x80, 0x00}},
+    {ColorIndex::PURPLE, {0x80, 0x00, 0x80}},
+    {ColorIndex::TEAL, {0x00, 0x80, 0x80}},
+    {ColorIndex::NAVY, {0x00, 0x00, 0x80}},
+    {ColorIndex::ORANGE, {0xFF, 0xA5, 0x00}},
+    {ColorIndex::GOLD, {0xFF, 0xD7, 0x00}},
+    {ColorIndex::FOREST, {0x22, 0x8B, 0x22}}};

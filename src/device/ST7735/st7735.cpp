@@ -1,4 +1,5 @@
 #include "st7735.h"
+#include "color/color_palette.h"
 
 void ST7735::enable_command_pin(bool enable)
 {

@@ -11,20 +11,39 @@
 #pragma once
 
 #include "pico/stdlib.h"
+#include <map>
+
 
 /// @brief index of the font width value in the <...>_font.h file
 #define FONT_WIDTH_INDEX 0
 /// @brief index of the font height value in the <...>_font.h file
 #define FONT_HEIGHT_INDEX 1
 
-/// @brief define the code value for color (limited here to monochome, can be extended later)
+/// @brief define the code value for color
 enum class ColorIndex
 {
-    /// @brief "black" coded with code 0x0
-    BLACK = 0,
-    /// @brief "white" coded with code 0x1
-    WHITE = 1
+  BLACK = 0, // "BLACK" must be coded with code 0x0 for monochrome display device
+  WHITE = 1, // "WHITE" must be coded with code 0x1 for monochrome display device
+  RED,
+  LIME,
+  BLUE,
+  YELLOW,
+  CYAN,
+  MAGENTA,
+  SILVER,
+  GRAY,
+  MAROON,
+  OLIVE,
+  GREEN,
+  PURPLE,
+  TEAL,
+  NAVY,
+  ORANGE,
+  GOLD,
+  FOREST
 };
+
+typedef std::map<ColorIndex, std::tuple<uint8_t, uint8_t, uint8_t>> color_palette_t;
 
 /// @brief the data structure that characterise the graphic framebuffer
 struct struct_PixelFrame
@@ -126,7 +145,6 @@ public:
     ~DisplayDevice();
 };
 
-
 /// @brief This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen SSD1306).
 /// \ingroup view
 class GraphicDisplayDevice : public DisplayDevice
@@ -137,6 +155,8 @@ public:
     size_t screen_pixel_width;
     /// @brief the physical height of the screen (in pixel)
     size_t screen_pixel_height;
+
+    uint16_t static rgb888_to_rgb565(ColorIndex index,  color_palette_t  color_palette);
 
     /**
      * @brief A pure virtual member function. Each device must implement this method and check the compatibility of the widget parameter with the its physical limitations.
