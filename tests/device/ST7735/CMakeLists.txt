@@ -4,5 +4,6 @@ target_link_libraries(test_st7735 PUBLIC
             hw_spi
             device_st7735 
             # sw_display_device
+            sw_widget
             utilities_probe
             )
