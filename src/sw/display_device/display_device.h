@@ -11,7 +11,7 @@
 #pragma once
 
 #include "pico/stdlib.h"
-#include <map>
+// #include <map>
 
 
 /// @brief index of the font width value in the <...>_font.h file
@@ -43,7 +43,7 @@ enum class ColorIndex
   FOREST
 };
 
-typedef std::map<ColorIndex, std::tuple<uint8_t, uint8_t, uint8_t>> color_palette_t;
+
 
 /// @brief the data structure that characterise the graphic framebuffer
 struct struct_PixelFrame
@@ -152,11 +152,11 @@ class GraphicDisplayDevice : public DisplayDevice
 protected:
 public:
     /// @brief the physical width of the screen (in pixel)
-    size_t screen_pixel_width;
+    size_t TFT_panel_width_in_pixel;
     /// @brief the physical height of the screen (in pixel)
-    size_t screen_pixel_height;
+    size_t TFT_panel_height_in_pixel;
 
-    uint16_t static rgb888_to_rgb565(ColorIndex index,  color_palette_t  color_palette);
+    // uint16_t static rgb888_to_rgb565(ColorIndex index,  color_palette_t  color_palette);
 
     /**
      * @brief A pure virtual member function. Each device must implement this method and check the compatibility of the widget parameter with the its physical limitations.
