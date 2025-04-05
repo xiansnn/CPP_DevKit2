@@ -17,6 +17,10 @@
 
 #define DCX_COMMAND 0
 #define DCX_DATA 1
+#define ST7735_144_128x128_column_offset 2
+#define ST7735_144_128x128_row_offset 1
+#define ST7735_177_160x128_column_offset 2
+#define ST7735_177_160x128_row_offset 1
 
 enum class ST7735DisplayType
 {
@@ -43,18 +47,22 @@ struct struct_ConfigST7735
 struct struct_ConfigScrollST7735
 {
 };
+/**
+ * @brief s adapter aux commandes CASET et RASET
+ *
+ */
 struct struct_RenderArea
 {
     /// @brief the pixel x where to start copy of the graphic framebuffer to the device memory
-    uint8_t start_col{0};
-    /// @brief the pixel y where to end copy of the graphic framebuffer to the device memory
-    uint8_t start_row{0};
+    uint16_t start_x{0};
     /// @brief the width of the rendered area
-    size_t width{};
+    uint16_t end_x{0};
+    /// @brief the pixel y where to end copy of the graphic framebuffer to the device memory
+    uint16_t start_y{0};
     /// @brief the eight of the rendered area
-    size_t height{};
+    uint16_t end_y{0};
     /// @brief the size of the graphic buffer
-    size_t buflen{};
+    size_t frame_buffer_length;
 };
 
 class ST7735 : public GraphicDisplayDevice
@@ -64,10 +72,10 @@ private:
     uint dc_pin;
     uint backlight_pin;
     uint hw_reset_pin;
-    uint8_t device_start_column_offset{0};
-    uint8_t device_start_row_offset{0};
-    uint8_t device_start_x{0};
-    uint8_t device_start_y{0};
+    uint8_t ST7735_device_column_offset{0};
+    uint8_t ST7735_device_row_offset{0};
+    uint8_t TFT_panel_start_x{0};
+    uint8_t TFT_panel_start_y{0};
     bool rgb_order;
 
     void enable_command_pin(bool enable);
@@ -78,9 +86,9 @@ private:
     void config_inversion_control();
     void config_power_control();
     void config_rotation_and_color(struct_ConfigST7735 device_config);
-    void init_column_row_address(struct_ConfigST7735 device_config);
+    // void init_column_row_address(struct_ConfigST7735 device_config);
     void config_gamma();
-    void set_normal_display_on();
+    void set_normal_mode();
     // void init_green_tab();
     void config_device_specific_size_and_offsets(struct_ConfigST7735 device_config);
     void send_cmd(uint8_t cmd);
@@ -89,12 +97,16 @@ private:
     void set_backlight(bool on);
     void soft_reset();
 
+    void set_RAM_write_addresses(uint8_t start_x, uint8_t start_y, size_t width, size_t height);
+
 public:
     ST7735(HW_SPI_Master *spi, struct_ConfigST7735 device_config);
     ~ST7735();
-    void enable_display(bool enable);
+    void set_display_ON();
+    void set_display_OFF();
     void enable_sleep(bool enable);
     void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg);
+    void clear_device_screen_buffer();
     void show(struct_PixelFrame *pixel_frame, const uint8_t anchor_x, const uint8_t anchor_y);
     void clear_pixel_buffer(struct_PixelFrame *pixel_frame);
     void create_pixel_buffer(struct_PixelFrame *pixel_frame);

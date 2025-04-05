@@ -1,5 +1,6 @@
 #include "st7735.h"
 #include "color/color_palette.h"
+#include <string.h>
 
 void ST7735::enable_command_pin(bool enable)
 {
@@ -132,23 +133,23 @@ void ST7735::config_rotation_and_color(struct_ConfigST7735 device_config)
     switch (device_config.rotation)
     {
     case ST7735Rotation::_0:
-        this->device_start_x = this->device_start_column_offset;
-        this->device_start_y = this->device_start_row_offset;
+        this->TFT_panel_start_x = this->ST7735_device_column_offset;
+        this->TFT_panel_start_y = this->ST7735_device_row_offset;
         break;
     case ST7735Rotation::_90:
         cmd_list[1] = MADCTL_MV | MADCTL_MX;
-        this->device_start_x = this->device_start_row_offset;
-        this->device_start_y = this->device_start_column_offset;
+        this->TFT_panel_start_x = this->ST7735_device_row_offset;
+        this->TFT_panel_start_y = this->ST7735_device_column_offset;
         break;
     case ST7735Rotation::_180:
         cmd_list[1] = MADCTL_MX | MADCTL_MY;
-        this->device_start_x = this->device_start_column_offset;
-        this->device_start_y = this->device_start_row_offset;
+        this->TFT_panel_start_x = this->ST7735_device_column_offset;
+        this->TFT_panel_start_y = this->ST7735_device_row_offset;
         break;
     case ST7735Rotation::_270:
         cmd_list[1] = MADCTL_MV | MADCTL_MY;
-        this->device_start_x = this->device_start_row_offset;
-        this->device_start_y = this->device_start_column_offset;
+        this->TFT_panel_start_x = this->ST7735_device_row_offset;
+        this->TFT_panel_start_y = this->ST7735_device_column_offset;
         break;
     default:
         break;
@@ -176,45 +177,45 @@ void ST7735::config_rotation_and_color(struct_ConfigST7735 device_config)
       0x00, 0x01,                   //     XSTART = 0
       0x00, 0x9F+0x01 },            //     XEND = 159
  */
-void ST7735::init_column_row_address(struct_ConfigST7735 device_config)
-{
-    uint8_t cmd_list[5];
-    switch (device_config.display_type)
-    {
-    case ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB:
-        cmd_list[0] = ST7735_CASET;
-        cmd_list[1] = 0x00;
-        cmd_list[2] = device_start_x;
-        cmd_list[3] = 0x00;
-        cmd_list[4] = 0x7F + device_start_x;
-        send_cmd_list(cmd_list, 5);
-        cmd_list[0] = ST7735_RASET;
-        cmd_list[1] = 0x00;
-        cmd_list[2] = device_start_y;
-        cmd_list[3] = 0x00;
-        cmd_list[4] = 0x7F + device_start_y;
-        send_cmd_list(cmd_list, 5);
-        break;
-    case ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB:
-        cmd_list[0] = ST7735_CASET;
-        cmd_list[1] = 0x00;
-        cmd_list[2] = device_start_column_offset;
-        cmd_list[3] = 0x00;
-        cmd_list[4] = 0x7F +  device_start_column_offset;
-        send_cmd_list(cmd_list, 5);
-        cmd_list[0] = ST7735_RASET;
-        cmd_list[1] = 0x00;
-        cmd_list[2] = device_start_row_offset;
-        cmd_list[3] = 0x00;
-        cmd_list[4] = 0x9F + device_start_row_offset;
-        send_cmd_list(cmd_list, 5);
+// void ST7735::init_column_row_address(struct_ConfigST7735 device_config)
+// {
+//     uint8_t cmd_list[5];
+//     switch (device_config.display_type)
+//     {
+//     case ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB:
+//         cmd_list[0] = ST7735_CASET;
+//         cmd_list[1] = 0x00;
+//         cmd_list[2] = TFT_panel_start_x;
+//         cmd_list[3] = 0x00;
+//         cmd_list[4] = 0x7F + TFT_panel_start_x;
+//         send_cmd_list(cmd_list, 5);
+//         cmd_list[0] = ST7735_RASET;
+//         cmd_list[1] = 0x00;
+//         cmd_list[2] = TFT_panel_start_y;
+//         cmd_list[3] = 0x00;
+//         cmd_list[4] = 0x7F + TFT_panel_start_y;
+//         send_cmd_list(cmd_list, 5);
+//         break;
+//     case ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB:
+//         cmd_list[0] = ST7735_CASET;
+//         cmd_list[1] = 0x00;
+//         cmd_list[2] = ST7735_device_column_offset;
+//         cmd_list[3] = 0x00;
+//         cmd_list[4] = 0x7F + ST7735_device_column_offset;
+//         send_cmd_list(cmd_list, 5);
+//         cmd_list[0] = ST7735_RASET;
+//         cmd_list[1] = 0x00;
+//         cmd_list[2] = ST7735_device_row_offset;
+//         cmd_list[3] = 0x00;
+//         cmd_list[4] = 0x9F + ST7735_device_row_offset;
+//         send_cmd_list(cmd_list, 5);
 
-        break;
+//         break;
 
-    default:
-        break;
-    }
-}
+//     default:
+//         break;
+//     }
+// }
 
 /**
  * @brief _gamma correction_
@@ -232,14 +233,11 @@ void ST7735::config_gamma()
 /**
  * @brief  _set display normal ON
  * NORON , sleep 10ms
- * DISPON , sleep 100ms
  */
-void ST7735::set_normal_display_on()
+void ST7735::set_normal_mode()
 {
     send_cmd(ST7735_NORON);
     sleep_ms(10);
-    send_cmd(ST7735_DISPON);
-    sleep_ms(100);
 }
 
 // /**
@@ -301,11 +299,12 @@ ST7735::ST7735(HW_SPI_Master *spi, struct_ConfigST7735 device_config)
     // device specific init
     config_device_specific_size_and_offsets(device_config);
     config_rotation_and_color(device_config);
-    init_column_row_address(device_config);
+    // init_column_row_address(device_config);
     // optional but improve color
     config_gamma();
     // start device
-    set_normal_display_on();
+    set_normal_mode();
+    set_display_ON();
 }
 
 void ST7735::config_device_specific_size_and_offsets(struct_ConfigST7735 device_config)
@@ -313,33 +312,33 @@ void ST7735::config_device_specific_size_and_offsets(struct_ConfigST7735 device_
     switch (device_config.display_type)
     {
     case ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB:
-        this->screen_pixel_width = 128;
-        this->screen_pixel_height = 128;
-        this->rgb_order = true;
-        this->device_start_column_offset = 2;
-        this->device_start_row_offset = 3;
+        this->TFT_panel_width_in_pixel = 128;
+        this->TFT_panel_height_in_pixel = 128;
+        this->rgb_order = false;
+        this->ST7735_device_column_offset = ST7735_144_128x128_column_offset;
+        this->ST7735_device_row_offset = ST7735_144_128x128_row_offset;
         break;
     case ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB:
         this->rgb_order = true;
-        this->device_start_column_offset = 2;
-        this->device_start_row_offset = 1;
+        this->ST7735_device_column_offset = ST7735_177_160x128_column_offset;
+        this->ST7735_device_row_offset = ST7735_177_160x128_row_offset;
         switch (device_config.rotation)
         {
         case ST7735Rotation::_0:
-            this->screen_pixel_width = 128;
-            this->screen_pixel_height = 160;
+            this->TFT_panel_width_in_pixel = 128;
+            this->TFT_panel_height_in_pixel = 160;
             break;
         case ST7735Rotation::_90:
-            this->screen_pixel_width = 160;
-            this->screen_pixel_height = 128;
+            this->TFT_panel_width_in_pixel = 160;
+            this->TFT_panel_height_in_pixel = 128;
             break;
         case ST7735Rotation::_180:
-            this->screen_pixel_width = 128;
-            this->screen_pixel_height = 160;
+            this->TFT_panel_width_in_pixel = 128;
+            this->TFT_panel_height_in_pixel = 160;
             break;
         case ST7735Rotation::_270:
-            this->screen_pixel_width = 160;
-            this->screen_pixel_height = 128;
+            this->TFT_panel_width_in_pixel = 160;
+            this->TFT_panel_height_in_pixel = 128;
             break;
         default:
             break;
@@ -355,9 +354,15 @@ ST7735::~ST7735()
 {
 }
 
-void ST7735::enable_display(bool enable)
+void ST7735::set_display_ON()
 {
-    send_cmd(enable ? ST7735_DISPON : ST7735_DISPOFF);
+    send_cmd(ST7735_DISPON);
+    sleep_ms(120);
+}
+
+void ST7735::set_display_OFF()
+{
+    send_cmd(ST7735_DISPOFF);
     sleep_ms(120);
 }
 
@@ -378,11 +383,43 @@ void ST7735::soft_reset()
     sleep_ms(120);
 }
 
+void ST7735::set_RAM_write_addresses(uint8_t start_x, uint8_t start_y, size_t width, size_t height)
+{
+    uint16_t device_start_x = start_x + TFT_panel_start_x;
+    uint16_t device_end_x = device_start_x + width - 1;
+    uint16_t device_start_y = start_y + TFT_panel_start_y;
+    uint16_t device_end_y = device_start_y + height - 1;
+
+    send_cmd(ST7735_CASET);
+    spi->single_write_16(device_start_x);
+    spi->single_write_16(device_end_x);
+    send_cmd(ST7735_RASET);
+    spi->single_write_16(device_start_y);
+    spi->single_write_16(device_end_y);
+}
+
 void ST7735::check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg)
 {
     // check limit of screen
-    assert(framebuffer_cfg.widget_anchor_y + framebuffer_cfg.pixel_frame_height <= this->screen_pixel_height);
-    assert(framebuffer_cfg.widget_anchor_x + framebuffer_cfg.pixel_frame_width <= this->screen_pixel_width);
+    assert(framebuffer_cfg.widget_anchor_y + framebuffer_cfg.pixel_frame_height <= TFT_panel_height_in_pixel);
+    assert(framebuffer_cfg.widget_anchor_x + framebuffer_cfg.pixel_frame_width <= TFT_panel_width_in_pixel);
+}
+
+void ST7735::clear_device_screen_buffer()
+{
+    uint8_t xsa = 0;
+    uint8_t ysa = 0;
+    size_t w = TFT_panel_width_in_pixel;
+    size_t h = TFT_panel_height_in_pixel;
+    set_RAM_write_addresses(xsa, ysa, w, h);
+    send_cmd(ST7735_RAMWR);
+    for (size_t i = 0; i < w * h; i++)
+    {
+        // ColorIndex color = ColorIndex::BLACK;
+        // spi->single_write_16(color_palette[static_cast<int>(color)]);
+
+        spi->single_write_16(0x0000);
+    }
 }
 
 void ST7735::show(struct_PixelFrame *pixel_frame,
@@ -392,10 +429,15 @@ void ST7735::show(struct_PixelFrame *pixel_frame,
 
 void ST7735::clear_pixel_buffer(struct_PixelFrame *pixel_frame)
 {
+    memset(pixel_frame->pixel_frame_buffer, 0x00, pixel_frame->pixel_frame_buffer_size);
 }
 
 void ST7735::create_pixel_buffer(struct_PixelFrame *pixel_frame)
 {
+    pixel_frame->pixel_frame_buffer_size = pixel_frame->pixel_frame_width * pixel_frame->pixel_frame_height;
+
+    pixel_frame->pixel_frame_buffer = new uint8_t[pixel_frame->pixel_frame_buffer_size];
+    clear_pixel_buffer(pixel_frame);
 }
 
 void ST7735::pixel(struct_PixelFrame *pixel_frame,
