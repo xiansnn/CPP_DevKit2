@@ -106,7 +106,7 @@ public:
     void set_display_OFF();
     void enable_sleep(bool enable);
     void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg);
-    void clear_device_screen_buffer();
+    void clear_device_screen_buffer(ColorIndex color_index = ColorIndex::BLACK);
     void show(struct_PixelFrame *pixel_frame, const uint8_t anchor_x, const uint8_t anchor_y);
     void clear_pixel_buffer(struct_PixelFrame *pixel_frame);
     void create_pixel_buffer(struct_PixelFrame *pixel_frame);

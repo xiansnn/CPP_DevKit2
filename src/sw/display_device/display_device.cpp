@@ -1,14 +1,5 @@
 
 #include "display_device.h"
-// #include "color/color_palette.h"
-
-// uint16_t GraphicDisplayDevice::rgb888_to_rgb565(ColorIndex index, color_palette_t color_palette)
-// {
-//     uint8_t red = std::get<0>(color_palette[index]);
-//     uint8_t green = std::get<1>(color_palette[index]);
-//     uint8_t blue = std::get<2>(color_palette[index]);
-//     return (((red & 0xF8) << 8) | ((green & 0xFC) << 3) | (blue >> 3));
-// }
 
 GraphicDisplayDevice::GraphicDisplayDevice(size_t screen_width,
                                            size_t screen_height)

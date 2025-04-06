@@ -13,48 +13,32 @@
 
 #include "sw/display_device/display_device.h"
 
-// #include <map>
-// typedef std::map<ColorIndex, std::tuple<uint8_t, uint8_t, uint8_t>> color_palette_t;
-// color_palette_t color_palette{
-//     {ColorIndex::BLACK, {0x00, 0x00, 0x00}},
-//     {ColorIndex::WHITE, {0xFF, 0xFF, 0xFF}},
-//     {ColorIndex::RED, {0xFF, 0x00, 0x00}},
-//     {ColorIndex::LIME, {0x00, 0xFF, 0x00}},
-//     {ColorIndex::BLUE, {0x00, 0x00, 0xFF}},
-//     {ColorIndex::YELLOW, {0xFF, 0xFF, 0x00}},
-//     {ColorIndex::CYAN, {0x00, 0xFF, 0xFF}},
-//     {ColorIndex::MAGENTA, {0xFF, 0x00, 0xFF}},
-//     {ColorIndex::SILVER, {0xC0, 0xC0, 0xC0}},
-//     {ColorIndex::GRAY, {0x80, 0x80, 0x80}},
-//     {ColorIndex::MAROON, {0x80, 0x00, 0x00}},
-//     {ColorIndex::OLIVE, {0x80, 0x80, 0x00}},
-//     {ColorIndex::GREEN, {0x00, 0x80, 0x00}},
-//     {ColorIndex::PURPLE, {0x80, 0x00, 0x80}},
-//     {ColorIndex::TEAL, {0x00, 0x80, 0x80}},
-//     {ColorIndex::NAVY, {0x00, 0x00, 0x80}},
-//     {ColorIndex::ORANGE, {0xFF, 0xA5, 0x00}},
-//     {ColorIndex::GOLD, {0xFF, 0xD7, 0x00}},
-//     {ColorIndex::FOREST, {0x22, 0x8B, 0x22}}};
+#include <map>
 
-uint16_t color_palette[32] = {
-    0x0000, // ColorIndex::BLACK
-    (((0xFF & 0xF8) << 8) | ((0xFF & 0xFC) << 3) | (0xFF >> 3)), //ColorIndex::WHITE
-    (((0xFF & 0xF8) << 8) | ((0x00 & 0xFC) << 3) | (0x00 >> 3)), //ColorIndex::RED
-    (((0x00 & 0xF8) << 8) | ((0xFF & 0xFC) << 3) | (0x00 >> 3)), //ColorIndex::LIME
-    (((0x00 & 0xF8) << 8) | ((0x00 & 0xFC) << 3) | (0xFF >> 3)), //ColorIndex::BLUE
-    (((0xFF & 0xF8) << 8) | ((0xFF & 0xFC) << 3) | (0x00 >> 3)), //ColorIndex::YELLOW
-    (((0x00 & 0xF8) << 8) | ((0xFF & 0xFC) << 3) | (0xFF >> 3)), //ColorIndex::CYAN
-    (((0xFF & 0xF8) << 8) | ((0x00 & 0xFC) << 3) | (0xFF >> 3)), //ColorIndex::MAGENTA
-    (((0xC0 & 0xF8) << 8) | ((0xC0 & 0xFC) << 3) | (0xC0 >> 3)), //ColorIndex::SILVER
-    (((0x80 & 0xF8) << 8) | ((0x80 & 0xFC) << 3) | (0x80 >> 3)), //ColorIndex::GRAY
-    (((0x80 & 0xF8) << 8) | ((0x00 & 0xFC) << 3) | (0x00 >> 3)), //ColorIndex::MAROON
-    (((0x80 & 0xF8) << 8) | ((0x80 & 0xFC) << 3) | (0x00 >> 3)), //ColorIndex::OLIVE
-    (((0x00 & 0xF8) << 8) | ((0x80 & 0xFC) << 3) | (0x00 >> 3)), //ColorIndex::GREEN
-    (((0x80 & 0xF8) << 8) | ((0x00 & 0xFC) << 3) | (0x80 >> 3)), //ColorIndex::PURPLE
-    (((0x00 & 0xF8) << 8) | ((0x80 & 0xFC) << 3) | (0x80 >> 3)), //ColorIndex::TEAL
-    (((0x00 & 0xF8) << 8) | ((0x00 & 0xFC) << 3) | (0x80 >> 3)), //ColorIndex::NAVY
-    (((0xFF & 0xF8) << 8) | ((0xA5 & 0xFC) << 3) | (0x00 >> 3)), //ColorIndex::ORANGE
-    (((0xFF & 0xF8) << 8) | ((0xD7 & 0xFC) << 3) | (0x00 >> 3)), //ColorIndex::GOLD
-    (((0x22 & 0xF8) << 8) | ((0x8B & 0xFC) << 3) | (0x22 >> 3))  //ColorIndex::FOREST
-};
+typedef std::map<ColorIndex, uint16_t> color_palette_t;
+#define RED_MASK 0xF8
+#define GREEN_MASK 0xFC
+#define BLUE_MASK 0xF8
+#define RGB_TO_565(R, G, B) (((R & RED_MASK) << 8) | ((G & GREEN_MASK) << 3) | (B & BLUE_MASK) >> 3)
 
+color_palette_t color565_palette{
+    {ColorIndex::BLACK, RGB_TO_565(0, 0, 0)},
+    {ColorIndex::WHITE, RGB_TO_565(255, 255, 255)},  
+    {ColorIndex::RED, RGB_TO_565(255, 0, 0)},        
+    {ColorIndex::LIME, RGB_TO_565(0, 255, 0)},       
+    {ColorIndex::BLUE, RGB_TO_565(0, 0, 255)},       
+    {ColorIndex::YELLOW, RGB_TO_565(255, 255, 0)},   
+    {ColorIndex::CYAN, RGB_TO_565(0, 255, 255)},     
+    {ColorIndex::MAGENTA, RGB_TO_565(255, 0, 255)},  
+    {ColorIndex::SILVER, RGB_TO_565(192, 192, 192)}, 
+    {ColorIndex::GRAY, RGB_TO_565(128, 128, 128)},   
+    {ColorIndex::BURGUNDY, RGB_TO_565(128, 0, 0)},     
+    {ColorIndex::MAROON, RGB_TO_565(165, 42, 42)},     
+    {ColorIndex::OLIVE, RGB_TO_565(128, 128, 0)},    
+    {ColorIndex::GREEN, RGB_TO_565(0, 128, 0)},      
+    {ColorIndex::PURPLE, RGB_TO_565(128, 0, 128)},   
+    {ColorIndex::TEAL, RGB_TO_565(0, 128, 128)},     
+    {ColorIndex::NAVY, RGB_TO_565(0, 0, 128)},       
+    {ColorIndex::ORANGE, RGB_TO_565(255, 165, 0)},   
+    {ColorIndex::GOLD, RGB_TO_565(255, 215, 0)},     
+    {ColorIndex::FOREST, RGB_TO_565(34, 139, 34)}};  

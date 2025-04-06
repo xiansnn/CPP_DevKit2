@@ -405,7 +405,7 @@ void ST7735::check_display_device_compatibility(struct_ConfigGraphicWidget frame
     assert(framebuffer_cfg.widget_anchor_x + framebuffer_cfg.pixel_frame_width <= TFT_panel_width_in_pixel);
 }
 
-void ST7735::clear_device_screen_buffer()
+void ST7735::clear_device_screen_buffer(ColorIndex color_index)
 {
     uint8_t xsa = 0;
     uint8_t ysa = 0;
@@ -413,13 +413,9 @@ void ST7735::clear_device_screen_buffer()
     size_t h = TFT_panel_height_in_pixel;
     set_RAM_write_addresses(xsa, ysa, w, h);
     send_cmd(ST7735_RAMWR);
+    uint16_t color = color565_palette[color_index];
     for (size_t i = 0; i < w * h; i++)
-    {
-        // ColorIndex color = ColorIndex::BLACK;
-        // spi->single_write_16(color_palette[static_cast<int>(color)]);
-
-        spi->single_write_16(0x0000);
-    }
+        spi->single_write_16(color);
 }
 
 void ST7735::show(struct_PixelFrame *pixel_frame,
@@ -451,37 +447,37 @@ void ST7735::draw_char_into_pixel(struct_PixelFrame *pixel_frame,
                                   const uint8_t anchor_x, const uint8_t anchor_y)
 {
 }
-/**
- * @brief init for "red tab" version of display ... I don't know why
- * _ wake up_
- * harware_reset
- * SW_reset, sleep 150us
- * SLPOUT, sleep 150us
- * _Frame rate control_
- * FRMCTR1 , [0x01, 0x2C, 0x2D] fastest refresh, 6 lines front, 3 lines back
- * FRMCTR2 , [0x01, 0x2C, 0x2D]
- * FRMCTR3 , [0x01, 0x2c, 0x2d, 0x01, 0x2c, 0x2d], sleep 10us
- * _display inversion control_
- * INVCTR , [0x07]
- * _power control_
- * PWCTR1 , [0xA2,0x02,0x84]
- * PWCTR2 , [0xC5] #VGH = 14.7V, VGL = -7.35V
- * PWCTR3 , [0x0A, 0x00] opamp current small, boost frequency
- * PWCTR4 , [0x8A, 0x2A] opamp current small, boost frequency
- * PWCTR5 , [0x8A, 0xEE] opamp current small, boost frequency
- * VMCTR1 , [0x0E]
- * _set rotation and color_
- * ---> MADCTL , [rotation and RBG] [0xC8]
- *
- * COLMOD , [0x05]
- * _column row address set_
- * ---> CASET , [0x00,0x0_0_,0x00, width-1]
- * ---> RASET , [0x00,0x0_0_,0x00, height-1]
- *
- * _gamma_
- * ---> GMCTRP1 , [0x0f, 0x1a, 0x0f, 0x18, 0x2f, 0x28, 0x20, 0x22, 0x1f, 0x1b, 0x23, 0x37, 0x00, 0x07, 0x02, 0x10]
- * ---> GMCTRN1 , [0x0f, 0x1b, 0x0f, 0x17, 0x33, 0x2c, 0x29, 0x2e, 0x30, 0x30, 0x39, 0x3f, 0x00, 0x07, 0x03, 0x10]
- * _set display normal ON
- * ---> DISPON
- * NORON , sleep 10us
- */
+// /**
+//  * @brief init for "red tab" version of display ... I don't know why
+//  * _ wake up_
+//  * harware_reset
+//  * SW_reset, sleep 150us
+//  * SLPOUT, sleep 150us
+//  * _Frame rate control_
+//  * FRMCTR1 , [0x01, 0x2C, 0x2D] fastest refresh, 6 lines front, 3 lines back
+//  * FRMCTR2 , [0x01, 0x2C, 0x2D]
+//  * FRMCTR3 , [0x01, 0x2c, 0x2d, 0x01, 0x2c, 0x2d], sleep 10us
+//  * _display inversion control_
+//  * INVCTR , [0x07]
+//  * _power control_
+//  * PWCTR1 , [0xA2,0x02,0x84]
+//  * PWCTR2 , [0xC5] #VGH = 14.7V, VGL = -7.35V
+//  * PWCTR3 , [0x0A, 0x00] opamp current small, boost frequency
+//  * PWCTR4 , [0x8A, 0x2A] opamp current small, boost frequency
+//  * PWCTR5 , [0x8A, 0xEE] opamp current small, boost frequency
+//  * VMCTR1 , [0x0E]
+//  * _set rotation and color_
+//  * ---> MADCTL , [rotation and RBG] [0xC8]
+//  *
+//  * COLMOD , [0x05]
+//  * _column row address set_
+//  * ---> CASET , [0x00,0x0_0_,0x00, width-1]
+//  * ---> RASET , [0x00,0x0_0_,0x00, height-1]
+//  *
+//  * _gamma_
+//  * ---> GMCTRP1 , [0x0f, 0x1a, 0x0f, 0x18, 0x2f, 0x28, 0x20, 0x22, 0x1f, 0x1b, 0x23, 0x37, 0x00, 0x07, 0x02, 0x10]
+//  * ---> GMCTRN1 , [0x0f, 0x1b, 0x0f, 0x17, 0x33, 0x2c, 0x29, 0x2e, 0x30, 0x30, 0x39, 0x3f, 0x00, 0x07, 0x03, 0x10]
+//  * _set display normal ON
+//  * ---> DISPON
+//  * NORON , sleep 10us
+//  */

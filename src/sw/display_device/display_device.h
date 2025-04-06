@@ -11,8 +11,7 @@
 #pragma once
 
 #include "pico/stdlib.h"
-// #include <map>
-
+// #include "color/color_palette.h"
 
 /// @brief index of the font width value in the <...>_font.h file
 #define FONT_WIDTH_INDEX 0
@@ -22,28 +21,30 @@
 /// @brief define the code value for color
 enum class ColorIndex
 {
-  BLACK = 0, // "BLACK" must be coded with code 0x0 for monochrome display device
-  WHITE = 1, // "WHITE" must be coded with code 0x1 for monochrome display device
-  RED,
-  LIME,
-  BLUE,
-  YELLOW,
-  CYAN,
-  MAGENTA,
-  SILVER,
-  GRAY,
-  MAROON,
-  OLIVE,
-  GREEN,
-  PURPLE,
-  TEAL,
-  NAVY,
-  ORANGE,
-  GOLD,
-  FOREST
+    BLACK = 0, // "BLACK" must be coded with code 0x0 for monochrome display device
+    WHITE = 1, // "WHITE" must be coded with code 0x1 for monochrome display device
+
+    BLUE,    //     {ColorIndex::BLUE, {0x00, 0x00, 0xFF}},
+    LIME,    //     {ColorIndex::LIME, {0x00, 0xFF, 0x00}},
+    CYAN,    //     {ColorIndex::CYAN, {0x00, 0xFF, 0xFF}},
+    RED,     //     {ColorIndex::RED, {0xFF, 0x00, 0x00}},
+    YELLOW,  //     {ColorIndex::YELLOW, {0xFF, 0xFF, 0x00}},
+    MAGENTA, //     {ColorIndex::MAGENTA, {0xFF, 0x00, 0xFF}},
+
+    NAVY,     //     {ColorIndex::NAVY, {0x00, 0x00, 0x80}},
+    GREEN,    //     {ColorIndex::GREEN, {0x00, 0x80, 0x00}},
+    TEAL,     //     {ColorIndex::TEAL, {0x00, 0x80, 0x80}},
+    BURGUNDY, //     {ColorIndex::BURGUNDY, {0x80, 0x00, 0x00}},
+    PURPLE,   //     {ColorIndex::PURPLE, {0x80, 0x00, 0x80}},
+    OLIVE,    //     {ColorIndex::OLIVE, {0x80, 0x80, 0x00}},
+    GRAY,     //     {ColorIndex::GRAY, {0x80, 0x80, 0x80}},
+
+    SILVER, //     {ColorIndex::SILVER, {0xC0, 0xC0, 0xC0}},
+    MAROON, //     {ColorIndex::MAROON, {0xA5, 0x2A, 0x2A}},
+    ORANGE, //     {ColorIndex::ORANGE, {0xFF, 0xA5, 0x00}},
+    GOLD,   //     {ColorIndex::GOLD, {0xFF, 0xD7, 0x00}},
+    FOREST  //     {ColorIndex::FOREST, {0x22, 0x8B, 0x22}}};
 };
-
-
 
 /// @brief the data structure that characterise the graphic framebuffer
 struct struct_PixelFrame
