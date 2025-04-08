@@ -1,27 +1,11 @@
-/**
- * @file color_palette.h
- * @author xiansnn (xiansnn@hotmail.com)
- * @brief
- * @version 0.1
- * @date 2025-04-03
- *
- * @copyright Copyright (c) 2025
- *
- */
+#include "canvas.h"
 
-#pragma once
-
-#include "sw/display_device/display_device.h"
-
-#include <map>
-
-typedef std::map<ColorIndex, uint16_t> color_palette_t;
 #define RED_MASK 0xF8
 #define GREEN_MASK 0xFC
 #define BLUE_MASK 0xF8
 #define RGB_TO_565(R, G, B) (((R & RED_MASK) << 8) | ((G & GREEN_MASK) << 3) | (B & BLUE_MASK) >> 3)
 
-color_palette_t color565_palette{
+std::map<ColorIndex, uint16_t> color565_palette{
     {ColorIndex::BLACK, RGB_TO_565(0, 0, 0)},
     {ColorIndex::WHITE, RGB_TO_565(255, 255, 255)},  
     {ColorIndex::RED, RGB_TO_565(255, 0, 0)},        

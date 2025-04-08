@@ -1,6 +1,12 @@
 #include "st7735.h"
-#include "color/color_palette.h"
+#include "sw/widget/canvas.h"
 #include <string.h>
+
+#include "utilities/probe/probe.h"
+Probe pr_D4 = Probe(4);
+Probe pr_D5 = Probe(5);
+Probe pr_D6 = Probe(6);
+Probe pr_D7 = Probe(7);
 
 void ST7735::enable_command_pin(bool enable)
 {
@@ -224,10 +230,10 @@ void ST7735::config_rotation_and_color(struct_ConfigST7735 device_config)
  */
 void ST7735::config_gamma()
 {
-    // uint8_t cmd_list[17] = {ST7735_GAMCTRP1, 0x02, 0x1c, 0x07, 0x12, 0x37, 0x32, 0x29, 0x2d, 0x29, 0x25, 0x2b, 0x39, 0x00, 0x01, 0x03, 0x10};
-    // send_cmd_list(cmd_list, 17);
-    // cmd_list[17] = {ST7735_GAMCTRN1, 0x03, 0x1d, 0x07, 0x06, 0x2e, 0x2c, 0x29, 0x2d, 0x2e, 0x2e, 0x37, 0x3f, 0x00, 0x00, 0x02, 0x10};
-    // send_cmd_list(cmd_list, 17);
+    uint8_t cmd_list1[17] = {ST7735_GAMCTRP1, 0x02, 0x1c, 0x07, 0x12, 0x37, 0x32, 0x29, 0x2d, 0x29, 0x25, 0x2b, 0x39, 0x00, 0x01, 0x03, 0x10};
+    send_cmd_list(cmd_list1, 17);
+    uint8_t cmd_list2[17] = {ST7735_GAMCTRN1, 0x03, 0x1d, 0x07, 0x06, 0x2e, 0x2c, 0x29, 0x2d, 0x2e, 0x2e, 0x37, 0x3f, 0x00, 0x00, 0x02, 0x10};
+    send_cmd_list(cmd_list2, 17);
 }
 
 /**
@@ -407,6 +413,7 @@ void ST7735::check_display_device_compatibility(struct_ConfigGraphicWidget frame
 
 void ST7735::clear_device_screen_buffer(ColorIndex color_index)
 {
+    pr_D4.hi();
     uint8_t xsa = 0;
     uint8_t ysa = 0;
     size_t w = TFT_panel_width_in_pixel;
@@ -414,8 +421,11 @@ void ST7735::clear_device_screen_buffer(ColorIndex color_index)
     set_RAM_write_addresses(xsa, ysa, w, h);
     send_cmd(ST7735_RAMWR);
     uint16_t color = color565_palette[color_index];
+    pr_D4.lo();
+    pr_D5.hi();
     for (size_t i = 0; i < w * h; i++)
         spi->single_write_16(color);
+    pr_D5.lo();
 }
 
 void ST7735::show(struct_PixelFrame *pixel_frame,

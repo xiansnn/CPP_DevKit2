@@ -20,14 +20,9 @@
 
 #include "device/ST7735/st7735.h"
 #include "sw/widget/widget.h"
-#include "utilities/probe/probe.h"
 
-#define DEGREE "\xF8"
 
-Probe pr_D4 = Probe(4);
-Probe pr_D5 = Probe(5);
-Probe pr_D6 = Probe(6);
-Probe pr_D7 = Probe(7);
+
 
 struct_ConfigMasterSPI cfg_spi = {
     .spi = spi1,
@@ -35,7 +30,7 @@ struct_ConfigMasterSPI cfg_spi = {
     .tx_pin = 11,
     .rx_pin = 12,
     .cs_pin = 13,
-    .baud_rate_Hz = 3 * 1000 * 1000};
+    .baud_rate_Hz = 10 * 1000 * 1000};
 
 struct_ConfigST7735 cfg_st7735{
     .display_type = ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB,
@@ -79,24 +74,19 @@ int main()
 
     my_graphic_widget full_screen = my_graphic_widget(&display, device_frame_cfg);
 
-    display.clear_device_screen_buffer();
-
-    full_screen.hline(0, 0, 32);
-    full_screen.show();
-    sleep_ms(1000);
-    full_screen.hline(0, 15, 64);
-    full_screen.show();
-    sleep_ms(1000);
-    full_screen.hline(0, 31, 96);
-    full_screen.show();
-    sleep_ms(1000);
-    full_screen.hline(0, 47, 128);
-    full_screen.hline(0, 63, 128);
-    full_screen.show();
-    sleep_ms(1000);
-
+    
     while (true)
     {
+        test_clear_device_screen(display);
     }
     return 0;
+}
+
+void test_clear_device_screen(ST7735 &display)
+{
+    for (auto &&i : color565_palette)
+    {
+        display.clear_device_screen_buffer(i.first);
+        sleep_ms(1000);
+    }
 }
