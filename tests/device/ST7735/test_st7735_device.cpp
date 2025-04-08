@@ -21,9 +21,6 @@
 #include "device/ST7735/st7735.h"
 #include "sw/widget/widget.h"
 
-
-
-
 struct_ConfigMasterSPI cfg_spi = {
     .spi = spi1,
     .sck_pin = 10,
@@ -56,6 +53,15 @@ my_graphic_widget::~my_graphic_widget() {}
 void my_graphic_widget::get_value_of_interest() {}
 void my_graphic_widget::draw() {};
 
+void test_clear_device_screen(ST7735 &display)
+{
+    for (auto &&i : color565_palette)
+    {
+        display.clear_device_screen_buffer(i.first);
+        sleep_ms(1000);
+    }
+}
+
 int main()
 {
 
@@ -74,19 +80,9 @@ int main()
 
     my_graphic_widget full_screen = my_graphic_widget(&display, device_frame_cfg);
 
-    
     while (true)
     {
         test_clear_device_screen(display);
     }
     return 0;
-}
-
-void test_clear_device_screen(ST7735 &display)
-{
-    for (auto &&i : color565_palette)
-    {
-        display.clear_device_screen_buffer(i.first);
-        sleep_ms(1000);
-    }
 }

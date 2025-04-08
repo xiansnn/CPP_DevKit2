@@ -42,7 +42,7 @@ enum class ColorIndex
     FOREST  //     {ColorIndex::FOREST, {0x22, 0x8B, 0x22}}};
 };
 
-extern const std::map<ColorIndex, uint16_t> color565_palette;
+extern std::map<ColorIndex, uint16_t> color565_palette;
 
 /// @brief the data structure that characterise the graphic framebuffer
 struct struct_PixelFrame
@@ -70,10 +70,7 @@ struct struct_TextFrame
     char *text_buffer = nullptr;
 };
 
-/**
- * @brief data structure used to configure graphic framebuffer
- *
- */
+/// @brief data structure used to configure graphic framebuffer
 struct struct_ConfigGraphicWidget
 {
 
