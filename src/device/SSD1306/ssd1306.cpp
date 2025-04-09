@@ -151,94 +151,16 @@ void SSD1306::check_display_device_compatibility(struct_ConfigGraphicWidget fram
     assert(framebuffer_cfg.widget_anchor_y % BYTE_SIZE == 0);
 }
 
-void SSD1306::clear_pixel_buffer(struct_PixelFrame *pixel_memory)
-{
-    memset(pixel_memory->pixel_frame_buffer, 0x00, pixel_memory->pixel_frame_buffer_size);
-}
-
-void SSD1306::create_pixel_buffer(struct_PixelFrame *pixel_memory)
-{
-    size_t nb_of_pages = pixel_memory->pixel_frame_height / BYTE_SIZE;
-    if (pixel_memory->pixel_frame_height % BYTE_SIZE != 0)
-        nb_of_pages += 1;
-
-    pixel_memory->pixel_frame_buffer_size = pixel_memory->pixel_frame_width * nb_of_pages;
-
-    pixel_memory->pixel_frame_buffer = new uint8_t[pixel_memory->pixel_frame_buffer_size];
-    clear_pixel_buffer(pixel_memory);
-}
-
-void SSD1306::pixel(struct_PixelFrame *pixel_memory_structure, const int x, const int y, const ColorIndex c)
-{
-    if (x >= 0 && x < pixel_memory_structure->pixel_frame_width && y >= 0 && y < pixel_memory_structure->pixel_frame_height) // avoid drawing outside the framebuffer
-    {
-        const int BytesPerRow = pixel_memory_structure->pixel_frame_width; // x pixels, 1bpp, but each row is 8 pixel high, so (x / 8) * 8
-        int byte_idx = (y / 8) * BytesPerRow + x;
-        uint8_t byte = pixel_memory_structure->pixel_frame_buffer[byte_idx];
-
-        if (c == ColorIndex::WHITE)
-            byte |= 1 << (y % 8);
-        else
-            byte &= ~(1 << (y % 8));
-
-        pixel_memory_structure->pixel_frame_buffer[byte_idx] = byte;
-    }
-}
-
-void SSD1306::show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y)
-{
-    uint8_t end_col = anchor_x + pixel_memory->pixel_frame_width - 1;
-    uint8_t end_line = anchor_y + pixel_memory->pixel_frame_height - 1;
-
-    assert(anchor_x + pixel_memory->pixel_frame_width - 1 <= SSD1306_WIDTH - 1);
-    assert(anchor_y + pixel_memory->pixel_frame_height - 1 <= SSD1306_HEIGHT - 1);
-
-    this->show_render_area(pixel_memory->pixel_frame_buffer, this->compute_render_area(anchor_x, end_col, anchor_y, end_line));
-}
-
 void SSD1306::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y)
 {
     uint8_t end_col = anchor_x + canvas->canvas_width_pixel - 1;
     uint8_t end_line = anchor_y + canvas->canvas_height_pixel - 1;
 
-    assert(anchor_x + canvas->canvas_width_pixel - 1 <= SSD1306_WIDTH - 1);
-    assert(anchor_y + canvas->canvas_height_pixel - 1 <= SSD1306_HEIGHT - 1);
+    // assert(anchor_x + canvas->canvas_width_pixel - 1 <= SSD1306_WIDTH - 1);
+    // assert(anchor_y + canvas->canvas_height_pixel - 1 <= SSD1306_HEIGHT - 1);
 
     this->show_render_area(canvas->canvas_buffer, this->compute_render_area(anchor_x, end_col, anchor_y, end_line));
 
-}
-
-void SSD1306::draw_char_into_pixel(struct_PixelFrame *pixel_memory_structure,
-                       const struct_ConfigTextWidget text_config,
-                       const char c, const uint8_t anchor_x, const uint8_t anchor_y)
-{
-    if (!text_config.font || c < 32) 
-        return;
-
-    uint8_t font_width = text_config.font[FONT_WIDTH_INDEX];
-    uint8_t font_height = text_config.font[FONT_HEIGHT_INDEX];
-
-    uint16_t seek = (c - 32) * (font_width * font_height) / 8 + 2;
-
-    uint8_t b_seek = 0;
-
-    for (uint8_t x = 0; x < font_width; x++)
-    {
-        for (uint8_t y = 0; y < font_height; y++)
-        {
-            if (text_config.font[seek] >> b_seek & 0b00000001)
-                pixel(pixel_memory_structure, x + anchor_x, y + anchor_y, text_config.fg_color);
-            else
-                pixel(pixel_memory_structure, x + anchor_x, y + anchor_y, text_config.bg_color);
-
-            b_seek++;
-            if (b_seek == 8)
-            {
-                b_seek = 0;
-                seek++;
-            }
-        }
-    }
 }
 
 void SSD1306::init_display_vertical_shift(uint8_t value)
@@ -352,21 +274,3 @@ void SSD1306::vertical_scroll(bool on, struct_ConfigScrollSSD1306 scroll_data)
     this->send_cmd_list(cmds, count_of(cmds));
 }
 
-/*
-
-static uint8_t reversed[sizeof(font)] = {0};
-
-static uint8_t reverse(uint8_t b)
-{
-    b = (b & 0xF0) >> 4 | (b & 0x0F) << 4;
-    b = (b & 0xCC) >> 2 | (b & 0x33) << 2;
-    b = (b & 0xAA) >> 1 | (b & 0x55) << 1;
-    return b;
-}
-static void FillReversedCache()
-{
-    // calculate and cache a MONO_VLSB version of fhe font, because it's defined MONO_VMSB (upside down)
-    for (size_t i = 0; i < sizeof(font); i++)
-        reversed[i] = reverse(font[i]);
-}
-*/

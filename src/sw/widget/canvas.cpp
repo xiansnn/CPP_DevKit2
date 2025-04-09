@@ -154,3 +154,23 @@ void CanvasRGB::draw_pixel(const int x, const int y, const ColorIndex color)
 void CanvasRGB::draw_glyph(const struct_ConfigTextWidget text_config, const char character, const uint8_t anchor_x, const uint8_t anchor_y)
 {
 }
+
+
+/*
+
+static uint8_t reversed[sizeof(font)] = {0};
+
+static uint8_t reverse(uint8_t b)
+{
+    b = (b & 0xF0) >> 4 | (b & 0x0F) << 4;
+    b = (b & 0xCC) >> 2 | (b & 0x33) << 2;
+    b = (b & 0xAA) >> 1 | (b & 0x55) << 1;
+    return b;
+}
+static void FillReversedCache()
+{
+    // calculate and cache a MONO_VLSB version of fhe font, because it's defined MONO_VMSB (upside down)
+    for (size_t i = 0; i < sizeof(font); i++)
+        reversed[i] = reverse(font[i]);
+}
+*/

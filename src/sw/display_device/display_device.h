@@ -13,13 +13,6 @@
 #include "pico/stdlib.h"
 #include "sw/widget/canvas.h"
 
-
-
-
-
-
-
-
 /// @brief A generic class for all display device
 /// \ingroup view
 class DisplayDevice
@@ -42,8 +35,6 @@ public:
     /// @brief the physical height of the screen (in pixel)
     size_t TFT_panel_height_in_pixel;
 
-    // uint16_t static rgb888_to_rgb565(ColorIndex index,  color_palette_t  color_palette);
-
     /**
      * @brief A pure virtual member function. Each device must implement this method and check the compatibility of the widget parameter with the its physical limitations.
      *
@@ -57,13 +48,11 @@ public:
      * It transfers the pixel buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel.
      * This method takes into account the specific addressing scheme and memory structure of the actual display device.
      *
-     * @param pixel_frame a pointer to the struct_PixelFrame that contains the pixel_buffer to be displayed
+     * @param canvas a pointer to the canvas that contains the buffer to be displayed
      * @param anchor_x the x(horizontal) starting position of the frame within the display screen,(in pixel)
-     * @param anchor_y
+     * @param anchor_y the y(vertical) starting position of the frame within the display screen,(in pixel)
      */
-    virtual void show(struct_PixelFrame *pixel_frame, const uint8_t anchor_x, const uint8_t anchor_y) = 0;
     virtual void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y) = 0;
-    // virtual void show(GraphicWidget *widget) = 0;
 
     /**
      * @brief Construct a new Display Device object
@@ -74,54 +63,9 @@ public:
     GraphicDisplayDevice(size_t screen_width,
                          size_t screen_height);
 
-    /**
-     * @brief Destroy the Display Device object
-     *
-     */
+    /// @brief Destroy the Display Device object
     virtual ~GraphicDisplayDevice();
 
-    /**
-     * @brief A pure virtual method. Usefull when to clear the pixel buffer.
-     * It fills the pixel_buffer with "0" (BLACK). Reset also character position to (0,0).
-     * @param pixel_frame the pixel buffer to fill
-     */
-    virtual void clear_pixel_buffer(struct_PixelFrame *pixel_frame) = 0;
-
-    /**
-     * @brief A pure virtual method. Create a pixel buffer object.
-     * \note : the width and height of the pixel frame must be known before invoking this method.
-     * \note : the graphic widget uses this method to create its pixel frame buffer.
-     *
-     * @param pixel_frame the pixel buffer to complete
-     */
-    virtual void create_pixel_buffer(struct_PixelFrame *pixel_frame) = 0;
-
-    /**
-     * @brief the graphic primitive to draw a pixel
-     *
-     * @param pixel_frame
-     * @param x the x position of the pixel
-     * @param y the y position of the pixel
-     * @param color the color of the pixel
-     */
-    virtual void pixel(struct_PixelFrame *pixel_frame,
-                       const int x, const int y,
-                       const ColorIndex color = ColorIndex::WHITE) = 0;
-
-    /**
-     * @brief a graphic primitive to draw a character at a pixel position
-     * \note : DrawChar() implementation depends strongly on the memory structure of the display device.
-     *
-     * @param pixel_frame
-     * @param text_config the configuration file of the text framebuffer
-     * @param character the character to draw
-     * @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
-     * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
-     */
-    virtual void draw_char_into_pixel(struct_PixelFrame *pixel_frame,
-                                      const struct_ConfigTextWidget text_config,
-                                      const char character,
-                                      const uint8_t anchor_x, const uint8_t anchor_y) = 0;
 };
 
 /**
@@ -140,8 +84,6 @@ public:
     size_t text_buffer_size;
     /// @brief the effective character buffer
     char *text_buffer = nullptr;
-    // /// @brief the data structure of the text memory
-    // struct_TextFrame text_memory;
     /**
      * @brief Construct a new Printer Device object
      *

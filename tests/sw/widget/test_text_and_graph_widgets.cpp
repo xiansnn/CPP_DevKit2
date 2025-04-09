@@ -28,6 +28,8 @@ Probe pr_D5 = Probe(5);
 
 #define DEGREE \xF8
 
+#define CANVAS_FORMAT CanvasFormat::MONO_VLSB
+
 struct_ConfigMasterI2C cfg_i2c{
     .i2c = i2c0,
     .sda_pin = 8,
@@ -85,20 +87,20 @@ class my_text_widget : public TextWidget
 
 public:
     my_text_widget(GraphicDisplayDevice *graphic_display_screen,
-                   struct_ConfigTextWidget text_cfg, Model *model = nullptr);
+                   struct_ConfigTextWidget text_cfg, CanvasFormat format, Model *model = nullptr);
     my_text_widget(GraphicDisplayDevice *graphic_display_screen,
-                   struct_ConfigTextWidget text_cfg,
+                   struct_ConfigTextWidget text_cfg, CanvasFormat format,
                    uint8_t x, uint8_t y, Model *model = nullptr);
     ~my_text_widget();
     void get_value_of_interest();
 };
 my_text_widget::my_text_widget(GraphicDisplayDevice *graphic_display_screen,
-                               struct_ConfigTextWidget text_cfg, Model *model)
-    : TextWidget(graphic_display_screen, text_cfg, model) {}
+                               struct_ConfigTextWidget text_cfg, CanvasFormat format, Model *model)
+    : TextWidget(graphic_display_screen, text_cfg, format, model) {}
 my_text_widget::my_text_widget(GraphicDisplayDevice *graphic_display_screen,
-                               struct_ConfigTextWidget text_cfg,
+                               struct_ConfigTextWidget text_cfg, CanvasFormat format,
                                uint8_t x, uint8_t y, Model *model)
-    : TextWidget(graphic_display_screen, text_cfg, x, y, model) {}
+    : TextWidget(graphic_display_screen, text_cfg, format, x, y, model) {}
 my_text_widget::~my_text_widget() {}
 void my_text_widget::get_value_of_interest()
 {
@@ -113,14 +115,14 @@ private:
 
 public:
     my_graphic_widget(GraphicDisplayDevice *graphic_display_screen,
-                      struct_ConfigGraphicWidget graph_cfg, Model *model);
+                      struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, Model *model);
     ~my_graphic_widget();
     void get_value_of_interest();
     void draw();
 };
 my_graphic_widget::my_graphic_widget(GraphicDisplayDevice *graphic_display_screen,
-                                     struct_ConfigGraphicWidget graph_cfg, Model *model)
-    : GraphicWidget(graphic_display_screen, graph_cfg, model) {}
+                                     struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, Model *model)
+    : GraphicWidget(graphic_display_screen, graph_cfg, format, model) {}
 my_graphic_widget::~my_graphic_widget() {}
 void my_graphic_widget::get_value_of_interest()
 {
@@ -133,7 +135,7 @@ void my_graphic_widget::draw()
     {
         clear_widget();
         get_value_of_interest();
-    
+
         // compute and show the graphic representation
         float xc = widget_width / 2;
         float yc = widget_height / 2;
@@ -145,15 +147,14 @@ void my_graphic_widget::draw()
         int y0 = yl - radius * sin_roll;
         int x1 = xc + radius * cos_roll;
         int y1 = yl + radius * sin_roll;
-    
+
         this->circle(radius, xc, yl, false, fg_color);
         this->line(x0, y0, x1, y1, fg_color);
-    
+
         draw_border();
         show();
         actual_displayed_model->draw_widget_done();
     }
-    
 }
 
 int main()
@@ -192,16 +193,16 @@ int main()
 
     my_model model = my_model();
 
-    my_text_widget values = my_text_widget(&values_display, values_config, &model);
+    my_text_widget values = my_text_widget(&values_display, values_config, CANVAS_FORMAT, &model);
     values.process_char(FORM_FEED);
 
-    my_graphic_widget graph = my_graphic_widget(&visu_display, graph_config, &model);
+    my_graphic_widget graph = my_graphic_widget(&visu_display, graph_config, CANVAS_FORMAT, &model);
     pr_D1.hi();
-    visu_display.clear_pixel_buffer(&graph.pixel_frame);
-    pr_D1.lo(); // 8µs
+    visu_display.clear_device_screen_buffer(); //.clear_pixel_buffer(&graph.pixel_frame);
+    pr_D1.lo();                                // 8µs
 
     pr_D1.hi();
-    my_text_widget title = my_text_widget(&values_display, title_config);
+    my_text_widget title = my_text_widget(&values_display, title_config, CANVAS_FORMAT);
     title.write("ROLL PITCH");
     title.show();
     pr_D1.lo(); // 9ms

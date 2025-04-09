@@ -171,9 +171,7 @@ private:
 public:
 
     void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg);
-    
 
-    void clear_pixel_buffer(struct_PixelFrame *pixel_memory);
     /**
      * @brief
      *
@@ -192,24 +190,14 @@ public:
      */
     static struct_RenderArea compute_render_area(uint8_t start_col, uint8_t end_col, uint8_t start_line, uint8_t end_line);
 
-    void create_pixel_buffer(struct_PixelFrame *pixel_memory);
-
-    void pixel(struct_PixelFrame *pixel_memory_structure, const int x, const int y, const ColorIndex c = ColorIndex::WHITE);
-
     /**
      * @brief
      *
-     * @param pixel_memory a pointer to the struct_PixelFrame that contains the pixel_buffer to be displayed
+     * @param canvas a pointer to the Canvas that contains the buffer to be displayed
      * @param anchor_x where we want to position (x) the frambuffer
      * @param anchor_y where we want to position (y) the frambuffer
      */
-    void show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y);
     void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y);
-
-    void draw_char_into_pixel(struct_PixelFrame *pixel_memory_structure,
-                  const struct_ConfigTextWidget text_config,
-                  const char c,
-                  const uint8_t anchor_x, const uint8_t anchor_y);
 
     /**
      * @brief  when we need to show a render area with a given framebuffer
@@ -230,7 +218,6 @@ public:
     /**
      * @brief write 0x00 directly into the device framebuffer.
      *  Uses fill_pattern_and_show_GDDRAM command.
-     *
      */
     void clear_device_screen_buffer();
     /**
@@ -246,7 +233,6 @@ public:
     void set_display_from_RAM();
     /**
      * @brief Set the all pixel ON
-     *
      */
     void set_all_pixel_ON();
     /**
