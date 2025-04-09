@@ -120,7 +120,7 @@ int main()
         .widget_anchor_x = 6,
         .widget_anchor_y = 8,
         .widget_with_border = false};
-    MySquareLEDWidgetWithFocus square_led_1 = MySquareLEDWidgetWithFocus(&test_model_1, &display, square_led_1_cfg);
+    MySquareLEDWidgetWithFocus square_led_1 = MySquareLEDWidgetWithFocus(&test_model_1, &display, square_led_1_cfg,CANVAS_FORMAT);
 
     struct_ConfigGraphicWidget square_led_2_cfg{
         .pixel_frame_width = 50,
@@ -130,7 +130,7 @@ int main()
         .widget_anchor_x = 6,
         .widget_anchor_y = 24,
         .widget_with_border = false};
-    MySquareLEDWidgetWithFocus square_led_2 = MySquareLEDWidgetWithFocus(&test_model_2, &display, square_led_2_cfg);
+    MySquareLEDWidgetWithFocus square_led_2 = MySquareLEDWidgetWithFocus(&test_model_2, &display, square_led_2_cfg,CANVAS_FORMAT);
 
     struct_ConfigGraphicWidget square_led_3_cfg{
         .pixel_frame_width = 50,
@@ -140,7 +140,7 @@ int main()
         .widget_anchor_x = 6,
         .widget_anchor_y = 40,
         .widget_with_border = false};
-    MySquareLEDWidgetWithFocus square_led_3 = MySquareLEDWidgetWithFocus(&test_model_3, &display, square_led_3_cfg);
+    MySquareLEDWidgetWithFocus square_led_3 = MySquareLEDWidgetWithFocus(&test_model_3, &display, square_led_3_cfg,CANVAS_FORMAT);
 
     ky040.update_current_controlled_object(&test_model_1);
 

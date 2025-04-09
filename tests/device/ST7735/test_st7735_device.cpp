@@ -21,6 +21,8 @@
 #include "device/ST7735/st7735.h"
 #include "sw/widget/widget.h"
 
+#define CANVAS_FORMAT CanvasFormat::RGB565
+
 struct_ConfigMasterSPI cfg_spi = {
     .spi = spi1,
     .sck_pin = 10,
@@ -41,14 +43,14 @@ class my_graphic_widget : public GraphicWidget
 private:
 public:
     my_graphic_widget(GraphicDisplayDevice *graphic_display_screen,
-                      struct_ConfigGraphicWidget graph_cfg);
+                      struct_ConfigGraphicWidget graph_cfg,CanvasFormat format);
     ~my_graphic_widget();
     void get_value_of_interest();
     void draw();
 };
 my_graphic_widget::my_graphic_widget(GraphicDisplayDevice *graphic_display_screen,
-                                     struct_ConfigGraphicWidget graph_cfg)
-    : GraphicWidget(graphic_display_screen, graph_cfg) {}
+                                     struct_ConfigGraphicWidget graph_cfg,CanvasFormat format)
+    : GraphicWidget(graphic_display_screen, graph_cfg,format) {}
 my_graphic_widget::~my_graphic_widget() {}
 void my_graphic_widget::get_value_of_interest() {}
 void my_graphic_widget::draw() {};
@@ -78,7 +80,7 @@ int main()
         .widget_anchor_y = 0,
         .widget_with_border = true};
 
-    my_graphic_widget full_screen = my_graphic_widget(&display, device_frame_cfg);
+    my_graphic_widget full_screen = my_graphic_widget(&display, device_frame_cfg,CANVAS_FORMAT);
 
     while (true)
     {

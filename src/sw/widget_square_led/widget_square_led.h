@@ -48,7 +48,7 @@ public:
      */
     WidgetSquareLed(Model *actual_displayed_model,
                     GraphicDisplayDevice *graphic_display_screen,
-                    struct_ConfigGraphicWidget graph_cfg);
+                    struct_ConfigGraphicWidget graph_cfg, CanvasFormat format);
     ~WidgetSquareLed();
 
     virtual void draw();
@@ -74,7 +74,7 @@ public:
      */
     WidgetBlinkingSquareLed(Model *actual_displayed_model,
                             GraphicDisplayDevice *graphic_display_screen,
-                            struct_ConfigGraphicWidget graph_cfg);
+                            struct_ConfigGraphicWidget graph_cfg, CanvasFormat format);
     ~WidgetBlinkingSquareLed();
 
     virtual void draw();
@@ -94,7 +94,7 @@ public:
     /// @param graph_cfg the configuration data structure of the graphic framebuffer
     WidgetFocusIndicator(Model *actual_displayed_model,
                          GraphicDisplayDevice *graphic_display_screen,
-                         struct_ConfigGraphicWidget graph_cfg);
+                         struct_ConfigGraphicWidget graph_cfg, CanvasFormat format);
     ~WidgetFocusIndicator();
     virtual void get_value_of_interest();
 };

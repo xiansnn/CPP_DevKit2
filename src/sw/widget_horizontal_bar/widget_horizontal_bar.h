@@ -53,7 +53,8 @@ public:
     WidgetHorizontalBar(Model *bar_value_model,
                         GraphicDisplayDevice *graphic_display_screen,
                         int max_value, int min_value,
-                        struct_ConfigGraphicWidget graph_cfg);
+                        struct_ConfigGraphicWidget graph_cfg,
+                        CanvasFormat format);
 
     ~WidgetHorizontalBar();
     /// @brief set the level to value

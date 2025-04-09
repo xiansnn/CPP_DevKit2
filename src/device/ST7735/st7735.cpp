@@ -428,8 +428,7 @@ void ST7735::clear_device_screen_buffer(ColorIndex color_index)
     pr_D5.lo();
 }
 
-void ST7735::show(struct_PixelFrame *pixel_frame,
-                  const uint8_t anchor_x, const uint8_t anchor_y)
+void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y)
 {
 }
 

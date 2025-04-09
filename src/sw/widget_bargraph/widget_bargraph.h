@@ -102,6 +102,7 @@ public:
     WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
                              GraphicDisplayDevice *graphic_display_screen,
                              struct_ConfigGraphicWidget graph_cfg,
+                             CanvasFormat format,
                              uint8_t bar_spacing = 1);
     /**
      * @brief Destroy the GraphicWidget Horizontal Bargraph object
@@ -159,6 +160,7 @@ public:
     WidgetVerticalBargraph(ModelBargraph *bargraph_model,
                            GraphicDisplayDevice *graphic_display_screen,
                            struct_ConfigGraphicWidget graph_cfg,
+                           CanvasFormat format,
                            uint8_t bar_spacing = 1);
     ~WidgetVerticalBargraph();
 };

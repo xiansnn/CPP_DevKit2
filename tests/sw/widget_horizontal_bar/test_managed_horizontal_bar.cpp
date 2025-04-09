@@ -118,15 +118,15 @@ struct_ConfigGraphicWidget h_bar3_with_focus_cfg{
 My_Horizontal_Bar_Widget_With_Focus horizontal_bar_1 = My_Horizontal_Bar_Widget_With_Focus(&my_horizontal_bar_model_1,
                                                                                            &display,
                                                                                            10, 0,
-                                                                                           h_bar1_with_focus_cfg);
+                                                                                           h_bar1_with_focus_cfg,CANVAS_FORMAT);
 My_Horizontal_Bar_Widget_With_Focus horizontal_bar_2 = My_Horizontal_Bar_Widget_With_Focus(&my_horizontal_bar_model_2,
                                                                                            &display,
                                                                                            +10, -10,
-                                                                                           h_bar2_with_focus_cfg);
+                                                                                           h_bar2_with_focus_cfg,CANVAS_FORMAT);
 My_Horizontal_Bar_Widget_With_Focus horizontal_bar_3 = My_Horizontal_Bar_Widget_With_Focus(&my_horizontal_bar_model_3,
                                                                                            &display,
                                                                                            3, -20,
-                                                                                           h_bar3_with_focus_cfg);
+                                                                                           h_bar3_with_focus_cfg,CANVAS_FORMAT);
 
 int main()
 {
