@@ -131,7 +131,7 @@ void my_graphic_widget::draw()
 {
     if (actual_displayed_model->has_changed())
     {
-        clear_pixel_buffer();
+        clear_widget();
         get_value_of_interest();
     
         // compute and show the graphic representation

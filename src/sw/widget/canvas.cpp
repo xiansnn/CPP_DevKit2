@@ -30,36 +30,36 @@ std::map<ColorIndex, uint16_t> color565_palette{
 
 Canvas::Canvas(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
 {
-    this->pixel_frame_width = canvas_width_pixel;
-    this->pixel_frame_height = canvas_height_pixel;
+    this->canvas_width_pixel = canvas_width_pixel;
+    this->canvas_height_pixel = canvas_height_pixel;
 }
 
 Canvas::~Canvas()
 {
-    delete pixel_frame_buffer;
+    delete canvas_buffer;
 }
 
 void Canvas::clear_canvas_buffer()
 {
-    memset(pixel_frame_buffer, 0x00, pixel_frame_buffer_size);
+    memset(canvas_buffer, 0x00, canvas_buffer_size);
 }
 
 struct_PixelFrame Canvas::get_pixel_frame()
 {
     struct_PixelFrame pixel_frame ={
-        .pixel_frame_width = this->pixel_frame_width,
-        .pixel_frame_height = this->pixel_frame_height,
-        .pixel_frame_buffer_size = this->pixel_frame_buffer_size,
-        .pixel_frame_buffer = this->pixel_frame_buffer
+        .pixel_frame_width = this->canvas_width_pixel,
+        .pixel_frame_height = this->canvas_height_pixel,
+        .pixel_frame_buffer_size = this->canvas_buffer_size,
+        .pixel_frame_buffer = this->canvas_buffer
     };
     return pixel_frame;
 }
 
 void CanvasVLSB::create_canvas_buffer()
 {
-    size_t nb_of_pages = (pixel_frame_height + BYTE_SIZE - 1) / BYTE_SIZE;
-    pixel_frame_buffer_size = pixel_frame_width * nb_of_pages;
-    pixel_frame_buffer = new uint8_t[pixel_frame_buffer_size];
+    size_t nb_of_pages = (canvas_height_pixel + BYTE_SIZE - 1) / BYTE_SIZE;
+    canvas_buffer_size = canvas_width_pixel * nb_of_pages;
+    canvas_buffer = new uint8_t[canvas_buffer_size];
     clear_canvas_buffer();
 }
 
@@ -73,24 +73,32 @@ CanvasVLSB::~CanvasVLSB()
 {
 }
 
-void CanvasVLSB::pixel(const int x, const int y, const ColorIndex color)
+void CanvasVLSB::fill_canvas_with_color(ColorIndex color)
+{    
+    if (color == ColorIndex::BLACK)
+        memset(canvas_buffer, 0x00, canvas_buffer_size);
+    else
+        memset(canvas_buffer, 0xFF, canvas_buffer_size);
+}
+
+void CanvasVLSB::draw_pixel(const int x, const int y, const ColorIndex color)
 {
-    if (x >= 0 && x < pixel_frame_width && y >= 0 && y < pixel_frame_height) // avoid drawing outside the canvas
+    if (x >= 0 && x < canvas_width_pixel && y >= 0 && y < canvas_height_pixel) // avoid drawing outside the canvas
     {
-        const int bytes_per_row = pixel_frame_width; // x pixels, 1bpp, but each row is 8 pixel high, so (x / 8) * 8
+        const int bytes_per_row = canvas_width_pixel; // x pixels, 1bpp, but each row is 8 pixel high, so (x / 8) * 8
         int byte_index = (y / BYTE_SIZE) * bytes_per_row + x;
-        uint8_t byte = pixel_frame_buffer[byte_index];
+        uint8_t byte = canvas_buffer[byte_index];
 
         if (color == ColorIndex::WHITE)
             byte |= 1 << (y % BYTE_SIZE);
         else
             byte &= ~(1 << (y % BYTE_SIZE));
 
-        pixel_frame_buffer[byte_index] = byte;
+        canvas_buffer[byte_index] = byte;
     }
 }
 
-void CanvasVLSB::draw_char_into_pixel(const struct_ConfigTextWidget text_config, const char character, const uint8_t anchor_x, const uint8_t anchor_y)
+void CanvasVLSB::draw_glyph(const struct_ConfigTextWidget text_config, const char character, const uint8_t anchor_x, const uint8_t anchor_y)
 {
     if (!text_config.font || character < 32)
         return;
@@ -107,9 +115,9 @@ void CanvasVLSB::draw_char_into_pixel(const struct_ConfigTextWidget text_config,
         for (uint8_t y = 0; y < font_height; y++)
         {
             if (text_config.font[seek] >> b_seek & 0b00000001)
-                pixel(x + anchor_x, y + anchor_y, text_config.fg_color);
+                draw_pixel(x + anchor_x, y + anchor_y, text_config.fg_color);
             else
-                pixel(x + anchor_x, y + anchor_y, text_config.bg_color);
+                draw_pixel(x + anchor_x, y + anchor_y, text_config.bg_color);
 
             b_seek++;
             if (b_seek == 8)
@@ -135,10 +143,14 @@ CanvasRGB::~CanvasRGB()
 {
 }
 
-void CanvasRGB::pixel(const int x, const int y, const ColorIndex color)
+void CanvasRGB::fill_canvas_with_color(ColorIndex color)
 {
 }
 
-void CanvasRGB::draw_char_into_pixel(const struct_ConfigTextWidget text_config, const char character, const uint8_t anchor_x, const uint8_t anchor_y)
+void CanvasRGB::draw_pixel(const int x, const int y, const ColorIndex color)
+{
+}
+
+void CanvasRGB::draw_glyph(const struct_ConfigTextWidget text_config, const char character, const uint8_t anchor_x, const uint8_t anchor_y)
 {
 }

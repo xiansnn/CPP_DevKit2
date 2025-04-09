@@ -139,10 +139,10 @@ void test_fb_line(SSD1306 *display)
         {
             c = ColorIndex::WHITE;
             frame.line(0, y, SSD1306_WIDTH - 1, SSD1306_HEIGHT - 1 - y, c);
-            display->show_render_area(frame.canvas->pixel_frame_buffer, full_screen_area);
+            display->show_render_area(frame.canvas->canvas_buffer, full_screen_area);
             c = ColorIndex::BLACK;
             frame.line(0, y, SSD1306_WIDTH - 1, SSD1306_HEIGHT - 1 - y, c);
-            display->show_render_area(frame.canvas->pixel_frame_buffer, full_screen_area);
+            display->show_render_area(frame.canvas->canvas_buffer, full_screen_area);
         }
     }
     sleep_ms(1000);
@@ -238,7 +238,7 @@ void test_fb_in_fb(SSD1306 *display)
         .widget_anchor_y = 24};
 
     my_graphic_widget small_frame = my_graphic_widget(display, small_frame_cfg);
-    small_frame.fill(ColorIndex::BLACK);
+    small_frame.canvas->clear_canvas_buffer();
     small_frame.line(5, 5, 80, 20);
     small_frame.circle(8, 44, 12);
     small_frame.show();
@@ -274,12 +274,12 @@ int main()
     while (true)
     {
         test_fb_line(&display);
-        // test_outofframe_line(&display);
-        // test_fb_hline(&display);
-        // test_fb_vline(&display);
-        // test_fb_rect(&display);
-        // test_fb_circle(&display);
-        // test_fb_in_fb(&display);
+        test_outofframe_line(&display);
+        test_fb_hline(&display);
+        test_fb_vline(&display);
+        test_fb_rect(&display);
+        test_fb_circle(&display);
+        test_fb_in_fb(&display);
     }
     return 0;
 }

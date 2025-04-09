@@ -23,12 +23,12 @@ void WidgetBlinkingSquareLed::draw()
         case LEDStatus::LED_IS_BLINKING:
             break;
         case LEDStatus::LED_IS_OFF:
-            clear_pixel_buffer();
+            clear_widget();
             led_is_on = false;
             draw_border();
             break;
         case LEDStatus::LED_IS_ON:
-            clear_pixel_buffer();
+            clear_widget();
             led_is_on = true;
             rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, true, fg_color);
             break;
@@ -42,7 +42,7 @@ void WidgetBlinkingSquareLed::draw()
     compute_blinking_phase();
     if ((led_status == LEDStatus::LED_IS_BLINKING) and has_blinking_changed())
     {
-        clear_pixel_buffer();
+        clear_widget();
         led_is_on = !led_is_on;
         if (led_is_on)
             rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, true, fg_color);
@@ -68,7 +68,7 @@ void WidgetSquareLed::draw()
 {
     if (actual_displayed_model->has_changed())
     {
-        clear_pixel_buffer();
+        clear_widget();
         get_value_of_interest();
         if (led_is_on)
             rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, true, fg_color);

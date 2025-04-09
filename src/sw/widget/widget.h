@@ -43,8 +43,6 @@
 
 class Model;
 class DisplayDevice;
-// class GraphicDisplayDevice;
-// class PrinterDevice;
 
 /// @brief A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker.
 /// \ingroup view
@@ -102,7 +100,7 @@ class Widget
 {
 protected:
     /// @brief the display device where the attached to the frame buffer
-    DisplayDevice *display_screen{nullptr};
+    DisplayDevice *display_device{nullptr};
 
     /// @brief a pointer to the Model actually displayed by the widget
     Model *actual_displayed_model{nullptr};
@@ -113,9 +111,9 @@ protected:
 public:
     /// @brief contructor for generic widget
     /// @param actual_displayed_model the displayed model of the widget
-    /// @param graphic_display_screen The display device on which the widget is drawn. This device can be "null".
+    /// @param graphic_display_device The display device on which the widget is drawn. This device can be "null".
     Widget(Model *actual_displayed_model,
-           DisplayDevice *graphic_display_screen = nullptr);
+           DisplayDevice *graphic_display_device = nullptr);
 
     ~Widget();
 
@@ -125,7 +123,7 @@ public:
 
     /// @brief Set the display screen object
     /// @param _new_display_device
-    void set_display_screen(DisplayDevice *_new_display_device);
+    void set_display_device(DisplayDevice *_new_display_device);
 
     /// @brief a pure virtual member that is called to effectively draw the widget.
     /// \note USAGE: This member function can be called by the draw_refresh_all_attached_widgets() method of the Model.
@@ -172,7 +170,7 @@ protected:
 
     /// @brief fill the graphic pixel buffer with 0x00.
     /// \note USAGE: used at the begining of the draw() method.
-    void clear_pixel_buffer();
+    void clear_widget();
 
     /// @brief A pure virtual method that results in the transfer of the displayed values of the displayed model to the widget.
     virtual void get_value_of_interest() = 0;
@@ -246,10 +244,10 @@ public:
     /// @return struct_ConfigGraphicFramebuffer
     struct_ConfigGraphicWidget get_graph_frame_config();
 
-    /// @brief Write all pixel buffer memory with "0" (or "1") if color c is BLACK (resp. WHITE)
-    /// \note: Works only for monochrome display!
-    /// @param color the foreground color
-    void fill(ColorIndex color);
+    // /// @brief Write all pixel buffer memory with "0" (or "1") if color c is BLACK (resp. WHITE)
+    // /// \note: Works only for monochrome display!
+    // /// @param color the foreground color
+    // void fill(ColorIndex color);
 
     /// @brief Draw a color horizontal line, starting at frame position (x,y), on w number of pixel.
     /// @param x horizontal start of line
@@ -390,7 +388,8 @@ public:
     /// @param frame_height the frame size height
     /// @param displayed_object the displayed model of the widget. Default to nullptr
     TextWidget(GraphicDisplayDevice *graphic_display_screen,
-               struct_ConfigTextWidget text_cfg, CanvasFormat canvas_format,
+               struct_ConfigTextWidget text_cfg, 
+               CanvasFormat canvas_format,
                size_t frame_width,
                size_t frame_height,
                Model *displayed_object = nullptr);

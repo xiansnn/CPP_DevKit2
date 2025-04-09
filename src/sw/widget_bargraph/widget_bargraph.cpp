@@ -13,7 +13,7 @@ void WidgetHorizontalBargraph::draw()
 {
     if (actual_displayed_model->has_changed())
     {
-        clear_pixel_buffer();
+        clear_widget();
         get_value_of_interest();
         for (int i = 0; i < number_of_bar; i++)
             draw_bar(i);
@@ -117,7 +117,7 @@ void WidgetVerticalBargraph::draw()
 {
     if (actual_displayed_model->has_changed())
     {
-        clear_pixel_buffer();
+        clear_widget();
         get_value_of_interest();
         for (int i = 0; i < number_of_bar; i++)
             draw_bar(i);

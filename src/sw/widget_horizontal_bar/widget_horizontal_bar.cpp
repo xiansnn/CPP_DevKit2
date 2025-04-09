@@ -14,7 +14,7 @@ void WidgetHorizontalBar::draw()
         uint8_t bar_start;
         uint8_t bar_end;
 
-        clear_pixel_buffer();
+        clear_widget();
         get_value_of_interest();
         
         if (level >= 0)

@@ -151,18 +151,18 @@ struct struct_ConfigTextWidget
 class Canvas
 {
 protected:
-
 public:
-virtual void create_canvas_buffer() = 0;
-    uint8_t pixel_frame_width;
-    uint8_t pixel_frame_height;
-    size_t pixel_frame_buffer_size;
-    uint8_t *pixel_frame_buffer;
+    virtual void create_canvas_buffer() = 0;
+    virtual void fill_canvas_with_color(ColorIndex color) = 0;
+    uint8_t canvas_width_pixel;
+    uint8_t canvas_height_pixel;
+    size_t canvas_buffer_size;
+    uint8_t *canvas_buffer;
     Canvas(uint8_t canvas_width_pixel,
            uint8_t canvas_height_pixel);
     ~Canvas();
     void clear_canvas_buffer();
-    struct_PixelFrame get_pixel_frame();
+    struct_PixelFrame get_pixel_frame(); // TODO depreciated
     /**
      * @brief the graphic primitive to draw a pixel
      *
@@ -170,8 +170,8 @@ virtual void create_canvas_buffer() = 0;
      * @param y the y position of the pixel
      * @param color the color of the pixel
      */
-    virtual void pixel(const int x, const int y,
-                       const ColorIndex color = ColorIndex::WHITE) = 0;
+    virtual void draw_pixel(const int x, const int y,
+                            const ColorIndex color = ColorIndex::WHITE) = 0;
     /**
      * @brief a graphic primitive to draw a character at a pixel position
      *
@@ -180,9 +180,9 @@ virtual void create_canvas_buffer() = 0;
      * @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
      * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
      */
-    virtual void draw_char_into_pixel(const struct_ConfigTextWidget text_config,
-                                      const char character,
-                                      const uint8_t anchor_x, const uint8_t anchor_y) = 0;
+    virtual void draw_glyph(const struct_ConfigTextWidget text_config,
+                            const char character,
+                            const uint8_t anchor_x, const uint8_t anchor_y) = 0;
 };
 
 class CanvasVLSB : public Canvas
@@ -194,11 +194,12 @@ public:
     CanvasVLSB(uint8_t canvas_width_pixel,
                uint8_t canvas_height_pixel);
     ~CanvasVLSB();
-    void pixel(const int x, const int y,
-               const ColorIndex color = ColorIndex::WHITE);
-    void draw_char_into_pixel(const struct_ConfigTextWidget text_config,
-                              const char character,
-                              const uint8_t anchor_x, const uint8_t anchor_y);
+    void fill_canvas_with_color(ColorIndex color);
+    void draw_pixel(const int x, const int y,
+                    const ColorIndex color = ColorIndex::WHITE);
+    void draw_glyph(const struct_ConfigTextWidget text_config,
+                    const char character,
+                    const uint8_t anchor_x, const uint8_t anchor_y);
 };
 class CanvasRGB : public Canvas
 {
@@ -209,9 +210,10 @@ public:
     CanvasRGB(uint8_t canvas_width_pixel,
               uint8_t canvas_height_pixel);
     ~CanvasRGB();
-    void pixel(const int x, const int y,
-               const ColorIndex color = ColorIndex::WHITE);
-    void draw_char_into_pixel(const struct_ConfigTextWidget text_config,
-                              const char character,
-                              const uint8_t anchor_x, const uint8_t anchor_y);
+    void fill_canvas_with_color(ColorIndex color);
+    void draw_pixel(const int x, const int y,
+                    const ColorIndex color = ColorIndex::WHITE);
+    void draw_glyph(const struct_ConfigTextWidget text_config,
+                    const char character,
+                    const uint8_t anchor_x, const uint8_t anchor_y);
 };
