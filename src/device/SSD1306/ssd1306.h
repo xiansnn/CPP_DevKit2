@@ -15,8 +15,6 @@
 #include "hw/i2c/hw_i2c.h"
 #include "sw/display_device/display_device.h"
 
-///@brief the symbolic value of a byte
-#define BYTE_SIZE 8
 
 // Time_frame_interval
 /// @brief refer to SSD1306 data sheet
@@ -173,6 +171,7 @@ private:
 public:
 
     void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg);
+    
 
     void clear_pixel_buffer(struct_PixelFrame *pixel_memory);
     /**
@@ -205,6 +204,7 @@ public:
      * @param anchor_y where we want to position (y) the frambuffer
      */
     void show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, const uint8_t anchor_y);
+    void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y);
 
     void draw_char_into_pixel(struct_PixelFrame *pixel_memory_structure,
                   const struct_ConfigTextWidget text_config,

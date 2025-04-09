@@ -17,10 +17,6 @@
 
 
 
-/// @brief index of the font width value in the <...>_font.h file
-#define FONT_WIDTH_INDEX 0
-/// @brief index of the font height value in the <...>_font.h file
-#define FONT_HEIGHT_INDEX 1
 
 
 
@@ -54,6 +50,7 @@ public:
      * @param framebuffer_cfg the widget configuration data
      */
     virtual void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg) = 0;
+    
 
     /**
      * @brief A pure virtual member function.
@@ -65,6 +62,8 @@ public:
      * @param anchor_y
      */
     virtual void show(struct_PixelFrame *pixel_frame, const uint8_t anchor_x, const uint8_t anchor_y) = 0;
+    virtual void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y) = 0;
+    // virtual void show(GraphicWidget *widget) = 0;
 
     /**
      * @brief Construct a new Display Device object

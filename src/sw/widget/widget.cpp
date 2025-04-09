@@ -38,20 +38,35 @@ void GraphicWidget::draw_border(ColorIndex color)
 
 void GraphicWidget::show()
 {
-    ((GraphicDisplayDevice *)display_screen)->show(&this->pixel_frame, this->widget_anchor_x, this->widget_anchor_y);
+    //TODO show()
+    ((GraphicDisplayDevice *)display_screen)->show(this->canvas,this->widget_anchor_x, this->widget_anchor_y);
+    // ((GraphicDisplayDevice *)display_screen)->show(this);
 }
 
-GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
+GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              struct_ConfigGraphicWidget graph_cfg,
+                             CanvasFormat canvas_format,
                              Model *displayed_object)
-    : Widget(displayed_object, display_screen)
+    : Widget(displayed_object, graphic_display_screen)
 {
     this->fg_color = graph_cfg.fg_color;
     this->bg_color = graph_cfg.bg_color;
 
-    this->pixel_frame.pixel_frame_height = graph_cfg.pixel_frame_height;
-    this->pixel_frame.pixel_frame_width = graph_cfg.pixel_frame_width;
-    ((GraphicDisplayDevice *)display_screen)->create_pixel_buffer(&this->pixel_frame);
+    switch (canvas_format)
+    {
+    case CanvasFormat::MONO_VLSB:
+        this->canvas = new CanvasVLSB(graph_cfg.pixel_frame_width, graph_cfg.pixel_frame_height);
+        break;
+    case CanvasFormat::RGB565:
+        this->canvas = new CanvasRGB(graph_cfg.pixel_frame_width, graph_cfg.pixel_frame_height);
+        break;
+    default:
+        break;
+    }
+
+    // this->pixel_frame.pixel_frame_height = graph_cfg.pixel_frame_height;
+    // this->pixel_frame.pixel_frame_width = graph_cfg.pixel_frame_width;
+    // ((GraphicDisplayDevice *)display_screen)->create_pixel_buffer(&this->pixel_frame);
 
     this->widget_anchor_x = graph_cfg.widget_anchor_x;
     this->widget_anchor_y = graph_cfg.widget_anchor_y;
@@ -61,23 +76,39 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *display_screen,
 
     widget_start_x = widget_border_width;
     widget_start_y = widget_border_width;
-    widget_width = pixel_frame.pixel_frame_width - 2 * widget_border_width;
-    widget_height = pixel_frame.pixel_frame_height - 2 * widget_border_width;
+    widget_width = canvas->pixel_frame_width - 2 * widget_border_width;
+    widget_height = canvas->pixel_frame_height - 2 * widget_border_width;
 
-    ((GraphicDisplayDevice *)display_screen)->check_display_device_compatibility(get_graph_frame_config());
+    struct_ConfigGraphicWidget cfg = this->get_graph_frame_config();
+
+    ((GraphicDisplayDevice *)display_screen)->check_display_device_compatibility(cfg);
 }
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              struct_ConfigTextWidget text_cfg,
+                             CanvasFormat canvas_format,
                              Model *displayed_object)
     : Widget(displayed_object, graphic_display_screen)
 {
     this->fg_color = text_cfg.fg_color;
     this->bg_color = text_cfg.bg_color;
 
-    this->pixel_frame.pixel_frame_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
-    this->pixel_frame.pixel_frame_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
-    ((GraphicDisplayDevice *)display_screen)->create_pixel_buffer(&this->pixel_frame);
+    uint8_t canvas_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
+    uint8_t canvas_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
+
+    switch (canvas_format)
+    {
+    case CanvasFormat::MONO_VLSB:
+        this->canvas = new CanvasVLSB(canvas_width, canvas_height);
+        break;
+    case CanvasFormat::RGB565:
+        this->canvas = new CanvasRGB(canvas_width, canvas_height);
+        break;
+    default:
+        break;
+    }
+
+    // ((GraphicDisplayDevice *)display_screen)->create_pixel_buffer(&this->pixel_frame);
 
     this->widget_anchor_x = text_cfg.widget_anchor_x;
     this->widget_anchor_y = text_cfg.widget_anchor_y;
@@ -87,14 +118,15 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
 
     widget_start_x = widget_border_width;
     widget_start_y = widget_border_width;
-    widget_width = pixel_frame.pixel_frame_width - 2 * widget_border_width;
-    widget_height = pixel_frame.pixel_frame_height - 2 * widget_border_width;
+    widget_width = canvas->pixel_frame_width - 2 * widget_border_width;
+    widget_height = canvas->pixel_frame_height - 2 * widget_border_width;
 
     ((GraphicDisplayDevice *)display_screen)->check_display_device_compatibility(get_graph_frame_config());
 }
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              struct_ConfigTextWidget text_cfg,
+                             CanvasFormat canvas_format,
                              size_t frame_width, size_t frame_height,
                              Model *displayed_object)
     : Widget(displayed_object, graphic_display_screen)
@@ -102,10 +134,18 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     this->fg_color = text_cfg.fg_color;
     this->bg_color = text_cfg.bg_color;
 
-    this->pixel_frame.pixel_frame_width = frame_width;
-    this->pixel_frame.pixel_frame_height = frame_height;
-
-    ((GraphicDisplayDevice *)display_screen)->create_pixel_buffer(&this->pixel_frame);
+    switch (canvas_format)
+    {
+    case CanvasFormat::MONO_VLSB:
+        this->canvas = new CanvasVLSB(frame_width, frame_height);
+        break;
+    case CanvasFormat::RGB565:
+        this->canvas = new CanvasRGB(frame_width, frame_height);
+        break;
+    default:
+        break;
+    }
+    // ((GraphicDisplayDevice *)display_screen)->create_pixel_buffer(&this->pixel_frame);
 
     this->widget_anchor_x = text_cfg.widget_anchor_x;
     this->widget_anchor_y = text_cfg.widget_anchor_y;
@@ -115,22 +155,22 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
 
     widget_start_x = widget_border_width;
     widget_start_y = widget_border_width;
-    widget_width = pixel_frame.pixel_frame_width - 2 * widget_border_width;
-    widget_height = pixel_frame.pixel_frame_height - 2 * widget_border_width;
+    widget_width = canvas->pixel_frame_width - 2 * widget_border_width;
+    widget_height = canvas->pixel_frame_height - 2 * widget_border_width;
 
     ((GraphicDisplayDevice *)display_screen)->check_display_device_compatibility(get_graph_frame_config());
 }
 
 GraphicWidget::~GraphicWidget()
 {
-    delete[] this->pixel_frame.pixel_frame_buffer;
+    // delete[] this->pixel_frame.pixel_frame_buffer;
 }
 
 struct_ConfigGraphicWidget GraphicWidget::get_graph_frame_config()
 {
     struct_ConfigGraphicWidget cfg = {
-        .pixel_frame_width = this->pixel_frame.pixel_frame_width,
-        .pixel_frame_height = this->pixel_frame.pixel_frame_height,
+        .pixel_frame_width =  canvas->pixel_frame_width,
+        .pixel_frame_height = canvas->pixel_frame_height,
         .fg_color = this->fg_color,
         .bg_color = this->bg_color,
         .widget_anchor_x = this->widget_anchor_x,
@@ -139,24 +179,28 @@ struct_ConfigGraphicWidget GraphicWidget::get_graph_frame_config()
     return cfg;
 }
 
+
+
 void GraphicWidget::fill(ColorIndex c)
 {
     if (c == ColorIndex::BLACK)
-        memset(this->pixel_frame.pixel_frame_buffer, 0x00, this->pixel_frame.pixel_frame_buffer_size);
+        memset(this->canvas->pixel_frame_buffer, 0x00, this->canvas->pixel_frame_buffer_size);
     else
-        memset(this->pixel_frame.pixel_frame_buffer, 0xFF, this->pixel_frame.pixel_frame_buffer_size);
+        memset(this->canvas->pixel_frame_buffer, 0xFF, this->canvas->pixel_frame_buffer_size);
 }
 
 void GraphicWidget::hline(uint8_t x, uint8_t y, size_t w, ColorIndex c)
 {
     for (size_t i = 0; i < w; i++)
-        ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x + i, y, c);
+        // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x + i, y, c);
+        canvas->pixel(x + i, y, c);
 }
 
 void GraphicWidget::vline(uint8_t x, uint8_t y, size_t h, ColorIndex c)
 {
     for (size_t i = 0; i < h; i++)
-        ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x, y + i, c);
+        // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x, y + i, c);
+        canvas->pixel(x, y + i, c);
 }
 
 void GraphicWidget::line(int x0, int y0, int x1, int y1, ColorIndex c)
@@ -170,7 +214,8 @@ void GraphicWidget::line(int x0, int y0, int x1, int y1, ColorIndex c)
 
     while (true)
     {
-        ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x0, y0, c);
+        // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x0, y0, c);
+        canvas->pixel(x0, y0, c);
         if (x0 == x1 && y0 == y1)
             break;
         e2 = 2 * err;
@@ -199,7 +244,8 @@ void GraphicWidget::rect(uint8_t start_x, uint8_t start_y, size_t w, size_t h, b
     else
         for (size_t i_x = 0; i_x < w; i_x++)
             for (size_t i_y = 0; i_y < h; i_y++)
-                ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, start_x + i_x, start_y + i_y, c);
+                // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, start_x + i_x, start_y + i_y, c);
+                canvas->pixel(start_x + i_x, start_y + i_y, c);
 }
 
 void GraphicWidget::circle(int radius, int x_center, int y_center, bool fill, ColorIndex c)
@@ -212,14 +258,22 @@ void GraphicWidget::circle(int radius, int x_center, int y_center, bool fill, Co
     {
         if (!fill)
         {
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center + x, y_center + y, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center + y, y_center + x, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center - x, y_center + y, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center - y, y_center + x, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center + x, y_center - y, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center + y, y_center - x, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center - x, y_center - y, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center - y, y_center - x, c);
+            // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center + x, y_center + y, c);
+            // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center + y, y_center + x, c);
+            // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center - x, y_center + y, c);
+            // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center - y, y_center + x, c);
+            // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center + x, y_center - y, c);
+            // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center + y, y_center - x, c);
+            // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center - x, y_center - y, c);
+            // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center - y, y_center - x, c);
+            canvas->pixel(x_center + x, y_center + y, c);
+            canvas->pixel(x_center + y, y_center + x, c);
+            canvas->pixel(x_center - x, y_center + y, c);
+            canvas->pixel(x_center - y, y_center + x, c);
+            canvas->pixel(x_center + x, y_center - y, c);
+            canvas->pixel(x_center + y, y_center - x, c);
+            canvas->pixel(x_center - x, y_center - y, c);
+            canvas->pixel(x_center - y, y_center - x, c);
         }
         else
         {
@@ -242,7 +296,8 @@ void TextWidget::write(char character, uint8_t char_column, uint8_t char_line)
 {
     uint8_t anchor_x = char_column * this->font[FONT_WIDTH_INDEX];
     uint8_t anchor_y = char_line * this->font[FONT_HEIGHT_INDEX];
-    ((GraphicDisplayDevice *)display_screen)->draw_char_into_pixel(&this->pixel_frame, this->get_text_frame_config(), character, anchor_x, anchor_y);
+    // ((GraphicDisplayDevice *)display_screen)->draw_char_into_pixel(&this->pixel_frame, this->get_text_frame_config(), character, anchor_x, anchor_y);
+    canvas->draw_char_into_pixel(this->get_text_frame_config(), character, anchor_x, anchor_y);
 }
 
 void TextWidget::clear_line()
@@ -278,9 +333,9 @@ struct_ConfigTextWidget TextWidget::get_text_frame_config()
 }
 
 TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
-                       struct_ConfigTextWidget text_cfg,
+                       struct_ConfigTextWidget text_cfg,CanvasFormat canvas_format,
                        Model *displayed_object)
-    : GraphicWidget(graphic_display_screen, text_cfg, displayed_object)
+    : GraphicWidget(graphic_display_screen, text_cfg,canvas_format, displayed_object)
 {
     this->number_of_column = text_cfg.number_of_column;
     this->number_of_line = text_cfg.number_of_line;
@@ -294,15 +349,17 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
     create_text_buffer();
 }
 
+
+
 TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
-                       struct_ConfigTextWidget text_cfg,
+                       struct_ConfigTextWidget text_cfg,CanvasFormat canvas_format,
                        size_t frame_width, size_t frame_height,
                        Model *displayed_object)
-    : GraphicWidget(graphic_display_screen, text_cfg, frame_width, frame_height, displayed_object)
+    : GraphicWidget(graphic_display_screen, text_cfg,canvas_format, frame_width, frame_height, displayed_object)
 {
     this->font = text_cfg.font;
-    this->number_of_column = this->pixel_frame.pixel_frame_width / this->font[FONT_WIDTH_INDEX];
-    this->number_of_line = this->pixel_frame.pixel_frame_height / this->font[FONT_HEIGHT_INDEX];
+    this->number_of_column = this->canvas->pixel_frame_width / this->font[FONT_WIDTH_INDEX];
+    this->number_of_line = this->canvas->pixel_frame_height / this->font[FONT_HEIGHT_INDEX];
 
     this->tab_size = text_cfg.tab_size;
     this->fg_color = text_cfg.fg_color;
@@ -323,8 +380,8 @@ void TextWidget::update_text_frame_size(const unsigned char *font)
     this->font = font;
 
     // size the text area according to the available room within the frame whidth and height
-    this->number_of_line = this->pixel_frame.pixel_frame_height / font[FONT_HEIGHT_INDEX];
-    this->number_of_column = this->pixel_frame.pixel_frame_width / font[FONT_WIDTH_INDEX];
+    this->number_of_line = this->canvas->pixel_frame_height / font[FONT_HEIGHT_INDEX];
+    this->number_of_column = this->canvas->pixel_frame_width / font[FONT_WIDTH_INDEX];
 
     delete[] this->text_buffer;
     create_text_buffer();
@@ -341,11 +398,11 @@ void TextWidget::update_graphic_frame_size(const unsigned char *font)
 {
     this->font = font;
     // size the pixel buffer to the required size due to character area
-    this->pixel_frame.pixel_frame_height = number_of_line * font[FONT_HEIGHT_INDEX];
-    this->pixel_frame.pixel_frame_width = number_of_column * font[FONT_WIDTH_INDEX];
+    this->canvas->pixel_frame_height = number_of_line * font[FONT_HEIGHT_INDEX];
+    this->canvas->pixel_frame_width = number_of_column * font[FONT_WIDTH_INDEX];
+    delete[] this->canvas->pixel_frame_buffer;
+    this->canvas->create_canvas_buffer();
 
-    delete[] this->pixel_frame.pixel_frame_buffer;
-    ((GraphicDisplayDevice *)display_screen)->create_pixel_buffer(&this->pixel_frame);
 }
 
 void TextWidget::write()
@@ -378,7 +435,8 @@ void TextWidget::process_char(char character)
         write(' ', current_char_column, current_char_line);
         break;
     case FORM_FEED:
-        ((GraphicDisplayDevice *)display_screen)->clear_pixel_buffer(&this->pixel_frame);
+        // ((GraphicDisplayDevice *)display_screen)->clear_pixel_buffer(&this->pixel_frame);
+        canvas->clear_canvas_buffer();
         current_char_column = 0;
         current_char_line = 0;
         break;
@@ -450,7 +508,7 @@ void TextWidget::draw()
 void TextWidget::draw_border(ColorIndex color)
 {
     if (this->widget_with_border)
-        rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, false, color);
+        rect(0, 0,  canvas->pixel_frame_width, canvas->pixel_frame_height, false, color);
 }
 
 void GraphicWidget::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, ColorIndex c)
@@ -467,10 +525,14 @@ void GraphicWidget::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius
     {
         if (!fill)
         {
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center + x, y_center + y, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center - x, y_center + y, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center + x, y_center - y, c);
-            ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center - x, y_center - y, c);
+            // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center + x, y_center + y, c);
+            // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center - x, y_center + y, c);
+            // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center + x, y_center - y, c);
+            // ((GraphicDisplayDevice *)display_screen)->pixel(&this->pixel_frame, x_center - x, y_center - y, c);
+            canvas->pixel(x_center + x, y_center + y, c);
+            canvas->pixel(x_center - x, y_center + y, c);
+            canvas->pixel(x_center + x, y_center - y, c);
+            canvas->pixel(x_center - x, y_center - y, c);
         }
         else
         {
@@ -496,7 +558,8 @@ void GraphicWidget::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius
 
 void GraphicWidget::clear_pixel_buffer()
 {
-    ((GraphicDisplayDevice *)display_screen)->clear_pixel_buffer(&this->pixel_frame);
+    // ((GraphicDisplayDevice *)display_screen)->clear_pixel_buffer(&this->pixel_frame);
+    canvas->clear_canvas_buffer();
 }
 
 void GraphicWidget::update_widget_anchor(uint8_t x, uint8_t y)
@@ -526,7 +589,6 @@ void GraphicWidget::update_widget_anchor(uint8_t x, uint8_t y)
 //         return;
 //     this->pixel_buffer[byte_idx] ^= byte;
 // }
-
 
 void Blinker::compute_blinking_phase()
 {
@@ -566,4 +628,3 @@ PrintWidget::PrintWidget(PrinterDevice *display_device, Model *actual_displayed_
 PrintWidget::~PrintWidget()
 {
 }
-

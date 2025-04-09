@@ -196,6 +196,18 @@ void SSD1306::show(struct_PixelFrame *pixel_memory, const uint8_t anchor_x, cons
     this->show_render_area(pixel_memory->pixel_frame_buffer, this->compute_render_area(anchor_x, end_col, anchor_y, end_line));
 }
 
+void SSD1306::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y)
+{
+    uint8_t end_col = anchor_x + canvas->pixel_frame_width - 1;
+    uint8_t end_line = anchor_y + canvas->pixel_frame_height - 1;
+
+    assert(anchor_x + canvas->pixel_frame_width - 1 <= SSD1306_WIDTH - 1);
+    assert(anchor_y + canvas->pixel_frame_height - 1 <= SSD1306_HEIGHT - 1);
+
+    this->show_render_area(canvas->pixel_frame_buffer, this->compute_render_area(anchor_x, end_col, anchor_y, end_line));
+
+}
+
 void SSD1306::draw_char_into_pixel(struct_PixelFrame *pixel_memory_structure,
                        const struct_ConfigTextWidget text_config,
                        const char c, const uint8_t anchor_x, const uint8_t anchor_y)

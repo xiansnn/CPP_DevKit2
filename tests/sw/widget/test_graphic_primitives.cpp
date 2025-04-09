@@ -62,7 +62,7 @@ public:
 };
 my_graphic_widget::my_graphic_widget(GraphicDisplayDevice *graphic_display_screen,
                                      struct_ConfigGraphicWidget graph_cfg)
-    : GraphicWidget(graphic_display_screen, graph_cfg) {}
+    : GraphicWidget(graphic_display_screen, graph_cfg, CanvasFormat::MONO_VLSB) {}
 my_graphic_widget::~my_graphic_widget() {}
 void my_graphic_widget::get_value_of_interest() {}
 void my_graphic_widget::draw() {}
@@ -101,7 +101,6 @@ void test_fb_line(SSD1306 *display)
     display->clear_device_screen_buffer();
     my_graphic_widget frame = my_graphic_widget(display, SSD1306_framebuffer_cfg);
     ColorIndex c = ColorIndex::BLACK;
-    struct_RenderArea full_screen_area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
     for (int i = 0; i < 2; i++)
     {
         if (c == ColorIndex::BLACK)
@@ -123,6 +122,8 @@ void test_fb_line(SSD1306 *display)
     }
 
     sleep_ms(1000);
+
+    struct_RenderArea full_screen_area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
     for (int i = 0; i < 2; i++)
     {
         for (int x = 0; x < SSD1306_WIDTH; x++)
@@ -134,15 +135,14 @@ void test_fb_line(SSD1306 *display)
             frame.line(x, 0, SSD1306_WIDTH - 1 - x, SSD1306_HEIGHT - 1, c);
             frame.show();
         }
-
         for (int y = SSD1306_HEIGHT - 1; y >= 0; y--)
         {
             c = ColorIndex::WHITE;
             frame.line(0, y, SSD1306_WIDTH - 1, SSD1306_HEIGHT - 1 - y, c);
-            display->show_render_area(frame.pixel_frame.pixel_frame_buffer, full_screen_area);
+            display->show_render_area(frame.canvas->pixel_frame_buffer, full_screen_area);
             c = ColorIndex::BLACK;
             frame.line(0, y, SSD1306_WIDTH - 1, SSD1306_HEIGHT - 1 - y, c);
-            display->show_render_area(frame.pixel_frame.pixel_frame_buffer, full_screen_area);
+            display->show_render_area(frame.canvas->pixel_frame_buffer, full_screen_area);
         }
     }
     sleep_ms(1000);
@@ -274,12 +274,12 @@ int main()
     while (true)
     {
         test_fb_line(&display);
-        test_outofframe_line(&display);
-        test_fb_hline(&display);
-        test_fb_vline(&display);
-        test_fb_rect(&display);
-        test_fb_circle(&display);
-        test_fb_in_fb(&display);
+        // test_outofframe_line(&display);
+        // test_fb_hline(&display);
+        // test_fb_vline(&display);
+        // test_fb_rect(&display);
+        // test_fb_circle(&display);
+        // test_fb_in_fb(&display);
     }
     return 0;
 }

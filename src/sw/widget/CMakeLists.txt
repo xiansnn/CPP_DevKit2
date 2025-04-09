@@ -1,4 +1,5 @@
-add_library(sw_widget widget.cpp
+add_library(sw_widget   
+            widget.cpp
             canvas.cpp)
 target_link_libraries(sw_widget 
             pico_stdlib

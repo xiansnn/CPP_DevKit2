@@ -11,6 +11,13 @@
 
 #pragma once
 
+/// @brief index of the font width value in the <...>_font.h file
+#define FONT_WIDTH_INDEX 0
+/// @brief index of the font height value in the <...>_font.h file
+#define FONT_HEIGHT_INDEX 1
+///@brief the symbolic value of a byte
+#define BYTE_SIZE 8
+
 #include "pico/stdlib.h"
 #include <map>
 
@@ -44,7 +51,19 @@ enum class ColorIndex
 
 extern std::map<ColorIndex, uint16_t> color565_palette;
 
-/// @brief the data structure that characterise the graphic framebuffer
+enum class CanvasFormat
+{
+    /// @brief monochrome canvas, pixel arranged vertically, LSB is top pixel
+    MONO_VLSB,
+    /// @brief monochrome canvas, pixel arranged horizontally, LSB is left pixel
+    MONO_HLSB,
+    /// @brief monochrome canvas, pixel arranged horizontally, MSB is left pixel
+    MONO_HMSB,
+    /// @brief color canvas, 16bits/pixel arranged 5b-red,6b-green,5b-blue
+    RGB565
+};
+
+/// @brief the data structure that characterises the graphic canvas
 struct struct_PixelFrame
 {
     /// @brief The number of pixel along the width of the frame.
@@ -57,7 +76,7 @@ struct struct_PixelFrame
     uint8_t *pixel_frame_buffer = nullptr;
 };
 
-/// @brief the data structure that characterise the text buffer
+/// @brief the data structure that characterises the text buffer
 struct struct_TextFrame
 {
     /// @brief the size, in number of character of a line
@@ -73,7 +92,6 @@ struct struct_TextFrame
 /// @brief data structure used to configure graphic framebuffer
 struct struct_ConfigGraphicWidget
 {
-
     /// @brief the frame width of the graphic frame
     size_t pixel_frame_width;
     /// @brief the frame height of the graphic frame
@@ -128,4 +146,72 @@ struct struct_ConfigTextWidget
     bool auto_next_char{true};
     /// @brief a flag that indicates if the widget has a 1-pixel width border
     bool widget_with_border{false};
+};
+
+class Canvas
+{
+protected:
+
+public:
+virtual void create_canvas_buffer() = 0;
+    uint8_t pixel_frame_width;
+    uint8_t pixel_frame_height;
+    size_t pixel_frame_buffer_size;
+    uint8_t *pixel_frame_buffer;
+    Canvas(uint8_t canvas_width_pixel,
+           uint8_t canvas_height_pixel);
+    ~Canvas();
+    void clear_canvas_buffer();
+    struct_PixelFrame get_pixel_frame();
+    /**
+     * @brief the graphic primitive to draw a pixel
+     *
+     * @param x the x position of the pixel
+     * @param y the y position of the pixel
+     * @param color the color of the pixel
+     */
+    virtual void pixel(const int x, const int y,
+                       const ColorIndex color = ColorIndex::WHITE) = 0;
+    /**
+     * @brief a graphic primitive to draw a character at a pixel position
+     *
+     * @param text_config the configuration file of the text framebuffer
+     * @param character the character to draw
+     * @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
+     * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
+     */
+    virtual void draw_char_into_pixel(const struct_ConfigTextWidget text_config,
+                                      const char character,
+                                      const uint8_t anchor_x, const uint8_t anchor_y) = 0;
+};
+
+class CanvasVLSB : public Canvas
+{
+private:
+    void create_canvas_buffer();
+
+public:
+    CanvasVLSB(uint8_t canvas_width_pixel,
+               uint8_t canvas_height_pixel);
+    ~CanvasVLSB();
+    void pixel(const int x, const int y,
+               const ColorIndex color = ColorIndex::WHITE);
+    void draw_char_into_pixel(const struct_ConfigTextWidget text_config,
+                              const char character,
+                              const uint8_t anchor_x, const uint8_t anchor_y);
+};
+class CanvasRGB : public Canvas
+{
+private:
+    void create_canvas_buffer();
+
+public:
+    CanvasRGB(uint8_t canvas_width_pixel,
+              uint8_t canvas_height_pixel);
+    ~CanvasRGB();
+    void pixel(const int x, const int y,
+               const ColorIndex color = ColorIndex::WHITE);
+    void draw_char_into_pixel(const struct_ConfigTextWidget text_config,
+                              const char character,
+                              const uint8_t anchor_x, const uint8_t anchor_y);
 };
