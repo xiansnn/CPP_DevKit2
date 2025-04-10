@@ -1,0 +1,5 @@
+<map id="GraphicWidget::circle" name="GraphicWidget::circle">
+<area shape="rect" id="Node000001" title="draw a cercle of size radius, centered at (x_center, y_center) https://fr.wikipedia...." alt="" coords="5,5,129,30"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="177,5,298,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,15,161,15,161,20,129,20"/>
+</map>

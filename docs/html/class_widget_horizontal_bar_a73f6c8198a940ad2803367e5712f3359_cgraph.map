@@ -1,20 +1,18 @@
 <map id="WidgetHorizontalBar::draw" name="WidgetHorizontalBar::draw">
 <area shape="rect" id="Node000001" title="the draw function of the widget" alt="" coords="5,104,156,129"/>
-<area shape="rect" id="Node000002" href="$class_graphic_widget.html#a32888852eb8d37759b1d88534ca34d56" title="fill the graphic pixel buffer with 0x00." alt="" coords="214,5,397,30"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html#a7cfe84700b96f442632858a6aad2000d" title="fill the graphic pixel buffer with 0x00." alt="" coords="225,5,386,30"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,101,144,71,203,41,226,32,228,37,205,45,147,76,101,106"/>
-<area shape="rect" id="Node000003" href="$class_graphic_widget.html#ae20a208f76132724ee39234b5f12d0d8" title="draw a rectangle around the widget." alt="" coords="225,55,386,79"/>
+<area shape="rect" id="Node000003" href="$class_graphic_widget.html#ac2a3a4387a699f25407c71a90b55eeab" title="draw a rectangle around the widget." alt="" coords="225,55,386,79"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,101,230,81,231,86,141,106"/>
-<area shape="rect" id="Node000004" href="$class_graphic_widget.html#ac2bb85ff122ed402b8467e179611eda2" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="455,80,573,105"/>
-<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="156,110,440,94,440,99,156,115"/>
-<area shape="rect" id="Node000008" href="$class_graphic_widget.html#a012e42d45d29004e6e93e46782dcb284" title="A pure virtual method that results in the transfer of the displayed values of the displayed model to ..." alt="" coords="204,153,407,178"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="141,127,231,147,230,152,140,132"/>
-<area shape="rect" id="Node000009" href="$class_graphic_widget.html#a83c221250b9dfdeb8ab03b87a783bf10" title="A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y)" alt="" coords="243,203,368,227"/>
-<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="101,127,147,157,205,187,229,196,227,201,203,192,144,162,98,132"/>
+<area shape="rect" id="Node000004" href="$class_graphic_widget.html#ac07cd1a8df25535bea9552de25411f2a" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="455,80,573,105"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="156,110,440,94,440,99,156,115"/>
+<area shape="rect" id="Node000007" href="$class_graphic_widget.html#a012e42d45d29004e6e93e46782dcb284" title="A pure virtual method that results in the transfer of the displayed values of the displayed model to ..." alt="" coords="204,153,407,178"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="141,127,231,147,230,152,140,132"/>
+<area shape="rect" id="Node000008" href="$class_graphic_widget.html#a83c221250b9dfdeb8ab03b87a783bf10" title="A short way to call GraphicDisplayDevice::show(&amp;canvas, anchor x, anchor y)" alt="" coords="243,203,368,227"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="101,127,147,157,205,187,229,196,227,201,203,192,144,162,98,132"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="386,74,440,81,439,86,385,79"/>
-<area shape="rect" id="Node000005" href="$class_graphic_widget.html#a44156ede281f3c11dd89756f4bbd4ebb" title="Write all pixel buffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)" alt="" coords="628,31,736,55"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="558,77,623,58,624,63,560,82"/>
-<area shape="rect" id="Node000006" href="$class_graphic_widget.html#a5099c45a85d86703b2c12d0d3a901c8e" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="621,80,743,105"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="574,90,606,90,606,95,574,95"/>
-<area shape="rect" id="Node000007" href="$class_graphic_widget.html#a52bd84668c5f613f363f2c68c0cb5f28" title="Draw a color vertical line, starting at frame position (x,y), on w number of pixel." alt="" coords="622,129,742,154"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="560,103,624,122,623,127,558,108"/>
+<area shape="rect" id="Node000005" href="$class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="621,55,743,79"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="573,81,605,76,606,81,574,86"/>
+<area shape="rect" id="Node000006" href="$class_graphic_widget.html#a0a6ac5a1610805ec69142fdaa2ec28b1" title="Draw a color vertical line, starting at frame position (x,y), on w number of pixel." alt="" coords="622,104,742,129"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="574,98,607,103,606,108,573,103"/>
 </map>

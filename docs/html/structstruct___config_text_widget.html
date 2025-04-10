@@ -107,7 +107,7 @@ $(function(){initNavTree('structstruct___config_text_widget.html',''); initResiz
 <p>the data structure used to configure textual widget  
  <a href="#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="display__device_8h_source.html">display_device.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="canvas_8h_source.html">canvas.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for struct_ConfigTextWidget:</div>
 <div class="dyncontent">
@@ -143,14 +143,14 @@ const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><b>font
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>tab_size</b> {2}</td></tr>
 <tr class="memdesc:aa69d2c7d5f6e4e7530059818c8e26575"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of space that ASCII character HT (aka TAB , "\t", 0x9) generates, default to 2. <br /></td></tr>
 <tr class="separator:aa69d2c7d5f6e4e7530059818c8e26575"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86676492c58b5f3169669ddea61540dd" id="r_a86676492c58b5f3169669ddea61540dd"><td class="memItemLeft" align="right" valign="top"><a id="a86676492c58b5f3169669ddea61540dd" name="a86676492c58b5f3169669ddea61540dd"></a>
-<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fg_color</b> {<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">PixelColor::WHITE</a>}</td></tr>
-<tr class="memdesc:a86676492c58b5f3169669ddea61540dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The foreground color, default to WHITE. <br /></td></tr>
-<tr class="separator:a86676492c58b5f3169669ddea61540dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc9a2310a99f9f4ffbddf0e6732079cd" id="r_afc9a2310a99f9f4ffbddf0e6732079cd"><td class="memItemLeft" align="right" valign="top"><a id="afc9a2310a99f9f4ffbddf0e6732079cd" name="afc9a2310a99f9f4ffbddf0e6732079cd"></a>
-<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bg_color</b> {<a class="el" href="display__device_8h.html#ad83e4ed8a472ffb9b7a07383eb669cf8a08d0012388564e95c3b4a7407cf04965">PixelColor::BLACK</a>}</td></tr>
-<tr class="memdesc:afc9a2310a99f9f4ffbddf0e6732079cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The background color, defaul to BLACK. <br /></td></tr>
-<tr class="separator:afc9a2310a99f9f4ffbddf0e6732079cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4368e0cb643aa11e7c07d7dc1cebee43" id="r_a4368e0cb643aa11e7c07d7dc1cebee43"><td class="memItemLeft" align="right" valign="top"><a id="a4368e0cb643aa11e7c07d7dc1cebee43" name="a4368e0cb643aa11e7c07d7dc1cebee43"></a>
+<a class="el" href="canvas_8h.html#a9efd9fcd52acdc60f2eb45ff9fce269b">ColorIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fg_color</b> {ColorIndex::WHITE}</td></tr>
+<tr class="memdesc:a4368e0cb643aa11e7c07d7dc1cebee43"><td class="mdescLeft">&#160;</td><td class="mdescRight">The foreground color, default to WHITE. <br /></td></tr>
+<tr class="separator:a4368e0cb643aa11e7c07d7dc1cebee43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a758a4febc23b99f4fe77d1d1872b4e0e" id="r_a758a4febc23b99f4fe77d1d1872b4e0e"><td class="memItemLeft" align="right" valign="top"><a id="a758a4febc23b99f4fe77d1d1872b4e0e" name="a758a4febc23b99f4fe77d1d1872b4e0e"></a>
+<a class="el" href="canvas_8h.html#a9efd9fcd52acdc60f2eb45ff9fce269b">ColorIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bg_color</b> {ColorIndex::BLACK}</td></tr>
+<tr class="memdesc:a758a4febc23b99f4fe77d1d1872b4e0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The background color, defaul to BLACK. <br /></td></tr>
+<tr class="separator:a758a4febc23b99f4fe77d1d1872b4e0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b31afc67527af0820b6dcc8a0c329cb" id="r_a6b31afc67527af0820b6dcc8a0c329cb"><td class="memItemLeft" align="right" valign="top"><a id="a6b31afc67527af0820b6dcc8a0c329cb" name="a6b31afc67527af0820b6dcc8a0c329cb"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>wrap</b> {true}</td></tr>
 <tr class="memdesc:a6b31afc67527af0820b6dcc8a0c329cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap flag : if true, text wrap to the next line when end of line is reached. <br /></td></tr>
@@ -167,7 +167,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>widget_with_border</b
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>the data structure used to configure textual widget </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="display__device_8h_source.html">display_device.h</a></li>
+<li><a class="el" href="canvas_8h_source.html">canvas.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

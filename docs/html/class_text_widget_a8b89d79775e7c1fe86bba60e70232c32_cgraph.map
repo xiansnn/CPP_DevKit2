@@ -1,0 +1,15 @@
+<map id="TextWidget::TextWidget" name="TextWidget::TextWidget">
+<area shape="rect" id="Node000001" title="The max number of line with respect to frame height and font height." alt="" coords="5,80,143,105"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html#af3b9275226b4bc13d2e7a9cb6ba83f2c" title="Construct a new Graphic Widget object." alt="" coords="193,55,362,79"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,81,177,77,177,82,144,86"/>
+<area shape="rect" id="Node000006" href="$class_text_widget.html#a25231a80633db702af090c590d5fabc7" title="create text buffer and delete the old one if already existing" alt="" coords="191,104,364,129"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="144,98,175,102,175,107,143,103"/>
+<area shape="rect" id="Node000003" href="$class_widget.html#ac59b534a5955f38cd5e518f967094bee" title="contructor for generic widget" alt="" coords="472,5,569,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="341,51,456,28,457,33,342,57"/>
+<area shape="rect" id="Node000005" href="$class_graphic_widget.html#a49c9ebded2dc14246284662e13713a05" title="Get the graphic frame config object." alt="" coords="412,55,629,79"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="363,64,397,64,397,70,363,70"/>
+<area shape="rect" id="Node000004" href="$class_model.html#a39c2d857bbad88b8fb04eb54820ae08f" title="add a new widget to the set of attached_widgets" alt="" coords="677,5,861,30"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="570,15,662,15,662,20,570,20"/>
+<area shape="rect" id="Node000007" href="$class_text_widget.html#ad0eff5956c8b16178e7eb3572a86e57d" title="et text buffer memory to &quot;0&quot; and set character current line and column to 0" alt="" coords="438,104,603,129"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="365,114,422,114,422,119,365,119"/>
+</map>

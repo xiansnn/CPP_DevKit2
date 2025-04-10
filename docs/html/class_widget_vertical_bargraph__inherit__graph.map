@@ -1,7 +1,7 @@
 <map id="WidgetVerticalBargraph" name="WidgetVerticalBargraph">
-<area shape="rect" id="Node000001" title="the widget that display a vertical bargraph" alt="" coords="55,847,504,997"/>
-<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="5,227,553,799"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="282,814,282,847,277,847,277,814"/>
-<area shape="rect" id="Node000003" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="57,5,501,179"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="282,194,282,227,277,227,277,194"/>
+<area shape="rect" id="Node000001" title="the widget that display a vertical bargraph" alt="" coords="35,828,551,1035"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="5,227,580,780"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="295,795,295,828,290,828,290,795"/>
+<area shape="rect" id="Node000003" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="71,5,514,179"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="295,194,295,227,290,227,290,194"/>
 </map>

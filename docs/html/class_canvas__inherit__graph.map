@@ -1,0 +1,7 @@
+<map id="Canvas" name="Canvas">
+<area shape="rect" id="Node000001" title="The canvas is a virtual memory in which the widget draws." alt="" coords="225,5,691,268"/>
+<area shape="rect" id="Node000002" href="$class_canvas_r_g_b.html" title="A special version of canvas for color widget (and device) with 1 pixel/byte accoeding to 565 RGB colo..." alt="" coords="5,316,447,467"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="330,281,296,318,292,314,326,277"/>
+<area shape="rect" id="Node000003" href="$class_canvas_v_l_s_b.html" title="A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically." alt="" coords="471,316,912,467"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="590,277,625,314,621,318,586,280"/>
+</map>

@@ -1,7 +1,7 @@
 <map id="Widget" name="Widget">
-<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="5,278,449,414"/>
+<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="5,278,448,414"/>
 <area shape="rect" id="Node000002" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="67,71,171,151"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,149,192,262,187,264,135,152"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,149,191,262,186,264,134,152"/>
 <area shape="rect" id="Node000003" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="195,5,475,216"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="290,217,272,255,268,264,264,262,268,253,285,215"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="289,217,267,264,262,262,284,215"/>
 </map>

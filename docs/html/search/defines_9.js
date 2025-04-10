@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['page_5faddressing_5fmode_0',['PAGE_ADDRESSING_MODE',['../ssd1306_8h.html#a2c0a40b88061866897ed7d527562e764',1,'ssd1306.h']]],
-  ['period_5fus_1',['PERIOD_us',['../sg90_8h.html#a69fd28fa4db77094fb62fd05e86037d9',1,'sg90.h']]],
-  ['phase_5fcorrect_2',['PHASE_CORRECT',['../sg90_8h.html#ac359616a325457c8cad32638b19d4f52',1,'sg90.h']]]
+  ['madctl_5fbgr_0',['MADCTL_BGR',['../commands___s_t7735_8h.html#a659f0d6f0c258a3d91f882a59dfa76f5',1,'commands_ST7735.h']]],
+  ['madctl_5fmh_1',['MADCTL_MH',['../commands___s_t7735_8h.html#a6f8b9fad1b5db52b70960b389056f0dd',1,'commands_ST7735.h']]],
+  ['madctl_5fml_2',['MADCTL_ML',['../commands___s_t7735_8h.html#a9ecee6d3131d3b4f750b94d5766b998a',1,'commands_ST7735.h']]],
+  ['madctl_5fmv_3',['MADCTL_MV',['../commands___s_t7735_8h.html#adc23a239d2b6976d53254ef4fc5d1713',1,'commands_ST7735.h']]],
+  ['madctl_5fmx_4',['MADCTL_MX',['../commands___s_t7735_8h.html#a6d18ed48efb3186877a07d0e81155453',1,'commands_ST7735.h']]],
+  ['madctl_5fmy_5',['MADCTL_MY',['../commands___s_t7735_8h.html#ab30e6bd24448245df1d60a3e1c4ddbdf',1,'commands_ST7735.h']]]
 ];

@@ -1,0 +1,13 @@
+<map id="ST7735" name="ST7735">
+<area shape="rect" id="node1" href="dir_ceb2b19df7c98beb9974cc31caddcfd9.html" title="ST7735" alt="" coords="59,51,116,76"/>
+<area shape="rect" id="node2" href="dir_14c55e0c8ed72074091b44a64439906f.html" title="hw" alt="" coords="5,124,44,149"/>
+<area shape="poly" id="edge1" href="dir_000017_000005.html" alt="" coords="79,78,47,114,43,111,75,75"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000017_000005.html" title="1" alt="" coords="50,109,56,123"/>
+<area shape="rect" id="node3" href="dir_384e345ba276260039517aa2781936b6.html" title="sw" alt="" coords="68,124,106,149"/>
+<area shape="poly" id="edge2" href="dir_000017_000018.html" alt="" coords="90,77,90,108,85,108,85,77"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000017_000018.html" title="2" alt="" coords="93,99,99,113"/>
+<area shape="rect" id="node4" href="dir_7b5d38f1875f1b693f62ca6a108a1129.html" title="utilities" alt="" coords="131,124,185,149"/>
+<area shape="poly" id="edge3" href="dir_000017_000021.html" alt="" coords="101,75,138,111,134,115,97,78"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000017_000021.html" title="1" alt="" coords="136,98,142,112"/>
+<area shape="rect" id="clust1" href="dir_16dc92632bab467dc50b01bd02b3341a.html" title="device" alt="" coords="47,16,127,87"/>
+</map>

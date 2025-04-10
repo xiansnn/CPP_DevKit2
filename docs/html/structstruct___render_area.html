@@ -113,7 +113,7 @@ Collaboration diagram for struct_RenderArea:</div>
 <div class="dyncontent">
 <div class="center"><img src="structstruct___render_area__coll__graph.png" border="0" usemap="#astruct___render_area_coll__map" alt="Collaboration graph"/></div>
 <map name="astruct___render_area_coll__map" id="astruct___render_area_coll__map">
-<area shape="rect" title="data used to compute the render area position in the display framebuffer reference,..." alt="" coords="5,5,119,179"/>
+<area shape="rect" title="data used to compute the render area position in the display framebuffer reference,..." alt="" coords="5,5,157,272"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -147,11 +147,33 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>height</b> { 64 }</
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>buflen</b> { ( ( 64 / _u(8) )* 128 )}</td></tr>
 <tr class="memdesc:a66cef6847c6a4e2d0bf534f588914bd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">the size of the graphic buffer <br /></td></tr>
 <tr class="separator:a66cef6847c6a4e2d0bf534f588914bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b63ae0902c010ef64a69607996bb957" id="r_a8b63ae0902c010ef64a69607996bb957"><td class="memItemLeft" align="right" valign="top"><a id="a8b63ae0902c010ef64a69607996bb957" name="a8b63ae0902c010ef64a69607996bb957"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>start_x</b> {0}</td></tr>
+<tr class="memdesc:a8b63ae0902c010ef64a69607996bb957"><td class="mdescLeft">&#160;</td><td class="mdescRight">the pixel x where to start copy of the graphic framebuffer to the device memory <br /></td></tr>
+<tr class="separator:a8b63ae0902c010ef64a69607996bb957"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3c59dbe6c554c39970cf3af61d76434" id="r_ab3c59dbe6c554c39970cf3af61d76434"><td class="memItemLeft" align="right" valign="top"><a id="ab3c59dbe6c554c39970cf3af61d76434" name="ab3c59dbe6c554c39970cf3af61d76434"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>end_x</b> {0}</td></tr>
+<tr class="memdesc:ab3c59dbe6c554c39970cf3af61d76434"><td class="mdescLeft">&#160;</td><td class="mdescRight">the width of the rendered area <br /></td></tr>
+<tr class="separator:ab3c59dbe6c554c39970cf3af61d76434"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b5e3c00aff94d7595b71f24f9913487" id="r_a3b5e3c00aff94d7595b71f24f9913487"><td class="memItemLeft" align="right" valign="top"><a id="a3b5e3c00aff94d7595b71f24f9913487" name="a3b5e3c00aff94d7595b71f24f9913487"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>start_y</b> {0}</td></tr>
+<tr class="memdesc:a3b5e3c00aff94d7595b71f24f9913487"><td class="mdescLeft">&#160;</td><td class="mdescRight">the pixel y where to end copy of the graphic framebuffer to the device memory <br /></td></tr>
+<tr class="separator:a3b5e3c00aff94d7595b71f24f9913487"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a528c17746b0e7e216c8cd48cc9ce8edd" id="r_a528c17746b0e7e216c8cd48cc9ce8edd"><td class="memItemLeft" align="right" valign="top"><a id="a528c17746b0e7e216c8cd48cc9ce8edd" name="a528c17746b0e7e216c8cd48cc9ce8edd"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>end_y</b> {0}</td></tr>
+<tr class="memdesc:a528c17746b0e7e216c8cd48cc9ce8edd"><td class="mdescLeft">&#160;</td><td class="mdescRight">the eight of the rendered area <br /></td></tr>
+<tr class="separator:a528c17746b0e7e216c8cd48cc9ce8edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0f8762bd9965939d69ba6c81b4fd2aa" id="r_ad0f8762bd9965939d69ba6c81b4fd2aa"><td class="memItemLeft" align="right" valign="top"><a id="ad0f8762bd9965939d69ba6c81b4fd2aa" name="ad0f8762bd9965939d69ba6c81b4fd2aa"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>frame_buffer_length</b></td></tr>
+<tr class="memdesc:ad0f8762bd9965939d69ba6c81b4fd2aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">the size of the graphic buffer <br /></td></tr>
+<tr class="separator:ad0f8762bd9965939d69ba6c81b4fd2aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>data used to compute the render area position in the display framebuffer reference, including the size of the required buffer. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<p>//TODO s'adapter aux commandes CASET et RASET </p>
+</div><hr/>The documentation for this struct was generated from the following files:<ul>
 <li><a class="el" href="ssd1306_8h_source.html">ssd1306.h</a></li>
+<li><a class="el" href="st7735_8h_source.html">st7735.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

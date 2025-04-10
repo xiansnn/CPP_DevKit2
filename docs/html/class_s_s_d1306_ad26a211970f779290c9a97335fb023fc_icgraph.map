@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="when we need to show a render area with a given framebuffer" alt="" coords="531,31,694,55"/>
 <area shape="rect" id="Node000002" href="$class_s_s_d1306.html#a764babad3f6a4d12cfa600ce7fd1b751" title="fill a pattern in the device framebuffer. this make it visible as soon as the device transfer the fra..." alt="" coords="257,5,483,30"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="515,36,483,32,484,27,515,30"/>
-<area shape="rect" id="Node000004" href="$class_s_s_d1306.html#a335271a156186ef7e54cfb2ebd9c0676" title=" " alt="" coords="321,55,418,79"/>
+<area shape="rect" id="Node000004" href="$class_s_s_d1306.html#a0856911564cd155a68bdb5cd4ba090e8" title=" " alt="" coords="321,55,418,79"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="516,55,419,65,419,60,515,50"/>
 <area shape="rect" id="Node000003" href="$class_s_s_d1306.html#a646463128f966a04b1746e3389819711" title="write 0x00 directly into the device framebuffer. Uses fill_pattern_and_show_GDDRAM command." alt="" coords="5,5,209,30"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="241,20,209,20,209,15,241,15"/>

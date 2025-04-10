@@ -1,0 +1,5 @@
+<map id="Widget::Widget" name="Widget::Widget">
+<area shape="rect" id="Node000001" title="contructor for generic widget" alt="" coords="5,5,103,30"/>
+<area shape="rect" id="Node000002" href="$class_model.html#a39c2d857bbad88b8fb04eb54820ae08f" title="add a new widget to the set of attached_widgets" alt="" coords="151,5,334,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,15,135,15,135,20,103,20"/>
+</map>
