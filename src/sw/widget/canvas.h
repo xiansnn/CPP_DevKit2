@@ -263,7 +263,8 @@ public:
     CanvasRGB(uint8_t canvas_width_pixel,
               uint8_t canvas_height_pixel);
     ~CanvasRGB();
-    /// @brief fill the canvas buffer with the given color
+    /// @brief fill the canvas buffer with the given color index
+    ///\note the conversion from color index to RGB565 is done by the device after calling the show() memeber
     /// @param color 
     void fill_canvas_with_color(ColorIndex color);
     void draw_pixel(const int x, const int y,

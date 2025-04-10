@@ -46,12 +46,11 @@ void Canvas::clear_canvas_buffer()
 
 struct_PixelFrame Canvas::get_pixel_frame()
 {
-    struct_PixelFrame pixel_frame ={
+    struct_PixelFrame pixel_frame = {
         .pixel_frame_width = this->canvas_width_pixel,
         .pixel_frame_height = this->canvas_height_pixel,
         .pixel_frame_buffer_size = this->canvas_buffer_size,
-        .pixel_frame_buffer = this->canvas_buffer
-    };
+        .pixel_frame_buffer = this->canvas_buffer};
     return pixel_frame;
 }
 
@@ -74,7 +73,7 @@ CanvasVLSB::~CanvasVLSB()
 }
 
 void CanvasVLSB::fill_canvas_with_color(ColorIndex color)
-{    
+{
     if (color == ColorIndex::BLACK)
         memset(canvas_buffer, 0x00, canvas_buffer_size);
     else
@@ -131,6 +130,9 @@ void CanvasVLSB::draw_glyph(const struct_ConfigTextWidget text_config, const cha
 
 void CanvasRGB::create_canvas_buffer()
 {
+    canvas_buffer_size = canvas_width_pixel * canvas_height_pixel;
+    canvas_buffer = new uint8_t[canvas_buffer_size];
+    clear_canvas_buffer();
 }
 
 CanvasRGB::CanvasRGB(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
@@ -154,7 +156,6 @@ void CanvasRGB::draw_pixel(const int x, const int y, const ColorIndex color)
 void CanvasRGB::draw_glyph(const struct_ConfigTextWidget text_config, const char character, const uint8_t anchor_x, const uint8_t anchor_y)
 {
 }
-
 
 /*
 
