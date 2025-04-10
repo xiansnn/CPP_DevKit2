@@ -48,7 +48,7 @@ enum class ColorIndex
     ORANGE, //     {ColorIndex::ORANGE, {0xFF, 0xA5, 0x00}},
     GOLD,   //     {ColorIndex::GOLD, {0xFF, 0xD7, 0x00}},
     FOREST  //     {ColorIndex::FOREST, {0x22, 0x8B, 0x22}}};
-           ///@endcond
+            ///@endcond
 };
 
 /**
@@ -164,57 +164,54 @@ class Canvas
 {
 protected:
 public:
-    /**
-     * @brief Create a canvas buffer object
-     */
+
+    /// @brief Create a canvas buffer object
     virtual void create_canvas_buffer() = 0;
-    /**
-     * @brief fill the canvas with a given color
-     * 
-     * @param color 
-     */
+
+    /// @brief fill the canvas with a given color
+    /// @param color
     virtual void fill_canvas_with_color(ColorIndex color) = 0;
+
     /// @brief the width (in pixel) of the canvas and also of those of the associated widget
     uint8_t canvas_width_pixel;
+
     /// @brief the height (in pixel) of the canvas and also of those of the associated widget
     uint8_t canvas_height_pixel;
+
     /// @brief the size (in bytes) of the buffer
     size_t canvas_buffer_size;
+
     /// @brief the buffer
     uint8_t *canvas_buffer;
-    /**
-     * @brief Construct a new Canvas object
-     * 
-     * @param canvas_width_pixel Width of the canvas (in pixel)
-     * @param canvas_height_pixel height of the canvas(in pixel)
-     */
+
+    /// @brief Construct a new Canvas object
+    /// @param canvas_width_pixel Width of the canvas (in pixel)
+    /// @param canvas_height_pixel height of the canvas(in pixel)
     Canvas(uint8_t canvas_width_pixel,
            uint8_t canvas_height_pixel);
     ~Canvas();
-    
+
     /// @brief fill the canvas buffer with 0x00
     void clear_canvas_buffer();
+
     /// @brief return a pixelFrame structure
-    ///\deprecated 
-    /// @return 
-    struct_PixelFrame get_pixel_frame(); // 
-    /**
-     * @brief the graphic primitive to draw a pixel
-     *
-     * @param x the x position of the pixel
-     * @param y the y position of the pixel
-     * @param color the color of the pixel
-     */
+    ///\deprecated
+    /// @return
+    struct_PixelFrame get_pixel_frame(); //
+
+    /// @brief the graphic primitive to draw a pixel
+    /// @param x the x position of the pixel
+    /// @param y the y position of the pixel
+    /// @param color the color of the pixel
     virtual void draw_pixel(const int x, const int y,
                             const ColorIndex color = ColorIndex::WHITE) = 0;
-    /**
-     * @brief a graphic primitive to draw a character at a pixel position
-     *
-     * @param text_config the configuration file of the text framebuffer
-     * @param character the character to draw
-     * @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
-     * @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
-     */
+
+
+    /// @brief a graphic primitive to draw a character at a pixel position
+    /// @param text_config the configuration file of the text framebuffer
+    /// @param character the character to draw
+    /// @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
+    /// @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
     virtual void draw_glyph(const struct_ConfigTextWidget text_config,
                             const char character,
                             const uint8_t anchor_x, const uint8_t anchor_y) = 0;
@@ -228,20 +225,20 @@ private:
     void create_canvas_buffer();
 
 public:
-/**
- * @brief Construct a new Canvas V L S B object
- * 
- * @param canvas_width_pixel 
- * @param canvas_height_pixel 
- */
+    /// @brief Construct a new Canvas V L S B object
+    /// @param canvas_width_pixel
+    /// @param canvas_height_pixel
     CanvasVLSB(uint8_t canvas_width_pixel,
                uint8_t canvas_height_pixel);
     ~CanvasVLSB();
+
     /// @brief fill the canvas buffer with 0x00 (i.e. BLACK) of 0xFF (WHITE)
-    /// @param color 
+    /// @param color
     void fill_canvas_with_color(ColorIndex color);
+
     void draw_pixel(const int x, const int y,
                     const ColorIndex color = ColorIndex::WHITE);
+
     void draw_glyph(const struct_ConfigTextWidget text_config,
                     const char character,
                     const uint8_t anchor_x, const uint8_t anchor_y);
@@ -254,19 +251,18 @@ private:
     void create_canvas_buffer();
 
 public:
-/**
- * @brief Construct a new Canvas R G B object
- * 
- * @param canvas_width_pixel 
- * @param canvas_height_pixel 
- */
+    /// @brief Construct a new Canvas R G B object
+    /// @param canvas_width_pixel
+    /// @param canvas_height_pixel
     CanvasRGB(uint8_t canvas_width_pixel,
               uint8_t canvas_height_pixel);
     ~CanvasRGB();
+
     /// @brief fill the canvas buffer with the given color index
     ///\note the conversion from color index to RGB565 is done by the device after calling the show() memeber
-    /// @param color 
+    /// @param color
     void fill_canvas_with_color(ColorIndex color);
+
     void draw_pixel(const int x, const int y,
                     const ColorIndex color = ColorIndex::WHITE);
     void draw_glyph(const struct_ConfigTextWidget text_config,
