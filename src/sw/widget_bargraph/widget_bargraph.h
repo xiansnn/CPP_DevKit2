@@ -94,11 +94,15 @@ public:
 
     virtual void get_value_of_interest();
 
-    /// @brief Construct a new GraphicWidget Horizontal Bargraph object
-    /// @param bargraph_model a pointer to the mactual displayed model
-    /// @param graphic_display_screen a pointer to the display device on which the widget is drawn
-    /// @param graph_cfg the configuration data structure of the graphic framebuffer
-    /// @param bar_spacing the number of pixel between each bar. Default to 1.
+    /**
+     * @brief Construct a new Widget Horizontal Bargraph object
+     * 
+     * @param bargraph_model a pointer to the mactual displayed model
+     * @param graphic_display_screen a pointer to the display device on which the widget is drawn
+     * @param graph_cfg the configuration data structure of the graphic framebuffer
+     * @param format the format of the associated canvas
+     * @param bar_spacing the number of pixel between each bar. Default to 1.
+     */
     WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
                              GraphicDisplayDevice *graphic_display_screen,
                              struct_ConfigGraphicWidget graph_cfg,
@@ -156,6 +160,7 @@ public:
     /// @param bargraph_model a pointer to the mactual displayed model
     /// @param graphic_display_screen a pointer to the display device on which the widget is drawn
     /// @param graph_cfg the configuration data structure of the graphic framebuffer
+    /// @param format the format of the associated canvas
     /// @param bar_spacing the number of pixel between each bar. Default to 1.
     WidgetVerticalBargraph(ModelBargraph *bargraph_model,
                            GraphicDisplayDevice *graphic_display_screen,

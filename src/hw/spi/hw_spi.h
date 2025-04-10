@@ -12,8 +12,6 @@
 #pragma once
 
 #include "hardware/spi.h"
-// #include "spi/hw_spi.h"
-// #include <spi.h>
 
 #include "pico/stdlib.h"
 
@@ -53,20 +51,80 @@ private:
     spi_inst_t *spi;
 
 public:
+     /**
+      * @brief Construct a new hw spi master object
+      * 
+      * @param master_config 
+      */
     HW_SPI_Master(struct_ConfigMasterSPI master_config);
     ~HW_SPI_Master();
 
+    /**
+     * @brief send a serie of 8 bit data on the SPI MOSI port
+     *
+     * @param src the source of the data
+     * @param len the lenght of the serie
+     * @return int the number of byte sent
+     */
     int burst_write_8(uint8_t *src, size_t len);
+    /**
+     * @brief send a serie of 16 bit data on the SPI MOSI port
+     *
+     * @param src the source of the data
+     * @param len the lenght of the serie
+     * @return int the number of byte sent
+     */
     int burst_write_16(uint16_t *src, size_t len);
 
+    /**
+     * @brief read / write a serie of 8 bit data on the SPI MISO/MOSI ports
+     *
+     * @param src the source of the data
+     * @param dest the destination of the data
+     * @param len the length of the serie
+     * @return int
+     */
     int burst_write_read_8(uint8_t *src, uint8_t *dest, size_t len);
 
+    /**
+     * @brief write a single byte on the SPI MOSI port
+     *
+     * @param byte_value
+     * @return int
+     */
     int single_write_8(uint8_t byte_value);
+    /**
+     * @brief write a single 16bit word on the SPI MOSI port
+     *
+     * @param word_value
+     * @return int
+     */
     int single_write_16(uint16_t word_value);
 
+    /**
+     * @brief read a single byte on the SPI MISO port
+     *
+     * @param dest the destination that receives the data
+     * @return int
+     */
     int single_read_8(uint8_t *dest);
 
-    int burst_read_8(uint8_t repeated_tx_data,  uint8_t *dest, size_t len);
+    /**
+     * @brief read a serie of byte on the SPI MISO port
+     *
+     * @param repeated_tx_data the byte sent on MOSI port during the read transfer
+     * @param dest the destination that receives the data
+     * @param len the length of the serie
+     * @return int
+     */
+    int burst_read_8(uint8_t repeated_tx_data, uint8_t *dest, size_t len);
 
+    /**
+     * @brief a test that checks if the slave_address device is connected
+     *
+     * @param slave_address
+     * @return true
+     * @return false
+     */
     bool device_is_connected(uint8_t slave_address);
 };

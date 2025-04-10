@@ -50,6 +50,7 @@ public:
     /// @param max_value max value of the bar
     /// @param min_value min value of the bar
     /// @param graph_cfg the configuration data for the graphic framebuffer
+    /// @param format the format of the associated canvas
     WidgetHorizontalBar(Model *bar_value_model,
                         GraphicDisplayDevice *graphic_display_screen,
                         int max_value, int min_value,

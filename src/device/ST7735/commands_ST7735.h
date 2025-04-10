@@ -50,8 +50,10 @@
 
 
 // ---------- system function commands ----------
-#define ST7735_NOP        0x00u // [Cx/W] No Operation 
-#define ST7735_SWRESET    0x01u // [Cx/W] Software Reset
+///@brief [Cx/W] No Operation 
+#define ST7735_NOP        0x00u
+///@brief [Cx/W] Software Reset
+#define ST7735_SWRESET    0x01u 
 
 // #define ST7735_RDDID      0x04u // [Cx/W] Read Display ID (followed by 4[D/R] )
 // #define ST7735_RDDST      0x09u // [Cx/W] Read Display Status (followed by 5[D/R] )
@@ -62,47 +64,73 @@
 // #define ST7735_RDDSM      0x0Eu // [Cx/W] Read Display Signal Mode (followed by 2[D/R] )
 // #define ST7735_RDDSDR     0x0Fu // [Cx/W] Read Display Self-Diagnostic Result (followed by 2[D/R] )
 
-#define ST7735_SLPIN      0x10u // [Cx/W] Sleep In & Booster Off 
-#define ST7735_SLPOUT     0x11u // [Cx/W] Sleep Out & Booster On . Wait for 120ms before sending next command.
+///@brief [Cx/W] Sleep In & Booster Off 
+#define ST7735_SLPIN      0x10u // 
+///@brief [Cx/W] Sleep Out & Booster On . Wait for 120ms before sending next command.
+#define ST7735_SLPOUT     0x11u //
 
-#define ST7735_PTLON      0x12u // [Cx/W] Partial Mode On 
-#define ST7735_NORON      0x13u // [Cx/W] Partial Off (Normal)
-#define ST7735_INVOFF     0x20u // [Cx/W] Display Inversion Off (Normal)
-#define ST7735_INVON      0x21u // [Cx/W] Display Inversion On
+///@brief [Cx/W] Partial Mode On 
+#define ST7735_PTLON      0x12u //
+///@brief [Cx/W] Partial Off (Normal)
+#define ST7735_NORON      0x13u //
+///@brief [Cx/W] Display Inversion Off (Normal)
+#define ST7735_INVOFF     0x20u //
+///@brief [Cx/W] Display Inversion On
+#define ST7735_INVON      0x21u //
 
-#define ST7735_GAMSET     0x26u // [Cx/W] Gamma Curve Select (followed by 1[D/W] )
+///@brief [Cx/W] Gamma Curve Select (followed by 1[D/W] )
+#define ST7735_GAMSET     0x26u //
 
-#define ST7735_DISPOFF    0x28u // [Cx/W] Display Off
-#define ST7735_DISPON     0x29u // [Cx/W] Display On
+///@brief [Cx/W] Display Off
+#define ST7735_DISPOFF    0x28u //
+///@brief [Cx/W] Display On
+#define ST7735_DISPON     0x29u //
 
 // write date in RAM
-#define ST7735_CASET      0x2Au // [Cx/W] Column Address Set (followed by 4[D/W] )
-#define ST7735_RASET      0x2Bu // [Cx/W] Row Address Set (followed by 4[D/W] )
-#define ST7735_RAMWR      0x2Cu // [Cx/W] Memory Write (followed by n[D/W] )
+///@brief [Cx/W] Column Address Set (followed by 4[D/W] )
+#define ST7735_CASET      0x2Au //
+///@brief [Cx/W] Row Address Set (followed by 4[D/W] )
+#define ST7735_RASET      0x2Bu //
+///@brief [Cx/W] Memory Write (followed by n[D/W] )
+#define ST7735_RAMWR      0x2Cu //
 // #define ST7735_RAMRD      0x2Eu // [Cx/W] Memory Read (followed by 2[D/R] )
 
-#define ST7735_RGBSET     0x2Du // [Cx/W] LUT for 4k,65k,262k Color display (followed by 128[D/W] )
+///@brief [Cx/W] LUT for 4k,65k,262k Color display (followed by 128[D/W] )
+#define ST7735_RGBSET     0x2Du //
 
 
-#define ST7735_PTLAR      0x30u // [Cx/W] Partial Start/End Address Set  (followed by 4[D/W] )
+///@brief [Cx/W] Partial Start/End Address Set  (followed by 4[D/W] )
+#define ST7735_PTLAR      0x30u //
 // #define ST7735_TEOFF      0x34u // [Cx/W] Tearing effect line off 
 // #define ST7735_TEON       0x35u // [Cx/W] Tearing Effect Mode Set & on  (followed by 1[D/W] )
 
-#define ST7735_MADCTL     0x36u // [Cx/W] Memory Data Access Control  (followed by 1[D/W] )
-#define MADCTL_MY         0x80 // mirror row address order
-#define MADCTL_MX         0x40 // mirror column address order
-#define MADCTL_MV         0x20 // swap row/column
-#define MADCTL_MH         0x04 // LCD horizontal refresh right to left
-#define MADCTL_ML         0x10 // LCD vertical refresh Bottom to Top
-#define MADCTL_BGR        0x08 // BGR color filter order
+///@brief [Cx/W] Memory Data Access Control  (followed by 1[D/W] )
+#define ST7735_MADCTL     0x36u //
+///@brief mirror row address order
+#define MADCTL_MY         0x80 //
+///@brief mirror column address order
+#define MADCTL_MX         0x40 //
+///@brief swap row/column
+#define MADCTL_MV         0x20 //
+///@brief LCD horizontal refresh right to left
+#define MADCTL_MH         0x04 //
+///@brief LCD vertical refresh Bottom to Top
+#define MADCTL_ML         0x10 //
+///@brief BGR color filter order
+#define MADCTL_BGR        0x08 //
 // scrolling definition
-#define ST7735_SCRLAR     0x33u // [Cx/W] Scroll area set   (followed by 6[D/W] )
-#define ST7735_VSCSAD     0x37u // [Cx/W] Scroll Start Address of RAM  (followed by 2[D/W] )
+///@brief [Cx/W] Scroll area set   (followed by 6[D/W] )
+#define ST7735_SCRLAR     0x33u //
+///@brief [Cx/W] Scroll Start Address of RAM  (followed by 2[D/W] )
+#define ST7735_VSCSAD     0x37u //
 // IDLE
-#define ST7735_IDMOFF     0x38u // [Cx/W] Idle Mode Off
-#define ST7735_IDMON      0x39u // [Cx/W] Idle Mode On
+///@brief [Cx/W] Idle Mode Off
+#define ST7735_IDMOFF     0x38u //
+///@brief [Cx/W] Idle Mode On
+#define ST7735_IDMON      0x39u //
 
-#define ST7735_COLMOD     0x3Au // [Cx/W] Interface Pixel Format (followed by 1[D/W]). default value is 18b/pixel->To be changed by 16b/pixel
+///@brief [Cx/W] Interface Pixel Format (followed by 1[D/W]). default value is 18b/pixel->To be changed by 16b/pixel
+#define ST7735_COLMOD     0x3Au //
 
 // #define ST7735_RDID1      0xDAu // [Cx/W] ) Read ID1 (followed by 1[D/R] )
 // #define ST7735_RDID2      0xDBu // [Cx/W] ) Read ID2 (followed by 1[D/R] )
@@ -110,37 +138,56 @@
 
 // ---------- panel function commands ----------
 // ---------- Frame Rate Control
-#define ST7735_FRMCTR1    0xB1u // [Cx/W] ) In normal mode (Full Colors) (followed by 3[D/W] )
-#define ST7735_FRMCTR2    0xB2u // [Cx/W] ) In normal mode (8-colors) (followed by 3[D/W] )
-#define ST7735_FRMCTR3    0xB3u // [Cx/W] ) In Partial mode + Full Colors (followed by 6[D/W] )
+///@brief [Cx/W] ) In normal mode (Full Colors) (followed by 3[D/W] )
+#define ST7735_FRMCTR1    0xB1u //
+///@brief [Cx/W] ) In normal mode (8-colors) (followed by 3[D/W] )
+#define ST7735_FRMCTR2    0xB2u //
+///@brief [Cx/W] ) In Partial mode + Full Colors (followed by 6[D/W] )
+#define ST7735_FRMCTR3    0xB3u //
 
 // // ---------- Display Inversion Control
-#define ST7735_INVCTR     0xB4u // [Cx/W] ) Display Inversion Control (followed by 1[D/W] )
-#define ST7735_DISSET5    0xB6u // [Cx/W] ) Display Function set 5 (followed by 2[D/W] ) NOTICE: for ST7735 only, not available on ST7735S
+///@brief [Cx/W] ) Display Inversion Control (followed by 1[D/W] )
+#define ST7735_INVCTR     0xB4u //
+///@brief [Cx/W] ) Display Function set 5 (followed by 2[D/W] ) NOTICE: for ST7735 only, not available on ST7735S
+#define ST7735_DISSET5    0xB6u //
 
 // // ---------- Power Control
-#define ST7735_PWCTR1     0xC0u // [Cx/W] ) Power Control Setting  (followed by 3[D/W] )
-#define ST7735_PWCTR2     0xC1u // [Cx/W] ) Power Control Setting  (followed by 1[D/W] )
-#define ST7735_PWCTR3     0xC2u // [Cx/W] ) Power Control Setting  (followed by 2[D/W] )
-#define ST7735_PWCTR4     0xC3u // [Cx/W] ) Power Control Setting in Idle Mode (8-colors)  (followed by 2[D/W] )
-#define ST7735_PWCTR5     0xC4u // [Cx/W] ) Power Control Setting in Partial Mode + Full COlors (followed by 2[D/W] )
+///@brief [Cx/W] ) Power Control Setting  (followed by 3[D/W] )
+#define ST7735_PWCTR1     0xC0u //
+///@brief [Cx/W] ) Power Control Setting  (followed by 1[D/W] )
+#define ST7735_PWCTR2     0xC1u //
+///@brief [Cx/W] ) Power Control Setting  (followed by 2[D/W] )
+#define ST7735_PWCTR3     0xC2u //
+///@brief [Cx/W] ) Power Control Setting in Idle Mode (8-colors)  (followed by 2[D/W] )
+#define ST7735_PWCTR4     0xC3u //
+///@brief [Cx/W] ) Power Control Setting in Partial Mode + Full COlors (followed by 2[D/W] )
+#define ST7735_PWCTR5     0xC4u //
 
 // // ---------- VCOM
-#define ST7735_VMCTR1     0xC5u // [Cx/W] ) VCOM Control 1 (followed by 1[D/W] )
-#define ST7735_VMOFTR     0xC7u // [Cx/W] ) Set VCOM Offset Control (followed by 1[D/W] )
+///@brief [Cx/W] ) VCOM Control 1 (followed by 1[D/W] )
+#define ST7735_VMCTR1     0xC5u //
+///@brief [Cx/W] ) Set VCOM Offset Control (followed by 1[D/W] )
+#define ST7735_VMOFTR     0xC7u //
 
 // // ---------- ID
-#define ST7735_WRID2      0xD1u // [Cx/W] ) Set LCM Version Code (followed by 1[D/W] )
-#define ST7735_WRID3      0xD2u // [Cx/W] ) Customer Project COde (followed by 1[D/W] )
+///@brief [Cx/W] ) Set LCM Version Code (followed by 1[D/W] )
+#define ST7735_WRID2      0xD1u //
+///@brief [Cx/W] ) Customer Project COde (followed by 1[D/W] )
+#define ST7735_WRID3      0xD2u //
 
 // // ---------- NVM
-#define ST7735_NVCTR1     0xD9u // [Cx/W] ) NVM Control Status (followed by 1[D/W] )
+///@brief [Cx/W] ) NVM Control Status (followed by 1[D/W] )
+#define ST7735_NVCTR1     0xD9u //
 // #define ST7735_NVCTR2     0xDEu // [Cx/W] ) NVM Read Command (followed by [D/W]0xF5,[D/W]0xA5 )
-#define ST7735_NVCTR3     0xDFu // [Cx/W] ) NVM Write Command (followed by [D/W]<command code>,[D/W]0xA5 )
+///@brief [Cx/W] ) NVM Write Command (followed by [D/W] command code ,[D/W]0xA5 )
+#define ST7735_NVCTR3     0xDFu //
 
 // // ---------- Gamma
-#define ST7735_GAMCTRP1   0xE0u // [Cx/W] ) Set Gamma adjustment (+polarity) (followed by 16[D/W] )
-#define ST7735_GAMCTRN1   0xE1u // [Cx/W] ) Set Gamma adjustment (-polarity) (followed by 16[D/W] )
+///@brief [Cx/W] ) Set Gamma adjustment (+polarity) (followed by 16[D/W] )
+#define ST7735_GAMCTRP1   0xE0u //
+///@brief [Cx/W] ) Set Gamma adjustment (-polarity) (followed by 16[D/W] )
+#define ST7735_GAMCTRN1   0xE1u //
 
 // // ---------- Gate pump
-#define ST7735_GCV        0xFCu // [Cx/W] ) Gate Pump Clock Frequency Variable (followed by 1[D/W] )
+///@brief [Cx/W] ) Gate Pump Clock Frequency Variable (followed by 1[D/W] )
+#define ST7735_GCV        0xFCu //

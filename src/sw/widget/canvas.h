@@ -24,6 +24,7 @@
 /// @brief define the code value for color
 enum class ColorIndex
 {
+    /// @cond
     BLACK = 0, // "BLACK" must be coded with code 0x0 for monochrome display device
     WHITE = 1, // "WHITE" must be coded with code 0x1 for monochrome display device
 
@@ -47,10 +48,19 @@ enum class ColorIndex
     ORANGE, //     {ColorIndex::ORANGE, {0xFF, 0xA5, 0x00}},
     GOLD,   //     {ColorIndex::GOLD, {0xFF, 0xD7, 0x00}},
     FOREST  //     {ColorIndex::FOREST, {0x22, 0x8B, 0x22}}};
+           ///@endcond
 };
 
+/**
+ * @brief the map color for RGB565 canvas
+ *
+ */
 extern std::map<ColorIndex, uint16_t> color565_palette;
 
+/**
+ * @brief the format of the canvas
+ *
+ */
 enum class CanvasFormat
 {
     /// @brief monochrome canvas, pixel arranged vertically, LSB is top pixel
@@ -148,21 +158,46 @@ struct struct_ConfigTextWidget
     bool widget_with_border{false};
 };
 
+/// @brief The canvas is a virtual memory in which the widget draws.
+///\ingroup view
 class Canvas
 {
 protected:
 public:
+    /**
+     * @brief Create a canvas buffer object
+     */
     virtual void create_canvas_buffer() = 0;
+    /**
+     * @brief fill the canvas with a given color
+     * 
+     * @param color 
+     */
     virtual void fill_canvas_with_color(ColorIndex color) = 0;
+    /// @brief the width (in pixel) of the canvas and also of those of the associated widget
     uint8_t canvas_width_pixel;
+    /// @brief the height (in pixel) of the canvas and also of those of the associated widget
     uint8_t canvas_height_pixel;
+    /// @brief the size (in bytes) of the buffer
     size_t canvas_buffer_size;
+    /// @brief the buffer
     uint8_t *canvas_buffer;
+    /**
+     * @brief Construct a new Canvas object
+     * 
+     * @param canvas_width_pixel Width of the canvas (in pixel)
+     * @param canvas_height_pixel height of the canvas(in pixel)
+     */
     Canvas(uint8_t canvas_width_pixel,
            uint8_t canvas_height_pixel);
     ~Canvas();
+    
+    /// @brief fill the canvas buffer with 0x00
     void clear_canvas_buffer();
-    struct_PixelFrame get_pixel_frame(); // TODO depreciated
+    /// @brief return a pixelFrame structure
+    ///\deprecated 
+    /// @return 
+    struct_PixelFrame get_pixel_frame(); // 
     /**
      * @brief the graphic primitive to draw a pixel
      *
@@ -185,15 +220,25 @@ public:
                             const uint8_t anchor_x, const uint8_t anchor_y) = 0;
 };
 
+/// @brief A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically
+///\ingroup view
 class CanvasVLSB : public Canvas
 {
 private:
     void create_canvas_buffer();
 
 public:
+/**
+ * @brief Construct a new Canvas V L S B object
+ * 
+ * @param canvas_width_pixel 
+ * @param canvas_height_pixel 
+ */
     CanvasVLSB(uint8_t canvas_width_pixel,
                uint8_t canvas_height_pixel);
     ~CanvasVLSB();
+    /// @brief fill the canvas buffer with 0x00 (i.e. BLACK) of 0xFF (WHITE)
+    /// @param color 
     void fill_canvas_with_color(ColorIndex color);
     void draw_pixel(const int x, const int y,
                     const ColorIndex color = ColorIndex::WHITE);
@@ -201,15 +246,25 @@ public:
                     const char character,
                     const uint8_t anchor_x, const uint8_t anchor_y);
 };
+/// @brief A special version of canvas for color widget (and device) with 1 pixel/byte accoeding to 565 RGB color coding
+///\ingroup view
 class CanvasRGB : public Canvas
 {
 private:
     void create_canvas_buffer();
 
 public:
+/**
+ * @brief Construct a new Canvas R G B object
+ * 
+ * @param canvas_width_pixel 
+ * @param canvas_height_pixel 
+ */
     CanvasRGB(uint8_t canvas_width_pixel,
               uint8_t canvas_height_pixel);
     ~CanvasRGB();
+    /// @brief fill the canvas buffer with the given color
+    /// @param color 
     void fill_canvas_with_color(ColorIndex color);
     void draw_pixel(const int x, const int y,
                     const ColorIndex color = ColorIndex::WHITE);

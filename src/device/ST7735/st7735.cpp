@@ -432,30 +432,6 @@ void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y
 {
 }
 
-void ST7735::clear_pixel_buffer(struct_PixelFrame *pixel_frame)
-{
-    memset(pixel_frame->pixel_frame_buffer, 0x00, pixel_frame->pixel_frame_buffer_size);
-}
-
-void ST7735::create_pixel_buffer(struct_PixelFrame *pixel_frame)
-{
-    pixel_frame->pixel_frame_buffer_size = pixel_frame->pixel_frame_width * pixel_frame->pixel_frame_height;
-
-    pixel_frame->pixel_frame_buffer = new uint8_t[pixel_frame->pixel_frame_buffer_size];
-    clear_pixel_buffer(pixel_frame);
-}
-
-void ST7735::pixel(struct_PixelFrame *pixel_frame,
-                   const int x, const int y, const ColorIndex color)
-{
-}
-
-void ST7735::draw_char_into_pixel(struct_PixelFrame *pixel_frame,
-                                  const struct_ConfigTextWidget text_config,
-                                  const char character,
-                                  const uint8_t anchor_x, const uint8_t anchor_y)
-{
-}
 // /**
 //  * @brief init for "red tab" version of display ... I don't know why
 //  * _ wake up_
