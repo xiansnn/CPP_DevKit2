@@ -5,16 +5,22 @@ var hierarchy =
         [ "WidgetFocusIndicator", "class_widget_focus_indicator.html", null ]
       ] ]
     ] ],
+    [ "Canvas", "class_canvas.html", [
+      [ "CanvasRGB", "class_canvas_r_g_b.html", null ],
+      [ "CanvasVLSB", "class_canvas_v_l_s_b.html", null ]
+    ] ],
     [ "DHT11", "class_d_h_t11.html", null ],
     [ "DisplayDevice", "class_display_device.html", [
       [ "GraphicDisplayDevice", "class_graphic_display_device.html", [
-        [ "SSD1306", "class_s_s_d1306.html", null ]
+        [ "SSD1306", "class_s_s_d1306.html", null ],
+        [ "ST7735", "class_s_t7735.html", null ]
       ] ],
       [ "PrinterDevice", "class_printer_device.html", null ]
     ] ],
     [ "HC_SR04", "class_h_c___s_r04.html", null ],
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", null ],
     [ "HW_I2C_Slave", "class_h_w___i2_c___slave.html", null ],
+    [ "HW_SPI_Master", "class_h_w___s_p_i___master.html", null ],
     [ "Model", "class_model.html", [
       [ "ModelBargraph", "class_model_bargraph.html", null ],
       [ "UIControlledModel", "class_u_i_controlled_model.html", [
@@ -31,11 +37,14 @@ var hierarchy =
     [ "SG90", "class_s_g90.html", null ],
     [ "struct_ConfigGraphicWidget", "structstruct___config_graphic_widget.html", null ],
     [ "struct_ConfigMasterI2C", "structstruct___config_master_i2_c.html", null ],
+    [ "struct_ConfigMasterSPI", "structstruct___config_master_s_p_i.html", null ],
     [ "struct_ConfigMPU6050", "structstruct___config_m_p_u6050.html", null ],
     [ "struct_ConfigScrollSSD1306", "structstruct___config_scroll_s_s_d1306.html", null ],
+    [ "struct_ConfigScrollST7735", "structstruct___config_scroll_s_t7735.html", null ],
     [ "struct_ConfigSG90", "structstruct___config_s_g90.html", null ],
     [ "struct_ConfigSlaveI2C", "structstruct___config_slave_i2_c.html", null ],
     [ "struct_ConfigSSD1306", "structstruct___config_s_s_d1306.html", null ],
+    [ "struct_ConfigST7735", "structstruct___config_s_t7735.html", null ],
     [ "struct_ConfigSwitchButton", "structstruct___config_switch_button.html", null ],
     [ "struct_ConfigTextWidget", "structstruct___config_text_widget.html", null ],
     [ "struct_DHTReading", "structstruct___d_h_t_reading.html", null ],

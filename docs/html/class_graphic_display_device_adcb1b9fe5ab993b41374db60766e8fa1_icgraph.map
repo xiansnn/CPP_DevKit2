@@ -1,5 +1,7 @@
 <map id="GraphicDisplayDevice::GraphicDisplayDevice" name="GraphicDisplayDevice::GraphicDisplayDevice">
-<area shape="rect" id="Node000001" title="Construct a new Display Device object." alt="" coords="169,5,398,30"/>
+<area shape="rect" id="Node000001" title="Construct a new Display Device object." alt="" coords="169,31,398,55"/>
 <area shape="rect" id="Node000002" href="$class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b" title=" " alt="" coords="5,5,121,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,20,121,20,121,15,153,15"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="155,31,121,27,121,22,156,26"/>
+<area shape="rect" id="Node000003" href="$class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8" title="Construct a new ST7735 object." alt="" coords="12,55,114,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,60,114,64,114,59,153,55"/>
 </map>

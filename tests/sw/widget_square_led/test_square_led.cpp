@@ -13,6 +13,8 @@
 #include "t_switch_button_controller.cpp"
 #include "t_square_led_widget.cpp"
 
+#define CANVAS_FORMAT CanvasFormat::MONO_VLSB
+
 
 /// @brief ########## Debug/Observer Probe for logic analyser section ##########
 Probe pr_D4 = Probe(4);
@@ -68,7 +70,7 @@ int main()
 
     MySquareLedModel my_model = MySquareLedModel();
 
-    my_blinking_square_led_widget square_led = my_blinking_square_led_widget(&my_model, &display, square_led_cfg);
+    my_blinking_square_led_widget square_led = my_blinking_square_led_widget(&my_model, &display, square_led_cfg,CANVAS_FORMAT);
     square_led.set_blink_us(300000);
 
     MySwitchButton central_switch = MySwitchButton(CENTRAL_SWITCH_GPIO, cfg_central_switch);

@@ -1,8 +1,8 @@
 var structstruct___config_text_widget =
 [
     [ "auto_next_char", "structstruct___config_text_widget.html#af2a22b977a5c017e07e3a5dc11d9f46c", null ],
-    [ "bg_color", "structstruct___config_text_widget.html#afc9a2310a99f9f4ffbddf0e6732079cd", null ],
-    [ "fg_color", "structstruct___config_text_widget.html#a86676492c58b5f3169669ddea61540dd", null ],
+    [ "bg_color", "structstruct___config_text_widget.html#a758a4febc23b99f4fe77d1d1872b4e0e", null ],
+    [ "fg_color", "structstruct___config_text_widget.html#a4368e0cb643aa11e7c07d7dc1cebee43", null ],
     [ "font", "structstruct___config_text_widget.html#a84cd4fa29c41809259ec431685df06ff", null ],
     [ "number_of_column", "structstruct___config_text_widget.html#aa11cb4c4535e901bc612b742e91d3fbf", null ],
     [ "number_of_line", "structstruct___config_text_widget.html#ae8ba9d0f0eb78ae9726b387b0a36e24c", null ],

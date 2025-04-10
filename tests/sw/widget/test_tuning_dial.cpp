@@ -15,6 +15,8 @@
 #include "device/SSD1306/ssd1306.h"
 #include "device/switch_button/switch_button.h"
 
+#define CANVAS_FORMAT CanvasFormat::MONO_VLSB
+
 /// @brief define central switch config
 struct_ConfigSwitchButton cfg_central_switch{
     .debounce_delay_us = 5000,
@@ -65,10 +67,10 @@ int main()
     FMVolumeModel my_FM_volume = FMVolumeModel(1, true);
 
     FMFrequencyWidget my_FM_frequency_widget = FMFrequencyWidget(&frequency_display,
-                                                                 fm_text_cnf,
+                                                                 fm_text_cnf,CANVAS_FORMAT,
                                                                  &my_FM_frequency);
     FMVolumeWidget my_FM_volume_widget = FMVolumeWidget(&volume_display,
-                                                        fm_text_cnf,
+                                                        fm_text_cnf,CANVAS_FORMAT,
                                                         &my_FM_volume);
 
     frequency_display.clear_device_screen_buffer();

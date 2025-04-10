@@ -13,8 +13,7 @@
 
 #include "sw/display_device/display_device.h"
 #include "sw/ui_core/ui_core.h"
-
-
+#include "sw/widget/canvas.h"
 
 #include <vector>
 #include <string>
@@ -43,6 +42,7 @@
 #define CARRIAGE_RETURN '\r'
 
 class Model;
+class DisplayDevice;
 
 /// @brief A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker.
 /// \ingroup view
@@ -80,13 +80,13 @@ public:
 };
 
 /**
- * @brief A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicWidget with graphical capabilities and GraphicWidget is derived as 
+ * @brief A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicWidget with graphical capabilities and GraphicWidget is derived as
  * TextWidget that adds textual capabilities.
- * 
+ *
  *
  * USAGE: A widget is defined by a frame with width and height in pixel, and line and column of text if derived as TextualWidget.
  * This frame is located within the display device screen at an anchor point (x,y).
- * 
+ *
  * \image html widget.png "The widget frame inside the display screen frame"
  *
  * \note IMPORTANT NOTICE 1:  The widget is only drawn if something has changed in the Model it represents. This allows to save drawing processing time.
@@ -100,7 +100,7 @@ class Widget
 {
 protected:
     /// @brief the display device where the attached to the frame buffer
-    DisplayDevice *display_screen{nullptr};
+    DisplayDevice *display_device{nullptr};
 
     /// @brief a pointer to the Model actually displayed by the widget
     Model *actual_displayed_model{nullptr};
@@ -111,9 +111,9 @@ protected:
 public:
     /// @brief contructor for generic widget
     /// @param actual_displayed_model the displayed model of the widget
-    /// @param graphic_display_screen The display device on which the widget is drawn. This device can be "null".
+    /// @param graphic_display_device The display device on which the widget is drawn. This device can be "null".
     Widget(Model *actual_displayed_model,
-           DisplayDevice *graphic_display_screen = nullptr);
+           DisplayDevice *graphic_display_device = nullptr);
 
     ~Widget();
 
@@ -123,7 +123,7 @@ public:
 
     /// @brief Set the display screen object
     /// @param _new_display_device
-    void set_display_screen(DisplayDevice *_new_display_device);
+    void set_display_device(DisplayDevice *_new_display_device);
 
     /// @brief a pure virtual member that is called to effectively draw the widget.
     /// \note USAGE: This member function can be called by the draw_refresh_all_attached_widgets() method of the Model.
@@ -131,7 +131,6 @@ public:
     /// \image html draw.svg
     virtual void draw() = 0;
 };
-
 
 /// @brief The graphical version of a Widget.
 /// \ingroup view
@@ -171,14 +170,16 @@ protected:
 
     /// @brief fill the graphic pixel buffer with 0x00.
     /// \note USAGE: used at the begining of the draw() method.
-    void clear_pixel_buffer();
+    void clear_widget();
 
     /// @brief A pure virtual method that results in the transfer of the displayed values of the displayed model to the widget.
     virtual void get_value_of_interest() = 0;
 
 public:
-    /// @brief the data structure that contains the actual pixel buffer, created by the display device.
-    struct_PixelFrame pixel_frame;
+    /// @brief the associated canvas in which the widget writes text and draws graphics
+    Canvas *canvas;
+    // /// @brief the data structure that contains the actual pixel buffer, created by the display device.
+    // struct_PixelFrame pixel_frame;
     /// @brief the foregroung color of the graphic frame
     ColorIndex fg_color;
     /// @brief the background color of the graphic frame
@@ -199,26 +200,33 @@ public:
     /// @param color the color of the border
     virtual void draw_border(ColorIndex color = ColorIndex::WHITE);
 
-    /// @brief A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y)
+    /// @brief A short way to call GraphicDisplayDevice::show(&canvas, anchor x, anchor y)
     void show();
 
-    /// @brief Construct a new Graphic Widget object
-    /// \note USAGE: when we need a pure graphic widget defined by the struct_ConfigGraphicFramebuffer
-    /// @param graphic_display_screen The display device on which the widget is drawn.
-    /// @param graph_cfg the configuration data structure of the graphic framebuffer
-    /// @param displayed_object  the displayed object of the widget
-    /// \image html widget.png
+    /**
+     * @brief Construct a new Graphic Widget object
+     * \note USAGE: when we need a pure graphic widget defined by the struct_ConfigGraphicFramebuffer
+     *
+     * @param graphic_display_screen The display device on which the widget is drawn.
+     * @param graph_cfg the configuration data structure of the graphic framebuffer
+     * @param canvas_format the format of the associated canvas (see CanvasFormat)
+     * @param displayed_object the displayed object of the widget
+     * \image html widget.png
+     */
     GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                   struct_ConfigGraphicWidget graph_cfg,
+                  CanvasFormat canvas_format,
                   Model *displayed_object = nullptr);
 
     /// @brief Construct a new Graphic Widget object from the TextWidget Constructor
     /// \note   USAGE: When we need a textual framebuffer defined by the struct_ConfigTextWidget
     /// @param graphic_display_screen The display device on which the widget is drawn.
     /// @param text_cfg the configuration data structure of the text framebuffer
+    /// @param canvas_format the format of the associated canvas (see CanvasFormat)
     /// @param displayed_object the displayed object of the widget
     GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                   struct_ConfigTextWidget text_cfg,
+                  CanvasFormat canvas_format,
                   Model *displayed_object = nullptr);
 
     /// @brief Construct a new Graphic Widget object from the TextWidget Constructor.
@@ -226,11 +234,13 @@ public:
     /// The number of column and line are computed with regard to the size of the font
     /// @param graphic_display_screen
     /// @param text_cfg the configuration data structure of the text framebuffer
+    /// @param canvas_format the format of the associated canvas (see CanvasFormat)
     /// @param frame_width the frame width in pixel
     /// @param frame_height the frame height in pixel
     /// @param displayed_object the displayed object of the widget
     GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                   struct_ConfigTextWidget text_cfg,
+                  CanvasFormat canvas_format,
                   size_t frame_width, size_t frame_height,
                   Model *displayed_object = nullptr);
 
@@ -240,11 +250,6 @@ public:
     /// @brief Get the graphic frame config object
     /// @return struct_ConfigGraphicFramebuffer
     struct_ConfigGraphicWidget get_graph_frame_config();
-
-    /// @brief Write all pixel buffer memory with "0" (or "1") if color c is BLACK (resp. WHITE)
-    /// \note: Works only for monochrome display!
-    /// @param color the foreground color
-    void fill(ColorIndex color);
 
     /// @brief Draw a color horizontal line, starting at frame position (x,y), on w number of pixel.
     /// @param x horizontal start of line
@@ -371,20 +376,24 @@ public:
     /// \note USAGE: when the text frame is defined by the number of characters width and height.
     /// @param graphic_display_screen The display device on which the widget is drawn
     /// @param text_cfg the configuration data for the textual frame
+    /// @param canvas_format the format of the associated canvas (see CanvasFormat)
     /// @param displayed_object the displayed model of the widget. Default to nullptr
     TextWidget(GraphicDisplayDevice *graphic_display_screen,
                struct_ConfigTextWidget text_cfg,
+               CanvasFormat canvas_format,
                Model *displayed_object = nullptr);
 
     /// @brief Construct a new Text Widget object
     /// \note USAGE: when the text frame is defined by the frame size width and height in pixel.
     /// @param graphic_display_screen The display device on which the widget is drawn
     /// @param text_cfg the configuration data for the textual frame
+    /// @param canvas_format the format of the associated canvas (see CanvasFormat)
     /// @param frame_width the frame size width
     /// @param frame_height the frame size height
     /// @param displayed_object the displayed model of the widget. Default to nullptr
     TextWidget(GraphicDisplayDevice *graphic_display_screen,
                struct_ConfigTextWidget text_cfg,
+               CanvasFormat canvas_format,
                size_t frame_width,
                size_t frame_height,
                Model *displayed_object = nullptr);

@@ -1,13 +1,13 @@
 <map id="WidgetHorizontalBar" name="WidgetHorizontalBar">
-<area shape="rect" id="Node000001" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="177,1079,609,1211"/>
-<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="119,476,667,1029"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="395,1045,395,1079,390,1079,390,1045"/>
-<area shape="rect" id="Node000003" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="5,278,449,414"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="263,426,282,475,278,477,258,428"/>
+<area shape="rect" id="Node000001" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="214,1187,717,1319"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="178,603,753,1137"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="468,1153,468,1187,463,1187,463,1153"/>
+<area shape="rect" id="Node000003" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="5,341,448,477"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="271,489,329,602,325,604,266,492"/>
 <area shape="rect" id="Node000004" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="67,71,171,151"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="140,149,192,262,187,264,135,152"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="135,149,199,325,194,327,130,151"/>
 <area shape="rect" id="Node000005" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="195,5,475,216"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="290,217,272,255,268,264,264,262,268,253,285,215"/>
-<area shape="rect" id="Node000006" href="$structstruct___pixel_frame.html" title="the data structure that characterise the graphic framebuffer" alt="" coords="474,287,642,405"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="537,405,514,461,509,459,532,403"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="299,217,259,326,254,325,294,215"/>
+<area shape="rect" id="Node000006" href="$class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="473,278,938,541"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="640,541,615,589,610,587,635,539"/>
 </map>

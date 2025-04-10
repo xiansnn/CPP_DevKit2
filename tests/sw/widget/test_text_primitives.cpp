@@ -31,6 +31,8 @@ Probe pr_D7 = Probe(7);
 #define LONG_DELAY 1000
 #define INTER_TEST_DELAY 2000
 
+#define CANVAS_FORMAT CanvasFormat::MONO_VLSB
+
 struct_ConfigMasterI2C cfg_i2c{
     .i2c = i2c0,
     .sda_pin = 8,
@@ -60,20 +62,24 @@ class my_text_widget : public TextWidget
 private:
 public:
     my_text_widget(GraphicDisplayDevice *graphic_display_screen,
-                   struct_ConfigTextWidget text_cfg);
+                   struct_ConfigTextWidget text_cfg,
+                   CanvasFormat format);
     my_text_widget(GraphicDisplayDevice *graphic_display_screen,
                    struct_ConfigTextWidget text_cfg,
+                   CanvasFormat format,
                    uint8_t x, uint8_t y);
     ~my_text_widget();
     void get_value_of_interest();
 };
 my_text_widget::my_text_widget(GraphicDisplayDevice *graphic_display_screen,
-                               struct_ConfigTextWidget text_cfg)
-    : TextWidget(graphic_display_screen, text_cfg) {}
+                               struct_ConfigTextWidget text_cfg,
+                               CanvasFormat format)
+    : TextWidget(graphic_display_screen, text_cfg, format) {}
 my_text_widget::my_text_widget(GraphicDisplayDevice *graphic_display_screen,
                                struct_ConfigTextWidget text_cfg,
+                               CanvasFormat format,
                                uint8_t x, uint8_t y)
-    : TextWidget(graphic_display_screen, text_cfg, x, y) {}
+    : TextWidget(graphic_display_screen, text_cfg, format, x, y) {}
 my_text_widget::~my_text_widget() {}
 void my_text_widget::get_value_of_interest() {}
 
@@ -91,7 +97,7 @@ void test_font_size(SSD1306 *current_display)
         .widget_anchor_y = 0,
         .font = current_font[0]};
 
-    my_text_widget *font_text_on_screen_0 = new my_text_widget(current_display, default_text_cfg);
+    my_text_widget *font_text_on_screen_0 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
     // draw text directly from a string to the pixel buffer
     font_text_on_screen_0->write(test_string.c_str());
     font_text_on_screen_0->show();
@@ -99,7 +105,7 @@ void test_font_size(SSD1306 *current_display)
 
     default_text_cfg.widget_anchor_x = 64;
     default_text_cfg.widget_anchor_y = 8;
-    my_text_widget *font_text_on_screen_1 = new my_text_widget(current_display, default_text_cfg);
+    my_text_widget *font_text_on_screen_1 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
     font_text_on_screen_1->update_graphic_frame_size(current_font[1]);
 
     // process first text according to sprintf capabilities then copy to text buffer and finally draw text buffer into pixel buffer
@@ -110,7 +116,7 @@ void test_font_size(SSD1306 *current_display)
 
     default_text_cfg.widget_anchor_x = 0;
     default_text_cfg.widget_anchor_y = 16;
-    my_text_widget *font_text_on_screen_2 = new my_text_widget(current_display, default_text_cfg);
+    my_text_widget *font_text_on_screen_2 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
     font_text_on_screen_2->update_graphic_frame_size(current_font[2]);
 
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
@@ -134,10 +140,10 @@ void test_full_screen_text(SSD1306 *current_display)
         .font = font_8x8,
         .wrap = true,
     };
-    my_text_widget text_frame = my_text_widget(current_display, txt_conf, SSD1306_WIDTH, SSD1306_HEIGHT);
+    my_text_widget text_frame = my_text_widget(current_display, txt_conf, CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     text_frame.process_char(FORM_FEED); // equiv. clear full screen
-    current_display->show(&text_frame.pixel_frame, 0, 0);
+    current_display->show(text_frame.canvas, 0, 0);
     uint16_t nb = text_frame.number_of_line * text_frame.number_of_column;
 
     uint16_t n{0};
@@ -145,7 +151,7 @@ void test_full_screen_text(SSD1306 *current_display)
     {
         n++;
         text_frame.process_char(c);
-        current_display->show(&text_frame.pixel_frame, 0, 0);
+        current_display->show(text_frame.canvas, 0, 0);
         if (n == nb)
         {
             sleep_ms(500);
@@ -164,7 +170,7 @@ void test_auto_next_char(SSD1306 *current_display)
         .wrap = true,
         .auto_next_char = false};
 
-    my_text_widget *text_frame = new my_text_widget(current_display, txt_conf, SSD1306_WIDTH, SSD1306_HEIGHT);
+    my_text_widget *text_frame = new my_text_widget(current_display, txt_conf, CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     text_frame->process_char(FORM_FEED);
 
@@ -173,7 +179,7 @@ void test_auto_next_char(SSD1306 *current_display)
     {
         n++;
         text_frame->process_char(c);
-        current_display->show(&text_frame->pixel_frame, 0, 0);
+        current_display->show(text_frame->canvas, 0, 0);
         if (n % 8 == 0)
             text_frame->next_char();
     }
@@ -199,7 +205,7 @@ void test_sprintf_format(SSD1306 *current_display)
         .font = font_8x8,
         .wrap = true};
 
-    my_text_widget *text_frame = new my_text_widget(current_display, text_frame_cfg, SSD1306_WIDTH, SSD1306_HEIGHT);
+    my_text_widget *text_frame = new my_text_widget(current_display, text_frame_cfg,CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     const char *s = "Hello";
 
@@ -234,16 +240,15 @@ void test_sprintf_format(SSD1306 *current_display)
     text_frame->show();
 
     text_frame->clear_text_buffer();
-    current_display->clear_pixel_buffer(&text_frame->pixel_frame);
+    // current_display->clear_pixel_buffer(&text_frame->pixel_frame);
+    current_display->clear_device_screen_buffer();
     sprintf(text_frame->text_buffer, "Characters: %c %%", 'A');
     text_frame->write();
     text_frame->show();
 
-    
     sleep_ms(LONG_DELAY);
-    
-    current_display->clear_device_screen_buffer();
 
+    current_display->clear_device_screen_buffer();
 
     text_frame->update_text_frame_size(font_5x8);
 
@@ -331,7 +336,7 @@ void test_sprintf_format(SSD1306 *current_display)
         .widget_anchor_y = 16,
         .font = font_12x16,
         .wrap = false};
-    my_text_widget *text_frame2 = new my_text_widget(current_display, text_frame2_cfg);
+    my_text_widget *text_frame2 = new my_text_widget(current_display, text_frame2_cfg,CANVAS_FORMAT);
 
     text_frame2->write(" 09:56\n03JAN24");
     text_frame2->show();
@@ -365,7 +370,7 @@ void test_ostringstream_format(SSD1306 *current_display)
         .font = current_font,
         .wrap = false};
 
-    my_text_widget text_frame = my_text_widget(current_display, txt_conf, SSD1306_WIDTH, SSD1306_HEIGHT);
+    my_text_widget text_frame = my_text_widget(current_display, txt_conf,CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     int n = 42;
     float f = std::numbers::pi;
@@ -380,19 +385,19 @@ void test_ostringstream_format(SSD1306 *current_display)
     stream0 << std::left << std::setw(6) << "test" << std::endl;
     text_frame.write(stream0.str().c_str());
 
-    current_display->show(&text_frame.pixel_frame, 0, 0);
+    current_display->show(text_frame.canvas, 0, 0);
     sleep_ms(DELAY);
 
     stream1 << std::setw(5) << std::dec << n << "|" << std::setw(5)
             << std::showbase << std::hex << n << "|" << std::showbase << std::setw(5) << std::oct << n << std::endl;
     text_frame.write(stream1.str().c_str());
-    current_display->show(&text_frame.pixel_frame, 0, 0);
+    current_display->show(text_frame.canvas, 0, 0);
 
     sleep_ms(DELAY);
 
     stream2 << "PI = " << std::left << f << std::endl;
     text_frame.write(stream2.str().c_str());
-    current_display->show(&text_frame.pixel_frame, 0, 0);
+    current_display->show(text_frame.canvas, 0, 0);
 
     sleep_ms(INTER_TEST_DELAY);
     current_display->clear_device_screen_buffer();

@@ -1,0 +1,7 @@
+<map id="Canvas::Canvas" name="Canvas::Canvas">
+<area shape="rect" id="Node000001" title="Construct a new Canvas object." alt="" coords="195,31,290,55"/>
+<area shape="rect" id="Node000002" href="$class_canvas_r_g_b.html#a31311b6281bef7a373398de04b26e459" title="Construct a new Canvas R G B object." alt="" coords="8,5,144,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,36,143,31,144,25,180,31"/>
+<area shape="rect" id="Node000003" href="$class_canvas_v_l_s_b.html#ab1738fd595e5e3bb2fff7b28c9ae4a80" title="Construct a new Canvas V L S B object." alt="" coords="5,55,147,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="179,55,147,59,146,54,179,49"/>
+</map>

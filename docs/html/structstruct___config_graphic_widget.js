@@ -1,7 +1,7 @@
 var structstruct___config_graphic_widget =
 [
-    [ "bg_color", "structstruct___config_graphic_widget.html#a5ae62b359bdf5e7978475aaa5d86bd5e", null ],
-    [ "fg_color", "structstruct___config_graphic_widget.html#a00cfbe59f3789fba00da4ada4aa22eee", null ],
+    [ "bg_color", "structstruct___config_graphic_widget.html#ab05ee4756b246e41e91c193dbd92ca79", null ],
+    [ "fg_color", "structstruct___config_graphic_widget.html#ac0dca05c4dd7261eaad0bc93a12697d5", null ],
     [ "pixel_frame_height", "structstruct___config_graphic_widget.html#a772cfec0c962cae99033de09c5bb4c27", null ],
     [ "pixel_frame_width", "structstruct___config_graphic_widget.html#af2bb5cba93a4dc21c75c08c5a2d6792e", null ],
     [ "widget_anchor_x", "structstruct___config_graphic_widget.html#a8b3bdb7066415a03d75abc9eb1d2e2e4", null ],

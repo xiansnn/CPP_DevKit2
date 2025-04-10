@@ -1,5 +1,10 @@
 <map id="display_device.h" name="display_device.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,104,30"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="15,78,94,103"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,31,57,62,52,62,52,31"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="37,5,135,30"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,151,84,175"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,32,67,79,53,136,47,135,62,77,79,30"/>
+<area shape="rect" id="Node000003" href="$canvas_8h.html" title=" " alt="" coords="76,78,192,103"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="96,29,120,64,115,67,92,32"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="121,105,72,143,69,139,117,101"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="113,151,155,175"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="136,103,136,135,131,135,131,103"/>
 </map>

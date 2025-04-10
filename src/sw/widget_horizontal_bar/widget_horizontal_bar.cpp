@@ -14,9 +14,9 @@ void WidgetHorizontalBar::draw()
         uint8_t bar_start;
         uint8_t bar_end;
 
-        clear_pixel_buffer();
+        clear_widget();
         get_value_of_interest();
-        
+
         if (level >= 0)
         {
             bar_start = level_offset;
@@ -29,9 +29,9 @@ void WidgetHorizontalBar::draw()
         }
 
         if (level == 0)
-            rect(bar_start, 0, 1, pixel_frame.pixel_frame_height, true);
+            rect(bar_start, 0, 1, canvas->canvas_height_pixel, true);
         else
-            rect(bar_start, 0, bar_end - bar_start, pixel_frame.pixel_frame_height, true);
+            rect(bar_start, 0, bar_end - bar_start, canvas->canvas_height_pixel, true);
 
         draw_border();
         show();
@@ -42,8 +42,9 @@ void WidgetHorizontalBar::draw()
 WidgetHorizontalBar::WidgetHorizontalBar(Model *bar_value_model,
                                          GraphicDisplayDevice *display_screen,
                                          int max_value, int min_value,
-                                         struct_ConfigGraphicWidget graph_cfg)
-    : GraphicWidget(display_screen, graph_cfg, bar_value_model)
+                                         struct_ConfigGraphicWidget graph_cfg,
+                                         CanvasFormat format)
+    : GraphicWidget(display_screen, graph_cfg, format, bar_value_model)
 {
     this->max_value = max_value;
     this->min_value = min_value;

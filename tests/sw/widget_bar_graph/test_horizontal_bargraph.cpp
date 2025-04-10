@@ -15,6 +15,8 @@
 
 // #define PRINT_DEBUG
 
+#define CANVAS_FORMAT CanvasFormat::MONO_VLSB
+
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
 
@@ -67,7 +69,8 @@ int main()
     ModelBargraph my_model = ModelBargraph(7, 0, 100);
     WidgetHorizontalBargraph my_widget = WidgetHorizontalBargraph(&my_model,
                                                                   &display,
-                                                                  horizontal_bargraph_cfg);
+                                                                  horizontal_bargraph_cfg, 
+                                                                  CANVAS_FORMAT);
 
 #ifdef PRINT_DEBUG
     stdio_init_all();

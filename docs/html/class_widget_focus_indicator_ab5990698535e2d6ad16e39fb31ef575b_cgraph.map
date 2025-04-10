@@ -1,0 +1,15 @@
+<map id="WidgetFocusIndicator::WidgetFocusIndicator" name="WidgetFocusIndicator::WidgetFocusIndicator">
+<area shape="rect" id="Node000001" title="constructor for the UICOntrolledModel focus indicator" alt="" coords="5,31,243,55"/>
+<area shape="rect" id="Node000002" href="$class_widget_blinking_square_led.html#a5e9986ae27493dbf31efc63eb98a492e" title="Construct a new GraphicWidget Square Led object." alt="" coords="291,31,560,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="243,40,275,40,275,46,243,46"/>
+<area shape="rect" id="Node000003" href="$class_widget_square_led.html#ad554a73ba696f1ba0538bd1a47ca7118" title="Construct a new GraphicWidget Square Led object." alt="" coords="608,31,807,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="560,40,592,40,592,46,560,46"/>
+<area shape="rect" id="Node000004" href="$class_graphic_widget.html#af3b9275226b4bc13d2e7a9cb6ba83f2c" title="Construct a new Graphic Widget object." alt="" coords="855,31,1025,55"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="808,40,840,40,840,46,808,46"/>
+<area shape="rect" id="Node000005" href="$class_widget.html#ac59b534a5955f38cd5e518f967094bee" title="contructor for generic widget" alt="" coords="1133,5,1230,30"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1025,31,1117,22,1117,27,1025,37"/>
+<area shape="rect" id="Node000007" href="$class_graphic_widget.html#a49c9ebded2dc14246284662e13713a05" title="Get the graphic frame config object." alt="" coords="1073,55,1290,79"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="1025,49,1057,52,1057,57,1025,54"/>
+<area shape="rect" id="Node000006" href="$class_model.html#a39c2d857bbad88b8fb04eb54820ae08f" title="add a new widget to the set of attached_widgets" alt="" coords="1338,5,1521,30"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1231,15,1323,15,1323,20,1231,20"/>
+</map>

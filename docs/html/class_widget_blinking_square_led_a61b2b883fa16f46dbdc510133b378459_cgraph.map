@@ -2,25 +2,23 @@
 <area shape="rect" id="Node000001" title="a pure virtual member that is called to effectively draw the widget." alt="" coords="5,179,178,203"/>
 <area shape="rect" id="Node000002" href="$class_blinker.html#ae6a97a7779716d6a9a4954e9491d2985" title="set blink_phase_changed = False" alt="" coords="227,5,428,30"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,177,145,112,182,73,224,41,238,34,240,38,227,45,185,77,150,115,103,180"/>
-<area shape="rect" id="Node000003" href="$class_graphic_widget.html#a32888852eb8d37759b1d88534ca34d56" title="fill the graphic pixel buffer with 0x00." alt="" coords="236,55,419,79"/>
+<area shape="rect" id="Node000003" href="$class_graphic_widget.html#a7cfe84700b96f442632858a6aad2000d" title="fill the graphic pixel buffer with 0x00." alt="" coords="247,55,408,79"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="105,176,155,134,188,110,225,90,244,82,246,87,227,95,191,115,158,138,108,180"/>
 <area shape="rect" id="Node000004" href="$class_blinker.html#a813d28ac666e9d76aebd1385a23b1b54" title="compute if the system clock divided by the blink_period is odd or even and if this has changed since ..." alt="" coords="238,104,416,129"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="124,176,225,139,255,130,257,136,226,144,126,181"/>
-<area shape="rect" id="Node000005" href="$class_graphic_widget.html#ae20a208f76132724ee39234b5f12d0d8" title="draw a rectangle around the widget." alt="" coords="247,153,408,178"/>
+<area shape="rect" id="Node000005" href="$class_graphic_widget.html#ac2a3a4387a699f25407c71a90b55eeab" title="draw a rectangle around the widget." alt="" coords="247,153,408,178"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="178,179,231,173,232,179,179,184"/>
-<area shape="rect" id="Node000006" href="$class_graphic_widget.html#ac2bb85ff122ed402b8467e179611eda2" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="477,179,595,203"/>
-<area shape="poly" id="edge11_Node000001_Node000006" title=" " alt="" coords="178,188,462,188,462,194,178,194"/>
-<area shape="rect" id="Node000010" href="$class_graphic_widget.html#a012e42d45d29004e6e93e46782dcb284" title="A pure virtual method that results in the transfer of the displayed values of the displayed model to ..." alt="" coords="226,252,429,277"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="133,201,226,231,270,244,268,250,225,236,131,206"/>
-<area shape="rect" id="Node000011" href="$class_blinker.html#ae36b06b6ad8e5b5e14f5a95c1f4d3471" title="return the status of the flag blink_phase_changed" alt="" coords="245,301,410,326"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="108,202,158,243,191,266,227,286,246,294,244,299,225,291,189,271,155,247,105,206"/>
-<area shape="rect" id="Node000012" href="$class_graphic_widget.html#a83c221250b9dfdeb8ab03b87a783bf10" title="A short way to call GraphicDisplayDevice::show(pixel_buffer, anchor x, anchor y)" alt="" coords="265,351,390,375"/>
-<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="103,202,150,267,186,304,227,335,251,347,249,351,224,340,182,308,146,270,99,205"/>
+<area shape="rect" id="Node000006" href="$class_graphic_widget.html#ac07cd1a8df25535bea9552de25411f2a" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="477,179,595,203"/>
+<area shape="poly" id="edge10_Node000001_Node000006" title=" " alt="" coords="178,188,462,188,462,194,178,194"/>
+<area shape="rect" id="Node000009" href="$class_graphic_widget.html#a012e42d45d29004e6e93e46782dcb284" title="A pure virtual method that results in the transfer of the displayed values of the displayed model to ..." alt="" coords="226,252,429,277"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="133,201,226,231,270,244,268,250,225,236,131,206"/>
+<area shape="rect" id="Node000010" href="$class_blinker.html#ae36b06b6ad8e5b5e14f5a95c1f4d3471" title="return the status of the flag blink_phase_changed" alt="" coords="245,301,410,326"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="108,202,158,243,191,266,227,286,246,294,244,299,225,291,189,271,155,247,105,206"/>
+<area shape="rect" id="Node000011" href="$class_graphic_widget.html#a83c221250b9dfdeb8ab03b87a783bf10" title="A short way to call GraphicDisplayDevice::show(&amp;canvas, anchor x, anchor y)" alt="" coords="265,351,390,375"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="103,202,150,267,186,304,227,335,251,347,249,351,224,340,182,308,146,270,99,205"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="408,173,462,179,461,185,407,178"/>
-<area shape="rect" id="Node000007" href="$class_graphic_widget.html#a44156ede281f3c11dd89756f4bbd4ebb" title="Write all pixel buffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)" alt="" coords="650,129,758,154"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="580,175,645,156,646,161,582,181"/>
-<area shape="rect" id="Node000008" href="$class_graphic_widget.html#a5099c45a85d86703b2c12d0d3a901c8e" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="643,179,765,203"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="596,188,628,188,628,194,596,194"/>
-<area shape="rect" id="Node000009" href="$class_graphic_widget.html#a52bd84668c5f613f363f2c68c0cb5f28" title="Draw a color vertical line, starting at frame position (x,y), on w number of pixel." alt="" coords="644,228,764,253"/>
-<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="582,201,646,221,645,226,580,207"/>
+<area shape="rect" id="Node000007" href="$class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="643,153,765,178"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="595,179,627,175,628,180,596,185"/>
+<area shape="rect" id="Node000008" href="$class_graphic_widget.html#a0a6ac5a1610805ec69142fdaa2ec28b1" title="Draw a color vertical line, starting at frame position (x,y), on w number of pixel." alt="" coords="644,203,764,227"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="596,197,629,202,628,207,595,202"/>
 </map>

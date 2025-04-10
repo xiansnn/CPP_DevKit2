@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['ui_5fmodel_5fobject_5fstatus_5ftime_5fout_5fus_0',['UI_MODEL_OBJECT_STATUS_TIME_OUT_us',['../ui__core_8h.html#a774f72dc3d61be40b9421594b673b2ef',1,'ui_core.h']]]
+  ['t_5fmax_5fus_0',['T_MAX_us',['../sg90_8h.html#a9aeda26fb02b15f9f6543e4c8431f81c',1,'sg90.h']]],
+  ['t_5fmin_5fus_1',['T_MIN_us',['../sg90_8h.html#a7c5ea4537b04ce892bbd2d11f3fadfde',1,'sg90.h']]],
+  ['time_5fout_5fdelay_5fus_2',['TIME_OUT_DELAY_us',['../switch__button_8h.html#a8427ce8de5f04cddd28ab84a5d201555',1,'switch_button.h']]]
 ];

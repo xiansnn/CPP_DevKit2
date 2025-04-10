@@ -14,12 +14,12 @@
 #include "sw/widget_horizontal_bar/widget_horizontal_bar.h"
 #include "utilities/probe/probe.h"
 
-
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
 
 #define MAX_VALUE 10
 #define MIN_VALUE -10
+#define CANVAS_FORMAT CanvasFormat::MONO_VLSB
 
 struct_ConfigMasterI2C cfg_i2c{
     .i2c = i2c0,
@@ -62,18 +62,18 @@ public:
     MySimpleHorizontalBarWidget(MySimpleHorizontalBarModel *bar_value_model,
                                 GraphicDisplayDevice *graphic_display_screen,
                                 int max_value, int min_value,
-                                struct_ConfigGraphicWidget graph_cfg);
+                                struct_ConfigGraphicWidget graph_cfg, CanvasFormat format);
     ~MySimpleHorizontalBarWidget();
 };
 
 MySimpleHorizontalBarWidget::MySimpleHorizontalBarWidget(MySimpleHorizontalBarModel *bar_value_model,
                                                          GraphicDisplayDevice *graphic_display_screen,
                                                          int max_value, int min_value,
-                                                         struct_ConfigGraphicWidget graph_cfg)
+                                                         struct_ConfigGraphicWidget graph_cfg, CanvasFormat format)
     : WidgetHorizontalBar(bar_value_model,
                           graphic_display_screen,
                           max_value, min_value,
-                          graph_cfg)
+                          graph_cfg, format)
 {
 }
 
@@ -106,18 +106,20 @@ public:
     MyControlledHorizontalBarWidget(MyControlledHorizontalBarModel *bar_value_model,
                                     GraphicDisplayDevice *graphic_display_screen,
                                     int max_value, int min_value,
-                                    struct_ConfigGraphicWidget graph_cfg);
+                                    struct_ConfigGraphicWidget graph_cfg,
+                                    CanvasFormat format);
     ~MyControlledHorizontalBarWidget();
 };
 
 MyControlledHorizontalBarWidget::MyControlledHorizontalBarWidget(MyControlledHorizontalBarModel *bar_value_model,
                                                                  GraphicDisplayDevice *graphic_display_screen,
                                                                  int max_value, int min_value,
-                                                                 struct_ConfigGraphicWidget graph_cfg)
+                                                                 struct_ConfigGraphicWidget graph_cfg,
+                                                                 CanvasFormat format)
     : WidgetHorizontalBar(bar_value_model,
                           graphic_display_screen,
                           max_value, min_value,
-                          graph_cfg)
+                          graph_cfg, format)
 {
 }
 
@@ -183,10 +185,10 @@ int main()
 
     MyControlledHorizontalBarWidget my_horizontal_bar = MyControlledHorizontalBarWidget(&my_model, &display,
                                                                                         MAX_VALUE, MIN_VALUE,
-                                                                                        controlled_horizontal_bar_cfg);
+                                                                                        controlled_horizontal_bar_cfg,CANVAS_FORMAT);
     MySimpleHorizontalBarWidget my_simple_horizontal_bar = MySimpleHorizontalBarWidget(&my_simple_model, &display,
                                                                                        MAX_VALUE, MIN_VALUE,
-                                                                                       simple_horizontal_bar_cfg);
+                                                                                       simple_horizontal_bar_cfg,CANVAS_FORMAT);
 
     display.clear_device_screen_buffer();
 

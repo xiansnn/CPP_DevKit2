@@ -1,12 +1,12 @@
 var class_text_widget =
 [
-    [ "TextWidget", "class_text_widget.html#afc16a5863871d87c9cd009e567b9df39", null ],
-    [ "TextWidget", "class_text_widget.html#ac8d4456a66543ca1938588eff17a0d92", null ],
+    [ "TextWidget", "class_text_widget.html#a8b89d79775e7c1fe86bba60e70232c32", null ],
+    [ "TextWidget", "class_text_widget.html#aca120d9a5d48d9f205a0971b826db362", null ],
     [ "~TextWidget", "class_text_widget.html#a5236b5dabb05f7a53ab9a021bc57e413", null ],
     [ "clear_text_buffer", "class_text_widget.html#ad0eff5956c8b16178e7eb3572a86e57d", null ],
     [ "create_text_buffer", "class_text_widget.html#a25231a80633db702af090c590d5fabc7", null ],
     [ "draw", "class_text_widget.html#a34e2f1558ebd76f1dbfb3cbfdf0e7894", null ],
-    [ "draw_border", "class_text_widget.html#a8e488a1292f4da21ad368259e9723091", null ],
+    [ "draw_border", "class_text_widget.html#ab82666ba03e577d92dc32be8384318cd", null ],
     [ "get_text_frame_config", "class_text_widget.html#ad59aca3e9c6adb5b24fdbb94c4ccea26", null ],
     [ "next_char", "class_text_widget.html#a3712ffd3288da6a64d22e57177ee4beb", null ],
     [ "next_line", "class_text_widget.html#a8192cc012e92157d8e47b4d8569f9529", null ],

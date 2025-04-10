@@ -98,21 +98,25 @@ $(function(){initNavTree('display__device_8h.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle"><div class="title">display_device.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;pico/stdlib.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="canvas_8h_source.html">sw/widget/canvas.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for display_device.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="display__device_8h__incl.png" border="0" usemap="#adisplay__device_8h" alt=""/></div>
 <map name="adisplay__device_8h" id="adisplay__device_8h">
-<area shape="rect" title=" " alt="" coords="5,5,104,30"/>
-<area shape="rect" title=" " alt="" coords="15,78,94,103"/>
-<area shape="poly" title=" " alt="" coords="57,31,57,62,52,62,52,31"/>
+<area shape="rect" title=" " alt="" coords="37,5,135,30"/>
+<area shape="rect" title=" " alt="" coords="5,151,84,175"/>
+<area shape="poly" title=" " alt="" coords="84,32,67,79,53,136,47,135,62,77,79,30"/>
+<area shape="rect" href="canvas_8h.html" title=" " alt="" coords="76,78,192,103"/>
+<area shape="poly" title=" " alt="" coords="96,29,120,64,115,67,92,32"/>
+<area shape="poly" title=" " alt="" coords="121,105,72,143,69,139,117,101"/>
+<area shape="rect" title=" " alt="" coords="113,151,155,175"/>
+<area shape="poly" title=" " alt="" coords="136,103,136,135,131,135,131,103"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -120,27 +124,29 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="display__device_8h__dep__incl.png" border="0" usemap="#adisplay__device_8hdep" alt=""/></div>
 <map name="adisplay__device_8hdep" id="adisplay__device_8hdep">
-<area shape="rect" title=" " alt="" coords="245,5,343,30"/>
+<area shape="rect" title=" " alt="" coords="230,5,328,30"/>
 <area shape="rect" href="ssd1306_8h.html" title=" " alt="" coords="5,78,76,103"/>
-<area shape="poly" title=" " alt="" coords="238,37,77,82,76,77,237,32"/>
-<area shape="rect" href="ui__core_8h.html" title=" " alt="" coords="261,78,326,103"/>
-<area shape="poly" title=" " alt="" coords="296,46,296,78,291,78,291,46"/>
-<area shape="rect" href="widget_8h.html" title=" " alt="" coords="333,151,396,175"/>
-<area shape="poly" title=" " alt="" coords="317,40,342,77,357,116,365,150,360,151,352,118,337,79,312,43"/>
-<area shape="rect" href="widget__bargraph_8h.html" title=" " alt="" coords="92,223,205,248"/>
-<area shape="poly" title=" " alt="" coords="258,40,227,59,194,85,163,116,140,152,136,170,136,189,146,222,141,224,131,190,130,169,135,150,159,112,190,81,224,55,255,36"/>
-<area shape="rect" href="widget__square__led_8h.html" title=" " alt="" coords="389,223,510,248"/>
-<area shape="poly" title=" " alt="" coords="324,38,365,76,394,115,418,157,448,222,443,224,413,159,389,118,361,80,320,41"/>
-<area shape="rect" href="ky040_8h.html" title=" " alt="" coords="150,151,208,175"/>
-<area shape="poly" title=" " alt="" coords="264,113,200,152,197,148,261,109"/>
-<area shape="poly" title=" " alt="" coords="310,113,348,148,344,152,307,117"/>
-<area shape="poly" title=" " alt="" coords="277,117,222,177,166,225,162,221,219,173,273,113"/>
-<area shape="rect" href="widget__horizontal__bar_8h.html" title=" " alt="" coords="228,223,365,248"/>
-<area shape="poly" title=" " alt="" coords="297,118,299,223,294,223,292,118"/>
-<area shape="poly" title=" " alt="" coords="348,141,311,105,314,101,352,137"/>
-<area shape="poly" title=" " alt="" coords="319,182,185,225,183,220,318,177"/>
-<area shape="poly" title=" " alt="" coords="345,188,309,225,306,221,341,185"/>
-<area shape="poly" title=" " alt="" coords="392,183,438,221,434,225,389,188"/>
+<area shape="poly" title=" " alt="" coords="226,37,77,81,75,76,224,32"/>
+<area shape="rect" href="st7735_8h.html" title="inspired from various code source, including https://github.com/adafruit/Adafruit&#45;ST7735&#45;Library" alt="" coords="100,78,163,103"/>
+<area shape="poly" title=" " alt="" coords="242,39,157,80,155,75,240,35"/>
+<area shape="rect" href="ui__core_8h.html" title=" " alt="" coords="313,78,378,103"/>
+<area shape="poly" title=" " alt="" coords="303,40,337,76,333,79,299,43"/>
+<area shape="rect" href="widget_8h.html" title=" " alt="" coords="421,151,484,175"/>
+<area shape="poly" title=" " alt="" coords="324,34,359,52,393,76,427,114,449,149,444,152,422,117,389,80,356,57,322,39"/>
+<area shape="rect" href="widget__bargraph_8h.html" title=" " alt="" coords="180,223,293,248"/>
+<area shape="poly" title=" " alt="" coords="268,45,246,93,228,151,228,190,235,222,230,223,223,191,223,150,241,92,263,43"/>
+<area shape="rect" href="widget__square__led_8h.html" title=" " alt="" coords="477,223,598,248"/>
+<area shape="poly" title=" " alt="" coords="334,33,378,51,423,76,465,108,497,149,521,188,536,222,531,224,516,191,493,152,461,112,420,80,376,56,332,38"/>
+<area shape="rect" href="ky040_8h.html" title=" " alt="" coords="238,151,296,175"/>
+<area shape="poly" title=" " alt="" coords="323,115,282,152,278,148,320,111"/>
+<area shape="poly" title=" " alt="" coords="370,110,429,148,427,152,367,114"/>
+<area shape="poly" title=" " alt="" coords="340,118,328,147,311,177,284,204,257,225,254,221,280,200,306,174,324,145,336,116"/>
+<area shape="rect" href="widget__horizontal__bar_8h.html" title=" " alt="" coords="316,223,453,248"/>
+<area shape="poly" title=" " alt="" coords="355,117,384,222,379,223,350,118"/>
+<area shape="poly" title=" " alt="" coords="429,144,369,105,372,101,432,139"/>
+<area shape="poly" title=" " alt="" coords="407,182,273,225,271,220,406,177"/>
+<area shape="poly" title=" " alt="" coords="433,188,397,225,394,221,429,185"/>
+<area shape="poly" title=" " alt="" coords="480,183,526,221,522,225,477,188"/>
 </map>
 </div>
 </div>
@@ -148,18 +154,6 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstruct___pixel_frame.html">struct_PixelFrame</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">the data structure that characterise the graphic framebuffer  <a href="structstruct___pixel_frame.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstruct___text_frame.html">struct_TextFrame</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">the data structure that characterise the text buffer  <a href="structstruct___text_frame.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstruct___config_graphic_widget.html">struct_ConfigGraphicWidget</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">data structure used to configure graphic framebuffer  <a href="structstruct___config_graphic_widget.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstruct___config_text_widget.html">struct_ConfigTextWidget</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">the data structure used to configure textual widget  <a href="structstruct___config_text_widget.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_display_device.html">DisplayDevice</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A generic class for all display device.  <a href="class_display_device.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,63 +163,13 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printer_device.html">PrinterDevice</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class dedicated to pure text display such as console, printer, ASCII character line display.  <a href="class_printer_device.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a1b5e690c2929f80821d04e8414fec2c5" id="r_a1b5e690c2929f80821d04e8414fec2c5"><td class="memItemLeft" align="right" valign="top"><a id="a1b5e690c2929f80821d04e8414fec2c5" name="a1b5e690c2929f80821d04e8414fec2c5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>FONT_WIDTH_INDEX</b>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:a1b5e690c2929f80821d04e8414fec2c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">index of the font width value in the &lt;...&gt;_font.h file <br /></td></tr>
-<tr class="separator:a1b5e690c2929f80821d04e8414fec2c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ab86d883782b831584c91476841456f" id="r_a4ab86d883782b831584c91476841456f"><td class="memItemLeft" align="right" valign="top"><a id="a4ab86d883782b831584c91476841456f" name="a4ab86d883782b831584c91476841456f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>FONT_HEIGHT_INDEX</b>&#160;&#160;&#160;1</td></tr>
-<tr class="memdesc:a4ab86d883782b831584c91476841456f"><td class="mdescLeft">&#160;</td><td class="mdescRight">index of the font height value in the &lt;...&gt;_font.h file <br /></td></tr>
-<tr class="separator:a4ab86d883782b831584c91476841456f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:ad83e4ed8a472ffb9b7a07383eb669cf8" id="r_ad83e4ed8a472ffb9b7a07383eb669cf8"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a> { <a class="el" href="#ad83e4ed8a472ffb9b7a07383eb669cf8a08d0012388564e95c3b4a7407cf04965">BLACK</a> = 0
-, <a class="el" href="#ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d">WHITE</a> = 1
- }</td></tr>
-<tr class="memdesc:ad83e4ed8a472ffb9b7a07383eb669cf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">define the code value for color (limited here to monochome, can be extended later)  <a href="#ad83e4ed8a472ffb9b7a07383eb669cf8">More...</a><br /></td></tr>
-<tr class="separator:ad83e4ed8a472ffb9b7a07383eb669cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>xiansnn (<a href="#" onclick="location.href='mai'+'lto:'+'xia'+'ns'+'nn@'+'ho'+'tma'+'il'+'.co'+'m'; return false;">xians<span class="obfuscator">.nosp@m.</span>nn@h<span class="obfuscator">.nosp@m.</span>otmai<span class="obfuscator">.nosp@m.</span>l.co<span class="obfuscator">.nosp@m.</span>m</a>) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025-01-11</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 </dd></dl>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="ad83e4ed8a472ffb9b7a07383eb669cf8" name="ad83e4ed8a472ffb9b7a07383eb669cf8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad83e4ed8a472ffb9b7a07383eb669cf8">&#9670;&#160;</a></span>PixelColor</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum class <a class="el" href="#ad83e4ed8a472ffb9b7a07383eb669cf8">PixelColor</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>define the code value for color (limited here to monochome, can be extended later) </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad83e4ed8a472ffb9b7a07383eb669cf8a08d0012388564e95c3b4a7407cf04965" name="ad83e4ed8a472ffb9b7a07383eb669cf8a08d0012388564e95c3b4a7407cf04965"></a>BLACK&#160;</td><td class="fielddoc"><p>"black" coded with code 0x0 </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d" name="ad83e4ed8a472ffb9b7a07383eb669cf8ab5bf627e448384cf3a4c35121ca6008d"></a>WHITE&#160;</td><td class="fielddoc"><p>"white" coded with code 0x1 </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

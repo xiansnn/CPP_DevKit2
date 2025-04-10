@@ -1,0 +1,9 @@
+<map id="TextWidget::draw_border" name="TextWidget::draw_border">
+<area shape="rect" id="Node000001" title="draw a one&#45;pixel width around the the frame" alt="" coords="5,31,150,55"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html#ac07cd1a8df25535bea9552de25411f2a" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="198,31,316,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,40,182,40,182,46,150,46"/>
+<area shape="rect" id="Node000003" href="$class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="364,5,485,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="316,31,348,27,349,32,317,37"/>
+<area shape="rect" id="Node000004" href="$class_graphic_widget.html#a0a6ac5a1610805ec69142fdaa2ec28b1" title="Draw a color vertical line, starting at frame position (x,y), on w number of pixel." alt="" coords="364,55,485,79"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="317,49,349,54,348,59,316,54"/>
+</map>

@@ -13,7 +13,7 @@ void WidgetHorizontalBargraph::draw()
 {
     if (actual_displayed_model->has_changed())
     {
-        clear_pixel_buffer();
+        clear_widget();
         get_value_of_interest();
         for (int i = 0; i < number_of_bar; i++)
             draw_bar(i);
@@ -56,8 +56,9 @@ void WidgetHorizontalBargraph::draw_bar(uint8_t bin_index)
 WidgetHorizontalBargraph::WidgetHorizontalBargraph(ModelBargraph *bargraph_model,
                                                    GraphicDisplayDevice *graphic_display_screen,
                                                    struct_ConfigGraphicWidget graph_cfg,
+                                                   CanvasFormat format,
                                                    uint8_t _bar_spacing)
-    : GraphicWidget(graphic_display_screen, graph_cfg, bargraph_model)
+    : GraphicWidget(graphic_display_screen, graph_cfg, format, bargraph_model)
 {
     this->bar_spacing = _bar_spacing;
 
@@ -79,7 +80,6 @@ WidgetHorizontalBargraph::WidgetHorizontalBargraph(ModelBargraph *bargraph_model
 WidgetHorizontalBargraph::~WidgetHorizontalBargraph()
 {
 }
-
 
 std::vector<int> ModelBargraph::get_values()
 {
@@ -117,7 +117,7 @@ void WidgetVerticalBargraph::draw()
 {
     if (actual_displayed_model->has_changed())
     {
-        clear_pixel_buffer();
+        clear_widget();
         get_value_of_interest();
         for (int i = 0; i < number_of_bar; i++)
             draw_bar(i);
@@ -161,8 +161,9 @@ void WidgetVerticalBargraph::draw_bar(uint8_t bin_index)
 WidgetVerticalBargraph::WidgetVerticalBargraph(ModelBargraph *bargraph_model,
                                                GraphicDisplayDevice *graphic_display_screen,
                                                struct_ConfigGraphicWidget graph_cfg,
+                                               CanvasFormat format,
                                                uint8_t _bar_spacing)
-    : GraphicWidget(graphic_display_screen, graph_cfg, bargraph_model)
+    : GraphicWidget(graphic_display_screen, graph_cfg, format, bargraph_model)
 {
     this->bar_spacing = _bar_spacing;
 
