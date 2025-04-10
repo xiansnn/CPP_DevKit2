@@ -147,10 +147,16 @@ CanvasRGB::~CanvasRGB()
 
 void CanvasRGB::fill_canvas_with_color(ColorIndex color)
 {
+    memset(canvas_buffer, static_cast<uint8_t>(color), canvas_buffer_size);
 }
 
 void CanvasRGB::draw_pixel(const int x, const int y, const ColorIndex color)
 {
+    if (x >= 0 && x < canvas_width_pixel && y >= 0 && y < canvas_height_pixel)
+    {
+        int byte_index = y * canvas_width_pixel + x;
+        canvas_buffer[byte_index] = static_cast<uint8_t>(color);
+    }
 }
 
 void CanvasRGB::draw_glyph(const struct_ConfigTextWidget text_config, const char character, const uint8_t anchor_x, const uint8_t anchor_y)
