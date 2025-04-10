@@ -135,7 +135,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a31311b6281bef7a373398de04b26e459"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_canvas.html" title="The canvas is a virtual memory in which the widget draws.">Canvas</a> R G B object.  <br /></td></tr>
 <tr class="separator:a31311b6281bef7a373398de04b26e459"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b75bb954fe7937dbfb3d321054c13dc" id="r_a6b75bb954fe7937dbfb3d321054c13dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b75bb954fe7937dbfb3d321054c13dc">fill_canvas_with_color</a> (<a class="el" href="canvas_8h.html#a9efd9fcd52acdc60f2eb45ff9fce269b">ColorIndex</a> color)</td></tr>
-<tr class="memdesc:a6b75bb954fe7937dbfb3d321054c13dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill the canvas buffer with the given color  <br /></td></tr>
+<tr class="memdesc:a6b75bb954fe7937dbfb3d321054c13dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill the canvas buffer with the given color index  <br /></td></tr>
 <tr class="separator:a6b75bb954fe7937dbfb3d321054c13dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9474f2a6680de4013e4493acab82f5b" id="r_ae9474f2a6680de4013e4493acab82f5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9474f2a6680de4013e4493acab82f5b">draw_pixel</a> (const int x, const int y, const <a class="el" href="canvas_8h.html#a9efd9fcd52acdc60f2eb45ff9fce269b">ColorIndex</a> color=ColorIndex::WHITE)</td></tr>
 <tr class="memdesc:ae9474f2a6680de4013e4493acab82f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic primitive to draw a pixel  <br /></td></tr>
@@ -340,7 +340,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>fill the canvas buffer with the given color </p>
+<p>fill the canvas buffer with the given color index </p>
+<dl class="section note"><dt>Note</dt><dd>the conversion from color index to RGB565 is done by the device after calling the show() memeber </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">color</td><td></td></tr>
