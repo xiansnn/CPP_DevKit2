@@ -78,8 +78,63 @@ void test_rotation_offset(my_graphic_widget &full_screen)
     full_screen.show();
 }
 
+void test_fb_line(ST7735 *display)
+{
+    display->clear_device_screen_buffer();
+    my_graphic_widget frame = my_graphic_widget(display, device_frame_cfg, CANVAS_FORMAT);
+    for (int i = 1; i < 7; i++)
+    {
+        ColorIndex c = static_cast<ColorIndex>(i);
 
+        for (int x = 0; x < 128; x++)
+        {
+            frame.line(x, 0, 128 - 1 - x, 128 - 1, c);
+            frame.show();
+        }
 
+        for (int y = 128 - 1; y >= 0; y--)
+        {
+            frame.line(0, y, 128 - 1, 128 - 1 - y, c);
+            frame.show();
+        }
+    }
+}
+void test_outofframe_line(ST7735 *display)
+{
+    my_graphic_widget frame = my_graphic_widget(display, device_frame_cfg, CANVAS_FORMAT);
+    int y0, x1, y1;
+    display->clear_device_screen_buffer();
+    x1 = 64;
+    y1 = 70;
+    y0 = -10;
+
+    uint8_t i = 0;
+
+    for (int x = -10; x < 138; x++)
+    {
+        i++;
+        if (i > 20)
+            i = 0;
+        ColorIndex c = static_cast<ColorIndex>(i);
+        frame.line(x, y0, x1, y1, c);
+        frame.show();
+        // c = ColorIndex::BLACK;
+        // frame.line(x, y0, x1, y1, c);
+        // frame.show();
+    }
+}
+void test_fb_rect(ST7735 *display)
+{
+    my_graphic_widget frame = my_graphic_widget(display, device_frame_cfg, CANVAS_FORMAT);
+
+    display->clear_device_screen_buffer();
+    frame.rect(0, 0, 128, 64);
+    frame.show();
+    sleep_ms(1000);
+    frame.rect(10, 10, 108, 44, true);
+    frame.show();
+    sleep_ms(2000);
+}
 
 int main()
 {
@@ -94,8 +149,14 @@ int main()
 
     while (true)
     {
-        test_rotation_offset(full_screen);
-    
+        // test_rotation_offset(full_screen);
+        test_fb_line(&display);
+        test_outofframe_line(&display);
+        // test_fb_hline(&display);
+        // test_fb_vline(&display);
+        test_fb_rect(&display);
+        // test_fb_circle(&display);
+        // test_fb_in_fb(&display);
     }
     return 0;
 }
