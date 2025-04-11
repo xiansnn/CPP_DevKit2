@@ -429,7 +429,7 @@ void ST7735::clear_device_screen_buffer(ColorIndex color_index)
 }
 
 void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y)
-{ //FIXME durée de scan full screen 68ms
+{ // FIXME durée de scan full screen 68ms
     pr_D4.hi();
     set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
     send_cmd(ST7735_RAMWR);
@@ -437,7 +437,7 @@ void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y
     pr_D5.hi();
     for (size_t i = 0; i < canvas->canvas_buffer_size; i++)
     {
-        ColorIndex color_index = static_cast<ColorIndex>(canvas->canvas_buffer[i]);       
+        ColorIndex color_index = static_cast<ColorIndex>(canvas->canvas_buffer[i]);
         spi->single_write_16(color565_palette[color_index]);
     }
     pr_D5.lo();
