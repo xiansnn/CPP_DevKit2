@@ -107,29 +107,29 @@ void my_text_widget::get_value_of_interest()
     sprintf(this->text_buffer, "%+3d\xF8  %+3d\xF8", ((my_model *)this->actual_displayed_model)->roll, ((my_model *)this->actual_displayed_model)->pitch);
 }
 
-class my_graphic_widget : public GraphicWidget
+class my_corner_rectangle_widget : public GraphicWidget
 {
 private:
     int roll{0};
     int pitch{0};
 
 public:
-    my_graphic_widget(GraphicDisplayDevice *graphic_display_screen,
+    my_corner_rectangle_widget(GraphicDisplayDevice *graphic_display_screen,
                       struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, Model *model);
-    ~my_graphic_widget();
+    ~my_corner_rectangle_widget();
     void get_value_of_interest();
     void draw();
 };
-my_graphic_widget::my_graphic_widget(GraphicDisplayDevice *graphic_display_screen,
+my_corner_rectangle_widget::my_corner_rectangle_widget(GraphicDisplayDevice *graphic_display_screen,
                                      struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, Model *model)
     : GraphicWidget(graphic_display_screen, graph_cfg, format, model) {}
-my_graphic_widget::~my_graphic_widget() {}
-void my_graphic_widget::get_value_of_interest()
+my_corner_rectangle_widget::~my_corner_rectangle_widget() {}
+void my_corner_rectangle_widget::get_value_of_interest()
 {
     this->roll = ((my_model *)this->actual_displayed_model)->roll;
     this->pitch = ((my_model *)this->actual_displayed_model)->pitch;
 }
-void my_graphic_widget::draw()
+void my_corner_rectangle_widget::draw()
 {
     if (actual_displayed_model->has_changed())
     {
@@ -196,7 +196,7 @@ int main()
     my_text_widget values = my_text_widget(&values_display, values_config, CANVAS_FORMAT, &model);
     values.process_char(FORM_FEED);
 
-    my_graphic_widget graph = my_graphic_widget(&visu_display, graph_config, CANVAS_FORMAT, &model);
+    my_corner_rectangle_widget graph = my_corner_rectangle_widget(&visu_display, graph_config, CANVAS_FORMAT, &model);
     pr_D1.hi();
     visu_display.clear_device_screen_buffer(); //.clear_pixel_buffer(&graph.pixel_frame);
     pr_D1.lo();                                // 8µs

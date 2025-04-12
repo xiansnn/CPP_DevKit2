@@ -132,30 +132,38 @@ void ST7735::config_power_control()
 /**
  * @brief  _set rotation and color_
  */
-void ST7735::config_rotation_and_color(struct_ConfigST7735 device_config)
+void ST7735::set_rotation_and_color(ST7735Rotation rotation)
 {
     uint8_t cmd_list[2]{0};
     cmd_list[0] = ST7735_MADCTL;
-    switch (device_config.rotation)
+    switch (rotation)
     {
     case ST7735Rotation::_0:
+        this->ST7735_device_row_offset = ST7735_144_128x128_row_offset_0_90;
+        this->ST7735_device_column_offset = ST7735_144_128x128_column_offset;
         this->TFT_panel_start_x = this->ST7735_device_column_offset;
         this->TFT_panel_start_y = this->ST7735_device_row_offset;
         break;
-    case ST7735Rotation::_90:
+        case ST7735Rotation::_90:
+        this->ST7735_device_row_offset = ST7735_144_128x128_row_offset_0_90;
+        this->ST7735_device_column_offset = ST7735_144_128x128_column_offset;
+        this->TFT_panel_start_x = this->ST7735_device_row_offset;
+        this->TFT_panel_start_y = this->ST7735_device_column_offset;
         cmd_list[1] = MADCTL_MV | MADCTL_MX;
-        this->TFT_panel_start_x = this->ST7735_device_row_offset;
-        this->TFT_panel_start_y = this->ST7735_device_column_offset;
         break;
-    case ST7735Rotation::_180:
-        cmd_list[1] = MADCTL_MX | MADCTL_MY;
+        case ST7735Rotation::_180:
+        this->ST7735_device_row_offset = ST7735_144_128x128_row_offset_180_270;
+        this->ST7735_device_column_offset = ST7735_144_128x128_column_offset;
         this->TFT_panel_start_x = this->ST7735_device_column_offset;
         this->TFT_panel_start_y = this->ST7735_device_row_offset;
+        cmd_list[1] = MADCTL_MX | MADCTL_MY;
         break;
-    case ST7735Rotation::_270:
-        cmd_list[1] = MADCTL_MV | MADCTL_MY;
+        case ST7735Rotation::_270:
+        this->ST7735_device_row_offset = ST7735_144_128x128_row_offset_180_270;
+        this->ST7735_device_column_offset = ST7735_144_128x128_column_offset;
         this->TFT_panel_start_x = this->ST7735_device_row_offset;
         this->TFT_panel_start_y = this->ST7735_device_column_offset;
+        cmd_list[1] = MADCTL_MV | MADCTL_MY;
         break;
     default:
         break;
@@ -304,7 +312,8 @@ ST7735::ST7735(HW_SPI_Master *spi, struct_ConfigST7735 device_config)
     config_power_control();
     // device specific init
     config_device_specific_size_and_offsets(device_config);
-    config_rotation_and_color(device_config);
+    set_rotation_and_color(device_config.rotation);
+    set_RAM_write_addresses(0, 0, 128, 128);
     // init_column_row_address(device_config);
     // optional but improve color
     config_gamma();
@@ -321,8 +330,9 @@ void ST7735::config_device_specific_size_and_offsets(struct_ConfigST7735 device_
         this->TFT_panel_width_in_pixel = 128;
         this->TFT_panel_height_in_pixel = 128;
         this->rgb_order = false;
-        this->ST7735_device_column_offset = ST7735_144_128x128_column_offset;
-        this->ST7735_device_row_offset = ST7735_144_128x128_row_offset;
+        // this->ST7735_device_column_offset = ST7735_144_128x128_column_offset;
+        // this->ST7735_device_row_offset = ST7735_144_128x128_row_offset;
+        // NOTICE: ST7735_device_row_offset depends on the effective rotation of the display. see set_rotation_and_color
         break;
     case ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB:
         this->rgb_order = true;
@@ -434,13 +444,13 @@ void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y
     set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
     send_cmd(ST7735_RAMWR);
     pr_D4.lo();
-    pr_D5.hi();
     for (size_t i = 0; i < canvas->canvas_buffer_size; i++)
     {
         ColorIndex color_index = static_cast<ColorIndex>(canvas->canvas_buffer[i]);
+        pr_D5.hi();
         spi->single_write_16(color565_palette[color_index]);
+        pr_D5.lo();
     }
-    pr_D5.lo();
 }
 
 // /**

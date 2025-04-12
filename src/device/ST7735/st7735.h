@@ -21,8 +21,10 @@
 #define DCX_DATA 1
 /// @brief hardware column offset between the TFT panel and the IC ST7735
 #define ST7735_144_128x128_column_offset 2
-/// @brief hardware row offset between the TFT panel and the IC ST7735
-#define ST7735_144_128x128_row_offset 1
+/// @brief hardware row offset between the TFT panel and the IC ST7735 for rotation = 0°, 90°
+#define ST7735_144_128x128_row_offset_0_90 1
+/// @brief hardware row offset between the TFT panel and the IC ST7735 for rotation = 180°, 270°
+#define ST7735_144_128x128_row_offset_180_270 3
 /// @brief hardware column offset between the TFT panel and the IC ST7735
 #define ST7735_177_160x128_column_offset 2
 /// @brief hardware row offset between the TFT panel and the IC ST7735
@@ -112,7 +114,6 @@ private:
     void config_frame_rate_control();
     void config_inversion_control();
     void config_power_control();
-    void config_rotation_and_color(struct_ConfigST7735 device_config);
     // void init_column_row_address(struct_ConfigST7735 device_config);
     void config_gamma();
     void set_normal_mode();
@@ -123,18 +124,19 @@ private:
     void send_buffer(uint8_t *buffer, size_t buffer_len);
     void set_backlight(bool on);
     void soft_reset();
-
+    
     void set_RAM_write_addresses(uint8_t start_x, uint8_t start_y, size_t width, size_t height);
-
-public:
-/**
- * @brief Construct a new ST7735 object
- * 
- * @param spi 
- * @param device_config 
- */
+    
+    public:
+    /**
+     * @brief Construct a new ST7735 object
+     * 
+     * @param spi 
+     * @param device_config 
+     */
     ST7735(HW_SPI_Master *spi, struct_ConfigST7735 device_config);
     ~ST7735();
+    void set_rotation_and_color(ST7735Rotation rotation);
     /**
      * @brief Set the display ON object
      * 

@@ -152,6 +152,7 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
 
 GraphicWidget::~GraphicWidget()
 {
+    // delete canvas;
 }
 
 struct_ConfigGraphicWidget GraphicWidget::get_graph_frame_config()

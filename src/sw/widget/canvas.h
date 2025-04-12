@@ -30,8 +30,9 @@ enum class ColorIndex
 
     BLUE,    //     {ColorIndex::BLUE, {0x00, 0x00, 0xFF}},
     LIME,    //     {ColorIndex::LIME, {0x00, 0xFF, 0x00}},
-    CYAN,    //     {ColorIndex::CYAN, {0x00, 0xFF, 0xFF}},
     RED,     //     {ColorIndex::RED, {0xFF, 0x00, 0x00}},
+    
+    CYAN,    //     {ColorIndex::CYAN, {0x00, 0xFF, 0xFF}},
     YELLOW,  //     {ColorIndex::YELLOW, {0xFF, 0xFF, 0x00}},
     MAGENTA, //     {ColorIndex::MAGENTA, {0xFF, 0x00, 0xFF}},
 
