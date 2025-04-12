@@ -31,7 +31,7 @@ enum class ColorIndex
     BLUE,    //     {ColorIndex::BLUE, {0x00, 0x00, 0xFF}},
     LIME,    //     {ColorIndex::LIME, {0x00, 0xFF, 0x00}},
     RED,     //     {ColorIndex::RED, {0xFF, 0x00, 0x00}},
-    
+
     CYAN,    //     {ColorIndex::CYAN, {0x00, 0xFF, 0xFF}},
     YELLOW,  //     {ColorIndex::YELLOW, {0xFF, 0xFF, 0x00}},
     MAGENTA, //     {ColorIndex::MAGENTA, {0xFF, 0x00, 0xFF}},
@@ -52,16 +52,10 @@ enum class ColorIndex
             ///@endcond
 };
 
-/**
- * @brief the map color for RGB565 canvas
- *
- */
+/// @brief the map color for RGB565 canvas
 extern std::map<ColorIndex, uint16_t> color565_palette;
 
-/**
- * @brief the format of the canvas
- *
- */
+/// @brief the format of the canvas
 enum class CanvasFormat
 {
     /// @brief monochrome canvas, pixel arranged vertically, LSB is top pixel
@@ -130,30 +124,18 @@ struct struct_ConfigTextWidget
     uint8_t widget_anchor_x{0};
     /// @brief the y-axis anchor of the widget
     uint8_t widget_anchor_y{0};
-    /**
-     * @brief The font used. Current font are defined according to IBM CP437. The font files are derived from https://github.com/Harbys/pico-ssd1306 works.
-     * They come is size 5x8, 8x8, 12x16 and 16x32.
-     */
+    /// @brief The font used. Current font are defined according to IBM CP437. The font files are derived from https://github.com/Harbys/pico-ssd1306 works.
+    /// They come is size 5x8, 8x8, 12x16 and 16x32.
     const unsigned char *font{nullptr};
-    /**
-     * @brief  The number of space that ASCII character HT (aka TAB , "\t", 0x9) generates, default to 2
-     */
+    /// @brief The number of space that ASCII character HT (aka TAB , "\t", 0x9) generates, default to 2
     uint8_t tab_size{2};
-    /**
-     * @brief The foreground color, default to WHITE
-     */
+    /// @brief The foreground color, default to WHITE
     ColorIndex fg_color{ColorIndex::WHITE};
-    /**
-     * @brief The background color, defaul to BLACK
-     */
+    /// @brief The background color, default to BLACK
     ColorIndex bg_color{ColorIndex::BLACK};
-    /**
-     * @brief Wrap flag : if true, text wrap to the next line when end of line is reached.
-     */
+    /// @brief Wrap flag : if true, text wrap to the next line when end of line is reached.
     bool wrap{true};
-    /**
-     * @brief auto_next_char flag : if true each char steps one position after being written.
-     */
+    /// @brief auto_next_char flag : if true each char steps one position after being written.
     bool auto_next_char{true};
     /// @brief a flag that indicates if the widget has a 1-pixel width border
     bool widget_with_border{false};
@@ -183,7 +165,7 @@ public:
     size_t canvas_buffer_size;
 
     /// @brief the buffer
-    uint8_t *canvas_buffer;
+    uint8_t *canvas_buffer{nullptr};
 
     /// @brief Construct a new Canvas object
     /// @param canvas_width_pixel Width of the canvas (in pixel)

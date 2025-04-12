@@ -70,7 +70,7 @@ CanvasVLSB::CanvasVLSB(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
 
 CanvasVLSB::~CanvasVLSB()
 {
-    // delete canvas_buffer;
+    delete[] canvas_buffer;
 }
 
 void CanvasVLSB::fill_canvas_with_color(ColorIndex color)
@@ -132,8 +132,6 @@ void CanvasVLSB::draw_glyph(const struct_ConfigTextWidget text_config, const cha
 void CanvasRGB::create_canvas_buffer()
 {
     canvas_buffer_size = canvas_width_pixel * canvas_height_pixel;
-    if (canvas_buffer != nullptr)
-        delete canvas_buffer;
     canvas_buffer = new uint8_t[canvas_buffer_size];
     clear_canvas_buffer();
 }
@@ -146,7 +144,7 @@ CanvasRGB::CanvasRGB(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
 
 CanvasRGB::~CanvasRGB()
 {
-    // delete canvas_buffer;
+    delete[] canvas_buffer;
 }
 
 void CanvasRGB::fill_canvas_with_color(ColorIndex color)

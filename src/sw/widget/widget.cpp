@@ -152,7 +152,7 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
 
 GraphicWidget::~GraphicWidget()
 {
-    // delete canvas;
+    delete canvas;
 }
 
 struct_ConfigGraphicWidget GraphicWidget::get_graph_frame_config()
@@ -167,14 +167,6 @@ struct_ConfigGraphicWidget GraphicWidget::get_graph_frame_config()
         .widget_with_border = this->widget_with_border};
     return cfg;
 }
-
-// void GraphicWidget::fill(ColorIndex c)
-// {
-//     if (c == ColorIndex::BLACK)
-//         memset(this->canvas->canvas_buffer, 0x00, this->canvas->canvas_buffer_size);
-//     else
-//         memset(this->canvas->canvas_buffer, 0xFF, this->canvas->canvas_buffer_size);
-// }
 
 void GraphicWidget::hline(uint8_t x, uint8_t y, size_t w, ColorIndex c)
 {

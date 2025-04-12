@@ -38,7 +38,7 @@ struct_ConfigST7735 cfg_st7735{
     .dc_pin = 14,
     .rotation = ST7735Rotation::_0};
 
-struct_ConfigGraphicWidget device_frame_cfg = {
+struct_ConfigGraphicWidget full_screen_cfg = {
     .pixel_frame_width = 128,
     .pixel_frame_height = 128,
     .fg_color = ColorIndex::RED,
@@ -83,7 +83,7 @@ void test_rotation_offset(my_corner_rectangle_widget &full_screen)
 void test_fb_line(ST7735 *display)
 {
     display->clear_device_screen_buffer();
-    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, device_frame_cfg, CANVAS_FORMAT);
+    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, full_screen_cfg, CANVAS_FORMAT);
     for (int i = 1; i < 7; i++)
     {
         ColorIndex c = static_cast<ColorIndex>(i);
@@ -103,7 +103,7 @@ void test_fb_line(ST7735 *display)
 }
 void test_outofframe_line(ST7735 *display)
 {
-    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, device_frame_cfg, CANVAS_FORMAT);
+    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, full_screen_cfg, CANVAS_FORMAT);
     int y0, x1, y1;
     display->clear_device_screen_buffer();
     x1 = 64;
@@ -124,7 +124,7 @@ void test_outofframe_line(ST7735 *display)
 }
 void test_fb_rect(ST7735 *display)
 {
-    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, device_frame_cfg, CANVAS_FORMAT);
+    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, full_screen_cfg, CANVAS_FORMAT);
 
     display->clear_device_screen_buffer();
     frame.rect(0, 0, 128, 64);
@@ -142,7 +142,7 @@ int main()
     HW_SPI_Master spi_master = HW_SPI_Master(cfg_spi);
     ST7735 display = ST7735(&spi_master, cfg_st7735);
 
-    my_corner_rectangle_widget full_screen = my_corner_rectangle_widget(&display, device_frame_cfg, CANVAS_FORMAT);
+    my_corner_rectangle_widget full_screen = my_corner_rectangle_widget(&display, full_screen_cfg, CANVAS_FORMAT);
 
     display.clear_device_screen_buffer();
 
