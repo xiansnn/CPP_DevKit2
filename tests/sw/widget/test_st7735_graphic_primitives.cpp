@@ -59,8 +59,8 @@ public:
 };
 my_full_screen_widget::my_full_screen_widget(GraphicDisplayDevice *graphic_display_screen,
                                              struct_ConfigGraphicWidget graph_cfg, CanvasFormat format)
-    : GraphicWidget(graphic_display_screen, graph_cfg, format) { printf("+ my_full_screen_widget\n"); }
-my_full_screen_widget::~my_full_screen_widget() { printf("- my_full_screen_widget\n"); }
+    : GraphicWidget(graphic_display_screen, graph_cfg, format) { }
+my_full_screen_widget::~my_full_screen_widget() { }
 void my_full_screen_widget::get_value_of_interest() {}
 void my_full_screen_widget::draw() {};
 
@@ -126,8 +126,20 @@ void test_fb_hline(ST7735 *display)
     for (size_t i = 0; i < 16; i++)
     {
         frame.hline(0, i * 8, 128, static_cast<ColorIndex>(i + 1));
-        // frame.show();
-        // sleep_ms(100);
+        frame.show();
+    }
+    frame.show(); // 80ms @ bitrate 10Mbps
+    sleep_ms(500);
+}
+void test_fb_vline(ST7735 *display)
+{
+    my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
+
+    display->clear_device_screen_buffer(); // 50ms @ bitrate 10Mbps
+    for (size_t i = 0; i < 16; i++)
+    {
+        frame.vline(i * 8, 0, 128, static_cast<ColorIndex>(i + 1));
+        frame.show();
     }
     frame.show(); // 80ms @ bitrate 10Mbps
     sleep_ms(500);
@@ -144,8 +156,8 @@ int main()
     {
         // test_fb_line(&display);
         // test_outofframe_line(&display);
-        test_fb_hline(&display);
-        // test_fb_vline(&display);
+        // test_fb_hline(&display);
+        test_fb_vline(&display);
         // test_fb_rect(&display);
         // test_fb_circle(&display);
         // test_fb_in_fb(&display);
