@@ -44,15 +44,15 @@ void Canvas::clear_canvas_buffer()
     memset(canvas_buffer, 0x00, canvas_buffer_size);
 }
 
-struct_PixelFrame Canvas::get_pixel_frame()
-{
-    struct_PixelFrame pixel_frame = {
-        .pixel_frame_width = this->canvas_width_pixel,
-        .pixel_frame_height = this->canvas_height_pixel,
-        .pixel_frame_buffer_size = this->canvas_buffer_size,
-        .pixel_frame_buffer = this->canvas_buffer};
-    return pixel_frame;
-}
+// struct_PixelFrame Canvas::get_pixel_frame()
+// {
+//     struct_PixelFrame pixel_frame = {
+//         .pixel_frame_width = this->canvas_width_pixel,
+//         .pixel_frame_height = this->canvas_height_pixel,
+//         .pixel_frame_buffer_size = this->canvas_buffer_size,
+//         .pixel_frame_buffer = this->canvas_buffer};
+//     return pixel_frame;
+// }
 
 void CanvasVLSB::create_canvas_buffer()
 {
@@ -163,6 +163,33 @@ void CanvasRGB::draw_pixel(const int x, const int y, const ColorIndex color)
 
 void CanvasRGB::draw_glyph(const struct_ConfigTextWidget text_config, const char character, const uint8_t anchor_x, const uint8_t anchor_y)
 {
+    if (!text_config.font || character < 32)
+        return;
+
+    uint8_t font_width = text_config.font[FONT_WIDTH_INDEX];
+    uint8_t font_height = text_config.font[FONT_HEIGHT_INDEX];
+
+    uint16_t seek = (character - 32) * (font_width * font_height) / 8 + 2;
+
+    uint8_t b_seek = 0;
+
+    for (uint8_t x = 0; x < font_width; x++)
+    {
+        for (uint8_t y = 0; y < font_height; y++)
+        {
+            if (text_config.font[seek] >> b_seek & 0b00000001)
+                draw_pixel(x + anchor_x, y + anchor_y, text_config.fg_color);
+            else
+                draw_pixel(x + anchor_x, y + anchor_y, text_config.bg_color);
+
+            b_seek++;
+            if (b_seek == 8)
+            {
+                b_seek = 0;
+                seek++;
+            }
+        }
+    }
 }
 
 /*

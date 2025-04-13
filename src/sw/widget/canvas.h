@@ -68,31 +68,31 @@ enum class CanvasFormat
     RGB565
 };
 
-/// @brief the data structure that characterises the graphic canvas
-struct struct_PixelFrame
-{
-    /// @brief The number of pixel along the width of the frame.
-    uint8_t pixel_frame_width;
-    /// @brief The number of pixel along the height of the frame.
-    uint8_t pixel_frame_height;
-    /// @brief size of the buffer that contains graphics as map of pixels.
-    size_t pixel_frame_buffer_size;
-    /// @brief the buffer where graphic are drawn
-    uint8_t *pixel_frame_buffer = nullptr;
-};
+// /// @brief the data structure that characterises the graphic canvas
+// struct struct_PixelFrame
+// {
+//     /// @brief The number of pixel along the width of the frame.
+//     uint8_t pixel_frame_width;
+//     /// @brief The number of pixel along the height of the frame.
+//     uint8_t pixel_frame_height;
+//     /// @brief size of the buffer that contains graphics as map of pixels.
+//     size_t pixel_frame_buffer_size;
+//     /// @brief the buffer where graphic are drawn
+//     uint8_t *pixel_frame_buffer = nullptr;
+// };
 
-/// @brief the data structure that characterises the text buffer
-struct struct_TextFrame
-{
-    /// @brief the size, in number of character of a line
-    size_t number_of_column;
-    /// @brief the number of line
-    size_t number_of_line;
-    /// @brief  the number of characters
-    size_t text_buffer_size;
-    /// @brief the effective character buffer
-    char *text_buffer = nullptr;
-};
+// /// @brief the data structure that characterises the text buffer
+// struct struct_TextFrame
+// {
+//     /// @brief the size, in number of character of a line
+//     size_t number_of_column;
+//     /// @brief the number of line
+//     size_t number_of_line;
+//     /// @brief  the number of characters
+//     size_t text_buffer_size;
+//     /// @brief the effective character buffer
+//     char *text_buffer = nullptr;
+// };
 
 /// @brief data structure used to configure graphic framebuffer
 struct struct_ConfigGraphicWidget
@@ -177,10 +177,10 @@ public:
     /// @brief fill the canvas buffer with 0x00
     void clear_canvas_buffer();
 
-    /// @brief return a pixelFrame structure
-    ///\deprecated
-    /// @return
-    struct_PixelFrame get_pixel_frame(); //
+    // /// @brief return a pixelFrame structure
+    // ///\deprecated
+    // /// @return
+    // struct_PixelFrame get_pixel_frame(); //
 
     /// @brief the graphic primitive to draw a pixel
     /// @param x the x position of the pixel
