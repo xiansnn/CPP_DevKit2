@@ -2,11 +2,15 @@
 #include "sw/widget/canvas.h"
 #include <string.h>
 
+// #define TIME_MEASURE
+
+#if defined(TIME_MEASURE)
 #include "utilities/probe/probe.h"
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
 Probe pr_D6 = Probe(6);
 Probe pr_D7 = Probe(7);
+#endif // MACRO
 
 void ST7735::enable_command_pin(bool enable)
 {
@@ -144,21 +148,21 @@ void ST7735::set_rotation_and_color(ST7735Rotation rotation)
         this->TFT_panel_start_x = this->ST7735_device_column_offset;
         this->TFT_panel_start_y = this->ST7735_device_row_offset;
         break;
-        case ST7735Rotation::_90:
+    case ST7735Rotation::_90:
         this->ST7735_device_row_offset = ST7735_144_128x128_row_offset_0_90;
         this->ST7735_device_column_offset = ST7735_144_128x128_column_offset;
         this->TFT_panel_start_x = this->ST7735_device_row_offset;
         this->TFT_panel_start_y = this->ST7735_device_column_offset;
         cmd_list[1] = MADCTL_MV | MADCTL_MX;
         break;
-        case ST7735Rotation::_180:
+    case ST7735Rotation::_180:
         this->ST7735_device_row_offset = ST7735_144_128x128_row_offset_180_270;
         this->ST7735_device_column_offset = ST7735_144_128x128_column_offset;
         this->TFT_panel_start_x = this->ST7735_device_column_offset;
         this->TFT_panel_start_y = this->ST7735_device_row_offset;
         cmd_list[1] = MADCTL_MX | MADCTL_MY;
         break;
-        case ST7735Rotation::_270:
+    case ST7735Rotation::_270:
         this->ST7735_device_row_offset = ST7735_144_128x128_row_offset_180_270;
         this->ST7735_device_column_offset = ST7735_144_128x128_column_offset;
         this->TFT_panel_start_x = this->ST7735_device_row_offset;
@@ -330,9 +334,9 @@ void ST7735::config_device_specific_size_and_offsets(struct_ConfigST7735 device_
         this->TFT_panel_width_in_pixel = 128;
         this->TFT_panel_height_in_pixel = 128;
         this->rgb_order = false;
+        // NOTICE: ST7735_device_row_offset depends on the effective rotation of the display. see set_rotation_and_color
         // this->ST7735_device_column_offset = ST7735_144_128x128_column_offset;
         // this->ST7735_device_row_offset = ST7735_144_128x128_row_offset;
-        // NOTICE: ST7735_device_row_offset depends on the effective rotation of the display. see set_rotation_and_color
         break;
     case ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB:
         this->rgb_order = true;
@@ -423,7 +427,9 @@ void ST7735::check_display_device_compatibility(struct_ConfigGraphicWidget frame
 
 void ST7735::clear_device_screen_buffer(ColorIndex color_index)
 {
+#if defined(TIME_MEASURE)
     pr_D4.hi();
+#endif
     uint8_t xsa = 0;
     uint8_t ysa = 0;
     size_t w = TFT_panel_width_in_pixel;
@@ -431,25 +437,37 @@ void ST7735::clear_device_screen_buffer(ColorIndex color_index)
     set_RAM_write_addresses(xsa, ysa, w, h);
     send_cmd(ST7735_RAMWR);
     uint16_t color = color565_palette[color_index];
+#if defined(TIME_MEASURE)
     pr_D4.lo();
     pr_D5.hi();
+#endif
     for (size_t i = 0; i < w * h; i++)
         spi->single_write_16(color);
+#if defined(TIME_MEASURE)
     pr_D5.lo();
+#endif
 }
 
 void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y)
-{ // FIXME durée de scan full screen 68ms
+{
+#ifdef TIME_MEASURE
     pr_D4.hi();
+#endif
     set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
     send_cmd(ST7735_RAMWR);
+#ifdef TIME_MEASURE
     pr_D4.lo();
+#endif
     for (size_t i = 0; i < canvas->canvas_buffer_size; i++)
     {
         ColorIndex color_index = static_cast<ColorIndex>(canvas->canvas_buffer[i]);
+#ifdef TIME_MEASURE
         pr_D5.hi();
+#endif
         spi->single_write_16(color565_palette[color_index]);
+#ifdef TIME_MEASURE
         pr_D5.lo();
+#endif
     }
 }
 
