@@ -48,3 +48,12 @@ target_link_libraries(test_st7735_graphic_primitives PUBLIC
             sw_widget
             utilities_probe
             )
+            #-------------------------------------------------------------------------------------
+add_executable(test_st7735_text_primitives test_st7735_text_primitives.cpp)
+target_link_libraries(test_st7735_text_primitives 
+            pico_stdlib 
+            hw_spi
+            device_st7735 
+            sw_widget
+            utilities_probe
+            )
