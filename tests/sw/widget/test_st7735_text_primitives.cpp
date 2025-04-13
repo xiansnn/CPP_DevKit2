@@ -19,13 +19,11 @@
 #include "sw/widget/widget.h"
 #include "device/ST7735/st7735.h"
 
-
 #include "utilities/probe/probe.h"
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
 Probe pr_D6 = Probe(6);
 Probe pr_D7 = Probe(7);
-
 
 #define REFRESH_PERIOD 50
 #define DELAY 500
@@ -87,9 +85,12 @@ void test_font_size(ST7735 *current_display)
         .number_of_line = 1,
         .widget_anchor_x = 0,
         .widget_anchor_y = 0,
-        .font = current_font[0]};
+        .font = current_font[0],
+        .fg_color = ColorIndex::RED,
+        .bg_color = ColorIndex::LIME};
 
     my_text_widget *font_text_on_screen_0 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
+    font_text_on_screen_0->canvas->fill_canvas_with_color(font_text_on_screen_0->bg_color);
     // draw text directly from a string to the pixel buffer
     font_text_on_screen_0->write(test_string.c_str());
     font_text_on_screen_0->show();
@@ -126,263 +127,270 @@ void test_font_size(ST7735 *current_display)
     current_display->clear_device_screen_buffer();
 }
 
-// void test_full_screen_text(ST7735 *current_display)
-// {
-//     struct_ConfigTextWidget txt_conf = {
-//         .font = font_8x8,
-//         .wrap = true,
-//     };
-//     my_text_widget text_frame = my_text_widget(current_display, txt_conf, CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
-
-//     text_frame.process_char(FORM_FEED); // equiv. clear full screen
-//     current_display->show(text_frame.canvas, 0, 0);
-//     uint16_t nb = text_frame.number_of_line * text_frame.number_of_column;
-
-//     uint16_t n{0};
-//     for (uint16_t c = 32; c < 256; c++)
-//     {
-//         n++;
-//         text_frame.process_char(c);
-//         current_display->show(text_frame.canvas, 0, 0);
-//         if (n == nb)
-//         {
-//             sleep_ms(500);
-//             text_frame.process_char(FORM_FEED);
-//         }
-//     }
-
-//     sleep_ms(INTER_TEST_DELAY);
-//     current_display->clear_device_screen_buffer();
-// }
-
-// void test_auto_next_char(ST7735 *current_display)
-// {
-//     struct_ConfigTextWidget txt_conf = {
-//         .font = font_8x8,
-//         .wrap = true,
-//         .auto_next_char = false};
-
-//     my_text_widget *text_frame = new my_text_widget(current_display, txt_conf, CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
-
-//     text_frame->process_char(FORM_FEED);
-
-//     uint16_t n{0};
-//     for (uint16_t c = 32; c < 128; c++)
-//     {
-//         n++;
-//         text_frame->process_char(c);
-//         current_display->show(text_frame->canvas, 0, 0);
-//         if (n % 8 == 0)
-//             text_frame->next_char();
-//     }
-
-//     delete text_frame;
-
-//     sleep_ms(INTER_TEST_DELAY);
-//     current_display->clear_device_screen_buffer();
-// }
+void test_full_screen_text(ST7735 *current_display)
+{
+    struct_ConfigTextWidget txt_conf = {
+        .font = font_8x8,
+        .fg_color = ColorIndex::CYAN,
+        .wrap = true,
+    };
+    my_text_widget text_frame = my_text_widget(current_display, txt_conf, CANVAS_FORMAT,
+                                               current_display->TFT_panel_width_in_pixel, current_display->TFT_panel_width_in_pixel);
+
+    text_frame.process_char(FORM_FEED); // equiv. clear full screen
+    current_display->show(text_frame.canvas, 0, 0);
+    uint16_t nb = text_frame.number_of_line * text_frame.number_of_column;
+
+    uint16_t n{0};
+    for (uint16_t c = 32; c < 256; c++)
+    {
+        n++;
+        text_frame.process_char(c);
+        current_display->show(text_frame.canvas, 0, 0);
+        if (n == nb)
+        {
+            sleep_ms(500);
+            text_frame.process_char(FORM_FEED);
+        }
+    }
+
+    sleep_ms(INTER_TEST_DELAY);
+    current_display->clear_device_screen_buffer();
+}
+
+void test_auto_next_char(ST7735 *current_display)
+{
+    struct_ConfigTextWidget txt_conf = {
+        .font = font_8x8,
+        .fg_color = ColorIndex::GOLD,
+        .wrap = true,
+        .auto_next_char = false};
+
+    my_text_widget *text_frame = new my_text_widget(current_display, txt_conf, CANVAS_FORMAT,
+                                                    current_display->TFT_panel_width_in_pixel, current_display->TFT_panel_width_in_pixel);
+
+    text_frame->process_char(FORM_FEED);
+
+    uint16_t n{0};
+    for (uint16_t c = 32; c < 128; c++)
+    {
+        n++;
+        text_frame->process_char(c);
+        current_display->show(text_frame->canvas, 0, 0);
+        if (n % 8 == 0)
+            text_frame->next_char();
+    }
+
+    delete text_frame;
+
+    sleep_ms(INTER_TEST_DELAY);
+    current_display->clear_device_screen_buffer();
+}
+
+void test_sprintf_format(ST7735 *current_display)
+{
+    current_display->clear_device_screen_buffer();
+
+    struct_ConfigTextWidget text_frame_cfg = {
+        .font = font_8x8,
+        .fg_color = ColorIndex::YELLOW,
+        .wrap = true};
+
+    my_text_widget *text_frame = new my_text_widget(current_display, text_frame_cfg, CANVAS_FORMAT,
+                                                    current_display->TFT_panel_width_in_pixel, current_display->TFT_panel_width_in_pixel);
 
-// void test_sprintf_format(ST7735 *current_display)
-// {
-//     current_display->clear_device_screen_buffer();
+    const char *s = "Hello";
+
+    text_frame->write("Strings:\n\tpadding:\n");
+    text_frame->show();
 
-//     struct_ConfigTextWidget text_frame_cfg = {
-//         .font = font_8x8,
-//         .wrap = true};
+    sprintf(text_frame->text_buffer, "\t[%7s]\n", s);
+    text_frame->write();
+    text_frame->show();
 
-//     my_text_widget *text_frame = new my_text_widget(current_display, text_frame_cfg,CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
+    sprintf(text_frame->text_buffer, "\t[%-7s]\n", s);
+    text_frame->write();
+    text_frame->show();
 
-//     const char *s = "Hello";
+    sprintf(text_frame->text_buffer, "\t[%*s]\n", 7, s);
+    text_frame->write();
+    text_frame->show();
 
-//     text_frame->write("Strings:\n\tpadding:\n");
-//     text_frame->show();
+    text_frame->write("\ttruncating:\n");
+    text_frame->show();
 
-//     sprintf(text_frame->text_buffer, "\t[%7s]\n", s);
-//     text_frame->write();
-//     text_frame->show();
+    sprintf(text_frame->text_buffer, "\t%.4s\n", s);
+    text_frame->write();
+    text_frame->show();
 
-//     sprintf(text_frame->text_buffer, "\t[%-7s]\n", s);
-//     text_frame->write();
-//     text_frame->show();
+    sprintf(text_frame->text_buffer, "\t\t%.*s\n", 3, s);
+    text_frame->write();
+    text_frame->show();
 
-//     sprintf(text_frame->text_buffer, "\t[%*s]\n", 7, s);
-//     text_frame->write();
-//     text_frame->show();
+    sleep_ms(LONG_DELAY);
 
-//     text_frame->write("\ttruncating:\n");
-//     text_frame->show();
+    text_frame->show();
 
-//     sprintf(text_frame->text_buffer, "\t%.4s\n", s);
-//     text_frame->write();
-//     text_frame->show();
+    text_frame->clear_text_buffer();
+    // current_display->clear_pixel_buffer(&text_frame->pixel_frame);
+    current_display->clear_device_screen_buffer();
+    sprintf(text_frame->text_buffer, "Characters: %c %%", 'A');
+    text_frame->write();
+    text_frame->show();
 
-//     sprintf(text_frame->text_buffer, "\t\t%.*s\n", 3, s);
-//     text_frame->write();
-//     text_frame->show();
+    sleep_ms(LONG_DELAY);
 
-//     sleep_ms(LONG_DELAY);
+    current_display->clear_device_screen_buffer();
 
-//     text_frame->show();
+    text_frame->update_text_frame_size(font_5x8);
 
-//     text_frame->clear_text_buffer();
-//     // current_display->clear_pixel_buffer(&text_frame->pixel_frame);
-//     current_display->clear_device_screen_buffer();
-//     sprintf(text_frame->text_buffer, "Characters: %c %%", 'A');
-//     text_frame->write();
-//     text_frame->show();
+    text_frame->write("Integers:\n");
+    sprintf(text_frame->text_buffer, "\tDec:  %i %d %.3i %i %.0i %+i %i\n", 1, 2, 3, 0, 0, 4, -4);
+    text_frame->write();
+    sprintf(text_frame->text_buffer, "\tHex:  %x %x %X %#x\n", 5, 10, 10, 6);
+    text_frame->write();
+    sprintf(text_frame->text_buffer, "\tOct:    %o %#o %#o\n", 10, 10, 4);
+    text_frame->write();
+    text_frame->write("Floating point:\n");
+    sprintf(text_frame->text_buffer, "\tRnd:  %f %.0f %.3f\n", 1.5, 1.5, 1.5);
+    text_frame->write();
+    sprintf(text_frame->text_buffer, "\tPad:  %05.2f %.2f %5.2f\n", 1.5, 1.5, 1.5);
+    text_frame->write();
+    sprintf(text_frame->text_buffer, "\tSci:  %.3E %.1e\n", 1.5, 1.5);
+    text_frame->write();
+    text_frame->show();
 
-//     sleep_ms(LONG_DELAY);
+    sleep_ms(LONG_DELAY);
 
-//     current_display->clear_device_screen_buffer();
+    current_display->clear_device_screen_buffer();
 
-//     text_frame->update_text_frame_size(font_5x8);
+    text_frame->update_text_frame_size(font_8x8);
 
-//     text_frame->write("Integers:\n");
-//     sprintf(text_frame->text_buffer, "\tDec:  %i %d %.3i %i %.0i %+i %i\n", 1, 2, 3, 0, 0, 4, -4);
-//     text_frame->write();
-//     sprintf(text_frame->text_buffer, "\tHex:  %x %x %X %#x\n", 5, 10, 10, 6);
-//     text_frame->write();
-//     sprintf(text_frame->text_buffer, "\tOct:    %o %#o %#o\n", 10, 10, 4);
-//     text_frame->write();
-//     text_frame->write("Floating point:\n");
-//     sprintf(text_frame->text_buffer, "\tRnd:  %f %.0f %.3f\n", 1.5, 1.5, 1.5);
-//     text_frame->write();
-//     sprintf(text_frame->text_buffer, "\tPad:  %05.2f %.2f %5.2f\n", 1.5, 1.5, 1.5);
-//     text_frame->write();
-//     sprintf(text_frame->text_buffer, "\tSci:  %.3E %.1e\n", 1.5, 1.5);
-//     text_frame->write();
-//     text_frame->show();
+    text_frame->process_char(FORM_FEED); // equivalent text_frame->clear_pixel_buffer();
 
-//     sleep_ms(LONG_DELAY);
+    text_frame->write(" !\"#$%&'()*+,-./0123456789:;<=>?");   // ca 1000us -> 2000us
+    text_frame->write("@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_");   // ca 1000us -> 2000us
+    text_frame->write("`abcdefghijklmnopqrstuvwxyz{|}~\x7F"); // ca 1000us-> 2000us
+    text_frame->write("1234567890\n");                        // ca 400us -> 800us
+    text_frame->show();
 
-//     current_display->clear_device_screen_buffer();
+    sleep_ms(LONG_DELAY);
 
-//     text_frame->update_text_frame_size(font_8x8);
+    text_frame->process_char(FORM_FEED);
 
-//     text_frame->process_char(FORM_FEED); // equivalent text_frame->clear_pixel_buffer();
+    text_frame->write("\t1TAB\n"); // ca 400us -> 800us
+    text_frame->show();
 
-//     text_frame->write(" !\"#$%&'()*+,-./0123456789:;<=>?");   // ca 1000us -> 2000us
-//     text_frame->write("@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_");   // ca 1000us -> 2000us
-//     text_frame->write("`abcdefghijklmnopqrstuvwxyz{|}~\x7F"); // ca 1000us-> 2000us
-//     text_frame->write("1234567890\n");                        // ca 400us -> 800us
-//     text_frame->show();
+    sleep_ms(DELAY);
 
-//     sleep_ms(LONG_DELAY);
+    text_frame->write("\t\t2TAB\n"); // ca 400us -> 800us
+    text_frame->show();
 
-//     text_frame->process_char(FORM_FEED);
+    sleep_ms(DELAY);
 
-//     text_frame->write("\t1TAB\n"); // ca 400us -> 800us
-//     text_frame->show();
+    text_frame->write("\t\t\t3TAB\n"); // ca 400us -> 800us
+    text_frame->show();
 
-//     sleep_ms(DELAY);
+    sleep_ms(DELAY);
 
-//     text_frame->write("\t\t2TAB\n"); // ca 400us -> 800us
-//     text_frame->show();
+    text_frame->write("\t\t\t\t4TAB\n"); // ca 400us -> 800us
+    text_frame->show();
 
-//     sleep_ms(DELAY);
+    sleep_ms(DELAY);
 
-//     text_frame->write("\t\t\t3TAB\n"); // ca 400us -> 800us
-//     text_frame->show();
+    text_frame->write("\t\t\t\t\t5TAB\n"); // ca 400us -> 800us
+    text_frame->show();
 
-//     sleep_ms(DELAY);
+    sleep_ms(DELAY);
 
-//     text_frame->write("\t\t\t\t4TAB\n"); // ca 400us -> 800us
-//     text_frame->show();
+    text_frame->write("\t1TAB\t\t\t3TAB\n"); // ca 400us -> 800us
+    text_frame->show();
 
-//     sleep_ms(DELAY);
+    sleep_ms(LONG_DELAY);
 
-//     text_frame->write("\t\t\t\t\t5TAB\n"); // ca 400us -> 800us
-//     text_frame->show();
+    text_frame->process_char(FORM_FEED);
+    text_frame->update_text_frame_size(font_16x32);
 
-//     sleep_ms(DELAY);
+    text_frame->write(" 15:06 \n");
+    text_frame->write("03/01/24");
+    text_frame->show();
 
-//     text_frame->write("\t1TAB\t\t\t3TAB\n"); // ca 400us -> 800us
-//     text_frame->show();
+    sleep_ms(LONG_DELAY);
 
-//     sleep_ms(LONG_DELAY);
+    current_display->clear_device_screen_buffer();
 
-//     text_frame->process_char(FORM_FEED);
-//     text_frame->update_text_frame_size(font_16x32);
+    delete text_frame;
 
-//     text_frame->write(" 15:06 \n");
-//     text_frame->write("03/01/24");
-//     text_frame->show();
+    struct_ConfigTextWidget text_frame2_cfg = {
+        .number_of_column = 7,
+        .number_of_line = 2,
+        .widget_anchor_x = 22,
+        .widget_anchor_y = 16,
+        .font = font_12x16,
+        .wrap = false};
+    my_text_widget *text_frame2 = new my_text_widget(current_display, text_frame2_cfg, CANVAS_FORMAT);
 
-//     sleep_ms(LONG_DELAY);
+    text_frame2->write(" 09:56\n03JAN24");
+    text_frame2->show();
+    delete text_frame2;
 
-//     current_display->clear_device_screen_buffer();
+    sleep_ms(INTER_TEST_DELAY);
+    current_display->clear_device_screen_buffer();
+    /*
+    undefined result for the used compiler
+    printf("\tHexadecimal:\t%a %A\n", 1.5, 1.5);
+    printf("\tSpecial values:\t0/0=%g 1/0=%g\n", 0.0 / 0.0, 1.0 / 0.0);
+    printf("Fixed-width types:\n");
+    printf("\tLargest 32-bit value is %" PRIu32 " or %#" PRIx32 "\n",
+           UINT32_MAX, UINT32_MAX);
+    */
+}
 
-//     delete text_frame;
+void test_ostringstream_format(ST7735 *current_display)
+{
 
-//     struct_ConfigTextWidget text_frame2_cfg = {
-//         .number_of_column = 7,
-//         .number_of_line = 2,
-//         .widget_anchor_x = 22,
-//         .widget_anchor_y = 16,
-//         .font = font_12x16,
-//         .wrap = false};
-//     my_text_widget *text_frame2 = new my_text_widget(current_display, text_frame2_cfg,CANVAS_FORMAT);
+    current_display->clear_device_screen_buffer();
 
-//     text_frame2->write(" 09:56\n03JAN24");
-//     text_frame2->show();
-//     delete text_frame2;
+    const unsigned char *current_font{font_5x8};
 
-//     sleep_ms(INTER_TEST_DELAY);
-//     current_display->clear_device_screen_buffer();
-//     /*
-//     undefined result for the used compiler
-//     printf("\tHexadecimal:\t%a %A\n", 1.5, 1.5);
-//     printf("\tSpecial values:\t0/0=%g 1/0=%g\n", 0.0 / 0.0, 1.0 / 0.0);
-//     printf("Fixed-width types:\n");
-//     printf("\tLargest 32-bit value is %" PRIu32 " or %#" PRIx32 "\n",
-//            UINT32_MAX, UINT32_MAX);
-//     */
-// }
+    struct_ConfigTextWidget txt_conf = {
+        .font = current_font,
+        .fg_color = ColorIndex::MAGENTA,
+        .wrap = false};
 
+    my_text_widget text_frame = my_text_widget(current_display, txt_conf, CANVAS_FORMAT,
+                                               current_display->TFT_panel_width_in_pixel, current_display->TFT_panel_width_in_pixel);
 
-// void test_ostringstream_format(ST7735 *current_display)
-// {
+    int n = 42;
+    float f = std::numbers::pi;
 
-//     current_display->clear_device_screen_buffer();
+    std::ostringstream stream0, stream1, stream2;
 
-//     const unsigned char *current_font{font_5x8};
+    stream0.fill('.');
+    stream2.fill('.');
+    stream2.precision(4);
+    stream2.width(20);
 
-//     struct_ConfigTextWidget txt_conf = {
-//         .font = current_font,
-//         .wrap = false};
+    stream0 << std::left << std::setw(6) << "test" << std::endl;
+    text_frame.write(stream0.str().c_str());
 
-//     my_text_widget text_frame = my_text_widget(current_display, txt_conf,CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
+    current_display->show(text_frame.canvas, 0, 0);
+    sleep_ms(DELAY);
 
-//     int n = 42;
-//     float f = std::numbers::pi;
+    stream1 << std::setw(5) << std::dec << n << "|" << std::setw(5)
+            << std::showbase << std::hex << n << "|" << std::showbase << std::setw(5) << std::oct << n << std::endl;
+    text_frame.write(stream1.str().c_str());
+    current_display->show(text_frame.canvas, 0, 0);
 
-//     std::ostringstream stream0, stream1, stream2;
+    sleep_ms(DELAY);
 
-//     stream0.fill('.');
-//     stream2.fill('.');
-//     stream2.precision(4);
-//     stream2.width(20);
+    stream2 << "PI = " << std::left << f << std::endl;
+    text_frame.write(stream2.str().c_str());
+    current_display->show(text_frame.canvas, 0, 0);
 
-//     stream0 << std::left << std::setw(6) << "test" << std::endl;
-//     text_frame.write(stream0.str().c_str());
-
-//     current_display->show(text_frame.canvas, 0, 0);
-//     sleep_ms(DELAY);
-
-//     stream1 << std::setw(5) << std::dec << n << "|" << std::setw(5)
-//             << std::showbase << std::hex << n << "|" << std::showbase << std::setw(5) << std::oct << n << std::endl;
-//     text_frame.write(stream1.str().c_str());
-//     current_display->show(text_frame.canvas, 0, 0);
-
-//     sleep_ms(DELAY);
-
-//     stream2 << "PI = " << std::left << f << std::endl;
-//     text_frame.write(stream2.str().c_str());
-//     current_display->show(text_frame.canvas, 0, 0);
-
-//     sleep_ms(INTER_TEST_DELAY);
-//     current_display->clear_device_screen_buffer();
-// }
+    sleep_ms(INTER_TEST_DELAY);
+    current_display->clear_device_screen_buffer();
+}
 
 int main()
 
@@ -395,9 +403,9 @@ int main()
     while (true)
     {
         test_font_size(&display);
-        // test_full_screen_text(&display);
-        // test_auto_next_char(&display);
-        // test_ostringstream_format(&display);
-        // test_sprintf_format(&display);
+        test_full_screen_text(&display);
+        test_auto_next_char(&display);
+        test_ostringstream_format(&display);
+        test_sprintf_format(&display);
     }
 }
