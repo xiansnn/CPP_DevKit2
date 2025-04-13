@@ -71,23 +71,6 @@ struct struct_ConfigST7735
 struct struct_ConfigScrollST7735
 {
 };
-/**
- * @brief //TODO s'adapter aux commandes CASET et RASET
- *
- */
-struct struct_RenderArea
-{
-    /// @brief the pixel x where to start copy of the graphic framebuffer to the device memory
-    uint16_t start_x{0};
-    /// @brief the width of the rendered area
-    uint16_t end_x{0};
-    /// @brief the pixel y where to end copy of the graphic framebuffer to the device memory
-    uint16_t start_y{0};
-    /// @brief the eight of the rendered area
-    uint16_t end_y{0};
-    /// @brief the size of the graphic buffer
-    size_t frame_buffer_length;
-};
 
 /**
  * @brief ST7735 driven TFT color display device
@@ -156,7 +139,7 @@ private:
     void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg);
     /**
      * @brief fill the internal ST7735 screen buffer with the given color.
-     * Default to BLACK, clear de internal buffer
+     * Default to BLACK, clear the internal buffer
      * 
      * @param color_index 
      */
