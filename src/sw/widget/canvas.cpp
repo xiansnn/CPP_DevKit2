@@ -44,16 +44,6 @@ void Canvas::clear_canvas_buffer()
     memset(canvas_buffer, 0x00, canvas_buffer_size);
 }
 
-// struct_PixelFrame Canvas::get_pixel_frame()
-// {
-//     struct_PixelFrame pixel_frame = {
-//         .pixel_frame_width = this->canvas_width_pixel,
-//         .pixel_frame_height = this->canvas_height_pixel,
-//         .pixel_frame_buffer_size = this->canvas_buffer_size,
-//         .pixel_frame_buffer = this->canvas_buffer};
-//     return pixel_frame;
-// }
-
 void CanvasVLSB::create_canvas_buffer()
 {
     size_t nb_of_pages = (canvas_height_pixel + BYTE_SIZE - 1) / BYTE_SIZE;
@@ -89,7 +79,7 @@ void CanvasVLSB::draw_pixel(const int x, const int y, const ColorIndex color)
         int byte_index = (y / BYTE_SIZE) * bytes_per_row + x;
         uint8_t byte = canvas_buffer[byte_index];
 
-        if (color == ColorIndex::WHITE)
+        if (color != ColorIndex::BLACK)
             byte |= 1 << (y % BYTE_SIZE);
         else
             byte &= ~(1 << (y % BYTE_SIZE));
