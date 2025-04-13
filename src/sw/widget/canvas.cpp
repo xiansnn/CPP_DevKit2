@@ -36,7 +36,7 @@ Canvas::Canvas(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
 
 Canvas::~Canvas()
 {
-    // delete canvas_buffer;
+    delete[] canvas_buffer;
 }
 
 void Canvas::clear_canvas_buffer()

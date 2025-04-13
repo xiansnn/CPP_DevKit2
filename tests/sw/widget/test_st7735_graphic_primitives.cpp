@@ -1,9 +1,9 @@
 /**
- * @file test_st7735_device.cpp
+ * @file test_st7735_graphic_primitives.cpp
  * @author xiansnn (xiansnn@hotmail.com)
  * @brief
  * @version 0.1
- * @date 2025-03-30
+ * @date 2025-04-12
  *
  * @copyright Copyright (c) 2025
  *
@@ -36,7 +36,7 @@ struct_ConfigST7735 cfg_st7735{
     .backlight_pin = 5,
     .hw_reset_pin = 15,
     .dc_pin = 14,
-    .rotation = ST7735Rotation::_0};
+    .rotation = ST7735Rotation::_90};
 
 struct_ConfigGraphicWidget full_screen_cfg = {
     .pixel_frame_width = 128,
@@ -47,44 +47,28 @@ struct_ConfigGraphicWidget full_screen_cfg = {
     .widget_anchor_y = 0,
     .widget_with_border = true};
 
-class my_corner_rectangle_widget : public GraphicWidget
+class my_full_screen_widget : public GraphicWidget
 {
 private:
 public:
-    my_corner_rectangle_widget(GraphicDisplayDevice *graphic_display_screen,
-                      struct_ConfigGraphicWidget graph_cfg, CanvasFormat format);
-    ~my_corner_rectangle_widget();
+    my_full_screen_widget(GraphicDisplayDevice *graphic_display_screen,
+                          struct_ConfigGraphicWidget graph_cfg, CanvasFormat format);
+    ~my_full_screen_widget();
     void get_value_of_interest();
     void draw();
 };
-my_corner_rectangle_widget::my_corner_rectangle_widget(GraphicDisplayDevice *graphic_display_screen,
-                                     struct_ConfigGraphicWidget graph_cfg, CanvasFormat format)
-    : GraphicWidget(graphic_display_screen, graph_cfg, format) {}
-my_corner_rectangle_widget::~my_corner_rectangle_widget() {}
-void my_corner_rectangle_widget::get_value_of_interest() {}
-void my_corner_rectangle_widget::draw() {
-    rect(widget_start_x,widget_start_y,widget_width,widget_height,true,bg_color);
-};
-
-void test_clear_device_screen(ST7735 &display)
-{
-    for (auto &&i : color565_palette)
-    {
-        display.clear_device_screen_buffer(i.first);
-        sleep_ms(1000);
-    }
-}
-void test_rotation_offset(my_corner_rectangle_widget &full_screen)
-{
-    full_screen.draw_border(ColorIndex::WHITE);
-    full_screen.show();
-}
+my_full_screen_widget::my_full_screen_widget(GraphicDisplayDevice *graphic_display_screen,
+                                             struct_ConfigGraphicWidget graph_cfg, CanvasFormat format)
+    : GraphicWidget(graphic_display_screen, graph_cfg, format) { printf("+ my_full_screen_widget\n"); }
+my_full_screen_widget::~my_full_screen_widget() { printf("- my_full_screen_widget\n"); }
+void my_full_screen_widget::get_value_of_interest() {}
+void my_full_screen_widget::draw() {};
 
 void test_fb_line(ST7735 *display)
 {
     display->clear_device_screen_buffer();
-    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, full_screen_cfg, CANVAS_FORMAT);
-    for (int i = 1; i < 7; i++)
+    my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
+    for (int i = 2; i < 5; i++)
     {
         ColorIndex c = static_cast<ColorIndex>(i);
 
@@ -103,7 +87,7 @@ void test_fb_line(ST7735 *display)
 }
 void test_outofframe_line(ST7735 *display)
 {
-    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, full_screen_cfg, CANVAS_FORMAT);
+    my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
     int y0, x1, y1;
     display->clear_device_screen_buffer();
     x1 = 64;
@@ -124,7 +108,7 @@ void test_outofframe_line(ST7735 *display)
 }
 void test_fb_rect(ST7735 *display)
 {
-    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, full_screen_cfg, CANVAS_FORMAT);
+    my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
 
     display->clear_device_screen_buffer();
     frame.rect(0, 0, 128, 64);
@@ -134,24 +118,33 @@ void test_fb_rect(ST7735 *display)
     frame.show();
     sleep_ms(2000);
 }
+void test_fb_hline(ST7735 *display)
+{
+    my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
+
+    display->clear_device_screen_buffer(); // 50ms @ bitrate 10Mbps
+    for (size_t i = 0; i < 16; i++)
+    {
+        frame.hline(0, i * 8, 128, static_cast<ColorIndex>(i + 1));
+        // frame.show();
+        // sleep_ms(100);
+    }
+    frame.show(); // 80ms @ bitrate 10Mbps
+    sleep_ms(500);
+}
 
 int main()
 {
-
     stdio_init_all();
     HW_SPI_Master spi_master = HW_SPI_Master(cfg_spi);
     ST7735 display = ST7735(&spi_master, cfg_st7735);
-
-    my_corner_rectangle_widget full_screen = my_corner_rectangle_widget(&display, full_screen_cfg, CANVAS_FORMAT);
-
     display.clear_device_screen_buffer();
 
     while (true)
     {
-        test_rotation_offset(full_screen);
         // test_fb_line(&display);
         // test_outofframe_line(&display);
-        // test_fb_hline(&display);
+        test_fb_hline(&display);
         // test_fb_vline(&display);
         // test_fb_rect(&display);
         // test_fb_circle(&display);

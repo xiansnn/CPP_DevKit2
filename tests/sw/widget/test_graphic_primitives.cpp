@@ -22,8 +22,6 @@
 #include "sw/widget/widget.h"
 #include "utilities/probe/probe.h"
 
-#define DEGREE "\xF8"
-
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
 Probe pr_D6 = Probe(6);
@@ -50,22 +48,22 @@ struct_ConfigGraphicWidget SSD1306_framebuffer_cfg{
     .widget_anchor_x = 0,
     .widget_anchor_y = 0};
 
-class my_corner_rectangle_widget : public GraphicWidget
+class my_full_screen_widget : public GraphicWidget
 {
 private:
 public:
-    my_corner_rectangle_widget(GraphicDisplayDevice *graphic_display_screen,
+    my_full_screen_widget(GraphicDisplayDevice *graphic_display_screen,
                       struct_ConfigGraphicWidget graph_cfg);
-    ~my_corner_rectangle_widget();
+    ~my_full_screen_widget();
     void get_value_of_interest();
     void draw();
 };
-my_corner_rectangle_widget::my_corner_rectangle_widget(GraphicDisplayDevice *graphic_display_screen,
+my_full_screen_widget::my_full_screen_widget(GraphicDisplayDevice *graphic_display_screen,
                                      struct_ConfigGraphicWidget graph_cfg)
     : GraphicWidget(graphic_display_screen, graph_cfg, CanvasFormat::MONO_VLSB) {}
-my_corner_rectangle_widget::~my_corner_rectangle_widget() {}
-void my_corner_rectangle_widget::get_value_of_interest() {}
-void my_corner_rectangle_widget::draw() {}
+my_full_screen_widget::~my_full_screen_widget() {}
+void my_full_screen_widget::get_value_of_interest() {}
+void my_full_screen_widget::draw() {}
 
 /**
  * @brief  Check that we can draw a line that outfit the framebuffer without consequences
@@ -74,7 +72,7 @@ void my_corner_rectangle_widget::draw() {}
  */
 void test_outofframe_line(SSD1306 *display)
 {
-    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, SSD1306_framebuffer_cfg);
+    my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
     int y0, x1, y1;
     display->clear_device_screen_buffer();
     x1 = 64;
@@ -99,7 +97,7 @@ void test_outofframe_line(SSD1306 *display)
 void test_fb_line(SSD1306 *display)
 {
     display->clear_device_screen_buffer();
-    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, SSD1306_framebuffer_cfg);
+    my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
     ColorIndex c = ColorIndex::BLACK;
     for (int i = 0; i < 2; i++)
     {
@@ -155,7 +153,7 @@ void test_fb_line(SSD1306 *display)
  */
 void test_fb_hline(SSD1306 *display)
 {
-    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, SSD1306_framebuffer_cfg);
+    my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
 
     display->clear_device_screen_buffer();
 
@@ -180,7 +178,7 @@ void test_fb_hline(SSD1306 *display)
  */
 void test_fb_vline(SSD1306 *display)
 {
-    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, SSD1306_framebuffer_cfg);
+    my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
 
     display->clear_device_screen_buffer();
     frame.vline(0, 0, 16);
@@ -205,7 +203,7 @@ void test_fb_vline(SSD1306 *display)
  */
 void test_fb_rect(SSD1306 *display)
 {
-    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, SSD1306_framebuffer_cfg);
+    my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
 
     display->clear_device_screen_buffer();
     frame.rect(0, 0, 128, 64);
@@ -222,7 +220,7 @@ void test_fb_rect(SSD1306 *display)
  */
 void test_fb_in_fb(SSD1306 *display)
 {
-    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, SSD1306_framebuffer_cfg);
+    my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
 
     display->clear_device_screen_buffer();
     frame.rect(0, 0, SSD1306_WIDTH, SSD1306_HEIGHT);
@@ -237,7 +235,7 @@ void test_fb_in_fb(SSD1306 *display)
         .widget_anchor_x = 24,
         .widget_anchor_y = 24};
 
-    my_corner_rectangle_widget small_frame = my_corner_rectangle_widget(display, small_frame_cfg);
+    my_full_screen_widget small_frame = my_full_screen_widget(display, small_frame_cfg);
     small_frame.canvas->clear_canvas_buffer();
     small_frame.line(5, 5, 80, 20);
     small_frame.circle(8, 44, 12);
@@ -252,7 +250,7 @@ void test_fb_in_fb(SSD1306 *display)
  */
 void test_fb_circle(SSD1306 *display)
 {
-    my_corner_rectangle_widget frame = my_corner_rectangle_widget(display, SSD1306_framebuffer_cfg);
+    my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
 
     display->clear_device_screen_buffer();
     frame.circle(50, 63, 31);
