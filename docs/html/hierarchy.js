@@ -50,11 +50,9 @@ var hierarchy =
     [ "struct_DHTReading", "structstruct___d_h_t_reading.html", null ],
     [ "struct_I2CXferResult", "structstruct___i2_c_xfer_result.html", null ],
     [ "struct_MPUData", "structstruct___m_p_u_data.html", null ],
-    [ "struct_PixelFrame", "structstruct___pixel_frame.html", null ],
     [ "struct_RawData", "structstruct___raw_data.html", null ],
     [ "struct_RenderArea", "structstruct___render_area.html", null ],
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", null ],
-    [ "struct_TextFrame", "structstruct___text_frame.html", null ],
     [ "SwitchButton", "class_switch_button.html", [
       [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", [
         [ "RotaryEncoder", "class_rotary_encoder.html", null ]

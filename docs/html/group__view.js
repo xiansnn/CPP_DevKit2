@@ -24,6 +24,7 @@ var group__view =
       [ "enable_sleep", "class_s_t7735.html#ac237efe612c94e3149e6ad6f791ece0e", null ],
       [ "set_display_OFF", "class_s_t7735.html#a2eeb323da6a0df1a2e24e932e7ed0a2a", null ],
       [ "set_display_ON", "class_s_t7735.html#a9df39c104f9b583b7e8ac2558c099724", null ],
+      [ "set_rotation_and_color", "class_s_t7735.html#ae39c6390f948dee9be246381356f636f", null ],
       [ "show", "class_s_t7735.html#a748040c220a93cf6e69e1b486e50f198", null ]
     ] ],
     [ "DisplayDevice", "class_display_device.html", null ],
@@ -50,7 +51,6 @@ var group__view =
       [ "draw_glyph", "class_canvas.html#a725db20c22fc791eab5951807b152aa3", null ],
       [ "draw_pixel", "class_canvas.html#a5b11b9d081c76790cf195964fface64b", null ],
       [ "fill_canvas_with_color", "class_canvas.html#a5f1e4f75a6f7544e0fdbcc87d2b7197b", null ],
-      [ "get_pixel_frame", "class_canvas.html#a09bb8b22f2bb155310bc8feb3895bdc1", null ],
       [ "canvas_buffer", "class_canvas.html#a9dd0742453c116a917f618435dceb2cc", null ],
       [ "canvas_buffer_size", "class_canvas.html#a109cc5819dd5ddfcbe0d6d03864dcf16", null ],
       [ "canvas_height_pixel", "class_canvas.html#addf98fc4b32946a6c815720de00ebe0e", null ],

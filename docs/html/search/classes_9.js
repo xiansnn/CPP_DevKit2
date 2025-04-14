@@ -18,11 +18,9 @@ var searchData=
   ['struct_5fdhtreading_15',['struct_DHTReading',['../structstruct___d_h_t_reading.html',1,'']]],
   ['struct_5fi2cxferresult_16',['struct_I2CXferResult',['../structstruct___i2_c_xfer_result.html',1,'']]],
   ['struct_5fmpudata_17',['struct_MPUData',['../structstruct___m_p_u_data.html',1,'']]],
-  ['struct_5fpixelframe_18',['struct_PixelFrame',['../structstruct___pixel_frame.html',1,'']]],
-  ['struct_5frawdata_19',['struct_RawData',['../structstruct___raw_data.html',1,'']]],
-  ['struct_5frenderarea_20',['struct_RenderArea',['../structstruct___render_area.html',1,'']]],
-  ['struct_5fslavememory_21',['struct_SlaveMemory',['../structstruct___slave_memory.html',1,'']]],
-  ['struct_5ftextframe_22',['struct_TextFrame',['../structstruct___text_frame.html',1,'']]],
-  ['switchbutton_23',['SwitchButton',['../class_switch_button.html',1,'']]],
-  ['switchbuttonwithirq_24',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html',1,'']]]
+  ['struct_5frawdata_18',['struct_RawData',['../structstruct___raw_data.html',1,'']]],
+  ['struct_5frenderarea_19',['struct_RenderArea',['../structstruct___render_area.html',1,'']]],
+  ['struct_5fslavememory_20',['struct_SlaveMemory',['../structstruct___slave_memory.html',1,'']]],
+  ['switchbutton_21',['SwitchButton',['../class_switch_button.html',1,'']]],
+  ['switchbuttonwithirq_22',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html',1,'']]]
 ];

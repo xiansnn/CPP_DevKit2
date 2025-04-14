@@ -1,7 +1,5 @@
 var canvas_8h =
 [
-    [ "struct_PixelFrame", "structstruct___pixel_frame.html", "structstruct___pixel_frame" ],
-    [ "struct_TextFrame", "structstruct___text_frame.html", "structstruct___text_frame" ],
     [ "struct_ConfigGraphicWidget", "structstruct___config_graphic_widget.html", "structstruct___config_graphic_widget" ],
     [ "struct_ConfigTextWidget", "structstruct___config_text_widget.html", "structstruct___config_text_widget" ],
     [ "BYTE_SIZE", "canvas_8h.html#a86fd4404b140711fdb77326609c0f393", null ],

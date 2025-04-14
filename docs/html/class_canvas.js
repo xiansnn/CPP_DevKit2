@@ -6,7 +6,6 @@ var class_canvas =
     [ "draw_glyph", "class_canvas.html#a725db20c22fc791eab5951807b152aa3", null ],
     [ "draw_pixel", "class_canvas.html#a5b11b9d081c76790cf195964fface64b", null ],
     [ "fill_canvas_with_color", "class_canvas.html#a5f1e4f75a6f7544e0fdbcc87d2b7197b", null ],
-    [ "get_pixel_frame", "class_canvas.html#a09bb8b22f2bb155310bc8feb3895bdc1", null ],
     [ "canvas_buffer", "class_canvas.html#a9dd0742453c116a917f618435dceb2cc", null ],
     [ "canvas_buffer_size", "class_canvas.html#a109cc5819dd5ddfcbe0d6d03864dcf16", null ],
     [ "canvas_height_pixel", "class_canvas.html#addf98fc4b32946a6c815720de00ebe0e", null ],

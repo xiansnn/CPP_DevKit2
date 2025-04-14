@@ -1,19 +1,19 @@
 <map id="WidgetFocusIndicator" name="WidgetFocusIndicator">
-<area shape="rect" id="Node000001" title="A specific class dedicated to indicate the status of an UIControlledModel. Not an abstract class,..." alt="" coords="440,1553,872,1667"/>
-<area shape="rect" id="Node000002" href="$class_widget_blinking_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="432,1391,880,1504"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="659,1519,659,1554,653,1554,653,1519"/>
-<area shape="rect" id="Node000003" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="239,1207,691,1321"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="536,1329,600,1389,596,1393,532,1333"/>
-<area shape="rect" id="Node000004" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="178,603,753,1137"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="468,1152,468,1207,463,1207,463,1152"/>
-<area shape="rect" id="Node000005" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="5,341,448,477"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="271,489,329,602,325,604,266,492"/>
+<area shape="rect" id="Node000001" title="A specific class dedicated to indicate the status of an UIControlledModel. Not an abstract class,..." alt="" coords="440,1535,872,1648"/>
+<area shape="rect" id="Node000002" href="$class_widget_blinking_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="432,1372,880,1485"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="659,1500,659,1535,653,1535,653,1500"/>
+<area shape="rect" id="Node000003" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="239,1189,691,1302"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="536,1310,600,1371,596,1374,532,1314"/>
+<area shape="rect" id="Node000004" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="178,584,753,1119"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="468,1134,468,1189,463,1189,463,1134"/>
+<area shape="rect" id="Node000005" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="5,332,448,468"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="271,480,326,583,322,586,267,482"/>
 <area shape="rect" id="Node000006" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="67,71,171,151"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="135,149,199,325,194,327,130,151"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="136,150,198,315,193,317,131,152"/>
 <area shape="rect" id="Node000007" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="195,5,475,216"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="299,217,259,326,254,325,294,215"/>
-<area shape="rect" id="Node000008" href="$class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="473,278,938,541"/>
-<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="640,541,615,589,610,587,635,539"/>
-<area shape="rect" id="Node000009" href="$class_blinker.html" title="A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker..." alt="" coords="715,1187,978,1341"/>
-<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="758,1353,716,1393,712,1389,754,1349"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="298,217,260,317,255,315,293,215"/>
+<area shape="rect" id="Node000008" href="$class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="473,278,938,522"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="643,523,618,570,613,568,639,520"/>
+<area shape="rect" id="Node000009" href="$class_blinker.html" title="A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker..." alt="" coords="715,1168,978,1323"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="758,1334,716,1374,712,1370,754,1331"/>
 </map>

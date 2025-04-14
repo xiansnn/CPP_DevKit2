@@ -6,6 +6,6 @@
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="825,90,883,131,880,136,822,94"/>
 <area shape="rect" id="Node000003" href="$class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,336,549,673"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="467,292,426,338,422,335,463,288"/>
-<area shape="rect" id="Node000004" href="$class_s_t7735.html" title="ST7735 driven TFT color display device." alt="" coords="573,409,1005,601"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="604,288,708,407,704,411,600,291"/>
+<area shape="rect" id="Node000004" href="$class_s_t7735.html" title="ST7735 driven TFT color display device." alt="" coords="573,399,1005,610"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="604,288,700,398,696,401,600,291"/>
 </map>

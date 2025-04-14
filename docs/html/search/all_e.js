@@ -10,7 +10,7 @@ var searchData=
   ['library_7',['&quot;Utilities/Debug library&quot;',['../group__debug.html',1,'']]],
   ['line_8',['line',['../class_graphic_widget.html#ab3cd06c0aabb88e5ca25489391662ce7',1,'GraphicWidget']]],
   ['line_5ffeed_9',['LINE_FEED',['../widget_8h.html#a3c2cad5489953de23c5733e6e696a93e',1,'widget.h']]],
-  ['list_10',['List',['../bug.html',1,'Bug List'],['../deprecated.html',1,'Deprecated List'],['../todo.html',1,'Todo List']]],
+  ['list_10',['List',['../bug.html',1,'Bug List'],['../todo.html',1,'Todo List']]],
   ['lo_11',['lo',['../class_probe.html#ade2391514faaee5f3acfffc4d3cb2de8',1,'Probe']]],
   ['long_5fpush_12',['LONG_PUSH',['../ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32a66d354703a5722b875b56431d89fb646',1,'ui_control_event.h']]],
   ['long_5fpush_5fdelay_5fus_13',['LONG_PUSH_DELAY_us',['../switch__button_8h.html#a2b652dcbb4a4f6e01ff5f355ec7a0ce6',1,'switch_button.h']]],

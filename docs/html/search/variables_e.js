@@ -19,7 +19,5 @@ var searchData=
   ['spi_5fpolarity_16',['spi_polarity',['../structstruct___config_master_s_p_i.html#ad2e47bcc07fef5657635598cb6bcea43',1,'struct_ConfigMasterSPI']]],
   ['start_5fcol_17',['start_col',['../structstruct___render_area.html#aaf82ae38396397c4c819495ea98f7bbe',1,'struct_RenderArea']]],
   ['start_5fpage_18',['start_page',['../structstruct___render_area.html#ad3cf4c69b7461c68c5ad187e11362467',1,'struct_RenderArea']]],
-  ['start_5fx_19',['start_x',['../structstruct___render_area.html#a8b63ae0902c010ef64a69607996bb957',1,'struct_RenderArea']]],
-  ['start_5fy_20',['start_y',['../structstruct___render_area.html#a3b5e3c00aff94d7595b71f24f9913487',1,'struct_RenderArea']]],
-  ['sync_5fpin_21',['sync_pin',['../structstruct___config_s_g90.html#a1adfe8bff0e581ebf86b11dd97d7153c',1,'struct_ConfigSG90']]]
+  ['sync_5fpin_19',['sync_pin',['../structstruct___config_s_g90.html#a1adfe8bff0e581ebf86b11dd97d7153c',1,'struct_ConfigSG90']]]
 ];

@@ -113,9 +113,9 @@ Inheritance diagram for ST7735:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_t7735__inherit__graph.png" border="0" usemap="#a_s_t7735_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_s_t7735_inherit__map" id="a_s_t7735_inherit__map">
-<area shape="rect" title="ST7735 driven TFT color display device." alt="" coords="28,317,460,509"/>
+<area shape="rect" title="ST7735 driven TFT color display device." alt="" coords="28,317,460,528"/>
 <area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,133,483,269"/>
-<area shape="poly" title=" " alt="" coords="247,284,247,318,241,318,241,284"/>
+<area shape="poly" title=" " alt="" coords="247,284,247,317,241,317,241,284"/>
 <area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="192,5,296,85"/>
 <area shape="poly" title=" " alt="" coords="247,100,247,134,241,134,241,100"/>
 </map>
@@ -125,9 +125,9 @@ Collaboration diagram for ST7735:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_t7735__coll__graph.png" border="0" usemap="#a_s_t7735_coll__map" alt="Collaboration graph"/></div>
 <map name="a_s_t7735_coll__map" id="a_s_t7735_coll__map">
-<area shape="rect" title="ST7735 driven TFT color display device." alt="" coords="28,317,460,509"/>
+<area shape="rect" title="ST7735 driven TFT color display device." alt="" coords="28,317,460,528"/>
 <area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,133,483,269"/>
-<area shape="poly" title=" " alt="" coords="247,284,247,318,241,318,241,284"/>
+<area shape="poly" title=" " alt="" coords="247,284,247,317,241,317,241,284"/>
 <area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="192,5,296,85"/>
 <area shape="poly" title=" " alt="" coords="247,100,247,134,241,134,241,100"/>
 </map>
@@ -138,6 +138,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:add6c307568c3286090dc44cf9c2b64d8" id="r_add6c307568c3286090dc44cf9c2b64d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add6c307568c3286090dc44cf9c2b64d8">ST7735</a> (<a class="el" href="class_h_w___s_p_i___master.html">HW_SPI_Master</a> *spi, <a class="el" href="structstruct___config_s_t7735.html">struct_ConfigST7735</a> device_config)</td></tr>
 <tr class="memdesc:add6c307568c3286090dc44cf9c2b64d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_s_t7735.html" title="ST7735 driven TFT color display device.">ST7735</a> object.  <br /></td></tr>
 <tr class="separator:add6c307568c3286090dc44cf9c2b64d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae39c6390f948dee9be246381356f636f" id="r_ae39c6390f948dee9be246381356f636f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae39c6390f948dee9be246381356f636f">set_rotation_and_color</a> (<a class="el" href="st7735_8h.html#a059e82c17223f7c3f8f83076a55733f9">ST7735Rotation</a> rotation)</td></tr>
+<tr class="memdesc:ae39c6390f948dee9be246381356f636f"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the actual position of the display  <br /></td></tr>
+<tr class="separator:ae39c6390f948dee9be246381356f636f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9df39c104f9b583b7e8ac2558c099724" id="r_a9df39c104f9b583b7e8ac2558c099724"><td class="memItemLeft" align="right" valign="top"><a id="a9df39c104f9b583b7e8ac2558c099724" name="a9df39c104f9b583b7e8ac2558c099724"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_display_ON</b> ()</td></tr>
 <tr class="memdesc:a9df39c104f9b583b7e8ac2558c099724"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the display ON object. <br /></td></tr>
@@ -153,7 +156,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_display_OFF</b> (
 <tr class="memdesc:a33bd0614652a81767fee1ef0af0c5b3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual member function. Each device must implement this method and check the compatibility of the widget parameter with the its physical limitations.  <br /></td></tr>
 <tr class="separator:a33bd0614652a81767fee1ef0af0c5b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ec156ac373534b3d705175d1bc61501" id="r_a6ec156ac373534b3d705175d1bc61501"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ec156ac373534b3d705175d1bc61501">clear_device_screen_buffer</a> (<a class="el" href="canvas_8h.html#a9efd9fcd52acdc60f2eb45ff9fce269b">ColorIndex</a> color_index=ColorIndex::BLACK)</td></tr>
-<tr class="memdesc:a6ec156ac373534b3d705175d1bc61501"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill the internal <a class="el" href="class_s_t7735.html" title="ST7735 driven TFT color display device.">ST7735</a> screen buffer with the given color. Default to BLACK, clear de internal buffer  <br /></td></tr>
+<tr class="memdesc:a6ec156ac373534b3d705175d1bc61501"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill the internal <a class="el" href="class_s_t7735.html" title="ST7735 driven TFT color display device.">ST7735</a> screen buffer with the given color. Default to BLACK, clear the internal buffer  <br /></td></tr>
 <tr class="separator:a6ec156ac373534b3d705175d1bc61501"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a748040c220a93cf6e69e1b486e50f198" id="r_a748040c220a93cf6e69e1b486e50f198"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a748040c220a93cf6e69e1b486e50f198">show</a> (<a class="el" href="class_canvas.html">Canvas</a> *canvas, const uint8_t anchor_x, const uint8_t anchor_y)</td></tr>
 <tr class="memdesc:a748040c220a93cf6e69e1b486e50f198"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual member function. It transfers the pixel buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel. This method takes into account the specific addressing scheme and memory structure of the actual display device.  <br /></td></tr>
@@ -204,8 +207,8 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>TFT_panel_height_in
 <p>Construct a new <a class="el" href="class_s_t7735.html" title="ST7735 driven TFT color display device.">ST7735</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">spi</td><td></td></tr>
-    <tr><td class="paramname">device_config</td><td></td></tr>
+    <tr><td class="paramname">spi</td><td>the SPI associated driver </td></tr>
+    <tr><td class="paramname">device_config</td><td>the device configuration file </td></tr>
   </table>
   </dd>
 </dl>
@@ -214,11 +217,13 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_t7735_add6c307568c3286090dc44cf9c2b64d8_cgraph.png" border="0" usemap="#aclass_s_t7735_add6c307568c3286090dc44cf9c2b64d8_cgraph" alt=""/></div>
 <map name="aclass_s_t7735_add6c307568c3286090dc44cf9c2b64d8_cgraph" id="aclass_s_t7735_add6c307568c3286090dc44cf9c2b64d8_cgraph">
-<area shape="rect" title="Construct a new ST7735 object." alt="" coords="5,31,107,55"/>
+<area shape="rect" title="Construct a new ST7735 object." alt="" coords="5,55,107,79"/>
 <area shape="rect" href="class_graphic_display_device.html#adcb1b9fe5ab993b41374db60766e8fa1" title="Construct a new Display Device object." alt="" coords="155,5,384,30"/>
-<area shape="poly" title=" " alt="" coords="107,34,145,30,145,35,108,40"/>
+<area shape="poly" title=" " alt="" coords="107,52,154,40,194,31,195,36,155,46,108,57"/>
 <area shape="rect" href="class_s_t7735.html#a9df39c104f9b583b7e8ac2558c099724" title="Set the display ON object." alt="" coords="200,55,339,79"/>
-<area shape="poly" title=" " alt="" coords="108,46,185,55,184,60,107,51"/>
+<area shape="poly" title=" " alt="" coords="107,64,184,64,184,70,107,70"/>
+<area shape="rect" href="class_s_t7735.html#ae39c6390f948dee9be246381356f636f" title="set the actual position of the display" alt="" coords="181,104,358,129"/>
+<area shape="poly" title=" " alt="" coords="108,77,155,88,195,98,194,103,154,94,107,82"/>
 </map>
 </div>
 
@@ -275,13 +280,25 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>fill the internal <a class="el" href="class_s_t7735.html" title="ST7735 driven TFT color display device.">ST7735</a> screen buffer with the given color. Default to BLACK, clear de internal buffer </p>
+<p>fill the internal <a class="el" href="class_s_t7735.html" title="ST7735 driven TFT color display device.">ST7735</a> screen buffer with the given color. Default to BLACK, clear the internal buffer </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">color_index</td><td></td></tr>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_t7735_a6ec156ac373534b3d705175d1bc61501_cgraph.png" border="0" usemap="#aclass_s_t7735_a6ec156ac373534b3d705175d1bc61501_cgraph" alt=""/></div>
+<map name="aclass_s_t7735_a6ec156ac373534b3d705175d1bc61501_cgraph" id="aclass_s_t7735_a6ec156ac373534b3d705175d1bc61501_cgraph">
+<area shape="rect" title="fill the internal ST7735 screen buffer with the given color. Default to BLACK, clear the internal buf..." alt="" coords="5,31,202,55"/>
+<area shape="rect" href="class_probe.html#a493e1f46f0123ae6a18d7bd6e79d74f1" title="Generates a HI logical level on the GPIO." alt="" coords="250,5,315,30"/>
+<area shape="poly" title=" " alt="" coords="195,27,234,22,234,27,195,33"/>
+<area shape="rect" href="class_probe.html#ade2391514faaee5f3acfffc4d3cb2de8" title="Generates a LO logical level on the GPIO." alt="" coords="250,55,315,79"/>
+<area shape="poly" title=" " alt="" coords="200,53,234,58,234,63,200,59"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -307,6 +324,42 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ae39c6390f948dee9be246381356f636f" name="ae39c6390f948dee9be246381356f636f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae39c6390f948dee9be246381356f636f">&#9670;&#160;</a></span>set_rotation_and_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ST7735::set_rotation_and_color </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="st7735_8h.html#a059e82c17223f7c3f8f83076a55733f9">ST7735Rotation</a></td>          <td class="paramname"><span class="paramname"><em>rotation</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>set the actual position of the display </p>
+<p><em>set rotation and color</em></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rotation</td><td>rotate the display 0°, 90°, 180°,270° clockwise </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_t7735_ae39c6390f948dee9be246381356f636f_icgraph.png" border="0" usemap="#aclass_s_t7735_ae39c6390f948dee9be246381356f636f_icgraph" alt=""/></div>
+<map name="aclass_s_t7735_ae39c6390f948dee9be246381356f636f_icgraph" id="aclass_s_t7735_ae39c6390f948dee9be246381356f636f_icgraph">
+<area shape="rect" title="set the actual position of the display" alt="" coords="155,5,332,30"/>
+<area shape="rect" href="class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8" title="Construct a new ST7735 object." alt="" coords="5,5,107,30"/>
+<area shape="poly" title=" " alt="" coords="139,20,107,20,107,15,139,15"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -353,6 +406,18 @@ Here is the call graph for this function:</div>
 </dl>
 
 <p>Implements <a class="el" href="class_graphic_display_device.html#a74d7018ff90dd9ec87edf705962f0403">GraphicDisplayDevice</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_t7735_a748040c220a93cf6e69e1b486e50f198_cgraph.png" border="0" usemap="#aclass_s_t7735_a748040c220a93cf6e69e1b486e50f198_cgraph" alt=""/></div>
+<map name="aclass_s_t7735_a748040c220a93cf6e69e1b486e50f198_cgraph" id="aclass_s_t7735_a748040c220a93cf6e69e1b486e50f198_cgraph">
+<area shape="rect" title="A pure virtual member function. It transfers the pixel buffer to the a part of display screen buffer ..." alt="" coords="5,31,96,55"/>
+<area shape="rect" href="class_probe.html#a493e1f46f0123ae6a18d7bd6e79d74f1" title="Generates a HI logical level on the GPIO." alt="" coords="144,5,209,30"/>
+<area shape="poly" title=" " alt="" coords="96,31,128,25,129,30,97,36"/>
+<area shape="rect" href="class_probe.html#ade2391514faaee5f3acfffc4d3cb2de8" title="Generates a LO logical level on the GPIO." alt="" coords="144,55,209,79"/>
+<area shape="poly" title=" " alt="" coords="97,49,129,55,128,61,96,54"/>
+</map>
+</div>
 
 </div>
 </div>

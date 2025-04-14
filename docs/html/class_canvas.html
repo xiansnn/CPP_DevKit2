@@ -114,11 +114,11 @@ Inheritance diagram for Canvas:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_canvas__inherit__graph.png" border="0" usemap="#a_canvas_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_canvas_inherit__map" id="a_canvas_inherit__map">
-<area shape="rect" title="The canvas is a virtual memory in which the widget draws." alt="" coords="225,5,691,268"/>
-<area shape="rect" href="class_canvas_r_g_b.html" title="A special version of canvas for color widget (and device) with 1 pixel/byte accoeding to 565 RGB colo..." alt="" coords="5,316,447,467"/>
-<area shape="poly" title=" " alt="" coords="330,281,296,318,292,314,326,277"/>
-<area shape="rect" href="class_canvas_v_l_s_b.html" title="A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically." alt="" coords="471,316,912,467"/>
-<area shape="poly" title=" " alt="" coords="590,277,625,314,621,318,586,280"/>
+<area shape="rect" title="The canvas is a virtual memory in which the widget draws." alt="" coords="225,5,691,249"/>
+<area shape="rect" href="class_canvas_r_g_b.html" title="A special version of canvas for color widget (and device) with 1 pixel/byte accoeding to 565 RGB colo..." alt="" coords="5,297,447,448"/>
+<area shape="poly" title=" " alt="" coords="334,262,299,299,295,296,330,258"/>
+<area shape="rect" href="class_canvas_v_l_s_b.html" title="A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically." alt="" coords="471,297,912,448"/>
+<area shape="poly" title=" " alt="" coords="586,258,622,296,618,299,582,262"/>
 </map>
 </div>
 <div class="dynheader">
@@ -126,7 +126,7 @@ Collaboration diagram for Canvas:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_canvas__coll__graph.png" border="0" usemap="#a_canvas_coll__map" alt="Collaboration graph"/></div>
 <map name="a_canvas_coll__map" id="a_canvas_coll__map">
-<area shape="rect" title="The canvas is a virtual memory in which the widget draws." alt="" coords="5,5,471,268"/>
+<area shape="rect" title="The canvas is a virtual memory in which the widget draws." alt="" coords="5,5,471,249"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -146,9 +146,6 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>create_canvas
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_canvas_buffer</b> ()</td></tr>
 <tr class="memdesc:ac4b13a4015778b278e43b3331460c1a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill the canvas buffer with 0x00 <br /></td></tr>
 <tr class="separator:ac4b13a4015778b278e43b3331460c1a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09bb8b22f2bb155310bc8feb3895bdc1" id="r_a09bb8b22f2bb155310bc8feb3895bdc1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstruct___pixel_frame.html">struct_PixelFrame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09bb8b22f2bb155310bc8feb3895bdc1">get_pixel_frame</a> ()</td></tr>
-<tr class="memdesc:a09bb8b22f2bb155310bc8feb3895bdc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">return a pixelFrame structure  <br /></td></tr>
-<tr class="separator:a09bb8b22f2bb155310bc8feb3895bdc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b11b9d081c76790cf195964fface64b" id="r_a5b11b9d081c76790cf195964fface64b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b11b9d081c76790cf195964fface64b">draw_pixel</a> (const int x, const int y, const <a class="el" href="canvas_8h.html#a9efd9fcd52acdc60f2eb45ff9fce269b">ColorIndex</a> color=ColorIndex::WHITE)=0</td></tr>
 <tr class="memdesc:a5b11b9d081c76790cf195964fface64b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic primitive to draw a pixel  <br /></td></tr>
 <tr class="separator:a5b11b9d081c76790cf195964fface64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -171,7 +168,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>canvas_buffer_size<
 <tr class="memdesc:a109cc5819dd5ddfcbe0d6d03864dcf16"><td class="mdescLeft">&#160;</td><td class="mdescRight">the size (in bytes) of the buffer <br /></td></tr>
 <tr class="separator:a109cc5819dd5ddfcbe0d6d03864dcf16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9dd0742453c116a917f618435dceb2cc" id="r_a9dd0742453c116a917f618435dceb2cc"><td class="memItemLeft" align="right" valign="top"><a id="a9dd0742453c116a917f618435dceb2cc" name="a9dd0742453c116a917f618435dceb2cc"></a>
-uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><b>canvas_buffer</b></td></tr>
+uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><b>canvas_buffer</b> {nullptr}</td></tr>
 <tr class="memdesc:a9dd0742453c116a917f618435dceb2cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">the buffer <br /></td></tr>
 <tr class="separator:a9dd0742453c116a917f618435dceb2cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -351,27 +348,6 @@ Here is the caller graph for this function:</div>
 </dl>
 
 <p>Implemented in <a class="el" href="class_canvas_r_g_b.html#a6b75bb954fe7937dbfb3d321054c13dc">CanvasRGB</a>, and <a class="el" href="class_canvas_v_l_s_b.html#a40d40c35e6fc2b5cf8a91c7c754dad25">CanvasVLSB</a>.</p>
-
-</div>
-</div>
-<a id="a09bb8b22f2bb155310bc8feb3895bdc1" name="a09bb8b22f2bb155310bc8feb3895bdc1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09bb8b22f2bb155310bc8feb3895bdc1">&#9670;&#160;</a></span>get_pixel_frame()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structstruct___pixel_frame.html">struct_PixelFrame</a> Canvas::get_pixel_frame </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>return a pixelFrame structure </p>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated</a></b></dt><dd></dd></dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
