@@ -111,38 +111,31 @@ private:
     void set_RAM_write_addresses(uint8_t start_x, uint8_t start_y, size_t width, size_t height);
     
     public:
-    /**
-     * @brief Construct a new ST7735 object
-     * 
-     * @param spi 
-     * @param device_config 
-     */
+
+    /// @brief Construct a new ST7735 object
+    /// @param spi the SPI associated driver
+    /// @param device_config the device configuration file
     ST7735(HW_SPI_Master *spi, struct_ConfigST7735 device_config);
     ~ST7735();
+
+    /// @brief set the actual position of the display
+    /// @param rotation rotate the display 0°, 90°, 180°,270° clockwise
     void set_rotation_and_color(ST7735Rotation rotation);
-    /**
-     * @brief Set the display ON object
-     * 
-     */
+
+    /// @brief Set the display ON object
     void set_display_ON();
-    /**
-     * @brief Set the display OFF object
-     * 
-     */
+
+    /// @brief Set the display OFF object
     void set_display_OFF();
-    /**
-     * @brief turn the display in sleep mode on/off
-     * 
-     * @param enable 
-     */
+
+    /// @brief turn the display in sleep mode on/off
+    /// @param enable 
     void enable_sleep(bool enable);
     void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg);
-    /**
-     * @brief fill the internal ST7735 screen buffer with the given color.
-     * Default to BLACK, clear the internal buffer
-     * 
-     * @param color_index 
-     */
+
+    /// @brief fill the internal ST7735 screen buffer with the given color.
+    /// Default to BLACK, clear the internal buffer
+    /// @param color_index 
     void clear_device_screen_buffer(ColorIndex color_index = ColorIndex::BLACK);
     void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y);
 };
