@@ -16,9 +16,10 @@
 #include "t_managed_square_led_models.cpp"
 #include "utilities/probe/probe.h"
 
-
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
+
+#define CANVAS_FORMAT CanvasFormat::MONO_VLSB
 
 class my_simple_led_widget : public WidgetSquareLed
 {
@@ -26,7 +27,8 @@ private:
 public:
     my_simple_led_widget(MyManagedSquareLedModel *actual_displayed_model,
                          GraphicDisplayDevice *graphic_display_screen,
-                         struct_ConfigGraphicWidget graph_cfg);
+                         struct_ConfigGraphicWidget graph_cfg,
+                         CanvasFormat format);
     ~my_simple_led_widget();
     void get_value_of_interest();
 };
@@ -39,7 +41,8 @@ private:
 public:
     MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *actual_displayed_model,
                                GraphicDisplayDevice *display_screen,
-                               struct_ConfigGraphicWidget graph_cfg);
+                               struct_ConfigGraphicWidget graph_cfg,
+                               CanvasFormat format);
     ~MySquareLEDWidgetWithFocus();
     void draw();
     void get_value_of_interest();
@@ -47,8 +50,9 @@ public:
 
 my_simple_led_widget::my_simple_led_widget(MyManagedSquareLedModel *actual_displayed_model,
                                            GraphicDisplayDevice *graphic_display_screen,
-                                           struct_ConfigGraphicWidget graph_cfg)
-    : WidgetSquareLed(actual_displayed_model, graphic_display_screen, graph_cfg)
+                                           struct_ConfigGraphicWidget graph_cfg,
+                                           CanvasFormat format)
+    : WidgetSquareLed(actual_displayed_model, graphic_display_screen, graph_cfg,format)
 {
 }
 
@@ -63,8 +67,9 @@ void my_simple_led_widget::get_value_of_interest() // le valeu bool
 
 MySquareLEDWidgetWithFocus::MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *actual_displayed_model,
                                                        GraphicDisplayDevice *display_screen,
-                                                       struct_ConfigGraphicWidget graph_cfg)
-    : GraphicWidget(display_screen, graph_cfg, actual_displayed_model)
+                                                       struct_ConfigGraphicWidget graph_cfg,
+                                                       CanvasFormat format)
+    : GraphicWidget(display_screen, graph_cfg,format, actual_displayed_model)
 {
 #define FOCUS_OFFSET 8u
 #define FOCUS_WIDTH 5u
@@ -78,7 +83,7 @@ MySquareLEDWidgetWithFocus::MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *
         .widget_anchor_x = anchor_x,
         .widget_anchor_y = graph_cfg.widget_anchor_y,
         .widget_with_border = true};
-    this->square_led = new my_simple_led_widget(actual_displayed_model, display_screen, square_led_cfg);
+    this->square_led = new my_simple_led_widget(actual_displayed_model, display_screen, square_led_cfg,CANVAS_FORMAT);
 
     struct_ConfigGraphicWidget focus_led_cfg{
         .pixel_frame_width = FOCUS_WIDTH,
@@ -90,8 +95,8 @@ MySquareLEDWidgetWithFocus::MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *
         .widget_with_border = false};
 
     this->focus_led = new WidgetFocusIndicator(actual_displayed_model,
-                                              display_screen,
-                                              focus_led_cfg);
+                                               display_screen,
+                                               focus_led_cfg,CANVAS_FORMAT);
     this->focus_led->set_blink_us(200000);
     add_widget(this->square_led);
     add_widget(this->focus_led);
@@ -105,9 +110,9 @@ MySquareLEDWidgetWithFocus::~MySquareLEDWidgetWithFocus()
 
 void MySquareLEDWidgetWithFocus::draw()
 {
-    get_value_of_interest(); 
+    get_value_of_interest();
     if (actual_displayed_model->has_changed())
-    //nothing to draw
+        // nothing to draw
         actual_displayed_model->draw_widget_done();
 
     for (auto &&widget : widgets)
@@ -120,5 +125,5 @@ void MySquareLEDWidgetWithFocus::draw()
 
 void MySquareLEDWidgetWithFocus::get_value_of_interest()
 {
-    //nothing to get
+    // nothing to get
 }

@@ -68,8 +68,8 @@ std::map<ControlledObjectStatus, std::string> status_to_string{
 struct_ConfigGraphicWidget default_cfg{
     .pixel_frame_width = 100,
     .pixel_frame_height = 8,
-    .fg_color = PixelColor::WHITE,
-    .bg_color = PixelColor::BLACK};
+    .fg_color = ColorIndex::WHITE,
+    .bg_color = ColorIndex::BLACK};
 
 MyIncrementalValueWidgetOnSerialMonitor::MyIncrementalValueWidgetOnSerialMonitor(PrinterDevice *my_printer, MyIncrementalValueModel *_actual_displayed_object)
     : PrintWidget(my_printer, _actual_displayed_object)
@@ -99,17 +99,17 @@ void MyIncrementalValueWidgetOnSerialMonitor::draw()
         switch (model_status)
         {
         case ControlledObjectStatus::IS_WAITING:
-            sprintf(((PrinterDevice *)this->display_screen)->text_buffer,
+            sprintf(((PrinterDevice *)this->display_device)->text_buffer,
                     "[%s] %s with value=%d\n",
                     name.c_str(), status.c_str(), value);
             break;
         case ControlledObjectStatus::HAS_FOCUS:
-            sprintf(((PrinterDevice *)this->display_screen)->text_buffer,
+            sprintf(((PrinterDevice *)this->display_device)->text_buffer,
                     "[%s] %s with value=%d\n",
                     name.c_str(), status.c_str(), value);
             break;
         case ControlledObjectStatus::IS_ACTIVE:
-            sprintf(((PrinterDevice *)this->display_screen)->text_buffer,
+            sprintf(((PrinterDevice *)this->display_device)->text_buffer,
                     "[%s] %s with value= %d %*c\n",
                     name.c_str(), status.c_str(), value, value_to_char_position(), '|');
             break;
@@ -117,7 +117,7 @@ void MyIncrementalValueWidgetOnSerialMonitor::draw()
             break;
         }
         //====show
-        ((PrinterDevice *)this->display_screen)->show();
+        ((PrinterDevice *)this->display_device)->show();
         //====clear change_flag
         this->actual_displayed_model->draw_widget_done();
         pr_D1.lo();
@@ -147,9 +147,9 @@ void MyManagerWidget::draw()
         std::string text = "manager " + status_to_string[((MyIncrementalValueModel *)actual_displayed_model)->get_status()] + " with value=" +
                            std::to_string(((MyIncrementalValueModel *)actual_displayed_model)->get_value()) + "\n";
         //====draw
-        sprintf(((PrinterDevice *)this->display_screen)->text_buffer, text.c_str());
+        sprintf(((PrinterDevice *)this->display_device)->text_buffer, text.c_str());
         //====show
-        ((PrinterDevice *)this->display_screen)->show();
+        ((PrinterDevice *)this->display_device)->show();
         //====clear change_flag
         this->actual_displayed_model->draw_widget_done();
 

@@ -13,6 +13,8 @@
 #include "t_switch_button_controller.cpp"
 #include "t_square_led_widget.cpp"
 
+#define CANVAS_FORMAT CanvasFormat::MONO_VLSB
+
 
 /// @brief ########## Debug/Observer Probe for logic analyser section ##########
 Probe pr_D4 = Probe(4);
@@ -48,8 +50,8 @@ struct_ConfigSSD1306 cfg_ssd1306{
 struct_ConfigGraphicWidget square_led_cfg = {
     .pixel_frame_width = 16,
     .pixel_frame_height = 16,
-    .fg_color = PixelColor::WHITE,
-    .bg_color = PixelColor::BLACK,
+    .fg_color = ColorIndex::WHITE,
+    .bg_color = ColorIndex::BLACK,
     .widget_anchor_x = 60,
     .widget_anchor_y = 32,
     .widget_with_border = true};
@@ -68,7 +70,7 @@ int main()
 
     MySquareLedModel my_model = MySquareLedModel();
 
-    my_blinking_square_led_widget square_led = my_blinking_square_led_widget(&my_model, &display, square_led_cfg);
+    my_blinking_square_led_widget square_led = my_blinking_square_led_widget(&my_model, &display, square_led_cfg,CANVAS_FORMAT);
     square_led.set_blink_us(300000);
 
     MySwitchButton central_switch = MySwitchButton(CENTRAL_SWITCH_GPIO, cfg_central_switch);

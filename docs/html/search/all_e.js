@@ -8,7 +8,7 @@ var searchData=
   ['ledstatus_5',['LEDStatus',['../widget__square__led_8h.html#aa7a6bd52125294400522ef059731eec1',1,'widget_square_led.h']]],
   ['libraries_6',['&quot;Hardware libraries&quot;',['../group__hw.html',1,'']]],
   ['library_7',['&quot;Utilities/Debug library&quot;',['../group__debug.html',1,'']]],
-  ['line_8',['line',['../class_graphic_widget.html#a486f223706f90218336d4fa3747ef76c',1,'GraphicWidget']]],
+  ['line_8',['line',['../class_graphic_widget.html#ab3cd06c0aabb88e5ca25489391662ce7',1,'GraphicWidget']]],
   ['line_5ffeed_9',['LINE_FEED',['../widget_8h.html#a3c2cad5489953de23c5733e6e696a93e',1,'widget.h']]],
   ['list_10',['List',['../bug.html',1,'Bug List'],['../todo.html',1,'Todo List']]],
   ['lo_11',['lo',['../class_probe.html#ade2391514faaee5f3acfffc4d3cb2de8',1,'Probe']]],

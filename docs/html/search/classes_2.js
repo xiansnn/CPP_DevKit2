@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['graphicdisplaydevice_0',['GraphicDisplayDevice',['../class_graphic_display_device.html',1,'']]],
-  ['graphicwidget_1',['GraphicWidget',['../class_graphic_widget.html',1,'']]]
+  ['dht11_0',['DHT11',['../class_d_h_t11.html',1,'']]],
+  ['displaydevice_1',['DisplayDevice',['../class_display_device.html',1,'']]]
 ];

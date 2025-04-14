@@ -1,0 +1,9 @@
+<map id="ST7735::ST7735" name="ST7735::ST7735">
+<area shape="rect" id="Node000001" title="Construct a new ST7735 object." alt="" coords="5,55,107,79"/>
+<area shape="rect" id="Node000002" href="$class_graphic_display_device.html#adcb1b9fe5ab993b41374db60766e8fa1" title="Construct a new Display Device object." alt="" coords="155,5,384,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,52,154,40,194,31,195,36,155,46,108,57"/>
+<area shape="rect" id="Node000003" href="$class_s_t7735.html#a9df39c104f9b583b7e8ac2558c099724" title="Set the display ON object." alt="" coords="200,55,339,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="107,64,184,64,184,70,107,70"/>
+<area shape="rect" id="Node000004" href="$class_s_t7735.html#ae39c6390f948dee9be246381356f636f" title="set the actual position of the display" alt="" coords="181,104,358,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="108,77,155,88,195,98,194,103,154,94,107,82"/>
+</map>

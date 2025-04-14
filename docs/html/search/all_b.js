@@ -9,7 +9,7 @@ var searchData=
   ['hc_5fsr04_2eh_6',['hc_sr04.h',['../hc__sr04_8h.html',1,'']]],
   ['height_7',['height',['../structstruct___render_area.html#a1b865d1677e21638357766ee175dd3bb',1,'struct_RenderArea']]],
   ['hi_8',['hi',['../class_probe.html#a493e1f46f0123ae6a18d7bd6e79d74f1',1,'Probe']]],
-  ['hline_9',['hline',['../class_graphic_widget.html#a5099c45a85d86703b2c12d0d3a901c8e',1,'GraphicWidget']]],
+  ['hline_9',['hline',['../class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a',1,'GraphicWidget']]],
   ['horizontal_5faddressing_5fmode_10',['HORIZONTAL_ADDRESSING_MODE',['../ssd1306_8h.html#a33832f7efd11e0c4480e0e2476646141',1,'ssd1306.h']]],
   ['horizontal_5fscroll_11',['horizontal_scroll',['../class_s_s_d1306.html#a3228383e41ea93124a1da0a619dc6b11',1,'SSD1306']]],
   ['horizontal_5ftab_12',['HORIZONTAL_TAB',['../widget_8h.html#ab9b41a58308928842d7ee267dbc81e26',1,'widget.h']]],
@@ -17,5 +17,8 @@ var searchData=
   ['hw_5fi2c_2eh_14',['hw_i2c.h',['../hw__i2c_8h.html',1,'']]],
   ['hw_5fi2c_5fmaster_15',['HW_I2C_Master',['../class_h_w___i2_c___master.html',1,'HW_I2C_Master'],['../class_h_w___i2_c___master.html#aec651bc1d3019c6a5d30bbda8bae5846',1,'HW_I2C_Master::HW_I2C_Master()']]],
   ['hw_5fi2c_5fslave_16',['HW_I2C_Slave',['../class_h_w___i2_c___slave.html',1,'HW_I2C_Slave'],['../class_h_w___i2_c___slave.html#ae6212d49af7559b541ec2160d6775917',1,'HW_I2C_Slave::HW_I2C_Slave()']]],
-  ['hw_5fpwm_2eh_17',['hw_pwm.h',['../hw__pwm_8h.html',1,'']]]
+  ['hw_5fpwm_2eh_17',['hw_pwm.h',['../hw__pwm_8h.html',1,'']]],
+  ['hw_5freset_5fpin_18',['hw_reset_pin',['../structstruct___config_s_t7735.html#a9c2d7524a91870088a48f308b4894f85',1,'struct_ConfigST7735']]],
+  ['hw_5fspi_2eh_19',['hw_spi.h',['../hw__spi_8h.html',1,'']]],
+  ['hw_5fspi_5fmaster_20',['HW_SPI_Master',['../class_h_w___s_p_i___master.html',1,'HW_SPI_Master'],['../class_h_w___s_p_i___master.html#ae511ff460d41821039ff9d25538ab57c',1,'HW_SPI_Master::HW_SPI_Master()']]]
 ];

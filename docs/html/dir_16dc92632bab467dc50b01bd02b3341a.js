@@ -8,5 +8,6 @@ var dir_16dc92632bab467dc50b01bd02b3341a =
     [ "rotary_encoder", "dir_9dfb2b70c43aafdd01eb4153687ebee1.html", "dir_9dfb2b70c43aafdd01eb4153687ebee1" ],
     [ "SG90", "dir_0625d5ea7b07f97131d30c9d9efdee9e.html", "dir_0625d5ea7b07f97131d30c9d9efdee9e" ],
     [ "SSD1306", "dir_4b9e62015fffd096c55fea90cc911a11.html", "dir_4b9e62015fffd096c55fea90cc911a11" ],
+    [ "ST7735", "dir_ceb2b19df7c98beb9974cc31caddcfd9.html", "dir_ceb2b19df7c98beb9974cc31caddcfd9" ],
     [ "switch_button", "dir_04341cff68d04296ac2545bf596ab6b3.html", "dir_04341cff68d04296ac2545bf596ab6b3" ]
 ];

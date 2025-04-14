@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['printerdevice_0',['PrinterDevice',['../class_printer_device.html',1,'']]],
-  ['printwidget_1',['PrintWidget',['../class_print_widget.html',1,'']]],
-  ['probe_2',['Probe',['../class_probe.html',1,'']]],
-  ['pwm_3',['PWM',['../class_p_w_m.html',1,'']]],
-  ['pwmgatedmeasure_4',['PWMgatedMeasure',['../class_p_w_mgated_measure.html',1,'']]]
+  ['model_0',['Model',['../class_model.html',1,'']]],
+  ['modelbargraph_1',['ModelBargraph',['../class_model_bargraph.html',1,'']]],
+  ['mpu6050_2',['MPU6050',['../class_m_p_u6050.html',1,'']]],
+  ['msgeq7_3',['MSGEQ7',['../class_m_s_g_e_q7.html',1,'']]]
 ];

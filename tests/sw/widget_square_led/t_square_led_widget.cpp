@@ -22,7 +22,8 @@ private:
 public:
     my_blinking_square_led_widget(MySquareLedModel *actual_displayed_model,
                                   GraphicDisplayDevice *graphic_display_screen,
-                                  struct_ConfigGraphicWidget graph_cfg);
+                                  struct_ConfigGraphicWidget graph_cfg,
+                                  CanvasFormat format);
     ~my_blinking_square_led_widget();
     void get_value_of_interest();
 };
@@ -39,8 +40,9 @@ public:
  */
 my_blinking_square_led_widget::my_blinking_square_led_widget(MySquareLedModel *actual_displayed_model,
                                                              GraphicDisplayDevice *graphic_display_screen,
-                                                             struct_ConfigGraphicWidget graph_cfg)
-    : WidgetBlinkingSquareLed(actual_displayed_model, graphic_display_screen, graph_cfg)
+                                                             struct_ConfigGraphicWidget graph_cfg,
+                                                             CanvasFormat format)
+    : WidgetBlinkingSquareLed(actual_displayed_model, graphic_display_screen, graph_cfg, format)
 {
 }
 

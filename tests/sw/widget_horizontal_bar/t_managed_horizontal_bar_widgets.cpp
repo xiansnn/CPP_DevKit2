@@ -17,6 +17,8 @@
 #include "utilities/probe/probe.h"
 #include "t_managed_horizontal_bar_models.cpp"
 
+#define CANVAS_FORMAT CanvasFormat::MONO_VLSB
+
 Probe pr_D5 = Probe(5);
 
 class My_Horizontal_Bar_Widget : public WidgetHorizontalBar
@@ -26,7 +28,7 @@ public:
     My_Horizontal_Bar_Widget(Model *bar_value_model,
                              GraphicDisplayDevice *graphic_display_screen,
                              int max_value, int min_value,
-                             struct_ConfigGraphicWidget graph_cfg);
+                             struct_ConfigGraphicWidget graph_cfg, CanvasFormat format);
     ~My_Horizontal_Bar_Widget();
     void get_value_of_interest();
 };
@@ -34,9 +36,9 @@ public:
 My_Horizontal_Bar_Widget::My_Horizontal_Bar_Widget(Model *bar_value_model,
                                                    GraphicDisplayDevice *graphic_display_screen,
                                                    int max_value, int min_value,
-                                                   struct_ConfigGraphicWidget graph_cfg)
+                                                   struct_ConfigGraphicWidget graph_cfg, CanvasFormat format)
     : WidgetHorizontalBar(bar_value_model, graphic_display_screen,
-                          max_value, min_value, graph_cfg)
+                          max_value, min_value, graph_cfg, format)
 {
 }
 
@@ -60,7 +62,7 @@ public:
     My_Horizontal_Bar_Widget_With_Focus(MyControlledHorizontalBarModel *bar_value_model,
                                         GraphicDisplayDevice *graphic_display_screen,
                                         int max_value, int min_value,
-                                        struct_ConfigGraphicWidget graph_cfg);
+                                        struct_ConfigGraphicWidget graph_cfg, CanvasFormat format);
     ~My_Horizontal_Bar_Widget_With_Focus();
     void draw();
     void get_value_of_interest();
@@ -69,8 +71,8 @@ public:
 My_Horizontal_Bar_Widget_With_Focus::My_Horizontal_Bar_Widget_With_Focus(MyControlledHorizontalBarModel *bar_value_model,
                                                                          GraphicDisplayDevice *graphic_display_screen,
                                                                          int max_value, int min_value,
-                                                                         struct_ConfigGraphicWidget graph_cfg)
-    : GraphicWidget(graphic_display_screen, graph_cfg, bar_value_model)
+                                                                         struct_ConfigGraphicWidget graph_cfg, CanvasFormat format)
+    : GraphicWidget(graphic_display_screen, graph_cfg, format, bar_value_model)
 
 {
     this->bar_value_model = bar_value_model;
@@ -83,8 +85,8 @@ My_Horizontal_Bar_Widget_With_Focus::My_Horizontal_Bar_Widget_With_Focus(MyContr
     struct_ConfigGraphicWidget h_bar_cfg{
         .pixel_frame_width = graph_cfg.pixel_frame_width - FOCUS_OFFSET,
         .pixel_frame_height = graph_cfg.pixel_frame_height,
-        .fg_color = PixelColor::WHITE,
-        .bg_color = PixelColor::BLACK,
+        .fg_color = ColorIndex::WHITE,
+        .bg_color = ColorIndex::BLACK,
         .widget_anchor_x = anchor_x,
         .widget_anchor_y = widget_anchor_y,
         .widget_with_border = true};
@@ -92,20 +94,20 @@ My_Horizontal_Bar_Widget_With_Focus::My_Horizontal_Bar_Widget_With_Focus(MyContr
     this->h_bar_widget = new My_Horizontal_Bar_Widget(bar_value_model,
                                                       graphic_display_screen,
                                                       max_value, min_value,
-                                                      h_bar_cfg);
+                                                      h_bar_cfg,CANVAS_FORMAT);
 
     struct_ConfigGraphicWidget focus_cfg{
         .pixel_frame_width = FOCUS_WIDTH,
         .pixel_frame_height = graph_cfg.pixel_frame_height,
-        .fg_color = PixelColor::WHITE,
-        .bg_color = PixelColor::BLACK,
+        .fg_color = ColorIndex::WHITE,
+        .bg_color = ColorIndex::BLACK,
         .widget_anchor_x = widget_anchor_x,
         .widget_anchor_y = widget_anchor_y,
         .widget_with_border = false};
 
     this->focus_widget = new WidgetFocusIndicator(bar_value_model,
                                                   graphic_display_screen,
-                                                  focus_cfg);
+                                                  focus_cfg,CANVAS_FORMAT);
     this->focus_widget->set_blink_us(200000);
 
     this->add_widget(focus_widget);
@@ -130,7 +132,6 @@ void My_Horizontal_Bar_Widget_With_Focus::draw()
     {
         widget->draw();
     }
-
 }
 
 void My_Horizontal_Bar_Widget_With_Focus::get_value_of_interest()

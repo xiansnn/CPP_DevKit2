@@ -2,8 +2,8 @@
 
 WidgetBlinkingSquareLed::WidgetBlinkingSquareLed(Model *actual_displayed_model,
                                                  GraphicDisplayDevice *display_screen,
-                                                 struct_ConfigGraphicWidget graph_cfg)
-    : WidgetSquareLed(actual_displayed_model, display_screen, graph_cfg), Blinker()
+                                                 struct_ConfigGraphicWidget graph_cfg, CanvasFormat format)
+    : WidgetSquareLed(actual_displayed_model, display_screen, graph_cfg, format), Blinker()
 {
 }
 
@@ -23,14 +23,14 @@ void WidgetBlinkingSquareLed::draw()
         case LEDStatus::LED_IS_BLINKING:
             break;
         case LEDStatus::LED_IS_OFF:
-            clear_pixel_buffer();
+            clear_widget();
             led_is_on = false;
             draw_border();
             break;
         case LEDStatus::LED_IS_ON:
-            clear_pixel_buffer();
+            clear_widget();
             led_is_on = true;
-            rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, true, fg_color);
+            rect(0, 0, canvas->canvas_width_pixel, canvas->canvas_height_pixel, true, fg_color);
             break;
         default:
             break;
@@ -42,10 +42,10 @@ void WidgetBlinkingSquareLed::draw()
     compute_blinking_phase();
     if ((led_status == LEDStatus::LED_IS_BLINKING) and has_blinking_changed())
     {
-        clear_pixel_buffer();
+        clear_widget();
         led_is_on = !led_is_on;
         if (led_is_on)
-            rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, true, fg_color);
+            rect(0, 0, canvas->canvas_width_pixel, canvas->canvas_height_pixel, true, fg_color);
         else
             draw_border();
         clear_blinking_phase_change();
@@ -55,8 +55,8 @@ void WidgetBlinkingSquareLed::draw()
 
 WidgetSquareLed::WidgetSquareLed(Model *actual_displayed_model,
                                  GraphicDisplayDevice *graphic_display_screen,
-                                 struct_ConfigGraphicWidget graph_cfg)
-    : GraphicWidget(graphic_display_screen, graph_cfg, actual_displayed_model)
+                                 struct_ConfigGraphicWidget graph_cfg, CanvasFormat format)
+    : GraphicWidget(graphic_display_screen, graph_cfg, format, actual_displayed_model)
 {
 }
 
@@ -68,10 +68,10 @@ void WidgetSquareLed::draw()
 {
     if (actual_displayed_model->has_changed())
     {
-        clear_pixel_buffer();
+        clear_widget();
         get_value_of_interest();
         if (led_is_on)
-            rect(0, 0, pixel_frame.pixel_frame_width, pixel_frame.pixel_frame_height, true, fg_color);
+            rect(0, 0, canvas->canvas_width_pixel, canvas->canvas_height_pixel, true, fg_color);
         else
             draw_border();
         show();
@@ -81,8 +81,8 @@ void WidgetSquareLed::draw()
 
 WidgetFocusIndicator::WidgetFocusIndicator(Model *actual_displayed_model,
                                            GraphicDisplayDevice *graphic_display_screen,
-                                           struct_ConfigGraphicWidget graph_cfg)
-    : WidgetBlinkingSquareLed(actual_displayed_model, graphic_display_screen, graph_cfg)
+                                           struct_ConfigGraphicWidget graph_cfg, CanvasFormat format)
+    : WidgetBlinkingSquareLed(actual_displayed_model, graphic_display_screen, graph_cfg, format)
 {
 }
 

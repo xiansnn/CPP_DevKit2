@@ -4,14 +4,13 @@
 GraphicDisplayDevice::GraphicDisplayDevice(size_t screen_width,
                                            size_t screen_height)
 {
-    this->screen_pixel_height = screen_height;
-    this->screen_pixel_width = screen_width;
+    this->TFT_panel_height_in_pixel = screen_height;
+    this->TFT_panel_width_in_pixel = screen_width;
 }
 
 GraphicDisplayDevice::~GraphicDisplayDevice()
 {
 }
-
 
 PrinterDevice::PrinterDevice(size_t number_of_char_width, size_t number_of_char_height)
 {

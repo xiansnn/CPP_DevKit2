@@ -1,3 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$class_d_h_t11.html" title="the Class manages the DHT11 humidity and temperature sensor" alt="" coords="5,5,59,30"/>
+<area shape="rect" id="Node000000" href="$class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="5,31,60,55"/>
+<area shape="rect" id="Node000001" href="$class_canvas_r_g_b.html" title="A special version of canvas for color widget (and device) with 1 pixel/byte accoeding to 565 RGB colo..." alt="" coords="109,5,184,30"/>
+<area shape="poly" id="edge11_Node000000_Node000001" title=" " alt="" coords="74,31,108,23,109,29,76,36"/>
+<area shape="rect" id="Node000002" href="$class_canvas_v_l_s_b.html" title="A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically." alt="" coords="108,55,185,79"/>
+<area shape="poly" id="edge12_Node000000_Node000002" title=" " alt="" coords="75,49,108,56,106,61,74,54"/>
 </map>

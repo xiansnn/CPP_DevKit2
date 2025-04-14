@@ -1,7 +1,7 @@
 <map id="Model" name="Model">
 <area shape="rect" id="Node000001" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="217,5,497,216"/>
-<area shape="rect" id="Node000002" href="$class_model_bargraph.html" title="the Model used by Bargraph GraphicWidget" alt="" coords="5,273,352,428"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="272,229,238,275,234,272,268,226"/>
+<area shape="rect" id="Node000002" href="$class_model_bargraph.html" title="the Model used by Bargraph GraphicWidget" alt="" coords="5,264,352,437"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="272,230,245,266,241,263,268,226"/>
 <area shape="rect" id="Node000003" href="$class_u_i_controlled_model.html" title="Class that adds UI Controller to the basic Model class." alt="" coords="376,264,699,437"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="447,226,475,263,471,266,443,230"/>
 <area shape="rect" id="Node000004" href="$class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of Model that have special feature such as a value that ca..." alt="" coords="265,485,810,752"/>

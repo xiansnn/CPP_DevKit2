@@ -1,8 +1,16 @@
 var searchData=
 [
-  ['command_5fpin_0',['command_pin',['../structstruct___config_s_g90.html#a581a0a3f493cacd65f9399888cf55a7e',1,'struct_ConfigSG90']]],
-  ['context_1',['context',['../structstruct___i2_c_xfer_result.html#ad12c9d3ec59f778d1d9fff8f2ced9387',1,'struct_I2CXferResult::context'],['../class_h_w___i2_c___slave.html#a6537f2f92c2d4f326372b1245707b01b',1,'HW_I2C_Slave::context']]],
-  ['contrast_2',['contrast',['../structstruct___config_s_s_d1306.html#a4e801394115d22be64de7753c835960f',1,'struct_ConfigSSD1306']]],
-  ['current_5factive_5fmodel_3',['current_active_model',['../class_u_i_model_manager.html#a2c82e97efcdecc4df914e491a928e294',1,'UIModelManager']]],
-  ['current_5fcontrolled_5fmodel_4',['current_controlled_model',['../class_u_i_controller.html#a4475e7f511f16abc5e791417287d5013',1,'UIController']]]
+  ['canvas_0',['canvas',['../class_graphic_widget.html#af9591b5109c6d49f678cc1c49cce5f16',1,'GraphicWidget']]],
+  ['canvas_5fbuffer_1',['canvas_buffer',['../class_canvas.html#a9dd0742453c116a917f618435dceb2cc',1,'Canvas']]],
+  ['canvas_5fbuffer_5fsize_2',['canvas_buffer_size',['../class_canvas.html#a109cc5819dd5ddfcbe0d6d03864dcf16',1,'Canvas']]],
+  ['canvas_5fheight_5fpixel_3',['canvas_height_pixel',['../class_canvas.html#addf98fc4b32946a6c815720de00ebe0e',1,'Canvas']]],
+  ['canvas_5fwidth_5fpixel_4',['canvas_width_pixel',['../class_canvas.html#ae5cb5bef3ff9ea8e2fd9bda308731c62',1,'Canvas']]],
+  ['clk_5fphase_5',['clk_phase',['../structstruct___config_master_s_p_i.html#ab5cc6db8ddef42175018b2c1029cb458',1,'struct_ConfigMasterSPI']]],
+  ['color565_5fpalette_6',['color565_palette',['../canvas_8h.html#a841a26de018118f8e49e2a1320c6401d',1,'canvas.cpp']]],
+  ['command_5fpin_7',['command_pin',['../structstruct___config_s_g90.html#a581a0a3f493cacd65f9399888cf55a7e',1,'struct_ConfigSG90']]],
+  ['context_8',['context',['../structstruct___i2_c_xfer_result.html#ad12c9d3ec59f778d1d9fff8f2ced9387',1,'struct_I2CXferResult::context'],['../class_h_w___i2_c___slave.html#a6537f2f92c2d4f326372b1245707b01b',1,'HW_I2C_Slave::context']]],
+  ['contrast_9',['contrast',['../structstruct___config_s_s_d1306.html#a4e801394115d22be64de7753c835960f',1,'struct_ConfigSSD1306']]],
+  ['cs_5fpin_10',['cs_pin',['../structstruct___config_master_s_p_i.html#ad1ecee733307c3b94312fe5abb8ac24d',1,'struct_ConfigMasterSPI']]],
+  ['current_5factive_5fmodel_11',['current_active_model',['../class_u_i_model_manager.html#a2c82e97efcdecc4df914e491a928e294',1,'UIModelManager']]],
+  ['current_5fcontrolled_5fmodel_12',['current_controlled_model',['../class_u_i_controller.html#a4475e7f511f16abc5e791417287d5013',1,'UIController']]]
 ];

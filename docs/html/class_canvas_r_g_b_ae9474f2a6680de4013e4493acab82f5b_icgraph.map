@@ -1,0 +1,5 @@
+<map id="CanvasRGB::draw_pixel" name="CanvasRGB::draw_pixel">
+<area shape="rect" id="Node000001" title="the graphic primitive to draw a pixel" alt="" coords="190,5,322,30"/>
+<area shape="rect" id="Node000002" href="$class_canvas_r_g_b.html#a0a34b4f1246890872271d35d824d63db" title="a graphic primitive to draw a character at a pixel position" alt="" coords="5,5,142,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,20,142,20,142,15,174,15"/>
+</map>

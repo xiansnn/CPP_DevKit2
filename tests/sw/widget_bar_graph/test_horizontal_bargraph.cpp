@@ -15,6 +15,8 @@
 
 // #define PRINT_DEBUG
 
+#define CANVAS_FORMAT CanvasFormat::MONO_VLSB
+
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
 
@@ -54,8 +56,8 @@ void simulate_values(ModelBargraph *model)
 struct_ConfigGraphicWidget horizontal_bargraph_cfg = {
     .pixel_frame_width = 56,
     .pixel_frame_height = 56,
-    .fg_color = PixelColor::WHITE,
-    .bg_color = PixelColor::BLACK,
+    .fg_color = ColorIndex::WHITE,
+    .bg_color = ColorIndex::BLACK,
     .widget_anchor_x = 20,
     .widget_anchor_y = 0,
     .widget_with_border = true};
@@ -67,7 +69,8 @@ int main()
     ModelBargraph my_model = ModelBargraph(7, 0, 100);
     WidgetHorizontalBargraph my_widget = WidgetHorizontalBargraph(&my_model,
                                                                   &display,
-                                                                  horizontal_bargraph_cfg);
+                                                                  horizontal_bargraph_cfg, 
+                                                                  CANVAS_FORMAT);
 
 #ifdef PRINT_DEBUG
     stdio_init_all();

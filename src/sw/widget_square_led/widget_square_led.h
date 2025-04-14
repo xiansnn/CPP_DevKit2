@@ -45,10 +45,11 @@ public:
      * @param actual_displayed_model the actual displayed model
      * @param graphic_display_screen The display device on which the widget is drawn.
      * @param graph_cfg the configuration data structure of the graphic framebuffer
+     * @param format the associated canvas format
      */
     WidgetSquareLed(Model *actual_displayed_model,
                     GraphicDisplayDevice *graphic_display_screen,
-                    struct_ConfigGraphicWidget graph_cfg);
+                    struct_ConfigGraphicWidget graph_cfg, CanvasFormat format);
     ~WidgetSquareLed();
 
     virtual void draw();
@@ -71,10 +72,11 @@ public:
      * @param actual_displayed_model the actual displayed model
      * @param graphic_display_screen The display device on which the widget is drawn.
      * @param graph_cfg the configuration data structure of the graphic framebuffer
+     * @param format the associated canvas format
      */
     WidgetBlinkingSquareLed(Model *actual_displayed_model,
                             GraphicDisplayDevice *graphic_display_screen,
-                            struct_ConfigGraphicWidget graph_cfg);
+                            struct_ConfigGraphicWidget graph_cfg, CanvasFormat format);
     ~WidgetBlinkingSquareLed();
 
     virtual void draw();
@@ -92,9 +94,10 @@ public:
     /// @param actual_displayed_model the actual displayed model
     /// @param graphic_display_screen The display device on which the widget is drawn.
     /// @param graph_cfg the configuration data structure of the graphic framebuffer
+    /// @param format the associated canvas format
     WidgetFocusIndicator(Model *actual_displayed_model,
                          GraphicDisplayDevice *graphic_display_screen,
-                         struct_ConfigGraphicWidget graph_cfg);
+                         struct_ConfigGraphicWidget graph_cfg, CanvasFormat format);
     ~WidgetFocusIndicator();
     virtual void get_value_of_interest();
 };
