@@ -188,8 +188,8 @@ int main()
 
     my_visu_widget graph = my_visu_widget(&display, graph_config, CANVAS_FORMAT, &model);
     pr_D1.hi();
-    display.clear_device_screen_buffer(); //.clear_pixel_buffer(&graph.pixel_frame);
-    pr_D1.lo();                           // 8µs
+    display.clear_device_screen_buffer(); 
+    pr_D1.lo();                           // 51ms
 
     pr_D1.hi();
     my_text_widget title = my_text_widget(&display, title_config, CANVAS_FORMAT);
@@ -208,11 +208,11 @@ int main()
             model.update_cycle(i, sign);
             pr_D4.hi();
             values.draw();
-            pr_D4.lo(); // 9ms
+            pr_D4.lo(); // 9.9ms
 
             pr_D5.hi();
             graph.draw();
-            pr_D5.lo(); // 21ms
+            pr_D5.lo(); // 29.6ms
             sleep_ms(REFRESH_PERIOD);
         }
     }
