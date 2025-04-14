@@ -27,7 +27,7 @@ Probe pr_D5 = Probe(5);
 
 #define DEGREE \xF8
 
-#define CANVAS_FORMAT CanvasFormat::MONO_VLSB
+#define CANVAS_FORMAT CanvasFormat::RGB565
 
 struct_ConfigMasterSPI cfg_spi = {
     .spi = spi1,
@@ -43,7 +43,6 @@ struct_ConfigST7735 cfg_st7735{
     .hw_reset_pin = 15,
     .dc_pin = 14,
     .rotation = ST7735Rotation::_90};
-
 
 class my_model : public Model
 {
@@ -98,29 +97,29 @@ void my_text_widget::get_value_of_interest()
     sprintf(this->text_buffer, "%+3d\xF8  %+3d\xF8", ((my_model *)this->actual_displayed_model)->roll, ((my_model *)this->actual_displayed_model)->pitch);
 }
 
-class my_corner_rectangle_widget : public GraphicWidget
+class my_visu_widget : public GraphicWidget
 {
 private:
     int roll{0};
     int pitch{0};
 
 public:
-    my_corner_rectangle_widget(GraphicDisplayDevice *graphic_display_screen,
-                      struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, Model *model);
-    ~my_corner_rectangle_widget();
+    my_visu_widget(GraphicDisplayDevice *graphic_display_screen,
+                   struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, Model *model);
+    ~my_visu_widget();
     void get_value_of_interest();
     void draw();
 };
-my_corner_rectangle_widget::my_corner_rectangle_widget(GraphicDisplayDevice *graphic_display_screen,
-                                     struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, Model *model)
+my_visu_widget::my_visu_widget(GraphicDisplayDevice *graphic_display_screen,
+                               struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, Model *model)
     : GraphicWidget(graphic_display_screen, graph_cfg, format, model) {}
-my_corner_rectangle_widget::~my_corner_rectangle_widget() {}
-void my_corner_rectangle_widget::get_value_of_interest()
+my_visu_widget::~my_visu_widget() {}
+void my_visu_widget::get_value_of_interest()
 {
     this->roll = ((my_model *)this->actual_displayed_model)->roll;
     this->pitch = ((my_model *)this->actual_displayed_model)->pitch;
 }
-void my_corner_rectangle_widget::draw()
+void my_visu_widget::draw()
 {
     if (actual_displayed_model->has_changed())
     {
@@ -139,10 +138,12 @@ void my_corner_rectangle_widget::draw()
         int x1 = xc + radius * cos_roll;
         int y1 = yl + radius * sin_roll;
 
-        this->circle(radius, xc, yl, false, fg_color);
-        this->line(x0, y0, x1, y1, fg_color);
+        this->canvas->fill_canvas_with_color(bg_color);
 
-        draw_border();
+        this->circle(radius, xc, yl, true, ColorIndex::GREEN);
+        this->line(x0, y0, x1, y1, ColorIndex::YELLOW);
+
+        draw_border(fg_color);
         show();
         actual_displayed_model->draw_widget_done();
     }
@@ -154,29 +155,28 @@ int main()
     stdio_init_all();
     HW_SPI_Master spi_master = HW_SPI_Master(cfg_spi);
     ST7735 display = ST7735(&spi_master, cfg_st7735);
-    display.clear_device_screen_buffer();
-
     struct_ConfigTextWidget title_config = {
         .number_of_column = 10,
         .number_of_line = 1,
         .widget_anchor_x = 0,
-        .widget_anchor_y = 0,
+        .widget_anchor_y = 64,
         .font = font_12x16};
 
     uint8_t w = title_config.font[FONT_WIDTH_INDEX];
     uint8_t h = title_config.font[FONT_HEIGHT_INDEX];
-    uint8_t values_anchor_y = 2 * h;
 
     struct_ConfigTextWidget values_config = {
         .number_of_column = 10,
         .number_of_line = 1,
         .widget_anchor_x = 0,
-        .widget_anchor_y = values_anchor_y,
+        .widget_anchor_y = (uint8_t)(title_config.widget_anchor_y + 2 * h),
         .font = font_12x16};
 
     struct_ConfigGraphicWidget graph_config{
         .pixel_frame_width = 120,
         .pixel_frame_height = 56,
+        .fg_color = ColorIndex::CYAN,
+        .bg_color = ColorIndex::MAROON,
         .widget_anchor_x = 0,
         .widget_anchor_y = 0,
         .widget_with_border = true};
@@ -186,10 +186,10 @@ int main()
     my_text_widget values = my_text_widget(&display, values_config, CANVAS_FORMAT, &model);
     values.process_char(FORM_FEED);
 
-    my_corner_rectangle_widget graph = my_corner_rectangle_widget(&display, graph_config, CANVAS_FORMAT, &model);
+    my_visu_widget graph = my_visu_widget(&display, graph_config, CANVAS_FORMAT, &model);
     pr_D1.hi();
     display.clear_device_screen_buffer(); //.clear_pixel_buffer(&graph.pixel_frame);
-    pr_D1.lo();                                // 8µs
+    pr_D1.lo();                           // 8µs
 
     pr_D1.hi();
     my_text_widget title = my_text_widget(&display, title_config, CANVAS_FORMAT);
