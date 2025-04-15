@@ -352,6 +352,13 @@ private:
     /// @brief auto_next_char flag : if true each char steps one position after being written.
     bool auto_next_char{true};
 
+    /// @brief a graphic primitive to draw a character at a pixel position. Strongly dependent on font memory organisation.
+    /// @param character the character to draw
+    /// @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
+    /// @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
+    void draw_glyph(const char character,
+                    const uint8_t anchor_x, const uint8_t anchor_y);
+
 protected:
     /// @brief create text buffer and delete the old one if already existing
     void create_text_buffer();

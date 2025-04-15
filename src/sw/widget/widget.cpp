@@ -263,7 +263,7 @@ void TextWidget::write(char character, uint8_t char_column, uint8_t char_line)
 {
     uint8_t anchor_x = char_column * this->font[FONT_WIDTH_INDEX];
     uint8_t anchor_y = char_line * this->font[FONT_HEIGHT_INDEX];
-    canvas->draw_glyph(this->get_text_frame_config(), character, anchor_x, anchor_y);
+    draw_glyph(character, anchor_x, anchor_y);
 }
 
 void TextWidget::clear_line()
@@ -449,6 +449,38 @@ void TextWidget::next_char()
         {
             current_char_column = 0;
             next_line();
+        }
+    }
+}
+
+void TextWidget::draw_glyph(const char character,
+                            const uint8_t anchor_x, const uint8_t anchor_y)
+{
+    if ((font == nullptr) || (character < 32))
+        return;
+
+    uint8_t font_width = font[FONT_WIDTH_INDEX];
+    uint8_t font_height = font[FONT_HEIGHT_INDEX];
+
+    uint16_t seek = (character - 32) * (font_width * font_height) / 8 + 2;
+
+    uint8_t b_seek = 0;
+
+    for (uint8_t x = 0; x < font_width; x++)
+    {
+        for (uint8_t y = 0; y < font_height; y++)
+        {
+            if (font[seek] >> b_seek & 0b00000001)
+                canvas->draw_pixel(x + anchor_x, y + anchor_y, fg_color);
+            else
+                canvas->draw_pixel(x + anchor_x, y + anchor_y, bg_color);
+
+            b_seek++;
+            if (b_seek == 8)
+            {
+                b_seek = 0;
+                seek++;
+            }
         }
     }
 }

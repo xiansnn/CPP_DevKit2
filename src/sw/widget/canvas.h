@@ -28,9 +28,9 @@ enum class ColorIndex
     BLACK = 0, // "BLACK" must be coded with code 0x0 for monochrome display device
     WHITE = 1, // "WHITE" must be coded with code 0x1 for monochrome display device
 
-    BLUE,    //     {ColorIndex::BLUE, {0x00, 0x00, 0xFF}},
-    LIME,    //     {ColorIndex::LIME, {0x00, 0xFF, 0x00}},
-    RED,     //     {ColorIndex::RED, {0xFF, 0x00, 0x00}},
+    BLUE, //     {ColorIndex::BLUE, {0x00, 0x00, 0xFF}},
+    LIME, //     {ColorIndex::LIME, {0x00, 0xFF, 0x00}},
+    RED,  //     {ColorIndex::RED, {0xFF, 0x00, 0x00}},
 
     CYAN,    //     {ColorIndex::CYAN, {0x00, 0xFF, 0xFF}},
     YELLOW,  //     {ColorIndex::YELLOW, {0xFF, 0xFF, 0x00}},
@@ -121,7 +121,6 @@ class Canvas
 {
 protected:
 public:
-
     /// @brief Create a canvas buffer object
     virtual void create_canvas_buffer() = 0;
 
@@ -151,27 +150,12 @@ public:
     /// @brief fill the canvas buffer with 0x00
     void clear_canvas_buffer();
 
-    // /// @brief return a pixelFrame structure
-    // ///\deprecated
-    // /// @return
-    // struct_PixelFrame get_pixel_frame(); //
-
     /// @brief the graphic primitive to draw a pixel
     /// @param x the x position of the pixel
     /// @param y the y position of the pixel
     /// @param color the color of the pixel
     virtual void draw_pixel(const int x, const int y,
                             const ColorIndex color = ColorIndex::WHITE) = 0;
-
-
-    /// @brief a graphic primitive to draw a character at a pixel position
-    /// @param text_config the configuration file of the text framebuffer
-    /// @param character the character to draw
-    /// @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
-    /// @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
-    virtual void draw_glyph(const struct_ConfigTextWidget text_config,
-                            const char character,
-                            const uint8_t anchor_x, const uint8_t anchor_y) = 0;
 };
 
 /// @brief A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically
@@ -195,11 +179,8 @@ public:
 
     void draw_pixel(const int x, const int y,
                     const ColorIndex color = ColorIndex::WHITE);
-
-    void draw_glyph(const struct_ConfigTextWidget text_config,
-                    const char character,
-                    const uint8_t anchor_x, const uint8_t anchor_y);
 };
+
 /// @brief A special version of canvas for color widget (and device) with 1 pixel/byte accoeding to 565 RGB color coding
 ///\ingroup view
 class CanvasRGB : public Canvas
@@ -216,13 +197,31 @@ public:
     ~CanvasRGB();
 
     /// @brief fill the canvas buffer with the given color index
-    ///\note the conversion from color index to RGB565 is done by the device after calling the show() memeber
+    ///\note the conversion from color index to RGB565 is done by the device after calling the show() member
     /// @param color
     void fill_canvas_with_color(ColorIndex color);
 
     void draw_pixel(const int x, const int y,
                     const ColorIndex color = ColorIndex::WHITE);
-    void draw_glyph(const struct_ConfigTextWidget text_config,
-                    const char character,
-                    const uint8_t anchor_x, const uint8_t anchor_y);
+};
+
+/// @brief A special version of canvas for monochrome widget with 8pixel/byte arranged horizontally.
+/// Usefull for monochrome widget (e.g.text) even for color RGB565 display device
+///\ingroup view
+class CanvasHMSB : public Canvas
+{
+private:
+    void create_canvas_buffer();
+
+public:
+    CanvasHMSB(uint8_t canvas_width_pixel,
+               uint8_t canvas_height_pixel);
+    ~CanvasHMSB();
+    /// @brief fill the canvas buffer with 0x00 (i.e. BLACK) of 0xFF (WHITE)
+    ///\note the conversion from color bit (0b0 or 0b1) to RGB565 is done by the device after calling the show() member according to fg_color and bg_color
+    /// @param color
+    void fill_canvas_with_color(ColorIndex color);
+
+    void draw_pixel(const int x, const int y,
+                    const ColorIndex color = ColorIndex::WHITE);
 };
