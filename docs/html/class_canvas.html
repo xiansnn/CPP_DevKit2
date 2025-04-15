@@ -114,11 +114,13 @@ Inheritance diagram for Canvas:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_canvas__inherit__graph.png" border="0" usemap="#a_canvas_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_canvas_inherit__map" id="a_canvas_inherit__map">
-<area shape="rect" title="The canvas is a virtual memory in which the widget draws." alt="" coords="225,5,691,249"/>
-<area shape="rect" href="class_canvas_r_g_b.html" title="A special version of canvas for color widget (and device) with 1 pixel/byte accoeding to 565 RGB colo..." alt="" coords="5,297,447,448"/>
-<area shape="poly" title=" " alt="" coords="334,262,299,299,295,296,330,258"/>
-<area shape="rect" href="class_canvas_v_l_s_b.html" title="A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically." alt="" coords="471,297,912,448"/>
-<area shape="poly" title=" " alt="" coords="586,258,622,296,618,299,582,262"/>
+<area shape="rect" title="The canvas is a virtual memory in which the widget draws." alt="" coords="427,5,892,272"/>
+<area shape="rect" href="class_canvas_h_m_s_b.html" title="A special version of canvas for monochrome widget with 8pixel/byte arranged horizontally...." alt="" coords="5,320,425,437"/>
+<area shape="poly" title=" " alt="" coords="415,274,324,322,321,318,412,269"/>
+<area shape="rect" href="class_canvas_r_g_b.html" title="A special version of canvas for color widget (and device) with 1 pixel/byte accoeding to 565 RGB colo..." alt="" coords="449,320,869,437"/>
+<area shape="poly" title=" " alt="" coords="662,287,662,321,657,321,657,287"/>
+<area shape="rect" href="class_canvas_v_l_s_b.html" title="A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically." alt="" coords="893,320,1313,437"/>
+<area shape="poly" title=" " alt="" coords="906,269,997,318,995,322,904,274"/>
 </map>
 </div>
 <div class="dynheader">
@@ -126,7 +128,7 @@ Collaboration diagram for Canvas:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_canvas__coll__graph.png" border="0" usemap="#a_canvas_coll__map" alt="Collaboration graph"/></div>
 <map name="a_canvas_coll__map" id="a_canvas_coll__map">
-<area shape="rect" title="The canvas is a virtual memory in which the widget draws." alt="" coords="5,5,471,249"/>
+<area shape="rect" title="The canvas is a virtual memory in which the widget draws." alt="" coords="5,5,471,272"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -149,12 +151,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_canvas_buffer</
 <tr class="memitem:a5b11b9d081c76790cf195964fface64b" id="r_a5b11b9d081c76790cf195964fface64b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b11b9d081c76790cf195964fface64b">draw_pixel</a> (const int x, const int y, const <a class="el" href="canvas_8h.html#a9efd9fcd52acdc60f2eb45ff9fce269b">ColorIndex</a> color=ColorIndex::WHITE)=0</td></tr>
 <tr class="memdesc:a5b11b9d081c76790cf195964fface64b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphic primitive to draw a pixel  <br /></td></tr>
 <tr class="separator:a5b11b9d081c76790cf195964fface64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a725db20c22fc791eab5951807b152aa3" id="r_a725db20c22fc791eab5951807b152aa3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a725db20c22fc791eab5951807b152aa3">draw_glyph</a> (const <a class="el" href="structstruct___config_text_widget.html">struct_ConfigTextWidget</a> text_config, const char character, const uint8_t anchor_x, const uint8_t anchor_y)=0</td></tr>
-<tr class="memdesc:a725db20c22fc791eab5951807b152aa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">a graphic primitive to draw a character at a pixel position  <br /></td></tr>
-<tr class="separator:a725db20c22fc791eab5951807b152aa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a43f39143153f43c22bff00845e6ee86c" id="r_a43f39143153f43c22bff00845e6ee86c"><td class="memItemLeft" align="right" valign="top"><a id="a43f39143153f43c22bff00845e6ee86c" name="a43f39143153f43c22bff00845e6ee86c"></a>
+<a class="el" href="canvas_8h.html#a436eabe2e5d4a62b78ff8002105c5421">CanvasFormat</a>&#160;</td><td class="memItemRight" valign="bottom"><b>canvas_format</b></td></tr>
+<tr class="memdesc:a43f39143153f43c22bff00845e6ee86c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the actual format of the canvas <br /></td></tr>
+<tr class="separator:a43f39143153f43c22bff00845e6ee86c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5800e267f8a6fe7fd433aa00a4d436e" id="r_af5800e267f8a6fe7fd433aa00a4d436e"><td class="memItemLeft" align="right" valign="top"><a id="af5800e267f8a6fe7fd433aa00a4d436e" name="af5800e267f8a6fe7fd433aa00a4d436e"></a>
+<a class="el" href="canvas_8h.html#a9efd9fcd52acdc60f2eb45ff9fce269b">ColorIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><b>canvas_fg_color</b></td></tr>
+<tr class="memdesc:af5800e267f8a6fe7fd433aa00a4d436e"><td class="mdescLeft">&#160;</td><td class="mdescRight">a copy of the widget foreground color <br /></td></tr>
+<tr class="separator:af5800e267f8a6fe7fd433aa00a4d436e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adab020682a37bf800e6087620fe21155" id="r_adab020682a37bf800e6087620fe21155"><td class="memItemLeft" align="right" valign="top"><a id="adab020682a37bf800e6087620fe21155" name="adab020682a37bf800e6087620fe21155"></a>
+<a class="el" href="canvas_8h.html#a9efd9fcd52acdc60f2eb45ff9fce269b">ColorIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><b>canvas_bg_color</b></td></tr>
+<tr class="memdesc:adab020682a37bf800e6087620fe21155"><td class="mdescLeft">&#160;</td><td class="mdescRight">a copy of the widget background color <br /></td></tr>
+<tr class="separator:adab020682a37bf800e6087620fe21155"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5cb5bef3ff9ea8e2fd9bda308731c62" id="r_ae5cb5bef3ff9ea8e2fd9bda308731c62"><td class="memItemLeft" align="right" valign="top"><a id="ae5cb5bef3ff9ea8e2fd9bda308731c62" name="ae5cb5bef3ff9ea8e2fd9bda308731c62"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>canvas_width_pixel</b></td></tr>
 <tr class="memdesc:ae5cb5bef3ff9ea8e2fd9bda308731c62"><td class="mdescLeft">&#160;</td><td class="mdescRight">the width (in pixel) of the canvas and also of those of the associated widget <br /></td></tr>
@@ -207,69 +218,19 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_canvas_a61d9d2f38baad8abbee82fb5d8fee291_icgraph.png" border="0" usemap="#aclass_canvas_a61d9d2f38baad8abbee82fb5d8fee291_icgraph" alt=""/></div>
 <map name="aclass_canvas_a61d9d2f38baad8abbee82fb5d8fee291_icgraph" id="aclass_canvas_a61d9d2f38baad8abbee82fb5d8fee291_icgraph">
-<area shape="rect" title="Construct a new Canvas object." alt="" coords="195,31,290,55"/>
-<area shape="rect" href="class_canvas_r_g_b.html#a31311b6281bef7a373398de04b26e459" title="Construct a new Canvas R G B object." alt="" coords="8,5,144,30"/>
-<area shape="poly" title=" " alt="" coords="179,36,143,31,144,25,180,31"/>
-<area shape="rect" href="class_canvas_v_l_s_b.html#ab1738fd595e5e3bb2fff7b28c9ae4a80" title="Construct a new Canvas V L S B object." alt="" coords="5,55,147,79"/>
-<area shape="poly" title=" " alt="" coords="179,55,147,59,146,54,179,49"/>
+<area shape="rect" title="Construct a new Canvas object." alt="" coords="203,55,298,79"/>
+<area shape="rect" href="class_canvas_h_m_s_b.html#a4e1880c5b1238297ce9d1beaa5f4a8b9" title="constructor for CanvasHMSB" alt="" coords="5,5,155,30"/>
+<area shape="poly" title=" " alt="" coords="190,52,124,33,126,28,191,47"/>
+<area shape="rect" href="class_canvas_r_g_b.html#a31311b6281bef7a373398de04b26e459" title="Construct a new Canvas R G B object." alt="" coords="12,55,148,79"/>
+<area shape="poly" title=" " alt="" coords="187,70,148,70,148,64,187,64"/>
+<area shape="rect" href="class_canvas_v_l_s_b.html#ab1738fd595e5e3bb2fff7b28c9ae4a80" title="Construct a new Canvas V L S B object." alt="" coords="9,104,151,129"/>
+<area shape="poly" title=" " alt="" coords="191,87,126,106,124,101,190,82"/>
 </map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a725db20c22fc791eab5951807b152aa3" name="a725db20c22fc791eab5951807b152aa3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a725db20c22fc791eab5951807b152aa3">&#9670;&#160;</a></span>draw_glyph()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void Canvas::draw_glyph </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structstruct___config_text_widget.html">struct_ConfigTextWidget</a></td>          <td class="paramname"><span class="paramname"><em>text_config</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char</td>          <td class="paramname"><span class="paramname"><em>character</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_x</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_y</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>a graphic primitive to draw a character at a pixel position </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">text_config</td><td>the configuration file of the text framebuffer </td></tr>
-    <tr><td class="paramname">character</td><td>the character to draw </td></tr>
-    <tr><td class="paramname">anchor_x</td><td>the pixel position on x-axis to start drawing the character (upper left corner) </td></tr>
-    <tr><td class="paramname">anchor_y</td><td>the pixel position on y-axis to start drawing the character (upper left corner) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implemented in <a class="el" href="class_canvas_r_g_b.html#a0a34b4f1246890872271d35d824d63db">CanvasRGB</a>, and <a class="el" href="class_canvas_v_l_s_b.html#a298c8e8bfceace2287df0d5cbad92b4d">CanvasVLSB</a>.</p>
-
-</div>
-</div>
 <a id="a5b11b9d081c76790cf195964fface64b" name="a5b11b9d081c76790cf195964fface64b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5b11b9d081c76790cf195964fface64b">&#9670;&#160;</a></span>draw_pixel()</h2>
 
@@ -312,7 +273,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_canvas_r_g_b.html#ae9474f2a6680de4013e4493acab82f5b">CanvasRGB</a>, and <a class="el" href="class_canvas_v_l_s_b.html#ad9730b156e3ca8449b296ad7392d07ee">CanvasVLSB</a>.</p>
+<p>Implemented in <a class="el" href="class_canvas_h_m_s_b.html#a04c0a63d53d9c0db1495827b9fffc79a">CanvasHMSB</a>, <a class="el" href="class_canvas_r_g_b.html#ae9474f2a6680de4013e4493acab82f5b">CanvasRGB</a>, and <a class="el" href="class_canvas_v_l_s_b.html#ad9730b156e3ca8449b296ad7392d07ee">CanvasVLSB</a>.</p>
 
 </div>
 </div>
@@ -347,7 +308,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_canvas_r_g_b.html#a6b75bb954fe7937dbfb3d321054c13dc">CanvasRGB</a>, and <a class="el" href="class_canvas_v_l_s_b.html#a40d40c35e6fc2b5cf8a91c7c754dad25">CanvasVLSB</a>.</p>
+<p>Implemented in <a class="el" href="class_canvas_h_m_s_b.html#a3cf926a9e0d6e6d46aaf755370c9c455">CanvasHMSB</a>, <a class="el" href="class_canvas_r_g_b.html#a6b75bb954fe7937dbfb3d321054c13dc">CanvasRGB</a>, and <a class="el" href="class_canvas_v_l_s_b.html#a40d40c35e6fc2b5cf8a91c7c754dad25">CanvasVLSB</a>.</p>
 
 </div>
 </div>

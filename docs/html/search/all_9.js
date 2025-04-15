@@ -5,7 +5,7 @@ var searchData=
   ['fifo_5fselected_5fsensors_2',['FIFO_SELECTED_SENSORS',['../structstruct___config_m_p_u6050.html#ac2fb6887c7ef83afec6bf017b574b841',1,'struct_ConfigMPU6050']]],
   ['file_20trees_3',['File trees',['../index.html#autotoc_md0',1,'']]],
   ['files_20naming_4',['Files naming',['../index.html#autotoc_md1',1,'']]],
-  ['fill_5fcanvas_5fwith_5fcolor_5',['fill_canvas_with_color',['../class_canvas.html#a5f1e4f75a6f7544e0fdbcc87d2b7197b',1,'Canvas::fill_canvas_with_color()'],['../class_canvas_v_l_s_b.html#a40d40c35e6fc2b5cf8a91c7c754dad25',1,'CanvasVLSB::fill_canvas_with_color()'],['../class_canvas_r_g_b.html#a6b75bb954fe7937dbfb3d321054c13dc',1,'CanvasRGB::fill_canvas_with_color()']]],
+  ['fill_5fcanvas_5fwith_5fcolor_5',['fill_canvas_with_color',['../class_canvas.html#a5f1e4f75a6f7544e0fdbcc87d2b7197b',1,'Canvas::fill_canvas_with_color()'],['../class_canvas_v_l_s_b.html#a40d40c35e6fc2b5cf8a91c7c754dad25',1,'CanvasVLSB::fill_canvas_with_color()'],['../class_canvas_r_g_b.html#a6b75bb954fe7937dbfb3d321054c13dc',1,'CanvasRGB::fill_canvas_with_color()'],['../class_canvas_h_m_s_b.html#a3cf926a9e0d6e6d46aaf755370c9c455',1,'CanvasHMSB::fill_canvas_with_color()']]],
   ['fill_5fpattern_5fand_5fshow_5fgddram_6',['fill_pattern_and_show_GDDRAM',['../class_s_s_d1306.html#a764babad3f6a4d12cfa600ce7fd1b751',1,'SSD1306']]],
   ['font_7',['font',['../structstruct___config_text_widget.html#a84cd4fa29c41809259ec431685df06ff',1,'struct_ConfigTextWidget']]],
   ['font_5f12x16_8',['font_12x16',['../12x16__font_8h.html#a348b0e098c08825316c4fb41b3bf0843',1,'12x16_font.h']]],

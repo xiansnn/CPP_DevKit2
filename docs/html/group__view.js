@@ -48,25 +48,30 @@ var group__view =
       [ "Canvas", "class_canvas.html#a61d9d2f38baad8abbee82fb5d8fee291", null ],
       [ "clear_canvas_buffer", "class_canvas.html#ac4b13a4015778b278e43b3331460c1a2", null ],
       [ "create_canvas_buffer", "class_canvas.html#a16b621ce19c564852d07cee34a7ada8c", null ],
-      [ "draw_glyph", "class_canvas.html#a725db20c22fc791eab5951807b152aa3", null ],
       [ "draw_pixel", "class_canvas.html#a5b11b9d081c76790cf195964fface64b", null ],
       [ "fill_canvas_with_color", "class_canvas.html#a5f1e4f75a6f7544e0fdbcc87d2b7197b", null ],
+      [ "canvas_bg_color", "class_canvas.html#adab020682a37bf800e6087620fe21155", null ],
       [ "canvas_buffer", "class_canvas.html#a9dd0742453c116a917f618435dceb2cc", null ],
       [ "canvas_buffer_size", "class_canvas.html#a109cc5819dd5ddfcbe0d6d03864dcf16", null ],
+      [ "canvas_fg_color", "class_canvas.html#af5800e267f8a6fe7fd433aa00a4d436e", null ],
+      [ "canvas_format", "class_canvas.html#a43f39143153f43c22bff00845e6ee86c", null ],
       [ "canvas_height_pixel", "class_canvas.html#addf98fc4b32946a6c815720de00ebe0e", null ],
       [ "canvas_width_pixel", "class_canvas.html#ae5cb5bef3ff9ea8e2fd9bda308731c62", null ]
     ] ],
     [ "CanvasVLSB", "class_canvas_v_l_s_b.html", [
       [ "CanvasVLSB", "class_canvas_v_l_s_b.html#ab1738fd595e5e3bb2fff7b28c9ae4a80", null ],
-      [ "draw_glyph", "class_canvas_v_l_s_b.html#a298c8e8bfceace2287df0d5cbad92b4d", null ],
       [ "draw_pixel", "class_canvas_v_l_s_b.html#ad9730b156e3ca8449b296ad7392d07ee", null ],
       [ "fill_canvas_with_color", "class_canvas_v_l_s_b.html#a40d40c35e6fc2b5cf8a91c7c754dad25", null ]
     ] ],
     [ "CanvasRGB", "class_canvas_r_g_b.html", [
       [ "CanvasRGB", "class_canvas_r_g_b.html#a31311b6281bef7a373398de04b26e459", null ],
-      [ "draw_glyph", "class_canvas_r_g_b.html#a0a34b4f1246890872271d35d824d63db", null ],
       [ "draw_pixel", "class_canvas_r_g_b.html#ae9474f2a6680de4013e4493acab82f5b", null ],
       [ "fill_canvas_with_color", "class_canvas_r_g_b.html#a6b75bb954fe7937dbfb3d321054c13dc", null ]
+    ] ],
+    [ "CanvasHMSB", "class_canvas_h_m_s_b.html", [
+      [ "CanvasHMSB", "class_canvas_h_m_s_b.html#a4e1880c5b1238297ce9d1beaa5f4a8b9", null ],
+      [ "draw_pixel", "class_canvas_h_m_s_b.html#a04c0a63d53d9c0db1495827b9fffc79a", null ],
+      [ "fill_canvas_with_color", "class_canvas_h_m_s_b.html#a3cf926a9e0d6e6d46aaf755370c9c455", null ]
     ] ],
     [ "Blinker", "class_blinker.html", [
       [ "clear_blinking_phase_change", "class_blinker.html#ae6a97a7779716d6a9a4954e9491d2985", null ],
