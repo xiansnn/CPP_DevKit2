@@ -47,9 +47,6 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              Model *displayed_object)
     : Widget(displayed_object, graphic_display_screen)
 {
-    this->fg_color = graph_cfg.fg_color;
-    this->bg_color = graph_cfg.bg_color;
-
     switch (canvas_format)
     {
     case CanvasFormat::MONO_VLSB:
@@ -61,6 +58,10 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     default:
         break;
     }
+    this->fg_color = graph_cfg.fg_color;
+    this->bg_color = graph_cfg.bg_color;
+    canvas->canvas_fg_color = fg_color;
+    canvas->canvas_bg_color = bg_color;
 
     this->widget_anchor_x = graph_cfg.widget_anchor_x;
     this->widget_anchor_y = graph_cfg.widget_anchor_y;
@@ -82,8 +83,6 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              Model *displayed_object)
     : Widget(displayed_object, graphic_display_screen)
 {
-    this->fg_color = text_cfg.fg_color;
-    this->bg_color = text_cfg.bg_color;
 
     uint8_t canvas_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
     uint8_t canvas_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
@@ -96,9 +95,15 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     case CanvasFormat::RGB565:
         this->canvas = new CanvasRGB(canvas_width, canvas_height);
         break;
+    case CanvasFormat::MONO_HMSB:
+        this->canvas = new CanvasHMSB(canvas_width, canvas_height);
     default:
         break;
     }
+    this->fg_color = text_cfg.fg_color;
+    this->bg_color = text_cfg.bg_color;
+    canvas->canvas_fg_color = fg_color;
+    canvas->canvas_bg_color = bg_color;
 
     this->widget_anchor_x = text_cfg.widget_anchor_x;
     this->widget_anchor_y = text_cfg.widget_anchor_y;
@@ -121,9 +126,6 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              Model *displayed_object)
     : Widget(displayed_object, graphic_display_screen)
 {
-    this->fg_color = text_cfg.fg_color;
-    this->bg_color = text_cfg.bg_color;
-
     switch (canvas_format)
     {
     case CanvasFormat::MONO_VLSB:
@@ -132,9 +134,15 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     case CanvasFormat::RGB565:
         this->canvas = new CanvasRGB(frame_width, frame_height);
         break;
+    case CanvasFormat::MONO_HMSB:
+        this->canvas = new CanvasHMSB(frame_width, frame_height);
     default:
         break;
     }
+    this->fg_color = text_cfg.fg_color;
+    this->bg_color = text_cfg.bg_color;
+    canvas->canvas_fg_color = fg_color;
+    canvas->canvas_bg_color = bg_color;
 
     this->widget_anchor_x = text_cfg.widget_anchor_x;
     this->widget_anchor_y = text_cfg.widget_anchor_y;
@@ -305,8 +313,8 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
     this->number_of_line = text_cfg.number_of_line;
     this->font = text_cfg.font;
     this->tab_size = text_cfg.tab_size;
-    this->fg_color = text_cfg.fg_color;
-    this->bg_color = text_cfg.bg_color;
+    // this->fg_color = text_cfg.fg_color;
+    // this->bg_color = text_cfg.bg_color;
     this->wrap = text_cfg.wrap;
     this->auto_next_char = text_cfg.auto_next_char;
 
@@ -324,8 +332,11 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
     this->number_of_line = this->canvas->canvas_height_pixel / this->font[FONT_HEIGHT_INDEX];
 
     this->tab_size = text_cfg.tab_size;
-    this->fg_color = text_cfg.fg_color;
-    this->bg_color = text_cfg.bg_color;
+    // this->fg_color = text_cfg.fg_color;
+    // this->bg_color = text_cfg.bg_color;
+    // canvas->canvas_fg_color = fg_color;
+    // canvas->canvas_bg_color = bg_color;
+
     this->wrap = text_cfg.wrap;
     this->auto_next_char = text_cfg.auto_next_char;
 

@@ -79,7 +79,7 @@ void CanvasHMSB::draw_pixel(const int x, const int y, const ColorIndex color)
         int byte_index = y * bytes_per_row + ((x + BYTE_SIZE - 1) / BYTE_SIZE);
         uint8_t byte = canvas_buffer[byte_index];
 
-        if (color != ColorIndex::BLACK)
+        if (color == canvas_fg_color)
             byte |= 0b10000000 >> (x & 0b00000011);
         else
             byte &= ~(0b10000000 >> (x & 0b00000011));

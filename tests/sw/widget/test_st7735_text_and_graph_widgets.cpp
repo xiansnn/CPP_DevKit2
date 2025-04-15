@@ -173,7 +173,7 @@ int main()
         .font = font_12x16};
 
     struct_ConfigGraphicWidget graph_config{
-        .pixel_frame_width = 120,
+        .pixel_frame_width = 128,
         .pixel_frame_height = 56,
         .fg_color = ColorIndex::CYAN,
         .bg_color = ColorIndex::MAROON,

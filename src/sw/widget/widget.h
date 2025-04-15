@@ -178,11 +178,12 @@ protected:
 public:
     /// @brief the associated canvas in which the widget writes text and draws graphics
     Canvas *canvas;
-    // /// @brief the data structure that contains the actual pixel buffer, created by the display device.
-    // struct_PixelFrame pixel_frame;
+
     /// @brief the foregroung color of the graphic frame
+    /// //TODO voir si fg_color n'est pas mieux dans canvas
     ColorIndex fg_color;
     /// @brief the background color of the graphic frame
+    /// //TODO voir si bg_color n'est pas mieux dans canvas
     ColorIndex bg_color;
 
     /// @brief location in x of the widget within the hosting framebuffer

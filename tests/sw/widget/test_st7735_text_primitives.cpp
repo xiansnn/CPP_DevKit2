@@ -392,6 +392,60 @@ void test_ostringstream_format(ST7735 *current_display)
     current_display->clear_device_screen_buffer();
 }
 
+void test_monochrome_canvas(ST7735 * display){
+    display->clear_device_screen_buffer();
+
+    std::string test_string = "Test";
+
+    struct_ConfigTextWidget default_text_cfg{
+        .number_of_column = (uint8_t)test_string.size(),
+        .number_of_line = 1,
+        .widget_anchor_x = 0,
+        .widget_anchor_y = 0,
+        .font = font_16x32,
+        .fg_color = ColorIndex::RED,
+        .bg_color = ColorIndex::LIME};
+
+    my_text_widget *font_text_on_screen_0 = new my_text_widget(display, default_text_cfg, CanvasFormat::MONO_HMSB);
+    font_text_on_screen_0->canvas->fill_canvas_with_color(font_text_on_screen_0->canvas->canvas_bg_color);
+    // draw text directly from a string to the pixel buffer
+    font_text_on_screen_0->write(test_string.c_str());
+    font_text_on_screen_0->show();
+    delete font_text_on_screen_0;
+
+    // default_text_cfg.widget_anchor_x = 64;
+    // default_text_cfg.widget_anchor_y = 8;
+    // my_text_widget *font_text_on_screen_1 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
+    // font_text_on_screen_1->update_graphic_frame_size(current_font[1]);
+
+    // // process first text according to sprintf capabilities then copy to text buffer and finally draw text buffer into pixel buffer
+    // sprintf(font_text_on_screen_1->text_buffer, test_string.c_str());
+    // font_text_on_screen_1->write();
+    // font_text_on_screen_1->show();
+    // delete font_text_on_screen_1;
+
+    // default_text_cfg.widget_anchor_x = 0;
+    // default_text_cfg.widget_anchor_y = 16;
+    // my_text_widget *font_text_on_screen_2 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
+    // font_text_on_screen_2->update_graphic_frame_size(current_font[2]);
+
+    // sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
+    // font_text_on_screen_2->write();
+    // font_text_on_screen_2->show();
+
+    // font_text_on_screen_2->update_graphic_frame_size(current_font[3]);
+    // font_text_on_screen_2->update_widget_anchor(64, 32);
+    // sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
+    // font_text_on_screen_2->write();
+    // font_text_on_screen_2->show();
+    // delete font_text_on_screen_2;
+
+    sleep_ms(INTER_TEST_DELAY);
+    display->clear_device_screen_buffer();
+
+
+}
+
 int main()
 
 {
@@ -402,10 +456,11 @@ int main()
 
     while (true)
     {
-        test_font_size(&display);
-        test_full_screen_text(&display);
-        test_auto_next_char(&display);
-        test_ostringstream_format(&display);
-        test_sprintf_format(&display);
+        test_monochrome_canvas(&display);
+        // test_font_size(&display);
+        // test_full_screen_text(&display);
+        // test_auto_next_char(&display);
+        // test_ostringstream_format(&display);
+        // test_sprintf_format(&display);
     }
 }
