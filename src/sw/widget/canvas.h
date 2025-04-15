@@ -221,6 +221,10 @@ private:
     void create_canvas_buffer();
 
 public:
+
+    /// @brief constructor for CanvasHMSB
+    /// @param canvas_width_pixel 
+    /// @param canvas_height_pixel 
     CanvasHMSB(uint8_t canvas_width_pixel,
                uint8_t canvas_height_pixel);
     ~CanvasHMSB();
