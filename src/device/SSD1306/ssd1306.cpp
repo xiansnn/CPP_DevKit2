@@ -153,14 +153,10 @@ void SSD1306::check_display_device_compatibility(struct_ConfigGraphicWidget fram
 
 void SSD1306::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y)
 {
+    assert(canvas->canvas_format == CanvasFormat::MONO_VLSB);
     uint8_t end_col = anchor_x + canvas->canvas_width_pixel - 1;
     uint8_t end_line = anchor_y + canvas->canvas_height_pixel - 1;
-
-    // assert(anchor_x + canvas->canvas_width_pixel - 1 <= SSD1306_WIDTH - 1);
-    // assert(anchor_y + canvas->canvas_height_pixel - 1 <= SSD1306_HEIGHT - 1);
-
     this->show_render_area(canvas->canvas_buffer, this->compute_render_area(anchor_x, end_col, anchor_y, end_line));
-
 }
 
 void SSD1306::init_display_vertical_shift(uint8_t value)

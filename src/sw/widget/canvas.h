@@ -121,6 +121,7 @@ class Canvas
 {
 protected:
 public:
+    CanvasFormat canvas_format;
     /// @brief Create a canvas buffer object
     virtual void create_canvas_buffer() = 0;
 

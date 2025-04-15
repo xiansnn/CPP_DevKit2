@@ -55,6 +55,7 @@ void CanvasHMSB::create_canvas_buffer()
 CanvasHMSB::CanvasHMSB(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
     : Canvas(canvas_width_pixel, canvas_height_pixel)
 {
+    canvas_format = CanvasFormat::MONO_HMSB;
     create_canvas_buffer();
 }
 
@@ -98,6 +99,7 @@ void CanvasVLSB::create_canvas_buffer()
 CanvasVLSB::CanvasVLSB(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
     : Canvas(canvas_width_pixel, canvas_height_pixel)
 {
+    canvas_format = CanvasFormat::MONO_VLSB;
     create_canvas_buffer();
 }
 
@@ -141,6 +143,7 @@ void CanvasRGB::create_canvas_buffer()
 CanvasRGB::CanvasRGB(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
     : Canvas(canvas_width_pixel, canvas_height_pixel)
 {
+    canvas_format = CanvasFormat::RGB565;
     create_canvas_buffer();
 }
 
