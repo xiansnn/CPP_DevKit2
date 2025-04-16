@@ -471,7 +471,8 @@ void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y
             uint8_t byte = canvas->canvas_buffer[i];
             for (size_t idx = 0; idx < 8; idx++)
             {
-                if (byte && ((0b10000000) >> idx))
+                uint8_t shift = byte & ((0b10000000) >> idx);
+                if (shift)
                     spi->single_write_16(foreground_color);
                 else
                     spi->single_write_16(background_color);
