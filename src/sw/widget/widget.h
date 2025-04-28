@@ -417,10 +417,10 @@ public:
     /// @brief et text buffer memory to "0" and set  character current line and column to 0
     void clear_text_buffer();
 
-    /// @brief compute graphic pixel width and height according to the size of the text (column x line ) and the size of the bitmap font.
+    /// @brief compute canvas width and height according to the size of the text (column x line ) and the size of the bitmap font.
     /// Delete the previous pixel buffer if any and create a new buffer.
     /// @param font the new font
-    void update_graphic_frame_size(const unsigned char *font);
+    void update_canvas_buffer_size(const unsigned char *font);
 
     /// @brief process characters in the internal text buffer and draw it into the pixel buffer.
     /// \note USAGE: this is useful if we have to fill the text_buffer, e.g. with sprintf and formatted text.

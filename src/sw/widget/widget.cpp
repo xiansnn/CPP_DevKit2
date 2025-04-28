@@ -352,7 +352,7 @@ void TextWidget::update_text_frame_size(const unsigned char *font)
 {
     this->font = font;
 
-    // size the text area according to the available room within the frame whidth and height
+    // size the text area according to the available room within the frame width and height
     this->number_of_line = this->canvas->canvas_height_pixel / font[FONT_HEIGHT_INDEX];
     this->number_of_column = this->canvas->canvas_width_pixel / font[FONT_WIDTH_INDEX];
 
@@ -368,7 +368,7 @@ void TextWidget::clear_text_buffer()
     current_char_line = 0;
 }
 
-void TextWidget::update_graphic_frame_size(const unsigned char *font)
+void TextWidget::update_canvas_buffer_size(const unsigned char *font)
 {
     this->font = font;
     // size the pixel buffer to the required size due to character area
