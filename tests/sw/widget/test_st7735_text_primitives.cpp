@@ -86,7 +86,7 @@ void test_font_size(ST7735 *current_display)
         .number_of_line = 1,
         .widget_anchor_x = 0,
         .widget_anchor_y = 0,
-        .font = current_font[0],
+        .font = current_font[1],
         .fg_color = ColorIndex::RED,
         .bg_color = ColorIndex::LIME};
 
@@ -100,7 +100,7 @@ void test_font_size(ST7735 *current_display)
     default_text_cfg.widget_anchor_x = 64;
     default_text_cfg.widget_anchor_y = 8;
     my_text_widget *font_text_on_screen_1 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
-    font_text_on_screen_1->update_graphic_frame_size(current_font[1]);
+    font_text_on_screen_1->update_graphic_frame_size(current_font[0]);
 
     // process first text according to sprintf capabilities then copy to text buffer and finally draw text buffer into pixel buffer
     sprintf(font_text_on_screen_1->text_buffer, test_string.c_str());
@@ -230,12 +230,8 @@ void test_sprintf_format(ST7735 *current_display)
 
     sleep_ms(LONG_DELAY);
 
-    text_frame->show();
-
-    text_frame->clear_text_buffer();
-    // current_display->clear_pixel_buffer(&text_frame->pixel_frame);
-    // current_display->clear_device_screen_buffer();
-    text_frame->clear_text_buffer();
+    current_display->clear_device_screen_buffer();
+    text_frame->clear_text_buffer();;
     sprintf(text_frame->text_buffer, "Characters: %c %%", 'A');
     text_frame->write();
     text_frame->show();
@@ -329,8 +325,10 @@ void test_sprintf_format(ST7735 *current_display)
         .widget_anchor_x = 22,
         .widget_anchor_y = 16,
         .font = font_12x16,
+        .fg_color = ColorIndex::YELLOW,
+        .bg_color = ColorIndex::BURGUNDY,
         .wrap = false};
-    my_text_widget *text_frame2 = new my_text_widget(current_display, text_frame2_cfg, CanvasFormat::RGB565); // FIXME font 12x16
+    my_text_widget *text_frame2 = new my_text_widget(current_display, text_frame2_cfg, CANVAS_FORMAT); 
 
     text_frame2->write(" 09:56\n03JAN24");
     text_frame2->show();
@@ -398,16 +396,16 @@ void test_monochrome_canvas(ST7735 *display)
 {
     display->clear_device_screen_buffer();
 
-    std::string test_string = "\xB0\xB1\xB2\xB3\xB4";
+    std::string test_string = "ABC\xB0\xB1\xB2\xB3\xB4";
 
     struct_ConfigTextWidget text_cfg{
         .number_of_column = (uint8_t)test_string.size(),
         .number_of_line = 1,
         .widget_anchor_x = 0,
         .widget_anchor_y = 0,
-        .font = font_8x8,
-        .fg_color = ColorIndex::WHITE,
-        .bg_color = ColorIndex::BLACK};
+        .font = font_12x16,
+        .fg_color = ColorIndex::YELLOW,
+        .bg_color = ColorIndex::BURGUNDY};
 
     my_text_widget *mono_text = new my_text_widget(display, text_cfg, CANVAS_FORMAT);
     mono_text->canvas->fill_canvas_with_color(mono_text->canvas->canvas_bg_color);
@@ -428,11 +426,11 @@ int main()
 
     while (true)
     {
-        test_monochrome_canvas(&display);
-        test_font_size(&display);
-        test_full_screen_text(&display);
-        test_auto_next_char(&display);
-        test_ostringstream_format(&display);
-        test_sprintf_format(&display);
+        // test_monochrome_canvas(&display); // 8x8
+        test_font_size(&display); // 5x8 8x8 12x16 16x32
+        // test_full_screen_text(&display); // 8x8
+        // test_auto_next_char(&display); // 8x8
+        // test_ostringstream_format(&display); // 5x8
+        test_sprintf_format(&display); // 8x8 16x32  12x16
     }
 }

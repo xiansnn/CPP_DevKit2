@@ -363,6 +363,7 @@ void TextWidget::update_text_frame_size(const unsigned char *font)
 void TextWidget::clear_text_buffer()
 {
     memset(this->text_buffer, '\0', this->text_buffer_size);
+    canvas->clear_canvas_buffer();
     current_char_column = 0;
     current_char_line = 0;
 }
