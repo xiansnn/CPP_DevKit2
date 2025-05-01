@@ -163,9 +163,9 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_text_buffer</b> ()</td></tr>
 <tr class="memdesc:ad0eff5956c8b16178e7eb3572a86e57d"><td class="mdescLeft">&#160;</td><td class="mdescRight">et text buffer memory to "0" and set character current line and column to 0 <br /></td></tr>
 <tr class="separator:ad0eff5956c8b16178e7eb3572a86e57d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34c23baf9e2a633803ff709b42ad4ff5" id="r_a34c23baf9e2a633803ff709b42ad4ff5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34c23baf9e2a633803ff709b42ad4ff5">update_graphic_frame_size</a> (const unsigned char *font)</td></tr>
-<tr class="memdesc:a34c23baf9e2a633803ff709b42ad4ff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute graphic pixel width and height according to the size of the text (column x line ) and the size of the bitmap font. Delete the previous pixel buffer if any and create a new buffer.  <br /></td></tr>
-<tr class="separator:a34c23baf9e2a633803ff709b42ad4ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b1dbfb205b17dd9404425871f35563e" id="r_a6b1dbfb205b17dd9404425871f35563e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b1dbfb205b17dd9404425871f35563e">update_canvas_buffer_size</a> (const unsigned char *font)</td></tr>
+<tr class="memdesc:a6b1dbfb205b17dd9404425871f35563e"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute canvas width and height according to the size of the text (column x line ) and the size of the bitmap font. Delete the previous pixel buffer if any and create a new buffer.  <br /></td></tr>
+<tr class="separator:a6b1dbfb205b17dd9404425871f35563e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ce8f540e45844b22efa9f18c3c85eab" id="r_a3ce8f540e45844b22efa9f18c3c85eab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ce8f540e45844b22efa9f18c3c85eab">write</a> ()</td></tr>
 <tr class="memdesc:a3ce8f540e45844b22efa9f18c3c85eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">process characters in the internal text buffer and draw it into the pixel buffer.  <br /></td></tr>
 <tr class="separator:a3ce8f540e45844b22efa9f18c3c85eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -669,14 +669,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a34c23baf9e2a633803ff709b42ad4ff5" name="a34c23baf9e2a633803ff709b42ad4ff5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34c23baf9e2a633803ff709b42ad4ff5">&#9670;&#160;</a></span>update_graphic_frame_size()</h2>
+<a id="a6b1dbfb205b17dd9404425871f35563e" name="a6b1dbfb205b17dd9404425871f35563e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b1dbfb205b17dd9404425871f35563e">&#9670;&#160;</a></span>update_canvas_buffer_size()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void TextWidget::update_graphic_frame_size </td>
+          <td class="memname">void TextWidget::update_canvas_buffer_size </td>
           <td>(</td>
           <td class="paramtype">const unsigned char *</td>          <td class="paramname"><span class="paramname"><em>font</em></span></td><td>)</td>
           <td></td>
@@ -684,7 +684,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>compute graphic pixel width and height according to the size of the text (column x line ) and the size of the bitmap font. Delete the previous pixel buffer if any and create a new buffer. </p>
+<p>compute canvas width and height according to the size of the text (column x line ) and the size of the bitmap font. Delete the previous pixel buffer if any and create a new buffer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">font</td><td>the new font </td></tr>

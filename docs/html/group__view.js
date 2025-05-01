@@ -128,7 +128,7 @@ var group__view =
       [ "next_char", "class_text_widget.html#a3712ffd3288da6a64d22e57177ee4beb", null ],
       [ "next_line", "class_text_widget.html#a8192cc012e92157d8e47b4d8569f9529", null ],
       [ "process_char", "class_text_widget.html#ae7a5603a5a769cad07cd3a102fb808f1", null ],
-      [ "update_graphic_frame_size", "class_text_widget.html#a34c23baf9e2a633803ff709b42ad4ff5", null ],
+      [ "update_canvas_buffer_size", "class_text_widget.html#a6b1dbfb205b17dd9404425871f35563e", null ],
       [ "update_text_frame_size", "class_text_widget.html#a90e41e7b1954c812001292dcc8b4dc51", null ],
       [ "write", "class_text_widget.html#a3ce8f540e45844b22efa9f18c3c85eab", null ],
       [ "write", "class_text_widget.html#ab9524e4f93739352b7fe0915e038c1fb", null ],
