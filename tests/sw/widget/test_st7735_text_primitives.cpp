@@ -86,21 +86,20 @@ void test_font_size(ST7735 *current_display)
         .number_of_line = 1,
         .widget_anchor_x = 0,
         .widget_anchor_y = 0,
-        .font = current_font[1],
+        .font = current_font[0],
         .fg_color = ColorIndex::RED,
         .bg_color = ColorIndex::LIME};
 
     my_text_widget *font_text_on_screen_0 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
-    font_text_on_screen_0->canvas->fill_canvas_with_color(font_text_on_screen_0->bg_color);
     // draw text directly from a string to the pixel buffer
-    font_text_on_screen_0->write(test_string.c_str()); // FIXME font 5x8 
+    font_text_on_screen_0->write(test_string.c_str());
     font_text_on_screen_0->show();
     delete font_text_on_screen_0;
 
     default_text_cfg.widget_anchor_x = 64;
     default_text_cfg.widget_anchor_y = 8;
     my_text_widget *font_text_on_screen_1 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
-    font_text_on_screen_1->update_graphic_frame_size(current_font[0]);
+    font_text_on_screen_1->update_canvas_buffer_size(current_font[1]);
 
     // process first text according to sprintf capabilities then copy to text buffer and finally draw text buffer into pixel buffer
     sprintf(font_text_on_screen_1->text_buffer, test_string.c_str());
@@ -111,13 +110,13 @@ void test_font_size(ST7735 *current_display)
     default_text_cfg.widget_anchor_x = 0;
     default_text_cfg.widget_anchor_y = 16;
     my_text_widget *font_text_on_screen_2 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
-    font_text_on_screen_2->update_graphic_frame_size(current_font[2]);
+    font_text_on_screen_2->update_canvas_buffer_size(current_font[2]);
 
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->write();
     font_text_on_screen_2->show();
 
-    font_text_on_screen_2->update_graphic_frame_size(current_font[3]);
+    font_text_on_screen_2->update_canvas_buffer_size(current_font[3]);
     font_text_on_screen_2->update_widget_anchor(64, 32);
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->write();
@@ -131,14 +130,14 @@ void test_font_size(ST7735 *current_display)
 void test_full_screen_text(ST7735 *current_display)
 {
     struct_ConfigTextWidget txt_conf = {
-        .font = font_8x8,
+        .font = font_5x8,
         .fg_color = ColorIndex::CYAN,
         .wrap = true,
     };
     my_text_widget text_frame = my_text_widget(current_display, txt_conf, CANVAS_FORMAT,
-                                               current_display->TFT_panel_width_in_pixel, current_display->TFT_panel_width_in_pixel);
+                                               current_display->TFT_panel_width_in_pixel, current_display->TFT_panel_height_in_pixel);
 
-    text_frame.process_char(FORM_FEED); // equiv. clear full screen
+    text_frame.process_char(FORM_FEED); // equiv. clear full canvas, not the display RAM
     current_display->show(text_frame.canvas, 0, 0);
     uint16_t nb = text_frame.number_of_line * text_frame.number_of_column;
 
@@ -231,7 +230,7 @@ void test_sprintf_format(ST7735 *current_display)
     sleep_ms(LONG_DELAY);
 
     current_display->clear_device_screen_buffer();
-    text_frame->clear_text_buffer();;
+    text_frame->clear_text_buffer();
     sprintf(text_frame->text_buffer, "Characters: %c %%", 'A');
     text_frame->write();
     text_frame->show();
@@ -264,7 +263,7 @@ void test_sprintf_format(ST7735 *current_display)
 
     text_frame->update_text_frame_size(font_8x8);
 
-    text_frame->process_char(FORM_FEED); // equivalent text_frame->clear_pixel_buffer();
+    text_frame->process_char(FORM_FEED);
 
     text_frame->write(" !\"#$%&'()*+,-./0123456789:;<=>?");   // ca 1000us -> 2000us
     text_frame->write("@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_");   // ca 1000us -> 2000us
@@ -319,23 +318,78 @@ void test_sprintf_format(ST7735 *current_display)
 
     delete text_frame;
 
+    struct_ConfigTextWidget text_frame1_cfg = {
+        .number_of_column = 14,
+        .number_of_line = 1,
+        .widget_anchor_x = 0,
+        .widget_anchor_y = 0,
+        .font = font_5x8,
+        .fg_color = ColorIndex::WHITE,
+        .bg_color = ColorIndex::BLACK,
+        .wrap = false};
+    my_text_widget *text_frame1 = new my_text_widget(current_display, text_frame1_cfg, CANVAS_FORMAT);
+    text_frame1->write(" 09:56 03JAN24");
+    text_frame1->show();
+    delete text_frame1;
+
     struct_ConfigTextWidget text_frame2_cfg = {
         .number_of_column = 7,
         .number_of_line = 2,
-        .widget_anchor_x = 22,
+        .widget_anchor_x = 35,
         .widget_anchor_y = 16,
-        .font = font_12x16,
+        .font = font_8x8,
         .fg_color = ColorIndex::YELLOW,
-        .bg_color = ColorIndex::BURGUNDY,
+        .bg_color = ColorIndex::BLUE,
         .wrap = false};
-    my_text_widget *text_frame2 = new my_text_widget(current_display, text_frame2_cfg, CANVAS_FORMAT); 
-
+    my_text_widget *text_frame2 = new my_text_widget(current_display, text_frame2_cfg, CANVAS_FORMAT);
     text_frame2->write(" 09:56\n03JAN24");
     text_frame2->show();
     delete text_frame2;
 
+    struct_ConfigTextWidget text_frame3_cfg = {
+        .number_of_column = 7,
+        .number_of_line = 2,
+        .widget_anchor_x = 0,
+        .widget_anchor_y = 32,
+        .font = font_5x8,
+        .fg_color = ColorIndex::RED,
+        .bg_color = ColorIndex::YELLOW,
+        .wrap = false};
+    my_text_widget *text_frame3 = new my_text_widget(current_display, text_frame3_cfg, CANVAS_FORMAT);
+    text_frame3->write(" 09:56\n03JAN24");
+    text_frame3->show();
+    delete text_frame3;
+
+    struct_ConfigTextWidget text_frame4_cfg = {
+        .number_of_column = 7,
+        .number_of_line = 2,
+        .widget_anchor_x = 0,
+        .widget_anchor_y = 32,
+        .font = font_12x16,
+        .fg_color = ColorIndex::WHITE,
+        .bg_color = ColorIndex::BLACK,
+        .wrap = false};
+    my_text_widget *text_frame4 = new my_text_widget(current_display, text_frame4_cfg, CANVAS_FORMAT);
+    text_frame4->write(" 09:56\n03JAN24");
+    text_frame4->show();
+    delete text_frame4;
+
+    struct_ConfigTextWidget text_frame5_cfg = {
+        .number_of_column = 7,
+        .number_of_line = 2,
+        .widget_anchor_x = 8,
+        .widget_anchor_y = 64,
+        .font = font_16x32,
+        .fg_color = ColorIndex::YELLOW,
+        .bg_color = ColorIndex::BURGUNDY,
+        .wrap = false};
+    my_text_widget *text_frame5 = new my_text_widget(current_display, text_frame5_cfg, CANVAS_FORMAT);
+    text_frame5->write(" 09:56\n03JAN24");
+    text_frame5->show();
+    delete text_frame5;
+
     sleep_ms(INTER_TEST_DELAY);
-    current_display->clear_device_screen_buffer();
+    // current_display->clear_device_screen_buffer();
     /*
     undefined result for the used compiler
     printf("\tHexadecimal:\t%a %A\n", 1.5, 1.5);
@@ -396,23 +450,45 @@ void test_monochrome_canvas(ST7735 *display)
 {
     display->clear_device_screen_buffer();
 
-    std::string test_string = "ABC\xB0\xB1\xB2\xB3\xB4";
+    std::string test_string = "\xB0\xB3\xB3\xB3\xB3";
 
     struct_ConfigTextWidget text_cfg{
         .number_of_column = (uint8_t)test_string.size(),
         .number_of_line = 1,
         .widget_anchor_x = 0,
         .widget_anchor_y = 0,
-        .font = font_12x16,
+        .font = font_5x8,
         .fg_color = ColorIndex::YELLOW,
-        .bg_color = ColorIndex::BURGUNDY};
+        .bg_color = ColorIndex::RED};
 
     my_text_widget *mono_text = new my_text_widget(display, text_cfg, CANVAS_FORMAT);
-    mono_text->canvas->fill_canvas_with_color(mono_text->canvas->canvas_bg_color);
-    // draw text directly from a string to the pixel buffer
     mono_text->write(test_string.c_str());
     mono_text->show();
     delete mono_text;
+
+    sleep_ms(INTER_TEST_DELAY);
+
+    struct_ConfigTextWidget txt_conf2 = {
+        .number_of_column = (uint8_t)test_string.size(),
+        .number_of_line = 1,
+        .widget_anchor_x = 0,
+        .widget_anchor_y = 16,
+        .font = font_5x8,
+        .fg_color = ColorIndex::BLACK,
+        .bg_color = ColorIndex::WHITE,
+        .wrap = true,
+    };
+
+    my_text_widget text_frame = my_text_widget(display, txt_conf2, CANVAS_FORMAT);
+
+    text_frame.process_char(FORM_FEED); 
+
+    for (auto &&c : test_string)
+    {
+        text_frame.process_char(c);
+        text_frame.show();
+    }
+
     sleep_ms(INTER_TEST_DELAY);
 }
 
@@ -426,11 +502,11 @@ int main()
 
     while (true)
     {
-        // test_monochrome_canvas(&display); // 8x8
-        test_font_size(&display); // 5x8 8x8 12x16 16x32
-        // test_full_screen_text(&display); // 8x8
-        // test_auto_next_char(&display); // 8x8
-        // test_ostringstream_format(&display); // 5x8
-        test_sprintf_format(&display); // 8x8 16x32  12x16
+        test_monochrome_canvas(&display);    //
+        test_font_size(&display);            // 
+        test_full_screen_text(&display);     // 
+        test_auto_next_char(&display);       // 
+        test_ostringstream_format(&display); // 
+        test_sprintf_format(&display);       // 
     }
 }
