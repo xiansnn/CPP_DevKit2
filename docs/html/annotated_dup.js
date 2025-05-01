@@ -2,6 +2,7 @@ var annotated_dup =
 [
     [ "Blinker", "class_blinker.html", "class_blinker" ],
     [ "Canvas", "class_canvas.html", "class_canvas" ],
+    [ "CanvasHMSB", "class_canvas_h_m_s_b.html", "class_canvas_h_m_s_b" ],
     [ "CanvasRGB", "class_canvas_r_g_b.html", "class_canvas_r_g_b" ],
     [ "CanvasVLSB", "class_canvas_v_l_s_b.html", "class_canvas_v_l_s_b" ],
     [ "DHT11", "class_d_h_t11.html", "class_d_h_t11" ],

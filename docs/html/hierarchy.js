@@ -6,6 +6,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "Canvas", "class_canvas.html", [
+      [ "CanvasHMSB", "class_canvas_h_m_s_b.html", null ],
       [ "CanvasRGB", "class_canvas_r_g_b.html", null ],
       [ "CanvasVLSB", "class_canvas_v_l_s_b.html", null ]
     ] ],

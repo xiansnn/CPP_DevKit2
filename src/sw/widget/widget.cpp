@@ -47,9 +47,6 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              Model *displayed_object)
     : Widget(displayed_object, graphic_display_screen)
 {
-    this->fg_color = graph_cfg.fg_color;
-    this->bg_color = graph_cfg.bg_color;
-
     switch (canvas_format)
     {
     case CanvasFormat::MONO_VLSB:
@@ -61,6 +58,10 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     default:
         break;
     }
+    this->fg_color = graph_cfg.fg_color;
+    this->bg_color = graph_cfg.bg_color;
+    canvas->canvas_fg_color = fg_color;
+    canvas->canvas_bg_color = bg_color;
 
     this->widget_anchor_x = graph_cfg.widget_anchor_x;
     this->widget_anchor_y = graph_cfg.widget_anchor_y;
@@ -82,23 +83,33 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              Model *displayed_object)
     : Widget(displayed_object, graphic_display_screen)
 {
-    this->fg_color = text_cfg.fg_color;
-    this->bg_color = text_cfg.bg_color;
-
-    uint8_t canvas_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
-    uint8_t canvas_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
 
     switch (canvas_format)
     {
+        uint8_t canvas_width;
+        uint8_t canvas_height;
     case CanvasFormat::MONO_VLSB:
+        canvas_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
+        canvas_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
         this->canvas = new CanvasVLSB(canvas_width, canvas_height);
         break;
     case CanvasFormat::RGB565:
+        canvas_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
+        canvas_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
         this->canvas = new CanvasRGB(canvas_width, canvas_height);
+        break;
+    case CanvasFormat::MONO_HMSB:
+        canvas_width = ((text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX]) + BYTE_SIZE - 1) / BYTE_SIZE * BYTE_SIZE;
+        canvas_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
+        this->canvas = new CanvasHMSB(canvas_width, canvas_height);
         break;
     default:
         break;
     }
+    this->fg_color = text_cfg.fg_color;
+    this->bg_color = text_cfg.bg_color;
+    canvas->canvas_fg_color = fg_color;
+    canvas->canvas_bg_color = bg_color;
 
     this->widget_anchor_x = text_cfg.widget_anchor_x;
     this->widget_anchor_y = text_cfg.widget_anchor_y;
@@ -121,9 +132,6 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              Model *displayed_object)
     : Widget(displayed_object, graphic_display_screen)
 {
-    this->fg_color = text_cfg.fg_color;
-    this->bg_color = text_cfg.bg_color;
-
     switch (canvas_format)
     {
     case CanvasFormat::MONO_VLSB:
@@ -132,9 +140,15 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     case CanvasFormat::RGB565:
         this->canvas = new CanvasRGB(frame_width, frame_height);
         break;
+    case CanvasFormat::MONO_HMSB:
+        this->canvas = new CanvasHMSB(frame_width, frame_height);
     default:
         break;
     }
+    this->fg_color = text_cfg.fg_color;
+    this->bg_color = text_cfg.bg_color;
+    canvas->canvas_fg_color = fg_color;
+    canvas->canvas_bg_color = bg_color;
 
     this->widget_anchor_x = text_cfg.widget_anchor_x;
     this->widget_anchor_y = text_cfg.widget_anchor_y;
@@ -263,7 +277,7 @@ void TextWidget::write(char character, uint8_t char_column, uint8_t char_line)
 {
     uint8_t anchor_x = char_column * this->font[FONT_WIDTH_INDEX];
     uint8_t anchor_y = char_line * this->font[FONT_HEIGHT_INDEX];
-    canvas->draw_glyph(this->get_text_frame_config(), character, anchor_x, anchor_y);
+    draw_glyph(character, anchor_x, anchor_y);
 }
 
 void TextWidget::clear_line()
@@ -305,8 +319,6 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
     this->number_of_line = text_cfg.number_of_line;
     this->font = text_cfg.font;
     this->tab_size = text_cfg.tab_size;
-    this->fg_color = text_cfg.fg_color;
-    this->bg_color = text_cfg.bg_color;
     this->wrap = text_cfg.wrap;
     this->auto_next_char = text_cfg.auto_next_char;
 
@@ -324,8 +336,7 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
     this->number_of_line = this->canvas->canvas_height_pixel / this->font[FONT_HEIGHT_INDEX];
 
     this->tab_size = text_cfg.tab_size;
-    this->fg_color = text_cfg.fg_color;
-    this->bg_color = text_cfg.bg_color;
+
     this->wrap = text_cfg.wrap;
     this->auto_next_char = text_cfg.auto_next_char;
 
@@ -341,7 +352,7 @@ void TextWidget::update_text_frame_size(const unsigned char *font)
 {
     this->font = font;
 
-    // size the text area according to the available room within the frame whidth and height
+    // size the text area according to the available room within the frame width and height
     this->number_of_line = this->canvas->canvas_height_pixel / font[FONT_HEIGHT_INDEX];
     this->number_of_column = this->canvas->canvas_width_pixel / font[FONT_WIDTH_INDEX];
 
@@ -352,11 +363,12 @@ void TextWidget::update_text_frame_size(const unsigned char *font)
 void TextWidget::clear_text_buffer()
 {
     memset(this->text_buffer, '\0', this->text_buffer_size);
+    canvas->clear_canvas_buffer();
     current_char_column = 0;
     current_char_line = 0;
 }
 
-void TextWidget::update_graphic_frame_size(const unsigned char *font)
+void TextWidget::update_canvas_buffer_size(const unsigned char *font)
 {
     this->font = font;
     // size the pixel buffer to the required size due to character area
@@ -396,7 +408,6 @@ void TextWidget::process_char(char character)
         write(' ', current_char_column, current_char_line);
         break;
     case FORM_FEED:
-        // ((GraphicDisplayDevice *)display_screen)->clear_pixel_buffer(&this->pixel_frame);
         canvas->clear_canvas_buffer();
         current_char_column = 0;
         current_char_line = 0;
@@ -449,6 +460,39 @@ void TextWidget::next_char()
         {
             current_char_column = 0;
             next_line();
+        }
+    }
+}
+
+void TextWidget::draw_glyph(const char character,
+                            const uint8_t anchor_x, const uint8_t anchor_y)
+{
+    if ((font == nullptr) || (character < 32))
+        return;
+
+    uint8_t font_width = font[FONT_WIDTH_INDEX];
+    uint8_t font_height = font[FONT_HEIGHT_INDEX];
+
+    uint16_t seek = (character - 32) * (font_width * font_height) / 8 + 2;
+
+    uint8_t b_seek = 0;
+
+    for (uint8_t x = 0; x < font_width; x++)
+    {
+        for (uint8_t y = 0; y < font_height; y++)
+        {
+            uint8_t b = font[seek];
+            if (font[seek] >> b_seek & 0b00000001)
+                canvas->draw_pixel(x + anchor_x, y + anchor_y, fg_color);
+            else
+                canvas->draw_pixel(x + anchor_x, y + anchor_y, bg_color);
+
+            b_seek++;
+            if (b_seek == 8)
+            {
+                b_seek = 0;
+                seek++;
+            }
         }
     }
 }

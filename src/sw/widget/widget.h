@@ -178,11 +178,12 @@ protected:
 public:
     /// @brief the associated canvas in which the widget writes text and draws graphics
     Canvas *canvas;
-    // /// @brief the data structure that contains the actual pixel buffer, created by the display device.
-    // struct_PixelFrame pixel_frame;
+
     /// @brief the foregroung color of the graphic frame
+    /// //TODO voir si fg_color n'est pas mieux dans canvas
     ColorIndex fg_color;
     /// @brief the background color of the graphic frame
+    /// //TODO voir si bg_color n'est pas mieux dans canvas
     ColorIndex bg_color;
 
     /// @brief location in x of the widget within the hosting framebuffer
@@ -352,6 +353,13 @@ private:
     /// @brief auto_next_char flag : if true each char steps one position after being written.
     bool auto_next_char{true};
 
+    /// @brief a graphic primitive to draw a character at a pixel position. Strongly dependent on font memory organisation.
+    /// @param character the character to draw
+    /// @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
+    /// @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
+    void draw_glyph(const char character,
+                    const uint8_t anchor_x, const uint8_t anchor_y);
+
 protected:
     /// @brief create text buffer and delete the old one if already existing
     void create_text_buffer();
@@ -409,10 +417,10 @@ public:
     /// @brief et text buffer memory to "0" and set  character current line and column to 0
     void clear_text_buffer();
 
-    /// @brief compute graphic pixel width and height according to the size of the text (column x line ) and the size of the bitmap font.
+    /// @brief compute canvas width and height according to the size of the text (column x line ) and the size of the bitmap font.
     /// Delete the previous pixel buffer if any and create a new buffer.
     /// @param font the new font
-    void update_graphic_frame_size(const unsigned char *font);
+    void update_canvas_buffer_size(const unsigned char *font);
 
     /// @brief process characters in the internal text buffer and draw it into the pixel buffer.
     /// \note USAGE: this is useful if we have to fill the text_buffer, e.g. with sprintf and formatted text.

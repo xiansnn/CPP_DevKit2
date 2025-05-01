@@ -106,7 +106,7 @@ void test_font_size(SSD1306 *current_display)
     default_text_cfg.widget_anchor_x = 64;
     default_text_cfg.widget_anchor_y = 8;
     my_text_widget *font_text_on_screen_1 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
-    font_text_on_screen_1->update_graphic_frame_size(current_font[1]);
+    font_text_on_screen_1->update_canvas_buffer_size(current_font[1]);
 
     // process first text according to sprintf capabilities then copy to text buffer and finally draw text buffer into pixel buffer
     sprintf(font_text_on_screen_1->text_buffer, test_string.c_str());
@@ -117,13 +117,13 @@ void test_font_size(SSD1306 *current_display)
     default_text_cfg.widget_anchor_x = 0;
     default_text_cfg.widget_anchor_y = 16;
     my_text_widget *font_text_on_screen_2 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
-    font_text_on_screen_2->update_graphic_frame_size(current_font[2]);
+    font_text_on_screen_2->update_canvas_buffer_size(current_font[2]);
 
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->write();
     font_text_on_screen_2->show();
 
-    font_text_on_screen_2->update_graphic_frame_size(current_font[3]);
+    font_text_on_screen_2->update_canvas_buffer_size(current_font[3]);
     font_text_on_screen_2->update_widget_anchor(64, 32);
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->write();

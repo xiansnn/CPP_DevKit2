@@ -450,24 +450,35 @@ void ST7735::clear_device_screen_buffer(ColorIndex color_index)
 
 void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y)
 {
-#ifdef TIME_MEASURE
-    pr_D4.hi();
-#endif
-    set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
-    send_cmd(ST7735_RAMWR);
-#ifdef TIME_MEASURE
-    pr_D4.lo();
-#endif
-    for (size_t i = 0; i < canvas->canvas_buffer_size; i++)
+    switch (canvas->canvas_format)
     {
-        ColorIndex color_index = static_cast<ColorIndex>(canvas->canvas_buffer[i]);
-#ifdef TIME_MEASURE
-        pr_D5.hi();
-#endif
-        spi->single_write_16(color565_palette[color_index]);
-#ifdef TIME_MEASURE
-        pr_D5.lo();
-#endif
+    case CanvasFormat::RGB565:
+        set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
+        send_cmd(ST7735_RAMWR);
+        for (size_t i = 0; i < canvas->canvas_buffer_size; i++)
+        {
+            ColorIndex color_index = static_cast<ColorIndex>(canvas->canvas_buffer[i]);
+            spi->single_write_16(color565_palette[color_index]);
+        }
+        break;
+    case CanvasFormat::MONO_HMSB:
+        uint16_t foreground_color = color565_palette[canvas->canvas_fg_color];
+        uint16_t background_color = color565_palette[canvas->canvas_bg_color];
+        set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
+        send_cmd(ST7735_RAMWR);
+        for (size_t i = 0; i < canvas->canvas_buffer_size; i++)
+        {
+            uint8_t byte = canvas->canvas_buffer[i];
+            for (size_t idx = 0; idx < 8; idx++)
+            {
+                uint8_t shift = byte & ((0b10000000) >> idx);
+                if (shift)
+                    spi->single_write_16(foreground_color);
+                else
+                    spi->single_write_16(background_color);
+            }
+        }
+        break;
     }
 }
 

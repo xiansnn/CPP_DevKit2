@@ -127,17 +127,17 @@ Collaboration diagram for TextWidget:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_text_widget__coll__graph.png" border="0" usemap="#a_text_widget_coll__map" alt="Collaboration graph"/></div>
 <map name="a_text_widget_coll__map" id="a_text_widget_coll__map">
-<area shape="rect" title="a dedicated class for text frame only" alt="" coords="178,1168,753,1576"/>
-<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="178,584,753,1119"/>
-<area shape="poly" title=" " alt="" coords="468,1134,468,1168,463,1168,463,1134"/>
-<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="5,332,448,468"/>
-<area shape="poly" title=" " alt="" coords="271,480,326,583,322,586,267,482"/>
+<area shape="rect" title="a dedicated class for text frame only" alt="" coords="178,1191,753,1599"/>
+<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="178,607,753,1141"/>
+<area shape="poly" title=" " alt="" coords="468,1156,468,1191,463,1191,463,1156"/>
+<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="5,343,448,479"/>
+<area shape="poly" title=" " alt="" coords="271,491,330,606,325,608,266,494"/>
 <area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="67,71,171,151"/>
-<area shape="poly" title=" " alt="" coords="136,150,198,315,193,317,131,152"/>
+<area shape="poly" title=" " alt="" coords="135,149,199,326,194,328,130,151"/>
 <area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="195,5,475,216"/>
-<area shape="poly" title=" " alt="" coords="298,217,260,317,255,315,293,215"/>
-<area shape="rect" href="class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="473,278,938,522"/>
-<area shape="poly" title=" " alt="" coords="643,523,618,570,613,568,639,520"/>
+<area shape="poly" title=" " alt="" coords="300,217,259,328,254,327,295,215"/>
+<area shape="rect" href="class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="473,278,938,545"/>
+<area shape="poly" title=" " alt="" coords="639,546,614,593,609,591,634,543"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -163,9 +163,9 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_text_buffer</b> ()</td></tr>
 <tr class="memdesc:ad0eff5956c8b16178e7eb3572a86e57d"><td class="mdescLeft">&#160;</td><td class="mdescRight">et text buffer memory to "0" and set character current line and column to 0 <br /></td></tr>
 <tr class="separator:ad0eff5956c8b16178e7eb3572a86e57d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34c23baf9e2a633803ff709b42ad4ff5" id="r_a34c23baf9e2a633803ff709b42ad4ff5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34c23baf9e2a633803ff709b42ad4ff5">update_graphic_frame_size</a> (const unsigned char *font)</td></tr>
-<tr class="memdesc:a34c23baf9e2a633803ff709b42ad4ff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute graphic pixel width and height according to the size of the text (column x line ) and the size of the bitmap font. Delete the previous pixel buffer if any and create a new buffer.  <br /></td></tr>
-<tr class="separator:a34c23baf9e2a633803ff709b42ad4ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b1dbfb205b17dd9404425871f35563e" id="r_a6b1dbfb205b17dd9404425871f35563e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b1dbfb205b17dd9404425871f35563e">update_canvas_buffer_size</a> (const unsigned char *font)</td></tr>
+<tr class="memdesc:a6b1dbfb205b17dd9404425871f35563e"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute canvas width and height according to the size of the text (column x line ) and the size of the bitmap font. Delete the previous pixel buffer if any and create a new buffer.  <br /></td></tr>
+<tr class="separator:a6b1dbfb205b17dd9404425871f35563e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ce8f540e45844b22efa9f18c3c85eab" id="r_a3ce8f540e45844b22efa9f18c3c85eab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ce8f540e45844b22efa9f18c3c85eab">write</a> ()</td></tr>
 <tr class="memdesc:a3ce8f540e45844b22efa9f18c3c85eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">process characters in the internal text buffer and draw it into the pixel buffer.  <br /></td></tr>
 <tr class="separator:a3ce8f540e45844b22efa9f18c3c85eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -264,11 +264,11 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>text_buffer</b> = n
 <tr class="separator:af9591b5109c6d49f678cc1c49cce5f16 inherit pub_attribs_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74a1b9f5c7257cd4ffc2021d1eb496f9 inherit pub_attribs_class_graphic_widget" id="r_a74a1b9f5c7257cd4ffc2021d1eb496f9"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="canvas_8h.html#a9efd9fcd52acdc60f2eb45ff9fce269b">ColorIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fg_color</b></td></tr>
-<tr class="memdesc:a74a1b9f5c7257cd4ffc2021d1eb496f9 inherit pub_attribs_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">the foregroung color of the graphic frame <br /></td></tr>
+<tr class="memdesc:a74a1b9f5c7257cd4ffc2021d1eb496f9 inherit pub_attribs_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">the foregroung color of the graphic frame //TODO voir si fg_color n'est pas mieux dans canvas <br /></td></tr>
 <tr class="separator:a74a1b9f5c7257cd4ffc2021d1eb496f9 inherit pub_attribs_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9e72f710b0399d5c917e422cffbe62c inherit pub_attribs_class_graphic_widget" id="r_ae9e72f710b0399d5c917e422cffbe62c"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="canvas_8h.html#a9efd9fcd52acdc60f2eb45ff9fce269b">ColorIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bg_color</b></td></tr>
-<tr class="memdesc:ae9e72f710b0399d5c917e422cffbe62c inherit pub_attribs_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">the background color of the graphic frame <br /></td></tr>
+<tr class="memdesc:ae9e72f710b0399d5c917e422cffbe62c inherit pub_attribs_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">the background color of the graphic frame //TODO voir si bg_color n'est pas mieux dans canvas <br /></td></tr>
 <tr class="separator:ae9e72f710b0399d5c917e422cffbe62c inherit pub_attribs_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61133b1352758000f0f3eef16824bdcb inherit pub_attribs_class_graphic_widget" id="r_a61133b1352758000f0f3eef16824bdcb"><td class="memItemLeft" align="right" valign="top">
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>widget_anchor_x</b></td></tr>
@@ -669,14 +669,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a34c23baf9e2a633803ff709b42ad4ff5" name="a34c23baf9e2a633803ff709b42ad4ff5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34c23baf9e2a633803ff709b42ad4ff5">&#9670;&#160;</a></span>update_graphic_frame_size()</h2>
+<a id="a6b1dbfb205b17dd9404425871f35563e" name="a6b1dbfb205b17dd9404425871f35563e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b1dbfb205b17dd9404425871f35563e">&#9670;&#160;</a></span>update_canvas_buffer_size()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void TextWidget::update_graphic_frame_size </td>
+          <td class="memname">void TextWidget::update_canvas_buffer_size </td>
           <td>(</td>
           <td class="paramtype">const unsigned char *</td>          <td class="paramname"><span class="paramname"><em>font</em></span></td><td>)</td>
           <td></td>
@@ -684,7 +684,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>compute graphic pixel width and height according to the size of the text (column x line ) and the size of the bitmap font. Delete the previous pixel buffer if any and create a new buffer. </p>
+<p>compute canvas width and height according to the size of the text (column x line ) and the size of the bitmap font. Delete the previous pixel buffer if any and create a new buffer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">font</td><td>the new font </td></tr>
