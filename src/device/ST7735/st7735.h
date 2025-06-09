@@ -26,9 +26,9 @@
 /// @brief hardware row offset between the TFT panel and the IC ST7735 for rotation = 180°, 270°
 #define ST7735_144_128x128_row_offset_180_270 3
 /// @brief hardware column offset between the TFT panel and the IC ST7735
-#define ST7735_177_160x128_column_offset 2
+#define ST7735_177_160x128_column_offset 0//2
 /// @brief hardware row offset between the TFT panel and the IC ST7735
-#define ST7735_177_160x128_row_offset 1
+#define ST7735_177_160x128_row_offset 0//1
 
 /// @brief tag used to ru the correct init code
 enum class ST7735DisplayType
@@ -119,8 +119,8 @@ private:
     ~ST7735();
 
     /// @brief set the actual position of the display
-    /// @param rotation rotate the display 0°, 90°, 180°,270° clockwise
-    void set_rotation_and_color(ST7735Rotation rotation);
+    ///  @param device_config the device configuration file
+    void set_rotation_and_color(struct_ConfigST7735 device_config);
 
     /// @brief Set the display ON object
     void set_display_ON();
