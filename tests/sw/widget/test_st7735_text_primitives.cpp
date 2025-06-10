@@ -42,11 +42,11 @@ struct_ConfigMasterSPI cfg_spi = {
     .baud_rate_Hz = 10 * 1000 * 1000};
 
 struct_ConfigST7735 cfg_st7735{
-    .display_type = ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB,
+    .display_type = ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB,
     .backlight_pin = 5,
     .hw_reset_pin = 15,
     .dc_pin = 14,
-    .rotation = ST7735Rotation::_90};
+    .rotation = ST7735Rotation::_180};
 
 class my_text_widget : public TextWidget
 {
@@ -117,6 +117,7 @@ void test_font_size(ST7735 *current_display)
     font_text_on_screen_2->show();
 
     font_text_on_screen_2->update_canvas_buffer_size(current_font[3]);
+    // font_text_on_screen_2->update_widget_anchor(64, 32);
     font_text_on_screen_2->update_widget_anchor(64, 32);
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->write();
@@ -130,7 +131,7 @@ void test_font_size(ST7735 *current_display)
 void test_full_screen_text(ST7735 *current_display)
 {
     struct_ConfigTextWidget txt_conf = {
-        .font = font_5x8,
+        .font = font_8x8,
         .fg_color = ColorIndex::CYAN,
         .wrap = true,
     };
