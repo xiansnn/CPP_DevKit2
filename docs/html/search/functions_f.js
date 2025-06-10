@@ -14,7 +14,7 @@ var searchData=
   ['set_5firq_11',['set_irq',['../class_p_w_m.html#a882cd8b81dee59ccc83b7b731fc786be',1,'PWM']]],
   ['set_5flevel_12',['set_level',['../class_widget_horizontal_bar.html#a463a0d22a9509395fac826be6a8154a4',1,'WidgetHorizontalBar']]],
   ['set_5fpos_13',['set_pos',['../class_s_g90.html#a0e8036a2f259a972fcb7d0227cb222d6',1,'SG90']]],
-  ['set_5frotation_5fand_5fcolor_14',['set_rotation_and_color',['../class_s_t7735.html#ae39c6390f948dee9be246381356f636f',1,'ST7735']]],
+  ['set_5frotation_5fand_5fcolor_14',['set_rotation_and_color',['../class_s_t7735.html#a87c2c59fc30094c1bd8f5b6bc41d2618',1,'ST7735']]],
   ['set_5fwidth_5fnb_5fof_5fstep_15',['set_width_nb_of_step',['../class_p_w_m.html#a706b0764d77f3b1bca0ff1bfdc99b336',1,'PWM']]],
   ['sg90_16',['SG90',['../class_s_g90.html#a32f812f329b6dc3938faa5f142ea7c0a',1,'SG90']]],
   ['show_17',['show',['../class_s_s_d1306.html#a0856911564cd155a68bdb5cd4ba090e8',1,'SSD1306::show()'],['../class_s_t7735.html#a748040c220a93cf6e69e1b486e50f198',1,'ST7735::show()'],['../class_graphic_display_device.html#a74d7018ff90dd9ec87edf705962f0403',1,'GraphicDisplayDevice::show()'],['../class_printer_device.html#ac36519bc40779e67778c59d8c6877b77',1,'PrinterDevice::show()'],['../class_graphic_widget.html#a83c221250b9dfdeb8ab03b87a783bf10',1,'GraphicWidget::show()']]],

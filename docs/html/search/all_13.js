@@ -26,7 +26,7 @@ var searchData=
   ['set_5firq_23',['set_irq',['../class_p_w_m.html#a882cd8b81dee59ccc83b7b731fc786be',1,'PWM']]],
   ['set_5flevel_24',['set_level',['../class_widget_horizontal_bar.html#a463a0d22a9509395fac826be6a8154a4',1,'WidgetHorizontalBar']]],
   ['set_5fpos_25',['set_pos',['../class_s_g90.html#a0e8036a2f259a972fcb7d0227cb222d6',1,'SG90']]],
-  ['set_5frotation_5fand_5fcolor_26',['set_rotation_and_color',['../class_s_t7735.html#ae39c6390f948dee9be246381356f636f',1,'ST7735']]],
+  ['set_5frotation_5fand_5fcolor_26',['set_rotation_and_color',['../class_s_t7735.html#a87c2c59fc30094c1bd8f5b6bc41d2618',1,'ST7735']]],
   ['set_5fwidth_5fnb_5fof_5fstep_27',['set_width_nb_of_step',['../class_p_w_m.html#a706b0764d77f3b1bca0ff1bfdc99b336',1,'PWM']]],
   ['sg90_28',['SG90',['../class_s_g90.html',1,'SG90'],['../class_s_g90.html#a32f812f329b6dc3938faa5f142ea7c0a',1,'SG90::SG90()']]],
   ['sg90_2eh_29',['sg90.h',['../sg90_8h.html',1,'']]],

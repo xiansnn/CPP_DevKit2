@@ -6,6 +6,6 @@ var class_s_t7735 =
     [ "enable_sleep", "class_s_t7735.html#ac237efe612c94e3149e6ad6f791ece0e", null ],
     [ "set_display_OFF", "class_s_t7735.html#a2eeb323da6a0df1a2e24e932e7ed0a2a", null ],
     [ "set_display_ON", "class_s_t7735.html#a9df39c104f9b583b7e8ac2558c099724", null ],
-    [ "set_rotation_and_color", "class_s_t7735.html#ae39c6390f948dee9be246381356f636f", null ],
+    [ "set_rotation_and_color", "class_s_t7735.html#a87c2c59fc30094c1bd8f5b6bc41d2618", null ],
     [ "show", "class_s_t7735.html#a748040c220a93cf6e69e1b486e50f198", null ]
 ];
