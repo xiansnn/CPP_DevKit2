@@ -35,10 +35,12 @@ HW_SPI_Master spi_master = HW_SPI_Master(cfg_spi);
 
 //=========================================================================
 struct_ConfigST7735 cfg_st7735{
-    .display_type = ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB,
+    .display_type = ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB,
+    // .display_type = ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB,
     .backlight_pin = 5,
     .hw_reset_pin = 15,
-    .dc_pin = 14};
+    .dc_pin = 14,
+    .rotation = ST7735Rotation::_0};
 //-------------------
 ST7735 display = ST7735(&spi_master, cfg_st7735);
 
@@ -71,7 +73,8 @@ void my_corner_rectangle_widget::draw() {};
 //====================================================================================
 struct_ConfigGraphicWidget full_screen_cfg = {
     .pixel_frame_width = 128,
-    .pixel_frame_height = 128,
+    .pixel_frame_height = 160, // if ST7735 128x160
+    // .pixel_frame_height = 128, // if ST7735 128x128
     .fg_color = ColorIndex::WHITE,
     .bg_color = ColorIndex::BLACK,
     .widget_anchor_x = 0,
@@ -107,14 +110,16 @@ void test_clear_device_screen(ST7735 &display)
 //================================================================================
 void test_screen_rotation(ST7735 *display, GraphicWidget *central_rectangle, GraphicWidget *corner_rectangle)
 {
-
+    cfg_st7735.rotation = ST7735Rotation::_0;
+    display->set_rotation_and_color(cfg_st7735);
     display->clear_device_screen_buffer();
     central_rectangle->draw_border();
     central_rectangle->show();
 
     for (size_t i = 0; i < 4; i++)
     {
-        display->set_rotation_and_color(static_cast<ST7735Rotation>(i));
+        cfg_st7735.rotation = static_cast<ST7735Rotation>(i);
+        display->set_rotation_and_color(cfg_st7735);
         corner_rectangle->fg_color = static_cast<ColorIndex>(i + 2);
         corner_rectangle->draw_border(corner_rectangle->fg_color);
         corner_rectangle->show();
