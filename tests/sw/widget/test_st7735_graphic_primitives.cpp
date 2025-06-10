@@ -32,15 +32,16 @@ struct_ConfigMasterSPI cfg_spi = {
     .baud_rate_Hz = 10 * 1000 * 1000};
 
 struct_ConfigST7735 cfg_st7735{
-    .display_type = ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB,
+    .display_type = ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB,
     .backlight_pin = 5,
     .hw_reset_pin = 15,
     .dc_pin = 14,
-    .rotation = ST7735Rotation::_90};
+    .rotation = ST7735Rotation::_180};
 
 struct_ConfigGraphicWidget full_screen_cfg = {
     .pixel_frame_width = 128,
-    .pixel_frame_height = 128,
+    .pixel_frame_height = 160,
+    // .pixel_frame_height = 128,// can be 128
     .fg_color = ColorIndex::RED,
     .bg_color = ColorIndex::YELLOW,
     .widget_anchor_x = 0,
