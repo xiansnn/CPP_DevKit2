@@ -38,11 +38,11 @@ struct_ConfigMasterSPI cfg_spi = {
     .baud_rate_Hz = 10 * 1000 * 1000};
 
 struct_ConfigST7735 cfg_st7735{
-    .display_type = ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB,
+    .display_type = ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB,
     .backlight_pin = 5,
     .hw_reset_pin = 15,
     .dc_pin = 14,
-    .rotation = ST7735Rotation::_90};
+    .rotation = ST7735Rotation::_180};
 
 class my_model : public Model
 {
