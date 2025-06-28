@@ -137,7 +137,7 @@ public:
 class GraphicWidget : public Widget
 {
 private:
-    /// @brief the graphic primitive to draw an ellipse \bug //FIXME doesn't work !
+    /// @brief the graphic primitive to draw an ellipse \bug //FIXME ellipse doesn't work !
     /// @param x_center the x coordinate of the center
     /// @param y_center the y coordinate of the center
     /// @param x_radius the radius along x axis
