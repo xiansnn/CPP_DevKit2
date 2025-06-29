@@ -22,6 +22,21 @@
 #include "sw/widget/widget.h"
 
 #define CANVAS_FORMAT CanvasFormat::RGB565
+#define ST7735_128x128
+// #define ST7735_128x160
+
+#ifdef ST7735_128x128
+#define DEVICE_DISPLAY_TYPE ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB
+#define DEVICE_DISPLAY_ROTATION ST7735Rotation::_90
+#define DEVICE_DISPLAY_HEIGHT 128
+#elif ST7735_128x160
+#define DEVICE_DISPLAY_TYPE ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB
+#define DEVICE_DISPLAY_ROTATION ST7735Rotation::_180
+#define DEVICE_DISPLAY_HEIGHT 160
+#endif
+
+
+
 //=========================================================================
 struct_ConfigMasterSPI cfg_spi = {
     .spi = spi1,
@@ -35,12 +50,11 @@ HW_SPI_Master spi_master = HW_SPI_Master(cfg_spi);
 
 //=========================================================================
 struct_ConfigST7735 cfg_st7735{
-    .display_type = ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB,
-    // .display_type = ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB,
+    .display_type = DEVICE_DISPLAY_TYPE,
     .backlight_pin = 5,
     .hw_reset_pin = 15,
     .dc_pin = 14,
-    .rotation = ST7735Rotation::_0};
+    .rotation = DEVICE_DISPLAY_ROTATION};
 //-------------------
 ST7735 display = ST7735(&spi_master, cfg_st7735);
 
@@ -73,8 +87,7 @@ void my_corner_rectangle_widget::draw() {};
 //====================================================================================
 struct_ConfigGraphicWidget full_screen_cfg = {
     .pixel_frame_width = 128,
-    .pixel_frame_height = 160, // if ST7735 128x160
-    // .pixel_frame_height = 128, // if ST7735 128x128
+    .pixel_frame_height = DEVICE_DISPLAY_HEIGHT, 
     .fg_color = ColorIndex::WHITE,
     .bg_color = ColorIndex::BLACK,
     .widget_anchor_x = 0,
