@@ -29,6 +29,21 @@ Probe pr_D5 = Probe(5);
 
 #define CANVAS_FORMAT CanvasFormat::RGB565
 
+// #define ST7735_128x128
+#define ST7735_128x160
+
+#ifdef ST7735_128x128
+#define DEVICE_DISPLAY_TYPE ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB
+#define DEVICE_DISPLAY_ROTATION ST7735Rotation::_90
+#define DEVICE_DISPLAY_HEIGHT 128
+#endif
+#ifdef ST7735_128x160
+#define DEVICE_DISPLAY_TYPE ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB
+#define DEVICE_DISPLAY_ROTATION ST7735Rotation::_180
+#define DEVICE_DISPLAY_HEIGHT 160
+#endif
+
+
 struct_ConfigMasterSPI cfg_spi = {
     .spi = spi1,
     .sck_pin = 10,
@@ -38,11 +53,11 @@ struct_ConfigMasterSPI cfg_spi = {
     .baud_rate_Hz = 10 * 1000 * 1000};
 
 struct_ConfigST7735 cfg_st7735{
-    .display_type = ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB,
+    .display_type = DEVICE_DISPLAY_TYPE,
     .backlight_pin = 5,
     .hw_reset_pin = 15,
     .dc_pin = 14,
-    .rotation = ST7735Rotation::_180};
+    .rotation = DEVICE_DISPLAY_ROTATION};
 
 class my_model : public Model
 {
