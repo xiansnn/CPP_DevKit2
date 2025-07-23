@@ -126,14 +126,14 @@ void probe_sequence(void *)
 int main()
 {
     // xTaskCreate(probe_sequence, "probe_sequence", 256, NULL, 1, NULL);
-    xTaskCreate(probe_sequence_0, "probe_sequence_0", 256, NULL, 2, NULL);
-    xTaskCreate(probe_sequence_1, "probe_sequence_1", 256, NULL, 1, NULL);
-    xTaskCreate(probe_sequence_2, "probe_sequence_2", 256, NULL, 1, NULL);
-    xTaskCreate(probe_sequence_3, "probe_sequence_3", 256, NULL, 1, NULL);
-    xTaskCreate(probe_sequence_4, "probe_sequence_4", 256, NULL, 1, NULL);
-    xTaskCreate(probe_sequence_5, "probe_sequence_5", 256, NULL, 1, NULL);
-    xTaskCreate(probe_sequence_6, "probe_sequence_6", 256, NULL, 1, NULL);
-    xTaskCreate(probe_sequence_7, "probe_sequence_7", 256, NULL, 1, NULL);
+    xTaskCreate(probe_sequence_0, "pr_sequence_0", 256, NULL, 2, NULL);
+    xTaskCreate(probe_sequence_1, "pr_sequence_1", 256, NULL, 1, NULL);
+    xTaskCreate(probe_sequence_2, "pr_sequence_2", 256, NULL, 1, NULL);
+    xTaskCreate(probe_sequence_3, "pr_sequence_3", 256, NULL, 1, NULL);
+    xTaskCreate(probe_sequence_4, "pr_sequence_4", 256, NULL, 1, NULL);
+    xTaskCreate(probe_sequence_5, "pr_sequence_5", 256, NULL, 1, NULL);
+    xTaskCreate(probe_sequence_6, "pr_sequence_6", 256, NULL, 1, NULL);
+    xTaskCreate(probe_sequence_7, "pr_sequence_7", 256, NULL, 1, NULL);
     vTaskStartScheduler();
 
     while (true)
