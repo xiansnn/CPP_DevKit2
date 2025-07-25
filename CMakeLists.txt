@@ -57,7 +57,7 @@ if(PROJECT_IS_TOP_LEVEL)
     include_directories(
         ${CPP_DEVKIT_INC_PATH} 
         ${CMAKE_CURRENT_LIST_DIR})
-    # include(${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
+    include(${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
     add_subdirectory(src)
     add_subdirectory(tests)
     add_subdirectory(test_freeRTOS)

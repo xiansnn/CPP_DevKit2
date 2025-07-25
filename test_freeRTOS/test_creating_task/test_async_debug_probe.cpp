@@ -32,9 +32,9 @@ void probe_sequence_0(void *)
     while (true)
     {
         p0.hi();
-        vTaskDelay(1);
+        // vTaskDelay(1);
         p0.lo();
-        vTaskDelay(10);
+        // vTaskDelay(10);
     }
 }
 void probe_sequence_1(void *)
@@ -42,9 +42,9 @@ void probe_sequence_1(void *)
     while (true)
     {
         p1.hi();
-        vTaskDelay(1);
+        // vTaskDelay(1);
         p1.lo();
-        vTaskDelay(20);
+        // vTaskDelay(20);
     }
 }
 void probe_sequence_2(void *)
@@ -126,14 +126,14 @@ void probe_sequence(void *)
 int main()
 {
     // xTaskCreate(probe_sequence, "probe_sequence", 256, NULL, 1, NULL);
-    xTaskCreate(probe_sequence_0, "pr_sequence_0", 256, NULL, 2, NULL);
+    xTaskCreate(probe_sequence_0, "pr_sequence_0", 256, NULL, 1, NULL);
     xTaskCreate(probe_sequence_1, "pr_sequence_1", 256, NULL, 1, NULL);
-    xTaskCreate(probe_sequence_2, "pr_sequence_2", 256, NULL, 1, NULL);
-    xTaskCreate(probe_sequence_3, "pr_sequence_3", 256, NULL, 1, NULL);
-    xTaskCreate(probe_sequence_4, "pr_sequence_4", 256, NULL, 1, NULL);
-    xTaskCreate(probe_sequence_5, "pr_sequence_5", 256, NULL, 1, NULL);
-    xTaskCreate(probe_sequence_6, "pr_sequence_6", 256, NULL, 1, NULL);
-    xTaskCreate(probe_sequence_7, "pr_sequence_7", 256, NULL, 1, NULL);
+    xTaskCreate(probe_sequence_2, "pr_sequence_2", 256, NULL, 2, NULL);
+    xTaskCreate(probe_sequence_3, "pr_sequence_3", 256, NULL, 2, NULL);
+    xTaskCreate(probe_sequence_4, "pr_sequence_4", 256, NULL, 2, NULL);
+    xTaskCreate(probe_sequence_5, "pr_sequence_5", 256, NULL, 2, NULL);
+    xTaskCreate(probe_sequence_6, "pr_sequence_6", 256, NULL, 2, NULL);
+    xTaskCreate(probe_sequence_7, "pr_sequence_7", 256, NULL, 2, NULL);
     vTaskStartScheduler();
 
     while (true)

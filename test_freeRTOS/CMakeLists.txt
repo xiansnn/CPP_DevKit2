@@ -1,11 +1,9 @@
-include(${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
-
-
-
-add_executable(test_async_debug_probe test_async_debug_probe.cpp)
-target_include_directories(test_async_debug_probe PUBLIC ${CMAKE_CURRENT_LIST_DIR})
-target_link_libraries(test_async_debug_probe
-            pico_stdlib 
-            FreeRTOS-Kernel-Heap4 
-            utilities_probe
-)
+include_directories(${CMAKE_CURRENT_LIST_DIR})
+file(GLOB ALL_ITEMS LIST_DIRECTORIES true  ${CMAKE_CURRENT_LIST_DIR}/*  )
+foreach(ITEM ${ALL_ITEMS})
+    if(IS_DIRECTORY ${ITEM})
+        get_filename_component(SHORT_NAME ${ITEM} NAME)
+        message( STATUS "cpp_devkit add test_freeRTOS directory-> ${SHORT_NAME}")
+        add_subdirectory(${SHORT_NAME})
+    endif()
+endforeach(ITEM)
