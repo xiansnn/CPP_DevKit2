@@ -25,6 +25,13 @@ Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
 
+struct config_periodic_task
+{
+    int probe_number;
+    uint32_t period;
+};
+
+
 Probe *probes[] = {&p0, &p1, &p2, &p3, &p4, &p5, &p6, &p7};
 int n_delay[8] = {0, 1, 2, 3, 4, 5, 6, 7};
 
@@ -50,21 +57,27 @@ void probe_sequence_delay(void *pxDelay)
 }
 void probe_sequence_periodic(void *pxPeriod)
 {
-    const volatile int *period__ms = static_cast<int *>(pxPeriod);
+    const volatile config_periodic_task *config = static_cast<config_periodic_task *>(pxPeriod);
     TickType_t xLastWakeTime = xTaskGetTickCount();
     while (true)
     {
         for (size_t i = 0; i < 10000; i++)
         {
-            probes[7]->hi();
-            probes[7]->lo();
+            probes[config->probe_number]->hi();
+            probes[config->probe_number]->lo();
         }
-        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(period__ms));
+        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(config->period));
     }
 }
 
 int main()
 {
+    
+    config_periodic_task cnf_task = {
+        .probe_number = 7,
+        .period = 255
+    };
+
     xTaskCreate(probe_sequence_full_load, "pr_sequence_00", 256, &n_delay[0], 1, NULL);
     xTaskCreate(probe_sequence_full_load, "pr_sequence_01", 256, &n_delay[1], 1, NULL);
     xTaskCreate(probe_sequence_delay, "pr_sequence_12", 256, &n_delay[2], 2, NULL);
@@ -72,7 +85,7 @@ int main()
     xTaskCreate(probe_sequence_delay, "pr_sequence_14", 256, &n_delay[4], 2, NULL);
     xTaskCreate(probe_sequence_delay, "pr_sequence_15", 256, &n_delay[5], 2, NULL);
     xTaskCreate(probe_sequence_delay, "pr_sequence_16", 256, &n_delay[6], 2, NULL);
-    xTaskCreate(probe_sequence_periodic, "pr_sequence_27", 250, (void *)255, 3, NULL);
+    xTaskCreate(probe_sequence_periodic, "pr_sequence_27", 250, &cnf_task, 3, NULL);
     vTaskStartScheduler();
 
     while (true)
