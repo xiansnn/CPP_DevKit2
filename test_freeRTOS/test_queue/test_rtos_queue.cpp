@@ -82,11 +82,13 @@ void vPeriodicSendingTask(void *pxConfig)
             pxConfigPeriodicTask->probe->hi();
             pxConfigPeriodicTask->probe->lo();
         };
+        pxConfigPeriodicTask->probe->pulse_us(1);
         for (size_t j = 0; j < 8; j++)
         {
             delay = j + 1;
             xQueueSend(msg_queue, &delay, 0);
         }
+        pxConfigPeriodicTask->probe->pulse_us(1);
         vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(pxConfigPeriodicTask->period_ms));
     }
 }
