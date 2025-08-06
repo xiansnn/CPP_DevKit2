@@ -1,9 +1,9 @@
 /**
- * @file test_queue_debug_probe.cpp
+ * @file test_rtos_timer.cpp
  * @author xiansnn (xiansnn@hotmail.com)
  * @brief
  * @version 0.1
- * @date 2025-07-28
+ * @date 2025-08-06
  *
  * @copyright Copyright (c) 2025
  *
@@ -46,15 +46,23 @@ static void prvOneShotTimerCallback(TimerHandle_t xTimer)
 {
     p1.pulse_us(1000);
 }
+void pico_set_led(bool led_on)
+{
+    gpio_put(PICO_DEFAULT_LED_PIN, led_on);
+}
 
 static void prvAutoReloadTimerCallback(TimerHandle_t xTimer)
 {
     p4.copy(status);
+    pico_set_led(status);
     status = !status;
 }
 
 int main()
 {
+    gpio_init(PICO_DEFAULT_LED_PIN);
+    gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
+
     xTaskCreate(vIdleTask, "idle_task0", 256, &p0, 0, NULL);
     TimerHandle_t xAutoReloadTimer, xOneShotTimer;
     BaseType_t xTimer1Started, xTimer2Started;
