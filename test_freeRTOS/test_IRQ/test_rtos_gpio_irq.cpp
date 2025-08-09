@@ -28,8 +28,8 @@ struct irq_data
     uint32_t event_mask;
 };
 
-
-#define GPIO_UNDER_TEST 17
+#define SW_GPIO_UNDER_TEST 17
+#define CLK_GPIO_UNDER_TEST 21
 
 static char event_str[128];
 
@@ -39,7 +39,6 @@ static const char *gpio_irq_str[] = {
     "EDGE_FALL",  // 0x4
     "EDGE_RISE"   // 0x8
 };
-
 
 QueueHandle_t event_queue = xQueueCreate(8, sizeof(irq_data));
 
@@ -97,7 +96,6 @@ void vIRQProcessingTask(void *pxProbe)
         gpio_event_string(event_str, data.event_mask);
         printf("GPIO %d %s\n", data.gpio_number, event_str);
         ((Probe *)pxProbe)->lo();
-
     }
 }
 
@@ -105,8 +103,8 @@ int main()
 {
     stdio_init_all();
 
-    printf("Hello GPIO[%d] IRQ \n", GPIO_UNDER_TEST);
-    gpio_set_irq_enabled_with_callback(GPIO_UNDER_TEST, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_callback);
+    gpio_set_irq_enabled_with_callback(SW_GPIO_UNDER_TEST, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_callback);
+    gpio_set_irq_enabled_with_callback(CLK_GPIO_UNDER_TEST, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_callback);
 
     xTaskCreate(vIdleTask, "idle_task0", 256, &p0, 0, NULL);
     xTaskCreate(vIRQProcessingTask, "IRQ_task1", 256, &p2, 3, NULL);
@@ -118,5 +116,3 @@ int main()
         tight_loop_contents();
     };
 }
-
-
