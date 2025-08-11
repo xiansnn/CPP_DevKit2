@@ -5,7 +5,7 @@ target_link_libraries(test_rtos_gpio_irq
             utilities_probe
             )
             
-add_executable(test_rtos_switch_button test_rtos_switch_button_irq.cpp)
+add_executable(test_rtos_switch_button test_rtos_switch_button.cpp)
 target_link_libraries(test_rtos_switch_button  
             pico_stdlib
             FreeRTOS-Kernel-Heap4 

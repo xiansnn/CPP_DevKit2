@@ -11,18 +11,22 @@
 #include <map>
 #include <string>
 
+#include "FreeRTOS.h"
+#include "task.h"
+// #include "queue.h"
+#include "event_groups.h"
+
 #include "device/switch_button/switch_button.h"
 #include "utilities/probe/probe.h"
 
 #define CENTRAL_SWITCH_GPIO 17
 #define ENCODER_CLK_GPIO 21
 
-// channel 0 : central switch pin
-Probe pr_D3 = Probe(3); // irq_call_back is running
-Probe pr_D4 = Probe(4); // clk_event != SwitchButtonEvent::NONE
-// Probe pr_D5 = Probe(5); // bounces discarded
-// channel 6 : encoder DT pin
-// channel 7 : encoder clk pin
+Probe p0 = Probe(0);
+Probe p1 = Probe(1);
+Probe p2 = Probe(2);
+Probe p3 = Probe(3);
+Probe p4 = Probe(4);
 
 struct_ConfigSwitchButton cfg_central_switch{
     .debounce_delay_us = 5000,
@@ -53,7 +57,7 @@ SwitchButtonWithIRQ encoder_clk = SwitchButtonWithIRQ(ENCODER_CLK_GPIO, &irq_cal
 void irq_call_back(uint gpio, uint32_t event_mask)
 {
     encoder_clk.irq_enabled(false);
-    pr_D3.hi();
+    p3.hi();
     if (gpio == CENTRAL_SWITCH_GPIO)
         printf("IRQ on CENTRAL_SWITCH_GPIO\n");
 
@@ -62,13 +66,13 @@ void irq_call_back(uint gpio, uint32_t event_mask)
         UIControlEvent clk_event = encoder_clk.process_IRQ_event(event_mask);
         if (clk_event != UIControlEvent::NONE)
         {
-            pr_D4.pulse_us(1); // actual IRQ received
+            p4.pulse_us(1); // actual IRQ received
             printf("ENCODER_CLK_GPIO IRQ event(%s) mask(%d)\n", event_to_string[clk_event].c_str(), event_mask);
         }
         // else
         //     pr_D5.pulse_us(1); // NONE indicating bounces on clk_event
     }
-    pr_D3.lo();
+    p3.lo();
     encoder_clk.irq_enabled(true);
 };
 
