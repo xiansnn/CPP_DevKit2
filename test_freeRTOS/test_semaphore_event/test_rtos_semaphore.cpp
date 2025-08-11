@@ -36,7 +36,9 @@ struct config_semaphore_task
 
 xSemaphoreHandle semaphore = xSemaphoreCreateBinary();
 xSemaphoreHandle irq_SW = xSemaphoreCreateBinary();
-xSemaphoreHandle irq_CLK = xSemaphoreCreateBinary();
+#define uxMAX_COUNT 10
+#define uxInitialCount 0
+xSemaphoreHandle irq_CLK = xSemaphoreCreateCounting(uxMAX_COUNT,uxInitialCount);
 
 bool status = true;
 
@@ -141,9 +143,9 @@ int main()
 
     xTaskCreate(vIdleTask, "idle_task0", 256, &p0, 0, NULL);
     xTaskCreate(vSemaphoreHandlerTask, "semaphore task", 256, &cnf_task, 2, NULL);
-    xTimerStart(xAutoReloadTimer, 0);
     xTaskCreate(vIRQ_SWProcessingTask, "IRQ_SW_task1", 256, &p2, 3, NULL);
     xTaskCreate(vIRQ_CLKProcessingTask, "IRQ_CLK_task1", 256, &p2, 1, NULL);
+    xTimerStart(xAutoReloadTimer, 0);
     p1.pulse_us(100);
     vTaskStartScheduler();
 
