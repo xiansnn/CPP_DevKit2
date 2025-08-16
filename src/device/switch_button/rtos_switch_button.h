@@ -48,7 +48,7 @@ enum class ButtonState
 struct struct_IRQData
 {
     uint32_t current_time_us;
-    int gpio_number;
+    // int gpio_number;
     uint32_t event_mask;
 };
 struct struct_ControlEventData
@@ -64,8 +64,7 @@ struct struct_ControlEventData
 /// @brief the default value for LONG_PUSH_DELAY_us
 #define LONG_PUSH_DELAY_us 1000000 // default to 1s
 /// @brief the default value for TIME_OUT_DELAY_us
-#define TIME_OUT_DELAY_us 5000000 // default top 5s
-
+#define TIME_OUT_DELAY_ms 5000 // default 5s/
 
 /**
  * @brief These are the values used to configure a switch button
@@ -97,7 +96,7 @@ struct struct_ConfigSwitchButton
      * @brief when a switch is released and not pushed again for time_out_delay_us (in microseconds) a UIControlEvent::TIME_OUT is returned.
      *
      */
-    uint time_out_delay_us = TIME_OUT_DELAY_us;
+    uint time_out_delay_ms = TIME_OUT_DELAY_ms;
     /**
      * @brief if true, this indicates that when the switch is pushed, a logical LO (0) signal is read on GPIO pin.
      *
@@ -137,10 +136,10 @@ protected:
     uint long_release_delay_us;
 
     /**
-     * @brief if the button is released after time_out_delay_us (in microseconds) a UIControlEvent::TIME_OUT is returned,
+     * @brief if the button is released after time_out_delay_ms (in milliseconds) a UIControlEvent::TIME_OUT is returned,
      *
      */
-    uint time_out_delay_us;
+    uint time_out_delay_ms;
 
     /*mechanical switch related members*/
     /// @brief the GPIO that reads the logical state of the switch (pushed or released)
@@ -152,13 +151,13 @@ protected:
     /// @brief the system time stored on the previous switch state change.
     uint previous_change_time_us;
 
-    /**
-     * @brief return the status of the switch.
-     *
-     * @return true if switch status is read LO (resp. HI) if active_lo is true (resp. false)
-     * @return false if switch status is read HI (resp. LO) if active_lo is true (resp. false)
-     */
-    bool is_switch_pushed();
+    // /**
+    //  * @brief return the status of the switch.
+    //  *
+    //  * @return true if switch status is read LO (resp. HI) if active_lo is true (resp. false)
+    //  * @return false if switch status is read HI (resp. LO) if active_lo is true (resp. false)
+    //  */
+    // bool is_switch_pushed();
 
     /// @brief The previous state read during the previous period.
     bool previous_switch_pushed_state;
@@ -183,12 +182,12 @@ public:
      */
     ~rtosSwitchButton();
 
-    /**
-     * @brief the periodic routine that process deboucing, push and release of the switch.
-     *
-     * @return UIControlEvent
-     */
-    UIControlEvent process_sample_event();
+    // /**
+    //  * @brief the periodic routine that process deboucing, push and release of the switch.
+    //  *
+    //  * @return UIControlEvent
+    //  */
+    // UIControlEvent process_sample_event();
 
     /**
      * @brief Get the button status object
@@ -196,6 +195,10 @@ public:
      * @return ButtonState
      */
     ButtonState get_button_status();
+
+    void set_button_status(ButtonState new_state);
+
+    uint get_time_out_delay_ms();
 };
 
 /**
@@ -227,6 +230,9 @@ private:
     bool is_switch_pushed(uint32_t current_event_mask);
 
 protected:
+    QueueHandle_t switch_button_queue;
+    QueueHandle_t control_event_queue;
+
 public:
     /**
      * @brief "AND" function used to enable/disable interrupt during Interrupt Service Routine (ISR)
@@ -242,8 +248,8 @@ public:
      * @param conf the configuration value of the switch
      * @param event_mask_config the rising/falling edge configuratio of the irq
      */
-    rtosSwitchButtonWithIRQ(uint gpio, gpio_irq_callback_t call_back, struct_ConfigSwitchButton conf = {},
-                            uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
+    rtosSwitchButtonWithIRQ(uint gpio, gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
+                            struct_ConfigSwitchButton conf = {}, uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
     rtosSwitchButtonWithIRQ();
     /**
      * @brief Destroy the SwitchButtonWithIRQ object
@@ -256,5 +262,5 @@ public:
      * @param data
      * @return UIControlEvent
      */
-    UIControlEvent rtos_process_IRQ_event(struct_IRQData data);
+    void rtos_process_IRQ_event(struct_IRQData data);
 };
