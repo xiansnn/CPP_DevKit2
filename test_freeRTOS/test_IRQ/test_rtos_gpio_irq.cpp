@@ -22,7 +22,7 @@ Probe p2 = Probe(2);
 // Probe p6 = Probe(6);
 // Probe p7 = Probe(7);
 
-struct irq_data
+struct struct_IRQData
 {
     int gpio_number;
     uint32_t event_mask;
@@ -40,7 +40,7 @@ static const char *gpio_irq_str[] = {
     "EDGE_RISE"   // 0x8
 };
 
-QueueHandle_t event_queue = xQueueCreate(8, sizeof(irq_data));
+QueueHandle_t event_queue = xQueueCreate(8, sizeof(struct_IRQData));
 
 void vIdleTask(void *pxProbe)
 {
@@ -79,7 +79,7 @@ void gpio_event_string(char *buf, uint32_t events)
 void gpio_callback(uint gpio, uint32_t event)
 {
     p1.hi();
-    irq_data data;
+    struct_IRQData data;
     data.event_mask = event;
     data.gpio_number = gpio;
     xQueueSendFromISR(event_queue, &data, 0);
@@ -88,7 +88,7 @@ void gpio_callback(uint gpio, uint32_t event)
 
 void vIRQProcessingTask(void *pxProbe)
 {
-    irq_data data;
+    struct_IRQData data;
     while (true)
     {
         xQueueReceive(event_queue, &data, portMAX_DELAY);

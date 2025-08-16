@@ -1,20 +1,23 @@
 /**
  * @file rtos_switch_button.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-08-14
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 #pragma once
 
 #include "pico/stdio.h"
 #include "pico/stdlib.h"
+#include "hardware/timer.h"
 #include <stdio.h>
 #include "sw/ui_core/ui_control_event.h"
 #include "FreeRTOS.h"
+#include "queue.h"
+#include "task.h"
 
 /// @brief the boolean meaning for GPIO_HI
 #define GPIO_HI true
@@ -42,6 +45,18 @@ enum class ButtonState
     TIME_OUT_PENDING
 };
 
+struct struct_IRQData
+{
+    uint32_t current_time_us;
+    int gpio_number;
+    uint32_t event_mask;
+};
+struct struct_ControlEventData
+{
+    int gpio_number;
+    UIControlEvent event;
+};
+
 /// @brief the default value for debounce_delay_us
 #define DEBOUNCE_us 10000 // default to 10ms
 /// @brief the default value for LONG_RELEASE_DELAY_us
@@ -50,6 +65,7 @@ enum class ButtonState
 #define LONG_PUSH_DELAY_us 1000000 // default to 1s
 /// @brief the default value for TIME_OUT_DELAY_us
 #define TIME_OUT_DELAY_us 5000000 // default top 5s
+
 
 /**
  * @brief These are the values used to configure a switch button
@@ -103,7 +119,7 @@ struct struct_ConfigSwitchButton
  * \image html button_short_release.svg "SwitchButton times references for short release"
  * \image html button_long_release.svg "SwitchButton times references for long release"
  */
-class SwitchButton
+class rtosSwitchButton
 {
 private:
 protected:
@@ -158,14 +174,14 @@ public:
      * @param gpio the microcontroller GPIO that read the switch status
      * @param conf the configuration data according struct_ConfigSwitchButton
      */
-    SwitchButton(uint gpio, struct_ConfigSwitchButton conf = {});
+    rtosSwitchButton(uint gpio, struct_ConfigSwitchButton conf = {});
 
-    SwitchButton();
+    rtosSwitchButton();
     /**
      * @brief Destroy the SwitchButton object
      *
      */
-    ~SwitchButton();
+    ~rtosSwitchButton();
 
     /**
      * @brief the periodic routine that process deboucing, push and release of the switch.
@@ -194,7 +210,7 @@ public:
  * with and without IRQ
  * \ingroup control
  */
-class SwitchButtonWithIRQ : public SwitchButton
+class rtosSwitchButtonWithIRQ : public rtosSwitchButton
 {
 private:
     /**
@@ -226,19 +242,19 @@ public:
      * @param conf the configuration value of the switch
      * @param event_mask_config the rising/falling edge configuratio of the irq
      */
-    SwitchButtonWithIRQ(uint gpio, gpio_irq_callback_t call_back, struct_ConfigSwitchButton conf = {},
-                        uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
-    SwitchButtonWithIRQ();
+    rtosSwitchButtonWithIRQ(uint gpio, gpio_irq_callback_t call_back, struct_ConfigSwitchButton conf = {},
+                            uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
+    rtosSwitchButtonWithIRQ();
     /**
      * @brief Destroy the SwitchButtonWithIRQ object
      *
      */
-    ~SwitchButtonWithIRQ();
+    ~rtosSwitchButtonWithIRQ();
     /**
      * @brief Process IRQ event and return the resulting event.
      *
-     * @param current_event_mask
+     * @param data
      * @return UIControlEvent
      */
-    UIControlEvent process_IRQ_event(uint32_t current_event_mask);
+    UIControlEvent rtos_process_IRQ_event(struct_IRQData data);
 };

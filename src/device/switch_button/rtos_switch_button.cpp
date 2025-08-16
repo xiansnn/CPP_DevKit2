@@ -2,7 +2,8 @@
 #include "hardware/gpio.h"
 #include "hardware/timer.h"
 
-SwitchButton::SwitchButton(uint gpio, struct_ConfigSwitchButton conf)
+
+rtosSwitchButton::rtosSwitchButton(uint gpio, struct_ConfigSwitchButton conf)
 {
     this->gpio = gpio;
     this->debounce_delay_us = conf.debounce_delay_us;
@@ -21,15 +22,15 @@ SwitchButton::SwitchButton(uint gpio, struct_ConfigSwitchButton conf)
     this->previous_switch_pushed_state = false;
 }
 
-SwitchButton::SwitchButton()
+rtosSwitchButton::rtosSwitchButton()
 {
 }
 
-SwitchButton::~SwitchButton()
+rtosSwitchButton::~rtosSwitchButton()
 {
 }
 
-UIControlEvent SwitchButton::process_sample_event()
+UIControlEvent rtosSwitchButton::process_sample_event()
 {
     uint32_t time_since_previous_change;
     uint32_t current_time_us = time_us_32();
@@ -83,36 +84,36 @@ UIControlEvent SwitchButton::process_sample_event()
     return UIControlEvent::NONE;
 }
 
-ButtonState SwitchButton::get_button_status()
+ButtonState rtosSwitchButton::get_button_status()
 {
     return button_status;
 }
 
-bool SwitchButton::is_switch_pushed()
+bool rtosSwitchButton::is_switch_pushed()
 {
     bool gpio_value = gpio_get(this->gpio);
     return ((active_lo && !gpio_value) || (!active_lo && gpio_value)) ? true : false;
 }
 
-SwitchButtonWithIRQ::SwitchButtonWithIRQ(uint gpio, gpio_irq_callback_t call_back, struct_ConfigSwitchButton conf, uint32_t event_mask_config)
-    : SwitchButton(gpio, conf)
+rtosSwitchButtonWithIRQ::rtosSwitchButtonWithIRQ(uint gpio, gpio_irq_callback_t call_back, struct_ConfigSwitchButton conf, uint32_t event_mask_config)
+    : rtosSwitchButton(gpio, conf)
 {
     this->irq_event_mask_config = event_mask_config;
     gpio_set_irq_enabled_with_callback(gpio, irq_event_mask_config, true, call_back);
 }
 
-SwitchButtonWithIRQ::SwitchButtonWithIRQ()
+rtosSwitchButtonWithIRQ::rtosSwitchButtonWithIRQ()
 {
 }
 
-SwitchButtonWithIRQ::~SwitchButtonWithIRQ()
+rtosSwitchButtonWithIRQ::~rtosSwitchButtonWithIRQ()
 {
 }
 
-UIControlEvent SwitchButtonWithIRQ::process_IRQ_event(uint32_t current_event_mask)
+UIControlEvent rtosSwitchButtonWithIRQ::rtos_process_IRQ_event(struct_IRQData data)
 {
-    bool new_switch_pushed_state = is_switch_pushed(current_event_mask);
-    uint32_t current_time_us = time_us_32();
+    bool new_switch_pushed_state = is_switch_pushed( data.event_mask);
+    uint32_t current_time_us = data.current_time_us;
     uint32_t time_since_previous_change = current_time_us - previous_change_time_us;
     previous_change_time_us = current_time_us;
     if (time_since_previous_change <= debounce_delay_us)
@@ -137,12 +138,12 @@ UIControlEvent SwitchButtonWithIRQ::process_IRQ_event(uint32_t current_event_mas
     }
 }
 
-void SwitchButtonWithIRQ::irq_enabled(bool enabled)
+void rtosSwitchButtonWithIRQ::irq_enabled(bool enabled)
 {
     gpio_set_irq_enabled(this->gpio, this->irq_event_mask_config, enabled);
 }
 
-bool SwitchButtonWithIRQ::is_switch_pushed(uint32_t event_mask)
+bool rtosSwitchButtonWithIRQ::is_switch_pushed(uint32_t event_mask)
 {
     bool only_rising_edge_present = (event_mask & GPIO_IRQ_EDGE_RISE) and !(event_mask & GPIO_IRQ_EDGE_FALL);
     bool only_falling_edge_present = (event_mask & GPIO_IRQ_EDGE_FALL) and !(event_mask & GPIO_IRQ_EDGE_RISE);
