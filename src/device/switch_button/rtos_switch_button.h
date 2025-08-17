@@ -263,4 +263,6 @@ public:
      * @return UIControlEvent
      */
     void rtos_process_IRQ_event(struct_IRQData data);
+
+    void test_idle_task(void * vpProbe);
 };

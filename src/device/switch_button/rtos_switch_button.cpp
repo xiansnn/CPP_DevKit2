@@ -2,6 +2,8 @@
 #include "hardware/gpio.h"
 #include "hardware/timer.h"
 
+#include "utilities/probe/probe.h"
+
 rtosSwitchButton::rtosSwitchButton(uint gpio, struct_ConfigSwitchButton conf)
 {
     this->gpio = gpio;
@@ -156,6 +158,19 @@ void rtosSwitchButtonWithIRQ::rtos_process_IRQ_event(struct_IRQData _irq_data)
         xQueueSend(this->control_event_queue, &_event_data, portMAX_DELAY);
     }
 }
+
+void rtosSwitchButtonWithIRQ::test_idle_task(void *pxProbe)
+{
+    Probe * p = (Probe *)pxProbe;
+
+        while (true)
+    {
+        p->hi();
+        p->lo();
+    }
+
+}
+
 
 void rtosSwitchButtonWithIRQ::irq_enabled(bool enabled)
 {

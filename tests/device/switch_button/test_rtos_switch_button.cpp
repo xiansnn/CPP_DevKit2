@@ -76,6 +76,10 @@ void vIdleTask(void *pxProbe)
         ((Probe *)pxProbe)->lo();
     }
 }
+
+void v2ndIdleTask(void * pxProbe){
+    encoder_clk.test_idle_task(pxProbe);
+}
 std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::NONE, "NONE"},
     {UIControlEvent::PUSH, "PUSH"},
@@ -157,7 +161,7 @@ int main()
 {
     stdio_init_all();
 
-    xTaskCreate(vIdleTask, "idle_task0", 256, &p0, 0, NULL);
+    xTaskCreate(v2ndIdleTask, "idle_task0", 256, &p0, 0, NULL);
     xTaskCreate(vProcessControlEventTask, "event_task0", 256, &p4, 2, NULL);
     xTaskCreate(vProcessCentralSwitchIRQ, "sw_irq_task0", 256, &p2, 4, NULL);
     xTaskCreate(vProcessEncoderCLKIRQ, "clk_irq_task0", 256, &p3, 4, NULL);
