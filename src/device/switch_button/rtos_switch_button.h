@@ -44,16 +44,27 @@ enum class ButtonState
     /// @brief the switch has beeb released, the button wait for next action. If nothing occurs, a time_out event is returned and the button is inactive
     TIME_OUT_PENDING
 };
-
+/**
+ * @brief this is the structure used to send irq data though the queue
+ * 
+ */
 struct struct_IRQData
 {
+    /// @brief the current time at wich the IRQ occurred
     uint32_t current_time_us;
+    /// @brief the IRQ mask given by the IRQ harware
     uint32_t event_mask;
 };
 
+/**
+ * @brief this is the structure used to transmit control event through the queue
+ * 
+ */
 struct struct_ControlEventData
 {
+    /// @brief the gpio that receive the IRQ
     int gpio_number;
+    /// @brief th control event computed by the IRQ processing task
     UIControlEvent event;
 };
 
@@ -183,14 +194,16 @@ protected:
     QueueHandle_t control_event_queue;
 
 public:
-    /**
-     * @brief Construct a new SwitchButtonWithIRQ object
-     *
-     * @param gpio The microcontroller GPIO connected to the switch
-     * @param call_back The ISR (interrupt Service Routine) that process IRQ event
-     * @param conf the configuration value of the switch
-     * @param event_mask_config the rising/falling edge configuratio of the irq
-     */
+     /**
+      * @brief Construct a new rtos Switch Button object
+      * 
+      * @param gpio The microcontroller GPIO connected to the switch
+      * @param call_back The ISR (interrupt Service Routine) that process IRQ event
+      * @param in_switch_button_queue the input queue that receives data from IRQ
+      * @param out_control_event_queue the output queue that receives computed control event
+      * @param conf the configuration value of the switch
+      * @param event_mask_config the rising/falling edge configuratio of the irq
+      */
     rtosSwitchButton(uint gpio, gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
                             struct_rtosConfigSwitchButton conf = {}, uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
 
