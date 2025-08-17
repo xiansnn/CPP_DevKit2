@@ -48,9 +48,9 @@ enum class ButtonState
 struct struct_IRQData
 {
     uint32_t current_time_us;
-    // int gpio_number;
     uint32_t event_mask;
 };
+
 struct struct_ControlEventData
 {
     int gpio_number;
@@ -62,7 +62,7 @@ struct struct_ControlEventData
 /// @brief the default value for LONG_RELEASE_DELAY_us
 #define LONG_RELEASE_DELAY_us 1000000 // default to 1s
 /// @brief the default value for LONG_PUSH_DELAY_us
-#define LONG_PUSH_DELAY_us 1000000 // default to 1s
+#define LONG_PUSH_DELAY_ms 1000 // default to 1s
 /// @brief the default value for TIME_OUT_DELAY_us
 #define TIME_OUT_DELAY_ms 5000 // default 5s/
 
@@ -70,12 +70,12 @@ struct struct_ControlEventData
  * @brief These are the values used to configure a switch button
  * (0) debounce_delay_us
  * (1) long_release_delay_us
- * (2) long_push_delay_us
- * (3) time_out_delay_us
+ * (2) long_push_delay_ms
+ * (3) time_out_delay_ms
  * (4) active_lo
  *
  */
-struct struct_ConfigSwitchButton
+struct struct_rtosConfigSwitchButton
 {
     /**
      * @brief The time during which all changes in the switch state is ignored
@@ -88,12 +88,12 @@ struct struct_ConfigSwitchButton
      */
     uint long_release_delay_us = LONG_RELEASE_DELAY_us;
     /**
-     * @brief when a switch is pushed more than long_push_delay_us (in microseconds) a UIControlEvent::LONG_PUSH is returned.
+     * @brief when a switch is pushed more than long_push_delay_ms (in milliseconds) a UIControlEvent::LONG_PUSH is returned.
      */
-    uint long_push_delay_us = LONG_PUSH_DELAY_us;
+    uint long_push_delay_ms = LONG_PUSH_DELAY_ms;
 
     /**
-     * @brief when a switch is released and not pushed again for time_out_delay_us (in microseconds) a UIControlEvent::TIME_OUT is returned.
+     * @brief when a switch is released and not pushed again for time_out_delay_ms (in milliseconds) a UIControlEvent::TIME_OUT is returned.
      *
      */
     uint time_out_delay_ms = TIME_OUT_DELAY_ms;
@@ -105,29 +105,50 @@ struct struct_ConfigSwitchButton
 };
 
 /**
- * @brief SwitchButton status is sampled periodically by software.
+ * @brief rtosSwitchButton is processed by an Interrupt Service Routine (ISR) and FreeRTOS routines.
  *
  * - Switch status is the status of the physical (i.e. mechanical) switch device.
  *
  * - Button status is the logical status of the button (regardless if the switch is wired active Lo or HI).
  *
- * During each period, the status of the button is compared to the previous status and the function member process_sample_event() return an event accordingly.
+ * During each ISR, the status of the button is compared to the previous status and the function member rtos_process_IRQ_event() generate an event accordingly toward the control_event output queue.
  *
- * SwitchButton can be associated with UIController if button belongs to a GUI. In such case a new class must be created that inherits from SwitchButton and UIController.
+ * SwitchButton can be associated with UIController if button belongs to a GUI. In such case a new class must be created that inherits from rtosSwitchButton and UIController.
  * \ingroup control
- * \image html button_short_release.svg "SwitchButton times references for short release"
- * \image html button_long_release.svg "SwitchButton times references for long release"
+ * \image html button_short_release.svg "SwitchButton times references for short release" // TODO to update
+ * \image html button_long_release.svg "SwitchButton times references for long release" // TODO to update
+
+ * \note
+ * WARNING: LONG_PUSH and TIME_OUT cannot be implemented by processing IRQ. // TODO to update
+ *
+ * NOTICE: the test program for rtos switch button is implemented with the rotary encoder device, which is a good example of what can be done
+ * with IRQ
+ * \ingroup control
  */
+
 class rtosSwitchButton
 {
 private:
+    /**
+     * @brief A memory slot reserved to store the irq_event_mask.
+     */
+    uint32_t irq_event_mask_config;
+    /**
+     * @brief return the logical status of the switch. It process rising and falling edges of the interrupt, according to the active_lo status of the switch.
+     *
+     * @param current_event_mask
+     * @return true if switch status is read LO (resp. HI) if active_lo is true (resp. false)
+     * @return false if switch status is read HI (resp. LO) if active_lo is true (resp. false)
+     */
+    bool is_switch_pushed(uint32_t current_event_mask);
+
 protected:
     /*time related members*/
     /// @brief The time during which all changes in the switch state is ignored
     uint debounce_delay_us;
 
-    /// @brief when a button is pushed more than long_push_delay_us (in microseconds) a UIControlEvent::LONG_PUSH is returned.
-    uint long_push_delay_us;
+    /// @brief when a button is pushed more than long_push_delay_ms (in milliseconds) a UIControlEvent::LONG_PUSH is returned.
+    uint long_push_delay_ms;
 
     /**
      * @brief if the button is released after long_release_delay_us (in microseconds) a UIControlEvent::RELEASED_AFTER_LONG_TIME is returned,
@@ -151,14 +172,6 @@ protected:
     /// @brief the system time stored on the previous switch state change.
     uint previous_change_time_us;
 
-    // /**
-    //  * @brief return the status of the switch.
-    //  *
-    //  * @return true if switch status is read LO (resp. HI) if active_lo is true (resp. false)
-    //  * @return false if switch status is read HI (resp. LO) if active_lo is true (resp. false)
-    //  */
-    // bool is_switch_pushed();
-
     /// @brief The previous state read during the previous period.
     bool previous_switch_pushed_state;
 
@@ -166,80 +179,10 @@ protected:
     /// @brief the logical button status, required to manage the event returned when the switch is pushed or released.
     ButtonState button_status{ButtonState::IDLE};
 
-public:
-    /**
-     * @brief Construct a new SwitchButton object
-     *
-     * @param gpio the microcontroller GPIO that read the switch status
-     * @param conf the configuration data according struct_ConfigSwitchButton
-     */
-    rtosSwitchButton(uint gpio, struct_ConfigSwitchButton conf = {});
-
-    rtosSwitchButton();
-    /**
-     * @brief Destroy the SwitchButton object
-     *
-     */
-    ~rtosSwitchButton();
-
-    // /**
-    //  * @brief the periodic routine that process deboucing, push and release of the switch.
-    //  *
-    //  * @return UIControlEvent
-    //  */
-    // UIControlEvent process_sample_event();
-
-    /**
-     * @brief Get the button status object
-     *
-     * @return ButtonState
-     */
-    ButtonState get_button_status();
-
-    void set_button_status(ButtonState new_state);
-
-    uint get_time_out_delay_ms();
-};
-
-/**
- * @brief SwitchButtonWithIRQ status is processed by an Interrupt Service Routine.
- * It is derived from SwithButton, but debouncing, press and release are processed differently.
- *
- * \note
- * WARNING: LONG_PUSH and TIME_OUT cannot be implemented by processing IRQ.
- * NOTICE: SwitchButtonWithIRQ can be associated with UIController only if button belongs to a UI.
- *
- * NOTICE: the test program for switch button with IRQ is implemented with the rotary encoder device, which is a good example of what can be done
- * with and without IRQ
- * \ingroup control
- */
-class rtosSwitchButtonWithIRQ : public rtosSwitchButton
-{
-private:
-    /**
-     * @brief A memory slot reserved to store the irq_event_mask.
-     */
-    uint32_t irq_event_mask_config;
-    /**
-     *@brief return the logical status of the switch. It process rising and falling edges of the interrupt, according to the active_lo status of the switch.
-     *
-     * @param current_event_mask
-     * @return true if switch status is read LO (resp. HI) if active_lo is true (resp. false)
-     * @return false if switch status is read HI (resp. LO) if active_lo is true (resp. false)
-     */
-    bool is_switch_pushed(uint32_t current_event_mask);
-
-protected:
     QueueHandle_t switch_button_queue;
     QueueHandle_t control_event_queue;
 
 public:
-    /**
-     * @brief "AND" function used to enable/disable interrupt during Interrupt Service Routine (ISR)
-     *
-     * @param enabled
-     */
-    void irq_enabled(bool enabled);
     /**
      * @brief Construct a new SwitchButtonWithIRQ object
      *
@@ -248,21 +191,21 @@ public:
      * @param conf the configuration value of the switch
      * @param event_mask_config the rising/falling edge configuratio of the irq
      */
-    rtosSwitchButtonWithIRQ(uint gpio, gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
-                            struct_ConfigSwitchButton conf = {}, uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
-    rtosSwitchButtonWithIRQ();
+    rtosSwitchButton(uint gpio, gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
+                            struct_rtosConfigSwitchButton conf = {}, uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
+
     /**
-     * @brief Destroy the SwitchButtonWithIRQ object
+     * @brief Destroy the SwitchButton object
      *
      */
-    ~rtosSwitchButtonWithIRQ();
-    /**
+    ~rtosSwitchButton();
+
+        /**
      * @brief Process IRQ event and return the resulting event.
      *
      * @param data
      * @return UIControlEvent
      */
-    void rtos_process_IRQ_event(struct_IRQData data);
+    void rtos_process_IRQ_event();
 
-    void test_idle_task(void * vpProbe);
 };

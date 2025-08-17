@@ -2,14 +2,13 @@
 #include "hardware/gpio.h"
 #include "hardware/timer.h"
 
-#include "utilities/probe/probe.h"
-
-rtosSwitchButton::rtosSwitchButton(uint gpio, struct_ConfigSwitchButton conf)
+rtosSwitchButton::rtosSwitchButton(uint gpio, gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
+                                   struct_rtosConfigSwitchButton conf, uint32_t event_mask_config)
 {
     this->gpio = gpio;
     this->debounce_delay_us = conf.debounce_delay_us;
     this->long_release_delay_us = conf.long_release_delay_us;
-    this->long_push_delay_us = conf.long_push_delay_us;
+    this->long_push_delay_ms = conf.long_push_delay_ms;
     this->time_out_delay_ms = conf.time_out_delay_ms;
     this->active_lo = conf.active_lo;
 
@@ -21,163 +20,60 @@ rtosSwitchButton::rtosSwitchButton(uint gpio, struct_ConfigSwitchButton conf)
     this->previous_change_time_us = time_us_32();
     this->button_status = ButtonState::IDLE;
     this->previous_switch_pushed_state = false;
-}
 
-rtosSwitchButton::rtosSwitchButton()
-{
-}
-
-rtosSwitchButton::~rtosSwitchButton()
-{
-}
-
-// UIControlEvent rtosSwitchButton::process_sample_event()
-// {
-//     uint32_t time_since_previous_change;
-//     uint32_t current_time_us = time_us_32();
-//     bool current_switch_pushed_state = is_switch_pushed();
-//     if (current_switch_pushed_state == previous_switch_pushed_state)
-//     {
-//         if (button_status == ButtonState::IDLE)
-//             return UIControlEvent::NONE;
-//         else if (button_status == ButtonState::ACTIVE)
-//         {
-//             if (current_time_us - previous_change_time_us >= long_push_delay_us)
-//             {
-//                 button_status = ButtonState::RELEASE_PENDING;
-//                 return UIControlEvent::LONG_PUSH;
-//             }
-//             else
-//                 return UIControlEvent::NONE;
-//         }
-//         else if (button_status == ButtonState::TIME_OUT_PENDING)
-//         {
-//             if (current_time_us - previous_change_time_us >= time_out_delay_us)
-//             {
-//                 button_status = ButtonState::IDLE;
-//                 return UIControlEvent::TIME_OUT;
-//             }
-//             else
-//                 return UIControlEvent::NONE;
-//         }
-//     }
-//     else
-//     {
-//         time_since_previous_change = current_time_us - previous_change_time_us;
-//         if (time_since_previous_change < debounce_delay_us)
-//             return UIControlEvent::NONE;
-//         else
-//         {
-//             previous_switch_pushed_state = current_switch_pushed_state;
-//             previous_change_time_us = current_time_us;
-//             if (current_switch_pushed_state)
-//             {
-//                 button_status = ButtonState::ACTIVE;
-//                 return UIControlEvent::PUSH;
-//             }
-//             else
-//             {
-//                 button_status = ButtonState::TIME_OUT_PENDING;
-//                 return (time_since_previous_change < long_release_delay_us) ? UIControlEvent::RELEASED_AFTER_SHORT_TIME : UIControlEvent::RELEASED_AFTER_LONG_TIME;
-//             }
-//         }
-//     }
-//     return UIControlEvent::NONE;
-// }
-
-ButtonState rtosSwitchButton::get_button_status()
-{
-    return button_status;
-}
-
-uint rtosSwitchButton::get_time_out_delay_ms()
-{
-    return this->time_out_delay_ms;
-}
-
-void rtosSwitchButton::set_button_status(ButtonState new_state)
-{
-    this->button_status = new_state;
-}
-
-// bool rtosSwitchButton::is_switch_pushed()
-// {
-//     bool gpio_value = gpio_get(this->gpio);
-//     return ((active_lo && !gpio_value) || (!active_lo && gpio_value)) ? true : false;
-// }
-
-// rtosSwitchButtonWithIRQ::rtosSwitchButtonWithIRQ(uint gpio, gpio_irq_callback_t call_back, struct_ConfigSwitchButton conf, uint32_t event_mask_config)
-//     : rtosSwitchButton(gpio, conf)
-// {
-//     this->irq_event_mask_config = event_mask_config;
-//     gpio_set_irq_enabled_with_callback(gpio, irq_event_mask_config, true, call_back);
-// }
-
-rtosSwitchButtonWithIRQ::rtosSwitchButtonWithIRQ(uint gpio, gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
-                                                 struct_ConfigSwitchButton conf, uint32_t event_mask_config)
-    : rtosSwitchButton(gpio, conf)
-{
     this->switch_button_queue = in_switch_button_queue;
     this->control_event_queue = out_control_event_queue;
     this->irq_event_mask_config = event_mask_config;
     gpio_set_irq_enabled_with_callback(gpio, irq_event_mask_config, true, call_back);
 }
 
-rtosSwitchButtonWithIRQ::rtosSwitchButtonWithIRQ()
+rtosSwitchButton::~rtosSwitchButton()
 {
 }
 
-rtosSwitchButtonWithIRQ::~rtosSwitchButtonWithIRQ()
+void rtosSwitchButton::rtos_process_IRQ_event()
 {
-}
+    struct_ControlEventData local_event_data;
+    struct_IRQData local_irq_data;
+    local_event_data.gpio_number = this->gpio;
 
-void rtosSwitchButtonWithIRQ::rtos_process_IRQ_event(struct_IRQData _irq_data)
-{
-    struct_ControlEventData _event_data;
-    _event_data.gpio_number = this->gpio; //_irq_data.gpio_number;
-    bool new_switch_pushed_state = is_switch_pushed(_irq_data.event_mask);
-    uint32_t current_time_us = _irq_data.current_time_us;
-
-    uint32_t time_since_previous_change = current_time_us - previous_change_time_us;
-    previous_change_time_us = current_time_us;
-    if (time_since_previous_change > debounce_delay_us)
+    while (true)
     {
-        if (new_switch_pushed_state == true)
+        uint time_to_wait = (button_status == ButtonState::TIME_OUT_PENDING) ? pdMS_TO_TICKS(time_out_delay_ms) : portMAX_DELAY;
+        bool success = xQueueReceive(this->switch_button_queue, &local_irq_data, time_to_wait);
+        if (!success)
         {
-            button_status = ButtonState::ACTIVE; // button is pressed
-            _event_data.event = UIControlEvent::PUSH;
+            local_event_data.event = UIControlEvent::TIME_OUT;
+            button_status = ButtonState::IDLE;
+            xQueueSend(this->control_event_queue, &local_event_data, portMAX_DELAY);
         }
-        else
+
+        bool new_switch_pushed_state = is_switch_pushed(local_irq_data.event_mask);
+        uint32_t current_time_us = local_irq_data.current_time_us;
+
+        uint32_t time_since_previous_change = current_time_us - previous_change_time_us;
+        previous_change_time_us = current_time_us;
+        if (time_since_previous_change > debounce_delay_us)
         {
-            button_status = ButtonState::TIME_OUT_PENDING; // button is released
-            if (time_since_previous_change < long_release_delay_us)
-                _event_data.event = UIControlEvent::RELEASED_AFTER_SHORT_TIME;
+            if (new_switch_pushed_state == true)
+            {
+                button_status = ButtonState::ACTIVE; // button is pressed
+                local_event_data.event = UIControlEvent::PUSH;
+            }
             else
-                _event_data.event = UIControlEvent::RELEASED_AFTER_LONG_TIME;
+            {
+                button_status = ButtonState::TIME_OUT_PENDING; // button is released
+                if (time_since_previous_change < long_release_delay_us)
+                    local_event_data.event = UIControlEvent::RELEASED_AFTER_SHORT_TIME;
+                else
+                    local_event_data.event = UIControlEvent::RELEASED_AFTER_LONG_TIME;
+            }
+            xQueueSend(this->control_event_queue, &local_event_data, portMAX_DELAY);
         }
-        xQueueSend(this->control_event_queue, &_event_data, portMAX_DELAY);
     }
 }
 
-void rtosSwitchButtonWithIRQ::test_idle_task(void *pxProbe)
-{
-    Probe * p = (Probe *)pxProbe;
-
-        while (true)
-    {
-        p->hi();
-        p->lo();
-    }
-
-}
-
-
-void rtosSwitchButtonWithIRQ::irq_enabled(bool enabled)
-{
-    gpio_set_irq_enabled(this->gpio, this->irq_event_mask_config, enabled);
-}
-
-bool rtosSwitchButtonWithIRQ::is_switch_pushed(uint32_t event_mask)
+bool rtosSwitchButton::is_switch_pushed(uint32_t event_mask)
 {
     bool only_rising_edge_present = (event_mask & GPIO_IRQ_EDGE_RISE) and !(event_mask & GPIO_IRQ_EDGE_FALL);
     bool only_falling_edge_present = (event_mask & GPIO_IRQ_EDGE_FALL) and !(event_mask & GPIO_IRQ_EDGE_RISE);

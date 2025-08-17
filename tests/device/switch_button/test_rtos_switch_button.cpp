@@ -38,10 +38,14 @@ void test_switch_irq_call_back(uint gpio, uint32_t event_mask)
     switch (gpio)
     {
     case CENTRAL_SWITCH_GPIO:
+        p2.hi();
         xQueueSendFromISR(central_switch_isr_queue, &data, &pxHigherPriorityTaskWoken);
+        p2.lo();
         break;
     case ENCODER_CLK_GPIO:
+        p3.hi();
         xQueueSendFromISR(encoder_clk_isr_queue, &data, &pxHigherPriorityTaskWoken);
+        p3.lo();
         break;
     default:
         break;
@@ -51,21 +55,23 @@ void test_switch_irq_call_back(uint gpio, uint32_t event_mask)
     p1.lo();
 };
 
-struct_ConfigSwitchButton cfg_central_switch{
+struct_rtosConfigSwitchButton cfg_central_switch{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
-    .long_push_delay_us = 1000000,
+    .long_push_delay_ms = 1000,
     .time_out_delay_ms = 5000};
 
-struct_ConfigSwitchButton cfg_encoder_clk{
+struct_rtosConfigSwitchButton cfg_encoder_clk{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
-    .long_push_delay_us = 1000000,
+    .long_push_delay_ms = 1000,
     .time_out_delay_ms = 3000};
 
-rtosSwitchButtonWithIRQ encoder_clk = rtosSwitchButtonWithIRQ(ENCODER_CLK_GPIO, &test_switch_irq_call_back, encoder_clk_isr_queue, ui_control_event_queue,
+rtosSwitchButton encoder_clk = rtosSwitchButton(ENCODER_CLK_GPIO, &test_switch_irq_call_back,
+                                                              encoder_clk_isr_queue, ui_control_event_queue,
                                                               cfg_encoder_clk);
-rtosSwitchButtonWithIRQ central_switch = rtosSwitchButtonWithIRQ(CENTRAL_SWITCH_GPIO, &test_switch_irq_call_back, central_switch_isr_queue, ui_control_event_queue,
+rtosSwitchButton central_switch = rtosSwitchButton(CENTRAL_SWITCH_GPIO, &test_switch_irq_call_back,
+                                                                 central_switch_isr_queue, ui_control_event_queue,
                                                                  cfg_central_switch);
 
 void vIdleTask(void *pxProbe)
@@ -77,9 +83,15 @@ void vIdleTask(void *pxProbe)
     }
 }
 
-void v2ndIdleTask(void * pxProbe){
-    encoder_clk.test_idle_task(pxProbe);
+void vProcessCentralSwitchIRQ(void *)
+{
+    central_switch.rtos_process_IRQ_event();
 }
+void vProcessEncoderCLKIRQ(void *)
+{
+    encoder_clk.rtos_process_IRQ_event();
+}
+
 std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::NONE, "NONE"},
     {UIControlEvent::PUSH, "PUSH"},
@@ -91,69 +103,26 @@ std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::DECREMENT, "DECREMENT"},
     {UIControlEvent::TIME_OUT, "TIME_OUT"}};
 
-void vProcessCentralSwitchIRQ(void *pxProbe)
+void vProcessControlEventTask(void *)
 {
-    struct_IRQData sw_irq_data;
-    struct_ControlEventData _event_data;
-    _event_data.gpio_number = CENTRAL_SWITCH_GPIO;
+    struct_ControlEventData local_event_data;
     while (true)
     {
-        uint time_to_wait = (central_switch.get_button_status() == ButtonState::TIME_OUT_PENDING) ? pdMS_TO_TICKS(central_switch.get_time_out_delay_ms()) : portMAX_DELAY;
-        BaseType_t success = xQueueReceive(central_switch_isr_queue, &sw_irq_data, time_to_wait);
-        if (success == pdFAIL)
-        {
-            _event_data.event = UIControlEvent::TIME_OUT;
-            central_switch.set_button_status(ButtonState::IDLE);
-            xQueueSend(ui_control_event_queue, &_event_data, portMAX_DELAY);
-        }
-
-        ((Probe *)pxProbe)->hi();
-        central_switch.rtos_process_IRQ_event(sw_irq_data);
-        ((Probe *)pxProbe)->lo();
-    }
-}
-void vProcessEncoderCLKIRQ(void *pxProbe)
-{
-    struct_IRQData encoder_irq_data;
-    struct_ControlEventData _event_data;
-    _event_data.gpio_number = ENCODER_CLK_GPIO;
-    while (true)
-    {
-        uint time_to_wait = (encoder_clk.get_button_status() == ButtonState::TIME_OUT_PENDING) ? pdMS_TO_TICKS(encoder_clk.get_time_out_delay_ms()) : portMAX_DELAY; // TODO extraire timeout value de chaque objet
-        bool success = xQueueReceive(encoder_clk_isr_queue, &encoder_irq_data, time_to_wait);
-        if (!success)
-        {
-            _event_data.event = UIControlEvent::TIME_OUT;
-            encoder_clk.set_button_status(ButtonState::IDLE);
-            xQueueSend(ui_control_event_queue, &_event_data, portMAX_DELAY);
-        }
-
-        ((Probe *)pxProbe)->hi();
-        encoder_clk.rtos_process_IRQ_event(encoder_irq_data);
-        ((Probe *)pxProbe)->lo();
-    }
-}
-
-void vProcessControlEventTask(void *pxProbe)
-{
-    struct_ControlEventData data;
-    while (true)
-    {
-        xQueueReceive(ui_control_event_queue, &data, portMAX_DELAY);
-        ((Probe *)pxProbe)->hi();
-        switch (data.gpio_number)
+        xQueueReceive(ui_control_event_queue, &local_event_data, portMAX_DELAY);
+        p4.hi();
+        switch (local_event_data.gpio_number)
         {
         case CENTRAL_SWITCH_GPIO:
-            printf("CENTRAL_SWITCH_GPIO IRQ event(%s)\n", event_to_string[data.event].c_str());
+            printf("CENTRAL_SWITCH_GPIO IRQ event(%s)\n", event_to_string[local_event_data.event].c_str());
             break;
         case ENCODER_CLK_GPIO:
-            printf("ENCODER_CLK_GPIO IRQ event(%s) \n", event_to_string[data.event].c_str());
+            printf("ENCODER_CLK_GPIO IRQ event(%s) \n", event_to_string[local_event_data.event].c_str());
             break;
 
         default:
             break;
         }
-        ((Probe *)pxProbe)->lo();
+        p4.lo();
     }
 }
 
@@ -161,10 +130,10 @@ int main()
 {
     stdio_init_all();
 
-    xTaskCreate(v2ndIdleTask, "idle_task0", 256, &p0, 0, NULL);
-    xTaskCreate(vProcessControlEventTask, "event_task0", 256, &p4, 2, NULL);
-    xTaskCreate(vProcessCentralSwitchIRQ, "sw_irq_task0", 256, &p2, 4, NULL);
-    xTaskCreate(vProcessEncoderCLKIRQ, "clk_irq_task0", 256, &p3, 4, NULL);
+    xTaskCreate(vIdleTask, "idle_task0", 256, &p0, 0, NULL);
+    xTaskCreate(vProcessControlEventTask, "event_task0", 256, NULL, 2, NULL);
+    xTaskCreate(vProcessCentralSwitchIRQ, "sw_irq_task0", 256, NULL, 4, NULL);
+    xTaskCreate(vProcessEncoderCLKIRQ, "clk_irq_task0", 256, NULL, 4, NULL);
 
     vTaskStartScheduler();
 
