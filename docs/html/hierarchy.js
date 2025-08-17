@@ -35,6 +35,7 @@ var hierarchy =
     [ "Probe", "class_probe.html", null ],
     [ "PWM", "class_p_w_m.html", null ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],
+    [ "rtosSwitchButton", "classrtos_switch_button.html", null ],
     [ "SG90", "class_s_g90.html", null ],
     [ "struct_ConfigGraphicWidget", "structstruct___config_graphic_widget.html", null ],
     [ "struct_ConfigMasterI2C", "structstruct___config_master_i2_c.html", null ],
@@ -48,11 +49,14 @@ var hierarchy =
     [ "struct_ConfigST7735", "structstruct___config_s_t7735.html", null ],
     [ "struct_ConfigSwitchButton", "structstruct___config_switch_button.html", null ],
     [ "struct_ConfigTextWidget", "structstruct___config_text_widget.html", null ],
+    [ "struct_ControlEventData", "structstruct___control_event_data.html", null ],
     [ "struct_DHTReading", "structstruct___d_h_t_reading.html", null ],
     [ "struct_I2CXferResult", "structstruct___i2_c_xfer_result.html", null ],
+    [ "struct_IRQData", "structstruct___i_r_q_data.html", null ],
     [ "struct_MPUData", "structstruct___m_p_u_data.html", null ],
     [ "struct_RawData", "structstruct___raw_data.html", null ],
     [ "struct_RenderArea", "structstruct___render_area.html", null ],
+    [ "struct_rtosConfigSwitchButton", "structstruct__rtos_config_switch_button.html", null ],
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", null ],
     [ "SwitchButton", "class_switch_button.html", [
       [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", [

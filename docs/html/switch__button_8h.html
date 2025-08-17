@@ -180,10 +180,17 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:aa46074d34fe2d6631c6bd9dc74633657" id="r_aa46074d34fe2d6631c6bd9dc74633657"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa46074d34fe2d6631c6bd9dc74633657">ButtonState</a> { <a class="el" href="#aa46074d34fe2d6631c6bd9dc74633657aa5daf7f2ebbba4975d61dab1c40188c7">IDLE</a>
+<tr class="memitem:aa46074d34fe2d6631c6bd9dc74633657" id="r_aa46074d34fe2d6631c6bd9dc74633657"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa46074d34fe2d6631c6bd9dc74633657">ButtonState</a> { <br />
+&#160;&#160;<a class="el" href="#aa46074d34fe2d6631c6bd9dc74633657aa5daf7f2ebbba4975d61dab1c40188c7">IDLE</a>
 , <a class="el" href="#aa46074d34fe2d6631c6bd9dc74633657a18ff74f43da410c5529f7d6fca84f115">ACTIVE</a>
 , <a class="el" href="#aa46074d34fe2d6631c6bd9dc74633657aa75feecb8d43431756d243e3e3e95321">RELEASE_PENDING</a>
 , <a class="el" href="#aa46074d34fe2d6631c6bd9dc74633657a56c111429dded1c6fca3baa5bad1d87b">TIME_OUT_PENDING</a>
+, <br />
+&#160;&#160;<a class="el" href="#aa46074d34fe2d6631c6bd9dc74633657aa5daf7f2ebbba4975d61dab1c40188c7">IDLE</a>
+, <a class="el" href="#aa46074d34fe2d6631c6bd9dc74633657a18ff74f43da410c5529f7d6fca84f115">ACTIVE</a>
+, <a class="el" href="#aa46074d34fe2d6631c6bd9dc74633657aa75feecb8d43431756d243e3e3e95321">RELEASE_PENDING</a>
+, <a class="el" href="#aa46074d34fe2d6631c6bd9dc74633657a56c111429dded1c6fca3baa5bad1d87b">TIME_OUT_PENDING</a>
+<br />
  }</td></tr>
 <tr class="memdesc:aa46074d34fe2d6631c6bd9dc74633657"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logical state of the switch (0) IDLE (1) ACTIVE (2) RELEASE_PENDING (3) TIME_OUT_PENDING.  <a href="#aa46074d34fe2d6631c6bd9dc74633657">More...</a><br /></td></tr>
 <tr class="separator:aa46074d34fe2d6631c6bd9dc74633657"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,7 +211,7 @@ Enumerations</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="#aa46074d34fe2d6631c6bd9dc74633657">ButtonState</a></td>
+          <td class="memname">enum class <a class="el" href="rtos__switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657">ButtonState</a></td>
         </tr>
       </table>
   </td>
@@ -217,6 +224,14 @@ Enumerations</h2></td></tr>
 <p>The logical state of the switch (0) IDLE (1) ACTIVE (2) RELEASE_PENDING (3) TIME_OUT_PENDING. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa46074d34fe2d6631c6bd9dc74633657aa5daf7f2ebbba4975d61dab1c40188c7" name="aa46074d34fe2d6631c6bd9dc74633657aa5daf7f2ebbba4975d61dab1c40188c7"></a>IDLE&#160;</td><td class="fielddoc"><p>The button is inactive. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa46074d34fe2d6631c6bd9dc74633657a18ff74f43da410c5529f7d6fca84f115" name="aa46074d34fe2d6631c6bd9dc74633657a18ff74f43da410c5529f7d6fca84f115"></a>ACTIVE&#160;</td><td class="fielddoc"><p>the switch has been pushed, the button is active </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa46074d34fe2d6631c6bd9dc74633657aa75feecb8d43431756d243e3e3e95321" name="aa46074d34fe2d6631c6bd9dc74633657aa75feecb8d43431756d243e3e3e95321"></a>RELEASE_PENDING&#160;</td><td class="fielddoc"><p>A long push has been detected, the switch wait to be released. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa46074d34fe2d6631c6bd9dc74633657a56c111429dded1c6fca3baa5bad1d87b" name="aa46074d34fe2d6631c6bd9dc74633657a56c111429dded1c6fca3baa5bad1d87b"></a>TIME_OUT_PENDING&#160;</td><td class="fielddoc"><p>the switch has beeb released, the button wait for next action. If nothing occurs, a time_out event is returned and the button is inactive </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa46074d34fe2d6631c6bd9dc74633657aa5daf7f2ebbba4975d61dab1c40188c7" name="aa46074d34fe2d6631c6bd9dc74633657aa5daf7f2ebbba4975d61dab1c40188c7"></a>IDLE&#160;</td><td class="fielddoc"><p>The button is inactive. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="aa46074d34fe2d6631c6bd9dc74633657a18ff74f43da410c5529f7d6fca84f115" name="aa46074d34fe2d6631c6bd9dc74633657a18ff74f43da410c5529f7d6fca84f115"></a>ACTIVE&#160;</td><td class="fielddoc"><p>the switch has been pushed, the button is active </p>
 </td></tr>
