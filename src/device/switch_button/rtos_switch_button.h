@@ -68,6 +68,7 @@ struct struct_ControlEventData
 
 /**
  * @brief These are the values used to configure a switch button
+ * delays related to action of the button (and generate IRQ) are expressed in microsecond, delays related to an absence of action on the button are expressed in milliseconds.
  * (0) debounce_delay_us
  * (1) long_release_delay_us
  * (2) long_push_delay_ms
@@ -83,17 +84,17 @@ struct struct_rtosConfigSwitchButton
      */
     uint debounce_delay_us = DEBOUNCE_us;
     /**
-     * @brief if the switch is released after long_release_delay_us (in microseconds) a UIControlEvent::RELEASED_AFTER_LONG_TIME is returned,
-     * else a UIControlEvent::RELEASED_AFTER_SHORT_TIME is released.
+     * @brief if the switch is released after long_release_delay_us (in microseconds) a UIControlEvent::RELEASED_AFTER_LONG_TIME is sent,
+     * else a UIControlEvent::RELEASED_AFTER_SHORT_TIME is sent.
      */
     uint long_release_delay_us = LONG_RELEASE_DELAY_us;
     /**
-     * @brief when a switch is pushed more than long_push_delay_ms (in milliseconds) a UIControlEvent::LONG_PUSH is returned.
+     * @brief when a switch is maintained pushed more than long_push_delay_ms (in milliseconds) a UIControlEvent::LONG_PUSH is sent.
      */
     uint long_push_delay_ms = LONG_PUSH_DELAY_ms;
 
     /**
-     * @brief when a switch is released and not pushed again for time_out_delay_ms (in milliseconds) a UIControlEvent::TIME_OUT is returned.
+     * @brief when a switch is released and not pushed again for time_out_delay_ms (in milliseconds) a UIControlEvent::TIME_OUT is sent.
      *
      */
     uint time_out_delay_ms = TIME_OUT_DELAY_ms;
@@ -105,21 +106,18 @@ struct struct_rtosConfigSwitchButton
 };
 
 /**
- * @brief rtosSwitchButton is processed by an Interrupt Service Routine (ISR) and FreeRTOS routines.
+ * @brief rtosSwitchButton is processed by an Interrupt Service Routine (ISR) under control of FreeRTOS routines.
  *
  * - Switch status is the status of the physical (i.e. mechanical) switch device.
  *
  * - Button status is the logical status of the button (regardless if the switch is wired active Lo or HI).
  *
- * During each ISR, the status of the button is compared to the previous status and the function member rtos_process_IRQ_event() generate an event accordingly toward the control_event output queue.
+ * During each ISR, the status of the button is compared to the previous status and the function member rtos_process_IRQ_event() sends
+ *  an event accordingly toward the control_event output queue.
  *
  * SwitchButton can be associated with UIController if button belongs to a GUI. In such case a new class must be created that inherits from rtosSwitchButton and UIController.
  * \ingroup control
- * \image html button_short_release.svg "SwitchButton times references for short release" // TODO to update
- * \image html button_long_release.svg "SwitchButton times references for long release" // TODO to update
-
- * \note
- * WARNING: LONG_PUSH and TIME_OUT cannot be implemented by processing IRQ. // TODO to update
+ * \image html button_long_release.svg "SwitchButton times references for long release"
  *
  * NOTICE: the test program for rtos switch button is implemented with the rotary encoder device, which is a good example of what can be done
  * with IRQ
@@ -179,7 +177,9 @@ protected:
     /// @brief the logical button status, required to manage the event returned when the switch is pushed or released.
     ButtonState button_status{ButtonState::IDLE};
 
+    /// @brief the queue from which IRQ data are received
     QueueHandle_t switch_button_queue;
+    /// @brief the queue to which the resulting control event is sent
     QueueHandle_t control_event_queue;
 
 public:
@@ -200,11 +200,9 @@ public:
      */
     ~rtosSwitchButton();
 
-        /**
-     * @brief Process IRQ event and return the resulting event.
-     *
-     * @param data
-     * @return UIControlEvent
+    /**
+     * @brief Process IRQ event and sent the resulting event to the event queue
+     * 
      */
     void rtos_process_IRQ_event();
 
