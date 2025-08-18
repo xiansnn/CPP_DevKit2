@@ -37,6 +37,9 @@ void rtosSwitchButton::rtos_process_IRQ_event()
     struct_IRQData local_irq_data;
     local_event_data.gpio_number = this->gpio;
     bool success;
+    bool switch_was_pushed;
+    uint32_t current_time_us;
+    uint32_t time_since_previous_change;
 
     while (true)
     {
@@ -65,10 +68,10 @@ void rtosSwitchButton::rtos_process_IRQ_event()
             xQueueReceive(this->switch_button_queue, &local_irq_data, portMAX_DELAY);
         }
 
-        bool switch_was_pushed = is_switch_pushed(local_irq_data.event_mask);
-        uint32_t current_time_us = local_irq_data.current_time_us;
+        switch_was_pushed = is_switch_pushed(local_irq_data.event_mask);
+        current_time_us = local_irq_data.current_time_us;
 
-        uint32_t time_since_previous_change = current_time_us - previous_change_time_us;
+        time_since_previous_change = current_time_us - previous_change_time_us;
         previous_change_time_us = current_time_us;
         if (time_since_previous_change > debounce_delay_us)
         {

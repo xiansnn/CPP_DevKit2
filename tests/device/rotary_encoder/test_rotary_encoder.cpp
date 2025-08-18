@@ -44,7 +44,7 @@ std::map<UIControlEvent, std::string> event_to_string{
 /// @param event_mask the event mask returned by the interrupt hardware routine
 void encoder_clk_irq_call_back(uint gpio, uint32_t event_mask);
 
-int number_of_event = 0;
+int value_inc_dec = 0;
 
 /**
  * @brief event_processor is a function that manages what to do 
@@ -56,8 +56,8 @@ int number_of_event = 0;
 void manager_process_control_event(UIControlEvent event)
 {
 
-    printf("Encoder event(%s) #%d \n", event_to_string[event].c_str(), number_of_event);
-    number_of_event++;
+    printf("Encoder event(%s) #%d \n", event_to_string[event].c_str(), value_inc_dec);
+    value_inc_dec++;
 };
 
 RotaryEncoder encoder = RotaryEncoder(ENCODER_CLK_GPIO, 

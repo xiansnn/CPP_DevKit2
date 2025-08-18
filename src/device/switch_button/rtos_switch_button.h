@@ -46,7 +46,7 @@ enum class ButtonState
 };
 /**
  * @brief this is the structure used to send irq data though the queue
- * 
+ *
  */
 struct struct_IRQData
 {
@@ -58,7 +58,7 @@ struct struct_IRQData
 
 /**
  * @brief this is the structure used to transmit control event through the queue
- * 
+ *
  */
 struct struct_ControlEventData
 {
@@ -142,6 +142,8 @@ private:
      * @brief A memory slot reserved to store the irq_event_mask.
      */
     uint32_t irq_event_mask_config;
+
+protected:
     /**
      * @brief return the logical status of the switch. It process rising and falling edges of the interrupt, according to the active_lo status of the switch.
      *
@@ -151,7 +153,6 @@ private:
      */
     bool is_switch_pushed(uint32_t current_event_mask);
 
-protected:
     /*time related members*/
     /// @brief The time during which all changes in the switch state is ignored
     uint debounce_delay_us;
@@ -194,18 +195,18 @@ protected:
     QueueHandle_t control_event_queue;
 
 public:
-     /**
-      * @brief Construct a new rtos Switch Button object
-      * 
-      * @param gpio The microcontroller GPIO connected to the switch
-      * @param call_back The ISR (interrupt Service Routine) that process IRQ event
-      * @param in_switch_button_queue the input queue that receives data from IRQ
-      * @param out_control_event_queue the output queue that receives computed control event
-      * @param conf the configuration value of the switch
-      * @param event_mask_config the rising/falling edge configuratio of the irq
-      */
+    /**
+     * @brief Construct a new rtos Switch Button object
+     *
+     * @param gpio The microcontroller GPIO connected to the switch
+     * @param call_back The ISR (interrupt Service Routine) that process IRQ event
+     * @param in_switch_button_queue the input queue that receives data from IRQ
+     * @param out_control_event_queue the output queue that receives computed control event
+     * @param conf the configuration value of the switch
+     * @param event_mask_config the rising/falling edge configuratio of the irq
+     */
     rtosSwitchButton(uint gpio, gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
-                            struct_rtosConfigSwitchButton conf = {}, uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
+                     struct_rtosConfigSwitchButton conf = {}, uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
 
     /**
      * @brief Destroy the SwitchButton object
@@ -215,8 +216,7 @@ public:
 
     /**
      * @brief Process IRQ event and sent the resulting event to the event queue
-     * 
+     *
      */
-    void rtos_process_IRQ_event();
-
+    virtual void rtos_process_IRQ_event() ;
 };
