@@ -44,12 +44,12 @@ private:
     QueueHandle_t dht_reading_queue;
 
 public:
-    /**
-     * @brief the member used to read and convert the values send by DHT11
-     * 
-     * @param result according to struct_DHTReading structure
-     */
+
+    /// @brief the function called by a RTOS periodic task 
     void read_from_dht();
 
+    /// @brief the constructor for rtosDHT11 object
+    /// @param gpio_in the gpio number connected the data pin
+    /// @param dht_reading_ouput_queue the output queue that receives readings
     rtosDHT11(uint gpio_in, QueueHandle_t dht_reading_ouput_queue);
 };

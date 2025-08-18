@@ -38,15 +38,15 @@ private:
   // control_event_processor_t event_processor;
 
 public:
-  /**
-   * @brief Construct a new Rotary Encoder object
-   *
-   * @param encoder_clk_gpio
-   * @param encoder_dt_gpio
-   * @param call_back
-   * @param event_processor
-   * @param clk_conf
-   */
+
+  /// @brief  Construct a new Rotary Encoder object compliant with FreeRTOS
+  /// @param encoder_clk_gpio  Construct a new Rotary Encoder object
+  /// @param encoder_dt_gpio  Construct a new Rotary Encoder object
+  /// @param call_back the IRQ callbaak
+  /// @param in_switch_button_queue the input queue receiveing IRQ data
+  /// @param out_control_event_queue the output queue receiving control event
+  /// @param conf the clock configutration (as a debounced switch)
+  /// @param event_mask_config the IRQ mask
   rtosRotaryEncoder(uint encoder_clk_gpio,
                     uint encoder_dt_gpio,
                     gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
