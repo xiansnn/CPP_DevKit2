@@ -45,12 +45,12 @@ std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::DECREMENT, "DECREMENT"},
     {UIControlEvent::TIME_OUT, "TIME_OUT"}};
 
-int number_of_event = 0;
+int value_inc_dec = 0;
 
 void manager_process_control_event(UIControlEvent event)
 {
-    printf("Encoder event(%s) #%d \n", event_to_string[event].c_str(), number_of_event);
-    number_of_event++;
+    printf("Encoder event(%s) #%d \n", event_to_string[event].c_str(), value_inc_dec);
+    value_inc_dec++;
 };
 
 void irq_call_back(uint gpio, uint32_t event_mask);

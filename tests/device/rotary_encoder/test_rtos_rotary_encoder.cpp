@@ -20,7 +20,7 @@
 
 Probe p0 = Probe(0);
 Probe p1 = Probe(1);
-// Probe p2 = Probe(2);
+Probe p2 = Probe(2);
 Probe p3 = Probe(3);
 Probe p4 = Probe(4);
 
@@ -62,7 +62,7 @@ std::map<UIControlEvent, std::string> event_to_string{
 
 void encoder_clk_irq_call_back(uint gpio, uint32_t event_mask);
 
-int number_of_event = 0;
+int value_inc_dec = 0;
 
 void vProcessControlEventTask(void *)
 {
@@ -76,19 +76,26 @@ void vProcessControlEventTask(void *)
             printf("CENTRAL_SWITCH_GPIO IRQ event(%s)\n", event_to_string[local_event_data.event].c_str());
             break;
         case ENCODER_CLK_GPIO:
-            if (local_event_data.event == UIControlEvent::INCREMENT)
+            switch (local_event_data.event)
             {
+            case UIControlEvent::INCREMENT:
                 p4.pulse_us(100);
-                number_of_event++;
-            }
-            else
-            {
-                number_of_event--;
+                value_inc_dec++;
+                break;
+            case UIControlEvent::DECREMENT:
+                value_inc_dec--;
                 p4.pulse_us(200);
-                printf("ENCODER_CLK_GPIO IRQ event(%s) #%d \n", event_to_string[local_event_data.event].c_str(), number_of_event);
+                break;
+            case UIControlEvent::TIME_OUT:
+                p4.pulse_us(400);
+                break;
+            default:
+                p4.pulse_us(1000);
+                break;
             }
-            break;
 
+            printf("ENCODER_CLK_GPIO IRQ event(%s) value = %d \n", event_to_string[local_event_data.event].c_str(), value_inc_dec);
+            break;
         default:
             break;
         }
@@ -100,15 +107,15 @@ void test_encoder_irq_call_back(uint gpio, uint32_t event_mask)
     struct_IRQData data;
     gpio_set_irq_enabled(gpio, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, false);
     data.current_time_us = time_us_32();
-    data.event_mask = event_mask;
     p1.hi();
+    data.event_mask = event_mask;
     BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
     switch (gpio)
     {
     case CENTRAL_SWITCH_GPIO:
-        // p2.hi();
+        p2.hi();
         xQueueSendFromISR(central_switch_isr_queue, &data, &pxHigherPriorityTaskWoken);
-        // p2.lo();
+        p2.lo();
         break;
     case ENCODER_CLK_GPIO:
         p3.hi();
