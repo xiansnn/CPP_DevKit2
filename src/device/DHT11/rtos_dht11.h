@@ -1,9 +1,9 @@
 /**
- * @file dht11.h
+ * @file rtos_dht11.h
  * @author xiansnn (xiansnn@hotmail.com)
  * @brief 
  * @version 0.1
- * @date 2025-01-11
+ * @date 2025-08-18
  * 
  * @copyright Copyright (c) 2025
  * 
@@ -11,7 +11,9 @@
 #pragma once
 #include "hardware/gpio.h"
 
-
+#include "FreeRTOS.h"
+#include "queue.h"
+#include "task.h"
 
 
 /**
@@ -33,11 +35,13 @@ struct struct_DHTReading
  * @brief the Class manages the DHT11 humidity and temperature sensor
  * \ingroup sensor
  */
-class DHT11
+class rtosDHT11
 {
 private:
     /// @brief the GPIO connected to DHT11
     uint gpio_in;
+
+    QueueHandle_t dht_reading_queue;
 
 public:
     /**
@@ -45,11 +49,7 @@ public:
      * 
      * @param result according to struct_DHTReading structure
      */
-    void read_from_dht(struct_DHTReading *result);
-    /**
-     * @brief Construct a new DHT11 object
-     * 
-     * @param gpio_in_ the GPIO connected to DHT11
-     */
-    DHT11(uint gpio_in_);
+    void read_from_dht();
+
+    rtosDHT11(uint gpio_in, QueueHandle_t dht_reading_ouput_queue);
 };
