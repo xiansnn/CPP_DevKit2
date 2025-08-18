@@ -35,7 +35,10 @@ var hierarchy =
     [ "Probe", "class_probe.html", null ],
     [ "PWM", "class_p_w_m.html", null ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],
-    [ "rtosSwitchButton", "classrtos_switch_button.html", null ],
+    [ "rtosDHT11", "classrtos_d_h_t11.html", null ],
+    [ "rtosSwitchButton", "classrtos_switch_button.html", [
+      [ "rtosRotaryEncoder", "classrtos_rotary_encoder.html", null ]
+    ] ],
     [ "SG90", "class_s_g90.html", null ],
     [ "struct_ConfigGraphicWidget", "structstruct___config_graphic_widget.html", null ],
     [ "struct_ConfigMasterI2C", "structstruct___config_master_i2_c.html", null ],

@@ -4,6 +4,10 @@ var group__sensor =
       [ "DHT11", "class_d_h_t11.html#abdb9b9dbfeb00fac3826752fff347c16", null ],
       [ "read_from_dht", "class_d_h_t11.html#ad72fb9614e231616cc6c3c28cafafca3", null ]
     ] ],
+    [ "rtosDHT11", "classrtos_d_h_t11.html", [
+      [ "rtosDHT11", "classrtos_d_h_t11.html#ad29fe524917478b7cb55d61ee22cdaaa", null ],
+      [ "read_from_dht", "classrtos_d_h_t11.html#a4fb51aded1acd9a21c45f3c57ceb4bc8", null ]
+    ] ],
     [ "HC_SR04", "class_h_c___s_r04.html", [
       [ "HC_SR04", "class_h_c___s_r04.html#a38ef28d37f4390a3bca4a973f98cd8d3", null ],
       [ "get_distance", "class_h_c___s_r04.html#a9436304e9e1bc947c2833127b5cd818d", null ]

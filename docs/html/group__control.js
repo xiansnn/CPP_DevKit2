@@ -12,9 +12,15 @@ var group__control =
       [ "interrupt_service_routine", "class_rotary_encoder.html#ae7ad35ae64d2b815c25ac72a51702e6f", null ],
       [ "update_event_processor", "class_rotary_encoder.html#a20a7d47b8facd264840c4c7e988f5ae3", null ]
     ] ],
+    [ "rtosRotaryEncoder", "classrtos_rotary_encoder.html", [
+      [ "rtosRotaryEncoder", "classrtos_rotary_encoder.html#a5a6b5527080d90741c99fb3a5e90a46b", null ],
+      [ "~rtosRotaryEncoder", "classrtos_rotary_encoder.html#a4435063a67299c5d79591a8a72e98667", null ],
+      [ "rtos_process_IRQ_event", "classrtos_rotary_encoder.html#aea24730460d4e8c7099ad34bad92b13e", null ]
+    ] ],
     [ "rtosSwitchButton", "classrtos_switch_button.html", [
       [ "rtosSwitchButton", "classrtos_switch_button.html#a5ad68d5b711b2fe55d1403c12287d130", null ],
       [ "~rtosSwitchButton", "classrtos_switch_button.html#a109ad602ca6c4fb1484344dc350eb630", null ],
+      [ "is_switch_pushed", "classrtos_switch_button.html#add2f018aa5d077d68a9bc7c6bb4c4d38", null ],
       [ "rtos_process_IRQ_event", "classrtos_switch_button.html#aa84c93c8f9a5e41e634d1b01ce640e89", null ],
       [ "active_lo", "classrtos_switch_button.html#a7aaff03a8924ec01faa5ef61be41a68f", null ],
       [ "button_status", "classrtos_switch_button.html#a2714b625565001274cb20433e16dfc07", null ],

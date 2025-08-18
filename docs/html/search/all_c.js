@@ -20,7 +20,7 @@ var searchData=
   ['irq_5fenabled_17',['irq_enabled',['../class_switch_button_with_i_r_q.html#a261dc80eca218e3733c6a0cf637c25e8',1,'SwitchButtonWithIRQ']]],
   ['is_5factive_18',['IS_ACTIVE',['../ui__core_8h.html#a57c20ec1ef250b4ad060705786762112a70d794d2a66b3ed4d2b0ff57d41b7089',1,'ui_core.h']]],
   ['is_5fdata_5fready_19',['is_data_ready',['../class_m_p_u6050.html#ac6f4794ef371942d4e8e29231957ab6b',1,'MPU6050']]],
-  ['is_5fswitch_5fpushed_20',['is_switch_pushed',['../class_switch_button.html#a3361ae31699ad49821d25ee53210f6d7',1,'SwitchButton']]],
+  ['is_5fswitch_5fpushed_20',['is_switch_pushed',['../classrtos_switch_button.html#add2f018aa5d077d68a9bc7c6bb4c4d38',1,'rtosSwitchButton::is_switch_pushed()'],['../class_switch_button.html#a3361ae31699ad49821d25ee53210f6d7',1,'SwitchButton::is_switch_pushed()']]],
   ['is_5fvalid_21',['is_valid',['../structstruct___d_h_t_reading.html#ac02a8974d21885a59e1e3552921ccd1b',1,'struct_DHTReading']]],
   ['is_5fwaiting_22',['IS_WAITING',['../ui__core_8h.html#a57c20ec1ef250b4ad060705786762112a02ca6db02d1c43b09e875c6cc1f51aab',1,'ui_core.h']]],
   ['is_5fwrappable_23',['is_wrappable',['../class_u_i_controlled_incremental_value.html#a73b3a10b2774cf4ce94902925ffc9ad9',1,'UIControlledIncrementalValue']]]

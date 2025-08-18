@@ -36,7 +36,7 @@ var searchData=
   ['contrast_33',['contrast',['../structstruct___config_s_s_d1306.html#a4e801394115d22be64de7753c835960f',1,'struct_ConfigSSD1306']]],
   ['control_34',['&quot;Control&quot;',['../group__control.html',1,'']]],
   ['control_20principles_35',['Model-View-Control principles',['../index.html#autotoc_md2',1,'']]],
-  ['control_5fevent_5fprocessor_5ft_36',['control_event_processor_t',['../rotary__encoder_8h.html#a787371d828d2ed06a5d1842695d04497',1,'rotary_encoder.h']]],
+  ['control_5fevent_5fprocessor_5ft_36',['control_event_processor_t',['../rotary__encoder_8h.html#a787371d828d2ed06a5d1842695d04497',1,'control_event_processor_t:&#160;rotary_encoder.h'],['../rtos__rotary__encoder_8h.html#a787371d828d2ed06a5d1842695d04497',1,'control_event_processor_t:&#160;rtos_rotary_encoder.h']]],
   ['control_5fevent_5fqueue_37',['control_event_queue',['../classrtos_switch_button.html#a01dfd1bafbbf24340bafadfcd57504cc',1,'rtosSwitchButton']]],
   ['controlledobjectstatus_38',['ControlledObjectStatus',['../ui__core_8h.html#a57c20ec1ef250b4ad060705786762112',1,'ui_core.h']]],
   ['controlledobjectstatustimeoutreason_39',['ControlledObjectStatusTimeOutReason',['../ui__core_8h.html#a1b97aab8f67794aef99a8febbf83360f',1,'ui_core.h']]],

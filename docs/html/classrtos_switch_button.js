@@ -2,6 +2,7 @@ var classrtos_switch_button =
 [
     [ "rtosSwitchButton", "classrtos_switch_button.html#a5ad68d5b711b2fe55d1403c12287d130", null ],
     [ "~rtosSwitchButton", "classrtos_switch_button.html#a109ad602ca6c4fb1484344dc350eb630", null ],
+    [ "is_switch_pushed", "classrtos_switch_button.html#add2f018aa5d077d68a9bc7c6bb4c4d38", null ],
     [ "rtos_process_IRQ_event", "classrtos_switch_button.html#aa84c93c8f9a5e41e634d1b01ce640e89", null ],
     [ "active_lo", "classrtos_switch_button.html#a7aaff03a8924ec01faa5ef61be41a68f", null ],
     [ "button_status", "classrtos_switch_button.html#a2714b625565001274cb20433e16dfc07", null ],
