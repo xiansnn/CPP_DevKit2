@@ -3,40 +3,77 @@
 #include <stdio.h>
 #include "rtos_hc_sr04.h"
 
-HC_SR04::HC_SR04(uint trig_pin, uint echo_pin)
+#include "utilities/probe/probe.h"
+
+Probe p4 = Probe(4);
+Probe p2 = Probe(2);
+Probe p6 = Probe(6);
+
+#define MAX_TRAVEL_TIME_ms 30
+
+rtosHC_SR04::rtosHC_SR04(uint trig_pin, uint echo_pin,
+                         QueueHandle_t input_timer_queue, QueueHandle_t output_range_queue,
+                         gpio_irq_callback_t echo_irq_call_back, uint32_t echo_irq_mask_config)
 {
     this->trig_pin = trig_pin;
     this->echo_pin = echo_pin;
+    this->input_timer_queue = input_timer_queue;
+    this->output_range_queue = output_range_queue;
+    this->echo_irq_mask_config = echo_irq_mask_config;
     gpio_init(this->trig_pin);
     gpio_init(this->echo_pin);
     gpio_set_dir(this->trig_pin, GPIO_OUT);
     gpio_set_dir(this->echo_pin, GPIO_IN);
     gpio_pull_up(this->echo_pin);
+    gpio_set_irq_enabled_with_callback(this->echo_pin, echo_irq_mask_config, true, echo_irq_call_back);
+    this->status = HCSR04Status::IDLE;
 }
 
-void HC_SR04::trig()
+void rtosHC_SR04::get_distance()
 {
+    p2.hi();
+    struct_HCSR04_IRQData irq_data;
+    float measured_range;
+    uint32_t start_time_us, end_time_us;
+    int32_t travel_time_us;
+    bool in_range;
+
     gpio_put(this->trig_pin, 1);
-    sleep_us(10);
+    sleep_us(10); // trig the device
     gpio_put(this->trig_pin, 0);
+
+    status = HCSR04Status::WAITING_FOR_ECHO_START;
+
+    in_range = xQueueReceive(this->input_timer_queue, &irq_data, pdMS_TO_TICKS(MAX_TRAVEL_TIME_ms));
+    if (irq_data.event_mask == GPIO_IRQ_EDGE_RISE)
+    {
+        p4.hi();
+        start_time_us = irq_data.time_us;
+        status = HCSR04Status::WAITING_FOR_ECHO_END;
+        p4.lo();
+    }
+    in_range = xQueueReceive(this->input_timer_queue, &irq_data, pdMS_TO_TICKS(MAX_TRAVEL_TIME_ms));
+    if (irq_data.event_mask == GPIO_IRQ_EDGE_FALL)
+    {
+        p6.hi();
+        end_time_us = irq_data.time_us;
+        status = HCSR04Status::MEASURE_COMPLETED;
+        p6.lo();
+    }
+    if (status == HCSR04Status::MEASURE_COMPLETED)
+    {
+        travel_time_us = end_time_us - start_time_us;
+        if ((travel_time_us > 0) and (travel_time_us < MAX_TRAVEL_TIME_ms * 1000))
+        {
+            measured_range = (float)travel_time_us * 0.017; // 340m/s give 0.034 cm/us round-trip -> 0.017 cm/us
+        }else
+        {
+            measured_range = -1.0;
+        }
+        xQueueSend(this->output_range_queue, &measured_range, portMAX_DELAY);
+    }
+    
+
+    p2.lo();
 }
 
-float HC_SR04::get_distance()
-{
-    this->trig();
-    // wait
-    while (gpio_get(this->echo_pin) == 0)
-    {
-        tight_loop_contents();
-    }
-    absolute_time_t start = get_absolute_time();
-    while (gpio_get(this->echo_pin) == 1)
-    {
-        if (absolute_time_diff_us(start, get_absolute_time()) > 30000)
-            return -1;
-    }
-    absolute_time_t end = get_absolute_time();
-    int64_t travel_time = absolute_time_diff_us(start, end);
-    float range = (float)travel_time * 0.017; // 340m/s give 0.0340 cm/us round-trip -> 0.017 cm/us
-    return range;
-}

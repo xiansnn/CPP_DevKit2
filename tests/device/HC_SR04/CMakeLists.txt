@@ -9,4 +9,5 @@ target_link_libraries(test_rtos_hc_sr04
             pico_stdlib 
             device_rtos_hc_sr04
             FreeRTOS-Kernel-Heap4 
+            utilities_probe
             )
