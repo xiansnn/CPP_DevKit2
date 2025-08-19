@@ -3,12 +3,6 @@
 #include <stdio.h>
 #include "rtos_hc_sr04.h"
 
-#include "utilities/probe/probe.h"
-
-Probe p4 = Probe(4);
-Probe p2 = Probe(2);
-Probe p6 = Probe(6);
-
 #define MAX_TRAVEL_TIME_ms 30
 
 rtosHC_SR04::rtosHC_SR04(uint trig_pin, uint echo_pin,
@@ -26,41 +20,36 @@ rtosHC_SR04::rtosHC_SR04(uint trig_pin, uint echo_pin,
     gpio_set_dir(this->echo_pin, GPIO_IN);
     gpio_pull_up(this->echo_pin);
     gpio_set_irq_enabled_with_callback(this->echo_pin, echo_irq_mask_config, true, echo_irq_call_back);
-    this->status = HCSR04Status::IDLE;
+    this->measure_completed = false;
 }
 
 void rtosHC_SR04::get_distance()
 {
-    p2.hi();
     struct_HCSR04_IRQData irq_data;
     float measured_range;
     uint32_t start_time_us, end_time_us;
     int32_t travel_time_us;
     bool in_range;
 
+    measure_completed = false;
+
     gpio_put(this->trig_pin, 1);
     sleep_us(10); // trig the device
     gpio_put(this->trig_pin, 0);
 
-    status = HCSR04Status::WAITING_FOR_ECHO_START;
 
     in_range = xQueueReceive(this->input_timer_queue, &irq_data, pdMS_TO_TICKS(MAX_TRAVEL_TIME_ms));
     if (irq_data.event_mask == GPIO_IRQ_EDGE_RISE)
     {
-        p4.hi();
         start_time_us = irq_data.time_us;
-        status = HCSR04Status::WAITING_FOR_ECHO_END;
-        p4.lo();
     }
     in_range = xQueueReceive(this->input_timer_queue, &irq_data, pdMS_TO_TICKS(MAX_TRAVEL_TIME_ms));
     if (irq_data.event_mask == GPIO_IRQ_EDGE_FALL)
     {
-        p6.hi();
         end_time_us = irq_data.time_us;
-        status = HCSR04Status::MEASURE_COMPLETED;
-        p6.lo();
+        measure_completed = true;
     }
-    if (status == HCSR04Status::MEASURE_COMPLETED)
+    if (measure_completed)
     {
         travel_time_us = end_time_us - start_time_us;
         if ((travel_time_us > 0) and (travel_time_us < MAX_TRAVEL_TIME_ms * 1000))
@@ -72,8 +61,5 @@ void rtosHC_SR04::get_distance()
         }
         xQueueSend(this->output_range_queue, &measured_range, portMAX_DELAY);
     }
-    
-
-    p2.lo();
 }
 

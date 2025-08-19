@@ -22,14 +22,6 @@ struct struct_HCSR04_IRQData
     uint32_t time_us;
 };
 
-enum class HCSR04Status
-{
-    IDLE,
-    WAITING_FOR_ECHO_START,
-    WAITING_FOR_ECHO_END,
-    MEASURE_COMPLETED
-};
-
 /**
  * @brief class for the ultrasonic ranging module HC-SR04 compliant with FreeRTOS
  * \ingroup sensor
@@ -48,7 +40,7 @@ private:
     /// @brief the queue to which the resulting range is sent
     QueueHandle_t output_range_queue;
 
-    HCSR04Status status;
+    bool measure_completed;
 
 public:
     /**

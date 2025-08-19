@@ -7,7 +7,7 @@
 
 Probe p0 = Probe(0);
 Probe p1 = Probe(1);
-// Probe p2 = Probe(2);
+Probe p2 = Probe(2);
 Probe p3 = Probe(3);
 
 
@@ -60,9 +60,9 @@ void vRangeMeasureTask(void *)
     while (true)
     {
         vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(MEASUREMENT_PERIOD_ms));
-        // p2.hi();
+        p2.hi();
         ranging_device.get_distance();
-        // p2.lo();
+        p2.lo();
     }
     
 }
