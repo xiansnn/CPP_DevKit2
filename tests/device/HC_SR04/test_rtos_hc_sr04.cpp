@@ -24,7 +24,6 @@ void gpio_callback(uint gpio, uint32_t event)
     gpio_set_irq_enabled(gpio, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, false);
     p1.hi();
     data.event_mask = event;
-    data.gpio_number = gpio;
     data.current_time_us = time_us_32();
     xQueueSendFromISR(range_timer_queue, &data, 0);
     gpio_set_irq_enabled(gpio, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true);
