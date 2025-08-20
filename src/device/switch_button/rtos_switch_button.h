@@ -48,7 +48,7 @@ enum class ButtonState
  * @brief this is the structure used to send irq data though the queue
  *
  */
-struct struct_IRQData
+struct struct_SwitchButtonIRQData
 {
     /// @brief the current time at wich the IRQ occurred
     uint32_t current_time_us;

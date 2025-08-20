@@ -23,13 +23,13 @@ Probe p2 = Probe(2);
 Probe p3 = Probe(3);
 Probe p4 = Probe(4);
 
-static QueueHandle_t encoder_clk_isr_queue = xQueueCreate(5, sizeof(struct_IRQData));
-static QueueHandle_t central_switch_isr_queue = xQueueCreate(5, sizeof(struct_IRQData));
+static QueueHandle_t encoder_clk_isr_queue = xQueueCreate(5, sizeof(struct_SwitchButtonIRQData));
+static QueueHandle_t central_switch_isr_queue = xQueueCreate(5, sizeof(struct_SwitchButtonIRQData));
 static QueueHandle_t ui_control_event_queue = xQueueCreate(5, sizeof(struct_ControlEventData));
 
 void test_switch_irq_call_back(uint gpio, uint32_t event_mask)
 {
-    struct_IRQData data;
+    struct_SwitchButtonIRQData data;
     gpio_set_irq_enabled(gpio, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, false);
     data.current_time_us = time_us_32();
     data.event_mask = event_mask;

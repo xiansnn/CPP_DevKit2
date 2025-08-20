@@ -34,7 +34,7 @@ rtosSwitchButton::~rtosSwitchButton()
 void rtosSwitchButton::rtos_process_IRQ_event()
 {
     struct_ControlEventData local_event_data;
-    struct_IRQData local_irq_data;
+    struct_SwitchButtonIRQData local_irq_data;
     local_event_data.gpio_number = this->gpio;
     bool success;
     bool switch_was_pushed;
