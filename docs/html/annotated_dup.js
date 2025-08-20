@@ -25,6 +25,7 @@ var annotated_dup =
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", "class_p_w_mgated_measure" ],
     [ "RotaryEncoder", "class_rotary_encoder.html", "class_rotary_encoder" ],
     [ "rtosDHT11", "classrtos_d_h_t11.html", "classrtos_d_h_t11" ],
+    [ "rtosHC_SR04", "classrtos_h_c___s_r04.html", "classrtos_h_c___s_r04" ],
     [ "rtosRotaryEncoder", "classrtos_rotary_encoder.html", "classrtos_rotary_encoder" ],
     [ "rtosSwitchButton", "classrtos_switch_button.html", "classrtos_switch_button" ],
     [ "SG90", "class_s_g90.html", "class_s_g90" ],

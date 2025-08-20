@@ -87,6 +87,9 @@ var NAVTREEINDEX1 =
 "classrtos_d_h_t11.html":[3,3,1],
 "classrtos_d_h_t11.html#a4fb51aded1acd9a21c45f3c57ceb4bc8":[3,3,1,1],
 "classrtos_d_h_t11.html#ad29fe524917478b7cb55d61ee22cdaaa":[3,3,1,0],
+"classrtos_h_c___s_r04.html":[3,3,3],
+"classrtos_h_c___s_r04.html#a1f6407ab1089298dbb2cfe5ada460d3a":[3,3,3,0],
+"classrtos_h_c___s_r04.html#a951397b3feb297117a41a81ba3a0566e":[3,3,3,1],
 "classrtos_rotary_encoder.html":[3,2,2],
 "classrtos_rotary_encoder.html#a4435063a67299c5d79591a8a72e98667":[3,2,2,1],
 "classrtos_rotary_encoder.html#a5a6b5527080d90741c99fb3a5e90a46b":[3,2,2,0],
@@ -246,8 +249,5 @@ var NAVTREEINDEX1 =
 "functions_func_i.html":[4,3,1,8],
 "functions_func_k.html":[4,3,1,9],
 "functions_func_l.html":[4,3,1,10],
-"functions_func_m.html":[4,3,1,11],
-"functions_func_n.html":[4,3,1,12],
-"functions_func_p.html":[4,3,1,13],
-"functions_func_r.html":[4,3,1,14]
+"functions_func_m.html":[4,3,1,11]
 };

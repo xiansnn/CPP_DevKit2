@@ -36,6 +36,7 @@ var hierarchy =
     [ "PWM", "class_p_w_m.html", null ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],
     [ "rtosDHT11", "classrtos_d_h_t11.html", null ],
+    [ "rtosHC_SR04", "classrtos_h_c___s_r04.html", null ],
     [ "rtosSwitchButton", "classrtos_switch_button.html", [
       [ "rtosRotaryEncoder", "classrtos_rotary_encoder.html", null ]
     ] ],

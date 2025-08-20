@@ -12,6 +12,10 @@ var group__sensor =
       [ "HC_SR04", "class_h_c___s_r04.html#a38ef28d37f4390a3bca4a973f98cd8d3", null ],
       [ "get_distance", "class_h_c___s_r04.html#a9436304e9e1bc947c2833127b5cd818d", null ]
     ] ],
+    [ "rtosHC_SR04", "classrtos_h_c___s_r04.html", [
+      [ "rtosHC_SR04", "classrtos_h_c___s_r04.html#a1f6407ab1089298dbb2cfe5ada460d3a", null ],
+      [ "get_distance", "classrtos_h_c___s_r04.html#a951397b3feb297117a41a81ba3a0566e", null ]
+    ] ],
     [ "MPU6050", "class_m_p_u6050.html", [
       [ "MPU6050", "class_m_p_u6050.html#a69ff7760846ab8f9b33ab07aa57709cf", null ],
       [ "get_FIFO_count", "class_m_p_u6050.html#ae3309784c38c0dde54a7638582dd23c9", null ],
