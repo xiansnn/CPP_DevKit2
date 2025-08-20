@@ -15,12 +15,12 @@ Probe p3 = Probe(3);
 #define ECHO_PIN 17
 #define MEASUREMENT_PERIOD_ms 150
 
-QueueHandle_t range_timer_queue = xQueueCreate(2, sizeof(struct_IRQData));
+QueueHandle_t range_timer_queue = xQueueCreate(2, sizeof(struct_HCSR04IRQData));
 QueueHandle_t range_queue = xQueueCreate(2, sizeof(float));
 
 void gpio_callback(uint gpio, uint32_t event)
 {
-    struct_IRQData data;
+    struct_HCSR04IRQData data;
     gpio_set_irq_enabled(gpio, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, false);
     p1.hi();
     data.event_mask = event;

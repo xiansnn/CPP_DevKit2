@@ -25,7 +25,7 @@ rtosHC_SR04::rtosHC_SR04(uint trig_pin, uint echo_pin,
 
 void rtosHC_SR04::get_distance()
 {
-    struct_IRQData irq_data;
+    struct_HCSR04IRQData irq_data;
     float measured_range;
     uint32_t start_time_us, end_time_us;
     int32_t travel_time_us;

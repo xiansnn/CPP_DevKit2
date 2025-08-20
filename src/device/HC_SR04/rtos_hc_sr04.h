@@ -16,7 +16,7 @@
 #include "queue.h"
 
 /// @brief data structure used by ISR to capture, mask, time.
-struct struct_IRQData
+struct struct_HCSR04IRQData
 {
     /// @brief the current time at wich the IRQ occurred
     uint32_t current_time_us;
