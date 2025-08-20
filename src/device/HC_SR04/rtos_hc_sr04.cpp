@@ -25,7 +25,7 @@ rtosHC_SR04::rtosHC_SR04(uint trig_pin, uint echo_pin,
 
 void rtosHC_SR04::get_distance()
 {
-    struct_HCSR04_IRQData irq_data;
+    struct_IRQData irq_data;
     float measured_range;
     uint32_t start_time_us, end_time_us;
     int32_t travel_time_us;
@@ -43,12 +43,12 @@ void rtosHC_SR04::get_distance()
     in_range = xQueueReceive(this->input_timer_queue, &irq_data, pdMS_TO_TICKS(MAX_TRAVEL_TIME_ms));
     if (irq_data.event_mask == GPIO_IRQ_EDGE_RISE)
     {
-        start_time_us = irq_data.time_us;
+        start_time_us = irq_data.current_time_us;
     }
     in_range = xQueueReceive(this->input_timer_queue, &irq_data, pdMS_TO_TICKS(MAX_TRAVEL_TIME_ms));
     if (irq_data.event_mask == GPIO_IRQ_EDGE_FALL)
     {
-        end_time_us = irq_data.time_us;
+        end_time_us = irq_data.current_time_us;
         measure_completed = true;
     }
     if (measure_completed)

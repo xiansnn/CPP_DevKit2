@@ -15,11 +15,13 @@
 #include "task.h"
 #include "queue.h"
 
-struct struct_HCSR04_IRQData
+/// @brief data structure used by ISR to capture, mask, time.
+struct struct_IRQData
 {
-    int gpio_number;
+    /// @brief the current time at wich the IRQ occurred
+    uint32_t current_time_us;
+    /// @brief the IRQ mask given by the IRQ harware
     uint32_t event_mask;
-    uint32_t time_us;
 };
 
 /**
@@ -43,19 +45,18 @@ private:
     bool measure_completed;
 
 public:
-    /**
-     * @brief Construct a new hc sr04 object
-     *
-     * @param trig_pin the pin attached to the triggering signal
-     * @param echo_pin the pin used to measure round-trip time of ultrasonic pulses
-     */
+
+    /// @brief Construct a new rtosHC_SR04 object
+    /// @param trig_pin the pin attached to the triggering signal
+    /// @param echo_pin the pin used to measure round-trip time of ultrasonic pulses
+    /// @param input_timer_queue the input queue that receives data from IRQ
+    /// @param output_range_queue the output queue that receives computed range
+    /// @param echo_irq_call_back The ISR (interrupt Service Routine) that process IRQ event
+    /// @param event_mask_config the rising/falling edge configuratio of the irq
     rtosHC_SR04(uint trig_pin, uint echo_pin,
                 QueueHandle_t input_timer_queue, QueueHandle_t output_range_queue,
                 gpio_irq_callback_t echo_irq_call_back, uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
-    /**
-     * @brief request a measure from HC_SR04
-     *
-     * @return the measured distance in float[cm]. Max = 400cm. If no response, return = -1.
-     */
+
+    /// @brief request a measure from HC_SR04
     void get_distance();
 };

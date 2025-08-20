@@ -64,7 +64,7 @@ struct struct_ControlEventData
 {
     /// @brief the gpio that receive the IRQ
     int gpio_number;
-    /// @brief th control event computed by the IRQ processing task
+    /// @brief the control event computed by the IRQ processing task
     UIControlEvent event;
 };
 
