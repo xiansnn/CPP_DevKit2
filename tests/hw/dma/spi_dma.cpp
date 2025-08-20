@@ -9,8 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "pico/stdlib.h"
-#include "pico/binary_info.h"
-#include "hardware/spi.h"
+#include "hw/spi/hw_spi.h"
 #include "hardware/dma.h"
 
 #include "utilities/probe/probe.h"
@@ -20,47 +19,35 @@ Probe p1 = Probe(1);
 Probe p2 = Probe(2);
 Probe p3 = Probe(3);
 Probe p4 = Probe(4);
+Probe p5 = Probe(5);
+Probe p6 = Probe(6);
+Probe p7 = Probe(7);
 
 #define TEST_SIZE 1024
 
-/*
-    .sck_pin = 10,
-    .tx_pin = 11,
-    .rx_pin = 12,
-    .cs_pin = 13,
-    .baud_rate_Hz = 10 * 1000 * 1000};
-*/
 #define SPI_SCK_PIN 10
 #define SPI_TX_PIN 11
 #define SPI_RX_PIN 12
 #define SPI_CSN_PIN 13
+#define SPI_BAUD_RATE 1000 * 100
+
+struct_ConfigMasterSPI cfg = {
+    .spi = spi1,
+    .sck_pin = SPI_SCK_PIN,
+    .tx_pin = SPI_TX_PIN,
+    .rx_pin = SPI_RX_PIN,
+    .cs_pin = SPI_CSN_PIN,
+    .baud_rate_Hz = SPI_BAUD_RATE};
 
 int main()
 {
     stdio_init_all();
-
+    spi_inst_t *spi = spi1;
+    HW_SPI_Master master = HW_SPI_Master(cfg);
     while (true)
     {
         p0.hi();
         printf("SPI DMA example\n");
-
-        // Enable SPI at 1 MHz and connect to GPIOs
-        spi_init(spi_default, 1000 * 1000);
-        gpio_set_function(SPI_RX_PIN, GPIO_FUNC_SPI);
-        gpio_init(PICO_DEFAULT_SPI_CSN_PIN);
-        gpio_set_function(SPI_SCK_PIN, GPIO_FUNC_SPI);
-        gpio_set_function(SPI_TX_PIN, GPIO_FUNC_SPI);
-        // Make the SPI pins available to picotool
-        bi_decl(bi_3pins_with_func(SPI_RX_PIN, SPI_TX_PIN, SPI_SCK_PIN, GPIO_FUNC_SPI));
-        // Make the CS pin available to picotool
-        bi_decl(bi_1pin_with_name(SPI_CSN_PIN, "SPI CS"));
-
-        // Grab some unused dma channels
-        const uint dma_tx = dma_claim_unused_channel(true);
-        const uint dma_rx = dma_claim_unused_channel(true);
-
-        // Force loopback for testing (I don't have an SPI device handy)
-        hw_set_bits(&spi_get_hw(spi_default)->cr1, SPI_SSPCR1_LBM_BITS);
 
         static uint8_t txbuf[TEST_SIZE];
         static uint8_t rxbuf[TEST_SIZE];
@@ -70,46 +57,54 @@ int main()
             txbuf[i] = rand();
         }
         p1.lo();
-        // We set the outbound DMA to transfer from a memory buffer to the SPI transmit FIFO paced by the SPI TX FIFO DREQ
-        // The default is for the read address to increment every element (in this case 1 byte = DMA_SIZE_8)
-        // and for the write address to remain unchanged.
+        
 
         // printf("Configure TX DMA\n");
         p2.hi();
+        // Grab some unused dma channels
+        const uint dma_tx = dma_claim_unused_channel(true);
         dma_channel_config c = dma_channel_get_default_config(dma_tx);
         channel_config_set_transfer_data_size(&c, DMA_SIZE_8);
-        channel_config_set_dreq(&c, spi_get_dreq(spi_default, true));
+        // We set the outbound DMA to transfer from a memory buffer to the SPI transmit FIFO paced by the SPI TX FIFO DREQ
+        // The default is for the read address to increment every element (in this case 1 byte = DMA_SIZE_8)
+        // and for the write address to remain unchanged.
+        channel_config_set_dreq(&c, spi_get_dreq(spi, true));
         dma_channel_configure(dma_tx, &c,
-                              &spi_get_hw(spi_default)->dr, // write address
-                              txbuf,                        // read address
-                              TEST_SIZE,                    // element count (each element is of size transfer_data_size)
-                              false);                       // don't start yet
+                              &spi_get_hw(spi)->dr, // write address
+                              txbuf,                // read address
+                              TEST_SIZE,            // element count (each element is of size transfer_data_size)
+                              false);               // don't start yet
+        p2.lo();
+
 
         // printf("Configure RX DMA\n");
-p2.lo();
-        // We set the inbound DMA to transfer from the SPI receive FIFO to a memory buffer paced by the SPI RX FIFO DREQ
-        // We configure the read address to remain unchanged for each element, but the write
-        // address to increment (so data is written throughout the buffer)
         p3.hi();
+        // Grab some unused dma channels
+        const uint dma_rx = dma_claim_unused_channel(true);
         c = dma_channel_get_default_config(dma_rx);
         channel_config_set_transfer_data_size(&c, DMA_SIZE_8);
-        channel_config_set_dreq(&c, spi_get_dreq(spi_default, false));
+        // We set the inbound DMA to transfer from the SPI receive FIFO to a memory buffer paced by the SPI RX FIFO DREQ
+        // address to increment (so data is written throughout the buffer)
+        channel_config_set_dreq(&c, spi_get_dreq(spi, false));
+        // We configure the read address to remain unchanged for each element, but the write
         channel_config_set_read_increment(&c, false);
         channel_config_set_write_increment(&c, true);
         dma_channel_configure(dma_rx, &c,
-                              rxbuf,                        // write address
-                              &spi_get_hw(spi_default)->dr, // read address
-                              TEST_SIZE,                    // element count (each element is of size transfer_data_size)
-                              false);                       // don't start yet
+                              rxbuf,                // write address
+                              &spi_get_hw(spi)->dr, // read address
+                              TEST_SIZE,            // element count (each element is of size transfer_data_size)
+                              false);               // don't start yet
 
+        p3.lo();
+
+        p4.hi();
         // printf("Starting DMAs...\n");
         // start them exactly simultaneously to avoid races (in extreme cases the FIFO could overflow)
-        p3.lo();
-        p4.hi();
         dma_start_channel_mask((1u << dma_tx) | (1u << dma_rx));
         // printf("Wait for RX complete...\n");
         dma_channel_wait_for_finish_blocking(dma_rx);
         p4.lo();
+
         if (dma_channel_is_busy(dma_tx))
         {
             panic("RX completed before TX");
@@ -126,7 +121,9 @@ p2.lo();
             }
         }
         p3.lo();
+
         printf("All good\n");
+        
         dma_channel_unclaim(dma_tx);
         dma_channel_unclaim(dma_rx);
         p0.lo();

@@ -9,6 +9,6 @@ add_executable(test_dma_spi spi_dma.cpp)
 target_link_libraries(test_dma_spi 
             pico_stdlib 
             hardware_dma
-            hardware_spi
+            hw_spi 
             utilities_probe
             )
