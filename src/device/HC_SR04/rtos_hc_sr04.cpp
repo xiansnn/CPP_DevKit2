@@ -33,6 +33,8 @@ void rtosHC_SR04::get_distance()
 
     measure_completed = false;
 
+    xQueueReset(this->input_timer_queue);
+
     gpio_put(this->trig_pin, 1);
     sleep_us(10); // trig the device
     gpio_put(this->trig_pin, 0);
