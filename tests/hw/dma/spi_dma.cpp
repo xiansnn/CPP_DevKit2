@@ -29,22 +29,27 @@ Probe p7 = Probe(7);
 #define SPI_CSN_PIN 13
 #define SPI_BAUD_RATE 1000 * 1000
 
+static uint16_t txbuf[TEST_SIZE];
+static uint16_t rxbuf[TEST_SIZE];
+
 struct struct_ConfigDMA
 {
     irq_num_t irq_number = DMA_IRQ_0; // can be DMQ_IRQ_1
     uint dma_channel;
     dma_channel_transfer_size dma_transfer_size = DMA_SIZE_16; // can be DMA_SIZE_8, DMA_SIZE_16, DMA_SIZE_32
+    uint block_transfer_size;
     irq_handler_t dma_handler = NULL;
 };
 
 static struct_ConfigDMA dma_tx_cfg = {
     .irq_number = DMA_IRQ_0,
     .dma_transfer_size = DMA_SIZE_16,
-};
+    .block_transfer_size = TEST_SIZE};
+
 static struct_ConfigDMA dma_rx_cfg = {
     .irq_number = DMA_IRQ_0,
     .dma_transfer_size = DMA_SIZE_16,
-};
+    .block_transfer_size = TEST_SIZE};
 
 static struct_ConfigMasterSPI spi_cfg = {
     .spi = spi1,
@@ -55,9 +60,39 @@ static struct_ConfigMasterSPI spi_cfg = {
     .baud_rate_Hz = SPI_BAUD_RATE,
     .transfer_size = 16};
 
-static uint16_t txbuf[TEST_SIZE];
-static uint16_t rxbuf[TEST_SIZE];
+void init_dma_spi(bool is_tx, uint16_t *data_buffer, struct_ConfigDMA dma_cfg, struct_ConfigMasterSPI spi_cfg)
+{
+    // Grab some unused dma channels
+    dma_cfg.dma_channel = dma_claim_unused_channel(true);
+    dma_channel_config c = dma_channel_get_default_config(dma_cfg.dma_channel);
+    channel_config_set_transfer_data_size(&c, dma_cfg.dma_transfer_size);
+    // We set the outbound DMA to transfer from a memory buffer to the SPI transmit FIFO paced by the SPI TX FIFO DREQ
+    channel_config_set_dreq(&c, spi_get_dreq(spi_cfg.spi, is_tx));
+    if (is_tx)
+    {
+        // data is sent to SPI -> the read address is incremented every transfer
+        // and the write address remain unchanged.
+        channel_config_set_read_increment(&c, true);
+        channel_config_set_write_increment(&c, false);
+        dma_channel_configure(dma_cfg.dma_channel, &c,
+                              &spi_get_hw(spi_cfg.spi)->dr, // write address
+                              data_buffer,                  // read address
+                              dma_cfg.block_transfer_size,  // element count (each element is of size transfer_data_size)
+                              false);                       // don't start yet
+    }
+    else
+    {
+        // receive data from SPI -> We configure the read address to remain unchanged for each element, and inceremt the write address to memory
+        channel_config_set_read_increment(&c, false);
+        channel_config_set_write_increment(&c, true);
 
+        dma_channel_configure(dma_cfg.dma_channel, &c,
+                              data_buffer,                  // write address
+                              &spi_get_hw(spi_cfg.spi)->dr, // read address
+                              dma_cfg.block_transfer_size,  // element count (each element is of size transfer_data_size)
+                              false);                       // don't start yet
+    }
+};
 
 int main()
 {
@@ -68,55 +103,48 @@ int main()
                    spi_cfg.spi_polarity, spi_cfg.clk_phase, spi_cfg.bit_order);
     while (true)
     {
-        p0.hi();
+        p1.pulse_us(10);
+
         printf("SPI DMA example\t");
 
         for (uint i = 0; i < TEST_SIZE; ++i)
         {
             txbuf[i] = i;
         }
-        p0.lo();
 
         // printf("Configure TX DMA\n");
-        p1.hi();
-        // Grab some unused dma channels
-        // uint dma_tx = dma_claim_unused_channel(true);
-        dma_tx_cfg.dma_channel = dma_claim_unused_channel(true);
 
-        dma_channel_config c = dma_channel_get_default_config(dma_tx_cfg.dma_channel);
-        channel_config_set_transfer_data_size(&c, DMA_SIZE_16);
-        // We set the outbound DMA to transfer from a memory buffer to the SPI transmit FIFO paced by the SPI TX FIFO DREQ
-        // The default is for the read address to increment every element (in this case 1 byte = DMA_SIZE_8)
-        // and for the write address to remain unchanged.
-        channel_config_set_dreq(&c, spi_get_dreq(spi_cfg.spi, true));
-        dma_channel_configure(dma_tx_cfg.dma_channel, &c,
-                              &spi_get_hw(spi_cfg.spi)->dr, // write address
-                              txbuf,                // read address
-                              TEST_SIZE,            // element count (each element is of size transfer_data_size)
-                              false);               // don't start yet
-        p1.lo();
-
+        //---------------------------------
+        init_dma_spi(true, txbuf, dma_tx_cfg, spi_cfg);
+        //---------------
+        // dma_tx_cfg.dma_channel = dma_claim_unused_channel(true);
+        // dma_channel_config c = dma_channel_get_default_config(dma_tx_cfg.dma_channel);
+        // channel_config_set_transfer_data_size(&c, DMA_SIZE_16);
+        // channel_config_set_dreq(&c, spi_get_dreq(spi_cfg.spi, true));
+        // channel_config_set_read_increment(&c, true);
+        // channel_config_set_write_increment(&c, false);
+        // dma_channel_configure(dma_tx_cfg.dma_channel, &c,
+        //                       &spi_get_hw(spi_cfg.spi)->dr, // write address
+        //                       txbuf,                        // read address
+        //                       TEST_SIZE,                    // element count (each element is of size transfer_data_size)
+        //                       false);                       // don't start yet
+        //--------------
         // printf("Configure RX DMA\n");
-        p2.hi();
-        // Grab some unused dma channels
-        // const uint dma_rx = dma_claim_unused_channel(true);
+        //--------------
+        // init_dma_spi(false, rxbuf, dma_rx_cfg, spi_cfg);
+        //-----------------
         dma_rx_cfg.dma_channel = dma_claim_unused_channel(true);
-        c = dma_channel_get_default_config(dma_rx_cfg.dma_channel);
+        dma_channel_config c = dma_channel_get_default_config(dma_rx_cfg.dma_channel);
         channel_config_set_transfer_data_size(&c, DMA_SIZE_16);
-        // We set the inbound DMA to transfer from the SPI receive FIFO to a memory buffer paced by the SPI RX FIFO DREQ
-        // address to increment (so data is written throughout the buffer)
         channel_config_set_dreq(&c, spi_get_dreq(spi_cfg.spi, false));
-        // We configure the read address to remain unchanged for each element, but the write
         channel_config_set_read_increment(&c, false);
         channel_config_set_write_increment(&c, true);
         dma_channel_configure(dma_rx_cfg.dma_channel, &c,
-                              rxbuf,                // write address
+                              rxbuf,                        // write address
                               &spi_get_hw(spi_cfg.spi)->dr, // read address
-                              TEST_SIZE,            // element count (each element is of size transfer_data_size)
-                              false);               // don't start yet
-
-        p2.lo();
-
+                              TEST_SIZE,                    // element count (each element is of size transfer_data_size)
+                              false);                       // don't start yet
+        //-------------
         p3.hi();
         // printf("Starting DMAs...\n");
         // start them exactly simultaneously to avoid races (in extreme cases the FIFO could overflow)
@@ -124,7 +152,7 @@ int main()
         p3.lo();
         // printf("Wait for RX complete...\n");
         p6.hi();
-        dma_channel_wait_for_finish_blocking(dma_rx_cfg.dma_channel);
+        dma_channel_wait_for_finish_blocking(dma_tx_cfg.dma_channel);
         p6.lo();
 
         if (dma_channel_is_busy(dma_tx_cfg.dma_channel))
