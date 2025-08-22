@@ -18,8 +18,8 @@ Probe p0 = Probe(0);
 Probe p1 = Probe(1);
 Probe p2 = Probe(2);
 Probe p3 = Probe(3);
-Probe p4 = Probe(4);
-Probe p5 = Probe(5);
+// Probe p4 = Probe(4);
+// Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
 
@@ -39,6 +39,8 @@ struct_ConfigMasterSPI cfg = {
     .cs_pin = SPI_CSN_PIN,
     .baud_rate_Hz = SPI_BAUD_RATE};
 
+static uint8_t txbuf[TEST_SIZE];
+static uint8_t rxbuf[TEST_SIZE];
 int main()
 {
     stdio_init_all();
@@ -47,17 +49,14 @@ int main()
     while (true)
     {
         p0.hi();
-        printf("SPI DMA example\n");
+        printf("SPI DMA example\t");
 
-        static uint8_t txbuf[TEST_SIZE];
-        static uint8_t rxbuf[TEST_SIZE];
         p1.hi();
         for (uint i = 0; i < TEST_SIZE; ++i)
         {
             txbuf[i] = rand();
         }
         p1.lo();
-        
 
         // printf("Configure TX DMA\n");
         p2.hi();
@@ -75,7 +74,6 @@ int main()
                               TEST_SIZE,            // element count (each element is of size transfer_data_size)
                               false);               // don't start yet
         p2.lo();
-
 
         // printf("Configure RX DMA\n");
         p3.hi();
@@ -97,13 +95,13 @@ int main()
 
         p3.lo();
 
-        p4.hi();
+        p6.hi();
         // printf("Starting DMAs...\n");
         // start them exactly simultaneously to avoid races (in extreme cases the FIFO could overflow)
         dma_start_channel_mask((1u << dma_tx) | (1u << dma_rx));
         // printf("Wait for RX complete...\n");
         dma_channel_wait_for_finish_blocking(dma_rx);
-        p4.lo();
+        p6.lo();
 
         if (dma_channel_is_busy(dma_tx))
         {
@@ -123,7 +121,7 @@ int main()
         p3.lo();
 
         printf("All good\n");
-        
+
         dma_channel_unclaim(dma_tx);
         dma_channel_unclaim(dma_rx);
         p0.lo();
