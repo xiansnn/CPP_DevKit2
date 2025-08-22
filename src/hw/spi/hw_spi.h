@@ -32,6 +32,8 @@ struct struct_ConfigMasterSPI
     uint cs_pin = 13;
     ///@brief the SPI baudrate(default to 1MHz)
     uint baud_rate_Hz = 1000 * 1000;
+    /// @brief size of SPI trasfert. Should be between 4 and 16. Default to 8.
+    uint transfer_size = 8;
     /// @brief clock phase (default to standard 0)
     spi_cpha_t clk_phase = SPI_CPHA_0;
     /// @brief signal polarity (default to standard 0)
