@@ -19,25 +19,45 @@ Probe p3 = Probe(3);
 
 #define TEST_SIZE 1024
 
-static uint16_t txbuf[TEST_SIZE];
-static uint16_t rxbuf[TEST_SIZE];
-
-static uint dma_channel;
-
-void dma_handler()
+struct struct_ConfigDMA
 {
-    if (dma_hw->ints0 & (1u << dma_channel))
+    uint channel;
+    dma_channel_transfer_size transfer_size = DMA_SIZE_16; // can be DMA_SIZE_8, DMA_SIZE_16, DMA_SIZE_32
+    uint block_size;                                       // number of transfer to be executed
+    irq_handler_t handler;
+    irq_num_t irq_number = DMA_IRQ_0; // can be DMQ_IRQ_1
+};
+
+void m2m_dma_handler();
+
+void init_m2m_dma(struct_ConfigDMA cfg, volatile void *write_address, volatile void *read_address);
+
+void set_up_irq(struct_ConfigDMA cfg);
+
+void clear_dma_channel(struct_ConfigDMA cfg);
+
+
+
+static struct_ConfigDMA cfg_dma{
+    .transfer_size = DMA_SIZE_16,
+    .block_size = TEST_SIZE,
+    .handler = m2m_dma_handler,
+};
+
+static uint16_t read_buf[TEST_SIZE];
+static uint16_t write_buf[TEST_SIZE];
+
+void m2m_dma_handler()
+{
+    if (dma_hw->ints0 & (1u << cfg_dma.channel))
     {
-        p3.hi();
-        dma_hw->ints0 = (1u << dma_channel); // Clear IRQ
-        // xSemaphoreGive(dma_complete);
-        p3.lo();
+        p2.hi();
+        dma_hw->ints0 = (1u << cfg_dma.channel); // Clear IRQ
+        p2.lo();
     }
 }
 
-// Data will be copied from src to dst
-const char src[] = "Hello, world! (from DMA)";
-char dst[count_of(src)];
+
 
 int main()
 {
@@ -45,67 +65,71 @@ int main()
 
     for (uint i = 0; i < TEST_SIZE; ++i)
     {
-        txbuf[i] = i;
+        read_buf[i] = i;
     }
-
-    // 16 bit transfers. Both read and write address increment after each
-    // transfer (each pointing to a location in src or dst respectively).
-    // No DREQ is selected, so the DMA transfers as fast as it can.
 
     while (true)
     {
         p0.hi();
         // Get a free channel, panic() if there are none
-        dma_channel = dma_claim_unused_channel(true);
+        cfg_dma.channel = dma_claim_unused_channel(true);
         printf("DMA M2M example\t");
 
-        dma_channel_config c = dma_channel_get_default_config(dma_channel);
-        channel_config_set_transfer_data_size(&c, DMA_SIZE_16);
-        channel_config_set_read_increment(&c, true);
-        channel_config_set_write_increment(&c, true);
+        init_m2m_dma( cfg_dma, write_buf, read_buf);
 
-        dma_channel_configure(
-            dma_channel,      // Channel to be configured
-            &c,        // The configuration we just created
-            rxbuf,     // The initial write address
-            txbuf,     // The initial read address
-            TEST_SIZE, // Number of transfers; in this case each is 1 byte.
-            false      // Start immediately.
-        );
-
-        dma_channel_set_irq0_enabled(dma_channel, true);
-        irq_set_exclusive_handler(DMA_IRQ_0, dma_handler);
-        irq_set_enabled(DMA_IRQ_0, true);
+        set_up_irq(cfg_dma);
 
         // Démarrer le transfert
-        dma_channel_start(dma_channel);
-
-        // We could choose to go and do something else whilst the DMA is doing its
-        // thing. In this case the processor has nothing else to do, so we just
-        // wait for the DMA to finish.
         p1.hi();
-        dma_channel_wait_for_finish_blocking(dma_channel);
+        dma_channel_start(cfg_dma.channel);
+        dma_channel_wait_for_finish_blocking(cfg_dma.channel);
         p1.lo();
-        // The DMA has now copied our text from the transmit buffer (src) to the
-        // receive buffer (dst), so we can print it out from there.
-        // puts(dst);
 
-        p2.hi();
+        p3.hi();
         for (uint i = 0; i < TEST_SIZE; ++i)
         {
-            if (rxbuf[i] != txbuf[i])
+            if (write_buf[i] != read_buf[i])
             {
                 panic("Mismatch at %d/%d: expected %02x, got %02x",
-                      i, TEST_SIZE, txbuf[i], rxbuf[i]);
+                      i, TEST_SIZE, read_buf[i], write_buf[i]);
             }
         }
         printf("All good\n");
-        p2.lo();
+        p3.lo();
 
-        dma_channel_cleanup(dma_channel);
-        dma_channel_unclaim(dma_channel);
+        clear_dma_channel(cfg_dma);
         p0.lo();
 
         sleep_ms(500);
     }
+}
+
+void set_up_irq(struct_ConfigDMA cfg)
+{
+    dma_channel_set_irq0_enabled(cfg.channel, true);
+    irq_set_exclusive_handler(cfg.irq_number, cfg_dma.handler);
+    irq_set_enabled(cfg.irq_number, true);
+}
+
+void init_m2m_dma(struct_ConfigDMA cfg, volatile void * write_address, volatile void * read_address)
+{
+    dma_channel_config c = dma_channel_get_default_config(cfg.channel);
+    channel_config_set_transfer_data_size(&c, cfg.transfer_size);
+    channel_config_set_read_increment(&c, true);
+    channel_config_set_write_increment(&c, true);
+
+    dma_channel_configure(
+        cfg.channel,    // Channel to be configured
+        &c,                 // The configuration we just created
+        write_address,              // The initial write address
+        read_address,              // The initial read address
+        cfg.block_size, // Number of transfers; in this case each is 1 byte.
+        false               // Start immediately.
+    );
+}
+
+void clear_dma_channel(struct_ConfigDMA cfg)
+{
+    dma_channel_cleanup(cfg.channel);
+    dma_channel_unclaim(cfg.channel);
 }
