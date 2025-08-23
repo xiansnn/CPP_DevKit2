@@ -1,5 +1,5 @@
-add_executable(test_dma_hello hello_dma.cpp)
-target_link_libraries(test_dma_hello 
+add_executable(test_dma_m2m mem2mem.cpp)
+target_link_libraries(test_dma_m2m 
             pico_stdlib 
             hardware_dma
             utilities_probe
