@@ -97,7 +97,6 @@ void init_dma_spi(bool is_tx, uint16_t *data_buffer, struct_ConfigDMA dma_cfg, s
 int main()
 {
     stdio_init_all();
-    // spi_inst_t *spi = spi1;
     HW_SPI_Master master = HW_SPI_Master(spi_cfg);
     spi_set_format(spi_cfg.spi, spi_cfg.transfer_size,
                    spi_cfg.spi_polarity, spi_cfg.clk_phase, spi_cfg.bit_order);
@@ -115,31 +114,31 @@ int main()
         // printf("Configure TX DMA\n");
 
         //---------------------------------
-        init_dma_spi(true, txbuf, dma_tx_cfg, spi_cfg);
+        // init_dma_spi(true, txbuf, dma_tx_cfg, spi_cfg);
         //---------------
-        // dma_tx_cfg.dma_channel = dma_claim_unused_channel(true);
-        // dma_channel_config c = dma_channel_get_default_config(dma_tx_cfg.dma_channel);
-        // channel_config_set_transfer_data_size(&c, DMA_SIZE_16);
-        // channel_config_set_dreq(&c, spi_get_dreq(spi_cfg.spi, true));
-        // channel_config_set_read_increment(&c, true);
-        // channel_config_set_write_increment(&c, false);
-        // dma_channel_configure(dma_tx_cfg.dma_channel, &c,
-        //                       &spi_get_hw(spi_cfg.spi)->dr, // write address
-        //                       txbuf,                        // read address
-        //                       TEST_SIZE,                    // element count (each element is of size transfer_data_size)
-        //                       false);                       // don't start yet
+        dma_tx_cfg.dma_channel = dma_claim_unused_channel(true);
+        dma_channel_config c_tx = dma_channel_get_default_config(dma_tx_cfg.dma_channel);
+        channel_config_set_transfer_data_size(&c_tx, DMA_SIZE_16);
+        channel_config_set_dreq(&c_tx, spi_get_dreq(spi_cfg.spi, true));
+        channel_config_set_read_increment(&c_tx, true);
+        channel_config_set_write_increment(&c_tx, false);
+        dma_channel_configure(dma_tx_cfg.dma_channel, &c_tx,
+                              &spi_get_hw(spi_cfg.spi)->dr, // write address
+                              txbuf,                        // read address
+                              TEST_SIZE,                    // element count (each element is of size transfer_data_size)
+                              false);                       // don't start yet
         //--------------
         // printf("Configure RX DMA\n");
         //--------------
         // init_dma_spi(false, rxbuf, dma_rx_cfg, spi_cfg);
         //-----------------
         dma_rx_cfg.dma_channel = dma_claim_unused_channel(true);
-        dma_channel_config c = dma_channel_get_default_config(dma_rx_cfg.dma_channel);
-        channel_config_set_transfer_data_size(&c, DMA_SIZE_16);
-        channel_config_set_dreq(&c, spi_get_dreq(spi_cfg.spi, false));
-        channel_config_set_read_increment(&c, false);
-        channel_config_set_write_increment(&c, true);
-        dma_channel_configure(dma_rx_cfg.dma_channel, &c,
+        dma_channel_config c_rx = dma_channel_get_default_config(dma_rx_cfg.dma_channel);
+        channel_config_set_transfer_data_size(&c_rx, DMA_SIZE_16);
+        channel_config_set_dreq(&c_rx, spi_get_dreq(spi_cfg.spi, false));
+        channel_config_set_read_increment(&c_rx, false);
+        channel_config_set_write_increment(&c_rx, true);
+        dma_channel_configure(dma_rx_cfg.dma_channel, &c_rx,
                               rxbuf,                        // write address
                               &spi_get_hw(spi_cfg.spi)->dr, // read address
                               TEST_SIZE,                    // element count (each element is of size transfer_data_size)
@@ -148,11 +147,14 @@ int main()
         p3.hi();
         // printf("Starting DMAs...\n");
         // start them exactly simultaneously to avoid races (in extreme cases the FIFO could overflow)
-        dma_start_channel_mask((1u << dma_tx_cfg.dma_channel) | (1u << dma_rx_cfg.dma_channel));
+        // dma_start_channel_mask((1u << dma_tx_cfg.dma_channel) | (1u << dma_rx_cfg.dma_channel));
+        dma_channel_start(dma_rx_cfg.dma_channel);
+        dma_channel_start(dma_tx_cfg.dma_channel);
+
         p3.lo();
         // printf("Wait for RX complete...\n");
         p6.hi();
-        dma_channel_wait_for_finish_blocking(dma_tx_cfg.dma_channel);
+        dma_channel_wait_for_finish_blocking(dma_rx_cfg.dma_channel);
         p6.lo();
 
         if (dma_channel_is_busy(dma_tx_cfg.dma_channel))
