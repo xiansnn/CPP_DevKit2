@@ -32,7 +32,6 @@ Probe p7 = Probe(7);
 static uint16_t txbuf[TEST_SIZE];
 static uint16_t rxbuf[TEST_SIZE];
 
-void spi_rx_dma_handler();
 
 struct struct_ConfigDMA
 {
@@ -48,12 +47,7 @@ void cleanup_and_free_dma_channel(struct_ConfigDMA *dma_cfg);
 void write_spi2dma(struct_ConfigMasterSPI *spi_cfg, struct_ConfigDMA *dma_cfg, volatile void *write_address, bool start);
 void write_dma2spi(struct_ConfigDMA *dma_cfg, struct_ConfigMasterSPI *spi_cfg, volatile void *read_address, bool start);
 
-// void set_up_irq(struct_ConfigDMA *cfg)
-// {
-//     dma_channel_set_irq0_enabled(cfg->channel, true);
-//     irq_set_exclusive_handler(cfg->irq_number, cfg->handler);
-//     irq_set_enabled(cfg->irq_number, true);
-// };
+void spi_rx_dma_handler();
 
 static struct_ConfigDMA dma_tx_cfg = {
     .transfer_size = DMA_SIZE_16,
