@@ -2,6 +2,9 @@
 #include <string.h>
 
 #include "hw/i2c/hw_i2c.h"
+
+#include "hw/dma/hw_dma.h"
+
 #include "utilities/probe/probe.h"
 
 Probe pr_D4 = Probe(4);
@@ -12,8 +15,7 @@ struct_ConfigMasterI2C master_config{
     .i2c = i2c0,
     .sda_pin = 8,
     .scl_pin = 9,
-    .baud_rate = I2C_FAST_MODE
-    };
+    .baud_rate = I2C_FAST_MODE};
 
 static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event);
 
@@ -36,8 +38,8 @@ static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event)
     pr_D4.lo();
 }
 
-
 #define MAX_DATA_SIZE 32
+
 int main()
 {
     stdio_init_all();
@@ -50,22 +52,77 @@ int main()
     {
         for (uint8_t mem_address = 0;; mem_address = (mem_address + MAX_DATA_SIZE) % slave_config.slave_memory_size)
         {
-            uint8_t write_data[MAX_DATA_SIZE];
+            // uint8_t write_data[MAX_DATA_SIZE]; // buffer for data to write, given to DMA
             char write_msg[MAX_DATA_SIZE];
             snprintf(write_msg, sizeof(write_msg), "Hello, slave@0x%02X mem[0x%02X]", slave_config.slave_address, mem_address);
             uint8_t msg_len = strlen(write_msg);
-            memcpy(write_data, write_msg, msg_len); // to convert  char[] to uint8_t[]
+            // memcpy(write_data, write_msg, msg_len); // to convert  char[] to uint8_t[]
             // write data at mem_address
             printf("Write at 0x%02X: '%s'\n", mem_address, write_msg);
             pr_D5.hi();
-            master.burst_byte_write(slave_config.slave_address, mem_address, write_data, msg_len);
+            //------------------------------
+            uint32_t full_buffer[MAX_DATA_SIZE + 1];
+            full_buffer[0] = mem_address; // first byte is reserved for command (start/stop)
+            for (size_t i = 0; i < msg_len; i++)
+            {
+                full_buffer[i + 1] = write_msg[i];
+            }
+            full_buffer[1] |= I2C_IC_DATA_CMD_FIRST_DATA_BYTE_BITS;
+            full_buffer[msg_len] |= I2C_IC_DATA_CMD_STOP_BITS;
+
+            uint channel_tx = dma_claim_unused_channel(true);
+            dma_channel_cleanup(channel_tx);
+            dma_channel_config c_tx = dma_channel_get_default_config(channel_tx);
+            channel_config_set_transfer_data_size(&c_tx, DMA_SIZE_32);
+            channel_config_set_dreq(&c_tx, i2c_get_dreq(master_config.i2c, true));
+            channel_config_set_read_increment(&c_tx, true);
+            channel_config_set_write_increment(&c_tx, false);
+            uint32_t transfer_count = msg_len + 1;
+            dma_channel_configure(channel_tx, &c_tx,
+                                  &i2c_get_hw(master_config.i2c)->data_cmd,
+                                  full_buffer,    // read address
+                                  transfer_count, // element count (each element is of size transfer_data_size)
+                                  false);         // don't start yet
+            dma_channel_start(channel_tx);
+            dma_channel_wait_for_finish_blocking(channel_tx);
+            dma_channel_cleanup(channel_tx);
+            dma_channel_unclaim(channel_tx);
             pr_D5.lo();
+            //------------------------------
+            pr_D5.hi();
+            // master.burst_byte_write(slave_config.slave_address, mem_address, write_data, msg_len);
+            pr_D5.lo();
+            //------------------------------
 
             // read from mem_address
+
             uint8_t read_data[MAX_DATA_SIZE];
             char read_msg[MAX_DATA_SIZE];
+            //------------------------------
+            // pr_D6.hi();
+            // uint channel_rx = dma_claim_unused_channel(true);
+            // dma_channel_config c_rx = dma_channel_get_default_config(channel_rx);
+            // channel_config_set_transfer_data_size(&c_rx, DMA_SIZE_8);
+            // channel_config_set_dreq(&c_rx, i2c_get_dreq(slave_config.i2c, false));
+            // channel_config_set_read_increment(&c_rx, false);
+            // channel_config_set_write_increment(&c_rx, true);
+            // dma_channel_configure(channel_rx, &c_rx,
+            //                       //   &i2c_get_hw(i2c0)->data,
+            //                       &i2c_get_hw(slave_config.i2c)->data_cmd,
+            //                       // &spi_get_hw(spi_cfg->spi)->dr, // write address
+            //                       read_data,         // read address
+            //                       sizeof(read_msg), // element count (each element is of size transfer_data_size)
+            //                       false);            // don't start yet
+
+            // dma_channel_start(channel_rx);
+            // dma_channel_wait_for_finish_blocking(channel_rx);
+            //  pr_D6.lo();
+            //------------------------------
             pr_D6.hi();
+            sleep_ms(1);
             master.burst_byte_read(slave_config.slave_address, mem_address, read_data, MAX_DATA_SIZE);
+            pr_D6.lo();
+            //------------------------------
             pr_D6.lo();
             memcpy(read_msg, read_data, MAX_DATA_SIZE);
             msg_len = strlen(read_msg);
