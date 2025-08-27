@@ -58,10 +58,10 @@ int main()
             uint8_t write_data[MAX_DATA_SIZE]; // buffer for data to write, given to DMA
             char write_msg[MAX_DATA_SIZE];
             snprintf(write_msg, sizeof(write_msg), "Hello, slave@0x%02X mem[0x%02X]", slave_config.slave_address, mem_address);
-            uint8_t msg_len = strlen(write_msg);
-            memcpy(write_data, write_msg, msg_len); // to convert  char[] to uint8_t[]
+            uint8_t write_msg_len = strlen(write_msg);
+            memcpy(write_data, write_msg, write_msg_len); // to convert  char[] to uint8_t[]
 
-            printf("Write at 0x%02X: '%s'\t", mem_address, write_msg); // FIXME first char missing on terminal
+            printf("Write %d at 0x%02X: '%s'\t",write_msg_len, mem_address, write_msg); // 
             //------------------------------
             // pr_D5.hi();
             // uint32_t full_buffer[MAX_DATA_SIZE + 1];
@@ -100,15 +100,23 @@ int main()
             // pr_D5.lo();
             //------------------------------
             pr_D5.hi();
-            master.burst_byte_write(slave_config.slave_address, mem_address, write_data, msg_len);
+            // ##############################
+            size_t nb_written;
+            uint8_t write_buf[write_msg_len + 1] = {mem_address};
+            memcpy(write_buf + 1, write_data, write_msg_len);
+            nb_written = i2c_write_blocking(master_config.i2c, slave_config.slave_address, write_buf, write_msg_len + 1, false);
+            
+            // ##############################
+            // master.burst_byte_write(slave_config.slave_address, mem_address, write_data, msg_len);
+            // ##############################
             pr_D5.lo();
             //------------------------------
-
+            
             // read from mem_address
             sleep_ms(1);
-
+            
             uint8_t read_data[MAX_DATA_SIZE];
-            char read_msg[MAX_DATA_SIZE];
+            char read_msg[MAX_DATA_SIZE]{0};
             //------------------------------
             // pr_D6.hi();
             // channel_rx = dma_claim_unused_channel(true);
@@ -129,12 +137,21 @@ int main()
             // pr_D6.lo();
             //------------------------------
             pr_D6.hi();
-            master.burst_byte_read(slave_config.slave_address, mem_address, read_data, msg_len);
+            // ##############################
+            size_t nb_red;
+            uint8_t cmd_buf[]{mem_address};
+            memcpy(write_buf + 1, write_data, write_msg_len);
+            nb_red = i2c_write_blocking(master_config.i2c, slave_config.slave_address, cmd_buf, 1, true);
+            nb_red = i2c_read_blocking(master_config.i2c, slave_config.slave_address, read_data, write_msg_len, false);
+            // ##############################
+            // master.burst_byte_read(slave_config.slave_address, mem_address, read_data, write_msg_len);
+            // ##############################
             pr_D6.lo();
             //------------------------------
-            memcpy(read_msg, read_data, msg_len);
-            msg_len = strlen(read_msg);
-            printf("Read %d char at 0x%02X: '%s'\n", msg_len, mem_address, read_msg);
+            memcpy(read_msg, read_data, MAX_DATA_SIZE);
+            uint8_t read_msg_len;
+            read_msg_len = strlen(read_msg);
+            printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, mem_address, read_msg);
             sleep_ms(1000);
         }
     }
