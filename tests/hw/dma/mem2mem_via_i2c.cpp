@@ -61,7 +61,7 @@ int main()
             uint8_t write_msg_len = strlen(write_msg);
             memcpy(write_data, write_msg, write_msg_len); // to convert  char[] to uint8_t[]
 
-            printf("Write %d at 0x%02X: '%s'\t",write_msg_len, mem_address, write_msg); // 
+            printf("Write %d at 0x%02X: '%s'\t", write_msg_len, mem_address, write_msg); //
             //------------------------------
             // pr_D5.hi();
             // uint32_t full_buffer[MAX_DATA_SIZE + 1];
@@ -105,16 +105,43 @@ int main()
             uint8_t write_buf[write_msg_len + 1] = {mem_address};
             memcpy(write_buf + 1, write_data, write_msg_len);
             nb_written = i2c_write_blocking(master_config.i2c, slave_config.slave_address, write_buf, write_msg_len + 1, false);
-            
+            pr_D5.lo();
+            //@@@@@@@@@@@@@@@@@
+            pr_D5.hi();
+            /**/
+            uint32_t full_cmd_buffer[write_msg_len + 1] = {mem_address};
+            full_cmd_buffer[0] |= I2C_IC_DATA_CMD_RESTART_BITS; // first byte is reserved for command (start/stop)
+            for (int i = 0; i < write_msg_len; ++i)
+                full_cmd_buffer[i + 1] = write_data[i];
+            // {
+
+            // bool_to_bit(first && true) << I2C_IC_DATA_CMD_RESTART_LSB |
+            // bool_to_bit(last && false) << I2C_IC_DATA_CMD_STOP_LSB |
+            // write_data[i];
+            // }
+            full_cmd_buffer[write_msg_len + 1] |= I2C_IC_DATA_CMD_STOP_BITS; // first byte is reserved for command (start/stop)
+
+            for (size_t i = 0; i < write_msg_len + 2; i++)
+            {
+                master_config.i2c->hw->data_cmd = full_cmd_buffer[i];
+                do
+                {
+                    tight_loop_contents();
+                } while ( !(master_config.i2c->hw->raw_intr_stat & I2C_IC_RAW_INTR_STAT_TX_EMPTY_BITS));
+            }
+
+            /**/
+
+            //@@@@@@@@@@@@@@@@@@@@@@
             // ##############################
             // master.burst_byte_write(slave_config.slave_address, mem_address, write_data, msg_len);
             // ##############################
             pr_D5.lo();
             //------------------------------
-            
+
             // read from mem_address
             sleep_ms(1);
-            
+
             uint8_t read_data[MAX_DATA_SIZE];
             char read_msg[MAX_DATA_SIZE]{0};
             //------------------------------
