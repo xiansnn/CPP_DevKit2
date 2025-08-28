@@ -46,7 +46,7 @@ static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event)
 int main()
 {
     stdio_init_all();
-    printf("test I2C exchange \n");
+    printf("Test I2C exchange \n");
     if (not master.device_is_connected(slave_config.slave_address))
     {
         printf("no device at 0x%02x\n", slave_config.slave_address);
@@ -55,9 +55,13 @@ int main()
     {
         for (uint8_t mem_address = 0;; mem_address = (mem_address + MAX_DATA_SIZE) % slave_config.slave_memory_size)
         {
+            //==================================================================================================================
+            // write to mem_address
+            //==================================================================================================================
+
             uint8_t write_data[MAX_DATA_SIZE]; // buffer for data to write, given to DMA
-            char write_msg[MAX_DATA_SIZE];
-            snprintf(write_msg, sizeof(write_msg), "Hello, slave@0x%02X mem[0x%02X]", slave_config.slave_address, mem_address);
+            char write_msg[MAX_DATA_SIZE]{0};
+            snprintf(write_msg, MAX_DATA_SIZE, "Hello, slave@0x%02X mem[0x%02X]", slave_config.slave_address, mem_address);
             uint8_t write_msg_len = strlen(write_msg);
             memcpy(write_data, write_msg, write_msg_len); // to convert  char[] to uint8_t[]
 
@@ -100,47 +104,27 @@ int main()
             // pr_D5.lo();
             //------------------------------
             pr_D5.hi();
-            // ##############################
-            size_t nb_written;
-            uint8_t write_buf[write_msg_len + 1] = {mem_address};
-            memcpy(write_buf + 1, write_data, write_msg_len);
-            nb_written = i2c_write_blocking(master_config.i2c, slave_config.slave_address, write_buf, write_msg_len + 1, false);
-            pr_D5.lo();
-            //@@@@@@@@@@@@@@@@@
-            pr_D5.hi();
-            /**/
-            uint32_t full_cmd_buffer[write_msg_len + 1] = {mem_address};
-            full_cmd_buffer[0] |= I2C_IC_DATA_CMD_RESTART_BITS; // first byte is reserved for command (start/stop)
+
+            uint16_t full_cmd_buffer[MAX_DATA_SIZE + 1];
+            full_cmd_buffer[0] = mem_address | I2C_IC_DATA_CMD_RESTART_BITS; // first byte is reserved for command (start/stop)
             for (int i = 0; i < write_msg_len; ++i)
-                full_cmd_buffer[i + 1] = write_data[i];
-            // {
+                full_cmd_buffer[i + 1] = (uint16_t)write_data[i];
 
-            // bool_to_bit(first && true) << I2C_IC_DATA_CMD_RESTART_LSB |
-            // bool_to_bit(last && false) << I2C_IC_DATA_CMD_STOP_LSB |
-            // write_data[i];
-            // }
-            full_cmd_buffer[write_msg_len + 1] |= I2C_IC_DATA_CMD_STOP_BITS; // first byte is reserved for command (start/stop)
-
-            for (size_t i = 0; i < write_msg_len + 2; i++)
+            full_cmd_buffer[write_msg_len] |= I2C_IC_DATA_CMD_STOP_BITS; // first byte is reserved for command (start/stop)
+            for (size_t i = 0; i < write_msg_len + 1; i++)
             {
                 master_config.i2c->hw->data_cmd = full_cmd_buffer[i];
                 do
                 {
                     tight_loop_contents();
-                } while ( !(master_config.i2c->hw->raw_intr_stat & I2C_IC_RAW_INTR_STAT_TX_EMPTY_BITS));
+                } while (!(master_config.i2c->hw->raw_intr_stat & I2C_IC_RAW_INTR_STAT_TX_EMPTY_BITS));
             }
 
-            /**/
-
-            //@@@@@@@@@@@@@@@@@@@@@@
-            // ##############################
-            // master.burst_byte_write(slave_config.slave_address, mem_address, write_data, msg_len);
-            // ##############################
             pr_D5.lo();
-            //------------------------------
-
+            //==================================================================================================================
             // read from mem_address
-            sleep_ms(1);
+            //==================================================================================================================
+            sleep_us(500);
 
             uint8_t read_data[MAX_DATA_SIZE];
             char read_msg[MAX_DATA_SIZE]{0};
@@ -165,21 +149,30 @@ int main()
             //------------------------------
             pr_D6.hi();
             // ##############################
-            size_t nb_red;
+            size_t nb_write, nb_read;
+            //
             uint8_t cmd_buf[]{mem_address};
-            memcpy(write_buf + 1, write_data, write_msg_len);
-            nb_red = i2c_write_blocking(master_config.i2c, slave_config.slave_address, cmd_buf, 1, true);
-            nb_red = i2c_read_blocking(master_config.i2c, slave_config.slave_address, read_data, write_msg_len, false);
+            nb_write = i2c_write_blocking(master_config.i2c, slave_config.slave_address, cmd_buf, 1, true);
+            //
+
+            // uint32_t cmd[1];
+            // cmd[0] = mem_address | I2C_IC_DATA_CMD_RESTART_BITS | I2C_IC_DATA_CMD_STOP_BITS;
+            // master_config.i2c->hw->enable = 0;
+            // master_config.i2c->hw->tar = slave_config.slave_address;
+            // master_config.i2c->hw->enable = 1;
+            // master_config.i2c->hw->data_cmd = cmd[0] ;
+            
+            //
+            nb_read = i2c_read_blocking(master_config.i2c, slave_config.slave_address, read_data, write_msg_len, false);
+
             // ##############################
             // master.burst_byte_read(slave_config.slave_address, mem_address, read_data, write_msg_len);
             // ##############################
             pr_D6.lo();
             //------------------------------
-            memcpy(read_msg, read_data, MAX_DATA_SIZE);
-            uint8_t read_msg_len;
-            read_msg_len = strlen(read_msg);
-            printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, mem_address, read_msg);
-            sleep_ms(1000);
+            memcpy(read_msg, read_data, write_msg_len);
+            printf("Read %d char at 0x%02X: '%s'\n", write_msg_len, mem_address, read_msg);
+            sleep_ms(100);
         }
     }
     return 0;
