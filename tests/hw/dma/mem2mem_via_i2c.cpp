@@ -152,16 +152,20 @@ int main()
             size_t nb_write, nb_read;
             //
             uint8_t cmd_buf[]{mem_address};
-            nb_write = i2c_write_blocking(master_config.i2c, slave_config.slave_address, cmd_buf, 1, true);
+            // nb_write = i2c_write_blocking(master_config.i2c, slave_config.slave_address, cmd_buf, 1, true);
             //
 
-            // uint32_t cmd[1];
-            // cmd[0] = mem_address | I2C_IC_DATA_CMD_RESTART_BITS | I2C_IC_DATA_CMD_STOP_BITS;
-            // master_config.i2c->hw->enable = 0;
-            // master_config.i2c->hw->tar = slave_config.slave_address;
-            // master_config.i2c->hw->enable = 1;
-            // master_config.i2c->hw->data_cmd = cmd[0] ;
-            
+            uint32_t cmd[1];
+            cmd[0] = mem_address | I2C_IC_DATA_CMD_RESTART_BITS | I2C_IC_DATA_CMD_STOP_BITS;
+            master_config.i2c->hw->enable = 0;
+            master_config.i2c->hw->tar = slave_config.slave_address;
+            master_config.i2c->hw->enable = 1;
+            master_config.i2c->hw->data_cmd = cmd[0];
+            do
+            {
+                tight_loop_contents();
+            } while ( !(master_config.i2c->hw->raw_intr_stat & I2C_IC_RAW_INTR_STAT_TX_EMPTY_BITS));
+
             //
             nb_read = i2c_read_blocking(master_config.i2c, slave_config.slave_address, read_data, write_msg_len, false);
 
@@ -171,7 +175,8 @@ int main()
             pr_D6.lo();
             //------------------------------
             memcpy(read_msg, read_data, write_msg_len);
-            printf("Read %d char at 0x%02X: '%s'\n", write_msg_len, mem_address, read_msg);
+            uint8_t read_msg_len = strlen(read_msg);
+            printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, mem_address, read_msg);
             sleep_ms(100);
         }
     }
