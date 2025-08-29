@@ -66,7 +66,7 @@ int main()
             memcpy(write_data, write_msg, write_msg_len); // to convert  char[] to uint8_t[]
 
             printf("Write %d at 0x%02X: '%s'\t", write_msg_len, mem_address, write_msg); //
-            //------------------------------
+
             // pr_D5.hi();
             // uint32_t full_buffer[MAX_DATA_SIZE + 1];
             // full_buffer[0] = mem_address; // first byte is reserved for command (start/stop)
@@ -80,7 +80,6 @@ int main()
             // channel_tx = dma_claim_unused_channel(true);
             // dma_channel_cleanup(channel_tx);
             // dma_channel_config c_tx = dma_channel_get_default_config(channel_tx);
-            // // channel_config_set_transfer_data_size(&c_tx, DMA_SIZE_32);
             // channel_config_set_transfer_data_size(&c_tx, DMA_SIZE_8);
             // channel_config_set_dreq(&c_tx, i2c_get_dreq(master_config.i2c, true));
             // channel_config_set_read_increment(&c_tx, true);
@@ -102,7 +101,7 @@ int main()
             // dma_channel_cleanup(channel_tx);
             // dma_channel_unclaim(channel_tx);
             // pr_D5.lo();
-            //------------------------------
+
             pr_D5.hi();
 
             uint16_t full_cmd_buffer[MAX_DATA_SIZE + 1];
@@ -110,8 +109,9 @@ int main()
             for (int i = 0; i < write_msg_len; ++i)
                 full_cmd_buffer[i + 1] = (uint16_t)write_data[i];
 
-            full_cmd_buffer[write_msg_len] |= I2C_IC_DATA_CMD_STOP_BITS; // first byte is reserved for command (start/stop)
-            for (size_t i = 0; i < write_msg_len + 1; i++)
+            full_cmd_buffer[write_msg_len] |= I2C_IC_DATA_CMD_STOP_BITS; // last byte stop
+
+            for (int i = 0; i < write_msg_len + 1; i++)
             {
                 master_config.i2c->hw->data_cmd = full_cmd_buffer[i];
                 do
@@ -121,14 +121,12 @@ int main()
             }
 
             pr_D5.lo();
+
+            sleep_us(500);
             //==================================================================================================================
             // read from mem_address
             //==================================================================================================================
-            sleep_us(500);
 
-            uint8_t read_data[MAX_DATA_SIZE];
-            char read_msg[MAX_DATA_SIZE]{0};
-            //------------------------------
             // pr_D6.hi();
             // channel_rx = dma_claim_unused_channel(true);
             // uint8_t mem_add[1] = {mem_address};
@@ -146,32 +144,40 @@ int main()
             // dma_channel_start(channel_rx);
             // dma_channel_wait_for_finish_blocking(channel_rx);
             // pr_D6.lo();
-            //------------------------------
-            pr_D6.hi();
-            // ##############################
-            size_t nb_write, nb_read;
-            //
-            uint8_t cmd_buf[]{mem_address};
-            // nb_write = i2c_write_blocking(master_config.i2c, slave_config.slave_address, cmd_buf, 1, true);
-            //
 
+            // ##############################
+            //
+            pr_D6.hi();
+            uint8_t read_data[MAX_DATA_SIZE];
+            char read_msg[MAX_DATA_SIZE]{0};
             uint32_t cmd[1];
+
+            // write command, pass mem_address
             cmd[0] = mem_address | I2C_IC_DATA_CMD_RESTART_BITS | I2C_IC_DATA_CMD_STOP_BITS;
             master_config.i2c->hw->enable = 0;
             master_config.i2c->hw->tar = slave_config.slave_address;
             master_config.i2c->hw->enable = 1;
+
             master_config.i2c->hw->data_cmd = cmd[0];
             do
             {
                 tight_loop_contents();
-            } while ( !(master_config.i2c->hw->raw_intr_stat & I2C_IC_RAW_INTR_STAT_TX_EMPTY_BITS));
+            } while (!(master_config.i2c->hw->raw_intr_stat & I2C_IC_RAW_INTR_STAT_TX_EMPTY_BITS));
 
             //
-            nb_read = i2c_read_blocking(master_config.i2c, slave_config.slave_address, read_data, write_msg_len, false);
+            // read data
+            //
+            for (int i = 0; i < write_msg_len; i++)
+            {
+                while (!i2c_get_write_available(master_config.i2c))
+                    tight_loop_contents();
+                master_config.i2c->hw->data_cmd = I2C_IC_DATA_CMD_CMD_BITS |
+                                                  (i == write_msg_len - 1 ? I2C_IC_DATA_CMD_STOP_BITS : 0);
 
-            // ##############################
-            // master.burst_byte_read(slave_config.slave_address, mem_address, read_data, write_msg_len);
-            // ##############################
+                while (!i2c_get_read_available(master_config.i2c))
+                    tight_loop_contents();
+                read_data[i] = (uint8_t)master_config.i2c->hw->data_cmd;
+            }
             pr_D6.lo();
             //------------------------------
             memcpy(read_msg, read_data, write_msg_len);
