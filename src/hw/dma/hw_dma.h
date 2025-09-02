@@ -14,6 +14,9 @@
 #include "hardware/dma.h"
 #include "hardware/irq.h"
 #include "hw/spi/hw_spi.h"
+#include "hw/i2c/hw_i2c.h"
+
+#define I2C_BURST_SIZE 16
 
 struct struct_ConfigDMA
 {
@@ -27,10 +30,6 @@ class HW_DMA
 {
 private:
     dma_channel_config c;
-    // dma_channel_transfer_size transfer_size = DMA_SIZE_8; // can be DMA_SIZE_8, DMA_SIZE_16, DMA_SIZE_32
-    // uint block_size;                                      // number of transfer to be executed
-    // irq_handler_t handler = NULL;
-    // irq_num_t irq_number; // can be DMQ_IRQ_0 or DMA_IRQ_1
 
 public:
     uint channel;
@@ -41,6 +40,9 @@ public:
     void write_mem2mem(struct_ConfigDMA *cfg, volatile void *write_address, volatile void *read_address, bool start);
     void write_dma2spi(struct_ConfigDMA *dma_cfg, struct_ConfigMasterSPI *spi_cfg, volatile void *read_address, bool start);
     void write_spi2dma(struct_ConfigMasterSPI *spi_cfg, struct_ConfigDMA *dma_cfg, volatile void *write_address, bool start);
+    void write_dma2i2c(struct_ConfigDMA *dma_cfg, bool *fifo_empty,
+                           struct_ConfigMasterI2C *i2c_cfg, uint8_t slave_address, uint8_t slave_mem_addr,
+                           volatile uint8_t *read_address, size_t length, bool start);
     void cleanup_and_free_dma_channel();
     void start_dma();
 };

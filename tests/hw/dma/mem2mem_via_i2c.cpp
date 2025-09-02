@@ -9,6 +9,13 @@
 
 void burst_byte_write(uint8_t slave_address, uint8_t slave_mem_addr, uint8_t *src, size_t len);
 
+struct_ConfigDMA dma_cfg = {
+    .transfer_size = DMA_SIZE_16,
+    .block_size = 32,
+    .handler = NULL};
+
+HW_DMA i2c_dma = HW_DMA();
+
 Probe pr_D0 = Probe(0);
 Probe pr_D1 = Probe(1);
 Probe pr_D4 = Probe(4);
@@ -16,17 +23,19 @@ Probe pr_D5 = Probe(5);
 Probe pr_D6 = Probe(6);
 Probe pr_D7 = Probe(7);
 
-uint channel_tx;
 uint channel_rx;
+
+void i2c_tx_fifo_handler();
 
 struct_ConfigMasterI2C master_config{
     .i2c = i2c0,
     .sda_pin = 8,
     .scl_pin = 9,
-    .baud_rate = I2C_FAST_MODE};
+    .baud_rate = I2C_FAST_MODE,
+    .i2c_handler = i2c_tx_fifo_handler};
 
 static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event);
-static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event);
+
 struct_ConfigSlaveI2C slave_config{
     .i2c = i2c1,
     .sda_pin = 14,
@@ -39,15 +48,13 @@ struct_ConfigSlaveI2C slave_config{
 HW_I2C_Master master = HW_I2C_Master(master_config);
 HW_I2C_Slave slave = HW_I2C_Slave(slave_config);
 
-
-
 bool fifo_empty;
 
 #define MAX_DATA_SIZE 32
 #define BURST_SIZE 16
 #define WATERMARK_LEVEL 16 - BURST_SIZE
 
-void i2c_tx_fifo_handler();
+
 
 void i2c_tx_fifo_dma_isr();
 
@@ -75,7 +82,9 @@ int main()
         printf("Write %d at 0x%02X: '%s'\t", write_msg_len, mem_address, write_msg); //
 
         pr_D4.hi();
-        burst_byte_write(slave_config.slave_address, mem_address, write_data, write_msg_len);
+        // burst_byte_write(slave_config.slave_address, mem_address, write_data, write_msg_len);
+        i2c_dma.write_dma2i2c(&dma_cfg, &fifo_empty, &master_config, slave_config.slave_address, mem_address, write_data, write_msg_len, true);
+
         pr_D4.lo();
 
         sleep_us(500);
@@ -152,7 +161,7 @@ void burst_byte_write(uint8_t slave_address, uint8_t slave_mem_addr, uint8_t *sr
     size_t tx_remaining;
     size_t chunk;
 
-    channel_tx = dma_claim_unused_channel(true);
+    uint channel_tx = dma_claim_unused_channel(true);
     dma_channel_cleanup(channel_tx);
     dma_channel_config c_tx = dma_channel_get_default_config(channel_tx);
     channel_config_set_transfer_data_size(&c_tx, DMA_SIZE_16);
@@ -212,7 +221,7 @@ void burst_byte_write(uint8_t slave_address, uint8_t slave_mem_addr, uint8_t *sr
     dma_channel_unclaim(channel_tx);
 }
 
-static void i2c_tx_fifo_handler()
+void i2c_tx_fifo_handler()
 {
     pr_D0.hi();
     i2c_tx_fifo_dma_isr();
