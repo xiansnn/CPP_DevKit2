@@ -8,7 +8,7 @@
 #include "utilities/probe/probe.h"
 
 void i2c_send_memory_address_and_start_bit(i2c_inst_t *i2c, uint8_t slave_address, uint8_t mem_address);
-void i2c_send_stop(i2c_inst_t *i2c, uint8_t slave_address);
+void burst_byte_write(uint8_t slave_address, uint8_t slave_mem_addr, uint8_t *src, size_t len);
 
 Probe pr_D0 = Probe(0);
 Probe pr_D1 = Probe(1);
@@ -42,21 +42,20 @@ HW_I2C_Slave slave = HW_I2C_Slave(slave_config);
 
 static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event)
 {
-    // pr_D1.hi();
+    pr_D1.hi();
     slave.slave_isr(event);
-    // pr_D1.lo();
+    pr_D1.lo();
 }
 
 dma_channel_config c_tx;
-uint16_t *tx_ptr;
+uint16_t tx_buffer[16];
 size_t tx_remaining;
 size_t chunk;
 bool fifo_empty;
 
 #define MAX_DATA_SIZE 32
 #define BURST_SIZE 16
-// #define WATERMARK_LEVEL 16 - BURST_SIZE
-// #define BYTE_TX_TIME (10 * 1e6 / I2C_FAST_MODE) // in µs, with 50% margin
+#define WATERMARK_LEVEL 16 - BURST_SIZE
 
 void i2c_tx_fifo_handler();
 
@@ -64,17 +63,6 @@ int main()
 {
     stdio_init_all();
     printf("Test I2C exchange \n");
-    // if (not master.device_is_connected(slave_config.slave_address))
-    // {
-    //     printf("no device at 0x%02x\n", slave_config.slave_address);
-    // }
-    // else
-    // {
-
-    // set fifo WATERMARK_LEVEL
-    // master_config.i2c->hw->tx_tl = WATERMARK_LEVEL;
-    // master_config.i2c->hw->rx_tl = WATERMARK_LEVEL;
-    // master_config.i2c->hw->con |= I2C_IC_CON_TX_EMPTY_CTRL_BITS;
 
     for (uint8_t mem_address = 0;; mem_address = (mem_address + MAX_DATA_SIZE) % slave_config.slave_memory_size)
     {
@@ -82,7 +70,7 @@ int main()
         // write to mem_address
         //==================================================================================================================
 
-        uint16_t write_data[MAX_DATA_SIZE]; // buffer for data to write, given to DMA
+        uint8_t write_data[MAX_DATA_SIZE]; // buffer for data to write, given to DMA
         char write_msg[MAX_DATA_SIZE]{0};
         snprintf(write_msg, MAX_DATA_SIZE, "Hello, slave@0x%02X mem[0x%02X]", slave_config.slave_address, mem_address);
         uint8_t write_msg_len = strlen(write_msg);
@@ -95,69 +83,7 @@ int main()
         printf("Write %d at 0x%02X: '%s'\t", write_msg_len, mem_address, write_msg); //
 
         pr_D4.hi();
-        channel_tx = dma_claim_unused_channel(true);
-        dma_channel_cleanup(channel_tx);
-        dma_channel_config c_tx = dma_channel_get_default_config(channel_tx);
-        channel_config_set_transfer_data_size(&c_tx, DMA_SIZE_16);
-        channel_config_set_dreq(&c_tx, i2c_get_dreq(master_config.i2c, true));
-        channel_config_set_read_increment(&c_tx, true);
-        channel_config_set_write_increment(&c_tx, false);
-
-        master_config.i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_TX_EMPTY_BITS;
-        irq_set_exclusive_handler(I2C0_IRQ, i2c_tx_fifo_handler);
-        irq_set_enabled(I2C0_IRQ, true);
-
-        pr_D7.hi();
-        fifo_empty = false;
-        i2c_send_memory_address_and_start_bit(master_config.i2c, slave_config.slave_address, mem_address);
-
-        pr_D6.hi();
-        irq_set_enabled(I2C0_IRQ, true);
-        while (!fifo_empty)
-            tight_loop_contents();
-        pr_D6.lo();
-        pr_D7.lo();
-
-        tx_ptr = write_data;
-        tx_remaining = write_msg_len;
-        while (tx_remaining > 0)
-        {
-
-            chunk = (tx_remaining > BURST_SIZE) ? BURST_SIZE : tx_remaining;
-
-            fifo_empty = false;
-            pr_D1.hi();
-            dma_channel_configure(channel_tx, &c_tx,
-                                  &i2c_get_hw(master_config.i2c)->data_cmd,
-                                  tx_ptr, // read address
-                                  chunk,  // element count (each element is of size transfer_data_size)
-                                  true);  // don't start yet
-            tx_ptr += chunk;
-            tx_remaining -= chunk;
-            pr_D1.lo();
-
-            pr_D6.hi();
-            irq_set_enabled(I2C0_IRQ, true);
-            while (!fifo_empty)
-                tight_loop_contents();
-            pr_D6.lo();
-        }
-
-        dma_channel_cleanup(channel_tx);
-        dma_channel_unclaim(channel_tx);
-
-        pr_D7.hi();
-        fifo_empty = false;
-        i2c_send_stop(master_config.i2c, slave_config.slave_address);
-
-        pr_D6.hi();
-        irq_set_enabled(I2C0_IRQ, true);
-        while (!fifo_empty)
-            tight_loop_contents();
-        pr_D6.lo();
-
-        pr_D7.lo();
-
+        burst_byte_write(slave_config.slave_address, mem_address, write_data, write_msg_len);
         pr_D4.lo();
 
         sleep_us(500);
@@ -224,7 +150,7 @@ int main()
         printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, mem_address, read_msg);
         sleep_ms(100);
     }
-    // }
+
     return 0;
 }
 
@@ -236,17 +162,64 @@ void i2c_send_memory_address_and_start_bit(i2c_inst_t *i2c, uint8_t slave_addres
     i2c->hw->data_cmd = mem_address | I2C_IC_DATA_CMD_RESTART_BITS;
 }
 
-// Envoie un STOP condition sans transmettre de données
-// Utilise une lecture d'un octet jetable pour forcer le STOP
-void i2c_send_stop(i2c_inst_t *i2c, uint8_t slave_address)
+void burst_byte_write(uint8_t slave_address, uint8_t slave_mem_addr, uint8_t *src, size_t len)
 {
-    uint8_t dummy;
-    int result = i2c_read_blocking(i2c, slave_address, &dummy, 1, false); // false = STOP
-    if (result < 0)
+    channel_tx = dma_claim_unused_channel(true);
+    dma_channel_cleanup(channel_tx);
+    dma_channel_config c_tx = dma_channel_get_default_config(channel_tx);
+    channel_config_set_transfer_data_size(&c_tx, DMA_SIZE_16);
+    channel_config_set_dreq(&c_tx, i2c_get_dreq(master_config.i2c, true));
+    channel_config_set_read_increment(&c_tx, true);
+    channel_config_set_write_increment(&c_tx, false);
+
+    master_config.i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_TX_EMPTY_BITS;
+    irq_set_exclusive_handler(I2C0_IRQ, i2c_tx_fifo_handler);
+    irq_set_enabled(I2C0_IRQ, true);
+
+    fifo_empty = false;
+    i2c_send_memory_address_and_start_bit(master_config.i2c, slave_address, slave_mem_addr);
+
+    pr_D6.hi();
+    irq_set_enabled(I2C0_IRQ, true);
+    while (!fifo_empty)
+        tight_loop_contents();
+    pr_D6.lo();
+
+    tx_remaining = len;
+    uint16_t write_data_index = 0;
+    while (tx_remaining > 0)
     {
-        panic("Erreur lors de l'envoi du STOP condition\n");
+
+        chunk = (tx_remaining > BURST_SIZE) ? BURST_SIZE : tx_remaining;
+
+        for (size_t i = 0; i < chunk; i++) // fill tx_buffer to send via DMA avoiding issue with unaligned access, and to waste memory with write_data uint16_t array
+        {
+            tx_buffer[i] = (uint16_t)src[write_data_index + i];
+            if ((write_data_index + i) == (len - 1))
+            {
+                tx_buffer[i] |= I2C_IC_DATA_CMD_STOP_BITS; // add STOP condition to last byte
+            }
+        }
+
+        fifo_empty = false;
+        dma_channel_configure(channel_tx, &c_tx,
+                              &i2c_get_hw(master_config.i2c)->data_cmd,
+                              tx_buffer, // read address
+                              chunk,     // element count (each element is of size transfer_data_size)
+                              true);     // don't start yet
+        write_data_index += chunk;
+        tx_remaining -= chunk;
+
+        pr_D6.hi();
+        irq_set_enabled(I2C0_IRQ, true);
+        while (!fifo_empty)
+            tight_loop_contents();
+        pr_D6.lo();
     }
+    dma_channel_cleanup(channel_tx);
+    dma_channel_unclaim(channel_tx);
 }
+
 void i2c_tx_fifo_handler()
 {
     irq_set_enabled(I2C0_IRQ, false); // disable IRQs to avoid re-entrance
