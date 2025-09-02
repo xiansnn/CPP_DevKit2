@@ -59,6 +59,8 @@ bool fifo_empty;
 
 void i2c_tx_fifo_handler();
 
+void tx_fifo_dma_isr();
+
 int main()
 {
     stdio_init_all();
@@ -222,12 +224,16 @@ void burst_byte_write(uint8_t slave_address, uint8_t slave_mem_addr, uint8_t *sr
 
 void i2c_tx_fifo_handler()
 {
-    irq_set_enabled(I2C0_IRQ, false); // disable IRQs to avoid re-entrance
+    pr_D0.hi();
+    tx_fifo_dma_isr();
+    pr_D0.lo();
+}
 
+void tx_fifo_dma_isr()
+{
+    irq_set_enabled(I2C0_IRQ, false); // disable IRQs to avoid re-entrance
     if (master_config.i2c->hw->intr_stat && I2C_IC_INTR_STAT_R_TX_EMPTY_BITS)
     {
-        pr_D0.hi();
         fifo_empty = true;
-        pr_D0.lo();
     }
 }
