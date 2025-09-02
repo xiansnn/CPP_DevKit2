@@ -7,7 +7,6 @@
 
 #include "utilities/probe/probe.h"
 
-void i2c_send_memory_address_and_start_bit(i2c_inst_t *i2c, uint8_t slave_address, uint8_t mem_address);
 void burst_byte_write(uint8_t slave_address, uint8_t slave_mem_addr, uint8_t *src, size_t len);
 
 Probe pr_D0 = Probe(0);
@@ -27,7 +26,7 @@ struct_ConfigMasterI2C master_config{
     .baud_rate = I2C_FAST_MODE};
 
 static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event);
-
+static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event);
 struct_ConfigSlaveI2C slave_config{
     .i2c = i2c1,
     .sda_pin = 14,
@@ -40,17 +39,8 @@ struct_ConfigSlaveI2C slave_config{
 HW_I2C_Master master = HW_I2C_Master(master_config);
 HW_I2C_Slave slave = HW_I2C_Slave(slave_config);
 
-static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event)
-{
-    pr_D1.hi();
-    slave.slave_isr(event);
-    pr_D1.lo();
-}
 
-dma_channel_config c_tx;
-uint16_t tx_buffer[16];
-size_t tx_remaining;
-size_t chunk;
+
 bool fifo_empty;
 
 #define MAX_DATA_SIZE 32
@@ -59,7 +49,7 @@ bool fifo_empty;
 
 void i2c_tx_fifo_handler();
 
-void tx_fifo_dma_isr();
+void i2c_tx_fifo_dma_isr();
 
 int main()
 {
@@ -156,16 +146,12 @@ int main()
     return 0;
 }
 
-void i2c_send_memory_address_and_start_bit(i2c_inst_t *i2c, uint8_t slave_address, uint8_t mem_address)
-{
-    i2c->hw->enable = 0;
-    i2c->hw->tar = slave_address;
-    i2c->hw->enable = 1;
-    i2c->hw->data_cmd = mem_address | I2C_IC_DATA_CMD_RESTART_BITS;
-}
-
 void burst_byte_write(uint8_t slave_address, uint8_t slave_mem_addr, uint8_t *src, size_t len)
 {
+    uint16_t tx_buffer[BURST_SIZE];
+    size_t tx_remaining;
+    size_t chunk;
+
     channel_tx = dma_claim_unused_channel(true);
     dma_channel_cleanup(channel_tx);
     dma_channel_config c_tx = dma_channel_get_default_config(channel_tx);
@@ -178,8 +164,12 @@ void burst_byte_write(uint8_t slave_address, uint8_t slave_mem_addr, uint8_t *sr
     irq_set_exclusive_handler(I2C0_IRQ, i2c_tx_fifo_handler);
     irq_set_enabled(I2C0_IRQ, true);
 
+    // send memory address and start bit
     fifo_empty = false;
-    i2c_send_memory_address_and_start_bit(master_config.i2c, slave_address, slave_mem_addr);
+    master_config.i2c->hw->enable = 0;
+    master_config.i2c->hw->tar = slave_address;
+    master_config.i2c->hw->enable = 1;
+    master_config.i2c->hw->data_cmd = slave_mem_addr | I2C_IC_DATA_CMD_RESTART_BITS;
 
     pr_D6.hi();
     irq_set_enabled(I2C0_IRQ, true);
@@ -222,14 +212,19 @@ void burst_byte_write(uint8_t slave_address, uint8_t slave_mem_addr, uint8_t *sr
     dma_channel_unclaim(channel_tx);
 }
 
-void i2c_tx_fifo_handler()
+static void i2c_tx_fifo_handler()
 {
     pr_D0.hi();
-    tx_fifo_dma_isr();
+    i2c_tx_fifo_dma_isr();
     pr_D0.lo();
 }
-
-void tx_fifo_dma_isr()
+static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event)
+{
+    pr_D1.hi();
+    slave.slave_isr(event);
+    pr_D1.lo();
+}
+void i2c_tx_fifo_dma_isr()
 {
     irq_set_enabled(I2C0_IRQ, false); // disable IRQs to avoid re-entrance
     if (master_config.i2c->hw->intr_stat && I2C_IC_INTR_STAT_R_TX_EMPTY_BITS)
