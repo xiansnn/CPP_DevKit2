@@ -91,7 +91,7 @@ void HW_DMA::write_spi2dma(struct_ConfigMasterSPI *spi_cfg, struct_ConfigDMA *dm
                           start);                        // don't start yet
 }
 
-void HW_DMA::write_dma2i2c(struct_ConfigDMA *dma_cfg, bool *fifo_empty,
+void HW_DMA::write_dma2i2c(bool *fifo_empty,
                            i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler,
                            volatile uint8_t *read_address, size_t length, bool start)
 {
@@ -102,12 +102,12 @@ void HW_DMA::write_dma2i2c(struct_ConfigDMA *dma_cfg, bool *fifo_empty,
     this->channel = dma_claim_unused_channel(true);
     dma_channel_cleanup(channel);
     this->c = dma_channel_get_default_config(channel);
-    channel_config_set_transfer_data_size(&c, dma_cfg->transfer_size);
+    channel_config_set_transfer_data_size(&c, DMA_SIZE_16);
     channel_config_set_dreq(&c, i2c_get_dreq(i2c, true));
     channel_config_set_read_increment(&c, true);
     channel_config_set_write_increment(&c, false);
-    irq_num_t irq_number = (i2c == i2c0) ? I2C0_IRQ : I2C1_IRQ; // only I2C0_IRQ and I2C1_IRQ are valid
 
+    irq_num_t irq_number = (i2c == i2c0) ? I2C0_IRQ : I2C1_IRQ; // only I2C0_IRQ and I2C1_IRQ are valid
     if (i2c_handler != NULL)
     {
         i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_TX_EMPTY_BITS;
@@ -120,7 +120,6 @@ void HW_DMA::write_dma2i2c(struct_ConfigDMA *dma_cfg, bool *fifo_empty,
     i2c->hw->enable = 0;
     i2c->hw->tar = slave_address;
     i2c->hw->enable = 1;
-
     i2c->hw->data_cmd = slave_mem_addr | I2C_IC_DATA_CMD_RESTART_BITS;
 
     tx_remaining = length;
@@ -132,16 +131,13 @@ void HW_DMA::write_dma2i2c(struct_ConfigDMA *dma_cfg, bool *fifo_empty,
 
     while (tx_remaining > 0)
     {
-
         chunk = (tx_remaining > I2C_BURST_SIZE) ? I2C_BURST_SIZE : tx_remaining;
 
         for (size_t i = 0; i < chunk; i++) // fill tx_buffer to send via DMA avoiding issue with unaligned access, and to waste memory with write_data uint16_t array
         {
             tx_buffer[i] = (uint16_t)(read_address[write_data_index + i]);
             if ((write_data_index + i) == (length - 1))
-            {
                 tx_buffer[i] |= I2C_IC_DATA_CMD_STOP_BITS; // add STOP condition to last byte
-            }
         }
 
         *fifo_empty = false;
@@ -150,6 +146,7 @@ void HW_DMA::write_dma2i2c(struct_ConfigDMA *dma_cfg, bool *fifo_empty,
                               tx_buffer, // read address
                               chunk,     // element count (each element is of size transfer_data_size)
                               start);    // don't start yet
+                              
         write_data_index += chunk;
         tx_remaining -= chunk;
 
