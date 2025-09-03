@@ -7,6 +7,8 @@
 
 #include "utilities/probe/probe.h"
 
+// #define PRINTF
+
 Probe pr_D0 = Probe(0);
 Probe pr_D1 = Probe(1);
 Probe pr_D4 = Probe(4);
@@ -14,19 +16,36 @@ Probe pr_D5 = Probe(5);
 Probe pr_D6 = Probe(6);
 Probe pr_D7 = Probe(7);
 
+#define MAX_DATA_SIZE 32
+struct struct_TX_DataI2C
+{
+    uint8_t write_data[MAX_DATA_SIZE];
+    uint8_t mem_address;
+    uint8_t write_msg_len;
+};
+struct struct_RX_DataI2C
+{
+    uint8_t mem_address;
+    uint8_t write_msg_len;
+};
+
+TaskHandle_t i2c_sending_task_handle;
+TaskHandle_t periodic_data_generation_task_handle;
+TaskHandle_t display_receive_data_task_handle;
+QueueHandle_t i2c_tx_data_queue = xQueueCreate(8, sizeof(struct_TX_DataI2C));
+QueueHandle_t i2c_rx_data_queue = xQueueCreate(8, sizeof(struct_RX_DataI2C));
+
 uint channel_rx;
 
 void i2c_tx_fifo_handler();
+static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event);
 
 struct_ConfigMasterI2C master_config{
     .i2c = i2c0,
     .sda_pin = 8,
     .scl_pin = 9,
     .baud_rate = I2C_FAST_MODE,
-    .i2c_master_handler = i2c_tx_fifo_handler
-};
-
-static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event);
+    .i2c_master_handler = i2c_tx_fifo_handler};
 
 struct_ConfigSlaveI2C slave_config{
     .i2c = i2c1,
@@ -40,68 +59,78 @@ struct_ConfigSlaveI2C slave_config{
 rtos_HW_I2C_Master master = rtos_HW_I2C_Master(master_config);
 HW_I2C_Slave slave = HW_I2C_Slave(slave_config);
 
-#define MAX_DATA_SIZE 32
-
-int main()
+void vIdleTask(void *pxProbe)
 {
-    stdio_init_all();
-    printf("Test I2C exchange \n");
+    while (true)
+    {
+        ((Probe *)pxProbe)->hi();
+        ((Probe *)pxProbe)->lo();
+    }
+}
+
+void vPeriodic_data_generation_task(void *pxPeriod)
+{
+    uint32_t *period_ms = (uint32_t *)pxPeriod;
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+    struct_TX_DataI2C data_to_show;
 
     for (uint8_t mem_address = 0;; mem_address = (mem_address + MAX_DATA_SIZE) % slave_config.slave_memory_size)
     {
         //==================================================================================================================
         // write to mem_address
         //==================================================================================================================
+        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(period_ms));
+        pr_D6.hi();
 
-        uint8_t write_data[MAX_DATA_SIZE]; // buffer for data to write, given to DMA
         char write_msg[MAX_DATA_SIZE]{0};
         snprintf(write_msg, MAX_DATA_SIZE, "Hello, slave@0x%02X mem[0x%02X]", slave_config.slave_address, mem_address);
-        uint8_t write_msg_len = strlen(write_msg);
+        data_to_show.write_msg_len = strlen(write_msg);
+        data_to_show.mem_address = mem_address;
 
-        for (size_t i = 0; i < write_msg_len; i++)
+        for (size_t i = 0; i < data_to_show.write_msg_len; i++)
         {
-            write_data[i] = (uint16_t)write_msg[i];
+            data_to_show.write_data[i] = (uint16_t)write_msg[i];
         }
+        xQueueSend(i2c_tx_data_queue, &data_to_show, portMAX_DELAY);
+#ifdef PRINTF
+        printf("Write %d at 0x%02X: '%s'\t", data_to_show.write_msg_len, mem_address, write_msg); //
+#endif
+        pr_D6.lo();
+    }
+}
 
-        printf("Write %d at 0x%02X: '%s'\t", write_msg_len, mem_address, write_msg); //
+void vI2c_sending_task(void *param)
+{
+    struct_TX_DataI2C data_to_send;
+    struct_RX_DataI2C data_to_receive;
+    while (true)
+    {
+        xQueueReceive(i2c_tx_data_queue, &data_to_send, portMAX_DELAY);
+        pr_D7.hi();
+        master.burst_byte_write(slave_config.slave_address, data_to_send.mem_address, data_to_send.write_data, data_to_send.write_msg_len);
+        data_to_receive.mem_address = data_to_send.mem_address;
+        data_to_receive.write_msg_len = data_to_send.write_msg_len;
 
-        pr_D4.hi();
-        master.burst_byte_write(slave_config.slave_address, mem_address, write_data, write_msg_len);
-        pr_D4.lo();
+        pr_D7.lo();
+        xQueueSend(i2c_rx_data_queue, &data_to_receive, portMAX_DELAY);
+    }
+}
 
-        sleep_us(500);
-
-        //==================================================================================================================
-        // read from mem_address
-        //==================================================================================================================
-
-        // pr_D6.hi();
-        // channel_rx = dma_claim_unused_channel(true);
-        // uint8_t mem_add[1] = {mem_address};
-        // dma_channel_config c_rx = dma_channel_get_default_config(channel_rx);
-        // channel_config_set_transfer_data_size(&c_rx, DMA_SIZE_8);
-        // channel_config_set_dreq(&c_rx, i2c_get_dreq(slave_config.i2c, false));
-        // channel_config_set_read_increment(&c_rx, false);
-        // channel_config_set_write_increment(&c_rx, true);
-        // dma_channel_configure(channel_rx, &c_rx,
-        //                       read_data,
-        //                       &i2c_get_hw(slave_config.i2c)->data_cmd,
-        //                       msg_len,                                                          // element count (each element is of size transfer_data_size)
-        //                       false);                                                           // don't start yet
-        // i2c_read_blocking(slave_config.i2c, slave_config.slave_address, mem_add, 1, true); // send command byte
-        // dma_channel_start(channel_rx);
-        // dma_channel_wait_for_finish_blocking(channel_rx);
-        // pr_D6.lo();
-
-        // ##############################
-        //
+void vDisplay_receive_data_task(void *param)
+{
+    uint8_t read_data[MAX_DATA_SIZE];
+    char read_msg[MAX_DATA_SIZE]{0};
+    struct_RX_DataI2C data_to_show;
+    while (true)
+    {
+        xQueueReceive(i2c_rx_data_queue, &data_to_show, portMAX_DELAY);
         pr_D5.hi();
         uint8_t read_data[MAX_DATA_SIZE];
         char read_msg[MAX_DATA_SIZE]{0};
         uint32_t cmd[1];
 
         // write command, pass mem_address
-        cmd[0] = mem_address | I2C_IC_DATA_CMD_RESTART_BITS | I2C_IC_DATA_CMD_STOP_BITS;
+        cmd[0] = data_to_show.mem_address | I2C_IC_DATA_CMD_RESTART_BITS | I2C_IC_DATA_CMD_STOP_BITS;
         master_config.i2c->hw->enable = 0;
         master_config.i2c->hw->tar = slave_config.slave_address;
         master_config.i2c->hw->enable = 1;
@@ -115,33 +144,52 @@ int main()
         //
         // read data
         //
-        for (int i = 0; i < write_msg_len; i++)
+        for (int i = 0; i < data_to_show.write_msg_len; i++)
         {
             while (!i2c_get_write_available(master_config.i2c))
                 tight_loop_contents();
             master_config.i2c->hw->data_cmd = I2C_IC_DATA_CMD_CMD_BITS |
-                                              (i == write_msg_len - 1 ? I2C_IC_DATA_CMD_STOP_BITS : 0);
+                                              (i == data_to_show.write_msg_len - 1 ? I2C_IC_DATA_CMD_STOP_BITS : 0);
 
             while (!i2c_get_read_available(master_config.i2c))
                 tight_loop_contents();
             read_data[i] = (uint8_t)master_config.i2c->hw->data_cmd;
         }
         //------------------------------
-        memcpy(read_msg, read_data, write_msg_len);
+        memcpy(read_msg, read_data, data_to_show.write_msg_len);
         uint8_t read_msg_len = strlen(read_msg);
+#ifdef PRINTF
+        printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, data_to_show.mem_address, read_msg);
+#endif
         pr_D5.lo();
-        printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, mem_address, read_msg);
-        sleep_ms(100);
     }
+}
 
+int main()
+{
+#ifdef PRINTF
+    stdio_init_all();
+    printf("Test I2C exchange \n");
+#endif
+
+    xTaskCreate(vIdleTask, "idle_task0", 256, &pr_D0, 0, NULL);
+    xTaskCreate(vPeriodic_data_generation_task, "compute_i2c_data", 250, (void *)500, 2, &periodic_data_generation_task_handle);
+    xTaskCreate(vI2c_sending_task, "send_i2c_data", 250, NULL, 4, &periodic_data_generation_task_handle);
+    xTaskCreate(vDisplay_receive_data_task, "receive_i2c_data", 250, NULL, 1, &display_receive_data_task_handle);
+    vTaskStartScheduler();
+
+    while (true)
+    {
+        tight_loop_contents();
+    }
     return 0;
 }
 
 void i2c_tx_fifo_handler()
 {
-    pr_D0.hi();
+    pr_D4.hi();
     master.i2c_tx_fifo_dma_isr();
-    pr_D0.lo();
+    pr_D4.lo();
 }
 static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event)
 {
