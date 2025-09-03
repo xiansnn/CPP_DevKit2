@@ -1,12 +1,12 @@
 /**
  * @file hw_i2c.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-01-11
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 #pragma once
 
@@ -78,6 +78,8 @@ struct struct_ConfigMasterI2C
      * - I2C_FAST_MODE_PLUS = 1Mb/s
      */
     uint baud_rate = I2C_STANDARD_MODE;
+
+    irq_handler_t i2c_master_handler = NULL;
 };
 
 /**
@@ -128,10 +130,14 @@ struct struct_ConfigSlaveI2C
 class HW_I2C_Master
 {
 private:
-    /// @brief the i2c hardware instance of the Pico that handles the i2c master
-    i2c_inst_t *i2c;
     /// @brief the delay before time-out allowed for reading i2c response. Computed according to actual baud rate.
     uint time_out_us_per_byte;
+
+protected:
+    /// @brief the i2c hardware instance of the Pico that handles the i2c master
+    i2c_inst_t *i2c;
+
+    irq_handler_t i2c_master_handler;
 
 public:
     /**
@@ -239,4 +245,3 @@ public:
      */
     void slave_isr(i2c_slave_event_t event);
 };
-

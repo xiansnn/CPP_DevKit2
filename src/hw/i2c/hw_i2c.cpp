@@ -8,6 +8,7 @@ HW_I2C_Master::HW_I2C_Master(struct_ConfigMasterI2C cfg)
 {
     this->i2c = cfg.i2c;
     this->time_out_us_per_byte = 8 * 1500000 / cfg.baud_rate; // with 50% margin
+    this->i2c_master_handler = cfg.i2c_master_handler;
 
     // As suggested by RP2040 data sheet
     gpio_init(cfg.sda_pin);
