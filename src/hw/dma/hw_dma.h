@@ -41,8 +41,8 @@ public:
     void write_dma2spi(struct_ConfigDMA *dma_cfg, struct_ConfigMasterSPI *spi_cfg, volatile void *read_address, bool start);
     void write_spi2dma(struct_ConfigMasterSPI *spi_cfg, struct_ConfigDMA *dma_cfg, volatile void *write_address, bool start);
     void write_dma2i2c(struct_ConfigDMA *dma_cfg, bool *fifo_empty,
-                           struct_ConfigMasterI2C *i2c_cfg, uint8_t slave_address, uint8_t slave_mem_addr,
-                           volatile uint8_t *read_address, size_t length, bool start);
+                       i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler,
+                       volatile uint8_t *read_address, size_t length, bool start);
     void cleanup_and_free_dma_channel();
     void start_dma();
 };

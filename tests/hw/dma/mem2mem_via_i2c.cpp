@@ -32,7 +32,7 @@ struct_ConfigMasterI2C master_config{
     .sda_pin = 8,
     .scl_pin = 9,
     .baud_rate = I2C_FAST_MODE,
-    .i2c_handler = i2c_tx_fifo_handler};
+    .i2c_master_handler = i2c_tx_fifo_handler};
 
 static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event);
 
@@ -53,8 +53,6 @@ bool fifo_empty;
 #define MAX_DATA_SIZE 32
 #define BURST_SIZE 16
 #define WATERMARK_LEVEL 16 - BURST_SIZE
-
-
 
 void i2c_tx_fifo_dma_isr();
 
@@ -83,7 +81,9 @@ int main()
 
         pr_D4.hi();
         // burst_byte_write(slave_config.slave_address, mem_address, write_data, write_msg_len);
-        i2c_dma.write_dma2i2c(&dma_cfg, &fifo_empty, &master_config, slave_config.slave_address, mem_address, write_data, write_msg_len, true);
+        i2c_dma.write_dma2i2c(&dma_cfg, &fifo_empty,
+                              master_config.i2c, slave_config.slave_address, mem_address, master_config.i2c_master_handler,
+                              write_data, write_msg_len, true);
 
         pr_D4.lo();
 
