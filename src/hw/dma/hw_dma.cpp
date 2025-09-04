@@ -151,6 +151,10 @@ void HW_DMA::write_dma2i2c(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave
     cleanup_and_free_dma_channel();
 }
 
+void HW_DMA::write_i2c2dma(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler, volatile uint8_t *read_address, size_t length, bool start)
+{
+}
+
 void HW_DMA::cleanup_and_free_dma_channel()
 {
     dma_channel_cleanup(this->channel);

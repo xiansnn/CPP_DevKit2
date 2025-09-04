@@ -17,22 +17,23 @@ Probe pr_D6 = Probe(6);
 Probe pr_D7 = Probe(7);
 
 #define MAX_DATA_SIZE 32
-struct struct_TX_DataI2C
-{
-    uint8_t write_data[MAX_DATA_SIZE];
-    uint8_t mem_address;
-    uint8_t write_msg_len;
-};
-struct struct_RX_DataI2C
-{
-    uint8_t mem_address;
-    uint8_t write_msg_len;
-};
+uint8_t write_data[MAX_DATA_SIZE];
+// struct struct_TX_DataQueueI2C
+// {
+//     uint8_t write_data[MAX_DATA_SIZE];
+//     uint8_t mem_address;
+//     uint8_t write_msg_len;
+// };
+// struct struct_RX_DataQueueI2C
+// {
+//     uint8_t mem_address;
+//     uint8_t write_msg_len;
+// };
 
 TaskHandle_t periodic_data_generation_task_handle;
 TaskHandle_t display_receive_data_task_handle;
-QueueHandle_t i2c_tx_data_queue = xQueueCreate(8, sizeof(struct_TX_DataI2C));
-QueueHandle_t i2c_rx_data_queue = xQueueCreate(8, sizeof(struct_RX_DataI2C));
+QueueHandle_t i2c_tx_data_queue = xQueueCreate(8, sizeof(struct_TX_DataQueueI2C));
+QueueHandle_t i2c_rx_data_queue = xQueueCreate(8, sizeof(struct_RX_DataQueueI2C));
 
 uint channel_rx;
 
@@ -71,7 +72,9 @@ void vPeriodic_data_generation_task(void *pxPeriod)
 {
     uint32_t *period_ms = (uint32_t *)pxPeriod;
     TickType_t xLastWakeTime = xTaskGetTickCount();
-    struct_TX_DataI2C data_to_show;
+    uint8_t write_data[MAX_DATA_SIZE];
+    struct_TX_DataQueueI2C data_to_show;
+    data_to_show.write_data = write_data;
 
     for (uint8_t mem_address = 0;; mem_address = (mem_address + MAX_DATA_SIZE) % slave_config.slave_memory_size)
     {
@@ -85,7 +88,7 @@ void vPeriodic_data_generation_task(void *pxPeriod)
 
         for (size_t i = 0; i < data_to_show.write_msg_len; i++)
         {
-            data_to_show.write_data[i] = (uint16_t)write_msg[i];
+            write_data[i] = (uint16_t)write_msg[i];
         }
         xQueueSend(i2c_tx_data_queue, &data_to_show, portMAX_DELAY);
 #ifdef PRINTF
@@ -97,8 +100,8 @@ void vPeriodic_data_generation_task(void *pxPeriod)
 
 void vI2c_sending_task(void *param)
 {
-    struct_TX_DataI2C data_to_send;
-    struct_RX_DataI2C data_to_receive;
+    struct_TX_DataQueueI2C data_to_send;
+    struct_RX_DataQueueI2C data_to_receive;
     while (true)
     {
         xQueueReceive(i2c_tx_data_queue, &data_to_send, portMAX_DELAY);
@@ -116,7 +119,7 @@ void vDisplay_received_data_task(void *param)
 {
     uint8_t read_data[MAX_DATA_SIZE];
     char read_msg[MAX_DATA_SIZE]{0};
-    struct_RX_DataI2C data_to_show;
+    struct_RX_DataQueueI2C data_to_show;
     while (true)
     {
         xQueueReceive(i2c_rx_data_queue, &data_to_show, portMAX_DELAY);
