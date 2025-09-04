@@ -29,7 +29,6 @@ struct struct_RX_DataI2C
     uint8_t write_msg_len;
 };
 
-TaskHandle_t i2c_sending_task_handle;
 TaskHandle_t periodic_data_generation_task_handle;
 TaskHandle_t display_receive_data_task_handle;
 QueueHandle_t i2c_tx_data_queue = xQueueCreate(8, sizeof(struct_TX_DataI2C));
@@ -76,9 +75,6 @@ void vPeriodic_data_generation_task(void *pxPeriod)
 
     for (uint8_t mem_address = 0;; mem_address = (mem_address + MAX_DATA_SIZE) % slave_config.slave_memory_size)
     {
-        //==================================================================================================================
-        // write to mem_address
-        //==================================================================================================================
         vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(period_ms));
         pr_D6.hi();
 
@@ -116,7 +112,7 @@ void vI2c_sending_task(void *param)
     }
 }
 
-void vDisplay_receive_data_task(void *param)
+void vDisplay_received_data_task(void *param)
 {
     uint8_t read_data[MAX_DATA_SIZE];
     char read_msg[MAX_DATA_SIZE]{0};
@@ -174,8 +170,8 @@ int main()
 
     xTaskCreate(vIdleTask, "idle_task0", 256, &pr_D0, 0, NULL);
     xTaskCreate(vPeriodic_data_generation_task, "compute_i2c_data", 250, (void *)500, 2, &periodic_data_generation_task_handle);
-    xTaskCreate(vI2c_sending_task, "send_i2c_data", 250, NULL, 4, &periodic_data_generation_task_handle);
-    xTaskCreate(vDisplay_receive_data_task, "receive_i2c_data", 250, NULL, 1, &display_receive_data_task_handle);
+    xTaskCreate(vI2c_sending_task, "send_i2c_data", 250, NULL, 4, &master.task_to_notify_when_fifo_empty);
+    xTaskCreate(vDisplay_received_data_task, "receive_i2c_data", 250, NULL, 1, &display_receive_data_task_handle);
     vTaskStartScheduler();
 
     while (true)

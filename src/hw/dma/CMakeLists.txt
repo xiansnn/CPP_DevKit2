@@ -3,6 +3,7 @@ target_link_libraries(hw_dma
             pico_stdlib 
             hardware_dma 
             hardware_spi
+            FreeRTOS-Kernel-Heap4
             hw_i2c
             )
 

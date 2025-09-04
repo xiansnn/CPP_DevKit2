@@ -91,14 +91,13 @@ void HW_DMA::write_spi2dma(struct_ConfigMasterSPI *spi_cfg, struct_ConfigDMA *dm
                           start);                        // don't start yet
 }
 
-void HW_DMA::write_dma2i2c(bool *fifo_empty,
-                           i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler,
+void HW_DMA::write_dma2i2c(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler,
                            volatile uint8_t *read_address, size_t length, bool start)
 {
     uint16_t tx_buffer[I2C_BURST_SIZE];
     size_t tx_remaining;
     size_t chunk;
-
+    // prepare DMA for I2C TX
     this->channel = dma_claim_unused_channel(true);
     dma_channel_cleanup(channel);
     this->c = dma_channel_get_default_config(channel);
@@ -107,7 +106,7 @@ void HW_DMA::write_dma2i2c(bool *fifo_empty,
     channel_config_set_read_increment(&c, true);
     channel_config_set_write_increment(&c, false);
 
-    irq_num_t irq_number = (i2c == i2c0) ? I2C0_IRQ : I2C1_IRQ; // only I2C0_IRQ and I2C1_IRQ are valid
+    irq_num_t irq_number = (i2c == i2c0) ? I2C0_IRQ : I2C1_IRQ;
     if (i2c_handler != NULL)
     {
         i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_TX_EMPTY_BITS;
@@ -116,7 +115,6 @@ void HW_DMA::write_dma2i2c(bool *fifo_empty,
     }
 
     // send memory address and start bit
-    *fifo_empty = false;
     i2c->hw->enable = 0;
     i2c->hw->tar = slave_address;
     i2c->hw->enable = 1;
@@ -124,11 +122,10 @@ void HW_DMA::write_dma2i2c(bool *fifo_empty,
 
     tx_remaining = length;
     uint16_t write_data_index = 0;
-
+    // wait for I2C TX FIFO to be empty before starting DMA
     irq_set_enabled(irq_number, true);
-    while (!*fifo_empty)
-        tight_loop_contents();
-
+    ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+    // now TX FIFO is empty, start sending data via DMA in chunks of I2C_BURST_SIZE bytes
     while (tx_remaining > 0)
     {
         chunk = (tx_remaining > I2C_BURST_SIZE) ? I2C_BURST_SIZE : tx_remaining;
@@ -140,19 +137,16 @@ void HW_DMA::write_dma2i2c(bool *fifo_empty,
                 tx_buffer[i] |= I2C_IC_DATA_CMD_STOP_BITS; // add STOP condition to last byte
         }
 
-        *fifo_empty = false;
         dma_channel_configure(channel, &c,
                               &i2c_get_hw(i2c)->data_cmd,
                               tx_buffer, // read address
                               chunk,     // element count (each element is of size transfer_data_size)
-                              start);    // don't start yet
-                              
+                              start);
         write_data_index += chunk;
         tx_remaining -= chunk;
-
+        // wait for DMA to complete
         irq_set_enabled(irq_number, true);
-        while (!*fifo_empty)
-            tight_loop_contents();
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
     }
     cleanup_and_free_dma_channel();
 }

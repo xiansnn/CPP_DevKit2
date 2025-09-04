@@ -25,12 +25,12 @@ class rtos_HW_I2C_Master : public HW_I2C_Master
 {
 private:
     HW_DMA *tx_dma;
-    bool fifo_empty = false;
-
-
 public:
     rtos_HW_I2C_Master(struct_ConfigMasterI2C cfg);
     ~rtos_HW_I2C_Master();
+    
+    /// @brief this the FreeRTOS task handle attached to the task that uses this I2C Master burst_byte_write function member
+    TaskHandle_t task_to_notify_when_fifo_empty = NULL;
 
     void burst_byte_write(uint8_t slave_address, uint8_t slave_mem_addr, uint8_t *src, size_t len);
     void i2c_tx_fifo_dma_isr();
