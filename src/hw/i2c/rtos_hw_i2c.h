@@ -25,7 +25,7 @@ struct struct_TX_DataQueueI2C
 {
     uint8_t *write_data;
     uint8_t mem_address;
-    uint8_t write_msg_len;
+    uint8_t write_data_length;
 };
 struct struct_RX_DataQueueI2C
 {
@@ -44,8 +44,9 @@ public:
 
     /// @brief this the FreeRTOS task handle attached to the task that uses this I2C Master burst_byte_write function member
     TaskHandle_t task_to_notify_when_fifo_empty = NULL;
+    QueueHandle_t i2c_tx_data_queue ;
 
-    void burst_byte_write(uint8_t slave_address, uint8_t slave_mem_addr, uint8_t *src, size_t len);
+    void burst_byte_write(uint8_t slave_address, struct_TX_DataQueueI2C data_to_send );
     void burst_byte_read(uint8_t slave_address, uint8_t slave_mem_addr, uint8_t *src, size_t len);
     void i2c_tx_fifo_dma_isr();
 };

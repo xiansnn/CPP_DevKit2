@@ -18,21 +18,10 @@ Probe pr_D7 = Probe(7);
 
 #define MAX_DATA_SIZE 32
 uint8_t write_data[MAX_DATA_SIZE];
-// struct struct_TX_DataQueueI2C
-// {
-//     uint8_t write_data[MAX_DATA_SIZE];
-//     uint8_t mem_address;
-//     uint8_t write_msg_len;
-// };
-// struct struct_RX_DataQueueI2C
-// {
-//     uint8_t mem_address;
-//     uint8_t write_msg_len;
-// };
 
 TaskHandle_t periodic_data_generation_task_handle;
 TaskHandle_t display_receive_data_task_handle;
-QueueHandle_t i2c_tx_data_queue = xQueueCreate(8, sizeof(struct_TX_DataQueueI2C));
+
 QueueHandle_t i2c_rx_data_queue = xQueueCreate(8, sizeof(struct_RX_DataQueueI2C));
 
 uint channel_rx;
@@ -83,14 +72,14 @@ void vPeriodic_data_generation_task(void *pxPeriod)
 
         char write_msg[MAX_DATA_SIZE]{0};
         snprintf(write_msg, MAX_DATA_SIZE, "Hello, slave@0x%02X mem[0x%02X]", slave_config.slave_address, mem_address);
-        data_to_show.write_msg_len = strlen(write_msg);
+        data_to_show.write_data_length = strlen(write_msg);
         data_to_show.mem_address = mem_address;
 
-        for (size_t i = 0; i < data_to_show.write_msg_len; i++)
+        for (size_t i = 0; i < data_to_show.write_data_length; i++)
         {
             write_data[i] = (uint16_t)write_msg[i];
         }
-        xQueueSend(i2c_tx_data_queue, &data_to_show, portMAX_DELAY);
+        xQueueSend(master.i2c_tx_data_queue, &data_to_show, portMAX_DELAY);
 #ifdef PRINTF
         printf("Write %d at 0x%02X: '%s'\t", data_to_show.write_msg_len, mem_address, write_msg); //
 #endif
@@ -104,14 +93,14 @@ void vI2c_sending_task(void *param)
     struct_RX_DataQueueI2C data_to_receive;
     while (true)
     {
-        xQueueReceive(i2c_tx_data_queue, &data_to_send, portMAX_DELAY);
+        xQueueReceive(master.i2c_tx_data_queue, &data_to_send, portMAX_DELAY);
         pr_D7.hi();
-        master.burst_byte_write(slave_config.slave_address, data_to_send.mem_address, data_to_send.write_data, data_to_send.write_msg_len);
+        master.burst_byte_write(slave_config.slave_address, data_to_send);
         data_to_receive.mem_address = data_to_send.mem_address;
-        data_to_receive.write_msg_len = data_to_send.write_msg_len;
+        data_to_receive.write_msg_len = data_to_send.write_data_length;
 
-        pr_D7.lo();
         xQueueSend(i2c_rx_data_queue, &data_to_receive, portMAX_DELAY);
+        pr_D7.lo();
     }
 }
 
