@@ -30,7 +30,7 @@ struct struct_TX_DataQueueI2C
 struct struct_RX_DataQueueI2C
 {
     uint8_t mem_address;
-    uint8_t write_msg_len;
+    uint8_t read_data_length;
 };
 
 class rtos_HW_I2C_Master : public HW_I2C_Master
@@ -47,6 +47,6 @@ public:
     QueueHandle_t i2c_tx_data_queue ;
 
     void burst_byte_write(uint8_t slave_address, struct_TX_DataQueueI2C data_to_send );
-    void burst_byte_read(uint8_t slave_address, uint8_t slave_mem_addr, uint8_t *src, size_t len);
+    void burst_byte_read(uint8_t slave_address,  struct_RX_DataQueueI2C data_to_receive, uint8_t *dest);
     void i2c_tx_fifo_dma_isr();
 };

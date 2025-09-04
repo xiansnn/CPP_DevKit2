@@ -97,7 +97,7 @@ void vI2c_sending_task(void *param)
         pr_D7.hi();
         master.burst_byte_write(slave_config.slave_address, data_to_send);
         data_to_receive.mem_address = data_to_send.mem_address;
-        data_to_receive.write_msg_len = data_to_send.write_data_length;
+        data_to_receive.read_data_length = data_to_send.write_data_length;
 
         xQueueSend(i2c_rx_data_queue, &data_to_receive, portMAX_DELAY);
         pr_D7.lo();
@@ -108,43 +108,17 @@ void vDisplay_received_data_task(void *param)
 {
     uint8_t read_data[MAX_DATA_SIZE];
     char read_msg[MAX_DATA_SIZE]{0};
-    struct_RX_DataQueueI2C data_to_show;
+    struct_RX_DataQueueI2C received_data;
     while (true)
     {
-        xQueueReceive(i2c_rx_data_queue, &data_to_show, portMAX_DELAY);
+        xQueueReceive(i2c_rx_data_queue, &received_data, portMAX_DELAY);
         pr_D5.hi();
         uint8_t read_data[MAX_DATA_SIZE];
         char read_msg[MAX_DATA_SIZE]{0};
-        uint32_t cmd[1];
+        
+        master.burst_byte_read(slave_config.slave_address, received_data, read_data);
 
-        // write command, pass mem_address
-        cmd[0] = data_to_show.mem_address | I2C_IC_DATA_CMD_RESTART_BITS | I2C_IC_DATA_CMD_STOP_BITS;
-        master_config.i2c->hw->enable = 0;
-        master_config.i2c->hw->tar = slave_config.slave_address;
-        master_config.i2c->hw->enable = 1;
-
-        master_config.i2c->hw->data_cmd = cmd[0];
-        do
-        {
-            tight_loop_contents();
-        } while (!(master_config.i2c->hw->raw_intr_stat & I2C_IC_RAW_INTR_STAT_TX_EMPTY_BITS));
-
-        //
-        // read data
-        //
-        for (int i = 0; i < data_to_show.write_msg_len; i++)
-        {
-            while (!i2c_get_write_available(master_config.i2c))
-                tight_loop_contents();
-            master_config.i2c->hw->data_cmd = I2C_IC_DATA_CMD_CMD_BITS |
-                                              (i == data_to_show.write_msg_len - 1 ? I2C_IC_DATA_CMD_STOP_BITS : 0);
-
-            while (!i2c_get_read_available(master_config.i2c))
-                tight_loop_contents();
-            read_data[i] = (uint8_t)master_config.i2c->hw->data_cmd;
-        }
-        //------------------------------
-        memcpy(read_msg, read_data, data_to_show.write_msg_len);
+        memcpy(read_msg, read_data, received_data.read_data_length);
         uint8_t read_msg_len = strlen(read_msg);
 #ifdef PRINTF
         printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, data_to_show.mem_address, read_msg);
