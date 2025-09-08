@@ -13,8 +13,8 @@ Probe pr_D0 = Probe(0);
 Probe pr_D1 = Probe(1);
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
-Probe pr_D6 = Probe(6);
-Probe pr_D7 = Probe(7);
+// Probe pr_D6 = Probe(6);
+// Probe pr_D7 = Probe(7);
 
 #define MAX_DATA_SIZE 32
 uint8_t write_data[MAX_DATA_SIZE];
@@ -68,7 +68,7 @@ void vPeriodic_data_generation_task(void *pxPeriod)
     for (uint8_t mem_address = 0;; mem_address = (mem_address + MAX_DATA_SIZE) % slave_config.slave_memory_size)
     {
         vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(period_ms));
-        pr_D6.hi();
+        // pr_D6.hi();
 
         char write_msg[MAX_DATA_SIZE]{0};
         snprintf(write_msg, MAX_DATA_SIZE, "Hello, slave@0x%02X mem[0x%02X]", slave_config.slave_address, mem_address);
@@ -81,9 +81,9 @@ void vPeriodic_data_generation_task(void *pxPeriod)
         }
         xQueueSend(master.i2c_tx_data_queue, &data_to_show, portMAX_DELAY);
 #ifdef PRINTF
-        printf("Write %d at 0x%02X: '%s'\t", data_to_show.write_msg_len, mem_address, write_msg); //
+        printf("Write %d at 0x%02X: '%s'\t", data_to_show.write_data_length, mem_address, write_msg); //
 #endif
-        pr_D6.lo();
+        // pr_D6.lo();
     }
 }
 
@@ -94,13 +94,13 @@ void vI2c_sending_task(void *param)
     while (true)
     {
         xQueueReceive(master.i2c_tx_data_queue, &data_to_send, portMAX_DELAY);
-        pr_D7.hi();
+        // pr_D7.hi();
         master.burst_byte_write(slave_config.slave_address, data_to_send);
         data_to_receive.mem_address = data_to_send.mem_address;
         data_to_receive.read_data_length = data_to_send.write_data_length;
 
         xQueueSend(i2c_rx_data_queue, &data_to_receive, portMAX_DELAY);
-        pr_D7.lo();
+        // pr_D7.lo();
     }
 }
 
@@ -121,7 +121,7 @@ void vDisplay_received_data_task(void *param)
         memcpy(read_msg, read_data, received_data.read_data_length);
         uint8_t read_msg_len = strlen(read_msg);
 #ifdef PRINTF
-        printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, data_to_show.mem_address, read_msg);
+        printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, received_data.mem_address, read_msg);
 #endif
         pr_D5.lo();
     }
