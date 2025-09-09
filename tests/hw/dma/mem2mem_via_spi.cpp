@@ -78,10 +78,10 @@ int main()
         }
 
         // printf("init write TX DMA\n");
-        dma_tx.write_dma2spi(&dma_tx_cfg, &spi_cfg, txbuf, false);
+        dma_tx.xfer_dma2spi(&dma_tx_cfg, &spi_cfg, txbuf, false);
 
         // printf("init write RX DMA\n");
-        dma_rx.write_spi2dma(&spi_cfg, &dma_rx_cfg, rxbuf, false);
+        dma_rx.xfer_spi2dma(&spi_cfg, &dma_rx_cfg, rxbuf, false);
 
         // printf("Starting DMAs...\n");
         p2.hi();

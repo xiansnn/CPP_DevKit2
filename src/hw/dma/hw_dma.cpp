@@ -15,7 +15,7 @@ HW_DMA::~HW_DMA()
 {
 }
 
-void HW_DMA::write_mem2mem(struct_ConfigDMA *cfg,
+void HW_DMA::xfer_mem2mem(struct_ConfigDMA *cfg,
                            volatile void *write_address,
                            volatile void *read_address,
                            bool start)
@@ -42,7 +42,7 @@ void HW_DMA::write_mem2mem(struct_ConfigDMA *cfg,
         start);          // Start immediately.
 }
 
-void HW_DMA::write_dma2spi(struct_ConfigDMA *dma_cfg,
+void HW_DMA::xfer_dma2spi(struct_ConfigDMA *dma_cfg,
                            struct_ConfigMasterSPI *spi_cfg,
                            volatile void *read_address,
                            bool start)
@@ -68,7 +68,7 @@ void HW_DMA::write_dma2spi(struct_ConfigDMA *dma_cfg,
                           start);                        // don't start yet
 }
 
-void HW_DMA::write_spi2dma(struct_ConfigMasterSPI *spi_cfg, struct_ConfigDMA *dma_cfg, volatile void *write_address, bool start)
+void HW_DMA::xfer_spi2dma(struct_ConfigMasterSPI *spi_cfg, struct_ConfigDMA *dma_cfg, volatile void *write_address, bool start)
 {
     this->channel = dma_claim_unused_channel(true);
     this->c = dma_channel_get_default_config(this->channel);
@@ -91,7 +91,7 @@ void HW_DMA::write_spi2dma(struct_ConfigMasterSPI *spi_cfg, struct_ConfigDMA *dm
                           start);                        // don't start yet
 }
 
-void HW_DMA::write_dma2i2c(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler,
+void HW_DMA::xfer_dma2i2c(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler,
                            volatile uint8_t *read_address, size_t length, bool start)
 {
     uint16_t tx_buffer[I2C_BURST_SIZE];
@@ -148,11 +148,35 @@ void HW_DMA::write_dma2i2c(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave
         irq_set_enabled(irq_number, true);
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
     }
+
     cleanup_and_free_dma_channel();
 }
 
-void HW_DMA::write_i2c2dma(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler, volatile uint8_t *read_address, size_t length, bool start)
+void HW_DMA::xfer_i2c2dma(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler, volatile uint8_t *read_address, size_t length, bool start)
 {
+    this->channel = dma_claim_unused_channel(true);
+    dma_channel_cleanup(channel);
+    this->c = dma_channel_get_default_config(channel);
+    channel_config_set_transfer_data_size(&c, DMA_SIZE_8);
+    channel_config_set_dreq(&c, i2c_get_dreq(i2c, false));
+    channel_config_set_read_increment(&c, false);
+    channel_config_set_write_increment(&c, true);
+
+    // irq_num_t irq_number = (i2c == i2c0) ? I2C0_IRQ : I2C1_IRQ;
+    // if (i2c_handler != NULL)
+    // {
+    //     i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_TX_EMPTY_BITS;
+    //     irq_set_exclusive_handler(irq_number, i2c_handler);
+    //     irq_set_enabled(irq_number, true);
+    // }
+
+    dma_channel_configure(channel, &c,
+                          read_address, // dma write address
+                          &i2c_get_hw(i2c)->data_cmd,
+                          length, // element count (each element is of size transfer_data_size)
+                          start);
+
+    cleanup_and_free_dma_channel();
 }
 
 void HW_DMA::cleanup_and_free_dma_channel()

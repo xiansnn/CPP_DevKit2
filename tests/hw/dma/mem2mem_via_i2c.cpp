@@ -113,9 +113,7 @@ void vDisplay_received_data_task(void *param)
     {
         xQueueReceive(i2c_rx_data_queue, &received_data, portMAX_DELAY);
         pr_D5.hi();
-        uint8_t read_data[MAX_DATA_SIZE];
-        char read_msg[MAX_DATA_SIZE]{0};
-        
+      
         master.burst_byte_read(slave_config.slave_address, received_data, read_data);
 
         memcpy(read_msg, read_data, received_data.read_data_length);

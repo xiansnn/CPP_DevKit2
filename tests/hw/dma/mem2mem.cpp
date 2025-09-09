@@ -45,7 +45,7 @@ int main()
     while (true)
     {
         p0.hi();
-        dma.write_mem2mem(&cfg_dma, write_buf, read_buf, false);
+        dma.xfer_mem2mem(&cfg_dma, write_buf, read_buf, false);
 
         p1.hi();
         dma.start_dma();

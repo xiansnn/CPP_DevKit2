@@ -17,7 +17,7 @@ rtos_HW_I2C_Master::~rtos_HW_I2C_Master()
 
 void rtos_HW_I2C_Master::burst_byte_write(uint8_t slave_address, struct_TX_DataQueueI2C data_to_send) //    uint8_t slave_mem_addr, uint8_t *src, size_t len)
 {
-    tx_dma->write_dma2i2c(this->i2c, slave_address, data_to_send.mem_address, this->i2c_master_handler, data_to_send.write_data, data_to_send.write_data_length);
+    tx_dma->xfer_dma2i2c(this->i2c, slave_address, data_to_send.mem_address, this->i2c_master_handler, data_to_send.write_data, data_to_send.write_data_length);
 }
 
 void rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address, struct_RX_DataQueueI2C data_to_receive, uint8_t *read_data)
@@ -53,18 +53,25 @@ void rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address, struct_RX_DataQu
         }
         rx_remaining -= chunk;
 
+        pr_D7.hi();
+        tx_dma->xfer_i2c2dma(this->i2c, slave_address, data_to_receive.mem_address, this->i2c_master_handler, read_data + received_data_index, chunk);
+        received_data_index += chunk;
+        pr_D7.lo();
+
         // read chunk of data -> prepare for DMA
 
-        for (size_t i = 0; i < chunk; i++)
-        {
-            pr_D7.hi();
-            while (!i2c->hw->rxflr)
-                tight_loop_contents();
-            read_data[received_data_index] = (uint8_t)i2c->hw->data_cmd;
-            received_data_index++;
-            pr_D7.lo();
-        }
+        // for (size_t i = 0; i < chunk; i++)
+        // {
+        //     pr_D7.hi();
+        //     while (!i2c->hw->rxflr)
+        //         tight_loop_contents();
+        //     read_data[received_data_index] = (uint8_t)i2c->hw->data_cmd;
+        //     received_data_index++;
+        //     pr_D7.lo();
+        // }
     }
+    // while (this->i2c->hw->rxflr != 0)
+    //     tight_loop_contents();
 }
 
 void rtos_HW_I2C_Master::i2c_tx_fifo_dma_isr()
