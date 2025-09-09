@@ -107,16 +107,17 @@ void vI2c_sending_task(void *param)
 void vDisplay_received_data_task(void *param)
 {
     uint8_t read_data[MAX_DATA_SIZE];
+    uint8_t * p_read_data = read_data;
     char read_msg[MAX_DATA_SIZE]{0};
-    struct_RX_DataQueueI2C received_data;
+    struct_RX_DataQueueI2C received_data_cfg;
     while (true)
     {
-        xQueueReceive(i2c_rx_data_queue, &received_data, portMAX_DELAY);
+        xQueueReceive(i2c_rx_data_queue, &received_data_cfg, portMAX_DELAY);
         pr_D5.hi();
       
-        master.burst_byte_read(slave_config.slave_address, received_data, read_data);
+        master.burst_byte_read(slave_config.slave_address, received_data_cfg, p_read_data);
 
-        memcpy(read_msg, read_data, received_data.read_data_length);
+        memcpy(read_msg, read_data, received_data_cfg.read_data_length);
         uint8_t read_msg_len = strlen(read_msg);
 #ifdef PRINTF
         printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, received_data.mem_address, read_msg);

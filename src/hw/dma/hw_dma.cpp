@@ -152,7 +152,7 @@ void HW_DMA::xfer_dma2i2c(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_
     cleanup_and_free_dma_channel();
 }
 
-void HW_DMA::xfer_i2c2dma(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler, volatile uint8_t *read_address, size_t length, bool start)
+void HW_DMA::xfer_i2c2dma(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler, volatile uint8_t *dest_address, size_t length, bool start)
 {
     this->channel = dma_claim_unused_channel(true);
     dma_channel_cleanup(channel);
@@ -171,7 +171,7 @@ void HW_DMA::xfer_i2c2dma(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_
     // }
 
     dma_channel_configure(channel, &c,
-                          read_address, // dma write address
+                          dest_address, // dma write address
                           &i2c_get_hw(i2c)->data_cmd,
                           length, // element count (each element is of size transfer_data_size)
                           start);

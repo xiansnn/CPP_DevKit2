@@ -20,7 +20,7 @@ void rtos_HW_I2C_Master::burst_byte_write(uint8_t slave_address, struct_TX_DataQ
     tx_dma->xfer_dma2i2c(this->i2c, slave_address, data_to_send.mem_address, this->i2c_master_handler, data_to_send.write_data, data_to_send.write_data_length);
 }
 
-void rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address, struct_RX_DataQueueI2C data_to_receive, uint8_t *read_data)
+void rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address, struct_RX_DataQueueI2C data_to_receive, uint8_t *dest)
 {
     uint32_t cmd[1];
 
@@ -30,6 +30,10 @@ void rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address, struct_RX_DataQu
     this->i2c->hw->enable = 1;
     cmd[0] = data_to_receive.mem_address | I2C_IC_DATA_CMD_RESTART_BITS | I2C_IC_DATA_CMD_STOP_BITS;
     this->i2c->hw->data_cmd = cmd[0];
+
+    pr_D7.hi();
+    tx_dma->xfer_i2c2dma(this->i2c, slave_address, data_to_receive.mem_address, this->i2c_master_handler, dest, data_to_receive.read_data_length);
+    pr_D7.lo();
 
     size_t chunk;
     size_t rx_remaining = data_to_receive.read_data_length;
@@ -52,11 +56,6 @@ void rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address, struct_RX_DataQu
             pr_D6.lo();
         }
         rx_remaining -= chunk;
-
-        pr_D7.hi();
-        tx_dma->xfer_i2c2dma(this->i2c, slave_address, data_to_receive.mem_address, this->i2c_master_handler, read_data + received_data_index, chunk);
-        received_data_index += chunk;
-        pr_D7.lo();
 
         // read chunk of data -> prepare for DMA
 
