@@ -16,9 +16,9 @@ HW_DMA::~HW_DMA()
 }
 
 void HW_DMA::xfer_mem2mem(struct_ConfigDMA *cfg,
-                           volatile void *write_address,
-                           volatile void *read_address,
-                           bool start)
+                          volatile void *write_address,
+                          volatile void *read_address,
+                          bool start)
 {
     this->channel = dma_claim_unused_channel(true);
     this->c = dma_channel_get_default_config(this->channel);
@@ -43,9 +43,9 @@ void HW_DMA::xfer_mem2mem(struct_ConfigDMA *cfg,
 }
 
 void HW_DMA::xfer_dma2spi(struct_ConfigDMA *dma_cfg,
-                           struct_ConfigMasterSPI *spi_cfg,
-                           volatile void *read_address,
-                           bool start)
+                          struct_ConfigMasterSPI *spi_cfg,
+                          volatile void *read_address,
+                          bool start)
 {
     this->channel = dma_claim_unused_channel(true);
     this->c = dma_channel_get_default_config(this->channel);
@@ -92,7 +92,7 @@ void HW_DMA::xfer_spi2dma(struct_ConfigMasterSPI *spi_cfg, struct_ConfigDMA *dma
 }
 
 void HW_DMA::xfer_dma2i2c(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler,
-                           volatile uint8_t *read_address, size_t length, bool start)
+                          volatile uint8_t *read_address, size_t length, bool start)
 {
     uint16_t tx_buffer[I2C_BURST_SIZE];
     size_t tx_remaining;
@@ -152,29 +152,85 @@ void HW_DMA::xfer_dma2i2c(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_
     cleanup_and_free_dma_channel();
 }
 
-void HW_DMA::xfer_i2c2dma(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler, volatile uint8_t *dest_address, size_t length, bool start)
+void HW_DMA::xfer_i2c2dma(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler, volatile uint16_t *dest_address, size_t length, bool start)
 {
+    size_t chunk;
+    size_t rx_remaining;
+
+    // send read cmd to  TX FIFO
+
     this->channel = dma_claim_unused_channel(true);
     dma_channel_cleanup(channel);
     this->c = dma_channel_get_default_config(channel);
-    channel_config_set_transfer_data_size(&c, DMA_SIZE_8);
+    channel_config_set_transfer_data_size(&c, DMA_SIZE_16);
     channel_config_set_dreq(&c, i2c_get_dreq(i2c, false));
     channel_config_set_read_increment(&c, false);
     channel_config_set_write_increment(&c, true);
 
-    // irq_num_t irq_number = (i2c == i2c0) ? I2C0_IRQ : I2C1_IRQ;
-    // if (i2c_handler != NULL)
-    // {
-    //     i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_TX_EMPTY_BITS;
-    //     irq_set_exclusive_handler(irq_number, i2c_handler);
-    //     irq_set_enabled(irq_number, true);
-    // }
+    irq_num_t irq_number = (i2c == i2c0) ? I2C0_IRQ : I2C1_IRQ;
+    if (i2c_handler != NULL)
+    {
+        i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_TX_EMPTY_BITS | I2C_IC_INTR_STAT_R_STOP_DET_BITS;
+        i2c->hw->clr_stop_det; // clear STOP_DET
+        irq_set_exclusive_handler(irq_number, i2c_handler);
+        irq_set_enabled(irq_number, true);
+    }
+    // irq_set_enabled(irq_number, true);
+    // write command, pass mem_address
+    i2c->hw->enable = 0;
+    i2c->hw->tar = slave_address;
+    i2c->hw->enable = 1;
+    uint32_t cmd[1];
+    cmd[0] = slave_mem_addr | I2C_IC_DATA_CMD_RESTART_BITS | I2C_IC_DATA_CMD_STOP_BITS;
+    i2c->hw->data_cmd = cmd[0];
 
-    dma_channel_configure(channel, &c,
-                          dest_address, // dma write address
-                          &i2c_get_hw(i2c)->data_cmd,
-                          length, // element count (each element is of size transfer_data_size)
-                          start);
+    //=================================================
+    rx_remaining = length;
+    size_t received_data_index = 0;
+    size_t tx_cmd_index = 0;
+
+    // wait for I2C TX FIFO to be empty before starting DMA
+
+    while (rx_remaining > 0)
+    { // wait until the command is sent
+        irq_set_enabled(irq_number, true);
+        // ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        while (!(i2c->hw->raw_intr_stat & I2C_IC_RAW_INTR_STAT_TX_EMPTY_BITS))
+            tight_loop_contents();
+
+
+        chunk = (rx_remaining > I2C_BURST_SIZE) ? I2C_BURST_SIZE : rx_remaining;
+
+        for (size_t i = 0; i < chunk; i++)
+        {
+            // pr_D6.hi();
+            uint32_t cmd = I2C_IC_DATA_CMD_CMD_BITS | (tx_cmd_index == length - 1 ? I2C_IC_DATA_CMD_STOP_BITS : 0);
+            i2c->hw->data_cmd = cmd;
+            tx_cmd_index++;
+            // pr_D6.lo();
+        }
+
+        // read chunk of data DMA
+
+        // pr_D7.hi();
+        dma_channel_configure(channel, &c,
+                              dest_address + received_data_index, // dma write address
+                              &i2c_get_hw(i2c)->data_cmd,
+                              length, // element count (each element is of size transfer_data_size)
+                              start);
+
+        // pr_D7.lo();
+        rx_remaining -= chunk;
+        received_data_index += chunk;
+
+    }
+    irq_set_enabled(irq_number, true);
+    // ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+    while (!(i2c->hw->raw_intr_stat & I2C_IC_RAW_INTR_STAT_TX_EMPTY_BITS))
+    // while (!(i2c->hw->raw_intr_stat & (I2C_IC_RAW_INTR_STAT_STOP_DET_BITS|I2C_IC_RAW_INTR_STAT_TX_EMPTY_BITS)))
+        tight_loop_contents();
+    sleep_us(50);
+    //=================================================
 
     cleanup_and_free_dma_channel();
 }

@@ -43,10 +43,12 @@ public:
     ~rtos_HW_I2C_Master();
 
     /// @brief this the FreeRTOS task handle attached to the task that uses this I2C Master burst_byte_write function member
-    TaskHandle_t task_to_notify_when_fifo_empty = NULL;
-    QueueHandle_t i2c_tx_data_queue ;
+    TaskHandle_t TX_task_to_notify_when_fifo_empty = NULL;
+    TaskHandle_t RX_task_to_notify_when_fifo_empty = NULL;
+    QueueHandle_t i2c_tx_data_queue;
 
-    void burst_byte_write(uint8_t slave_address, struct_TX_DataQueueI2C data_to_send );
-    void burst_byte_read(uint8_t slave_address,  struct_RX_DataQueueI2C data_to_receive, uint8_t *dest);
+    void burst_byte_write(uint8_t slave_address, struct_TX_DataQueueI2C data_to_send);
+    void burst_byte_read(uint8_t slave_address, struct_RX_DataQueueI2C data_to_receive, uint16_t *dest);
     void i2c_tx_fifo_dma_isr();
+    void i2c_rx_fifo_dma_isr();
 };

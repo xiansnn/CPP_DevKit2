@@ -79,7 +79,7 @@ struct struct_ConfigMasterI2C
      */
     uint baud_rate = I2C_STANDARD_MODE;
 
-    irq_handler_t i2c_master_handler = NULL;
+    irq_handler_t i2c_tx_master_handler = NULL;
 };
 
 /**
@@ -137,7 +137,8 @@ protected:
     /// @brief the i2c hardware instance of the Pico that handles the i2c master
     i2c_inst_t *i2c;
 
-    irq_handler_t i2c_master_handler;
+    irq_handler_t i2c_master_exclusive_irq_handler = NULL;
+
 
 public:
     /**

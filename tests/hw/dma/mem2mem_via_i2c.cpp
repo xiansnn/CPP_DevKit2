@@ -13,7 +13,7 @@ Probe pr_D0 = Probe(0);
 Probe pr_D1 = Probe(1);
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
-// Probe pr_D6 = Probe(6);
+Probe pr_D6 = Probe(6);
 // Probe pr_D7 = Probe(7);
 
 #define MAX_DATA_SIZE 32
@@ -27,6 +27,7 @@ QueueHandle_t i2c_rx_data_queue = xQueueCreate(8, sizeof(struct_RX_DataQueueI2C)
 uint channel_rx;
 
 void i2c_tx_fifo_handler();
+void i2c_rx_fifo_handler();
 static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event);
 
 struct_ConfigMasterI2C master_config{
@@ -34,7 +35,7 @@ struct_ConfigMasterI2C master_config{
     .sda_pin = 8,
     .scl_pin = 9,
     .baud_rate = I2C_FAST_MODE,
-    .i2c_master_handler = i2c_tx_fifo_handler};
+    .i2c_tx_master_handler = i2c_tx_fifo_handler};
 
 struct_ConfigSlaveI2C slave_config{
     .i2c = i2c1,
@@ -90,39 +91,43 @@ void vPeriodic_data_generation_task(void *pxPeriod)
 void vI2c_sending_task(void *param)
 {
     struct_TX_DataQueueI2C data_to_send;
-    struct_RX_DataQueueI2C data_to_receive;
+    struct_RX_DataQueueI2C data_to_display;
     while (true)
     {
         xQueueReceive(master.i2c_tx_data_queue, &data_to_send, portMAX_DELAY);
         // pr_D7.hi();
         master.burst_byte_write(slave_config.slave_address, data_to_send);
-        data_to_receive.mem_address = data_to_send.mem_address;
-        data_to_receive.read_data_length = data_to_send.write_data_length;
+        data_to_display.mem_address = data_to_send.mem_address;
+        data_to_display.read_data_length = data_to_send.write_data_length;
 
-        xQueueSend(i2c_rx_data_queue, &data_to_receive, portMAX_DELAY);
+        xQueueSend(i2c_rx_data_queue, &data_to_display, portMAX_DELAY);
         // pr_D7.lo();
     }
 }
 
 void vDisplay_received_data_task(void *param)
 {
-    uint8_t read_data[MAX_DATA_SIZE];
-    uint8_t * p_read_data = read_data;
-    char read_msg[MAX_DATA_SIZE]{0};
     struct_RX_DataQueueI2C received_data_cfg;
     while (true)
     {
+        char read_msg[MAX_DATA_SIZE]{0};
+        uint16_t read_data[MAX_DATA_SIZE]{0};
         xQueueReceive(i2c_rx_data_queue, &received_data_cfg, portMAX_DELAY);
         pr_D5.hi();
-      
-        master.burst_byte_read(slave_config.slave_address, received_data_cfg, p_read_data);
 
-        memcpy(read_msg, read_data, received_data_cfg.read_data_length);
+        master.burst_byte_read(slave_config.slave_address, received_data_cfg, read_data);
+
+        // memcpy(read_msg, read_data, received_data_cfg.read_data_length);
+        for (size_t i = 0; i < received_data_cfg.read_data_length; i++)
+        {
+            read_msg[i] = (char)read_data[i];
+        }
+
         uint8_t read_msg_len = strlen(read_msg);
-#ifdef PRINTF
-        printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, received_data.mem_address, read_msg);
-#endif
         pr_D5.lo();
+#ifdef PRINTF
+        printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, received_data_cfg.mem_address, read_msg);
+#endif
     }
 }
 
@@ -135,8 +140,8 @@ int main()
 
     xTaskCreate(vIdleTask, "idle_task0", 256, &pr_D0, 0, NULL);
     xTaskCreate(vPeriodic_data_generation_task, "compute_i2c_data", 250, (void *)500, 2, &periodic_data_generation_task_handle);
-    xTaskCreate(vI2c_sending_task, "send_i2c_data", 250, NULL, 4, &master.task_to_notify_when_fifo_empty);
-    xTaskCreate(vDisplay_received_data_task, "receive_i2c_data", 250, NULL, 1, &display_receive_data_task_handle);
+    xTaskCreate(vI2c_sending_task, "send_i2c_data", 250, NULL, 4, &master.TX_task_to_notify_when_fifo_empty);
+    xTaskCreate(vDisplay_received_data_task, "receive_i2c_data", 250, NULL, 1, &master.RX_task_to_notify_when_fifo_empty);
     vTaskStartScheduler();
 
     while (true)
@@ -151,6 +156,12 @@ void i2c_tx_fifo_handler()
     pr_D4.hi();
     master.i2c_tx_fifo_dma_isr();
     pr_D4.lo();
+}
+void i2c_rx_fifo_handler()
+{
+    pr_D6.hi();
+    master.i2c_rx_fifo_dma_isr();
+    pr_D6.lo();
 }
 static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event)
 {
