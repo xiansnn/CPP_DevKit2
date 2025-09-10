@@ -109,7 +109,7 @@ void HW_DMA::xfer_dma2i2c(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_
     irq_num_t irq_number = (i2c == i2c0) ? I2C0_IRQ : I2C1_IRQ;
     if (i2c_handler != NULL)
     {
-        i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_TX_EMPTY_BITS;
+        i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_TX_EMPTY_BITS | I2C_IC_INTR_STAT_R_STOP_DET_BITS;
         irq_set_exclusive_handler(irq_number, i2c_handler);
         irq_set_enabled(irq_number, true);
     }
@@ -198,7 +198,6 @@ void HW_DMA::xfer_i2c2dma(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_
         while (!(i2c->hw->raw_intr_stat & I2C_IC_RAW_INTR_STAT_TX_EMPTY_BITS))
             tight_loop_contents();
 
-
         chunk = (rx_remaining > I2C_BURST_SIZE) ? I2C_BURST_SIZE : rx_remaining;
 
         for (size_t i = 0; i < chunk; i++)
@@ -222,14 +221,14 @@ void HW_DMA::xfer_i2c2dma(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_
         // pr_D7.lo();
         rx_remaining -= chunk;
         received_data_index += chunk;
-
     }
     irq_set_enabled(irq_number, true);
     // ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-    while (!(i2c->hw->raw_intr_stat & I2C_IC_RAW_INTR_STAT_TX_EMPTY_BITS))
-    // while (!(i2c->hw->raw_intr_stat & (I2C_IC_RAW_INTR_STAT_STOP_DET_BITS|I2C_IC_RAW_INTR_STAT_TX_EMPTY_BITS)))
+    // while (!(i2c->hw->raw_intr_stat & I2C_IC_RAW_INTR_STAT_TX_EMPTY_BITS))
+    while (!(i2c->hw->intr_stat & I2C_IC_INTR_STAT_R_STOP_DET_BITS))//TODO masquer et demasquer les IRQ suivant la phase de reception
         tight_loop_contents();
-    sleep_us(50);
+    sleep_us(100); 
+
     //=================================================
 
     cleanup_and_free_dma_channel();
