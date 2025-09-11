@@ -8,5 +8,6 @@ var structstruct___config_master_s_p_i =
     [ "sck_pin", "structstruct___config_master_s_p_i.html#a3919f29141a005b4df7f67b9047e9e30", null ],
     [ "spi", "structstruct___config_master_s_p_i.html#a7d5244cc6e90ea4b569a58d18c41647e", null ],
     [ "spi_polarity", "structstruct___config_master_s_p_i.html#ad2e47bcc07fef5657635598cb6bcea43", null ],
+    [ "transfer_size", "structstruct___config_master_s_p_i.html#a4dc9a48b32f4d626511c76a16341bd0a", null ],
     [ "tx_pin", "structstruct___config_master_s_p_i.html#a9b3d2c2db463d797abda0ca9a951841d", null ]
 ];

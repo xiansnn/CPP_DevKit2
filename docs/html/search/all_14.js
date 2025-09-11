@@ -19,6 +19,9 @@ var searchData=
   ['time_5fout_5fpending_16',['TIME_OUT_PENDING',['../rtos__switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657a56c111429dded1c6fca3baa5bad1d87b',1,'TIME_OUT_PENDING:&#160;rtos_switch_button.h'],['../switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657a56c111429dded1c6fca3baa5bad1d87b',1,'TIME_OUT_PENDING:&#160;rtos_switch_button.h'],['../rtos__switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657a56c111429dded1c6fca3baa5bad1d87b',1,'TIME_OUT_PENDING:&#160;switch_button.h'],['../switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657a56c111429dded1c6fca3baa5bad1d87b',1,'TIME_OUT_PENDING:&#160;switch_button.h']]],
   ['to_20cpp_5fdevkit_20documentation_17',['Introduction to CPP_DevKit documentation',['../index.html',1,'']]],
   ['todo_20list_18',['Todo List',['../todo.html',1,'']]],
-  ['trees_19',['File trees',['../index.html#autotoc_md0',1,'']]],
-  ['tx_5fpin_20',['tx_pin',['../structstruct___config_master_s_p_i.html#a9b3d2c2db463d797abda0ca9a951841d',1,'struct_ConfigMasterSPI']]]
+  ['transfer_5fsize_19',['transfer_size',['../structstruct___config_d_m_a.html#a2a32e1d243137a31462989ea1f58dd3c',1,'struct_ConfigDMA::transfer_size'],['../structstruct___config_master_s_p_i.html#a4dc9a48b32f4d626511c76a16341bd0a',1,'struct_ConfigMasterSPI::transfer_size']]],
+  ['trees_20',['File trees',['../index.html#autotoc_md0',1,'']]],
+  ['tx_5fdma_21',['tx_dma',['../classrtos___h_w___i2_c___master.html#ab8e1e1d014beaad8f2108f2346a821ba',1,'rtos_HW_I2C_Master']]],
+  ['tx_5ffifo_5fempty_22',['TX_FIFO_empty',['../class_h_w___d_m_a.html#a36dd26671c44f735baa58bd313cbac04',1,'HW_DMA']]],
+  ['tx_5fpin_23',['tx_pin',['../structstruct___config_master_s_p_i.html#a9b3d2c2db463d797abda0ca9a951841d',1,'struct_ConfigMasterSPI']]]
 ];

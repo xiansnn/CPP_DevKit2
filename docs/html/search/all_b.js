@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['handler_0',['handler',['../structstruct___config_slave_i2_c.html#ae2eff28693042d4575cc2c596fec86b4',1,'struct_ConfigSlaveI2C']]],
+  ['handler_0',['handler',['../structstruct___config_d_m_a.html#acb5af4ba0e80941e7a294bd0711d3192',1,'struct_ConfigDMA']]],
   ['hardware_20libraries_1',['&quot;Hardware libraries&quot;',['../group__hw.html',1,'']]],
   ['has_5fblinking_5fchanged_2',['has_blinking_changed',['../class_blinker.html#ae36b06b6ad8e5b5e14f5a95c1f4d3471',1,'Blinker']]],
   ['has_5fchanged_3',['has_changed',['../class_model.html#a6581f694a68e74228507591a3dbaccdf',1,'Model']]],
@@ -14,11 +14,13 @@ var searchData=
   ['horizontal_5fscroll_11',['horizontal_scroll',['../class_s_s_d1306.html#a3228383e41ea93124a1da0a619dc6b11',1,'SSD1306']]],
   ['horizontal_5ftab_12',['HORIZONTAL_TAB',['../widget_8h.html#ab9b41a58308928842d7ee267dbc81e26',1,'widget.h']]],
   ['humidity_13',['humidity',['../structstruct___d_h_t_reading.html#aa43b0d2e8be45ff41c89eb4602699c5c',1,'struct_DHTReading']]],
-  ['hw_5fi2c_2eh_14',['hw_i2c.h',['../hw__i2c_8h.html',1,'']]],
-  ['hw_5fi2c_5fmaster_15',['HW_I2C_Master',['../class_h_w___i2_c___master.html',1,'HW_I2C_Master'],['../class_h_w___i2_c___master.html#aec651bc1d3019c6a5d30bbda8bae5846',1,'HW_I2C_Master::HW_I2C_Master()']]],
-  ['hw_5fi2c_5fslave_16',['HW_I2C_Slave',['../class_h_w___i2_c___slave.html',1,'HW_I2C_Slave'],['../class_h_w___i2_c___slave.html#ae6212d49af7559b541ec2160d6775917',1,'HW_I2C_Slave::HW_I2C_Slave()']]],
-  ['hw_5fpwm_2eh_17',['hw_pwm.h',['../hw__pwm_8h.html',1,'']]],
-  ['hw_5freset_5fpin_18',['hw_reset_pin',['../structstruct___config_s_t7735.html#a9c2d7524a91870088a48f308b4894f85',1,'struct_ConfigST7735']]],
-  ['hw_5fspi_2eh_19',['hw_spi.h',['../hw__spi_8h.html',1,'']]],
-  ['hw_5fspi_5fmaster_20',['HW_SPI_Master',['../class_h_w___s_p_i___master.html',1,'HW_SPI_Master'],['../class_h_w___s_p_i___master.html#ae511ff460d41821039ff9d25538ab57c',1,'HW_SPI_Master::HW_SPI_Master()']]]
+  ['hw_5fdma_14',['HW_DMA',['../class_h_w___d_m_a.html',1,'HW_DMA'],['../class_h_w___d_m_a.html#a701c73d5f9606ae2e7be9655f0b52ba7',1,'HW_DMA::HW_DMA()'],['../class_h_w___d_m_a.html#a0a482a4495da6d88bb14f933e2ea3a48',1,'HW_DMA::HW_DMA(uint channel, struct_ConfigDMA *cfg)']]],
+  ['hw_5fdma_2eh_15',['hw_dma.h',['../hw__dma_8h.html',1,'']]],
+  ['hw_5fi2c_2eh_16',['hw_i2c.h',['../hw__i2c_8h.html',1,'']]],
+  ['hw_5fi2c_5fmaster_17',['HW_I2C_Master',['../class_h_w___i2_c___master.html',1,'HW_I2C_Master'],['../class_h_w___i2_c___master.html#aec651bc1d3019c6a5d30bbda8bae5846',1,'HW_I2C_Master::HW_I2C_Master()']]],
+  ['hw_5fi2c_5fslave_18',['HW_I2C_Slave',['../class_h_w___i2_c___slave.html',1,'HW_I2C_Slave'],['../class_h_w___i2_c___slave.html#ae6212d49af7559b541ec2160d6775917',1,'HW_I2C_Slave::HW_I2C_Slave()']]],
+  ['hw_5fpwm_2eh_19',['hw_pwm.h',['../hw__pwm_8h.html',1,'']]],
+  ['hw_5freset_5fpin_20',['hw_reset_pin',['../structstruct___config_s_t7735.html#a9c2d7524a91870088a48f308b4894f85',1,'struct_ConfigST7735']]],
+  ['hw_5fspi_2eh_21',['hw_spi.h',['../hw__spi_8h.html',1,'']]],
+  ['hw_5fspi_5fmaster_22',['HW_SPI_Master',['../class_h_w___s_p_i___master.html',1,'HW_SPI_Master'],['../class_h_w___s_p_i___master.html#ae511ff460d41821039ff9d25538ab57c',1,'HW_SPI_Master::HW_SPI_Master()']]]
 ];

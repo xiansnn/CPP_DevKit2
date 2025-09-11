@@ -113,7 +113,7 @@ Collaboration diagram for struct_ConfigMasterI2C:</div>
 <div class="dyncontent">
 <div class="center"><img src="structstruct___config_master_i2_c__coll__graph.png" border="0" usemap="#astruct___config_master_i2_c_coll__map" alt="Collaboration graph"/></div>
 <map name="astruct___config_master_i2_c_coll__map" id="astruct___config_master_i2_c_coll__map">
-<area shape="rect" title="The configuration data of I2C interface used as Master." alt="" coords="5,5,131,123"/>
+<area shape="rect" title="The configuration data of I2C interface used as Master." alt="" coords="5,5,205,141"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -134,6 +134,9 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>scl_pin</b> = 05</td>
 <tr class="memitem:a62e5546133c513d337644ed1470872d2" id="r_a62e5546133c513d337644ed1470872d2"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62e5546133c513d337644ed1470872d2">baud_rate</a> = 100 * 1000</td></tr>
 <tr class="memdesc:a62e5546133c513d337644ed1470872d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the I2C baudrate:  <br /></td></tr>
 <tr class="separator:a62e5546133c513d337644ed1470872d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5dbbc5cb7bd582d30f3f55452b03277" id="r_aa5dbbc5cb7bd582d30f3f55452b03277"><td class="memItemLeft" align="right" valign="top">irq_handler_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5dbbc5cb7bd582d30f3f55452b03277">i2c_tx_master_handler</a> = NULL</td></tr>
+<tr class="memdesc:aa5dbbc5cb7bd582d30f3f55452b03277"><td class="mdescLeft">&#160;</td><td class="mdescRight">a function pointer to the IRQ i2c_master_exclusive_handler, to the program that manage the I2C IRQ when used with DMA  <br /></td></tr>
+<tr class="separator:aa5dbbc5cb7bd582d30f3f55452b03277"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The configuration data of I2C interface used as Master. </p>
@@ -156,6 +159,23 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>scl_pin</b> = 05</td>
 <li>I2C_FAST_MODE = 400kb/s</li>
 <li>I2C_FAST_MODE_PLUS = 1Mb/s </li>
 </ul>
+
+</div>
+</div>
+<a id="aa5dbbc5cb7bd582d30f3f55452b03277" name="aa5dbbc5cb7bd582d30f3f55452b03277"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5dbbc5cb7bd582d30f3f55452b03277">&#9670;&#160;</a></span>i2c_tx_master_handler</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">irq_handler_t struct_ConfigMasterI2C::i2c_tx_master_handler = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>a function pointer to the IRQ i2c_master_exclusive_handler, to the program that manage the I2C IRQ when used with DMA </p>
+<p>NOTICE: This i2c_master_exclusive_handler is the one given to NVIC IRQ map. It seems that it must be a static function defined in the main code. </p>
 
 </div>
 </div>

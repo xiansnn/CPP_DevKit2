@@ -14,7 +14,7 @@ var searchData=
   ['max_5fvalue_11',['max_value',['../class_u_i_controlled_incremental_value.html#a502ecbf045c5f2b4d2015bad04611a7d',1,'UIControlledIncrementalValue::max_value'],['../class_model_bargraph.html#ab5ac71a917bd5563fe3e298e8841a80f',1,'ModelBargraph::max_value']]],
   ['measure_5fduty_5fcycle_12',['measure_duty_cycle',['../class_p_w_mgated_measure.html#a11067dc47c6d0cf8a2314fd947db1abf',1,'PWMgatedMeasure']]],
   ['mem_13',['mem',['../structstruct___slave_memory.html#a541a2516d84c428b9450dc98efdc028d',1,'struct_SlaveMemory']]],
-  ['mem_5faddress_14',['mem_address',['../structstruct___slave_memory.html#a676889062063c62684c4c2bb1f6772ed',1,'struct_SlaveMemory']]],
+  ['mem_5faddress_14',['mem_address',['../structstruct___slave_memory.html#a676889062063c62684c4c2bb1f6772ed',1,'struct_SlaveMemory::mem_address'],['../structstruct___t_x___data_queue_i2_c.html#a224a6fbf96d9c858fb318896141f7399',1,'struct_TX_DataQueueI2C::mem_address'],['../structstruct___r_x___data_queue_i2_c.html#ad42877bf7ec5fef57027a53f13299348',1,'struct_RX_DataQueueI2C::mem_address']]],
   ['mem_5faddress_5fwritten_15',['mem_address_written',['../structstruct___slave_memory.html#a7ffdb875b97e9cb9ca8680e72704621f',1,'struct_SlaveMemory']]],
   ['min_5fvalue_16',['min_value',['../class_u_i_controlled_incremental_value.html#ae8b0cdfbfe7f3bc120870d7f9e67fb7a',1,'UIControlledIncrementalValue::min_value'],['../class_model_bargraph.html#ab248b727cd4e7023c6bd29259ca60358',1,'ModelBargraph::min_value']]],
   ['model_17',['Model',['../group__model.html',1,'&quot;Model&quot;'],['../class_model.html',1,'Model'],['../class_model.html#ae3b375de5f6df4faf74a95d64748e048',1,'Model::Model()']]],

@@ -28,7 +28,8 @@ var searchData=
   ['ssd1306_25',['SSD1306',['../class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b',1,'SSD1306']]],
   ['st7735_26',['ST7735',['../class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8',1,'ST7735']]],
   ['start_27',['start',['../class_p_w_m.html#ae21be3a643267ca4f69be8d99fdfb06a',1,'PWM']]],
-  ['starttogether_28',['StartTogether',['../class_p_w_m.html#abac2f8531ce95dd465b80ae8c3344e39',1,'PWM']]],
-  ['switchbutton_29',['SwitchButton',['../class_switch_button.html#a750d21f333405881df2ef91495885a29',1,'SwitchButton']]],
-  ['switchbuttonwithirq_30',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html#aafb53c306bcbb5c681caae03b778f517',1,'SwitchButtonWithIRQ']]]
+  ['start_5fdma_28',['start_dma',['../class_h_w___d_m_a.html#a7a302596f00968cd3e9fb43da92b88a0',1,'HW_DMA']]],
+  ['starttogether_29',['StartTogether',['../class_p_w_m.html#abac2f8531ce95dd465b80ae8c3344e39',1,'PWM']]],
+  ['switchbutton_30',['SwitchButton',['../class_switch_button.html#a750d21f333405881df2ef91495885a29',1,'SwitchButton']]],
+  ['switchbuttonwithirq_31',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html#aafb53c306bcbb5c681caae03b778f517',1,'SwitchButtonWithIRQ']]]
 ];

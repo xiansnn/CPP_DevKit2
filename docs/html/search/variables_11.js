@@ -10,5 +10,7 @@ var searchData=
   ['widget_5fwith_5fborder_7',['widget_with_border',['../structstruct___config_graphic_widget.html#a241c9ce31b72a52dec662c46f6fdb0fd',1,'struct_ConfigGraphicWidget::widget_with_border'],['../structstruct___config_text_widget.html#a8dbd38147a8402f663b7ed0e037fdca5',1,'struct_ConfigTextWidget::widget_with_border'],['../class_graphic_widget.html#afd6b3c92346618f1fdbb501989c15078',1,'GraphicWidget::widget_with_border']]],
   ['widgets_8',['widgets',['../class_widget.html#af4c3a0de546fdcb1038469f5c592e2b6',1,'Widget']]],
   ['width_9',['width',['../structstruct___render_area.html#ae390a957d9f070f47e89e84fbcdb8319',1,'struct_RenderArea']]],
-  ['wrap_10',['wrap',['../structstruct___config_text_widget.html#a6b31afc67527af0820b6dcc8a0c329cb',1,'struct_ConfigTextWidget']]]
+  ['wrap_10',['wrap',['../structstruct___config_text_widget.html#a6b31afc67527af0820b6dcc8a0c329cb',1,'struct_ConfigTextWidget']]],
+  ['write_5fdata_11',['write_data',['../structstruct___t_x___data_queue_i2_c.html#ae2462bf801a44057d81196e668905a54',1,'struct_TX_DataQueueI2C']]],
+  ['write_5fdata_5flength_12',['write_data_length',['../structstruct___t_x___data_queue_i2_c.html#af24a3995b6d594fbdcf490207b9daf91',1,'struct_TX_DataQueueI2C']]]
 ];

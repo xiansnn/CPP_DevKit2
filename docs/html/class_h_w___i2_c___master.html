@@ -99,6 +99,7 @@ $(function(){initNavTree('class_h_w___i2_c___master.html',''); initResizable(tru
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_h_w___i2_c___master-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">HW_I2C_Master Class Reference<div class="ingroups"><a class="el" href="group__hw.html">&quot;Hardware libraries&quot;</a></div></div></div>
 </div><!--header-->
@@ -109,11 +110,21 @@ $(function(){initNavTree('class_h_w___i2_c___master.html',''); initResizable(tru
 
 <p><code>#include &lt;<a class="el" href="hw__i2c_8h_source.html">hw_i2c.h</a>&gt;</code></p>
 <div class="dynheader">
+Inheritance diagram for HW_I2C_Master:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_h_w___i2_c___master__inherit__graph.png" border="0" usemap="#a_h_w___i2_c___master_inherit__map" alt="Inheritance graph"/></div>
+<map name="a_h_w___i2_c___master_inherit__map" id="a_h_w___i2_c___master_inherit__map">
+<area shape="rect" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="5,5,539,197"/>
+<area shape="rect" href="classrtos___h_w___i2_c___master.html" title="This is a C++ wrapper for the original pico SDK i2c master API, adapted to FreeRTOS environment." alt="" coords="9,245,535,400"/>
+<area shape="poly" title=" " alt="" coords="275,213,275,246,269,246,269,213"/>
+</map>
+</div>
+<div class="dynheader">
 Collaboration diagram for HW_I2C_Master:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_h_w___i2_c___master__coll__graph.png" border="0" usemap="#a_h_w___i2_c___master_coll__map" alt="Collaboration graph"/></div>
 <map name="a_h_w___i2_c___master_coll__map" id="a_h_w___i2_c___master_coll__map">
-<area shape="rect" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="5,5,539,179"/>
+<area shape="rect" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="5,5,539,197"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -140,6 +151,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad767e0f547fe485ffdfe0b37678a64f9" id="r_ad767e0f547fe485ffdfe0b37678a64f9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad767e0f547fe485ffdfe0b37678a64f9">device_is_connected</a> (uint8_t slave_address)</td></tr>
 <tr class="memdesc:ad767e0f547fe485ffdfe0b37678a64f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">utility to know if a device is connected  <br /></td></tr>
 <tr class="separator:ad767e0f547fe485ffdfe0b37678a64f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:aab3a5b68364dad06462d8e26bfede7d6" id="r_aab3a5b68364dad06462d8e26bfede7d6"><td class="memItemLeft" align="right" valign="top"><a id="aab3a5b68364dad06462d8e26bfede7d6" name="aab3a5b68364dad06462d8e26bfede7d6"></a>
+i2c_inst_t *&#160;</td><td class="memItemRight" valign="bottom"><b>i2c</b></td></tr>
+<tr class="memdesc:aab3a5b68364dad06462d8e26bfede7d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the i2c hardware instance of the Pico that handles the i2c master <br /></td></tr>
+<tr class="separator:aab3a5b68364dad06462d8e26bfede7d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5712ef13f78dba483dfb7534681b4809" id="r_a5712ef13f78dba483dfb7534681b4809"><td class="memItemLeft" align="right" valign="top"><a id="a5712ef13f78dba483dfb7534681b4809" name="a5712ef13f78dba483dfb7534681b4809"></a>
+irq_handler_t&#160;</td><td class="memItemRight" valign="bottom"><b>i2c_master_exclusive_irq_handler</b> = NULL</td></tr>
+<tr class="memdesc:a5712ef13f78dba483dfb7534681b4809"><td class="mdescLeft">&#160;</td><td class="mdescRight">a function pointer to the IRQ i2c_master_exclusive_handler, to the program that manage the I2C IRQ when used with DMA <br /></td></tr>
+<tr class="separator:a5712ef13f78dba483dfb7534681b4809"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>this is a C++ wrapper for the original pico SDK i2c master API </p>
@@ -166,6 +188,16 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_h_w___i2_c___master_aec651bc1d3019c6a5d30bbda8bae5846_icgraph.png" border="0" usemap="#aclass_h_w___i2_c___master_aec651bc1d3019c6a5d30bbda8bae5846_icgraph" alt=""/></div>
+<map name="aclass_h_w___i2_c___master_aec651bc1d3019c6a5d30bbda8bae5846_icgraph" id="aclass_h_w___i2_c___master_aec651bc1d3019c6a5d30bbda8bae5846_icgraph">
+<area shape="rect" title="Construct a new hw i2c master object." alt="" coords="289,5,474,30"/>
+<area shape="rect" href="classrtos___h_w___i2_c___master.html#aab66902f880060f31b4bafee66d1e26f" title="Constructor of the class." alt="" coords="5,5,241,30"/>
+<area shape="poly" title=" " alt="" coords="273,20,241,20,241,15,273,15"/>
+</map>
+</div>
 
 </div>
 </div>

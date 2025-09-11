@@ -113,7 +113,7 @@ Collaboration diagram for struct_ConfigSlaveI2C:</div>
 <div class="dyncontent">
 <div class="center"><img src="structstruct___config_slave_i2_c__coll__graph.png" border="0" usemap="#astruct___config_slave_i2_c_coll__map" alt="Collaboration graph"/></div>
 <map name="astruct___config_slave_i2_c_coll__map" id="astruct___config_slave_i2_c_coll__map">
-<area shape="rect" title="The configuration data of I2C interface used as Slave." alt="" coords="5,5,163,179"/>
+<area shape="rect" title="The configuration data of I2C interface used as Slave." alt="" coords="5,5,212,179"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -142,9 +142,9 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>slave_address</b> 
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>slave_memory_size</b> = 256</td></tr>
 <tr class="memdesc:a1205b1fcda3c452180f907d95d47e7c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the size of the memory buffer reserved by the slave interface (default to 256) <br /></td></tr>
 <tr class="separator:a1205b1fcda3c452180f907d95d47e7c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2eff28693042d4575cc2c596fec86b4" id="r_ae2eff28693042d4575cc2c596fec86b4"><td class="memItemLeft" align="right" valign="top">i2c_slave_handler_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2eff28693042d4575cc2c596fec86b4">handler</a></td></tr>
-<tr class="memdesc:ae2eff28693042d4575cc2c596fec86b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">a function pointer to the IRQ handler, required by pico SDK, to the program that manage the reception of i2c message by the slave interface  <br /></td></tr>
-<tr class="separator:ae2eff28693042d4575cc2c596fec86b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8146b143c39d01408db2e4620b20a94" id="r_ac8146b143c39d01408db2e4620b20a94"><td class="memItemLeft" align="right" valign="top">i2c_slave_handler_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8146b143c39d01408db2e4620b20a94">i2c_slave_handler</a></td></tr>
+<tr class="memdesc:ac8146b143c39d01408db2e4620b20a94"><td class="mdescLeft">&#160;</td><td class="mdescRight">a function pointer to the IRQ i2c_slave_handler, required by pico SDK, to the program that manage the reception of i2c message by the slave interface  <br /></td></tr>
+<tr class="separator:ac8146b143c39d01408db2e4620b20a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The configuration data of I2C interface used as Slave. </p>
@@ -170,20 +170,20 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>slave_memory_size</
 
 </div>
 </div>
-<a id="ae2eff28693042d4575cc2c596fec86b4" name="ae2eff28693042d4575cc2c596fec86b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2eff28693042d4575cc2c596fec86b4">&#9670;&#160;</a></span>handler</h2>
+<a id="ac8146b143c39d01408db2e4620b20a94" name="ac8146b143c39d01408db2e4620b20a94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8146b143c39d01408db2e4620b20a94">&#9670;&#160;</a></span>i2c_slave_handler</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">i2c_slave_handler_t struct_ConfigSlaveI2C::handler</td>
+          <td class="memname">i2c_slave_handler_t struct_ConfigSlaveI2C::i2c_slave_handler</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>a function pointer to the IRQ handler, required by pico SDK, to the program that manage the reception of i2c message by the slave interface </p>
-<p>NOTICE: This handler is the one given to NVIC IRQ map. It seems that it must be a static function defined in the main code. </p>
+<p>a function pointer to the IRQ i2c_slave_handler, required by pico SDK, to the program that manage the reception of i2c message by the slave interface </p>
+<p>NOTICE: This i2c_slave_handler is the one given to NVIC IRQ map. It seems that it must be a static function defined in the main code. </p>
 
 </div>
 </div>

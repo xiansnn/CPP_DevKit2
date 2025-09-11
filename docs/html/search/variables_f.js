@@ -10,5 +10,8 @@ var searchData=
   ['time_5fframe_5finterval_7',['time_frame_interval',['../structstruct___config_scroll_s_s_d1306.html#a93dfb9fc1febd2921ccd477901b90b98',1,'struct_ConfigScrollSSD1306']]],
   ['time_5fout_5fdelay_5fms_8',['time_out_delay_ms',['../structstruct__rtos_config_switch_button.html#a10b014bf95420e3c6c06f431417bf0b6',1,'struct_rtosConfigSwitchButton::time_out_delay_ms'],['../classrtos_switch_button.html#aa60bfe9fa3a4bc317a54d1adf5f0673f',1,'rtosSwitchButton::time_out_delay_ms']]],
   ['time_5fout_5fdelay_5fus_9',['time_out_delay_us',['../structstruct___config_switch_button.html#ab2b4d2b97f8821471d7426c8e69b9888',1,'struct_ConfigSwitchButton::time_out_delay_us'],['../class_switch_button.html#a37e6513061d4466fd101192f60494d2b',1,'SwitchButton::time_out_delay_us']]],
-  ['tx_5fpin_10',['tx_pin',['../structstruct___config_master_s_p_i.html#a9b3d2c2db463d797abda0ca9a951841d',1,'struct_ConfigMasterSPI']]]
+  ['transfer_5fsize_10',['transfer_size',['../structstruct___config_d_m_a.html#a2a32e1d243137a31462989ea1f58dd3c',1,'struct_ConfigDMA::transfer_size'],['../structstruct___config_master_s_p_i.html#a4dc9a48b32f4d626511c76a16341bd0a',1,'struct_ConfigMasterSPI::transfer_size']]],
+  ['tx_5fdma_11',['tx_dma',['../classrtos___h_w___i2_c___master.html#ab8e1e1d014beaad8f2108f2346a821ba',1,'rtos_HW_I2C_Master']]],
+  ['tx_5ffifo_5fempty_12',['TX_FIFO_empty',['../class_h_w___d_m_a.html#a36dd26671c44f735baa58bd313cbac04',1,'HW_DMA']]],
+  ['tx_5fpin_13',['tx_pin',['../structstruct___config_master_s_p_i.html#a9b3d2c2db463d797abda0ca9a951841d',1,'struct_ConfigMasterSPI']]]
 ];
