@@ -11,10 +11,10 @@
 
 Probe pr_D0 = Probe(0);
 Probe pr_D1 = Probe(1);
-// Probe pr_D4 = Probe(4);
+Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
-// Probe pr_D6 = Probe(6);
-// Probe pr_D7 = Probe(7);
+Probe pr_D6 = Probe(6);
+Probe pr_D7 = Probe(7);
 
 #define MAX_DATA_SIZE 32
 uint8_t write_data[MAX_DATA_SIZE];
@@ -23,7 +23,7 @@ QueueHandle_t i2c_rx_data_queue = xQueueCreate(8, sizeof(struct_RX_DataQueueI2C)
 
 uint channel_rx;
 
-void i2c_tx_fifo_handler();
+void i2c_irq_handler();
 
 static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event);
 
@@ -32,7 +32,7 @@ struct_ConfigMasterI2C master_config{
     .sda_pin = 8,
     .scl_pin = 9,
     .baud_rate = I2C_FAST_MODE,
-    .i2c_tx_master_handler = i2c_tx_fifo_handler};
+    .i2c_tx_master_handler = i2c_irq_handler};
 
 struct_ConfigSlaveI2C slave_config{
     .i2c = i2c1,
@@ -110,7 +110,7 @@ void vDisplay_received_data_task(void *param)
         char read_msg[MAX_DATA_SIZE]{0};
         uint16_t read_data[MAX_DATA_SIZE]{0};
         xQueueReceive(i2c_rx_data_queue, &received_data_cfg, portMAX_DELAY);
-        pr_D5.hi();
+        pr_D6.hi();
 
         master.burst_byte_read(slave_config.slave_address, received_data_cfg, read_data);
 
@@ -121,7 +121,7 @@ void vDisplay_received_data_task(void *param)
         }
 
         uint8_t read_msg_len = strlen(read_msg);
-        pr_D5.lo();
+        pr_D6.lo();
 #ifdef PRINTF
         printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, received_data_cfg.mem_address, read_msg);
 #endif
@@ -148,9 +148,9 @@ int main()
     return 0;
 }
 
-void i2c_tx_fifo_handler()
+void i2c_irq_handler()
 {
-    master.i2c_tx_fifo_dma_isr();
+    master.i2c_dma_isr();
 }
 
 static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event)

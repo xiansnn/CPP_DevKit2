@@ -46,5 +46,5 @@ public:
 
     void burst_byte_write(uint8_t slave_address, struct_TX_DataQueueI2C data_to_send);
     void burst_byte_read(uint8_t slave_address, struct_RX_DataQueueI2C data_to_receive, uint16_t *dest);
-    void i2c_tx_fifo_dma_isr();
+    void i2c_dma_isr();
 };
