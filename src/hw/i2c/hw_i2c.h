@@ -1,12 +1,12 @@
 /**
  * @file hw_i2c.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-01-11
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 #pragma once
 
@@ -78,6 +78,8 @@ struct struct_ConfigMasterI2C
      * - I2C_FAST_MODE_PLUS = 1Mb/s
      */
     uint baud_rate = I2C_STANDARD_MODE;
+
+    irq_handler_t i2c_tx_master_handler = NULL;
 };
 
 /**
@@ -113,12 +115,12 @@ struct struct_ConfigSlaveI2C
      */
     size_t slave_memory_size = I2C_SLAVE_DEFAULT_MAX_MEMORY_SIZE;
     /**
-     * @brief a function pointer to the IRQ handler, required by pico SDK, to the program that manage the reception of i2c message by the slave interface
+     * @brief a function pointer to the IRQ i2c_slave_handler, required by pico SDK, to the program that manage the reception of i2c message by the slave interface
      *
-     * NOTICE: This handler is the one given to NVIC IRQ map.
+     * NOTICE: This i2c_slave_handler is the one given to NVIC IRQ map.
      * It seems that it must be a static function defined in the main code.
      */
-    i2c_slave_handler_t handler;
+    i2c_slave_handler_t i2c_slave_handler;
 };
 
 /**
@@ -128,10 +130,15 @@ struct struct_ConfigSlaveI2C
 class HW_I2C_Master
 {
 private:
-    /// @brief the i2c hardware instance of the Pico that handles the i2c master
-    i2c_inst_t *i2c;
     /// @brief the delay before time-out allowed for reading i2c response. Computed according to actual baud rate.
     uint time_out_us_per_byte;
+
+protected:
+    /// @brief the i2c hardware instance of the Pico that handles the i2c master
+    i2c_inst_t *i2c;
+
+    irq_handler_t i2c_master_exclusive_irq_handler = NULL;
+
 
 public:
     /**
@@ -239,4 +246,3 @@ public:
      */
     void slave_isr(i2c_slave_event_t event);
 };
-

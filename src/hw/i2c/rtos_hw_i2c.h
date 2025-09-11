@@ -1,0 +1,50 @@
+/**
+ * @file rtos_hw_i2c.h
+ * @author xiansnn (xiansnn@hotmail.com)
+ * @brief
+ * @version 0.1
+ * @date 2025-09-02
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+#pragma once
+
+#include "hw_i2c.h"
+#include "hw/dma/hw_dma.h"
+#include "pico/i2c_slave.h"
+#include "pico/stdlib.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "semphr.h"
+#include "hardware/irq.h"
+
+#define BURST_SIZE 16
+
+struct struct_TX_DataQueueI2C
+{
+    uint8_t *write_data;
+    uint8_t mem_address;
+    uint8_t write_data_length;
+};
+struct struct_RX_DataQueueI2C
+{
+    uint8_t mem_address;
+    uint8_t read_data_length;
+};
+
+class rtos_HW_I2C_Master : public HW_I2C_Master
+{
+private:
+public:
+    HW_DMA *tx_dma;
+    QueueHandle_t i2c_tx_data_queue;
+    
+    rtos_HW_I2C_Master(struct_ConfigMasterI2C cfg);
+    ~rtos_HW_I2C_Master();
+
+
+    void burst_byte_write(uint8_t slave_address, struct_TX_DataQueueI2C data_to_send);
+    void burst_byte_read(uint8_t slave_address, struct_RX_DataQueueI2C data_to_receive, uint16_t *dest);
+    void i2c_dma_isr();
+};
