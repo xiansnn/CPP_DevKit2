@@ -79,6 +79,12 @@ struct struct_ConfigMasterI2C
      */
     uint baud_rate = I2C_STANDARD_MODE;
 
+    /**
+     * @brief a function pointer to the IRQ i2c_master_exclusive_handler, to the program that manage the I2C IRQ when used with DMA
+     *
+     * NOTICE: This i2c_master_exclusive_handler is the one given to NVIC IRQ map.
+     * It seems that it must be a static function defined in the main code.
+     */
     irq_handler_t i2c_tx_master_handler = NULL;
 };
 
@@ -136,7 +142,8 @@ private:
 protected:
     /// @brief the i2c hardware instance of the Pico that handles the i2c master
     i2c_inst_t *i2c;
-
+ 
+    /// @brief  a function pointer to the IRQ i2c_master_exclusive_handler, to the program that manage the I2C IRQ when used with DMA
     irq_handler_t i2c_master_exclusive_irq_handler = NULL;
 
 

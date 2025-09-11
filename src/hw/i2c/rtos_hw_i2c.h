@@ -19,32 +19,54 @@
 #include "semphr.h"
 #include "hardware/irq.h"
 
+/// @brief I2C max FIFO size (according to RP2040 datasheet)
 #define BURST_SIZE 16
 
+/// @brief Data structure for I2C TX queue
 struct struct_TX_DataQueueI2C
 {
+    /// @brief pointer to the data buffer to send
     uint8_t *write_data;
+    /// @brief memory address in the slave device to write to   
     uint8_t mem_address;
+    /// @brief number of bytes to write
     uint8_t write_data_length;
 };
+/// @brief Data structure for I2C RX queue
 struct struct_RX_DataQueueI2C
 {
+    /// @brief memory address in the slave device to read from
     uint8_t mem_address;
+    /// @brief the size of the data to read
     uint8_t read_data_length;
 };
 
+/// @brief This is a C++ wrapper for the original pico SDK i2c master API, adapted to FreeRTOS environment
+/// \ingroup hw     
 class rtos_HW_I2C_Master : public HW_I2C_Master
 {
 private:
 public:
+    /// @brief the DMA channel used for I2C TX
     HW_DMA *tx_dma;
+    /// @brief the freeRTOS queue used to exchange data from a generator to the I2C TX task
     QueueHandle_t i2c_tx_data_queue;
     
+    /// @brief  Constructor of the class
+    /// @param cfg  the configuration structure for the I2C master
     rtos_HW_I2C_Master(struct_ConfigMasterI2C cfg);
+    /// @brief Destructor of the class
     ~rtos_HW_I2C_Master();
 
-
+    /// @brief  a function member to write a burst of data to a slave device, using DMA and FreeRTOS queue
+    /// @param slave_address    the 7-bit I2C slave address
+    /// @param data_to_send     the structure that contains the data buffer, the memory address in the slave device and the size of data to write
     void burst_byte_write(uint8_t slave_address, struct_TX_DataQueueI2C data_to_send);
+    /// @brief      a function member to read a burst of data from a slave device, using DMA and FreeRTOS queue
+    /// @param slave_address    the 7-bit I2C slave address
+    /// @param data_to_receive   the structure that contains the memory address in the slave device and the size of data to read
+    /// @param dest     pointer to buffer to receive data
     void burst_byte_read(uint8_t slave_address, struct_RX_DataQueueI2C data_to_receive, uint16_t *dest);
+    /// @brief the I2C IRQ handler, to be called in the main program IRQ map
     void i2c_dma_isr();
 };

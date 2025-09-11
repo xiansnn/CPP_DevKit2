@@ -13,6 +13,7 @@ HW_DMA::HW_DMA(uint channel, struct_ConfigDMA *cfg)
 
 HW_DMA::~HW_DMA()
 {
+    cleanup_and_free_dma_channel();
 }
 
 void HW_DMA::xfer_mem2mem(struct_ConfigDMA *cfg,
