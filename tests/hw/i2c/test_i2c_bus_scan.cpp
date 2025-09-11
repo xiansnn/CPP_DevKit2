@@ -34,7 +34,7 @@ struct_ConfigSlaveI2C slave_config{
     .baud_rate = I2C_STANDARD_MODE,
     .slave_address = 0x15,
     .slave_memory_size = 256,
-    .handler = i2c_slave_handler};
+    .i2c_slave_handler = i2c_slave_handler};
 
 
 HW_I2C_Master master = HW_I2C_Master(master_config);
@@ -42,7 +42,7 @@ HW_I2C_Slave slave = HW_I2C_Slave(slave_config);
 
 
 /**
- * @brief the actual I2C IRQ handler given to the RP2040 hardware I2C instance
+ * @brief the actual I2C IRQ i2c_slave_handler given to the RP2040 hardware I2C instance
  * 
  * @param i2c Either i2c0 or i2c1
  * @param event the event that gives the type of received data/command

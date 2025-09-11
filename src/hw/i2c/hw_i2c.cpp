@@ -191,5 +191,5 @@ HW_I2C_Slave::HW_I2C_Slave(struct_ConfigSlaveI2C cfg)
 
     i2c_init(this->i2c, cfg.baud_rate);
 
-    i2c_slave_init(this->i2c, cfg.slave_address, cfg.handler);
+    i2c_slave_init(this->i2c, cfg.slave_address, cfg.i2c_slave_handler);
 }

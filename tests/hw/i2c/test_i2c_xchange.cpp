@@ -24,7 +24,7 @@ struct_ConfigSlaveI2C slave_config{
     .baud_rate = I2C_FAST_MODE,
     .slave_address = 0x15,
     .slave_memory_size = 256,
-    .handler = i2c_slave_handler};
+    .i2c_slave_handler = i2c_slave_handler};
 
 HW_I2C_Master master = HW_I2C_Master(master_config);
 HW_I2C_Slave slave = HW_I2C_Slave(slave_config);
