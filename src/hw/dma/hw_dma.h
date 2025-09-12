@@ -51,9 +51,9 @@ public:
     /// @brief the DMA channel number allocated
     uint channel;
     /// @brief semaphore to signal the end of a I2C transfer
-    SemaphoreHandle_t end_of_xfer = xSemaphoreCreateBinary();
+    SemaphoreHandle_t end_of_xfer ;
     /// @brief semaphore to signal the TX FIFO of I2C is empty
-    SemaphoreHandle_t TX_FIFO_empty = xSemaphoreCreateBinary();
+    SemaphoreHandle_t TX_FIFO_empty ;
 
     /// @brief Constructor of the class, allocate a DMA channel
     HW_DMA();
@@ -69,19 +69,22 @@ public:
     /// @param write_address the destination address
     /// @param read_address the source address
     /// @param start if true, start the DMA transfer immediately
-    void xfer_mem2mem(struct_ConfigDMA *cfg, volatile void *write_address, volatile void *read_address, bool start);
+    /// @return error code
+    error_t xfer_mem2mem(struct_ConfigDMA *cfg, volatile void *write_address, volatile void *read_address, bool start);
     /// @brief the function member used to move data from memory to SPI peripheral
     /// @param dma_cfg the DMA configuration data structure 
     /// @param spi_cfg the SPI configuration data structure
     /// @param read_address the source address
     /// @param start if true, start the DMA transfer immediately
-    void xfer_dma2spi(struct_ConfigDMA *dma_cfg, struct_ConfigMasterSPI *spi_cfg, volatile void *read_address, bool start);
+    /// @return error code
+    error_t xfer_dma2spi(struct_ConfigDMA *dma_cfg, struct_ConfigMasterSPI *spi_cfg, volatile void *read_address, bool start);
     /// @brief  the function member used to move data from SPI peripheral to memory
     /// @param spi_cfg  the SPI configuration data structure
     /// @param dma_cfg  the DMA configuration data structure
     /// @param write_address  the destination address
     /// @param start  if true, start the DMA transfer immediately
-    void xfer_spi2dma(struct_ConfigMasterSPI *spi_cfg, struct_ConfigDMA *dma_cfg, volatile void *write_address, bool start);
+    /// @return error code
+    error_t xfer_spi2dma(struct_ConfigMasterSPI *spi_cfg, struct_ConfigDMA *dma_cfg, volatile void *write_address, bool start);
     /// @brief the function member used to move data from memory to I2C peripheral
     /// @param i2c the I2C instance, can be i2c0 or i2c1
     /// @param slave_address the 7-bit I2C slave address
@@ -90,7 +93,8 @@ public:
     /// @param read_address the source address
     /// @param length the number of bytes to write
     /// @param start if true, start the DMA transfer immediately
-    void xfer_dma2i2c(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler,
+    /// @return error code
+    error_t xfer_dma2i2c(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler,
                       volatile uint8_t *read_address, size_t length, bool start = true);
     /// @brief the function member used to move data from I2C peripheral to memory
     /// @param i2c  the I2C instance, can be i2c0 or i2c1
@@ -100,7 +104,8 @@ public:
     /// @param read_address     the destination address
     /// @param length   the number of bytes to read
     /// @param start    if true, start the DMA transfer immediately
-    void xfer_i2c2dma(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler,
+    /// @return error code
+    error_t xfer_i2c2dma(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler,
                       volatile uint16_t *read_address, size_t length, bool start = true);
     /// @brief clean up and free the allocated DMA channel
     void cleanup_and_free_dma_channel();
