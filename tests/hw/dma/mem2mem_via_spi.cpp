@@ -1,3 +1,18 @@
+/**
+ * @file mem2mem_via_spi.cpp
+ * @author xiansnn (xiansnn@hotmail.com)
+ * @brief   test of SPI master/slave exchange using DMA
+ * @note harware connections:
+ * - connect SPI1 (as master) to SPI1 (as slave)  with:
+ * - GPIO11 (MOSI) to GPIO12 (MISO)
+ *  
+       
+ * @version 0.1
+ * @date 2025-09-12
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include "pico/stdlib.h"

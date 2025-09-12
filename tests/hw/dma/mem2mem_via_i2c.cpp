@@ -1,3 +1,18 @@
+/**
+ * @file mem2mem_via_i2c.cpp
+ * @author xiansnn (xiansnn@hotmail.com)
+ * @brief test of i2c master/slave exchange using DMA and FreeRTOS queue
+ * @note harware connections:
+ *  - connect i2c0 (master) to i2c1 (slave) with pull-up resistors on SDA and SCL lines
+ *  - i2c0: GPIO8 (SDA), GPIO9 (SCL)
+ *  - i2c1: GPIO14 (SDA), GPIO15 (SCL)
+ * 
+ * @version 0.1
+ * @date 2025-09-12
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include <stdio.h>
 #include <string.h>
 
