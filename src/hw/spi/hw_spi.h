@@ -48,7 +48,7 @@ struct struct_ConfigMasterSPI
  */
 class HW_SPI_Master
 {
-private:
+protected:
     /// @brief the spi hardware instance of the Pico that handles the spi master
     spi_inst_t *spi;
 

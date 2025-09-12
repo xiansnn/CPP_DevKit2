@@ -75,12 +75,10 @@ void spi_rx_dma_handler()
 
 int main()
 {
-    p0.hi();
     stdio_init_all();
     HW_SPI_Master master = HW_SPI_Master(spi_cfg);
     spi_set_format(spi_cfg.spi, spi_cfg.transfer_size,
                    spi_cfg.spi_polarity, spi_cfg.clk_phase, spi_cfg.bit_order);
-    p0.lo();
     while (true)
     {
         p1.hi();
