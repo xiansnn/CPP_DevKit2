@@ -44,13 +44,13 @@ class HW_DMA
 {
 private:
     dma_channel_config c;
+    
+    public:
+    /// @brief the IRQ number for the DMA channel, can be DMA_IRQ_0 or DMA_IRQ_1
     irq_num_t irq_number;
-
-public:
-
     /// @brief the DMA channel number allocated
     uint channel;
-    /// @brief semaphore to signal the end of a I2C transfer
+    /// @brief semaphore to signal the end of a DMA transfer
     SemaphoreHandle_t end_of_xfer ;
     /// @brief semaphore to signal the TX FIFO of I2C is empty
     SemaphoreHandle_t TX_FIFO_empty ;

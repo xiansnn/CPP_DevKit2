@@ -1,22 +1,17 @@
 /**
  * @file mem2mem_via_spi.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief   test of SPI master/slave exchange using DMA
- * @note harware connections:
- * - connect SPI1 (as master) to SPI1 (as slave)  with:
- * - GPIO11 (MOSI) to GPIO12 (MISO)
- *  
-       
+ * @brief
  * @version 0.1
  * @date 2025-09-12
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 #include <stdio.h>
 #include <stdlib.h>
 #include "pico/stdlib.h"
-#include "hw/spi/hw_spi.h"
+#include "hw/spi/rtos_hw_spi.h"
 #include "hw/dma/hw_dma.h"
 
 #include "utilities/probe/probe.h"
@@ -36,23 +31,25 @@ Probe p7 = Probe(7);
 #define SPI_CSN_PIN 13
 #define SPI_BAUD_RATE 1000 * 1000
 
-static uint16_t txbuf[TEST_SIZE];
 static uint16_t rxbuf[TEST_SIZE];
+static uint16_t txbuf[TEST_SIZE];
+QueueHandle_t spi_tx_data_queue = xQueueCreate(8, sizeof(struct_TX_DataQueueSPI));
+SemaphoreHandle_t data_ready = xSemaphoreCreateBinary();
 
-void spi_rx_dma_handler();
+void end_of_DMA_xfer_handler();
 
 static struct_ConfigDMA dma_tx_cfg = {
     .transfer_size = DMA_SIZE_16,
-    .block_size = TEST_SIZE};
+    .block_size = TEST_SIZE,
+    // .handler = end_of_DMA_xfer_handler, // TODO voir si on peur changer rx pour tx et si on peut changer IRQ
+    // .irq_number = DMA_IRQ_0
+};
 
 static struct_ConfigDMA dma_rx_cfg = {
     .transfer_size = DMA_SIZE_16,
     .block_size = TEST_SIZE,
-    .handler = spi_rx_dma_handler,
+    .handler = end_of_DMA_xfer_handler,
     .irq_number = DMA_IRQ_0};
-
-HW_DMA dma_rx = HW_DMA();
-HW_DMA dma_tx = HW_DMA();
 
 static struct_ConfigMasterSPI spi_cfg = {
     .spi = spi1,
@@ -63,75 +60,97 @@ static struct_ConfigMasterSPI spi_cfg = {
     .baud_rate_Hz = SPI_BAUD_RATE,
     .transfer_size = 16};
 
-void spi_rx_dma_handler()
+rtos_HW_SPI_Master master = rtos_HW_SPI_Master(spi_cfg);
+
+void end_of_DMA_xfer_handler()
 {
-    if (dma_hw->ints0 & (1u << dma_rx.channel))
+    p7.hi();
+    master.spi_rx_dma_isr();
+    p7.lo();
+}
+void vIdleTask(void *pxProbe)
+{
+    while (true)
     {
-        p7.hi();
-        dma_hw->ints0 = (1u << dma_rx.channel); // Clear IRQ
-        p7.lo();
+        ((Probe *)pxProbe)->hi();
+        ((Probe *)pxProbe)->lo();
+    }
+}
+
+void vPeriodic_data_generation_task(void *param)
+{
+    struct_TX_DataQueueSPI data_to_send;
+
+    data_to_send.data = txbuf;
+    data_to_send.length = TEST_SIZE;
+
+    while (true)
+    {
+        vTaskDelay(pdMS_TO_TICKS((uint32_t)param));
+        p1.hi();
+        // fill the TX buffer
+        for (uint i = 0; i < TEST_SIZE; ++i)
+        {
+            txbuf[i] = i;
+        }
+        xQueueSend(spi_tx_data_queue, &data_to_send, portMAX_DELAY);
+        p1.lo();
+    }
+}
+void vSpi_sending_task(void *param)
+{
+    struct_TX_DataQueueSPI data_to_send;
+    while (true)
+    {
+        xQueueReceive(spi_tx_data_queue, &data_to_send, portMAX_DELAY);
+        p2.hi();
+
+        master.dma_rx->xfer_spi2dma(&spi_cfg, &dma_rx_cfg, rxbuf, true);
+        master.dma_tx->xfer_dma2spi(&dma_tx_cfg, &spi_cfg, data_to_send.data, true);
+        xSemaphoreTake(master.dma_rx->end_of_xfer, portMAX_DELAY);
+        master.dma_tx->cleanup_and_free_dma_channel();
+        master.dma_rx->cleanup_and_free_dma_channel();
+        xSemaphoreGive(data_ready);
+        p2.lo();
+    }
+}
+
+void vChecking_task(void *param)
+{
+    while (true)
+    {
+        xSemaphoreTake(data_ready, portMAX_DELAY);
+        p6.hi();
+        for (uint i = 0; i < TEST_SIZE; ++i)
+        {
+            if (rxbuf[i] != i)
+            {
+                panic("Mismatch at %d/%d: expected %02x, got %02x",
+                      i, TEST_SIZE, i, rxbuf[i]);
+            }
+        }
+        p6.lo();
+        printf("All good\n");
     }
 }
 
 int main()
 {
     stdio_init_all();
-    HW_SPI_Master master = HW_SPI_Master(spi_cfg);
+    printf("SPI DMA example\n");
+
     spi_set_format(spi_cfg.spi, spi_cfg.transfer_size,
                    spi_cfg.spi_polarity, spi_cfg.clk_phase, spi_cfg.bit_order);
+
+    xTaskCreate(vIdleTask, "idle_task0", 256, &p0, 0, NULL);
+    xTaskCreate(vPeriodic_data_generation_task, "compute_spi_data", 250, (void *)500, 2, NULL);
+    xTaskCreate(vSpi_sending_task, "send_spi_data", 250, NULL, 4, NULL);
+    xTaskCreate(vChecking_task, "check_data", 250, NULL, 4, NULL);
+    vTaskStartScheduler();
+
     while (true)
     {
-        p1.hi();
-        printf("SPI DMA example\t");
-
-        // fill the TX buffer
-        for (uint i = 0; i < TEST_SIZE; ++i)
-        {
-            txbuf[i] = i;
-        }
-
-        // printf("init write TX DMA\n");
-        dma_tx.xfer_dma2spi(&dma_tx_cfg, &spi_cfg, txbuf, false);
-
-        // printf("init write RX DMA\n");
-        dma_rx.xfer_spi2dma(&spi_cfg, &dma_rx_cfg, rxbuf, false);
-
-        // printf("Starting DMAs...\n");
-        p2.hi();
-        dma_rx.start_dma();
-        dma_tx.start_dma();
-        p2.lo();
-
-        // printf("Wait for RX complete...\n");
-        p3.hi();
-        dma_channel_wait_for_finish_blocking(dma_rx.channel);
-        p3.lo();
-
-        // Extra test, specific for the example
-        if (dma_channel_is_busy(dma_tx.channel))
-        {
-            panic("RX completed before TX");
-        }
-
-        // clean all and free DMA's
-        dma_rx.cleanup_and_free_dma_channel();
-        dma_tx.cleanup_and_free_dma_channel();
-
-        // printf("Done. Checking...");
-        p6.hi();
-        for (uint i = 0; i < TEST_SIZE; ++i)
-        {
-            if (rxbuf[i] != txbuf[i])
-            {
-                panic("Mismatch at %d/%d: expected %02x, got %02x",
-                      i, TEST_SIZE, txbuf[i], rxbuf[i]);
-            }
-        }
-        printf("All good\n");
-        p6.lo();
-
-        p1.lo();
-        sleep_ms(500);
+        tight_loop_contents();
     }
     return 0;
 }

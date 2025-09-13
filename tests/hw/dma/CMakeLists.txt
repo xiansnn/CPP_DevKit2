@@ -10,7 +10,7 @@ target_link_libraries(test_dma_m2m_via_spi
             pico_stdlib
             FreeRTOS-Kernel-Heap4 
             hw_dma
-            hw_spi 
+            rtos_hw_spi 
             utilities_probe
             )
 
