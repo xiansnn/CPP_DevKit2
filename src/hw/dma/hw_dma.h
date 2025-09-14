@@ -23,18 +23,18 @@
 /// @brief I2C max FIFO size (according to RP2040 datasheet)
 #define I2C_BURST_SIZE 16
 
-/// @brief Configuration structure for DMA
-struct struct_ConfigDMA
-{
-    /// @brief width of DMA transfers words, can be DMA_SIZE_8, DMA_SIZE_16, DMA_SIZE_32
-    dma_channel_transfer_size transfer_size = DMA_SIZE_8;
-    /// @brief number of words to be transfered in each burst
-    uint number_of_transfer;
-    /// @brief the pointer to the handler for DMA IRQ, can be NULL if no IRQ is needed
-    irq_handler_t dma_irq_handler = NULL;
-    /// @brief the IRQ number for the DMA channel, can be DMA_IRQ_0 or DMA_IRQ_1
-    irq_num_t irq_number;
-};
+// /// @brief Configuration structure for DMA
+// struct struct_ConfigDMA
+// {
+//     // /// @brief width of DMA transfers words, can be DMA_SIZE_8, DMA_SIZE_16, DMA_SIZE_32
+//     // dma_channel_transfer_size transfer_size = DMA_SIZE_8;
+//     /// @brief number of words to be transfered in each burst
+//     uint number_of_transfer;
+//     /// @brief the pointer to the handler for DMA IRQ, can be NULL if no IRQ is needed
+//     irq_handler_t dma_irq_handler = NULL;
+//     /// @brief the IRQ number for the DMA channel, can be DMA_IRQ_0 or DMA_IRQ_1
+//     irq_num_t irq_number;
+// };
 
 /**
  * @brief Class to manage a DMA channel
@@ -43,8 +43,6 @@ struct struct_ConfigDMA
 class HW_DMA
 {
 private:
-    // /// @brief
-    // dma_channel_config c;
 
 public:
     /// @brief the IRQ number for the DMA channel, can be DMA_IRQ_0 or DMA_IRQ_1
@@ -59,7 +57,7 @@ public:
     /// @brief Constructor of the class
     /// @param channel a specific DMA channel number to allocate
     /// @param cfg  the DMA configuration data structure
-    HW_DMA(struct_ConfigDMA cfg);
+    HW_DMA(irq_num_t irq_number, irq_handler_t dma_irq_handler = NULL);
 
     /// @brief Destructor of the class, free the allocated DMA channel
     ~HW_DMA();
@@ -70,11 +68,12 @@ public:
     /// @param source_address the source address
     /// @param start if true, start the DMA transfer immediately
     /// @return error code
-    int xfer_mem2mem(struct_ConfigDMA *cfg,
+    int xfer_mem2mem(uint32_t number_of_transfer,
                      dma_channel_transfer_size_t transfer_size,
                      volatile void *destination_address,
                      volatile void *source_address,
                      bool start);
+
 
     /// @brief the function member used to move data from memory to I2C peripheral
     /// @param i2c the I2C instance, can be i2c0 or i2c1

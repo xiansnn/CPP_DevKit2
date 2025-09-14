@@ -39,18 +39,6 @@ SemaphoreHandle_t data_ready = xSemaphoreCreateBinary();
 void end_of_TX_DMA_xfer_handler();
 void end_of_RX_DMA_xfer_handler();
 
-static struct_ConfigDMA dma_tx_cfg = {
-    .transfer_size = DMA_SIZE_16,
-    .number_of_transfer = TEST_SIZE,
-    .dma_irq_handler = end_of_TX_DMA_xfer_handler,
-    .irq_number = DMA_IRQ_1};
-
-static struct_ConfigDMA dma_rx_cfg = {
-    .transfer_size = DMA_SIZE_16,
-    .number_of_transfer = TEST_SIZE,
-    .dma_irq_handler = end_of_RX_DMA_xfer_handler,
-    .irq_number = DMA_IRQ_0};
-
 static struct_ConfigMasterSPI spi_cfg = {
     .spi = spi1,
     .sck_pin = SPI_SCK_PIN,
@@ -60,18 +48,20 @@ static struct_ConfigMasterSPI spi_cfg = {
     .baud_rate_Hz = SPI_BAUD_RATE,
     .transfer_size = 16};
 
-rtos_HW_SPI_Master master = rtos_HW_SPI_Master(spi_cfg, dma_tx_cfg, dma_rx_cfg);
+rtos_HW_SPI_Master spi_master = rtos_HW_SPI_Master(spi_cfg,
+                                               DMA_IRQ_1, end_of_TX_DMA_xfer_handler,
+                                               DMA_IRQ_0, end_of_RX_DMA_xfer_handler);
 
 void end_of_TX_DMA_xfer_handler()
 {
     p3.hi();
-    master.spi_tx_dma_isr();
+    spi_master.spi_tx_dma_isr();
     p3.lo();
 }
 void end_of_RX_DMA_xfer_handler()
 {
     p7.hi();
-    master.spi_rx_dma_isr();
+    spi_master.spi_rx_dma_isr();
     p7.lo();
 }
 void vIdleTask(void *pxProbe)
@@ -111,10 +101,10 @@ void vSpi_sending_task(void *param)
         xQueueReceive(spi_tx_data_queue, &data_to_send, portMAX_DELAY);
         p2.hi();
 
-        master.burst_read_16(rxbuf, TEST_SIZE);
-        master.burst_write_16((uint16_t *)(data_to_send.data), TEST_SIZE);
-        
-        xSemaphoreTake(master.dma_rx->end_of_xfer, portMAX_DELAY); // can be necessary to wait for the end of RX. Possible race condition
+        spi_master.burst_read_16(rxbuf, TEST_SIZE);
+        spi_master.burst_write_16((uint16_t *)(data_to_send.data), TEST_SIZE);
+
+        xSemaphoreTake(spi_master.dma_rx->end_of_xfer, portMAX_DELAY); // can be necessary to wait for the end of RX. Possible race condition
         // xSemaphoreTake(master.dma_tx->end_of_xfer, portMAX_DELAY); // can be necessary to wait for the end of RX. Possible race condition
         xSemaphoreGive(data_ready);
         p2.lo();

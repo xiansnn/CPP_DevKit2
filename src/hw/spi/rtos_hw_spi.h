@@ -45,8 +45,8 @@ public:
    * @param master_config
    */
   rtos_HW_SPI_Master(struct_ConfigMasterSPI master_config,
-                     struct_ConfigDMA tx_dma_config,
-                     struct_ConfigDMA rx_dma_config);
+                     irq_num_t dma_tx_irq_number, irq_handler_t dma_tx_irq_handler,
+                     irq_num_t dma_rx_irq_number, irq_handler_t dma_rx_irq_handler);
   ~rtos_HW_SPI_Master();
 
   /**
@@ -59,7 +59,7 @@ public:
   int burst_write_8(uint8_t *src, size_t len);
 
   /**
-   * @brief send a serie of 16 bit data on the SPI MOSI port. 
+   * @brief send a serie of 16 bit data on the SPI MOSI port.
    * Use DMA.
    *
    * @param src the source of the data
@@ -68,7 +68,7 @@ public:
    */
   int burst_write_16(uint16_t *src, size_t len);
 
-  /// @brief read a serie of 16 bit data on the SPI MISO port. 
+  /// @brief read a serie of 16 bit data on the SPI MISO port.
   /// Use DMA.
   /// @param dst the destination of the data
   /// @param len the length of the serie

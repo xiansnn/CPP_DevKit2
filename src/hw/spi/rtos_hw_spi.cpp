@@ -2,12 +2,12 @@
 #include "rtos_hw_spi.h"
 
 rtos_HW_SPI_Master::rtos_HW_SPI_Master(struct_ConfigMasterSPI master_config,
-                                       struct_ConfigDMA tx_dma_config,
-                                       struct_ConfigDMA rx_dma_config)
+                                       irq_num_t dma_tx_irq_number, irq_handler_t dma_tx_irq_handler,
+                                       irq_num_t dma_rx_irq_number, irq_handler_t dma_rx_irq_handler)
     : HW_SPI_Master(master_config)
 {
-    dma_rx = new HW_DMA(rx_dma_config);
-    dma_tx = new HW_DMA(tx_dma_config);
+    dma_rx = new HW_DMA(dma_rx_irq_number,dma_rx_irq_handler);
+    dma_tx = new HW_DMA(dma_tx_irq_number,dma_tx_irq_handler);
 }
 
 rtos_HW_SPI_Master::~rtos_HW_SPI_Master()
