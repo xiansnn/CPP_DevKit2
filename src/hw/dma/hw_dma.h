@@ -43,6 +43,7 @@ struct struct_ConfigDMA
 class HW_DMA
 {
 private:
+    /// @brief
     dma_channel_config c;
 
 public:
@@ -73,28 +74,6 @@ public:
                      volatile void *destination_address,
                      volatile void *source_address,
                      bool start);
-
-    /// @brief the function member used to move data from SPI peripheral to DMA channel
-    /// @param spi  the SPI instance, can be spi0 or spi1
-    /// @param source_address  the read address
-    /// @param number_of_transfers  the number of transfers
-    /// @param start  if true, start the DMA transfer immediately
-    /// @return error code
-    int xfer_dma2spi(spi_inst_t *spi,
-                     volatile void *source_address,
-                     uint32_t number_of_transfers,
-                     bool start = true); // TODO move to SPI
-
-    /// @brief the function member used to move data from SPI peripheral to DMA channel
-    /// @param spi  the SPI instance, can be spi0 or spi1
-    /// @param destination_address  the destination address
-    /// @param number_of_transfers  the number of transfers
-    /// @param start  if true, start the DMA transfer immediately
-    /// @return error code
-    int xfer_spi2dma(spi_inst_t *spi,
-                     volatile void *destination_address,
-                     uint32_t number_of_transfers,
-                     bool start = true); // TODO move to SPI
 
     /// @brief the function member used to move data from memory to I2C peripheral
     /// @param i2c the I2C instance, can be i2c0 or i2c1

@@ -46,44 +46,6 @@ int HW_DMA::xfer_mem2mem(struct_ConfigDMA *cfg,
     return error;
 }
 
-error_t HW_DMA::xfer_dma2spi(spi_inst_t *spi,
-                             volatile void *source_address,
-                             uint32_t number_of_transfers,
-                             bool start)
-{
-    error_t error = pico_error_codes::PICO_ERROR_NONE;
-
-    channel_config_set_dreq(&c, spi_get_dreq(spi, true));
-    channel_config_set_read_increment(&c, true);
-    channel_config_set_write_increment(&c, false);
-
-    dma_channel_configure(this->channel, &c,
-                          &spi_get_hw(spi)->dr,
-                          source_address,
-                          number_of_transfers,
-                          start);
-    return error;
-}
-
-error_t HW_DMA::xfer_spi2dma(spi_inst_t *spi,
-                             volatile void *destination_address,
-                             uint32_t number_of_transfers,
-                             bool start)
-{
-    error_t error = pico_error_codes::PICO_ERROR_NONE;
-
-    channel_config_set_dreq(&c, spi_get_dreq(spi, false));
-    channel_config_set_read_increment(&c, false);
-    channel_config_set_write_increment(&c, true);
-
-    dma_channel_configure(this->channel, &c,
-                          destination_address,  // write address
-                          &spi_get_hw(spi)->dr, // read address
-                          number_of_transfers,  // element count (each element is of size transfer_data_size)
-                          start);               // don't start yet
-    return error;
-}
-
 error_t HW_DMA::xfer_dma2i2c(i2c_inst_t *i2c, uint8_t slave_address, uint8_t slave_mem_addr, irq_handler_t i2c_handler,
                              volatile uint8_t *read_address, size_t length, bool start)
 {
