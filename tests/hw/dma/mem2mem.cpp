@@ -13,14 +13,14 @@ Probe p3 = Probe(3);
 
 void m2m_dma_handler();
 
-HW_DMA dma = HW_DMA();
+HW_DMA dma = HW_DMA(DMA_IRQ_0, m2m_dma_handler);
 
-static struct_ConfigDMA cfg_dma{
-    .transfer_size = DMA_SIZE_16,
-    .number_of_transfer = TEST_SIZE,
-    .dma_irq_handler = m2m_dma_handler,
-    .irq_number = DMA_IRQ_0,
-};
+// static struct_ConfigDMA cfg_dma{
+//     .transfer_size = DMA_SIZE_16,
+//     .number_of_transfer = TEST_SIZE,
+//     .dma_irq_handler = m2m_dma_handler,
+//     .irq_number = DMA_IRQ_0,
+// };
 
 static uint16_t read_buf[TEST_SIZE];
 static uint16_t write_buf[TEST_SIZE];
@@ -45,8 +45,7 @@ int main()
     while (true)
     {
         p0.hi();
-        dma.xfer_mem2mem(&cfg_dma, write_buf, read_buf, false);
-
+        dma.xfer_mem2mem(TEST_SIZE, DMA_SIZE_16,write_buf,read_buf,false);
         p1.hi();
         dma.start_dma();
         dma_channel_wait_for_finish_blocking(dma.channel);
@@ -64,7 +63,7 @@ int main()
         printf("All good\n");
         p3.lo();
 
-        dma.cleanup_and_free_dma_channel();
+        // dma.cleanup_and_free_dma_channel();
         p0.lo();
 
         sleep_ms(500);
