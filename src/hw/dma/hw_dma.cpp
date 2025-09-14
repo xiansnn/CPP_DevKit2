@@ -7,8 +7,8 @@ HW_DMA::HW_DMA(struct_ConfigDMA cfg)
 
     this->irq_number = cfg.irq_number;
     this->channel = dma_claim_unused_channel(true);
-    this->c = dma_channel_get_default_config(this->channel);
-    channel_config_set_transfer_data_size(&this->c, cfg.transfer_size);
+    // this->c = dma_channel_get_default_config(this->channel);
+    // channel_config_set_transfer_data_size(&this->c, cfg.transfer_size);
     if (cfg.dma_irq_handler != NULL)
     {
         if (irq_number == irq_num_t::DMA_IRQ_0)
@@ -27,14 +27,18 @@ HW_DMA::~HW_DMA()
 }
 
 int HW_DMA::xfer_mem2mem(struct_ConfigDMA *cfg,
+                         dma_channel_transfer_size_t transfer_size,
                          volatile void *write_address,
                          volatile void *read_address,
                          bool start)
 {
     int error = pico_error_codes::PICO_ERROR_NONE;
 
-    channel_config_set_read_increment(&this->c, true);
-    channel_config_set_write_increment(&this->c, true);
+    dma_channel_config c = dma_channel_get_default_config(this->channel);
+    channel_config_set_transfer_data_size(&c, transfer_size);
+
+    channel_config_set_read_increment(&c, true);
+    channel_config_set_write_increment(&c, true);
 
     dma_channel_configure(this->channel,           // Channel to be configured
                           &c,                      // The configuration we just created
@@ -50,15 +54,18 @@ error_t HW_DMA::xfer_dma2i2c(i2c_inst_t *i2c, uint8_t slave_address, uint8_t sla
                              volatile uint8_t *read_address, size_t length, bool start)
 {
     error_t error = pico_error_codes::PICO_ERROR_NONE;
+
+    
     uint16_t tx_buffer[I2C_BURST_SIZE];
     size_t tx_remaining;
     size_t chunk;
-
+    
     // prepare DMA for I2C TX
-
+    
     this->channel = dma_claim_unused_channel(true);
     dma_channel_cleanup(channel);
-    this->c = dma_channel_get_default_config(channel);
+    dma_channel_config c = dma_channel_get_default_config(this->channel);
+    c = dma_channel_get_default_config(channel);
     channel_config_set_transfer_data_size(&c, DMA_SIZE_16);
     channel_config_set_dreq(&c, i2c_get_dreq(i2c, true));
     channel_config_set_read_increment(&c, true);
@@ -120,7 +127,7 @@ error_t HW_DMA::xfer_i2c2dma(i2c_inst_t *i2c, uint8_t slave_address, uint8_t sla
 
     this->channel = dma_claim_unused_channel(true);
     dma_channel_cleanup(channel);
-    this->c = dma_channel_get_default_config(channel);
+    dma_channel_config c = dma_channel_get_default_config(this->channel);
     channel_config_set_transfer_data_size(&c, DMA_SIZE_16);
     channel_config_set_dreq(&c, i2c_get_dreq(i2c, false));
     channel_config_set_read_increment(&c, false);

@@ -43,8 +43,8 @@ struct struct_ConfigDMA
 class HW_DMA
 {
 private:
-    /// @brief
-    dma_channel_config c;
+    // /// @brief
+    // dma_channel_config c;
 
 public:
     /// @brief the IRQ number for the DMA channel, can be DMA_IRQ_0 or DMA_IRQ_1
@@ -71,6 +71,7 @@ public:
     /// @param start if true, start the DMA transfer immediately
     /// @return error code
     int xfer_mem2mem(struct_ConfigDMA *cfg,
+                     dma_channel_transfer_size_t transfer_size,
                      volatile void *destination_address,
                      volatile void *source_address,
                      bool start);
