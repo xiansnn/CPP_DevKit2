@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data_0',['data',['../class_m_p_u6050.html#a524c486b1dc1716814f62dea03a62577',1,'MPU6050']]],
+  ['data_0',['data',['../class_m_p_u6050.html#a524c486b1dc1716814f62dea03a62577',1,'MPU6050::data'],['../structstruct___t_x___data_queue_s_p_i.html#a14d1c30a30a41d0b3e14793857628582',1,'struct_TX_DataQueueSPI::data']]],
   ['dc_5fpin_1',['dc_pin',['../structstruct___config_s_t7735.html#a7f1508e4852977176ee2b9ac0c6f2758',1,'struct_ConfigST7735']]],
   ['dcx_5fcommand_2',['DCX_COMMAND',['../st7735_8h.html#abd8eb27d364a32890e54dcc50dbedb66',1,'st7735.h']]],
   ['dcx_5fdata_3',['DCX_DATA',['../st7735_8h.html#acdfd958913e851196c73b8ac8052679a',1,'st7735.h']]],
@@ -18,11 +18,13 @@ var searchData=
   ['display_5ftype_15',['display_type',['../structstruct___config_s_t7735.html#ace8c802f5f1afb38d68bed3840a4698b',1,'struct_ConfigST7735']]],
   ['displaydevice_16',['DisplayDevice',['../class_display_device.html',1,'']]],
   ['dlpf_5fbw_17',['DLPF_BW',['../structstruct___config_m_p_u6050.html#afefb9507ba1cf36365f5108a28723820',1,'struct_ConfigMPU6050']]],
-  ['documentation_18',['Introduction to CPP_DevKit documentation',['../index.html',1,'']]],
-  ['double_5fpush_19',['DOUBLE_PUSH',['../ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32a7f9117be5ae4af6fadbf2c87f360c120',1,'ui_control_event.h']]],
-  ['draw_20',['draw',['../class_widget.html#ae48262adfd76a5df4fcc892485d942a6',1,'Widget::draw()'],['../class_text_widget.html#a34e2f1558ebd76f1dbfb3cbfdf0e7894',1,'TextWidget::draw()'],['../class_widget_horizontal_bargraph.html#ac51fc7454f00e12c47c507b449a1b0b0',1,'WidgetHorizontalBargraph::draw()'],['../class_widget_vertical_bargraph.html#a938fef5332131013fe1f7e31f7629f41',1,'WidgetVerticalBargraph::draw()'],['../class_widget_horizontal_bar.html#a73f6c8198a940ad2803367e5712f3359',1,'WidgetHorizontalBar::draw()'],['../class_widget_square_led.html#a73764f45091e9a4dde223262cd63256b',1,'WidgetSquareLed::draw()'],['../class_widget_blinking_square_led.html#a61b2b883fa16f46dbdc510133b378459',1,'WidgetBlinkingSquareLed::draw()']]],
-  ['draw_5fborder_21',['draw_border',['../class_graphic_widget.html#ac2a3a4387a699f25407c71a90b55eeab',1,'GraphicWidget::draw_border()'],['../class_text_widget.html#ab82666ba03e577d92dc32be8384318cd',1,'TextWidget::draw_border()']]],
-  ['draw_5fpixel_22',['draw_pixel',['../class_canvas.html#a5b11b9d081c76790cf195964fface64b',1,'Canvas::draw_pixel()'],['../class_canvas_v_l_s_b.html#ad9730b156e3ca8449b296ad7392d07ee',1,'CanvasVLSB::draw_pixel()'],['../class_canvas_r_g_b.html#ae9474f2a6680de4013e4493acab82f5b',1,'CanvasRGB::draw_pixel()'],['../class_canvas_h_m_s_b.html#a04c0a63d53d9c0db1495827b9fffc79a',1,'CanvasHMSB::draw_pixel()']]],
-  ['draw_5frefresh_5fall_5fattached_5fwidgets_23',['draw_refresh_all_attached_widgets',['../class_model.html#a9038912d8fa59bdfcd8b68f1c22486c2',1,'Model']]],
-  ['draw_5fwidget_5fdone_24',['draw_widget_done',['../class_model.html#a617d6bc4132350008952369a96cdc4d0',1,'Model']]]
+  ['dma_5frx_18',['dma_rx',['../classrtos___h_w___s_p_i___master.html#add80821952b0fde7bba7f9f2f19b568d',1,'rtos_HW_SPI_Master']]],
+  ['dma_5ftx_19',['dma_tx',['../classrtos___h_w___s_p_i___master.html#ac33eeb96d3e8e0e0ead1a03650964063',1,'rtos_HW_SPI_Master']]],
+  ['documentation_20',['Introduction to CPP_DevKit documentation',['../index.html',1,'']]],
+  ['double_5fpush_21',['DOUBLE_PUSH',['../ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32a7f9117be5ae4af6fadbf2c87f360c120',1,'ui_control_event.h']]],
+  ['draw_22',['draw',['../class_widget.html#ae48262adfd76a5df4fcc892485d942a6',1,'Widget::draw()'],['../class_text_widget.html#a34e2f1558ebd76f1dbfb3cbfdf0e7894',1,'TextWidget::draw()'],['../class_widget_horizontal_bargraph.html#ac51fc7454f00e12c47c507b449a1b0b0',1,'WidgetHorizontalBargraph::draw()'],['../class_widget_vertical_bargraph.html#a938fef5332131013fe1f7e31f7629f41',1,'WidgetVerticalBargraph::draw()'],['../class_widget_horizontal_bar.html#a73f6c8198a940ad2803367e5712f3359',1,'WidgetHorizontalBar::draw()'],['../class_widget_square_led.html#a73764f45091e9a4dde223262cd63256b',1,'WidgetSquareLed::draw()'],['../class_widget_blinking_square_led.html#a61b2b883fa16f46dbdc510133b378459',1,'WidgetBlinkingSquareLed::draw()']]],
+  ['draw_5fborder_23',['draw_border',['../class_graphic_widget.html#ac2a3a4387a699f25407c71a90b55eeab',1,'GraphicWidget::draw_border()'],['../class_text_widget.html#ab82666ba03e577d92dc32be8384318cd',1,'TextWidget::draw_border()']]],
+  ['draw_5fpixel_24',['draw_pixel',['../class_canvas.html#a5b11b9d081c76790cf195964fface64b',1,'Canvas::draw_pixel()'],['../class_canvas_v_l_s_b.html#ad9730b156e3ca8449b296ad7392d07ee',1,'CanvasVLSB::draw_pixel()'],['../class_canvas_r_g_b.html#ae9474f2a6680de4013e4493acab82f5b',1,'CanvasRGB::draw_pixel()'],['../class_canvas_h_m_s_b.html#a04c0a63d53d9c0db1495827b9fffc79a',1,'CanvasHMSB::draw_pixel()']]],
+  ['draw_5frefresh_5fall_5fattached_5fwidgets_25',['draw_refresh_all_attached_widgets',['../class_model.html#a9038912d8fa59bdfcd8b68f1c22486c2',1,'Model']]],
+  ['draw_5fwidget_5fdone_26',['draw_widget_done',['../class_model.html#a617d6bc4132350008952369a96cdc4d0',1,'Model']]]
 ];

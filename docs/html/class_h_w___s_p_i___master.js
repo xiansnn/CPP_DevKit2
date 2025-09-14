@@ -8,5 +8,6 @@ var class_h_w___s_p_i___master =
     [ "device_is_connected", "class_h_w___s_p_i___master.html#a860b5f5a07b99bd787ab3936abec15b3", null ],
     [ "single_read_8", "class_h_w___s_p_i___master.html#a8fbf8cf64d396f28f12eb1f1ff880f83", null ],
     [ "single_write_16", "class_h_w___s_p_i___master.html#aeb3add8b799b7820c696653b31c21801", null ],
-    [ "single_write_8", "class_h_w___s_p_i___master.html#a9e6e3c1c0480d1eac20e66de3757bc8a", null ]
+    [ "single_write_8", "class_h_w___s_p_i___master.html#a9e6e3c1c0480d1eac20e66de3757bc8a", null ],
+    [ "spi", "class_h_w___s_p_i___master.html#aa2eca5b3bd4f87655d7c413cf7b0e817", null ]
 ];

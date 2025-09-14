@@ -24,7 +24,9 @@ var hierarchy =
       [ "rtos_HW_I2C_Master", "classrtos___h_w___i2_c___master.html", null ]
     ] ],
     [ "HW_I2C_Slave", "class_h_w___i2_c___slave.html", null ],
-    [ "HW_SPI_Master", "class_h_w___s_p_i___master.html", null ],
+    [ "HW_SPI_Master", "class_h_w___s_p_i___master.html", [
+      [ "rtos_HW_SPI_Master", "classrtos___h_w___s_p_i___master.html", null ]
+    ] ],
     [ "Model", "class_model.html", [
       [ "ModelBargraph", "class_model_bargraph.html", null ],
       [ "UIControlledModel", "class_u_i_controlled_model.html", [
@@ -44,7 +46,6 @@ var hierarchy =
       [ "rtosRotaryEncoder", "classrtos_rotary_encoder.html", null ]
     ] ],
     [ "SG90", "class_s_g90.html", null ],
-    [ "struct_ConfigDMA", "structstruct___config_d_m_a.html", null ],
     [ "struct_ConfigGraphicWidget", "structstruct___config_graphic_widget.html", null ],
     [ "struct_ConfigMasterI2C", "structstruct___config_master_i2_c.html", null ],
     [ "struct_ConfigMasterSPI", "structstruct___config_master_s_p_i.html", null ],
@@ -69,6 +70,7 @@ var hierarchy =
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", null ],
     [ "struct_SwitchButtonIRQData", "structstruct___switch_button_i_r_q_data.html", null ],
     [ "struct_TX_DataQueueI2C", "structstruct___t_x___data_queue_i2_c.html", null ],
+    [ "struct_TX_DataQueueSPI", "structstruct___t_x___data_queue_s_p_i.html", null ],
     [ "SwitchButton", "class_switch_button.html", [
       [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", [
         [ "RotaryEncoder", "class_rotary_encoder.html", null ]

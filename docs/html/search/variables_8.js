@@ -9,7 +9,7 @@ var searchData=
   ['increment_6',['increment',['../class_u_i_controlled_incremental_value.html#a02a7a8031bd9fee1ecaabc5cbcac48c7',1,'UIControlledIncrementalValue']]],
   ['int_5fenable_7',['INT_ENABLE',['../structstruct___config_m_p_u6050.html#a314eaf94831a298d1a6f3c4151550d6c',1,'struct_ConfigMPU6050']]],
   ['int_5fpin_5fcfg_8',['INT_PIN_CFG',['../structstruct___config_m_p_u6050.html#ade7f01f848248106b52b5073cfd967b6',1,'struct_ConfigMPU6050']]],
-  ['irq_5fnumber_9',['irq_number',['../structstruct___config_d_m_a.html#af0278308b12d782f1e06862f96dd4b41',1,'struct_ConfigDMA']]],
+  ['irq_5fnumber_9',['irq_number',['../class_h_w___d_m_a.html#a40b855940b730c2ac0d583f9e4d41be3',1,'HW_DMA']]],
   ['is_5fvalid_10',['is_valid',['../structstruct___d_h_t_reading.html#ac02a8974d21885a59e1e3552921ccd1b',1,'struct_DHTReading']]],
   ['is_5fwrappable_11',['is_wrappable',['../class_u_i_controlled_incremental_value.html#a73b3a10b2774cf4ce94902925ffc9ad9',1,'UIControlledIncrementalValue']]]
 ];

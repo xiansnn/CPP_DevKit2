@@ -24,7 +24,7 @@ var searchData=
   ['interrupt_5fservice_5froutine_21',['interrupt_service_routine',['../class_rotary_encoder.html#ae7ad35ae64d2b815c25ac72a51702e6f',1,'RotaryEncoder']]],
   ['introduction_20to_20cpp_5fdevkit_20documentation_22',['Introduction to CPP_DevKit documentation',['../index.html',1,'']]],
   ['irq_5fenabled_23',['irq_enabled',['../class_switch_button_with_i_r_q.html#a261dc80eca218e3733c6a0cf637c25e8',1,'SwitchButtonWithIRQ']]],
-  ['irq_5fnumber_24',['irq_number',['../structstruct___config_d_m_a.html#af0278308b12d782f1e06862f96dd4b41',1,'struct_ConfigDMA']]],
+  ['irq_5fnumber_24',['irq_number',['../class_h_w___d_m_a.html#a40b855940b730c2ac0d583f9e4d41be3',1,'HW_DMA']]],
   ['is_5factive_25',['IS_ACTIVE',['../ui__core_8h.html#a57c20ec1ef250b4ad060705786762112a70d794d2a66b3ed4d2b0ff57d41b7089',1,'ui_core.h']]],
   ['is_5fdata_5fready_26',['is_data_ready',['../class_m_p_u6050.html#ac6f4794ef371942d4e8e29231957ab6b',1,'MPU6050']]],
   ['is_5fswitch_5fpushed_27',['is_switch_pushed',['../classrtos_switch_button.html#add2f018aa5d077d68a9bc7c6bb4c4d38',1,'rtosSwitchButton::is_switch_pushed()'],['../class_switch_button.html#a3361ae31699ad49821d25ee53210f6d7',1,'SwitchButton::is_switch_pushed()']]],

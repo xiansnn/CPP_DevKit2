@@ -15,7 +15,7 @@ var searchData=
   ['slave_5faddress_12',['slave_address',['../structstruct___config_slave_i2_c.html#af7f59b731d8464999028a1128f646734',1,'struct_ConfigSlaveI2C']]],
   ['slave_5fmemory_5fsize_13',['slave_memory_size',['../structstruct___config_slave_i2_c.html#a1205b1fcda3c452180f907d95d47e7c6',1,'struct_ConfigSlaveI2C']]],
   ['slice_5fmask_14',['slice_mask',['../class_p_w_m.html#ac95700cb79b54ce3babf273df156b561',1,'PWM']]],
-  ['spi_15',['spi',['../structstruct___config_master_s_p_i.html#a7d5244cc6e90ea4b569a58d18c41647e',1,'struct_ConfigMasterSPI']]],
+  ['spi_15',['spi',['../structstruct___config_master_s_p_i.html#a7d5244cc6e90ea4b569a58d18c41647e',1,'struct_ConfigMasterSPI::spi'],['../class_h_w___s_p_i___master.html#aa2eca5b3bd4f87655d7c413cf7b0e817',1,'HW_SPI_Master::spi']]],
   ['spi_5fpolarity_16',['spi_polarity',['../structstruct___config_master_s_p_i.html#ad2e47bcc07fef5657635598cb6bcea43',1,'struct_ConfigMasterSPI']]],
   ['start_5fcol_17',['start_col',['../structstruct___render_area.html#aaf82ae38396397c4c819495ea98f7bbe',1,'struct_RenderArea']]],
   ['start_5fpage_18',['start_page',['../structstruct___render_area.html#ad3cf4c69b7461c68c5ad187e11362467',1,'struct_RenderArea']]],

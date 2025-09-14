@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['xfer_5fdma2i2c_0',['xfer_dma2i2c',['../class_h_w___d_m_a.html#a450d99ac29ae829bbbe2c9b4ad60197a',1,'HW_DMA']]],
-  ['xfer_5fdma2spi_1',['xfer_dma2spi',['../class_h_w___d_m_a.html#ae2f71542331c32b3ca128796b4a79a7e',1,'HW_DMA']]],
-  ['xfer_5fi2c2dma_2',['xfer_i2c2dma',['../class_h_w___d_m_a.html#a20803737b3b7fcc05d1239be59606e70',1,'HW_DMA']]],
-  ['xfer_5fmem2mem_3',['xfer_mem2mem',['../class_h_w___d_m_a.html#a35fec3e7ddd0c2f0c9a2681931b0191e',1,'HW_DMA']]],
-  ['xfer_5fspi2dma_4',['xfer_spi2dma',['../class_h_w___d_m_a.html#a549a00cc265ba675d0dcfdab202ec1a7',1,'HW_DMA']]]
+  ['xfer_5fdma2i2c_0',['xfer_dma2i2c',['../class_h_w___d_m_a.html#aa94d736e33297a4dd55db325c3fe1069',1,'HW_DMA']]],
+  ['xfer_5fi2c2dma_1',['xfer_i2c2dma',['../class_h_w___d_m_a.html#ab0c0dbef5faeb3ba16ccd344139eca3b',1,'HW_DMA']]],
+  ['xfer_5fmem2mem_2',['xfer_mem2mem',['../class_h_w___d_m_a.html#a4f25011f38559e5a73c64a83ac424459',1,'HW_DMA']]]
 ];

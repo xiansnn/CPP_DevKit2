@@ -25,11 +25,13 @@ var searchData=
   ['single_5fwrite_5f16_22',['single_write_16',['../class_h_w___s_p_i___master.html#aeb3add8b799b7820c696653b31c21801',1,'HW_SPI_Master']]],
   ['single_5fwrite_5f8_23',['single_write_8',['../class_h_w___s_p_i___master.html#a9e6e3c1c0480d1eac20e66de3757bc8a',1,'HW_SPI_Master']]],
   ['slave_5fisr_24',['slave_isr',['../class_h_w___i2_c___slave.html#ad1cd7139bba4bb865c6da8d08ff7dacd',1,'HW_I2C_Slave']]],
-  ['ssd1306_25',['SSD1306',['../class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b',1,'SSD1306']]],
-  ['st7735_26',['ST7735',['../class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8',1,'ST7735']]],
-  ['start_27',['start',['../class_p_w_m.html#ae21be3a643267ca4f69be8d99fdfb06a',1,'PWM']]],
-  ['start_5fdma_28',['start_dma',['../class_h_w___d_m_a.html#a7a302596f00968cd3e9fb43da92b88a0',1,'HW_DMA']]],
-  ['starttogether_29',['StartTogether',['../class_p_w_m.html#abac2f8531ce95dd465b80ae8c3344e39',1,'PWM']]],
-  ['switchbutton_30',['SwitchButton',['../class_switch_button.html#a750d21f333405881df2ef91495885a29',1,'SwitchButton']]],
-  ['switchbuttonwithirq_31',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html#aafb53c306bcbb5c681caae03b778f517',1,'SwitchButtonWithIRQ']]]
+  ['spi_5frx_5fdma_5fisr_25',['spi_rx_dma_isr',['../classrtos___h_w___s_p_i___master.html#aa46e5565740e6e7496cd6483b57af5c9',1,'rtos_HW_SPI_Master']]],
+  ['spi_5ftx_5fdma_5fisr_26',['spi_tx_dma_isr',['../classrtos___h_w___s_p_i___master.html#a34b181ea40187a33060f02b5ecf0fb3a',1,'rtos_HW_SPI_Master']]],
+  ['ssd1306_27',['SSD1306',['../class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b',1,'SSD1306']]],
+  ['st7735_28',['ST7735',['../class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8',1,'ST7735']]],
+  ['start_29',['start',['../class_p_w_m.html#ae21be3a643267ca4f69be8d99fdfb06a',1,'PWM']]],
+  ['start_5fdma_30',['start_dma',['../class_h_w___d_m_a.html#a7a302596f00968cd3e9fb43da92b88a0',1,'HW_DMA']]],
+  ['starttogether_31',['StartTogether',['../class_p_w_m.html#abac2f8531ce95dd465b80ae8c3344e39',1,'PWM']]],
+  ['switchbutton_32',['SwitchButton',['../class_switch_button.html#a750d21f333405881df2ef91495885a29',1,'SwitchButton']]],
+  ['switchbuttonwithirq_33',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html#aafb53c306bcbb5c681caae03b778f517',1,'SwitchButtonWithIRQ']]]
 ];
