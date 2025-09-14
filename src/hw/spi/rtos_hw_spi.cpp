@@ -6,8 +6,8 @@ rtos_HW_SPI_Master::rtos_HW_SPI_Master(struct_ConfigMasterSPI master_config,
                                        irq_num_t dma_rx_irq_number, irq_handler_t dma_rx_irq_handler)
     : HW_SPI_Master(master_config)
 {
-    dma_rx = new HW_DMA(dma_rx_irq_number,dma_rx_irq_handler);
-    dma_tx = new HW_DMA(dma_tx_irq_number,dma_tx_irq_handler);
+    dma_rx = new HW_DMA(dma_rx_irq_number, dma_rx_irq_handler);
+    dma_tx = new HW_DMA(dma_tx_irq_number, dma_tx_irq_handler);
 }
 
 rtos_HW_SPI_Master::~rtos_HW_SPI_Master()
@@ -75,12 +75,14 @@ int rtos_HW_SPI_Master::burst_read_8(uint8_t repeated_tx_data, uint8_t *dest, si
 
 void rtos_HW_SPI_Master::spi_tx_dma_isr()
 {
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
     if (this->dma_tx->irq_number == irq_num_t::DMA_IRQ_0)
     {
         if (dma_hw->ints0 & (1u << this->dma_tx->channel))
         {
             dma_hw->ints0 = (1u << this->dma_tx->channel); // Clear IRQ
-            xSemaphoreGiveFromISR(this->dma_tx->end_of_xfer, NULL);
+            xSemaphoreGiveFromISR(this->dma_tx->end_of_xfer, &xHigherPriorityTaskWoken);
+            portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
         }
     }
     else
@@ -88,19 +90,22 @@ void rtos_HW_SPI_Master::spi_tx_dma_isr()
         if (dma_hw->ints1 & (1u << this->dma_tx->channel))
         {
             dma_hw->ints1 = (1u << this->dma_tx->channel); // Clear IRQ
-            xSemaphoreGiveFromISR(this->dma_tx->end_of_xfer, NULL);
+            xSemaphoreGiveFromISR(this->dma_tx->end_of_xfer, &xHigherPriorityTaskWoken);
+            portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
         }
     }
 }
 
 void rtos_HW_SPI_Master::spi_rx_dma_isr()
 {
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
     if (this->dma_rx->irq_number == irq_num_t::DMA_IRQ_0)
     {
         if (dma_hw->ints0 & (1u << this->dma_rx->channel))
         {
             dma_hw->ints0 = (1u << this->dma_rx->channel); // Clear IRQ
-            xSemaphoreGiveFromISR(this->dma_rx->end_of_xfer, NULL);
+            xSemaphoreGiveFromISR(this->dma_rx->end_of_xfer, &xHigherPriorityTaskWoken);
+            portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
         }
     }
     else
@@ -108,7 +113,8 @@ void rtos_HW_SPI_Master::spi_rx_dma_isr()
         if (dma_hw->ints1 & (1u << this->dma_rx->channel))
         {
             dma_hw->ints1 = (1u << this->dma_rx->channel); // Clear IRQ
-            xSemaphoreGiveFromISR(this->dma_rx->end_of_xfer, NULL);
+            xSemaphoreGiveFromISR(this->dma_rx->end_of_xfer, &xHigherPriorityTaskWoken);
+            portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
         }
     }
 }
