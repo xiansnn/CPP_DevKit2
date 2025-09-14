@@ -17,8 +17,8 @@ HW_DMA dma = HW_DMA();
 
 static struct_ConfigDMA cfg_dma{
     .transfer_size = DMA_SIZE_16,
-    .block_size = TEST_SIZE,
-    .handler = m2m_dma_handler,
+    .number_of_transfer = TEST_SIZE,
+    .dma_irq_handler = m2m_dma_handler,
     .irq_number = DMA_IRQ_0,
 };
 
