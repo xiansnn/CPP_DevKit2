@@ -36,20 +36,21 @@ static uint16_t txbuf[TEST_SIZE];
 QueueHandle_t spi_tx_data_queue = xQueueCreate(8, sizeof(struct_TX_DataQueueSPI));
 SemaphoreHandle_t data_ready = xSemaphoreCreateBinary();
 
-void end_of_DMA_xfer_handler();
+void end_of_TX_DMA_xfer_handler();
+void end_of_RX_DMA_xfer_handler();
 
 static struct_ConfigDMA dma_tx_cfg = {
     .transfer_size = DMA_SIZE_16,
     .block_size = TEST_SIZE,
-    // .handler = end_of_DMA_xfer_handler, // TODO voir si on peur changer rx pour tx et si on peut changer IRQ
-    // .irq_number = DMA_IRQ_0
-};
+    .handler = end_of_TX_DMA_xfer_handler,
+    .irq_number = DMA_IRQ_1};
 
 static struct_ConfigDMA dma_rx_cfg = {
     .transfer_size = DMA_SIZE_16,
     .block_size = TEST_SIZE,
-    .handler = end_of_DMA_xfer_handler,
-    .irq_number = DMA_IRQ_0};
+    .handler = end_of_RX_DMA_xfer_handler,
+    .irq_number = DMA_IRQ_0
+};
 
 static struct_ConfigMasterSPI spi_cfg = {
     .spi = spi1,
@@ -62,7 +63,13 @@ static struct_ConfigMasterSPI spi_cfg = {
 
 rtos_HW_SPI_Master master = rtos_HW_SPI_Master(spi_cfg);
 
-void end_of_DMA_xfer_handler()
+void end_of_TX_DMA_xfer_handler()
+{
+    p7.hi();
+    master.spi_tx_dma_isr();
+    p7.lo();
+}
+void end_of_RX_DMA_xfer_handler()
 {
     p7.hi();
     master.spi_rx_dma_isr();
@@ -107,7 +114,8 @@ void vSpi_sending_task(void *param)
 
         master.dma_rx->xfer_spi2dma(&spi_cfg, &dma_rx_cfg, rxbuf, true);
         master.dma_tx->xfer_dma2spi(&dma_tx_cfg, &spi_cfg, data_to_send.data, true);
-        xSemaphoreTake(master.dma_rx->end_of_xfer, portMAX_DELAY);
+        xSemaphoreTake(master.dma_rx->end_of_xfer, portMAX_DELAY); // can be necessary to wait for the end of RX. Possible race condition
+        // xSemaphoreTake(master.dma_tx->end_of_xfer, portMAX_DELAY); // can be necessary to wait for the end of RX. Possible race condition
         master.dma_tx->cleanup_and_free_dma_channel();
         master.dma_rx->cleanup_and_free_dma_channel();
         xSemaphoreGive(data_ready);
