@@ -1,20 +1,24 @@
 #include "hw_dma.h"
 
-HW_DMA::HW_DMA()
+HW_DMA::HW_DMA(struct_ConfigDMA cfg)
 {
     end_of_xfer = xSemaphoreCreateBinary();
-    TX_FIFO_empty = xSemaphoreCreateBinary();
-}
+    TX_FIFO_empty = xSemaphoreCreateBinary(); // TODO move to I2C
 
-HW_DMA::HW_DMA(uint channel, struct_ConfigDMA *cfg)
-{
-    end_of_xfer = xSemaphoreCreateBinary();
-    TX_FIFO_empty = xSemaphoreCreateBinary();
-
-    this->channel = channel;
-    this->irq_number = cfg->irq_number;
+    this->irq_number = cfg.irq_number;
+    this->channel = dma_claim_unused_channel(true);
     this->c = dma_channel_get_default_config(this->channel);
-    channel_config_set_transfer_data_size(&this->c, cfg->transfer_size);
+    channel_config_set_transfer_data_size(&this->c, cfg.transfer_size);
+    if (cfg.dma_irq_handler != NULL)
+    {
+        if (irq_number == irq_num_t::DMA_IRQ_0)
+            dma_channel_set_irq0_enabled(this->channel, true);
+        else
+            dma_channel_set_irq1_enabled(this->channel, true);
+
+        irq_set_exclusive_handler(this->irq_number, cfg.dma_irq_handler);
+        irq_set_enabled(this->irq_number, true);
+    }
 }
 
 HW_DMA::~HW_DMA()
@@ -22,102 +26,61 @@ HW_DMA::~HW_DMA()
     cleanup_and_free_dma_channel();
 }
 
-error_t HW_DMA::xfer_mem2mem(struct_ConfigDMA *cfg,
-                             volatile void *write_address,
-                             volatile void *read_address,
-                             bool start)
+int HW_DMA::xfer_mem2mem(struct_ConfigDMA *cfg,
+                         volatile void *write_address,
+                         volatile void *read_address,
+                         bool start)
 {
-    error_t error = pico_error_codes::PICO_ERROR_NONE;
+    int error = pico_error_codes::PICO_ERROR_NONE;
 
-    this->irq_number = cfg->irq_number;
-
-    this->channel = dma_claim_unused_channel(true);
-    this->c = dma_channel_get_default_config(this->channel);
-    channel_config_set_transfer_data_size(&this->c, cfg->transfer_size);
     channel_config_set_read_increment(&this->c, true);
     channel_config_set_write_increment(&this->c, true);
 
-    if (cfg->handler != NULL)
-    {
-        if (irq_number == irq_num_t::DMA_IRQ_0)
-            dma_channel_set_irq0_enabled(this->channel, true);
-        else
-            dma_channel_set_irq1_enabled(this->channel, true);
-
-        irq_set_exclusive_handler(cfg->irq_number, cfg->handler);
-        irq_set_enabled(cfg->irq_number, true);
-    }
-
-    dma_channel_configure(
-        this->channel,   // Channel to be configured
-        &c,              // The configuration we just created
-        write_address,   // The initial write address
-        read_address,    // The initial read address
-        cfg->block_size, // Number of transfers; in this case each is 1 byte.
-        start);
+    dma_channel_configure(this->channel,           // Channel to be configured
+                          &c,                      // The configuration we just created
+                          write_address,           // The initial write address
+                          read_address,            // The initial read address
+                          cfg->number_of_transfer, // Number of transfers; in this case each is 1 byte.
+                          start);
 
     return error;
 }
 
-error_t HW_DMA::xfer_dma2spi(struct_ConfigDMA *dma_cfg,
-                             struct_ConfigMasterSPI *spi_cfg,
-                             volatile void *read_address,
+error_t HW_DMA::xfer_dma2spi(spi_inst_t *spi,
+                             volatile void *source_address,
+                             uint32_t number_of_transfers,
                              bool start)
 {
     error_t error = pico_error_codes::PICO_ERROR_NONE;
-    this->irq_number = dma_cfg->irq_number;
-    this->channel = dma_claim_unused_channel(true);
-    this->c = dma_channel_get_default_config(this->channel);
-    channel_config_set_transfer_data_size(&c, dma_cfg->transfer_size);
-    channel_config_set_dreq(&c, spi_get_dreq(spi_cfg->spi, true));
+
+    channel_config_set_dreq(&c, spi_get_dreq(spi, true));
     channel_config_set_read_increment(&c, true);
     channel_config_set_write_increment(&c, false);
 
-    if (dma_cfg->handler != NULL)
-    {
-        if (irq_number == irq_num_t::DMA_IRQ_0)
-            dma_channel_set_irq0_enabled(this->channel, true);
-        else
-            dma_channel_set_irq1_enabled(this->channel, true);
-        irq_set_exclusive_handler(dma_cfg->irq_number, dma_cfg->handler);
-        irq_set_enabled(dma_cfg->irq_number, true);
-    }
-
     dma_channel_configure(this->channel, &c,
-                          &spi_get_hw(spi_cfg->spi)->dr, // write address
-                          read_address,                  // read address
-                          dma_cfg->block_size,           // element count (each element is of size transfer_data_size)
-                          start);                        // don't start yet
+                          &spi_get_hw(spi)->dr,
+                          source_address,
+                          number_of_transfers,
+                          start);
     return error;
 }
 
-error_t HW_DMA::xfer_spi2dma(struct_ConfigMasterSPI *spi_cfg, struct_ConfigDMA *dma_cfg, volatile void *write_address, bool start)
+error_t HW_DMA::xfer_spi2dma(spi_inst_t *spi,
+                             volatile void *destination_address,
+                             uint32_t number_of_transfers,
+                             bool start)
 {
     error_t error = pico_error_codes::PICO_ERROR_NONE;
-    this->irq_number = dma_cfg->irq_number;
-    this->channel = dma_claim_unused_channel(true);
-    this->c = dma_channel_get_default_config(this->channel);
-    channel_config_set_transfer_data_size(&c, dma_cfg->transfer_size);
-    channel_config_set_dreq(&c, spi_get_dreq(spi_cfg->spi, false));
+
+    channel_config_set_dreq(&c, spi_get_dreq(spi, false));
     channel_config_set_read_increment(&c, false);
     channel_config_set_write_increment(&c, true);
 
-    if (dma_cfg->handler != NULL)
-    {
-        // dma_channel_set_irq0_enabled(this->channel, true);
-        if (irq_number == irq_num_t::DMA_IRQ_0)
-            dma_channel_set_irq0_enabled(this->channel, true);
-        else
-            dma_channel_set_irq1_enabled(this->channel, true);
-        irq_set_exclusive_handler(dma_cfg->irq_number, dma_cfg->handler);
-        irq_set_enabled(dma_cfg->irq_number, true);
-    }
-
     dma_channel_configure(this->channel, &c,
-                          write_address,                 // write address
-                          &spi_get_hw(spi_cfg->spi)->dr, // read address
-                          dma_cfg->block_size,           // element count (each element is of size transfer_data_size)
-                          start);                        // don't start yet
+                          destination_address,  // write address
+                          &spi_get_hw(spi)->dr, // read address
+                          number_of_transfers,  // element count (each element is of size transfer_data_size)
+                          start);               // don't start yet
     return error;
 }
 

@@ -44,12 +44,14 @@ public:
    * @brief Construct a new hw spi master object
    * @param master_config
    */
-  rtos_HW_SPI_Master(struct_ConfigMasterSPI master_config);
+  rtos_HW_SPI_Master(struct_ConfigMasterSPI master_config,
+                     struct_ConfigDMA tx_dma_config,
+                     struct_ConfigDMA rx_dma_config);
   ~rtos_HW_SPI_Master();
 
   /**
    * @brief send a serie of 8 bit data on the SPI MOSI port
-   *
+   * DMA not implemented
    * @param src the source of the data
    * @param len the lenght of the serie
    * @return int the number of byte sent
@@ -57,37 +59,39 @@ public:
   int burst_write_8(uint8_t *src, size_t len);
 
   /**
-   * @brief send a serie of 16 bit data on the SPI MOSI port
+   * @brief send a serie of 16 bit data on the SPI MOSI port. 
+   * Use DMA.
    *
    * @param src the source of the data
    * @param len the lenght of the serie
-   * @return int the number of byte sent
+   * @return error code
    */
   int burst_write_16(uint16_t *src, size_t len);
 
-  /// @brief read a serie of 16 bit data on the SPI MISO port
-  /// @param src the source of the data
+  /// @brief read a serie of 16 bit data on the SPI MISO port. 
+  /// Use DMA.
+  /// @param dst the destination of the data
   /// @param len the length of the serie
-  /// @return int the number of byte read
-  int burst_read_16(uint16_t *src, size_t len);
+  /// @return error code
+  int burst_read_16(uint16_t *dst, size_t len);
 
   /**
    * @brief read / write a serie of 8 bit data on the SPI MISO/MOSI ports
-   *
+   * DMA not implemented
    * @param src the source of the data
    * @param dest the destination of the data
    * @param len the length of the serie
-   * @return int
+   * @return error code
    */
   int burst_write_read_8(uint8_t *src, uint8_t *dest, size_t len);
 
   /**
    * @brief read a serie of byte on the SPI MISO port
-   *
+   * DMA not implemented
    * @param repeated_tx_data the byte sent on MOSI port during the read transfer
    * @param dest the destination that receives the data
    * @param len the length of the serie
-   * @return int
+   * @return error code
    */
   int burst_read_8(uint8_t repeated_tx_data, uint8_t *dest, size_t len);
 

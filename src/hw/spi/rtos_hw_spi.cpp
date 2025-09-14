@@ -1,16 +1,20 @@
 #include "hw_spi.h"
 #include "rtos_hw_spi.h"
 
-rtos_HW_SPI_Master::rtos_HW_SPI_Master(struct_ConfigMasterSPI master_config)
+rtos_HW_SPI_Master::rtos_HW_SPI_Master(struct_ConfigMasterSPI master_config,
+                                       struct_ConfigDMA tx_dma_config,
+                                       struct_ConfigDMA rx_dma_config)
     : HW_SPI_Master(master_config)
 {
-    dma_rx = new HW_DMA();
-    dma_tx = new HW_DMA();
+    dma_rx = new HW_DMA(rx_dma_config);
+    dma_tx = new HW_DMA(tx_dma_config);
 }
 
 rtos_HW_SPI_Master::~rtos_HW_SPI_Master()
 {
     spi_deinit(spi);
+    delete dma_rx;
+    delete dma_tx;
 }
 
 int rtos_HW_SPI_Master::burst_write_8(uint8_t *src, size_t len)
@@ -22,12 +26,13 @@ int rtos_HW_SPI_Master::burst_write_8(uint8_t *src, size_t len)
 int rtos_HW_SPI_Master::burst_write_16(uint16_t *src, size_t len)
 {
     spi_set_format(spi, 16, SPI_CPOL_0, SPI_CPHA_0, SPI_MSB_FIRST);
-    return spi_write16_blocking(spi, src, len);
+    return this->dma_tx->xfer_dma2spi(spi, src, len, true);
 }
 
-int rtos_HW_SPI_Master::burst_read_16(uint16_t *src, size_t len)
+int rtos_HW_SPI_Master::burst_read_16(uint16_t *dst, size_t len)
 {
     spi_set_format(spi, 16, SPI_CPOL_0, SPI_CPHA_0, SPI_MSB_FIRST);
+    this->dma_rx->xfer_spi2dma(spi, dst, len);
     return 0;
 }
 

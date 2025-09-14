@@ -41,16 +41,15 @@ void end_of_RX_DMA_xfer_handler();
 
 static struct_ConfigDMA dma_tx_cfg = {
     .transfer_size = DMA_SIZE_16,
-    .block_size = TEST_SIZE,
-    .handler = end_of_TX_DMA_xfer_handler,
+    .number_of_transfer = TEST_SIZE,
+    .dma_irq_handler = end_of_TX_DMA_xfer_handler,
     .irq_number = DMA_IRQ_1};
 
 static struct_ConfigDMA dma_rx_cfg = {
     .transfer_size = DMA_SIZE_16,
-    .block_size = TEST_SIZE,
-    .handler = end_of_RX_DMA_xfer_handler,
-    .irq_number = DMA_IRQ_0
-};
+    .number_of_transfer = TEST_SIZE,
+    .dma_irq_handler = end_of_RX_DMA_xfer_handler,
+    .irq_number = DMA_IRQ_0};
 
 static struct_ConfigMasterSPI spi_cfg = {
     .spi = spi1,
@@ -61,13 +60,13 @@ static struct_ConfigMasterSPI spi_cfg = {
     .baud_rate_Hz = SPI_BAUD_RATE,
     .transfer_size = 16};
 
-rtos_HW_SPI_Master master = rtos_HW_SPI_Master(spi_cfg);
+rtos_HW_SPI_Master master = rtos_HW_SPI_Master(spi_cfg, dma_tx_cfg, dma_rx_cfg);
 
 void end_of_TX_DMA_xfer_handler()
 {
-    p7.hi();
+    p3.hi();
     master.spi_tx_dma_isr();
-    p7.lo();
+    p3.lo();
 }
 void end_of_RX_DMA_xfer_handler()
 {
@@ -112,12 +111,11 @@ void vSpi_sending_task(void *param)
         xQueueReceive(spi_tx_data_queue, &data_to_send, portMAX_DELAY);
         p2.hi();
 
-        master.dma_rx->xfer_spi2dma(&spi_cfg, &dma_rx_cfg, rxbuf, true);
-        master.dma_tx->xfer_dma2spi(&dma_tx_cfg, &spi_cfg, data_to_send.data, true);
+        master.burst_read_16(rxbuf, TEST_SIZE);
+        master.burst_write_16((uint16_t *)(data_to_send.data), TEST_SIZE);
+        
         xSemaphoreTake(master.dma_rx->end_of_xfer, portMAX_DELAY); // can be necessary to wait for the end of RX. Possible race condition
         // xSemaphoreTake(master.dma_tx->end_of_xfer, portMAX_DELAY); // can be necessary to wait for the end of RX. Possible race condition
-        master.dma_tx->cleanup_and_free_dma_channel();
-        master.dma_rx->cleanup_and_free_dma_channel();
         xSemaphoreGive(data_ready);
         p2.lo();
     }
