@@ -21,9 +21,12 @@
 #include "pico/stdlib.h"
 #include <cstdint>
 
+/// @brief strusture of data block sent to queue in order to start SPI emission
 struct struct_TX_DataQueueSPI
 {
+  /// @brief  the pointer to the data to send
   void *data;
+  /// @brief  the excpected nuber of transfer
   size_t length;
 };
 
@@ -40,10 +43,14 @@ public:
 
   /// @brief the DMA channel used for SPI TX
   HW_DMA *dma_tx;
-  /**
-   * @brief Construct a new hw spi master object
-   * @param master_config
-   */
+
+
+  /// @brief Construct a new hw spi master object
+  /// @param master_config the data structure that contains SPI configuration
+  /// @param dma_tx_irq_number the DMA IRQ number attached to TX DMA
+  /// @param dma_tx_irq_handler the DMA IRQ handler attached to TX DMA
+  /// @param dma_rx_irq_number the DMA IRQ number attached to RX DMA
+  /// @param dma_rx_irq_handler the DMA IRQ handler attached to RX DMA
   rtos_HW_SPI_Master(struct_ConfigMasterSPI master_config,
                      irq_num_t dma_tx_irq_number, irq_handler_t dma_tx_irq_handler,
                      irq_num_t dma_rx_irq_number, irq_handler_t dma_rx_irq_handler);

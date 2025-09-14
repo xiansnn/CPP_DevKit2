@@ -54,19 +54,20 @@ public:
     /// @brief semaphore to signal the TX FIFO of I2C is empty
     SemaphoreHandle_t TX_FIFO_empty; // TODO move to I2C
 
-    /// @brief Constructor of the class
-    /// @param channel a specific DMA channel number to allocate
-    /// @param cfg  the DMA configuration data structure
+    /// @brief  constructor of the DMA class
+    /// @param irq_number the IRQ attached to this DMA object
+    /// @param dma_irq_handler the IRQ hansler triggered by this IRQ
     HW_DMA(irq_num_t irq_number, irq_handler_t dma_irq_handler = NULL);
 
     /// @brief Destructor of the class, free the allocated DMA channel
     ~HW_DMA();
 
     /// @brief the function member used to move data from memory to memory
-    /// @param cfg the DMA configuration data structure
-    /// @param destination_address the destination address
-    /// @param source_address the source address
-    /// @param start if true, start the DMA transfer immediately
+    /// @param number_of_transfer the number of DMA transfers
+    /// @param transfer_size the size of DMA transfer (8, 16 or 32 bit)
+    /// @param destination_address the memory destination address
+    /// @param source_address the memory source address
+    /// @param start if trus, immediate start
     /// @return error code
     int xfer_mem2mem(uint32_t number_of_transfer,
                      dma_channel_transfer_size_t transfer_size,
