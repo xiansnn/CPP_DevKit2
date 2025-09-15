@@ -57,7 +57,7 @@ public:
     /// @brief  constructor of the DMA class
     /// @param irq_number the IRQ attached to this DMA object
     /// @param dma_irq_handler the IRQ hansler triggered by this IRQ
-    HW_DMA(irq_num_t irq_number, irq_handler_t dma_irq_handler = NULL);
+    HW_DMA(irq_num_t irq_number = DMA_IRQ_0, irq_handler_t dma_irq_handler = NULL);
 
     /// @brief Destructor of the class, free the allocated DMA channel
     ~HW_DMA();
