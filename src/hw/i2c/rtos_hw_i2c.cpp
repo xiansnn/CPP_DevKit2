@@ -11,16 +11,25 @@ rtos_HW_I2C_Master::rtos_HW_I2C_Master(struct_ConfigMasterI2C cfg)
 
 rtos_HW_I2C_Master::~rtos_HW_I2C_Master()
 {
+    delete tx_dma;
 }
 
-void rtos_HW_I2C_Master::burst_byte_write(uint8_t slave_address, struct_TX_DataQueueI2C data_to_send)
+int rtos_HW_I2C_Master::burst_byte_write(uint8_t slave_address, uint8_t mem_address, uint8_t *source_address, size_t length)
 {
-    tx_dma->xfer_dma2i2c(this->i2c, slave_address, data_to_send.mem_address, this->i2c_master_exclusive_irq_handler, data_to_send.write_data, data_to_send.write_data_length);
+    tx_dma->xfer_dma2i2c(this->i2c,
+                         slave_address, mem_address, this->i2c_master_exclusive_irq_handler,
+                         source_address, length);
+
+    return 0;
 }
 
-void rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address, struct_RX_DataQueueI2C data_to_receive, uint16_t *dest)
+int rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address,
+                                        uint8_t mem_addr,
+                                        uint16_t *destination_address,
+                                        size_t length)
 {
-    tx_dma->xfer_i2c2dma(this->i2c, slave_address, data_to_receive.mem_address, this->i2c_master_exclusive_irq_handler, dest, data_to_receive.read_data_length);
+    tx_dma->xfer_i2c2dma(i2c, slave_address, mem_addr, this->i2c_master_exclusive_irq_handler, destination_address, length);
+    return 0;
 }
 
 void rtos_HW_I2C_Master::i2c_dma_isr()
@@ -30,7 +39,7 @@ void rtos_HW_I2C_Master::i2c_dma_isr()
     irq_set_enabled(irq_number, false); // disable IRQs to avoid re-entrance
     if (this->i2c->hw->intr_stat & I2C_IC_INTR_STAT_R_STOP_DET_BITS)
     {
-        this->i2c->hw->clr_stop_det; // clear the STOP_DET interrupt
+        this->i2c->hw->clr_stop_det;       // clear the STOP_DET interrupt
         irq_set_enabled(irq_number, true); // disable IRQs to avoid re-entrance
         xSemaphoreGiveFromISR(this->tx_dma->end_of_xfer, &xHigherPriorityTaskWoken);
         portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
