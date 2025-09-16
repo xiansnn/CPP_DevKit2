@@ -57,7 +57,7 @@ public:
     QueueHandle_t i2c_tx_data_queue;
 
     /// @brief semaphore to signal the TX FIFO of I2C is empty
-    SemaphoreHandle_t TX_FIFO_empty; 
+    SemaphoreHandle_t i2c_tx_FIFO_empty; 
 
 
     /// @brief  Constructor of the class
