@@ -75,40 +75,6 @@ public:
                      volatile void *source_address,
                      bool start);
 
-
-    /// @brief the function member used to move data from memory to I2C peripheral
-    /// @param i2c the I2C instance, can be i2c0 or i2c1
-    /// @param slave_address the 7-bit I2C slave address
-    /// @param slave_mem_addr the memory address in the slave device to write to
-    /// @param i2c_handler the IRQ handler for I2C, can be NULL if no IRQ is needed
-    /// @param source_address the source address
-    /// @param length the number of bytes to write
-    /// @param start if true, start the DMA transfer immediately
-    /// @return error code
-    int xfer_dma2i2c(i2c_inst_t *i2c,
-                     uint8_t slave_address,
-                     uint8_t slave_mem_addr,
-                     irq_handler_t i2c_handler,
-                     volatile uint8_t *source_address,
-                     size_t length,
-                     bool start = true); // TODO move to I2C
-    /// @brief the function member used to move data from I2C peripheral to memory
-    /// @param i2c  the I2C instance, can be i2c0 or i2c1
-    /// @param slave_address    the 7-bit I2C slave address
-    /// @param slave_mem_addr   the memory address in the slave device to read from
-    /// @param i2c_handler  the IRQ handler for I2C, can be NULL if no IRQ is needed
-    /// @param destination_address     the destination address
-    /// @param length   the number of bytes to read
-    /// @param start    if true, start the DMA transfer immediately
-    /// @return error code
-    int xfer_i2c2dma(i2c_inst_t *i2c,
-                     uint8_t slave_address,
-                     uint8_t slave_mem_addr,
-                     irq_handler_t i2c_handler,
-                     volatile uint16_t *destination_address,
-                     size_t length,
-                     bool start = true); // TODO move to I2C
-
     /// @brief clean up and free the allocated DMA channel
     void cleanup_and_free_dma_channel();
 
