@@ -9,6 +9,9 @@ HW_I2C_Master::HW_I2C_Master(struct_ConfigMasterI2C cfg)
     this->i2c = cfg.i2c;
     this->time_out_us_per_byte = 8 * 1500000 / cfg.baud_rate; // with 50% margin
     this->i2c_master_exclusive_irq_handler = cfg.i2c_tx_master_handler;
+    this->i2c_irq_number = (i2c == i2c0) ? I2C0_IRQ : I2C1_IRQ;
+    if (i2c_master_exclusive_irq_handler != NULL)
+        irq_set_exclusive_handler(i2c_irq_number, i2c_master_exclusive_irq_handler);
 
     // As suggested by RP2040 data sheet
     gpio_init(cfg.sda_pin);
