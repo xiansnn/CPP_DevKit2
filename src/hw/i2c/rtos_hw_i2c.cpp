@@ -7,6 +7,8 @@ rtos_HW_I2C_Master::rtos_HW_I2C_Master(struct_ConfigMasterI2C cfg)
     this->tx_dma = new HW_DMA();
     this->i2c_master_exclusive_irq_handler = cfg.i2c_tx_master_handler;
     i2c_tx_data_queue = xQueueCreate(8, sizeof(struct_TX_DataQueueI2C));
+    this->TX_FIFO_empty = xSemaphoreCreateBinary(); 
+
 }
 
 rtos_HW_I2C_Master::~rtos_HW_I2C_Master()
@@ -44,7 +46,7 @@ int rtos_HW_I2C_Master::burst_byte_write(uint8_t slave_address, uint8_t mem_addr
         // wait for I2C TX FIFO to be empty before starting DMA
         i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_TX_EMPTY_BITS;
         irq_set_enabled(i2c_irq_number, true);
-        xSemaphoreTake(tx_dma->TX_FIFO_empty, portMAX_DELAY);
+        xSemaphoreTake(this->TX_FIFO_empty, portMAX_DELAY);
         // now TX FIFO is empty, start sending data via DMA in chunks of I2C_BURST_SIZE bytes
 
         chunk = (tx_remaining > I2C_BURST_SIZE) ? I2C_BURST_SIZE : tx_remaining;
@@ -102,7 +104,7 @@ int rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address,
     { // wait until the command is sent
         i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_TX_EMPTY_BITS;
         irq_set_enabled(i2c_irq_number, true);
-        xSemaphoreTake(tx_dma->TX_FIFO_empty, portMAX_DELAY);
+        xSemaphoreTake(this->TX_FIFO_empty, portMAX_DELAY);
 
         chunk = (rx_remaining > I2C_BURST_SIZE) ? I2C_BURST_SIZE : rx_remaining;
 
@@ -144,7 +146,7 @@ void rtos_HW_I2C_Master::i2c_dma_isr()
     }
     if (this->i2c->hw->intr_stat & I2C_IC_INTR_STAT_R_TX_EMPTY_BITS)
     {
-        xSemaphoreGiveFromISR(this->tx_dma->TX_FIFO_empty, &xHigherPriorityTaskWoken);
+        xSemaphoreGiveFromISR(this->TX_FIFO_empty, &xHigherPriorityTaskWoken);
         portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
     }
 }

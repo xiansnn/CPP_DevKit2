@@ -56,6 +56,10 @@ public:
     /// @brief the freeRTOS queue used to exchange data from a generator to the I2C TX task
     QueueHandle_t i2c_tx_data_queue;
 
+    /// @brief semaphore to signal the TX FIFO of I2C is empty
+    SemaphoreHandle_t TX_FIFO_empty; 
+
+
     /// @brief  Constructor of the class
     /// @param cfg  the configuration structure for the I2C master
     rtos_HW_I2C_Master(struct_ConfigMasterI2C cfg);

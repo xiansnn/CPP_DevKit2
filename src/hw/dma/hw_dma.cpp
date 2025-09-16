@@ -3,7 +3,7 @@
 HW_DMA::HW_DMA(irq_num_t irq_number, irq_handler_t dma_irq_handler)
 {
     end_of_xfer = xSemaphoreCreateBinary();
-    TX_FIFO_empty = xSemaphoreCreateBinary(); // TODO move to I2C
+
 
     this->irq_number = irq_number;
     this->channel = dma_claim_unused_channel(true);
