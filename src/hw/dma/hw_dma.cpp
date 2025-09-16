@@ -7,8 +7,7 @@ HW_DMA::HW_DMA(irq_num_t irq_number, irq_handler_t dma_irq_handler)
 
     this->irq_number = irq_number;
     this->channel = dma_claim_unused_channel(true);
-    // this->c = dma_channel_get_default_config(this->channel);
-    // channel_config_set_transfer_data_size(&this->c, cfg.transfer_size);
+
     if (dma_irq_handler != NULL)
     {
         if (irq_number == irq_num_t::DMA_IRQ_0)

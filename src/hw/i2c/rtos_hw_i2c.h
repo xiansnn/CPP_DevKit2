@@ -57,7 +57,7 @@ public:
     QueueHandle_t i2c_tx_data_queue;
 
     /// @brief semaphore to signal the TX FIFO of I2C is empty
-    SemaphoreHandle_t TX_FIFO_empty; 
+    SemaphoreHandle_t i2c_tx_FIFO_empty; 
 
 
     /// @brief  Constructor of the class
@@ -89,7 +89,8 @@ public:
      * @return code error
      */
     int burst_byte_read(uint8_t slave_address,
-                        uint8_t mem_addr, uint16_t *destination_address,
+                        uint8_t mem_addr, 
+                        uint16_t *destination_address,
                         size_t length);
 
     /// @brief the I2C IRQ handler, to be called in the main program IRQ map
