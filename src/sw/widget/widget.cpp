@@ -98,6 +98,11 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
         canvas_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
         this->canvas = new CanvasRGB(canvas_width, canvas_height);
         break;
+    case CanvasFormat::trueRGB565:
+        canvas_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
+        canvas_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
+        this->canvas = new CanvasTrueRGB(canvas_width, canvas_height);
+        break;
     case CanvasFormat::MONO_HMSB:
         canvas_width = ((text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX]) + BYTE_SIZE - 1) / BYTE_SIZE * BYTE_SIZE;
         canvas_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];

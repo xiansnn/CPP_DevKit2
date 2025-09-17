@@ -12,7 +12,7 @@
 
 #include "pico/stdlib.h"
 #include "commands_ST7735.h"
-#include "hw/spi/hw_spi.h"
+#include "hw/spi/rtos_hw_spi.h"
 #include "sw/display_device/display_device.h"
 
 /// @brief level defined as command on the data/Command wire

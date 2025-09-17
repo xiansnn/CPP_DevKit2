@@ -186,22 +186,39 @@ static void FillReversedCache()
 */
 
 void CanvasTrueRGB::create_canvas_buffer()
-{ // TODO to implrmrnt trueRGB version
+{
+    canvas_buffer_size = canvas_width_pixel * canvas_height_pixel;
+    canvas_16buffer = new uint16_t[canvas_buffer_size];
+    clear_canvas_buffer();
 }
 
 CanvasTrueRGB::CanvasTrueRGB(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
     : Canvas(canvas_width_pixel, canvas_height_pixel)
-{ // TODO to implrmrnt trueRGB version
+{
+    canvas_format = CanvasFormat::trueRGB565;
+    create_canvas_buffer();
 }
 
 CanvasTrueRGB::~CanvasTrueRGB()
-{ // TODO to implrmrnt trueRGB version
+{
+    delete canvas_16buffer;
+}
+
+void CanvasTrueRGB::clear_canvas_buffer()
+{
+    memset(canvas_16buffer, 0x0000, canvas_buffer_size);
 }
 
 void CanvasTrueRGB::fill_canvas_with_color(ColorIndex color)
-{ // TODO to implrmrnt trueRGB version
+{
+    memset(canvas_16buffer, color565_palette[color], canvas_buffer_size);
 }
 
 void CanvasTrueRGB::draw_pixel(const int x, const int y, const ColorIndex color)
-{ // TODO to implrmrnt trueRGB version
+{
+    if (x >= 0 && x < canvas_width_pixel && y >= 0 && y < canvas_height_pixel)
+    {
+        int byte_index = y * canvas_width_pixel + x;
+        canvas_16buffer[byte_index] = color565_palette[color];
+    }
 }

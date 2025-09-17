@@ -146,8 +146,11 @@ public:
     /// @brief the size (in bytes) of the buffer
     size_t canvas_buffer_size;
 
-    /// @brief the buffer
+    /// @brief the 8bit canvas buffer
     uint8_t *canvas_buffer{nullptr};
+
+    /// @brief the 16bit canvasbuffer
+    uint16_t *canvas_16buffer{nullptr};
 
     /// @brief Construct a new Canvas object
     /// @param canvas_width_pixel Width of the canvas (in pixel)
@@ -157,7 +160,7 @@ public:
     ~Canvas();
 
     /// @brief fill the canvas buffer with 0x00
-    void clear_canvas_buffer();
+    virtual void clear_canvas_buffer();
 
     /// @brief the graphic primitive to draw a pixel
     /// @param x the x position of the pixel
@@ -227,6 +230,10 @@ public:
     CanvasTrueRGB(uint8_t canvas_width_pixel,
                   uint8_t canvas_height_pixel);
     ~CanvasTrueRGB();
+
+    /// @brief fill the 16bit canvas buffer with 0x00
+    virtual void clear_canvas_buffer();
+
 
     /// @brief fill the canvas buffer with the given color index
     ///\note the conversion from color index to RGB565 is done by the device after calling the show() member
