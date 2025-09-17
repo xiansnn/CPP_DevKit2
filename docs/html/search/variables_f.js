@@ -12,6 +12,5 @@ var searchData=
   ['time_5fout_5fdelay_5fus_9',['time_out_delay_us',['../structstruct___config_switch_button.html#ab2b4d2b97f8821471d7426c8e69b9888',1,'struct_ConfigSwitchButton::time_out_delay_us'],['../class_switch_button.html#a37e6513061d4466fd101192f60494d2b',1,'SwitchButton::time_out_delay_us']]],
   ['transfer_5fsize_10',['transfer_size',['../structstruct___config_master_s_p_i.html#a4dc9a48b32f4d626511c76a16341bd0a',1,'struct_ConfigMasterSPI']]],
   ['tx_5fdma_11',['tx_dma',['../classrtos___h_w___i2_c___master.html#ab8e1e1d014beaad8f2108f2346a821ba',1,'rtos_HW_I2C_Master']]],
-  ['tx_5ffifo_5fempty_12',['TX_FIFO_empty',['../class_h_w___d_m_a.html#a36dd26671c44f735baa58bd313cbac04',1,'HW_DMA']]],
-  ['tx_5fpin_13',['tx_pin',['../structstruct___config_master_s_p_i.html#a9b3d2c2db463d797abda0ca9a951841d',1,'struct_ConfigMasterSPI']]]
+  ['tx_5fpin_12',['tx_pin',['../structstruct___config_master_s_p_i.html#a9b3d2c2db463d797abda0ca9a951841d',1,'struct_ConfigMasterSPI']]]
 ];

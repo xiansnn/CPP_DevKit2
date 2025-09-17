@@ -1,6 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"structstruct___config_s_t7735.html":[4,0,43],
 "structstruct___config_s_t7735.html#a3347af0a9646ab6e6e2d6e3d7bc3b252":[4,0,43,4],
 "structstruct___config_s_t7735.html#a7f1508e4852977176ee2b9ac0c6f2758":[4,0,43,1],
 "structstruct___config_s_t7735.html#a9c2d7524a91870088a48f308b4894f85":[4,0,43,3],

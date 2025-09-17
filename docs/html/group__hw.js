@@ -9,6 +9,7 @@ var group__hw =
       [ "single_byte_read", "class_h_w___i2_c___master.html#af75401aef49c0774326f4e318f91a781", null ],
       [ "single_byte_write", "class_h_w___i2_c___master.html#a4bafebb5c2b2e2964b2ad83891b8ff7f", null ],
       [ "i2c", "class_h_w___i2_c___master.html#aab3a5b68364dad06462d8e26bfede7d6", null ],
+      [ "i2c_irq_number", "class_h_w___i2_c___master.html#a4f8e073a52737ab0a143e2db6714b8c9", null ],
       [ "i2c_master_exclusive_irq_handler", "class_h_w___i2_c___master.html#a5712ef13f78dba483dfb7534681b4809", null ]
     ] ],
     [ "HW_I2C_Slave", "class_h_w___i2_c___slave.html", [
@@ -19,10 +20,11 @@ var group__hw =
     [ "rtos_HW_I2C_Master", "classrtos___h_w___i2_c___master.html", [
       [ "rtos_HW_I2C_Master", "classrtos___h_w___i2_c___master.html#aab66902f880060f31b4bafee66d1e26f", null ],
       [ "~rtos_HW_I2C_Master", "classrtos___h_w___i2_c___master.html#a18b709a7a70bfc8435addba3e0fbb2b2", null ],
-      [ "burst_byte_read", "classrtos___h_w___i2_c___master.html#acb1fb5f1a18f522e48978b8de15a25e3", null ],
-      [ "burst_byte_write", "classrtos___h_w___i2_c___master.html#a93b613c3721a41334e7c959435c822c2", null ],
+      [ "burst_byte_read", "classrtos___h_w___i2_c___master.html#a63458ce683d95f9fa71954cdc263b2a7", null ],
+      [ "burst_byte_write", "classrtos___h_w___i2_c___master.html#a7b64ab96a74756ebd3aa8cf90768f1ce", null ],
       [ "i2c_dma_isr", "classrtos___h_w___i2_c___master.html#acb27f7573d7f42d396dfec10c1fc326f", null ],
       [ "i2c_tx_data_queue", "classrtos___h_w___i2_c___master.html#aca5e538beb7f882859e8faafed1c8de2", null ],
+      [ "i2c_tx_FIFO_empty", "classrtos___h_w___i2_c___master.html#ab459055fc2a8363d141fdd9025295960", null ],
       [ "tx_dma", "classrtos___h_w___i2_c___master.html#ab8e1e1d014beaad8f2108f2346a821ba", null ]
     ] ],
     [ "PWM", "class_p_w_m.html", [

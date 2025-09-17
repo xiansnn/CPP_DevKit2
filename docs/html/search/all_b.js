@@ -13,7 +13,7 @@ var searchData=
   ['horizontal_5fscroll_10',['horizontal_scroll',['../class_s_s_d1306.html#a3228383e41ea93124a1da0a619dc6b11',1,'SSD1306']]],
   ['horizontal_5ftab_11',['HORIZONTAL_TAB',['../widget_8h.html#ab9b41a58308928842d7ee267dbc81e26',1,'widget.h']]],
   ['humidity_12',['humidity',['../structstruct___d_h_t_reading.html#aa43b0d2e8be45ff41c89eb4602699c5c',1,'struct_DHTReading']]],
-  ['hw_5fdma_13',['HW_DMA',['../class_h_w___d_m_a.html',1,'HW_DMA'],['../class_h_w___d_m_a.html#a40285dc681a60a26c3c99c4bb49aa0b5',1,'HW_DMA::HW_DMA()']]],
+  ['hw_5fdma_13',['HW_DMA',['../class_h_w___d_m_a.html',1,'HW_DMA'],['../class_h_w___d_m_a.html#aeb1a6d0b0caff1877e6671838d111cd2',1,'HW_DMA::HW_DMA()']]],
   ['hw_5fdma_2eh_14',['hw_dma.h',['../hw__dma_8h.html',1,'']]],
   ['hw_5fi2c_2eh_15',['hw_i2c.h',['../hw__i2c_8h.html',1,'']]],
   ['hw_5fi2c_5fmaster_16',['HW_I2C_Master',['../class_h_w___i2_c___master.html',1,'HW_I2C_Master'],['../class_h_w___i2_c___master.html#aec651bc1d3019c6a5d30bbda8bae5846',1,'HW_I2C_Master::HW_I2C_Master()']]],
