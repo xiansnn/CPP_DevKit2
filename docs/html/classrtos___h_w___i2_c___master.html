@@ -114,9 +114,9 @@ Inheritance diagram for rtos_HW_I2C_Master:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___h_w___i2_c___master__inherit__graph.png" border="0" usemap="#artos___h_w___i2_c___master_inherit__map" alt="Inheritance graph"/></div>
 <map name="artos___h_w___i2_c___master_inherit__map" id="artos___h_w___i2_c___master_inherit__map">
-<area shape="rect" title="This is a C++ wrapper for the original pico SDK i2c master API, adapted to FreeRTOS environment." alt="" coords="9,245,535,400"/>
-<area shape="rect" href="class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="5,5,539,197"/>
-<area shape="poly" title=" " alt="" coords="275,213,275,246,269,246,269,213"/>
+<area shape="rect" title="This is a C++ wrapper for the original pico SDK i2c master API, adapted to FreeRTOS environment." alt="" coords="5,264,549,437"/>
+<area shape="rect" href="class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="11,5,544,216"/>
+<area shape="poly" title=" " alt="" coords="280,231,280,264,275,264,275,231"/>
 </map>
 </div>
 <div class="dynheader">
@@ -124,11 +124,11 @@ Collaboration diagram for rtos_HW_I2C_Master:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___h_w___i2_c___master__coll__graph.png" border="0" usemap="#artos___h_w___i2_c___master_coll__map" alt="Collaboration graph"/></div>
 <map name="artos___h_w___i2_c___master_coll__map" id="artos___h_w___i2_c___master_coll__map">
-<area shape="rect" title="This is a C++ wrapper for the original pico SDK i2c master API, adapted to FreeRTOS environment." alt="" coords="272,341,797,477"/>
-<area shape="rect" href="class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="5,46,539,238"/>
-<area shape="poly" title=" " alt="" coords="379,247,470,339,467,343,375,251"/>
-<area shape="rect" href="class_h_w___d_m_a.html" title="Class to manage a DMA channel." alt="" coords="563,5,1035,279"/>
-<area shape="poly" title=" " alt="" coords="665,280,615,331,611,327,662,277"/>
+<area shape="rect" title="This is a C++ wrapper for the original pico SDK i2c master API, adapted to FreeRTOS environment." alt="" coords="257,278,801,433"/>
+<area shape="rect" href="class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="5,5,539,216"/>
+<area shape="poly" title=" " alt="" coords="395,224,451,276,447,280,391,228"/>
+<area shape="rect" href="class_h_w___d_m_a.html" title="Class to manage a DMA channel." alt="" coords="563,17,1011,205"/>
+<area shape="poly" title=" " alt="" coords="690,206,624,268,621,264,686,203"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -141,12 +141,12 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~rtos_HW_I2C_Master</b> ()</td></tr>
 <tr class="memdesc:a18b709a7a70bfc8435addba3e0fbb2b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of the class. <br /></td></tr>
 <tr class="separator:a18b709a7a70bfc8435addba3e0fbb2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93b613c3721a41334e7c959435c822c2" id="r_a93b613c3721a41334e7c959435c822c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93b613c3721a41334e7c959435c822c2">burst_byte_write</a> (uint8_t slave_address, <a class="el" href="structstruct___t_x___data_queue_i2_c.html">struct_TX_DataQueueI2C</a> data_to_send)</td></tr>
-<tr class="memdesc:a93b613c3721a41334e7c959435c822c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">a function member to write a burst of data to a slave device, using DMA and FreeRTOS queue  <br /></td></tr>
-<tr class="separator:a93b613c3721a41334e7c959435c822c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb1fb5f1a18f522e48978b8de15a25e3" id="r_acb1fb5f1a18f522e48978b8de15a25e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb1fb5f1a18f522e48978b8de15a25e3">burst_byte_read</a> (uint8_t slave_address, <a class="el" href="structstruct___r_x___data_queue_i2_c.html">struct_RX_DataQueueI2C</a> data_to_receive, uint16_t *dest)</td></tr>
-<tr class="memdesc:acb1fb5f1a18f522e48978b8de15a25e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">a function member to read a burst of data from a slave device, using DMA and FreeRTOS queue  <br /></td></tr>
-<tr class="separator:acb1fb5f1a18f522e48978b8de15a25e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b64ab96a74756ebd3aa8cf90768f1ce" id="r_a7b64ab96a74756ebd3aa8cf90768f1ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b64ab96a74756ebd3aa8cf90768f1ce">burst_byte_write</a> (uint8_t slave_address, uint8_t mem_addr, uint8_t *source_address, size_t length)</td></tr>
+<tr class="memdesc:a7b64ab96a74756ebd3aa8cf90768f1ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">a function member to write a burst of data to a slave device, using DMA and FreeRTOS queue  <br /></td></tr>
+<tr class="separator:a7b64ab96a74756ebd3aa8cf90768f1ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63458ce683d95f9fa71954cdc263b2a7" id="r_a63458ce683d95f9fa71954cdc263b2a7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63458ce683d95f9fa71954cdc263b2a7">burst_byte_read</a> (uint8_t slave_address, uint8_t mem_addr, uint16_t *destination_address, size_t length)</td></tr>
+<tr class="memdesc:a63458ce683d95f9fa71954cdc263b2a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">a convenient C++ member wrapper to read a block of data starting at a slave memory address, using DMA and FreeRTOS queue  <br /></td></tr>
+<tr class="separator:a63458ce683d95f9fa71954cdc263b2a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb27f7573d7f42d396dfec10c1fc326f" id="r_acb27f7573d7f42d396dfec10c1fc326f"><td class="memItemLeft" align="right" valign="top"><a id="acb27f7573d7f42d396dfec10c1fc326f" name="acb27f7573d7f42d396dfec10c1fc326f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>i2c_dma_isr</b> ()</td></tr>
 <tr class="memdesc:acb27f7573d7f42d396dfec10c1fc326f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the I2C IRQ handler, to be called in the main program IRQ map <br /></td></tr>
@@ -184,6 +184,10 @@ Public Attributes</h2></td></tr>
 QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>i2c_tx_data_queue</b></td></tr>
 <tr class="memdesc:aca5e538beb7f882859e8faafed1c8de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the freeRTOS queue used to exchange data from a generator to the I2C TX task <br /></td></tr>
 <tr class="separator:aca5e538beb7f882859e8faafed1c8de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab459055fc2a8363d141fdd9025295960" id="r_ab459055fc2a8363d141fdd9025295960"><td class="memItemLeft" align="right" valign="top"><a id="ab459055fc2a8363d141fdd9025295960" name="ab459055fc2a8363d141fdd9025295960"></a>
+SemaphoreHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>i2c_tx_FIFO_empty</b></td></tr>
+<tr class="memdesc:ab459055fc2a8363d141fdd9025295960"><td class="mdescLeft">&#160;</td><td class="mdescRight">semaphore to signal the TX FIFO of I2C is empty <br /></td></tr>
+<tr class="separator:ab459055fc2a8363d141fdd9025295960"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -196,6 +200,10 @@ i2c_inst_t *&#160;</td><td class="memItemRight" valign="bottom"><b>i2c</b></td><
 irq_handler_t&#160;</td><td class="memItemRight" valign="bottom"><b>i2c_master_exclusive_irq_handler</b> = NULL</td></tr>
 <tr class="memdesc:a5712ef13f78dba483dfb7534681b4809 inherit pro_attribs_class_h_w___i2_c___master"><td class="mdescLeft">&#160;</td><td class="mdescRight">a function pointer to the IRQ i2c_master_exclusive_handler, to the program that manage the I2C IRQ when used with DMA <br /></td></tr>
 <tr class="separator:a5712ef13f78dba483dfb7534681b4809 inherit pro_attribs_class_h_w___i2_c___master"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f8e073a52737ab0a143e2db6714b8c9 inherit pro_attribs_class_h_w___i2_c___master" id="r_a4f8e073a52737ab0a143e2db6714b8c9"><td class="memItemLeft" align="right" valign="top">
+irq_num_t&#160;</td><td class="memItemRight" valign="bottom"><b>i2c_irq_number</b></td></tr>
+<tr class="memdesc:a4f8e073a52737ab0a143e2db6714b8c9 inherit pro_attribs_class_h_w___i2_c___master"><td class="mdescLeft">&#160;</td><td class="mdescRight">the attached irq to the i2c instance <br /></td></tr>
+<tr class="separator:a4f8e073a52737ab0a143e2db6714b8c9 inherit pro_attribs_class_h_w___i2_c___master"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is a C++ wrapper for the original pico SDK i2c master API, adapted to FreeRTOS environment. </p>
@@ -236,57 +244,74 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="acb1fb5f1a18f522e48978b8de15a25e3" name="acb1fb5f1a18f522e48978b8de15a25e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb1fb5f1a18f522e48978b8de15a25e3">&#9670;&#160;</a></span>burst_byte_read()</h2>
+<a id="a63458ce683d95f9fa71954cdc263b2a7" name="a63458ce683d95f9fa71954cdc263b2a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63458ce683d95f9fa71954cdc263b2a7">&#9670;&#160;</a></span>burst_byte_read()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void rtos_HW_I2C_Master::burst_byte_read </td>
+          <td class="memname">int rtos_HW_I2C_Master::burst_byte_read </td>
           <td>(</td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>slave_address</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structstruct___r_x___data_queue_i2_c.html">struct_RX_DataQueueI2C</a></td>          <td class="paramname"><span class="paramname"><em>data_to_receive</em></span>, </td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mem_addr</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint16_t *</td>          <td class="paramname"><span class="paramname"><em>dest</em></span>&#160;)</td>
+          <td class="paramtype">uint16_t *</td>          <td class="paramname"><span class="paramname"><em>destination_address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>a function member to read a burst of data from a slave device, using DMA and FreeRTOS queue </p>
+<p>a convenient C++ member wrapper to read a block of data starting at a slave memory address, using DMA and FreeRTOS queue </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">slave_address</td><td>the 7-bit I2C slave address </td></tr>
-    <tr><td class="paramname">data_to_receive</td><td>the structure that contains the memory address in the slave device and the size of data to read </td></tr>
-    <tr><td class="paramname">dest</td><td>pointer to buffer to receive data </td></tr>
+    <tr><td class="paramname">slave_address</td><td>the slave address </td></tr>
+    <tr><td class="paramname">mem_addr</td><td>the starting address of slave memory to read from </td></tr>
+    <tr><td class="paramname">destination_address</td><td>Pointer to buffer to receive data </td></tr>
+    <tr><td class="paramname">length</td><td>the size of the block of data </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>code error </dd></dl>
 
 </div>
 </div>
-<a id="a93b613c3721a41334e7c959435c822c2" name="a93b613c3721a41334e7c959435c822c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a93b613c3721a41334e7c959435c822c2">&#9670;&#160;</a></span>burst_byte_write()</h2>
+<a id="a7b64ab96a74756ebd3aa8cf90768f1ce" name="a7b64ab96a74756ebd3aa8cf90768f1ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b64ab96a74756ebd3aa8cf90768f1ce">&#9670;&#160;</a></span>burst_byte_write()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void rtos_HW_I2C_Master::burst_byte_write </td>
+          <td class="memname">int rtos_HW_I2C_Master::burst_byte_write </td>
           <td>(</td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>slave_address</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structstruct___t_x___data_queue_i2_c.html">struct_TX_DataQueueI2C</a></td>          <td class="paramname"><span class="paramname"><em>data_to_send</em></span>&#160;)</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mem_addr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>source_address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -295,10 +320,13 @@ Here is the call graph for this function:</div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">slave_address</td><td>the 7-bit I2C slave address </td></tr>
-    <tr><td class="paramname">data_to_send</td><td>the structure that contains the data buffer, the memory address in the slave device and the size of data to write </td></tr>
+    <tr><td class="paramname">mem_addr</td><td>the adresse to write in the slave peripheral </td></tr>
+    <tr><td class="paramname">source_address</td><td>the address of the data to send </td></tr>
+    <tr><td class="paramname">length</td><td>the number of data to send </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>code error </dd></dl>
 
 </div>
 </div>

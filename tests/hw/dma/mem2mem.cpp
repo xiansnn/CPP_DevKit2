@@ -1,12 +1,12 @@
 /**
  * @file mem2mem.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief no benefit to use FreeRTOS for mem2me DMA -> way too fast 
+ * @brief no benefit to use FreeRTOS for mem2me DMA -> way too fast
  * @version 0.1
  * @date 2025-09-14
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 #include <stdio.h>
 #include "pico/stdlib.h"
@@ -43,10 +43,10 @@ void m2m_dma_handler()
 {
     if (dma_hw->ints0 & (1u << dma.channel))
     {
-        p2.hi();
+        p3.hi();
         dma_hw->ints0 = (1u << dma.channel); // Clear IRQ
         xSemaphoreGiveFromISR(dma.end_of_xfer, NULL);
-        p2.lo();
+        p3.lo();
     }
 }
 
@@ -84,11 +84,11 @@ void vXchange_task(void *param)
     while (true)
     {
         xQueueReceive(m2m_data_queue, &received_data, portMAX_DELAY);
-        p3.hi();
+        p2.hi();
         dma.xfer_mem2mem(received_data.length, DMA_SIZE_16,
                          received_data.destination, received_data.source, true);
-        p3.lo();
         xSemaphoreTake(dma.end_of_xfer, portMAX_DELAY);
+        p2.lo();
         xSemaphoreGive(data_ready);
     }
 }
@@ -107,7 +107,7 @@ void vChecking_task(void *param)
             }
         }
         p6.lo();
-        printf("All good\n");
+        // printf("All good\n");
     }
 }
 

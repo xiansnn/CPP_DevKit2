@@ -6,12 +6,12 @@
  *  - connect i2c0 (master) to i2c1 (slave) with pull-up resistors on SDA and SCL lines
  *  - i2c0: GPIO8 (SDA), GPIO9 (SCL)
  *  - i2c1: GPIO14 (SDA), GPIO15 (SCL)
- * 
+ *
  * @version 0.1
  * @date 2025-09-12
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 #include <stdio.h>
 #include <string.h>
@@ -92,9 +92,9 @@ void vPeriodic_data_generation_task(void *pxPeriod)
             write_data[i] = (uint16_t)write_msg[i];
         }
 
-        #ifdef PRINTF
-                printf("Write %d at 0x%02X: '%s'\t", data_to_show.write_data_length, mem_address, write_msg); //
-        #endif
+#ifdef PRINTF
+        printf("Write %d at 0x%02X: '%s'\t", data_to_show.write_data_length, mem_address, write_msg); //
+#endif
         xQueueSend(master.i2c_tx_data_queue, &data_to_show, portMAX_DELAY);
     }
 }
@@ -105,10 +105,11 @@ void vI2c_sending_task(void *param)
     struct_RX_DataQueueI2C data_to_display;
     while (true)
     {
-        
+
         xQueueReceive(master.i2c_tx_data_queue, &data_to_send, portMAX_DELAY);
         pr_D5.hi();
-        master.burst_byte_write(slave_config.slave_address, data_to_send);
+        master.burst_byte_write(slave_config.slave_address,
+                                data_to_send.mem_address, data_to_send.write_data, data_to_send.write_data_length);
 
         data_to_display.mem_address = data_to_send.mem_address;
         data_to_display.read_data_length = data_to_send.write_data_length;
@@ -126,10 +127,8 @@ void vDisplay_received_data_task(void *param)
         uint16_t read_data[MAX_DATA_SIZE]{0};
         xQueueReceive(i2c_rx_data_queue, &received_data_cfg, portMAX_DELAY);
         pr_D6.hi();
-
-        master.burst_byte_read(slave_config.slave_address, received_data_cfg, read_data);
-
-        //convert uint16_t read by DMA to char or uint8_t as expected by I2C received data
+        master.burst_byte_read(slave_config.slave_address, received_data_cfg.mem_address, read_data,received_data_cfg.read_data_length);
+        // convert uint16_t read by DMA to char or uint8_t as expected by I2C received data
         for (size_t i = 0; i < received_data_cfg.read_data_length; i++)
         {
             read_msg[i] = (char)read_data[i];

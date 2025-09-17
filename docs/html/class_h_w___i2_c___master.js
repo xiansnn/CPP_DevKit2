@@ -8,5 +8,6 @@ var class_h_w___i2_c___master =
     [ "single_byte_read", "class_h_w___i2_c___master.html#af75401aef49c0774326f4e318f91a781", null ],
     [ "single_byte_write", "class_h_w___i2_c___master.html#a4bafebb5c2b2e2964b2ad83891b8ff7f", null ],
     [ "i2c", "class_h_w___i2_c___master.html#aab3a5b68364dad06462d8e26bfede7d6", null ],
+    [ "i2c_irq_number", "class_h_w___i2_c___master.html#a4f8e073a52737ab0a143e2db6714b8c9", null ],
     [ "i2c_master_exclusive_irq_handler", "class_h_w___i2_c___master.html#a5712ef13f78dba483dfb7534681b4809", null ]
 ];

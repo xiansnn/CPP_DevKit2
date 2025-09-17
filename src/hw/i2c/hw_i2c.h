@@ -142,10 +142,12 @@ private:
 protected:
     /// @brief the i2c hardware instance of the Pico that handles the i2c master
     i2c_inst_t *i2c;
- 
+
     /// @brief  a function pointer to the IRQ i2c_master_exclusive_handler, to the program that manage the I2C IRQ when used with DMA
     irq_handler_t i2c_master_exclusive_irq_handler = NULL;
 
+    /// @brief the attached irq to the i2c instance
+    irq_num_t i2c_irq_number;
 
 public:
     /**
