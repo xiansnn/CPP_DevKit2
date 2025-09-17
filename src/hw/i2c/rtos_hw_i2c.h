@@ -73,8 +73,8 @@ public:
     /// @param mem_addr the adresse to write in the slave peripheral
     /// @param source_address the address of the data to send
     /// @param length the number of data to send
-    /// @return code error
-    int burst_byte_write(uint8_t slave_address,
+    /// @return struct_I2CXferResult code error
+    struct_I2CXferResult burst_byte_write(uint8_t slave_address,
                          uint8_t mem_addr,
                          uint8_t *source_address,
                          size_t length);
@@ -83,14 +83,14 @@ public:
     /**
      * @brief a convenient C++ member wrapper to read a block of data starting at a slave memory address, using DMA and FreeRTOS queue
      * @param slave_address the slave address
-     * @param mem_addr the starting address of slave memory to read from
+     * @param mem_address the starting address of slave memory to read from
      * @param destination_address Pointer to buffer to receive data
      * @param length the size of the block of data
-     * @return code error
+     * @return struct_I2CXferResult code error
      */
-    int burst_byte_read(uint8_t slave_address,
-                        uint8_t mem_addr, 
-                        uint16_t *destination_address,
+    struct_I2CXferResult burst_byte_read(uint8_t slave_address,
+                        uint8_t mem_address, 
+                        uint8_t *destination_address,
                         size_t length);
 
     /// @brief the I2C IRQ handler, to be called in the main program IRQ map

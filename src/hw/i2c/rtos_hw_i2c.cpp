@@ -7,8 +7,7 @@ rtos_HW_I2C_Master::rtos_HW_I2C_Master(struct_ConfigMasterI2C cfg)
     this->tx_dma = new HW_DMA();
     this->i2c_master_exclusive_irq_handler = cfg.i2c_tx_master_handler;
     i2c_tx_data_queue = xQueueCreate(8, sizeof(struct_TX_DataQueueI2C));
-    this->i2c_tx_FIFO_empty = xSemaphoreCreateBinary(); 
-
+    this->i2c_tx_FIFO_empty = xSemaphoreCreateBinary();
 }
 
 rtos_HW_I2C_Master::~rtos_HW_I2C_Master()
@@ -16,14 +15,19 @@ rtos_HW_I2C_Master::~rtos_HW_I2C_Master()
     delete tx_dma;
 }
 
-int rtos_HW_I2C_Master::burst_byte_write(uint8_t slave_address, uint8_t mem_address, uint8_t *source_address, size_t length)
+struct_I2CXferResult rtos_HW_I2C_Master::burst_byte_write(uint8_t slave_address, uint8_t mem_address, uint8_t *source_address, size_t length)
 {
-    error_t error = pico_error_codes::PICO_ERROR_NONE;
+    struct_I2CXferResult result = {
+        // TODO abort and timeout checking not implemented
+        .error = false,
+        .context = "rtos_burst_byte_write",
+        .xfer_size = 0,
+    };
 
     uint16_t tx_buffer[I2C_BURST_SIZE];
     size_t tx_remaining;
     size_t chunk;
-    
+
     // prepare DMA for I2C TX
     dma_channel_cleanup(tx_dma->channel);
     dma_channel_config c = dma_channel_get_default_config(tx_dma->channel);
@@ -71,15 +75,23 @@ int rtos_HW_I2C_Master::burst_byte_write(uint8_t slave_address, uint8_t mem_addr
     irq_set_enabled(i2c_irq_number, true);
     xSemaphoreTake(tx_dma->end_of_xfer, portMAX_DELAY);
 
-    return error;
+    return result;
 }
 
-int rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address,
-                                        uint8_t mem_address,
-                                        uint16_t *destination_address,
-                                        size_t length)
+struct_I2CXferResult rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address,
+                                                         uint8_t mem_address,
+                                                         uint8_t *destination_address,
+                                                         size_t length)
 {
-    error_t error = pico_error_codes::PICO_ERROR_NONE;
+    struct_I2CXferResult result = {
+        // TODO abort and timeout checking not implemented
+        .error = false,
+        .context = "rtos_burst_byte_write",
+        .xfer_size = 0,
+    };
+
+    uint16_t *destination_buffer = new uint16_t[length];
+    error_t error_code = pico_error_codes::PICO_ERROR_NONE; // TODO abort and timeout checking not implemented
     size_t rx_remaining;
     size_t chunk;
 
@@ -118,7 +130,7 @@ int rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address,
 
         // read chunk of data DMA
         dma_channel_configure(tx_dma->channel, &c,
-                              destination_address + received_data_index, // dma write address
+                              destination_buffer + received_data_index, // dma write address
                               &i2c_get_hw(i2c)->data_cmd,
                               length, // element count (each element is of size transfer_data_size)
                               true);
@@ -128,8 +140,15 @@ int rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address,
     i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_STOP_DET_BITS;
     irq_set_enabled(i2c_irq_number, true);
     xSemaphoreTake(tx_dma->end_of_xfer, portMAX_DELAY);
+    // reformat destination data from 16 to 8 bit
+    for (size_t i = 0; i < length; i++)
+    {
+        destination_address[i] = (uint8_t)destination_buffer[i];
+    }
 
-    return error;
+    delete destination_buffer;
+
+    return result;
 }
 
 void rtos_HW_I2C_Master::i2c_dma_isr()

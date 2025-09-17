@@ -123,21 +123,14 @@ void vDisplay_received_data_task(void *param)
     struct_RX_DataQueueI2C received_data_cfg;
     while (true)
     {
-        char read_msg[MAX_DATA_SIZE]{0};
-        uint16_t read_data[MAX_DATA_SIZE]{0};
+        uint8_t read_data[MAX_DATA_SIZE]{0};
         xQueueReceive(i2c_rx_data_queue, &received_data_cfg, portMAX_DELAY);
         pr_D6.hi();
         master.burst_byte_read(slave_config.slave_address, received_data_cfg.mem_address, read_data,received_data_cfg.read_data_length);
-        // convert uint16_t read by DMA to char or uint8_t as expected by I2C received data
-        for (size_t i = 0; i < received_data_cfg.read_data_length; i++)
-        {
-            read_msg[i] = (char)read_data[i];
-        }
-
-        uint8_t read_msg_len = strlen(read_msg);
+        uint8_t read_msg_len = strlen((char*)read_data);
         pr_D6.lo();
 #ifdef PRINTF
-        printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, received_data_cfg.mem_address, read_msg);
+        printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, received_data_cfg.mem_address, read_data);
 #endif
     }
 }

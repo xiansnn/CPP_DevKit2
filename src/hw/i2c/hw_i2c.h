@@ -165,7 +165,7 @@ public:
      * @param len the size of the block of data
      * @return struct_I2CXferResult
      */
-    struct_I2CXferResult burst_byte_write(uint8_t slave_address, uint8_t mem_addr, uint8_t *src, size_t len);
+    virtual struct_I2CXferResult burst_byte_write(uint8_t slave_address, uint8_t mem_addr, uint8_t *src, size_t len);
     /**
      * @brief a convenient C++ member wrapper to write a single byte at a slave memory address.
      * The operation is bounded by a timeout.
@@ -194,7 +194,7 @@ public:
      * @param len the size of the block of data
      * @return struct_I2CXferResult
      */
-    struct_I2CXferResult burst_byte_read(uint8_t slave_address, uint8_t mem_addr, uint8_t *dest, size_t len);
+    virtual struct_I2CXferResult burst_byte_read(uint8_t slave_address, uint8_t mem_addr, uint8_t *dest, size_t len);
     /**
      * @brief A utility that scan the I2C bus and return the set of answering devices
      *
