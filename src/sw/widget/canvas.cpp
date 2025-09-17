@@ -184,3 +184,24 @@ static void FillReversedCache()
         reversed[i] = reverse(font[i]);
 }
 */
+
+void CanvasTrueRGB::create_canvas_buffer()
+{ // TODO to implrmrnt trueRGB version
+}
+
+CanvasTrueRGB::CanvasTrueRGB(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
+    : Canvas(canvas_width_pixel, canvas_height_pixel)
+{ // TODO to implrmrnt trueRGB version
+}
+
+CanvasTrueRGB::~CanvasTrueRGB()
+{ // TODO to implrmrnt trueRGB version
+}
+
+void CanvasTrueRGB::fill_canvas_with_color(ColorIndex color)
+{ // TODO to implrmrnt trueRGB version
+}
+
+void CanvasTrueRGB::draw_pixel(const int x, const int y, const ColorIndex color)
+{ // TODO to implrmrnt trueRGB version
+}

@@ -213,6 +213,29 @@ public:
     void draw_pixel(const int x, const int y,
                     const ColorIndex color = ColorIndex::WHITE);
 };
+/// @brief A special version of canvas for color widget (and device) with true RGB565 color coding(i.e. 16bit) per pixel
+///\ingroup view
+class CanvasTrueRGB : public Canvas
+{
+private:
+    void create_canvas_buffer();
+
+public:
+    /// @brief Construct a new Canvas R G B object
+    /// @param canvas_width_pixel
+    /// @param canvas_height_pixel
+    CanvasTrueRGB(uint8_t canvas_width_pixel,
+                  uint8_t canvas_height_pixel);
+    ~CanvasTrueRGB();
+
+    /// @brief fill the canvas buffer with the given color index
+    ///\note the conversion from color index to RGB565 is done by the device after calling the show() member
+    /// @param color
+    void fill_canvas_with_color(ColorIndex color);
+
+    void draw_pixel(const int x, const int y,
+                    const ColorIndex color = ColorIndex::WHITE);
+};
 
 /// @brief A special version of canvas for monochrome widget with 8pixel/byte arranged horizontally.
 /// Usefull for monochrome widget (e.g.text) even for color RGB565 display device
@@ -223,10 +246,9 @@ private:
     void create_canvas_buffer();
 
 public:
-
     /// @brief constructor for CanvasHMSB
-    /// @param canvas_width_pixel 
-    /// @param canvas_height_pixel 
+    /// @param canvas_width_pixel
+    /// @param canvas_height_pixel
     CanvasHMSB(uint8_t canvas_width_pixel,
                uint8_t canvas_height_pixel);
     ~CanvasHMSB();
