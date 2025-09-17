@@ -65,7 +65,9 @@ enum class CanvasFormat
     /// @brief monochrome canvas, pixel arranged horizontally, MSB is left pixel
     MONO_HMSB,
     /// @brief color canvas, 16bits/pixel arranged 5b-red,6b-green,5b-blue
-    RGB565
+    RGB565,
+    /// @brief color canvas, 16bits/pixel arranged 5b-red,6b-green,5b-blue but with true RGB565 stored in buffer. This is to allow the use of 16bit DMA.
+    trueRGB565
 };
 
 /// @brief data structure used to configure graphic framebuffer
@@ -188,7 +190,7 @@ public:
                     const ColorIndex color = ColorIndex::WHITE);
 };
 
-/// @brief A special version of canvas for color widget (and device) with 1 pixel/byte accoeding to 565 RGB color coding
+/// @brief A special version of canvas for color widget (and device) with 1 pixel/byte according to 565 RGB color coding
 ///\ingroup view
 class CanvasRGB : public Canvas
 {
