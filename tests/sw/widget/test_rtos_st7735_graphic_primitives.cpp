@@ -21,7 +21,7 @@
 #include "device/ST7735/st7735.h"
 #include "sw/widget/widget.h"
 
-#define CANVAS_FORMAT CanvasFormat::RGB565
+#define CANVAS_FORMAT CanvasFormat::trueRGB565
 
 // #define ST7735_128x128
 #define ST7735_128x160
@@ -51,11 +51,11 @@ struct_ConfigST7735 cfg_st7735{
     .hw_reset_pin = 15,
     .dc_pin = 14,
     .rotation = DEVICE_DISPLAY_ROTATION,
-    };
+};
 
 struct_ConfigGraphicWidget full_screen_cfg = {
     .pixel_frame_width = 128,
-    .pixel_frame_height = DEVICE_DISPLAY_HEIGHT, 
+    .pixel_frame_height = DEVICE_DISPLAY_HEIGHT,
     .fg_color = ColorIndex::RED,
     .bg_color = ColorIndex::YELLOW,
     .widget_anchor_x = 0,
@@ -79,10 +79,14 @@ my_full_screen_widget::~my_full_screen_widget() {}
 void my_full_screen_widget::get_value_of_interest() {}
 void my_full_screen_widget::draw() {};
 
+HW_SPI_Master spi_master = HW_SPI_Master(cfg_spi);
+ST7735 display = ST7735(&spi_master, cfg_st7735);
+
 void test_fb_line(ST7735 *display)
 {
-    display->clear_device_screen_buffer();
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
+    display->clear_device_screen_buffer();
+    frame.canvas->clear_canvas_buffer();
 
     int i = 0;
     for (int x = 0; x < 128; x++)
@@ -108,6 +112,7 @@ void test_outofframe_line(ST7735 *display)
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
     int y0, x1, y1;
     display->clear_device_screen_buffer();
+    frame.canvas->clear_canvas_buffer();
     x1 = 64;
     y1 = 160;
     y0 = -10;
@@ -129,6 +134,7 @@ void test_fb_rect(ST7735 *display)
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
 
     display->clear_device_screen_buffer();
+    frame.canvas->clear_canvas_buffer();
     frame.rect(0, 0, 128, 64, false, ColorIndex::RED);
     frame.show();
     sleep_ms(500);
@@ -141,6 +147,7 @@ void test_fb_hline(ST7735 *display)
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
 
     display->clear_device_screen_buffer(); // 50ms @ bitrate 10Mbps
+    frame.canvas->clear_canvas_buffer();
     for (size_t i = 0; i < 16; i++)
     {
         frame.hline(0, i * 8, 128, static_cast<ColorIndex>(i + 1));
@@ -154,6 +161,7 @@ void test_fb_vline(ST7735 *display)
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
 
     display->clear_device_screen_buffer(); // 50ms @ bitrate 10Mbps
+    frame.canvas->clear_canvas_buffer();
     for (size_t i = 0; i < 16; i++)
     {
         frame.vline(i * 8, 0, 128, static_cast<ColorIndex>(i + 1));
@@ -168,6 +176,7 @@ void test_fb_circle(ST7735 *display)
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
 
     display->clear_device_screen_buffer();
+    frame.canvas->clear_canvas_buffer();
     frame.circle(50, 63, 31, false, ColorIndex::ORANGE);
     frame.show();
     sleep_ms(500);
@@ -181,6 +190,7 @@ void test_fb_in_fb(ST7735 *display)
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
 
     display->clear_device_screen_buffer();
+    frame.canvas->clear_canvas_buffer();
     frame.rect(0, 0, display->TFT_panel_width_in_pixel, display->TFT_panel_height_in_pixel);
     frame.rect(10, 10, 108, 44, true, ColorIndex::CYAN);
     frame.line(5, 60, 120, 5, ColorIndex::RED);
@@ -204,9 +214,6 @@ void test_fb_in_fb(ST7735 *display)
 int main()
 {
     stdio_init_all();
-    HW_SPI_Master spi_master = HW_SPI_Master(cfg_spi);
-    ST7735 display = ST7735(&spi_master, cfg_st7735);
-    display.clear_device_screen_buffer();
 
     while (true)
     {

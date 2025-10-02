@@ -19,6 +19,7 @@
 #define BYTE_SIZE 8
 
 #include "pico/stdlib.h"
+#include <stdio.h>
 #include <map>
 
 /// @brief define the code value for color
@@ -144,7 +145,10 @@ public:
     uint8_t canvas_height_pixel;
 
     /// @brief the size (in bytes) of the buffer
-    size_t canvas_buffer_size;
+    size_t canvas_buffer_size_byte;
+    
+    /// @brief the size (in pixel) of the buffer
+    size_t canvas_buffer_size_pixel;
 
     /// @brief the 8bit canvas buffer
     uint8_t *canvas_buffer{nullptr};
@@ -157,7 +161,7 @@ public:
     /// @param canvas_height_pixel height of the canvas(in pixel)
     Canvas(uint8_t canvas_width_pixel,
            uint8_t canvas_height_pixel);
-    ~Canvas();
+    virtual ~Canvas();
 
     /// @brief fill the canvas buffer with 0x00
     virtual void clear_canvas_buffer();

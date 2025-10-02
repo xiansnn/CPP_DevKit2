@@ -7,6 +7,7 @@
 
 Widget::Widget(Model *actual_displayed_model, DisplayDevice *graphic_display_device)
 {
+    printf("+ Widget\n");
     this->display_device = graphic_display_device;
     if (actual_displayed_model != nullptr)
     {
@@ -18,6 +19,7 @@ Widget::Widget(Model *actual_displayed_model, DisplayDevice *graphic_display_dev
 
 Widget::~Widget()
 {
+    printf("- Widget\n");
 }
 
 void Widget::add_widget(Widget *_sub_widget)
@@ -47,6 +49,7 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              Model *displayed_object)
     : Widget(displayed_object, graphic_display_screen)
 {
+    printf("+ GraphicWidget graph_cfg\n");
     switch (canvas_format)
     {
     case CanvasFormat::MONO_VLSB:
@@ -54,6 +57,9 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
         break;
     case CanvasFormat::RGB565:
         this->canvas = new CanvasRGB(graph_cfg.pixel_frame_width, graph_cfg.pixel_frame_height);
+        break;
+    case CanvasFormat::trueRGB565:
+        this->canvas = new CanvasTrueRGB(graph_cfg.pixel_frame_width, graph_cfg.pixel_frame_height);
         break;
     default:
         break;
@@ -83,6 +89,7 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              Model *displayed_object)
     : Widget(displayed_object, graphic_display_screen)
 {
+    printf("+ GraphicWidget text_cfg\n");
 
     switch (canvas_format)
     {
@@ -137,6 +144,7 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              Model *displayed_object)
     : Widget(displayed_object, graphic_display_screen)
 {
+     printf("+ GraphicWidget text_cfg 2\n");
     switch (canvas_format)
     {
     case CanvasFormat::MONO_VLSB:
@@ -144,6 +152,9 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
         break;
     case CanvasFormat::RGB565:
         this->canvas = new CanvasRGB(frame_width, frame_height);
+        break;
+    case CanvasFormat::trueRGB565:
+        this->canvas = new CanvasTrueRGB(frame_width, frame_height);
         break;
     case CanvasFormat::MONO_HMSB:
         this->canvas = new CanvasHMSB(frame_width, frame_height);
@@ -171,7 +182,16 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
 
 GraphicWidget::~GraphicWidget()
 {
-    delete canvas;
+    printf("- GraphicWidget\n");
+    if (canvas->canvas_format==CanvasFormat::trueRGB565)
+    {
+        delete[] canvas->canvas_16buffer;
+    }
+    else
+    {
+        delete[] canvas->canvas_buffer;
+    }
+
 }
 
 struct_ConfigGraphicWidget GraphicWidget::get_graph_frame_config()
@@ -320,6 +340,7 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
                        Model *displayed_object)
     : GraphicWidget(graphic_display_screen, text_cfg, canvas_format, displayed_object)
 {
+    printf("+ TextWidget\n");
     this->number_of_column = text_cfg.number_of_column;
     this->number_of_line = text_cfg.number_of_line;
     this->font = text_cfg.font;
@@ -336,6 +357,7 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
                        Model *displayed_object)
     : GraphicWidget(graphic_display_screen, text_cfg, canvas_format, frame_width, frame_height, displayed_object)
 {
+    printf("+ TextWidget2\n");
     this->font = text_cfg.font;
     this->number_of_column = this->canvas->canvas_width_pixel / this->font[FONT_WIDTH_INDEX];
     this->number_of_line = this->canvas->canvas_height_pixel / this->font[FONT_HEIGHT_INDEX];
@@ -350,6 +372,7 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
 
 TextWidget::~TextWidget()
 {
+    printf("- TextWidget\n");
     delete[] this->text_buffer;
 }
 

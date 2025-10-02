@@ -30,25 +30,35 @@ std::map<ColorIndex, uint16_t> color565_palette{
 
 Canvas::Canvas(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
 {
+    printf("+ Canvas\n");
     this->canvas_width_pixel = canvas_width_pixel;
     this->canvas_height_pixel = canvas_height_pixel;
+    this->canvas_buffer_size_pixel = canvas_width_pixel * canvas_height_pixel;
 }
 
 Canvas::~Canvas()
 {
+    printf("- Canvas canvas_buffer[]\n");
     delete[] canvas_buffer;
 }
 
 void Canvas::clear_canvas_buffer()
 {
-    memset(canvas_buffer, 0x00, canvas_buffer_size);
+    if (canvas_format == CanvasFormat::trueRGB565)
+    {
+        memset(canvas_16buffer, 0x00, canvas_buffer_size_byte);
+    }
+    else
+    {
+        memset(canvas_buffer, 0x00, canvas_buffer_size_byte);
+    }
 }
 
 void CanvasHMSB::create_canvas_buffer()
 {
-    size_t byte_per_row = (canvas_width_pixel + BYTE_SIZE - 1) / BYTE_SIZE;
-    canvas_buffer_size = canvas_height_pixel * byte_per_row;
-    canvas_buffer = new uint8_t[canvas_buffer_size];
+    size_t byte_per_row = (canvas_width_pixel + BYTE_SIZE - 1) / BYTE_SIZE; // 8 horizontal pixels per byte
+    canvas_buffer_size_byte = canvas_height_pixel * byte_per_row;
+    canvas_buffer = new uint8_t[canvas_buffer_size_byte];
     clear_canvas_buffer();
 }
 
@@ -61,14 +71,15 @@ CanvasHMSB::CanvasHMSB(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
 
 CanvasHMSB::~CanvasHMSB()
 {
+    printf("- CanvasHMSB canvas_buffer[]\n");
     delete[] canvas_buffer;
 }
 void CanvasHMSB::fill_canvas_with_color(ColorIndex color)
 {
     if (color == ColorIndex::BLACK)
-        memset(canvas_buffer, 0x00, canvas_buffer_size);
+        memset(canvas_buffer, 0x00, canvas_buffer_size_byte);
     else
-        memset(canvas_buffer, 0xFF, canvas_buffer_size);
+        memset(canvas_buffer, 0xFF, canvas_buffer_size_byte);
 }
 
 void CanvasHMSB::draw_pixel(const int x, const int y, const ColorIndex color)
@@ -90,30 +101,33 @@ void CanvasHMSB::draw_pixel(const int x, const int y, const ColorIndex color)
 
 void CanvasVLSB::create_canvas_buffer()
 {
-    size_t nb_of_pages = (canvas_height_pixel + BYTE_SIZE - 1) / BYTE_SIZE;
-    canvas_buffer_size = canvas_width_pixel * nb_of_pages;
-    canvas_buffer = new uint8_t[canvas_buffer_size];
+    size_t nb_of_pages = (canvas_height_pixel + BYTE_SIZE - 1) / BYTE_SIZE; // 8 vertical pixels per byte
+    canvas_buffer_size_byte = canvas_width_pixel * nb_of_pages;
+    canvas_buffer = new uint8_t[canvas_buffer_size_byte];
     clear_canvas_buffer();
 }
 
 CanvasVLSB::CanvasVLSB(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
     : Canvas(canvas_width_pixel, canvas_height_pixel)
 {
+    printf("+ CanvasVLSB\n");
+
     canvas_format = CanvasFormat::MONO_VLSB;
     create_canvas_buffer();
 }
 
 CanvasVLSB::~CanvasVLSB()
 {
+    printf("- CanvasVLSB canvas_buffer[]\n");
     delete[] canvas_buffer;
 }
 
 void CanvasVLSB::fill_canvas_with_color(ColorIndex color)
 {
     if (color == ColorIndex::BLACK)
-        memset(canvas_buffer, 0x00, canvas_buffer_size);
+        memset(canvas_buffer, 0x00, canvas_buffer_size_byte);
     else
-        memset(canvas_buffer, 0xFF, canvas_buffer_size);
+        memset(canvas_buffer, 0xFF, canvas_buffer_size_byte);
 }
 
 void CanvasVLSB::draw_pixel(const int x, const int y, const ColorIndex color)
@@ -135,26 +149,28 @@ void CanvasVLSB::draw_pixel(const int x, const int y, const ColorIndex color)
 
 void CanvasRGB::create_canvas_buffer()
 {
-    canvas_buffer_size = canvas_width_pixel * canvas_height_pixel;
-    canvas_buffer = new uint8_t[canvas_buffer_size];
+    canvas_buffer_size_byte = canvas_buffer_size_pixel; // 1 byte per pixel
+    canvas_buffer = new uint8_t[canvas_buffer_size_byte];
     clear_canvas_buffer();
 }
 
 CanvasRGB::CanvasRGB(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
     : Canvas(canvas_width_pixel, canvas_height_pixel)
 {
+    printf("+ CanvasRGB\n");
     canvas_format = CanvasFormat::RGB565;
     create_canvas_buffer();
 }
 
 CanvasRGB::~CanvasRGB()
 {
+    printf("- CanvasRGB canvas_buffer[]\n");
     delete[] canvas_buffer;
 }
 
 void CanvasRGB::fill_canvas_with_color(ColorIndex color)
 {
-    memset(canvas_buffer, static_cast<uint8_t>(color), canvas_buffer_size);
+    memset(canvas_buffer, static_cast<uint8_t>(color), canvas_buffer_size_byte);
 }
 
 void CanvasRGB::draw_pixel(const int x, const int y, const ColorIndex color)
@@ -163,6 +179,49 @@ void CanvasRGB::draw_pixel(const int x, const int y, const ColorIndex color)
     {
         int byte_index = y * canvas_width_pixel + x;
         canvas_buffer[byte_index] = static_cast<uint8_t>(color);
+    }
+}
+
+void CanvasTrueRGB::create_canvas_buffer()
+{
+    canvas_buffer_size_byte = canvas_buffer_size_pixel * 2; // 2 bytes per pixel
+    canvas_16buffer = new uint16_t[canvas_buffer_size_pixel];
+    clear_canvas_buffer();
+}
+
+CanvasTrueRGB::CanvasTrueRGB(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
+    : Canvas(canvas_width_pixel, canvas_height_pixel)
+{
+    printf("+ CanvasTrueRGB\n");
+    canvas_format = CanvasFormat::trueRGB565;
+    create_canvas_buffer();
+}
+
+CanvasTrueRGB::~CanvasTrueRGB()
+{
+    printf("- CanvasTrueRGB canvas_16buffer[]\n");
+    delete[] canvas_16buffer;
+}
+
+void CanvasTrueRGB::clear_canvas_buffer()
+{
+    memset(canvas_16buffer, 0x00, canvas_buffer_size_byte);
+}
+
+void CanvasTrueRGB::fill_canvas_with_color(ColorIndex color)
+{
+    for (size_t i = 0; i < canvas_buffer_size_pixel; i++)
+    {
+        canvas_16buffer[i] = color565_palette[color];
+    }
+}
+
+void CanvasTrueRGB::draw_pixel(const int x, const int y, const ColorIndex color)
+{
+    if (x >= 0 && x < canvas_width_pixel && y >= 0 && y < canvas_height_pixel)
+    {
+        int byte_index = y * canvas_width_pixel + x;
+        canvas_16buffer[byte_index] = color565_palette[color];
     }
 }
 
@@ -184,41 +243,3 @@ static void FillReversedCache()
         reversed[i] = reverse(font[i]);
 }
 */
-
-void CanvasTrueRGB::create_canvas_buffer()
-{
-    canvas_buffer_size = canvas_width_pixel * canvas_height_pixel;
-    canvas_16buffer = new uint16_t[canvas_buffer_size];
-    clear_canvas_buffer();
-}
-
-CanvasTrueRGB::CanvasTrueRGB(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
-    : Canvas(canvas_width_pixel, canvas_height_pixel)
-{
-    canvas_format = CanvasFormat::trueRGB565;
-    create_canvas_buffer();
-}
-
-CanvasTrueRGB::~CanvasTrueRGB()
-{
-    delete canvas_16buffer;
-}
-
-void CanvasTrueRGB::clear_canvas_buffer()
-{
-    memset(canvas_16buffer, 0x0000, canvas_buffer_size);
-}
-
-void CanvasTrueRGB::fill_canvas_with_color(ColorIndex color)
-{
-    memset(canvas_16buffer, color565_palette[color], canvas_buffer_size);
-}
-
-void CanvasTrueRGB::draw_pixel(const int x, const int y, const ColorIndex color)
-{
-    if (x >= 0 && x < canvas_width_pixel && y >= 0 && y < canvas_height_pixel)
-    {
-        int byte_index = y * canvas_width_pixel + x;
-        canvas_16buffer[byte_index] = color565_palette[color];
-    }
-}

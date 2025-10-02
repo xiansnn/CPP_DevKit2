@@ -115,7 +115,7 @@ public:
     Widget(Model *actual_displayed_model,
            DisplayDevice *graphic_display_device = nullptr);
 
-    ~Widget();
+    virtual ~Widget();
 
     /// @brief add sub_widget to the current widget
     /// @param _sub_widget
@@ -246,7 +246,7 @@ public:
                   Model *displayed_object = nullptr);
 
     /// @brief Destroy the Widget object
-    ~GraphicWidget();
+    virtual ~GraphicWidget();
 
     /// @brief Get the graphic frame config object
     /// @return struct_ConfigGraphicFramebuffer
@@ -407,7 +407,7 @@ public:
                Model *displayed_object = nullptr);
 
     /// @brief the destructor of TextWidget
-    ~TextWidget();
+    virtual ~TextWidget();
 
     /// @brief  Compute the text size in column x line according to the size of the font and the size of the frame in pixel.
     /// Delete the previous text buffer if any and create a new buffer.
@@ -487,5 +487,5 @@ public:
     /// @param display_device the pointer to the printer display device
     /// @param actual_displayed_model the pointer to the displayed model. Default to nullptr
     PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model = nullptr);
-    ~PrintWidget();
+    virtual ~PrintWidget();
 };
