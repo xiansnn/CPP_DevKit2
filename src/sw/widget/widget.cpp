@@ -144,7 +144,7 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              Model *displayed_object)
     : Widget(displayed_object, graphic_display_screen)
 {
-     printf("+ GraphicWidget text_cfg 2\n");
+    printf("+ GraphicWidget text_cfg 2\n");
     switch (canvas_format)
     {
     case CanvasFormat::MONO_VLSB:
@@ -183,7 +183,7 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
 GraphicWidget::~GraphicWidget()
 {
     printf("- GraphicWidget\n");
-    if (canvas->canvas_format==CanvasFormat::trueRGB565)
+    if (canvas->canvas_format == CanvasFormat::trueRGB565)
     {
         delete[] canvas->canvas_16buffer;
     }
@@ -191,7 +191,6 @@ GraphicWidget::~GraphicWidget()
     {
         delete[] canvas->canvas_buffer;
     }
-
 }
 
 struct_ConfigGraphicWidget GraphicWidget::get_graph_frame_config()
@@ -361,6 +360,7 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
     this->font = text_cfg.font;
     this->number_of_column = this->canvas->canvas_width_pixel / this->font[FONT_WIDTH_INDEX];
     this->number_of_line = this->canvas->canvas_height_pixel / this->font[FONT_HEIGHT_INDEX];
+    this->canvas->canvas_buffer_size_pixel = this->canvas->canvas_height_pixel * this->canvas->canvas_width_pixel;
 
     this->tab_size = text_cfg.tab_size;
 
@@ -402,7 +402,13 @@ void TextWidget::update_canvas_buffer_size(const unsigned char *font)
     // size the pixel buffer to the required size due to character area
     this->canvas->canvas_height_pixel = number_of_line * font[FONT_HEIGHT_INDEX];
     this->canvas->canvas_width_pixel = number_of_column * font[FONT_WIDTH_INDEX];
-    delete[] this->canvas->canvas_buffer;
+    this->canvas->canvas_buffer_size_pixel = this->canvas->canvas_height_pixel * this->canvas->canvas_width_pixel;
+
+    if (canvas->canvas_format == CanvasFormat::trueRGB565)
+        delete[] canvas->canvas_16buffer;
+    else
+        delete[] canvas->canvas_buffer;
+
     this->canvas->create_canvas_buffer();
 }
 
