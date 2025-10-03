@@ -512,8 +512,6 @@ void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y
         send_cmd(ST7735_RAMWR);
         for (size_t i = 0; i < canvas->canvas_buffer_size_pixel; i++)
         {
-            // ColorIndex color_index = static_cast<ColorIndex>(canvas->canvas_buffer[i]);
-            // spi->single_write_16(color565_palette[color_index]);
             spi->single_write_16(canvas->canvas_16buffer[i]);
         }
         break;

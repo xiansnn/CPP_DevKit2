@@ -27,7 +27,8 @@ Probe pr_D5 = Probe(5);
 
 #define DEGREE \xF8
 
-#define CANVAS_FORMAT CanvasFormat::trueRGB565
+#define GRAPHICS_CANVAS_FORMAT CanvasFormat::trueRGB565
+#define TEXT_CANVAS_FORMAT CanvasFormat::MONO_HMSB
 
 // #define ST7735_128x128
 #define ST7735_128x160
@@ -198,16 +199,16 @@ int main()
 
     my_model model = my_model();
 
-    my_text_widget values = my_text_widget(&display, values_config, CANVAS_FORMAT, &model);
+    my_text_widget values = my_text_widget(&display, values_config, TEXT_CANVAS_FORMAT, &model);
     values.process_char(FORM_FEED);
 
-    my_visu_widget graph = my_visu_widget(&display, graph_config, CANVAS_FORMAT, &model);
+    my_visu_widget graph = my_visu_widget(&display, graph_config, GRAPHICS_CANVAS_FORMAT, &model);
     pr_D1.hi();
     display.clear_device_screen_buffer(); 
     pr_D1.lo();                           // 51ms
 
     pr_D1.hi();
-    my_text_widget title = my_text_widget(&display, title_config, CANVAS_FORMAT);
+    my_text_widget title = my_text_widget(&display, title_config, TEXT_CANVAS_FORMAT);
     title.write("ROLL PITCH");
     title.show();
     pr_D1.lo(); // 9ms

@@ -59,15 +59,20 @@ extern std::map<ColorIndex, uint16_t> color565_palette;
 /// @brief the format of the canvas
 enum class CanvasFormat
 {
-    /// @brief monochrome canvas, pixel arranged vertically, LSB is top pixel
+    /// @brief monochrome canvas, pixel arranged vertically, LSB is top pixel.
+    /// @note example: SSD1306
     MONO_VLSB,
     /// @brief monochrome canvas, pixel arranged horizontally, LSB is left pixel
+    /// @note example: SH1106
     MONO_HLSB,
     /// @brief monochrome canvas, pixel arranged horizontally, MSB is left pixel
+    /// @note example: ST7735 in 1-bit mode
     MONO_HMSB,
     /// @brief color canvas, 16bits/pixel arranged 5b-red,6b-green,5b-blue
+    /// @note example: ST7735 in 16-bit mode
     RGB565,
     /// @brief color canvas, 16bits/pixel arranged 5b-red,6b-green,5b-blue but with true RGB565 stored in buffer. This is to allow the use of 16bit DMA.
+    /// @note example: ST7735 in 16-bit mode with transfer from canvas done by DMA. In this case the canvas buffer format Canvas::trueRGB565 is directly compatible with the ST7735 16-bit mode.
     trueRGB565
 };
 

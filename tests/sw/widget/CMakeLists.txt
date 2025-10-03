@@ -48,7 +48,7 @@ target_link_libraries(test_st7735_graphic_primitives PUBLIC
             sw_widget
             utilities_probe
             )
-            #-------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------
 add_executable(test_st7735_text_primitives test_st7735_text_primitives.cpp)
 target_link_libraries(test_st7735_text_primitives 
             pico_stdlib 
@@ -91,4 +91,13 @@ target_link_libraries(test_rtos_st7735_text_and_graph_widgets
             
             FreeRTOS-Kernel-Heap4 
             )
-
+#-------------------------------------------------------------------------------------
+add_executable(test_rtos_st7735_text_primitives test_rtos_st7735_text_primitives.cpp)
+target_link_libraries(test_rtos_st7735_text_primitives 
+            pico_stdlib 
+            rtos_hw_spi
+            device_st7735 
+            sw_widget
+            utilities_probe
+            FreeRTOS-Kernel-Heap4 
+            )
