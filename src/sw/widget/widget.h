@@ -179,12 +179,12 @@ public:
     /// @brief the associated canvas in which the widget writes text and draws graphics
     Canvas *canvas;
 
-    /// @brief the foregroung color of the graphic frame
-    /// //TODO voir si fg_color n'est pas mieux dans canvas
-    ColorIndex fg_color;
-    /// @brief the background color of the graphic frame
-    /// //TODO voir si bg_color n'est pas mieux dans canvas
-    ColorIndex bg_color;
+    // /// @brief the foregroung color of the graphic frame
+    // /// //TODO voir si fg_color n'est pas mieux dans canvas
+    // ColorIndex fg_color;
+    // /// @brief the background color of the graphic frame
+    // /// //TODO voir si bg_color n'est pas mieux dans canvas
+    // ColorIndex bg_color;
 
     /// @brief location in x of the widget within the hosting framebuffer
     uint8_t widget_anchor_x;
