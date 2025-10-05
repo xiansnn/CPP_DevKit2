@@ -166,6 +166,7 @@ public:
     /// @param canvas_height_pixel height of the canvas(in pixel)
     Canvas(uint8_t canvas_width_pixel,
            uint8_t canvas_height_pixel);
+
     virtual ~Canvas();
 
     /// @brief fill the canvas buffer with 0x00

@@ -79,7 +79,7 @@ struct struct_ConfigScrollST7735
  */
 class ST7735 : public GraphicDisplayDevice
 {
-private:
+protected:
     HW_SPI_Master *spi;
     uint dc_pin;
     uint backlight_pin;
@@ -116,7 +116,7 @@ private:
     /// @param spi the SPI associated driver
     /// @param device_config the device configuration file
     ST7735(HW_SPI_Master *spi, struct_ConfigST7735 device_config);
-    ~ST7735();
+    virtual ~ST7735();
 
     /// @brief set the actual position of the display
     ///  @param device_config the device configuration file
@@ -136,6 +136,33 @@ private:
     /// @brief fill the internal ST7735 screen buffer with the given color.
     /// Default to BLACK, clear the internal buffer
     /// @param color_index 
-    void clear_device_screen_buffer(ColorIndex color_index = ColorIndex::BLACK);
-    void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y);
+    virtual void clear_device_screen_buffer(ColorIndex color_index = ColorIndex::BLACK);
+
+    
+    virtual void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y);
+
+
 };
+
+
+struct struct_ST7735_data_to_show
+{
+    ST7735 *display = nullptr;
+    Canvas *canvas = nullptr;
+    uint8_t anchor_x = 0;
+    uint8_t anchor_y = 0;
+};
+
+
+class rtos_ST7735 : public ST7735
+{
+private:
+    /* data */
+public:
+    rtos_ST7735(rtos_HW_SPI_Master *spi, struct_ConfigST7735 device_config);
+    ~rtos_ST7735();
+    void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y);
+    void clear_device_screen_buffer(ColorIndex color_index = ColorIndex::BLACK);
+
+};
+

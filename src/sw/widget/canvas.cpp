@@ -1,7 +1,7 @@
 #include "canvas.h"
 #include <string.h>
 
-#define PRINT_CANVAS_CONSTRUCTOR_DESTRUCTOR //usefull to debug canvas construction/destruction
+// #define PRINT_CANVAS_CONSTRUCTOR_DESTRUCTOR //usefull to debug canvas construction/destruction
 
 #define RED_MASK 0xF8
 #define GREEN_MASK 0xFC

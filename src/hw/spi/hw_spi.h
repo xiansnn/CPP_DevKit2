@@ -59,7 +59,7 @@ spi_inst_t *spi;
       * @param master_config 
       */
     HW_SPI_Master(struct_ConfigMasterSPI master_config);
-    ~HW_SPI_Master();
+    virtual ~HW_SPI_Master();
 
     /**
      * @brief send a serie of 8 bit data on the SPI MOSI port
@@ -68,7 +68,7 @@ spi_inst_t *spi;
      * @param len the lenght of the serie
      * @return int the number of byte sent
      */
-    int burst_write_8(uint8_t *src, size_t len);
+    virtual int burst_write_8(uint8_t *src, size_t len);
     /**
      * @brief send a serie of 16 bit data on the SPI MOSI port
      *
@@ -76,7 +76,7 @@ spi_inst_t *spi;
      * @param len the lenght of the serie
      * @return int the number of byte sent
      */
-    int burst_write_16(uint16_t *src, size_t len);
+    virtual int burst_write_16(uint16_t *src, size_t len);
 
     /**
      * @brief read / write a serie of 8 bit data on the SPI MISO/MOSI ports
@@ -86,7 +86,7 @@ spi_inst_t *spi;
      * @param len the length of the serie
      * @return int
      */
-    int burst_write_read_8(uint8_t *src, uint8_t *dest, size_t len);
+    virtual int burst_write_read_8(uint8_t *src, uint8_t *dest, size_t len);
 
     /**
      * @brief write a single byte on the SPI MOSI port
