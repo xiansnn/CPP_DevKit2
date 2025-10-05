@@ -94,7 +94,7 @@ void ST7735::config_inversion_control()
 /**
  * @brief _power control_
  * PWCTR1 , [0xA2,0x02,0x84]
- * PWCTR2 , [0xC5] #VGH = 14.7V, VGL = -7.35V
+ * PWCTR2 , [0xC5] VGH = 14.7V, VGL = -7.35V
  * PWCTR3 , [0x0A, 0x00] opamp current small, boost frequency
  * PWCTR4 , [0x8A, 0x2A] opamp current small, boost frequency
  * PWCTR5 , [0x8A, 0xEE] opamp current small, boost frequency
@@ -551,7 +551,7 @@ void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y
 //  * INVCTR , [0x07]
 //  * _power control_
 //  * PWCTR1 , [0xA2,0x02,0x84]
-//  * PWCTR2 , [0xC5] #VGH = 14.7V, VGL = -7.35V
+//  * PWCTR2 , [0xC5] VGH = 14.7V, VGL = -7.35V
 //  * PWCTR3 , [0x0A, 0x00] opamp current small, boost frequency
 //  * PWCTR4 , [0x8A, 0x2A] opamp current small, boost frequency
 //  * PWCTR5 , [0x8A, 0xEE] opamp current small, boost frequency
