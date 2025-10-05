@@ -19,6 +19,7 @@
 #define BYTE_SIZE 8
 
 #include "pico/stdlib.h"
+#include <stdio.h>
 #include <map>
 
 /// @brief define the code value for color
@@ -58,15 +59,20 @@ extern std::map<ColorIndex, uint16_t> color565_palette;
 /// @brief the format of the canvas
 enum class CanvasFormat
 {
-    /// @brief monochrome canvas, pixel arranged vertically, LSB is top pixel
+    /// @brief monochrome canvas, pixel arranged vertically, LSB is top pixel.
+    /// @note example: SSD1306
     MONO_VLSB,
     /// @brief monochrome canvas, pixel arranged horizontally, LSB is left pixel
+    /// @note example: SH1106
     MONO_HLSB,
     /// @brief monochrome canvas, pixel arranged horizontally, MSB is left pixel
+    /// @note example: ST7735 in 1-bit mode
     MONO_HMSB,
     /// @brief color canvas, 16bits/pixel arranged 5b-red,6b-green,5b-blue
+    /// @note example: ST7735 in 16-bit mode
     RGB565,
     /// @brief color canvas, 16bits/pixel arranged 5b-red,6b-green,5b-blue but with true RGB565 stored in buffer. This is to allow the use of 16bit DMA.
+    /// @note example: ST7735 in 16-bit mode with transfer from canvas done by DMA. In this case the canvas buffer format Canvas::trueRGB565 is directly compatible with the ST7735 16-bit mode.
     trueRGB565
 };
 
@@ -144,20 +150,27 @@ public:
     uint8_t canvas_height_pixel;
 
     /// @brief the size (in bytes) of the buffer
-    size_t canvas_buffer_size;
+    size_t canvas_buffer_size_byte;
+    
+    /// @brief the size (in pixel) of the buffer
+    size_t canvas_buffer_size_pixel;
 
-    /// @brief the buffer
+    /// @brief the 8bit canvas buffer
     uint8_t *canvas_buffer{nullptr};
+
+    /// @brief the 16bit canvasbuffer
+    uint16_t *canvas_16buffer{nullptr};
 
     /// @brief Construct a new Canvas object
     /// @param canvas_width_pixel Width of the canvas (in pixel)
     /// @param canvas_height_pixel height of the canvas(in pixel)
     Canvas(uint8_t canvas_width_pixel,
            uint8_t canvas_height_pixel);
-    ~Canvas();
+
+    virtual ~Canvas();
 
     /// @brief fill the canvas buffer with 0x00
-    void clear_canvas_buffer();
+    virtual void clear_canvas_buffer();
 
     /// @brief the graphic primitive to draw a pixel
     /// @param x the x position of the pixel
@@ -213,6 +226,33 @@ public:
     void draw_pixel(const int x, const int y,
                     const ColorIndex color = ColorIndex::WHITE);
 };
+/// @brief A special version of canvas for color widget (and device) with true RGB565 color coding(i.e. 16bit) per pixel
+///\ingroup view
+class CanvasTrueRGB : public Canvas
+{
+private:
+    void create_canvas_buffer();
+
+public:
+    /// @brief Construct a new Canvas R G B object
+    /// @param canvas_width_pixel
+    /// @param canvas_height_pixel
+    CanvasTrueRGB(uint8_t canvas_width_pixel,
+                  uint8_t canvas_height_pixel);
+    ~CanvasTrueRGB();
+
+    /// @brief fill the 16bit canvas buffer with 0x00
+    virtual void clear_canvas_buffer();
+
+
+    /// @brief fill the canvas buffer with the given color index
+    ///\note the conversion from color index to RGB565 is done by the device after calling the show() member
+    /// @param color
+    void fill_canvas_with_color(ColorIndex color);
+
+    void draw_pixel(const int x, const int y,
+                    const ColorIndex color = ColorIndex::WHITE);
+};
 
 /// @brief A special version of canvas for monochrome widget with 8pixel/byte arranged horizontally.
 /// Usefull for monochrome widget (e.g.text) even for color RGB565 display device
@@ -223,10 +263,9 @@ private:
     void create_canvas_buffer();
 
 public:
-
     /// @brief constructor for CanvasHMSB
-    /// @param canvas_width_pixel 
-    /// @param canvas_height_pixel 
+    /// @param canvas_width_pixel
+    /// @param canvas_height_pixel
     CanvasHMSB(uint8_t canvas_width_pixel,
                uint8_t canvas_height_pixel);
     ~CanvasHMSB();

@@ -63,7 +63,7 @@ public:
    * @param len the lenght of the serie
    * @return int the number of byte sent
    */
-  int burst_write_8(uint8_t *src, size_t len);
+  int burst_write_8(uint8_t *src, size_t len) override;
 
   /**
    * @brief send a serie of 16 bit data on the SPI MOSI port.
@@ -73,7 +73,7 @@ public:
    * @param len the lenght of the serie
    * @return error code
    */
-  int burst_write_16(uint16_t *src, size_t len);
+  int burst_write_16(uint16_t *src, size_t len) override;
 
   /// @brief read a serie of 16 bit data on the SPI MISO port.
   /// Use DMA.
@@ -90,7 +90,7 @@ public:
    * @param len the length of the serie
    * @return error code
    */
-  int burst_write_read_8(uint8_t *src, uint8_t *dest, size_t len);
+  int burst_write_read_8(uint8_t *src, uint8_t *dest, size_t len) override;
 
   /**
    * @brief read a serie of byte on the SPI MISO port

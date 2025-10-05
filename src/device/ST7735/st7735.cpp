@@ -501,18 +501,27 @@ void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y
     case CanvasFormat::RGB565:
         set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
         send_cmd(ST7735_RAMWR);
-        for (size_t i = 0; i < canvas->canvas_buffer_size; i++)
+        for (size_t i = 0; i < canvas->canvas_buffer_size_byte; i++)
         {
             ColorIndex color_index = static_cast<ColorIndex>(canvas->canvas_buffer[i]);
             spi->single_write_16(color565_palette[color_index]);
         }
+        break;
+    case CanvasFormat::trueRGB565:
+        set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
+        send_cmd(ST7735_RAMWR);
+        // for (size_t i = 0; i < canvas->canvas_buffer_size_pixel; i++)
+        // {
+        //     spi->single_write_16(canvas->canvas_16buffer[i]);
+        // }
+        spi->burst_write_16(canvas->canvas_16buffer, canvas->canvas_buffer_size_pixel);
         break;
     case CanvasFormat::MONO_HMSB:
         uint16_t foreground_color = color565_palette[canvas->canvas_fg_color];
         uint16_t background_color = color565_palette[canvas->canvas_bg_color];
         set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
         send_cmd(ST7735_RAMWR);
-        for (size_t i = 0; i < canvas->canvas_buffer_size; i++)
+        for (size_t i = 0; i < canvas->canvas_buffer_size_byte; i++)
         {
             uint8_t byte = canvas->canvas_buffer[i];
             for (size_t idx = 0; idx < 8; idx++)
@@ -562,3 +571,75 @@ void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y
 //  * ---> DISPON
 //  * NORON , sleep 10us
 //  */
+
+rtos_ST7735::rtos_ST7735(rtos_HW_SPI_Master *spi, struct_ConfigST7735 device_config)
+    : ST7735(spi, device_config)
+{
+}
+
+rtos_ST7735::~rtos_ST7735()
+{
+}
+
+void rtos_ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y)
+{
+    switch (canvas->canvas_format)
+    {
+    case CanvasFormat::RGB565:
+        set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
+        send_cmd(ST7735_RAMWR);
+        for (size_t i = 0; i < canvas->canvas_buffer_size_byte; i++)
+        {
+            ColorIndex color_index = static_cast<ColorIndex>(canvas->canvas_buffer[i]);
+            spi->single_write_16(color565_palette[color_index]);
+        }
+        break;
+    case CanvasFormat::trueRGB565:
+        set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
+        send_cmd(ST7735_RAMWR);
+        ((rtos_HW_SPI_Master*)spi)->burst_write_16(canvas->canvas_16buffer, canvas->canvas_buffer_size_pixel);
+        xSemaphoreTake(((rtos_HW_SPI_Master*)spi)->dma_tx->end_of_xfer, portMAX_DELAY);
+        break;
+    case CanvasFormat::MONO_HMSB:
+        uint16_t foreground_color = color565_palette[canvas->canvas_fg_color];
+        uint16_t background_color = color565_palette[canvas->canvas_bg_color];
+        set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
+        send_cmd(ST7735_RAMWR);
+        for (size_t i = 0; i < canvas->canvas_buffer_size_byte; i++)
+        {
+            uint8_t byte = canvas->canvas_buffer[i];
+            for (size_t idx = 0; idx < 8; idx++)
+            {
+                uint8_t shift = byte & ((0b10000000) >> idx);
+                if (shift)
+                    spi->single_write_16(foreground_color);
+                else
+                    spi->single_write_16(background_color);
+            }
+        }
+        break;
+    }
+}
+
+void rtos_ST7735::clear_device_screen_buffer(ColorIndex color_index)
+{
+#if defined(TIME_MEASURE)
+    pr_D4.hi();
+#endif
+    uint8_t xsa = 0;
+    uint8_t ysa = 0;
+    size_t w = TFT_panel_width_in_pixel;
+    size_t h = TFT_panel_height_in_pixel;
+    set_RAM_write_addresses(xsa, ysa, w, h);
+    send_cmd(ST7735_RAMWR);
+    uint16_t color = color565_palette[color_index];
+#if defined(TIME_MEASURE)
+    pr_D4.lo();
+    pr_D5.hi();
+#endif
+    for (size_t i = 0; i < w * h; i++)
+        spi->single_write_16(color);
+#if defined(TIME_MEASURE)
+    pr_D5.lo();
+#endif
+}

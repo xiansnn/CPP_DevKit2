@@ -5,8 +5,13 @@
 #include <string.h>
 #include <cstring>
 
+// #define PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR  //usefull to debug widget construction/destruction
+
 Widget::Widget(Model *actual_displayed_model, DisplayDevice *graphic_display_device)
 {
+#if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
+    printf("+ Widget\n");
+#endif // MACRO
     this->display_device = graphic_display_device;
     if (actual_displayed_model != nullptr)
     {
@@ -18,6 +23,9 @@ Widget::Widget(Model *actual_displayed_model, DisplayDevice *graphic_display_dev
 
 Widget::~Widget()
 {
+#if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
+    printf("- Widget\n");
+#endif // MACRO
 }
 
 void Widget::add_widget(Widget *_sub_widget)
@@ -47,6 +55,9 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              Model *displayed_object)
     : Widget(displayed_object, graphic_display_screen)
 {
+#if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
+    printf("+ GraphicWidget graph_cfg\n");
+#endif // MACRO
     switch (canvas_format)
     {
     case CanvasFormat::MONO_VLSB:
@@ -55,13 +66,14 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     case CanvasFormat::RGB565:
         this->canvas = new CanvasRGB(graph_cfg.pixel_frame_width, graph_cfg.pixel_frame_height);
         break;
+    case CanvasFormat::trueRGB565:
+        this->canvas = new CanvasTrueRGB(graph_cfg.pixel_frame_width, graph_cfg.pixel_frame_height);
+        break;
     default:
         break;
     }
-    this->fg_color = graph_cfg.fg_color;
-    this->bg_color = graph_cfg.bg_color;
-    canvas->canvas_fg_color = fg_color;
-    canvas->canvas_bg_color = bg_color;
+    canvas->canvas_fg_color = graph_cfg.fg_color;
+    canvas->canvas_bg_color = graph_cfg.bg_color;
 
     this->widget_anchor_x = graph_cfg.widget_anchor_x;
     this->widget_anchor_y = graph_cfg.widget_anchor_y;
@@ -83,6 +95,9 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              Model *displayed_object)
     : Widget(displayed_object, graphic_display_screen)
 {
+#if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
+    printf("+ GraphicWidget text_cfg\n");
+#endif // MACRO
 
     switch (canvas_format)
     {
@@ -98,6 +113,11 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
         canvas_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
         this->canvas = new CanvasRGB(canvas_width, canvas_height);
         break;
+    case CanvasFormat::trueRGB565:
+        canvas_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
+        canvas_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
+        this->canvas = new CanvasTrueRGB(canvas_width, canvas_height);
+        break;
     case CanvasFormat::MONO_HMSB:
         canvas_width = ((text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX]) + BYTE_SIZE - 1) / BYTE_SIZE * BYTE_SIZE;
         canvas_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
@@ -106,10 +126,8 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     default:
         break;
     }
-    this->fg_color = text_cfg.fg_color;
-    this->bg_color = text_cfg.bg_color;
-    canvas->canvas_fg_color = fg_color;
-    canvas->canvas_bg_color = bg_color;
+    canvas->canvas_fg_color = text_cfg.fg_color;
+    canvas->canvas_bg_color = text_cfg.bg_color;
 
     this->widget_anchor_x = text_cfg.widget_anchor_x;
     this->widget_anchor_y = text_cfg.widget_anchor_y;
@@ -132,6 +150,9 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              Model *displayed_object)
     : Widget(displayed_object, graphic_display_screen)
 {
+#if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
+    printf("+ GraphicWidget text_cfg 2\n");
+#endif // MACRO
     switch (canvas_format)
     {
     case CanvasFormat::MONO_VLSB:
@@ -140,15 +161,16 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     case CanvasFormat::RGB565:
         this->canvas = new CanvasRGB(frame_width, frame_height);
         break;
+    case CanvasFormat::trueRGB565:
+        this->canvas = new CanvasTrueRGB(frame_width, frame_height);
+        break;
     case CanvasFormat::MONO_HMSB:
         this->canvas = new CanvasHMSB(frame_width, frame_height);
     default:
         break;
     }
-    this->fg_color = text_cfg.fg_color;
-    this->bg_color = text_cfg.bg_color;
-    canvas->canvas_fg_color = fg_color;
-    canvas->canvas_bg_color = bg_color;
+    canvas->canvas_fg_color = text_cfg.fg_color;
+    canvas->canvas_bg_color = text_cfg.bg_color;
 
     this->widget_anchor_x = text_cfg.widget_anchor_x;
     this->widget_anchor_y = text_cfg.widget_anchor_y;
@@ -166,6 +188,9 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
 
 GraphicWidget::~GraphicWidget()
 {
+#if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
+    printf("- GraphicWidget\n");
+#endif // MACRO
     delete canvas;
 }
 
@@ -174,8 +199,8 @@ struct_ConfigGraphicWidget GraphicWidget::get_graph_frame_config()
     struct_ConfigGraphicWidget cfg = {
         .pixel_frame_width = canvas->canvas_width_pixel,
         .pixel_frame_height = canvas->canvas_height_pixel,
-        .fg_color = this->fg_color,
-        .bg_color = this->bg_color,
+        .fg_color = canvas->canvas_fg_color,
+        .bg_color = canvas->canvas_bg_color,
         .widget_anchor_x = this->widget_anchor_x,
         .widget_anchor_y = this->widget_anchor_y,
         .widget_with_border = this->widget_with_border};
@@ -303,8 +328,8 @@ struct_ConfigTextWidget TextWidget::get_text_frame_config()
         .widget_anchor_y = this->widget_anchor_y,
         .font = this->font,
         .tab_size = this->tab_size,
-        .fg_color = this->fg_color,
-        .bg_color = this->bg_color,
+        .fg_color = this->canvas->canvas_fg_color,
+        .bg_color = this->canvas->canvas_bg_color,
         .wrap = this->wrap,
         .auto_next_char = this->auto_next_char};
     return conf;
@@ -315,6 +340,9 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
                        Model *displayed_object)
     : GraphicWidget(graphic_display_screen, text_cfg, canvas_format, displayed_object)
 {
+    #if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
+    printf("+ TextWidget\n");
+    #endif // MACRO
     this->number_of_column = text_cfg.number_of_column;
     this->number_of_line = text_cfg.number_of_line;
     this->font = text_cfg.font;
@@ -331,9 +359,13 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
                        Model *displayed_object)
     : GraphicWidget(graphic_display_screen, text_cfg, canvas_format, frame_width, frame_height, displayed_object)
 {
+    #if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
+    printf("+ TextWidget2\n");
+    #endif // MACRO
     this->font = text_cfg.font;
     this->number_of_column = this->canvas->canvas_width_pixel / this->font[FONT_WIDTH_INDEX];
     this->number_of_line = this->canvas->canvas_height_pixel / this->font[FONT_HEIGHT_INDEX];
+    this->canvas->canvas_buffer_size_pixel = this->canvas->canvas_height_pixel * this->canvas->canvas_width_pixel;
 
     this->tab_size = text_cfg.tab_size;
 
@@ -345,6 +377,9 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
 
 TextWidget::~TextWidget()
 {
+    #if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
+    printf("- TextWidget\n");
+    #endif // MACRO
     delete[] this->text_buffer;
 }
 
@@ -374,7 +409,13 @@ void TextWidget::update_canvas_buffer_size(const unsigned char *font)
     // size the pixel buffer to the required size due to character area
     this->canvas->canvas_height_pixel = number_of_line * font[FONT_HEIGHT_INDEX];
     this->canvas->canvas_width_pixel = number_of_column * font[FONT_WIDTH_INDEX];
-    delete[] this->canvas->canvas_buffer;
+    this->canvas->canvas_buffer_size_pixel = this->canvas->canvas_height_pixel * this->canvas->canvas_width_pixel;
+
+    if (canvas->canvas_format == CanvasFormat::trueRGB565)
+        delete[] canvas->canvas_16buffer;
+    else
+        delete[] canvas->canvas_buffer;
+
     this->canvas->create_canvas_buffer();
 }
 
@@ -483,9 +524,9 @@ void TextWidget::draw_glyph(const char character,
         {
             uint8_t b = font[seek];
             if (font[seek] >> b_seek & 0b00000001)
-                canvas->draw_pixel(x + anchor_x, y + anchor_y, fg_color);
+                canvas->draw_pixel(x + anchor_x, y + anchor_y, canvas->canvas_fg_color);
             else
-                canvas->draw_pixel(x + anchor_x, y + anchor_y, bg_color);
+                canvas->draw_pixel(x + anchor_x, y + anchor_y, canvas->canvas_bg_color);
 
             b_seek++;
             if (b_seek == 8)
