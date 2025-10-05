@@ -1,9 +1,47 @@
 <map id="ST7735::ST7735" name="ST7735::ST7735">
-<area shape="rect" id="Node000001" title="Construct a new ST7735 object." alt="" coords="5,55,107,79"/>
-<area shape="rect" id="Node000002" href="$class_graphic_display_device.html#adcb1b9fe5ab993b41374db60766e8fa1" title="Construct a new Display Device object." alt="" coords="155,5,384,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,52,154,40,194,31,195,36,155,46,108,57"/>
-<area shape="rect" id="Node000003" href="$class_s_t7735.html#a9df39c104f9b583b7e8ac2558c099724" title="Set the display ON object." alt="" coords="200,55,339,79"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="107,64,184,64,184,70,107,70"/>
-<area shape="rect" id="Node000004" href="$class_s_t7735.html#a87c2c59fc30094c1bd8f5b6bc41d2618" title="set the actual position of the display" alt="" coords="181,104,358,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="108,77,155,88,195,98,194,103,154,94,107,82"/>
+<area shape="rect" id="Node000001" title="Construct a new ST7735 object." alt="" coords="5,301,107,326"/>
+<area shape="rect" id="Node000002" href="$class_graphic_display_device.html#adcb1b9fe5ab993b41374db60766e8fa1" title="Construct a new Display Device object." alt="" coords="168,5,397,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,301,60,252,74,182,86,143,103,106,125,71,153,41,159,36,162,40,156,45,129,74,108,108,91,145,79,183,65,253,60,301"/>
+<area shape="rect" id="Node000003" href="$class_s_t7735.html#ab964e971a3c5a6fd90286fd25ec0570f" title="config specific device size and offsets" alt="" coords="155,55,410,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="56,300,64,259,80,202,109,142,129,114,153,90,160,85,164,89,156,94,133,117,114,144,85,204,69,260,62,301"/>
+<area shape="rect" id="Node000004" href="$class_s_t7735.html#afe905a4fe73161fd92df9549eb011f27" title="config framerate control" alt="" coords="186,252,378,277"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="107,298,154,287,198,278,199,283,155,292,108,304"/>
+<area shape="rect" id="Node000007" href="$class_s_t7735.html#a123ced1154bf7ca33746901c661df520" title="column row address set CASET , [0x00,0x01,0x00, width&#45;1] RASET , [0x00,0x01,0x00, height&#45;1] we start ..." alt="" coords="215,301,350,326"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="107,311,199,311,199,316,107,316"/>
+<area shape="rect" id="Node000008" href="$class_s_t7735.html#aef1da358d04fdc120d2cdf0cfcd40fd3" title="config display inversion control" alt="" coords="192,104,372,129"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="58,300,69,267,87,223,115,178,133,157,153,139,177,127,179,131,156,144,137,161,119,181,92,226,74,269,63,302"/>
+<area shape="rect" id="Node000009" href="$class_s_t7735.html#aadf42de089dbf57671063fb8632aad43" title="config power control" alt="" coords="198,153,366,178"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="61,299,95,245,121,214,153,189,182,176,184,180,156,193,125,218,99,248,66,302"/>
+<area shape="rect" id="Node000010" href="$class_s_t7735.html#ae3756f2b5a896be7a93e765a5fc88bfa" title="wake up the device from sleep mode" alt="" coords="213,549,352,574"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="62,326,70,366,86,421,115,479,134,506,156,529,176,542,199,551,197,556,174,547,153,533,130,509,110,482,81,423,64,367,56,327"/>
+<area shape="rect" id="Node000014" href="$class_s_t7735.html#a7ed7edd936d147237e5a6c5a19e3f828" title="initialize pins for the ST7735 device" alt="" coords="230,351,334,375"/>
+<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="108,324,155,335,216,348,215,353,154,340,107,329"/>
+<area shape="rect" id="Node000015" href="$class_s_t7735.html#a1c93052432455bc78b75c4d743eab2d8" title="set the backlight of the display" alt="" coords="218,400,346,425"/>
+<area shape="poly" id="edge18_Node000001_Node000015" title=" " alt="" coords="72,324,108,355,156,385,204,400,202,405,154,389,105,359,68,328"/>
+<area shape="rect" id="Node000016" href="$class_s_t7735.html#a9df39c104f9b583b7e8ac2558c099724" title="Set the display ON object." alt="" coords="484,623,624,647"/>
+<area shape="poly" id="edge19_Node000001_Node000016" title=" " alt="" coords="60,326,64,376,78,447,90,485,106,522,128,555,156,584,191,607,230,624,271,637,313,644,396,650,469,646,469,651,396,655,312,650,269,642,228,629,189,612,153,588,124,559,102,524,85,487,72,448,59,377,55,327"/>
+<area shape="rect" id="Node000017" href="$class_s_t7735.html#a6723634407330ea90a23b9955c56f31b" title="_set display normal ON NORON , sleep 10ms" alt="" coords="478,425,630,450"/>
+<area shape="poly" id="edge21_Node000001_Node000017" title=" " alt="" coords="65,325,78,350,97,381,123,411,156,434,197,450,241,461,286,467,331,468,417,463,488,451,489,456,417,468,331,474,286,472,240,466,196,455,153,439,120,415,93,384,73,353,60,328"/>
+<area shape="rect" id="Node000018" href="$class_s_t7735.html#a5d45094a281b3051f2681711c76d11b4" title="set the RAM write addresses for the display" alt="" coords="458,475,650,499"/>
+<area shape="poly" id="edge23_Node000001_Node000018" title=" " alt="" coords="63,326,73,358,91,399,119,441,136,459,156,474,196,493,240,506,284,513,329,516,416,512,488,500,489,506,416,517,329,522,284,519,238,511,194,498,153,479,132,463,114,445,87,402,68,359,58,327"/>
+<area shape="rect" id="Node000019" href="$class_s_t7735.html#a87c2c59fc30094c1bd8f5b6bc41d2618" title="set the actual position of the display" alt="" coords="194,203,371,227"/>
+<area shape="poly" id="edge25_Node000001_Node000019" title=" " alt="" coords="68,299,105,268,153,238,178,229,180,234,156,243,108,272,72,303"/>
+<area shape="rect" id="Node000005" href="$class_s_t7735.html#a0f7130dfeabb86eb7373cb816a3cb1ad" title="send a list of command to the ST7735 device" alt="" coords="488,228,621,253"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="379,253,472,245,472,250,379,258"/>
+<area shape="rect" id="Node000006" href="$class_s_t7735.html#abbc613fffe458c261881c56d8be0afa7" title="enable or disable the command mode (DC pin low or high)" alt="" coords="861,451,1031,475"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="579,251,910,440,908,445,577,256"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="350,299,409,286,503,256,505,261,411,291,351,305"/>
+<area shape="poly" id="edge9_Node000008_Node000005" title=" " alt="" coords="373,127,411,139,445,156,477,176,529,216,525,220,474,180,442,161,409,144,371,132"/>
+<area shape="poly" id="edge11_Node000009_Node000005" title=" " alt="" coords="357,176,411,188,507,220,505,225,409,194,356,181"/>
+<area shape="rect" id="Node000011" href="$class_s_t7735.html#ac237efe612c94e3149e6ad6f791ece0e" title="turn the display in sleep mode on/off" alt="" coords="490,573,618,598"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="352,565,475,576,474,581,352,570"/>
+<area shape="rect" id="Node000013" href="$class_s_t7735.html#a1199b2f3f56011e7620d7a63dd112bc4" title="hardware reset of the ST7735 device" alt="" coords="483,524,625,549"/>
+<area shape="poly" id="edge16_Node000010_Node000013" title=" " alt="" coords="352,553,467,542,468,547,352,558"/>
+<area shape="rect" id="Node000012" href="$class_s_t7735.html#a352d97b36c32932b43f891bdf41fb371" title="send a command to the ST7735 device" alt="" coords="698,475,813,499"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="616,570,649,558,691,534,726,507,730,512,694,538,651,563,618,575"/>
+<area shape="poly" id="edge15_Node000012_Node000006" title=" " alt="" coords="813,477,845,473,845,478,813,482"/>
+<area shape="poly" id="edge20_Node000016_Node000012" title=" " alt="" coords="623,620,649,607,676,586,701,561,737,511,741,514,705,564,680,590,652,612,625,625"/>
+<area shape="poly" id="edge22_Node000017_Node000012" title=" " alt="" coords="608,448,688,468,687,473,607,453"/>
+<area shape="poly" id="edge24_Node000018_Node000012" title=" " alt="" coords="651,484,683,484,683,490,651,490"/>
+<area shape="poly" id="edge26_Node000019_Node000005" title=" " alt="" coords="372,221,472,230,472,235,371,226"/>
 </map>

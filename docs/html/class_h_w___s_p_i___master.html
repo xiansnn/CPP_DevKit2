@@ -133,13 +133,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae511ff460d41821039ff9d25538ab57c" id="r_ae511ff460d41821039ff9d25538ab57c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae511ff460d41821039ff9d25538ab57c">HW_SPI_Master</a> (<a class="el" href="structstruct___config_master_s_p_i.html">struct_ConfigMasterSPI</a> master_config)</td></tr>
 <tr class="memdesc:ae511ff460d41821039ff9d25538ab57c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new hw spi master object.  <br /></td></tr>
 <tr class="separator:ae511ff460d41821039ff9d25538ab57c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a18f17016767aef5bf032c86fed0989" id="r_a3a18f17016767aef5bf032c86fed0989"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a18f17016767aef5bf032c86fed0989">burst_write_8</a> (uint8_t *src, size_t len)</td></tr>
+<tr class="memitem:a3a18f17016767aef5bf032c86fed0989" id="r_a3a18f17016767aef5bf032c86fed0989"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a18f17016767aef5bf032c86fed0989">burst_write_8</a> (uint8_t *src, size_t len)</td></tr>
 <tr class="memdesc:a3a18f17016767aef5bf032c86fed0989"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a serie of 8 bit data on the SPI MOSI port  <br /></td></tr>
 <tr class="separator:a3a18f17016767aef5bf032c86fed0989"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0f1f240f64c74604f2569818567db35" id="r_aa0f1f240f64c74604f2569818567db35"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0f1f240f64c74604f2569818567db35">burst_write_16</a> (uint16_t *src, size_t len)</td></tr>
+<tr class="memitem:aa0f1f240f64c74604f2569818567db35" id="r_aa0f1f240f64c74604f2569818567db35"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0f1f240f64c74604f2569818567db35">burst_write_16</a> (uint16_t *src, size_t len)</td></tr>
 <tr class="memdesc:aa0f1f240f64c74604f2569818567db35"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a serie of 16 bit data on the SPI MOSI port  <br /></td></tr>
 <tr class="separator:aa0f1f240f64c74604f2569818567db35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa219e3da499620eb5b4f89216340a8ae" id="r_aa219e3da499620eb5b4f89216340a8ae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa219e3da499620eb5b4f89216340a8ae">burst_write_read_8</a> (uint8_t *src, uint8_t *dest, size_t len)</td></tr>
+<tr class="memitem:aa219e3da499620eb5b4f89216340a8ae" id="r_aa219e3da499620eb5b4f89216340a8ae"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa219e3da499620eb5b4f89216340a8ae">burst_write_read_8</a> (uint8_t *src, uint8_t *dest, size_t len)</td></tr>
 <tr class="memdesc:aa219e3da499620eb5b4f89216340a8ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">read / write a serie of 8 bit data on the SPI MISO/MOSI ports  <br /></td></tr>
 <tr class="separator:aa219e3da499620eb5b4f89216340a8ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e6e3c1c0480d1eac20e66de3757bc8a" id="r_a9e6e3c1c0480d1eac20e66de3757bc8a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e6e3c1c0480d1eac20e66de3757bc8a">single_write_8</a> (uint8_t byte_value)</td></tr>
@@ -246,6 +246,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int HW_SPI_Master::burst_write_16 </td>
@@ -258,6 +261,11 @@ Here is the caller graph for this function:</div>
           <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>send a serie of 16 bit data on the SPI MOSI port </p>
@@ -270,6 +278,8 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int the number of byte sent </dd></dl>
 
+<p>Reimplemented in <a class="el" href="classrtos___h_w___s_p_i___master.html#a3475c044ad176bcf774bd8c60b35b6b6">rtos_HW_SPI_Master</a>.</p>
+
 </div>
 </div>
 <a id="a3a18f17016767aef5bf032c86fed0989" name="a3a18f17016767aef5bf032c86fed0989"></a>
@@ -277,6 +287,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int HW_SPI_Master::burst_write_8 </td>
@@ -289,6 +302,11 @@ Here is the caller graph for this function:</div>
           <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>send a serie of 8 bit data on the SPI MOSI port </p>
@@ -301,6 +319,8 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int the number of byte sent </dd></dl>
 
+<p>Reimplemented in <a class="el" href="classrtos___h_w___s_p_i___master.html#ad56f0c9914dd87bd347718c35b69164c">rtos_HW_SPI_Master</a>.</p>
+
 </div>
 </div>
 <a id="aa219e3da499620eb5b4f89216340a8ae" name="aa219e3da499620eb5b4f89216340a8ae"></a>
@@ -308,6 +328,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int HW_SPI_Master::burst_write_read_8 </td>
@@ -325,6 +348,11 @@ Here is the caller graph for this function:</div>
           <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>read / write a serie of 8 bit data on the SPI MISO/MOSI ports </p>
@@ -337,6 +365,8 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classrtos___h_w___s_p_i___master.html#a53c8a4bba205f5168dee2a9cf6409e98">rtos_HW_SPI_Master</a>.</p>
 
 </div>
 </div>

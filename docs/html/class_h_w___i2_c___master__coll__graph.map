@@ -1,3 +1,3 @@
 <map id="HW_I2C_Master" name="HW_I2C_Master">
-<area shape="rect" id="Node000001" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="5,5,539,216"/>
+<area shape="rect" id="Node000001" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="5,5,519,245"/>
 </map>

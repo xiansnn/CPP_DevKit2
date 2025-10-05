@@ -114,9 +114,9 @@ Inheritance diagram for HW_I2C_Master:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_h_w___i2_c___master__inherit__graph.png" border="0" usemap="#a_h_w___i2_c___master_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_h_w___i2_c___master_inherit__map" id="a_h_w___i2_c___master_inherit__map">
-<area shape="rect" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="11,5,544,216"/>
-<area shape="rect" href="classrtos___h_w___i2_c___master.html" title="This is a C++ wrapper for the original pico SDK i2c master API, adapted to FreeRTOS environment." alt="" coords="5,264,549,437"/>
-<area shape="poly" title=" " alt="" coords="280,231,280,264,275,264,275,231"/>
+<area shape="rect" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="5,5,519,245"/>
+<area shape="rect" href="classrtos___h_w___i2_c___master.html" title="This is a C++ wrapper for the original pico SDK i2c master API, adapted to FreeRTOS environment." alt="" coords="34,293,490,496"/>
+<area shape="poly" title=" " alt="" coords="265,260,265,294,259,294,259,260"/>
 </map>
 </div>
 <div class="dynheader">
@@ -124,7 +124,7 @@ Collaboration diagram for HW_I2C_Master:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_h_w___i2_c___master__coll__graph.png" border="0" usemap="#a_h_w___i2_c___master_coll__map" alt="Collaboration graph"/></div>
 <map name="a_h_w___i2_c___master_coll__map" id="a_h_w___i2_c___master_coll__map">
-<area shape="rect" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="5,5,539,216"/>
+<area shape="rect" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="5,5,519,245"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -133,7 +133,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aec651bc1d3019c6a5d30bbda8bae5846" id="r_aec651bc1d3019c6a5d30bbda8bae5846"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec651bc1d3019c6a5d30bbda8bae5846">HW_I2C_Master</a> (<a class="el" href="structstruct___config_master_i2_c.html">struct_ConfigMasterI2C</a> master_config)</td></tr>
 <tr class="memdesc:aec651bc1d3019c6a5d30bbda8bae5846"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new hw i2c master object.  <br /></td></tr>
 <tr class="separator:aec651bc1d3019c6a5d30bbda8bae5846"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d6beaf9cd225d78626902884c81d41c" id="r_a3d6beaf9cd225d78626902884c81d41c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstruct___i2_c_xfer_result.html">struct_I2CXferResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d6beaf9cd225d78626902884c81d41c">burst_byte_write</a> (uint8_t slave_address, uint8_t mem_addr, uint8_t *src, size_t len)</td></tr>
+<tr class="memitem:a3d6beaf9cd225d78626902884c81d41c" id="r_a3d6beaf9cd225d78626902884c81d41c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structstruct___i2_c_xfer_result.html">struct_I2CXferResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d6beaf9cd225d78626902884c81d41c">burst_byte_write</a> (uint8_t slave_address, uint8_t mem_addr, uint8_t *src, size_t len)</td></tr>
 <tr class="memdesc:a3d6beaf9cd225d78626902884c81d41c"><td class="mdescLeft">&#160;</td><td class="mdescRight">a convenient C++ member wrapper to write a block of data starting at a slave memory address. The operation is bounded by a timeout  <br /></td></tr>
 <tr class="separator:a3d6beaf9cd225d78626902884c81d41c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bafebb5c2b2e2964b2ad83891b8ff7f" id="r_a4bafebb5c2b2e2964b2ad83891b8ff7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstruct___i2_c_xfer_result.html">struct_I2CXferResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bafebb5c2b2e2964b2ad83891b8ff7f">single_byte_write</a> (uint8_t slave_address, uint8_t mem_addr, uint8_t mem_value)</td></tr>
@@ -142,7 +142,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af75401aef49c0774326f4e318f91a781" id="r_af75401aef49c0774326f4e318f91a781"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstruct___i2_c_xfer_result.html">struct_I2CXferResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af75401aef49c0774326f4e318f91a781">single_byte_read</a> (uint8_t slave_address, uint8_t mem_addr, uint8_t *dest)</td></tr>
 <tr class="memdesc:af75401aef49c0774326f4e318f91a781"><td class="mdescLeft">&#160;</td><td class="mdescRight">a convenient C++ member wrapper to read a single byte at a slave memory address. The operation is bounded by a timeout.  <br /></td></tr>
 <tr class="separator:af75401aef49c0774326f4e318f91a781"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa23837c8f759cfd68ab01da51b2e6443" id="r_aa23837c8f759cfd68ab01da51b2e6443"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstruct___i2_c_xfer_result.html">struct_I2CXferResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa23837c8f759cfd68ab01da51b2e6443">burst_byte_read</a> (uint8_t slave_address, uint8_t mem_addr, uint8_t *dest, size_t len)</td></tr>
+<tr class="memitem:aa23837c8f759cfd68ab01da51b2e6443" id="r_aa23837c8f759cfd68ab01da51b2e6443"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structstruct___i2_c_xfer_result.html">struct_I2CXferResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa23837c8f759cfd68ab01da51b2e6443">burst_byte_read</a> (uint8_t slave_address, uint8_t mem_addr, uint8_t *dest, size_t len)</td></tr>
 <tr class="memdesc:aa23837c8f759cfd68ab01da51b2e6443"><td class="mdescLeft">&#160;</td><td class="mdescRight">a convenient C++ member wrapper to read a block of data starting at a slave memory address. The operation is bounded by a timeout.  <br /></td></tr>
 <tr class="separator:aa23837c8f759cfd68ab01da51b2e6443"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81b01ac8db26400774c892f76b1917de" id="r_a81b01ac8db26400774c892f76b1917de"><td class="memItemLeft" align="right" valign="top">std::set&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81b01ac8db26400774c892f76b1917de">bus_scan</a> ()</td></tr>
@@ -211,6 +211,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="structstruct___i2_c_xfer_result.html">struct_I2CXferResult</a> HW_I2C_Master::burst_byte_read </td>
@@ -233,6 +236,11 @@ Here is the caller graph for this function:</div>
           <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>a convenient C++ member wrapper to read a block of data starting at a slave memory address. The operation is bounded by a timeout. </p>
@@ -247,6 +255,8 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="structstruct___i2_c_xfer_result.html" title="this data structure collects result when an I2C transfer is done. It gives a more verbose error descr...">struct_I2CXferResult</a> </dd></dl>
 
+<p>Reimplemented in <a class="el" href="classrtos___h_w___i2_c___master.html#ada7805179e403c58fd0a63a4a744ec75">rtos_HW_I2C_Master</a>.</p>
+
 </div>
 </div>
 <a id="a3d6beaf9cd225d78626902884c81d41c" name="a3d6beaf9cd225d78626902884c81d41c"></a>
@@ -254,6 +264,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="structstruct___i2_c_xfer_result.html">struct_I2CXferResult</a> HW_I2C_Master::burst_byte_write </td>
@@ -276,6 +289,11 @@ Here is the caller graph for this function:</div>
           <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>a convenient C++ member wrapper to write a block of data starting at a slave memory address. The operation is bounded by a timeout </p>
@@ -289,6 +307,8 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="structstruct___i2_c_xfer_result.html" title="this data structure collects result when an I2C transfer is done. It gives a more verbose error descr...">struct_I2CXferResult</a> </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classrtos___h_w___i2_c___master.html#a4e7e66d87bbc72e72f1b3b200d71e1c8">rtos_HW_I2C_Master</a>.</p>
 
 </div>
 </div>

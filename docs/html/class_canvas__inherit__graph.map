@@ -1,9 +1,11 @@
 <map id="Canvas" name="Canvas">
-<area shape="rect" id="Node000001" title="The canvas is a virtual memory in which the widget draws." alt="" coords="427,5,892,272"/>
-<area shape="rect" id="Node000002" href="$class_canvas_h_m_s_b.html" title="A special version of canvas for monochrome widget with 8pixel/byte arranged horizontally...." alt="" coords="5,320,425,437"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="415,274,324,322,321,318,412,269"/>
-<area shape="rect" id="Node000003" href="$class_canvas_r_g_b.html" title="A special version of canvas for color widget (and device) with 1 pixel/byte accoeding to 565 RGB colo..." alt="" coords="449,320,869,437"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="662,287,662,321,657,321,657,287"/>
-<area shape="rect" id="Node000004" href="$class_canvas_v_l_s_b.html" title="A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically." alt="" coords="893,320,1313,437"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="906,269,997,318,995,322,904,274"/>
+<area shape="rect" id="Node000001" title="The canvas is a virtual memory in which the widget draws." alt="" coords="648,5,1113,309"/>
+<area shape="rect" id="Node000002" href="$class_canvas_h_m_s_b.html" title="A special version of canvas for monochrome widget with 8pixel/byte arranged horizontally...." alt="" coords="5,367,425,484"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="635,259,360,369,358,364,633,254"/>
+<area shape="rect" id="Node000003" href="$class_canvas_r_g_b.html" title="A special version of canvas for color widget (and device) with 1 pixel/byte according to 565 RGB colo..." alt="" coords="449,367,869,484"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="748,322,709,369,705,365,743,319"/>
+<area shape="rect" id="Node000004" href="$class_canvas_true_r_g_b.html" title="A special version of canvas for color widget (and device) with true RGB565 color coding(i...." alt="" coords="893,357,1313,493"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1019,319,1049,356,1045,359,1014,322"/>
+<area shape="rect" id="Node000005" href="$class_canvas_v_l_s_b.html" title="A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically." alt="" coords="1337,367,1757,484"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1128,254,1405,364,1403,369,1126,259"/>
 </map>

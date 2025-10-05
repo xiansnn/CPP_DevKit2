@@ -1,0 +1,7 @@
+<map id="ST7735::enable_sleep" name="ST7735::enable_sleep">
+<area shape="rect" id="Node000001" title="turn the display in sleep mode on/off" alt="" coords="5,5,134,30"/>
+<area shape="rect" id="Node000002" href="$class_s_t7735.html#a352d97b36c32932b43f891bdf41fb371" title="send a command to the ST7735 device" alt="" coords="182,5,296,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,15,166,15,166,20,134,20"/>
+<area shape="rect" id="Node000003" href="$class_s_t7735.html#abbc613fffe458c261881c56d8be0afa7" title="enable or disable the command mode (DC pin low or high)" alt="" coords="344,5,514,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="296,15,328,15,328,20,296,20"/>
+</map>
