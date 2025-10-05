@@ -13,6 +13,19 @@
 #include "pico/stdlib.h"
 #include "sw/widget/canvas.h"
 
+/// @brief data structure used to queue data to send to the display task
+struct struct_DataToShow
+{
+    /// @brief the display device
+    GraphicDisplayDevice *display = nullptr;
+    /// @brief the canvas to be displayed
+    Canvas *canvas = nullptr;
+    /// @brief the x anchor position of the canvas on the display
+    uint8_t anchor_x = 0;
+    /// @brief the y anchor position of the canvas on the display
+    uint8_t anchor_y = 0;
+};
+
 /// @brief A generic class for all display device
 /// \ingroup view
 class DisplayDevice

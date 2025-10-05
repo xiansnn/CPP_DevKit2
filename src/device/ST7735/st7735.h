@@ -178,18 +178,7 @@ protected:
 
 };
 
-/// @brief data structure used to queue data to send to the display task
-struct struct_ST7735_data_to_show
-{
-    /// @brief the display device
-    ST7735 *display = nullptr;
-    /// @brief the canvas to be displayed
-    Canvas *canvas = nullptr;
-    /// @brief the x anchor position of the canvas on the display
-    uint8_t anchor_x = 0;
-    /// @brief the y anchor position of the canvas on the display
-    uint8_t anchor_y = 0;
-};
+
 
 /// @brief RTOS version of the ST7735 display device
 class rtos_ST7735 : public ST7735

@@ -594,12 +594,14 @@ void rtos_ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anc
             spi->single_write_16(color565_palette[color_index]);
         }
         break;
+
     case CanvasFormat::trueRGB565:
         set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
         send_cmd(ST7735_RAMWR);
         ((rtos_HW_SPI_Master*)spi)->burst_write_16(canvas->canvas_16buffer, canvas->canvas_buffer_size_pixel);
         xSemaphoreTake(((rtos_HW_SPI_Master*)spi)->dma_tx->end_of_xfer, portMAX_DELAY);
         break;
+        
     case CanvasFormat::MONO_HMSB:
         uint16_t foreground_color = color565_palette[canvas->canvas_fg_color];
         uint16_t background_color = color565_palette[canvas->canvas_bg_color];

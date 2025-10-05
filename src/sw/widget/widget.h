@@ -179,17 +179,13 @@ public:
     /// @brief the associated canvas in which the widget writes text and draws graphics
     Canvas *canvas;
 
-    // /// @brief the foregroung color of the graphic frame
-    // /// //TODO voir si fg_color n'est pas mieux dans canvas
-    // ColorIndex fg_color;
-    // /// @brief the background color of the graphic frame
-    // /// //TODO voir si bg_color n'est pas mieux dans canvas
-    // ColorIndex bg_color;
-
     /// @brief location in x of the widget within the hosting framebuffer
     uint8_t widget_anchor_x;
     /// @brief location in y of the widget within the hosting framebuffer
     uint8_t widget_anchor_y;
+
+
+    struct_DataToShow data_to_show;
 
     /// @brief Modify the anchor of the widget on the display screen
     /// @param x anchor x coordinate
@@ -203,6 +199,9 @@ public:
 
     /// @brief A short way to call GraphicDisplayDevice::show(&canvas, anchor x, anchor y)
     void show();
+
+
+ 
 
     /**
      * @brief Construct a new Graphic Widget object
