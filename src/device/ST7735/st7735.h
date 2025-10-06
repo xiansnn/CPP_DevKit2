@@ -26,37 +26,37 @@
 /// @brief hardware row offset between the TFT panel and the IC ST7735 for rotation = 180°, 270°
 #define ST7735_144_128x128_row_offset_180_270 3
 /// @brief hardware column offset between the TFT panel and the IC ST7735
-#define ST7735_177_160x128_column_offset 0//2
+#define ST7735_177_160x128_column_offset 0 // 2
 /// @brief hardware row offset between the TFT panel and the IC ST7735
-#define ST7735_177_160x128_row_offset 0//1
+#define ST7735_177_160x128_row_offset 0 // 1
 
 /// @brief tag used to ru the correct init code
 enum class ST7735DisplayType
 {
     /// @brief LCD TFT 1"44 128(RGB)x128 green_tab configuration
-    ST7735_144_128_RGB_128_GREENTAB, // 
+    ST7735_144_128_RGB_128_GREENTAB, //
     /// @brief LCD TFT 1"77 160(RGB)x128 green_tab configuration
-    ST7735_177_160_RGB_128_GREENTAB  // 
+    ST7735_177_160_RGB_128_GREENTAB //
 };
 
 /// @brief code indicates rotation of the display (Portrait, paysage, upside-down)
 enum class ST7735Rotation
 {
-    
+
     /// @brief no rotation applied
     _0,
     /// @brief rotate 90° clockwise
     _90,
     /// @brief rotate 180° clockwise
     _180,
-    /// @brief rotate 270° clockwise 
+    /// @brief rotate 270° clockwise
     _270
 };
 
 /// @brief data used to configure the display device
 struct struct_ConfigST7735
 {
-    
+
     /// @brief indicates which type of TFT panel must be configured
     ST7735DisplayType display_type;
     /// @brief indicates the GPIO connected to the backlight input
@@ -75,7 +75,7 @@ struct struct_ConfigScrollST7735
 /**
  * @brief ST7735 driven TFT color display device
  * \ingroup view
- * 
+ *
  */
 class ST7735 : public GraphicDisplayDevice
 {
@@ -133,7 +133,7 @@ protected:
     /// @param buffer_len the length of the buffer
     void send_buffer(uint8_t *buffer, size_t buffer_len);
     /// @brief set the backlight of the display
-    /// @param on 
+    /// @param on
     void set_backlight(bool on);
     /// @brief perform a software reset of the display
     void soft_reset();
@@ -163,22 +163,17 @@ protected:
     void set_display_OFF();
 
     /// @brief turn the display in sleep mode on/off
-    /// @param enable 
+    /// @param enable
     void enable_sleep(bool enable);
     void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg);
 
     /// @brief fill the internal ST7735 screen buffer with the given color.
     /// Default to BLACK, clear the internal buffer
-    /// @param color_index 
+    /// @param color_index
     virtual void clear_device_screen_buffer(ColorIndex color_index = ColorIndex::BLACK);
 
-    
     virtual void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y);
-
-
 };
-
-
 
 /// @brief RTOS version of the ST7735 display device
 class rtos_ST7735 : public ST7735
@@ -194,6 +189,4 @@ public:
 
     void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y);
     void clear_device_screen_buffer(ColorIndex color_index = ColorIndex::BLACK);
-
 };
-

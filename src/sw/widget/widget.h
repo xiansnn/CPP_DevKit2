@@ -184,8 +184,8 @@ public:
     /// @brief location in y of the widget within the hosting framebuffer
     uint8_t widget_anchor_y;
 
-
-    struct_DataToShow data_to_show;
+    /// @brief the data structure used to send the canvas to the display task
+    struct_DataToShow data_to_display;
 
     /// @brief Modify the anchor of the widget on the display screen
     /// @param x anchor x coordinate

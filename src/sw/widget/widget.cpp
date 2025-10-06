@@ -86,10 +86,10 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     widget_width = canvas->canvas_width_pixel - 2 * widget_border_width;
     widget_height = canvas->canvas_height_pixel - 2 * widget_border_width;
 
-    data_to_show.display = (GraphicDisplayDevice*)display_device;
-    data_to_show.canvas = this->canvas;
-    data_to_show.anchor_x = this->widget_anchor_x;
-    data_to_show.anchor_y = this->widget_anchor_y;
+    data_to_display.display = (GraphicDisplayDevice*)display_device;
+    data_to_display.canvas = this->canvas;
+    data_to_display.anchor_x = this->widget_anchor_x;
+    data_to_display.anchor_y = this->widget_anchor_y;
 
 
     ((GraphicDisplayDevice *)display_device)->check_display_device_compatibility(get_graph_frame_config());
