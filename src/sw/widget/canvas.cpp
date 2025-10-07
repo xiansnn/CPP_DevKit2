@@ -84,7 +84,7 @@ CanvasHMSB::~CanvasHMSB()
 }
 void CanvasHMSB::fill_canvas_with_color(ColorIndex color)
 {
-    if (color == ColorIndex::BLACK)
+    if (color == canvas_bg_color)
         memset(canvas_buffer, 0x00, canvas_buffer_size_byte);
     else
         memset(canvas_buffer, 0xFF, canvas_buffer_size_byte);

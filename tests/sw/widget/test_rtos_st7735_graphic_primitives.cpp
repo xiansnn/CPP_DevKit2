@@ -149,7 +149,7 @@ void test_fb_line(ST7735 *display)
     p1.hi();
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
     p2.hi();
-    display->clear_device_screen_buffer(); // TODO optimize clear_device_screen_buffer() to use DMA (65ms)
+    display->clear_device_screen_buffer();
     p2.lo();
     p2.hi();
     frame.canvas->clear_canvas_buffer(); // no real need to use DMA (165us)

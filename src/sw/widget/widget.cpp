@@ -86,11 +86,10 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     widget_width = canvas->canvas_width_pixel - 2 * widget_border_width;
     widget_height = canvas->canvas_height_pixel - 2 * widget_border_width;
 
-    data_to_display.display = (GraphicDisplayDevice*)display_device;
+    data_to_display.display = (GraphicDisplayDevice *)display_device;
     data_to_display.canvas = this->canvas;
     data_to_display.anchor_x = this->widget_anchor_x;
     data_to_display.anchor_y = this->widget_anchor_y;
-
 
     ((GraphicDisplayDevice *)display_device)->check_display_device_compatibility(get_graph_frame_config());
 }
@@ -346,9 +345,9 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
                        Model *displayed_object)
     : GraphicWidget(graphic_display_screen, text_cfg, canvas_format, displayed_object)
 {
-    #if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
+#if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
     printf("+ TextWidget\n");
-    #endif // MACRO
+#endif // MACRO
     this->number_of_column = text_cfg.number_of_column;
     this->number_of_line = text_cfg.number_of_line;
     this->font = text_cfg.font;
@@ -365,9 +364,9 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
                        Model *displayed_object)
     : GraphicWidget(graphic_display_screen, text_cfg, canvas_format, frame_width, frame_height, displayed_object)
 {
-    #if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
+#if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
     printf("+ TextWidget2\n");
-    #endif // MACRO
+#endif // MACRO
     this->font = text_cfg.font;
     this->number_of_column = this->canvas->canvas_width_pixel / this->font[FONT_WIDTH_INDEX];
     this->number_of_line = this->canvas->canvas_height_pixel / this->font[FONT_HEIGHT_INDEX];
@@ -383,9 +382,9 @@ TextWidget::TextWidget(GraphicDisplayDevice *graphic_display_screen,
 
 TextWidget::~TextWidget()
 {
-    #if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
+#if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
     printf("- TextWidget\n");
-    #endif // MACRO
+#endif // MACRO
     delete[] this->text_buffer;
 }
 
