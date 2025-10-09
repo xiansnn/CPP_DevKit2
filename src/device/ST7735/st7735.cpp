@@ -599,7 +599,6 @@ void rtos_ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anc
         set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
         send_cmd(ST7735_RAMWR);
         ((rtos_HW_SPI_Master *)spi)->burst_write_16(canvas->canvas_16buffer, canvas->canvas_buffer_size_pixel);
-        xSemaphoreTake(((rtos_HW_SPI_Master *)spi)->dma_tx->end_of_xfer, portMAX_DELAY);
         break;
 
     case CanvasFormat::MONO_HMSB:
@@ -640,7 +639,6 @@ void rtos_ST7735::clear_device_screen_buffer(ColorIndex color_index)
     pr_D5.hi();
 #endif
     ((rtos_HW_SPI_Master *)spi)->repeat_write_16(&color, w * h);
-    xSemaphoreTake(((rtos_HW_SPI_Master *)spi)->dma_tx->end_of_xfer, portMAX_DELAY);
 #if defined(TIME_MEASURE)
     pr_D5.lo();
 #endif

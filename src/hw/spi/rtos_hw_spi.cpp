@@ -39,6 +39,7 @@ int rtos_HW_SPI_Master::burst_write_16(uint16_t *src, size_t len)
                           src,
                           len,
                           true);
+    xSemaphoreTake(this->dma_tx->end_of_xfer, portMAX_DELAY);
     return error;
 }
 
@@ -58,6 +59,7 @@ int rtos_HW_SPI_Master::repeat_write_16(uint16_t *src, size_t len)
                           src,
                           len,
                           true);
+    xSemaphoreTake(this->dma_tx->end_of_xfer, portMAX_DELAY);
     return error;
 }
 
@@ -77,6 +79,7 @@ int rtos_HW_SPI_Master::burst_read_16(uint16_t *dst, size_t len)
                           &spi_get_hw(spi)->dr, // read address
                           len,                  // element count (each element is of size transfer_data_size)
                           true);                // immediate start
+    xSemaphoreTake(this->dma_rx->end_of_xfer, portMAX_DELAY);
     return error;
 }
 
