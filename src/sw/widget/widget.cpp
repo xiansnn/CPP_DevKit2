@@ -63,10 +63,10 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     case CanvasFormat::MONO_VLSB:
         this->canvas = new CanvasVLSB(graph_cfg.pixel_frame_width, graph_cfg.pixel_frame_height);
         break;
-    case CanvasFormat::RGB565:
+    case CanvasFormat::RGB_COLOR_INDEX_8b:
         this->canvas = new CanvasRGB(graph_cfg.pixel_frame_width, graph_cfg.pixel_frame_height);
         break;
-    case CanvasFormat::trueRGB565:
+    case CanvasFormat::RGB565_16b:
         this->canvas = new CanvasTrueRGB(graph_cfg.pixel_frame_width, graph_cfg.pixel_frame_height);
         break;
     default:
@@ -113,12 +113,12 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
         canvas_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
         this->canvas = new CanvasVLSB(canvas_width, canvas_height);
         break;
-    case CanvasFormat::RGB565:
+    case CanvasFormat::RGB_COLOR_INDEX_8b:
         canvas_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
         canvas_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
         this->canvas = new CanvasRGB(canvas_width, canvas_height);
         break;
-    case CanvasFormat::trueRGB565:
+    case CanvasFormat::RGB565_16b:
         canvas_width = text_cfg.number_of_column * text_cfg.font[FONT_WIDTH_INDEX];
         canvas_height = text_cfg.number_of_line * text_cfg.font[FONT_HEIGHT_INDEX];
         this->canvas = new CanvasTrueRGB(canvas_width, canvas_height);
@@ -145,6 +145,11 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     widget_width = canvas->canvas_width_pixel - 2 * widget_border_width;
     widget_height = canvas->canvas_height_pixel - 2 * widget_border_width;
 
+    data_to_display.display = (GraphicDisplayDevice *)display_device;
+    data_to_display.canvas = this->canvas;
+    data_to_display.anchor_x = this->widget_anchor_x;
+    data_to_display.anchor_y = this->widget_anchor_y;
+
     ((GraphicDisplayDevice *)display_device)->check_display_device_compatibility(get_graph_frame_config());
 }
 
@@ -163,10 +168,10 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     case CanvasFormat::MONO_VLSB:
         this->canvas = new CanvasVLSB(frame_width, frame_height);
         break;
-    case CanvasFormat::RGB565:
+    case CanvasFormat::RGB_COLOR_INDEX_8b:
         this->canvas = new CanvasRGB(frame_width, frame_height);
         break;
-    case CanvasFormat::trueRGB565:
+    case CanvasFormat::RGB565_16b:
         this->canvas = new CanvasTrueRGB(frame_width, frame_height);
         break;
     case CanvasFormat::MONO_HMSB:
@@ -187,6 +192,11 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     widget_start_y = widget_border_width;
     widget_width = canvas->canvas_width_pixel - 2 * widget_border_width;
     widget_height = canvas->canvas_height_pixel - 2 * widget_border_width;
+
+    data_to_display.display = (GraphicDisplayDevice *)display_device;
+    data_to_display.canvas = this->canvas;
+    data_to_display.anchor_x = this->widget_anchor_x;
+    data_to_display.anchor_y = this->widget_anchor_y;
 
     ((GraphicDisplayDevice *)display_device)->check_display_device_compatibility(get_graph_frame_config());
 }
@@ -416,7 +426,7 @@ void TextWidget::update_canvas_buffer_size(const unsigned char *font)
     this->canvas->canvas_width_pixel = number_of_column * font[FONT_WIDTH_INDEX];
     this->canvas->canvas_buffer_size_pixel = this->canvas->canvas_height_pixel * this->canvas->canvas_width_pixel;
 
-    if (canvas->canvas_format == CanvasFormat::trueRGB565)
+    if (canvas->canvas_format == CanvasFormat::RGB565_16b)
         delete[] canvas->canvas_16buffer;
     else
         delete[] canvas->canvas_buffer;

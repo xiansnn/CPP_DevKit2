@@ -179,7 +179,7 @@ CanvasRGB::CanvasRGB(uint8_t canvas_width_pixel, uint8_t canvas_height_pixel)
 #if defined(PRINT_CANVAS_CONSTRUCTOR_DESTRUCTOR)
     printf("+ CanvasRGB\t");
 #endif // MACRO
-    canvas_format = CanvasFormat::RGB565;
+    canvas_format = CanvasFormat::RGB_COLOR_INDEX_8b;
     create_canvas_buffer();
 }
 
@@ -222,7 +222,7 @@ CanvasTrueRGB::CanvasTrueRGB(uint8_t canvas_width_pixel, uint8_t canvas_height_p
 #if defined(PRINT_CANVAS_CONSTRUCTOR_DESTRUCTOR)
     printf("+ CanvasTrueRGB\t");
 #endif // MACRO
-    canvas_format = CanvasFormat::trueRGB565;
+    canvas_format = CanvasFormat::RGB565_16b;
     create_canvas_buffer();
 }
 

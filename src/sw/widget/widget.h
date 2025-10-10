@@ -15,6 +15,8 @@
 #include "sw/ui_core/ui_core.h"
 #include "sw/widget/canvas.h"
 
+// #include "FreeRTOS.h" //FIXME FreeRTOS.h file not found !!
+
 #include <vector>
 #include <string>
 
@@ -184,7 +186,7 @@ public:
     /// @brief location in y of the widget within the hosting framebuffer
     uint8_t widget_anchor_y;
 
-    /// @brief the data structure used to send the canvas to the display task
+    /// @brief the data structure used to send the canvas to the display task when a FreeRTOS queue is used.
     struct_DataToShow data_to_display;
 
     /// @brief Modify the anchor of the widget on the display screen
