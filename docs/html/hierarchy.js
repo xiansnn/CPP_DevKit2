@@ -8,13 +8,16 @@ var hierarchy =
     [ "Canvas", "class_canvas.html", [
       [ "CanvasHMSB", "class_canvas_h_m_s_b.html", null ],
       [ "CanvasRGB", "class_canvas_r_g_b.html", null ],
+      [ "CanvasTrueRGB", "class_canvas_true_r_g_b.html", null ],
       [ "CanvasVLSB", "class_canvas_v_l_s_b.html", null ]
     ] ],
     [ "DHT11", "class_d_h_t11.html", null ],
     [ "DisplayDevice", "class_display_device.html", [
       [ "GraphicDisplayDevice", "class_graphic_display_device.html", [
         [ "SSD1306", "class_s_s_d1306.html", null ],
-        [ "ST7735", "class_s_t7735.html", null ]
+        [ "ST7735", "class_s_t7735.html", [
+          [ "rtos_ST7735", "classrtos___s_t7735.html", null ]
+        ] ]
       ] ],
       [ "PrinterDevice", "class_printer_device.html", null ]
     ] ],
@@ -68,6 +71,7 @@ var hierarchy =
     [ "struct_rtosConfigSwitchButton", "structstruct__rtos_config_switch_button.html", null ],
     [ "struct_RX_DataQueueI2C", "structstruct___r_x___data_queue_i2_c.html", null ],
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", null ],
+    [ "struct_ST7735_data_to_show", "structstruct___s_t7735__data__to__show.html", null ],
     [ "struct_SwitchButtonIRQData", "structstruct___switch_button_i_r_q_data.html", null ],
     [ "struct_TX_DataQueueI2C", "structstruct___t_x___data_queue_i2_c.html", null ],
     [ "struct_TX_DataQueueSPI", "structstruct___t_x___data_queue_s_p_i.html", null ],

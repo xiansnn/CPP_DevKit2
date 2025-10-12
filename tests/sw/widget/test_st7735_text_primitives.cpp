@@ -30,7 +30,7 @@ Probe pr_D7 = Probe(7);
 #define LONG_DELAY 1000
 #define INTER_TEST_DELAY 2000
 
-// #define CANVAS_FORMAT CanvasFormat::trueRGB565
+// #define CANVAS_FORMAT CanvasFormat::RGB565_16b
 #define CANVAS_FORMAT CanvasFormat::MONO_HMSB
 
 // #define ST7735_128x128

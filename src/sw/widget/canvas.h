@@ -53,7 +53,7 @@ enum class ColorIndex
             ///@endcond
 };
 
-/// @brief the map color for RGB565 canvas
+/// @brief the map color for RGB_COLOR_INDEX_8b canvas
 extern std::map<ColorIndex, uint16_t> color565_palette;
 
 /// @brief the format of the canvas
@@ -68,12 +68,12 @@ enum class CanvasFormat
     /// @brief monochrome canvas, pixel arranged horizontally, MSB is left pixel
     /// @note example: ST7735 in 1-bit mode
     MONO_HMSB,
-    /// @brief color canvas, 16bits/pixel arranged 5b-red,6b-green,5b-blue
+    /// @brief color canvas, 8-bit/pixel coded according to ColorIndex in color565_palette. Converted to RGB565 just before being sent to display device.
     /// @note example: ST7735 in 16-bit mode
-    RGB565,
-    /// @brief color canvas, 16bits/pixel arranged 5b-red,6b-green,5b-blue but with true RGB565 stored in buffer. This is to allow the use of 16bit DMA.
-    /// @note example: ST7735 in 16-bit mode with transfer from canvas done by DMA. In this case the canvas buffer format Canvas::trueRGB565 is directly compatible with the ST7735 16-bit mode.
-    trueRGB565
+    RGB_COLOR_INDEX_8b,
+    /// @brief color canvas, 16bits/pixel arranged 5b-red,6b-green,5b-blue stored in buffer. This is to allow the use of 16bit DMA.
+    /// @note example: ST7735 in 16-bit mode with transfer from canvas done by DMA. In this case the canvas buffer format Canvas::RGB565_16b is directly compatible with the ST7735 16-bit mode.
+    RGB565_16b
 };
 
 /// @brief data structure used to configure graphic framebuffer
@@ -151,7 +151,7 @@ public:
 
     /// @brief the size (in bytes) of the buffer
     size_t canvas_buffer_size_byte;
-    
+
     /// @brief the size (in pixel) of the buffer
     size_t canvas_buffer_size_pixel;
 
@@ -219,14 +219,14 @@ public:
     ~CanvasRGB();
 
     /// @brief fill the canvas buffer with the given color index
-    ///\note the conversion from color index to RGB565 is done by the device after calling the show() member
+    ///\note the conversion from color index to RGB_COLOR_INDEX_8b is done by the device after calling the show() member
     /// @param color
     void fill_canvas_with_color(ColorIndex color);
 
     void draw_pixel(const int x, const int y,
                     const ColorIndex color = ColorIndex::WHITE);
 };
-/// @brief A special version of canvas for color widget (and device) with true RGB565 color coding(i.e. 16bit) per pixel
+/// @brief A special version of canvas for color widget (and device) with true RGB_COLOR_INDEX_8b color coding(i.e. 16bit) per pixel
 ///\ingroup view
 class CanvasTrueRGB : public Canvas
 {
@@ -244,9 +244,8 @@ public:
     /// @brief fill the 16bit canvas buffer with 0x00
     virtual void clear_canvas_buffer();
 
-
     /// @brief fill the canvas buffer with the given color index
-    ///\note the conversion from color index to RGB565 is done by the device after calling the show() member
+    ///\note the conversion from color index to RGB_COLOR_INDEX_8b is done by the device after calling the show() member
     /// @param color
     void fill_canvas_with_color(ColorIndex color);
 
@@ -255,7 +254,7 @@ public:
 };
 
 /// @brief A special version of canvas for monochrome widget with 8pixel/byte arranged horizontally.
-/// Usefull for monochrome widget (e.g.text) even for color RGB565 display device
+/// Usefull for monochrome widget (e.g.text) even for color RGB_COLOR_INDEX_8b display device
 ///\ingroup view
 class CanvasHMSB : public Canvas
 {
@@ -270,7 +269,7 @@ public:
                uint8_t canvas_height_pixel);
     ~CanvasHMSB();
     /// @brief fill the canvas buffer with 0x00 (i.e. BLACK) of 0xFF (WHITE)
-    ///\note the conversion from color bit (0b0 or 0b1) to RGB565 is done by the device after calling the show() member according to fg_color and bg_color
+    ///\note the conversion from color bit (0b0 or 0b1) to RGB_COLOR_INDEX_8b is done by the device after calling the show() member according to fg_color and bg_color
     /// @param color
     void fill_canvas_with_color(ColorIndex color);
 

@@ -137,18 +137,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a609ea03583e6b114ac2acd7e2641f220" id="r_a609ea03583e6b114ac2acd7e2641f220"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a609ea03583e6b114ac2acd7e2641f220">rtos_HW_SPI_Master</a> (<a class="el" href="structstruct___config_master_s_p_i.html">struct_ConfigMasterSPI</a> master_config, irq_num_t dma_tx_irq_number, irq_handler_t dma_tx_irq_handler, irq_num_t dma_rx_irq_number, irq_handler_t dma_rx_irq_handler)</td></tr>
 <tr class="memdesc:a609ea03583e6b114ac2acd7e2641f220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new hw spi master object.  <br /></td></tr>
 <tr class="separator:a609ea03583e6b114ac2acd7e2641f220"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51c14f829a6572601b1a64e053677787" id="r_a51c14f829a6572601b1a64e053677787"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51c14f829a6572601b1a64e053677787">burst_write_8</a> (uint8_t *src, size_t len)</td></tr>
-<tr class="memdesc:a51c14f829a6572601b1a64e053677787"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a serie of 8 bit data on the SPI MOSI port DMA not implemented  <br /></td></tr>
-<tr class="separator:a51c14f829a6572601b1a64e053677787"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84cc9f9c70338e240186329c4a75d769" id="r_a84cc9f9c70338e240186329c4a75d769"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84cc9f9c70338e240186329c4a75d769">burst_write_16</a> (uint16_t *src, size_t len)</td></tr>
-<tr class="memdesc:a84cc9f9c70338e240186329c4a75d769"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a serie of 16 bit data on the SPI MOSI port. Use DMA.  <br /></td></tr>
-<tr class="separator:a84cc9f9c70338e240186329c4a75d769"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad56f0c9914dd87bd347718c35b69164c" id="r_ad56f0c9914dd87bd347718c35b69164c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad56f0c9914dd87bd347718c35b69164c">burst_write_8</a> (uint8_t *src, size_t len) override</td></tr>
+<tr class="memdesc:ad56f0c9914dd87bd347718c35b69164c"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a serie of 8 bit data on the SPI MOSI port DMA not implemented  <br /></td></tr>
+<tr class="separator:ad56f0c9914dd87bd347718c35b69164c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3475c044ad176bcf774bd8c60b35b6b6" id="r_a3475c044ad176bcf774bd8c60b35b6b6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3475c044ad176bcf774bd8c60b35b6b6">burst_write_16</a> (uint16_t *src, size_t len) override</td></tr>
+<tr class="memdesc:a3475c044ad176bcf774bd8c60b35b6b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a serie of 16 bit data on the SPI MOSI port. Use DMA.  <br /></td></tr>
+<tr class="separator:a3475c044ad176bcf774bd8c60b35b6b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adeed350f36efc6b1b2cd97b445ee283a" id="r_adeed350f36efc6b1b2cd97b445ee283a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adeed350f36efc6b1b2cd97b445ee283a">burst_read_16</a> (uint16_t *dst, size_t len)</td></tr>
 <tr class="memdesc:adeed350f36efc6b1b2cd97b445ee283a"><td class="mdescLeft">&#160;</td><td class="mdescRight">read a serie of 16 bit data on the SPI MISO port. Use DMA.  <br /></td></tr>
 <tr class="separator:adeed350f36efc6b1b2cd97b445ee283a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adde13e5c8df37988960d7c97cd63726a" id="r_adde13e5c8df37988960d7c97cd63726a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adde13e5c8df37988960d7c97cd63726a">burst_write_read_8</a> (uint8_t *src, uint8_t *dest, size_t len)</td></tr>
-<tr class="memdesc:adde13e5c8df37988960d7c97cd63726a"><td class="mdescLeft">&#160;</td><td class="mdescRight">read / write a serie of 8 bit data on the SPI MISO/MOSI ports DMA not implemented  <br /></td></tr>
-<tr class="separator:adde13e5c8df37988960d7c97cd63726a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53c8a4bba205f5168dee2a9cf6409e98" id="r_a53c8a4bba205f5168dee2a9cf6409e98"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53c8a4bba205f5168dee2a9cf6409e98">burst_write_read_8</a> (uint8_t *src, uint8_t *dest, size_t len) override</td></tr>
+<tr class="memdesc:a53c8a4bba205f5168dee2a9cf6409e98"><td class="mdescLeft">&#160;</td><td class="mdescRight">read / write a serie of 8 bit data on the SPI MISO/MOSI ports DMA not implemented  <br /></td></tr>
+<tr class="separator:a53c8a4bba205f5168dee2a9cf6409e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb93db0c99078730b215bd65e775e0cc" id="r_afb93db0c99078730b215bd65e775e0cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb93db0c99078730b215bd65e775e0cc">burst_read_8</a> (uint8_t repeated_tx_data, uint8_t *dest, size_t len)</td></tr>
 <tr class="memdesc:afb93db0c99078730b215bd65e775e0cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">read a serie of byte on the SPI MISO port DMA not implemented  <br /></td></tr>
 <tr class="separator:afb93db0c99078730b215bd65e775e0cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,15 +164,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>spi_rx_dma_isr</b> ()
 <tr class="memitem:ae511ff460d41821039ff9d25538ab57c inherit pub_methods_class_h_w___s_p_i___master" id="r_ae511ff460d41821039ff9d25538ab57c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_w___s_p_i___master.html#ae511ff460d41821039ff9d25538ab57c">HW_SPI_Master</a> (<a class="el" href="structstruct___config_master_s_p_i.html">struct_ConfigMasterSPI</a> master_config)</td></tr>
 <tr class="memdesc:ae511ff460d41821039ff9d25538ab57c inherit pub_methods_class_h_w___s_p_i___master"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new hw spi master object.  <br /></td></tr>
 <tr class="separator:ae511ff460d41821039ff9d25538ab57c inherit pub_methods_class_h_w___s_p_i___master"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a18f17016767aef5bf032c86fed0989 inherit pub_methods_class_h_w___s_p_i___master" id="r_a3a18f17016767aef5bf032c86fed0989"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_w___s_p_i___master.html#a3a18f17016767aef5bf032c86fed0989">burst_write_8</a> (uint8_t *src, size_t len)</td></tr>
-<tr class="memdesc:a3a18f17016767aef5bf032c86fed0989 inherit pub_methods_class_h_w___s_p_i___master"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a serie of 8 bit data on the SPI MOSI port  <br /></td></tr>
-<tr class="separator:a3a18f17016767aef5bf032c86fed0989 inherit pub_methods_class_h_w___s_p_i___master"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0f1f240f64c74604f2569818567db35 inherit pub_methods_class_h_w___s_p_i___master" id="r_aa0f1f240f64c74604f2569818567db35"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_w___s_p_i___master.html#aa0f1f240f64c74604f2569818567db35">burst_write_16</a> (uint16_t *src, size_t len)</td></tr>
-<tr class="memdesc:aa0f1f240f64c74604f2569818567db35 inherit pub_methods_class_h_w___s_p_i___master"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a serie of 16 bit data on the SPI MOSI port  <br /></td></tr>
-<tr class="separator:aa0f1f240f64c74604f2569818567db35 inherit pub_methods_class_h_w___s_p_i___master"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa219e3da499620eb5b4f89216340a8ae inherit pub_methods_class_h_w___s_p_i___master" id="r_aa219e3da499620eb5b4f89216340a8ae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_w___s_p_i___master.html#aa219e3da499620eb5b4f89216340a8ae">burst_write_read_8</a> (uint8_t *src, uint8_t *dest, size_t len)</td></tr>
-<tr class="memdesc:aa219e3da499620eb5b4f89216340a8ae inherit pub_methods_class_h_w___s_p_i___master"><td class="mdescLeft">&#160;</td><td class="mdescRight">read / write a serie of 8 bit data on the SPI MISO/MOSI ports  <br /></td></tr>
-<tr class="separator:aa219e3da499620eb5b4f89216340a8ae inherit pub_methods_class_h_w___s_p_i___master"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e6e3c1c0480d1eac20e66de3757bc8a inherit pub_methods_class_h_w___s_p_i___master" id="r_a9e6e3c1c0480d1eac20e66de3757bc8a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_h_w___s_p_i___master.html#a9e6e3c1c0480d1eac20e66de3757bc8a">single_write_8</a> (uint8_t byte_value)</td></tr>
 <tr class="memdesc:a9e6e3c1c0480d1eac20e66de3757bc8a inherit pub_methods_class_h_w___s_p_i___master"><td class="mdescLeft">&#160;</td><td class="mdescRight">write a single byte on the SPI MOSI port  <br /></td></tr>
 <tr class="separator:a9e6e3c1c0480d1eac20e66de3757bc8a inherit pub_methods_class_h_w___s_p_i___master"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -335,11 +326,14 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a84cc9f9c70338e240186329c4a75d769" name="a84cc9f9c70338e240186329c4a75d769"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84cc9f9c70338e240186329c4a75d769">&#9670;&#160;</a></span>burst_write_16()</h2>
+<a id="a3475c044ad176bcf774bd8c60b35b6b6" name="a3475c044ad176bcf774bd8c60b35b6b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3475c044ad176bcf774bd8c60b35b6b6">&#9670;&#160;</a></span>burst_write_16()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int rtos_HW_SPI_Master::burst_write_16 </td>
@@ -352,6 +346,11 @@ Here is the call graph for this function:</div>
           <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>send a serie of 16 bit data on the SPI MOSI port. Use DMA. </p>
@@ -364,13 +363,18 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>error code </dd></dl>
 
+<p>Reimplemented from <a class="el" href="class_h_w___s_p_i___master.html#aa0f1f240f64c74604f2569818567db35">HW_SPI_Master</a>.</p>
+
 </div>
 </div>
-<a id="a51c14f829a6572601b1a64e053677787" name="a51c14f829a6572601b1a64e053677787"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51c14f829a6572601b1a64e053677787">&#9670;&#160;</a></span>burst_write_8()</h2>
+<a id="ad56f0c9914dd87bd347718c35b69164c" name="ad56f0c9914dd87bd347718c35b69164c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad56f0c9914dd87bd347718c35b69164c">&#9670;&#160;</a></span>burst_write_8()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int rtos_HW_SPI_Master::burst_write_8 </td>
@@ -383,6 +387,11 @@ Here is the call graph for this function:</div>
           <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>send a serie of 8 bit data on the SPI MOSI port DMA not implemented </p>
@@ -395,13 +404,18 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int the number of byte sent </dd></dl>
 
+<p>Reimplemented from <a class="el" href="class_h_w___s_p_i___master.html#a3a18f17016767aef5bf032c86fed0989">HW_SPI_Master</a>.</p>
+
 </div>
 </div>
-<a id="adde13e5c8df37988960d7c97cd63726a" name="adde13e5c8df37988960d7c97cd63726a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adde13e5c8df37988960d7c97cd63726a">&#9670;&#160;</a></span>burst_write_read_8()</h2>
+<a id="a53c8a4bba205f5168dee2a9cf6409e98" name="a53c8a4bba205f5168dee2a9cf6409e98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53c8a4bba205f5168dee2a9cf6409e98">&#9670;&#160;</a></span>burst_write_read_8()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int rtos_HW_SPI_Master::burst_write_read_8 </td>
@@ -419,6 +433,11 @@ Here is the call graph for this function:</div>
           <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>read / write a serie of 8 bit data on the SPI MISO/MOSI ports DMA not implemented </p>
@@ -431,6 +450,8 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>error code </dd></dl>
+
+<p>Reimplemented from <a class="el" href="class_h_w___s_p_i___master.html#aa219e3da499620eb5b4f89216340a8ae">HW_SPI_Master</a>.</p>
 
 </div>
 </div>

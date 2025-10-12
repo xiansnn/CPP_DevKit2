@@ -94,7 +94,7 @@ void ST7735::config_inversion_control()
 /**
  * @brief _power control_
  * PWCTR1 , [0xA2,0x02,0x84]
- * PWCTR2 , [0xC5] #VGH = 14.7V, VGL = -7.35V
+ * PWCTR2 , [0xC5] VGH = 14.7V, VGL = -7.35V
  * PWCTR3 , [0x0A, 0x00] opamp current small, boost frequency
  * PWCTR4 , [0x8A, 0x2A] opamp current small, boost frequency
  * PWCTR5 , [0x8A, 0xEE] opamp current small, boost frequency
@@ -498,7 +498,7 @@ void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y
 {
     switch (canvas->canvas_format)
     {
-    case CanvasFormat::RGB565:
+    case CanvasFormat::RGB_COLOR_INDEX_8b:
         set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
         send_cmd(ST7735_RAMWR);
         for (size_t i = 0; i < canvas->canvas_buffer_size_byte; i++)
@@ -507,7 +507,7 @@ void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y
             spi->single_write_16(color565_palette[color_index]);
         }
         break;
-    case CanvasFormat::trueRGB565:
+    case CanvasFormat::RGB565_16b:
         set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
         send_cmd(ST7735_RAMWR);
         // for (size_t i = 0; i < canvas->canvas_buffer_size_pixel; i++)
@@ -551,7 +551,7 @@ void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y
 //  * INVCTR , [0x07]
 //  * _power control_
 //  * PWCTR1 , [0xA2,0x02,0x84]
-//  * PWCTR2 , [0xC5] #VGH = 14.7V, VGL = -7.35V
+//  * PWCTR2 , [0xC5] VGH = 14.7V, VGL = -7.35V
 //  * PWCTR3 , [0x0A, 0x00] opamp current small, boost frequency
 //  * PWCTR4 , [0x8A, 0x2A] opamp current small, boost frequency
 //  * PWCTR5 , [0x8A, 0xEE] opamp current small, boost frequency
@@ -585,7 +585,7 @@ void rtos_ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anc
 {
     switch (canvas->canvas_format)
     {
-    case CanvasFormat::RGB565:
+    case CanvasFormat::RGB_COLOR_INDEX_8b:
         set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
         send_cmd(ST7735_RAMWR);
         for (size_t i = 0; i < canvas->canvas_buffer_size_byte; i++)
@@ -594,12 +594,13 @@ void rtos_ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anc
             spi->single_write_16(color565_palette[color_index]);
         }
         break;
-    case CanvasFormat::trueRGB565:
+
+    case CanvasFormat::RGB565_16b:
         set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
         send_cmd(ST7735_RAMWR);
-        ((rtos_HW_SPI_Master*)spi)->burst_write_16(canvas->canvas_16buffer, canvas->canvas_buffer_size_pixel);
-        xSemaphoreTake(((rtos_HW_SPI_Master*)spi)->dma_tx->end_of_xfer, portMAX_DELAY);
+        ((rtos_HW_SPI_Master *)spi)->burst_write_16(canvas->canvas_16buffer, canvas->canvas_buffer_size_pixel);
         break;
+
     case CanvasFormat::MONO_HMSB:
         uint16_t foreground_color = color565_palette[canvas->canvas_fg_color];
         uint16_t background_color = color565_palette[canvas->canvas_bg_color];
@@ -637,8 +638,7 @@ void rtos_ST7735::clear_device_screen_buffer(ColorIndex color_index)
     pr_D4.lo();
     pr_D5.hi();
 #endif
-    for (size_t i = 0; i < w * h; i++)
-        spi->single_write_16(color);
+    ((rtos_HW_SPI_Master *)spi)->repeat_write_16(&color, w * h);
 #if defined(TIME_MEASURE)
     pr_D5.lo();
 #endif

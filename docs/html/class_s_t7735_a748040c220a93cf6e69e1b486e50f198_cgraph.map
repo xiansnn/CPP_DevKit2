@@ -1,7 +1,10 @@
 <map id="ST7735::show" name="ST7735::show">
-<area shape="rect" id="Node000001" title="A pure virtual member function. It transfers the pixel buffer to the a part of display screen buffer ..." alt="" coords="5,31,96,55"/>
-<area shape="rect" id="Node000002" href="$class_probe.html#a493e1f46f0123ae6a18d7bd6e79d74f1" title="Generates a HI logical level on the GPIO." alt="" coords="144,5,209,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,31,128,25,129,30,97,36"/>
-<area shape="rect" id="Node000003" href="$class_probe.html#ade2391514faaee5f3acfffc4d3cb2de8" title="Generates a LO logical level on the GPIO." alt="" coords="144,55,209,79"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="97,49,129,55,128,61,96,54"/>
+<area shape="rect" id="Node000001" title="A pure virtual member function. It transfers the pixel buffer to the a part of display screen buffer ..." alt="" coords="5,5,96,30"/>
+<area shape="rect" id="Node000002" href="$class_s_t7735.html#a352d97b36c32932b43f891bdf41fb371" title="send a command to the ST7735 device" alt="" coords="384,5,498,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,15,369,15,369,20,96,20"/>
+<area shape="rect" id="Node000004" href="$class_s_t7735.html#a5d45094a281b3051f2681711c76d11b4" title="set the RAM write addresses for the display" alt="" coords="144,29,336,54"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="96,21,128,25,128,30,96,26"/>
+<area shape="rect" id="Node000003" href="$class_s_t7735.html#abbc613fffe458c261881c56d8be0afa7" title="enable or disable the command mode (DC pin low or high)" alt="" coords="546,5,717,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="499,15,530,15,530,20,499,20"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="336,28,368,24,369,29,337,33"/>
 </map>

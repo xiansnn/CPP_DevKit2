@@ -70,10 +70,19 @@ public:
    * Use DMA.
    *
    * @param src the source of the data
-   * @param len the lenght of the serie
+   * @param len the length of the serie
    * @return error code
    */
   int burst_write_16(uint16_t *src, size_t len) override;
+ /**
+   * @brief repeat a single 16 bit data on the SPI MOSI port.
+   * Use DMA.
+   *
+   * @param src the source of the data
+   * @param len the length of the repetition
+   * @return error code
+   */
+  int repeat_write_16(uint16_t *src, size_t len);
 
   /// @brief read a serie of 16 bit data on the SPI MISO port.
   /// Use DMA.

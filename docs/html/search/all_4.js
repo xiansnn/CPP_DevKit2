@@ -7,6 +7,8 @@ var searchData=
   ['actuator_4',['&quot;Actuator&quot;',['../group__actuator.html',1,'']]],
   ['add_5fmanaged_5fmodel_5',['add_managed_model',['../class_u_i_model_manager.html#a24dec688218673e7d38a5a6cfaa305ad',1,'UIModelManager']]],
   ['add_5fwidget_6',['add_widget',['../class_widget.html#a6d08d01ec5ea290b39ae26963ae7e460',1,'Widget']]],
-  ['attached_5fwidgets_7',['attached_widgets',['../class_model.html#a764d7bc0d5d7ce1cb6c5cd27410f7425',1,'Model']]],
-  ['auto_5fnext_5fchar_8',['auto_next_char',['../structstruct___config_text_widget.html#af2a22b977a5c017e07e3a5dc11d9f46c',1,'struct_ConfigTextWidget']]]
+  ['anchor_5fx_7',['anchor_x',['../structstruct___s_t7735__data__to__show.html#a5376c4cd4862438a9ba677578a8d13d5',1,'struct_ST7735_data_to_show']]],
+  ['anchor_5fy_8',['anchor_y',['../structstruct___s_t7735__data__to__show.html#add9dbdb7a9d9ef4ca12cc8786c1d1589',1,'struct_ST7735_data_to_show']]],
+  ['attached_5fwidgets_9',['attached_widgets',['../class_model.html#a764d7bc0d5d7ce1cb6c5cd27410f7425',1,'Model']]],
+  ['auto_5fnext_5fchar_10',['auto_next_char',['../structstruct___config_text_widget.html#af2a22b977a5c017e07e3a5dc11d9f46c',1,'struct_ConfigTextWidget']]]
 ];

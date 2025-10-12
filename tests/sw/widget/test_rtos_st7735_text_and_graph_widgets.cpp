@@ -19,16 +19,19 @@
 #include "device/ST7735/st7735.h"
 
 #include "utilities/probe/probe.h"
-Probe pr_D1 = Probe(1);
-Probe pr_D4 = Probe(4);
-Probe pr_D5 = Probe(5);
+Probe p0 = Probe(0);
+Probe p1 = Probe(1);
+Probe p2 = Probe(2);
+Probe p3 = Probe(3);
+Probe p4 = Probe(4);
+Probe p5 = Probe(5);
 
 #define REFRESH_PERIOD 20
 
 #define DEGREE \xF8
 
-#define GRAPHICS_CANVAS_FORMAT CanvasFormat::trueRGB565
-#define TEXT_CANVAS_FORMAT CanvasFormat::MONO_HMSB
+#define GRAPHICS_CANVAS_FORMAT CanvasFormat::RGB565_16b
+#define TEXT_CANVAS_FORMAT CanvasFormat::RGB565_16b
 
 // #define ST7735_128x128
 #define ST7735_128x160
@@ -43,7 +46,6 @@ Probe pr_D5 = Probe(5);
 #define DEVICE_DISPLAY_ROTATION ST7735Rotation::_180
 #define DEVICE_DISPLAY_HEIGHT 160
 #endif
-
 
 struct_ConfigMasterSPI cfg_spi = {
     .spi = spi1,
@@ -72,14 +74,8 @@ public:
     int cycle{0};
     void update_cycle(int i, int sign);
 };
-
-my_model::my_model()
-{
-}
-
-my_model::~my_model()
-{
-}
+my_model::my_model() {}
+my_model::~my_model() {}
 
 void my_model::update_cycle(int i, int sign)
 {
@@ -137,7 +133,7 @@ void my_visu_widget::get_value_of_interest()
 }
 void my_visu_widget::draw()
 {
-    if (actual_displayed_model->has_changed())
+    if (actual_displayed_model->has_changed()) // ########### event
     {
         clear_widget();
         get_value_of_interest();
@@ -160,8 +156,8 @@ void my_visu_widget::draw()
         this->line(x0, y0, x1, y1, ColorIndex::YELLOW);
 
         draw_border(canvas->canvas_fg_color);
-        show();
-        actual_displayed_model->draw_widget_done();
+        show();// ##############
+        actual_displayed_model->draw_widget_done();// #### semaphore
     }
 }
 
@@ -203,15 +199,15 @@ int main()
     values.process_char(FORM_FEED);
 
     my_visu_widget graph = my_visu_widget(&display, graph_config, GRAPHICS_CANVAS_FORMAT, &model);
-    pr_D1.hi();
-    display.clear_device_screen_buffer(); 
-    pr_D1.lo();                           // 51ms
+    p1.hi();
+    display.clear_device_screen_buffer();
+    p1.lo(); // 51ms
 
-    pr_D1.hi();
+    p1.hi();
     my_text_widget title = my_text_widget(&display, title_config, TEXT_CANVAS_FORMAT);
     title.write("ROLL PITCH");
     title.show();
-    pr_D1.lo(); // 9ms
+    p1.lo(); // 9ms
 
     int sign = 1;
 
@@ -222,13 +218,13 @@ int main()
         {
             // compute and show values
             model.update_cycle(i, sign);
-            pr_D4.hi();
+            p4.hi();
             values.draw();
-            pr_D4.lo(); // 9.9ms
+            p4.lo(); // 9.9ms
 
-            pr_D5.hi();
+            p5.hi();
             graph.draw();
-            pr_D5.lo(); // 29.6ms
+            p5.lo(); // 29.6ms
             sleep_ms(REFRESH_PERIOD);
         }
     }

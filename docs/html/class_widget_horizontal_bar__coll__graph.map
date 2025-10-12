@@ -1,13 +1,13 @@
 <map id="WidgetHorizontalBar" name="WidgetHorizontalBar">
 <area shape="rect" id="Node000001" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="214,1191,717,1323"/>
-<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="178,607,753,1141"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="468,1157,468,1191,463,1191,463,1157"/>
-<area shape="rect" id="Node000003" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="5,343,448,479"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="271,491,330,606,325,608,266,494"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="178,644,753,1141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="468,1156,468,1191,463,1191,463,1156"/>
+<area shape="rect" id="Node000003" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="5,362,448,498"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="270,510,340,643,335,646,266,512"/>
 <area shape="rect" id="Node000004" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="67,71,171,151"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="135,149,199,326,194,328,130,151"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="134,149,201,345,196,347,129,151"/>
 <area shape="rect" id="Node000005" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="195,5,475,216"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="300,217,259,328,254,327,295,215"/>
-<area shape="rect" id="Node000006" href="$class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="473,278,938,545"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="639,546,614,593,609,591,634,543"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="302,217,257,347,252,345,297,215"/>
+<area shape="rect" id="Node000006" href="$class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="473,278,938,582"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="629,583,605,630,600,628,624,581"/>
 </map>

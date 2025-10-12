@@ -15,6 +15,11 @@
 #include "sw/ui_core/ui_core.h"
 #include "sw/widget/canvas.h"
 
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
+
 #include <vector>
 #include <string>
 
@@ -179,17 +184,13 @@ public:
     /// @brief the associated canvas in which the widget writes text and draws graphics
     Canvas *canvas;
 
-    // /// @brief the foregroung color of the graphic frame
-    // /// //TODO voir si fg_color n'est pas mieux dans canvas
-    // ColorIndex fg_color;
-    // /// @brief the background color of the graphic frame
-    // /// //TODO voir si bg_color n'est pas mieux dans canvas
-    // ColorIndex bg_color;
-
     /// @brief location in x of the widget within the hosting framebuffer
     uint8_t widget_anchor_x;
     /// @brief location in y of the widget within the hosting framebuffer
     uint8_t widget_anchor_y;
+
+    /// @brief the data structure used to send the canvas to the display task when a FreeRTOS queue is used.
+    struct_DataToShow data_to_display;
 
     /// @brief Modify the anchor of the widget on the display screen
     /// @param x anchor x coordinate
@@ -203,6 +204,15 @@ public:
 
     /// @brief A short way to call GraphicDisplayDevice::show(&canvas, anchor x, anchor y)
     void show();
+
+    
+    /// @brief used with FreeRTOS. send the widget data_to_display structure to the task in charge of the display management
+    /// @param display_queue the communcation queue with the display gate keeper
+    /// @param sending_done the semaphore triggered when the canvas display is complete.
+    void send_to_DisplayGateKeeper(QueueHandle_t display_queue,SemaphoreHandle_t sending_done);
+
+
+ 
 
     /**
      * @brief Construct a new Graphic Widget object

@@ -21,6 +21,10 @@
 #include "device/ST7735/st7735.h"
 #include "sw/widget/widget.h"
 
+#include "utilities/probe/probe.h"
+Probe p1 = Probe(1);
+Probe p2 = Probe(2);
+
 #define CANVAS_FORMAT CanvasFormat::RGB565
 
 // #define ST7735_128x128
@@ -51,11 +55,11 @@ struct_ConfigST7735 cfg_st7735{
     .hw_reset_pin = 15,
     .dc_pin = 14,
     .rotation = DEVICE_DISPLAY_ROTATION,
-    };
+};
 
 struct_ConfigGraphicWidget full_screen_cfg = {
     .pixel_frame_width = 128,
-    .pixel_frame_height = DEVICE_DISPLAY_HEIGHT, 
+    .pixel_frame_height = DEVICE_DISPLAY_HEIGHT,
     .fg_color = ColorIndex::RED,
     .bg_color = ColorIndex::YELLOW,
     .widget_anchor_x = 0,
@@ -81,8 +85,12 @@ void my_full_screen_widget::draw() {};
 
 void test_fb_line(ST7735 *display)
 {
-    display->clear_device_screen_buffer();
+    p1.hi();
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
+    p2.hi();
+    display->clear_device_screen_buffer();
+    p2.lo();
+    p2.hi();
 
     int i = 0;
     for (int x = 0; x < 128; x++)
@@ -93,7 +101,8 @@ void test_fb_line(ST7735 *display)
         frame.line(x, 0, 128 - 1 - x, 128 - 1, static_cast<ColorIndex>(i / 8));
         frame.show();
     }
-
+    p2.lo();
+    p2.hi();
     for (int y = 128 - 1; y >= 0; y--)
     {
         i++;
@@ -102,17 +111,25 @@ void test_fb_line(ST7735 *display)
         frame.line(0, y, 128 - 1, 128 - 1 - y, static_cast<ColorIndex>(i / 8));
         frame.show();
     }
+    p2.lo();
+    p1.lo();
 }
 void test_outofframe_line(ST7735 *display)
 {
+    p1.hi();
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
     int y0, x1, y1;
+    p2.hi();
     display->clear_device_screen_buffer();
+    p2.lo();
+    p2.hi();
     x1 = 64;
     y1 = 160;
     y0 = -10;
 
     uint8_t i = 0;
+    p2.lo();
+    p2.hi();
 
     for (int x = -10; x < 138; x++)
     {
@@ -123,6 +140,8 @@ void test_outofframe_line(ST7735 *display)
         frame.line(x, y0, x1, y1, c);
         frame.show();
     }
+    p2.lo();
+    p1.lo();
 }
 void test_fb_rect(ST7735 *display)
 {

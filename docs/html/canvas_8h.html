@@ -106,17 +106,20 @@ $(function(){initNavTree('canvas_8h.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;pico/stdlib.h&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for canvas.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="canvas_8h__incl.png" border="0" usemap="#acanvas_8h" alt=""/></div>
 <map name="acanvas_8h" id="acanvas_8h">
-<area shape="rect" title=" " alt="" coords="55,5,117,30"/>
+<area shape="rect" title=" " alt="" coords="103,5,165,30"/>
 <area shape="rect" title=" " alt="" coords="5,78,84,103"/>
-<area shape="poly" title=" " alt="" coords="81,32,61,66,57,63,77,29"/>
-<area shape="rect" title=" " alt="" coords="107,78,150,103"/>
-<area shape="poly" title=" " alt="" coords="95,29,116,63,111,66,91,32"/>
+<area shape="poly" title=" " alt="" coords="121,33,72,71,69,66,117,28"/>
+<area shape="rect" title=" " alt="" coords="107,78,160,103"/>
+<area shape="poly" title=" " alt="" coords="136,31,136,62,131,62,131,31"/>
+<area shape="rect" title=" " alt="" coords="185,78,227,103"/>
+<area shape="poly" title=" " alt="" coords="148,29,185,65,181,69,144,32"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -170,7 +173,10 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically.  <a href="class_canvas_v_l_s_b.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_canvas_r_g_b.html">CanvasRGB</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A special version of canvas for color widget (and device) with 1 pixel/byte accoeding to 565 RGB color coding.  <a href="class_canvas_r_g_b.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A special version of canvas for color widget (and device) with 1 pixel/byte according to 565 RGB color coding.  <a href="class_canvas_r_g_b.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_canvas_true_r_g_b.html">CanvasTrueRGB</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A special version of canvas for color widget (and device) with true RGB565 color coding(i.e. 16bit) per pixel.  <a href="class_canvas_true_r_g_b.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_canvas_h_m_s_b.html">CanvasHMSB</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A special version of canvas for monochrome widget with 8pixel/byte arranged horizontally. Usefull for monochrome widget (e.g.text) even for color RGB565 display device.  <a href="class_canvas_h_m_s_b.html#details">More...</a><br /></td></tr>
@@ -196,10 +202,14 @@ Enumerations</h2></td></tr>
 <tr class="memitem:a9efd9fcd52acdc60f2eb45ff9fce269b" id="r_a9efd9fcd52acdc60f2eb45ff9fce269b"><td class="memItemLeft" align="right" valign="top"><a id="a9efd9fcd52acdc60f2eb45ff9fce269b" name="a9efd9fcd52acdc60f2eb45ff9fce269b"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9efd9fcd52acdc60f2eb45ff9fce269b">ColorIndex</a> </td></tr>
 <tr class="memdesc:a9efd9fcd52acdc60f2eb45ff9fce269b"><td class="mdescLeft">&#160;</td><td class="mdescRight">define the code value for color <br /></td></tr>
 <tr class="separator:a9efd9fcd52acdc60f2eb45ff9fce269b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a436eabe2e5d4a62b78ff8002105c5421" id="r_a436eabe2e5d4a62b78ff8002105c5421"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a436eabe2e5d4a62b78ff8002105c5421">CanvasFormat</a> { <a class="el" href="#a436eabe2e5d4a62b78ff8002105c5421ab8705fdb146f8f1c9e9d2d8dd6c072ad">MONO_VLSB</a>
+<tr class="memitem:a436eabe2e5d4a62b78ff8002105c5421" id="r_a436eabe2e5d4a62b78ff8002105c5421"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a436eabe2e5d4a62b78ff8002105c5421">CanvasFormat</a> { <br />
+&#160;&#160;<a class="el" href="#a436eabe2e5d4a62b78ff8002105c5421ab8705fdb146f8f1c9e9d2d8dd6c072ad">MONO_VLSB</a>
 , <a class="el" href="#a436eabe2e5d4a62b78ff8002105c5421a1970320035936767bee33317f867c2f3">MONO_HLSB</a>
 , <a class="el" href="#a436eabe2e5d4a62b78ff8002105c5421af6ffeff77bd8691d7cff05ead253b4e7">MONO_HMSB</a>
 , <a class="el" href="#a436eabe2e5d4a62b78ff8002105c5421a3b73e4d15701467ed72f157ffaff680a">RGB565</a>
+, <br />
+&#160;&#160;<a class="el" href="#a436eabe2e5d4a62b78ff8002105c5421a1f19115c39cc6238757f731850745538">trueRGB565</a>
+<br />
  }</td></tr>
 <tr class="memdesc:a436eabe2e5d4a62b78ff8002105c5421"><td class="mdescLeft">&#160;</td><td class="mdescRight">the format of the canvas  <a href="#a436eabe2e5d4a62b78ff8002105c5421">More...</a><br /></td></tr>
 <tr class="separator:a436eabe2e5d4a62b78ff8002105c5421"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -239,13 +249,20 @@ std::map&lt; <a class="el" href="#a9efd9fcd52acdc60f2eb45ff9fce269b">ColorIndex<
 
 <p>the format of the canvas </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a436eabe2e5d4a62b78ff8002105c5421ab8705fdb146f8f1c9e9d2d8dd6c072ad" name="a436eabe2e5d4a62b78ff8002105c5421ab8705fdb146f8f1c9e9d2d8dd6c072ad"></a>MONO_VLSB&#160;</td><td class="fielddoc"><p>monochrome canvas, pixel arranged vertically, LSB is top pixel </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a436eabe2e5d4a62b78ff8002105c5421ab8705fdb146f8f1c9e9d2d8dd6c072ad" name="a436eabe2e5d4a62b78ff8002105c5421ab8705fdb146f8f1c9e9d2d8dd6c072ad"></a>MONO_VLSB&#160;</td><td class="fielddoc"><p>monochrome canvas, pixel arranged vertically, LSB is top pixel. </p>
+<dl class="section note"><dt>Note</dt><dd>example: <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> </dd></dl>
 </td></tr>
 <tr><td class="fieldname"><a id="a436eabe2e5d4a62b78ff8002105c5421a1970320035936767bee33317f867c2f3" name="a436eabe2e5d4a62b78ff8002105c5421a1970320035936767bee33317f867c2f3"></a>MONO_HLSB&#160;</td><td class="fielddoc"><p>monochrome canvas, pixel arranged horizontally, LSB is left pixel </p>
+<dl class="section note"><dt>Note</dt><dd>example: SH1106 </dd></dl>
 </td></tr>
 <tr><td class="fieldname"><a id="a436eabe2e5d4a62b78ff8002105c5421af6ffeff77bd8691d7cff05ead253b4e7" name="a436eabe2e5d4a62b78ff8002105c5421af6ffeff77bd8691d7cff05ead253b4e7"></a>MONO_HMSB&#160;</td><td class="fielddoc"><p>monochrome canvas, pixel arranged horizontally, MSB is left pixel </p>
+<dl class="section note"><dt>Note</dt><dd>example: <a class="el" href="class_s_t7735.html" title="ST7735 driven TFT color display device.">ST7735</a> in 1-bit mode </dd></dl>
 </td></tr>
 <tr><td class="fieldname"><a id="a436eabe2e5d4a62b78ff8002105c5421a3b73e4d15701467ed72f157ffaff680a" name="a436eabe2e5d4a62b78ff8002105c5421a3b73e4d15701467ed72f157ffaff680a"></a>RGB565&#160;</td><td class="fielddoc"><p>color canvas, 16bits/pixel arranged 5b-red,6b-green,5b-blue </p>
+<dl class="section note"><dt>Note</dt><dd>example: <a class="el" href="class_s_t7735.html" title="ST7735 driven TFT color display device.">ST7735</a> in 16-bit mode </dd></dl>
+</td></tr>
+<tr><td class="fieldname"><a id="a436eabe2e5d4a62b78ff8002105c5421a1f19115c39cc6238757f731850745538" name="a436eabe2e5d4a62b78ff8002105c5421a1f19115c39cc6238757f731850745538"></a>trueRGB565&#160;</td><td class="fielddoc"><p>color canvas, 16bits/pixel arranged 5b-red,6b-green,5b-blue but with true RGB565 stored in buffer. This is to allow the use of 16bit DMA. </p>
+<dl class="section note"><dt>Note</dt><dd>example: <a class="el" href="class_s_t7735.html" title="ST7735 driven TFT color display device.">ST7735</a> in 16-bit mode with transfer from canvas done by DMA. In this case the canvas buffer format Canvas::trueRGB565 is directly compatible with the <a class="el" href="class_s_t7735.html" title="ST7735 driven TFT color display device.">ST7735</a> 16-bit mode. </dd></dl>
 </td></tr>
 </table>
 

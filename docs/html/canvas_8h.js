@@ -9,7 +9,8 @@ var canvas_8h =
       [ "MONO_VLSB", "canvas_8h.html#a436eabe2e5d4a62b78ff8002105c5421ab8705fdb146f8f1c9e9d2d8dd6c072ad", null ],
       [ "MONO_HLSB", "canvas_8h.html#a436eabe2e5d4a62b78ff8002105c5421a1970320035936767bee33317f867c2f3", null ],
       [ "MONO_HMSB", "canvas_8h.html#a436eabe2e5d4a62b78ff8002105c5421af6ffeff77bd8691d7cff05ead253b4e7", null ],
-      [ "RGB565", "canvas_8h.html#a436eabe2e5d4a62b78ff8002105c5421a3b73e4d15701467ed72f157ffaff680a", null ]
+      [ "RGB565", "canvas_8h.html#a436eabe2e5d4a62b78ff8002105c5421a3b73e4d15701467ed72f157ffaff680a", null ],
+      [ "trueRGB565", "canvas_8h.html#a436eabe2e5d4a62b78ff8002105c5421a1f19115c39cc6238757f731850745538", null ]
     ] ],
     [ "ColorIndex", "canvas_8h.html#a9efd9fcd52acdc60f2eb45ff9fce269b", null ],
     [ "color565_palette", "canvas_8h.html#a841a26de018118f8e49e2a1320c6401d", null ]
