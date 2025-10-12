@@ -1,7 +1,7 @@
 var searchData=
 [
   ['canvas_0',['Canvas',['../class_canvas.html',1,'Canvas'],['../class_canvas.html#a61d9d2f38baad8abbee82fb5d8fee291',1,'Canvas::Canvas()']]],
-  ['canvas_1',['canvas',['../structstruct___s_t7735__data__to__show.html#a7b0579f022afe8f91967a97897711b61',1,'struct_ST7735_data_to_show::canvas'],['../class_graphic_widget.html#af9591b5109c6d49f678cc1c49cce5f16',1,'GraphicWidget::canvas']]],
+  ['canvas_1',['canvas',['../structstruct___data_to_show.html#a3020d201cb3eeca7ee172287ab5d1c76',1,'struct_DataToShow::canvas'],['../class_graphic_widget.html#af9591b5109c6d49f678cc1c49cce5f16',1,'GraphicWidget::canvas']]],
   ['canvas_2eh_2',['canvas.h',['../canvas_8h.html',1,'']]],
   ['canvas_5f16buffer_3',['canvas_16buffer',['../class_canvas.html#a157d6cedd34505230069394bb060f3c0',1,'Canvas']]],
   ['canvas_5fbg_5fcolor_4',['canvas_bg_color',['../class_canvas.html#adab020682a37bf800e6087620fe21155',1,'Canvas']]],

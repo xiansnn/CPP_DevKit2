@@ -6,6 +6,7 @@ var classrtos___h_w___s_p_i___master =
     [ "burst_write_16", "classrtos___h_w___s_p_i___master.html#a3475c044ad176bcf774bd8c60b35b6b6", null ],
     [ "burst_write_8", "classrtos___h_w___s_p_i___master.html#ad56f0c9914dd87bd347718c35b69164c", null ],
     [ "burst_write_read_8", "classrtos___h_w___s_p_i___master.html#a53c8a4bba205f5168dee2a9cf6409e98", null ],
+    [ "repeat_write_16", "classrtos___h_w___s_p_i___master.html#a43ff0f7ea50531a483e530bcdfea08a9", null ],
     [ "spi_rx_dma_isr", "classrtos___h_w___s_p_i___master.html#aa46e5565740e6e7496cd6483b57af5c9", null ],
     [ "spi_tx_dma_isr", "classrtos___h_w___s_p_i___master.html#a34b181ea40187a33060f02b5ecf0fb3a", null ],
     [ "dma_rx", "classrtos___h_w___s_p_i___master.html#add80821952b0fde7bba7f9f2f19b568d", null ],

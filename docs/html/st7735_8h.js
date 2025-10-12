@@ -2,7 +2,6 @@ var st7735_8h =
 [
     [ "struct_ConfigST7735", "structstruct___config_s_t7735.html", "structstruct___config_s_t7735" ],
     [ "struct_ConfigScrollST7735", "structstruct___config_scroll_s_t7735.html", null ],
-    [ "struct_ST7735_data_to_show", "structstruct___s_t7735__data__to__show.html", "structstruct___s_t7735__data__to__show" ],
     [ "rtos_ST7735", "classrtos___s_t7735.html", "classrtos___s_t7735" ],
     [ "DCX_COMMAND", "st7735_8h.html#abd8eb27d364a32890e54dcc50dbedb66", null ],
     [ "DCX_DATA", "st7735_8h.html#acdfd958913e851196c73b8ac8052679a", null ],

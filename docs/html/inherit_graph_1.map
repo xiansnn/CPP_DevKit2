@@ -4,7 +4,7 @@
 <area shape="poly" id="edge11_Node000000_Node000001" title=" " alt="" coords="63,69,106,41,128,28,131,33,109,45,66,73"/>
 <area shape="rect" id="Node000002" href="$class_canvas_r_g_b.html" title="A special version of canvas for color widget (and device) with 1 pixel/byte according to 565 RGB colo..." alt="" coords="118,55,192,79"/>
 <area shape="poly" id="edge12_Node000000_Node000002" title=" " alt="" coords="74,81,117,72,118,77,75,86"/>
-<area shape="rect" id="Node000003" href="$class_canvas_true_r_g_b.html" title="A special version of canvas for color widget (and device) with true RGB565 color coding(i...." alt="" coords="108,104,203,129"/>
+<area shape="rect" id="Node000003" href="$class_canvas_true_r_g_b.html" title="A special version of canvas for color widget (and device) with true RGB_COLOR_INDEX_8b color coding(i..." alt="" coords="108,104,203,129"/>
 <area shape="poly" id="edge13_Node000000_Node000003" title=" " alt="" coords="75,98,108,104,107,110,74,103"/>
 <area shape="rect" id="Node000004" href="$class_canvas_v_l_s_b.html" title="A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically." alt="" coords="117,153,194,178"/>
 <area shape="poly" id="edge14_Node000000_Node000004" title=" " alt="" coords="66,111,109,138,131,151,128,155,106,143,64,116"/>

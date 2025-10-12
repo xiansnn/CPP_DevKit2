@@ -23,7 +23,6 @@ var searchData=
   ['todo_20list_20',['Todo List',['../todo.html',1,'']]],
   ['transfer_5fsize_21',['transfer_size',['../structstruct___config_master_s_p_i.html#a4dc9a48b32f4d626511c76a16341bd0a',1,'struct_ConfigMasterSPI']]],
   ['trees_22',['File trees',['../index.html#autotoc_md0',1,'']]],
-  ['truergb565_23',['trueRGB565',['../canvas_8h.html#a436eabe2e5d4a62b78ff8002105c5421a1f19115c39cc6238757f731850745538',1,'canvas.h']]],
-  ['tx_5fdma_24',['tx_dma',['../classrtos___h_w___i2_c___master.html#ab8e1e1d014beaad8f2108f2346a821ba',1,'rtos_HW_I2C_Master']]],
-  ['tx_5fpin_25',['tx_pin',['../structstruct___config_master_s_p_i.html#a9b3d2c2db463d797abda0ca9a951841d',1,'struct_ConfigMasterSPI']]]
+  ['tx_5fdma_23',['tx_dma',['../classrtos___h_w___i2_c___master.html#ab8e1e1d014beaad8f2108f2346a821ba',1,'rtos_HW_I2C_Master']]],
+  ['tx_5fpin_24',['tx_pin',['../structstruct___config_master_s_p_i.html#a9b3d2c2db463d797abda0ca9a951841d',1,'struct_ConfigMasterSPI']]]
 ];
