@@ -15,7 +15,10 @@
 #include "sw/ui_core/ui_core.h"
 #include "sw/widget/canvas.h"
 
-// #include "FreeRTOS.h" //FIXME FreeRTOS.h file not found !!
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
 
 #include <vector>
 #include <string>
@@ -201,6 +204,12 @@ public:
 
     /// @brief A short way to call GraphicDisplayDevice::show(&canvas, anchor x, anchor y)
     void show();
+
+    
+    /// @brief used with FreeRTOS. send the widget data_to_display structure to the task in charge of the display management
+    /// @param display_queue the communcation queue with the display gate keeper
+    /// @param sending_done the semaphore triggered when the canvas display is complete.
+    void send_to_DisplayGateKeeper(QueueHandle_t display_queue,SemaphoreHandle_t sending_done);
 
 
  

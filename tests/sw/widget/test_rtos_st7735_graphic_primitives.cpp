@@ -32,7 +32,7 @@ Probe p5 = Probe(5);
 // Probe p6 = Probe(6);
 // Probe p7 = Probe(7);
 
-#define CANVAS_FORMAT CanvasFormat::trueRGB565
+#define CANVAS_FORMAT CanvasFormat::RGB565_16b
 
 #define INTRA_TASK_DELAY 500
 #define INTER_TASK_DELAY 1000
@@ -114,7 +114,7 @@ rtos_HW_SPI_Master spi_master = rtos_HW_SPI_Master(cfg_spi,
 
 rtos_ST7735 display = rtos_ST7735(&spi_master, cfg_st7735);
 
-void display_show_task(void *param)
+void display_gate_keeper_task(void *param)
 {
     struct_DataToShow received_data_to_show;
 
@@ -162,8 +162,7 @@ void test_fb_line(ST7735 *display)
         if (i > 20 * 8)
             i = 1;
         frame.line(x, 0, 128 - 1 - x, 128 - 1, static_cast<ColorIndex>(i / 8));
-        xQueueSend(queue_from_tests_to_ST7735, &frame.data_to_display, portMAX_DELAY);
-        xSemaphoreTake(data_sent, portMAX_DELAY);
+        frame.send_to_DisplayGateKeeper(queue_from_tests_to_ST7735, data_sent);
     }
     p2.lo();
     p2.hi();
@@ -174,8 +173,7 @@ void test_fb_line(ST7735 *display)
         if (i > 20 * 8)
             i = 1;
         frame.line(0, y, 128 - 1, 128 - 1 - y, static_cast<ColorIndex>(i / 8));
-        xQueueSend(queue_from_tests_to_ST7735, &frame.data_to_display, portMAX_DELAY);
-        xSemaphoreTake(data_sent, portMAX_DELAY);
+        frame.send_to_DisplayGateKeeper(queue_from_tests_to_ST7735, data_sent);
     }
     p2.lo();
     p1.lo();
@@ -206,8 +204,7 @@ void test_outofframe_line(ST7735 *display)
             i = 0;
         ColorIndex c = static_cast<ColorIndex>(i / 8);
         frame.line(x, y0, x1, y1, c);
-        xQueueSend(queue_from_tests_to_ST7735, &frame.data_to_display, portMAX_DELAY);
-        xSemaphoreTake(data_sent, portMAX_DELAY);
+        frame.send_to_DisplayGateKeeper(queue_from_tests_to_ST7735, data_sent);
     }
     p2.lo();
     p1.lo();
@@ -223,14 +220,12 @@ void test_fb_rect(ST7735 *display)
     p2.hi();
     frame.canvas->clear_canvas_buffer();
     frame.rect(0, 0, 128, 64, false, ColorIndex::RED);
-    xQueueSend(queue_from_tests_to_ST7735, &frame.data_to_display, portMAX_DELAY);
-    xSemaphoreTake(data_sent, portMAX_DELAY);
+    frame.send_to_DisplayGateKeeper(queue_from_tests_to_ST7735, data_sent);
     p2.lo();
     vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
     p2.hi();
     frame.rect(10, 10, 108, 44, true, ColorIndex::YELLOW);
-    xQueueSend(queue_from_tests_to_ST7735, &frame.data_to_display, portMAX_DELAY);
-    xSemaphoreTake(data_sent, portMAX_DELAY);
+    frame.send_to_DisplayGateKeeper(queue_from_tests_to_ST7735, data_sent);
     p2.lo();
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
@@ -248,11 +243,9 @@ void test_fb_hline(ST7735 *display)
     for (size_t i = 0; i < 16; i++)
     {
         frame.hline(0, i * 8, 128, static_cast<ColorIndex>(i + 1));
-        xQueueSend(queue_from_tests_to_ST7735, &frame.data_to_display, portMAX_DELAY);
-        xSemaphoreTake(data_sent, portMAX_DELAY);
+        frame.send_to_DisplayGateKeeper(queue_from_tests_to_ST7735, data_sent);
     }
-    xQueueSend(queue_from_tests_to_ST7735, &frame.data_to_display, portMAX_DELAY);
-    xSemaphoreTake(data_sent, portMAX_DELAY);
+    frame.send_to_DisplayGateKeeper(queue_from_tests_to_ST7735, data_sent);
     p2.lo();
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
@@ -271,11 +264,9 @@ void test_fb_vline(ST7735 *display)
     for (size_t i = 0; i < 16; i++)
     {
         frame.vline(i * 8, 0, 128, static_cast<ColorIndex>(i + 1));
-        xQueueSend(queue_from_tests_to_ST7735, &frame.data_to_display, portMAX_DELAY);
-        xSemaphoreTake(data_sent, portMAX_DELAY);
+        frame.send_to_DisplayGateKeeper(queue_from_tests_to_ST7735, data_sent);
     }
-    xQueueSend(queue_from_tests_to_ST7735, &frame.data_to_display, portMAX_DELAY);
-    xSemaphoreTake(data_sent, portMAX_DELAY);
+    frame.send_to_DisplayGateKeeper(queue_from_tests_to_ST7735, data_sent);
     p2.lo();
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
@@ -291,14 +282,12 @@ void test_fb_circle(ST7735 *display)
     p2.hi();
     frame.canvas->clear_canvas_buffer();
     frame.circle(50, 63, 31, false, ColorIndex::ORANGE);
-    xQueueSend(queue_from_tests_to_ST7735, &frame.data_to_display, portMAX_DELAY);
-    xSemaphoreTake(data_sent, portMAX_DELAY);
+    frame.send_to_DisplayGateKeeper(queue_from_tests_to_ST7735, data_sent);
     p2.lo();
     p2.hi();
     vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
     frame.circle(20, 64, 32, true, ColorIndex::LIME);
-    xQueueSend(queue_from_tests_to_ST7735, &frame.data_to_display, portMAX_DELAY);
-    xSemaphoreTake(data_sent, portMAX_DELAY);
+    frame.send_to_DisplayGateKeeper(queue_from_tests_to_ST7735, data_sent);
     p2.lo();
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
@@ -316,8 +305,7 @@ void test_fb_in_fb(ST7735 *display)
     frame.rect(0, 0, display->TFT_panel_width_in_pixel, display->TFT_panel_height_in_pixel);
     frame.rect(10, 10, 108, 44, true, ColorIndex::CYAN);
     frame.line(5, 60, 120, 5, ColorIndex::RED);
-    xQueueSend(queue_from_tests_to_ST7735, &frame.data_to_display, portMAX_DELAY);
-    xSemaphoreTake(data_sent, portMAX_DELAY);
+    frame.send_to_DisplayGateKeeper(queue_from_tests_to_ST7735, data_sent);
     p2.lo();
 
     vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
@@ -331,8 +319,7 @@ void test_fb_in_fb(ST7735 *display)
     small_frame.canvas->fill_canvas_with_color(ColorIndex::NAVY);
     small_frame.line(5, 5, 80, 20, ColorIndex::YELLOW);
     small_frame.circle(8, 44, 12, false, ColorIndex::GREEN);
-    xQueueSend(queue_from_tests_to_ST7735, &small_frame.data_to_display, portMAX_DELAY);
-    xSemaphoreTake(data_sent, portMAX_DELAY);
+    small_frame.send_to_DisplayGateKeeper(queue_from_tests_to_ST7735, data_sent);
     p2.lo();
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
@@ -359,7 +346,7 @@ int main()
 
     xTaskCreate(vIdleTask, "idle_task0", 256, &p0, 0, NULL);
     xTaskCreate(main_task, "main_task", 256, (void *)&display, 2, NULL);
-    xTaskCreate(display_show_task, "display_show_task", 250, NULL, 4, NULL);
+    xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 250, NULL, 4, NULL);
 
     p5.lo();
     vTaskStartScheduler();
