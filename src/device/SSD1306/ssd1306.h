@@ -12,7 +12,7 @@
 
 #include "commands_SSD1306.h"
 #include "pico/stdlib.h"
-#include "hw/i2c/hw_i2c.h"
+#include "hw/i2c/rtos_hw_i2c.h"
 #include "sw/display_device/display_device.h"
 
 
@@ -122,7 +122,7 @@ struct struct_RenderArea
  */
 class SSD1306 : public GraphicDisplayDevice
 {
-private:
+protected:
     /// @brief the I2C master that control the SSD1306 display
     HW_I2C_Master *i2c_master;
     /// @brief the SSD1306 device configuration
@@ -166,7 +166,7 @@ private:
     /// @brief refer to SSD1306 data sheet for more details
     /// @param buf refer to SSD1306 data sheet for more details
     /// @param buflen refer to SSD1306 data sheet for more details
-    void send_buf(uint8_t buf[], size_t buflen);
+    virtual void send_buf(uint8_t buf[], size_t buflen);
 
 public:
 
@@ -179,6 +179,8 @@ public:
      * @param device_config the configuration according to struct_ConfigSSD1306
      */
     SSD1306(HW_I2C_Master *master, struct_ConfigSSD1306 device_config);
+
+    virtual ~SSD1306();
     /**
      * @brief A static member function that converts the area we want to display into device specific parameters.
      *
@@ -266,3 +268,19 @@ public:
      */
     void vertical_scroll(bool on, struct_ConfigScrollSSD1306 scroll_data);
 };
+
+class rtos_SSD1306 : public SSD1306
+{
+private:
+    /* data */
+public:
+    rtos_SSD1306(rtos_HW_I2C_Master *master, struct_ConfigSSD1306 device_config);
+    ~rtos_SSD1306();
+
+    /// @brief refer to SSD1306 data sheet for more details
+    /// @param buf refer to SSD1306 data sheet for more details
+    /// @param buflen refer to SSD1306 data sheet for more details
+    void send_buf(uint8_t buf[], size_t buflen);
+
+};
+

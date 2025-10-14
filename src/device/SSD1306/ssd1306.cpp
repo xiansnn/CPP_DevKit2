@@ -27,6 +27,10 @@ SSD1306::SSD1306(HW_I2C_Master *master, struct_ConfigSSD1306 init_config)
     this->init();
 }
 
+SSD1306::~SSD1306()
+{
+}
+
 struct_RenderArea SSD1306::compute_render_area(uint8_t start_col, uint8_t end_col, uint8_t start_line, uint8_t end_line)
 {
     struct_RenderArea area;
@@ -146,7 +150,7 @@ void SSD1306::check_display_device_compatibility(struct_ConfigGraphicWidget fram
     assert(framebuffer_cfg.widget_anchor_y + framebuffer_cfg.pixel_frame_height <= SSD1306_HEIGHT);
     assert(framebuffer_cfg.widget_anchor_x + framebuffer_cfg.pixel_frame_width <= SSD1306_WIDTH);
 
-    //check that framebuffer fit on page height boundary
+    // check that framebuffer fit on page height boundary
     assert(framebuffer_cfg.pixel_frame_height % BYTE_SIZE == 0);
     assert(framebuffer_cfg.widget_anchor_y % BYTE_SIZE == 0);
 }
@@ -270,3 +274,16 @@ void SSD1306::vertical_scroll(bool on, struct_ConfigScrollSSD1306 scroll_data)
     this->send_cmd_list(cmds, count_of(cmds));
 }
 
+rtos_SSD1306::rtos_SSD1306(rtos_HW_I2C_Master *master, struct_ConfigSSD1306 device_config)
+    : SSD1306(master, device_config)
+{
+}
+
+rtos_SSD1306::~rtos_SSD1306()
+{
+}
+
+void rtos_SSD1306::send_buf(uint8_t buffer[], size_t buflen)
+{
+    ((rtos_HW_I2C_Master*)this->i2c_master)->burst_byte_write(this->device_config.i2c_address, I2C_DATA_FLAG, buffer, buflen);
+}
