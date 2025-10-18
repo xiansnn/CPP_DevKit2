@@ -23,7 +23,7 @@
 #define SSD1306_PAGE_HEIGHT _u(8)
 /// @brief Related to FramebufferFormat, SSD1306_WIDTH divided by the font height
 #define SSD1306_NUM_PAGES (SSD1306_HEIGHT / SSD1306_PAGE_HEIGHT)
-/// @brief size of the pixel_buffer of the assocoated framebuffer
+/// @brief size of the pixel_buffer of the associated framebuffer
 #define SSD1306_BUF_LEN (SSD1306_NUM_PAGES * SSD1306_WIDTH)
 
 // ---------- SSD1306 commands (see datasheet)----------

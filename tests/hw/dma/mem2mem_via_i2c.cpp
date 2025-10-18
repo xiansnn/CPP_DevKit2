@@ -27,14 +27,38 @@
 Probe pr_D0 = Probe(0);
 Probe pr_D1 = Probe(1);
 Probe pr_D4 = Probe(4);
-Probe pr_D5 = Probe(5);
-Probe pr_D6 = Probe(6);
-Probe pr_D7 = Probe(7);
+// Probe pr_D5 = Probe(5);
+// Probe pr_D6 = Probe(6);
+// Probe pr_D7 = Probe(7);
+
+
+/// @brief Data structure for I2C TX queue
+struct struct_TX_DataQueueI2C
+{
+    /// @brief pointer to the data buffer to send
+    uint8_t *write_data;
+
+    /// @brief memory address in the slave device to write to
+    uint8_t mem_address;
+
+    /// @brief number of bytes to write
+    uint8_t write_data_length;
+};
+/// @brief Data structure for I2C RX queue
+struct struct_RX_DataQueueI2C
+{
+    /// @brief memory address in the slave device to read from
+    uint8_t mem_address;
+
+    /// @brief the size of the data to read
+    uint8_t read_data_length;
+};
 
 #define MAX_DATA_SIZE 32
 uint8_t write_data[MAX_DATA_SIZE];
 
 QueueHandle_t i2c_rx_data_queue = xQueueCreate(8, sizeof(struct_RX_DataQueueI2C));
+QueueHandle_t display_data_queue = xQueueCreate(8, sizeof(struct_TX_DataQueueI2C));
 
 uint channel_rx;
 
@@ -95,7 +119,7 @@ void vPeriodic_data_generation_task(void *pxPeriod)
 #ifdef PRINTF
         printf("Write %d at 0x%02X: '%s'\t", data_to_show.write_data_length, mem_address, write_msg); //
 #endif
-        xQueueSend(master.i2c_tx_data_queue, &data_to_show, portMAX_DELAY);
+        xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
     }
 }
 
@@ -106,14 +130,14 @@ void vI2c_sending_task(void *param)
     while (true)
     {
 
-        xQueueReceive(master.i2c_tx_data_queue, &data_to_send, portMAX_DELAY);
-        pr_D5.hi();
+        xQueueReceive(display_data_queue, &data_to_send, portMAX_DELAY);
+        // pr_D5.hi();
         master.burst_byte_write(slave_config.slave_address,
                                 data_to_send.mem_address, data_to_send.write_data, data_to_send.write_data_length);
 
         data_to_display.mem_address = data_to_send.mem_address;
         data_to_display.read_data_length = data_to_send.write_data_length;
-        pr_D5.lo();
+        // pr_D5.lo();
         xQueueSend(i2c_rx_data_queue, &data_to_display, portMAX_DELAY);
     }
 }
@@ -125,10 +149,10 @@ void vDisplay_received_data_task(void *param)
     {
         uint8_t read_data[MAX_DATA_SIZE]{0};
         xQueueReceive(i2c_rx_data_queue, &received_data_cfg, portMAX_DELAY);
-        pr_D6.hi();
-        master.burst_byte_read(slave_config.slave_address, received_data_cfg.mem_address, read_data,received_data_cfg.read_data_length);
-        uint8_t read_msg_len = strlen((char*)read_data);
-        pr_D6.lo();
+        // pr_D6.hi();
+        master.burst_byte_read(slave_config.slave_address, received_data_cfg.mem_address, read_data, received_data_cfg.read_data_length);
+        uint8_t read_msg_len = strlen((char *)read_data);
+        // pr_D6.lo();
 #ifdef PRINTF
         printf("Read %d char at 0x%02X: '%s'\n", read_msg_len, received_data_cfg.mem_address, read_data);
 #endif
