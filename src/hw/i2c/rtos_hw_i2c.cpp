@@ -12,6 +12,7 @@ rtos_HW_I2C_Master::rtos_HW_I2C_Master(struct_ConfigMasterI2C cfg)
     this->tx_dma = new HW_DMA();
     this->i2c_master_exclusive_irq_handler = cfg.i2c_tx_master_handler;
     this->i2c_tx_FIFO_empty = xSemaphoreCreateBinary();
+    this->i2c_access_mutex = xSemaphoreCreateMutex();
 }
 
 rtos_HW_I2C_Master::~rtos_HW_I2C_Master()
@@ -21,6 +22,7 @@ rtos_HW_I2C_Master::~rtos_HW_I2C_Master()
 
 struct_I2CXferResult rtos_HW_I2C_Master::burst_byte_write(uint8_t slave_address, uint8_t mem_address, uint8_t *source_address, size_t length)
 {
+    xSemaphoreTake(i2c_access_mutex, portMAX_DELAY);
     struct_I2CXferResult result = {
         // TODO abort and timeout checking not implemented
         .error = false,
@@ -78,12 +80,14 @@ struct_I2CXferResult rtos_HW_I2C_Master::burst_byte_write(uint8_t slave_address,
     i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_STOP_DET_BITS;
     irq_set_enabled(i2c_irq_number, true);
     xSemaphoreTake(tx_dma->end_of_xfer, portMAX_DELAY);
+    xSemaphoreGive(i2c_access_mutex);
 
     return result;
 }
 
 struct_I2CXferResult rtos_HW_I2C_Master::repeat_byte_write(uint8_t slave_address, uint8_t mem_address, uint8_t pattern, size_t length)
 {
+    xSemaphoreTake(i2c_access_mutex, portMAX_DELAY);
     struct_I2CXferResult result = {
         // TODO abort and timeout checking not implemented
         .error = false,
@@ -101,7 +105,7 @@ struct_I2CXferResult rtos_HW_I2C_Master::repeat_byte_write(uint8_t slave_address
     c = dma_channel_get_default_config(tx_dma->channel);
     channel_config_set_transfer_data_size(&c, DMA_SIZE_16);
     channel_config_set_dreq(&c, i2c_get_dreq(i2c, true));
-    channel_config_set_read_increment(&c, false);
+    channel_config_set_read_increment(&c, true);
     channel_config_set_write_increment(&c, false);
 
     // send memory address and start bit
@@ -141,6 +145,7 @@ struct_I2CXferResult rtos_HW_I2C_Master::repeat_byte_write(uint8_t slave_address
     i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_STOP_DET_BITS;
     irq_set_enabled(i2c_irq_number, true);
     xSemaphoreTake(tx_dma->end_of_xfer, portMAX_DELAY);
+    xSemaphoreGive(i2c_access_mutex);
 
     return result;
 }
@@ -150,6 +155,7 @@ struct_I2CXferResult rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address,
                                                          uint8_t *destination_address,
                                                          size_t length)
 {
+    xSemaphoreTake(i2c_access_mutex, portMAX_DELAY);
     struct_I2CXferResult result = {
         // TODO abort and timeout checking not implemented
         .error = false,
@@ -214,6 +220,7 @@ struct_I2CXferResult rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address,
     }
 
     delete destination_buffer;
+    xSemaphoreGive(i2c_access_mutex);
 
     return result;
 }
@@ -226,7 +233,7 @@ void rtos_HW_I2C_Master::i2c_dma_isr()
     if (this->i2c->hw->intr_stat & I2C_IC_INTR_STAT_R_STOP_DET_BITS)
     {
         p7.hi();
-        this->i2c->hw->clr_stop_det;       // clear the STOP_DET interrupt
+        this->i2c->hw->clr_stop_det;                 // clear the STOP_DET interrupt
         irq_set_enabled(this->i2c_irq_number, true); // enable IRQs
         xSemaphoreGiveFromISR(this->tx_dma->end_of_xfer, &xHigherPriorityTaskWoken);
         portYIELD_FROM_ISR(xHigherPriorityTaskWoken);

@@ -35,6 +35,8 @@ public:
     /// @brief semaphore to signal the TX FIFO of I2C is empty
     SemaphoreHandle_t i2c_tx_FIFO_empty;
 
+    SemaphoreHandle_t i2c_access_mutex;
+
     /// @brief  Constructor of the class
     /// @param cfg  the configuration structure for the I2C master
     rtos_HW_I2C_Master(struct_ConfigMasterI2C cfg);
