@@ -117,12 +117,10 @@ struct struct_RenderArea
 
 struct struct_SSD1306DataToShow
 {
-    GraphicDisplayDevice * display;
+    GraphicDisplayDevice *display;
     struct_RenderArea display_area;
-    uint8_t * data_buffer;
-
+    uint8_t *data_buffer;
 };
-
 
 /**
  * @brief SSD1306 128x64 pixel OLED display device driver with I2C interface
@@ -215,7 +213,7 @@ public:
      * @param screen_area
      * @param addressing_mode
      */
-    void show_render_area(uint8_t *data_buffer, struct_RenderArea screen_area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
+    virtual void show_render_area(uint8_t *data_buffer, struct_RenderArea screen_area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
     /**
      * @brief fill a pattern in the device framebuffer. this make it visible as soon as the device transfer the framebuffer to the pixels.
      * The pattern is a vertical byte representing 8 vertical pixels (refer to MONO_VLSB framebuffer format)
@@ -223,7 +221,7 @@ public:
      * @param pattern the vertical pattern to copy in a set of 8 vertical pixel
      * @param area the location of the area to copy the pattern
      */
-    void fill_pattern_and_show_GDDRAM(uint8_t pattern, struct_RenderArea area);
+    virtual void fill_pattern_and_show_GDDRAM(uint8_t pattern, struct_RenderArea area);
     /**
      * @brief write 0x00 directly into the device framebuffer.
      *  Uses fill_pattern_and_show_GDDRAM command.
@@ -289,7 +287,13 @@ public:
      */
     void clear_device_screen_buffer(uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
 
-    void show_data_buffer(uint8_t *data_buffer, struct_RenderArea display_area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
+    void show_render_area(uint8_t *data_buffer, struct_RenderArea display_area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
+
+    /// @brief fill a pattern in the device framebuffer. this make it visible as soon as the device transfer the framebuffer to the pixels.
+    /// The pattern is a vertical byte representing 8 vertical pixels (refer to MONO_VLSB framebuffer format)
+    /// @param pattern the vertical pattern to copy in a set of 8 vertical pixel
+    /// @param area the location of the area to copy the pattern
+    void fill_GDDRAM_with_pattern_and_show(uint8_t pattern, struct_RenderArea area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
 
     /// @brief refer to SSD1306 data sheet for more details
     /// @param buf refer to SSD1306 data sheet for more details

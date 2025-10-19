@@ -31,6 +31,7 @@ Probe p4 = Probe(4);
 // Probe p7 = Probe(7);
 
 // #define DEGREE "\xF8"
+#define INTER_TASK_DELAY 500
 
 QueueHandle_t display_data_queue = xQueueCreate(8, sizeof(struct_SSD1306DataToShow));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
@@ -142,29 +143,29 @@ void vIdleTask(void *pxProbe)
 //     p1.lo();
 // };
 
-// /**
-//  * @brief test blink command
-//  *
-//  * @param display
-//  */
-// void test_blink(SSD1306 *display)
-// {
-//     struct_RenderArea area;
-//     p1.hi();
-//     display->clear_device_screen_buffer();
-//     area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
-//     display->fill_pattern_and_show_GDDRAM(0x81, area);
-//     area = SSD1306::compute_render_area(64, 96, 15, 40);
-//     display->fill_pattern_and_show_GDDRAM(0x7E, area);
-//     for (int i = 0; i < 2; i++)
-//     {
-//         display->set_all_pixel_ON();
-//         sleep_ms(1000);
-//         display->set_display_from_RAM();
-//         sleep_ms(500);
-//     }
-//     p1.lo();
-// };
+/**
+ * @brief test blink command
+ *
+ * @param display
+ */
+void test_blink(SSD1306 *display)
+{
+    struct_RenderArea area;
+    p1.hi();
+    display->clear_device_screen_buffer();
+    area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
+    display->fill_pattern_and_show_GDDRAM(0x81, area);
+    area = SSD1306::compute_render_area(64, 96, 15, 40);
+    display->fill_pattern_and_show_GDDRAM(0x7E, area);
+    for (int i = 0; i < 2; i++)
+    {
+        display->set_all_pixel_ON();
+        sleep_ms(INTER_TASK_DELAY/4);
+        display->set_display_from_RAM();
+        sleep_ms(INTER_TASK_DELAY/4);
+    }
+    p1.lo();
+};
 // /**
 //  * @brief tst auto scrolling function of the SSD1306 device
 //  *
@@ -197,30 +198,31 @@ void vIdleTask(void *pxProbe)
 //     p1.lo();
 // };
 
-void test_write_buf(void *display_device)
+void test_write_GDDRAM(void *display_device)
 {
+    p1.hi();
     struct_SSD1306DataToShow data_to_show;
     struct_RenderArea area;
     static uint8_t image[SSD1306_BUF_LEN];
-    uint8_t pattern = 0x00;
-    while (true)
-    {
-        p1.hi();
-        pattern = pattern xor 0xFF;
-        // ((rtos_SSD1306 *)display_device)->clear_device_screen_buffer();
-        // vTaskDelay(pdMS_TO_TICKS(250));
-        // ############## display->fill_pattern_and_show_GDDRAM(pattern, area);
-        area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
-        memset(image, pattern, area.buflen);
-        data_to_show.display = (rtos_SSD1306 *)display_device;
-        data_to_show.display_area = area;
-        data_to_show.data_buffer = image;
+    uint8_t pattern = 0xF0;
 
-        xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
-        xSemaphoreTake(data_sent, portMAX_DELAY);
-        p1.lo();
-        vTaskDelay(pdMS_TO_TICKS(250));
-    }
+    ((rtos_SSD1306 *)display_device)->clear_device_screen_buffer();
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY/2));
+
+    ((rtos_SSD1306 *)display_device)->fill_GDDRAM_with_pattern_and_show(pattern, area);
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY/2));
+
+    pattern = 0xFF;
+    area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
+    memset(image, pattern, area.buflen);
+    data_to_show.display = (rtos_SSD1306 *)display_device;
+    data_to_show.display_area = area;
+    data_to_show.data_buffer = image;
+    xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
+    xSemaphoreTake(data_sent, portMAX_DELAY);
+
+    p1.lo();
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
 };
 
 void display_gate_keeper_task(void *param)
@@ -231,31 +233,31 @@ void display_gate_keeper_task(void *param)
     {
         xQueueReceive(display_data_queue, &received_data_to_show, portMAX_DELAY);
         p4.hi();
-        ((rtos_SSD1306 *)received_data_to_show.display)->show_data_buffer(received_data_to_show.data_buffer, received_data_to_show.display_area);
+        ((rtos_SSD1306 *)received_data_to_show.display)->show_render_area(received_data_to_show.data_buffer, received_data_to_show.display_area);
         xSemaphoreGive(data_sent);
         p4.lo();
     }
 }
 
-// void main_task(void *display_device)
-// {
-//     while (true)
-//     {
-//         test_write_buf((rtos_SSD1306 *)display_device);
-//         // test_blink(&display);
-//         // test_contrast(&display);
-//         // test_addressing_mode(&display);
-//         // test_scrolling(&display);
-//     }
-// }
+void main_task(void *display_device)
+{
+    while (true)
+    {
+        test_write_GDDRAM((rtos_SSD1306 *)display_device);
+        // test_blink((rtos_SSD1306 *)display_device);
+        // test_contrast((rtos_SSD1306 *)display_device);
+        // test_addressing_mode((rtos_SSD1306 *)display_device);
+        // test_scrolling((rtos_SSD1306 *)display_device);
+    }
+}
 
 int main()
 {
-    // stdio_init_all();
+    stdio_init_all();
 
     xTaskCreate(vIdleTask, "idle_task0", 256, &p0, 0, NULL);
-    // xTaskCreate(main_task, "main_task", 256, NULL, 2, NULL);
-    xTaskCreate(test_write_buf, "test_write_buf", 256, &display, 2, NULL);
+    xTaskCreate(main_task, "main_task", 256, &display, 2, NULL);
+
     xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, NULL, 4, NULL);
 
     vTaskStartScheduler();
