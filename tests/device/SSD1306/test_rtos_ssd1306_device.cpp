@@ -148,23 +148,39 @@ void vIdleTask(void *pxProbe)
  *
  * @param display
  */
-void test_blink(SSD1306 *display)
+void test_blink(rtos_SSD1306 *display_device)
 {
+    static uint8_t image[SSD1306_BUF_LEN];
+    struct_SSD1306DataToShow data_to_show;
     struct_RenderArea area;
+
     p1.hi();
-    display->clear_device_screen_buffer();
+
+    display_device->clear_device_screen_buffer();
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
+    
     area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
-    display->fill_pattern_and_show_GDDRAM(0x81, area);
+    display_device->fill_GDDRAM_with_pattern_and_show(0x81, area);
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
+
     area = SSD1306::compute_render_area(64, 96, 15, 40);
-    display->fill_pattern_and_show_GDDRAM(0x7E, area);
+    memset(image, 0x7E, area.buflen);
+    data_to_show.display = (rtos_SSD1306 *)display_device;
+    data_to_show.display_area = area;
+    data_to_show.data_buffer = image;
+    xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
+    xSemaphoreTake(data_sent, portMAX_DELAY);
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+
     for (int i = 0; i < 2; i++)
     {
-        display->set_all_pixel_ON();
-        sleep_ms(INTER_TASK_DELAY/4);
-        display->set_display_from_RAM();
-        sleep_ms(INTER_TASK_DELAY/4);
+        display_device->set_all_pixel_ON();
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY/4));
+        display_device->set_display_from_RAM();
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY/4));
     }
     p1.lo();
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
 };
 // /**
 //  * @brief tst auto scrolling function of the SSD1306 device
@@ -207,10 +223,10 @@ void test_write_GDDRAM(void *display_device)
     uint8_t pattern = 0xF0;
 
     ((rtos_SSD1306 *)display_device)->clear_device_screen_buffer();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY/2));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
 
     ((rtos_SSD1306 *)display_device)->fill_GDDRAM_with_pattern_and_show(pattern, area);
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY/2));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
 
     pattern = 0xFF;
     area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
@@ -244,7 +260,7 @@ void main_task(void *display_device)
     while (true)
     {
         test_write_GDDRAM((rtos_SSD1306 *)display_device);
-        // test_blink((rtos_SSD1306 *)display_device);
+        test_blink((rtos_SSD1306 *)display_device);
         // test_contrast((rtos_SSD1306 *)display_device);
         // test_addressing_mode((rtos_SSD1306 *)display_device);
         // test_scrolling((rtos_SSD1306 *)display_device);
