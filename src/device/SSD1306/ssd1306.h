@@ -15,7 +15,6 @@
 #include "hw/i2c/rtos_hw_i2c.h"
 #include "sw/display_device/display_device.h"
 
-
 // Time_frame_interval
 /// @brief refer to SSD1306 data sheet
 #define _2_FRAMES 0b111
@@ -116,6 +115,15 @@ struct struct_RenderArea
     size_t buflen{SSD1306_BUF_LEN};
 };
 
+struct struct_SSD1306DataToShow
+{
+    GraphicDisplayDevice * display;
+    struct_RenderArea display_area;
+    uint8_t * data_buffer;
+
+};
+
+
 /**
  * @brief SSD1306 128x64 pixel OLED display device driver with I2C interface
  * \ingroup view
@@ -169,7 +177,6 @@ protected:
     virtual void send_buf(uint8_t buf[], size_t buflen);
 
 public:
-
     void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg);
 
     /**
@@ -213,8 +220,8 @@ public:
      * @brief fill a pattern in the device framebuffer. this make it visible as soon as the device transfer the framebuffer to the pixels.
      * The pattern is a vertical byte representing 8 vertical pixels (refer to MONO_VLSB framebuffer format)
      * \bug// FIXME : PAGE_ADDRESSING_MODE seems misbehave depending on what was executed before
-     * @param pattern
-     * @param area
+     * @param pattern the vertical pattern to copy in a set of 8 vertical pixel
+     * @param area the location of the area to copy the pattern
      */
     void fill_pattern_and_show_GDDRAM(uint8_t pattern, struct_RenderArea area);
     /**
@@ -277,10 +284,15 @@ public:
     rtos_SSD1306(rtos_HW_I2C_Master *master, struct_ConfigSSD1306 device_config);
     ~rtos_SSD1306();
 
+    /**
+     * @brief write 0x00 directly into the device framebuffer.
+     */
+    void clear_device_screen_buffer(uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
+
+    void show_data_buffer(uint8_t *data_buffer, struct_RenderArea display_area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
+
     /// @brief refer to SSD1306 data sheet for more details
     /// @param buf refer to SSD1306 data sheet for more details
     /// @param buflen refer to SSD1306 data sheet for more details
     void send_buf(uint8_t buf[], size_t buflen);
-
 };
-

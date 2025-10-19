@@ -283,7 +283,38 @@ rtos_SSD1306::~rtos_SSD1306()
 {
 }
 
+void rtos_SSD1306::clear_device_screen_buffer(uint8_t addressing_mode)
+{
+    assert(addressing_mode != PAGE_ADDRESSING_MODE);
+    struct_RenderArea area = compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
+    this->send_cmd(SSD1306_SET_MEM_MODE);
+    this->send_cmd(HORIZONTAL_ADDRESSING_MODE);
+
+    this->send_cmd(SSD1306_SET_COL_ADDR);
+    this->send_cmd(area.start_col);
+    this->send_cmd(area.end_col);
+    this->send_cmd(SSD1306_SET_PAGE_ADDR);
+    this->send_cmd(area.start_page);
+    this->send_cmd(area.end_page);
+    ((rtos_HW_I2C_Master *)this->i2c_master)->repeat_byte_write(this->device_config.i2c_address, I2C_DATA_FLAG, 0x00, area.buflen);
+}
+
+void rtos_SSD1306::show_data_buffer(uint8_t *data_buffer, struct_RenderArea display_area, uint8_t addressing_mode)
+{
+    assert(addressing_mode != PAGE_ADDRESSING_MODE);
+    this->send_cmd(SSD1306_SET_MEM_MODE);
+    this->send_cmd(addressing_mode);
+
+    this->send_cmd(SSD1306_SET_COL_ADDR);
+    this->send_cmd(display_area.start_col);
+    this->send_cmd(display_area.end_col);
+    this->send_cmd(SSD1306_SET_PAGE_ADDR);
+    this->send_cmd(display_area.start_page);
+    this->send_cmd(display_area.end_page);
+    this->send_buf(data_buffer, display_area.buflen);
+}
+
 void rtos_SSD1306::send_buf(uint8_t buffer[], size_t buflen)
 {
-    ((rtos_HW_I2C_Master*)this->i2c_master)->burst_byte_write(this->device_config.i2c_address, I2C_DATA_FLAG, buffer, buflen);
+    ((rtos_HW_I2C_Master *)this->i2c_master)->burst_byte_write(this->device_config.i2c_address, I2C_DATA_FLAG, buffer, buflen);
 }
