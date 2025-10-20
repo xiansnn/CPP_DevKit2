@@ -10,17 +10,12 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-// #include <string.h>
-// #include <string>
-// #include <math.h>
-// #include <numbers>
-// #include <sstream>
-// #include <iomanip>
+
 #include <cstring>
 
 #include "device/SSD1306/ssd1306.h"
 
-// #include "font/raspberry26x32.h"
+#include "font/raspberry26x32.h"
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
@@ -30,8 +25,8 @@ Probe p4 = Probe(4);
 // Probe p6 = Probe(6);
 // Probe p7 = Probe(7);
 
-// #define DEGREE "\xF8"
-#define INTER_TASK_DELAY 500
+
+#define INTER_TASK_DELAY 200
 
 QueueHandle_t display_data_queue = xQueueCreate(8, sizeof(struct_SSD1306DataToShow));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
@@ -54,8 +49,6 @@ struct_ConfigSSD1306 cfg_ssd1306{
     .frequency_divider = 1,
     .frequency_factor = 0};
 
-// HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
-// SSD1306 display = SSD1306(&master, cfg_ssd1306);
 rtos_HW_I2C_Master master = rtos_HW_I2C_Master(cfg_i2c);
 rtos_SSD1306 display = rtos_SSD1306(&master, cfg_ssd1306);
 
@@ -73,75 +66,101 @@ void vIdleTask(void *pxProbe)
     }
 }
 
-// /**
-//  * @brief test contrast command.
-//  *
-//  * repeat 3 times [contrast 0, contrast 255, contrast 127]
-//  *
-//  * @param display
-//  */
-// void test_contrast(SSD1306 *display)
-// {
-//     p1.hi();
-//     display->clear_device_screen_buffer();
-//     struct_RenderArea area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
-//     display->fill_pattern_and_show_GDDRAM(0x55, area);
-//     area = SSD1306::compute_render_area(32, 96, 16, 32);
-//     display->fill_pattern_and_show_GDDRAM(0xFF, area);
-//     for (size_t i = 0; i < 3; i++)
-//     {
-//         display->set_contrast(0);
-//         sleep_ms(1000);
-//         display->set_contrast(255);
-//         sleep_ms(1000);
-//         display->set_contrast(127);
-//         sleep_ms(1000);
-//     }
-//     p1.lo();
-// };
+/**
+ * @brief test contrast command.
+ *
+ * repeat 3 times [contrast 0, contrast 255, contrast 127]
+ *
+ * @param display
+ */
+void test_contrast(rtos_SSD1306 *display)
+{
+    p1.hi();
+    display->clear_device_screen_buffer();
 
-// /**
-//  * @brief  test addressing mode.
-//  * successsive test[horizontal addressing mode, verticale addressing mode, page addressing mode]
-//  *
-//  * @param display
-//  */
-// void test_addressing_mode(SSD1306 *display)
-// {
-//     p1.hi();
-//     uint8_t image[128 * 8]{0x00};
-//     memset(image, 0xFE, sizeof(image));
-//     sleep_ms(1000);
-//     display->clear_device_screen_buffer();
-//     struct_RenderArea area;
-//     // HORIZONTAL_ADDRESSING_MODE
-//     for (size_t i = 0; i < 4; i++)
-//     {
-//         memset(image, 0xAA, sizeof(image));
-//         area = SSD1306::compute_render_area(10 * i, 90 + 10 * i, 8 * i, 2 + 8 * i);
-//         display->show_render_area(image, area, HORIZONTAL_ADDRESSING_MODE);
-//         sleep_ms(1000);
-//         display->clear_device_screen_buffer();
-//     }
-//     // VERTICAL_ADDRESSING_MODE
-//     for (size_t i = 0; i < 4; i++)
-//     {
-//         memset(image, 0xAA, sizeof(image));
-//         area = SSD1306::compute_render_area(40 + 10 * i, 50 + 10 * i, 8 * i, 30 + 8 * i);
-//         display->show_render_area(image, area, VERTICAL_ADDRESSING_MODE);
-//         sleep_ms(1000);
-//         display->clear_device_screen_buffer();
-//     }
-//     // PAGE_ADDRESSING_MODE
-//     for (size_t i = 0; i < 8; i++)
-//     {
-//         memset(image, 0x55, sizeof(image));
-//         area = SSD1306::compute_render_area(i * 10, 100 + i * 10, 8 * i, 8 * i);
-//         display->show_render_area(image, area, PAGE_ADDRESSING_MODE);
-//         sleep_ms(1000);
-//     }
-//     p1.lo();
-// };
+    struct_RenderArea area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
+    display->fill_GDDRAM_with_pattern(0x55, area);
+    area = SSD1306::compute_render_area(32, 96, 16, 32);
+    display->fill_GDDRAM_with_pattern(0xFF, area);
+
+    for (size_t i = 0; i < 3; i++)
+    {
+        display->set_contrast(0);
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY * 2));
+        display->set_contrast(255);
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY * 2));
+        display->set_contrast(127);
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY * 2));
+    }
+    p1.lo();
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+};
+
+/**
+ * @brief  test addressing mode.
+ * successsive test[horizontal addressing mode, verticale addressing mode, page addressing mode]
+ *
+ * @param display
+ */
+void test_addressing_mode(rtos_SSD1306 *display)
+{
+    struct_SSD1306DataToShow data_to_show;
+    data_to_show.display = (rtos_SSD1306 *)display;
+    struct_RenderArea area;
+    static uint8_t image[128 * 8]{0x00};
+    p1.hi();
+    display->clear_device_screen_buffer();
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+
+    // memset(image, 0xFF, sizeof(image));
+
+    // HORIZONTAL_ADDRESSING_MODE
+    for (size_t i = 0; i < 4; i++)
+    {
+        memset(image, 0xAA, sizeof(image));
+        area = SSD1306::compute_render_area(10 * i, 90 + 10 * i, 8 * i, 2 + 8 * i);
+        data_to_show.display_area = area;
+        data_to_show.data_buffer = image;
+        data_to_show.addressing_mode = HORIZONTAL_ADDRESSING_MODE;
+        xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
+        xSemaphoreTake(data_sent, portMAX_DELAY);
+
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
+        display->clear_device_screen_buffer();
+    }
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    // VERTICAL_ADDRESSING_MODE
+    for (size_t i = 0; i < 4; i++)
+    {
+        memset(image, 0xAA, sizeof(image));
+        area = SSD1306::compute_render_area(40 + 10 * i, 50 + 10 * i, 8 * i, 30 + 8 * i);
+        data_to_show.display = (rtos_SSD1306 *)display;
+        data_to_show.display_area = area;
+        data_to_show.data_buffer = image;
+        data_to_show.addressing_mode = VERTICAL_ADDRESSING_MODE;
+        xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
+        xSemaphoreTake(data_sent, portMAX_DELAY);
+
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
+        display->clear_device_screen_buffer();
+    }
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    // PAGE_ADDRESSING_MODE
+    for (size_t i = 0; i < 8; i++)
+    {
+        memset(image, 0x55, sizeof(image));
+        area = SSD1306::compute_render_area(i * 10, 100 + i * 10, 8 * i, 8 * i);
+        data_to_show.display = (rtos_SSD1306 *)display;
+        data_to_show.display_area = area;
+        data_to_show.data_buffer = image;
+        data_to_show.addressing_mode = PAGE_ADDRESSING_MODE;
+        xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
+        xSemaphoreTake(data_sent, portMAX_DELAY);
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
+    }
+    p1.lo();
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+};
 
 /**
  * @brief test blink command
@@ -158,9 +177,9 @@ void test_blink(rtos_SSD1306 *display_device)
 
     display_device->clear_device_screen_buffer();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
-    
+
     area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
-    display_device->fill_GDDRAM_with_pattern_and_show(0x81, area);
+    display_device->fill_GDDRAM_with_pattern(0x81, area);
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
 
     area = SSD1306::compute_render_area(64, 96, 15, 40);
@@ -175,65 +194,77 @@ void test_blink(rtos_SSD1306 *display_device)
     for (int i = 0; i < 2; i++)
     {
         display_device->set_all_pixel_ON();
-        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY/4));
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 4));
         display_device->set_display_from_RAM();
-        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY/4));
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 4));
     }
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
 };
-// /**
-//  * @brief tst auto scrolling function of the SSD1306 device
-//  *
-//  * @param display
-//  */
-// void test_scrolling(SSD1306 *display)
-// {
-//     p1.hi();
-//     display->clear_device_screen_buffer();
-//     // render 3 cute little raspberries
-//     struct_RenderArea area = SSD1306::compute_render_area(0, IMG_WIDTH - 1, 0, IMG_HEIGHT - 1);
-//     uint8_t offset = 5 + IMG_WIDTH; // 5px padding
-//     for (int i = 0; i < 3; i++)
-//     {
-//         display->show_render_area(raspberry26x32, area);
-//         area.start_col += offset;
-//         area.end_col += offset;
-//     }
-//     // start scrolling
-//     struct_ConfigScrollSSD1306 scroll_data = {
-//         .time_frame_interval = _25_FRAMES,
-//         .vertical_scrolling_offset = 1};
-//     display->horizontal_scroll(true, scroll_data);
-//     sleep_ms(3000);
-//     display->horizontal_scroll(false, scroll_data);
-//     sleep_ms(1000);
-//     display->vertical_scroll(true, scroll_data);
-//     sleep_ms(5000);
-//     display->vertical_scroll(false, scroll_data);
-//     p1.lo();
-// };
+/**
+ * @brief tst auto scrolling function of the SSD1306 device
+ *
+ * @param display
+ */
+void test_scrolling(rtos_SSD1306 *display)
+{
+    p1.hi();
+    struct_SSD1306DataToShow data_to_show;
+    display->clear_device_screen_buffer();
+    // render 3 cute little raspberries
+    struct_RenderArea area = SSD1306::compute_render_area(0, IMG_WIDTH - 1, 0, IMG_HEIGHT - 1);
+    uint8_t offset = 5 + IMG_WIDTH; // 5px padding
+    for (int i = 0; i < 3; i++)
+    {
+        // display->show_render_area(raspberry26x32, area);
+        data_to_show.display = (rtos_SSD1306 *)display;
+        data_to_show.display_area = area;
+        data_to_show.data_buffer = raspberry26x32;
+        xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
+        xSemaphoreTake(data_sent, portMAX_DELAY);
+
+        area.start_col += offset;
+        area.end_col += offset;
+        data_to_show.display_area = area;
+        data_to_show.data_buffer = raspberry26x32;
+        xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
+        xSemaphoreTake(data_sent, portMAX_DELAY);
+    }
+    // start scrolling
+    struct_ConfigScrollSSD1306 scroll_data = {
+        .time_frame_interval = _25_FRAMES,
+        .vertical_scrolling_offset = 1};
+    display->horizontal_scroll(true, scroll_data);
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY * 4));
+    display->horizontal_scroll(false, scroll_data);
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY * 4));
+    display->vertical_scroll(true, scroll_data);
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY * 4));
+    display->vertical_scroll(false, scroll_data);
+    p1.lo();
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+};
 
 void test_write_GDDRAM(void *display_device)
 {
     p1.hi();
     struct_SSD1306DataToShow data_to_show;
     struct_RenderArea area;
-    static uint8_t image[SSD1306_BUF_LEN];
+    static uint8_t screen[SSD1306_BUF_LEN];
     uint8_t pattern = 0xF0;
 
     ((rtos_SSD1306 *)display_device)->clear_device_screen_buffer();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
 
-    ((rtos_SSD1306 *)display_device)->fill_GDDRAM_with_pattern_and_show(pattern, area);
+    ((rtos_SSD1306 *)display_device)->fill_GDDRAM_with_pattern(pattern, area);
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
 
     pattern = 0xFF;
     area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
-    memset(image, pattern, area.buflen);
+    memset(screen, pattern, area.buflen);
     data_to_show.display = (rtos_SSD1306 *)display_device;
     data_to_show.display_area = area;
-    data_to_show.data_buffer = image;
+    data_to_show.data_buffer = screen;
     xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
     xSemaphoreTake(data_sent, portMAX_DELAY);
 
@@ -249,7 +280,9 @@ void display_gate_keeper_task(void *param)
     {
         xQueueReceive(display_data_queue, &received_data_to_show, portMAX_DELAY);
         p4.hi();
-        ((rtos_SSD1306 *)received_data_to_show.display)->show_render_area(received_data_to_show.data_buffer, received_data_to_show.display_area);
+        ((rtos_SSD1306 *)received_data_to_show.display)->show_render_area(received_data_to_show.data_buffer, 
+                                        received_data_to_show.display_area, 
+                                        received_data_to_show.addressing_mode);
         xSemaphoreGive(data_sent);
         p4.lo();
     }
@@ -261,9 +294,9 @@ void main_task(void *display_device)
     {
         test_write_GDDRAM((rtos_SSD1306 *)display_device);
         test_blink((rtos_SSD1306 *)display_device);
-        // test_contrast((rtos_SSD1306 *)display_device);
-        // test_addressing_mode((rtos_SSD1306 *)display_device);
-        // test_scrolling((rtos_SSD1306 *)display_device);
+        test_contrast((rtos_SSD1306 *)display_device);        
+        test_addressing_mode((rtos_SSD1306 *)display_device); 
+        test_scrolling((rtos_SSD1306 *)display_device);
     }
 }
 
@@ -273,7 +306,6 @@ int main()
 
     xTaskCreate(vIdleTask, "idle_task0", 256, &p0, 0, NULL);
     xTaskCreate(main_task, "main_task", 256, &display, 2, NULL);
-
     xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, NULL, 4, NULL);
 
     vTaskStartScheduler();
