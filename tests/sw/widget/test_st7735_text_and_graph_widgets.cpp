@@ -27,7 +27,7 @@ Probe pr_D5 = Probe(5);
 
 #define DEGREE \xF8
 
-#define CANVAS_FORMAT CanvasFormat::RGB565
+#define CANVAS_FORMAT CanvasFormat::RGB_COLOR_INDEX_8b
 
 // #define ST7735_128x128
 #define ST7735_128x160
@@ -153,12 +153,12 @@ void my_visu_widget::draw()
         int x1 = xc + radius * cos_roll;
         int y1 = yl + radius * sin_roll;
 
-        this->canvas->fill_canvas_with_color(bg_color);
+        this->canvas->fill_canvas_with_color(this->canvas->bg_color);
 
         this->circle(radius, xc, yl, true, ColorIndex::GREEN);
         this->line(x0, y0, x1, y1, ColorIndex::YELLOW);
 
-        draw_border(fg_color);
+        draw_border(this->canvas->fg_color);
         show();
         actual_displayed_model->draw_widget_done();
     }

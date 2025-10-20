@@ -79,8 +79,8 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     default:
         break;
     }
-    canvas->canvas_fg_color = graph_cfg.fg_color;
-    canvas->canvas_bg_color = graph_cfg.bg_color;
+    canvas->fg_color = graph_cfg.fg_color;
+    canvas->bg_color = graph_cfg.bg_color;
 
     this->widget_anchor_x = graph_cfg.widget_anchor_x;
     this->widget_anchor_y = graph_cfg.widget_anchor_y;
@@ -138,8 +138,8 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     default:
         break;
     }
-    canvas->canvas_fg_color = text_cfg.fg_color;
-    canvas->canvas_bg_color = text_cfg.bg_color;
+    canvas->fg_color = text_cfg.fg_color;
+    canvas->bg_color = text_cfg.bg_color;
 
     this->widget_anchor_x = text_cfg.widget_anchor_x;
     this->widget_anchor_y = text_cfg.widget_anchor_y;
@@ -186,8 +186,8 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     default:
         break;
     }
-    canvas->canvas_fg_color = text_cfg.fg_color;
-    canvas->canvas_bg_color = text_cfg.bg_color;
+    canvas->fg_color = text_cfg.fg_color;
+    canvas->bg_color = text_cfg.bg_color;
 
     this->widget_anchor_x = text_cfg.widget_anchor_x;
     this->widget_anchor_y = text_cfg.widget_anchor_y;
@@ -221,8 +221,8 @@ struct_ConfigGraphicWidget GraphicWidget::get_graph_frame_config()
     struct_ConfigGraphicWidget cfg = {
         .pixel_frame_width = canvas->canvas_width_pixel,
         .pixel_frame_height = canvas->canvas_height_pixel,
-        .fg_color = canvas->canvas_fg_color,
-        .bg_color = canvas->canvas_bg_color,
+        .fg_color = canvas->fg_color,
+        .bg_color = canvas->bg_color,
         .widget_anchor_x = this->widget_anchor_x,
         .widget_anchor_y = this->widget_anchor_y,
         .widget_with_border = this->widget_with_border};
@@ -350,8 +350,8 @@ struct_ConfigTextWidget TextWidget::get_text_frame_config()
         .widget_anchor_y = this->widget_anchor_y,
         .font = this->font,
         .tab_size = this->tab_size,
-        .fg_color = this->canvas->canvas_fg_color,
-        .bg_color = this->canvas->canvas_bg_color,
+        .fg_color = this->canvas->fg_color,
+        .bg_color = this->canvas->bg_color,
         .wrap = this->wrap,
         .auto_next_char = this->auto_next_char};
     return conf;
@@ -546,9 +546,9 @@ void TextWidget::draw_glyph(const char character,
         {
             uint8_t b = font[seek];
             if (font[seek] >> b_seek & 0b00000001)
-                canvas->draw_pixel(x + anchor_x, y + anchor_y, canvas->canvas_fg_color);
+                canvas->draw_pixel(x + anchor_x, y + anchor_y, canvas->fg_color);
             else
-                canvas->draw_pixel(x + anchor_x, y + anchor_y, canvas->canvas_bg_color);
+                canvas->draw_pixel(x + anchor_x, y + anchor_y, canvas->bg_color);
 
             b_seek++;
             if (b_seek == 8)

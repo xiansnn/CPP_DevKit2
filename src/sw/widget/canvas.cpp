@@ -84,7 +84,7 @@ CanvasHMSB::~CanvasHMSB()
 }
 void CanvasHMSB::fill_canvas_with_color(ColorIndex color)
 {
-    if (color == canvas_bg_color)
+    if (color == bg_color)
         memset(canvas_buffer, 0x00, canvas_buffer_size_byte);
     else
         memset(canvas_buffer, 0xFF, canvas_buffer_size_byte);
@@ -98,7 +98,7 @@ void CanvasHMSB::draw_pixel(const int x, const int y, const ColorIndex color)
         int byte_index = y * bytes_per_row + x / BYTE_SIZE;
         uint8_t byte = canvas_buffer[byte_index];
 
-        if (color == canvas_fg_color)
+        if (color == fg_color)
             byte |= 0b10000000 >> (x & 0b00000111);
         else
             byte &= ~(0b10000000 >> (x & 0b00000111));

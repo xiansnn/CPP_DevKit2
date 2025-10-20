@@ -25,7 +25,7 @@
 Probe p1 = Probe(1);
 Probe p2 = Probe(2);
 
-#define CANVAS_FORMAT CanvasFormat::RGB565
+#define CANVAS_FORMAT CanvasFormat::RGB_COLOR_INDEX_8b
 
 // #define ST7735_128x128
 #define ST7735_128x160
