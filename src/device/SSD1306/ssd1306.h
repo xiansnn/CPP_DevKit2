@@ -120,6 +120,8 @@ struct struct_SSD1306DataToShow
     GraphicDisplayDevice *display;
     struct_RenderArea display_area;
     uint8_t *data_buffer;
+    uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE;
+
 };
 
 /**
@@ -277,23 +279,26 @@ public:
 class rtos_SSD1306 : public SSD1306
 {
 private:
-    /* data */
+    
 public:
+    /// @brief constructor for FreeRTOS compliant SSD1306 device driver.
+    /// @param master the I2C master controller, compliant with FreeRTOS.
+    /// @param device_config The configuration data of the display device.
     rtos_SSD1306(rtos_HW_I2C_Master *master, struct_ConfigSSD1306 device_config);
     ~rtos_SSD1306();
 
-    /**
-     * @brief write 0x00 directly into the device framebuffer.
-     */
+    /// @brief write 0x00 directly into the device framebuffer (GDDRAM).
+    /// @param addressing_mode the way the data is written to the GDDRAM
     void clear_device_screen_buffer(uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
 
     void show_render_area(uint8_t *data_buffer, struct_RenderArea display_area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
 
-    /// @brief fill a pattern in the device framebuffer. this make it visible as soon as the device transfer the framebuffer to the pixels.
+    /// @brief fill a pattern in the device framebuffer (GDDRAM). This is shown on display as soon as the GDDRAM buffer is transfered to the pixels.
     /// The pattern is a vertical byte representing 8 vertical pixels (refer to MONO_VLSB framebuffer format)
     /// @param pattern the vertical pattern to copy in a set of 8 vertical pixel
     /// @param area the location of the area to copy the pattern
-    void fill_GDDRAM_with_pattern_and_show(uint8_t pattern, struct_RenderArea area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
+    /// @param addressing_mode the way the data is written ti the GDDRAM
+    void fill_GDDRAM_with_pattern(uint8_t pattern, struct_RenderArea area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
 
     /// @brief refer to SSD1306 data sheet for more details
     /// @param buf refer to SSD1306 data sheet for more details
