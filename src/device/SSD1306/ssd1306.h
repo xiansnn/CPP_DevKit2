@@ -115,11 +115,16 @@ struct struct_RenderArea
     size_t buflen{SSD1306_BUF_LEN};
 };
 
+/// @brief  data structure used to pass multiple parameters to the RTOS task that handles the display update     
 struct struct_SSD1306DataToShow
 {
+    /// @brief pointer to the display device object
     GraphicDisplayDevice *display;
+    /// @brief the area to be displayed
     struct_RenderArea display_area;
+    /// @brief pointer to the data buffer to be displayed
     uint8_t *data_buffer;
+    /// @brief the addressing mode to be used
     uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE;
 
 };
@@ -276,6 +281,7 @@ public:
     void vertical_scroll(bool on, struct_ConfigScrollSSD1306 scroll_data);
 };
 
+/// @brief FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface
 class rtos_SSD1306 : public SSD1306
 {
 private:

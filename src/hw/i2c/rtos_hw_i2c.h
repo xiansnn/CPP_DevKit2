@@ -34,7 +34,7 @@ public:
 
     /// @brief semaphore to signal the TX FIFO of I2C is empty
     SemaphoreHandle_t i2c_tx_FIFO_empty;
-
+    /// @brief semaphore to protect access to the I2C bus
     SemaphoreHandle_t i2c_access_mutex;
 
     /// @brief  Constructor of the class
