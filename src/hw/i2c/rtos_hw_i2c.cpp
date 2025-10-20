@@ -1,10 +1,14 @@
 
 #include "rtos_hw_i2c.h"
 
+// #define SHOW_PROBE
+
+#ifdef SHOW_PROBE
 #include "utilities/probe/probe.h"
 Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
+#endif
 
 rtos_HW_I2C_Master::rtos_HW_I2C_Master(struct_ConfigMasterI2C cfg)
     : HW_I2C_Master(cfg)
@@ -233,24 +237,37 @@ struct_I2CXferResult rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address,
 
 void rtos_HW_I2C_Master::i2c_dma_isr()
 {
+#ifdef SHOW_PROBE
     p5.hi();
+#endif
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;
     irq_set_enabled(this->i2c_irq_number, false); // disable IRQs to avoid re-entrance
     if (this->i2c->hw->intr_stat & I2C_IC_INTR_STAT_R_STOP_DET_BITS)
     {
+#ifdef SHOW_PROBE
         p7.hi();
+#endif
         this->i2c->hw->clr_stop_det;                 // clear the STOP_DET interrupt
         irq_set_enabled(this->i2c_irq_number, true); // enable IRQs
         xSemaphoreGiveFromISR(this->tx_dma->end_of_xfer, &xHigherPriorityTaskWoken);
         portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+#ifdef SHOW_PROBE
         p7.lo();
+#endif
     }
     if (this->i2c->hw->intr_stat & I2C_IC_INTR_STAT_R_TX_EMPTY_BITS)
     {
+#ifdef SHOW_PROBE
         p6.hi();
+#endif
         xSemaphoreGiveFromISR(this->i2c_tx_FIFO_empty, &xHigherPriorityTaskWoken);
         portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+
+#ifdef SHOW_PROBE
         p6.lo();
+#endif
     }
+#ifdef SHOW_PROBE
     p5.lo();
+#endif
 }
