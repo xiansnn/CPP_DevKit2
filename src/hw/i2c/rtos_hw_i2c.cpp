@@ -80,6 +80,8 @@ struct_I2CXferResult rtos_HW_I2C_Master::burst_byte_write(uint8_t slave_address,
     i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_STOP_DET_BITS;
     irq_set_enabled(i2c_irq_number, true);
     xSemaphoreTake(tx_dma->end_of_xfer, portMAX_DELAY);
+    i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_STOP_DET_BITS | I2C_IC_INTR_STAT_R_TX_EMPTY_BITS;
+    irq_set_enabled(i2c_irq_number, false);
     xSemaphoreGive(i2c_access_mutex);
 
     return result;
@@ -145,6 +147,8 @@ struct_I2CXferResult rtos_HW_I2C_Master::repeat_byte_write(uint8_t slave_address
     i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_STOP_DET_BITS;
     irq_set_enabled(i2c_irq_number, true);
     xSemaphoreTake(tx_dma->end_of_xfer, portMAX_DELAY);
+    i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_STOP_DET_BITS | I2C_IC_INTR_STAT_R_TX_EMPTY_BITS;
+    irq_set_enabled(i2c_irq_number, false);
     xSemaphoreGive(i2c_access_mutex);
 
     return result;
@@ -220,6 +224,8 @@ struct_I2CXferResult rtos_HW_I2C_Master::burst_byte_read(uint8_t slave_address,
     }
 
     delete destination_buffer;
+    i2c->hw->intr_mask = I2C_IC_INTR_STAT_R_STOP_DET_BITS | I2C_IC_INTR_STAT_R_TX_EMPTY_BITS;
+    irq_set_enabled(i2c_irq_number, false);
     xSemaphoreGive(i2c_access_mutex);
 
     return result;
