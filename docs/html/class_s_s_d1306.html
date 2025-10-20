@@ -100,6 +100,8 @@ $(function(){initNavTree('class_s_s_d1306.html',''); initResizable(true); });
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_s_s_d1306-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SSD1306 Class Reference<div class="ingroups"><a class="el" href="group__view.html">&quot;View&quot;</a></div></div></div>
 </div><!--header-->
@@ -114,7 +116,9 @@ Inheritance diagram for SSD1306:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_s_d1306__inherit__graph.png" border="0" usemap="#a_s_s_d1306_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_s_s_d1306_inherit__map" id="a_s_s_d1306_inherit__map">
-<area shape="rect" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,317,549,655"/>
+<area shape="rect" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="53,317,501,931"/>
+<area shape="rect" href="classrtos___s_s_d1306.html" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,979,549,1133"/>
+<area shape="poly" title=" " alt="" coords="280,946,280,979,275,979,275,946"/>
 <area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="39,133,516,269"/>
 <area shape="poly" title=" " alt="" coords="280,284,280,318,275,318,275,284"/>
 <area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="225,5,329,85"/>
@@ -126,11 +130,15 @@ Collaboration diagram for SSD1306:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_s_d1306__coll__graph.png" border="0" usemap="#a_s_s_d1306_coll__map" alt="Collaboration graph"/></div>
 <map name="a_s_s_d1306_coll__map" id="a_s_s_d1306_coll__map">
-<area shape="rect" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,317,549,655"/>
-<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="39,133,516,269"/>
-<area shape="poly" title=" " alt="" coords="280,284,280,318,275,318,275,284"/>
-<area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="225,5,329,85"/>
-<area shape="poly" title=" " alt="" coords="280,100,280,134,275,134,275,100"/>
+<area shape="rect" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="540,445,988,1039"/>
+<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,191,483,327"/>
+<area shape="poly" title=" " alt="" coords="329,335,542,532,538,536,325,339"/>
+<area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="192,5,296,85"/>
+<area shape="poly" title=" " alt="" coords="247,100,247,191,241,191,241,100"/>
+<area shape="rect" href="class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="507,139,1021,379"/>
+<area shape="poly" title=" " alt="" coords="767,378,767,428,761,428,761,378"/>
+<area shape="rect" href="structstruct___config_s_s_d1306.html" title="configuration data for SSD1306 OLED display. refer to datasheet for more details." alt="" coords="1045,135,1229,383"/>
+<area shape="poly" title=" " alt="" coords="1048,380,1000,441,996,437,1043,377"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -139,14 +147,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae86de55b157bce1451499d8b18e879f5" id="r_ae86de55b157bce1451499d8b18e879f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae86de55b157bce1451499d8b18e879f5">check_display_device_compatibility</a> (<a class="el" href="structstruct___config_graphic_widget.html">struct_ConfigGraphicWidget</a> framebuffer_cfg)</td></tr>
 <tr class="memdesc:ae86de55b157bce1451499d8b18e879f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual member function. Each device must implement this method and check the compatibility of the widget parameter with the its physical limitations.  <br /></td></tr>
 <tr class="separator:ae86de55b157bce1451499d8b18e879f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d8fc891acd28a44e8b2c274c92cd57b" id="r_a4d8fc891acd28a44e8b2c274c92cd57b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d8fc891acd28a44e8b2c274c92cd57b">SSD1306</a> (<a class="el" href="class_h_w___i2_c___master.html">HW_I2C_Master</a> *master, <a class="el" href="structstruct___config_s_s_d1306.html">struct_ConfigSSD1306</a> device_config)</td></tr>
+<tr class="memitem:a4d8fc891acd28a44e8b2c274c92cd57b" id="r_a4d8fc891acd28a44e8b2c274c92cd57b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d8fc891acd28a44e8b2c274c92cd57b">SSD1306</a> (<a class="el" href="class_h_w___i2_c___master.html">HW_I2C_Master</a> *master, <a class="el" href="structstruct___config_s_s_d1306.html">struct_ConfigSSD1306</a> <a class="el" href="#a8c77fc2b876883b63b9f9d403e368e8d">device_config</a>)</td></tr>
 <tr class="separator:a4d8fc891acd28a44e8b2c274c92cd57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0856911564cd155a68bdb5cd4ba090e8" id="r_a0856911564cd155a68bdb5cd4ba090e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0856911564cd155a68bdb5cd4ba090e8">show</a> (<a class="el" href="class_canvas.html">Canvas</a> *canvas, const uint8_t anchor_x, const uint8_t anchor_y)</td></tr>
 <tr class="separator:a0856911564cd155a68bdb5cd4ba090e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad26a211970f779290c9a97335fb023fc" id="r_ad26a211970f779290c9a97335fb023fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad26a211970f779290c9a97335fb023fc">show_render_area</a> (uint8_t *data_buffer, <a class="el" href="structstruct___render_area.html">struct_RenderArea</a> screen_area, uint8_t addressing_mode=0)</td></tr>
+<tr class="memitem:ad26a211970f779290c9a97335fb023fc" id="r_ad26a211970f779290c9a97335fb023fc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad26a211970f779290c9a97335fb023fc">show_render_area</a> (uint8_t *data_buffer, <a class="el" href="structstruct___render_area.html">struct_RenderArea</a> screen_area, uint8_t addressing_mode=0)</td></tr>
 <tr class="memdesc:ad26a211970f779290c9a97335fb023fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">when we need to show a render area with a given framebuffer  <br /></td></tr>
 <tr class="separator:ad26a211970f779290c9a97335fb023fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a764babad3f6a4d12cfa600ce7fd1b751" id="r_a764babad3f6a4d12cfa600ce7fd1b751"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a764babad3f6a4d12cfa600ce7fd1b751">fill_pattern_and_show_GDDRAM</a> (uint8_t pattern, <a class="el" href="structstruct___render_area.html">struct_RenderArea</a> area)</td></tr>
+<tr class="memitem:a764babad3f6a4d12cfa600ce7fd1b751" id="r_a764babad3f6a4d12cfa600ce7fd1b751"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a764babad3f6a4d12cfa600ce7fd1b751">fill_pattern_and_show_GDDRAM</a> (uint8_t pattern, <a class="el" href="structstruct___render_area.html">struct_RenderArea</a> area)</td></tr>
 <tr class="memdesc:a764babad3f6a4d12cfa600ce7fd1b751"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill a pattern in the device framebuffer. this make it visible as soon as the device transfer the framebuffer to the pixels. The pattern is a vertical byte representing 8 vertical pixels (refer to MONO_VLSB framebuffer format)  <br /></td></tr>
 <tr class="separator:a764babad3f6a4d12cfa600ce7fd1b751"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a646463128f966a04b1746e3389819711" id="r_a646463128f966a04b1746e3389819711"><td class="memItemLeft" align="right" valign="top"><a id="a646463128f966a04b1746e3389819711" name="a646463128f966a04b1746e3389819711"></a>
@@ -194,6 +202,57 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memdesc:a077e87e76e6c5ad59e2ad5ecd11e21fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">A static member function that converts the area we want to display into device specific parameters.  <br /></td></tr>
 <tr class="separator:a077e87e76e6c5ad59e2ad5ecd11e21fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a3e0efaaaf70d9712057b3fdbc1ee069f" id="r_a3e0efaaaf70d9712057b3fdbc1ee069f"><td class="memItemLeft" align="right" valign="top"><a id="a3e0efaaaf70d9712057b3fdbc1ee069f" name="a3e0efaaaf70d9712057b3fdbc1ee069f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
+<tr class="memdesc:a3e0efaaaf70d9712057b3fdbc1ee069f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the master init function that calls all others <br /></td></tr>
+<tr class="separator:a3e0efaaaf70d9712057b3fdbc1ee069f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7d610e1d38518a7d467950ec7c48413" id="r_ae7d610e1d38518a7d467950ec7c48413"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7d610e1d38518a7d467950ec7c48413">init_MUX_ratio</a> (uint8_t value)</td></tr>
+<tr class="memdesc:ae7d610e1d38518a7d467950ec7c48413"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
+<tr class="separator:ae7d610e1d38518a7d467950ec7c48413"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc821b2c7b46a4872f7198dd59a14e66" id="r_afc821b2c7b46a4872f7198dd59a14e66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc821b2c7b46a4872f7198dd59a14e66">init_display_vertical_shift</a> (uint8_t value)</td></tr>
+<tr class="memdesc:afc821b2c7b46a4872f7198dd59a14e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
+<tr class="separator:afc821b2c7b46a4872f7198dd59a14e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a784fdb3c2897af4c27ce69f0195bfd80" id="r_a784fdb3c2897af4c27ce69f0195bfd80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a784fdb3c2897af4c27ce69f0195bfd80">init_RAM_start_line</a> (uint8_t value)</td></tr>
+<tr class="memdesc:a784fdb3c2897af4c27ce69f0195bfd80"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
+<tr class="separator:a784fdb3c2897af4c27ce69f0195bfd80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2197c4965c293100893159d198779846" id="r_a2197c4965c293100893159d198779846"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2197c4965c293100893159d198779846">init_SEG_scan_inverse_direction</a> (bool inverse)</td></tr>
+<tr class="memdesc:a2197c4965c293100893159d198779846"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
+<tr class="separator:a2197c4965c293100893159d198779846"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49eae32a3832373c003b9d9c3381a3bf" id="r_a49eae32a3832373c003b9d9c3381a3bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49eae32a3832373c003b9d9c3381a3bf">init_COM_scan_inverse_direction</a> (bool inverse)</td></tr>
+<tr class="memdesc:a49eae32a3832373c003b9d9c3381a3bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
+<tr class="separator:a49eae32a3832373c003b9d9c3381a3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accd5618ae4484f8435ed75b63e58543f" id="r_accd5618ae4484f8435ed75b63e58543f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#accd5618ae4484f8435ed75b63e58543f">init_COM_cfg</a> (bool sequentialCOM, bool enableCOMLRremap)</td></tr>
+<tr class="memdesc:accd5618ae4484f8435ed75b63e58543f"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
+<tr class="separator:accd5618ae4484f8435ed75b63e58543f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79b1c2ff4a7842aad1ea1c475d766bfe" id="r_a79b1c2ff4a7842aad1ea1c475d766bfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79b1c2ff4a7842aad1ea1c475d766bfe">init_clock_frequency</a> (uint8_t divide_ratio, uint8_t frequency_factor)</td></tr>
+<tr class="memdesc:a79b1c2ff4a7842aad1ea1c475d766bfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
+<tr class="separator:a79b1c2ff4a7842aad1ea1c475d766bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80df9a8d75ab48e4e848a77b5e2c1194" id="r_a80df9a8d75ab48e4e848a77b5e2c1194"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80df9a8d75ab48e4e848a77b5e2c1194">init_charge_pump_enabled</a> (bool enabled)</td></tr>
+<tr class="memdesc:a80df9a8d75ab48e4e848a77b5e2c1194"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
+<tr class="separator:a80df9a8d75ab48e4e848a77b5e2c1194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2d5544f63b5b15c62f74ebf78570d08" id="r_ad2d5544f63b5b15c62f74ebf78570d08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2d5544f63b5b15c62f74ebf78570d08">send_cmd</a> (uint8_t cmd)</td></tr>
+<tr class="memdesc:ad2d5544f63b5b15c62f74ebf78570d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
+<tr class="separator:ad2d5544f63b5b15c62f74ebf78570d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abba4af0c315a9fdcab52d32acc11ab97" id="r_abba4af0c315a9fdcab52d32acc11ab97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abba4af0c315a9fdcab52d32acc11ab97">send_cmd_list</a> (uint8_t *cmd_list, int num)</td></tr>
+<tr class="memdesc:abba4af0c315a9fdcab52d32acc11ab97"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
+<tr class="separator:abba4af0c315a9fdcab52d32acc11ab97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a617bac0b0002b299b129bc9e84772af7" id="r_a617bac0b0002b299b129bc9e84772af7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a617bac0b0002b299b129bc9e84772af7">send_buf</a> (uint8_t buf[], size_t buflen)</td></tr>
+<tr class="memdesc:a617bac0b0002b299b129bc9e84772af7"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
+<tr class="separator:a617bac0b0002b299b129bc9e84772af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:ac2a0691d558b4b4d8bd51ddbdd3d0809" id="r_ac2a0691d558b4b4d8bd51ddbdd3d0809"><td class="memItemLeft" align="right" valign="top"><a id="ac2a0691d558b4b4d8bd51ddbdd3d0809" name="ac2a0691d558b4b4d8bd51ddbdd3d0809"></a>
+<a class="el" href="class_h_w___i2_c___master.html">HW_I2C_Master</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>i2c_master</b></td></tr>
+<tr class="memdesc:ac2a0691d558b4b4d8bd51ddbdd3d0809"><td class="mdescLeft">&#160;</td><td class="mdescRight">the I2C master that control the <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> display <br /></td></tr>
+<tr class="separator:ac2a0691d558b4b4d8bd51ddbdd3d0809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c77fc2b876883b63b9f9d403e368e8d" id="r_a8c77fc2b876883b63b9f9d403e368e8d"><td class="memItemLeft" align="right" valign="top"><a id="a8c77fc2b876883b63b9f9d403e368e8d" name="a8c77fc2b876883b63b9f9d403e368e8d"></a>
+<a class="el" href="structstruct___config_s_s_d1306.html">struct_ConfigSSD1306</a>&#160;</td><td class="memItemRight" valign="bottom"><b>device_config</b></td></tr>
+<tr class="memdesc:a8c77fc2b876883b63b9f9d403e368e8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> device configuration <br /></td></tr>
+<tr class="separator:a8c77fc2b876883b63b9f9d403e368e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_attribs_class_graphic_display_device"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_class_graphic_display_device')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a></td></tr>
@@ -239,9 +298,64 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_s_d1306_a4d8fc891acd28a44e8b2c274c92cd57b_cgraph.png" border="0" usemap="#aclass_s_s_d1306_a4d8fc891acd28a44e8b2c274c92cd57b_cgraph" alt=""/></div>
 <map name="aclass_s_s_d1306_a4d8fc891acd28a44e8b2c274c92cd57b_cgraph" id="aclass_s_s_d1306_a4d8fc891acd28a44e8b2c274c92cd57b_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,121,30"/>
-<area shape="rect" href="class_graphic_display_device.html#adcb1b9fe5ab993b41374db60766e8fa1" title="Construct a new Display Device object." alt="" coords="169,5,398,30"/>
-<area shape="poly" title=" " alt="" coords="121,15,153,15,153,20,121,20"/>
+<area shape="rect" title=" " alt="" coords="5,303,121,327"/>
+<area shape="rect" href="class_graphic_display_device.html#adcb1b9fe5ab993b41374db60766e8fa1" title="Construct a new Display Device object." alt="" coords="169,277,398,302"/>
+<area shape="poly" title=" " alt="" coords="121,306,155,302,155,307,121,311"/>
+<area shape="rect" href="class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f" title="the master init function that calls all others" alt="" coords="240,327,326,351"/>
+<area shape="poly" title=" " alt="" coords="121,319,225,330,224,335,121,324"/>
+<area shape="rect" href="class_s_s_d1306.html#a80df9a8d75ab48e4e848a77b5e2c1194" title="refer to SSD1306 data sheet for more details" alt="" coords="460,5,662,30"/>
+<area shape="poly" title=" " alt="" coords="326,338,364,331,381,323,396,312,418,279,427,246,425,213,419,179,413,144,412,110,421,75,444,41,448,38,452,41,448,45,426,77,417,110,419,144,425,178,431,212,432,247,423,281,400,315,384,328,365,336,327,343"/>
+<area shape="rect" href="class_s_s_d1306.html#a79b1c2ff4a7842aad1ea1c475d766bfe" title="refer to SSD1306 data sheet for more details" alt="" coords="476,55,645,79"/>
+<area shape="poly" title=" " alt="" coords="327,337,364,331,381,323,396,312,415,285,423,259,423,231,419,203,416,175,416,147,424,118,444,90,461,78,464,82,448,94,429,121,421,147,421,175,425,203,428,231,428,259,420,288,400,316,384,328,365,336,328,343"/>
+<area shape="rect" href="class_s_s_d1306.html#accd5618ae4484f8435ed75b63e58543f" title="refer to SSD1306 data sheet for more details" alt="" coords="494,104,628,129"/>
+<area shape="poly" title=" " alt="" coords="326,337,363,330,381,323,396,312,412,292,419,271,419,228,420,183,427,161,444,140,460,128,477,121,479,126,462,133,448,144,432,164,425,184,425,228,424,272,417,294,400,316,384,327,365,335,327,342"/>
+<area shape="rect" href="class_s_s_d1306.html#a49eae32a3832373c003b9d9c3381a3bf" title="refer to SSD1306 data sheet for more details" alt="" coords="446,153,675,178"/>
+<area shape="poly" title=" " alt="" coords="326,336,363,329,381,322,396,312,409,298,415,283,419,252,423,220,431,204,444,189,451,184,454,188,448,193,435,207,429,222,425,253,421,285,413,300,400,316,383,327,365,334,327,342"/>
+<area shape="rect" href="class_s_s_d1306.html#afc821b2c7b46a4872f7198dd59a14e66" title="refer to SSD1306 data sheet for more details" alt="" coords="466,203,656,227"/>
+<area shape="poly" title=" " alt="" coords="327,335,362,327,396,312,412,295,420,276,427,257,444,238,455,232,457,237,448,242,432,259,424,278,417,297,400,316,364,332,328,340"/>
+<area shape="rect" href="class_s_s_d1306.html#ae7d610e1d38518a7d467950ec7c48413" title="refer to SSD1306 data sheet for more details" alt="" coords="490,252,631,277"/>
+<area shape="poly" title=" " alt="" coords="326,330,397,311,421,299,445,287,474,278,476,283,447,292,423,304,399,316,327,335"/>
+<area shape="rect" href="class_s_s_d1306.html#a784fdb3c2897af4c27ce69f0195bfd80" title="refer to SSD1306 data sheet for more details" alt="" coords="478,301,643,326"/>
+<area shape="poly" title=" " alt="" coords="327,332,463,320,464,325,327,338"/>
+<area shape="rect" href="class_s_s_d1306.html#a2197c4965c293100893159d198779846" title="refer to SSD1306 data sheet for more details" alt="" coords="448,351,674,375"/>
+<area shape="poly" title=" " alt="" coords="327,340,432,349,432,355,327,345"/>
+<area shape="rect" href="class_s_s_d1306.html#abba4af0c315a9fdcab52d32acc11ab97" title="refer to SSD1306 data sheet for more details" alt="" coords="490,400,631,425"/>
+<area shape="poly" title=" " alt="" coords="326,349,447,384,484,393,482,399,445,390,324,354"/>
+<area shape="rect" href="class_s_s_d1306.html#ae4322aca81cf05c9f9b9e5f40874cb7b" title="Set the contrast object. refer to datasheet of SSD1306 device." alt="" coords="494,449,627,474"/>
+<area shape="poly" title=" " alt="" coords="303,350,365,391,405,414,447,434,480,445,478,450,445,439,402,419,362,396,300,354"/>
+<area shape="rect" href="class_s_s_d1306.html#a8c752a77ba2889496a3f80a937818dff" title="Set the display from RAM object." alt="" coords="470,499,651,523"/>
+<area shape="poly" title=" " alt="" coords="297,350,356,415,399,452,447,483,464,491,462,496,445,488,396,456,352,418,293,354"/>
+<area shape="rect" href="class_s_s_d1306.html#a6fdcc8d92ed79a2af902d6e1e8d0ea07" title="Set the display OFF object." alt="" coords="485,548,636,573"/>
+<area shape="poly" title=" " alt="" coords="293,350,314,387,348,437,393,489,419,513,447,533,471,544,469,549,445,537,416,517,389,493,344,440,310,390,289,353"/>
+<area shape="rect" href="class_s_s_d1306.html#ae1ff6651fa144bacc2e9ab192f8b313a" title="Set the display ON object." alt="" coords="488,597,634,622"/>
+<area shape="poly" title=" " alt="" coords="291,351,310,395,342,459,388,526,416,556,447,582,474,595,472,600,445,587,412,560,384,529,337,461,305,398,287,353"/>
+<area shape="rect" href="class_s_s_d1306.html#a7dd92a993f881125bd81057c35d82c87" title="Set the inverse color object." alt="" coords="482,647,639,671"/>
+<area shape="poly" title=" " alt="" coords="290,351,305,403,335,480,357,522,382,562,412,600,448,632,469,644,467,648,444,636,409,603,378,565,352,524,330,482,300,405,285,352"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="723,327,845,351"/>
+<area shape="poly" title=" " alt="" coords="658,28,677,41,705,71,728,105,746,143,759,181,777,254,784,311,779,312,771,255,754,183,741,145,723,108,701,74,674,45,655,33"/>
+<area shape="poly" title=" " alt="" coords="647,74,677,90,701,114,722,142,752,203,771,263,782,311,776,312,766,264,747,205,717,145,697,118,674,94,644,78"/>
+<area shape="poly" title=" " alt="" coords="629,119,654,127,677,140,716,179,745,226,766,273,778,311,773,313,761,274,740,228,712,182,674,144,652,132,628,124"/>
+<area shape="poly" title=" " alt="" coords="651,176,677,189,709,216,737,249,773,311,769,314,732,252,706,220,674,193,649,181"/>
+<area shape="poly" title=" " alt="" coords="645,225,677,238,703,254,727,274,765,313,761,317,723,278,700,259,674,243,643,230"/>
+<area shape="poly" title=" " alt="" coords="632,275,676,287,746,317,744,322,674,292,630,280"/>
+<area shape="poly" title=" " alt="" coords="643,320,708,328,708,333,643,326"/>
+<area shape="poly" title=" " alt="" coords="674,348,708,344,708,350,675,353"/>
+<area shape="poly" title=" " alt="" coords="630,397,674,384,743,356,745,361,676,390,631,402"/>
+<area shape="poly" title=" " alt="" coords="627,450,674,434,700,418,723,399,761,361,765,365,727,403,703,422,676,439,628,456"/>
+<area shape="poly" title=" " alt="" coords="649,496,674,483,705,457,732,425,769,364,773,366,736,428,709,461,677,488,651,500"/>
+<area shape="poly" title=" " alt="" coords="636,551,656,543,674,533,711,495,740,449,760,404,773,365,778,367,765,406,745,452,715,498,677,537,658,548,638,556"/>
+<area shape="poly" title=" " alt="" coords="633,601,655,594,674,582,697,559,717,532,747,472,766,413,776,366,781,367,771,415,752,474,722,535,701,563,677,586,657,599,635,607"/>
+<area shape="poly" title=" " alt="" coords="638,650,657,643,674,632,701,603,723,569,741,532,754,495,771,423,778,366,784,367,777,424,759,496,746,534,728,571,705,606,677,636,659,647,640,655"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a4d8fc891acd28a44e8b2c274c92cd57b_icgraph.png" border="0" usemap="#aclass_s_s_d1306_a4d8fc891acd28a44e8b2c274c92cd57b_icgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a4d8fc891acd28a44e8b2c274c92cd57b_icgraph" id="aclass_s_s_d1306_a4d8fc891acd28a44e8b2c274c92cd57b_icgraph">
+<area shape="rect" title=" " alt="" coords="219,5,334,30"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8" title="constructor for FreeRTOS compliant SSD1306 device driver." alt="" coords="5,5,171,30"/>
+<area shape="poly" title=" " alt="" coords="203,20,171,20,171,15,203,15"/>
 </map>
 </div>
 
@@ -336,9 +450,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_s_d1306_a077e87e76e6c5ad59e2ad5ecd11e21fa_icgraph.png" border="0" usemap="#aclass_s_s_d1306_a077e87e76e6c5ad59e2ad5ecd11e21fa_icgraph" alt=""/></div>
 <map name="aclass_s_s_d1306_a077e87e76e6c5ad59e2ad5ecd11e21fa_icgraph" id="aclass_s_s_d1306_a077e87e76e6c5ad59e2ad5ecd11e21fa_icgraph">
-<area shape="rect" title="A static member function that converts the area we want to display into device specific parameters." alt="" coords="257,5,437,30"/>
-<area shape="rect" href="class_s_s_d1306.html#a646463128f966a04b1746e3389819711" title="write 0x00 directly into the device framebuffer. Uses fill_pattern_and_show_GDDRAM command." alt="" coords="5,5,209,30"/>
-<area shape="poly" title=" " alt="" coords="241,20,209,20,209,15,241,15"/>
+<area shape="rect" title="A static member function that converts the area we want to display into device specific parameters." alt="" coords="282,31,462,55"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a64657b476ccb9d9473bf20e382f220fc" title="write 0x00 directly into the device framebuffer (GDDRAM)." alt="" coords="5,5,234,30"/>
+<area shape="poly" title=" " alt="" coords="266,35,234,32,234,26,266,30"/>
+<area shape="rect" href="class_s_s_d1306.html#a646463128f966a04b1746e3389819711" title="write 0x00 directly into the device framebuffer. Uses fill_pattern_and_show_GDDRAM command." alt="" coords="18,55,221,79"/>
+<area shape="poly" title=" " alt="" coords="266,56,222,60,221,55,266,50"/>
 </map>
 </div>
 
@@ -349,6 +465,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void SSD1306::fill_pattern_and_show_GDDRAM </td>
@@ -361,14 +480,19 @@ Here is the caller graph for this function:</div>
           <td class="paramtype"><a class="el" href="structstruct___render_area.html">struct_RenderArea</a></td>          <td class="paramname"><span class="paramname"><em>area</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>fill a pattern in the device framebuffer. this make it visible as soon as the device transfer the framebuffer to the pixels. The pattern is a vertical byte representing 8 vertical pixels (refer to MONO_VLSB framebuffer format) </p>
 <dl class="bug"><dt><b><a class="el" href="bug.html#_bug000002">Bug</a></b></dt><dd>// FIXME : PAGE_ADDRESSING_MODE seems misbehave depending on what was executed before </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pattern</td><td></td></tr>
-    <tr><td class="paramname">area</td><td></td></tr>
+    <tr><td class="paramname">pattern</td><td>the vertical pattern to copy in a set of 8 vertical pixel </td></tr>
+    <tr><td class="paramname">area</td><td>the location of the area to copy the pattern </td></tr>
   </table>
   </dd>
 </dl>
@@ -377,9 +501,13 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_s_d1306_a764babad3f6a4d12cfa600ce7fd1b751_cgraph.png" border="0" usemap="#aclass_s_s_d1306_a764babad3f6a4d12cfa600ce7fd1b751_cgraph" alt=""/></div>
 <map name="aclass_s_s_d1306_a764babad3f6a4d12cfa600ce7fd1b751_cgraph" id="aclass_s_s_d1306_a764babad3f6a4d12cfa600ce7fd1b751_cgraph">
-<area shape="rect" title="fill a pattern in the device framebuffer. this make it visible as soon as the device transfer the fra..." alt="" coords="5,5,232,30"/>
-<area shape="rect" href="class_s_s_d1306.html#ad26a211970f779290c9a97335fb023fc" title="when we need to show a render area with a given framebuffer" alt="" coords="280,5,443,30"/>
-<area shape="poly" title=" " alt="" coords="232,15,264,15,264,20,232,20"/>
+<area shape="rect" title="fill a pattern in the device framebuffer. this make it visible as soon as the device transfer the fra..." alt="" coords="5,31,232,55"/>
+<area shape="rect" href="class_s_s_d1306.html#ad26a211970f779290c9a97335fb023fc" title="when we need to show a render area with a given framebuffer" alt="" coords="280,31,443,55"/>
+<area shape="poly" title=" " alt="" coords="232,40,264,40,264,46,232,46"/>
+<area shape="rect" href="class_s_s_d1306.html#a617bac0b0002b299b129bc9e84772af7" title="refer to SSD1306 data sheet for more details" alt="" coords="494,5,610,30"/>
+<area shape="poly" title=" " alt="" coords="443,29,478,25,478,30,444,35"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="491,55,612,79"/>
+<area shape="poly" title=" " alt="" coords="444,51,476,55,475,60,443,56"/>
 </map>
 </div>
 <div class="dynheader">
@@ -420,6 +548,714 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a3228383e41ea93124a1da0a619dc6b11_cgraph.png" border="0" usemap="#aclass_s_s_d1306_a3228383e41ea93124a1da0a619dc6b11_cgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a3228383e41ea93124a1da0a619dc6b11_cgraph" id="aclass_s_s_d1306_a3228383e41ea93124a1da0a619dc6b11_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,155,30"/>
+<area shape="rect" href="class_s_s_d1306.html#abba4af0c315a9fdcab52d32acc11ab97" title="refer to SSD1306 data sheet for more details" alt="" coords="203,5,343,30"/>
+<area shape="poly" title=" " alt="" coords="155,15,187,15,187,20,155,20"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="391,5,512,30"/>
+<area shape="poly" title=" " alt="" coords="343,15,375,15,375,20,343,20"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a80df9a8d75ab48e4e848a77b5e2c1194" name="a80df9a8d75ab48e4e848a77b5e2c1194"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80df9a8d75ab48e4e848a77b5e2c1194">&#9670;&#160;</a></span>init_charge_pump_enabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::init_charge_pump_enabled </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enabled</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enabled</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a80df9a8d75ab48e4e848a77b5e2c1194_cgraph.png" border="0" usemap="#aclass_s_s_d1306_a80df9a8d75ab48e4e848a77b5e2c1194_cgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a80df9a8d75ab48e4e848a77b5e2c1194_cgraph" id="aclass_s_s_d1306_a80df9a8d75ab48e4e848a77b5e2c1194_cgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="5,5,208,30"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="256,5,377,30"/>
+<area shape="poly" title=" " alt="" coords="208,15,240,15,240,20,208,20"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a80df9a8d75ab48e4e848a77b5e2c1194_icgraph.png" border="0" usemap="#aclass_s_s_d1306_a80df9a8d75ab48e4e848a77b5e2c1194_icgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a80df9a8d75ab48e4e848a77b5e2c1194_icgraph" id="aclass_s_s_d1306_a80df9a8d75ab48e4e848a77b5e2c1194_icgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="516,5,719,30"/>
+<area shape="rect" href="class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f" title="the master init function that calls all others" alt="" coords="382,5,468,30"/>
+<area shape="poly" title=" " alt="" coords="501,20,469,20,469,15,501,15"/>
+<area shape="rect" href="class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b" title=" " alt="" coords="219,5,334,30"/>
+<area shape="poly" title=" " alt="" coords="367,20,335,20,335,15,367,15"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8" title="constructor for FreeRTOS compliant SSD1306 device driver." alt="" coords="5,5,171,30"/>
+<area shape="poly" title=" " alt="" coords="203,20,171,20,171,15,203,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a79b1c2ff4a7842aad1ea1c475d766bfe" name="a79b1c2ff4a7842aad1ea1c475d766bfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79b1c2ff4a7842aad1ea1c475d766bfe">&#9670;&#160;</a></span>init_clock_frequency()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::init_clock_frequency </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>divide_ratio</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>frequency_factor</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">divide_ratio</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+    <tr><td class="paramname">frequency_factor</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a79b1c2ff4a7842aad1ea1c475d766bfe_cgraph.png" border="0" usemap="#aclass_s_s_d1306_a79b1c2ff4a7842aad1ea1c475d766bfe_cgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a79b1c2ff4a7842aad1ea1c475d766bfe_cgraph" id="aclass_s_s_d1306_a79b1c2ff4a7842aad1ea1c475d766bfe_cgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="5,5,174,30"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="222,5,343,30"/>
+<area shape="poly" title=" " alt="" coords="174,15,206,15,206,20,174,20"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a79b1c2ff4a7842aad1ea1c475d766bfe_icgraph.png" border="0" usemap="#aclass_s_s_d1306_a79b1c2ff4a7842aad1ea1c475d766bfe_icgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a79b1c2ff4a7842aad1ea1c475d766bfe_icgraph" id="aclass_s_s_d1306_a79b1c2ff4a7842aad1ea1c475d766bfe_icgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="516,5,685,30"/>
+<area shape="rect" href="class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f" title="the master init function that calls all others" alt="" coords="382,5,468,30"/>
+<area shape="poly" title=" " alt="" coords="501,20,469,20,469,15,501,15"/>
+<area shape="rect" href="class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b" title=" " alt="" coords="219,5,334,30"/>
+<area shape="poly" title=" " alt="" coords="367,20,335,20,335,15,367,15"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8" title="constructor for FreeRTOS compliant SSD1306 device driver." alt="" coords="5,5,171,30"/>
+<area shape="poly" title=" " alt="" coords="203,20,171,20,171,15,203,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="accd5618ae4484f8435ed75b63e58543f" name="accd5618ae4484f8435ed75b63e58543f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accd5618ae4484f8435ed75b63e58543f">&#9670;&#160;</a></span>init_COM_cfg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::init_COM_cfg </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>sequentialCOM</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enableCOMLRremap</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sequentialCOM</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+    <tr><td class="paramname">enableCOMLRremap</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_accd5618ae4484f8435ed75b63e58543f_cgraph.png" border="0" usemap="#aclass_s_s_d1306_accd5618ae4484f8435ed75b63e58543f_cgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_accd5618ae4484f8435ed75b63e58543f_cgraph" id="aclass_s_s_d1306_accd5618ae4484f8435ed75b63e58543f_cgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="5,5,140,30"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="188,5,309,30"/>
+<area shape="poly" title=" " alt="" coords="140,15,172,15,172,20,140,20"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_accd5618ae4484f8435ed75b63e58543f_icgraph.png" border="0" usemap="#aclass_s_s_d1306_accd5618ae4484f8435ed75b63e58543f_icgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_accd5618ae4484f8435ed75b63e58543f_icgraph" id="aclass_s_s_d1306_accd5618ae4484f8435ed75b63e58543f_icgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="516,5,651,30"/>
+<area shape="rect" href="class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f" title="the master init function that calls all others" alt="" coords="382,5,468,30"/>
+<area shape="poly" title=" " alt="" coords="501,20,469,20,469,15,501,15"/>
+<area shape="rect" href="class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b" title=" " alt="" coords="219,5,334,30"/>
+<area shape="poly" title=" " alt="" coords="367,20,335,20,335,15,367,15"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8" title="constructor for FreeRTOS compliant SSD1306 device driver." alt="" coords="5,5,171,30"/>
+<area shape="poly" title=" " alt="" coords="203,20,171,20,171,15,203,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a49eae32a3832373c003b9d9c3381a3bf" name="a49eae32a3832373c003b9d9c3381a3bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49eae32a3832373c003b9d9c3381a3bf">&#9670;&#160;</a></span>init_COM_scan_inverse_direction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::init_COM_scan_inverse_direction </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>inverse</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inverse</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a49eae32a3832373c003b9d9c3381a3bf_cgraph.png" border="0" usemap="#aclass_s_s_d1306_a49eae32a3832373c003b9d9c3381a3bf_cgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a49eae32a3832373c003b9d9c3381a3bf_cgraph" id="aclass_s_s_d1306_a49eae32a3832373c003b9d9c3381a3bf_cgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="5,5,235,30"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="283,5,404,30"/>
+<area shape="poly" title=" " alt="" coords="235,15,268,15,268,20,235,20"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a49eae32a3832373c003b9d9c3381a3bf_icgraph.png" border="0" usemap="#aclass_s_s_d1306_a49eae32a3832373c003b9d9c3381a3bf_icgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a49eae32a3832373c003b9d9c3381a3bf_icgraph" id="aclass_s_s_d1306_a49eae32a3832373c003b9d9c3381a3bf_icgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="516,5,746,30"/>
+<area shape="rect" href="class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f" title="the master init function that calls all others" alt="" coords="382,5,468,30"/>
+<area shape="poly" title=" " alt="" coords="501,20,469,20,469,15,501,15"/>
+<area shape="rect" href="class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b" title=" " alt="" coords="219,5,334,30"/>
+<area shape="poly" title=" " alt="" coords="367,20,335,20,335,15,367,15"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8" title="constructor for FreeRTOS compliant SSD1306 device driver." alt="" coords="5,5,171,30"/>
+<area shape="poly" title=" " alt="" coords="203,20,171,20,171,15,203,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afc821b2c7b46a4872f7198dd59a14e66" name="afc821b2c7b46a4872f7198dd59a14e66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc821b2c7b46a4872f7198dd59a14e66">&#9670;&#160;</a></span>init_display_vertical_shift()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::init_display_vertical_shift </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_afc821b2c7b46a4872f7198dd59a14e66_cgraph.png" border="0" usemap="#aclass_s_s_d1306_afc821b2c7b46a4872f7198dd59a14e66_cgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_afc821b2c7b46a4872f7198dd59a14e66_cgraph" id="aclass_s_s_d1306_afc821b2c7b46a4872f7198dd59a14e66_cgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="5,5,196,30"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="244,5,365,30"/>
+<area shape="poly" title=" " alt="" coords="196,15,228,15,228,20,196,20"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_afc821b2c7b46a4872f7198dd59a14e66_icgraph.png" border="0" usemap="#aclass_s_s_d1306_afc821b2c7b46a4872f7198dd59a14e66_icgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_afc821b2c7b46a4872f7198dd59a14e66_icgraph" id="aclass_s_s_d1306_afc821b2c7b46a4872f7198dd59a14e66_icgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="516,5,707,30"/>
+<area shape="rect" href="class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f" title="the master init function that calls all others" alt="" coords="382,5,468,30"/>
+<area shape="poly" title=" " alt="" coords="501,20,469,20,469,15,501,15"/>
+<area shape="rect" href="class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b" title=" " alt="" coords="219,5,334,30"/>
+<area shape="poly" title=" " alt="" coords="367,20,335,20,335,15,367,15"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8" title="constructor for FreeRTOS compliant SSD1306 device driver." alt="" coords="5,5,171,30"/>
+<area shape="poly" title=" " alt="" coords="203,20,171,20,171,15,203,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae7d610e1d38518a7d467950ec7c48413" name="ae7d610e1d38518a7d467950ec7c48413"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7d610e1d38518a7d467950ec7c48413">&#9670;&#160;</a></span>init_MUX_ratio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::init_MUX_ratio </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data shhet for more details </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_ae7d610e1d38518a7d467950ec7c48413_cgraph.png" border="0" usemap="#aclass_s_s_d1306_ae7d610e1d38518a7d467950ec7c48413_cgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_ae7d610e1d38518a7d467950ec7c48413_cgraph" id="aclass_s_s_d1306_ae7d610e1d38518a7d467950ec7c48413_cgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="5,5,147,30"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="195,5,316,30"/>
+<area shape="poly" title=" " alt="" coords="147,15,179,15,179,20,147,20"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_ae7d610e1d38518a7d467950ec7c48413_icgraph.png" border="0" usemap="#aclass_s_s_d1306_ae7d610e1d38518a7d467950ec7c48413_icgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_ae7d610e1d38518a7d467950ec7c48413_icgraph" id="aclass_s_s_d1306_ae7d610e1d38518a7d467950ec7c48413_icgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="516,5,658,30"/>
+<area shape="rect" href="class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f" title="the master init function that calls all others" alt="" coords="382,5,468,30"/>
+<area shape="poly" title=" " alt="" coords="501,20,469,20,469,15,501,15"/>
+<area shape="rect" href="class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b" title=" " alt="" coords="219,5,334,30"/>
+<area shape="poly" title=" " alt="" coords="367,20,335,20,335,15,367,15"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8" title="constructor for FreeRTOS compliant SSD1306 device driver." alt="" coords="5,5,171,30"/>
+<area shape="poly" title=" " alt="" coords="203,20,171,20,171,15,203,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a784fdb3c2897af4c27ce69f0195bfd80" name="a784fdb3c2897af4c27ce69f0195bfd80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a784fdb3c2897af4c27ce69f0195bfd80">&#9670;&#160;</a></span>init_RAM_start_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::init_RAM_start_line </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a784fdb3c2897af4c27ce69f0195bfd80_cgraph.png" border="0" usemap="#aclass_s_s_d1306_a784fdb3c2897af4c27ce69f0195bfd80_cgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a784fdb3c2897af4c27ce69f0195bfd80_cgraph" id="aclass_s_s_d1306_a784fdb3c2897af4c27ce69f0195bfd80_cgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="5,5,170,30"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="218,5,339,30"/>
+<area shape="poly" title=" " alt="" coords="170,15,202,15,202,20,170,20"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a784fdb3c2897af4c27ce69f0195bfd80_icgraph.png" border="0" usemap="#aclass_s_s_d1306_a784fdb3c2897af4c27ce69f0195bfd80_icgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a784fdb3c2897af4c27ce69f0195bfd80_icgraph" id="aclass_s_s_d1306_a784fdb3c2897af4c27ce69f0195bfd80_icgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="516,5,681,30"/>
+<area shape="rect" href="class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f" title="the master init function that calls all others" alt="" coords="382,5,468,30"/>
+<area shape="poly" title=" " alt="" coords="501,20,469,20,469,15,501,15"/>
+<area shape="rect" href="class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b" title=" " alt="" coords="219,5,334,30"/>
+<area shape="poly" title=" " alt="" coords="367,20,335,20,335,15,367,15"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8" title="constructor for FreeRTOS compliant SSD1306 device driver." alt="" coords="5,5,171,30"/>
+<area shape="poly" title=" " alt="" coords="203,20,171,20,171,15,203,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2197c4965c293100893159d198779846" name="a2197c4965c293100893159d198779846"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2197c4965c293100893159d198779846">&#9670;&#160;</a></span>init_SEG_scan_inverse_direction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::init_SEG_scan_inverse_direction </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>inverse</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inverse</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a2197c4965c293100893159d198779846_cgraph.png" border="0" usemap="#aclass_s_s_d1306_a2197c4965c293100893159d198779846_cgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a2197c4965c293100893159d198779846_cgraph" id="aclass_s_s_d1306_a2197c4965c293100893159d198779846_cgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="5,5,232,30"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="280,5,401,30"/>
+<area shape="poly" title=" " alt="" coords="232,15,265,15,265,20,232,20"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a2197c4965c293100893159d198779846_icgraph.png" border="0" usemap="#aclass_s_s_d1306_a2197c4965c293100893159d198779846_icgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a2197c4965c293100893159d198779846_icgraph" id="aclass_s_s_d1306_a2197c4965c293100893159d198779846_icgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="516,5,743,30"/>
+<area shape="rect" href="class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f" title="the master init function that calls all others" alt="" coords="382,5,468,30"/>
+<area shape="poly" title=" " alt="" coords="501,20,469,20,469,15,501,15"/>
+<area shape="rect" href="class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b" title=" " alt="" coords="219,5,334,30"/>
+<area shape="poly" title=" " alt="" coords="367,20,335,20,335,15,367,15"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8" title="constructor for FreeRTOS compliant SSD1306 device driver." alt="" coords="5,5,171,30"/>
+<area shape="poly" title=" " alt="" coords="203,20,171,20,171,15,203,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a617bac0b0002b299b129bc9e84772af7" name="a617bac0b0002b299b129bc9e84772af7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a617bac0b0002b299b129bc9e84772af7">&#9670;&#160;</a></span>send_buf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::send_buf </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>buflen</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+    <tr><td class="paramname">buflen</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classrtos___s_s_d1306.html#ae014f66332f6d6380bb6383dc10764a6">rtos_SSD1306</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a617bac0b0002b299b129bc9e84772af7_icgraph.png" border="0" usemap="#aclass_s_s_d1306_a617bac0b0002b299b129bc9e84772af7_icgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a617bac0b0002b299b129bc9e84772af7_icgraph" id="aclass_s_s_d1306_a617bac0b0002b299b129bc9e84772af7_icgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="742,31,859,55"/>
+<area shape="rect" href="class_s_s_d1306.html#ad26a211970f779290c9a97335fb023fc" title="when we need to show a render area with a given framebuffer" alt="" coords="531,31,694,55"/>
+<area shape="poly" title=" " alt="" coords="727,46,695,46,695,40,727,40"/>
+<area shape="rect" href="class_s_s_d1306.html#a764babad3f6a4d12cfa600ce7fd1b751" title="fill a pattern in the device framebuffer. this make it visible as soon as the device transfer the fra..." alt="" coords="257,5,483,30"/>
+<area shape="poly" title=" " alt="" coords="515,36,483,32,484,27,515,30"/>
+<area shape="rect" href="class_s_s_d1306.html#a0856911564cd155a68bdb5cd4ba090e8" title=" " alt="" coords="321,55,418,79"/>
+<area shape="poly" title=" " alt="" coords="516,55,419,65,419,60,515,50"/>
+<area shape="rect" href="class_s_s_d1306.html#a646463128f966a04b1746e3389819711" title="write 0x00 directly into the device framebuffer. Uses fill_pattern_and_show_GDDRAM command." alt="" coords="5,5,209,30"/>
+<area shape="poly" title=" " alt="" coords="241,20,209,20,209,15,241,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad2d5544f63b5b15c62f74ebf78570d08" name="ad2d5544f63b5b15c62f74ebf78570d08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2d5544f63b5b15c62f74ebf78570d08">&#9670;&#160;</a></span>send_cmd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::send_cmd </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>cmd</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmd</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_ad2d5544f63b5b15c62f74ebf78570d08_icgraph.png" border="0" usemap="#aclass_s_s_d1306_ad2d5544f63b5b15c62f74ebf78570d08_icgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_ad2d5544f63b5b15c62f74ebf78570d08_icgraph" id="aclass_s_s_d1306_ad2d5544f63b5b15c62f74ebf78570d08_icgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="1024,425,1145,450"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a8bc4957ee0a73161bfc99ef061c12ad8" title="fill a pattern in the device framebuffer (GDDRAM). This is shown on display as soon as the GDDRAM buf..." alt="" coords="750,5,972,30"/>
+<area shape="poly" title=" " alt="" coords="1077,411,1063,326,1041,216,1011,112,993,72,974,45,956,33,959,28,978,41,998,69,1016,110,1046,215,1068,325,1082,410"/>
+<area shape="rect" href="class_s_s_d1306.html#a80df9a8d75ab48e4e848a77b5e2c1194" title="refer to SSD1306 data sheet for more details" alt="" coords="760,301,962,326"/>
+<area shape="poly" title=" " alt="" coords="1061,415,1024,377,1000,357,974,341,943,329,945,324,977,337,1003,353,1027,373,1065,412"/>
+<area shape="rect" href="class_s_s_d1306.html#a79b1c2ff4a7842aad1ea1c475d766bfe" title="refer to SSD1306 data sheet for more details" alt="" coords="777,351,945,375"/>
+<area shape="poly" title=" " alt="" coords="1044,420,975,391,931,379,932,373,977,386,1046,415"/>
+<area shape="rect" href="class_s_s_d1306.html#accd5618ae4484f8435ed75b63e58543f" title="refer to SSD1306 data sheet for more details" alt="" coords="794,400,928,425"/>
+<area shape="poly" title=" " alt="" coords="1008,432,928,423,929,417,1008,426"/>
+<area shape="rect" href="class_s_s_d1306.html#a49eae32a3832373c003b9d9c3381a3bf" title="refer to SSD1306 data sheet for more details" alt="" coords="746,449,976,474"/>
+<area shape="poly" title=" " alt="" coords="1008,448,976,452,976,447,1008,443"/>
+<area shape="rect" href="class_s_s_d1306.html#afc821b2c7b46a4872f7198dd59a14e66" title="refer to SSD1306 data sheet for more details" alt="" coords="766,548,956,573"/>
+<area shape="poly" title=" " alt="" coords="1065,463,1027,502,1003,521,977,537,945,550,943,545,974,533,1000,517,1023,498,1061,460"/>
+<area shape="rect" href="class_s_s_d1306.html#ae7d610e1d38518a7d467950ec7c48413" title="refer to SSD1306 data sheet for more details" alt="" coords="790,597,932,622"/>
+<area shape="poly" title=" " alt="" coords="1074,465,1037,527,1010,559,977,587,956,598,933,605,931,600,954,593,974,582,1006,556,1032,524,1069,462"/>
+<area shape="rect" href="class_s_s_d1306.html#a784fdb3c2897af4c27ce69f0195bfd80" title="refer to SSD1306 data sheet for more details" alt="" coords="779,647,943,671"/>
+<area shape="poly" title=" " alt="" coords="1078,466,1065,504,1045,551,1016,597,977,636,945,652,942,647,974,632,1012,594,1040,548,1061,502,1073,464"/>
+<area shape="rect" href="class_s_s_d1306.html#a2197c4965c293100893159d198779846" title="refer to SSD1306 data sheet for more details" alt="" coords="748,696,974,721"/>
+<area shape="poly" title=" " alt="" coords="1082,466,1072,513,1053,573,1022,634,1002,661,977,685,957,698,954,693,974,681,998,658,1017,631,1048,571,1066,512,1077,465"/>
+<area shape="rect" href="class_s_s_d1306.html#abba4af0c315a9fdcab52d32acc11ab97" title="refer to SSD1306 data sheet for more details" alt="" coords="791,745,931,770"/>
+<area shape="poly" title=" " alt="" coords="1084,466,1077,522,1060,595,1046,633,1028,670,1005,704,977,734,956,748,932,756,931,751,954,743,974,730,1001,701,1023,668,1041,631,1055,593,1072,521,1079,465"/>
+<area shape="rect" href="class_s_s_d1306.html#aee29b36a9af5d427c0665dfaf942445e" title="Set the all pixel ON." alt="" coords="785,499,937,523"/>
+<area shape="poly" title=" " alt="" coords="1045,460,977,488,931,501,930,495,975,483,1043,455"/>
+<area shape="rect" href="class_s_s_d1306.html#ae4322aca81cf05c9f9b9e5f40874cb7b" title="Set the contrast object. refer to datasheet of SSD1306 device." alt="" coords="794,55,928,79"/>
+<area shape="poly" title=" " alt="" coords="1080,410,1076,345,1061,259,1048,214,1029,170,1005,130,974,94,952,80,927,72,929,67,954,76,977,90,1009,126,1034,168,1053,212,1067,258,1082,344,1086,410"/>
+<area shape="rect" href="class_s_s_d1306.html#a8c752a77ba2889496a3f80a937818dff" title="Set the display from RAM object." alt="" coords="771,104,951,129"/>
+<area shape="poly" title=" " alt="" coords="1079,410,1072,354,1055,281,1041,243,1023,207,1001,173,974,144,950,129,953,125,977,140,1005,170,1028,204,1046,241,1060,280,1077,353,1084,410"/>
+<area shape="rect" href="class_s_s_d1306.html#a6fdcc8d92ed79a2af902d6e1e8d0ea07" title="Set the display OFF object." alt="" coords="785,153,937,178"/>
+<area shape="poly" title=" " alt="" coords="1077,411,1067,363,1048,304,1018,244,998,216,974,193,956,182,936,174,938,169,959,177,977,189,1002,213,1022,241,1053,302,1072,361,1082,409"/>
+<area shape="rect" href="class_s_s_d1306.html#ae1ff6651fa144bacc2e9ab192f8b313a" title="Set the display ON object." alt="" coords="788,203,934,227"/>
+<area shape="poly" title=" " alt="" coords="1074,412,1061,373,1041,327,1012,281,974,242,955,231,934,224,936,219,957,227,977,238,1016,278,1045,325,1066,371,1079,410"/>
+<area shape="rect" href="class_s_s_d1306.html#a7dd92a993f881125bd81057c35d82c87" title="Set the inverse color object." alt="" coords="783,252,939,277"/>
+<area shape="poly" title=" " alt="" coords="1069,413,1032,351,1006,319,974,292,939,276,941,271,977,287,1010,315,1037,348,1074,410"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#aaab62ec700ec39a715d8b27b95f2956a" title="when we need to show a render area with a given framebuffer" alt="" coords="767,795,955,819"/>
+<area shape="poly" title=" " alt="" coords="1086,466,1081,531,1066,617,1053,662,1034,707,1009,748,977,784,957,797,954,793,974,780,1005,745,1029,704,1048,661,1061,616,1076,530,1080,466"/>
+<area shape="rect" href="class_s_s_d1306.html#ad26a211970f779290c9a97335fb023fc" title="when we need to show a render area with a given framebuffer" alt="" coords="779,844,943,869"/>
+<area shape="poly" title=" " alt="" coords="1082,466,1068,549,1046,660,1016,764,997,805,978,833,962,844,944,852,942,847,959,840,974,829,993,802,1010,762,1041,658,1063,549,1077,465"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a64657b476ccb9d9473bf20e382f220fc" title="write 0x00 directly into the device framebuffer (GDDRAM)." alt="" coords="470,5,698,30"/>
+<area shape="poly" title=" " alt="" coords="734,20,699,20,699,15,734,15"/>
+<area shape="rect" href="class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f" title="the master init function that calls all others" alt="" coords="541,376,627,401"/>
+<area shape="poly" title=" " alt="" coords="784,333,747,342,625,378,623,373,746,336,782,327"/>
+<area shape="rect" href="class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b" title=" " alt="" coords="263,376,378,401"/>
+<area shape="poly" title=" " alt="" coords="526,391,379,391,379,386,526,386"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8" title="constructor for FreeRTOS compliant SSD1306 device driver." alt="" coords="5,376,171,401"/>
+<area shape="poly" title=" " alt="" coords="247,391,171,391,171,386,247,386"/>
+<area shape="poly" title=" " alt="" coords="761,375,628,387,628,382,761,369"/>
+<area shape="poly" title=" " alt="" coords="778,408,628,395,628,389,779,403"/>
+<area shape="poly" title=" " alt="" coords="783,448,746,439,625,404,626,399,747,434,784,443"/>
+<area shape="poly" title=" " alt="" coords="763,545,745,537,696,506,653,468,594,403,598,400,656,464,699,501,748,533,765,540"/>
+<area shape="poly" title=" " alt="" coords="774,600,745,587,716,566,690,542,645,489,611,439,590,402,594,400,615,436,649,486,694,538,720,562,748,582,776,595"/>
+<area shape="poly" title=" " alt="" coords="763,646,745,636,713,609,684,579,638,511,605,447,587,402,592,400,610,445,642,508,688,575,716,606,748,631,766,641"/>
+<area shape="poly" title=" " alt="" coords="753,691,745,685,709,653,678,615,652,574,631,532,601,454,586,402,591,400,606,453,636,529,657,571,683,612,713,649,748,681,756,687"/>
+<area shape="poly" title=" " alt="" coords="775,751,745,734,705,696,673,651,646,602,625,553,597,462,585,402,590,401,602,461,630,551,651,600,677,648,709,692,748,730,777,746"/>
+<area shape="rect" href="class_s_s_d1306.html#a3228383e41ea93124a1da0a619dc6b11" title=" " alt="" coords="510,708,659,733"/>
+<area shape="poly" title=" " alt="" coords="775,749,659,733,660,728,776,744"/>
+<area shape="rect" href="class_s_s_d1306.html#a25a4d90a656b9fd2f1b2d220cc9f8e2b" title=" " alt="" coords="516,757,652,782"/>
+<area shape="poly" title=" " alt="" coords="775,764,653,769,653,764,775,759"/>
+<area shape="poly" title=" " alt="" coords="781,78,748,95,713,127,682,164,657,205,636,247,606,324,591,377,586,375,601,322,631,245,652,202,678,161,709,123,745,90,778,74"/>
+<area shape="poly" title=" " alt="" coords="758,138,748,144,716,170,688,200,642,268,610,332,592,377,587,375,605,329,638,265,684,197,713,166,745,139,755,133"/>
+<area shape="poly" title=" " alt="" coords="772,182,748,193,720,213,694,237,649,290,615,340,594,377,590,374,610,337,644,287,690,234,716,209,745,189,769,177"/>
+<area shape="poly" title=" " alt="" coords="774,232,748,243,699,274,656,312,597,377,593,374,652,309,696,270,745,238,772,227"/>
+<area shape="poly" title=" " alt="" coords="772,284,747,292,705,312,665,335,604,378,601,373,662,331,703,307,745,287,770,279"/>
+<area shape="rect" href="class_s_s_d1306.html#a764babad3f6a4d12cfa600ce7fd1b751" title="fill a pattern in the device framebuffer. this make it visible as soon as the device transfer the fra..." alt="" coords="471,831,697,855"/>
+<area shape="poly" title=" " alt="" coords="764,854,698,851,698,846,764,849"/>
+<area shape="rect" href="class_s_s_d1306.html#a0856911564cd155a68bdb5cd4ba090e8" title=" " alt="" coords="536,880,633,905"/>
+<area shape="poly" title=" " alt="" coords="764,872,633,889,633,883,764,866"/>
+<area shape="rect" href="class_s_s_d1306.html#a646463128f966a04b1746e3389819711" title="write 0x00 directly into the device framebuffer. Uses fill_pattern_and_show_GDDRAM command." alt="" coords="219,831,422,855"/>
+<area shape="poly" title=" " alt="" coords="455,846,422,846,422,840,455,840"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abba4af0c315a9fdcab52d32acc11ab97" name="abba4af0c315a9fdcab52d32acc11ab97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abba4af0c315a9fdcab52d32acc11ab97">&#9670;&#160;</a></span>send_cmd_list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSD1306::send_cmd_list </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>cmd_list</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>num</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmd_list</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+    <tr><td class="paramname">num</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_abba4af0c315a9fdcab52d32acc11ab97_cgraph.png" border="0" usemap="#aclass_s_s_d1306_abba4af0c315a9fdcab52d32acc11ab97_cgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_abba4af0c315a9fdcab52d32acc11ab97_cgraph" id="aclass_s_s_d1306_abba4af0c315a9fdcab52d32acc11ab97_cgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="5,5,146,30"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="194,5,315,30"/>
+<area shape="poly" title=" " alt="" coords="146,15,178,15,178,20,146,20"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_abba4af0c315a9fdcab52d32acc11ab97_icgraph.png" border="0" usemap="#aclass_s_s_d1306_abba4af0c315a9fdcab52d32acc11ab97_icgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_abba4af0c315a9fdcab52d32acc11ab97_icgraph" id="aclass_s_s_d1306_abba4af0c315a9fdcab52d32acc11ab97_icgraph">
+<area shape="rect" title="refer to SSD1306 data sheet for more details" alt="" coords="579,55,720,79"/>
+<area shape="rect" href="class_s_s_d1306.html#a3228383e41ea93124a1da0a619dc6b11" title=" " alt="" coords="382,5,531,30"/>
+<area shape="poly" title=" " alt="" coords="583,53,507,33,508,28,584,48"/>
+<area shape="rect" href="class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f" title="the master init function that calls all others" alt="" coords="414,55,500,79"/>
+<area shape="poly" title=" " alt="" coords="564,70,500,70,500,64,564,64"/>
+<area shape="rect" href="class_s_s_d1306.html#a25a4d90a656b9fd2f1b2d220cc9f8e2b" title=" " alt="" coords="388,104,525,129"/>
+<area shape="poly" title=" " alt="" coords="584,86,508,106,507,101,583,81"/>
+<area shape="rect" href="class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b" title=" " alt="" coords="219,55,334,79"/>
+<area shape="poly" title=" " alt="" coords="398,70,335,70,335,64,398,64"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8" title="constructor for FreeRTOS compliant SSD1306 device driver." alt="" coords="5,55,171,79"/>
+<area shape="poly" title=" " alt="" coords="203,70,171,70,171,64,203,64"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -445,6 +1281,30 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_ae4322aca81cf05c9f9b9e5f40874cb7b_cgraph.png" border="0" usemap="#aclass_s_s_d1306_ae4322aca81cf05c9f9b9e5f40874cb7b_cgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_ae4322aca81cf05c9f9b9e5f40874cb7b_cgraph" id="aclass_s_s_d1306_ae4322aca81cf05c9f9b9e5f40874cb7b_cgraph">
+<area shape="rect" title="Set the contrast object. refer to datasheet of SSD1306 device." alt="" coords="5,5,139,30"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="187,5,308,30"/>
+<area shape="poly" title=" " alt="" coords="139,15,171,15,171,20,139,20"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_ae4322aca81cf05c9f9b9e5f40874cb7b_icgraph.png" border="0" usemap="#aclass_s_s_d1306_ae4322aca81cf05c9f9b9e5f40874cb7b_icgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_ae4322aca81cf05c9f9b9e5f40874cb7b_icgraph" id="aclass_s_s_d1306_ae4322aca81cf05c9f9b9e5f40874cb7b_icgraph">
+<area shape="rect" title="Set the contrast object. refer to datasheet of SSD1306 device." alt="" coords="516,5,650,30"/>
+<area shape="rect" href="class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f" title="the master init function that calls all others" alt="" coords="382,5,468,30"/>
+<area shape="poly" title=" " alt="" coords="501,20,469,20,469,15,501,15"/>
+<area shape="rect" href="class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b" title=" " alt="" coords="219,5,334,30"/>
+<area shape="poly" title=" " alt="" coords="367,20,335,20,335,15,367,15"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8" title="constructor for FreeRTOS compliant SSD1306 device driver." alt="" coords="5,5,171,30"/>
+<area shape="poly" title=" " alt="" coords="203,20,171,20,171,15,203,15"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -470,6 +1330,30 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a7dd92a993f881125bd81057c35d82c87_cgraph.png" border="0" usemap="#aclass_s_s_d1306_a7dd92a993f881125bd81057c35d82c87_cgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a7dd92a993f881125bd81057c35d82c87_cgraph" id="aclass_s_s_d1306_a7dd92a993f881125bd81057c35d82c87_cgraph">
+<area shape="rect" title="Set the inverse color object." alt="" coords="5,5,162,30"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="210,5,331,30"/>
+<area shape="poly" title=" " alt="" coords="162,15,194,15,194,20,162,20"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a7dd92a993f881125bd81057c35d82c87_icgraph.png" border="0" usemap="#aclass_s_s_d1306_a7dd92a993f881125bd81057c35d82c87_icgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a7dd92a993f881125bd81057c35d82c87_icgraph" id="aclass_s_s_d1306_a7dd92a993f881125bd81057c35d82c87_icgraph">
+<area shape="rect" title="Set the inverse color object." alt="" coords="516,5,673,30"/>
+<area shape="rect" href="class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f" title="the master init function that calls all others" alt="" coords="382,5,468,30"/>
+<area shape="poly" title=" " alt="" coords="501,20,469,20,469,15,501,15"/>
+<area shape="rect" href="class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b" title=" " alt="" coords="219,5,334,30"/>
+<area shape="poly" title=" " alt="" coords="367,20,335,20,335,15,367,15"/>
+<area shape="rect" href="classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8" title="constructor for FreeRTOS compliant SSD1306 device driver." alt="" coords="5,5,171,30"/>
+<area shape="poly" title=" " alt="" coords="203,20,171,20,171,15,203,15"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -519,9 +1403,13 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_s_d1306_a0856911564cd155a68bdb5cd4ba090e8_cgraph.png" border="0" usemap="#aclass_s_s_d1306_a0856911564cd155a68bdb5cd4ba090e8_cgraph" alt=""/></div>
 <map name="aclass_s_s_d1306_a0856911564cd155a68bdb5cd4ba090e8_cgraph" id="aclass_s_s_d1306_a0856911564cd155a68bdb5cd4ba090e8_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,103,30"/>
-<area shape="rect" href="class_s_s_d1306.html#ad26a211970f779290c9a97335fb023fc" title="when we need to show a render area with a given framebuffer" alt="" coords="151,5,314,30"/>
-<area shape="poly" title=" " alt="" coords="103,15,135,15,135,20,103,20"/>
+<area shape="rect" title=" " alt="" coords="5,31,103,55"/>
+<area shape="rect" href="class_s_s_d1306.html#ad26a211970f779290c9a97335fb023fc" title="when we need to show a render area with a given framebuffer" alt="" coords="151,31,314,55"/>
+<area shape="poly" title=" " alt="" coords="103,40,135,40,135,46,103,46"/>
+<area shape="rect" href="class_s_s_d1306.html#a617bac0b0002b299b129bc9e84772af7" title="refer to SSD1306 data sheet for more details" alt="" coords="364,5,481,30"/>
+<area shape="poly" title=" " alt="" coords="314,29,349,25,349,30,315,35"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="362,55,483,79"/>
+<area shape="poly" title=" " alt="" coords="315,51,347,55,346,60,314,56"/>
 </map>
 </div>
 
@@ -532,6 +1420,9 @@ Here is the call graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void SSD1306::show_render_area </td>
@@ -549,6 +1440,11 @@ Here is the call graph for this function:</div>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>addressing_mode</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>when we need to show a render area with a given framebuffer </p>
@@ -560,6 +1456,20 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
+
+<p>Reimplemented in <a class="el" href="classrtos___s_s_d1306.html#aaab62ec700ec39a715d8b27b95f2956a">rtos_SSD1306</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_ad26a211970f779290c9a97335fb023fc_cgraph.png" border="0" usemap="#aclass_s_s_d1306_ad26a211970f779290c9a97335fb023fc_cgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_ad26a211970f779290c9a97335fb023fc_cgraph" id="aclass_s_s_d1306_ad26a211970f779290c9a97335fb023fc_cgraph">
+<area shape="rect" title="when we need to show a render area with a given framebuffer" alt="" coords="5,31,169,55"/>
+<area shape="rect" href="class_s_s_d1306.html#a617bac0b0002b299b129bc9e84772af7" title="refer to SSD1306 data sheet for more details" alt="" coords="219,5,336,30"/>
+<area shape="poly" title=" " alt="" coords="169,29,203,25,204,30,169,35"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="217,55,338,79"/>
+<area shape="poly" title=" " alt="" coords="169,51,202,55,201,60,169,56"/>
+</map>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -602,6 +1512,18 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_s_s_d1306_a25a4d90a656b9fd2f1b2d220cc9f8e2b_cgraph.png" border="0" usemap="#aclass_s_s_d1306_a25a4d90a656b9fd2f1b2d220cc9f8e2b_cgraph" alt=""/></div>
+<map name="aclass_s_s_d1306_a25a4d90a656b9fd2f1b2d220cc9f8e2b_cgraph" id="aclass_s_s_d1306_a25a4d90a656b9fd2f1b2d220cc9f8e2b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,142,30"/>
+<area shape="rect" href="class_s_s_d1306.html#abba4af0c315a9fdcab52d32acc11ab97" title="refer to SSD1306 data sheet for more details" alt="" coords="190,5,330,30"/>
+<area shape="poly" title=" " alt="" coords="142,15,174,15,174,20,142,20"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="378,5,499,30"/>
+<area shape="poly" title=" " alt="" coords="330,15,362,15,362,20,330,20"/>
+</map>
+</div>
 
 </div>
 </div>

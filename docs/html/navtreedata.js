@@ -55,9 +55,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "12x16__font_8h.html",
-"class_s_t7735.html#a9adf53e80c857b33df01bfe1370c3d8d",
-"commands___s_t7735_8h.html#aac679645f819d98761965299f19620f6",
-"structstruct___config_m_p_u6050.html#ae1d0a186e799f5a3eec4294afe631725"
+"class_s_t7735.html#a1c93052432455bc78b75c4d743eab2d8",
+"commands___s_t7735_8h.html#a484d38defdf6303f4a8d19f994d0593d",
+"st7735_8h.html#af4e77a584252da1bc68acc909c0cd82e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

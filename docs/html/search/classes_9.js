@@ -24,11 +24,10 @@ var searchData=
   ['struct_5frawdata_21',['struct_RawData',['../structstruct___raw_data.html',1,'']]],
   ['struct_5frenderarea_22',['struct_RenderArea',['../structstruct___render_area.html',1,'']]],
   ['struct_5frtosconfigswitchbutton_23',['struct_rtosConfigSwitchButton',['../structstruct__rtos_config_switch_button.html',1,'']]],
-  ['struct_5frx_5fdataqueuei2c_24',['struct_RX_DataQueueI2C',['../structstruct___r_x___data_queue_i2_c.html',1,'']]],
-  ['struct_5fslavememory_25',['struct_SlaveMemory',['../structstruct___slave_memory.html',1,'']]],
+  ['struct_5fslavememory_24',['struct_SlaveMemory',['../structstruct___slave_memory.html',1,'']]],
+  ['struct_5fssd1306datatoshow_25',['struct_SSD1306DataToShow',['../structstruct___s_s_d1306_data_to_show.html',1,'']]],
   ['struct_5fswitchbuttonirqdata_26',['struct_SwitchButtonIRQData',['../structstruct___switch_button_i_r_q_data.html',1,'']]],
-  ['struct_5ftx_5fdataqueuei2c_27',['struct_TX_DataQueueI2C',['../structstruct___t_x___data_queue_i2_c.html',1,'']]],
-  ['struct_5ftx_5fdataqueuespi_28',['struct_TX_DataQueueSPI',['../structstruct___t_x___data_queue_s_p_i.html',1,'']]],
-  ['switchbutton_29',['SwitchButton',['../class_switch_button.html',1,'']]],
-  ['switchbuttonwithirq_30',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html',1,'']]]
+  ['struct_5ftx_5fdataqueuespi_27',['struct_TX_DataQueueSPI',['../structstruct___t_x___data_queue_s_p_i.html',1,'']]],
+  ['switchbutton_28',['SwitchButton',['../class_switch_button.html',1,'']]],
+  ['switchbuttonwithirq_29',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html',1,'']]]
 ];

@@ -1,9 +1,11 @@
 <map id="GraphicDisplayDevice::GraphicDisplayDevice" name="GraphicDisplayDevice::GraphicDisplayDevice">
-<area shape="rect" id="Node000001" title="Construct a new Display Device object." alt="" coords="368,31,597,55"/>
-<area shape="rect" id="Node000002" href="$class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b" title=" " alt="" coords="205,5,320,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="354,31,320,27,321,22,355,26"/>
-<area shape="rect" id="Node000003" href="$class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8" title="Construct a new ST7735 object." alt="" coords="212,55,313,79"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="353,60,314,64,313,59,352,55"/>
-<area shape="rect" id="Node000004" href="$classrtos___s_t7735.html#a66cd3316fdb254d845f5decb6a8b9c36" title="Construct a new rtos_ST7735 object." alt="" coords="5,55,157,79"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="196,70,157,70,157,64,196,64"/>
+<area shape="rect" id="Node000001" title="Construct a new Display Device object." alt="" coords="382,31,611,55"/>
+<area shape="rect" id="Node000002" href="$class_s_s_d1306.html#a4d8fc891acd28a44e8b2c274c92cd57b" title=" " alt="" coords="219,5,334,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="368,31,334,27,335,22,369,26"/>
+<area shape="rect" id="Node000004" href="$class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8" title="Construct a new ST7735 object." alt="" coords="226,55,327,79"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="367,60,328,64,327,59,366,55"/>
+<area shape="rect" id="Node000003" href="$classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8" title="constructor for FreeRTOS compliant SSD1306 device driver." alt="" coords="5,5,171,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="203,20,171,20,171,15,203,15"/>
+<area shape="rect" id="Node000005" href="$classrtos___s_t7735.html#a66cd3316fdb254d845f5decb6a8b9c36" title="Construct a new rtos_ST7735 object." alt="" coords="12,55,164,79"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="210,70,164,70,164,64,210,64"/>
 </map>

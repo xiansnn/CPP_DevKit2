@@ -7,7 +7,7 @@ var searchData=
   ['bar_5fwidth_4',['bar_width',['../class_widget_vertical_bargraph.html#a1052a305919908ce30531940c1fc9e57',1,'WidgetVerticalBargraph']]],
   ['baud_5frate_5',['baud_rate',['../structstruct___config_master_i2_c.html#a62e5546133c513d337644ed1470872d2',1,'struct_ConfigMasterI2C::baud_rate'],['../structstruct___config_slave_i2_c.html#ae6a465237599f36f69dddb429d5f2da2',1,'struct_ConfigSlaveI2C::baud_rate']]],
   ['baud_5frate_5fhz_6',['baud_rate_Hz',['../structstruct___config_master_s_p_i.html#ab78aa3af4bfc10ba6abc9ee4c1055644',1,'struct_ConfigMasterSPI']]],
-  ['bg_5fcolor_7',['bg_color',['../structstruct___config_graphic_widget.html#ab05ee4756b246e41e91c193dbd92ca79',1,'struct_ConfigGraphicWidget::bg_color'],['../structstruct___config_text_widget.html#a758a4febc23b99f4fe77d1d1872b4e0e',1,'struct_ConfigTextWidget::bg_color']]],
+  ['bg_5fcolor_7',['bg_color',['../structstruct___config_graphic_widget.html#ab05ee4756b246e41e91c193dbd92ca79',1,'struct_ConfigGraphicWidget::bg_color'],['../structstruct___config_text_widget.html#a758a4febc23b99f4fe77d1d1872b4e0e',1,'struct_ConfigTextWidget::bg_color'],['../class_canvas.html#a5d5ffedfb2985fcda37d8241f3b7faeb',1,'Canvas::bg_color']]],
   ['bit_5forder_8',['bit_order',['../structstruct___config_master_s_p_i.html#adc10e9c122ca390727e762b8ca4bfa3a',1,'struct_ConfigMasterSPI']]],
   ['blinker_9',['Blinker',['../class_blinker.html',1,'']]],
   ['buflen_10',['buflen',['../structstruct___render_area.html#a66cef6847c6a4e2d0bf534f588914bd5',1,'struct_RenderArea']]],

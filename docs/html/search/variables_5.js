@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['fg_5fcolor_0',['fg_color',['../structstruct___config_graphic_widget.html#ac0dca05c4dd7261eaad0bc93a12697d5',1,'struct_ConfigGraphicWidget::fg_color'],['../structstruct___config_text_widget.html#a4368e0cb643aa11e7c07d7dc1cebee43',1,'struct_ConfigTextWidget::fg_color']]],
+  ['fg_5fcolor_0',['fg_color',['../structstruct___config_graphic_widget.html#ac0dca05c4dd7261eaad0bc93a12697d5',1,'struct_ConfigGraphicWidget::fg_color'],['../structstruct___config_text_widget.html#a4368e0cb643aa11e7c07d7dc1cebee43',1,'struct_ConfigTextWidget::fg_color'],['../class_canvas.html#ac0d729a8c47e28b6ce89fc00e37d50d5',1,'Canvas::fg_color']]],
   ['fifo_5fop_1',['FIFO_OP',['../structstruct___config_m_p_u6050.html#ab7f05661f12849229e5f12616d4d4e40',1,'struct_ConfigMPU6050']]],
   ['fifo_5fselected_5fsensors_2',['FIFO_SELECTED_SENSORS',['../structstruct___config_m_p_u6050.html#ac2fb6887c7ef83afec6bf017b574b841',1,'struct_ConfigMPU6050']]],
   ['font_3',['font',['../structstruct___config_text_widget.html#a84cd4fa29c41809259ec431685df06ff',1,'struct_ConfigTextWidget']]],

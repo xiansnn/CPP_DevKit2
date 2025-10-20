@@ -14,7 +14,9 @@ var hierarchy =
     [ "DHT11", "class_d_h_t11.html", null ],
     [ "DisplayDevice", "class_display_device.html", [
       [ "GraphicDisplayDevice", "class_graphic_display_device.html", [
-        [ "SSD1306", "class_s_s_d1306.html", null ],
+        [ "SSD1306", "class_s_s_d1306.html", [
+          [ "rtos_SSD1306", "classrtos___s_s_d1306.html", null ]
+        ] ],
         [ "ST7735", "class_s_t7735.html", [
           [ "rtos_ST7735", "classrtos___s_t7735.html", null ]
         ] ]
@@ -70,10 +72,9 @@ var hierarchy =
     [ "struct_RawData", "structstruct___raw_data.html", null ],
     [ "struct_RenderArea", "structstruct___render_area.html", null ],
     [ "struct_rtosConfigSwitchButton", "structstruct__rtos_config_switch_button.html", null ],
-    [ "struct_RX_DataQueueI2C", "structstruct___r_x___data_queue_i2_c.html", null ],
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", null ],
+    [ "struct_SSD1306DataToShow", "structstruct___s_s_d1306_data_to_show.html", null ],
     [ "struct_SwitchButtonIRQData", "structstruct___switch_button_i_r_q_data.html", null ],
-    [ "struct_TX_DataQueueI2C", "structstruct___t_x___data_queue_i2_c.html", null ],
     [ "struct_TX_DataQueueSPI", "structstruct___t_x___data_queue_s_p_i.html", null ],
     [ "SwitchButton", "class_switch_button.html", [
       [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", [

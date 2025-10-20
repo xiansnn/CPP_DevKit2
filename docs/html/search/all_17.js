@@ -22,7 +22,5 @@ var searchData=
   ['widgetverticalbargraph_19',['WidgetVerticalBargraph',['../class_widget_vertical_bargraph.html',1,'WidgetVerticalBargraph'],['../class_widget_vertical_bargraph.html#a6c7c092d3d1bd495d29d43e290aa705d',1,'WidgetVerticalBargraph::WidgetVerticalBargraph()']]],
   ['width_20',['width',['../structstruct___render_area.html#ae390a957d9f070f47e89e84fbcdb8319',1,'struct_RenderArea']]],
   ['wrap_21',['wrap',['../structstruct___config_text_widget.html#a6b31afc67527af0820b6dcc8a0c329cb',1,'struct_ConfigTextWidget']]],
-  ['write_22',['write',['../class_text_widget.html#a3ce8f540e45844b22efa9f18c3c85eab',1,'TextWidget::write()'],['../class_text_widget.html#ab9524e4f93739352b7fe0915e038c1fb',1,'TextWidget::write(const char *c_str)']]],
-  ['write_5fdata_23',['write_data',['../structstruct___t_x___data_queue_i2_c.html#ae2462bf801a44057d81196e668905a54',1,'struct_TX_DataQueueI2C']]],
-  ['write_5fdata_5flength_24',['write_data_length',['../structstruct___t_x___data_queue_i2_c.html#af24a3995b6d594fbdcf490207b9daf91',1,'struct_TX_DataQueueI2C']]]
+  ['write_22',['write',['../class_text_widget.html#a3ce8f540e45844b22efa9f18c3c85eab',1,'TextWidget::write()'],['../class_text_widget.html#ab9524e4f93739352b7fe0915e038c1fb',1,'TextWidget::write(const char *c_str)']]]
 ];
