@@ -3,10 +3,10 @@
 #include "pico/stdlib.h"
 #include <string>
 
-rtosRotaryEncoder::rtosRotaryEncoder(uint encoder_clk_gpio, uint encoder_dt_gpio,
+rtos_RotaryEncoder::rtos_RotaryEncoder(uint encoder_clk_gpio, uint encoder_dt_gpio,
                                      gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
                                      struct_rtosConfigSwitchButton conf, uint32_t event_mask_config)
-    : rtosSwitchButton(encoder_clk_gpio,
+    : rtos_SwitchButton(encoder_clk_gpio,
                        call_back, in_switch_button_queue, out_control_event_queue,
                        conf, event_mask_config)
 {
@@ -17,11 +17,11 @@ rtosRotaryEncoder::rtosRotaryEncoder(uint encoder_clk_gpio, uint encoder_dt_gpio
     gpio_pull_up(this->dt_gpio);
 }
 
-rtosRotaryEncoder::~rtosRotaryEncoder()
+rtos_RotaryEncoder::~rtos_RotaryEncoder()
 {
 }
 
-void rtosRotaryEncoder::rtos_process_IRQ_event()
+void rtos_RotaryEncoder::rtos_process_IRQ_event()
 {
     struct_ControlEventData local_event_data;
     struct_SwitchButtonIRQData local_irq_data;

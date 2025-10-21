@@ -29,7 +29,7 @@ typedef void (*control_event_processor_t)(UIControlEvent event);
  * As a UIController, the rotary encoder is associated with a Model.
  * \ingroup control
  */
-class rtosRotaryEncoder : public rtosSwitchButton
+class rtos_RotaryEncoder : public rtos_SwitchButton
 {
 private:
   /// @brief the GPIO pin connected to the Data pin of the rotary encoder
@@ -47,7 +47,7 @@ public:
   /// @param out_control_event_queue the output queue receiving control event
   /// @param conf the clock configutration (as a debounced switch)
   /// @param event_mask_config the IRQ mask
-  rtosRotaryEncoder(uint encoder_clk_gpio,
+  rtos_RotaryEncoder(uint encoder_clk_gpio,
                     uint encoder_dt_gpio,
                     gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
                     struct_rtosConfigSwitchButton conf = {}, uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
@@ -56,7 +56,7 @@ public:
    * @brief Destroy the Rotary Encoder object
    *
    */
-  ~rtosRotaryEncoder();
+  ~rtos_RotaryEncoder();
 
   void rtos_process_IRQ_event() override;
  

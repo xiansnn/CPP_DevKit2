@@ -28,7 +28,7 @@ static QueueHandle_t dht_reading_queue = xQueueCreate(2, sizeof(struct_DHTReadin
 
 xSemaphoreHandle semaphore = xSemaphoreCreateBinary();
 
-rtosDHT11 dht = rtosDHT11(CURRENT_DHT_PIN, dht_reading_queue);
+rtos_DHT11 dht = rtos_DHT11(CURRENT_DHT_PIN, dht_reading_queue);
 
 void pico_flash_led(void *param)
 {

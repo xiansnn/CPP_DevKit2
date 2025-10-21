@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "hc_sr04.h"
 
-HC_SR04::HC_SR04(uint trig_pin, uint echo_pin)
+HCSR04::HCSR04(uint trig_pin, uint echo_pin)
 {
     this->trig_pin = trig_pin;
     this->echo_pin = echo_pin;
@@ -14,14 +14,14 @@ HC_SR04::HC_SR04(uint trig_pin, uint echo_pin)
     gpio_pull_up(this->echo_pin);
 }
 
-void HC_SR04::trig()
+void HCSR04::trig()
 {
     gpio_put(this->trig_pin, 1);
     sleep_us(10);
     gpio_put(this->trig_pin, 0);
 }
 
-float HC_SR04::get_distance()
+float HCSR04::get_distance()
 {
     this->trig();
     // wait

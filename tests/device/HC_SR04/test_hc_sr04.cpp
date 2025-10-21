@@ -7,7 +7,7 @@
 int main()
 {
     stdio_init_all();
-    HC_SR04 ranging_device = HC_SR04(TRIG_PIN, ECHO_PIN);
+    HCSR04 ranging_device = HCSR04(TRIG_PIN, ECHO_PIN);
     float range{};
 
     while (true)

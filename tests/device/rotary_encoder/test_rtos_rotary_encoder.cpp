@@ -130,11 +130,11 @@ void test_encoder_irq_call_back(uint gpio, uint32_t event_mask)
     p1.lo();
 };
 
-rtosSwitchButton central_switch = rtosSwitchButton(CENTRAL_SWITCH_GPIO,
+rtos_SwitchButton central_switch = rtos_SwitchButton(CENTRAL_SWITCH_GPIO,
                                                    &test_encoder_irq_call_back, central_switch_isr_queue, ui_control_event_queue,
                                                    cfg_central_switch);
 
-rtosRotaryEncoder encoder = rtosRotaryEncoder(ENCODER_CLK_GPIO, ENCODER_DT_GPIO,
+rtos_RotaryEncoder encoder = rtos_RotaryEncoder(ENCODER_CLK_GPIO, ENCODER_DT_GPIO,
                                               &test_encoder_irq_call_back, encoder_clk_isr_queue, ui_control_event_queue,
                                               cfg_encoder_clk);
 

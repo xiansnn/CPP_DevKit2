@@ -5,7 +5,7 @@
 
 #define MAX_TRAVEL_TIME_ms 30
 
-rtosHC_SR04::rtosHC_SR04(uint trig_pin, uint echo_pin,
+rtos_HCSR04::rtos_HCSR04(uint trig_pin, uint echo_pin,
                          QueueHandle_t input_timer_queue, QueueHandle_t output_range_queue,
                          gpio_irq_callback_t echo_irq_call_back, uint32_t echo_irq_mask_config)
 {
@@ -23,7 +23,7 @@ rtosHC_SR04::rtosHC_SR04(uint trig_pin, uint echo_pin,
     this->measure_completed = false;
 }
 
-void rtosHC_SR04::get_distance()
+void rtos_HCSR04::get_distance()
 {
     struct_HCSR04IRQData irq_data;
     float measured_range;

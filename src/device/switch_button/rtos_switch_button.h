@@ -117,7 +117,7 @@ struct struct_rtosConfigSwitchButton
 };
 
 /**
- * @brief rtosSwitchButton is processed by an Interrupt Service Routine (ISR) under control of FreeRTOS routines.
+ * @brief rtos_SwitchButton is processed by an Interrupt Service Routine (ISR) under control of FreeRTOS routines.
  *
  * - Switch status is the status of the physical (i.e. mechanical) switch device.
  *
@@ -126,7 +126,7 @@ struct struct_rtosConfigSwitchButton
  * During each ISR, the status of the button is compared to the previous status and the function member rtos_process_IRQ_event() sends
  *  an event accordingly toward the control_event output queue.
  *
- * SwitchButton can be associated with UIController if button belongs to a GUI. In such case a new class must be created that inherits from rtosSwitchButton and UIController.
+ * SwitchButton can be associated with UIController if button belongs to a GUI. In such case a new class must be created that inherits from rtos_SwitchButton and UIController.
  * \ingroup control
  * \image html button_long_release.svg "SwitchButton times references for long release"
  *
@@ -135,7 +135,7 @@ struct struct_rtosConfigSwitchButton
  * \ingroup control
  */
 
-class rtosSwitchButton
+class rtos_SwitchButton
 {
 private:
     /**
@@ -205,14 +205,14 @@ public:
      * @param conf the configuration value of the switch
      * @param event_mask_config the rising/falling edge configuratio of the irq
      */
-    rtosSwitchButton(uint gpio, gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
+    rtos_SwitchButton(uint gpio, gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
                      struct_rtosConfigSwitchButton conf = {}, uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
 
     /**
      * @brief Destroy the SwitchButton object
      *
      */
-    ~rtosSwitchButton();
+    ~rtos_SwitchButton();
 
     /**
      * @brief Process IRQ event and sent the resulting event to the event queue
