@@ -9,5 +9,5 @@ var searchData=
   ['bg_5fcolor_6',['bg_color',['../structstruct___config_graphic_widget.html#ab05ee4756b246e41e91c193dbd92ca79',1,'struct_ConfigGraphicWidget::bg_color'],['../structstruct___config_text_widget.html#a758a4febc23b99f4fe77d1d1872b4e0e',1,'struct_ConfigTextWidget::bg_color'],['../class_canvas.html#a5d5ffedfb2985fcda37d8241f3b7faeb',1,'Canvas::bg_color']]],
   ['bit_5forder_7',['bit_order',['../structstruct___config_master_s_p_i.html#adc10e9c122ca390727e762b8ca4bfa3a',1,'struct_ConfigMasterSPI']]],
   ['buflen_8',['buflen',['../structstruct___render_area.html#a66cef6847c6a4e2d0bf534f588914bd5',1,'struct_RenderArea']]],
-  ['button_5fstatus_9',['button_status',['../classrtos_switch_button.html#a2714b625565001274cb20433e16dfc07',1,'rtosSwitchButton::button_status'],['../class_switch_button.html#a4b5680f86c7354637f0d7eb77e1edbec',1,'SwitchButton::button_status']]]
+  ['button_5fstatus_9',['button_status',['../classrtos___switch_button.html#aa9e4f1cc20b331a32c7459e5ed951f4d',1,'rtos_SwitchButton::button_status'],['../class_switch_button.html#a4b5680f86c7354637f0d7eb77e1edbec',1,'SwitchButton::button_status']]]
 ];

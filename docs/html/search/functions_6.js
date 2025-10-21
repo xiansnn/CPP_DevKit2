@@ -2,7 +2,7 @@ var searchData=
 [
   ['get_5fbutton_5fstatus_0',['get_button_status',['../class_switch_button.html#a6b40906d298a665870c30c1359fbea2e',1,'SwitchButton']]],
   ['get_5fcurrent_5fcontroller_1',['get_current_controller',['../class_u_i_controlled_model.html#a278084ada7122332a7565046d081fe99',1,'UIControlledModel']]],
-  ['get_5fdistance_2',['get_distance',['../class_h_c___s_r04.html#a9436304e9e1bc947c2833127b5cd818d',1,'HC_SR04::get_distance()'],['../classrtos_h_c___s_r04.html#a951397b3feb297117a41a81ba3a0566e',1,'rtosHC_SR04::get_distance()']]],
+  ['get_5fdistance_2',['get_distance',['../class_h_c_s_r04.html#aa946b0976a5a915bfde3ff51b7359ddb',1,'HCSR04::get_distance()'],['../classrtos___h_c_s_r04.html#acedf553849f3d6d63b9e38d83a8a97ba',1,'rtos_HCSR04::get_distance()']]],
   ['get_5ffifo_5fcount_3',['get_FIFO_count',['../class_m_p_u6050.html#ae3309784c38c0dde54a7638582dd23c9',1,'MPU6050']]],
   ['get_5fgraph_5fframe_5fconfig_4',['get_graph_frame_config',['../class_graphic_widget.html#a49c9ebded2dc14246284662e13713a05',1,'GraphicWidget']]],
   ['get_5fmax_5fvalue_5',['get_max_value',['../class_u_i_controlled_incremental_value.html#a21d6fb79b326dda133869372a38b9389',1,'UIControlledIncrementalValue']]],

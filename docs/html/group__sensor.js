@@ -4,17 +4,17 @@ var group__sensor =
       [ "DHT11", "class_d_h_t11.html#abdb9b9dbfeb00fac3826752fff347c16", null ],
       [ "read_from_dht", "class_d_h_t11.html#ad72fb9614e231616cc6c3c28cafafca3", null ]
     ] ],
-    [ "rtosDHT11", "classrtos_d_h_t11.html", [
-      [ "rtosDHT11", "classrtos_d_h_t11.html#ad29fe524917478b7cb55d61ee22cdaaa", null ],
-      [ "read_from_dht", "classrtos_d_h_t11.html#a4fb51aded1acd9a21c45f3c57ceb4bc8", null ]
+    [ "rtos_DHT11", "classrtos___d_h_t11.html", [
+      [ "rtos_DHT11", "classrtos___d_h_t11.html#ac3e9f7aed685686d934714ddd28f18e4", null ],
+      [ "read_from_dht", "classrtos___d_h_t11.html#a103945d0b9618eda30176136dc072333", null ]
     ] ],
-    [ "HC_SR04", "class_h_c___s_r04.html", [
-      [ "HC_SR04", "class_h_c___s_r04.html#a38ef28d37f4390a3bca4a973f98cd8d3", null ],
-      [ "get_distance", "class_h_c___s_r04.html#a9436304e9e1bc947c2833127b5cd818d", null ]
+    [ "HCSR04", "class_h_c_s_r04.html", [
+      [ "HCSR04", "class_h_c_s_r04.html#a036f4e60cdd9c8e6821833a824dbf338", null ],
+      [ "get_distance", "class_h_c_s_r04.html#aa946b0976a5a915bfde3ff51b7359ddb", null ]
     ] ],
-    [ "rtosHC_SR04", "classrtos_h_c___s_r04.html", [
-      [ "rtosHC_SR04", "classrtos_h_c___s_r04.html#a1f6407ab1089298dbb2cfe5ada460d3a", null ],
-      [ "get_distance", "classrtos_h_c___s_r04.html#a951397b3feb297117a41a81ba3a0566e", null ]
+    [ "rtos_HCSR04", "classrtos___h_c_s_r04.html", [
+      [ "rtos_HCSR04", "classrtos___h_c_s_r04.html#adf0579071dbb9e870f55841f1d4d6fde", null ],
+      [ "get_distance", "classrtos___h_c_s_r04.html#acedf553849f3d6d63b9e38d83a8a97ba", null ]
     ] ],
     [ "MPU6050", "class_m_p_u6050.html", [
       [ "MPU6050", "class_m_p_u6050.html#a69ff7760846ab8f9b33ab07aa57709cf", null ],

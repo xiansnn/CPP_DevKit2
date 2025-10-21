@@ -3,7 +3,7 @@ var searchData=
   ['hardware_5freset_0',['hardware_reset',['../class_s_t7735.html#a1199b2f3f56011e7620d7a63dd112bc4',1,'ST7735']]],
   ['has_5fblinking_5fchanged_1',['has_blinking_changed',['../class_blinker.html#ae36b06b6ad8e5b5e14f5a95c1f4d3471',1,'Blinker']]],
   ['has_5fchanged_2',['has_changed',['../class_model.html#a6581f694a68e74228507591a3dbaccdf',1,'Model']]],
-  ['hc_5fsr04_3',['HC_SR04',['../class_h_c___s_r04.html#a38ef28d37f4390a3bca4a973f98cd8d3',1,'HC_SR04']]],
+  ['hcsr04_3',['HCSR04',['../class_h_c_s_r04.html#a036f4e60cdd9c8e6821833a824dbf338',1,'HCSR04']]],
   ['hi_4',['hi',['../class_probe.html#a493e1f46f0123ae6a18d7bd6e79d74f1',1,'Probe']]],
   ['hline_5',['hline',['../class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a',1,'GraphicWidget']]],
   ['horizontal_5fscroll_6',['horizontal_scroll',['../class_s_s_d1306.html#a3228383e41ea93124a1da0a619dc6b11',1,'SSD1306']]],

@@ -16,5 +16,5 @@ var searchData=
   ['interrupt_5fservice_5froutine_13',['interrupt_service_routine',['../class_rotary_encoder.html#ae7ad35ae64d2b815c25ac72a51702e6f',1,'RotaryEncoder']]],
   ['irq_5fenabled_14',['irq_enabled',['../class_switch_button_with_i_r_q.html#a261dc80eca218e3733c6a0cf637c25e8',1,'SwitchButtonWithIRQ']]],
   ['is_5fdata_5fready_15',['is_data_ready',['../class_m_p_u6050.html#ac6f4794ef371942d4e8e29231957ab6b',1,'MPU6050']]],
-  ['is_5fswitch_5fpushed_16',['is_switch_pushed',['../classrtos_switch_button.html#add2f018aa5d077d68a9bc7c6bb4c4d38',1,'rtosSwitchButton::is_switch_pushed()'],['../class_switch_button.html#a3361ae31699ad49821d25ee53210f6d7',1,'SwitchButton::is_switch_pushed()']]]
+  ['is_5fswitch_5fpushed_16',['is_switch_pushed',['../classrtos___switch_button.html#a9c29dcafb8a7521d1ea0a193b6034db8',1,'rtos_SwitchButton::is_switch_pushed()'],['../class_switch_button.html#a3361ae31699ad49821d25ee53210f6d7',1,'SwitchButton::is_switch_pushed()']]]
 ];

@@ -45,7 +45,7 @@ var searchData=
   ['control_42',['&quot;Control&quot;',['../group__control.html',1,'']]],
   ['control_20principles_43',['Model-View-Control principles',['../index.html#autotoc_md2',1,'']]],
   ['control_5fevent_5fprocessor_5ft_44',['control_event_processor_t',['../rotary__encoder_8h.html#a787371d828d2ed06a5d1842695d04497',1,'control_event_processor_t:&#160;rotary_encoder.h'],['../rtos__rotary__encoder_8h.html#a787371d828d2ed06a5d1842695d04497',1,'control_event_processor_t:&#160;rtos_rotary_encoder.h']]],
-  ['control_5fevent_5fqueue_45',['control_event_queue',['../classrtos_switch_button.html#a01dfd1bafbbf24340bafadfcd57504cc',1,'rtosSwitchButton']]],
+  ['control_5fevent_5fqueue_45',['control_event_queue',['../classrtos___switch_button.html#adb54d0aadd5523c8f46382b4048e6bb1',1,'rtos_SwitchButton']]],
   ['controlledobjectstatus_46',['ControlledObjectStatus',['../ui__core_8h.html#a57c20ec1ef250b4ad060705786762112',1,'ui_core.h']]],
   ['controlledobjectstatustimeoutreason_47',['ControlledObjectStatusTimeOutReason',['../ui__core_8h.html#a1b97aab8f67794aef99a8febbf83360f',1,'ui_core.h']]],
   ['copy_48',['copy',['../class_probe.html#a3ca878200b9a6d5744366b23fe0051c9',1,'Probe']]],

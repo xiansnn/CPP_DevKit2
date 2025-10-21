@@ -40,7 +40,7 @@ var searchData=
   ['irq_5fnumber_37',['irq_number',['../class_h_w___d_m_a.html#a40b855940b730c2ac0d583f9e4d41be3',1,'HW_DMA']]],
   ['is_5factive_38',['IS_ACTIVE',['../ui__core_8h.html#a57c20ec1ef250b4ad060705786762112a70d794d2a66b3ed4d2b0ff57d41b7089',1,'ui_core.h']]],
   ['is_5fdata_5fready_39',['is_data_ready',['../class_m_p_u6050.html#ac6f4794ef371942d4e8e29231957ab6b',1,'MPU6050']]],
-  ['is_5fswitch_5fpushed_40',['is_switch_pushed',['../classrtos_switch_button.html#add2f018aa5d077d68a9bc7c6bb4c4d38',1,'rtosSwitchButton::is_switch_pushed()'],['../class_switch_button.html#a3361ae31699ad49821d25ee53210f6d7',1,'SwitchButton::is_switch_pushed()']]],
+  ['is_5fswitch_5fpushed_40',['is_switch_pushed',['../classrtos___switch_button.html#a9c29dcafb8a7521d1ea0a193b6034db8',1,'rtos_SwitchButton::is_switch_pushed()'],['../class_switch_button.html#a3361ae31699ad49821d25ee53210f6d7',1,'SwitchButton::is_switch_pushed()']]],
   ['is_5fvalid_41',['is_valid',['../structstruct___d_h_t_reading.html#ac02a8974d21885a59e1e3552921ccd1b',1,'struct_DHTReading']]],
   ['is_5fwaiting_42',['IS_WAITING',['../ui__core_8h.html#a57c20ec1ef250b4ad060705786762112a02ca6db02d1c43b09e875c6cc1f51aab',1,'ui_core.h']]],
   ['is_5fwrappable_43',['is_wrappable',['../class_u_i_controlled_incremental_value.html#a73b3a10b2774cf4ce94902925ffc9ad9',1,'UIControlledIncrementalValue']]]

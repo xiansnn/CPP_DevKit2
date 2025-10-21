@@ -179,7 +179,7 @@ var searchData=
   ['struct_5fswitchbuttonirqdata_176',['struct_SwitchButtonIRQData',['../structstruct___switch_button_i_r_q_data.html',1,'']]],
   ['struct_5ftx_5fdataqueuespi_177',['struct_TX_DataQueueSPI',['../structstruct___t_x___data_queue_s_p_i.html',1,'']]],
   ['switch_5fbutton_2eh_178',['switch_button.h',['../switch__button_8h.html',1,'']]],
-  ['switch_5fbutton_5fqueue_179',['switch_button_queue',['../classrtos_switch_button.html#a19628267a85d9f51b9cd13651ecb2377',1,'rtosSwitchButton']]],
+  ['switch_5fbutton_5fqueue_179',['switch_button_queue',['../classrtos___switch_button.html#acd970e5d886585887d1cbce1987e22d2',1,'rtos_SwitchButton']]],
   ['switchbutton_180',['SwitchButton',['../class_switch_button.html',1,'SwitchButton'],['../class_switch_button.html#a750d21f333405881df2ef91495885a29',1,'SwitchButton::SwitchButton()']]],
   ['switchbuttonwithirq_181',['SwitchButtonWithIRQ',['../class_switch_button_with_i_r_q.html',1,'SwitchButtonWithIRQ'],['../class_switch_button_with_i_r_q.html#aafb53c306bcbb5c681caae03b778f517',1,'SwitchButtonWithIRQ::SwitchButtonWithIRQ()']]],
   ['sync_5fpin_182',['sync_pin',['../structstruct___config_s_g90.html#a1adfe8bff0e581ebf86b11dd97d7153c',1,'struct_ConfigSG90']]]

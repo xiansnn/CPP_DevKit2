@@ -23,7 +23,7 @@ var hierarchy =
       ] ],
       [ "PrinterDevice", "class_printer_device.html", null ]
     ] ],
-    [ "HC_SR04", "class_h_c___s_r04.html", null ],
+    [ "HCSR04", "class_h_c_s_r04.html", null ],
     [ "HW_DMA", "class_h_w___d_m_a.html", null ],
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", [
       [ "rtos_HW_I2C_Master", "classrtos___h_w___i2_c___master.html", null ]
@@ -45,10 +45,10 @@ var hierarchy =
     [ "Probe", "class_probe.html", null ],
     [ "PWM", "class_p_w_m.html", null ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],
-    [ "rtosDHT11", "classrtos_d_h_t11.html", null ],
-    [ "rtosHC_SR04", "classrtos_h_c___s_r04.html", null ],
-    [ "rtosSwitchButton", "classrtos_switch_button.html", [
-      [ "rtosRotaryEncoder", "classrtos_rotary_encoder.html", null ]
+    [ "rtos_DHT11", "classrtos___d_h_t11.html", null ],
+    [ "rtos_HCSR04", "classrtos___h_c_s_r04.html", null ],
+    [ "rtos_SwitchButton", "classrtos___switch_button.html", [
+      [ "rtos_RotaryEncoder", "classrtos___rotary_encoder.html", null ]
     ] ],
     [ "SG90", "class_s_g90.html", null ],
     [ "struct_ConfigGraphicWidget", "structstruct___config_graphic_widget.html", null ],
