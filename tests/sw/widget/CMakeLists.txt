@@ -113,3 +113,15 @@ target_link_libraries(test_rtos_ssd1306_graphic_primitives
             utilities_probe
             FreeRTOS-Kernel-Heap4 
             )
+#-------------------------------------------------------------------------------------
+add_executable(test_rtos_ssd1306_text_primitives test_rtos_ssd1306_text_primitives.cpp)
+target_link_libraries(test_rtos_ssd1306_text_primitives 
+            pico_stdlib 
+            rtos_hw_i2c 
+            sw_widget
+            # sw_ui_core
+            device_ssd1306 
+            utilities_probe
+            FreeRTOS-Kernel-Heap4 
+            )
+            
