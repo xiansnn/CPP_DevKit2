@@ -1,9 +1,9 @@
 /**
- * @file test_textual_widget.cpp
+ * @file test_rtos_ssd1306_text_primitives.cpp
  * @author xiansnn (xiansnn@hotmail.com)
  * @brief
  * @version 0.1
- * @date 2025-01-28
+ * @date 2025-10-22
  *
  * @copyright Copyright (c) 2025
  *
@@ -18,12 +18,13 @@
 
 #include "sw/widget/widget.h"
 #include "device/SSD1306/ssd1306.h"
-#include "utilities/probe/probe.h"
 
+#include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
 Probe p1 = Probe(1);
+Probe p2 = Probe(2);
+Probe p3 = Probe(3);
 Probe p4 = Probe(4);
-
 // Probe p5 = Probe(5);
 // Probe p6 = Probe(6);
 // Probe p7 = Probe(7);
@@ -31,33 +32,9 @@ Probe p4 = Probe(4);
 #define REFRESH_PERIOD 50
 #define DELAY 500
 #define LONG_DELAY 1000
-#define INTER_TEST_DELAY 2000
+#define INTER_TASK_DELAY 2000
 
 #define CANVAS_FORMAT CanvasFormat::MONO_VLSB
-
-struct_ConfigMasterI2C cfg_i2c{
-    .i2c = i2c0,
-    .sda_pin = 8,
-    .scl_pin = 9,
-    .baud_rate = I2C_FAST_MODE};
-
-struct_ConfigSSD1306 cfg_left_screen{
-    .i2c_address = 0x3C,
-    .vertical_offset = 0,
-    .scan_SEG_inverse_direction = true,
-    .scan_COM_inverse_direction = true,
-    .contrast = 128,
-    .frequency_divider = 1,
-    .frequency_factor = 0};
-
-struct_ConfigSSD1306 cfg_right_screen{
-    .i2c_address = 0x3D,
-    .vertical_offset = 0,
-    .scan_SEG_inverse_direction = true,
-    .scan_COM_inverse_direction = true,
-    .contrast = 128,
-    .frequency_divider = 1,
-    .frequency_factor = 0};
 
 class my_text_widget : public TextWidget
 {
@@ -85,8 +62,71 @@ my_text_widget::my_text_widget(GraphicDisplayDevice *graphic_display_screen,
 my_text_widget::~my_text_widget() {}
 void my_text_widget::get_value_of_interest() {}
 
-void test_font_size(SSD1306 *current_display)
+QueueHandle_t display_data_queue = xQueueCreate(8, sizeof(struct_DataToShow));
+SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
+
+void i2c_irq_handler();
+
+struct_ConfigMasterI2C cfg_i2c{
+    .i2c = i2c0,
+    .sda_pin = 8,
+    .scl_pin = 9,
+    .baud_rate = I2C_FAST_MODE,
+    .i2c_tx_master_handler = i2c_irq_handler};
+
+struct_ConfigSSD1306 cfg_left_screen{
+    .i2c_address = 0x3C,
+    .vertical_offset = 0,
+    .scan_SEG_inverse_direction = true,
+    .scan_COM_inverse_direction = true,
+    .contrast = 128,
+    .frequency_divider = 1,
+    .frequency_factor = 0};
+
+struct_ConfigSSD1306 cfg_right_screen{
+    .i2c_address = 0x3D,
+    .vertical_offset = 0,
+    .scan_SEG_inverse_direction = true,
+    .scan_COM_inverse_direction = true,
+    .contrast = 128,
+    .frequency_divider = 1,
+    .frequency_factor = 0};
+
+rtos_HW_I2C_Master master = rtos_HW_I2C_Master(cfg_i2c);
+rtos_SSD1306 left_display = rtos_SSD1306(&master, cfg_left_screen);
+rtos_SSD1306 right_display = rtos_SSD1306(&master, cfg_right_screen);
+
+void i2c_irq_handler()
 {
+    master.i2c_dma_isr();
+};
+
+void vIdleTask(void *pxProbe)
+{
+    while (true)
+    {
+        ((Probe *)pxProbe)->hi();
+        ((Probe *)pxProbe)->lo();
+    }
+}
+
+void display_gate_keeper_task(void *param)
+{
+    struct_DataToShow received_data_to_show;
+
+    while (true)
+    {
+        xQueueReceive(display_data_queue, &received_data_to_show, portMAX_DELAY);
+        p4.hi();
+        ((rtos_SSD1306 *)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
+        xSemaphoreGive(data_sent);
+        p4.lo();
+    }
+}
+
+void test_font_size(rtos_SSD1306 *current_display)
+{
+    p1.hi();
     current_display->clear_device_screen_buffer();
     const unsigned char *current_font[4]{font_5x8, font_8x8, font_12x16, font_16x32};
 
@@ -102,7 +142,7 @@ void test_font_size(SSD1306 *current_display)
     my_text_widget *font_text_on_screen_0 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
     // draw text directly from a string to the pixel buffer
     font_text_on_screen_0->write(test_string.c_str());
-    font_text_on_screen_0->show();
+    font_text_on_screen_0->send_to_DisplayGateKeeper(display_data_queue, data_sent);
     delete font_text_on_screen_0;
 
     default_text_cfg.widget_anchor_x = 64;
@@ -113,7 +153,7 @@ void test_font_size(SSD1306 *current_display)
     // process first text according to sprintf capabilities then copy to text buffer and finally draw text buffer into pixel buffer
     sprintf(font_text_on_screen_1->text_buffer, test_string.c_str());
     font_text_on_screen_1->write();
-    font_text_on_screen_1->show();
+    font_text_on_screen_1->send_to_DisplayGateKeeper(display_data_queue, data_sent);
     delete font_text_on_screen_1;
 
     default_text_cfg.widget_anchor_x = 0;
@@ -123,29 +163,32 @@ void test_font_size(SSD1306 *current_display)
 
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->write();
-    font_text_on_screen_2->show();
+    font_text_on_screen_2->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     font_text_on_screen_2->update_canvas_buffer_size(current_font[3]);
     font_text_on_screen_2->update_widget_anchor(64, 32);
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->write();
-    font_text_on_screen_2->show();
+    font_text_on_screen_2->send_to_DisplayGateKeeper(display_data_queue, data_sent);
     delete font_text_on_screen_2;
-
-    sleep_ms(INTER_TEST_DELAY);
+    p1.lo();
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
     current_display->clear_device_screen_buffer();
 }
 
-void test_full_screen_text(SSD1306 *current_display)
+void test_full_screen_text(rtos_SSD1306 *current_display)
 {
     struct_ConfigTextWidget txt_conf = {
         .font = font_8x8,
         .wrap = true,
     };
+    p1.hi();
+    current_display->clear_device_screen_buffer();
     my_text_widget text_frame = my_text_widget(current_display, txt_conf, CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     text_frame.process_char(FORM_FEED); // equiv. clear full screen
-    current_display->show(text_frame.canvas, 0, 0);
+    // current_display->show(text_frame.canvas, 0, 0);
+    text_frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
     uint16_t nb = text_frame.number_of_line * text_frame.number_of_column;
 
     uint16_t n{0};
@@ -153,24 +196,28 @@ void test_full_screen_text(SSD1306 *current_display)
     {
         n++;
         text_frame.process_char(c);
-        current_display->show(text_frame.canvas, 0, 0);
+        // current_display->show(text_frame.canvas, 0, 0);
+        text_frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+
         if (n == nb)
         {
             sleep_ms(500);
             text_frame.process_char(FORM_FEED);
         }
     }
-
-    sleep_ms(INTER_TEST_DELAY);
+    p1.lo();
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
     current_display->clear_device_screen_buffer();
 }
 
-void test_auto_next_char(SSD1306 *current_display)
+void test_auto_next_char(rtos_SSD1306 *current_display)
 {
     struct_ConfigTextWidget txt_conf = {
         .font = font_8x8,
         .wrap = true,
         .auto_next_char = false};
+    p1.hi();
+    current_display->clear_device_screen_buffer();
 
     my_text_widget *text_frame = new my_text_widget(current_display, txt_conf, CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
 
@@ -181,14 +228,16 @@ void test_auto_next_char(SSD1306 *current_display)
     {
         n++;
         text_frame->process_char(c);
-        current_display->show(text_frame->canvas, 0, 0);
+        // current_display->show(text_frame->canvas, 0, 0);
+        text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+
         if (n % 8 == 0)
             text_frame->next_char();
     }
 
     delete text_frame;
-
-    sleep_ms(INTER_TEST_DELAY);
+    p1.lo();
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
     current_display->clear_device_screen_buffer();
 }
 
@@ -199,56 +248,56 @@ void test_auto_next_char(SSD1306 *current_display)
  *
  * @param current_display
  */
-void test_sprintf_format(SSD1306 *current_display)
+void test_sprintf_format(rtos_SSD1306 *current_display)
 {
+    p1.hi();
     current_display->clear_device_screen_buffer();
-
     struct_ConfigTextWidget text_frame_cfg = {
         .font = font_8x8,
         .wrap = true};
 
-    my_text_widget *text_frame = new my_text_widget(current_display, text_frame_cfg,CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
+    my_text_widget *text_frame = new my_text_widget(current_display, text_frame_cfg, CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     const char *s = "Hello";
 
     text_frame->write("Strings:\n\tpadding:\n");
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     sprintf(text_frame->text_buffer, "\t[%7s]\n", s);
     text_frame->write();
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     sprintf(text_frame->text_buffer, "\t[%-7s]\n", s);
     text_frame->write();
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     sprintf(text_frame->text_buffer, "\t[%*s]\n", 7, s);
     text_frame->write();
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     text_frame->write("\ttruncating:\n");
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     sprintf(text_frame->text_buffer, "\t%.4s\n", s);
     text_frame->write();
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     sprintf(text_frame->text_buffer, "\t\t%.*s\n", 3, s);
     text_frame->write();
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
-    sleep_ms(LONG_DELAY);
+    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
 
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     text_frame->clear_text_buffer();
     // current_display->clear_pixel_buffer(&text_frame->pixel_frame);
     current_display->clear_device_screen_buffer();
     sprintf(text_frame->text_buffer, "Characters: %c %%", 'A');
     text_frame->write();
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
-    sleep_ms(LONG_DELAY);
+    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
 
     current_display->clear_device_screen_buffer();
 
@@ -268,9 +317,9 @@ void test_sprintf_format(SSD1306 *current_display)
     text_frame->write();
     sprintf(text_frame->text_buffer, "\tSci:  %.3E %.1e\n", 1.5, 1.5);
     text_frame->write();
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
-    sleep_ms(LONG_DELAY);
+    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
 
     current_display->clear_device_screen_buffer();
 
@@ -282,50 +331,50 @@ void test_sprintf_format(SSD1306 *current_display)
     text_frame->write("@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_");   // ca 1000us -> 2000us
     text_frame->write("`abcdefghijklmnopqrstuvwxyz{|}~\x7F"); // ca 1000us-> 2000us
     text_frame->write("1234567890\n");                        // ca 400us -> 800us
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
-    sleep_ms(LONG_DELAY);
+    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
 
     text_frame->process_char(FORM_FEED);
 
     text_frame->write("\t1TAB\n"); // ca 400us -> 800us
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
-    sleep_ms(DELAY);
+    vTaskDelay(pdMS_TO_TICKS(DELAY));
 
     text_frame->write("\t\t2TAB\n"); // ca 400us -> 800us
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
-    sleep_ms(DELAY);
+    vTaskDelay(pdMS_TO_TICKS(DELAY));
 
     text_frame->write("\t\t\t3TAB\n"); // ca 400us -> 800us
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
-    sleep_ms(DELAY);
+    vTaskDelay(pdMS_TO_TICKS(DELAY));
 
     text_frame->write("\t\t\t\t4TAB\n"); // ca 400us -> 800us
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
-    sleep_ms(DELAY);
+    vTaskDelay(pdMS_TO_TICKS(DELAY));
 
     text_frame->write("\t\t\t\t\t5TAB\n"); // ca 400us -> 800us
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
-    sleep_ms(DELAY);
+    vTaskDelay(pdMS_TO_TICKS(DELAY));
 
     text_frame->write("\t1TAB\t\t\t3TAB\n"); // ca 400us -> 800us
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
-    sleep_ms(LONG_DELAY);
+    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
 
     text_frame->process_char(FORM_FEED);
     text_frame->update_text_frame_size(font_16x32);
 
     text_frame->write(" 15:06 \n");
     text_frame->write("03/01/24");
-    text_frame->show();
+    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
 
-    sleep_ms(LONG_DELAY);
+    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
 
     current_display->clear_device_screen_buffer();
 
@@ -338,14 +387,15 @@ void test_sprintf_format(SSD1306 *current_display)
         .widget_anchor_y = 16,
         .font = font_12x16,
         .wrap = false};
-    my_text_widget *text_frame2 = new my_text_widget(current_display, text_frame2_cfg,CANVAS_FORMAT);
+    my_text_widget *text_frame2 = new my_text_widget(current_display, text_frame2_cfg, CANVAS_FORMAT);
 
     text_frame2->write(" 09:56\n03JAN24");
-    text_frame2->show();
+    text_frame2->send_to_DisplayGateKeeper(display_data_queue, data_sent);
     delete text_frame2;
-
-    sleep_ms(INTER_TEST_DELAY);
+    p1.lo();
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
     current_display->clear_device_screen_buffer();
+
     /*
     undefined result for the used compiler
     printf("\tHexadecimal:\t%a %A\n", 1.5, 1.5);
@@ -356,70 +406,25 @@ void test_sprintf_format(SSD1306 *current_display)
     */
 }
 
-// /**
-//  * @brief Another way to print formatted text, using stringstream
-//  *
-//  * @param current_display
-//  */
-// void test_ostringstream_format(SSD1306 *current_display)
-// {
-
-//     current_display->clear_device_screen_buffer();
-
-//     const unsigned char *current_font{font_5x8};
-
-//     struct_ConfigTextWidget txt_conf = {
-//         .font = current_font,
-//         .wrap = false};
-
-//     my_text_widget text_frame = my_text_widget(current_display, txt_conf,CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
-
-//     int n = 42;
-//     float f = std::numbers::pi;
-
-//     std::ostringstream stream0, stream1, stream2;
-
-//     stream0.fill('.');
-//     stream2.fill('.');
-//     stream2.precision(4);
-//     stream2.width(20);
-
-//     stream0 << std::left << std::setw(6) << "test" << std::endl;
-//     text_frame.write(stream0.str().c_str());
-
-//     current_display->show(text_frame.canvas, 0, 0);
-//     sleep_ms(DELAY);
-
-//     stream1 << std::setw(5) << std::dec << n << "|" << std::setw(5)
-//             << std::showbase << std::hex << n << "|" << std::showbase << std::setw(5) << std::oct << n << std::endl;
-//     text_frame.write(stream1.str().c_str());
-//     current_display->show(text_frame.canvas, 0, 0);
-
-//     sleep_ms(DELAY);
-
-//     stream2 << "PI = " << std::left << f << std::endl;
-//     text_frame.write(stream2.str().c_str());
-//     current_display->show(text_frame.canvas, 0, 0);
-
-//     sleep_ms(INTER_TEST_DELAY);
-//     current_display->clear_device_screen_buffer();
-// }
-
-int main()
-
+void main_task(void *display_device)
 {
-    HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
-    SSD1306 left_display = SSD1306(&master, cfg_left_screen);
-    SSD1306 right_display = SSD1306(&master, cfg_right_screen);
-    left_display.clear_device_screen_buffer();
-    right_display.clear_device_screen_buffer();
-
     while (true)
     {
         test_font_size(&left_display);
         test_full_screen_text(&right_display);
         test_auto_next_char(&left_display);
-        test_sprintf_format(&left_display);
-        // test_ostringstream_format(&right_display);
+        test_sprintf_format(&right_display);
     }
+}
+
+int main()
+{
+    xTaskCreate(vIdleTask, "idle_task0", 256, &p0, 0, NULL);
+    xTaskCreate(main_task, "main_task", 256, NULL, 2, NULL);
+    xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, NULL, 4, NULL);
+
+    vTaskStartScheduler();
+
+    while (true)
+        tight_loop_contents();
 }
