@@ -28,6 +28,19 @@ Probe p4 = Probe(4);
 
 #define INTER_TASK_DELAY 200
 
+/// @brief  data structure used to pass multiple parameters to the RTOS task that handles the display update
+struct struct_SSD1306DataToShow
+{
+    /// @brief pointer to the display device object
+    GraphicDisplayDevice *display;
+    /// @brief the area to be displayed
+    struct_RenderArea display_area;
+    /// @brief pointer to the data buffer to be displayed
+    uint8_t *data_buffer;
+    /// @brief the addressing mode to be used
+    uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE;
+};
+
 QueueHandle_t display_data_queue = xQueueCreate(8, sizeof(struct_SSD1306DataToShow));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
 

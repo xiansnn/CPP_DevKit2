@@ -581,6 +581,11 @@ rtos_ST7735::~rtos_ST7735()
 {
 }
 
+void rtos_ST7735::show_from_display_queue(struct_DataToShow data_t_show)
+{
+    this->show(data_t_show.canvas, data_t_show.anchor_x, data_t_show.anchor_y);
+}
+
 void rtos_ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y)
 {
     switch (canvas->canvas_format)

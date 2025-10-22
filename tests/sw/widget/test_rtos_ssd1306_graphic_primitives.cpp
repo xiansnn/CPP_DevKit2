@@ -33,6 +33,9 @@ Probe p4 = Probe(4);
 #define INTER_TASK_DELAY 1000
 #define INTRA_TASK_DELAY 250
 
+
+
+
 QueueHandle_t display_data_queue = xQueueCreate(8, sizeof(struct_DataToShow));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
 
@@ -313,9 +316,7 @@ void display_gate_keeper_task(void *param)
     {
         xQueueReceive(display_data_queue, &received_data_to_show, portMAX_DELAY);
         p4.hi();
-        received_data_to_show.display->show(received_data_to_show.canvas,
-                                            received_data_to_show.anchor_x,
-                                            received_data_to_show.anchor_y);
+        ((rtos_SSD1306*)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
         xSemaphoreGive(data_sent);
         p4.lo();
     }

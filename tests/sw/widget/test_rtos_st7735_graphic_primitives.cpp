@@ -122,9 +122,7 @@ void display_gate_keeper_task(void *param)
     {
         xQueueReceive(queue_from_tests_to_ST7735, &received_data_to_show, portMAX_DELAY);
         p3.hi();
-        received_data_to_show.display->show(received_data_to_show.canvas,
-                                            received_data_to_show.anchor_x,
-                                            received_data_to_show.anchor_y);
+        ((rtos_ST7735*)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
         xSemaphoreGive(data_sent);
 
         p3.lo();

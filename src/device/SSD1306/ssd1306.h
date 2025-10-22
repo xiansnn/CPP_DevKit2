@@ -115,19 +115,6 @@ struct struct_RenderArea
     size_t buflen{SSD1306_BUF_LEN};
 };
 
-/// @brief  data structure used to pass multiple parameters to the RTOS task that handles the display update     
-struct struct_SSD1306DataToShow
-{
-    /// @brief pointer to the display device object
-    GraphicDisplayDevice *display;
-    /// @brief the area to be displayed
-    struct_RenderArea display_area;
-    /// @brief pointer to the data buffer to be displayed
-    uint8_t *data_buffer;
-    /// @brief the addressing mode to be used
-    uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE;
-
-};
 
 /**
  * @brief SSD1306 128x64 pixel OLED display device driver with I2C interface
@@ -285,7 +272,6 @@ public:
 class rtos_SSD1306 : public SSD1306
 {
 private:
-    
 public:
     /// @brief constructor for FreeRTOS compliant SSD1306 device driver.
     /// @param master the I2C master controller, compliant with FreeRTOS.
@@ -296,6 +282,10 @@ public:
     /// @brief write 0x00 directly into the device framebuffer (GDDRAM).
     /// @param addressing_mode the way the data is written to the GDDRAM
     void clear_device_screen_buffer(uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
+
+    /// @brief Show data from the display queue.
+    /// @param data_to_show The data to display.
+    void show_from_display_queue(struct_DataToShow data_to_show);
 
     void show_render_area(uint8_t *data_buffer, struct_RenderArea display_area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
 

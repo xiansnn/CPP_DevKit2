@@ -35,7 +35,7 @@ enum class ST7735DisplayType
 {
     /// @brief LCD TFT 1"44 128(RGB)x128 green_tab configuration
     ST7735_144_128_RGB_128_GREENTAB, //
-    /// @brief LCD TFT 1"77 160(RGB)x128 green_tab configuration
+                                     /// @brief LCD TFT 1"77 160(RGB)x128 green_tab configuration
     ST7735_177_160_RGB_128_GREENTAB //
 };
 
@@ -80,9 +80,9 @@ struct struct_ConfigScrollST7735
 class ST7735 : public GraphicDisplayDevice
 {
 protected:
-/// @brief SPI driver associated with the display
+    /// @brief SPI driver associated with the display
     HW_SPI_Master *spi;
-    /// @brief the GPIO connected to the Data/Command_ input    
+    /// @brief the GPIO connected to the Data/Command_ input
     uint dc_pin;
     /// @brief the GPIO connected to the backlight input
     uint backlight_pin;
@@ -143,9 +143,8 @@ protected:
     /// @param width the width of the area to write
     /// @param height the height of the area to write
     void set_RAM_write_addresses(uint8_t start_x, uint8_t start_y, size_t width, size_t height);
-    
-    public:
 
+public:
     /// @brief Construct a new ST7735 object
     /// @param spi the SPI associated driver
     /// @param device_config the device configuration file
@@ -172,21 +171,25 @@ protected:
     /// @param color_index
     virtual void clear_device_screen_buffer(ColorIndex color_index = ColorIndex::BLACK);
 
+    
     virtual void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y);
 };
 
 /// @brief RTOS version of the ST7735 display device
 class rtos_ST7735 : public ST7735
 {
-private:
+    private:
     /* data */
-public:
+    public:
     /// @brief Construct a new rtos_ST7735 object
     /// @param spi the rtos_HW_SPI_Master associated driver
     /// @param device_config    the device configuration file
     rtos_ST7735(rtos_HW_SPI_Master *spi, struct_ConfigST7735 device_config);
     ~rtos_ST7735();
 
+    /// @brief Show data from the display queue.
+    /// @param data_t_show The data to display. 
+    void show_from_display_queue(struct_DataToShow data_t_show);
     void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y);
     void clear_device_screen_buffer(ColorIndex color_index = ColorIndex::BLACK);
 };

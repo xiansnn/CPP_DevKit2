@@ -290,6 +290,11 @@ void rtos_SSD1306::clear_device_screen_buffer(uint8_t addressing_mode)
     this->fill_GDDRAM_with_pattern(0x00, area, addressing_mode);
 }
 
+void rtos_SSD1306::show_from_display_queue(struct_DataToShow data_to_show)
+{
+    this->show(data_to_show.canvas,data_to_show.anchor_x,data_to_show.anchor_y);
+}
+
 void rtos_SSD1306::show_render_area(uint8_t *data_buffer, const struct_RenderArea display_area, const uint8_t addressing_mode)
 {
     assert((addressing_mode >= 0) & (addressing_mode <= 2));
