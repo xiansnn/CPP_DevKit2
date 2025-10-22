@@ -1,57 +1,59 @@
 <map id="ST7735::enable_command_pin" name="ST7735::enable_command_pin">
-<area shape="rect" id="Node000001" title="enable or disable the command mode (DC pin low or high)" alt="" coords="1026,352,1196,377"/>
-<area shape="rect" id="Node000002" href="$class_s_t7735.html#a352d97b36c32932b43f891bdf41fb371" title="send a command to the ST7735 device" alt="" coords="864,376,978,401"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1011,380,979,384,978,378,1010,374"/>
-<area shape="rect" id="Node000017" href="$class_s_t7735.html#a0f7130dfeabb86eb7373cb816a3cb1ad" title="send a list of command to the ST7735 device" alt="" coords="653,104,786,129"/>
-<area shape="poly" id="edge23_Node000001_Node000017" title=" " alt="" coords="1085,343,1038,301,974,247,897,192,815,144,782,132,784,127,817,139,900,187,977,243,1042,297,1088,339"/>
-<area shape="rect" id="Node000003" href="$classrtos___s_t7735.html#a5991340ec2e969c1cd7cf6a6b5af86f7" title="fill the internal ST7735 screen buffer with the given color. Default to BLACK, clear the internal buf..." alt="" coords="354,252,575,277"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="907,363,894,333,874,299,847,267,814,243,793,236,764,232,690,234,609,242,535,254,534,249,608,237,690,228,764,227,794,231,817,238,851,263,878,296,898,330,912,360"/>
-<area shape="rect" id="Node000004" href="$class_s_t7735.html#a6ec156ac373534b3d705175d1bc61501" title="fill the internal ST7735 screen buffer with the given color. Default to BLACK, clear the internal buf..." alt="" coords="366,301,563,326"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="884,371,851,354,815,342,751,328,685,320,563,314,563,308,685,314,752,323,816,336,853,350,887,366"/>
-<area shape="rect" id="Node000005" href="$class_s_t7735.html#ac237efe612c94e3149e6ad6f791ece0e" title="turn the display in sleep mode on/off" alt="" coords="655,549,784,574"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="910,416,875,478,849,511,817,539,785,554,783,549,814,534,845,507,870,475,906,414"/>
-<area shape="rect" id="Node000009" href="$class_s_t7735.html#a6c4b26d10f47ebe50e9f1120d36acbf4" title="send a buffer of data to the ST7735 device" alt="" coords="658,599,781,623"/>
-<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="915,416,903,455,883,501,855,548,817,588,800,598,782,605,780,600,798,593,814,584,851,545,878,499,898,453,910,415"/>
-<area shape="rect" id="Node000010" href="$class_s_t7735.html#a2eeb323da6a0df1a2e24e932e7ed0a2a" title="Set the display OFF object." alt="" coords="647,153,792,178"/>
-<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="909,362,896,325,877,281,849,237,814,198,783,181,785,176,817,194,853,233,881,278,901,323,914,360"/>
-<area shape="rect" id="Node000011" href="$class_s_t7735.html#a9df39c104f9b583b7e8ac2558c099724" title="Set the display ON object." alt="" coords="650,648,789,673"/>
-<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="919,416,909,464,890,523,861,584,841,613,817,637,791,652,788,648,814,633,837,609,856,582,886,521,904,463,913,415"/>
-<area shape="rect" id="Node000012" href="$class_s_t7735.html#a6723634407330ea90a23b9955c56f31b" title="_set display normal ON NORON , sleep 10ms" alt="" coords="643,500,796,525"/>
-<area shape="poly" id="edge12_Node000002_Node000012" title=" " alt="" coords="900,414,864,450,817,484,775,502,773,497,814,479,860,446,897,410"/>
-<area shape="rect" id="Node000013" href="$class_s_t7735.html#a5d45094a281b3051f2681711c76d11b4" title="set the RAM write addresses for the display" alt="" coords="623,351,816,375"/>
-<area shape="poly" id="edge14_Node000002_Node000013" title=" " alt="" coords="848,382,816,378,816,373,849,377"/>
-<area shape="rect" id="Node000014" href="$classrtos___s_t7735.html#ae773d6c1f1da93a13b5589a20fe4d899" title="A pure virtual member function. It transfers the pixel buffer to the a part of display screen buffer ..." alt="" coords="407,400,522,425"/>
-<area shape="poly" id="edge20_Node000002_Node000014" title=" " alt="" coords="849,395,523,412,523,407,848,389"/>
-<area shape="rect" id="Node000015" href="$class_s_t7735.html#a748040c220a93cf6e69e1b486e50f198" title="A pure virtual member function. It transfers the pixel buffer to the a part of display screen buffer ..." alt="" coords="420,451,510,475"/>
-<area shape="poly" id="edge21_Node000002_Node000015" title=" " alt="" coords="849,406,816,412,511,460,510,454,815,407,848,401"/>
-<area shape="rect" id="Node000016" href="$class_s_t7735.html#aa9e3a290aba1c4e846625c6508a9aa27" title="perform a software reset of the display" alt="" coords="662,252,777,277"/>
-<area shape="poly" id="edge22_Node000002_Node000016" title=" " alt="" coords="897,366,860,331,814,297,773,280,775,275,817,293,864,327,900,363"/>
-<area shape="rect" id="Node000006" href="$class_s_t7735.html#ae3756f2b5a896be7a93e765a5fc88bfa" title="wake up the device from sleep mode" alt="" coords="396,549,534,574"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="640,564,534,564,534,559,640,559"/>
-<area shape="rect" id="Node000007" href="$class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8" title="Construct a new ST7735 object." alt="" coords="205,203,306,227"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="380,551,352,533,322,496,298,454,281,410,269,364,257,283,254,228,259,227,262,282,274,363,286,408,303,452,326,493,356,529,382,546"/>
-<area shape="rect" id="Node000008" href="$classrtos___s_t7735.html#a66cd3316fdb254d845f5decb6a8b9c36" title="Construct a new rtos_ST7735 object." alt="" coords="5,203,157,227"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="189,218,157,218,157,212,189,212"/>
-<area shape="poly" id="edge11_Node000011_Node000007" title=" " alt="" coords="634,669,566,667,491,656,453,645,417,631,383,612,352,587,332,559,315,517,286,410,266,302,256,228,261,227,271,301,291,409,320,515,337,557,356,584,386,607,419,626,455,640,492,651,566,662,634,664"/>
-<area shape="poly" id="edge13_Node000012_Node000007" title=" " alt="" coords="628,520,551,521,471,518,401,508,373,500,352,489,323,460,300,426,283,389,271,350,257,278,254,228,259,227,263,277,276,348,288,387,305,424,327,457,356,485,375,495,402,503,471,512,551,515,627,514"/>
-<area shape="poly" id="edge16_Node000013_Node000003" title=" " alt="" coords="683,345,632,318,574,292,533,280,535,275,576,287,635,313,685,340"/>
-<area shape="poly" id="edge17_Node000013_Node000004" title=" " alt="" coords="637,350,532,329,533,324,638,345"/>
-<area shape="poly" id="edge15_Node000013_Node000007" title=" " alt="" coords="615,380,553,382,486,378,417,365,353,340,320,316,293,285,260,229,265,227,297,282,323,312,355,335,419,360,486,373,553,377,615,375"/>
-<area shape="poly" id="edge18_Node000013_Node000014" title=" " alt="" coords="637,382,523,404,522,399,636,376"/>
-<area shape="poly" id="edge19_Node000013_Node000015" title=" " alt="" coords="685,386,635,413,576,439,511,457,510,452,574,434,632,408,683,381"/>
-<area shape="rect" id="Node000018" href="$class_s_t7735.html#afe905a4fe73161fd92df9549eb011f27" title="config framerate control" alt="" coords="368,5,561,30"/>
-<area shape="poly" id="edge24_Node000017_Node000018" title=" " alt="" coords="683,98,632,71,574,46,533,33,535,28,576,40,635,66,685,93"/>
-<area shape="rect" id="Node000019" href="$class_s_t7735.html#a123ced1154bf7ca33746901c661df520" title="column row address set CASET , [0x00,0x01,0x00, width&#45;1] RASET , [0x00,0x01,0x00, height&#45;1] we start ..." alt="" coords="397,55,532,79"/>
-<area shape="poly" id="edge26_Node000017_Node000019" title=" " alt="" coords="637,103,532,83,533,77,638,98"/>
-<area shape="rect" id="Node000020" href="$class_s_t7735.html#aef1da358d04fdc120d2cdf0cfcd40fd3" title="config display inversion control" alt="" coords="374,104,555,129"/>
-<area shape="poly" id="edge28_Node000017_Node000020" title=" " alt="" coords="638,119,555,119,555,114,638,114"/>
-<area shape="rect" id="Node000021" href="$class_s_t7735.html#aadf42de089dbf57671063fb8632aad43" title="config power control" alt="" coords="380,153,549,178"/>
-<area shape="poly" id="edge30_Node000017_Node000021" title=" " alt="" coords="638,135,533,155,532,150,637,129"/>
-<area shape="rect" id="Node000022" href="$class_s_t7735.html#a87c2c59fc30094c1bd8f5b6bc41d2618" title="set the actual position of the display" alt="" coords="376,203,553,227"/>
-<area shape="poly" id="edge32_Node000017_Node000022" title=" " alt="" coords="640,137,625,144,610,155,602,167,592,180,577,192,547,205,545,200,574,187,588,176,597,164,607,152,622,139,637,132"/>
-<area shape="poly" id="edge25_Node000018_Node000007" title=" " alt="" coords="365,39,356,45,336,62,319,83,292,128,273,171,263,203,257,201,268,169,287,125,315,80,332,59,352,41,362,35"/>
-<area shape="poly" id="edge27_Node000019_Node000007" title=" " alt="" coords="383,82,355,95,325,120,299,150,265,204,261,201,294,147,321,116,353,90,381,77"/>
-<area shape="poly" id="edge29_Node000020_Node000007" title=" " alt="" coords="375,136,355,144,308,174,272,204,268,200,305,169,353,139,373,131"/>
-<area shape="poly" id="edge31_Node000021_Node000007" title=" " alt="" coords="393,185,355,194,307,205,306,200,353,188,391,179"/>
-<area shape="poly" id="edge33_Node000022_Node000007" title=" " alt="" coords="361,218,306,218,306,212,361,212"/>
+<area shape="rect" id="Node000001" title="enable or disable the command mode (DC pin low or high)" alt="" coords="1142,425,1312,449"/>
+<area shape="rect" id="Node000002" href="$class_s_t7735.html#a352d97b36c32932b43f891bdf41fb371" title="send a command to the ST7735 device" alt="" coords="980,277,1094,301"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1196,417,1052,304,1056,299,1200,413"/>
+<area shape="rect" id="Node000018" href="$class_s_t7735.html#a0f7130dfeabb86eb7373cb816a3cb1ad" title="send a list of command to the ST7735 device" alt="" coords="769,621,902,645"/>
+<area shape="poly" id="edge24_Node000001_Node000018" title=" " alt="" coords="1188,459,864,622,861,618,1185,454"/>
+<area shape="rect" id="Node000003" href="$classrtos___s_t7735.html#a5991340ec2e969c1cd7cf6a6b5af86f7" title="fill the internal ST7735 screen buffer with the given color. Default to BLACK, clear the internal buf..." alt="" coords="470,78,691,103"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1028,262,1017,221,998,174,970,128,952,109,930,93,893,75,852,63,810,58,768,57,688,66,624,80,623,75,687,61,767,52,810,53,853,58,894,70,933,88,955,105,974,125,1003,172,1022,220,1033,260"/>
+<area shape="rect" id="Node000004" href="$class_s_t7735.html#a6ec156ac373534b3d705175d1bc61501" title="fill the internal ST7735 screen buffer with the given color. Default to BLACK, clear the internal buf..." alt="" coords="482,201,679,225"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="982,274,931,261,800,238,679,224,679,219,801,233,932,256,983,269"/>
+<area shape="rect" id="Node000005" href="$class_s_t7735.html#ac237efe612c94e3149e6ad6f791ece0e" title="turn the display in sleep mode on/off" alt="" coords="771,498,900,523"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="1031,317,1019,356,999,401,971,448,933,487,901,504,899,499,930,483,966,444,994,399,1014,354,1026,316"/>
+<area shape="rect" id="Node000009" href="$class_s_t7735.html#a6c4b26d10f47ebe50e9f1120d36acbf4" title="send a buffer of data to the ST7735 device" alt="" coords="774,301,897,325"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="965,300,898,308,897,303,964,295"/>
+<area shape="rect" id="Node000010" href="$class_s_t7735.html#a2eeb323da6a0df1a2e24e932e7ed0a2a" title="Set the display OFF object." alt="" coords="763,350,908,375"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="998,311,933,339,892,352,891,347,931,334,996,306"/>
+<area shape="rect" id="Node000011" href="$class_s_t7735.html#a9df39c104f9b583b7e8ac2558c099724" title="Set the display ON object." alt="" coords="766,399,905,424"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="1018,315,981,353,933,389,903,401,901,396,930,384,978,349,1014,311"/>
+<area shape="rect" id="Node000012" href="$class_s_t7735.html#a6723634407330ea90a23b9955c56f31b" title="_set display normal ON NORON , sleep 10ms" alt="" coords="759,449,912,473"/>
+<area shape="poly" id="edge12_Node000002_Node000012" title=" " alt="" coords="1026,317,990,378,964,410,933,438,909,450,906,446,930,433,961,407,986,375,1021,314"/>
+<area shape="rect" id="Node000013" href="$class_s_t7735.html#a5d45094a281b3051f2681711c76d11b4" title="set the RAM write addresses for the display" alt="" coords="739,151,932,176"/>
+<area shape="poly" id="edge14_Node000002_Node000013" title=" " alt="" coords="1013,267,976,231,930,197,889,179,891,174,933,192,980,227,1016,263"/>
+<area shape="rect" id="Node000014" href="$classrtos___s_t7735.html#ae773d6c1f1da93a13b5589a20fe4d899" title="A pure virtual member function. It transfers the pixel buffer to the a part of display screen buffer ..." alt="" coords="523,15,638,40"/>
+<area shape="poly" id="edge21_Node000002_Node000014" title=" " alt="" coords="1030,262,1021,216,1003,159,974,102,954,77,930,56,896,37,859,23,820,14,780,10,704,10,639,18,638,13,704,5,781,4,821,9,860,18,898,32,933,52,958,73,978,99,1008,157,1026,214,1035,261"/>
+<area shape="rect" id="Node000016" href="$class_s_t7735.html#a748040c220a93cf6e69e1b486e50f198" title="A pure virtual member function. It transfers the pixel buffer to the a part of display screen buffer ..." alt="" coords="536,250,626,275"/>
+<area shape="poly" id="edge22_Node000002_Node000016" title=" " alt="" coords="964,287,626,268,627,262,964,282"/>
+<area shape="rect" id="Node000017" href="$class_s_t7735.html#aa9e3a290aba1c4e846625c6508a9aa27" title="perform a software reset of the display" alt="" coords="778,102,893,127"/>
+<area shape="poly" id="edge23_Node000002_Node000017" title=" " alt="" coords="1022,264,987,202,961,169,930,142,912,132,892,125,894,120,914,127,933,137,965,166,991,199,1027,261"/>
+<area shape="rect" id="Node000006" href="$class_s_t7735.html#ae3756f2b5a896be7a93e765a5fc88bfa" title="wake up the device from sleep mode" alt="" coords="512,498,650,523"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="756,513,650,513,650,508,756,508"/>
+<area shape="rect" id="Node000007" href="$class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8" title="Construct a new ST7735 object." alt="" coords="263,547,364,572"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="497,528,365,553,364,548,496,523"/>
+<area shape="rect" id="Node000008" href="$classrtos___s_t7735.html#a66cd3316fdb254d845f5decb6a8b9c36" title="Construct a new rtos_ST7735 object." alt="" coords="5,547,157,572"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="247,562,157,562,157,557,247,557"/>
+<area shape="poly" id="edge11_Node000011_Node000007" title=" " alt="" coords="751,413,688,416,617,423,543,436,471,457,428,477,388,502,330,549,327,545,385,498,426,472,469,452,541,431,616,417,687,410,750,408"/>
+<area shape="poly" id="edge13_Node000012_Node000007" title=" " alt="" coords="744,461,613,466,541,474,471,489,432,501,396,517,337,549,334,544,393,513,431,496,469,484,540,469,613,460,744,455"/>
+<area shape="poly" id="edge16_Node000013_Node000003" title=" " alt="" coords="769,149,739,141,622,106,623,101,740,136,770,144"/>
+<area shape="poly" id="edge17_Node000013_Node000004" title=" " alt="" coords="754,182,649,203,648,197,753,177"/>
+<area shape="poly" id="edge15_Node000013_Node000007" title=" " alt="" coords="763,151,696,143,619,143,580,148,542,157,505,171,472,191,429,230,395,277,369,329,350,382,336,434,326,481,318,547,313,547,321,480,330,433,344,381,364,327,391,274,425,226,468,187,503,167,540,152,579,143,619,138,696,138,763,146"/>
+<area shape="poly" id="edge18_Node000013_Node000014" title=" " alt="" coords="748,147,738,140,721,122,713,104,705,86,690,68,665,53,638,43,640,38,667,49,693,64,710,83,717,102,725,119,741,136,751,142"/>
+<area shape="poly" id="edge20_Node000013_Node000016" title=" " alt="" coords="801,187,751,214,692,239,627,257,626,252,690,234,748,209,799,182"/>
+<area shape="rect" id="Node000015" href="$classrtos___s_t7735.html#a5dc7c24ffcafc6431e07acd61a025bab" title="Show data from the display queue." alt="" coords="205,15,422,40"/>
+<area shape="poly" id="edge19_Node000014_Node000015" title=" " alt="" coords="507,30,423,30,423,25,507,25"/>
+<area shape="rect" id="Node000019" href="$class_s_t7735.html#afe905a4fe73161fd92df9549eb011f27" title="config framerate control" alt="" coords="484,597,677,621"/>
+<area shape="poly" id="edge25_Node000018_Node000019" title=" " alt="" coords="753,628,677,621,677,615,754,623"/>
+<area shape="rect" id="Node000020" href="$class_s_t7735.html#a123ced1154bf7ca33746901c661df520" title="column row address set CASET , [0x00,0x01,0x00, width&#45;1] RASET , [0x00,0x01,0x00, height&#45;1] we start ..." alt="" coords="513,646,648,671"/>
+<area shape="poly" id="edge27_Node000018_Node000020" title=" " alt="" coords="754,644,649,654,648,649,753,638"/>
+<area shape="rect" id="Node000021" href="$class_s_t7735.html#aef1da358d04fdc120d2cdf0cfcd40fd3" title="config display inversion control" alt="" coords="490,695,671,720"/>
+<area shape="poly" id="edge29_Node000018_Node000021" title=" " alt="" coords="786,654,692,685,644,697,642,692,691,680,785,649"/>
+<area shape="rect" id="Node000022" href="$class_s_t7735.html#aadf42de089dbf57671063fb8632aad43" title="config power control" alt="" coords="496,745,665,769"/>
+<area shape="poly" id="edge31_Node000018_Node000022" title=" " alt="" coords="810,657,758,697,692,734,656,747,654,742,690,729,755,692,807,653"/>
+<area shape="rect" id="Node000023" href="$class_s_t7735.html#a87c2c59fc30094c1bd8f5b6bc41d2618" title="set the actual position of the display" alt="" coords="492,547,669,572"/>
+<area shape="poly" id="edge33_Node000018_Node000023" title=" " alt="" coords="784,617,691,588,642,575,643,570,692,582,785,612"/>
+<area shape="poly" id="edge26_Node000019_Node000007" title=" " alt="" coords="494,596,364,572,365,566,495,591"/>
+<area shape="poly" id="edge28_Node000020_Node000007" title=" " alt="" coords="498,644,469,635,396,605,336,575,339,570,398,600,471,630,499,639"/>
+<area shape="poly" id="edge30_Node000021_Node000007" title=" " alt="" coords="488,693,469,685,424,659,383,628,325,574,328,570,387,624,427,654,471,680,490,688"/>
+<area shape="poly" id="edge32_Node000022_Node000007" title=" " alt="" coords="483,741,469,734,418,696,375,650,342,607,320,574,324,571,346,603,379,647,421,692,471,729,485,736"/>
+<area shape="poly" id="edge34_Node000023_Node000007" title=" " alt="" coords="476,562,364,562,364,557,476,557"/>
 </map>

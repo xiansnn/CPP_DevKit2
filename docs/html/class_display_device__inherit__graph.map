@@ -8,8 +8,8 @@
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="483,293,447,360,443,358,478,290"/>
 <area shape="rect" id="Node000005" href="$class_s_t7735.html" title="ST7735 driven TFT color display device." alt="" coords="535,336,993,995"/>
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="567,290,591,335,587,338,563,293"/>
-<area shape="rect" id="Node000004" href="$classrtos___s_s_d1306.html" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,1043,549,1197"/>
+<area shape="rect" id="Node000004" href="$classrtos___s_s_d1306.html" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,1043,549,1216"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="282,987,281,1043,276,1043,277,987"/>
-<area shape="rect" id="Node000006" href="$classrtos___s_t7735.html" title="RTOS version of the ST7735 display device." alt="" coords="573,1061,963,1179"/>
+<area shape="rect" id="Node000006" href="$classrtos___s_t7735.html" title="RTOS version of the ST7735 display device." alt="" coords="573,1061,963,1197"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="770,1010,770,1062,765,1062,764,1010"/>
 </map>

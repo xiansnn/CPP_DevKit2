@@ -73,7 +73,6 @@ var hierarchy =
     [ "struct_RenderArea", "structstruct___render_area.html", null ],
     [ "struct_rtosConfigSwitchButton", "structstruct__rtos_config_switch_button.html", null ],
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", null ],
-    [ "struct_SSD1306DataToShow", "structstruct___s_s_d1306_data_to_show.html", null ],
     [ "struct_SwitchButtonIRQData", "structstruct___switch_button_i_r_q_data.html", null ],
     [ "struct_TX_DataQueueSPI", "structstruct___t_x___data_queue_s_p_i.html", null ],
     [ "SwitchButton", "class_switch_button.html", [

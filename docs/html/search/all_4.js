@@ -7,9 +7,8 @@ var searchData=
   ['actuator_4',['&quot;Actuator&quot;',['../group__actuator.html',1,'']]],
   ['add_5fmanaged_5fmodel_5',['add_managed_model',['../class_u_i_model_manager.html#a24dec688218673e7d38a5a6cfaa305ad',1,'UIModelManager']]],
   ['add_5fwidget_6',['add_widget',['../class_widget.html#a6d08d01ec5ea290b39ae26963ae7e460',1,'Widget']]],
-  ['addressing_5fmode_7',['addressing_mode',['../structstruct___s_s_d1306_data_to_show.html#a543933ea794e970f0481304943164c9b',1,'struct_SSD1306DataToShow']]],
-  ['anchor_5fx_8',['anchor_x',['../structstruct___data_to_show.html#aeec0bc84cc4ffbd8ff885251c28425ee',1,'struct_DataToShow']]],
-  ['anchor_5fy_9',['anchor_y',['../structstruct___data_to_show.html#aaa60f5aef5d64667dd16bff197563c8e',1,'struct_DataToShow']]],
-  ['attached_5fwidgets_10',['attached_widgets',['../class_model.html#a764d7bc0d5d7ce1cb6c5cd27410f7425',1,'Model']]],
-  ['auto_5fnext_5fchar_11',['auto_next_char',['../structstruct___config_text_widget.html#af2a22b977a5c017e07e3a5dc11d9f46c',1,'struct_ConfigTextWidget']]]
+  ['anchor_5fx_7',['anchor_x',['../structstruct___data_to_show.html#aeec0bc84cc4ffbd8ff885251c28425ee',1,'struct_DataToShow']]],
+  ['anchor_5fy_8',['anchor_y',['../structstruct___data_to_show.html#aaa60f5aef5d64667dd16bff197563c8e',1,'struct_DataToShow']]],
+  ['attached_5fwidgets_9',['attached_widgets',['../class_model.html#a764d7bc0d5d7ce1cb6c5cd27410f7425',1,'Model']]],
+  ['auto_5fnext_5fchar_10',['auto_next_char',['../structstruct___config_text_widget.html#af2a22b977a5c017e07e3a5dc11d9f46c',1,'struct_ConfigTextWidget']]]
 ];

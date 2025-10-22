@@ -59,7 +59,6 @@ var annotated_dup =
     [ "struct_RenderArea", "structstruct___render_area.html", "structstruct___render_area" ],
     [ "struct_rtosConfigSwitchButton", "structstruct__rtos_config_switch_button.html", "structstruct__rtos_config_switch_button" ],
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", "structstruct___slave_memory" ],
-    [ "struct_SSD1306DataToShow", "structstruct___s_s_d1306_data_to_show.html", "structstruct___s_s_d1306_data_to_show" ],
     [ "struct_SwitchButtonIRQData", "structstruct___switch_button_i_r_q_data.html", "structstruct___switch_button_i_r_q_data" ],
     [ "struct_TX_DataQueueSPI", "structstruct___t_x___data_queue_s_p_i.html", "structstruct___t_x___data_queue_s_p_i" ],
     [ "SwitchButton", "class_switch_button.html", "class_switch_button" ],

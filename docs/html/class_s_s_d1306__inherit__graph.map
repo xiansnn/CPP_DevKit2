@@ -1,6 +1,6 @@
 <map id="SSD1306" name="SSD1306">
 <area shape="rect" id="Node000001" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="53,317,501,931"/>
-<area shape="rect" id="Node000004" href="$classrtos___s_s_d1306.html" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,979,549,1133"/>
+<area shape="rect" id="Node000004" href="$classrtos___s_s_d1306.html" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,979,549,1152"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="280,946,280,979,275,979,275,946"/>
 <area shape="rect" id="Node000002" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="39,133,516,269"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="280,284,280,318,275,318,275,284"/>

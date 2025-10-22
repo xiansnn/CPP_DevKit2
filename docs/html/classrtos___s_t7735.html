@@ -113,7 +113,7 @@ Inheritance diagram for rtos_ST7735:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___s_t7735__inherit__graph.png" border="0" usemap="#artos___s_t7735_inherit__map" alt="Inheritance graph"/></div>
 <map name="artos___s_t7735_inherit__map" id="artos___s_t7735_inherit__map">
-<area shape="rect" title="RTOS version of the ST7735 display device." alt="" coords="49,1024,439,1141"/>
+<area shape="rect" title="RTOS version of the ST7735 display device." alt="" coords="49,1024,439,1160"/>
 <area shape="rect" href="class_s_t7735.html" title="ST7735 driven TFT color display device." alt="" coords="15,317,473,976"/>
 <area shape="poly" title=" " alt="" coords="247,991,247,1024,241,1024,241,991"/>
 <area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,133,483,269"/>
@@ -127,7 +127,7 @@ Collaboration diagram for rtos_ST7735:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___s_t7735__coll__graph.png" border="0" usemap="#artos___s_t7735_coll__map" alt="Collaboration graph"/></div>
 <map name="artos___s_t7735_coll__map" id="artos___s_t7735_coll__map">
-<area shape="rect" title="RTOS version of the ST7735 display device." alt="" coords="269,1115,659,1233"/>
+<area shape="rect" title="RTOS version of the ST7735 display device." alt="" coords="269,1115,659,1251"/>
 <area shape="rect" href="class_s_t7735.html" title="ST7735 driven TFT color display device." alt="" coords="235,426,693,1066"/>
 <area shape="poly" title=" " alt="" coords="467,1081,467,1116,461,1116,461,1081"/>
 <area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,181,483,317"/>
@@ -144,6 +144,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a66cd3316fdb254d845f5decb6a8b9c36" id="r_a66cd3316fdb254d845f5decb6a8b9c36"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66cd3316fdb254d845f5decb6a8b9c36">rtos_ST7735</a> (<a class="el" href="classrtos___h_w___s_p_i___master.html">rtos_HW_SPI_Master</a> *<a class="el" href="class_s_t7735.html#a406c961d135a3bb54435853dc78ddf03">spi</a>, <a class="el" href="structstruct___config_s_t7735.html">struct_ConfigST7735</a> device_config)</td></tr>
 <tr class="memdesc:a66cd3316fdb254d845f5decb6a8b9c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classrtos___s_t7735.html" title="RTOS version of the ST7735 display device.">rtos_ST7735</a> object.  <br /></td></tr>
 <tr class="separator:a66cd3316fdb254d845f5decb6a8b9c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dc7c24ffcafc6431e07acd61a025bab" id="r_a5dc7c24ffcafc6431e07acd61a025bab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5dc7c24ffcafc6431e07acd61a025bab">show_from_display_queue</a> (<a class="el" href="structstruct___data_to_show.html">struct_DataToShow</a> data_t_show)</td></tr>
+<tr class="memdesc:a5dc7c24ffcafc6431e07acd61a025bab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Show data from the display queue.  <br /></td></tr>
+<tr class="separator:a5dc7c24ffcafc6431e07acd61a025bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae773d6c1f1da93a13b5589a20fe4d899" id="r_ae773d6c1f1da93a13b5589a20fe4d899"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae773d6c1f1da93a13b5589a20fe4d899">show</a> (<a class="el" href="class_canvas.html">Canvas</a> *canvas, const uint8_t anchor_x, const uint8_t anchor_y)</td></tr>
 <tr class="memdesc:ae773d6c1f1da93a13b5589a20fe4d899"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual member function. It transfers the pixel buffer to the a part of display screen buffer starting at the (anchor_x, anchor_y) coordinates of the screen , expressed in pixel. This method takes into account the specific addressing scheme and memory structure of the actual display device.  <br /></td></tr>
 <tr class="separator:ae773d6c1f1da93a13b5589a20fe4d899"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -483,6 +486,58 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="class_s_t7735.html#abbc613fffe458c261881c56d8be0afa7" title="enable or disable the command mode (DC pin low or high)" alt="" coords="571,5,742,30"/>
 <area shape="poly" title=" " alt="" coords="524,15,555,15,555,20,524,20"/>
 <area shape="poly" title=" " alt="" coords="361,28,393,24,394,29,362,33"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classrtos___s_t7735_ae773d6c1f1da93a13b5589a20fe4d899_icgraph.png" border="0" usemap="#aclassrtos___s_t7735_ae773d6c1f1da93a13b5589a20fe4d899_icgraph" alt=""/></div>
+<map name="aclassrtos___s_t7735_ae773d6c1f1da93a13b5589a20fe4d899_icgraph" id="aclassrtos___s_t7735_ae773d6c1f1da93a13b5589a20fe4d899_icgraph">
+<area shape="rect" title="A pure virtual member function. It transfers the pixel buffer to the a part of display screen buffer ..." alt="" coords="271,5,386,30"/>
+<area shape="rect" href="classrtos___s_t7735.html#a5dc7c24ffcafc6431e07acd61a025bab" title="Show data from the display queue." alt="" coords="5,5,223,30"/>
+<area shape="poly" title=" " alt="" coords="255,20,223,20,223,15,255,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5dc7c24ffcafc6431e07acd61a025bab" name="a5dc7c24ffcafc6431e07acd61a025bab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dc7c24ffcafc6431e07acd61a025bab">&#9670;&#160;</a></span>show_from_display_queue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtos_ST7735::show_from_display_queue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstruct___data_to_show.html">struct_DataToShow</a></td>          <td class="paramname"><span class="paramname"><em>data_t_show</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Show data from the display queue. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data_t_show</td><td>The data to display. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classrtos___s_t7735_a5dc7c24ffcafc6431e07acd61a025bab_cgraph.png" border="0" usemap="#aclassrtos___s_t7735_a5dc7c24ffcafc6431e07acd61a025bab_cgraph" alt=""/></div>
+<map name="aclassrtos___s_t7735_a5dc7c24ffcafc6431e07acd61a025bab_cgraph" id="aclassrtos___s_t7735_a5dc7c24ffcafc6431e07acd61a025bab_cgraph">
+<area shape="rect" title="Show data from the display queue." alt="" coords="5,5,223,30"/>
+<area shape="rect" href="classrtos___s_t7735.html#ae773d6c1f1da93a13b5589a20fe4d899" title="A pure virtual member function. It transfers the pixel buffer to the a part of display screen buffer ..." alt="" coords="271,5,386,30"/>
+<area shape="poly" title=" " alt="" coords="223,15,255,15,255,20,223,20"/>
+<area shape="rect" href="class_s_t7735.html#a352d97b36c32932b43f891bdf41fb371" title="send a command to the ST7735 device" alt="" coords="674,5,789,30"/>
+<area shape="poly" title=" " alt="" coords="387,15,659,15,659,20,387,20"/>
+<area shape="rect" href="class_s_t7735.html#a5d45094a281b3051f2681711c76d11b4" title="set the RAM write addresses for the display" alt="" coords="434,29,626,54"/>
+<area shape="poly" title=" " alt="" coords="387,22,419,26,418,31,386,27"/>
+<area shape="rect" href="class_s_t7735.html#abbc613fffe458c261881c56d8be0afa7" title="enable or disable the command mode (DC pin low or high)" alt="" coords="837,5,1007,30"/>
+<area shape="poly" title=" " alt="" coords="789,15,821,15,821,20,789,20"/>
+<area shape="poly" title=" " alt="" coords="626,28,659,24,659,29,627,33"/>
 </map>
 </div>
 
