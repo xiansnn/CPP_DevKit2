@@ -1,7 +1,7 @@
 
 #include "rtos_hw_i2c.h"
 
-// #define SHOW_PROBE
+#define SHOW_PROBE
 
 #ifdef SHOW_PROBE
 #include "utilities/probe/probe.h"
