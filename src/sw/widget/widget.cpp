@@ -51,7 +51,7 @@ void GraphicWidget::show()
 
 void GraphicWidget::send_image_to_DisplayGateKeeper(QueueHandle_t display_queue, SemaphoreHandle_t sending_done)
 {
-    this->data_to_display.command = DisplayCommand::show_image;
+    this->data_to_display.command = DisplayCommand::SHOW_IMAGE;
     xQueueSend(display_queue, &(this->data_to_display), portMAX_DELAY); // take 65ms but used fully the CPU
     xSemaphoreTake(sending_done, portMAX_DELAY);
 }

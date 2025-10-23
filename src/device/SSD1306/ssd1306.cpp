@@ -295,7 +295,7 @@ void rtos_SSD1306::clear_device_screen_buffer(uint8_t addressing_mode)
 void rtos_SSD1306::send_clear_device_command(QueueHandle_t display_queue, SemaphoreHandle_t sending_done)
 {
     struct_DataToShow data_to_display;
-    data_to_display.command = DisplayCommand::clear_screen;
+    data_to_display.command = DisplayCommand::CLEAR_SCREEN;
     data_to_display.display = this;
     xQueueSend(display_queue, &data_to_display, portMAX_DELAY); // take 65ms but used fully the CPU
     xSemaphoreTake(sending_done, portMAX_DELAY);

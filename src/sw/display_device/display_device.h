@@ -67,16 +67,16 @@ public:
 /// @brief Enumeration of display commands for display task management
 enum class DisplayCommand {
     /// @brief Command to clear the screen
-    clear_screen,
+    CLEAR_SCREEN,
     /// @brief Command to show an image
-    show_image
+    SHOW_IMAGE
 };
 
 /// @brief data structure used to queue data to send to the display task
 struct struct_DataToShow
 {
     /// @brief the command to be executed by the display task
-    DisplayCommand command{DisplayCommand::show_image};
+    DisplayCommand command{DisplayCommand::SHOW_IMAGE};
     /// @brief the display device
     GraphicDisplayDevice *display = nullptr;
     /// @brief the canvas to be displayed

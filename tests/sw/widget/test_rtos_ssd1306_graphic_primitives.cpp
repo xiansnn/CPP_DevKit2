@@ -315,10 +315,10 @@ void display_gate_keeper_task(void *param)
         p4.hi();
         switch (received_data_to_show.command)
         {
-        case DisplayCommand::show_image:
+        case DisplayCommand::SHOW_IMAGE:
             ((rtos_SSD1306 *)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
             break;
-        case DisplayCommand::clear_screen:
+        case DisplayCommand::CLEAR_SCREEN:
             ((rtos_SSD1306 *)received_data_to_show.display)->clear_device_screen_buffer();
             break;
         default:
