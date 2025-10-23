@@ -2,7 +2,7 @@ var display__device_8h =
 [
     [ "struct_DataToShow", "structstruct___data_to_show.html", "structstruct___data_to_show" ],
     [ "DisplayCommand", "display__device_8h.html#ab0433629f57aaf649227bc0b74f0e3be", [
-      [ "clear_screen", "display__device_8h.html#ab0433629f57aaf649227bc0b74f0e3bead856c241502929a5b0a771051dab1caa", null ],
-      [ "show_image", "display__device_8h.html#ab0433629f57aaf649227bc0b74f0e3beacc615ac061cdc2959b681d26bd65728f", null ]
+      [ "CLEAR_SCREEN", "display__device_8h.html#ab0433629f57aaf649227bc0b74f0e3beaff569fcb394b1691c99f7ce67c6febfa", null ],
+      [ "SHOW_IMAGE", "display__device_8h.html#ab0433629f57aaf649227bc0b74f0e3bea8a575cfcbbe294bd5ed7e7dc5a1d054e", null ]
     ] ]
 ];
