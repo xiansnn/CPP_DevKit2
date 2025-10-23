@@ -145,8 +145,10 @@ void SSD1306::show_render_area(uint8_t *data_buffer, const struct_RenderArea scr
     }
 }
 
-void SSD1306::check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg)
+void SSD1306::check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format)
 {
+    // check canvas format
+    assert(canvas_format == CanvasFormat::MONO_VLSB);
     // check limit of screen
     assert(framebuffer_cfg.widget_anchor_y + framebuffer_cfg.pixel_frame_height <= SSD1306_HEIGHT);
     assert(framebuffer_cfg.widget_anchor_x + framebuffer_cfg.pixel_frame_width <= SSD1306_WIDTH);

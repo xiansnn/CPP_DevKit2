@@ -164,7 +164,7 @@ public:
     /// @brief turn the display in sleep mode on/off
     /// @param enable
     void enable_sleep(bool enable);
-    void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg);
+    void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format);
 
     /// @brief fill the internal ST7735 screen buffer with the given color.
     /// Default to BLACK, clear the internal buffer

@@ -53,7 +53,6 @@ void GraphicWidget::send_to_DisplayGateKeeper(QueueHandle_t display_queue, Semap
 {
     xQueueSend(display_queue, &(this->data_to_display), portMAX_DELAY); // take 65ms but used fully the CPU
     xSemaphoreTake(sending_done, portMAX_DELAY);
-
 }
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
@@ -98,7 +97,7 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     data_to_display.anchor_x = this->widget_anchor_x;
     data_to_display.anchor_y = this->widget_anchor_y;
 
-    ((GraphicDisplayDevice *)display_device)->check_display_device_compatibility(get_graph_frame_config());
+    ((GraphicDisplayDevice *)display_device)->check_display_device_compatibility(get_graph_frame_config(), canvas_format);
 }
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
@@ -157,7 +156,7 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     data_to_display.anchor_x = this->widget_anchor_x;
     data_to_display.anchor_y = this->widget_anchor_y;
 
-    ((GraphicDisplayDevice *)display_device)->check_display_device_compatibility(get_graph_frame_config());
+    ((GraphicDisplayDevice *)display_device)->check_display_device_compatibility(get_graph_frame_config(), canvas_format);
 }
 
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
@@ -205,7 +204,7 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     data_to_display.anchor_x = this->widget_anchor_x;
     data_to_display.anchor_y = this->widget_anchor_y;
 
-    ((GraphicDisplayDevice *)display_device)->check_display_device_compatibility(get_graph_frame_config());
+    ((GraphicDisplayDevice *)display_device)->check_display_device_compatibility(get_graph_frame_config(), canvas_format);
 }
 
 GraphicWidget::~GraphicWidget()

@@ -169,7 +169,7 @@ protected:
     virtual void send_buf(uint8_t buf[], size_t buflen);
 
 public:
-    void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg);
+    void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format);
 
     /**
      * @brief

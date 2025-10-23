@@ -13,8 +13,6 @@
 #include "pico/stdlib.h"
 #include "sw/widget/canvas.h"
 
-
-
 /// @brief A generic class for all display device
 /// \ingroup view
 class DisplayDevice
@@ -42,8 +40,7 @@ public:
      *
      * @param framebuffer_cfg the widget configuration data
      */
-    virtual void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg) = 0;
-    
+    virtual void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format) = 0;
 
     /**
      * @brief A pure virtual member function.
@@ -67,7 +64,6 @@ public:
 
     /// @brief Destroy the Display Device object
     virtual ~GraphicDisplayDevice();
-
 };
 
 /// @brief data structure used to queue data to send to the display task

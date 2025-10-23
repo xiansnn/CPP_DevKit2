@@ -464,8 +464,10 @@ void ST7735::set_RAM_write_addresses(uint8_t start_x, uint8_t start_y, size_t wi
     spi->single_write_16(device_end_y);
 }
 
-void ST7735::check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg)
+void ST7735::check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format)
 {
+    // check canvas format
+    assert(canvas_format != CanvasFormat::MONO_VLSB);
     // check limit of screen
     assert(framebuffer_cfg.widget_anchor_y + framebuffer_cfg.pixel_frame_height <= TFT_panel_height_in_pixel);
     assert(framebuffer_cfg.widget_anchor_x + framebuffer_cfg.pixel_frame_width <= TFT_panel_width_in_pixel);
