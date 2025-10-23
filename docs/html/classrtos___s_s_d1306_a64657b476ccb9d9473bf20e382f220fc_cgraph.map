@@ -1,0 +1,9 @@
+<map id="rtos_SSD1306::clear_device_screen_buffer" name="rtos_SSD1306::clear_device_screen_buffer">
+<area shape="rect" id="Node000001" title="write 0x00 directly into the device framebuffer (GDDRAM)." alt="" coords="5,31,234,55"/>
+<area shape="rect" id="Node000002" href="$class_s_s_d1306.html#a077e87e76e6c5ad59e2ad5ecd11e21fa" title="A static member function that converts the area we want to display into device specific parameters." alt="" coords="303,5,483,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,30,287,25,287,30,234,35"/>
+<area shape="rect" id="Node000003" href="$classrtos___s_s_d1306.html#a8bc4957ee0a73161bfc99ef061c12ad8" title="fill a pattern in the device framebuffer (GDDRAM). This is shown on display as soon as the GDDRAM buf..." alt="" coords="282,55,504,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="234,50,266,53,266,59,234,56"/>
+<area shape="rect" id="Node000004" href="$class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="552,55,673,79"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="505,64,536,64,536,70,505,70"/>
+</map>

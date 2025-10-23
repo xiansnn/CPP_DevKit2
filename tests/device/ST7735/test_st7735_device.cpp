@@ -21,7 +21,7 @@
 #include "device/ST7735/st7735.h"
 #include "sw/widget/widget.h"
 
-#define CANVAS_FORMAT CanvasFormat::RGB565
+#define CANVAS_FORMAT CanvasFormat::RGB_COLOR_INDEX_8b
 // #define ST7735_128x128
 #define ST7735_128x160
 
@@ -134,8 +134,8 @@ void test_screen_rotation(ST7735 *display, GraphicWidget *central_rectangle, Gra
     {
         cfg_st7735.rotation = static_cast<ST7735Rotation>(i);
         display->set_rotation_and_color(cfg_st7735);
-        corner_rectangle->fg_color = static_cast<ColorIndex>(i + 2);
-        corner_rectangle->draw_border(corner_rectangle->fg_color);
+        corner_rectangle->canvas->fg_color = static_cast<ColorIndex>(i + 2);
+        corner_rectangle->draw_border(corner_rectangle->canvas->fg_color);
         corner_rectangle->show();
     }
     sleep_ms(1000);

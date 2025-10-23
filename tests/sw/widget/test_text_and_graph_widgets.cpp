@@ -148,8 +148,8 @@ void my_corner_rectangle_widget::draw()
         int x1 = xc + radius * cos_roll;
         int y1 = yl + radius * sin_roll;
 
-        this->circle(radius, xc, yl, false, fg_color);
-        this->line(x0, y0, x1, y1, fg_color);
+        this->circle(radius, xc, yl, false, this->canvas->fg_color);
+        this->line(x0, y0, x1, y1, this->canvas->fg_color);
 
         draw_border();
         show();

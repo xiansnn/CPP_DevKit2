@@ -56,7 +56,7 @@
   * - View : supported by widgets, its mission is only to show the values, datas of the Model. Several widget can be attached to a Model, showing different data of a same data viewed by different way.
   * - Control : supported by any means (switch, rotary encoder, ...). It allow the User to change something in the Model.
   * 
-  * The Model maintains a flag that indicates when something has changes and must be viewed. This is a signal that triggs the efective (re)drawing of the display. Otherwise nothing happens, savin time of processing.
+  * The Model maintains a flag that indicates when something has changes and must be viewed. This is a signal that triggs the effective (re)drawing of the display. Otherwise nothing happens, saving time of processing.
   * \image html mvc_core.svg "Interrelations between Model-View(Widget)-Control"
 
   */

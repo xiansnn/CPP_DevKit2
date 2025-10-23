@@ -16,33 +16,12 @@
 #include "pico/stdlib.h"
 #include "FreeRTOS.h"
 #include "task.h"
+#include "queue.h"
 #include "semphr.h"
 #include "hardware/irq.h"
 
 /// @brief I2C max FIFO size (according to RP2040 datasheet)
 #define BURST_SIZE 16
-
-/// @brief Data structure for I2C TX queue
-struct struct_TX_DataQueueI2C
-{
-    /// @brief pointer to the data buffer to send
-    uint8_t *write_data;
-
-    /// @brief memory address in the slave device to write to
-    uint8_t mem_address;
-
-    /// @brief number of bytes to write
-    uint8_t write_data_length;
-};
-/// @brief Data structure for I2C RX queue
-struct struct_RX_DataQueueI2C
-{
-    /// @brief memory address in the slave device to read from
-    uint8_t mem_address;
-
-    /// @brief the size of the data to read
-    uint8_t read_data_length;
-};
 
 /// @brief This is a C++ wrapper for the original pico SDK i2c master API, adapted to FreeRTOS environment
 /// \ingroup hw
@@ -53,12 +32,10 @@ public:
     /// @brief the DMA channel used for I2C TX
     HW_DMA *tx_dma;
 
-    /// @brief the freeRTOS queue used to exchange data from a generator to the I2C TX task
-    QueueHandle_t i2c_tx_data_queue;
-
     /// @brief semaphore to signal the TX FIFO of I2C is empty
-    SemaphoreHandle_t i2c_tx_FIFO_empty; 
-
+    SemaphoreHandle_t i2c_tx_FIFO_empty;
+    /// @brief semaphore to protect access to the I2C bus
+    SemaphoreHandle_t i2c_access_mutex;
 
     /// @brief  Constructor of the class
     /// @param cfg  the configuration structure for the I2C master
@@ -67,7 +44,6 @@ public:
     /// @brief Destructor of the class
     ~rtos_HW_I2C_Master();
 
-
     /// @brief a function member to write a burst of data to a slave device, using DMA and FreeRTOS queue
     /// @param slave_address the 7-bit I2C slave address
     /// @param mem_addr the adresse to write in the slave peripheral
@@ -75,10 +51,20 @@ public:
     /// @param length the number of data to send
     /// @return struct_I2CXferResult code error
     struct_I2CXferResult burst_byte_write(uint8_t slave_address,
-                         uint8_t mem_addr,
-                         uint8_t *source_address,
-                         size_t length);
+                                          uint8_t mem_addr,
+                                          uint8_t *source_address,
+                                          size_t length);
 
+    /// @brief a function member to write a burst of data to a slave device, using DMA and FreeRTOS queue
+    /// @param slave_address the 7-bit I2C slave address
+    /// @param mem_addr the adresse to write in the slave peripheral
+    /// @param pattern the data to send
+    /// @param length the number of time te byte at sourcedata to send
+    /// @return 
+    struct_I2CXferResult repeat_byte_write(uint8_t slave_address,
+                                           uint8_t mem_addr,
+                                           uint8_t pattern,
+                                           size_t length);
 
     /**
      * @brief a convenient C++ member wrapper to read a block of data starting at a slave memory address, using DMA and FreeRTOS queue
@@ -89,9 +75,9 @@ public:
      * @return struct_I2CXferResult code error
      */
     struct_I2CXferResult burst_byte_read(uint8_t slave_address,
-                        uint8_t mem_address, 
-                        uint8_t *destination_address,
-                        size_t length);
+                                         uint8_t mem_address,
+                                         uint8_t *destination_address,
+                                         size_t length);
 
     /// @brief the I2C IRQ handler, to be called in the main program IRQ map
     void i2c_dma_isr();

@@ -30,7 +30,7 @@ void gpio_callback(uint gpio, uint32_t event)
     p1.lo();
 }
 
-rtosHC_SR04 ranging_device = rtosHC_SR04(TRIG_PIN, ECHO_PIN,
+rtos_HCSR04 ranging_device = rtos_HCSR04(TRIG_PIN, ECHO_PIN,
                 range_timer_queue,range_queue,
                 gpio_callback);
 

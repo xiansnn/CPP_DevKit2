@@ -1,0 +1,9 @@
+<map id="struct_SSD1306DataToShow" name="struct_SSD1306DataToShow">
+<area shape="rect" id="Node000001" title="data structure used to pass multiple parameters to the RTOS task that handles the display update" alt="" coords="329,370,479,450"/>
+<area shape="rect" id="Node000002" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,153,483,289"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="303,288,361,355,357,359,299,291"/>
+<area shape="rect" id="Node000003" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="192,5,296,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="247,100,247,153,241,153,241,100"/>
+<area shape="rect" id="Node000004" href="$structstruct___render_area.html" title="data used to compute the render area position in the display framebuffer reference,..." alt="" coords="507,135,621,308"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="510,294,497,310,453,359,449,356,493,306,505,291"/>
+</map>

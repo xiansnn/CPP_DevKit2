@@ -1,11 +1,11 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="Node000000" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,31,55,55"/>
 <area shape="rect" id="Node000001" href="$class_model_bargraph.html" title="the Model used by Bargraph GraphicWidget" alt="" coords="110,5,204,30"/>
-<area shape="poly" id="edge22_Node000000_Node000001" title=" " alt="" coords="70,32,109,24,110,30,71,38"/>
+<area shape="poly" id="edge23_Node000000_Node000001" title=" " alt="" coords="70,32,109,24,110,30,71,38"/>
 <area shape="rect" id="Node000002" href="$class_u_i_controlled_model.html" title="Class that adds UI Controller to the basic Model class." alt="" coords="103,55,211,79"/>
-<area shape="poly" id="edge23_Node000000_Node000002" title=" " alt="" coords="71,48,103,54,102,59,70,53"/>
+<area shape="poly" id="edge24_Node000000_Node000002" title=" " alt="" coords="71,48,103,54,102,59,70,53"/>
 <area shape="rect" id="Node000003" href="$class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of Model that have special feature such as a value that ca..." alt="" coords="259,55,422,79"/>
-<area shape="poly" id="edge24_Node000002_Node000003" title=" " alt="" coords="227,64,258,64,258,70,227,70"/>
+<area shape="poly" id="edge25_Node000002_Node000003" title=" " alt="" coords="227,64,258,64,258,70,227,70"/>
 <area shape="rect" id="Node000004" href="$class_u_i_model_manager.html" title="This is an Abstract class that is used to implement the manager of object on a screen." alt="" coords="470,55,573,79"/>
-<area shape="poly" id="edge25_Node000003_Node000004" title=" " alt="" coords="438,64,470,64,470,70,438,70"/>
+<area shape="poly" id="edge26_Node000003_Node000004" title=" " alt="" coords="438,64,470,64,470,70,438,70"/>
 </map>

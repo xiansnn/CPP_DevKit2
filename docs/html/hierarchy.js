@@ -14,14 +14,16 @@ var hierarchy =
     [ "DHT11", "class_d_h_t11.html", null ],
     [ "DisplayDevice", "class_display_device.html", [
       [ "GraphicDisplayDevice", "class_graphic_display_device.html", [
-        [ "SSD1306", "class_s_s_d1306.html", null ],
+        [ "SSD1306", "class_s_s_d1306.html", [
+          [ "rtos_SSD1306", "classrtos___s_s_d1306.html", null ]
+        ] ],
         [ "ST7735", "class_s_t7735.html", [
           [ "rtos_ST7735", "classrtos___s_t7735.html", null ]
         ] ]
       ] ],
       [ "PrinterDevice", "class_printer_device.html", null ]
     ] ],
-    [ "HC_SR04", "class_h_c___s_r04.html", null ],
+    [ "HCSR04", "class_h_c_s_r04.html", null ],
     [ "HW_DMA", "class_h_w___d_m_a.html", null ],
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", [
       [ "rtos_HW_I2C_Master", "classrtos___h_w___i2_c___master.html", null ]
@@ -43,10 +45,10 @@ var hierarchy =
     [ "Probe", "class_probe.html", null ],
     [ "PWM", "class_p_w_m.html", null ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],
-    [ "rtosDHT11", "classrtos_d_h_t11.html", null ],
-    [ "rtosHC_SR04", "classrtos_h_c___s_r04.html", null ],
-    [ "rtosSwitchButton", "classrtos_switch_button.html", [
-      [ "rtosRotaryEncoder", "classrtos_rotary_encoder.html", null ]
+    [ "rtos_DHT11", "classrtos___d_h_t11.html", null ],
+    [ "rtos_HCSR04", "classrtos___h_c_s_r04.html", null ],
+    [ "rtos_SwitchButton", "classrtos___switch_button.html", [
+      [ "rtos_RotaryEncoder", "classrtos___rotary_encoder.html", null ]
     ] ],
     [ "SG90", "class_s_g90.html", null ],
     [ "struct_ConfigGraphicWidget", "structstruct___config_graphic_widget.html", null ],
@@ -62,6 +64,7 @@ var hierarchy =
     [ "struct_ConfigSwitchButton", "structstruct___config_switch_button.html", null ],
     [ "struct_ConfigTextWidget", "structstruct___config_text_widget.html", null ],
     [ "struct_ControlEventData", "structstruct___control_event_data.html", null ],
+    [ "struct_DataToShow", "structstruct___data_to_show.html", null ],
     [ "struct_DHTReading", "structstruct___d_h_t_reading.html", null ],
     [ "struct_HCSR04IRQData", "structstruct___h_c_s_r04_i_r_q_data.html", null ],
     [ "struct_I2CXferResult", "structstruct___i2_c_xfer_result.html", null ],
@@ -69,11 +72,8 @@ var hierarchy =
     [ "struct_RawData", "structstruct___raw_data.html", null ],
     [ "struct_RenderArea", "structstruct___render_area.html", null ],
     [ "struct_rtosConfigSwitchButton", "structstruct__rtos_config_switch_button.html", null ],
-    [ "struct_RX_DataQueueI2C", "structstruct___r_x___data_queue_i2_c.html", null ],
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", null ],
-    [ "struct_ST7735_data_to_show", "structstruct___s_t7735__data__to__show.html", null ],
     [ "struct_SwitchButtonIRQData", "structstruct___switch_button_i_r_q_data.html", null ],
-    [ "struct_TX_DataQueueI2C", "structstruct___t_x___data_queue_i2_c.html", null ],
     [ "struct_TX_DataQueueSPI", "structstruct___t_x___data_queue_s_p_i.html", null ],
     [ "SwitchButton", "class_switch_button.html", [
       [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", [

@@ -132,9 +132,9 @@ public:
     /// @brief the actual format of the canvas
     CanvasFormat canvas_format;
     /// @brief a copy of the widget foreground color
-    ColorIndex canvas_fg_color;
+    ColorIndex fg_color;
     /// @brief a copy of the widget background color
-    ColorIndex canvas_bg_color;
+    ColorIndex bg_color;
 
     /// @brief Create a canvas buffer object
     virtual void create_canvas_buffer() = 0;

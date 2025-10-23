@@ -35,7 +35,7 @@ struct struct_DHTReading
  * @brief the Class manages the DHT11 humidity and temperature sensor
  * \ingroup sensor
  */
-class rtosDHT11
+class rtos_DHT11
 {
 private:
     /// @brief the GPIO connected to DHT11
@@ -48,8 +48,8 @@ public:
     /// @brief the function called by a RTOS periodic task 
     void read_from_dht();
 
-    /// @brief the constructor for rtosDHT11 object
+    /// @brief the constructor for rtos_DHT11 object
     /// @param gpio_in the gpio number connected the data pin
     /// @param dht_reading_ouput_queue the output queue that receives readings
-    rtosDHT11(uint gpio_in, QueueHandle_t dht_reading_ouput_queue);
+    rtos_DHT11(uint gpio_in, QueueHandle_t dht_reading_ouput_queue);
 };

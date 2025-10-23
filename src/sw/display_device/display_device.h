@@ -13,8 +13,6 @@
 #include "pico/stdlib.h"
 #include "sw/widget/canvas.h"
 
-
-
 /// @brief A generic class for all display device
 /// \ingroup view
 class DisplayDevice
@@ -37,13 +35,10 @@ public:
     /// @brief the physical height of the screen (in pixel)
     size_t TFT_panel_height_in_pixel;
 
-    /**
-     * @brief A pure virtual member function. Each device must implement this method and check the compatibility of the widget parameter with the its physical limitations.
-     *
-     * @param framebuffer_cfg the widget configuration data
-     */
-    virtual void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg) = 0;
-    
+     /// @brief A pure virtual member function. Each device must implement this method and check the compatibility of the widget parameter with the its physical limitations.
+     /// @param framebuffer_cfg the widget configuration data
+     /// @param canvas_format the format of the canvas
+    virtual void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format) = 0;
 
     /**
      * @brief A pure virtual member function.
@@ -67,12 +62,21 @@ public:
 
     /// @brief Destroy the Display Device object
     virtual ~GraphicDisplayDevice();
+};
 
+/// @brief Enumeration of display commands for display task management
+enum class DisplayCommand {
+    /// @brief Command to clear the screen
+    CLEAR_SCREEN,
+    /// @brief Command to show an image
+    SHOW_IMAGE
 };
 
 /// @brief data structure used to queue data to send to the display task
 struct struct_DataToShow
 {
+    /// @brief the command to be executed by the display task
+    DisplayCommand command{DisplayCommand::SHOW_IMAGE};
     /// @brief the display device
     GraphicDisplayDevice *display = nullptr;
     /// @brief the canvas to be displayed

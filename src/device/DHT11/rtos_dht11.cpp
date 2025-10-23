@@ -7,7 +7,7 @@
 
 #define MAX_TIMING_MEASURE 80
 
-void rtosDHT11::read_from_dht()
+void rtos_DHT11::read_from_dht()
 {
     struct_DHTReading local_reading;
 
@@ -86,7 +86,7 @@ void rtosDHT11::read_from_dht()
     
 }
 
-rtosDHT11::rtosDHT11(uint _gpio_in, QueueHandle_t dht_reading_ouput_queue)
+rtos_DHT11::rtos_DHT11(uint _gpio_in, QueueHandle_t dht_reading_ouput_queue)
 {
     this->gpio_in = _gpio_in;
     gpio_init(gpio_in);

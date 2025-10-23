@@ -67,10 +67,10 @@ struct_rtosConfigSwitchButton cfg_encoder_clk{
     .long_push_delay_ms = 1000,
     .time_out_delay_ms = 3000};
 
-rtosSwitchButton encoder_clk = rtosSwitchButton(ENCODER_CLK_GPIO, &test_switch_irq_call_back,
+rtos_SwitchButton encoder_clk = rtos_SwitchButton(ENCODER_CLK_GPIO, &test_switch_irq_call_back,
                                                               encoder_clk_isr_queue, ui_control_event_queue,
                                                               cfg_encoder_clk);
-rtosSwitchButton central_switch = rtosSwitchButton(CENTRAL_SWITCH_GPIO, &test_switch_irq_call_back,
+rtos_SwitchButton central_switch = rtos_SwitchButton(CENTRAL_SWITCH_GPIO, &test_switch_irq_call_back,
                                                                  central_switch_isr_queue, ui_control_event_queue,
                                                                  cfg_central_switch);
 

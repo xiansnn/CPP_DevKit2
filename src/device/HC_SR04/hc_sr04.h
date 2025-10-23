@@ -16,14 +16,14 @@
  * @brief class for the ultrasonic ranging module HC-SR04
  * \ingroup sensor
  */
-class HC_SR04
+class HCSR04
 {
 private:
     /// @brief the GPIO pin that send trigger signal to the HC-SR04 module
     uint trig_pin;
     /// @brief the GPIO pin where the HC-SR04 return echo signal
     uint echo_pin;
-    /// @brief send a trig signal to HC_SR04
+    /// @brief send a trig signal to HCSR04
     void trig();
 
 public:
@@ -33,9 +33,9 @@ public:
      * @param trig_pin the pin attached to the triggering signal
      * @param echo_pin the pin used to measure round-trip time of ultrasonic pulses
      */
-    HC_SR04(uint trig_pin, uint echo_pin);
+    HCSR04(uint trig_pin, uint echo_pin);
     /**
-     * @brief request a measure from HC_SR04
+     * @brief request a measure from HCSR04
      *
      * @return the measured distance in float[cm]. Max = 400cm. If no response, return = -1.
      */

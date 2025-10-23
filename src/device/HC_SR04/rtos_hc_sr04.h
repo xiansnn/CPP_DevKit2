@@ -28,7 +28,7 @@ struct struct_HCSR04IRQData
  * @brief class for the ultrasonic ranging module HC-SR04 compliant with FreeRTOS
  * \ingroup sensor
  */
-class rtosHC_SR04
+class rtos_HCSR04
 {
 private:
     /// @brief the GPIO pin that send trigger signal to the HC-SR04 module
@@ -46,17 +46,17 @@ private:
 
 public:
 
-    /// @brief Construct a new rtosHC_SR04 object
+    /// @brief Construct a new rtos_HCSR04 object
     /// @param trig_pin the pin attached to the triggering signal
     /// @param echo_pin the pin used to measure round-trip time of ultrasonic pulses
     /// @param input_timer_queue the input queue that receives data from IRQ
     /// @param output_range_queue the output queue that receives computed range
     /// @param echo_irq_call_back The ISR (interrupt Service Routine) that process IRQ event
     /// @param event_mask_config the rising/falling edge configuratio of the irq
-    rtosHC_SR04(uint trig_pin, uint echo_pin,
+    rtos_HCSR04(uint trig_pin, uint echo_pin,
                 QueueHandle_t input_timer_queue, QueueHandle_t output_range_queue,
                 gpio_irq_callback_t echo_irq_call_back, uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
 
-    /// @brief request a measure from HC_SR04
+    /// @brief request a measure from HCSR04
     void get_distance();
 };

@@ -1,7 +1,7 @@
 var class_s_t7735 =
 [
     [ "ST7735", "class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8", null ],
-    [ "check_display_device_compatibility", "class_s_t7735.html#a33bd0614652a81767fee1ef0af0c5b3e", null ],
+    [ "check_display_device_compatibility", "class_s_t7735.html#a165458fb8ed2b1998e6bdb9f41a74338", null ],
     [ "clear_device_screen_buffer", "class_s_t7735.html#a6ec156ac373534b3d705175d1bc61501", null ],
     [ "config_device_specific_size_and_offsets", "class_s_t7735.html#ab964e971a3c5a6fd90286fd25ec0570f", null ],
     [ "config_frame_rate_control", "class_s_t7735.html#afe905a4fe73161fd92df9549eb011f27", null ],

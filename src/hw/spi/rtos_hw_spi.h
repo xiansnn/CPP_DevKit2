@@ -44,7 +44,6 @@ public:
   /// @brief the DMA channel used for SPI TX
   HW_DMA *dma_tx;
 
-
   /// @brief Construct a new hw spi master object
   /// @param master_config the data structure that contains SPI configuration
   /// @param dma_tx_irq_number the DMA IRQ number attached to TX DMA
@@ -52,8 +51,8 @@ public:
   /// @param dma_rx_irq_number the DMA IRQ number attached to RX DMA
   /// @param dma_rx_irq_handler the DMA IRQ handler attached to RX DMA
   rtos_HW_SPI_Master(struct_ConfigMasterSPI master_config,
-                     irq_num_t dma_tx_irq_number, irq_handler_t dma_tx_irq_handler,
-                     irq_num_t dma_rx_irq_number, irq_handler_t dma_rx_irq_handler);
+                     irq_num_t dma_tx_irq_number = DMA_IRQ_0, irq_handler_t dma_tx_irq_handler = nullptr,
+                     irq_num_t dma_rx_irq_number = DMA_IRQ_1, irq_handler_t dma_rx_irq_handler = nullptr);
   ~rtos_HW_SPI_Master();
 
   /**
@@ -74,7 +73,7 @@ public:
    * @return error code
    */
   int burst_write_16(uint16_t *src, size_t len) override;
- /**
+  /**
    * @brief repeat a single 16 bit data on the SPI MOSI port.
    * Use DMA.
    *

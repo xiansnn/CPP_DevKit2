@@ -1,5 +1,5 @@
 <map id="GraphicDisplayDevice" name="GraphicDisplayDevice">
-<area shape="rect" id="Node000001" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,133,483,269"/>
-<area shape="rect" id="Node000002" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="192,5,296,85"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="247,100,247,134,241,134,241,100"/>
+<area shape="rect" id="Node000001" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,133,445,284"/>
+<area shape="rect" id="Node000002" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="173,5,277,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,100,228,134,223,134,223,100"/>
 </map>

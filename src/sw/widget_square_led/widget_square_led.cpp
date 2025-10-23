@@ -30,7 +30,7 @@ void WidgetBlinkingSquareLed::draw()
         case LEDStatus::LED_IS_ON:
             clear_widget();
             led_is_on = true;
-            rect(0, 0, canvas->canvas_width_pixel, canvas->canvas_height_pixel, true, fg_color);
+            rect(0, 0, canvas->canvas_width_pixel, canvas->canvas_height_pixel, true, this->canvas->fg_color);
             break;
         default:
             break;
@@ -45,7 +45,7 @@ void WidgetBlinkingSquareLed::draw()
         clear_widget();
         led_is_on = !led_is_on;
         if (led_is_on)
-            rect(0, 0, canvas->canvas_width_pixel, canvas->canvas_height_pixel, true, fg_color);
+            rect(0, 0, canvas->canvas_width_pixel, canvas->canvas_height_pixel, true, this->canvas->fg_color);
         else
             draw_border();
         clear_blinking_phase_change();
@@ -71,7 +71,7 @@ void WidgetSquareLed::draw()
         clear_widget();
         get_value_of_interest();
         if (led_is_on)
-            rect(0, 0, canvas->canvas_width_pixel, canvas->canvas_height_pixel, true, fg_color);
+            rect(0, 0, canvas->canvas_width_pixel, canvas->canvas_height_pixel, true, this->canvas->fg_color);
         else
             draw_border();
         show();

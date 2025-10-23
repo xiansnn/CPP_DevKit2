@@ -150,12 +150,12 @@ void my_visu_widget::draw()
         int x1 = xc + radius * cos_roll;
         int y1 = yl + radius * sin_roll;
 
-        this->canvas->fill_canvas_with_color(canvas->canvas_bg_color);
+        this->canvas->fill_canvas_with_color(canvas->bg_color);
 
         this->circle(radius, xc, yl, true, ColorIndex::GREEN);
         this->line(x0, y0, x1, y1, ColorIndex::YELLOW);
 
-        draw_border(canvas->canvas_fg_color);
+        draw_border(canvas->fg_color);
         show();// ##############
         actual_displayed_model->draw_widget_done();// #### semaphore
     }

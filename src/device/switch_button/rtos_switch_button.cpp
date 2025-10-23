@@ -2,7 +2,7 @@
 #include "hardware/gpio.h"
 #include "hardware/timer.h"
 
-rtosSwitchButton::rtosSwitchButton(uint gpio, gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
+rtos_SwitchButton::rtos_SwitchButton(uint gpio, gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
                                    struct_rtosConfigSwitchButton conf, uint32_t event_mask_config)
 {
     this->gpio = gpio;
@@ -27,11 +27,11 @@ rtosSwitchButton::rtosSwitchButton(uint gpio, gpio_irq_callback_t call_back, Que
     gpio_set_irq_enabled_with_callback(gpio, irq_event_mask_config, true, call_back);
 }
 
-rtosSwitchButton::~rtosSwitchButton()
+rtos_SwitchButton::~rtos_SwitchButton()
 {
 }
 
-void rtosSwitchButton::rtos_process_IRQ_event()
+void rtos_SwitchButton::rtos_process_IRQ_event()
 {
     struct_ControlEventData local_event_data;
     struct_SwitchButtonIRQData local_irq_data;
@@ -93,7 +93,7 @@ void rtosSwitchButton::rtos_process_IRQ_event()
     }
 }
 
-bool rtosSwitchButton::is_switch_pushed(uint32_t event_mask)
+bool rtos_SwitchButton::is_switch_pushed(uint32_t event_mask)
 {
     bool only_rising_edge_present = (event_mask & GPIO_IRQ_EDGE_RISE) and !(event_mask & GPIO_IRQ_EDGE_FALL);
     bool only_falling_edge_present = (event_mask & GPIO_IRQ_EDGE_FALL) and !(event_mask & GPIO_IRQ_EDGE_RISE);

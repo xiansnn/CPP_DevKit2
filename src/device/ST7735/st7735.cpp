@@ -464,8 +464,10 @@ void ST7735::set_RAM_write_addresses(uint8_t start_x, uint8_t start_y, size_t wi
     spi->single_write_16(device_end_y);
 }
 
-void ST7735::check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg)
+void ST7735::check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format)
 {
+    // check canvas format
+    assert(canvas_format != CanvasFormat::MONO_VLSB);
     // check limit of screen
     assert(framebuffer_cfg.widget_anchor_y + framebuffer_cfg.pixel_frame_height <= TFT_panel_height_in_pixel);
     assert(framebuffer_cfg.widget_anchor_x + framebuffer_cfg.pixel_frame_width <= TFT_panel_width_in_pixel);
@@ -517,8 +519,8 @@ void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y
         spi->burst_write_16(canvas->canvas_16buffer, canvas->canvas_buffer_size_pixel);
         break;
     case CanvasFormat::MONO_HMSB:
-        uint16_t foreground_color = color565_palette[canvas->canvas_fg_color];
-        uint16_t background_color = color565_palette[canvas->canvas_bg_color];
+        uint16_t foreground_color = color565_palette[canvas->fg_color];
+        uint16_t background_color = color565_palette[canvas->bg_color];
         set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
         send_cmd(ST7735_RAMWR);
         for (size_t i = 0; i < canvas->canvas_buffer_size_byte; i++)
@@ -581,6 +583,11 @@ rtos_ST7735::~rtos_ST7735()
 {
 }
 
+void rtos_ST7735::show_from_display_queue(struct_DataToShow data_t_show)
+{
+    this->show(data_t_show.canvas, data_t_show.anchor_x, data_t_show.anchor_y);
+}
+
 void rtos_ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y)
 {
     switch (canvas->canvas_format)
@@ -602,8 +609,8 @@ void rtos_ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anc
         break;
 
     case CanvasFormat::MONO_HMSB:
-        uint16_t foreground_color = color565_palette[canvas->canvas_fg_color];
-        uint16_t background_color = color565_palette[canvas->canvas_bg_color];
+        uint16_t foreground_color = color565_palette[canvas->fg_color];
+        uint16_t background_color = color565_palette[canvas->bg_color];
         set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
         send_cmd(ST7735_RAMWR);
         for (size_t i = 0; i < canvas->canvas_buffer_size_byte; i++)
@@ -642,4 +649,14 @@ void rtos_ST7735::clear_device_screen_buffer(ColorIndex color_index)
 #if defined(TIME_MEASURE)
     pr_D5.lo();
 #endif
+}
+
+void rtos_ST7735::send_clear_device_command(QueueHandle_t display_queue, SemaphoreHandle_t sending_done)
+{
+    struct_DataToShow data_to_display;
+    data_to_display.command = DisplayCommand::CLEAR_SCREEN;
+    data_to_display.display = this;
+    xQueueSend(display_queue, &data_to_display, portMAX_DELAY); // take 65ms but used fully the CPU
+    xSemaphoreTake(sending_done, portMAX_DELAY);
+
 }

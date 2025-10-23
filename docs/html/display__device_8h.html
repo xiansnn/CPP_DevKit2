@@ -98,7 +98,8 @@ $(function(){initNavTree('display__device_8h.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle"><div class="title">display_device.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -162,16 +163,58 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a>).  <a href="class_graphic_display_device.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstruct___data_to_show.html">struct_DataToShow</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">data structure used to queue data to send to the display task  <a href="structstruct___data_to_show.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printer_device.html">PrinterDevice</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class dedicated to pure text display such as console, printer, ASCII character line display.  <a href="class_printer_device.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ab0433629f57aaf649227bc0b74f0e3be" id="r_ab0433629f57aaf649227bc0b74f0e3be"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0433629f57aaf649227bc0b74f0e3be">DisplayCommand</a> { <a class="el" href="#ab0433629f57aaf649227bc0b74f0e3beaff569fcb394b1691c99f7ce67c6febfa">CLEAR_SCREEN</a>
+, <a class="el" href="#ab0433629f57aaf649227bc0b74f0e3bea8a575cfcbbe294bd5ed7e7dc5a1d054e">SHOW_IMAGE</a>
+ }</td></tr>
+<tr class="memdesc:ab0433629f57aaf649227bc0b74f0e3be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of display commands for display task management.  <a href="#ab0433629f57aaf649227bc0b74f0e3be">More...</a><br /></td></tr>
+<tr class="separator:ab0433629f57aaf649227bc0b74f0e3be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>xiansnn (<a href="#" onclick="location.href='mai'+'lto:'+'xia'+'ns'+'nn@'+'ho'+'tma'+'il'+'.co'+'m'; return false;">xians<span class="obfuscator">.nosp@m.</span>nn@h<span class="obfuscator">.nosp@m.</span>otmai<span class="obfuscator">.nosp@m.</span>l.co<span class="obfuscator">.nosp@m.</span>m</a>) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025-01-11</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ab0433629f57aaf649227bc0b74f0e3be" name="ab0433629f57aaf649227bc0b74f0e3be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0433629f57aaf649227bc0b74f0e3be">&#9670;&#160;</a></span>DisplayCommand</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#ab0433629f57aaf649227bc0b74f0e3be">DisplayCommand</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Enumeration of display commands for display task management. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ab0433629f57aaf649227bc0b74f0e3beaff569fcb394b1691c99f7ce67c6febfa" name="ab0433629f57aaf649227bc0b74f0e3beaff569fcb394b1691c99f7ce67c6febfa"></a>CLEAR_SCREEN&#160;</td><td class="fielddoc"><p>Command to clear the screen. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab0433629f57aaf649227bc0b74f0e3bea8a575cfcbbe294bd5ed7e7dc5a1d054e" name="ab0433629f57aaf649227bc0b74f0e3bea8a575cfcbbe294bd5ed7e7dc5a1d054e"></a>SHOW_IMAGE&#160;</td><td class="fielddoc"><p>Command to show an image. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
