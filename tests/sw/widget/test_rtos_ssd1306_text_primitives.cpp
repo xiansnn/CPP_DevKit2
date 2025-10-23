@@ -29,10 +29,9 @@ Probe p4 = Probe(4);
 // Probe p6 = Probe(6);
 // Probe p7 = Probe(7);
 
-#define REFRESH_PERIOD 50
-#define DELAY 500
-#define LONG_DELAY 1000
-#define INTER_TASK_DELAY 2000
+#define DELAY 10
+#define LONG_DELAY 100
+#define INTER_TASK_DELAY 100
 
 #define CANVAS_FORMAT CanvasFormat::MONO_VLSB
 
@@ -118,7 +117,17 @@ void display_gate_keeper_task(void *param)
     {
         xQueueReceive(display_data_queue, &received_data_to_show, portMAX_DELAY);
         p4.hi();
-        ((rtos_SSD1306 *)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
+        switch (received_data_to_show.command)
+        {
+        case DisplayCommand::show_image:
+            ((rtos_SSD1306 *)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
+            break;
+        case DisplayCommand::clear_screen:
+            ((rtos_SSD1306 *)received_data_to_show.display)->clear_device_screen_buffer();
+            break;
+        default:
+            break;
+        }
         xSemaphoreGive(data_sent);
         p4.lo();
     }
@@ -127,7 +136,7 @@ void display_gate_keeper_task(void *param)
 void test_font_size(rtos_SSD1306 *current_display)
 {
     p1.hi();
-    current_display->clear_device_screen_buffer();
+    current_display->send_clear_device_command(display_data_queue, data_sent);
     const unsigned char *current_font[4]{font_5x8, font_8x8, font_12x16, font_16x32};
 
     std::string test_string = "Test";
@@ -142,7 +151,7 @@ void test_font_size(rtos_SSD1306 *current_display)
     my_text_widget *font_text_on_screen_0 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
     // draw text directly from a string to the pixel buffer
     font_text_on_screen_0->write(test_string.c_str());
-    font_text_on_screen_0->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    font_text_on_screen_0->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     delete font_text_on_screen_0;
 
     default_text_cfg.widget_anchor_x = 64;
@@ -153,7 +162,7 @@ void test_font_size(rtos_SSD1306 *current_display)
     // process first text according to sprintf capabilities then copy to text buffer and finally draw text buffer into pixel buffer
     sprintf(font_text_on_screen_1->text_buffer, test_string.c_str());
     font_text_on_screen_1->write();
-    font_text_on_screen_1->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    font_text_on_screen_1->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     delete font_text_on_screen_1;
 
     default_text_cfg.widget_anchor_x = 0;
@@ -163,17 +172,17 @@ void test_font_size(rtos_SSD1306 *current_display)
 
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->write();
-    font_text_on_screen_2->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    font_text_on_screen_2->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     font_text_on_screen_2->update_canvas_buffer_size(current_font[3]);
     font_text_on_screen_2->update_widget_anchor(64, 32);
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->write();
-    font_text_on_screen_2->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    font_text_on_screen_2->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     delete font_text_on_screen_2;
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
-    current_display->clear_device_screen_buffer();
+    current_display->send_clear_device_command(display_data_queue, data_sent);
 }
 
 void test_full_screen_text(rtos_SSD1306 *current_display)
@@ -183,12 +192,12 @@ void test_full_screen_text(rtos_SSD1306 *current_display)
         .wrap = true,
     };
     p1.hi();
-    current_display->clear_device_screen_buffer();
+    current_display->send_clear_device_command(display_data_queue, data_sent);
     my_text_widget text_frame = my_text_widget(current_display, txt_conf, CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     text_frame.process_char(FORM_FEED); // equiv. clear full screen
     // current_display->show(text_frame.canvas, 0, 0);
-    text_frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     uint16_t nb = text_frame.number_of_line * text_frame.number_of_column;
 
     uint16_t n{0};
@@ -197,7 +206,7 @@ void test_full_screen_text(rtos_SSD1306 *current_display)
         n++;
         text_frame.process_char(c);
         // current_display->show(text_frame.canvas, 0, 0);
-        text_frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+        text_frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
         if (n == nb)
         {
@@ -207,7 +216,7 @@ void test_full_screen_text(rtos_SSD1306 *current_display)
     }
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
-    current_display->clear_device_screen_buffer();
+    current_display->send_clear_device_command(display_data_queue, data_sent);
 }
 
 void test_auto_next_char(rtos_SSD1306 *current_display)
@@ -217,7 +226,7 @@ void test_auto_next_char(rtos_SSD1306 *current_display)
         .wrap = true,
         .auto_next_char = false};
     p1.hi();
-    current_display->clear_device_screen_buffer();
+    current_display->send_clear_device_command(display_data_queue, data_sent);
 
     my_text_widget *text_frame = new my_text_widget(current_display, txt_conf, CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
 
@@ -229,7 +238,7 @@ void test_auto_next_char(rtos_SSD1306 *current_display)
         n++;
         text_frame->process_char(c);
         // current_display->show(text_frame->canvas, 0, 0);
-        text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+        text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
         if (n % 8 == 0)
             text_frame->next_char();
@@ -238,7 +247,7 @@ void test_auto_next_char(rtos_SSD1306 *current_display)
     delete text_frame;
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
-    current_display->clear_device_screen_buffer();
+    current_display->send_clear_device_command(display_data_queue, data_sent);
 }
 
 /**
@@ -251,7 +260,7 @@ void test_auto_next_char(rtos_SSD1306 *current_display)
 void test_sprintf_format(rtos_SSD1306 *current_display)
 {
     p1.hi();
-    current_display->clear_device_screen_buffer();
+    current_display->send_clear_device_command(display_data_queue, data_sent);
     struct_ConfigTextWidget text_frame_cfg = {
         .font = font_8x8,
         .wrap = true};
@@ -261,45 +270,45 @@ void test_sprintf_format(rtos_SSD1306 *current_display)
     const char *s = "Hello";
 
     text_frame->write("Strings:\n\tpadding:\n");
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     sprintf(text_frame->text_buffer, "\t[%7s]\n", s);
     text_frame->write();
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     sprintf(text_frame->text_buffer, "\t[%-7s]\n", s);
     text_frame->write();
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     sprintf(text_frame->text_buffer, "\t[%*s]\n", 7, s);
     text_frame->write();
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     text_frame->write("\ttruncating:\n");
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     sprintf(text_frame->text_buffer, "\t%.4s\n", s);
     text_frame->write();
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     sprintf(text_frame->text_buffer, "\t\t%.*s\n", 3, s);
     text_frame->write();
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
 
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     text_frame->clear_text_buffer();
     // current_display->clear_pixel_buffer(&text_frame->pixel_frame);
-    current_display->clear_device_screen_buffer();
+    current_display->send_clear_device_command(display_data_queue, data_sent);
     sprintf(text_frame->text_buffer, "Characters: %c %%", 'A');
     text_frame->write();
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
 
-    current_display->clear_device_screen_buffer();
+    current_display->send_clear_device_command(display_data_queue, data_sent);
 
     text_frame->update_text_frame_size(font_5x8);
 
@@ -317,11 +326,11 @@ void test_sprintf_format(rtos_SSD1306 *current_display)
     text_frame->write();
     sprintf(text_frame->text_buffer, "\tSci:  %.3E %.1e\n", 1.5, 1.5);
     text_frame->write();
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
 
-    current_display->clear_device_screen_buffer();
+    current_display->send_clear_device_command(display_data_queue, data_sent);
 
     text_frame->update_text_frame_size(font_8x8);
 
@@ -331,39 +340,39 @@ void test_sprintf_format(rtos_SSD1306 *current_display)
     text_frame->write("@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_");   // ca 1000us -> 2000us
     text_frame->write("`abcdefghijklmnopqrstuvwxyz{|}~\x7F"); // ca 1000us-> 2000us
     text_frame->write("1234567890\n");                        // ca 400us -> 800us
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
 
     text_frame->process_char(FORM_FEED);
 
     text_frame->write("\t1TAB\n"); // ca 400us -> 800us
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     vTaskDelay(pdMS_TO_TICKS(DELAY));
 
     text_frame->write("\t\t2TAB\n"); // ca 400us -> 800us
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     vTaskDelay(pdMS_TO_TICKS(DELAY));
 
     text_frame->write("\t\t\t3TAB\n"); // ca 400us -> 800us
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     vTaskDelay(pdMS_TO_TICKS(DELAY));
 
     text_frame->write("\t\t\t\t4TAB\n"); // ca 400us -> 800us
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     vTaskDelay(pdMS_TO_TICKS(DELAY));
 
     text_frame->write("\t\t\t\t\t5TAB\n"); // ca 400us -> 800us
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     vTaskDelay(pdMS_TO_TICKS(DELAY));
 
     text_frame->write("\t1TAB\t\t\t3TAB\n"); // ca 400us -> 800us
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
 
@@ -372,11 +381,11 @@ void test_sprintf_format(rtos_SSD1306 *current_display)
 
     text_frame->write(" 15:06 \n");
     text_frame->write("03/01/24");
-    text_frame->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
 
     vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
 
-    current_display->clear_device_screen_buffer();
+    current_display->send_clear_device_command(display_data_queue, data_sent);
 
     delete text_frame;
 
@@ -390,11 +399,11 @@ void test_sprintf_format(rtos_SSD1306 *current_display)
     my_text_widget *text_frame2 = new my_text_widget(current_display, text_frame2_cfg, CANVAS_FORMAT);
 
     text_frame2->write(" 09:56\n03JAN24");
-    text_frame2->send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame2->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     delete text_frame2;
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
-    current_display->clear_device_screen_buffer();
+    current_display->send_clear_device_command(display_data_queue, data_sent);
 
     /*
     undefined result for the used compiler
@@ -410,17 +419,18 @@ void main_task(void *display_device)
 {
     while (true)
     {
-        test_font_size(&left_display);
-        test_full_screen_text(&right_display);
-        test_auto_next_char(&left_display);
-        test_sprintf_format(&right_display);
+        test_font_size((rtos_SSD1306 *)display_device);
+        test_full_screen_text((rtos_SSD1306 *)display_device);
+        test_auto_next_char((rtos_SSD1306 *)display_device);
+        test_sprintf_format((rtos_SSD1306 *)display_device);
     }
 }
 
 int main()
 {
     xTaskCreate(vIdleTask, "idle_task0", 256, &p0, 0, NULL);
-    xTaskCreate(main_task, "main_task", 256, NULL, 2, NULL);
+    xTaskCreate(main_task, "right_main_task", 256, (void *)&right_display, 2, NULL);
+    xTaskCreate(main_task, "left_main_task", 256, (void *)&left_display, 2, NULL);
     xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, NULL, 4, NULL);
 
     vTaskStartScheduler();

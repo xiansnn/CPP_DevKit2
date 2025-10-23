@@ -66,9 +66,17 @@ public:
     virtual ~GraphicDisplayDevice();
 };
 
+/// @brief Enumeration of display commands for display task management
+enum class DisplayCommand {
+    clear_screen,
+    show_image
+};
+
 /// @brief data structure used to queue data to send to the display task
 struct struct_DataToShow
 {
+    /// @brief the command to be executed by the display task
+    DisplayCommand command{DisplayCommand::show_image};
     /// @brief the display device
     GraphicDisplayDevice *display = nullptr;
     /// @brief the canvas to be displayed

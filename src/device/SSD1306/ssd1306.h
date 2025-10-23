@@ -115,7 +115,6 @@ struct struct_RenderArea
     size_t buflen{SSD1306_BUF_LEN};
 };
 
-
 /**
  * @brief SSD1306 128x64 pixel OLED display device driver with I2C interface
  * \ingroup view
@@ -282,6 +281,11 @@ public:
     /// @brief write 0x00 directly into the device framebuffer (GDDRAM).
     /// @param addressing_mode the way the data is written to the GDDRAM
     void clear_device_screen_buffer(uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
+
+    /// @brief Send a clear screen command to the display gate keeper task.
+    /// @param display_queue The queue used to send data to the display gate keeper task.
+    /// @param sending_done A semaphore to signal when the sending is done.
+    void send_clear_device_command(QueueHandle_t display_queue, SemaphoreHandle_t sending_done);
 
     /// @brief Show data from the display queue.
     /// @param data_to_show The data to display.

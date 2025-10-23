@@ -33,9 +33,6 @@ Probe p4 = Probe(4);
 #define INTER_TASK_DELAY 1000
 #define INTRA_TASK_DELAY 250
 
-
-
-
 QueueHandle_t display_data_queue = xQueueCreate(8, sizeof(struct_DataToShow));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
 
@@ -107,7 +104,7 @@ void test_outofframe_line(rtos_SSD1306 *display)
     p1.hi();
     my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
     int y0, x1, y1;
-    display->clear_device_screen_buffer();
+    display->send_clear_device_command(display_data_queue, data_sent);
     x1 = 64;
     y1 = 70;
     y0 = -10;
@@ -116,10 +113,10 @@ void test_outofframe_line(rtos_SSD1306 *display)
     {
         ColorIndex c = ColorIndex::WHITE;
         frame.line(x, y0, x1, y1, c);
-        frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+        frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
         c = ColorIndex::BLACK;
         frame.line(x, y0, x1, y1, c);
-        frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+        frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     }
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
@@ -132,7 +129,7 @@ void test_outofframe_line(rtos_SSD1306 *display)
 void test_fb_line(rtos_SSD1306 *display)
 {
     p1.hi();
-    display->clear_device_screen_buffer();
+    display->send_clear_device_command(display_data_queue, data_sent);
     my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
     ColorIndex c = ColorIndex::BLACK;
     for (int i = 0; i < 2; i++)
@@ -145,13 +142,13 @@ void test_fb_line(rtos_SSD1306 *display)
         for (int x = 0; x < SSD1306_WIDTH; x++)
         {
             frame.line(x, 0, SSD1306_WIDTH - 1 - x, SSD1306_HEIGHT - 1, c);
-            frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+            frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
         }
 
         for (int y = SSD1306_HEIGHT - 1; y >= 0; y--)
         {
             frame.line(0, y, SSD1306_WIDTH - 1, SSD1306_HEIGHT - 1 - y, c);
-            frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+            frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
         }
     }
 
@@ -164,19 +161,19 @@ void test_fb_line(rtos_SSD1306 *display)
         {
             c = ColorIndex::WHITE;
             frame.line(x, 0, SSD1306_WIDTH - 1 - x, SSD1306_HEIGHT - 1, c);
-            frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+            frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
             c = ColorIndex::BLACK;
             frame.line(x, 0, SSD1306_WIDTH - 1 - x, SSD1306_HEIGHT - 1, c);
-            frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+            frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
         }
         for (int y = SSD1306_HEIGHT - 1; y >= 0; y--)
         {
             c = ColorIndex::WHITE;
             frame.line(0, y, SSD1306_WIDTH - 1, SSD1306_HEIGHT - 1 - y, c);
-            display->show_render_area(frame.canvas->canvas_buffer, full_screen_area);///////////////////
+            display->show_render_area(frame.canvas->canvas_buffer, full_screen_area); ///////////////////
             c = ColorIndex::BLACK;
             frame.line(0, y, SSD1306_WIDTH - 1, SSD1306_HEIGHT - 1 - y, c);
-            display->show_render_area(frame.canvas->canvas_buffer, full_screen_area);/////////////////
+            display->show_render_area(frame.canvas->canvas_buffer, full_screen_area); /////////////////
         }
     }
     p1.lo();
@@ -193,20 +190,20 @@ void test_fb_hline(rtos_SSD1306 *display)
     p1.hi();
     my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
 
-    display->clear_device_screen_buffer();
+    display->send_clear_device_command(display_data_queue, data_sent);
 
     frame.hline(0, 0, 32);
-    frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     sleep_ms(1000);
     frame.hline(0, 15, 64);
-    frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     sleep_ms(1000);
     frame.hline(0, 31, 96);
-    frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     sleep_ms(1000);
     frame.hline(0, 47, 128);
     frame.hline(0, 63, 128);
-    frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
 }
@@ -220,19 +217,19 @@ void test_fb_vline(rtos_SSD1306 *display)
     p1.hi();
     my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
 
-    display->clear_device_screen_buffer();
+    display->send_clear_device_command(display_data_queue, data_sent);
     frame.vline(0, 0, 16);
-    frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     sleep_ms(1000);
     frame.vline(15, 0, 32);
-    frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     sleep_ms(1000);
     frame.vline(31, 0, 48);
-    frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     sleep_ms(1000);
     frame.vline(64, 0, 64);
     frame.vline(127, 0, 64);
-    frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
 }
@@ -247,12 +244,12 @@ void test_fb_rect(rtos_SSD1306 *display)
     p1.hi();
     my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
 
-    display->clear_device_screen_buffer();
+    display->send_clear_device_command(display_data_queue, data_sent);
     frame.rect(0, 0, 128, 64);
-    frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     sleep_ms(1000);
     frame.rect(10, 10, 108, 44, true);
-    frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
 }
@@ -266,11 +263,11 @@ void test_fb_in_fb(rtos_SSD1306 *display)
     p1.hi();
     my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
 
-    display->clear_device_screen_buffer();
+    display->send_clear_device_command(display_data_queue, data_sent);
     frame.rect(0, 0, SSD1306_WIDTH, SSD1306_HEIGHT);
     frame.rect(10, 10, 108, 44, true);
     frame.line(5, 60, 120, 5, ColorIndex::BLACK);
-    frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
 
     struct_ConfigGraphicWidget small_frame_cfg{
@@ -283,7 +280,7 @@ void test_fb_in_fb(rtos_SSD1306 *display)
     small_frame.canvas->clear_canvas_buffer();
     small_frame.line(5, 5, 80, 20);
     small_frame.circle(8, 44, 12);
-    small_frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    small_frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
 }
@@ -298,12 +295,12 @@ void test_fb_circle(rtos_SSD1306 *display)
     p1.hi();
     my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
 
-    display->clear_device_screen_buffer();
+    display->send_clear_device_command(display_data_queue, data_sent);
     frame.circle(50, 63, 31);
-    frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
     frame.circle(20, 64, 32, true);
-    frame.send_to_DisplayGateKeeper(display_data_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
 }
@@ -316,7 +313,18 @@ void display_gate_keeper_task(void *param)
     {
         xQueueReceive(display_data_queue, &received_data_to_show, portMAX_DELAY);
         p4.hi();
-        ((rtos_SSD1306*)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
+        switch (received_data_to_show.command)
+        {
+        case DisplayCommand::show_image:
+            ((rtos_SSD1306 *)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
+            break;
+        case DisplayCommand::clear_screen:
+            ((rtos_SSD1306 *)received_data_to_show.display)->clear_device_screen_buffer();
+            break;
+        default:
+            break;
+        }
+
         xSemaphoreGive(data_sent);
         p4.lo();
     }

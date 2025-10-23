@@ -209,7 +209,7 @@ public:
     /// @brief used with FreeRTOS. send the widget data_to_display structure to the task in charge of the display management
     /// @param display_queue the communcation queue with the display gate keeper
     /// @param sending_done the semaphore triggered when the canvas display is complete.
-    void send_to_DisplayGateKeeper(QueueHandle_t display_queue,SemaphoreHandle_t sending_done);
+    void send_image_to_DisplayGateKeeper(QueueHandle_t display_queue,SemaphoreHandle_t sending_done);
 
 
  
