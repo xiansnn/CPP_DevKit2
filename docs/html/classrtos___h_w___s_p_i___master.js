@@ -1,6 +1,6 @@
 var classrtos___h_w___s_p_i___master =
 [
-    [ "rtos_HW_SPI_Master", "classrtos___h_w___s_p_i___master.html#a609ea03583e6b114ac2acd7e2641f220", null ],
+    [ "rtos_HW_SPI_Master", "classrtos___h_w___s_p_i___master.html#ab0b4f66cb858ddc73fe008496cd0f2f1", null ],
     [ "burst_read_16", "classrtos___h_w___s_p_i___master.html#adeed350f36efc6b1b2cd97b445ee283a", null ],
     [ "burst_read_8", "classrtos___h_w___s_p_i___master.html#afb93db0c99078730b215bd65e775e0cc", null ],
     [ "burst_write_16", "classrtos___h_w___s_p_i___master.html#a3475c044ad176bcf774bd8c60b35b6b6", null ],

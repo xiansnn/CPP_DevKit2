@@ -22,7 +22,7 @@ var searchData=
   ['rtos_5fhw_5fi2c_2eh_19',['rtos_hw_i2c.h',['../rtos__hw__i2c_8h.html',1,'']]],
   ['rtos_5fhw_5fi2c_5fmaster_20',['rtos_HW_I2C_Master',['../classrtos___h_w___i2_c___master.html',1,'rtos_HW_I2C_Master'],['../classrtos___h_w___i2_c___master.html#aab66902f880060f31b4bafee66d1e26f',1,'rtos_HW_I2C_Master::rtos_HW_I2C_Master()']]],
   ['rtos_5fhw_5fspi_2eh_21',['rtos_hw_spi.h',['../rtos__hw__spi_8h.html',1,'']]],
-  ['rtos_5fhw_5fspi_5fmaster_22',['rtos_HW_SPI_Master',['../classrtos___h_w___s_p_i___master.html',1,'rtos_HW_SPI_Master'],['../classrtos___h_w___s_p_i___master.html#a609ea03583e6b114ac2acd7e2641f220',1,'rtos_HW_SPI_Master::rtos_HW_SPI_Master()']]],
+  ['rtos_5fhw_5fspi_5fmaster_22',['rtos_HW_SPI_Master',['../classrtos___h_w___s_p_i___master.html',1,'rtos_HW_SPI_Master'],['../classrtos___h_w___s_p_i___master.html#ab0b4f66cb858ddc73fe008496cd0f2f1',1,'rtos_HW_SPI_Master::rtos_HW_SPI_Master()']]],
   ['rtos_5fprocess_5firq_5fevent_23',['rtos_process_IRQ_event',['../classrtos___rotary_encoder.html#a49b161016d8d9a00e322e819218f6c74',1,'rtos_RotaryEncoder::rtos_process_IRQ_event()'],['../classrtos___switch_button.html#aa1017a2d9370e64e72b8629dd2a594a3',1,'rtos_SwitchButton::rtos_process_IRQ_event()']]],
   ['rtos_5frotary_5fencoder_2eh_24',['rtos_rotary_encoder.h',['../rtos__rotary__encoder_8h.html',1,'']]],
   ['rtos_5frotaryencoder_25',['rtos_RotaryEncoder',['../classrtos___rotary_encoder.html',1,'rtos_RotaryEncoder'],['../classrtos___rotary_encoder.html#afef821f6910545235862593614263bc9',1,'rtos_RotaryEncoder::rtos_RotaryEncoder()']]],

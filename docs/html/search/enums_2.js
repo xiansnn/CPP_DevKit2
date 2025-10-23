@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ledstatus_0',['LEDStatus',['../widget__square__led_8h.html#aa7a6bd52125294400522ef059731eec1',1,'widget_square_led.h']]]
+  ['displaycommand_0',['DisplayCommand',['../display__device_8h.html#ab0433629f57aaf649227bc0b74f0e3be',1,'display_device.h']]]
 ];

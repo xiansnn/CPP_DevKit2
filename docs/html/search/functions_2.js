@@ -5,7 +5,7 @@ var searchData=
   ['canvasrgb_2',['CanvasRGB',['../class_canvas_r_g_b.html#a31311b6281bef7a373398de04b26e459',1,'CanvasRGB']]],
   ['canvastruergb_3',['CanvasTrueRGB',['../class_canvas_true_r_g_b.html#aa1b1ab50cbe8ee85776ad9f7fa686c21',1,'CanvasTrueRGB']]],
   ['canvasvlsb_4',['CanvasVLSB',['../class_canvas_v_l_s_b.html#ab1738fd595e5e3bb2fff7b28c9ae4a80',1,'CanvasVLSB']]],
-  ['check_5fdisplay_5fdevice_5fcompatibility_5',['check_display_device_compatibility',['../class_s_s_d1306.html#ae86de55b157bce1451499d8b18e879f5',1,'SSD1306::check_display_device_compatibility()'],['../class_s_t7735.html#a33bd0614652a81767fee1ef0af0c5b3e',1,'ST7735::check_display_device_compatibility()'],['../class_graphic_display_device.html#a23a5e34f719cb1847c9b306855f2b29e',1,'GraphicDisplayDevice::check_display_device_compatibility()']]],
+  ['check_5fdisplay_5fdevice_5fcompatibility_5',['check_display_device_compatibility',['../class_s_s_d1306.html#a97d4903cd5f1bce0d8314f41c077f14b',1,'SSD1306::check_display_device_compatibility()'],['../class_s_t7735.html#a165458fb8ed2b1998e6bdb9f41a74338',1,'ST7735::check_display_device_compatibility()'],['../class_graphic_display_device.html#ad7b965798c59a83bfb555b900ba5079f',1,'GraphicDisplayDevice::check_display_device_compatibility()']]],
   ['check_5ftime_5fout_6',['check_time_out',['../class_u_i_model_manager.html#ab6d7acbc231c5fd6a33e2eecdf9e3641',1,'UIModelManager']]],
   ['circle_7',['circle',['../class_graphic_widget.html#aeadc616612d2a5ad911c9595073bdb71',1,'GraphicWidget']]],
   ['cleanup_5fand_5ffree_5fdma_5fchannel_8',['cleanup_and_free_dma_channel',['../class_h_w___d_m_a.html#afa7dde1515be72e4adc96002774ec270',1,'HW_DMA']]],

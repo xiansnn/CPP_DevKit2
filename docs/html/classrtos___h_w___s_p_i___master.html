@@ -114,9 +114,9 @@ Inheritance diagram for rtos_HW_SPI_Master:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___h_w___s_p_i___master__inherit__graph.png" border="0" usemap="#artos___h_w___s_p_i___master_inherit__map" alt="Inheritance graph"/></div>
 <map name="artos___h_w___s_p_i___master_inherit__map" id="artos___h_w___s_p_i___master_inherit__map">
-<area shape="rect" title="This is a C++ wrapper for the original pico SDK spi master API, adapted to FreeRTOS environment." alt="" coords="5,283,521,545"/>
-<area shape="rect" href="class_h_w___s_p_i___master.html" title="this is a C++ wrapper for the original pico SDK spi master API" alt="" coords="85,5,441,235"/>
-<area shape="poly" title=" " alt="" coords="266,249,266,283,261,283,261,249"/>
+<area shape="rect" title="This is a C++ wrapper for the original pico SDK spi master API, adapted to FreeRTOS environment." alt="" coords="5,283,485,559"/>
+<area shape="rect" href="class_h_w___s_p_i___master.html" title="this is a C++ wrapper for the original pico SDK spi master API" alt="" coords="67,5,423,235"/>
+<area shape="poly" title=" " alt="" coords="248,250,248,283,243,283,243,250"/>
 </map>
 </div>
 <div class="dynheader">
@@ -124,19 +124,19 @@ Collaboration diagram for rtos_HW_SPI_Master:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___h_w___s_p_i___master__coll__graph.png" border="0" usemap="#artos___h_w___s_p_i___master_coll__map" alt="Collaboration graph"/></div>
 <map name="artos___h_w___s_p_i___master_coll__map" id="artos___h_w___s_p_i___master_coll__map">
-<area shape="rect" title="This is a C++ wrapper for the original pico SDK spi master API, adapted to FreeRTOS environment." alt="" coords="139,311,655,555"/>
+<area shape="rect" title="This is a C++ wrapper for the original pico SDK spi master API, adapted to FreeRTOS environment." alt="" coords="157,311,637,568"/>
 <area shape="rect" href="class_h_w___s_p_i___master.html" title="this is a C++ wrapper for the original pico SDK spi master API" alt="" coords="5,5,361,235"/>
-<area shape="poly" title=" " alt="" coords="272,245,316,310,312,313,268,248"/>
+<area shape="poly" title=" " alt="" coords="270,245,313,310,309,313,266,248"/>
 <area shape="rect" href="class_h_w___d_m_a.html" title="Class to manage a DMA channel." alt="" coords="386,26,834,214"/>
-<area shape="poly" title=" " alt="" coords="548,215,491,298,487,295,544,212"/>
+<area shape="poly" title=" " alt="" coords="550,215,494,298,490,295,546,212"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a609ea03583e6b114ac2acd7e2641f220" id="r_a609ea03583e6b114ac2acd7e2641f220"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a609ea03583e6b114ac2acd7e2641f220">rtos_HW_SPI_Master</a> (<a class="el" href="structstruct___config_master_s_p_i.html">struct_ConfigMasterSPI</a> master_config, irq_num_t dma_tx_irq_number, irq_handler_t dma_tx_irq_handler, irq_num_t dma_rx_irq_number, irq_handler_t dma_rx_irq_handler)</td></tr>
-<tr class="memdesc:a609ea03583e6b114ac2acd7e2641f220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new hw spi master object.  <br /></td></tr>
-<tr class="separator:a609ea03583e6b114ac2acd7e2641f220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0b4f66cb858ddc73fe008496cd0f2f1" id="r_ab0b4f66cb858ddc73fe008496cd0f2f1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0b4f66cb858ddc73fe008496cd0f2f1">rtos_HW_SPI_Master</a> (<a class="el" href="structstruct___config_master_s_p_i.html">struct_ConfigMasterSPI</a> master_config, irq_num_t dma_tx_irq_number=DMA_IRQ_0, irq_handler_t dma_tx_irq_handler=nullptr, irq_num_t dma_rx_irq_number=DMA_IRQ_1, irq_handler_t dma_rx_irq_handler=nullptr)</td></tr>
+<tr class="memdesc:ab0b4f66cb858ddc73fe008496cd0f2f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new hw spi master object.  <br /></td></tr>
+<tr class="separator:ab0b4f66cb858ddc73fe008496cd0f2f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad56f0c9914dd87bd347718c35b69164c" id="r_ad56f0c9914dd87bd347718c35b69164c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad56f0c9914dd87bd347718c35b69164c">burst_write_8</a> (uint8_t *src, size_t len) override</td></tr>
 <tr class="memdesc:ad56f0c9914dd87bd347718c35b69164c"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a serie of 8 bit data on the SPI MOSI port DMA not implemented  <br /></td></tr>
 <tr class="separator:ad56f0c9914dd87bd347718c35b69164c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -202,8 +202,8 @@ spi_inst_t *&#160;</td><td class="memItemRight" valign="bottom"><b>spi</b></td><
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is a C++ wrapper for the original pico SDK spi master API, adapted to FreeRTOS environment. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a609ea03583e6b114ac2acd7e2641f220" name="a609ea03583e6b114ac2acd7e2641f220"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a609ea03583e6b114ac2acd7e2641f220">&#9670;&#160;</a></span>rtos_HW_SPI_Master()</h2>
+<a id="ab0b4f66cb858ddc73fe008496cd0f2f1" name="ab0b4f66cb858ddc73fe008496cd0f2f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0b4f66cb858ddc73fe008496cd0f2f1">&#9670;&#160;</a></span>rtos_HW_SPI_Master()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -216,22 +216,22 @@ spi_inst_t *&#160;</td><td class="memItemRight" valign="bottom"><b>spi</b></td><
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">irq_num_t</td>          <td class="paramname"><span class="paramname"><em>dma_tx_irq_number</em></span>, </td>
+          <td class="paramtype">irq_num_t</td>          <td class="paramname"><span class="paramname"><em>dma_tx_irq_number</em></span><span class="paramdefsep"> = </span><span class="paramdefval">DMA_IRQ_0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">irq_handler_t</td>          <td class="paramname"><span class="paramname"><em>dma_tx_irq_handler</em></span>, </td>
+          <td class="paramtype">irq_handler_t</td>          <td class="paramname"><span class="paramname"><em>dma_tx_irq_handler</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">irq_num_t</td>          <td class="paramname"><span class="paramname"><em>dma_rx_irq_number</em></span>, </td>
+          <td class="paramtype">irq_num_t</td>          <td class="paramname"><span class="paramname"><em>dma_rx_irq_number</em></span><span class="paramdefsep"> = </span><span class="paramdefval">DMA_IRQ_1</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">irq_handler_t</td>          <td class="paramname"><span class="paramname"><em>dma_rx_irq_handler</em></span>&#160;)</td>
+          <td class="paramtype">irq_handler_t</td>          <td class="paramname"><span class="paramname"><em>dma_rx_irq_handler</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -250,8 +250,8 @@ spi_inst_t *&#160;</td><td class="memItemRight" valign="bottom"><b>spi</b></td><
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classrtos___h_w___s_p_i___master_a609ea03583e6b114ac2acd7e2641f220_cgraph.png" border="0" usemap="#aclassrtos___h_w___s_p_i___master_a609ea03583e6b114ac2acd7e2641f220_cgraph" alt=""/></div>
-<map name="aclassrtos___h_w___s_p_i___master_a609ea03583e6b114ac2acd7e2641f220_cgraph" id="aclassrtos___h_w___s_p_i___master_a609ea03583e6b114ac2acd7e2641f220_cgraph">
+<div class="center"><img src="classrtos___h_w___s_p_i___master_ab0b4f66cb858ddc73fe008496cd0f2f1_cgraph.png" border="0" usemap="#aclassrtos___h_w___s_p_i___master_ab0b4f66cb858ddc73fe008496cd0f2f1_cgraph" alt=""/></div>
+<map name="aclassrtos___h_w___s_p_i___master_ab0b4f66cb858ddc73fe008496cd0f2f1_cgraph" id="aclassrtos___h_w___s_p_i___master_ab0b4f66cb858ddc73fe008496cd0f2f1_cgraph">
 <area shape="rect" title="Construct a new hw spi master object." alt="" coords="5,5,241,30"/>
 <area shape="rect" href="class_h_w___s_p_i___master.html#ae511ff460d41821039ff9d25538ab57c" title="Construct a new hw spi master object." alt="" coords="289,5,474,30"/>
 <area shape="poly" title=" " alt="" coords="241,15,273,15,273,20,241,20"/>

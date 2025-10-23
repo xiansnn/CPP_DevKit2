@@ -12,7 +12,7 @@ var class_graphic_widget =
     [ "hline", "class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a", null ],
     [ "line", "class_graphic_widget.html#ab3cd06c0aabb88e5ca25489391662ce7", null ],
     [ "rect", "class_graphic_widget.html#ac07cd1a8df25535bea9552de25411f2a", null ],
-    [ "send_to_DisplayGateKeeper", "class_graphic_widget.html#a17e4b40374bb9eae7c6c9623afbb8604", null ],
+    [ "send_image_to_DisplayGateKeeper", "class_graphic_widget.html#a83120ac9fccb17f34111352755d62384", null ],
     [ "show", "class_graphic_widget.html#a83c221250b9dfdeb8ab03b87a783bf10", null ],
     [ "update_widget_anchor", "class_graphic_widget.html#a9059637b35c4e26bca54a77ae9c25b0d", null ],
     [ "vline", "class_graphic_widget.html#a0a6ac5a1610805ec69142fdaa2ec28b1", null ],

@@ -1,7 +1,7 @@
 <map id="rtos_HW_SPI_Master" name="rtos_HW_SPI_Master">
-<area shape="rect" id="Node000001" title="This is a C++ wrapper for the original pico SDK spi master API, adapted to FreeRTOS environment." alt="" coords="139,311,655,555"/>
+<area shape="rect" id="Node000001" title="This is a C++ wrapper for the original pico SDK spi master API, adapted to FreeRTOS environment." alt="" coords="157,311,637,568"/>
 <area shape="rect" id="Node000002" href="$class_h_w___s_p_i___master.html" title="this is a C++ wrapper for the original pico SDK spi master API" alt="" coords="5,5,361,235"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="272,245,316,310,312,313,268,248"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="270,245,313,310,309,313,266,248"/>
 <area shape="rect" id="Node000003" href="$class_h_w___d_m_a.html" title="Class to manage a DMA channel." alt="" coords="386,26,834,214"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="548,215,491,298,487,295,544,212"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="550,215,494,298,490,295,546,212"/>
 </map>

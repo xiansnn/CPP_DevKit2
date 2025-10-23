@@ -1,15 +1,15 @@
 <map id="DisplayDevice" name="DisplayDevice">
-<area shape="rect" id="Node000001" title="A generic class for all display device." alt="" coords="697,5,801,85"/>
-<area shape="rect" id="Node000002" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="284,143,761,279"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="687,95,617,145,614,141,684,90"/>
-<area shape="rect" id="Node000007" href="$class_printer_device.html" title="A class dedicated to pure text display such as console, printer, ASCII character line display." alt="" coords="786,133,1169,288"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="815,90,872,131,869,136,812,94"/>
-<area shape="rect" id="Node000003" href="$class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="60,359,508,972"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="483,293,447,360,443,358,478,290"/>
-<area shape="rect" id="Node000005" href="$class_s_t7735.html" title="ST7735 driven TFT color display device." alt="" coords="535,336,993,995"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="567,290,591,335,587,338,563,293"/>
-<area shape="rect" id="Node000004" href="$classrtos___s_s_d1306.html" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,1043,549,1216"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="282,987,281,1043,276,1043,277,987"/>
-<area shape="rect" id="Node000006" href="$classrtos___s_t7735.html" title="RTOS version of the ST7735 display device." alt="" coords="573,1061,963,1197"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="770,1010,770,1062,765,1062,764,1010"/>
+<area shape="rect" id="Node000001" title="A generic class for all display device." alt="" coords="719,5,823,85"/>
+<area shape="rect" id="Node000002" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="333,135,773,286"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="709,97,653,138,650,134,705,92"/>
+<area shape="rect" id="Node000007" href="$class_printer_device.html" title="A class dedicated to pure text display such as console, printer, ASCII character line display." alt="" coords="798,133,1181,288"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="836,92,889,131,886,136,833,96"/>
+<area shape="rect" id="Node000003" href="$class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="91,359,539,987"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="510,301,479,360,475,358,506,298"/>
+<area shape="rect" id="Node000005" href="$class_s_t7735.html" title="ST7735 driven TFT color display device." alt="" coords="581,336,1040,1009"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="604,298,625,335,620,337,600,300"/>
+<area shape="rect" id="Node000004" href="$classrtos___s_s_d1306.html" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,1057,549,1249"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="292,1002,287,1058,282,1057,286,1002"/>
+<area shape="rect" id="Node000006" href="$classrtos___s_t7735.html" title="RTOS version of the ST7735 display device." alt="" coords="573,1076,1088,1231"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="828,1024,830,1076,825,1076,823,1025"/>
 </map>

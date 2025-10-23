@@ -1,9 +1,9 @@
 <map id="rtos_ST7735" name="rtos_ST7735">
-<area shape="rect" id="Node000001" title="RTOS version of the ST7735 display device." alt="" coords="49,1024,439,1160"/>
-<area shape="rect" id="Node000002" href="$class_s_t7735.html" title="ST7735 driven TFT color display device." alt="" coords="15,317,473,976"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="247,991,247,1024,241,1024,241,991"/>
-<area shape="rect" id="Node000003" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,133,483,269"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="247,284,247,318,241,318,241,284"/>
-<area shape="rect" id="Node000004" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="192,5,296,85"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="247,100,247,134,241,134,241,100"/>
+<area shape="rect" id="Node000001" title="RTOS version of the ST7735 display device." alt="" coords="5,1053,520,1208"/>
+<area shape="rect" id="Node000002" href="$class_s_t7735.html" title="ST7735 driven TFT color display device." alt="" coords="33,332,492,1005"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="265,1020,265,1054,260,1054,260,1020"/>
+<area shape="rect" id="Node000003" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="43,133,483,284"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="265,299,265,332,260,332,260,299"/>
+<area shape="rect" id="Node000004" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="211,5,315,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="265,100,265,134,260,134,260,100"/>
 </map>
