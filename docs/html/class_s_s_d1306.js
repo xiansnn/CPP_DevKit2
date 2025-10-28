@@ -15,7 +15,6 @@ var class_s_s_d1306 =
     [ "init_MUX_ratio", "class_s_s_d1306.html#ae7d610e1d38518a7d467950ec7c48413", null ],
     [ "init_RAM_start_line", "class_s_s_d1306.html#a784fdb3c2897af4c27ce69f0195bfd80", null ],
     [ "init_SEG_scan_inverse_direction", "class_s_s_d1306.html#a2197c4965c293100893159d198779846", null ],
-    [ "send_buf", "class_s_s_d1306.html#a617bac0b0002b299b129bc9e84772af7", null ],
     [ "send_cmd", "class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08", null ],
     [ "send_cmd_list", "class_s_s_d1306.html#abba4af0c315a9fdcab52d32acc11ab97", null ],
     [ "set_all_pixel_ON", "class_s_s_d1306.html#aee29b36a9af5d427c0665dfaf942445e", null ],
