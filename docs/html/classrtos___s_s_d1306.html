@@ -113,9 +113,9 @@ Inheritance diagram for rtos_SSD1306:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___s_s_d1306__inherit__graph.png" border="0" usemap="#artos___s_s_d1306_inherit__map" alt="Inheritance graph"/></div>
 <map name="artos___s_s_d1306_inherit__map" id="artos___s_s_d1306_inherit__map">
-<area shape="rect" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,1008,549,1200"/>
-<area shape="rect" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="53,332,501,960"/>
-<area shape="poly" title=" " alt="" coords="280,975,280,1008,275,1008,275,975"/>
+<area shape="rect" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,989,549,1163"/>
+<area shape="rect" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="53,332,501,941"/>
+<area shape="poly" title=" " alt="" coords="280,957,280,989,275,989,275,957"/>
 <area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="57,133,497,284"/>
 <area shape="poly" title=" " alt="" coords="280,299,280,332,275,332,275,299"/>
 <area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="225,5,329,85"/>
@@ -127,17 +127,17 @@ Collaboration diagram for rtos_SSD1306:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___s_s_d1306__coll__graph.png" border="0" usemap="#artos___s_s_d1306_coll__map" alt="Collaboration graph"/></div>
 <map name="artos___s_s_d1306_coll__map" id="artos___s_s_d1306_coll__map">
-<area shape="rect" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="455,1103,999,1295"/>
-<area shape="rect" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="503,445,951,1054"/>
-<area shape="poly" title=" " alt="" coords="729,1069,729,1104,724,1104,724,1069"/>
+<area shape="rect" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="455,1085,999,1258"/>
+<area shape="rect" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="503,445,951,1035"/>
+<area shape="poly" title=" " alt="" coords="729,1050,729,1085,724,1085,724,1050"/>
 <area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,183,445,334"/>
-<area shape="poly" title=" " alt="" coords="313,342,505,528,501,532,309,346"/>
+<area shape="poly" title=" " alt="" coords="315,342,505,523,501,527,312,346"/>
 <area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="173,5,277,85"/>
 <area shape="poly" title=" " alt="" coords="228,101,228,184,223,184,223,101"/>
 <area shape="rect" href="class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="470,139,983,379"/>
 <area shape="poly" title=" " alt="" coords="729,378,729,428,724,428,724,378"/>
 <area shape="rect" href="structstruct___config_s_s_d1306.html" title="configuration data for SSD1306 OLED display. refer to datasheet for more details." alt="" coords="1008,135,1192,383"/>
-<area shape="poly" title=" " alt="" coords="1010,382,963,443,959,440,1006,378"/>
+<area shape="poly" title=" " alt="" coords="1010,379,963,440,959,437,1006,376"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -161,9 +161,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8bc4957ee0a73161bfc99ef061c12ad8" id="r_a8bc4957ee0a73161bfc99ef061c12ad8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bc4957ee0a73161bfc99ef061c12ad8">fill_GDDRAM_with_pattern</a> (uint8_t pattern, <a class="el" href="structstruct___render_area.html">struct_RenderArea</a> area, uint8_t addressing_mode=0)</td></tr>
 <tr class="memdesc:a8bc4957ee0a73161bfc99ef061c12ad8"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill a pattern in the device framebuffer (GDDRAM). This is shown on display as soon as the GDDRAM buffer is transfered to the pixels. The pattern is a vertical byte representing 8 vertical pixels (refer to MONO_VLSB framebuffer format)  <br /></td></tr>
 <tr class="separator:a8bc4957ee0a73161bfc99ef061c12ad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae014f66332f6d6380bb6383dc10764a6" id="r_ae014f66332f6d6380bb6383dc10764a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae014f66332f6d6380bb6383dc10764a6">send_buf</a> (uint8_t buf[], size_t buflen)</td></tr>
-<tr class="memdesc:ae014f66332f6d6380bb6383dc10764a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details  <br /></td></tr>
-<tr class="separator:ae014f66332f6d6380bb6383dc10764a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_s_s_d1306"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_s_s_d1306')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_s_s_d1306.html">SSD1306</a></td></tr>
 <tr class="memitem:a97d4903cd5f1bce0d8314f41c077f14b inherit pub_methods_class_s_s_d1306" id="r_a97d4903cd5f1bce0d8314f41c077f14b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_s_d1306.html#a97d4903cd5f1bce0d8314f41c077f14b">check_display_device_compatibility</a> (<a class="el" href="structstruct___config_graphic_widget.html">struct_ConfigGraphicWidget</a> framebuffer_cfg, <a class="el" href="canvas_8h.html#a436eabe2e5d4a62b78ff8002105c5421">CanvasFormat</a> canvas_format)</td></tr>
 <tr class="memdesc:a97d4903cd5f1bce0d8314f41c077f14b inherit pub_methods_class_s_s_d1306"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual member function. Each device must implement this method and check the compatibility of the widget parameter with the its physical limitations.  <br /></td></tr>
@@ -460,46 +457,6 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ae014f66332f6d6380bb6383dc10764a6" name="ae014f66332f6d6380bb6383dc10764a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae014f66332f6d6380bb6383dc10764a6">&#9670;&#160;</a></span>send_buf()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void rtos_SSD1306::send_buf </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>[], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>buflen</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">buf</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
-    <tr><td class="paramname">buflen</td><td>refer to <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a> data sheet for more details </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Reimplemented from <a class="el" href="class_s_s_d1306.html#a617bac0b0002b299b129bc9e84772af7">SSD1306</a>.</p>
-
-</div>
-</div>
 <a id="a89b302a02835a2a2374689450342b6e7" name="a89b302a02835a2a2374689450342b6e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a89b302a02835a2a2374689450342b6e7">&#9670;&#160;</a></span>send_clear_device_command()</h2>
 
@@ -557,15 +514,13 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___s_s_d1306_ac4bfafafd6fbfd5a59e2be79268bf317_cgraph.png" border="0" usemap="#aclassrtos___s_s_d1306_ac4bfafafd6fbfd5a59e2be79268bf317_cgraph" alt=""/></div>
 <map name="aclassrtos___s_s_d1306_ac4bfafafd6fbfd5a59e2be79268bf317_cgraph" id="aclassrtos___s_s_d1306_ac4bfafafd6fbfd5a59e2be79268bf317_cgraph">
-<area shape="rect" title="Show data from the display queue." alt="" coords="5,31,230,55"/>
-<area shape="rect" href="class_s_s_d1306.html#a0856911564cd155a68bdb5cd4ba090e8" title=" " alt="" coords="278,31,375,55"/>
-<area shape="poly" title=" " alt="" coords="230,40,262,40,262,46,230,46"/>
-<area shape="rect" href="class_s_s_d1306.html#ad26a211970f779290c9a97335fb023fc" title="when we need to show a render area with a given framebuffer" alt="" coords="423,31,586,55"/>
-<area shape="poly" title=" " alt="" coords="375,40,407,40,407,46,375,46"/>
-<area shape="rect" href="class_s_s_d1306.html#a617bac0b0002b299b129bc9e84772af7" title="refer to SSD1306 data sheet for more details" alt="" coords="637,5,753,30"/>
-<area shape="poly" title=" " alt="" coords="586,29,621,25,622,30,587,35"/>
-<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="634,55,756,79"/>
-<area shape="poly" title=" " alt="" coords="587,51,619,55,619,60,586,56"/>
+<area shape="rect" title="Show data from the display queue." alt="" coords="5,5,230,30"/>
+<area shape="rect" href="class_s_s_d1306.html#a0856911564cd155a68bdb5cd4ba090e8" title=" " alt="" coords="278,5,375,30"/>
+<area shape="poly" title=" " alt="" coords="230,15,262,15,262,20,230,20"/>
+<area shape="rect" href="class_s_s_d1306.html#ad26a211970f779290c9a97335fb023fc" title="when we need to show a render area with a given framebuffer" alt="" coords="423,5,586,30"/>
+<area shape="poly" title=" " alt="" coords="375,15,407,15,407,20,375,20"/>
+<area shape="rect" href="class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="634,5,756,30"/>
+<area shape="poly" title=" " alt="" coords="587,15,619,15,619,20,587,20"/>
 </map>
 </div>
 

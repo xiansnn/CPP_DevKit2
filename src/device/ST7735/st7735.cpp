@@ -512,10 +512,6 @@ void ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y
     case CanvasFormat::RGB565_16b:
         set_RAM_write_addresses(anchor_x, anchor_y, canvas->canvas_width_pixel, canvas->canvas_height_pixel);
         send_cmd(ST7735_RAMWR);
-        // for (size_t i = 0; i < canvas->canvas_buffer_size_pixel; i++)
-        // {
-        //     spi->single_write_16(canvas->canvas_16buffer[i]);
-        // }
         spi->burst_write_16(canvas->canvas_16buffer, canvas->canvas_buffer_size_pixel);
         break;
     case CanvasFormat::MONO_HMSB:

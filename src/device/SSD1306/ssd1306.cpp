@@ -1,7 +1,6 @@
 #include "ssd1306.h"
 #include <string.h>
 
-
 void SSD1306::send_cmd(uint8_t cmd)
 {
     // I2C write process expects a control byte followed by data
@@ -13,11 +12,6 @@ void SSD1306::send_cmd_list(uint8_t *cmd_list, int cmd_list_size)
 {
     for (int i = 0; i < cmd_list_size; i++)
         this->send_cmd(cmd_list[i]);
-}
-
-void SSD1306::send_buf(uint8_t buffer[], size_t buffer_size)
-{
-    this->i2c_master->burst_byte_write(this->device_config.i2c_address, I2C_DATA_FLAG, buffer, buffer_size);
 }
 
 SSD1306::SSD1306(HW_I2C_Master *master, struct_ConfigSSD1306 init_config)
@@ -131,7 +125,8 @@ void SSD1306::show_render_area(uint8_t *data_buffer, const struct_RenderArea scr
         this->send_cmd(column_start_LO_address);
         uint8_t column_start_HI_address = (((0xF0) & screen_area.start_col) >> 4) | 0x10;
         this->send_cmd(column_start_HI_address);
-        this->send_buf(data_buffer, screen_area.buflen);
+        // this->send_buf(data_buffer, screen_area.buflen);
+        this->i2c_master->burst_byte_write(this->device_config.i2c_address, I2C_DATA_FLAG, data_buffer, screen_area.buflen);
     }
     else
     {
@@ -141,7 +136,8 @@ void SSD1306::show_render_area(uint8_t *data_buffer, const struct_RenderArea scr
         this->send_cmd(SSD1306_SET_PAGE_ADDR);
         this->send_cmd(screen_area.start_page);
         this->send_cmd(screen_area.end_page);
-        this->send_buf(data_buffer, screen_area.buflen);
+        // this->send_buf(data_buffer, screen_area.buflen);
+        this->i2c_master->burst_byte_write(this->device_config.i2c_address, I2C_DATA_FLAG, data_buffer, screen_area.buflen);
     }
 }
 
@@ -299,13 +295,11 @@ void rtos_SSD1306::send_clear_device_command(QueueHandle_t display_queue, Semaph
     data_to_display.display = this;
     xQueueSend(display_queue, &data_to_display, portMAX_DELAY); // take 65ms but used fully the CPU
     xSemaphoreTake(sending_done, portMAX_DELAY);
-
 }
-
 
 void rtos_SSD1306::show_from_display_queue(struct_DataToShow data_to_show)
 {
-    this->show(data_to_show.canvas,data_to_show.anchor_x,data_to_show.anchor_y);
+    this->show(data_to_show.canvas, data_to_show.anchor_x, data_to_show.anchor_y);
 }
 
 void rtos_SSD1306::show_render_area(uint8_t *data_buffer, const struct_RenderArea display_area, const uint8_t addressing_mode)
@@ -362,9 +356,4 @@ void rtos_SSD1306::fill_GDDRAM_with_pattern(uint8_t pattern, struct_RenderArea a
         this->send_cmd(column_start_HI_address);
         ((rtos_HW_I2C_Master *)this->i2c_master)->repeat_byte_write(this->device_config.i2c_address, I2C_DATA_FLAG, pattern, area.buflen);
     }
-}
-
-void rtos_SSD1306::send_buf(uint8_t buffer[], size_t buffer_length)
-{
-    ((rtos_HW_I2C_Master *)this->i2c_master)->burst_byte_write(this->device_config.i2c_address, I2C_DATA_FLAG, buffer, buffer_length);
 }

@@ -1,7 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"st7735_8h.html#a801fa0148c017e7e718bdbed0fb9f5ea":[5,0,0,0,8,1,9],
-"st7735_8h.html#aaacdcc51ca8096e2178050a1e0af76e7":[5,0,0,0,8,1,8],
 "st7735_8h.html#abd8eb27d364a32890e54dcc50dbedb66":[5,0,0,0,8,1,3],
 "st7735_8h.html#acdfd958913e851196c73b8ac8052679a":[5,0,0,0,8,1,4],
 "st7735_8h.html#ad2eeb3d0d34f2181a82c41ca1236c558":[5,0,0,0,8,1,10],
