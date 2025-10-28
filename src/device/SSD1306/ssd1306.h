@@ -162,10 +162,10 @@ protected:
     /// @param cmd_list refer to SSD1306 data sheet for more details
     /// @param num refer to SSD1306 data sheet for more details
     void send_cmd_list(uint8_t *cmd_list, int num);
-    /// @brief refer to SSD1306 data sheet for more details
-    /// @param buf refer to SSD1306 data sheet for more details
-    /// @param buflen refer to SSD1306 data sheet for more details
-    virtual void send_buf(uint8_t buf[], size_t buflen);
+    // /// @brief refer to SSD1306 data sheet for more details
+    // /// @param buf refer to SSD1306 data sheet for more details
+    // /// @param buflen refer to SSD1306 data sheet for more details
+    // virtual void send_buf(uint8_t buf[], size_t buflen);
 
 public:
     void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format);
@@ -300,8 +300,8 @@ public:
     /// @param addressing_mode the way the data is written ti the GDDRAM
     void fill_GDDRAM_with_pattern(uint8_t pattern, struct_RenderArea area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
 
-    /// @brief refer to SSD1306 data sheet for more details
-    /// @param buf refer to SSD1306 data sheet for more details
-    /// @param buflen refer to SSD1306 data sheet for more details
-    void send_buf(uint8_t buf[], size_t buflen);
+    // /// @brief refer to SSD1306 data sheet for more details
+    // /// @param buf refer to SSD1306 data sheet for more details
+    // /// @param buflen refer to SSD1306 data sheet for more details
+    // void send_buf(uint8_t buf[], size_t buflen);
 };
