@@ -14,11 +14,6 @@ void SSD1306::send_cmd_list(uint8_t *cmd_list, int cmd_list_size)
         this->send_cmd(cmd_list[i]);
 }
 
-// void SSD1306::send_buf(uint8_t buffer[], size_t buffer_size)
-// {
-//     this->i2c_master->burst_byte_write(this->device_config.i2c_address, I2C_DATA_FLAG, buffer, buffer_size);
-// }
-
 SSD1306::SSD1306(HW_I2C_Master *master, struct_ConfigSSD1306 init_config)
     : GraphicDisplayDevice(SSD1306_WIDTH, SSD1306_HEIGHT)
 {
@@ -362,8 +357,3 @@ void rtos_SSD1306::fill_GDDRAM_with_pattern(uint8_t pattern, struct_RenderArea a
         ((rtos_HW_I2C_Master *)this->i2c_master)->repeat_byte_write(this->device_config.i2c_address, I2C_DATA_FLAG, pattern, area.buflen);
     }
 }
-
-// void rtos_SSD1306::send_buf(uint8_t buffer[], size_t buffer_length)
-// {
-//     ((rtos_HW_I2C_Master *)this->i2c_master)->burst_byte_write(this->device_config.i2c_address, I2C_DATA_FLAG, buffer, buffer_length);
-// }
