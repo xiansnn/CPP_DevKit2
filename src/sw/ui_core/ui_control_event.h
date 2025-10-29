@@ -37,4 +37,34 @@ enum class UIControlEvent
     /// @brief event that signals nothing happens after a configurable period of time.
     TIME_OUT
 };
+/// @brief The list of status that a Model can have.
+/// (0) IS_WAITING
+/// (1) HAS_FOCUS
+/// (2) IS_ACTIVE
+enum class ControlledObjectStatus
+{
+    /// @brief The object is inactive, nothing to do.
+    IS_WAITING,
+
+    /// @brief The widget or object manager is pointing to this model
+    HAS_FOCUS,
+
+    /// @brief The user has selected (clicked) on this model. ControlEvent are then passed to this model in order to be processed.
+    IS_ACTIVE
+};
+
+/// @brief The list of reason of manager time out report.
+/// (0) NO_TIME_OUT
+/// (1) MANAGER_INACTIVE
+/// (3) MANAGED_OBJECT_INACTIVE
+enum class ControlledObjectStatusTimeOutReason
+{
+    /// @brief no time out
+    NO_TIME_OUT,
+    /// @brief The object is inactive, nothing to do.
+    MANAGER_INACTIVE,
+    /// @brief The widget or object manager is pointing to this model
+    MANAGED_OBJECT_INACTIVE
+};
+
 
