@@ -1,6 +1,8 @@
-#include "sw/ui_core/rtos_ui_core.h"
+#include "sw/ui_core/ui_core.h"
 #include "sw/widget/widget.h"
 #include "sw/display_device/display_device.h"
+
+#include "t_rtos_ui_core.h"
 
 
 
@@ -14,7 +16,7 @@ Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
 
-#define MAIN_TASK_PERIOD_ms 1000
+#define MAIN_TASK_PERIOD_ms 500
 
 QueueHandle_t display_queue = xQueueCreate(8, sizeof(struct_DataToShow));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
