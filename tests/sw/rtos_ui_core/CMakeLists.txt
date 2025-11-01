@@ -1,7 +1,23 @@
+add_library(rtos_ui_core t_rtos_ui_core.cpp)
+target_link_libraries(rtos_ui_core PUBLIC 
+            pico_stdlib
+            # rtos_hw_spi
+            sw_ui_core
+            # device_ky040
+            # device_st7735
+            sw_widget
+            sw_display_device
+            utilities_probe
+            FreeRTOS-Kernel-Heap4)
+
+
+
 add_executable(test_rtos_ui_core  test_rtos_ui_core.cpp )               
 target_link_libraries(test_rtos_ui_core 
             pico_stdlib
             rtos_hw_spi
+            sw_ui_core
+            rtos_ui_core
             # device_ky040
             device_st7735
             sw_widget
