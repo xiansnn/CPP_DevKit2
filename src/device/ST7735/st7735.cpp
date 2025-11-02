@@ -8,8 +8,8 @@
 #include "utilities/probe/probe.h"
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
-Probe pr_D6 = Probe(6);
-Probe pr_D7 = Probe(7);
+// Probe pr_D6 = Probe(6);
+// Probe pr_D7 = Probe(7);
 #endif // MACRO
 
 void ST7735::enable_command_pin(bool enable)
