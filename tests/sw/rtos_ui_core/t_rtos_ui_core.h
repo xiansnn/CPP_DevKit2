@@ -10,28 +10,7 @@
 
 #include <set>
 
-class rtos_Widget
-{
-private:
-public:
-    Widget *widget;
-    TaskHandle_t task_handle;
-    rtos_Widget(Widget *widget = nullptr);
-    ~rtos_Widget();
-};
 
-class rtos_Model
-{
-private:
-    std::set<rtos_Widget *> linked_widget;
-
-public:
-    Model *model;
-    void link_widget(rtos_Widget *linked_widget);
-    void notify_all_linked_widget();
-    rtos_Model(Model *model = nullptr);
-    ~rtos_Model();
-};
 //---------------------------------------------------------------------------------------------
 class my_Model : public Model
 {
@@ -43,23 +22,25 @@ public:
     ~my_Model();
 };
 
-class My_Widget : public PrintWidget
+class my_Widget : public Widget
 {
 private:
     /* data */
 public:
-    My_Widget(PrinterDevice *display_device, Model *actual_displayed_model = nullptr);
-    ~My_Widget();
+    my_Widget(DisplayDevice *display_device, Model *actual_displayed_model = nullptr);
+    ~my_Widget();
     void draw();
 };
 
-class my_ProbePrinter : public PrinterDevice
+class my_ProbePrinter : public DisplayDevice
 {
 private:
     Probe *probe;
 
 public:
     void show();
+    void show_from_display_queue(struct_DataToShow received_data_to_show);
+    void clear_device_screen_buffer();
     my_ProbePrinter(Probe *probe);
     ~my_ProbePrinter();
 };

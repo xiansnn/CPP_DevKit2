@@ -78,7 +78,7 @@ struct struct_DataToShow
     /// @brief the command to be executed by the display task
     DisplayCommand command{DisplayCommand::SHOW_IMAGE};
     /// @brief the display device
-    GraphicDisplayDevice *display = nullptr;
+    DisplayDevice *display = nullptr;
     /// @brief the canvas to be displayed
     Canvas *canvas = nullptr;
     /// @brief the x anchor position of the canvas on the display

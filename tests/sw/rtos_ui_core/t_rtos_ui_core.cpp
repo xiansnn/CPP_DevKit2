@@ -1,47 +1,18 @@
 #include "t_rtos_ui_core.h"
 
-void rtos_Model::link_widget(rtos_Widget *linked_widget)
-{
-    this->linked_widget.insert(linked_widget);
-}
 
-void rtos_Model::notify_all_linked_widget()
-{
-    for (auto &&widget : linked_widget)
-    {
-        xTaskNotifyGive(widget->task_handle);
-    }
-}
-
-rtos_Model::rtos_Model(Model *model)
-{
-    this->model = model;
-}
-
-rtos_Model::~rtos_Model()
+my_Widget::my_Widget(DisplayDevice *display_device, Model *actual_displayed_model)
+    : Widget(actual_displayed_model, display_device)
 {
 }
 
-rtos_Widget::rtos_Widget(Widget *widget)
-{
-    this->widget = widget;
-}
-
-rtos_Widget::~rtos_Widget()
+my_Widget::~my_Widget()
 {
 }
 
-My_Widget::My_Widget(PrinterDevice *display_device, Model *actual_displayed_model)
-    : PrintWidget(display_device, actual_displayed_model)
+void my_Widget::draw()
 {
-}
 
-My_Widget::~My_Widget()
-{
-}
-
-void My_Widget::draw()
-{
     ((my_ProbePrinter *)this->display_device)->show();
 }
 
@@ -54,8 +25,18 @@ void my_ProbePrinter::show()
     }
 }
 
+void my_ProbePrinter::show_from_display_queue(struct_DataToShow received_data_to_show)
+{
+    show();
+}
+
+void my_ProbePrinter::clear_device_screen_buffer()
+{
+    this->probe->pulse_us(100);
+}
+
 my_ProbePrinter::my_ProbePrinter(Probe *probe)
-    : PrinterDevice(100, 1)
+    : DisplayDevice()
 {
     this->probe = probe;
 }

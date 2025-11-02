@@ -7,12 +7,12 @@
 
 // #define PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR  //usefull to debug widget construction/destruction
 
-Widget::Widget(Model *actual_displayed_model, DisplayDevice *graphic_display_device)
+Widget::Widget(Model *actual_displayed_model, DisplayDevice *display_device)
 {
 #if defined(PRINT_WIDGET_CONSTRUCTOR_DESTRUCTOR)
     printf("+ Widget\n");
 #endif // MACRO
-    this->display_device = graphic_display_device;
+    this->display_device = display_device;
     if (actual_displayed_model != nullptr)
     {
         this->actual_displayed_model = actual_displayed_model;

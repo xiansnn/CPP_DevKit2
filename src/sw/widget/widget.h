@@ -104,9 +104,6 @@ public:
 class Widget
 {
 protected:
-    /// @brief the display device where the attached to the frame buffer
-    DisplayDevice *display_device{nullptr};
-
     /// @brief a pointer to the Model actually displayed by the widget
     Model *actual_displayed_model{nullptr};
 
@@ -114,11 +111,13 @@ protected:
     std::vector<Widget *> widgets;
 
 public:
+    /// @brief the display device where the attached to the frame buffer
+    DisplayDevice *display_device{nullptr};
     /// @brief contructor for generic widget
     /// @param actual_displayed_model the displayed model of the widget
     /// @param graphic_display_device The display device on which the widget is drawn. This device can be "null".
     Widget(Model *actual_displayed_model,
-           DisplayDevice *graphic_display_device = nullptr);
+           DisplayDevice *display_device = nullptr);
 
     virtual ~Widget();
 
@@ -205,14 +204,10 @@ public:
     /// @brief A short way to call GraphicDisplayDevice::show(&canvas, anchor x, anchor y)
     void show();
 
-    
     /// @brief used with FreeRTOS. send the widget data_to_display structure to the task in charge of the display management
     /// @param display_queue the communcation queue with the display gate keeper
     /// @param sending_done the semaphore triggered when the canvas display is complete.
-    void send_image_to_DisplayGateKeeper(QueueHandle_t display_queue,SemaphoreHandle_t sending_done);
-
-
- 
+    void send_image_to_DisplayGateKeeper(QueueHandle_t display_queue, SemaphoreHandle_t sending_done);
 
     /**
      * @brief Construct a new Graphic Widget object
