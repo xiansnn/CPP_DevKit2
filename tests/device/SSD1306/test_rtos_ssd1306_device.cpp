@@ -42,7 +42,7 @@ struct struct_SSD1306DataToShow
 };
 
 QueueHandle_t display_data_queue = xQueueCreate(8, sizeof(struct_SSD1306DataToShow));
-SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
+SemaphoreHandle_t data_sent_to_I2C = xSemaphoreCreateBinary(); // synchro between display task and sending task
 
 void i2c_irq_handler();
 
@@ -136,7 +136,7 @@ void test_addressing_mode(rtos_SSD1306 *display)
         data_to_show.data_buffer = image;
         data_to_show.addressing_mode = HORIZONTAL_ADDRESSING_MODE;
         xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
-        xSemaphoreTake(data_sent, portMAX_DELAY);
+        xSemaphoreTake(data_sent_to_I2C, portMAX_DELAY);
 
         vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
         display->clear_device_screen_buffer();
@@ -152,7 +152,7 @@ void test_addressing_mode(rtos_SSD1306 *display)
         data_to_show.data_buffer = image;
         data_to_show.addressing_mode = VERTICAL_ADDRESSING_MODE;
         xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
-        xSemaphoreTake(data_sent, portMAX_DELAY);
+        xSemaphoreTake(data_sent_to_I2C, portMAX_DELAY);
 
         vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
         display->clear_device_screen_buffer();
@@ -168,7 +168,7 @@ void test_addressing_mode(rtos_SSD1306 *display)
         data_to_show.data_buffer = image;
         data_to_show.addressing_mode = PAGE_ADDRESSING_MODE;
         xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
-        xSemaphoreTake(data_sent, portMAX_DELAY);
+        xSemaphoreTake(data_sent_to_I2C, portMAX_DELAY);
         vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
     }
     p1.lo();
@@ -201,7 +201,7 @@ void test_blink(rtos_SSD1306 *display_device)
     data_to_show.display_area = area;
     data_to_show.data_buffer = image;
     xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
-    xSemaphoreTake(data_sent, portMAX_DELAY);
+    xSemaphoreTake(data_sent_to_I2C, portMAX_DELAY);
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
 
     for (int i = 0; i < 2; i++)
@@ -234,14 +234,14 @@ void test_scrolling(rtos_SSD1306 *display)
         data_to_show.display_area = area;
         data_to_show.data_buffer = raspberry26x32;
         xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
-        xSemaphoreTake(data_sent, portMAX_DELAY);
+        xSemaphoreTake(data_sent_to_I2C, portMAX_DELAY);
 
         area.start_col += offset;
         area.end_col += offset;
         data_to_show.display_area = area;
         data_to_show.data_buffer = raspberry26x32;
         xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
-        xSemaphoreTake(data_sent, portMAX_DELAY);
+        xSemaphoreTake(data_sent_to_I2C, portMAX_DELAY);
     }
     // start scrolling
     struct_ConfigScrollSSD1306 scroll_data = {
@@ -279,7 +279,7 @@ void test_write_GDDRAM(void *display_device)
     data_to_show.display_area = area;
     data_to_show.data_buffer = screen;
     xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
-    xSemaphoreTake(data_sent, portMAX_DELAY);
+    xSemaphoreTake(data_sent_to_I2C, portMAX_DELAY);
 
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
@@ -296,7 +296,7 @@ void display_gate_keeper_task(void *param)
         ((rtos_SSD1306 *)received_data_to_show.display)->show_render_area(received_data_to_show.data_buffer, 
                                         received_data_to_show.display_area, 
                                         received_data_to_show.addressing_mode);
-        xSemaphoreGive(data_sent);
+        xSemaphoreGive(data_sent_to_I2C);
         p4.lo();
     }
 }

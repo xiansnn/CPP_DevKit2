@@ -84,7 +84,6 @@ void my_model::update_cycle(int i, int sign)
 {
     this->roll = i;
     this->pitch = sign * i / 4;
-    set_change_flag();
 }
 
 class my_text_widget : public TextWidget

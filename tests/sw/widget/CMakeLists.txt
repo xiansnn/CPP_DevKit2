@@ -79,11 +79,15 @@ target_link_libraries(test_rtos_st7735_graphic_primitives PUBLIC
             FreeRTOS-Kernel-Heap4 
             )
 #-------------------------------------------------------------------------------------
-add_executable(test_rtos_st7735_text_and_graph_widgets test_rtos_st7735_text_and_graph_widgets.cpp)
+add_executable(test_rtos_st7735_text_and_graph_widgets 
+                test_rtos_st7735_text_and_graph_widgets.cpp
+                t_rtos_st7735_text_and_graph_widgets.cpp
+                )
 target_link_libraries(test_rtos_st7735_text_and_graph_widgets 
             pico_stdlib 
             utilities_probe
             sw_ui_core
+            rtos_ui_core
             rtos_hw_spi
             sw_widget
             device_st7735 

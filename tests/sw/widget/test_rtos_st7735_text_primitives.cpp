@@ -91,8 +91,8 @@ my_text_widget::my_text_widget(GraphicDisplayDevice *graphic_display_screen,
 my_text_widget::~my_text_widget() {}
 void my_text_widget::get_value_of_interest() {}
 
-QueueHandle_t display_queue = xQueueCreate(8, sizeof(struct_DataToShow));
-SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
+QueueHandle_t display_queue_to_SPI = xQueueCreate(8, sizeof(struct_DataToShow));
+SemaphoreHandle_t data_sent_to_SPI = xSemaphoreCreateBinary(); // synchro between display task and sending task
 
 void end_of_TX_DMA_xfer_handler();
 rtos_HW_SPI_Master spi_master = rtos_HW_SPI_Master(cfg_spi,
@@ -113,7 +113,7 @@ void display_gate_keeper_task(void *param)
 
     while (true)
     {
-        xQueueReceive(display_queue, &received_data_to_show, portMAX_DELAY);
+        xQueueReceive(display_queue_to_SPI, &received_data_to_show, portMAX_DELAY);
         p4.hi();
         switch (received_data_to_show.command)
         {
@@ -126,7 +126,7 @@ void display_gate_keeper_task(void *param)
         default:
             break;
         }
-        xSemaphoreGive(data_sent);
+        xSemaphoreGive(data_sent_to_SPI);
         p4.lo();
     }
 }
@@ -154,14 +154,14 @@ void test_font_size(rtos_ST7735 *current_display)
         .bg_color = ColorIndex::LIME};
 
     p2.hi();
-    current_display->send_clear_device_command(display_queue, data_sent);
+    current_display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
 
     p2.hi();
     my_text_widget *font_text_on_screen_0 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
     // draw text directly from a string to the pixel buffer
     font_text_on_screen_0->write(test_string.c_str());
-    font_text_on_screen_0->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    font_text_on_screen_0->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
 
     delete font_text_on_screen_0;
@@ -174,7 +174,7 @@ void test_font_size(rtos_ST7735 *current_display)
     // process first text according to sprintf capabilities then copy to text buffer and finally draw text buffer into pixel buffer
     sprintf(font_text_on_screen_1->text_buffer, test_string.c_str());
     font_text_on_screen_1->write();
-    font_text_on_screen_1->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    font_text_on_screen_1->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
 
     delete font_text_on_screen_1;
@@ -186,7 +186,7 @@ void test_font_size(rtos_ST7735 *current_display)
 
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->write();
-    font_text_on_screen_2->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    font_text_on_screen_2->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
 
     p2.hi();
@@ -195,7 +195,7 @@ void test_font_size(rtos_ST7735 *current_display)
     font_text_on_screen_2->update_widget_anchor(64, 32);
     sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
     font_text_on_screen_2->write();
-    font_text_on_screen_2->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    font_text_on_screen_2->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
 
     p2.lo();
     delete font_text_on_screen_2;
@@ -216,11 +216,11 @@ void test_full_screen_text(rtos_ST7735 *current_display)
     my_text_widget text_full_screen = my_text_widget(current_display, txt_conf, CANVAS_FORMAT,
                                                      current_display->TFT_panel_width_in_pixel, current_display->TFT_panel_height_in_pixel);
     p2.hi();
-    current_display->send_clear_device_command(display_queue, data_sent);
+    current_display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     p2.hi();
     text_full_screen.process_char(FORM_FEED);
-    text_full_screen.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_full_screen.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
 
     p2.hi();
@@ -230,7 +230,7 @@ void test_full_screen_text(rtos_ST7735 *current_display)
         n++;
         text_full_screen.process_char(c);
         p5.hi();
-        text_full_screen.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+        text_full_screen.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
         p5.lo();
     }
     p2.lo();
@@ -258,7 +258,7 @@ void test_auto_next_char(rtos_ST7735 *current_display)
         n++;
         text_frame->process_char(c);
         p2.hi();
-        text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+        text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
         p2.lo();
         if (n % 8 == 0)
             text_frame->next_char();
@@ -266,7 +266,7 @@ void test_auto_next_char(rtos_ST7735 *current_display)
 
     delete text_frame;
     p2.hi();
-    current_display->send_clear_device_command(display_queue, data_sent);
+    current_display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TEST_DELAY));
@@ -276,7 +276,7 @@ void test_sprintf_format(rtos_ST7735 *current_display)
 {
     p1.hi();
     p5.hi();
-    current_display->send_clear_device_command(display_queue, data_sent);
+    current_display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p5.lo();
 
     struct_ConfigTextWidget text_frame_cfg = {
@@ -292,47 +292,47 @@ void test_sprintf_format(rtos_ST7735 *current_display)
     p2.hi();
 
     text_frame->write("Strings:\n\tpadding:\n");
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
 
     sprintf(text_frame->text_buffer, "\t[%7s]\n", s);
     text_frame->write();
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
 
     sprintf(text_frame->text_buffer, "\t[%-7s]\n", s);
     text_frame->write();
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
 
     sprintf(text_frame->text_buffer, "\t[%*s]\n", 7, s);
     text_frame->write();
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
 
     text_frame->write("\ttruncating:\n");
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
 
     sprintf(text_frame->text_buffer, "\t%.4s\n", s);
     text_frame->write();
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
 
     sprintf(text_frame->text_buffer, "\t\t%.*s\n", 3, s);
     text_frame->write();
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
 
     p2.lo();
     vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
     p2.hi();
     p5.hi();
-    current_display->send_clear_device_command(display_queue, data_sent);
+    current_display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p5.lo();
     text_frame->clear_text_buffer();
     sprintf(text_frame->text_buffer, "Characters: %c %%", 'A');
     text_frame->write();
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
 
     p2.lo();
     vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
 
     p5.hi();
-    current_display->send_clear_device_command(display_queue, data_sent);
+    current_display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p5.lo();
 
     p2.hi();
@@ -352,11 +352,11 @@ void test_sprintf_format(rtos_ST7735 *current_display)
     text_frame->write();
     sprintf(text_frame->text_buffer, "\tSci:  %.3E %.1e\n", 1.5, 1.5);
     text_frame->write();
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
     p5.hi();
-    current_display->send_clear_device_command(display_queue, data_sent);
+    current_display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p5.lo();
     p2.hi();
     text_frame->update_text_frame_size(font_8x8);
@@ -367,39 +367,39 @@ void test_sprintf_format(rtos_ST7735 *current_display)
     text_frame->write("@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_");   // ca 1000us -> 2000us
     text_frame->write("`abcdefghijklmnopqrstuvwxyz{|}~\x7F"); // ca 1000us-> 2000us
     text_frame->write("1234567890\n");                        // ca 400us -> 800us
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
     p2.hi();
     text_frame->process_char(FORM_FEED);
 
     text_frame->write("\t1TAB\n"); // ca 400us -> 800us
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
 
     vTaskDelay(pdMS_TO_TICKS(DELAY));
 
     text_frame->write("\t\t2TAB\n"); // ca 400us -> 800us
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
 
     vTaskDelay(pdMS_TO_TICKS(DELAY));
 
     text_frame->write("\t\t\t3TAB\n"); // ca 400us -> 800us
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
 
     vTaskDelay(pdMS_TO_TICKS(DELAY));
 
     text_frame->write("\t\t\t\t4TAB\n"); // ca 400us -> 800us
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
 
     vTaskDelay(pdMS_TO_TICKS(DELAY));
 
     text_frame->write("\t\t\t\t\t5TAB\n"); // ca 400us -> 800us
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
 
     vTaskDelay(pdMS_TO_TICKS(DELAY));
 
     text_frame->write("\t1TAB\t\t\t3TAB\n"); // ca 400us -> 800us
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     vTaskDelay(pdMS_TO_TICKS(DELAY));
     p2.hi();
@@ -408,11 +408,11 @@ void test_sprintf_format(rtos_ST7735 *current_display)
 
     text_frame->write(" 15:06 \n");
     text_frame->write("03/01/24");
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
     p5.hi();
-    current_display->send_clear_device_command(display_queue, data_sent);
+    current_display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p5.lo();
     delete text_frame;
     p2.hi();
@@ -427,7 +427,7 @@ void test_sprintf_format(rtos_ST7735 *current_display)
         .wrap = false};
     my_text_widget *text_frame1 = new my_text_widget(current_display, text_frame1_cfg, CANVAS_FORMAT);
     text_frame1->write(" 09:56 03JAN24");
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     delete text_frame1;
     p2.lo();
     p2.hi();
@@ -442,7 +442,7 @@ void test_sprintf_format(rtos_ST7735 *current_display)
         .wrap = false};
     my_text_widget *text_frame2 = new my_text_widget(current_display, text_frame2_cfg, CANVAS_FORMAT);
     text_frame2->write(" 09:56\n03JAN24");
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     delete text_frame2;
     p2.lo();
     p2.hi();
@@ -457,7 +457,7 @@ void test_sprintf_format(rtos_ST7735 *current_display)
         .wrap = false};
     my_text_widget *text_frame3 = new my_text_widget(current_display, text_frame3_cfg, CANVAS_FORMAT);
     text_frame3->write(" 09:56\n03JAN24");
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     delete text_frame3;
     p2.lo();
     p2.hi();
@@ -472,7 +472,7 @@ void test_sprintf_format(rtos_ST7735 *current_display)
         .wrap = false};
     my_text_widget *text_frame4 = new my_text_widget(current_display, text_frame4_cfg, CANVAS_FORMAT);
     text_frame4->write(" 09:56\n03JAN24");
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     delete text_frame4;
     p2.lo();
     p2.hi();
@@ -487,7 +487,7 @@ void test_sprintf_format(rtos_ST7735 *current_display)
         .wrap = false};
     my_text_widget *text_frame5 = new my_text_widget(current_display, text_frame5_cfg, CANVAS_FORMAT);
     text_frame5->write(" 09:56\n03JAN24");
-    text_frame->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    text_frame->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     delete text_frame5;
     p2.lo();
     p1.lo();
@@ -508,7 +508,7 @@ void test_ostringstream_format(rtos_ST7735 *current_display)
 {
     p1.hi();
     p5.hi();
-    current_display->send_clear_device_command(display_queue, data_sent);
+    current_display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p5.lo();
 
     p2.hi();
@@ -534,28 +534,28 @@ void test_ostringstream_format(rtos_ST7735 *current_display)
     stream0 << std::left << std::setw(6) << "test" << std::endl;
     text_frame.write(stream0.str().c_str());
 
-    xQueueSend(display_queue, &(text_frame.data_to_display), portMAX_DELAY);
-    xSemaphoreTake(data_sent, portMAX_DELAY);
+    xQueueSend(display_queue_to_SPI, &(text_frame.data_to_display), portMAX_DELAY);
+    xSemaphoreTake(data_sent_to_SPI, portMAX_DELAY);
     p2.lo();
     vTaskDelay(pdMS_TO_TICKS(DELAY));
     p2.hi();
     stream1 << std::setw(5) << std::dec << n << "|" << std::setw(5)
             << std::showbase << std::hex << n << "|" << std::showbase << std::setw(5) << std::oct << n << std::endl;
     text_frame.write(stream1.str().c_str());
-    xQueueSend(display_queue, &(text_frame.data_to_display), portMAX_DELAY);
-    xSemaphoreTake(data_sent, portMAX_DELAY);
+    xQueueSend(display_queue_to_SPI, &(text_frame.data_to_display), portMAX_DELAY);
+    xSemaphoreTake(data_sent_to_SPI, portMAX_DELAY);
     p2.lo();
 
     vTaskDelay(pdMS_TO_TICKS(DELAY));
     p2.hi();
     stream2 << "PI = " << std::left << f << std::endl;
     text_frame.write(stream2.str().c_str());
-    xQueueSend(display_queue, &(text_frame.data_to_display), portMAX_DELAY);
-    xSemaphoreTake(data_sent, portMAX_DELAY);
+    xQueueSend(display_queue_to_SPI, &(text_frame.data_to_display), portMAX_DELAY);
+    xSemaphoreTake(data_sent_to_SPI, portMAX_DELAY);
 
     p2.lo();
     p5.hi();
-    current_display->send_clear_device_command(display_queue, data_sent);
+    current_display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p5.lo();
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TEST_DELAY));
@@ -565,7 +565,7 @@ void test_monochrome_canvas(rtos_ST7735 *current_display)
 {
     p1.hi();
     p2.hi();
-    current_display->send_clear_device_command(display_queue, data_sent);
+    current_display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
 
     std::string test_string = "\xB0\xB3\xB3\xB3\xB3";
@@ -581,7 +581,7 @@ void test_monochrome_canvas(rtos_ST7735 *current_display)
     p2.hi();
     my_text_widget *mono_text = new my_text_widget(current_display, text_cfg, CANVAS_FORMAT);
     mono_text->write(test_string.c_str());
-    mono_text->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    mono_text->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
 
     delete mono_text;
@@ -606,7 +606,7 @@ void test_monochrome_canvas(rtos_ST7735 *current_display)
     for (auto &&c : test_string)
     {
         text_frame.process_char(c);
-        text_frame.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+        text_frame.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     }
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TEST_DELAY));

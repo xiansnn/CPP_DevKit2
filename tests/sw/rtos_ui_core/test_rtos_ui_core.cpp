@@ -83,7 +83,7 @@ void widget_task_1(void *probe)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         // warning: be sure to complete struct_DataToShow before send_image_to_DisplayGateKeeper
-        my_rtos_widget1.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+        my_rtos_widget1.widget->send_image_to_DisplayGateKeeper(display_queue, data_sent);
     }
 }
 void widget_task_2(void *probe)
@@ -91,7 +91,7 @@ void widget_task_2(void *probe)
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        my_rtos_widget2.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+        my_rtos_widget2.widget->send_image_to_DisplayGateKeeper(display_queue, data_sent);
     }
 }
 

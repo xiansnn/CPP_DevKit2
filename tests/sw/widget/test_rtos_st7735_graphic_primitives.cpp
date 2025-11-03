@@ -76,8 +76,8 @@ struct_ConfigGraphicWidget full_screen_cfg = {
     .widget_anchor_y = 0,
     .widget_with_border = true};
 
-QueueHandle_t display_queue = xQueueCreate(8, sizeof(struct_DataToShow));
-SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
+QueueHandle_t display_queue_to_SPI = xQueueCreate(8, sizeof(struct_DataToShow));
+SemaphoreHandle_t data_sent_to_SPI = xSemaphoreCreateBinary(); // synchro between display task and sending task
 
 class my_full_screen_widget : public GraphicWidget
 {
@@ -118,7 +118,7 @@ void display_gate_keeper_task(void *param)
 
     while (true)
     {
-        xQueueReceive(display_queue, &received_data_to_show, portMAX_DELAY);
+        xQueueReceive(display_queue_to_SPI, &received_data_to_show, portMAX_DELAY);
         p4.hi();
         switch (received_data_to_show.command)
         {
@@ -132,7 +132,7 @@ void display_gate_keeper_task(void *param)
             break;
         }
 
-        xSemaphoreGive(data_sent);
+        xSemaphoreGive(data_sent_to_SPI);
 
         p4.lo();
     }
@@ -150,7 +150,7 @@ void test_fb_line(rtos_ST7735 *display)
     p1.hi();
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
     p2.hi();
-    display->send_clear_device_command(display_queue, data_sent);
+    display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p2.hi();
     frame.canvas->clear_canvas_buffer(); // no real need to use DMA (165us)
     p2.lo();
@@ -162,7 +162,7 @@ void test_fb_line(rtos_ST7735 *display)
         if (i > 20 * 8)
             i = 1;
         frame.line(x, 0, 128 - 1 - x, 128 - 1, static_cast<ColorIndex>(i / 8));
-        frame.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+        frame.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     }
     p2.lo();
     p2.hi();
@@ -173,7 +173,7 @@ void test_fb_line(rtos_ST7735 *display)
         if (i > 20 * 8)
             i = 1;
         frame.line(0, y, 128 - 1, 128 - 1 - y, static_cast<ColorIndex>(i / 8));
-        frame.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+        frame.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     }
     p2.lo();
     p1.lo();
@@ -186,7 +186,7 @@ void test_outofframe_line(rtos_ST7735 *display)
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
     int y0, x1, y1;
     p2.hi();
-    display->send_clear_device_command(display_queue, data_sent);
+    display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     p2.hi();
     frame.canvas->clear_canvas_buffer();
@@ -204,7 +204,7 @@ void test_outofframe_line(rtos_ST7735 *display)
             i = 0;
         ColorIndex c = static_cast<ColorIndex>(i / 8);
         frame.line(x, y0, x1, y1, c);
-        frame.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+        frame.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     }
     p2.lo();
     p1.lo();
@@ -215,17 +215,17 @@ void test_fb_rect(rtos_ST7735 *display)
     p1.hi();
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
     p2.hi();
-    display->send_clear_device_command(display_queue, data_sent);
+    display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     p2.hi();
     frame.canvas->clear_canvas_buffer();
     frame.rect(0, 0, 128, 64, false, ColorIndex::RED);
-    frame.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
     p2.hi();
     frame.rect(10, 10, 108, 44, true, ColorIndex::YELLOW);
-    frame.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
@@ -235,7 +235,7 @@ void test_fb_hline(rtos_ST7735 *display)
     p1.hi();
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
     p2.hi();
-    display->send_clear_device_command(display_queue, data_sent);
+    display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     p2.hi();
     frame.canvas->clear_canvas_buffer();
@@ -243,9 +243,9 @@ void test_fb_hline(rtos_ST7735 *display)
     for (size_t i = 0; i < 16; i++)
     {
         frame.hline(0, i * 8, 128, static_cast<ColorIndex>(i + 1));
-        frame.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+        frame.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     }
-    frame.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
@@ -255,7 +255,7 @@ void test_fb_vline(rtos_ST7735 *display)
     p1.hi();
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
     p2.hi();
-    display->send_clear_device_command(display_queue, data_sent);
+    display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     p2.hi();
 
@@ -264,9 +264,9 @@ void test_fb_vline(rtos_ST7735 *display)
     for (size_t i = 0; i < 16; i++)
     {
         frame.vline(i * 8, 0, 128, static_cast<ColorIndex>(i + 1));
-        frame.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+        frame.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     }
-    frame.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
@@ -277,17 +277,17 @@ void test_fb_circle(rtos_ST7735 *display)
     p1.hi();
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
     p2.hi();
-    display->send_clear_device_command(display_queue, data_sent);
+    display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     p2.hi();
     frame.canvas->clear_canvas_buffer();
     frame.circle(50, 63, 31, false, ColorIndex::ORANGE);
-    frame.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     p2.hi();
     vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
     frame.circle(20, 64, 32, true, ColorIndex::LIME);
-    frame.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
@@ -298,14 +298,14 @@ void test_fb_in_fb(rtos_ST7735 *display)
     p1.hi();
     my_full_screen_widget frame = my_full_screen_widget(display, full_screen_cfg, CANVAS_FORMAT);
     p2.hi();
-    display->send_clear_device_command(display_queue, data_sent);
+    display->send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     p2.hi();
     frame.canvas->clear_canvas_buffer();
     frame.rect(0, 0, display->TFT_panel_width_in_pixel, display->TFT_panel_height_in_pixel);
     frame.rect(10, 10, 108, 44, true, ColorIndex::CYAN);
     frame.line(5, 60, 120, 5, ColorIndex::RED);
-    frame.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    frame.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
 
     vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
@@ -319,7 +319,7 @@ void test_fb_in_fb(rtos_ST7735 *display)
     small_frame.canvas->fill_canvas_with_color(ColorIndex::NAVY);
     small_frame.line(5, 5, 80, 20, ColorIndex::YELLOW);
     small_frame.circle(8, 44, 12, false, ColorIndex::GREEN);
-    small_frame.send_image_to_DisplayGateKeeper(display_queue, data_sent);
+    small_frame.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
     p2.lo();
     p1.lo();
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));

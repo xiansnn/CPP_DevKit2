@@ -1,22 +1,16 @@
 /**
- * @file test_text_and_graph_framebuffer.cpp
+ * @file test_rtos_st7735_text_and_graph_widgets.cpp
  * @author xiansnn (xiansnn@hotmail.com)
  * @brief
  * @version 0.1
- * @date 2025-02-05
+ * @date 2025-11-02
  *
  * @copyright Copyright (c) 2025
  *
  */
-#include <pico/stdio.h>
-#include <math.h>
-#include <numbers>
-#include <sstream>
-#include <iomanip>
-#include <string>
 
-#include "sw/widget/widget.h"
-#include "device/ST7735/st7735.h"
+#include "t_rtos_st7735_text_and_graph_widgets.h"
+#include "sw/ui_core/rtos_ui_core.h"
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
@@ -25,10 +19,10 @@ Probe p2 = Probe(2);
 Probe p3 = Probe(3);
 Probe p4 = Probe(4);
 Probe p5 = Probe(5);
+Probe p6 = Probe(6);
+Probe p7 = Probe(7);
 
-#define REFRESH_PERIOD 20
-
-#define DEGREE \xF8
+#define REFRESH_PERIOD_ms 50
 
 #define GRAPHICS_CANVAS_FORMAT CanvasFormat::RGB565_16b
 #define TEXT_CANVAS_FORMAT CanvasFormat::RGB565_16b
@@ -47,6 +41,13 @@ Probe p5 = Probe(5);
 #define DEVICE_DISPLAY_HEIGHT 160
 #endif
 
+QueueHandle_t display_queue_to_SPI = xQueueCreate(8, sizeof(struct_DataToShow));
+SemaphoreHandle_t data_sent_to_SPI = xSemaphoreCreateBinary(); // synchro between display task and sending task
+
+//-------------Model-----
+my_model model = my_model();
+rtos_Model my_rtos_model = rtos_Model(&model);
+//-------------SPI drivers----
 struct_ConfigMasterSPI cfg_spi = {
     .spi = spi1,
     .sck_pin = 10,
@@ -54,110 +55,136 @@ struct_ConfigMasterSPI cfg_spi = {
     .rx_pin = 12,
     .cs_pin = 13,
     .baud_rate_Hz = 10 * 1000 * 1000};
+void end_of_TX_DMA_xfer_handler();
+rtos_HW_SPI_Master spi_master = rtos_HW_SPI_Master(cfg_spi,
+                                                   DMA_IRQ_0, end_of_TX_DMA_xfer_handler);
+void end_of_TX_DMA_xfer_handler()
+{
+    p7.hi();
+    spi_master.spi_tx_dma_isr();
+    p7.lo();
+}
 
+//------------ST7735 display device-----
 struct_ConfigST7735 cfg_st7735{
     .display_type = DEVICE_DISPLAY_TYPE,
     .backlight_pin = 5,
     .hw_reset_pin = 15,
     .dc_pin = 14,
     .rotation = DEVICE_DISPLAY_ROTATION};
+rtos_ST7735 display = rtos_ST7735(&spi_master, cfg_st7735);
+//-------------Title-text-----
+struct_ConfigTextWidget title_config = {
+    .number_of_column = 10,
+    .number_of_line = 1,
+    .widget_anchor_x = 0,
+    .widget_anchor_y = 64,
+    .font = font_12x16};
+my_text_widget title = my_text_widget(&display, title_config, TEXT_CANVAS_FORMAT);
+//--------------Values-text----
+struct_ConfigTextWidget values_config = {
+    .number_of_column = 10,
+    .number_of_line = 1,
+    .widget_anchor_x = 0,
+    .widget_anchor_y = (uint8_t)(title_config.widget_anchor_y + 2 * title_config.font[FONT_HEIGHT_INDEX]),
+    .font = font_12x16};
+my_text_widget values = my_text_widget(&display, values_config, TEXT_CANVAS_FORMAT, &model);
+rtos_Widget my_rtos_values_widget = rtos_Widget(&values);
+//---------------Graph------------
+struct_ConfigGraphicWidget graph_config{
+    .pixel_frame_width = 128,
+    .pixel_frame_height = 56,
+    .fg_color = ColorIndex::CYAN,
+    .bg_color = ColorIndex::MAROON,
+    .widget_anchor_x = 0,
+    .widget_anchor_y = 0,
+    .widget_with_border = true};
+my_visu_widget graph = my_visu_widget(&display, graph_config, GRAPHICS_CANVAS_FORMAT, &model);
+rtos_Widget my_rtos_graph_widget = rtos_Widget(&graph);
+//--------------------------------
 
-class my_model : public Model
+void display_gate_keeper_task(void *probe)
 {
-private:
-    /* data */
-public:
-    my_model();
-    ~my_model();
-    int roll{0};
-    int pitch{0};
-    int cycle{0};
-    void update_cycle(int i, int sign);
-};
-my_model::my_model() {}
-my_model::~my_model() {}
+    struct_DataToShow received_data_to_show;
 
-void my_model::update_cycle(int i, int sign)
-{
-    this->roll = i;
-    this->pitch = sign * i / 4;
-    set_change_flag();
-}
-
-class my_text_widget : public TextWidget
-{
-
-public:
-    my_text_widget(GraphicDisplayDevice *graphic_display_screen,
-                   struct_ConfigTextWidget text_cfg, CanvasFormat format, Model *model = nullptr);
-    my_text_widget(GraphicDisplayDevice *graphic_display_screen,
-                   struct_ConfigTextWidget text_cfg, CanvasFormat format,
-                   uint8_t x, uint8_t y, Model *model = nullptr);
-    ~my_text_widget();
-    void get_value_of_interest();
-};
-my_text_widget::my_text_widget(GraphicDisplayDevice *graphic_display_screen,
-                               struct_ConfigTextWidget text_cfg, CanvasFormat format, Model *model)
-    : TextWidget(graphic_display_screen, text_cfg, format, model) {}
-my_text_widget::my_text_widget(GraphicDisplayDevice *graphic_display_screen,
-                               struct_ConfigTextWidget text_cfg, CanvasFormat format,
-                               uint8_t x, uint8_t y, Model *model)
-    : TextWidget(graphic_display_screen, text_cfg, format, x, y, model) {}
-my_text_widget::~my_text_widget() {}
-void my_text_widget::get_value_of_interest()
-{
-    sprintf(this->text_buffer, "%+3d\xF8  %+3d\xF8", ((my_model *)this->actual_displayed_model)->roll, ((my_model *)this->actual_displayed_model)->pitch);
-}
-
-class my_visu_widget : public GraphicWidget
-{
-private:
-    int roll{0};
-    int pitch{0};
-
-public:
-    my_visu_widget(GraphicDisplayDevice *graphic_display_screen,
-                   struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, Model *model);
-    ~my_visu_widget();
-    void get_value_of_interest();
-    void draw();
-};
-my_visu_widget::my_visu_widget(GraphicDisplayDevice *graphic_display_screen,
-                               struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, Model *model)
-    : GraphicWidget(graphic_display_screen, graph_cfg, format, model) {}
-my_visu_widget::~my_visu_widget() {}
-void my_visu_widget::get_value_of_interest()
-{
-    this->roll = ((my_model *)this->actual_displayed_model)->roll;
-    this->pitch = ((my_model *)this->actual_displayed_model)->pitch;
-}
-void my_visu_widget::draw()
-{
-    if (actual_displayed_model->has_changed()) // ########### event
+    while (true)
     {
-        clear_widget();
-        get_value_of_interest();
+        xQueueReceive(display_queue_to_SPI, &received_data_to_show, portMAX_DELAY);
+        ((Probe *)probe)->hi();
+        switch (received_data_to_show.command)
+        {
+        case DisplayCommand::SHOW_IMAGE:
+            ((rtos_ST7735 *)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
+            break;
+        case DisplayCommand::CLEAR_SCREEN:
+            ((rtos_ST7735 *)received_data_to_show.display)->clear_device_screen_buffer();
+            break;
+        default:
+            break;
+        };
+        ((Probe *)probe)->lo();
+        xSemaphoreGive(data_sent_to_SPI);
+    }
+}
 
-        // compute and show the graphic representation
-        float xc = widget_width / 2;
-        float yc = widget_height / 2;
-        float yl = widget_height / 2 - pitch;
-        float radius = yc - 2 * widget_border_width; // radius -2 to fit inside the rectangle
-        float sin_roll = sin(std::numbers::pi / 180.0 * roll);
-        float cos_roll = cos(std::numbers::pi / 180.0 * roll);
-        int x0 = xc - radius * cos_roll;
-        int y0 = yl - radius * sin_roll;
-        int x1 = xc + radius * cos_roll;
-        int y1 = yl + radius * sin_roll;
+void idle_task(void *pxProbe)
+{
+    while (true)
+    {
+        ((Probe *)pxProbe)->hi();
+        ((Probe *)pxProbe)->lo();
+    }
+}
 
-        this->canvas->fill_canvas_with_color(canvas->bg_color);
+void my_model_task(void *pxProbe)
+{
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+    my_rtos_model.link_widget(&my_rtos_graph_widget);
+    my_rtos_model.link_widget(&my_rtos_values_widget);
+    display.send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
+    my_text_widget title = my_text_widget(&display, title_config, TEXT_CANVAS_FORMAT);
+    title.write("ROLL PITCH");
+    title.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
 
-        this->circle(radius, xc, yl, true, ColorIndex::GREEN);
-        this->line(x0, y0, x1, y1, ColorIndex::YELLOW);
-
-        draw_border(canvas->fg_color);
-        show();// ##############
-        actual_displayed_model->draw_widget_done();// #### semaphore
+    ((Probe *)pxProbe)->pulse_us(100);
+    int sign = 1;
+    while (true)
+    {
+        sign *= -1;
+        for (int i = -90; i < 90; i+=10)
+        {
+            ((Probe *)pxProbe)->hi();
+            ((my_model *)my_rtos_model.model)->update_cycle(i, sign); //  cyclic_computation((Probe *)pxProbe);
+            my_rtos_model.notify_all_linked_widget_task();
+            ((Probe *)pxProbe)->lo();
+            vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(REFRESH_PERIOD_ms));
+        }
+    }
+}
+void values_widget_task(void *probe)
+{
+    p3.pulse_us(100);
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        p3.hi();
+        // warning: be sure to complete struct_DataToShow before send_image_to_DisplayGateKeeper
+        ((my_text_widget*)my_rtos_values_widget.widget)->draw();
+        my_rtos_values_widget.widget->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
+        p3.lo();
+    }
+}
+void graph_widget_task(void *probe)
+{
+    p2.pulse_us(100);
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        p2.hi();
+        // warning: be sure to complete struct_DataToShow before send_image_to_DisplayGateKeeper
+        ((my_visu_widget*)my_rtos_graph_widget.widget)->draw();
+        ((GraphicWidget *)my_rtos_graph_widget.widget)->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
+        p2.lo();
     }
 }
 
@@ -165,67 +192,19 @@ int main()
 
 {
     stdio_init_all();
-    HW_SPI_Master spi_master = HW_SPI_Master(cfg_spi);
-    ST7735 display = ST7735(&spi_master, cfg_st7735);
-    struct_ConfigTextWidget title_config = {
-        .number_of_column = 10,
-        .number_of_line = 1,
-        .widget_anchor_x = 0,
-        .widget_anchor_y = 64,
-        .font = font_12x16};
 
-    uint8_t w = title_config.font[FONT_WIDTH_INDEX];
-    uint8_t h = title_config.font[FONT_HEIGHT_INDEX];
+    xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
+    xTaskCreate(my_model_task, "main_task", 256, &p1, 15, NULL);
+    xTaskCreate(graph_widget_task, "widget_task_1", 256, NULL, 10, &my_rtos_graph_widget.task_handle);
+    xTaskCreate(values_widget_task, "widget_task_2", 256, NULL, 10, &my_rtos_values_widget.task_handle);
 
-    struct_ConfigTextWidget values_config = {
-        .number_of_column = 10,
-        .number_of_line = 1,
-        .widget_anchor_x = 0,
-        .widget_anchor_y = (uint8_t)(title_config.widget_anchor_y + 2 * h),
-        .font = font_12x16};
+    xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, &p4, 5, NULL);
 
-    struct_ConfigGraphicWidget graph_config{
-        .pixel_frame_width = 128,
-        .pixel_frame_height = 56,
-        .fg_color = ColorIndex::CYAN,
-        .bg_color = ColorIndex::MAROON,
-        .widget_anchor_x = 0,
-        .widget_anchor_y = 0,
-        .widget_with_border = true};
-
-    my_model model = my_model();
-
-    my_text_widget values = my_text_widget(&display, values_config, TEXT_CANVAS_FORMAT, &model);
-    values.process_char(FORM_FEED);
-
-    my_visu_widget graph = my_visu_widget(&display, graph_config, GRAPHICS_CANVAS_FORMAT, &model);
-    p1.hi();
-    display.clear_device_screen_buffer();
-    p1.lo(); // 51ms
-
-    p1.hi();
-    my_text_widget title = my_text_widget(&display, title_config, TEXT_CANVAS_FORMAT);
-    title.write("ROLL PITCH");
-    title.show();
-    p1.lo(); // 9ms
-
-    int sign = 1;
+    vTaskStartScheduler();
 
     while (true)
-    {
-        sign *= -1;
-        for (int i = -90; i < 90; i++)
-        {
-            // compute and show values
-            model.update_cycle(i, sign);
-            p4.hi();
-            values.draw();
-            p4.lo(); // 9.9ms
+        tight_loop_contents();
 
-            p5.hi();
-            graph.draw();
-            p5.lo(); // 29.6ms
-            sleep_ms(REFRESH_PERIOD);
-        }
-    }
+    return 0;
+
 }

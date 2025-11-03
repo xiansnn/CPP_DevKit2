@@ -194,7 +194,7 @@ class rtos_ST7735 : public ST7735
     void clear_device_screen_buffer(ColorIndex color_index = ColorIndex::BLACK);
     
     /// @brief Send a clear screen command to the display gate keeper task.
-    /// @param display_queue The queue used to send data to the display gate keeper task.
+    /// @param display_queue_to_SPI The queue used to send data to the display gate keeper task.
     /// @param sending_done A semaphore to signal when the sending is done.
-    void send_clear_device_command(QueueHandle_t display_queue, SemaphoreHandle_t sending_done);
+    void send_clear_device_command(QueueHandle_t display_queue_to_SPI, SemaphoreHandle_t sending_done);
 };

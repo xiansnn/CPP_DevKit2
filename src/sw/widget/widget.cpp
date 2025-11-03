@@ -13,6 +13,7 @@ Widget::Widget(Model *actual_displayed_model, DisplayDevice *display_device)
     printf("+ Widget\n");
 #endif // MACRO
     this->display_device = display_device;
+    this->data_to_display.display = this->display_device;
     if (actual_displayed_model != nullptr)
     {
         this->actual_displayed_model = actual_displayed_model;
@@ -49,7 +50,7 @@ void GraphicWidget::show()
     ((GraphicDisplayDevice *)display_device)->show(this->canvas, this->widget_anchor_x, this->widget_anchor_y);
 }
 
-void GraphicWidget::send_image_to_DisplayGateKeeper(QueueHandle_t display_queue, SemaphoreHandle_t sending_done)
+void Widget::send_image_to_DisplayGateKeeper(QueueHandle_t display_queue, SemaphoreHandle_t sending_done)
 {
     this->data_to_display.command = DisplayCommand::SHOW_IMAGE;
     xQueueSend(display_queue, &(this->data_to_display), portMAX_DELAY); // take 65ms but used fully the CPU
@@ -93,10 +94,9 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     widget_width = canvas->canvas_width_pixel - 2 * widget_border_width;
     widget_height = canvas->canvas_height_pixel - 2 * widget_border_width;
 
-    data_to_display.display = (GraphicDisplayDevice *)display_device;
-    data_to_display.canvas = this->canvas;
-    data_to_display.anchor_x = this->widget_anchor_x;
-    data_to_display.anchor_y = this->widget_anchor_y;
+    this->data_to_display.canvas = this->canvas;
+    this->data_to_display.anchor_x = this->widget_anchor_x;
+    this->data_to_display.anchor_y = this->widget_anchor_y;
 
     ((GraphicDisplayDevice *)display_device)->check_display_device_compatibility(get_graph_frame_config(), canvas_format);
 }
