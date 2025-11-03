@@ -1,10 +1,10 @@
 var searchData=
 [
   ['send_5fbuffer_0',['send_buffer',['../class_s_t7735.html#a6c4b26d10f47ebe50e9f1120d36acbf4',1,'ST7735']]],
-  ['send_5fclear_5fdevice_5fcommand_1',['send_clear_device_command',['../classrtos___s_s_d1306.html#a89b302a02835a2a2374689450342b6e7',1,'rtos_SSD1306::send_clear_device_command()'],['../classrtos___s_t7735.html#a1c8348370d0848be8a0a4962cf74fd20',1,'rtos_ST7735::send_clear_device_command()']]],
+  ['send_5fclear_5fdevice_5fcommand_1',['send_clear_device_command',['../classrtos___s_s_d1306.html#a89b302a02835a2a2374689450342b6e7',1,'rtos_SSD1306::send_clear_device_command()'],['../classrtos___s_t7735.html#a66986dcf6b99a11beb350a49c6f063b5',1,'rtos_ST7735::send_clear_device_command()'],['../classrtos___widget.html#a2ed80983f6b863cef88c42c7040993d3',1,'rtos_Widget::send_clear_device_command()']]],
   ['send_5fcmd_2',['send_cmd',['../class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08',1,'SSD1306::send_cmd()'],['../class_s_t7735.html#a352d97b36c32932b43f891bdf41fb371',1,'ST7735::send_cmd()']]],
   ['send_5fcmd_5flist_3',['send_cmd_list',['../class_s_s_d1306.html#abba4af0c315a9fdcab52d32acc11ab97',1,'SSD1306::send_cmd_list()'],['../class_s_t7735.html#a0f7130dfeabb86eb7373cb816a3cb1ad',1,'ST7735::send_cmd_list()']]],
-  ['send_5fimage_5fto_5fdisplaygatekeeper_4',['send_image_to_DisplayGateKeeper',['../class_graphic_widget.html#a83120ac9fccb17f34111352755d62384',1,'GraphicWidget']]],
+  ['send_5fimage_5fto_5fdisplaygatekeeper_4',['send_image_to_DisplayGateKeeper',['../class_widget.html#aad1983916e09bbc926b078adb910d5d6',1,'Widget']]],
   ['set_5fall_5fpixel_5fon_5',['set_all_pixel_ON',['../class_s_s_d1306.html#aee29b36a9af5d427c0665dfaf942445e',1,'SSD1306']]],
   ['set_5fbacklight_6',['set_backlight',['../class_s_t7735.html#a1c93052432455bc78b75c4d743eab2d8',1,'ST7735']]],
   ['set_5fblink_5fus_7',['set_blink_us',['../class_blinker.html#a55d1c93f8b1e2492b1948944d1462665',1,'Blinker']]],

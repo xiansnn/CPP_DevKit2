@@ -99,6 +99,7 @@ $(function(){initNavTree('class_widget.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_widget-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Widget Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span><div class="ingroups"><a class="el" href="group__view.html">&quot;View&quot;</a></div></div></div>
@@ -114,21 +115,21 @@ Inheritance diagram for Widget:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_widget__inherit__graph.png" border="0" usemap="#a_widget_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_widget_inherit__map" id="a_widget_inherit__map">
-<area shape="rect" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="1429,5,1871,179"/>
-<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="1101,227,1676,780"/>
-<area shape="poly" title=" " alt="" coords="1590,193,1567,228,1562,225,1585,190"/>
-<area shape="rect" href="class_print_widget.html" title="A widget used when we need to simply print but still want to take advantage of the status change mana..." alt="" coords="1700,463,2123,543"/>
-<area shape="poly" title=" " alt="" coords="1715,190,1889,462,1885,465,1710,193"/>
+<area shape="rect" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="1379,5,1921,216"/>
+<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="1101,264,1676,780"/>
+<area shape="poly" title=" " alt="" coords="1578,230,1555,266,1550,263,1573,227"/>
+<area shape="rect" href="class_print_widget.html" title="A widget used when we need to simply print but still want to take advantage of the status change mana..." alt="" coords="1700,482,2123,562"/>
+<area shape="poly" title=" " alt="" coords="1727,227,1889,481,1884,483,1722,230"/>
 <area shape="rect" href="class_text_widget.html" title="a dedicated class for text frame only" alt="" coords="5,828,580,1236"/>
-<area shape="poly" title=" " alt="" coords="1089,612,844,711,716,769,594,830,581,837,578,833,591,826,714,764,841,706,1087,607"/>
+<area shape="poly" title=" " alt="" coords="1088,623,843,716,716,771,594,830,581,837,578,833,591,826,714,766,841,711,1086,618"/>
 <area shape="rect" href="class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="604,966,1107,1098"/>
-<area shape="poly" title=" " alt="" coords="1101,793,922,968,919,964,1097,789"/>
+<area shape="poly" title=" " alt="" coords="1110,792,925,968,921,964,1106,789"/>
 <area shape="rect" href="class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="1131,957,1647,1107"/>
 <area shape="poly" title=" " alt="" coords="1391,795,1391,957,1386,957,1386,795"/>
 <area shape="rect" href="class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="1671,975,2123,1089"/>
-<area shape="poly" title=" " alt="" coords="1667,789,1845,974,1842,978,1663,793"/>
+<area shape="poly" title=" " alt="" coords="1658,789,1844,974,1840,978,1655,793"/>
 <area shape="rect" href="class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="2147,929,2663,1135"/>
-<area shape="poly" title=" " alt="" coords="1691,777,1755,799,1812,807,1864,808,1914,803,1963,799,2015,799,2072,806,2136,826,2180,846,2223,871,2299,927,2296,931,2220,875,2178,851,2134,830,2071,811,2015,804,1964,804,1914,809,1864,813,1812,813,1754,804,1689,783"/>
+<area shape="poly" title=" " alt="" coords="1691,778,1756,798,1813,806,1865,806,1914,802,1964,798,2016,798,2072,806,2136,826,2180,846,2223,871,2299,927,2296,931,2220,875,2178,851,2134,830,2071,811,2015,803,1964,804,1915,808,1865,812,1812,811,1755,803,1689,783"/>
 <area shape="rect" href="class_widget_blinking_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="1673,1284,2121,1397"/>
 <area shape="poly" title=" " alt="" coords="1899,1104,1899,1284,1894,1284,1894,1104"/>
 <area shape="rect" href="class_widget_focus_indicator.html" title="A specific class dedicated to indicate the status of an UIControlledModel. Not an abstract class,..." alt="" coords="1681,1445,2113,1559"/>
@@ -140,19 +141,27 @@ Collaboration diagram for Widget:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_widget__coll__graph.png" border="0" usemap="#a_widget_coll__map" alt="Collaboration graph"/></div>
 <map name="a_widget_coll__map" id="a_widget_coll__map">
-<area shape="rect" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="5,278,448,414"/>
-<area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="67,71,171,151"/>
-<area shape="poly" title=" " alt="" coords="139,149,191,262,186,264,134,152"/>
-<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="195,5,475,216"/>
-<area shape="poly" title=" " alt="" coords="289,217,267,264,262,262,284,215"/>
+<area shape="rect" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="62,644,605,799"/>
+<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,371,285,582"/>
+<area shape="poly" title=" " alt="" coords="171,581,192,619,201,630,197,633,187,621,167,583"/>
+<area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="281,117,385,197"/>
+<area shape="poly" title=" " alt="" coords="336,197,336,627,331,627,331,197"/>
+<area shape="rect" href="structstruct___data_to_show.html" title="data structure used to queue data to send to the display task" alt="" coords="436,427,591,526"/>
+<area shape="poly" title=" " alt="" coords="350,196,372,250,401,308,434,362,469,412,464,415,430,365,396,311,367,252,345,198"/>
+<area shape="poly" title=" " alt="" coords="480,527,402,632,398,629,476,524"/>
+<area shape="rect" href="class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="410,5,875,309"/>
+<area shape="poly" title=" " alt="" coords="584,310,542,413,537,411,579,308"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac59b534a5955f38cd5e518f967094bee" id="r_ac59b534a5955f38cd5e518f967094bee"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac59b534a5955f38cd5e518f967094bee">Widget</a> (<a class="el" href="class_model.html">Model</a> *<a class="el" href="#a41ae2c77c95867d80f15cc722d32ce86">actual_displayed_model</a>, <a class="el" href="class_display_device.html">DisplayDevice</a> *graphic_display_device=nullptr)</td></tr>
-<tr class="memdesc:ac59b534a5955f38cd5e518f967094bee"><td class="mdescLeft">&#160;</td><td class="mdescRight">contructor for generic widget  <br /></td></tr>
-<tr class="separator:ac59b534a5955f38cd5e518f967094bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad1983916e09bbc926b078adb910d5d6" id="r_aad1983916e09bbc926b078adb910d5d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad1983916e09bbc926b078adb910d5d6">send_image_to_DisplayGateKeeper</a> (QueueHandle_t display_queue, SemaphoreHandle_t sending_done)</td></tr>
+<tr class="memdesc:aad1983916e09bbc926b078adb910d5d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">used with FreeRTOS. send the widget data_to_display structure to the task in charge of the display management  <br /></td></tr>
+<tr class="separator:aad1983916e09bbc926b078adb910d5d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d8f98229ae680885d74911bd73c67a1" id="r_a0d8f98229ae680885d74911bd73c67a1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d8f98229ae680885d74911bd73c67a1">Widget</a> (<a class="el" href="class_model.html">Model</a> *<a class="el" href="#a41ae2c77c95867d80f15cc722d32ce86">actual_displayed_model</a>, <a class="el" href="class_display_device.html">DisplayDevice</a> *<a class="el" href="#a85aa072690bb7cad227ea2c810e5b4b3">display_device</a>=nullptr)</td></tr>
+<tr class="memdesc:a0d8f98229ae680885d74911bd73c67a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">contructor for generic widget  <br /></td></tr>
+<tr class="separator:a0d8f98229ae680885d74911bd73c67a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d08d01ec5ea290b39ae26963ae7e460" id="r_a6d08d01ec5ea290b39ae26963ae7e460"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d08d01ec5ea290b39ae26963ae7e460">add_widget</a> (<a class="el" href="class_widget.html">Widget</a> *_sub_widget)</td></tr>
 <tr class="memdesc:a6d08d01ec5ea290b39ae26963ae7e460"><td class="mdescLeft">&#160;</td><td class="mdescRight">add sub_widget to the current widget  <br /></td></tr>
 <tr class="separator:a6d08d01ec5ea290b39ae26963ae7e460"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,12 +172,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ae48262adfd76a5df4fcc892485d942a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">a pure virtual member that is called to effectively draw the widget.  <br /></td></tr>
 <tr class="separator:ae48262adfd76a5df4fcc892485d942a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
 <tr class="memitem:a85aa072690bb7cad227ea2c810e5b4b3" id="r_a85aa072690bb7cad227ea2c810e5b4b3"><td class="memItemLeft" align="right" valign="top"><a id="a85aa072690bb7cad227ea2c810e5b4b3" name="a85aa072690bb7cad227ea2c810e5b4b3"></a>
 <a class="el" href="class_display_device.html">DisplayDevice</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>display_device</b> {nullptr}</td></tr>
 <tr class="memdesc:a85aa072690bb7cad227ea2c810e5b4b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">the display device where the attached to the frame buffer <br /></td></tr>
 <tr class="separator:a85aa072690bb7cad227ea2c810e5b4b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15a74a79fd45a3cd03cb0de4a7366216" id="r_a15a74a79fd45a3cd03cb0de4a7366216"><td class="memItemLeft" align="right" valign="top"><a id="a15a74a79fd45a3cd03cb0de4a7366216" name="a15a74a79fd45a3cd03cb0de4a7366216"></a>
+<a class="el" href="structstruct___data_to_show.html">struct_DataToShow</a>&#160;</td><td class="memItemRight" valign="bottom"><b>data_to_display</b></td></tr>
+<tr class="memdesc:a15a74a79fd45a3cd03cb0de4a7366216"><td class="mdescLeft">&#160;</td><td class="mdescRight">the data structure used to send the canvas to the display task when a FreeRTOS queue is used. <br /></td></tr>
+<tr class="separator:a15a74a79fd45a3cd03cb0de4a7366216"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
 <tr class="memitem:a41ae2c77c95867d80f15cc722d32ce86" id="r_a41ae2c77c95867d80f15cc722d32ce86"><td class="memItemLeft" align="right" valign="top"><a id="a41ae2c77c95867d80f15cc722d32ce86" name="a41ae2c77c95867d80f15cc722d32ce86"></a>
 <a class="el" href="class_model.html">Model</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>actual_displayed_model</b> {nullptr}</td></tr>
 <tr class="memdesc:a41ae2c77c95867d80f15cc722d32ce86"><td class="mdescLeft">&#160;</td><td class="mdescRight">a pointer to the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> actually displayed by the widget <br /></td></tr>
@@ -187,8 +203,8 @@ std::vector&lt; <a class="el" href="class_widget.html">Widget</a> * &gt;&#160;</
 The widget frame inside the display screen frame</div></div>
 <dl class="section note"><dt>Note</dt><dd>IMPORTANT NOTICE 1: The widget is only drawn if something has changed in the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> it represents. This allows to save drawing processing time. However there is a strong limitation : only the widget buffer is transfered to the device GDDRAM, based of its specific addressing scheme. As a result, if the widget is located such that the buffer is written across device pages, the contents of the overwritten pages is lost. This is why the widget height and the widget_anchor_y must be multiple of 8. Doing so the widget buffer bytes do not ovewrite pixel outside the widget border. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac59b534a5955f38cd5e518f967094bee" name="ac59b534a5955f38cd5e518f967094bee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac59b534a5955f38cd5e518f967094bee">&#9670;&#160;</a></span>Widget()</h2>
+<a id="a0d8f98229ae680885d74911bd73c67a1" name="a0d8f98229ae680885d74911bd73c67a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d8f98229ae680885d74911bd73c67a1">&#9670;&#160;</a></span>Widget()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -201,7 +217,7 @@ The widget frame inside the display screen frame</div></div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_display_device.html">DisplayDevice</a> *</td>          <td class="paramname"><span class="paramname"><em>graphic_display_device</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="class_display_device.html">DisplayDevice</a> *</td>          <td class="paramname"><span class="paramname"><em>display_device</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -217,8 +233,8 @@ The widget frame inside the display screen frame</div></div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_widget_ac59b534a5955f38cd5e518f967094bee_cgraph.png" border="0" usemap="#aclass_widget_ac59b534a5955f38cd5e518f967094bee_cgraph" alt=""/></div>
-<map name="aclass_widget_ac59b534a5955f38cd5e518f967094bee_cgraph" id="aclass_widget_ac59b534a5955f38cd5e518f967094bee_cgraph">
+<div class="center"><img src="class_widget_a0d8f98229ae680885d74911bd73c67a1_cgraph.png" border="0" usemap="#aclass_widget_a0d8f98229ae680885d74911bd73c67a1_cgraph" alt=""/></div>
+<map name="aclass_widget_a0d8f98229ae680885d74911bd73c67a1_cgraph" id="aclass_widget_a0d8f98229ae680885d74911bd73c67a1_cgraph">
 <area shape="rect" title="contructor for generic widget" alt="" coords="5,5,103,30"/>
 <area shape="rect" href="class_model.html#a39c2d857bbad88b8fb04eb54820ae08f" title="add a new widget to the set of attached_widgets" alt="" coords="151,5,334,30"/>
 <area shape="poly" title=" " alt="" coords="103,15,135,15,135,20,103,20"/>
@@ -227,8 +243,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_widget_ac59b534a5955f38cd5e518f967094bee_icgraph.png" border="0" usemap="#aclass_widget_ac59b534a5955f38cd5e518f967094bee_icgraph" alt=""/></div>
-<map name="aclass_widget_ac59b534a5955f38cd5e518f967094bee_icgraph" id="aclass_widget_ac59b534a5955f38cd5e518f967094bee_icgraph">
+<div class="center"><img src="class_widget_a0d8f98229ae680885d74911bd73c67a1_icgraph.png" border="0" usemap="#aclass_widget_a0d8f98229ae680885d74911bd73c67a1_icgraph" alt=""/></div>
+<map name="aclass_widget_a0d8f98229ae680885d74911bd73c67a1_icgraph" id="aclass_widget_a0d8f98229ae680885d74911bd73c67a1_icgraph">
 <area shape="rect" title="contructor for generic widget" alt="" coords="1155,227,1252,251"/>
 <area shape="rect" href="class_graphic_widget.html#af3b9275226b4bc13d2e7a9cb6ba83f2c" title="Construct a new Graphic Widget object." alt="" coords="937,128,1107,153"/>
 <area shape="poly" title=" " alt="" coords="1176,218,1144,192,1105,168,1075,156,1077,151,1108,163,1147,188,1179,214"/>
@@ -290,7 +306,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="class_widget_a6d08d01ec5ea290b39ae26963ae7e460_cgraph.png" border="0" usemap="#aclass_widget_a6d08d01ec5ea290b39ae26963ae7e460_cgraph" alt=""/></div>
 <map name="aclass_widget_a6d08d01ec5ea290b39ae26963ae7e460_cgraph" id="aclass_widget_a6d08d01ec5ea290b39ae26963ae7e460_cgraph">
 <area shape="rect" title="add sub_widget to the current widget" alt="" coords="5,5,125,30"/>
-<area shape="rect" href="class_widget.html#ac59b534a5955f38cd5e518f967094bee" title="contructor for generic widget" alt="" coords="173,5,270,30"/>
+<area shape="rect" href="class_widget.html#a0d8f98229ae680885d74911bd73c67a1" title="contructor for generic widget" alt="" coords="173,5,270,30"/>
 <area shape="poly" title=" " alt="" coords="125,15,157,15,157,20,125,20"/>
 <area shape="rect" href="class_model.html#a39c2d857bbad88b8fb04eb54820ae08f" title="add a new widget to the set of attached_widgets" alt="" coords="318,5,501,30"/>
 <area shape="poly" title=" " alt="" coords="270,15,302,15,302,20,270,20"/>
@@ -329,6 +345,36 @@ Here is the call graph for this function:</div>
  </dd></dl>
 
 <p>Implemented in <a class="el" href="class_text_widget.html#a34e2f1558ebd76f1dbfb3cbfdf0e7894">TextWidget</a>, <a class="el" href="class_widget_blinking_square_led.html#a61b2b883fa16f46dbdc510133b378459">WidgetBlinkingSquareLed</a>, <a class="el" href="class_widget_horizontal_bar.html#a73f6c8198a940ad2803367e5712f3359">WidgetHorizontalBar</a>, <a class="el" href="class_widget_horizontal_bargraph.html#ac51fc7454f00e12c47c507b449a1b0b0">WidgetHorizontalBargraph</a>, <a class="el" href="class_widget_square_led.html#a73764f45091e9a4dde223262cd63256b">WidgetSquareLed</a>, and <a class="el" href="class_widget_vertical_bargraph.html#a938fef5332131013fe1f7e31f7629f41">WidgetVerticalBargraph</a>.</p>
+
+</div>
+</div>
+<a id="aad1983916e09bbc926b078adb910d5d6" name="aad1983916e09bbc926b078adb910d5d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad1983916e09bbc926b078adb910d5d6">&#9670;&#160;</a></span>send_image_to_DisplayGateKeeper()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Widget::send_image_to_DisplayGateKeeper </td>
+          <td>(</td>
+          <td class="paramtype">QueueHandle_t</td>          <td class="paramname"><span class="paramname"><em>display_queue</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SemaphoreHandle_t</td>          <td class="paramname"><span class="paramname"><em>sending_done</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>used with FreeRTOS. send the widget data_to_display structure to the task in charge of the display management </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">display_queue</td><td>the communcation queue with the display gate keeper </td></tr>
+    <tr><td class="paramname">sending_done</td><td>the semaphore triggered when the canvas display is complete. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

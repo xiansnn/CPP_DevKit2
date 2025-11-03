@@ -126,11 +126,13 @@ var group__view =
       [ "set_blink_us", "class_blinker.html#a55d1c93f8b1e2492b1948944d1462665", null ]
     ] ],
     [ "Widget", "class_widget.html", [
-      [ "Widget", "class_widget.html#ac59b534a5955f38cd5e518f967094bee", null ],
+      [ "Widget", "class_widget.html#a0d8f98229ae680885d74911bd73c67a1", null ],
       [ "add_widget", "class_widget.html#a6d08d01ec5ea290b39ae26963ae7e460", null ],
       [ "draw", "class_widget.html#ae48262adfd76a5df4fcc892485d942a6", null ],
+      [ "send_image_to_DisplayGateKeeper", "class_widget.html#aad1983916e09bbc926b078adb910d5d6", null ],
       [ "set_display_device", "class_widget.html#abce987bca542b6efeaa706c73edbfcc0", null ],
       [ "actual_displayed_model", "class_widget.html#a41ae2c77c95867d80f15cc722d32ce86", null ],
+      [ "data_to_display", "class_widget.html#a15a74a79fd45a3cd03cb0de4a7366216", null ],
       [ "display_device", "class_widget.html#a85aa072690bb7cad227ea2c810e5b4b3", null ],
       [ "widgets", "class_widget.html#af4c3a0de546fdcb1038469f5c592e2b6", null ]
     ] ],
@@ -147,12 +149,10 @@ var group__view =
       [ "hline", "class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a", null ],
       [ "line", "class_graphic_widget.html#ab3cd06c0aabb88e5ca25489391662ce7", null ],
       [ "rect", "class_graphic_widget.html#ac07cd1a8df25535bea9552de25411f2a", null ],
-      [ "send_image_to_DisplayGateKeeper", "class_graphic_widget.html#a83120ac9fccb17f34111352755d62384", null ],
       [ "show", "class_graphic_widget.html#a83c221250b9dfdeb8ab03b87a783bf10", null ],
       [ "update_widget_anchor", "class_graphic_widget.html#a9059637b35c4e26bca54a77ae9c25b0d", null ],
       [ "vline", "class_graphic_widget.html#a0a6ac5a1610805ec69142fdaa2ec28b1", null ],
       [ "canvas", "class_graphic_widget.html#af9591b5109c6d49f678cc1c49cce5f16", null ],
-      [ "data_to_display", "class_graphic_widget.html#a5c1d37335a061053caf088ce0643d126", null ],
       [ "widget_anchor_x", "class_graphic_widget.html#a61133b1352758000f0f3eef16824bdcb", null ],
       [ "widget_anchor_y", "class_graphic_widget.html#ae4f41f6ccf52025b2c16fc2ec59208ee", null ],
       [ "widget_border_width", "class_graphic_widget.html#ab06cc273f6d42d2527eca35fd5e9b8ed", null ],

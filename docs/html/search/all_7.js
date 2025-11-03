@@ -1,7 +1,7 @@
 var searchData=
 [
   ['data_0',['data',['../class_m_p_u6050.html#a524c486b1dc1716814f62dea03a62577',1,'MPU6050::data'],['../structstruct___t_x___data_queue_s_p_i.html#a14d1c30a30a41d0b3e14793857628582',1,'struct_TX_DataQueueSPI::data']]],
-  ['data_5fto_5fdisplay_1',['data_to_display',['../class_graphic_widget.html#a5c1d37335a061053caf088ce0643d126',1,'GraphicWidget']]],
+  ['data_5fto_5fdisplay_1',['data_to_display',['../class_widget.html#a15a74a79fd45a3cd03cb0de4a7366216',1,'Widget']]],
   ['dc_5fpin_2',['dc_pin',['../structstruct___config_s_t7735.html#a7f1508e4852977176ee2b9ac0c6f2758',1,'struct_ConfigST7735::dc_pin'],['../class_s_t7735.html#af03d425f6b34b3692ba032530b969e7f',1,'ST7735::dc_pin']]],
   ['dcx_5fcommand_3',['DCX_COMMAND',['../st7735_8h.html#abd8eb27d364a32890e54dcc50dbedb66',1,'st7735.h']]],
   ['dcx_5fdata_4',['DCX_DATA',['../st7735_8h.html#acdfd958913e851196c73b8ac8052679a',1,'st7735.h']]],
@@ -16,7 +16,7 @@ var searchData=
   ['device_5fwakeup_13',['device_wakeup',['../class_s_t7735.html#ae3756f2b5a896be7a93e765a5fc88bfa',1,'ST7735']]],
   ['dht11_14',['DHT11',['../class_d_h_t11.html',1,'DHT11'],['../class_d_h_t11.html#abdb9b9dbfeb00fac3826752fff347c16',1,'DHT11::DHT11()']]],
   ['dht11_2eh_15',['dht11.h',['../dht11_8h.html',1,'']]],
-  ['display_16',['display',['../structstruct___data_to_show.html#a1a965f39121dfdc28bd002f0a04771ed',1,'struct_DataToShow']]],
+  ['display_16',['display',['../structstruct___data_to_show.html#af1f8ea37e64060da654156d2a3119a44',1,'struct_DataToShow']]],
   ['display_5fdevice_17',['display_device',['../class_widget.html#a85aa072690bb7cad227ea2c810e5b4b3',1,'Widget']]],
   ['display_5fdevice_2eh_18',['display_device.h',['../display__device_8h.html',1,'']]],
   ['display_5ftype_19',['display_type',['../structstruct___config_s_t7735.html#ace8c802f5f1afb38d68bed3840a4698b',1,'struct_ConfigST7735']]],

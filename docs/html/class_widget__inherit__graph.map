@@ -1,19 +1,19 @@
 <map id="Widget" name="Widget">
-<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="1429,5,1871,179"/>
-<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="1101,227,1676,780"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1590,193,1567,228,1562,225,1585,190"/>
-<area shape="rect" id="Node000010" href="$class_print_widget.html" title="A widget used when we need to simply print but still want to take advantage of the status change mana..." alt="" coords="1700,463,2123,543"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1715,190,1889,462,1885,465,1710,193"/>
+<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="1379,5,1921,216"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="1101,264,1676,780"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1578,230,1555,266,1550,263,1573,227"/>
+<area shape="rect" id="Node000010" href="$class_print_widget.html" title="A widget used when we need to simply print but still want to take advantage of the status change mana..." alt="" coords="1700,482,2123,562"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1727,227,1889,481,1884,483,1722,230"/>
 <area shape="rect" id="Node000003" href="$class_text_widget.html" title="a dedicated class for text frame only" alt="" coords="5,828,580,1236"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1089,612,844,711,716,769,594,830,581,837,578,833,591,826,714,764,841,706,1087,607"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1088,623,843,716,716,771,594,830,581,837,578,833,591,826,714,766,841,711,1086,618"/>
 <area shape="rect" id="Node000004" href="$class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="604,966,1107,1098"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1101,793,922,968,919,964,1097,789"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1110,792,925,968,921,964,1106,789"/>
 <area shape="rect" id="Node000005" href="$class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="1131,957,1647,1107"/>
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="1391,795,1391,957,1386,957,1386,795"/>
 <area shape="rect" id="Node000006" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="1671,975,2123,1089"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="1667,789,1845,974,1842,978,1663,793"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="1658,789,1844,974,1840,978,1655,793"/>
 <area shape="rect" id="Node000009" href="$class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="2147,929,2663,1135"/>
-<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="1691,777,1755,799,1812,807,1864,808,1914,803,1963,799,2015,799,2072,806,2136,826,2180,846,2223,871,2299,927,2296,931,2220,875,2178,851,2134,830,2071,811,2015,804,1964,804,1914,809,1864,813,1812,813,1754,804,1689,783"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="1691,778,1756,798,1813,806,1865,806,1914,802,1964,798,2016,798,2072,806,2136,826,2180,846,2223,871,2299,927,2296,931,2220,875,2178,851,2134,830,2071,811,2015,803,1964,804,1915,808,1865,812,1812,811,1755,803,1689,783"/>
 <area shape="rect" id="Node000007" href="$class_widget_blinking_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="1673,1284,2121,1397"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1899,1104,1899,1284,1894,1284,1894,1104"/>
 <area shape="rect" id="Node000008" href="$class_widget_focus_indicator.html" title="A specific class dedicated to indicate the status of an UIControlledModel. Not an abstract class,..." alt="" coords="1681,1445,2113,1559"/>

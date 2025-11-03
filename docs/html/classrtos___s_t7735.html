@@ -113,13 +113,13 @@ Inheritance diagram for rtos_ST7735:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___s_t7735__inherit__graph.png" border="0" usemap="#artos___s_t7735_inherit__map" alt="Inheritance graph"/></div>
 <map name="artos___s_t7735_inherit__map" id="artos___s_t7735_inherit__map">
-<area shape="rect" title="RTOS version of the ST7735 display device." alt="" coords="5,1053,520,1208"/>
-<area shape="rect" href="class_s_t7735.html" title="ST7735 driven TFT color display device." alt="" coords="33,332,492,1005"/>
-<area shape="poly" title=" " alt="" coords="265,1020,265,1054,260,1054,260,1020"/>
-<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="43,133,483,284"/>
-<area shape="poly" title=" " alt="" coords="265,299,265,332,260,332,260,299"/>
-<area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="211,5,315,85"/>
-<area shape="poly" title=" " alt="" coords="265,100,265,134,260,134,260,100"/>
+<area shape="rect" title="RTOS version of the ST7735 display device." alt="" coords="5,1053,557,1208"/>
+<area shape="rect" href="class_s_t7735.html" title="ST7735 driven TFT color display device." alt="" coords="52,332,511,1005"/>
+<area shape="poly" title=" " alt="" coords="284,1020,284,1054,279,1054,279,1020"/>
+<area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="61,133,501,284"/>
+<area shape="poly" title=" " alt="" coords="284,299,284,332,279,332,279,299"/>
+<area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="229,5,333,85"/>
+<area shape="poly" title=" " alt="" coords="284,100,284,134,279,134,279,100"/>
 </map>
 </div>
 <div class="dynheader">
@@ -127,7 +127,7 @@ Collaboration diagram for rtos_ST7735:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___s_t7735__coll__graph.png" border="0" usemap="#artos___s_t7735_coll__map" alt="Collaboration graph"/></div>
 <map name="artos___s_t7735_coll__map" id="artos___s_t7735_coll__map">
-<area shape="rect" title="RTOS version of the ST7735 display device." alt="" coords="179,1130,693,1285"/>
+<area shape="rect" title="RTOS version of the ST7735 display device." alt="" coords="160,1130,712,1285"/>
 <area shape="rect" href="class_s_t7735.html" title="ST7735 driven TFT color display device." alt="" coords="207,426,665,1081"/>
 <area shape="poly" title=" " alt="" coords="439,1096,439,1130,433,1130,433,1096"/>
 <area shape="rect" href="class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,174,445,325"/>
@@ -153,9 +153,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5991340ec2e969c1cd7cf6a6b5af86f7" id="r_a5991340ec2e969c1cd7cf6a6b5af86f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5991340ec2e969c1cd7cf6a6b5af86f7">clear_device_screen_buffer</a> (<a class="el" href="canvas_8h.html#a9efd9fcd52acdc60f2eb45ff9fce269b">ColorIndex</a> color_index=ColorIndex::BLACK)</td></tr>
 <tr class="memdesc:a5991340ec2e969c1cd7cf6a6b5af86f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill the internal <a class="el" href="class_s_t7735.html" title="ST7735 driven TFT color display device.">ST7735</a> screen buffer with the given color. Default to BLACK, clear the internal buffer  <br /></td></tr>
 <tr class="separator:a5991340ec2e969c1cd7cf6a6b5af86f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c8348370d0848be8a0a4962cf74fd20" id="r_a1c8348370d0848be8a0a4962cf74fd20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c8348370d0848be8a0a4962cf74fd20">send_clear_device_command</a> (QueueHandle_t display_queue, SemaphoreHandle_t sending_done)</td></tr>
-<tr class="memdesc:a1c8348370d0848be8a0a4962cf74fd20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a clear screen command to the display gate keeper task.  <br /></td></tr>
-<tr class="separator:a1c8348370d0848be8a0a4962cf74fd20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66986dcf6b99a11beb350a49c6f063b5" id="r_a66986dcf6b99a11beb350a49c6f063b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66986dcf6b99a11beb350a49c6f063b5">send_clear_device_command</a> (QueueHandle_t display_queue_to_SPI, SemaphoreHandle_t sending_done)</td></tr>
+<tr class="memdesc:a66986dcf6b99a11beb350a49c6f063b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a clear screen command to the display gate keeper task.  <br /></td></tr>
+<tr class="separator:a66986dcf6b99a11beb350a49c6f063b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_s_t7735"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_s_t7735')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_s_t7735.html">ST7735</a></td></tr>
 <tr class="memitem:add6c307568c3286090dc44cf9c2b64d8 inherit pub_methods_class_s_t7735" id="r_add6c307568c3286090dc44cf9c2b64d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8">ST7735</a> (<a class="el" href="class_h_w___s_p_i___master.html">HW_SPI_Master</a> *<a class="el" href="class_s_t7735.html#a406c961d135a3bb54435853dc78ddf03">spi</a>, <a class="el" href="structstruct___config_s_t7735.html">struct_ConfigST7735</a> device_config)</td></tr>
 <tr class="memdesc:add6c307568c3286090dc44cf9c2b64d8 inherit pub_methods_class_s_t7735"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_s_t7735.html" title="ST7735 driven TFT color display device.">ST7735</a> object.  <br /></td></tr>
@@ -433,8 +433,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a1c8348370d0848be8a0a4962cf74fd20" name="a1c8348370d0848be8a0a4962cf74fd20"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c8348370d0848be8a0a4962cf74fd20">&#9670;&#160;</a></span>send_clear_device_command()</h2>
+<a id="a66986dcf6b99a11beb350a49c6f063b5" name="a66986dcf6b99a11beb350a49c6f063b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66986dcf6b99a11beb350a49c6f063b5">&#9670;&#160;</a></span>send_clear_device_command()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -442,7 +442,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void rtos_ST7735::send_clear_device_command </td>
           <td>(</td>
-          <td class="paramtype">QueueHandle_t</td>          <td class="paramname"><span class="paramname"><em>display_queue</em></span>, </td>
+          <td class="paramtype">QueueHandle_t</td>          <td class="paramname"><span class="paramname"><em>display_queue_to_SPI</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -455,7 +455,7 @@ Here is the call graph for this function:</div>
 <p>Send a clear screen command to the display gate keeper task. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">display_queue</td><td>The queue used to send data to the display gate keeper task. </td></tr>
+    <tr><td class="paramname">display_queue_to_SPI</td><td>The queue used to send data to the display gate keeper task. </td></tr>
     <tr><td class="paramname">sending_done</td><td>A semaphore to signal when the sending is done. </td></tr>
   </table>
   </dd>

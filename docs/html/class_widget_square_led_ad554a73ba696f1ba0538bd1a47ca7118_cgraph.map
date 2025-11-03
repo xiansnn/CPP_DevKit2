@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="Construct a new GraphicWidget Square Led object." alt="" coords="5,31,205,55"/>
 <area shape="rect" id="Node000002" href="$class_graphic_widget.html#af3b9275226b4bc13d2e7a9cb6ba83f2c" title="Construct a new Graphic Widget object." alt="" coords="253,31,422,55"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,40,237,40,237,46,205,46"/>
-<area shape="rect" id="Node000003" href="$class_widget.html#ac59b534a5955f38cd5e518f967094bee" title="contructor for generic widget" alt="" coords="530,5,627,30"/>
+<area shape="rect" id="Node000003" href="$class_widget.html#a0d8f98229ae680885d74911bd73c67a1" title="contructor for generic widget" alt="" coords="530,5,627,30"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="422,31,514,22,515,27,423,37"/>
 <area shape="rect" id="Node000005" href="$class_graphic_widget.html#a49c9ebded2dc14246284662e13713a05" title="Get the graphic frame config object." alt="" coords="470,55,687,79"/>
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="423,49,455,52,454,57,422,54"/>

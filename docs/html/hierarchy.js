@@ -47,9 +47,11 @@ var hierarchy =
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],
     [ "rtos_DHT11", "classrtos___d_h_t11.html", null ],
     [ "rtos_HCSR04", "classrtos___h_c_s_r04.html", null ],
+    [ "rtos_Model", "classrtos___model.html", null ],
     [ "rtos_SwitchButton", "classrtos___switch_button.html", [
       [ "rtos_RotaryEncoder", "classrtos___rotary_encoder.html", null ]
     ] ],
+    [ "rtos_Widget", "classrtos___widget.html", null ],
     [ "SG90", "class_s_g90.html", null ],
     [ "struct_ConfigGraphicWidget", "structstruct___config_graphic_widget.html", null ],
     [ "struct_ConfigMasterI2C", "structstruct___config_master_i2_c.html", null ],

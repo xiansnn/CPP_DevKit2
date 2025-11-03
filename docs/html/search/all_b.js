@@ -4,7 +4,7 @@ var searchData=
   ['hardware_5freset_1',['hardware_reset',['../class_s_t7735.html#a1199b2f3f56011e7620d7a63dd112bc4',1,'ST7735']]],
   ['has_5fblinking_5fchanged_2',['has_blinking_changed',['../class_blinker.html#ae36b06b6ad8e5b5e14f5a95c1f4d3471',1,'Blinker']]],
   ['has_5fchanged_3',['has_changed',['../class_model.html#a6581f694a68e74228507591a3dbaccdf',1,'Model']]],
-  ['has_5ffocus_4',['HAS_FOCUS',['../ui__core_8h.html#a57c20ec1ef250b4ad060705786762112ac21f0eab1363c0a1274cd38acea090ac',1,'ui_core.h']]],
+  ['has_5ffocus_4',['HAS_FOCUS',['../ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112ac21f0eab1363c0a1274cd38acea090ac',1,'ui_control_event.h']]],
   ['hc_5fsr04_2eh_5',['hc_sr04.h',['../hc__sr04_8h.html',1,'']]],
   ['hcsr04_6',['HCSR04',['../class_h_c_s_r04.html',1,'HCSR04'],['../class_h_c_s_r04.html#a036f4e60cdd9c8e6821833a824dbf338',1,'HCSR04::HCSR04()']]],
   ['height_7',['height',['../structstruct___render_area.html#a1b865d1677e21638357766ee175dd3bb',1,'struct_RenderArea']]],

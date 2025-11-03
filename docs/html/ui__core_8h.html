@@ -99,8 +99,7 @@ $(function(){initNavTree('ui__core_8h.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">ui_core.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -170,20 +169,22 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="ui__core_8h__dep__incl.png" border="0" usemap="#aui__core_8hdep" alt=""/></div>
 <map name="aui__core_8hdep" id="aui__core_8hdep">
-<area shape="rect" title=" " alt="" coords="170,5,236,30"/>
-<area shape="rect" href="ky040_8h.html" title=" " alt="" coords="39,78,97,103"/>
-<area shape="poly" title=" " alt="" coords="168,40,92,80,89,75,166,35"/>
-<area shape="rect" href="widget_8h.html" title=" " alt="" coords="172,78,234,103"/>
-<area shape="poly" title=" " alt="" coords="197,45,199,77,193,78,191,46"/>
-<area shape="rect" href="widget__bargraph_8h.html" title=" " alt="" coords="5,151,118,175"/>
-<area shape="poly" title=" " alt="" coords="183,43,75,152,71,148,179,39"/>
-<area shape="rect" href="widget__horizontal__bar_8h.html" title=" " alt="" coords="288,151,424,175"/>
-<area shape="poly" title=" " alt="" coords="228,39,346,148,342,152,224,43"/>
-<area shape="poly" title=" " alt="" coords="209,63,207,31,212,30,214,62"/>
-<area shape="poly" title=" " alt="" coords="167,112,86,152,84,148,165,108"/>
-<area shape="poly" title=" " alt="" coords="243,107,332,148,330,153,241,112"/>
-<area shape="rect" href="widget__square__led_8h.html" title=" " alt="" coords="142,151,264,175"/>
-<area shape="poly" title=" " alt="" coords="206,118,206,150,200,150,200,118"/>
+<area shape="rect" title=" " alt="" coords="216,5,282,30"/>
+<area shape="rect" href="ky040_8h.html" title=" " alt="" coords="5,78,64,103"/>
+<area shape="poly" title=" " alt="" coords="202,37,65,82,63,77,201,32"/>
+<area shape="rect" href="rtos__ui__core_8h.html" title=" " alt="" coords="88,78,178,103"/>
+<area shape="poly" title=" " alt="" coords="219,41,154,80,151,75,216,36"/>
+<area shape="rect" href="widget_8h.html" title=" " alt="" coords="253,78,315,103"/>
+<area shape="poly" title=" " alt="" coords="255,43,274,76,269,79,251,46"/>
+<area shape="rect" href="widget__bargraph_8h.html" title=" " alt="" coords="86,151,199,175"/>
+<area shape="poly" title=" " alt="" coords="235,45,193,104,154,152,150,148,188,101,231,42"/>
+<area shape="rect" href="widget__horizontal__bar_8h.html" title=" " alt="" coords="369,151,505,175"/>
+<area shape="poly" title=" " alt="" coords="278,37,424,148,420,152,274,42"/>
+<area shape="poly" title=" " alt="" coords="278,65,259,32,264,29,282,62"/>
+<area shape="poly" title=" " alt="" coords="248,112,167,152,165,148,246,108"/>
+<area shape="poly" title=" " alt="" coords="324,107,413,148,411,153,322,112"/>
+<area shape="rect" href="widget__square__led_8h.html" title=" " alt="" coords="223,151,344,175"/>
+<area shape="poly" title=" " alt="" coords="286,118,286,150,281,150,281,118"/>
 </map>
 </div>
 </div>
@@ -213,93 +214,13 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>UI_MODEL_OBJECT_STATUS_TIME_OUT_us</b>&#160;&#160;&#160;3000000</td></tr>
 <tr class="memdesc:a774f72dc3d61be40b9421594b673b2ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">the time out used by the <a class="el" href="class_u_i_model_manager.html" title="This is an Abstract class that is used to implement the manager of object on a screen.">UIModelManager</a> that indicates there is no more UI_ModelObject Status change. <br /></td></tr>
 <tr class="separator:a774f72dc3d61be40b9421594b673b2ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a57c20ec1ef250b4ad060705786762112" id="r_a57c20ec1ef250b4ad060705786762112"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57c20ec1ef250b4ad060705786762112">ControlledObjectStatus</a> { <a class="el" href="#a57c20ec1ef250b4ad060705786762112a02ca6db02d1c43b09e875c6cc1f51aab">IS_WAITING</a>
-, <a class="el" href="#a57c20ec1ef250b4ad060705786762112ac21f0eab1363c0a1274cd38acea090ac">HAS_FOCUS</a>
-, <a class="el" href="#a57c20ec1ef250b4ad060705786762112a70d794d2a66b3ed4d2b0ff57d41b7089">IS_ACTIVE</a>
- }</td></tr>
-<tr class="memdesc:a57c20ec1ef250b4ad060705786762112"><td class="mdescLeft">&#160;</td><td class="mdescRight">The list of status that a <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> can have. (0) IS_WAITING (1) HAS_FOCUS (2) IS_ACTIVE.  <a href="#a57c20ec1ef250b4ad060705786762112">More...</a><br /></td></tr>
-<tr class="separator:a57c20ec1ef250b4ad060705786762112"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b97aab8f67794aef99a8febbf83360f" id="r_a1b97aab8f67794aef99a8febbf83360f"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b97aab8f67794aef99a8febbf83360f">ControlledObjectStatusTimeOutReason</a> { <a class="el" href="#a1b97aab8f67794aef99a8febbf83360fa25acbfe2d400c0c58406c136eed29eff">NO_TIME_OUT</a>
-, <a class="el" href="#a1b97aab8f67794aef99a8febbf83360faa168377e720c2ee7f0be52df4c287497">MANAGER_INACTIVE</a>
-, <a class="el" href="#a1b97aab8f67794aef99a8febbf83360faee1548dc30a1a5d758b67a7ce4c3cc77">MANAGED_OBJECT_INACTIVE</a>
- }</td></tr>
-<tr class="memdesc:a1b97aab8f67794aef99a8febbf83360f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The list of reason of manager time out report. (0) NO_TIME_OUT (1) MANAGER_INACTIVE (3) MANAGED_OBJECT_INACTIVE.  <a href="#a1b97aab8f67794aef99a8febbf83360f">More...</a><br /></td></tr>
-<tr class="separator:a1b97aab8f67794aef99a8febbf83360f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>xiansnn (<a href="#" onclick="location.href='mai'+'lto:'+'xia'+'ns'+'nn@'+'ho'+'tma'+'il'+'.co'+'m'; return false;">xians<span class="obfuscator">.nosp@m.</span>nn@h<span class="obfuscator">.nosp@m.</span>otmai<span class="obfuscator">.nosp@m.</span>l.co<span class="obfuscator">.nosp@m.</span>m</a>) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025-01-11</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 </dd></dl>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a57c20ec1ef250b4ad060705786762112" name="a57c20ec1ef250b4ad060705786762112"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57c20ec1ef250b4ad060705786762112">&#9670;&#160;</a></span>ControlledObjectStatus</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum class <a class="el" href="#a57c20ec1ef250b4ad060705786762112">ControlledObjectStatus</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The list of status that a <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> can have. (0) IS_WAITING (1) HAS_FOCUS (2) IS_ACTIVE. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a57c20ec1ef250b4ad060705786762112a02ca6db02d1c43b09e875c6cc1f51aab" name="a57c20ec1ef250b4ad060705786762112a02ca6db02d1c43b09e875c6cc1f51aab"></a>IS_WAITING&#160;</td><td class="fielddoc"><p>The object is inactive, nothing to do. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a57c20ec1ef250b4ad060705786762112ac21f0eab1363c0a1274cd38acea090ac" name="a57c20ec1ef250b4ad060705786762112ac21f0eab1363c0a1274cd38acea090ac"></a>HAS_FOCUS&#160;</td><td class="fielddoc"><p>The widget or object manager is pointing to this model. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a57c20ec1ef250b4ad060705786762112a70d794d2a66b3ed4d2b0ff57d41b7089" name="a57c20ec1ef250b4ad060705786762112a70d794d2a66b3ed4d2b0ff57d41b7089"></a>IS_ACTIVE&#160;</td><td class="fielddoc"><p>The user has selected (clicked) on this model. ControlEvent are then passed to this model in order to be processed. </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<a id="a1b97aab8f67794aef99a8febbf83360f" name="a1b97aab8f67794aef99a8febbf83360f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b97aab8f67794aef99a8febbf83360f">&#9670;&#160;</a></span>ControlledObjectStatusTimeOutReason</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum class <a class="el" href="#a1b97aab8f67794aef99a8febbf83360f">ControlledObjectStatusTimeOutReason</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The list of reason of manager time out report. (0) NO_TIME_OUT (1) MANAGER_INACTIVE (3) MANAGED_OBJECT_INACTIVE. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1b97aab8f67794aef99a8febbf83360fa25acbfe2d400c0c58406c136eed29eff" name="a1b97aab8f67794aef99a8febbf83360fa25acbfe2d400c0c58406c136eed29eff"></a>NO_TIME_OUT&#160;</td><td class="fielddoc"><p>no time out </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a1b97aab8f67794aef99a8febbf83360faa168377e720c2ee7f0be52df4c287497" name="a1b97aab8f67794aef99a8febbf83360faa168377e720c2ee7f0be52df4c287497"></a>MANAGER_INACTIVE&#160;</td><td class="fielddoc"><p>The object is inactive, nothing to do. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a1b97aab8f67794aef99a8febbf83360faee1548dc30a1a5d758b67a7ce4c3cc77" name="a1b97aab8f67794aef99a8febbf83360faee1548dc30a1a5d758b67a7ce4c3cc77"></a>MANAGED_OBJECT_INACTIVE&#160;</td><td class="fielddoc"><p>The widget or object manager is pointing to this model. </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -135,13 +135,13 @@ Collaboration diagram for UIControlledModel:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4c95a5deec65814e1ea03d6340b8fd42" id="r_a4c95a5deec65814e1ea03d6340b8fd42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c95a5deec65814e1ea03d6340b8fd42">update_status</a> (<a class="el" href="ui__core_8h.html#a57c20ec1ef250b4ad060705786762112">ControlledObjectStatus</a> _new_status)</td></tr>
+<tr class="memitem:a4c95a5deec65814e1ea03d6340b8fd42" id="r_a4c95a5deec65814e1ea03d6340b8fd42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c95a5deec65814e1ea03d6340b8fd42">update_status</a> (<a class="el" href="ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112">ControlledObjectStatus</a> _new_status)</td></tr>
 <tr class="memdesc:a4c95a5deec65814e1ea03d6340b8fd42"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if the _new_status change is effective, then change it and set the change_flag to true.  <br /></td></tr>
 <tr class="separator:a4c95a5deec65814e1ea03d6340b8fd42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4774f17bc60e1dba71a20f27c32dc4c6" id="r_a4774f17bc60e1dba71a20f27c32dc4c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4774f17bc60e1dba71a20f27c32dc4c6">update_current_controller</a> (<a class="el" href="class_u_i_controller.html">UIController</a> *_new_controller)</td></tr>
 <tr class="memdesc:a4774f17bc60e1dba71a20f27c32dc4c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">if _new_controller is different from the current controller, change the current controller associated to the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a>. the new controller has is member current_controlled_model also changed.  <br /></td></tr>
 <tr class="separator:a4774f17bc60e1dba71a20f27c32dc4c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30d8cff3d0e7637f2939c50c07f4a763" id="r_a30d8cff3d0e7637f2939c50c07f4a763"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ui__core_8h.html#a57c20ec1ef250b4ad060705786762112">ControlledObjectStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30d8cff3d0e7637f2939c50c07f4a763">get_status</a> ()</td></tr>
+<tr class="memitem:a30d8cff3d0e7637f2939c50c07f4a763" id="r_a30d8cff3d0e7637f2939c50c07f4a763"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112">ControlledObjectStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30d8cff3d0e7637f2939c50c07f4a763">get_status</a> ()</td></tr>
 <tr class="memdesc:a30d8cff3d0e7637f2939c50c07f4a763"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the status object.  <br /></td></tr>
 <tr class="separator:a30d8cff3d0e7637f2939c50c07f4a763"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a278084ada7122332a7565046d081fe99" id="r_a278084ada7122332a7565046d081fe99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_u_i_controller.html">UIController</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a278084ada7122332a7565046d081fe99">get_current_controller</a> ()</td></tr>
@@ -232,7 +232,7 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ui__core_8h.html#a57c20ec1ef250b4ad060705786762112">ControlledObjectStatus</a> UIControlledModel::get_status </td>
+          <td class="memname"><a class="el" href="ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112">ControlledObjectStatus</a> UIControlledModel::get_status </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -241,7 +241,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Get the status object. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="ui__core_8h.html#a57c20ec1ef250b4ad060705786762112" title="The list of status that a Model can have. (0) IS_WAITING (1) HAS_FOCUS (2) IS_ACTIVE.">ControlledObjectStatus</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112" title="The list of status that a Model can have. (0) IS_WAITING (1) HAS_FOCUS (2) IS_ACTIVE.">ControlledObjectStatus</a> </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -332,7 +332,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void UIControlledModel::update_status </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="ui__core_8h.html#a57c20ec1ef250b4ad060705786762112">ControlledObjectStatus</a></td>          <td class="paramname"><span class="paramname"><em>_new_status</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112">ControlledObjectStatus</a></td>          <td class="paramname"><span class="paramname"><em>_new_status</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

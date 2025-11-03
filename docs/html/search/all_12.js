@@ -23,12 +23,15 @@ var searchData=
   ['rtos_5fhw_5fi2c_5fmaster_20',['rtos_HW_I2C_Master',['../classrtos___h_w___i2_c___master.html',1,'rtos_HW_I2C_Master'],['../classrtos___h_w___i2_c___master.html#aab66902f880060f31b4bafee66d1e26f',1,'rtos_HW_I2C_Master::rtos_HW_I2C_Master()']]],
   ['rtos_5fhw_5fspi_2eh_21',['rtos_hw_spi.h',['../rtos__hw__spi_8h.html',1,'']]],
   ['rtos_5fhw_5fspi_5fmaster_22',['rtos_HW_SPI_Master',['../classrtos___h_w___s_p_i___master.html',1,'rtos_HW_SPI_Master'],['../classrtos___h_w___s_p_i___master.html#ab0b4f66cb858ddc73fe008496cd0f2f1',1,'rtos_HW_SPI_Master::rtos_HW_SPI_Master()']]],
-  ['rtos_5fprocess_5firq_5fevent_23',['rtos_process_IRQ_event',['../classrtos___rotary_encoder.html#a49b161016d8d9a00e322e819218f6c74',1,'rtos_RotaryEncoder::rtos_process_IRQ_event()'],['../classrtos___switch_button.html#aa1017a2d9370e64e72b8629dd2a594a3',1,'rtos_SwitchButton::rtos_process_IRQ_event()']]],
-  ['rtos_5frotary_5fencoder_2eh_24',['rtos_rotary_encoder.h',['../rtos__rotary__encoder_8h.html',1,'']]],
-  ['rtos_5frotaryencoder_25',['rtos_RotaryEncoder',['../classrtos___rotary_encoder.html',1,'rtos_RotaryEncoder'],['../classrtos___rotary_encoder.html#afef821f6910545235862593614263bc9',1,'rtos_RotaryEncoder::rtos_RotaryEncoder()']]],
-  ['rtos_5fssd1306_26',['rtos_SSD1306',['../classrtos___s_s_d1306.html',1,'rtos_SSD1306'],['../classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8',1,'rtos_SSD1306::rtos_SSD1306()']]],
-  ['rtos_5fst7735_27',['rtos_ST7735',['../classrtos___s_t7735.html',1,'rtos_ST7735'],['../classrtos___s_t7735.html#a66cd3316fdb254d845f5decb6a8b9c36',1,'rtos_ST7735::rtos_ST7735()']]],
-  ['rtos_5fswitch_5fbutton_2eh_28',['rtos_switch_button.h',['../rtos__switch__button_8h.html',1,'']]],
-  ['rtos_5fswitchbutton_29',['rtos_SwitchButton',['../classrtos___switch_button.html',1,'rtos_SwitchButton'],['../classrtos___switch_button.html#a25d653657ad8e2509c22b5c08cf92c4c',1,'rtos_SwitchButton::rtos_SwitchButton()']]],
-  ['rx_5fpin_30',['rx_pin',['../structstruct___config_master_s_p_i.html#a706e797e658220957b084d0f3b7c4362',1,'struct_ConfigMasterSPI']]]
+  ['rtos_5fmodel_23',['rtos_Model',['../classrtos___model.html',1,'rtos_Model'],['../classrtos___model.html#a5c27f9193c8c80bedca94cd2e2ca9d99',1,'rtos_Model::rtos_Model()']]],
+  ['rtos_5fprocess_5firq_5fevent_24',['rtos_process_IRQ_event',['../classrtos___rotary_encoder.html#a49b161016d8d9a00e322e819218f6c74',1,'rtos_RotaryEncoder::rtos_process_IRQ_event()'],['../classrtos___switch_button.html#aa1017a2d9370e64e72b8629dd2a594a3',1,'rtos_SwitchButton::rtos_process_IRQ_event()']]],
+  ['rtos_5frotary_5fencoder_2eh_25',['rtos_rotary_encoder.h',['../rtos__rotary__encoder_8h.html',1,'']]],
+  ['rtos_5frotaryencoder_26',['rtos_RotaryEncoder',['../classrtos___rotary_encoder.html',1,'rtos_RotaryEncoder'],['../classrtos___rotary_encoder.html#afef821f6910545235862593614263bc9',1,'rtos_RotaryEncoder::rtos_RotaryEncoder()']]],
+  ['rtos_5fssd1306_27',['rtos_SSD1306',['../classrtos___s_s_d1306.html',1,'rtos_SSD1306'],['../classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8',1,'rtos_SSD1306::rtos_SSD1306()']]],
+  ['rtos_5fst7735_28',['rtos_ST7735',['../classrtos___s_t7735.html',1,'rtos_ST7735'],['../classrtos___s_t7735.html#a66cd3316fdb254d845f5decb6a8b9c36',1,'rtos_ST7735::rtos_ST7735()']]],
+  ['rtos_5fswitch_5fbutton_2eh_29',['rtos_switch_button.h',['../rtos__switch__button_8h.html',1,'']]],
+  ['rtos_5fswitchbutton_30',['rtos_SwitchButton',['../classrtos___switch_button.html',1,'rtos_SwitchButton'],['../classrtos___switch_button.html#a25d653657ad8e2509c22b5c08cf92c4c',1,'rtos_SwitchButton::rtos_SwitchButton()']]],
+  ['rtos_5fui_5fcore_2eh_31',['rtos_ui_core.h',['../rtos__ui__core_8h.html',1,'']]],
+  ['rtos_5fwidget_32',['rtos_Widget',['../classrtos___widget.html',1,'rtos_Widget'],['../classrtos___widget.html#a60be17ea5b44b135b42e9d9d810d9e28',1,'rtos_Widget::rtos_Widget()']]],
+  ['rx_5fpin_33',['rx_pin',['../structstruct___config_master_s_p_i.html#a706e797e658220957b084d0f3b7c4362',1,'struct_ConfigMasterSPI']]]
 ];

@@ -4,7 +4,7 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,81,177,77,177,82,144,86"/>
 <area shape="rect" id="Node000006" href="$class_text_widget.html#a25231a80633db702af090c590d5fabc7" title="create text buffer and delete the old one if already existing" alt="" coords="191,104,364,129"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="144,98,175,102,175,107,143,103"/>
-<area shape="rect" id="Node000003" href="$class_widget.html#ac59b534a5955f38cd5e518f967094bee" title="contructor for generic widget" alt="" coords="472,5,569,30"/>
+<area shape="rect" id="Node000003" href="$class_widget.html#a0d8f98229ae680885d74911bd73c67a1" title="contructor for generic widget" alt="" coords="472,5,569,30"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="341,51,456,28,457,33,342,57"/>
 <area shape="rect" id="Node000005" href="$class_graphic_widget.html#a49c9ebded2dc14246284662e13713a05" title="Get the graphic frame config object." alt="" coords="412,55,629,79"/>
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="363,64,397,64,397,70,363,70"/>

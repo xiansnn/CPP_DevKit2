@@ -1,6 +1,6 @@
 <map id="GraphicWidget::GraphicWidget" name="GraphicWidget::GraphicWidget">
 <area shape="rect" id="Node000001" title="Construct a new Graphic Widget object." alt="" coords="5,31,175,55"/>
-<area shape="rect" id="Node000002" href="$class_widget.html#ac59b534a5955f38cd5e518f967094bee" title="contructor for generic widget" alt="" coords="283,5,380,30"/>
+<area shape="rect" id="Node000002" href="$class_widget.html#a0d8f98229ae680885d74911bd73c67a1" title="contructor for generic widget" alt="" coords="283,5,380,30"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,31,267,22,267,27,175,37"/>
 <area shape="rect" id="Node000004" href="$class_graphic_widget.html#a49c9ebded2dc14246284662e13713a05" title="Get the graphic frame config object." alt="" coords="223,55,440,79"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="175,49,207,52,207,57,175,54"/>

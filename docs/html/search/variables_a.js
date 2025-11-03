@@ -6,6 +6,7 @@ var searchData=
   ['mem_5faddress_3',['mem_address',['../structstruct___slave_memory.html#a676889062063c62684c4c2bb1f6772ed',1,'struct_SlaveMemory']]],
   ['mem_5faddress_5fwritten_4',['mem_address_written',['../structstruct___slave_memory.html#a7ffdb875b97e9cb9ca8680e72704621f',1,'struct_SlaveMemory']]],
   ['min_5fvalue_5',['min_value',['../class_u_i_controlled_incremental_value.html#ae8b0cdfbfe7f3bc120870d7f9e67fb7a',1,'UIControlledIncrementalValue::min_value'],['../class_model_bargraph.html#ab248b727cd4e7023c6bd29259ca60358',1,'ModelBargraph::min_value']]],
-  ['mpu_5faddr_6',['MPU_ADDR',['../structstruct___config_m_p_u6050.html#acf79176ed664b066365717df749cacd7',1,'struct_ConfigMPU6050']]],
-  ['mux_5fratio_5fvalue_7',['mux_ratio_value',['../structstruct___config_s_s_d1306.html#aecebd6411a14e59af2f09302e716bcb9',1,'struct_ConfigSSD1306']]]
+  ['model_6',['model',['../classrtos___model.html#a798160ea844e667af34e2d929c39cba3',1,'rtos_Model']]],
+  ['mpu_5faddr_7',['MPU_ADDR',['../structstruct___config_m_p_u6050.html#acf79176ed664b066365717df749cacd7',1,'struct_ConfigMPU6050']]],
+  ['mux_5fratio_5fvalue_8',['mux_ratio_value',['../structstruct___config_s_s_d1306.html#aecebd6411a14e59af2f09302e716bcb9',1,'struct_ConfigSSD1306']]]
 ];
