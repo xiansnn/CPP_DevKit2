@@ -22,6 +22,7 @@
 #include <set>
 
 /// @brief RTOS wrapper for Widget class
+/// \ingroup view
 class rtos_Widget
 {
 private:
@@ -42,6 +43,8 @@ public:
     ~rtos_Widget();
 };
 
+/// @brief RTOS wrapper for Model class
+/// \ingroup model
 class rtos_Model
 {
 private:
