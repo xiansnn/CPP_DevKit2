@@ -1,5 +1,4 @@
 add_executable(test_rtos_ui_core  
-            t_rtos_ui_core.cpp
             test_rtos_ui_core.cpp 
             )               
 target_link_libraries(test_rtos_ui_core 

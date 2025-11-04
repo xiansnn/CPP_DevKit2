@@ -44,3 +44,14 @@ public:
     my_ProbePrinter(Probe *probe);
     ~my_ProbePrinter();
 };
+//----------------------------------
+std::map<UIControlEvent, std::string> event_to_string{
+    {UIControlEvent::NONE, "NONE"},
+    {UIControlEvent::PUSH, "PUSH"},
+    {UIControlEvent::DOUBLE_PUSH, "DOUBLE_PUSH"},
+    {UIControlEvent::LONG_PUSH, "LONG_PUSH"},
+    {UIControlEvent::RELEASED_AFTER_LONG_TIME, "RELEASED_AFTER_LONG_TIME"},
+    {UIControlEvent::RELEASED_AFTER_SHORT_TIME, "RELEASED_AFTER_SHORT_TIME"},
+    {UIControlEvent::INCREMENT, "INCREMENT"},
+    {UIControlEvent::DECREMENT, "DECREMENT"},
+    {UIControlEvent::TIME_OUT, "TIME_OUT"}};
