@@ -7,7 +7,7 @@ target_link_libraries(test_rtos_ui_core
             rtos_hw_spi
             sw_ui_core
             rtos_ui_core
-            # device_ky040
+            dev_rtos_rotary_encoder
             device_st7735
             sw_widget
             sw_display_device

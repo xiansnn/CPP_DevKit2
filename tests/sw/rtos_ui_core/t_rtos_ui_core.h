@@ -21,7 +21,7 @@ public:
     my_Model(/* args */);
     ~my_Model();
 };
-
+//--------------------------------
 class my_Widget : public Widget
 {
 private:
@@ -31,7 +31,7 @@ public:
     ~my_Widget();
     void draw();
 };
-
+//--------------------------------
 class my_ProbePrinter : public DisplayDevice
 {
 private:
