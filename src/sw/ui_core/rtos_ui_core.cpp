@@ -39,3 +39,39 @@ rtos_Widget::rtos_Widget(Widget *widget)
 rtos_Widget::~rtos_Widget()
 {
 }
+
+rtos_UIController::rtos_UIController(UIController *linked_controller)
+{
+    this->controller = linked_controller;
+}
+
+rtos_UIController::~rtos_UIController()
+{
+}
+
+rtos_UIControlledModel::rtos_UIControlledModel(UIControlledModel *linked_controlled_model)
+    : rtos_Model(linked_controlled_model)
+{
+}
+
+rtos_UIControlledModel::~rtos_UIControlledModel()
+{
+}
+
+rtos_UIControlledIncrementalValue::rtos_UIControlledIncrementalValue(UIControlledIncrementalValue *linked_ui_controlled_incremental_value)
+    : rtos_UIControlledModel(linked_ui_controlled_incremental_value)
+{
+}
+
+rtos_UIControlledIncrementalValue::~rtos_UIControlledIncrementalValue()
+{
+}
+
+rtos_UIModelManager::rtos_UIModelManager(UIModelManager *linked_model_manager)
+    : rtos_UIControlledIncrementalValue(linked_model_manager)
+{
+}
+
+rtos_UIModelManager::~rtos_UIModelManager()
+{
+}
