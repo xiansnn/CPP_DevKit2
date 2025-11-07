@@ -26,7 +26,7 @@ Probe p4 = Probe(4);
 
 static QueueHandle_t encoder_clk_isr_queue = xQueueCreate(5, sizeof(struct_SwitchButtonIRQData));
 static QueueHandle_t central_switch_isr_queue = xQueueCreate(5, sizeof(struct_SwitchButtonIRQData));
-static QueueHandle_t ui_control_event_queue = xQueueCreate(5, sizeof(struct_ControlEventData));
+static QueueHandle_t ky040_control_event_queue = xQueueCreate(5, sizeof(struct_ControlEventData));
 
 void vIdleTask(void *pxProbe)
 {
@@ -64,12 +64,12 @@ void encoder_clk_irq_call_back(uint gpio, uint32_t event_mask);
 
 int value_inc_dec = 0;
 
-void vProcessControlEventTask(void *)
+void ky040_process_control_event(void *)
 {
     struct_ControlEventData local_event_data;
     while (true)
     {
-        xQueueReceive(ui_control_event_queue, &local_event_data, portMAX_DELAY);
+        xQueueReceive(ky040_control_event_queue, &local_event_data, portMAX_DELAY);
         switch (local_event_data.gpio_number)
         {
         case CENTRAL_SWITCH_GPIO:
@@ -102,7 +102,7 @@ void vProcessControlEventTask(void *)
     }
 }
 
-void test_encoder_irq_call_back(uint gpio, uint32_t event_mask)
+void encoder_irq_call_back(uint gpio, uint32_t event_mask)
 {
     struct_SwitchButtonIRQData data;
     gpio_set_irq_enabled(gpio, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, false);
@@ -131,11 +131,11 @@ void test_encoder_irq_call_back(uint gpio, uint32_t event_mask)
 };
 
 rtos_SwitchButton central_switch = rtos_SwitchButton(CENTRAL_SWITCH_GPIO,
-                                                   &test_encoder_irq_call_back, central_switch_isr_queue, ui_control_event_queue,
+                                                   &encoder_irq_call_back, central_switch_isr_queue, ky040_control_event_queue,
                                                    cfg_central_switch);
 
 rtos_RotaryEncoder encoder = rtos_RotaryEncoder(ENCODER_CLK_GPIO, ENCODER_DT_GPIO,
-                                              &test_encoder_irq_call_back, encoder_clk_isr_queue, ui_control_event_queue,
+                                              &encoder_irq_call_back, encoder_clk_isr_queue, ky040_control_event_queue,
                                               cfg_encoder_clk);
 
 void vProcessCentralSwitchIRQ(void *)
@@ -152,7 +152,7 @@ int main()
     stdio_init_all();
 
     xTaskCreate(vIdleTask, "idle_task0", 256, &p0, 0, NULL);
-    xTaskCreate(vProcessControlEventTask, "event_task0", 256, NULL, 2, NULL);
+    xTaskCreate(ky040_process_control_event, "event_task0", 256, NULL, 2, NULL);
     xTaskCreate(vProcessCentralSwitchIRQ, "sw_irq_task0", 256, NULL, 4, NULL);
     xTaskCreate(vProcessEncoderCLKIRQ, "clk_irq_task0", 256, NULL, 4, NULL);
 
