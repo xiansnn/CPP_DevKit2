@@ -17,13 +17,13 @@ Probe p2 = Probe(2);
 Probe p3 = Probe(3);
 Probe p4 = Probe(4);
 Probe p5 = Probe(5);
-// Probe p6 = Probe(6);
-// Probe p7 = Probe(7);
+Probe p6 = Probe(6);
+Probe p7 = Probe(7);
 
 #define MAIN_TASK_PERIOD_ms 500
-#define CENTRAL_SWITCH_GPIO 17
-#define ENCODER_CLK_GPIO 21
-#define ENCODER_DT_GPIO 26
+#define CENTRAL_SWITCH_GPIO 18
+#define ENCODER_CLK_GPIO 19
+#define ENCODER_DT_GPIO 20
 
 QueueHandle_t display_queue = xQueueCreate(8, sizeof(struct_DataToShow));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task

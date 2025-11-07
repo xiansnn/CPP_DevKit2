@@ -23,9 +23,9 @@
 #include "device/KY040/ky040.h"
 
 
-#define CENTRAL_SWITCH_GPIO 6
-#define ENCODER_CLK_GPIO 26
-#define ENCODER_DT_GPIO 21
+#define CENTRAL_SWITCH_GPIO 18
+#define ENCODER_CLK_GPIO 19
+#define ENCODER_DT_GPIO 20
 
 /// @brief config of the rotary encoder central switch
 struct_ConfigSwitchButton cfg_central_switch{
