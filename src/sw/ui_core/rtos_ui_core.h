@@ -26,10 +26,8 @@
 class rtos_Widget
 {
 private:
-
-
 public:
-//// @brief pointer to the actual widget
+    //// @brief pointer to the actual widget
     Widget *widget;
     /// @brief FreeRTOS task handle associated to the widget
     TaskHandle_t task_handle;
@@ -70,8 +68,8 @@ class rtos_UIController
 private:
     /* data */
 public:
-UIController *controller;
-    rtos_UIController(UIController * linked_controller);
+    UIController *controller;
+    rtos_UIController(UIController *linked_controller);
     ~rtos_UIController();
 };
 
@@ -80,8 +78,9 @@ class rtos_UIControlledModel : public rtos_Model
 private:
     /* data */
 public:
-    rtos_UIControlledModel(UIControlledModel * linked_controlled_model);
+    rtos_UIControlledModel(UIControlledModel *linked_controlled_model);
     ~rtos_UIControlledModel();
+    virtual void process_control_event_queue(UIControlEvent _event) = 0;
 };
 
 class rtos_UIControlledIncrementalValue : public rtos_UIControlledModel
@@ -89,7 +88,7 @@ class rtos_UIControlledIncrementalValue : public rtos_UIControlledModel
 private:
     /* data */
 public:
-    rtos_UIControlledIncrementalValue(UIControlledIncrementalValue * linked_ui_controlled_incremental_value);
+    rtos_UIControlledIncrementalValue(UIControlledIncrementalValue *linked_ui_controlled_incremental_value);
     ~rtos_UIControlledIncrementalValue();
 };
 
@@ -98,10 +97,8 @@ class rtos_UIModelManager : public rtos_UIControlledIncrementalValue
 private:
     /* data */
 public:
-    rtos_UIModelManager(UIModelManager * linked_model_manager);
+    rtos_UIModelManager(UIModelManager *linked_model_manager);
     ~rtos_UIModelManager();
+    void make_managed_model_active();
+    void make_manager_active();
 };
-
-
-
-

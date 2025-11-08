@@ -75,3 +75,13 @@ rtos_UIModelManager::rtos_UIModelManager(UIModelManager *linked_model_manager)
 rtos_UIModelManager::~rtos_UIModelManager()
 {
 }
+
+void rtos_UIModelManager::make_managed_model_active()
+{
+    printf("rtos_UIModelManager::make_managed_model_active\n");
+}
+
+void rtos_UIModelManager::make_manager_active()
+{
+    printf("rtos_UIModelManager::make_manager_active\n");
+}

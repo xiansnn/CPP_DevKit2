@@ -83,11 +83,11 @@ void vIdleTask(void *pxProbe)
     }
 }
 
-void vProcessCentralSwitchIRQ(void *)
+void central_switch_process_irq_event(void *)
 {
     central_switch.rtos_process_IRQ_event();
 }
-void vProcessEncoderCLKIRQ(void *)
+void encoder_process_irq_event(void *)
 {
     encoder_clk.rtos_process_IRQ_event();
 }
@@ -132,8 +132,8 @@ int main()
 
     xTaskCreate(vIdleTask, "idle_task0", 256, &p0, 0, NULL);
     xTaskCreate(vProcessControlEventTask, "event_task0", 256, NULL, 2, NULL);
-    xTaskCreate(vProcessCentralSwitchIRQ, "sw_irq_task0", 256, NULL, 4, NULL);
-    xTaskCreate(vProcessEncoderCLKIRQ, "clk_irq_task0", 256, NULL, 4, NULL);
+    xTaskCreate(central_switch_process_irq_event, "sw_irq_task0", 256, NULL, 4, NULL);
+    xTaskCreate(encoder_process_irq_event, "clk_irq_task0", 256, NULL, 4, NULL);
 
     vTaskStartScheduler();
 
