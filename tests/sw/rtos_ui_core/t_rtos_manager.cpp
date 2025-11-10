@@ -28,8 +28,10 @@ rtos_my_TestManager::~rtos_my_TestManager()
 /// - INCREMENT: focus to next model
 /// - DECREMENT: focus to previous model
 /// @param _event
-void rtos_my_TestManager::process_control_event_queue(UIControlEvent _event)
+void rtos_my_TestManager::process_control_event_queue(struct_ControlEventData event_data)
 {
+    my_TestManager *_my_model = (my_TestManager *)this->model;
+    UIControlEvent _event = event_data.event;
     switch (_event)
     {
     case UIControlEvent::NONE:
@@ -37,39 +39,37 @@ void rtos_my_TestManager::process_control_event_queue(UIControlEvent _event)
         break;
     case UIControlEvent::LONG_PUSH:
         printf("rtos_my_TestManager::process_control_event_queue->LONG_PUSH\n");
-        if (((my_TestManager *)this->model)->current_active_model != this->model)
-            ((my_TestManager *)this->model)->current_active_model->process_control_event(_event);
+        if (_my_model->current_active_model != _my_model)
+            _my_model->current_active_model->process_control_event(_event);
         break;
     case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
         printf("rtos_my_TestManager::process_control_event_queue->RELEASED_AFTER_SHORT_TIME\n");
-        if (((my_TestManager *)this->model)->current_active_model == this->model)
-            // ((my_TestManager *)this->model)->make_managed_model_active();
-            this->make_managed_model_active();
+        if (_my_model->current_active_model == _my_model)
+            _my_model->make_managed_model_active();
         else
-            // ((my_TestManager *)this->model)->make_manager_active();
-            this->make_manager_active();
+            _my_model->make_manager_active();
         break;
     case UIControlEvent::INCREMENT:
         printf("rtos_my_TestManager::process_control_event_queue->INCREMENT\n");
-        if (((my_TestManager *)this->model)->current_active_model == this->model)
+        if (_my_model->current_active_model == _my_model)
         {
-            ((my_TestManager *)this->model)->increment_focus();
+            _my_model->increment_focus();
+            _my_model->set_change_flag();
             this->notify_all_linked_widget_task();
-            // this->set_change_flag();
         }
         else
-            ((my_TestManager *)this->model)->current_active_model->process_control_event(_event);
+            _my_model->current_active_model->process_control_event(_event);
         break;
     case UIControlEvent::DECREMENT:
         printf("rtos_my_TestManager::process_control_event_queue->DECREMENT\n");
-        if (((my_TestManager *)this->model)->current_active_model == this->model)
+        if (_my_model->current_active_model == _my_model)
         {
-            ((my_TestManager *)this->model)->decrement_focus();
+            _my_model->decrement_focus();
             this->notify_all_linked_widget_task();
             // this->set_change_flag();
         }
         else
-            ((my_TestManager *)this->model)->current_active_model->process_control_event(_event);
+            _my_model->current_active_model->process_control_event(_event);
         break;
     case UIControlEvent::TIME_OUT:
         printf("rtos_my_TestManager::process_control_event_queue->TIME_OUT\n");
@@ -89,7 +89,8 @@ void rtos_my_TestManager::process_control_event_queue(UIControlEvent _event)
     }
 }
 
-my_TestManager::my_TestManager()
+my_TestManager::my_TestManager(bool is_wrappable)
+    : UIModelManager(is_wrappable)
 {
 }
 

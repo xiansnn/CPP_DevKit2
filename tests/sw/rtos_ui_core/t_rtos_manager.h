@@ -18,7 +18,7 @@ private:
     /* data */
 public:
     friend class rtos_my_TestManager;
-    my_TestManager(/* args */);
+    my_TestManager(bool is_wrappable = false);
     ~my_TestManager();
     void process_control_event(UIControlEvent _event);
 };
@@ -33,5 +33,5 @@ public:
     /// @param _controller
     rtos_my_TestManager(UIModelManager *linked_model_manager);
     ~rtos_my_TestManager();
-    virtual void process_control_event_queue(UIControlEvent _event) override;
+    virtual void process_control_event_queue(struct_ControlEventData event_data) override;
 };

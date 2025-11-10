@@ -294,7 +294,7 @@ public:
      */
     virtual void decrement_focus();
 
-    friend class rtos_UIModelManager
+    
     /**
      * @brief Construct a new UIModelManager object
      *
