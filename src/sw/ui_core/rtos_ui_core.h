@@ -69,6 +69,7 @@ private:
     /* data */
 public:
     UIController *controller;
+    QueueHandle_t control_event_output_queue;
     rtos_UIController(UIController *linked_controller);
     ~rtos_UIController();
 };
@@ -80,7 +81,8 @@ private:
 public:
     rtos_UIControlledModel(UIControlledModel *linked_controlled_model);
     ~rtos_UIControlledModel();
-    virtual void process_control_event_queue(UIControlEvent _event) = 0;
+    QueueHandle_t control_event_input_queue;
+    virtual void process_control_event_queue(struct_ControlEventData event_data) = 0;
 };
 
 class rtos_UIControlledIncrementalValue : public rtos_UIControlledModel
@@ -99,6 +101,6 @@ private:
 public:
     rtos_UIModelManager(UIModelManager *linked_model_manager);
     ~rtos_UIModelManager();
-    void make_managed_model_active();
-    void make_manager_active();
+    void make_managed_rtos_model_active();
+    void make_rtos_manager_active();
 };

@@ -1,4 +1,5 @@
 #include "rtos_ui_core.h"
+#include "sw/ui_core/ui_control_event.h"
 
 void rtos_Model::link_widget(rtos_Widget *linked_widget)
 {
@@ -43,6 +44,7 @@ rtos_Widget::~rtos_Widget()
 rtos_UIController::rtos_UIController(UIController *linked_controller)
 {
     this->controller = linked_controller;
+    control_event_output_queue = xQueueCreate(5, sizeof(struct_ControlEventData));
 }
 
 rtos_UIController::~rtos_UIController()
@@ -76,12 +78,20 @@ rtos_UIModelManager::~rtos_UIModelManager()
 {
 }
 
-void rtos_UIModelManager::make_managed_model_active()
+void rtos_UIModelManager::make_managed_rtos_model_active()
 {
     printf("rtos_UIModelManager::make_managed_model_active\n");
+    UIModelManager *model = ((UIModelManager *)this->model);
+    model->current_active_model = model->managed_models[model->get_value()];
+    model->current_active_model->update_status(ControlledObjectStatus::IS_ACTIVE);
+    model->update_status(ControlledObjectStatus::IS_WAITING);
 }
 
-void rtos_UIModelManager::make_manager_active()
+void rtos_UIModelManager::make_rtos_manager_active()
 {
-    printf("rtos_UIModelManager::make_manager_active\n");
+    printf("rtos_UIModelManager::make_rtos_manager_active\n");
+    UIModelManager *model = ((UIModelManager *)this->model);
+    model->current_active_model->update_status(ControlledObjectStatus::IS_WAITING);
+    model->current_active_model = (UIControlledModel *)this;
+    model->update_status(ControlledObjectStatus::IS_ACTIVE);
 }

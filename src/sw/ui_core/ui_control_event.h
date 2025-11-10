@@ -37,6 +37,19 @@ enum class UIControlEvent
     /// @brief event that signals nothing happens after a configurable period of time.
     TIME_OUT
 };
+
+/**
+ * @brief this is the structure used to transmit control event through a RTOS queue
+ *
+ */
+struct struct_ControlEventData
+{
+    /// @brief the gpio that receive the IRQ
+    int gpio_number;
+    /// @brief the control event computed by the IRQ processing task
+    UIControlEvent event;
+};
+
 /// @brief The list of status that a Model can have.
 /// (0) IS_WAITING
 /// (1) HAS_FOCUS

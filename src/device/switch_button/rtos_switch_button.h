@@ -56,17 +56,6 @@ struct struct_SwitchButtonIRQData
     uint32_t event_mask;
 };
 
-/**
- * @brief this is the structure used to transmit control event through the queue
- *
- */
-struct struct_ControlEventData
-{
-    /// @brief the gpio that receive the IRQ
-    int gpio_number;
-    /// @brief the control event computed by the IRQ processing task
-    UIControlEvent event;
-};
 
 /// @brief the default value for debounce_delay_us
 #define DEBOUNCE_us 10000 // default to 10ms

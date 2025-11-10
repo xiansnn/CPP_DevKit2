@@ -261,6 +261,8 @@ protected:
      * @return ControlledObjectStatusTimeOutReason
      */
     ControlledObjectStatusTimeOutReason check_time_out(uint32_t managed_object_status_time_out_us = UI_MODEL_OBJECT_STATUS_TIME_OUT_us);
+
+public:
     /**
      * @brief The list of managed objects
      *
@@ -292,7 +294,7 @@ protected:
      */
     virtual void decrement_focus();
 
-public:
+    friend class rtos_UIModelManager
     /**
      * @brief Construct a new UIModelManager object
      *
