@@ -35,5 +35,6 @@ private:
 public:
     rtos_my_IncrementalValueModel(my_IncrementalValueModel *linked_ui_controlled_incremental_value);
     ~rtos_my_IncrementalValueModel();
+    void process_control_event_queue(struct_ControlEventData event_data);
 };
 

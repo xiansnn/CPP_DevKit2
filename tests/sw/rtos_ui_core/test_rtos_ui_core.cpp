@@ -39,13 +39,25 @@ std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::INCREMENT, "INCREMENT"},
     {UIControlEvent::DECREMENT, "DECREMENT"},
     {UIControlEvent::TIME_OUT, "TIME_OUT"}};
+//----------------------------
+PrinterDevice my_serial_monitor = PrinterDevice(100, 1);
+/// 2- create 3 incremental value object
+my_IncrementalValueModel value_0 = my_IncrementalValueModel("val0", 0, 5, true, 1);
+rtos_my_IncrementalValueModel rtos_value_0 = rtos_my_IncrementalValueModel(&value_0);
+// MyIncrementalValueModel value_1 = MyIncrementalValueModel("val1", 0, 10, false, 1);
+// MyIncrementalValueModel value_2 = MyIncrementalValueModel("val2", -20, 3, false, 1);
+
+/// 3- create 3 serial terminal widget associated with incremental value objects.
+// MyIncrementalValueWidgetOnSerialMonitor value_0_widget = MyIncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_0);
+// MyIncrementalValueWidgetOnSerialMonitor value_1_widget = MyIncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_1);
+// MyIncrementalValueWidgetOnSerialMonitor value_2_widget = MyIncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_2);
 
 QueueHandle_t display_queue = xQueueCreate(8, sizeof(struct_DataToShow));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
 
 static QueueHandle_t encoder_clk_isr_queue = xQueueCreate(5, sizeof(struct_SwitchButtonIRQData));
 static QueueHandle_t central_switch_isr_queue = xQueueCreate(5, sizeof(struct_SwitchButtonIRQData));
-static QueueHandle_t ui_control_event_queue = xQueueCreate(5, sizeof(struct_ControlEventData));
+static QueueHandle_t control_event_queue_to_manager = xQueueCreate(5, sizeof(struct_ControlEventData));
 
 // //------------------
 // my_Model my_model = my_Model();
@@ -58,9 +70,7 @@ static QueueHandle_t ui_control_event_queue = xQueueCreate(5, sizeof(struct_Cont
 // my_ProbePrinter probe_widget2 = my_ProbePrinter(&p3);
 // my_Widget my_widget2 = my_Widget(&probe_widget2, &my_model);
 // rtos_Widget my_rtos_widget2 = rtos_Widget(&my_widget2);
-// //-----------------
-my_TestManager manager = my_TestManager();
-rtos_my_TestManager my_manager = rtos_my_TestManager(&manager);
+
 //-----------------
 void encoder_clk_irq_call_back(uint gpio, uint32_t event_mask);
 void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask);
@@ -71,7 +81,7 @@ struct_rtosConfigSwitchButton cfg_central_switch{
     .long_push_delay_ms = 1500,
     .time_out_delay_ms = 5000};
 rtos_SwitchButton central_switch = rtos_SwitchButton(CENTRAL_SWITCH_GPIO,
-                                                     &ky040_encoder_irq_call_back, central_switch_isr_queue, ui_control_event_queue,
+                                                     &ky040_encoder_irq_call_back, central_switch_isr_queue, control_event_queue_to_manager,
                                                      cfg_central_switch);
 //-----------------
 struct_rtosConfigSwitchButton cfg_encoder_clk{
@@ -80,19 +90,9 @@ struct_rtosConfigSwitchButton cfg_encoder_clk{
     .long_push_delay_ms = 1000,
     .time_out_delay_ms = 3000};
 rtos_RotaryEncoder encoder = rtos_RotaryEncoder(ENCODER_CLK_GPIO, ENCODER_DT_GPIO,
-                                                &ky040_encoder_irq_call_back, encoder_clk_isr_queue, ui_control_event_queue,
+                                                &ky040_encoder_irq_call_back, encoder_clk_isr_queue, control_event_queue_to_manager,
                                                 cfg_encoder_clk);
 //-----------------
-
-void manager_process_control_event_task(void *)
-{
-    struct_ControlEventData local_event_data;
-    while (true)
-    {
-        xQueueReceive(ui_control_event_queue, &local_event_data, portMAX_DELAY);
-        my_manager.process_control_event_queue(local_event_data.event);
-    }
-};
 void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask)
 {
     struct_SwitchButtonIRQData data;
@@ -120,38 +120,32 @@ void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask)
     gpio_set_irq_enabled(gpio, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true);
     p5.lo();
 };
-void central_switch_process_irq_event(void *)
+//---------------------------------------------
+my_TestManager manager = my_TestManager();
+rtos_my_TestManager rtos_manager = rtos_my_TestManager(&manager);
+//-----------------
+void manager_process_control_event_task(void *)
+{
+    manager.add_managed_model(&value_0);
+    struct_ControlEventData local_event_data;
+
+
+
+    while (true)
+    {
+        xQueueReceive(control_event_queue_to_manager, &local_event_data, portMAX_DELAY);
+        rtos_manager.process_control_event_queue(local_event_data);
+    }
+};
+void central_switch_process_irq_event_task(void *)
 {
     central_switch.rtos_process_IRQ_event();
 }
-void encoder_process_irq_event(void *)
+void encoder_process_irq_event_task(void *)
 {
     encoder.rtos_process_IRQ_event();
 }
 
-void display_gate_keeper_task(void *probe)
-{
-    struct_DataToShow received_data_to_show;
-
-    while (true)
-    {
-        xQueueReceive(display_queue, &received_data_to_show, portMAX_DELAY);
-        ((Probe *)probe)->hi();
-        switch (received_data_to_show.command)
-        {
-        case DisplayCommand::SHOW_IMAGE:
-            ((my_ProbePrinter *)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
-            break;
-        case DisplayCommand::CLEAR_SCREEN:
-            ((my_ProbePrinter *)received_data_to_show.display)->clear_device_screen_buffer();
-            break;
-        default:
-            break;
-        };
-        ((Probe *)probe)->lo();
-        xSemaphoreGive(data_sent);
-    }
-}
 
 void idle_task(void *pxProbe)
 {
@@ -161,7 +155,6 @@ void idle_task(void *pxProbe)
         ((Probe *)pxProbe)->lo();
     }
 }
-
 
 int main()
 {
@@ -173,9 +166,9 @@ int main()
     // xTaskCreate(widget_task_1, "widget_task_1", 256, NULL, 2, &my_rtos_widget1.task_handle);
     // xTaskCreate(widget_task_2, "widget_task_2", 256, NULL, 2, &my_rtos_widget2.task_handle);
 
+    xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 4, NULL);
+    xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 4, NULL);
     xTaskCreate(manager_process_control_event_task, "manager_process_control_event_task", 256, NULL, 2, NULL);
-    xTaskCreate(central_switch_process_irq_event, "central_switch_process_irq_event", 256, NULL, 4, NULL);
-    xTaskCreate(encoder_process_irq_event, "encoder_process_irq_event", 256, NULL, 4, NULL);
 
     // xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, &p4, 6, NULL);
 
@@ -213,5 +206,30 @@ int main()
 //     {
 //         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 //         my_rtos_widget2.widget->send_image_to_DisplayGateKeeper(display_queue, data_sent);
+//     }
+// }
+
+
+// void display_gate_keeper_task(void *probe)
+// {
+//     struct_DataToShow received_data_to_show;
+
+//     while (true)
+//     {
+//         xQueueReceive(display_queue, &received_data_to_show, portMAX_DELAY);
+//         ((Probe *)probe)->hi();
+//         switch (received_data_to_show.command)
+//         {
+//         case DisplayCommand::SHOW_IMAGE:
+//             ((my_ProbePrinter *)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
+//             break;
+//         case DisplayCommand::CLEAR_SCREEN:
+//             ((my_ProbePrinter *)received_data_to_show.display)->clear_device_screen_buffer();
+//             break;
+//         default:
+//             break;
+//         };
+//         ((Probe *)probe)->lo();
+//         xSemaphoreGive(data_sent);
 //     }
 // }

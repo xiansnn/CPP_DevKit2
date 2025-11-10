@@ -36,12 +36,15 @@ void my_IncrementalValueModel::process_control_event(UIControlEvent _event)
     {
     case UIControlEvent::LONG_PUSH:
         this->set_clipped_value(0);
+        printf("my_IncrementalValueModel::process_control_event(UIControlEvent::LONG_PUSH) |name = %s value = %d status =%d \n",this->get_name(),this->get_value(),this->get_status());
         break;
     case UIControlEvent::INCREMENT:
         increment_value();
+        printf("my_IncrementalValueModel::process_control_event(UIControlEvent::INCREMENT) |name = %s value = %d status =%d \n",this->get_name(),this->get_value(),this->get_status());
         break;
-    case UIControlEvent::DECREMENT:
+        case UIControlEvent::DECREMENT:
         decrement_value();
+        printf("my_IncrementalValueModel::process_control_event(UIControlEvent::DECREMENT) |name = %s value = %d status =%d \n",this->get_name(),this->get_value(),this->get_status());
         break;
     default:
         break;
@@ -60,4 +63,10 @@ rtos_my_IncrementalValueModel::rtos_my_IncrementalValueModel(my_IncrementalValue
 
 rtos_my_IncrementalValueModel::~rtos_my_IncrementalValueModel()
 {
+}
+
+void rtos_my_IncrementalValueModel::process_control_event_queue(struct_ControlEventData event_data)
+{
+    printf("rtos_my_IncrementalValueModel::process_control_event_queue(struct_ControlEventData event_data) | @=%p\n", this);
+
 }

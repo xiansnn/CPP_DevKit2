@@ -32,59 +32,67 @@ void rtos_my_TestManager::process_control_event_queue(struct_ControlEventData ev
 {
     my_TestManager *_my_model = (my_TestManager *)this->model;
     UIControlEvent _event = event_data.event;
+    uint gpio = event_data.gpio_number;
     switch (_event)
     {
     case UIControlEvent::NONE:
         /* code */
         break;
     case UIControlEvent::LONG_PUSH:
-        printf("rtos_my_TestManager::process_control_event_queue->LONG_PUSH\n");
+        printf("rtos_my_TestManager::process_control_event_queue->LONG_PUSH@%d\n", gpio);
         if (_my_model->current_active_model != _my_model)
             _my_model->current_active_model->process_control_event(_event);
         break;
     case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
-        printf("rtos_my_TestManager::process_control_event_queue->RELEASED_AFTER_SHORT_TIME\n");
+        printf("rtos_my_TestManager::process_control_event_queue->RELEASED_AFTER_SHORT_TIME@%d\n", gpio);
         if (_my_model->current_active_model == _my_model)
+        {
+            printf("_my_model(%p)->make_managed_model_active()|value = ", this, _my_model->get_value());
             _my_model->make_managed_model_active();
+            printf("_my_model(%p)<-make_managed_model_active()|value = ", this, _my_model->get_value());
+        }
         else
             _my_model->make_manager_active();
         break;
     case UIControlEvent::INCREMENT:
-        printf("rtos_my_TestManager::process_control_event_queue->INCREMENT\n");
+        printf("rtos_my_TestManager::process_control_event_queue->INCREMENT@%d\n", gpio);
         if (_my_model->current_active_model == _my_model)
         {
+            printf("_my_model->current_active_model->process_control_event_queue(event_data) | @=%p\n", _my_model->current_active_model);
             _my_model->increment_focus();
             _my_model->set_change_flag();
             this->notify_all_linked_widget_task();
         }
         else
-            _my_model->current_active_model->process_control_event(_event);
+            printf("_my_model->current_active_model->process_control_event(_event) | @=%p\n", _my_model->current_active_model);
+        // _my_model->current_active_model->process_control_event(_event);
         break;
     case UIControlEvent::DECREMENT:
-        printf("rtos_my_TestManager::process_control_event_queue->DECREMENT\n");
+        printf("rtos_my_TestManager::process_control_event_queue->DECREMENT@%d\n", gpio);
         if (_my_model->current_active_model == _my_model)
         {
             _my_model->decrement_focus();
+            _my_model->set_change_flag();
             this->notify_all_linked_widget_task();
-            // this->set_change_flag();
         }
         else
-            _my_model->current_active_model->process_control_event(_event);
+            printf("_my_model->current_active_model->process_control_event(_event) | @=%p\n", _my_model->current_active_model);
+        // _my_model->current_active_model->process_control_event(_event);
         break;
     case UIControlEvent::TIME_OUT:
-        printf("rtos_my_TestManager::process_control_event_queue->TIME_OUT\n");
+        printf("rtos_my_TestManager::process_control_event_queue->TIME_OUT@%d\n", gpio);
         break;
     case UIControlEvent::RELEASED_AFTER_LONG_TIME:
-        printf("rtos_my_TestManager::process_control_event_queue->RELEASED_AFTER_LONG_TIME\n");
+        printf("rtos_my_TestManager::process_control_event_queue->RELEASED_AFTER_LONG_TIME@%d\n", gpio);
         break;
     case UIControlEvent::PUSH:
-        printf("rtos_my_TestManager::process_control_event_queue->PUSH\n");
+        printf("rtos_my_TestManager::process_control_event_queue->PUSH@%d\n", gpio);
         break;
     case UIControlEvent::DOUBLE_PUSH:
-        printf("rtos_my_TestManager::process_control_event_queue->DOUBLE_PUSH\n");
+        printf("rtos_my_TestManager::process_control_event_queue->DOUBLE_PUSH@%d\n", gpio);
         break;
     default:
-        printf("rtos_my_TestManager::process_control_event_queue->DEFAULT\n");
+        printf("rtos_my_TestManager::process_control_event_queue->DEFAULT@%d\n", gpio);
         break;
     }
 }
