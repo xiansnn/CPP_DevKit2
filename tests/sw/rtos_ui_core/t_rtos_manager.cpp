@@ -38,46 +38,61 @@ void rtos_my_TestManager::process_control_event_queue(struct_ControlEventData ev
     case UIControlEvent::NONE:
         /* code */
         break;
-    case UIControlEvent::LONG_PUSH:
+        case UIControlEvent::LONG_PUSH:
         printf("rtos_my_TestManager::process_control_event_queue->LONG_PUSH@%d\n", gpio);
         if (_my_model->current_active_model != _my_model)
+        {
+            printf("_my_model->current_active_model != _my_model \n");
             _my_model->current_active_model->process_control_event(_event);
+        }
         break;
     case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
-        printf("rtos_my_TestManager::process_control_event_queue->RELEASED_AFTER_SHORT_TIME@%d\n", gpio);
+    printf("rtos_my_TestManager::process_control_event_queue->RELEASED_AFTER_SHORT_TIME@%d\n", gpio);
         if (_my_model->current_active_model == _my_model)
         {
-            printf("_my_model(%p)->make_managed_model_active()|value = ", this, _my_model->get_value());
+            printf("\t\t_my_model->current_active_model == _my_model \n");
             _my_model->make_managed_model_active();
-            printf("_my_model(%p)<-make_managed_model_active()|value = ", this, _my_model->get_value());
+            _my_model->draw_refresh_all_attached_widgets();
         }
         else
+        {
+            printf("\t\t_my_model->current_active_model =! _my_model \n");
             _my_model->make_manager_active();
+            _my_model->draw_refresh_all_attached_widgets();
+        }
         break;
     case UIControlEvent::INCREMENT:
         printf("rtos_my_TestManager::process_control_event_queue->INCREMENT@%d\n", gpio);
         if (_my_model->current_active_model == _my_model)
         {
-            printf("_my_model->current_active_model->process_control_event_queue(event_data) | @=%p\n", _my_model->current_active_model);
+            printf("\t\t_my_model->current_active_model == _my_model\n");
             _my_model->increment_focus();
             _my_model->set_change_flag();
-            this->notify_all_linked_widget_task();
+            _my_model->draw_refresh_all_attached_widgets();
+            // this->notify_all_linked_widget_task();
         }
         else
-            printf("_my_model->current_active_model->process_control_event(_event) | @=%p\n", _my_model->current_active_model);
-        // _my_model->current_active_model->process_control_event(_event);
+        {
+            printf("\t\t_my_model->current_active_model == _my_model\n");
+            _my_model->current_active_model->process_control_event(_event);
+        }
         break;
-    case UIControlEvent::DECREMENT:
+        case UIControlEvent::DECREMENT:
         printf("rtos_my_TestManager::process_control_event_queue->DECREMENT@%d\n", gpio);
+        _my_model->draw_refresh_all_attached_widgets();
         if (_my_model->current_active_model == _my_model)
         {
+            printf("\t\t_my_model->current_active_model == _my_model\n");
             _my_model->decrement_focus();
             _my_model->set_change_flag();
             this->notify_all_linked_widget_task();
         }
         else
-            printf("_my_model->current_active_model->process_control_event(_event) | @=%p\n", _my_model->current_active_model);
-        // _my_model->current_active_model->process_control_event(_event);
+        {
+            printf("\t\t_my_model->current_active_model == _my_model\n");
+            _my_model->current_active_model->process_control_event(_event);
+            _my_model->draw_refresh_all_attached_widgets();
+        }
         break;
     case UIControlEvent::TIME_OUT:
         printf("rtos_my_TestManager::process_control_event_queue->TIME_OUT@%d\n", gpio);

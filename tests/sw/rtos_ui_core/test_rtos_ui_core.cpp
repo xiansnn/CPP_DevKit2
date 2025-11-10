@@ -44,13 +44,15 @@ PrinterDevice my_serial_monitor = PrinterDevice(100, 1);
 /// 2- create 3 incremental value object
 my_IncrementalValueModel value_0 = my_IncrementalValueModel("val0", 0, 5, true, 1);
 rtos_my_IncrementalValueModel rtos_value_0 = rtos_my_IncrementalValueModel(&value_0);
-// MyIncrementalValueModel value_1 = MyIncrementalValueModel("val1", 0, 10, false, 1);
-// MyIncrementalValueModel value_2 = MyIncrementalValueModel("val2", -20, 3, false, 1);
+my_IncrementalValueModel value_1 = my_IncrementalValueModel("val1", 0, 10, false, 1);
+rtos_my_IncrementalValueModel rtos_value_1 = rtos_my_IncrementalValueModel(&value_1);
+my_IncrementalValueModel value_2 = my_IncrementalValueModel("val2", -20, 3, false, 1);
+rtos_my_IncrementalValueModel rtos_value_2 = rtos_my_IncrementalValueModel(&value_2);
 
 /// 3- create 3 serial terminal widget associated with incremental value objects.
-// MyIncrementalValueWidgetOnSerialMonitor value_0_widget = MyIncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_0);
-// MyIncrementalValueWidgetOnSerialMonitor value_1_widget = MyIncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_1);
-// MyIncrementalValueWidgetOnSerialMonitor value_2_widget = MyIncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_2);
+my_IncrementalValueWidgetOnSerialMonitor value_0_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_0);
+my_IncrementalValueWidgetOnSerialMonitor value_1_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_1);
+my_IncrementalValueWidgetOnSerialMonitor value_2_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_2);
 
 QueueHandle_t display_queue = xQueueCreate(8, sizeof(struct_DataToShow));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
@@ -123,13 +125,15 @@ void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask)
 //---------------------------------------------
 my_TestManager manager = my_TestManager();
 rtos_my_TestManager rtos_manager = rtos_my_TestManager(&manager);
+/// 5- create a widget for the manager
+my_ManagerWidget manager_widget = my_ManagerWidget(&my_serial_monitor, &manager);
 //-----------------
 void manager_process_control_event_task(void *)
 {
     manager.add_managed_model(&value_0);
+    manager.add_managed_model(&value_1);
+    manager.add_managed_model(&value_2);
     struct_ControlEventData local_event_data;
-
-
 
     while (true)
     {
@@ -145,7 +149,6 @@ void encoder_process_irq_event_task(void *)
 {
     encoder.rtos_process_IRQ_event();
 }
-
 
 void idle_task(void *pxProbe)
 {
@@ -208,7 +211,6 @@ int main()
 //         my_rtos_widget2.widget->send_image_to_DisplayGateKeeper(display_queue, data_sent);
 //     }
 // }
-
 
 // void display_gate_keeper_task(void *probe)
 // {

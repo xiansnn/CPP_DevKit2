@@ -13,10 +13,10 @@
 #include "t_rtos_controlled_value.h"
 
 my_IncrementalValueModel::my_IncrementalValueModel(std::string _name,
-                                                 int _min_value,
-                                                 int _max_value,
-                                                 bool _is_wrappable,
-                                                 int increment)
+                                                   int _min_value,
+                                                   int _max_value,
+                                                   bool _is_wrappable,
+                                                   int increment)
     : UIControlledIncrementalValue(_min_value, _max_value, _is_wrappable, increment)
 {
     this->name = _name;
@@ -35,16 +35,19 @@ void my_IncrementalValueModel::process_control_event(UIControlEvent _event)
     switch (_event)
     {
     case UIControlEvent::LONG_PUSH:
+        printf("rtos_my_TestManager::process_control_event_queue->LONG_PUSH\n");
         this->set_clipped_value(0);
-        printf("my_IncrementalValueModel::process_control_event(UIControlEvent::LONG_PUSH) |name = %s value = %d status =%d \n",this->get_name(),this->get_value(),this->get_status());
+        this->draw_refresh_all_attached_widgets();
         break;
-    case UIControlEvent::INCREMENT:
+        case UIControlEvent::INCREMENT:
+        printf("rtos_my_TestManager::process_control_event_queue->INCREMENT\n");
         increment_value();
-        printf("my_IncrementalValueModel::process_control_event(UIControlEvent::INCREMENT) |name = %s value = %d status =%d \n",this->get_name(),this->get_value(),this->get_status());
+        this->draw_refresh_all_attached_widgets();
         break;
         case UIControlEvent::DECREMENT:
+        printf("rtos_my_TestManager::process_control_event_queue->DECREMENT\n");
         decrement_value();
-        printf("my_IncrementalValueModel::process_control_event(UIControlEvent::DECREMENT) |name = %s value = %d status =%d \n",this->get_name(),this->get_value(),this->get_status());
+        this->draw_refresh_all_attached_widgets();
         break;
     default:
         break;
@@ -68,5 +71,4 @@ rtos_my_IncrementalValueModel::~rtos_my_IncrementalValueModel()
 void rtos_my_IncrementalValueModel::process_control_event_queue(struct_ControlEventData event_data)
 {
     printf("rtos_my_IncrementalValueModel::process_control_event_queue(struct_ControlEventData event_data) | @=%p\n", this);
-
 }
