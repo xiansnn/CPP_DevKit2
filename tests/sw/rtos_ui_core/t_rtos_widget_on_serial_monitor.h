@@ -1,3 +1,13 @@
+/**
+ * @file t_rtos_widget_on_serial_monitor.h
+ * @author xiansnn (xiansnn@hotmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-11-11
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #pragma once
 
 #include <sstream>

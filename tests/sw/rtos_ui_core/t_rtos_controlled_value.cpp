@@ -1,15 +1,14 @@
 /**
- * @file t_controlled_value.cpp
+ * @file t_rtos_controlled_value.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief
+ * @brief 
  * @version 0.1
- * @date 2025-01-11
- *
+ * @date 2025-11-11
+ * 
  * @copyright Copyright (c) 2025
- *
+ * 
  */
 
-// #include "sw/ui_core/rtos_ui_core.h"
 #include "t_rtos_controlled_value.h"
 
 my_IncrementalValueModel::my_IncrementalValueModel(std::string _name,
@@ -35,17 +34,14 @@ void my_IncrementalValueModel::process_control_event(UIControlEvent _event)
     switch (_event)
     {
     case UIControlEvent::LONG_PUSH:
-        printf("rtos_my_TestManager::process_control_event_queue->LONG_PUSH\n");
         this->set_clipped_value(0);
         this->draw_refresh_all_attached_widgets();
         break;
         case UIControlEvent::INCREMENT:
-        printf("rtos_my_TestManager::process_control_event_queue->INCREMENT\n");
         increment_value();
         this->draw_refresh_all_attached_widgets();
         break;
         case UIControlEvent::DECREMENT:
-        printf("rtos_my_TestManager::process_control_event_queue->DECREMENT\n");
         decrement_value();
         this->draw_refresh_all_attached_widgets();
         break;

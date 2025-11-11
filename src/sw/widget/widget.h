@@ -113,7 +113,7 @@ protected:
 public:
     /// @brief the display device where the attached to the frame buffer
     DisplayDevice *display_device{nullptr};
-    
+
     /// @brief the data structure used to send the canvas to the display task when a FreeRTOS queue is used.
     struct_DataToShow data_to_display;
 
@@ -121,7 +121,6 @@ public:
     /// @param display_queue the communcation queue with the display gate keeper
     /// @param sending_done the semaphore triggered when the canvas display is complete.
     void send_image_to_DisplayGateKeeper(QueueHandle_t display_queue, SemaphoreHandle_t sending_done);
-
 
     /// @brief contructor for generic widget
     /// @param actual_displayed_model the displayed model of the widget
@@ -198,7 +197,6 @@ public:
     /// @brief location in y of the widget within the hosting framebuffer
     uint8_t widget_anchor_y;
 
- 
     /// @brief Modify the anchor of the widget on the display screen
     /// @param x anchor x coordinate
     /// @param y anchor y coordinate
@@ -496,9 +494,10 @@ class PrintWidget : public Widget
 private:
 protected:
 public:
-    /// @brief Construct a new Dummy Widget object
-    /// @param display_device the pointer to the printer display device
-    /// @param actual_displayed_model the pointer to the displayed model. Default to nullptr
-    PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model = nullptr);
-    virtual ~PrintWidget();
+
+/// @brief Construct a new Dummy Widget object
+/// @param display_device the pointer to the printer display device
+/// @param actual_displayed_model the pointer to the displayed model. Default to nullptr
+PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model = nullptr);
+virtual ~PrintWidget();
 };

@@ -21,7 +21,7 @@ private:
     /* data */
 public:
     DisplayDevice(/* args */);
-    ~DisplayDevice();
+    virtual ~DisplayDevice();
 };
 
 /// @brief This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen SSD1306).
@@ -35,9 +35,9 @@ public:
     /// @brief the physical height of the screen (in pixel)
     size_t TFT_panel_height_in_pixel;
 
-     /// @brief A pure virtual member function. Each device must implement this method and check the compatibility of the widget parameter with the its physical limitations.
-     /// @param framebuffer_cfg the widget configuration data
-     /// @param canvas_format the format of the canvas
+    /// @brief A pure virtual member function. Each device must implement this method and check the compatibility of the widget parameter with the its physical limitations.
+    /// @param framebuffer_cfg the widget configuration data
+    /// @param canvas_format the format of the canvas
     virtual void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format) = 0;
 
     /**
@@ -65,7 +65,8 @@ public:
 };
 
 /// @brief Enumeration of display commands for display task management
-enum class DisplayCommand {
+enum class DisplayCommand
+{
     /// @brief Command to clear the screen
     CLEAR_SCREEN,
     /// @brief Command to show an image
@@ -111,8 +112,19 @@ public:
      */
     PrinterDevice(size_t number_of_char_width,
                   size_t number_of_char_hight);
-    ~PrinterDevice();
+    virtual ~PrinterDevice();
 
     /// @brief the method that actually print the content of text_buffer on the console
     virtual void show();
+};
+
+class rtos_PrinterDevice : public PrinterDevice
+{
+private:
+    /* data */
+public:
+    rtos_PrinterDevice(size_t number_of_char_width,
+                       size_t number_of_char_hight);
+    ~rtos_PrinterDevice();
+    void show_from_display_queue(char* text_to_print);
 };

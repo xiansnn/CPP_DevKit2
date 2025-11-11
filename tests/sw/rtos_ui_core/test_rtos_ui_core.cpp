@@ -54,7 +54,7 @@ my_IncrementalValueWidgetOnSerialMonitor value_0_widget = my_IncrementalValueWid
 my_IncrementalValueWidgetOnSerialMonitor value_1_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_1);
 my_IncrementalValueWidgetOnSerialMonitor value_2_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_2);
 
-QueueHandle_t display_queue = xQueueCreate(8, sizeof(struct_DataToShow));
+QueueHandle_t text_buffer_queue = xQueueCreate(3, sizeof(char*));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
 
 static QueueHandle_t encoder_clk_isr_queue = xQueueCreate(5, sizeof(struct_SwitchButtonIRQData));
@@ -133,12 +133,17 @@ void manager_process_control_event_task(void *)
     manager.add_managed_model(&value_0);
     manager.add_managed_model(&value_1);
     manager.add_managed_model(&value_2);
+    manager.make_manager_active();
+    manager.draw_refresh_all_attached_widgets();
     struct_ControlEventData local_event_data;
 
     while (true)
     {
         xQueueReceive(control_event_queue_to_manager, &local_event_data, portMAX_DELAY);
+        p1.hi();
         rtos_manager.process_control_event_queue(local_event_data);
+
+        p1.lo();
     }
 };
 void central_switch_process_irq_event_task(void *)
@@ -159,6 +164,55 @@ void idle_task(void *pxProbe)
     }
 }
 
+void manager_widget_task(void *probe)
+{
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        manager_widget.send_image_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+    }
+}
+// void value_widget_task_0(void *probe)
+// {
+//     while (true)
+//     {
+//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+//         value_0_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+//     }
+// }
+// void value_widget_task_1(void *probe)
+// {
+//     while (true)
+//     {
+//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+//         value_1_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+//     }
+// }
+// void value_widget_task_2(void *probe)
+// {
+//     while (true)
+//     {
+//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+//         value_2_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+//     }
+// }
+
+// void display_gate_keeper_task(void *probe)
+// {
+//     char * text_to_tprint;
+
+//     while (true)
+//     {
+//         xQueueReceive(text_buffer_queue, &text_to_tprint, portMAX_DELAY);
+//         ((Probe *)probe)->hi();
+//         my_serial_monitor.show_from_display_queue(text_to_tprint);
+//         ((Probe *)probe)->lo();
+//         xSemaphoreGive(data_sent);
+//     }
+// }
+
+
+
 int main()
 {
     stdio_init_all();
@@ -166,8 +220,9 @@ int main()
     xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
 
     // xTaskCreate(my_model_task, "main_task", 256, &p1, 4, NULL);
-    // xTaskCreate(widget_task_1, "widget_task_1", 256, NULL, 2, &my_rtos_widget1.task_handle);
-    // xTaskCreate(widget_task_2, "widget_task_2", 256, NULL, 2, &my_rtos_widget2.task_handle);
+    // xTaskCreate(value_widget_task_0, "widget_task_0", 256, NULL, 2, &value_0_widget.task_handle);
+    // xTaskCreate(value_widget_task_1, "widget_task_1", 256, NULL, 2, &my_rtos_widget2.task_handle);
+    // xTaskCreate(value_widget_task_2, "widget_task_2", 256, NULL, 2, &my_rtos_widget2.task_handle);
 
     xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 4, NULL);
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 4, NULL);
@@ -194,44 +249,4 @@ int main()
 //         vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(MAIN_TASK_PERIOD_ms));
 //     }
 // }
-// void widget_task_1(void *probe)
-// {
-//     while (true)
-//     {
-//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-//         // warning: be sure to complete struct_DataToShow before send_image_to_DisplayGateKeeper
-//         my_rtos_widget1.widget->send_image_to_DisplayGateKeeper(display_queue, data_sent);
-//     }
-// }
-// void widget_task_2(void *probe)
-// {
-//     while (true)
-//     {
-//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-//         my_rtos_widget2.widget->send_image_to_DisplayGateKeeper(display_queue, data_sent);
-//     }
-// }
 
-// void display_gate_keeper_task(void *probe)
-// {
-//     struct_DataToShow received_data_to_show;
-
-//     while (true)
-//     {
-//         xQueueReceive(display_queue, &received_data_to_show, portMAX_DELAY);
-//         ((Probe *)probe)->hi();
-//         switch (received_data_to_show.command)
-//         {
-//         case DisplayCommand::SHOW_IMAGE:
-//             ((my_ProbePrinter *)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
-//             break;
-//         case DisplayCommand::CLEAR_SCREEN:
-//             ((my_ProbePrinter *)received_data_to_show.display)->clear_device_screen_buffer();
-//             break;
-//         default:
-//             break;
-//         };
-//         ((Probe *)probe)->lo();
-//         xSemaphoreGive(data_sent);
-//     }
-// }
