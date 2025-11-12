@@ -43,11 +43,8 @@ std::map<UIControlEvent, std::string> event_to_string{
 PrinterDevice my_serial_monitor = PrinterDevice(100, 1);
 /// 2- create 3 incremental value object
 my_IncrementalValueModel value_0 = my_IncrementalValueModel("val0", 0, 5, true, 1);
-rtos_my_IncrementalValueModel rtos_value_0 = rtos_my_IncrementalValueModel(&value_0);
 my_IncrementalValueModel value_1 = my_IncrementalValueModel("val1", 0, 10, false, 1);
-rtos_my_IncrementalValueModel rtos_value_1 = rtos_my_IncrementalValueModel(&value_1);
 my_IncrementalValueModel value_2 = my_IncrementalValueModel("val2", -20, 3, false, 1);
-rtos_my_IncrementalValueModel rtos_value_2 = rtos_my_IncrementalValueModel(&value_2);
 
 /// 3- create 3 serial terminal widget associated with incremental value objects.
 my_IncrementalValueWidgetOnSerialMonitor value_0_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_0);
@@ -124,7 +121,6 @@ void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask)
 };
 //---------------------------------------------
 my_TestManager manager = my_TestManager();
-rtos_my_TestManager rtos_manager = rtos_my_TestManager(&manager);
 /// 5- create a widget for the manager
 my_ManagerWidget manager_widget = my_ManagerWidget(&my_serial_monitor, &manager);
 //-----------------
@@ -141,7 +137,7 @@ void manager_process_control_event_task(void *)
     {
         xQueueReceive(control_event_queue_to_manager, &local_event_data, portMAX_DELAY);
         p1.hi();
-        rtos_manager.process_control_event_queue(local_event_data);
+        manager.process_control_event_queue(local_event_data);
 
         p1.lo();
     }

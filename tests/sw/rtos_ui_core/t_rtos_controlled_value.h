@@ -28,13 +28,3 @@ public:
     std::string get_name();
 };
 
-class rtos_my_IncrementalValueModel : public rtos_UIControlledIncrementalValue
-{
-private:
-    /* data */
-public:
-    rtos_my_IncrementalValueModel(my_IncrementalValueModel *linked_ui_controlled_incremental_value);
-    ~rtos_my_IncrementalValueModel();
-    void process_control_event_queue(struct_ControlEventData event_data);
-};
-

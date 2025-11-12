@@ -50,28 +50,16 @@ private:
     std::set<rtos_Widget *> linked_widget_tasks;
 
 public:
-    /// @brief pointer to the actual model
-    Model *model;
+    // /// @brief pointer to the actual model
+    // Model *model;
     /// @brief link a new widget task to the model
     void link_widget(rtos_Widget *linked_widget);
     /// @brief notify all linked widget tasks that the model has changed
     void notify_all_linked_widget_task();
     /// @brief constructor for RTOS model
-    /// @param model    pointer to the actual model
-    rtos_Model(Model *model = nullptr);
+    rtos_Model();
     /// @brief destructor for RTOS model
     ~rtos_Model();
-};
-
-class rtos_UIController
-{
-private:
-    /* data */
-public:
-    UIController *controller;
-    QueueHandle_t control_event_output_queue;
-    rtos_UIController(UIController *linked_controller);
-    ~rtos_UIController();
 };
 
 class rtos_UIControlledModel : public rtos_Model
@@ -79,7 +67,7 @@ class rtos_UIControlledModel : public rtos_Model
 private:
     /* data */
 public:
-    rtos_UIControlledModel(UIControlledModel *linked_controlled_model);
+    rtos_UIControlledModel();
     ~rtos_UIControlledModel();
     QueueHandle_t control_event_input_queue;
     virtual void process_control_event_queue(struct_ControlEventData event_data) = 0;
@@ -88,19 +76,15 @@ public:
 class rtos_UIControlledIncrementalValue : public rtos_UIControlledModel
 {
 private:
-    /* data */
 public:
-    rtos_UIControlledIncrementalValue(UIControlledIncrementalValue *linked_ui_controlled_incremental_value);
+    rtos_UIControlledIncrementalValue();
     ~rtos_UIControlledIncrementalValue();
 };
 
 class rtos_UIModelManager : public rtos_UIControlledIncrementalValue
 {
 private:
-    /* data */
 public:
-    rtos_UIModelManager(UIModelManager *linked_model_manager);
+    rtos_UIModelManager();
     ~rtos_UIModelManager();
-    void make_managed_rtos_model_active();
-    void make_rtos_manager_active();
 };

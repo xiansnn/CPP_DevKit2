@@ -48,23 +48,9 @@ void my_IncrementalValueModel::process_control_event(UIControlEvent _event)
     default:
         break;
     }
-};
+}
 
 std::string my_IncrementalValueModel::get_name()
 {
     return name;
 };
-
-rtos_my_IncrementalValueModel::rtos_my_IncrementalValueModel(my_IncrementalValueModel *linked_ui_controlled_incremental_value)
-    : rtos_UIControlledIncrementalValue(linked_ui_controlled_incremental_value)
-{
-}
-
-rtos_my_IncrementalValueModel::~rtos_my_IncrementalValueModel()
-{
-}
-
-void rtos_my_IncrementalValueModel::process_control_event_queue(struct_ControlEventData event_data)
-{
-    printf("rtos_my_IncrementalValueModel::process_control_event_queue(struct_ControlEventData event_data) | @=%p\n", this);
-}
