@@ -34,8 +34,7 @@ class rtos_RotaryEncoder : public rtos_SwitchButton
 private:
   /// @brief the GPIO pin connected to the Data pin of the rotary encoder
   uint dt_gpio;
-  // /// @brief the function pointer that will processes the event such as PUSH, RELEASE, INCREMENT, DECREMENT etc.
-  // control_event_processor_t event_processor;
+
 
 public:
 
@@ -49,7 +48,7 @@ public:
   /// @param event_mask_config the IRQ mask
   rtos_RotaryEncoder(uint encoder_clk_gpio,
                     uint encoder_dt_gpio,
-                    gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
+                    gpio_irq_callback_t call_back, QueueHandle_t out_control_event_queue,
                     struct_rtosConfigSwitchButton conf = {}, uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
 
   /**

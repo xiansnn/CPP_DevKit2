@@ -2,8 +2,8 @@
 #include "hardware/gpio.h"
 #include "hardware/timer.h"
 
-rtos_SwitchButton::rtos_SwitchButton(uint gpio, gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
-                                   struct_rtosConfigSwitchButton conf, uint32_t event_mask_config)
+rtos_SwitchButton::rtos_SwitchButton(uint gpio, gpio_irq_callback_t call_back, QueueHandle_t control_event_destination_queue,
+                                     struct_rtosConfigSwitchButton conf, uint32_t event_mask_config)
 {
     this->gpio = gpio;
     this->debounce_delay_us = conf.debounce_delay_us;
@@ -21,10 +21,13 @@ rtos_SwitchButton::rtos_SwitchButton(uint gpio, gpio_irq_callback_t call_back, Q
     this->button_status = ButtonState::IDLE;
     this->previous_switch_pushed_state = false;
 
-    this->switch_button_queue = in_switch_button_queue;
-    this->control_event_queue = out_control_event_queue;
+    this->IRQdata_input_queue = xQueueCreate(3, sizeof(struct_SwitchButtonIRQData));
+    ;
+    this->control_event_queue = control_event_destination_queue;
     this->irq_event_mask_config = event_mask_config;
     gpio_set_irq_enabled_with_callback(gpio, irq_event_mask_config, true, call_back);
+
+    IRQdata_input_queue = xQueueCreate(3, sizeof(struct_SwitchButtonIRQData));
 }
 
 rtos_SwitchButton::~rtos_SwitchButton()
@@ -45,7 +48,7 @@ void rtos_SwitchButton::rtos_process_IRQ_event()
     {
         if (button_status == ButtonState::ACTIVE)
         {
-            success = xQueueReceive(this->switch_button_queue, &local_irq_data, pdMS_TO_TICKS(long_push_delay_ms));
+            success = xQueueReceive(this->IRQdata_input_queue, &local_irq_data, pdMS_TO_TICKS(long_push_delay_ms));
             if (!success)
             {
                 local_event_data.event = UIControlEvent::LONG_PUSH;
@@ -55,7 +58,7 @@ void rtos_SwitchButton::rtos_process_IRQ_event()
         }
         else if (button_status == ButtonState::TIME_OUT_PENDING)
         {
-            success = xQueueReceive(this->switch_button_queue, &local_irq_data, pdMS_TO_TICKS(time_out_delay_ms));
+            success = xQueueReceive(this->IRQdata_input_queue, &local_irq_data, pdMS_TO_TICKS(time_out_delay_ms));
             if (!success)
             {
                 local_event_data.event = UIControlEvent::TIME_OUT;
@@ -65,7 +68,7 @@ void rtos_SwitchButton::rtos_process_IRQ_event()
         }
         else
         {
-            xQueueReceive(this->switch_button_queue, &local_irq_data, portMAX_DELAY);
+            xQueueReceive(this->IRQdata_input_queue, &local_irq_data, portMAX_DELAY);
         }
 
         switch_was_pushed = is_switch_pushed(local_irq_data.event_mask);

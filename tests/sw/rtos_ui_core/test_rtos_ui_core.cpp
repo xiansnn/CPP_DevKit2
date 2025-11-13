@@ -54,8 +54,6 @@ my_IncrementalValueWidgetOnSerialMonitor value_2_widget = my_IncrementalValueWid
 QueueHandle_t text_buffer_queue = xQueueCreate(3, sizeof(char *));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
 
-static QueueHandle_t encoder_clk_isr_queue = xQueueCreate(5, sizeof(struct_SwitchButtonIRQData));
-static QueueHandle_t central_switch_isr_queue = xQueueCreate(5, sizeof(struct_SwitchButtonIRQData));
 
 // //------------------
 // my_Model my_model = my_Model();
@@ -70,7 +68,7 @@ static QueueHandle_t central_switch_isr_queue = xQueueCreate(5, sizeof(struct_Sw
 // rtos_Widget my_rtos_widget2 = rtos_Widget(&my_widget2);
 
 //-----------------
-void encoder_clk_irq_call_back(uint gpio, uint32_t event_mask);
+
 void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask);
 //-----------------
 //---------------------------------------------
@@ -85,7 +83,7 @@ struct_rtosConfigSwitchButton cfg_central_switch{
     .long_push_delay_ms = 1500,
     .time_out_delay_ms = 5000};
 rtos_SwitchButton central_switch = rtos_SwitchButton(CENTRAL_SWITCH_GPIO,
-                                                     &ky040_encoder_irq_call_back, central_switch_isr_queue, manager.control_event_input_queue,
+                                                     &ky040_encoder_irq_call_back, manager.control_event_input_queue,
                                                      cfg_central_switch);
 //-----------------
 struct_rtosConfigSwitchButton cfg_encoder_clk{
@@ -94,7 +92,7 @@ struct_rtosConfigSwitchButton cfg_encoder_clk{
     .long_push_delay_ms = 1000,
     .time_out_delay_ms = 3000};
 rtos_RotaryEncoder encoder = rtos_RotaryEncoder(ENCODER_CLK_GPIO, ENCODER_DT_GPIO,
-                                                &ky040_encoder_irq_call_back, encoder_clk_isr_queue, manager.control_event_input_queue,
+                                                &ky040_encoder_irq_call_back, manager.control_event_input_queue,
                                                 cfg_encoder_clk);
 //-----------------
 void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask)
@@ -109,12 +107,12 @@ void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask)
     {
     case CENTRAL_SWITCH_GPIO:
         p6.hi();
-        xQueueSendFromISR(central_switch_isr_queue, &data, &pxHigherPriorityTaskWoken);
+        xQueueSendFromISR(central_switch.IRQdata_input_queue, &data, &pxHigherPriorityTaskWoken);
         p6.lo();
         break;
     case ENCODER_CLK_GPIO:
         p7.hi();
-        xQueueSendFromISR(encoder_clk_isr_queue, &data, &pxHigherPriorityTaskWoken);
+        xQueueSendFromISR(encoder.IRQdata_input_queue, &data, &pxHigherPriorityTaskWoken);
         p7.lo();
         break;
     default:

@@ -4,10 +4,10 @@
 #include <string>
 
 rtos_RotaryEncoder::rtos_RotaryEncoder(uint encoder_clk_gpio, uint encoder_dt_gpio,
-                                     gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
+                                     gpio_irq_callback_t call_back, QueueHandle_t out_control_event_queue,
                                      struct_rtosConfigSwitchButton conf, uint32_t event_mask_config)
     : rtos_SwitchButton(encoder_clk_gpio,
-                       call_back, in_switch_button_queue, out_control_event_queue,
+                       call_back, out_control_event_queue,
                        conf, event_mask_config)
 {
     this->dt_gpio = encoder_dt_gpio;
@@ -37,7 +37,7 @@ void rtos_RotaryEncoder::rtos_process_IRQ_event()
         switch (button_status)
         {
         case ButtonState::TIME_OUT_PENDING:
-            success = xQueueReceive(this->switch_button_queue, &local_irq_data, pdMS_TO_TICKS(time_out_delay_ms));
+            success = xQueueReceive(this->IRQdata_input_queue, &local_irq_data, pdMS_TO_TICKS(time_out_delay_ms));
             if (!success)
             {
                 local_event_data.event = UIControlEvent::TIME_OUT;
@@ -47,7 +47,7 @@ void rtos_RotaryEncoder::rtos_process_IRQ_event()
             break;
 
         default:
-            xQueueReceive(this->switch_button_queue, &local_irq_data, portMAX_DELAY);
+            xQueueReceive(this->IRQdata_input_queue, &local_irq_data, portMAX_DELAY);
             break;
         }
 

@@ -56,7 +56,6 @@ struct struct_SwitchButtonIRQData
     uint32_t event_mask;
 };
 
-
 /// @brief the default value for debounce_delay_us
 #define DEBOUNCE_us 10000 // default to 10ms
 /// @brief the default value for LONG_RELEASE_DELAY_us
@@ -178,8 +177,6 @@ protected:
     /// @brief the logical button status, required to manage the event returned when the switch is pushed or released.
     ButtonState button_status{ButtonState::IDLE};
 
-    /// @brief the queue from which IRQ data are received
-    QueueHandle_t switch_button_queue;
     /// @brief the queue to which the resulting control event is sent
     QueueHandle_t control_event_queue;
 
@@ -189,13 +186,12 @@ public:
      *
      * @param gpio The microcontroller GPIO connected to the switch
      * @param call_back The ISR (interrupt Service Routine) that process IRQ event
-     * @param in_switch_button_queue the input queue that receives data from IRQ
-     * @param out_control_event_queue the output queue that receives computed control event
+     * @param control_event_destination_queue the output queue that receives computed control event
      * @param conf the configuration value of the switch
      * @param event_mask_config the rising/falling edge configuratio of the irq
      */
-    rtos_SwitchButton(uint gpio, gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue,
-                     struct_rtosConfigSwitchButton conf = {}, uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
+    rtos_SwitchButton(uint gpio, gpio_irq_callback_t call_back, QueueHandle_t control_event_destination_queue,
+                      struct_rtosConfigSwitchButton conf = {}, uint32_t event_mask_config = GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE);
 
     /**
      * @brief Destroy the SwitchButton object
@@ -207,5 +203,8 @@ public:
      * @brief Process IRQ event and sent the resulting event to the event queue
      *
      */
-    virtual void rtos_process_IRQ_event() ;
+    virtual void rtos_process_IRQ_event();
+    
+    /// @brief the queue from which IRQ data are received
+    QueueHandle_t IRQdata_input_queue;
 };
