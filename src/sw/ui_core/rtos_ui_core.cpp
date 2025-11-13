@@ -43,26 +43,9 @@ rtos_Widget::~rtos_Widget()
 rtos_UIControlledModel::rtos_UIControlledModel()
     : rtos_Model()
 {
+    this->control_event_input_queue = xQueueCreate(3, sizeof(struct_ControlEventData));
 }
 
 rtos_UIControlledModel::~rtos_UIControlledModel()
-{
-}
-
-rtos_UIControlledIncrementalValue::rtos_UIControlledIncrementalValue()
-    : rtos_UIControlledModel()
-{
-}
-
-rtos_UIControlledIncrementalValue::~rtos_UIControlledIncrementalValue()
-{
-}
-
-rtos_UIModelManager::rtos_UIModelManager()
-    : rtos_UIControlledIncrementalValue()
-{
-}
-
-rtos_UIModelManager::~rtos_UIModelManager()
 {
 }

@@ -70,21 +70,4 @@ public:
     rtos_UIControlledModel();
     ~rtos_UIControlledModel();
     QueueHandle_t control_event_input_queue;
-    virtual void process_control_event_queue(struct_ControlEventData event_data) = 0;
-};
-
-class rtos_UIControlledIncrementalValue : public rtos_UIControlledModel
-{
-private:
-public:
-    rtos_UIControlledIncrementalValue();
-    ~rtos_UIControlledIncrementalValue();
-};
-
-class rtos_UIModelManager : public rtos_UIControlledIncrementalValue
-{
-private:
-public:
-    rtos_UIModelManager();
-    ~rtos_UIModelManager();
-};
+    };

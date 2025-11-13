@@ -51,12 +51,11 @@ my_IncrementalValueWidgetOnSerialMonitor value_0_widget = my_IncrementalValueWid
 my_IncrementalValueWidgetOnSerialMonitor value_1_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_1);
 my_IncrementalValueWidgetOnSerialMonitor value_2_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_2);
 
-QueueHandle_t text_buffer_queue = xQueueCreate(3, sizeof(char*));
+QueueHandle_t text_buffer_queue = xQueueCreate(3, sizeof(char *));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
 
 static QueueHandle_t encoder_clk_isr_queue = xQueueCreate(5, sizeof(struct_SwitchButtonIRQData));
 static QueueHandle_t central_switch_isr_queue = xQueueCreate(5, sizeof(struct_SwitchButtonIRQData));
-static QueueHandle_t control_event_queue_to_manager = xQueueCreate(5, sizeof(struct_ControlEventData));
 
 // //------------------
 // my_Model my_model = my_Model();
@@ -74,13 +73,19 @@ static QueueHandle_t control_event_queue_to_manager = xQueueCreate(5, sizeof(str
 void encoder_clk_irq_call_back(uint gpio, uint32_t event_mask);
 void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask);
 //-----------------
+//---------------------------------------------
+my_TestManager manager = my_TestManager();
+/// 5- create a widget for the manager
+my_ManagerWidget manager_widget = my_ManagerWidget(&my_serial_monitor, &manager);
+//-----------------
+
 struct_rtosConfigSwitchButton cfg_central_switch{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
     .long_push_delay_ms = 1500,
     .time_out_delay_ms = 5000};
 rtos_SwitchButton central_switch = rtos_SwitchButton(CENTRAL_SWITCH_GPIO,
-                                                     &ky040_encoder_irq_call_back, central_switch_isr_queue, control_event_queue_to_manager,
+                                                     &ky040_encoder_irq_call_back, central_switch_isr_queue, manager.control_event_input_queue,
                                                      cfg_central_switch);
 //-----------------
 struct_rtosConfigSwitchButton cfg_encoder_clk{
@@ -89,7 +94,7 @@ struct_rtosConfigSwitchButton cfg_encoder_clk{
     .long_push_delay_ms = 1000,
     .time_out_delay_ms = 3000};
 rtos_RotaryEncoder encoder = rtos_RotaryEncoder(ENCODER_CLK_GPIO, ENCODER_DT_GPIO,
-                                                &ky040_encoder_irq_call_back, encoder_clk_isr_queue, control_event_queue_to_manager,
+                                                &ky040_encoder_irq_call_back, encoder_clk_isr_queue, manager.control_event_input_queue,
                                                 cfg_encoder_clk);
 //-----------------
 void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask)
@@ -119,11 +124,7 @@ void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask)
     gpio_set_irq_enabled(gpio, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true);
     p5.lo();
 };
-//---------------------------------------------
-my_TestManager manager = my_TestManager();
-/// 5- create a widget for the manager
-my_ManagerWidget manager_widget = my_ManagerWidget(&my_serial_monitor, &manager);
-//-----------------
+
 void manager_process_control_event_task(void *)
 {
     manager.add_managed_model(&value_0);
@@ -135,9 +136,9 @@ void manager_process_control_event_task(void *)
 
     while (true)
     {
-        xQueueReceive(control_event_queue_to_manager, &local_event_data, portMAX_DELAY);
+        xQueueReceive(manager.control_event_input_queue, &local_event_data, portMAX_DELAY);
         p1.hi();
-        manager.process_control_event_queue(local_event_data);
+        manager.process_control_event(local_event_data.event);
 
         p1.lo();
     }
@@ -207,8 +208,6 @@ void manager_widget_task(void *probe)
 //     }
 // }
 
-
-
 int main()
 {
     stdio_init_all();
@@ -245,4 +244,3 @@ int main()
 //         vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(MAIN_TASK_PERIOD_ms));
 //     }
 // }
-
