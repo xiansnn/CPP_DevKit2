@@ -13,7 +13,7 @@ struct_ConfigGraphicWidget default_cfg{
     .bg_color = ColorIndex::BLACK};
 
 my_IncrementalValueWidgetOnSerialMonitor::my_IncrementalValueWidgetOnSerialMonitor(PrinterDevice *my_printer, my_IncrementalValueModel *_actual_displayed_object)
-    : PrintWidget(my_printer, _actual_displayed_object)
+    : PrintWidget(my_printer, _actual_displayed_object) , rtos_Widget()
 {
     UIControlledIncrementalValue *_actual_displayed_model = (UIControlledIncrementalValue *)this->actual_displayed_model;
     int max_value = _actual_displayed_model->get_max_value();
@@ -23,6 +23,10 @@ my_IncrementalValueWidgetOnSerialMonitor::my_IncrementalValueWidgetOnSerialMonit
 }
 
 my_IncrementalValueWidgetOnSerialMonitor::~my_IncrementalValueWidgetOnSerialMonitor()
+{
+}
+
+void my_IncrementalValueWidgetOnSerialMonitor::send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent)
 {
 }
 
@@ -67,16 +71,16 @@ int my_IncrementalValueWidgetOnSerialMonitor::value_to_char_position()
     return (char_position_slope * ((my_IncrementalValueModel *)this->actual_displayed_model)->get_value() + char_position_offset);
 }
 
-my_ManagerWidget::my_ManagerWidget(PrinterDevice *my_printer, my_TestManager *_manager)
+my_ManagerWidgetOnSerialMonitor::my_ManagerWidgetOnSerialMonitor(PrinterDevice *my_printer, my_TestManager *_manager)
     : PrintWidget(my_printer, _manager)
 {
 }
 
-my_ManagerWidget::~my_ManagerWidget()
+my_ManagerWidgetOnSerialMonitor::~my_ManagerWidgetOnSerialMonitor()
 {
 }
 
-void my_ManagerWidget::draw()
+void my_ManagerWidgetOnSerialMonitor::draw()
 {
     my_TestManager *_actual_display_model = (my_TestManager *)this->actual_displayed_model;
     PrinterDevice *_display_device = (PrinterDevice *)this->display_device;

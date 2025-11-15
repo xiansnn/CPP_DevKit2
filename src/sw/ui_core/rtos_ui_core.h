@@ -27,8 +27,7 @@ class rtos_Widget
 {
 private:
 public:
-    //// @brief pointer to the actual widget
-    Widget *widget;
+
     /// @brief FreeRTOS task handle associated to the widget
     TaskHandle_t task_handle;
     /// @brief Send a command to clear the device screen buffer
@@ -36,7 +35,7 @@ public:
     /// @param sending_done     the semaphore to signal when the sending is done
     void send_clear_device_command(QueueHandle_t display_queue, SemaphoreHandle_t sending_done);
     /// @brief constructor for RTOS widget
-    rtos_Widget(Widget *widget = nullptr);
+    rtos_Widget();
     /// @brief destructor for RTOS widget
     ~rtos_Widget();
 };

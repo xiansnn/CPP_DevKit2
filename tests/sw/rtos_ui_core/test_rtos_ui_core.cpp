@@ -40,7 +40,7 @@ std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::DECREMENT, "DECREMENT"},
     {UIControlEvent::TIME_OUT, "TIME_OUT"}};
 //----------------------------
-PrinterDevice my_serial_monitor = PrinterDevice(100, 1);
+rtos_PrinterDevice my_serial_monitor = rtos_PrinterDevice(100, 1);
 /// 2- create 3 incremental value object
 my_IncrementalValueModel value_0 = my_IncrementalValueModel("val0", 0, 5, true, 1);
 my_IncrementalValueModel value_1 = my_IncrementalValueModel("val1", 0, 10, false, 1);
@@ -53,7 +53,6 @@ my_IncrementalValueWidgetOnSerialMonitor value_2_widget = my_IncrementalValueWid
 
 QueueHandle_t text_buffer_queue = xQueueCreate(3, sizeof(char *));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
-
 
 // //------------------
 // my_Model my_model = my_Model();
@@ -74,7 +73,7 @@ void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask);
 //---------------------------------------------
 my_TestManager manager = my_TestManager();
 /// 5- create a widget for the manager
-my_ManagerWidget manager_widget = my_ManagerWidget(&my_serial_monitor, &manager);
+my_ManagerWidgetOnSerialMonitor manager_widget = my_ManagerWidgetOnSerialMonitor(&my_serial_monitor, &manager);
 //-----------------
 
 struct_rtosConfigSwitchButton cfg_central_switch{
@@ -141,6 +140,32 @@ void manager_process_control_event_task(void *)
         p1.lo();
     }
 };
+
+void value_0_task(void *)
+{
+    value_0.link_widget(&value_0_widget);
+    while (true)
+    {
+        value_0.notify_all_linked_widget_task();
+    }
+}
+void value_1_task(void *)
+{
+    value_1.link_widget(&value_1_widget);
+    while (true)
+    {
+        /* code */
+    }
+}
+void value_2_task(void *)
+{
+    value_2.link_widget(&value_2_widget);
+    while (true)
+    {
+        /* code */
+    }
+}
+
 void central_switch_process_irq_event_task(void *)
 {
     central_switch.rtos_process_IRQ_event();
@@ -159,7 +184,7 @@ void idle_task(void *pxProbe)
     }
 }
 
-void manager_widget_task(void *probe)
+void manager_widget_task(void *)
 {
     while (true)
     {
@@ -167,44 +192,44 @@ void manager_widget_task(void *probe)
         manager_widget.send_image_to_DisplayGateKeeper(text_buffer_queue, data_sent);
     }
 }
-// void value_widget_task_0(void *probe)
-// {
-//     while (true)
-//     {
-//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-//         value_0_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-//     }
-// }
-// void value_widget_task_1(void *probe)
-// {
-//     while (true)
-//     {
-//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-//         value_1_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-//     }
-// }
-// void value_widget_task_2(void *probe)
-// {
-//     while (true)
-//     {
-//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-//         value_2_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-//     }
-// }
+void value_widget_task_0(void *)
+{
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        value_0_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+    }
+}
+void value_widget_task_1(void *)
+{
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        value_1_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+    }
+}
+void value_widget_task_2(void *)
+{
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        value_2_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+    }
+}
 
-// void display_gate_keeper_task(void *probe)
-// {
-//     char * text_to_tprint;
+void display_gate_keeper_task(void *probe)
+{
+    char *text_to_tprint;
 
-//     while (true)
-//     {
-//         xQueueReceive(text_buffer_queue, &text_to_tprint, portMAX_DELAY);
-//         ((Probe *)probe)->hi();
-//         my_serial_monitor.show_from_display_queue(text_to_tprint);
-//         ((Probe *)probe)->lo();
-//         xSemaphoreGive(data_sent);
-//     }
-// }
+    while (true)
+    {
+        xQueueReceive(text_buffer_queue, &text_to_tprint, portMAX_DELAY);
+        ((Probe *)probe)->hi();
+        my_serial_monitor.show_from_display_queue(text_to_tprint);
+        ((Probe *)probe)->lo();
+        xSemaphoreGive(data_sent);
+    }
+}
 
 int main()
 {
@@ -213,15 +238,20 @@ int main()
     xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
 
     // xTaskCreate(my_model_task, "main_task", 256, &p1, 4, NULL);
-    // xTaskCreate(value_widget_task_0, "widget_task_0", 256, NULL, 2, &value_0_widget.task_handle);
-    // xTaskCreate(value_widget_task_1, "widget_task_1", 256, NULL, 2, &my_rtos_widget2.task_handle);
-    // xTaskCreate(value_widget_task_2, "widget_task_2", 256, NULL, 2, &my_rtos_widget2.task_handle);
 
     xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 4, NULL);
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 4, NULL);
     xTaskCreate(manager_process_control_event_task, "manager_process_control_event_task", 256, NULL, 2, NULL);
 
-    // xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, &p4, 6, NULL);
+    xTaskCreate(value_0_task, "value_0_task", 256, NULL, 3, NULL);
+    xTaskCreate(value_1_task, "value_1_task", 256, NULL, 3, NULL);
+    xTaskCreate(value_2_task, "value_2_task", 256, NULL, 3, NULL);
+    
+    xTaskCreate(value_widget_task_0, "widget_task_0", 256, NULL, 2, &value_0_widget.task_handle);
+    xTaskCreate(value_widget_task_1, "widget_task_1", 256, NULL, 2, &value_1_widget.task_handle);
+    xTaskCreate(value_widget_task_2, "widget_task_2", 256, NULL, 2, &value_2_widget.task_handle);
+
+    xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, &p4, 6, NULL);
 
     vTaskStartScheduler();
 
@@ -230,15 +260,3 @@ int main()
 
     return 0;
 }
-// void my_model_task(void *pxProbe)
-// {
-//     TickType_t xLastWakeTime = xTaskGetTickCount();
-//     my_rtos_model.link_widget(&my_rtos_widget1);
-//     my_rtos_model.link_widget(&my_rtos_widget2);
-//     while (true)
-//     {
-//         ((my_Model *)my_rtos_model.model)->cyclic_computation((Probe *)pxProbe);
-//         my_rtos_model.notify_all_linked_widget_task();
-//         vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(MAIN_TASK_PERIOD_ms));
-//     }
-// }

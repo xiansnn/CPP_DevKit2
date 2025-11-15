@@ -24,7 +24,7 @@
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of test_IncrementalValue on the serial monitor
-class my_IncrementalValueWidgetOnSerialMonitor : public PrintWidget
+class my_IncrementalValueWidgetOnSerialMonitor : public PrintWidget, public rtos_Widget
 {
 private:
     float char_position_slope;
@@ -38,22 +38,23 @@ public:
     my_IncrementalValueWidgetOnSerialMonitor(PrinterDevice *my_printer, my_IncrementalValueModel *_actual_displayed_object);
 
     ~my_IncrementalValueWidgetOnSerialMonitor();
+    void send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent);
 
     void draw();
 };
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of MyManager on the serial monitor
-class my_ManagerWidget : public PrintWidget
+class my_ManagerWidgetOnSerialMonitor : public PrintWidget, public rtos_Widget
 {
 private:
 public:
     /// @brief Construct a new MyManagerWidget object
     /// @param line_printer
     /// @param manager
-    my_ManagerWidget(PrinterDevice *my_printer, my_TestManager *manager);
+    my_ManagerWidgetOnSerialMonitor(PrinterDevice *my_printer, my_TestManager *manager);
 
-    ~my_ManagerWidget();
+    ~my_ManagerWidgetOnSerialMonitor();
 
     void draw();
 };
