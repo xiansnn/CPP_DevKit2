@@ -27,7 +27,6 @@ class rtos_Widget
 {
 private:
 public:
-
     /// @brief FreeRTOS task handle associated to the widget
     TaskHandle_t task_handle;
     /// @brief Send a command to clear the device screen buffer
@@ -49,8 +48,7 @@ private:
     std::set<rtos_Widget *> linked_widget_tasks;
 
 public:
-    // /// @brief pointer to the actual model
-    // Model *model;
+    TaskHandle_t task_handle;
     /// @brief link a new widget task to the model
     void link_widget(rtos_Widget *linked_widget);
     /// @brief notify all linked widget tasks that the model has changed
@@ -69,4 +67,4 @@ public:
     rtos_UIControlledModel();
     ~rtos_UIControlledModel();
     QueueHandle_t control_event_input_queue;
-    };
+};

@@ -146,6 +146,7 @@ void value_0_task(void *)
     value_0.link_widget(&value_0_widget);
     while (true)
     {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         value_0.notify_all_linked_widget_task();
     }
 }
@@ -154,7 +155,7 @@ void value_1_task(void *)
     value_1.link_widget(&value_1_widget);
     while (true)
     {
-        /* code */
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
     }
 }
 void value_2_task(void *)
@@ -162,7 +163,7 @@ void value_2_task(void *)
     value_2.link_widget(&value_2_widget);
     while (true)
     {
-        /* code */
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
     }
 }
 
@@ -243,9 +244,9 @@ int main()
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 4, NULL);
     xTaskCreate(manager_process_control_event_task, "manager_process_control_event_task", 256, NULL, 2, NULL);
 
-    xTaskCreate(value_0_task, "value_0_task", 256, NULL, 3, NULL);
-    xTaskCreate(value_1_task, "value_1_task", 256, NULL, 3, NULL);
-    xTaskCreate(value_2_task, "value_2_task", 256, NULL, 3, NULL);
+    xTaskCreate(value_0_task, "value_0_task", 256, NULL, 3, &value_0.task_handle);
+    xTaskCreate(value_1_task, "value_1_task", 256, NULL, 3, &value_1.task_handle);
+    xTaskCreate(value_2_task, "value_2_task", 256, NULL, 3, &value_2.task_handle);
     
     xTaskCreate(value_widget_task_0, "widget_task_0", 256, NULL, 2, &value_0_widget.task_handle);
     xTaskCreate(value_widget_task_1, "widget_task_1", 256, NULL, 2, &value_1_widget.task_handle);
