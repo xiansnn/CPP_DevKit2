@@ -99,44 +99,66 @@ void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask)
     struct_SwitchButtonIRQData data;
     gpio_set_irq_enabled(gpio, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, false);
     data.current_time_us = time_us_32();
-    p5.hi();
+    // p5.hi();
     data.event_mask = event_mask;
     BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
     switch (gpio)
     {
     case CENTRAL_SWITCH_GPIO:
-        p6.hi();
+        // p6.hi();
         xQueueSendFromISR(central_switch.IRQdata_input_queue, &data, &pxHigherPriorityTaskWoken);
-        p6.lo();
+        // p6.lo();
         break;
     case ENCODER_CLK_GPIO:
-        p7.hi();
+        // p7.hi();
         xQueueSendFromISR(encoder.IRQdata_input_queue, &data, &pxHigherPriorityTaskWoken);
-        p7.lo();
+        // p7.lo();
         break;
     default:
         break;
     }
     portYIELD_FROM_ISR(&pxHigherPriorityTaskWoken);
     gpio_set_irq_enabled(gpio, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true);
-    p5.lo();
+    // p5.lo();
 };
 
 void manager_process_control_event_task(void *)
 {
+
     manager.add_managed_model(&value_0);
     manager.add_managed_model(&value_1);
     manager.add_managed_model(&value_2);
+
+    printf("ManagedModels.task handle: [0][%p]\t[1][%p]\t[2][%p]\n",
+           ((my_IncrementalValueModel *)manager.managed_models[0])->task_handle,
+           ((my_IncrementalValueModel *)manager.managed_models[1])->task_handle,
+           ((my_IncrementalValueModel *)manager.managed_models[2])->task_handle);
+
     manager.make_manager_active();
     manager.draw_refresh_all_attached_widgets();
     struct_ControlEventData local_event_data;
 
+    
     while (true)
     {
         xQueueReceive(manager.control_event_input_queue, &local_event_data, portMAX_DELAY);
         p1.hi();
+        // xTaskNotify(value_1.task_handle, 2, eSetValueWithOverwrite);
+        // printf("manager_process_control_event_task.value_2.task_handle : %p\n",value_2.task_handle);
+        // xTaskNotify(value_2.task_handle, 3, eSetValueWithOverwrite);
+        // size_t idx = manager.get_value();
+        // rtos_UIControlledModel *current_active_model = (my_IncrementalValueModel *)manager.managed_models[idx];
+        // TaskHandle_t handle = current_active_model->task_handle;
+        // printf("avant my_TestManager::process_control_event.current_active_model_task_handle : %p\n", handle);
+        
         manager.process_control_event(local_event_data.event);
-
+        
+        TaskHandle_t handle;
+        rtos_UIControlledModel *current_active_model;
+        current_active_model = (my_IncrementalValueModel *)manager.managed_models[manager.get_value()];
+        handle = current_active_model->task_handle;
+        printf("apres my_TestManager::process_control_event  managed_models[manager.get_value()->task_handle : %p\n", handle);
+        xTaskNotify(handle, (uint32_t)local_event_data.event, eSetValueWithOverwrite);
         p1.lo();
     }
 };
@@ -146,8 +168,11 @@ void value_0_task(void *)
     value_0.link_widget(&value_0_widget);
     while (true)
     {
-        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        value_0.notify_all_linked_widget_task();
+        uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        p2.pulse_us(10);
+        p2.pulse_us(event * 100);
+        // value_0.process_control_event(event);
+        // value_0.notify_all_linked_widget_task();
     }
 }
 void value_1_task(void *)
@@ -155,7 +180,9 @@ void value_1_task(void *)
     value_1.link_widget(&value_1_widget);
     while (true)
     {
-        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        p3.pulse_us(10);
+        p3.pulse_us(event * 100);
     }
 }
 void value_2_task(void *)
@@ -163,7 +190,9 @@ void value_2_task(void *)
     value_2.link_widget(&value_2_widget);
     while (true)
     {
-        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        p4.pulse_us(10);
+        p4.pulse_us(event * 100);
     }
 }
 
@@ -193,7 +222,7 @@ void manager_widget_task(void *)
         manager_widget.send_image_to_DisplayGateKeeper(text_buffer_queue, data_sent);
     }
 }
-void value_widget_task_0(void *)
+void value_0_widget_task(void *)
 {
     while (true)
     {
@@ -201,7 +230,7 @@ void value_widget_task_0(void *)
         value_0_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
     }
 }
-void value_widget_task_1(void *)
+void value_1_widget_task(void *)
 {
     while (true)
     {
@@ -209,7 +238,7 @@ void value_widget_task_1(void *)
         value_1_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
     }
 }
-void value_widget_task_2(void *)
+void value_2_widget_task(void *)
 {
     while (true)
     {
@@ -238,19 +267,23 @@ int main()
 
     xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
 
-    // xTaskCreate(my_model_task, "main_task", 256, &p1, 4, NULL);
-
     xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 4, NULL);
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 4, NULL);
     xTaskCreate(manager_process_control_event_task, "manager_process_control_event_task", 256, NULL, 2, NULL);
 
     xTaskCreate(value_0_task, "value_0_task", 256, NULL, 3, &value_0.task_handle);
+    printf("value_0_task.handle(main) :  %p @%p\n", value_0.task_handle, &value_0.task_handle);
     xTaskCreate(value_1_task, "value_1_task", 256, NULL, 3, &value_1.task_handle);
+    printf("value_1_task.handle(main) :  %p @%p\n", value_1.task_handle, &value_1.task_handle);
     xTaskCreate(value_2_task, "value_2_task", 256, NULL, 3, &value_2.task_handle);
-    
-    xTaskCreate(value_widget_task_0, "widget_task_0", 256, NULL, 2, &value_0_widget.task_handle);
-    xTaskCreate(value_widget_task_1, "widget_task_1", 256, NULL, 2, &value_1_widget.task_handle);
-    xTaskCreate(value_widget_task_2, "widget_task_2", 256, NULL, 2, &value_2_widget.task_handle);
+    printf("value_2_task.handle(main) :  %p @%p\n", value_2.task_handle, &value_2.task_handle);
+
+    xTaskCreate(value_0_widget_task, "widget_task_0", 256, NULL, 2, &value_0_widget.task_handle);
+    // printf("value_0_widget_task.handle(main) : %p\n", value_0_widget.task_handle);
+    xTaskCreate(value_1_widget_task, "widget_task_1", 256, NULL, 2, &value_1_widget.task_handle);
+    // printf("value_1_widget_task.handle(main) : %p\n", value_1_widget.task_handle);
+    xTaskCreate(value_2_widget_task, "widget_task_2", 256, NULL, 2, &value_2_widget.task_handle);
+    // printf("value_2_widget_task.handle(main) : %p\n", value_2_widget.task_handle);
 
     xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, &p4, 6, NULL);
 

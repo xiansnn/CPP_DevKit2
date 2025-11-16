@@ -1,12 +1,12 @@
 /**
  * @file t_rtos_manager.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-11-11
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
 #include "t_rtos_manager.h"
@@ -31,6 +31,9 @@ void my_TestManager::process_control_event(UIControlEvent _event)
     case UIControlEvent::LONG_PUSH:
         if (this->current_active_model != this)
         {
+            // TaskHandle_t current_active_model_task_handle = ((rtos_UIControlledModel *)this->current_active_model)->task_handle;
+            // printf("LONG_PUSH my_TestManager::process_control_event.current_active_model_task_handle : %p\n", current_active_model_task_handle);
+            // xTaskNotify(current_active_model_task_handle, (uint32_t)UIControlEvent::LONG_PUSH, eSetValueWithOverwrite);
             this->current_active_model->process_control_event(_event);
         }
         break;
@@ -63,9 +66,9 @@ void my_TestManager::process_control_event(UIControlEvent _event)
     case UIControlEvent::DECREMENT:
         if (this->current_active_model == this)
         {
-           this->decrement_focus();
-           this->set_change_flag();
-           this->draw_refresh_all_attached_widgets();
+            this->decrement_focus();
+            this->set_change_flag();
+            this->draw_refresh_all_attached_widgets();
             // this->notify_all_linked_widget_task();
         }
         else
@@ -79,5 +82,4 @@ void my_TestManager::process_control_event(UIControlEvent _event)
     default:
         break;
     }
-
 }
