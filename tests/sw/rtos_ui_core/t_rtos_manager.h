@@ -19,4 +19,5 @@ public:
     my_TestManager(bool is_wrappable = false);
     ~my_TestManager();
     void process_control_event(UIControlEvent _event);
+    void notify_current_active_model( UIControlEvent _event);
 };

@@ -138,27 +138,11 @@ void manager_process_control_event_task(void *)
     manager.draw_refresh_all_attached_widgets();
     struct_ControlEventData local_event_data;
 
-    
     while (true)
     {
         xQueueReceive(manager.control_event_input_queue, &local_event_data, portMAX_DELAY);
         p1.hi();
-        // xTaskNotify(value_1.task_handle, 2, eSetValueWithOverwrite);
-        // printf("manager_process_control_event_task.value_2.task_handle : %p\n",value_2.task_handle);
-        // xTaskNotify(value_2.task_handle, 3, eSetValueWithOverwrite);
-        // size_t idx = manager.get_value();
-        // rtos_UIControlledModel *current_active_model = (my_IncrementalValueModel *)manager.managed_models[idx];
-        // TaskHandle_t handle = current_active_model->task_handle;
-        // printf("avant my_TestManager::process_control_event.current_active_model_task_handle : %p\n", handle);
-        
         manager.process_control_event(local_event_data.event);
-        
-        TaskHandle_t handle;
-        rtos_UIControlledModel *current_active_model;
-        current_active_model = (my_IncrementalValueModel *)manager.managed_models[manager.get_value()];
-        handle = current_active_model->task_handle;
-        printf("apres my_TestManager::process_control_event  managed_models[manager.get_value()->task_handle : %p\n", handle);
-        xTaskNotify(handle, (uint32_t)local_event_data.event, eSetValueWithOverwrite);
         p1.lo();
     }
 };
@@ -169,9 +153,10 @@ void value_0_task(void *)
     while (true)
     {
         uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p2.pulse_us(10);
+        p2.hi();
+        value_0.process_control_event((UIControlEvent)event);
+        p2.lo();
         p2.pulse_us(event * 100);
-        // value_0.process_control_event(event);
         // value_0.notify_all_linked_widget_task();
     }
 }
@@ -181,7 +166,9 @@ void value_1_task(void *)
     while (true)
     {
         uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p3.pulse_us(10);
+        p3.hi();
+        value_1.process_control_event((UIControlEvent)event);
+        p3.lo();
         p3.pulse_us(event * 100);
     }
 }
@@ -191,7 +178,9 @@ void value_2_task(void *)
     while (true)
     {
         uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p4.pulse_us(10);
+        p4.hi();
+        value_2.process_control_event((UIControlEvent)event);
+        p4.lo();
         p4.pulse_us(event * 100);
     }
 }

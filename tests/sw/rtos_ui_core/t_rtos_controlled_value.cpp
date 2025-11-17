@@ -1,12 +1,12 @@
 /**
  * @file t_rtos_controlled_value.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-11-11
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
 #include "t_rtos_controlled_value.h"
@@ -33,15 +33,18 @@ void my_IncrementalValueModel::process_control_event(UIControlEvent _event)
 {
     switch (_event)
     {
+    case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
+        this->draw_refresh_all_attached_widgets();
+        break;
     case UIControlEvent::LONG_PUSH:
         this->set_clipped_value(0);
         this->draw_refresh_all_attached_widgets();
         break;
-        case UIControlEvent::INCREMENT:
+    case UIControlEvent::INCREMENT:
         increment_value();
         this->draw_refresh_all_attached_widgets();
         break;
-        case UIControlEvent::DECREMENT:
+    case UIControlEvent::DECREMENT:
         decrement_value();
         this->draw_refresh_all_attached_widgets();
         break;

@@ -10,6 +10,7 @@
  */
 
 #include "t_rtos_manager.h"
+#include "t_rtos_controlled_value.h"
 
 my_TestManager::my_TestManager(bool is_wrappable)
     : UIModelManager(is_wrappable), rtos_UIControlledModel()
@@ -22,19 +23,15 @@ my_TestManager::~my_TestManager()
 
 void my_TestManager::process_control_event(UIControlEvent _event)
 {
+    TaskHandle_t handle;
+    my_IncrementalValueModel *current_active_model;
 
     switch (_event)
     {
-    case UIControlEvent::NONE:
-        /* code */
-        break;
     case UIControlEvent::LONG_PUSH:
         if (this->current_active_model != this)
         {
-            // TaskHandle_t current_active_model_task_handle = ((rtos_UIControlledModel *)this->current_active_model)->task_handle;
-            // printf("LONG_PUSH my_TestManager::process_control_event.current_active_model_task_handle : %p\n", current_active_model_task_handle);
-            // xTaskNotify(current_active_model_task_handle, (uint32_t)UIControlEvent::LONG_PUSH, eSetValueWithOverwrite);
-            this->current_active_model->process_control_event(_event);
+            this->notify_current_active_model(_event);
         }
         break;
     case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
@@ -42,7 +39,7 @@ void my_TestManager::process_control_event(UIControlEvent _event)
         {
             this->make_managed_model_active();
             this->draw_refresh_all_attached_widgets();
-            this->current_active_model->draw_refresh_all_attached_widgets();
+            this->notify_current_active_model(_event);
         }
         else
         {
@@ -60,7 +57,7 @@ void my_TestManager::process_control_event(UIControlEvent _event)
         }
         else
         {
-            this->current_active_model->process_control_event(_event);
+            this->notify_current_active_model(_event);
         }
         break;
     case UIControlEvent::DECREMENT:
@@ -73,8 +70,7 @@ void my_TestManager::process_control_event(UIControlEvent _event)
         }
         else
         {
-
-            this->current_active_model->process_control_event(_event);
+            this->notify_current_active_model(_event);
         }
         break;
     case UIControlEvent::TIME_OUT:
@@ -82,4 +78,13 @@ void my_TestManager::process_control_event(UIControlEvent _event)
     default:
         break;
     }
+}
+
+void my_TestManager::notify_current_active_model(UIControlEvent _event)
+{
+    TaskHandle_t handle;
+    my_IncrementalValueModel *current_active_model;
+    current_active_model = (my_IncrementalValueModel *)this->managed_models[this->get_value()];
+    handle = current_active_model->task_handle;
+    xTaskNotify(handle, (uint32_t)_event, eSetValueWithOverwrite);
 }
