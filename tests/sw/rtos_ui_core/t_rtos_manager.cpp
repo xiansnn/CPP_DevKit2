@@ -13,7 +13,7 @@
 #include "t_rtos_controlled_value.h"
 
 my_TestManager::my_TestManager(bool is_wrappable)
-    : UIModelManager(is_wrappable), rtos_UIControlledModel()
+    : UIModelManager(is_wrappable), rtos_UIModelManager()
 {
 }
 
@@ -31,7 +31,7 @@ void my_TestManager::process_control_event(UIControlEvent _event)
     case UIControlEvent::LONG_PUSH:
         if (this->current_active_model != this)
         {
-            this->notify_current_active_model(_event);
+            this->notify_current_active_managed_model(_event);
         }
         break;
     case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
@@ -39,7 +39,7 @@ void my_TestManager::process_control_event(UIControlEvent _event)
         {
             this->make_managed_model_active();
             this->draw_refresh_all_attached_widgets();
-            this->notify_current_active_model(_event);
+            this->notify_current_active_managed_model(_event);
         }
         else
         {
@@ -57,7 +57,7 @@ void my_TestManager::process_control_event(UIControlEvent _event)
         }
         else
         {
-            this->notify_current_active_model(_event);
+            this->notify_current_active_managed_model(_event);
         }
         break;
     case UIControlEvent::DECREMENT:
@@ -70,7 +70,7 @@ void my_TestManager::process_control_event(UIControlEvent _event)
         }
         else
         {
-            this->notify_current_active_model(_event);
+            this->notify_current_active_managed_model(_event);
         }
         break;
     case UIControlEvent::TIME_OUT:
@@ -80,11 +80,9 @@ void my_TestManager::process_control_event(UIControlEvent _event)
     }
 }
 
-void my_TestManager::notify_current_active_model(UIControlEvent _event)
+void my_TestManager::notify_current_active_managed_model(UIControlEvent _event)
 {
-    TaskHandle_t handle;
-    my_IncrementalValueModel *current_active_model;
-    current_active_model = (my_IncrementalValueModel *)this->managed_models[this->get_value()];
-    handle = current_active_model->task_handle;
+    my_IncrementalValueModel * current_active_model = (my_IncrementalValueModel *)this->managed_models[this->get_value()];
+    TaskHandle_t handle = current_active_model->task_handle;
     xTaskNotify(handle, (uint32_t)_event, eSetValueWithOverwrite);
 }

@@ -68,3 +68,13 @@ public:
     ~rtos_UIControlledModel();
     QueueHandle_t control_event_input_queue;
 };
+
+class rtos_UIModelManager : public rtos_UIControlledModel
+{
+private:
+    /* data */
+public:
+    virtual void notify_current_active_managed_model(UIControlEvent _event) = 0;
+    rtos_UIModelManager(/* args */);
+    ~rtos_UIModelManager();
+};

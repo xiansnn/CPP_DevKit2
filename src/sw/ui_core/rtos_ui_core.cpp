@@ -27,7 +27,7 @@ void rtos_Widget::send_clear_device_command(QueueHandle_t display_queue, Semapho
     struct_DataToShow data_to_display;
     data_to_display.command = DisplayCommand::CLEAR_SCREEN;
     // data_to_display.display = this->widget->display_device;
-    xQueueSend(display_queue, &data_to_display, portMAX_DELAY); 
+    xQueueSend(display_queue, &data_to_display, portMAX_DELAY);
     xSemaphoreTake(sending_done, portMAX_DELAY);
 }
 
@@ -46,5 +46,14 @@ rtos_UIControlledModel::rtos_UIControlledModel()
 }
 
 rtos_UIControlledModel::~rtos_UIControlledModel()
+{
+}
+
+rtos_UIModelManager::rtos_UIModelManager()
+    : rtos_UIControlledModel()
+{
+}
+
+rtos_UIModelManager::~rtos_UIModelManager()
 {
 }
