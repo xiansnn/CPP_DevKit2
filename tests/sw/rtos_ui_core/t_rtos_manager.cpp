@@ -23,66 +23,50 @@ my_TestManager::~my_TestManager()
 
 void my_TestManager::process_control_event(UIControlEvent _event)
 {
-    TaskHandle_t handle;
-    my_IncrementalValueModel *current_active_model;
-
-    switch (_event)
+    if (this->current_active_model == this)
     {
-    case UIControlEvent::LONG_PUSH:
-        if (this->current_active_model != this)
+        switch (_event)
         {
-            this->notify_current_active_managed_model(_event);
-        }
-        break;
-    case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
-        if (this->current_active_model == this)
-        {
+        case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
             this->make_managed_model_active();
             this->draw_refresh_all_attached_widgets();
             this->notify_current_active_managed_model(_event);
+            break;
+        case UIControlEvent::INCREMENT:
+            this->increment_focus();
+            this->draw_refresh_all_attached_widgets();
+            break;
+        case UIControlEvent::DECREMENT:
+            this->decrement_focus();
+            this->draw_refresh_all_attached_widgets();
+            break;
+        case UIControlEvent::TIME_OUT:
+            this->update_status(ControlledObjectStatus::IS_WAITING);
+            this->draw_refresh_all_attached_widgets();
+            break;
+        default:
+            break;
         }
-        else
+    }
+    else
+    {
+        switch (_event)
         {
+        case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
             this->make_manager_active();
             this->draw_refresh_all_attached_widgets();
-        }
-        break;
-    case UIControlEvent::INCREMENT:
-        if (this->current_active_model == this)
-        {
-            this->increment_focus();
-            this->set_change_flag();
-            this->draw_refresh_all_attached_widgets();
-            // this->notify_all_linked_widget_task();
-        }
-        else
-        {
+            break;
+
+        default:
             this->notify_current_active_managed_model(_event);
+            break;
         }
-        break;
-    case UIControlEvent::DECREMENT:
-        if (this->current_active_model == this)
-        {
-            this->decrement_focus();
-            this->set_change_flag();
-            this->draw_refresh_all_attached_widgets();
-            // this->notify_all_linked_widget_task();
-        }
-        else
-        {
-            this->notify_current_active_managed_model(_event);
-        }
-        break;
-    case UIControlEvent::TIME_OUT:
-        break;
-    default:
-        break;
     }
 }
 
 void my_TestManager::notify_current_active_managed_model(UIControlEvent _event)
 {
-    my_IncrementalValueModel * current_active_model = (my_IncrementalValueModel *)this->managed_models[this->get_value()];
+    my_IncrementalValueModel *current_active_model = (my_IncrementalValueModel *)this->managed_models[this->get_value()];
     TaskHandle_t handle = current_active_model->task_handle;
     xTaskNotify(handle, (uint32_t)_event, eSetValueWithOverwrite);
 }
