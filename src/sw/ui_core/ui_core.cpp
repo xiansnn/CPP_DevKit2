@@ -105,7 +105,7 @@ int UIControlledIncrementalValue::get_max_value()
 UIModelManager::UIModelManager(bool is_wrappable)
     : UIControlledIncrementalValue(0, 0, is_wrappable, 1)
 {
-    update_status(ControlledObjectStatus::IS_ACTIVE);
+    update_status(ControlledObjectStatus::IS_IDLE);
     current_active_model = this;
 }
 
@@ -193,6 +193,7 @@ void UIController::update_current_controlled_object(UIControlledModel *_new_cont
 }
 
 UIControlledModel::UIControlledModel()
+    : Model()
 {
     set_change_flag();
 }
@@ -228,4 +229,3 @@ UIController *UIControlledModel::get_current_controller()
 {
     return this->current_controller;
 }
-

@@ -24,7 +24,7 @@ public:
                             bool _is_wrappable = false,
                             int increment = 1);
     ~my_IncrementalValueModel();
-    void process_control_event(UIControlEvent _event);
+    void process_control_event(struct_ControlEventData control_event);
     std::string get_name();
 };
 

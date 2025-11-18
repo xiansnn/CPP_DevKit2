@@ -29,8 +29,9 @@ my_IncrementalValueModel::~my_IncrementalValueModel() {
 /// - INCREMENT:
 /// - DECREMENT:
 /// @param _event
-void my_IncrementalValueModel::process_control_event(UIControlEvent _event)
+void my_IncrementalValueModel::process_control_event(struct_ControlEventData control_event)
 {
+    UIControlEvent _event = control_event.event;
     switch (_event)
     {
     case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
@@ -47,6 +48,8 @@ void my_IncrementalValueModel::process_control_event(UIControlEvent _event)
     case UIControlEvent::DECREMENT:
         decrement_value();
         this->draw_refresh_all_attached_widgets();
+        break;
+    case UIControlEvent::TIME_OUT:
         break;
     default:
         break;

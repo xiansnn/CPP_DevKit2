@@ -2,6 +2,7 @@
 #include <map>
 
 std::map<ControlledObjectStatus, std::string> status_to_string{
+    {ControlledObjectStatus::IS_IDLE, "IS_IDLE"},
     {ControlledObjectStatus::IS_WAITING, "IS_WAITING"},
     {ControlledObjectStatus::HAS_FOCUS, "HAS_FOCUS"},
     {ControlledObjectStatus::IS_ACTIVE, "IS_ACTIVE"}};

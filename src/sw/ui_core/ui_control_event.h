@@ -1,12 +1,12 @@
 /**
  * @file ui_control_event.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-01-11
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 #pragma once
 
@@ -24,7 +24,7 @@ enum class UIControlEvent
     /// @brief event triggered when a button is double-pushed
     /// \todo  Not implemented. To find a way to do "DOUBLE_PUSH"
     DOUBLE_PUSH,
-     /// @brief event triggered when a button is held more than a configurable duration.
+    /// @brief event triggered when a button is held more than a configurable duration.
     LONG_PUSH,
     /// @brief event triggered when a button is released after a configurable duration.
     RELEASED_AFTER_LONG_TIME,
@@ -44,10 +44,10 @@ enum class UIControlEvent
  */
 struct struct_ControlEventData
 {
-    /// @brief the gpio that receive the IRQ
-    int gpio_number;
     /// @brief the control event computed by the IRQ processing task
     UIControlEvent event;
+    /// @brief the gpio that receive the IRQ
+    int gpio_number;
 };
 
 /// @brief The list of status that a Model can have.
@@ -56,7 +56,9 @@ struct struct_ControlEventData
 /// (2) IS_ACTIVE
 enum class ControlledObjectStatus
 {
-    /// @brief The object is inactive, nothing to do.
+    /// @brief The object is in idle state, waiting to be activated.
+    IS_IDLE,
+    /// @brief the object has done its job and is waiting for the next activation
     IS_WAITING,
 
     /// @brief The widget or object manager is pointing to this model
@@ -79,5 +81,3 @@ enum class ControlledObjectStatusTimeOutReason
     /// @brief The widget or object manager is pointing to this model
     MANAGED_OBJECT_INACTIVE
 };
-
-

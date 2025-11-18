@@ -23,36 +23,6 @@
 /// @brief the time out used by the UIModelManager that indicates there is no more UI_ModelObject Status change.
 #define UI_MODEL_OBJECT_STATUS_TIME_OUT_us 3000000
 
-// /// @brief The list of status that a Model can have.
-// /// (0) IS_WAITING
-// /// (1) HAS_FOCUS
-// /// (2) IS_ACTIVE
-// enum class ControlledObjectStatus
-// {
-//     /// @brief The object is inactive, nothing to do.
-//     IS_WAITING,
-
-//     /// @brief The widget or object manager is pointing to this model
-//     HAS_FOCUS,
-
-//     /// @brief The user has selected (clicked) on this model. ControlEvent are then passed to this model in order to be processed.
-//     IS_ACTIVE
-// };
-
-// /// @brief The list of reason of manager time out report.
-// /// (0) NO_TIME_OUT
-// /// (1) MANAGER_INACTIVE
-// /// (3) MANAGED_OBJECT_INACTIVE
-// enum class ControlledObjectStatusTimeOutReason
-// {
-//     /// @brief no time out
-//     NO_TIME_OUT,
-//     /// @brief The object is inactive, nothing to do.
-//     MANAGER_INACTIVE,
-//     /// @brief The widget or object manager is pointing to this model
-//     MANAGED_OBJECT_INACTIVE
-// };
-
 class UIController;
 class Widget;
 
@@ -159,7 +129,7 @@ public:
      *
      * @param _event
      */
-    virtual void process_control_event(UIControlEvent _event) = 0;
+    virtual void process_control_event(struct_ControlEventData control_event) = 0;
 };
 
 /**

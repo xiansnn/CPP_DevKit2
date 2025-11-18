@@ -80,7 +80,7 @@ struct_rtosConfigSwitchButton cfg_central_switch{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
     .long_push_delay_ms = 1500,
-    .time_out_delay_ms = 3000};
+    .time_out_delay_ms = 5000};
 rtos_SwitchButton central_switch = rtos_SwitchButton(CENTRAL_SWITCH_GPIO,
                                                      &ky040_encoder_irq_call_back, manager.control_event_input_queue,
                                                      cfg_central_switch);
@@ -135,14 +135,13 @@ void idle_task(void *pxProbe)
     }
 }
 
-
 void UI_control_event_manager_task(void *)
 {
     manager.add_managed_model(&value_0);
     manager.add_managed_model(&value_1);
     manager.add_managed_model(&value_2);
+    manager.update_attached_widgets(&manager_widget);
 
-    manager.make_manager_active();
     manager.draw_refresh_all_attached_widgets();
     struct_ControlEventData local_event_data;
 
@@ -150,48 +149,56 @@ void UI_control_event_manager_task(void *)
     {
         xQueueReceive(manager.control_event_input_queue, &local_event_data, portMAX_DELAY);
         p1.hi();
-        manager.process_control_event(local_event_data.event);
+        manager.process_control_event(local_event_data);
         p1.lo();
     }
 };
 
 void value_0_task(void *)
 {
+    struct_ControlEventData dummy_control_event;
     value_0.link_widget(&value_0_widget);
+    value_0.update_attached_widgets(&value_0_widget);
     while (true)
     {
         uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        dummy_control_event.event = (UIControlEvent)event;
         p2.hi();
-        value_0.process_control_event((UIControlEvent)event);
+        value_0.process_control_event(dummy_control_event);
         p2.lo();
         value_0.notify_all_linked_widget_task();
     }
 }
 void value_1_task(void *)
 {
+    struct_ControlEventData dummy_control_event;
     value_1.link_widget(&value_1_widget);
+    value_1.update_attached_widgets(&value_1_widget);
     while (true)
     {
         uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        dummy_control_event.event = (UIControlEvent)event;
         p3.hi();
-        value_1.process_control_event((UIControlEvent)event);
+        value_1.process_control_event(dummy_control_event);
         p3.lo();
         value_1.notify_all_linked_widget_task();
     }
 }
 void value_2_task(void *)
 {
+    struct_ControlEventData dummy_control_event;
     value_2.link_widget(&value_2_widget);
+    value_2.update_attached_widgets(&value_2_widget);
     while (true)
     {
         uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        dummy_control_event.event = (UIControlEvent)event;
         p4.hi();
-        value_2.process_control_event((UIControlEvent)event);
+        value_2.process_control_event(dummy_control_event);
         p4.lo();
         value_2.notify_all_linked_widget_task();
     }
 }
-
 
 void manager_widget_task(void *)
 {

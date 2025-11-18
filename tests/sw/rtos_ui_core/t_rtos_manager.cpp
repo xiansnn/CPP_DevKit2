@@ -21,9 +21,19 @@ my_TestManager::~my_TestManager()
 {
 }
 
-void my_TestManager::process_control_event(UIControlEvent _event)
+void my_TestManager::process_control_event(struct_ControlEventData control_event)
 {
-    if (this->current_active_model == this)
+    UIControlEvent _event = control_event.event;
+
+    if ((this->get_status() == ControlledObjectStatus::IS_IDLE) and
+        ((_event == UIControlEvent::RELEASED_AFTER_SHORT_TIME) or
+         (_event == UIControlEvent::INCREMENT) or
+         (_event == UIControlEvent::DECREMENT))) // wake up manager
+    {
+        this->make_manager_active();
+        this->draw_refresh_all_attached_widgets();
+    }
+    else if (this->current_active_model == this)
     {
         switch (_event)
         {
@@ -41,7 +51,7 @@ void my_TestManager::process_control_event(UIControlEvent _event)
             this->draw_refresh_all_attached_widgets();
             break;
         case UIControlEvent::TIME_OUT:
-            this->update_status(ControlledObjectStatus::IS_WAITING);
+            this->update_status(ControlledObjectStatus::IS_IDLE);
             this->draw_refresh_all_attached_widgets();
             break;
         default:
