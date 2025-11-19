@@ -1,6 +1,5 @@
 add_executable(test_rtos_ui_core  
             test_rtos_ui_core.cpp
-            t_rtos_ui_core.cpp
             t_rtos_manager.cpp 
             t_rtos_controlled_value.cpp
             t_rtos_widget_on_serial_monitor.cpp
