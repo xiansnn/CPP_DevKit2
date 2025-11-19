@@ -35,25 +35,25 @@ void my_IncrementalValueModel::process_control_event(struct_ControlEventData con
     switch (_event)
     {
     case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
-        this->draw_refresh_all_attached_widgets();
         break;
     case UIControlEvent::LONG_PUSH:
         this->set_clipped_value(0);
-        this->draw_refresh_all_attached_widgets();
+        this->notify_all_linked_widget_task();
         break;
-    case UIControlEvent::INCREMENT:
-        increment_value();
-        this->draw_refresh_all_attached_widgets();
+        case UIControlEvent::INCREMENT:
+        this->increment_value();
+        this->notify_all_linked_widget_task();
         break;
-    case UIControlEvent::DECREMENT:
-        decrement_value();
-        this->draw_refresh_all_attached_widgets();
+        case UIControlEvent::DECREMENT:
+        this->decrement_value();
+        this->notify_all_linked_widget_task();
         break;
     case UIControlEvent::TIME_OUT:
         break;
     default:
         break;
     }
+
 }
 
 std::string my_IncrementalValueModel::get_name()

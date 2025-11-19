@@ -31,7 +31,7 @@ void my_TestManager::process_control_event(struct_ControlEventData control_event
          (_event == UIControlEvent::DECREMENT))) // wake up manager
     {
         this->make_manager_active();
-        this->draw_refresh_all_attached_widgets();
+        this->notify_all_linked_widget_task();
     }
     else if (this->current_active_model == this)
     {
@@ -39,20 +39,19 @@ void my_TestManager::process_control_event(struct_ControlEventData control_event
         {
         case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
             this->make_managed_model_active();
-            this->draw_refresh_all_attached_widgets();
             this->notify_current_active_managed_model(_event);
             break;
         case UIControlEvent::INCREMENT:
             this->increment_focus();
-            this->draw_refresh_all_attached_widgets();
+            this->notify_all_linked_widget_task();
             break;
         case UIControlEvent::DECREMENT:
             this->decrement_focus();
-            this->draw_refresh_all_attached_widgets();
+            this->notify_all_linked_widget_task();
             break;
         case UIControlEvent::TIME_OUT:
             this->update_status(ControlledObjectStatus::IS_IDLE);
-            this->draw_refresh_all_attached_widgets();
+            this->notify_all_linked_widget_task();
             break;
         default:
             break;
@@ -64,7 +63,7 @@ void my_TestManager::process_control_event(struct_ControlEventData control_event
         {
         case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
             this->make_manager_active();
-            this->draw_refresh_all_attached_widgets();
+            this->notify_all_linked_widget_task();
             break;
 
         default:

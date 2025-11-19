@@ -29,6 +29,10 @@ my_IncrementalValueWidgetOnSerialMonitor::~my_IncrementalValueWidgetOnSerialMoni
 
 void my_IncrementalValueWidgetOnSerialMonitor::send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent)
 {
+    char* text = ((rtos_PrinterDevice*)this->display_device)->text_buffer;
+    xQueueSend(text_buffer_queue, &text, portMAX_DELAY); // take 65ms but used fully the CPU
+    xSemaphoreTake(data_sent, portMAX_DELAY);
+
 }
 
 void my_IncrementalValueWidgetOnSerialMonitor::draw()
@@ -64,7 +68,7 @@ void my_IncrementalValueWidgetOnSerialMonitor::draw()
         break;
     }
     //====show
-    _display_device->show();
+    // _display_device->show();
 }
 
 int my_IncrementalValueWidgetOnSerialMonitor::value_to_char_position()
@@ -81,6 +85,14 @@ my_ManagerWidgetOnSerialMonitor::~my_ManagerWidgetOnSerialMonitor()
 {
 }
 
+void my_ManagerWidgetOnSerialMonitor::send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent)
+{
+    char* text = ((rtos_PrinterDevice*)this->display_device)->text_buffer;
+    xQueueSend(text_buffer_queue, &text, portMAX_DELAY); 
+    xSemaphoreTake(data_sent, portMAX_DELAY);
+
+}
+
 void my_ManagerWidgetOnSerialMonitor::draw()
 {
     my_TestManager *_actual_display_model = (my_TestManager *)this->actual_displayed_model;
@@ -91,5 +103,5 @@ void my_ManagerWidgetOnSerialMonitor::draw()
     //====draw
     sprintf(_display_device->text_buffer, text.c_str());
     //====show
-    _display_device->show();
+    // _display_device->show();
 }

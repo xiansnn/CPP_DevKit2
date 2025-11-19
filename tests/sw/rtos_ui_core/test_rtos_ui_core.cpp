@@ -8,7 +8,6 @@
 #include <map>
 #include <string>
 
-#include "t_rtos_ui_core.h"
 #include "t_rtos_controlled_value.h"
 #include "t_rtos_manager.h"
 #include "t_rtos_widget_on_serial_monitor.h"
@@ -53,20 +52,6 @@ my_IncrementalValueWidgetOnSerialMonitor value_2_widget = my_IncrementalValueWid
 
 QueueHandle_t text_buffer_queue = xQueueCreate(3, sizeof(char *));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
-
-// //------------------
-// my_Model my_model = my_Model();
-// rtos_Model my_rtos_model = rtos_Model(&my_model);
-// //------------------
-// my_ProbePrinter probe_widget1 = my_ProbePrinter(&p2);
-// my_Widget my_widget1 = my_Widget(&probe_widget1, &my_model);
-// rtos_Widget my_rtos_widget1 = rtos_Widget(&my_widget1);
-// //------------------
-// my_ProbePrinter probe_widget2 = my_ProbePrinter(&p3);
-// my_Widget my_widget2 = my_Widget(&probe_widget2, &my_model);
-// rtos_Widget my_rtos_widget2 = rtos_Widget(&my_widget2);
-
-//-----------------
 
 void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask);
 
@@ -141,8 +126,11 @@ void UI_control_event_manager_task(void *)
     manager.add_managed_model(&value_1);
     manager.add_managed_model(&value_2);
     manager.update_attached_widgets(&manager_widget);
-
+    manager.link_widget(&manager_widget);
+    p1.hi();
     manager.draw_refresh_all_attached_widgets();
+    manager.notify_all_linked_widget_task();
+    p1.lo();
     struct_ControlEventData local_event_data;
 
     while (true)
@@ -162,10 +150,10 @@ void value_0_task(void *)
     while (true)
     {
         uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        p3.hi();
         dummy_control_event.event = (UIControlEvent)event;
-        p2.hi();
         value_0.process_control_event(dummy_control_event);
-        p2.lo();
+        p3.lo();
         value_0.notify_all_linked_widget_task();
     }
 }
@@ -177,8 +165,8 @@ void value_1_task(void *)
     while (true)
     {
         uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        dummy_control_event.event = (UIControlEvent)event;
         p3.hi();
+        dummy_control_event.event = (UIControlEvent)event;
         value_1.process_control_event(dummy_control_event);
         p3.lo();
         value_1.notify_all_linked_widget_task();
@@ -192,10 +180,10 @@ void value_2_task(void *)
     while (true)
     {
         uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        p5.hi();
         dummy_control_event.event = (UIControlEvent)event;
-        p4.hi();
         value_2.process_control_event(dummy_control_event);
-        p4.lo();
+        p5.lo();
         value_2.notify_all_linked_widget_task();
     }
 }
@@ -205,9 +193,10 @@ void manager_widget_task(void *)
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p1.hi();
-        manager_widget.send_image_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-        p1.lo();
+        p2.hi();
+        manager_widget.draw();
+        manager_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+        p2.lo();
     }
 }
 void value_0_widget_task(void *)
@@ -215,9 +204,10 @@ void value_0_widget_task(void *)
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p5.hi();
+        p4.hi();
+        value_0_widget.draw();
         value_0_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-        p5.lo();
+        p4.lo();
     }
 }
 void value_1_widget_task(void *)
@@ -225,9 +215,10 @@ void value_1_widget_task(void *)
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p6.hi();
+        p3.hi();
+        value_1_widget.draw();
         value_1_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-        p6.lo();
+        p2.lo();
     }
 }
 void value_2_widget_task(void *)
@@ -235,9 +226,10 @@ void value_2_widget_task(void *)
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p7.hi();
+        p5.hi();
+        value_2_widget.draw();
         value_2_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-        p7.lo();
+        p5.lo();
     }
 }
 
@@ -248,9 +240,9 @@ void display_gate_keeper_task(void *probe)
     while (true)
     {
         xQueueReceive(text_buffer_queue, &text_to_tprint, portMAX_DELAY);
-        ((Probe *)probe)->hi();
+        p7.hi();
         my_serial_monitor.show_from_display_queue(text_to_tprint);
-        ((Probe *)probe)->lo();
+        p7.lo();
         xSemaphoreGive(data_sent);
     }
 }
@@ -263,17 +255,18 @@ int main()
 
     xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 4, NULL);
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 4, NULL);
-    xTaskCreate(UI_control_event_manager_task, "UI_control_event_manager_task", 256, NULL, 2, NULL);
 
+    xTaskCreate(UI_control_event_manager_task, "UI_control_event_manager_task", 256, NULL, 3, &manager.task_handle);
     xTaskCreate(value_0_task, "value_0_task", 256, NULL, 3, &value_0.task_handle);
     xTaskCreate(value_1_task, "value_1_task", 256, NULL, 3, &value_1.task_handle);
     xTaskCreate(value_2_task, "value_2_task", 256, NULL, 3, &value_2.task_handle);
 
-    xTaskCreate(value_0_widget_task, "widget_task_0", 256, NULL, 2, &value_0_widget.task_handle);
-    xTaskCreate(value_1_widget_task, "widget_task_1", 256, NULL, 2, &value_1_widget.task_handle);
-    xTaskCreate(value_2_widget_task, "widget_task_2", 256, NULL, 2, &value_2_widget.task_handle);
+    xTaskCreate(manager_widget_task, "manager_widget_task", 256, NULL, 2, &manager_widget.task_handle);
+    xTaskCreate(value_0_widget_task, "value_0_widget_task", 256, NULL, 2, &value_0_widget.task_handle);
+    xTaskCreate(value_1_widget_task, "value_1_widget_task", 256, NULL, 2, &value_1_widget.task_handle);
+    xTaskCreate(value_2_widget_task, "value_2_widget_task", 256, NULL, 2, &value_2_widget.task_handle);
 
-    xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, &p4, 6, NULL);
+    xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, NULL, 6, NULL);
 
     vTaskStartScheduler();
 

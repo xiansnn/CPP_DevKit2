@@ -55,6 +55,7 @@ public:
     my_ManagerWidgetOnSerialMonitor(PrinterDevice *my_printer, my_TestManager *manager);
 
     ~my_ManagerWidgetOnSerialMonitor();
+    void send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent);
 
     void draw();
 };
