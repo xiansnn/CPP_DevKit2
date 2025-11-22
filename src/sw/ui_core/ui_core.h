@@ -101,7 +101,7 @@ public:
      * then change it and set the change_flag to true.
      * @param _new_status
      */
-    void update_status(ControlledObjectStatus _new_status);
+    bool update_status(ControlledObjectStatus _new_status);
     /**
      * @brief if _new_controller is different from the current controller, change the current controller associated to the Model.
      * the new controller has is member current_controlled_model also changed.
@@ -175,18 +175,18 @@ public:
      * @brief Add "increment" to the current value.
      *
      */
-    virtual void increment_value();
+    virtual bool increment_value();
     /**
      * @brief  Substract "increment" to the current value.
      *
      */
-    virtual void decrement_value();
+    virtual bool decrement_value();
     /**
      * @brief Set value to _new_value, and clip the result to min or max value if needed.
      *
      * @param _new_value
      */
-    void set_clipped_value(int _new_value);
+    bool set_clipped_value(int _new_value);
     /**
      * @brief Get the value object
      *
@@ -254,7 +254,7 @@ public:
      *
      */
     UIControlledModel *current_active_model;
-    
+
     /**
      * @brief change the status of model object under focus to IS_ACTIVE
      *
@@ -266,7 +266,6 @@ public:
      */
     void make_manager_active();
 
-    
     /**
      * @brief Construct a new UIModelManager object
      *

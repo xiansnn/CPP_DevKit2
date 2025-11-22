@@ -139,8 +139,8 @@ void idle_task(void *pxProbe)
 void my_model_task(void *pxProbe)
 {
     TickType_t xLastWakeTime = xTaskGetTickCount();
-    my_rtos_model.link_widget(&my_rtos_graph_widget);
-    my_rtos_model.link_widget(&my_rtos_values_widget);
+    my_rtos_model.update_attached_rtos_widget(&my_rtos_graph_widget);
+    my_rtos_model.update_attached_rtos_widget(&my_rtos_values_widget);
     display.send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
     my_text_widget title = my_text_widget(&display, title_config, TEXT_CANVAS_FORMAT);
     title.write("ROLL PITCH");

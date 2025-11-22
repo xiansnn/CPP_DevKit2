@@ -12,6 +12,7 @@ target_link_libraries(test_rtos_ui_core
             dev_rtos_rotary_encoder
             # device_st7735
             sw_widget
+            rtos_widget
             sw_display_device
             utilities_probe
             FreeRTOS-Kernel-Heap4

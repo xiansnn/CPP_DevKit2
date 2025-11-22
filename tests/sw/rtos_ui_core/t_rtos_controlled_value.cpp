@@ -16,7 +16,7 @@ my_IncrementalValueModel::my_IncrementalValueModel(std::string _name,
                                                    int _max_value,
                                                    bool _is_wrappable,
                                                    int increment)
-    : UIControlledIncrementalValue(_min_value, _max_value, _is_wrappable, increment)
+    : core_IncrementControlledModel(_min_value, _max_value, _is_wrappable, increment)
 {
     this->name = _name;
 };
@@ -31,29 +31,36 @@ my_IncrementalValueModel::~my_IncrementalValueModel() {
 /// @param _event
 void my_IncrementalValueModel::process_control_event(struct_ControlEventData control_event)
 {
+    bool changed;
     UIControlEvent _event = control_event.event;
     switch (_event)
     {
     case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
+        printf("[my_IncrementalValueModel::process_control_event] [%s] is active, RELEASED_AFTER_SHORT_TIME \n", this->get_name());
+        this->notify_all_linked_widget_task();
         break;
     case UIControlEvent::LONG_PUSH:
-        this->set_clipped_value(0);
-        this->notify_all_linked_widget_task();
+
+        changed = this->set_clipped_value(0);
+        printf("[my_IncrementalValueModel::process_control_event] [%s] is active, LONG_PUSH \n", this->get_name());
+        if (changed)
+            this->notify_all_linked_widget_task();
         break;
-        case UIControlEvent::INCREMENT:
+    case UIControlEvent::INCREMENT:
         this->increment_value();
-        this->notify_all_linked_widget_task();
+        printf("[my_IncrementalValueModel::process_control_event] [%s] is active, INCREMENT \n", this->get_name());
+        if (changed)
+            this->notify_all_linked_widget_task();
         break;
-        case UIControlEvent::DECREMENT:
+    case UIControlEvent::DECREMENT:
         this->decrement_value();
-        this->notify_all_linked_widget_task();
-        break;
-    case UIControlEvent::TIME_OUT:
+        printf("[my_IncrementalValueModel::process_control_event] [%s] is active, DECREMENT \n", this->get_name());
+        if (changed)
+            this->notify_all_linked_widget_task();
         break;
     default:
         break;
     }
-
 }
 
 std::string my_IncrementalValueModel::get_name()

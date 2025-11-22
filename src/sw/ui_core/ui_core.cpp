@@ -59,32 +59,47 @@ UIControlledIncrementalValue::~UIControlledIncrementalValue()
 {
 }
 
-void UIControlledIncrementalValue::increment_value()
+bool UIControlledIncrementalValue::increment_value()
 {
+    bool changed = false;
     int previous_value = value;
     value += increment;
     if (value > max_value)
         value = (is_wrappable) ? min_value : max_value;
     if (value != previous_value)
+    {
+        changed = true;
         set_change_flag();
+    }
+    return changed;
 }
 
-void UIControlledIncrementalValue::decrement_value()
+bool UIControlledIncrementalValue::decrement_value()
 {
+    bool changed = false;
     int previous_value = value;
     value -= increment;
     if (value < min_value)
         value = (is_wrappable) ? max_value : min_value;
     if (value != previous_value)
+    {
+        changed = true;
         set_change_flag();
+    }
+    return changed;
 }
 
-void UIControlledIncrementalValue::set_clipped_value(int _new_value)
+bool UIControlledIncrementalValue::set_clipped_value(int _new_value)
 {
+    bool changed = false;
     int previous_value = value;
     value = std::min(max_value, std::max(min_value, _new_value));
     if (value != previous_value)
+    {
+        changed = true;
         set_change_flag();
+    }
+    return changed;
 }
 
 int UIControlledIncrementalValue::get_value()
@@ -202,13 +217,16 @@ UIControlledModel::~UIControlledModel()
 {
 }
 
-void UIControlledModel::update_status(ControlledObjectStatus _new_status)
+bool UIControlledModel::update_status(ControlledObjectStatus _new_status)
 {
+    bool changed = false;
     if (this->status != _new_status)
     {
         this->status = _new_status;
+        changed = true;
         set_change_flag();
     }
+    return changed;
 }
 
 void UIControlledModel::update_current_controller(UIController *_new_controller)

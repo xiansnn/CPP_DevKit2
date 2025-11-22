@@ -17,14 +17,14 @@
 #include "t_rtos_manager.h"
 
 #include "sw/ui_core/rtos_ui_core.h"
-#include "sw/widget/widget.h"
+#include "sw/widget/rtos_widget.h"
 #include "sw/display_device/display_device.h"
 #include "utilities/probe/probe.h"
 
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of test_IncrementalValue on the serial monitor
-class my_IncrementalValueWidgetOnSerialMonitor : public PrintWidget, public rtos_Widget
+class my_IncrementalValueWidgetOnSerialMonitor : public rtos_PrintWidget
 {
 private:
     float char_position_slope;
@@ -35,7 +35,7 @@ private:
 public:
     /// @brief Construct a new Test Cursor Widget With Incremental Value object
     /// @param _actual_displayed_object
-    my_IncrementalValueWidgetOnSerialMonitor(PrinterDevice *my_printer, my_IncrementalValueModel *_actual_displayed_object);
+    my_IncrementalValueWidgetOnSerialMonitor(rtos_PrinterDevice *my_printer, my_IncrementalValueModel*_actual_displayed_object);
 
     ~my_IncrementalValueWidgetOnSerialMonitor();
     void send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent);
@@ -45,14 +45,14 @@ public:
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of MyManager on the serial monitor
-class my_ManagerWidgetOnSerialMonitor : public PrintWidget, public rtos_Widget
+class my_ManagerWidgetOnSerialMonitor : public rtos_PrintWidget
 {
 private:
 public:
     /// @brief Construct a new MyManagerWidget object
     /// @param line_printer
     /// @param manager
-    my_ManagerWidgetOnSerialMonitor(PrinterDevice *my_printer, my_TestManager *manager);
+    my_ManagerWidgetOnSerialMonitor(rtos_PrinterDevice *my_printer, rtos_UIModelManager *manager);
 
     ~my_ManagerWidgetOnSerialMonitor();
     void send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent);

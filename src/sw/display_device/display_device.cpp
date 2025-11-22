@@ -53,3 +53,7 @@ void rtos_PrinterDevice::show_from_display_queue(char* text_to_print)
     stdio_printf(text_to_print);
 }
 
+void rtos_PrinterDevice::direct_print(char *text_to_print)
+{
+    printf(text_to_print);
+}

@@ -46,9 +46,9 @@ my_IncrementalValueModel value_1 = my_IncrementalValueModel("val1", 0, 10, false
 my_IncrementalValueModel value_2 = my_IncrementalValueModel("val2", -20, 3, false, 1);
 
 /// 3- create 3 serial terminal widget associated with incremental value objects.
-my_IncrementalValueWidgetOnSerialMonitor value_0_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_0);
-my_IncrementalValueWidgetOnSerialMonitor value_1_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_1);
-my_IncrementalValueWidgetOnSerialMonitor value_2_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_2);
+// my_IncrementalValueWidgetOnSerialMonitor value_0_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_0);
+// my_IncrementalValueWidgetOnSerialMonitor value_1_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_1);
+// my_IncrementalValueWidgetOnSerialMonitor value_2_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_2);
 
 QueueHandle_t text_buffer_queue = xQueueCreate(3, sizeof(char *));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
@@ -56,9 +56,9 @@ SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between displ
 void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask);
 
 //---------------my_TestManager manager------------------------------
-my_TestManager manager = my_TestManager();
+my_TestManager manager = my_TestManager(true);
 /// 5- create a widget for the manager
-my_ManagerWidgetOnSerialMonitor manager_widget = my_ManagerWidgetOnSerialMonitor(&my_serial_monitor, &manager);
+// my_ManagerWidgetOnSerialMonitor manager_widget = my_ManagerWidgetOnSerialMonitor(&my_serial_monitor, &manager);
 
 //-----KY040---------rtos_SwitchButton central_switch---------------------
 struct_rtosConfigSwitchButton cfg_central_switch{
@@ -122,13 +122,13 @@ void idle_task(void *pxProbe)
 
 void UI_control_event_manager_task(void *)
 {
-    manager.add_managed_model(&value_0);
-    manager.add_managed_model(&value_1);
-    manager.add_managed_model(&value_2);
-    manager.update_attached_widgets(&manager_widget);
-    manager.link_widget(&manager_widget);
+    manager.add_managed_rtos_model(&value_0);
+    manager.add_managed_rtos_model(&value_1);
+    manager.add_managed_rtos_model(&value_2);
+    // manager.update_attached_widgets(&manager_widget);
+    // manager.update_attached_rtos_widget(&manager_widget);
     p1.hi();
-    manager.draw_refresh_all_attached_widgets();
+    // manager.draw_refresh_all_attached_widgets();
     manager.notify_all_linked_widget_task();
     p1.lo();
     struct_ControlEventData local_event_data;
@@ -145,8 +145,7 @@ void UI_control_event_manager_task(void *)
 void value_0_task(void *)
 {
     struct_ControlEventData dummy_control_event;
-    value_0.link_widget(&value_0_widget);
-    value_0.update_attached_widgets(&value_0_widget);
+    // value_0.update_attached_rtos_widget(&value_0_widget);
     while (true)
     {
         uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -154,14 +153,12 @@ void value_0_task(void *)
         dummy_control_event.event = (UIControlEvent)event;
         value_0.process_control_event(dummy_control_event);
         p3.lo();
-        value_0.notify_all_linked_widget_task();
     }
 }
 void value_1_task(void *)
 {
     struct_ControlEventData dummy_control_event;
-    value_1.link_widget(&value_1_widget);
-    value_1.update_attached_widgets(&value_1_widget);
+    // value_1.update_attached_rtos_widget(&value_1_widget);
     while (true)
     {
         uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -169,14 +166,12 @@ void value_1_task(void *)
         dummy_control_event.event = (UIControlEvent)event;
         value_1.process_control_event(dummy_control_event);
         p3.lo();
-        value_1.notify_all_linked_widget_task();
     }
 }
 void value_2_task(void *)
 {
     struct_ControlEventData dummy_control_event;
-    value_2.link_widget(&value_2_widget);
-    value_2.update_attached_widgets(&value_2_widget);
+    // value_2.update_attached_rtos_widget(&value_2_widget);
     while (true)
     {
         uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -184,68 +179,67 @@ void value_2_task(void *)
         dummy_control_event.event = (UIControlEvent)event;
         value_2.process_control_event(dummy_control_event);
         p5.lo();
-        value_2.notify_all_linked_widget_task();
     }
 }
 
-void manager_widget_task(void *)
-{
-    while (true)
-    {
-        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p2.hi();
-        manager_widget.draw();
-        manager_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-        p2.lo();
-    }
-}
-void value_0_widget_task(void *)
-{
-    while (true)
-    {
-        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p4.hi();
-        value_0_widget.draw();
-        value_0_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-        p4.lo();
-    }
-}
-void value_1_widget_task(void *)
-{
-    while (true)
-    {
-        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p3.hi();
-        value_1_widget.draw();
-        value_1_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-        p2.lo();
-    }
-}
-void value_2_widget_task(void *)
-{
-    while (true)
-    {
-        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p5.hi();
-        value_2_widget.draw();
-        value_2_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-        p5.lo();
-    }
-}
+// void manager_widget_task(void *)
+// {
+//     while (true)
+//     {
+//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+//         p2.hi();
+//         manager_widget.draw();
+//         manager_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+//         p2.lo();
+//     }
+// }
+// void value_0_widget_task(void *)
+// {
+//     while (true)
+//     {
+//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+//         p4.hi();
+//         value_0_widget.draw();
+//         value_0_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+//         p4.lo();
+//     }
+// }
+// void value_1_widget_task(void *)
+// {
+//     while (true)
+//     {
+//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+//         p3.hi();
+//         value_1_widget.draw();
+//         value_1_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+//         p2.lo();
+//     }
+// }
+// void value_2_widget_task(void *)
+// {
+//     while (true)
+//     {
+//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+//         p5.hi();
+//         value_2_widget.draw();
+//         value_2_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+//         p5.lo();
+//     }
+// }
 
-void display_gate_keeper_task(void *probe)
-{
-    char *text_to_tprint;
+// void display_gate_keeper_task(void *probe)
+// {
+//     char *text_to_tprint;
 
-    while (true)
-    {
-        xQueueReceive(text_buffer_queue, &text_to_tprint, portMAX_DELAY);
-        p7.hi();
-        my_serial_monitor.show_from_display_queue(text_to_tprint);
-        p7.lo();
-        xSemaphoreGive(data_sent);
-    }
-}
+//     while (true)
+//     {
+//         xQueueReceive(text_buffer_queue, &text_to_tprint, portMAX_DELAY);
+//         p7.hi();
+//         my_serial_monitor.show_from_display_queue(text_to_tprint);
+//         p7.lo();
+//         xSemaphoreGive(data_sent);
+//     }
+// }
 
 int main()
 {
@@ -261,12 +255,12 @@ int main()
     xTaskCreate(value_1_task, "value_1_task", 256, NULL, 3, &value_1.task_handle);
     xTaskCreate(value_2_task, "value_2_task", 256, NULL, 3, &value_2.task_handle);
 
-    xTaskCreate(manager_widget_task, "manager_widget_task", 256, NULL, 2, &manager_widget.task_handle);
-    xTaskCreate(value_0_widget_task, "value_0_widget_task", 256, NULL, 2, &value_0_widget.task_handle);
-    xTaskCreate(value_1_widget_task, "value_1_widget_task", 256, NULL, 2, &value_1_widget.task_handle);
-    xTaskCreate(value_2_widget_task, "value_2_widget_task", 256, NULL, 2, &value_2_widget.task_handle);
+    // xTaskCreate(manager_widget_task, "manager_widget_task", 256, NULL, 2, &manager_widget.task_handle);
+    // xTaskCreate(value_0_widget_task, "value_0_widget_task", 256, NULL, 2, &value_0_widget.task_handle);
+    // xTaskCreate(value_1_widget_task, "value_1_widget_task", 256, NULL, 2, &value_1_widget.task_handle);
+    // xTaskCreate(value_2_widget_task, "value_2_widget_task", 256, NULL, 2, &value_2_widget.task_handle);
 
-    xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, NULL, 6, NULL);
+    // xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, NULL, 6, NULL);
 
     vTaskStartScheduler();
 

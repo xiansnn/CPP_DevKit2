@@ -127,4 +127,5 @@ public:
                        size_t number_of_char_hight);
     ~rtos_PrinterDevice();
     void show_from_display_queue(char* text_to_print);
+    void direct_print(char * text_to_print);
 };

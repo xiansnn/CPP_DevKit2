@@ -13,7 +13,7 @@
 #include "sw/ui_core/rtos_ui_core.h"
 
 /// @brief Construct an implementation of UIControlledIncrementalValue for test_ui_core program.
-class my_IncrementalValueModel : public UIControlledIncrementalValue, public rtos_UIControlledModel
+class my_IncrementalValueModel : public core_IncrementControlledModel, public rtos_UIControlledModel
 {
 private:
 public:

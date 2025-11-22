@@ -13,10 +13,9 @@ struct_ConfigGraphicWidget default_cfg{
     .fg_color = ColorIndex::WHITE,
     .bg_color = ColorIndex::BLACK};
 
-my_IncrementalValueWidgetOnSerialMonitor::my_IncrementalValueWidgetOnSerialMonitor(PrinterDevice *my_printer, my_IncrementalValueModel *_actual_displayed_object)
-    : PrintWidget(my_printer, _actual_displayed_object) , rtos_Widget()
+my_IncrementalValueWidgetOnSerialMonitor::my_IncrementalValueWidgetOnSerialMonitor(rtos_PrinterDevice *my_printer, my_IncrementalValueModel *_actual_displayed_model)
+    : rtos_PrintWidget(my_printer, _actual_displayed_model)
 {
-    UIControlledIncrementalValue *_actual_displayed_model = (UIControlledIncrementalValue *)this->actual_displayed_model;
     int max_value = _actual_displayed_model->get_max_value();
     int min_value = _actual_displayed_model->get_min_value();
     char_position_slope = (max_line_width - 1.) / (max_value - min_value);
@@ -29,10 +28,9 @@ my_IncrementalValueWidgetOnSerialMonitor::~my_IncrementalValueWidgetOnSerialMoni
 
 void my_IncrementalValueWidgetOnSerialMonitor::send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent)
 {
-    char* text = ((rtos_PrinterDevice*)this->display_device)->text_buffer;
+    char *text = ((rtos_PrinterDevice *)this->display_device)->text_buffer;
     xQueueSend(text_buffer_queue, &text, portMAX_DELAY); // take 65ms but used fully the CPU
     xSemaphoreTake(data_sent, portMAX_DELAY);
-
 }
 
 void my_IncrementalValueWidgetOnSerialMonitor::draw()
@@ -43,7 +41,7 @@ void my_IncrementalValueWidgetOnSerialMonitor::draw()
     //====get_value_of_interest
     std::string name = _actual_displayed_model->get_name();
     int value = _actual_displayed_model->get_value();
-    ControlledObjectStatus model_status = _actual_displayed_model->get_status();
+    ControlledObjectStatus model_status = _actual_displayed_model->get_rtos_status();
     std::string status = status_to_string[model_status];
 
     //====draw
@@ -68,7 +66,7 @@ void my_IncrementalValueWidgetOnSerialMonitor::draw()
         break;
     }
     //====show
-    // _display_device->show();
+    _display_device->show();
 }
 
 int my_IncrementalValueWidgetOnSerialMonitor::value_to_char_position()
@@ -76,8 +74,8 @@ int my_IncrementalValueWidgetOnSerialMonitor::value_to_char_position()
     return (char_position_slope * ((my_IncrementalValueModel *)this->actual_displayed_model)->get_value() + char_position_offset);
 }
 
-my_ManagerWidgetOnSerialMonitor::my_ManagerWidgetOnSerialMonitor(PrinterDevice *my_printer, my_TestManager *_manager)
-    : PrintWidget(my_printer, _manager)
+my_ManagerWidgetOnSerialMonitor::my_ManagerWidgetOnSerialMonitor(rtos_PrinterDevice *my_printer, rtos_UIModelManager *manager)
+    : rtos_PrintWidget(my_printer, manager)
 {
 }
 
@@ -87,10 +85,9 @@ my_ManagerWidgetOnSerialMonitor::~my_ManagerWidgetOnSerialMonitor()
 
 void my_ManagerWidgetOnSerialMonitor::send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent)
 {
-    char* text = ((rtos_PrinterDevice*)this->display_device)->text_buffer;
-    xQueueSend(text_buffer_queue, &text, portMAX_DELAY); 
+    char *text = ((rtos_PrinterDevice *)this->display_device)->text_buffer;
+    xQueueSend(text_buffer_queue, &text, portMAX_DELAY);
     xSemaphoreTake(data_sent, portMAX_DELAY);
-
 }
 
 void my_ManagerWidgetOnSerialMonitor::draw()
@@ -98,10 +95,10 @@ void my_ManagerWidgetOnSerialMonitor::draw()
     my_TestManager *_actual_display_model = (my_TestManager *)this->actual_displayed_model;
     PrinterDevice *_display_device = (PrinterDevice *)this->display_device;
     //====get_value_of_interest
-    std::string text = "manager " + status_to_string[_actual_display_model->get_status()] + " with value=" +
-                       std::to_string(_actual_display_model->get_value()) + "\n";
+    std::string text = "manager " + status_to_string[_actual_display_model->get_rtos_status()] + " with value=" +
+                       std::to_string(_actual_display_model->get_current_focus_index()) + "\n";
     //====draw
     sprintf(_display_device->text_buffer, text.c_str());
     //====show
-    // _display_device->show();
+    _display_device->show();
 }

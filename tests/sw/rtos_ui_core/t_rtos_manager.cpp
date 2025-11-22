@@ -12,8 +12,8 @@
 #include "t_rtos_manager.h"
 #include "t_rtos_controlled_value.h"
 
-my_TestManager::my_TestManager(bool is_wrappable)
-    : UIModelManager(is_wrappable), rtos_UIModelManager()
+my_TestManager::my_TestManager(bool is_wrapable)
+    : rtos_UIModelManager(is_wrapable)
 {
 }
 
@@ -25,33 +25,34 @@ void my_TestManager::process_control_event(struct_ControlEventData control_event
 {
     UIControlEvent _event = control_event.event;
 
-    if ((this->get_status() == ControlledObjectStatus::IS_IDLE) and
+    if ((this->get_rtos_status() == ControlledObjectStatus::IS_IDLE) and
         ((_event == UIControlEvent::RELEASED_AFTER_SHORT_TIME) or
          (_event == UIControlEvent::INCREMENT) or
          (_event == UIControlEvent::DECREMENT))) // wake up manager
     {
-        this->make_manager_active();
-        this->notify_all_linked_widget_task();
+        this->make_rtos_manager_active();
+        printf("[my_TestManager::process_control_event]manager wakeup\n");
     }
-    else if (this->current_active_model == this)
+    else if (this->current_active_rtos_model == this)
     {
         switch (_event)
         {
         case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
-            this->make_managed_model_active();
+            this->make_managed_rtos_model_active();
+            printf("[my_TestManager::process_control_event]manager is active, RELEASED_AFTER_SHORT_TIME\n");
             this->notify_current_active_managed_model(_event);
             break;
         case UIControlEvent::INCREMENT:
             this->increment_focus();
-            this->notify_all_linked_widget_task();
+            printf("[my_TestManager::process_control_event]manager is active, INCREMENT focus [%d]\n", this->get_current_focus_index());
             break;
         case UIControlEvent::DECREMENT:
             this->decrement_focus();
-            this->notify_all_linked_widget_task();
+            printf("[my_TestManager::process_control_event]manager is active, DECREMENT focus [%d]\n", this->get_current_focus_index());
             break;
         case UIControlEvent::TIME_OUT:
-            this->update_status(ControlledObjectStatus::IS_IDLE);
-            this->notify_all_linked_widget_task();
+            this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
+            printf("[my_TestManager::process_control_event]manager is active, TIME_OUT \n");
             break;
         default:
             break;
@@ -62,20 +63,14 @@ void my_TestManager::process_control_event(struct_ControlEventData control_event
         switch (_event)
         {
         case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
-            this->make_manager_active();
-            this->notify_all_linked_widget_task();
+            this->make_rtos_manager_active();
+            printf("[my_TestManager::process_control_event]model(%d) is active, RELEASED_AFTER_SHORT_TIME\n", this->get_current_focus_index());
             break;
 
         default:
+            printf("[my_TestManager::process_control_event]model(%d) is active, default(%d)\n", this->get_current_focus_index(), _event);
             this->notify_current_active_managed_model(_event);
             break;
         }
     }
-}
-
-void my_TestManager::notify_current_active_managed_model(UIControlEvent _event)
-{
-    my_IncrementalValueModel *current_active_model = (my_IncrementalValueModel *)this->managed_models[this->get_value()];
-    TaskHandle_t handle = current_active_model->task_handle;
-    xTaskNotify(handle, (uint32_t)_event, eSetValueWithOverwrite);
 }
