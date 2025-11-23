@@ -11,7 +11,6 @@
 #pragma once
 
 #include "sw/display_device/display_device.h"
-// #include "sw/ui_core/rtos_ui_core.h"
 #include "sw/widget/canvas.h"
 
 #include "FreeRTOS.h"

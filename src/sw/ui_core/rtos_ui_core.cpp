@@ -62,8 +62,8 @@ void rtos_UIModelManager::increment_focus()
     current_focus_index += 1;
     if (current_focus_index > max_focus_index)
         current_focus_index = is_wrapable ? 0 : max_focus_index;
-
-    notify_all_linked_widget_task();
+    if (current_focus_index != previous_focus_index)
+        notify_all_linked_widget_task();
 }
 
 void rtos_UIModelManager::decrement_focus()
@@ -72,8 +72,8 @@ void rtos_UIModelManager::decrement_focus()
     current_focus_index -= 1;
     if (current_focus_index < 0)
         current_focus_index = is_wrapable ? max_focus_index : 0;
-
-    notify_all_linked_widget_task();
+    if (current_focus_index != previous_focus_index)
+        notify_all_linked_widget_task();
 }
 
 rtos_UIModelManager::rtos_UIModelManager(bool is_wrapable)
@@ -81,7 +81,7 @@ rtos_UIModelManager::rtos_UIModelManager(bool is_wrapable)
 {
     this->current_active_rtos_model = this;
     this->is_wrapable = is_wrapable;
-    this->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
+    this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
 }
 
 rtos_UIModelManager::~rtos_UIModelManager()
@@ -139,9 +139,8 @@ bool core_IncrementControlledModel::increment_value()
     if (value > max_value)
         value = (is_wrappable) ? min_value : max_value;
     if (value != previous_value)
-    {
         changed = true;
-    }
+
     return changed;
 }
 
@@ -153,9 +152,8 @@ bool core_IncrementControlledModel::decrement_value()
     if (value < min_value)
         value = (is_wrappable) ? max_value : min_value;
     if (value != previous_value)
-    {
         changed = true;
-    }
+
     return changed;
 }
 

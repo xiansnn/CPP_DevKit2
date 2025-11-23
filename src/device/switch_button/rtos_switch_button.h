@@ -181,6 +181,9 @@ protected:
     QueueHandle_t control_event_queue;
 
 public:
+    /// @brief the queue from which IRQ data are received
+    QueueHandle_t IRQdata_input_queue;
+    
     /**
      * @brief Construct a new rtos Switch Button object
      *
@@ -204,7 +207,4 @@ public:
      *
      */
     virtual void rtos_process_IRQ_event();
-    
-    /// @brief the queue from which IRQ data are received
-    QueueHandle_t IRQdata_input_queue;
 };

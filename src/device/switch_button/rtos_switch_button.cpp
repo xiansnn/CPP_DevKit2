@@ -27,7 +27,6 @@ rtos_SwitchButton::rtos_SwitchButton(uint gpio, gpio_irq_callback_t call_back, Q
     this->irq_event_mask_config = event_mask_config;
     gpio_set_irq_enabled_with_callback(gpio, irq_event_mask_config, true, call_back);
 
-    IRQdata_input_queue = xQueueCreate(3, sizeof(struct_SwitchButtonIRQData));
 }
 
 rtos_SwitchButton::~rtos_SwitchButton()

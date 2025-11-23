@@ -36,30 +36,25 @@ void my_IncrementalValueModel::process_control_event(struct_ControlEventData con
     switch (_event)
     {
     case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
-        printf("RELEASED_AFTER_SHORT_TIME->CntrlMdl[%s] status = %d, value = %d\n", this->get_name().c_str(), get_rtos_status(), get_value());
         this->notify_all_linked_widget_task();
         break;
     case UIControlEvent::LONG_PUSH:
 
         changed = this->set_clipped_value(0);
-        printf("LONG_PUSH->CntrlMdl[%s] status = %d, value = %d\n", this->get_name().c_str(), get_rtos_status(), get_value());
         if (changed)
             this->notify_all_linked_widget_task();
         break;
     case UIControlEvent::INCREMENT:
         changed = this->increment_value();
-        printf("INCREMENT->CntrlMdl[%s] status = %d, value = %d\n", this->get_name().c_str(), get_rtos_status(), get_value());
         if (changed)
             this->notify_all_linked_widget_task();
         break;
     case UIControlEvent::DECREMENT:
         changed = this->decrement_value();
-        printf("DECREMENT->CntrlMdl[%s] status = %d, value = %d\n", this->get_name().c_str(), get_rtos_status(), get_value());
         if (changed)
             this->notify_all_linked_widget_task();
         break;
     case UIControlEvent::TIME_OUT:
-        printf("TIME_OUT->CntrlMdl[%s] status = %d, value = %d\n", this->get_name().c_str(), get_rtos_status(), get_value());
     default:
         break;
     }

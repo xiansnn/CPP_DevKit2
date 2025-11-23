@@ -19,5 +19,4 @@ public:
     my_TestManager(bool is_wrapable = false);
     ~my_TestManager();
     void process_control_event(struct_ControlEventData control_event);
-    // void notify_current_active_managed_model( UIControlEvent _event);
 };
