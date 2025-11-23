@@ -13,7 +13,7 @@ struct_ConfigGraphicWidget default_cfg{
     .fg_color = ColorIndex::WHITE,
     .bg_color = ColorIndex::BLACK};
 
-my_IncrementalValueWidgetOnSerialMonitor::my_IncrementalValueWidgetOnSerialMonitor(rtos_PrinterDevice *my_printer, my_IncrementalValueModel *_actual_displayed_model)
+my_IncrementalValueWidgetOnSerialMonitor::my_IncrementalValueWidgetOnSerialMonitor(PrinterDevice *my_printer, my_IncrementalValueModel *_actual_displayed_model)
     : rtos_PrintWidget(my_printer, _actual_displayed_model)
 {
     int max_value = _actual_displayed_model->get_max_value();
@@ -28,7 +28,7 @@ my_IncrementalValueWidgetOnSerialMonitor::~my_IncrementalValueWidgetOnSerialMoni
 
 void my_IncrementalValueWidgetOnSerialMonitor::send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent)
 {
-    char *text = ((rtos_PrinterDevice *)this->display_device)->text_buffer;
+    char *text = ((PrinterDevice *)this->display_device)->text_buffer;
     xQueueSend(text_buffer_queue, &text, portMAX_DELAY); // take 65ms but used fully the CPU
     xSemaphoreTake(data_sent, portMAX_DELAY);
 }
@@ -74,7 +74,7 @@ int my_IncrementalValueWidgetOnSerialMonitor::value_to_char_position()
     return (char_position_slope * ((my_IncrementalValueModel *)this->actual_displayed_model)->get_value() + char_position_offset);
 }
 
-my_ManagerWidgetOnSerialMonitor::my_ManagerWidgetOnSerialMonitor(rtos_PrinterDevice *my_printer, rtos_UIModelManager *manager)
+my_ManagerWidgetOnSerialMonitor::my_ManagerWidgetOnSerialMonitor(PrinterDevice *my_printer, rtos_UIModelManager *manager)
     : rtos_PrintWidget(my_printer, manager)
 {
 }
@@ -85,7 +85,7 @@ my_ManagerWidgetOnSerialMonitor::~my_ManagerWidgetOnSerialMonitor()
 
 void my_ManagerWidgetOnSerialMonitor::send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent)
 {
-    char *text = ((rtos_PrinterDevice *)this->display_device)->text_buffer;
+    char *text = ((PrinterDevice *)this->display_device)->text_buffer;
     xQueueSend(text_buffer_queue, &text, portMAX_DELAY);
     xSemaphoreTake(data_sent, portMAX_DELAY);
 }

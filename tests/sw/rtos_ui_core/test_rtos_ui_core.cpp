@@ -39,16 +39,16 @@ std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::DECREMENT, "DECREMENT"},
     {UIControlEvent::TIME_OUT, "TIME_OUT"}};
 //----------------------------
-rtos_PrinterDevice my_serial_monitor = rtos_PrinterDevice(100, 1);
+PrinterDevice my_serial_monitor = PrinterDevice(100, 1);
 /// 2- create 3 incremental value object
 my_IncrementalValueModel value_0 = my_IncrementalValueModel("val0", 0, 5, true, 1);
 my_IncrementalValueModel value_1 = my_IncrementalValueModel("val1", 0, 10, false, 1);
 my_IncrementalValueModel value_2 = my_IncrementalValueModel("val2", -20, 3, false, 1);
 
 /// 3- create 3 serial terminal widget associated with incremental value objects.
-// my_IncrementalValueWidgetOnSerialMonitor value_0_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_0);
-// my_IncrementalValueWidgetOnSerialMonitor value_1_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_1);
-// my_IncrementalValueWidgetOnSerialMonitor value_2_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_2);
+my_IncrementalValueWidgetOnSerialMonitor value_0_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_0);
+my_IncrementalValueWidgetOnSerialMonitor value_1_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_1);
+my_IncrementalValueWidgetOnSerialMonitor value_2_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_2);
 
 QueueHandle_t text_buffer_queue = xQueueCreate(3, sizeof(char *));
 SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
@@ -57,7 +57,6 @@ void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask);
 
 //---------------my_TestManager manager------------------------------
 my_TestManager manager = my_TestManager(true);
-/// 5- create a widget for the manager
 my_ManagerWidgetOnSerialMonitor manager_widget = my_ManagerWidgetOnSerialMonitor(&my_serial_monitor, &manager);
 
 //-----KY040---------rtos_SwitchButton central_switch---------------------
@@ -125,13 +124,11 @@ void UI_control_event_manager_task(void *)
     manager.add_managed_rtos_model(&value_0);
     manager.add_managed_rtos_model(&value_1);
     manager.add_managed_rtos_model(&value_2);
-    // manager.update_attached_rtos_widget(&manager_widget);
+
     p1.hi();
-
     manager.notify_all_linked_widget_task();
-    printf("init manager ; manager status =%d, focus index = %d \n", manager.get_rtos_status(), manager.get_current_focus_index());
-
     p1.lo();
+
     struct_ControlEventData local_event_data;
 
     while (true)
@@ -147,7 +144,6 @@ void all_incremental_value_task(void *value_x)
 {
     struct_ControlEventData received_control_event;
     my_IncrementalValueModel *incremental_value_model = (my_IncrementalValueModel *)value_x;
-    // incremental_value_model.update_attached_rtos_widget(&value_2_widget);
     while (true)
     {
         xQueueReceive(incremental_value_model->control_event_input_queue, &received_control_event, portMAX_DELAY);
@@ -169,39 +165,18 @@ void manager_widget_task(void *)
     }
 }
 
-// void value_0_widget_task(void *)
-// {
-//     while (true)
-//     {
-//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-//         p4.hi();
-//         value_0_widget.draw();
-//         value_0_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-//         p4.lo();
-//     }
-// }
-// void value_1_widget_task(void *)
-// {
-//     while (true)
-//     {
-//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-//         p3.hi();
-//         value_1_widget.draw();
-//         value_1_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-//         p2.lo();
-//     }
-// }
-// void value_2_widget_task(void *)
-// {
-//     while (true)
-//     {
-//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-//         p6.hi();
-//         value_2_widget.draw();
-//         value_2_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-//         p6.lo();
-//     }
-// }
+void all_incremental_value_widget_task(void *value_widget)
+{
+    my_IncrementalValueWidgetOnSerialMonitor *incremental_value_widget = (my_IncrementalValueWidgetOnSerialMonitor *)value_widget;
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        p4.hi();
+        incremental_value_widget->draw();
+        // incremental_value_widget->send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+        p4.lo();
+    }
+}
 
 // void display_gate_keeper_task(void *probe)
 // {
@@ -233,9 +208,10 @@ int main()
     xTaskCreate(all_incremental_value_task, "value_2_task", 256, &value_2, 3, &value_2.task_handle);
 
     xTaskCreate(manager_widget_task, "manager_widget_task", 256, NULL, 2, &manager_widget.task_handle);
-    // xTaskCreate(value_0_widget_task, "value_0_widget_task", 256, NULL, 2, &value_0_widget.task_handle);
-    // xTaskCreate(value_1_widget_task, "value_1_widget_task", 256, NULL, 2, &value_1_widget.task_handle);
-    // xTaskCreate(value_2_widget_task, "value_2_widget_task", 256, NULL, 2, &value_2_widget.task_handle);
+
+    xTaskCreate(all_incremental_value_widget_task, "value_0_widget_task", 256, &value_0_widget, 2, &value_0_widget.task_handle);
+    xTaskCreate(all_incremental_value_widget_task, "value_1_widget_task", 256, &value_1_widget, 2, &value_1_widget.task_handle);
+    xTaskCreate(all_incremental_value_widget_task, "value_2_widget_task", 256, &value_2_widget, 2, &value_2_widget.task_handle);
 
     // xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, NULL, 6, NULL);
 

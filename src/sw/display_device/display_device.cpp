@@ -38,22 +38,3 @@ DisplayDevice::DisplayDevice()
 DisplayDevice::~DisplayDevice()
 {
 }
-
-rtos_PrinterDevice::rtos_PrinterDevice(size_t number_of_char_width, size_t number_of_char_hight)
-    : PrinterDevice(number_of_char_width, number_of_char_hight)
-{
-}
-
-rtos_PrinterDevice::~rtos_PrinterDevice()
-{
-}
-
-void rtos_PrinterDevice::show_from_display_queue(char* text_to_print)
-{
-    stdio_printf(text_to_print);
-}
-
-void rtos_PrinterDevice::direct_print(char *text_to_print)
-{
-    printf(text_to_print);
-}

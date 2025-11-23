@@ -117,15 +117,3 @@ public:
     /// @brief the method that actually print the content of text_buffer on the console
     virtual void show();
 };
-
-class rtos_PrinterDevice : public PrinterDevice
-{
-private:
-    /* data */
-public:
-    rtos_PrinterDevice(size_t number_of_char_width,
-                       size_t number_of_char_hight);
-    ~rtos_PrinterDevice();
-    void show_from_display_queue(char* text_to_print);
-    void direct_print(char * text_to_print);
-};
