@@ -13,6 +13,16 @@
 #include "pico/stdlib.h"
 #include "sw/widget/canvas.h"
 
+/// @brief Enumeration of display commands for display task management
+enum class DisplayCommand
+{
+    /// @brief Command to clear the screen
+    CLEAR_SCREEN,
+    /// @brief Command to show an image
+    SHOW_IMAGE
+};
+
+
 /// @brief A generic class for all display device
 /// \ingroup view
 class DisplayDevice
@@ -23,6 +33,22 @@ public:
     DisplayDevice(/* args */);
     virtual ~DisplayDevice();
 };
+
+/// @brief data structure used to queue data to send to the display task
+struct struct_DataToShow
+{
+    /// @brief the command to be executed by the display task
+    DisplayCommand command{DisplayCommand::SHOW_IMAGE};
+    /// @brief the display device
+    DisplayDevice *display = nullptr;
+    /// @brief the canvas to be displayed
+    Canvas *canvas = nullptr;
+    /// @brief the x anchor position of the canvas on the display
+    uint8_t anchor_x = 0;
+    /// @brief the y anchor position of the canvas on the display
+    uint8_t anchor_y = 0;
+};
+
 
 /// @brief This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen SSD1306).
 /// \ingroup view
@@ -64,29 +90,7 @@ public:
     virtual ~GraphicDisplayDevice();
 };
 
-/// @brief Enumeration of display commands for display task management
-enum class DisplayCommand
-{
-    /// @brief Command to clear the screen
-    CLEAR_SCREEN,
-    /// @brief Command to show an image
-    SHOW_IMAGE
-};
 
-/// @brief data structure used to queue data to send to the display task
-struct struct_DataToShow
-{
-    /// @brief the command to be executed by the display task
-    DisplayCommand command{DisplayCommand::SHOW_IMAGE};
-    /// @brief the display device
-    DisplayDevice *display = nullptr;
-    /// @brief the canvas to be displayed
-    Canvas *canvas = nullptr;
-    /// @brief the x anchor position of the canvas on the display
-    uint8_t anchor_x = 0;
-    /// @brief the y anchor position of the canvas on the display
-    uint8_t anchor_y = 0;
-};
 
 /**
  * @brief A class dedicated to pure text display such as console, printer, ASCII character line display
@@ -117,3 +121,13 @@ public:
     /// @brief the method that actually print the content of text_buffer on the console
     virtual void show();
 };
+
+class rtos_DisplayGateKeeper
+{
+private:
+    /* data */
+public:
+    rtos_DisplayGateKeeper(/* args */);
+    ~rtos_DisplayGateKeeper();
+};
+
