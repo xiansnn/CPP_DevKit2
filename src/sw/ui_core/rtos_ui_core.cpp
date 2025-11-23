@@ -113,10 +113,9 @@ void rtos_UIModelManager::add_managed_rtos_model(rtos_UIControlledModel *new_mod
     this->max_focus_index = managed_rtos_models.size() - 1;
 }
 
-void rtos_UIModelManager::notify_current_active_managed_model(UIControlEvent _event)
+void rtos_UIModelManager::forward_control_event_to_active_managed_model(struct_ControlEventData *control_event)
 {
-    TaskHandle_t handle = current_active_rtos_model->task_handle;
-    xTaskNotify(handle, (uint32_t)_event, eSetValueWithOverwrite);
+    xQueueSend(current_active_rtos_model->control_event_input_queue, control_event, portMAX_DELAY);
 }
 
 core_IncrementControlledModel::core_IncrementControlledModel(int min_value, int max_value, bool is_wrappable, int increment)

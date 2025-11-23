@@ -24,7 +24,7 @@ rtos_Widget::rtos_Widget(rtos_Model *actual_displayed_model, DisplayDevice *disp
     {
         this->actual_displayed_model = actual_displayed_model;
         this->actual_displayed_model->update_attached_rtos_widget(this);
-        actual_displayed_model->notify_all_linked_widget_task();
+        // actual_displayed_model->notify_all_linked_widget_task();
     }
 }
 

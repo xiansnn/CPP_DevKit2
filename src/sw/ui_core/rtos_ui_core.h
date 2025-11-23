@@ -79,7 +79,7 @@ public:
     void make_managed_rtos_model_active();
     void make_rtos_manager_active();
     void add_managed_rtos_model( rtos_UIControlledModel* new_model);
-    void notify_current_active_managed_model(UIControlEvent _event);
+    void forward_control_event_to_active_managed_model(struct_ControlEventData* control_event);
 };
 
 class core_IncrementControlledModel

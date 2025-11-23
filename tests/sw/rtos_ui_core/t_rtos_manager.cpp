@@ -31,7 +31,7 @@ void my_TestManager::process_control_event(struct_ControlEventData control_event
          (_event == UIControlEvent::DECREMENT))) // wake up manager
     {
         this->make_rtos_manager_active();
-        printf("[my_TestManager::process_control_event]manager wakeup\n");
+        printf("manager wakeup \n");
     }
     else if (this->current_active_rtos_model == this)
     {
@@ -39,20 +39,20 @@ void my_TestManager::process_control_event(struct_ControlEventData control_event
         {
         case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
             this->make_managed_rtos_model_active();
-            printf("[my_TestManager::process_control_event]manager is active, RELEASED_AFTER_SHORT_TIME\n");
-            this->notify_current_active_managed_model(_event);
+            printf("RELEASED_AFTER_SHORT_TIME->manager ; manager status =%d, focus index = %d \n", get_rtos_status(), this->get_current_focus_index());
+            this->forward_control_event_to_active_managed_model(&control_event);
             break;
         case UIControlEvent::INCREMENT:
             this->increment_focus();
-            printf("[my_TestManager::process_control_event]manager is active, INCREMENT focus [%d]\n", this->get_current_focus_index());
+            printf("INCREMENT->manager ; manager status =%d, focus index = %d \n", get_rtos_status(), this->get_current_focus_index());
             break;
         case UIControlEvent::DECREMENT:
             this->decrement_focus();
-            printf("[my_TestManager::process_control_event]manager is active, DECREMENT focus [%d]\n", this->get_current_focus_index());
+            printf("DECREMENT->manager ; manager status =%d, focus index = %d \n", get_rtos_status(), this->get_current_focus_index());
             break;
         case UIControlEvent::TIME_OUT:
             this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
-            printf("[my_TestManager::process_control_event]manager is active, TIME_OUT \n");
+            printf("TIME_OUT->manager ; manager status =%d, focus index = %d \n", get_rtos_status(), this->get_current_focus_index());
             break;
         default:
             break;
@@ -64,12 +64,11 @@ void my_TestManager::process_control_event(struct_ControlEventData control_event
         {
         case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
             this->make_rtos_manager_active();
-            printf("[my_TestManager::process_control_event]model(%d) is active, RELEASED_AFTER_SHORT_TIME\n", this->get_current_focus_index());
+            printf("RELEASED_AFTER_SHORT_TIME->manager becomes ACTIVE ; manager status =%d, focus index = %d\n ", get_rtos_status(), this->get_current_focus_index());
             break;
 
         default:
-            printf("[my_TestManager::process_control_event]model(%d) is active, default(%d)\n", this->get_current_focus_index(), _event);
-            this->notify_current_active_managed_model(_event);
+            this->forward_control_event_to_active_managed_model(&control_event);
             break;
         }
     }

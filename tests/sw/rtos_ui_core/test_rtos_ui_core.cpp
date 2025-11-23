@@ -58,7 +58,7 @@ void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask);
 //---------------my_TestManager manager------------------------------
 my_TestManager manager = my_TestManager(true);
 /// 5- create a widget for the manager
-// my_ManagerWidgetOnSerialMonitor manager_widget = my_ManagerWidgetOnSerialMonitor(&my_serial_monitor, &manager);
+my_ManagerWidgetOnSerialMonitor manager_widget = my_ManagerWidgetOnSerialMonitor(&my_serial_monitor, &manager);
 
 //-----KY040---------rtos_SwitchButton central_switch---------------------
 struct_rtosConfigSwitchButton cfg_central_switch{
@@ -125,11 +125,12 @@ void UI_control_event_manager_task(void *)
     manager.add_managed_rtos_model(&value_0);
     manager.add_managed_rtos_model(&value_1);
     manager.add_managed_rtos_model(&value_2);
-    // manager.update_attached_widgets(&manager_widget);
     // manager.update_attached_rtos_widget(&manager_widget);
     p1.hi();
-    // manager.draw_refresh_all_attached_widgets();
+
     manager.notify_all_linked_widget_task();
+    printf("init manager ; manager status =%d, focus index = %d \n", manager.get_rtos_status(), manager.get_current_focus_index());
+
     p1.lo();
     struct_ControlEventData local_event_data;
 
@@ -142,57 +143,32 @@ void UI_control_event_manager_task(void *)
     }
 };
 
-void value_0_task(void *)
+void all_incremental_value_task(void *value_x)
 {
-    struct_ControlEventData dummy_control_event;
-    // value_0.update_attached_rtos_widget(&value_0_widget);
+    struct_ControlEventData received_control_event;
+    my_IncrementalValueModel *incremental_value_model = (my_IncrementalValueModel *)value_x;
+    // incremental_value_model.update_attached_rtos_widget(&value_2_widget);
     while (true)
     {
-        uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p3.hi();
-        dummy_control_event.event = (UIControlEvent)event;
-        value_0.process_control_event(dummy_control_event);
-        p3.lo();
-    }
-}
-void value_1_task(void *)
-{
-    struct_ControlEventData dummy_control_event;
-    // value_1.update_attached_rtos_widget(&value_1_widget);
-    while (true)
-    {
-        uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p3.hi();
-        dummy_control_event.event = (UIControlEvent)event;
-        value_1.process_control_event(dummy_control_event);
-        p3.lo();
-    }
-}
-void value_2_task(void *)
-{
-    struct_ControlEventData dummy_control_event;
-    // value_2.update_attached_rtos_widget(&value_2_widget);
-    while (true)
-    {
-        uint32_t event = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p5.hi();
-        dummy_control_event.event = (UIControlEvent)event;
-        value_2.process_control_event(dummy_control_event);
-        p5.lo();
+        xQueueReceive(incremental_value_model->control_event_input_queue, &received_control_event, portMAX_DELAY);
+        p2.hi();
+        incremental_value_model->process_control_event(received_control_event);
+        p2.lo();
     }
 }
 
-// void manager_widget_task(void *)
-// {
-//     while (true)
-//     {
-//         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-//         p2.hi();
-//         manager_widget.draw();
-//         manager_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-//         p2.lo();
-//     }
-// }
+void manager_widget_task(void *)
+{
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        p3.hi();
+        manager_widget.draw();
+        // manager_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+        p3.lo();
+    }
+}
+
 // void value_0_widget_task(void *)
 // {
 //     while (true)
@@ -220,10 +196,10 @@ void value_2_task(void *)
 //     while (true)
 //     {
 //         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-//         p5.hi();
+//         p6.hi();
 //         value_2_widget.draw();
 //         value_2_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
-//         p5.lo();
+//         p6.lo();
 //     }
 // }
 
@@ -251,11 +227,12 @@ int main()
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 4, NULL);
 
     xTaskCreate(UI_control_event_manager_task, "UI_control_event_manager_task", 256, NULL, 3, &manager.task_handle);
-    xTaskCreate(value_0_task, "value_0_task", 256, NULL, 3, &value_0.task_handle);
-    xTaskCreate(value_1_task, "value_1_task", 256, NULL, 3, &value_1.task_handle);
-    xTaskCreate(value_2_task, "value_2_task", 256, NULL, 3, &value_2.task_handle);
 
-    // xTaskCreate(manager_widget_task, "manager_widget_task", 256, NULL, 2, &manager_widget.task_handle);
+    xTaskCreate(all_incremental_value_task, "value_0_task", 256, &value_0, 3, &value_0.task_handle);
+    xTaskCreate(all_incremental_value_task, "value_1_task", 256, &value_1, 3, &value_1.task_handle);
+    xTaskCreate(all_incremental_value_task, "value_2_task", 256, &value_2, 3, &value_2.task_handle);
+
+    xTaskCreate(manager_widget_task, "manager_widget_task", 256, NULL, 2, &manager_widget.task_handle);
     // xTaskCreate(value_0_widget_task, "value_0_widget_task", 256, NULL, 2, &value_0_widget.task_handle);
     // xTaskCreate(value_1_widget_task, "value_1_widget_task", 256, NULL, 2, &value_1_widget.task_handle);
     // xTaskCreate(value_2_widget_task, "value_2_widget_task", 256, NULL, 2, &value_2_widget.task_handle);
