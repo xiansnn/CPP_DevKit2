@@ -22,11 +22,18 @@ Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
 
-#define MAIN_TASK_PERIOD_ms 500
+#define SYSTEM_TIMEOUT_DELAY_ms 5000
 #define CENTRAL_SWITCH_GPIO 18
 #define ENCODER_CLK_GPIO 19
 #define ENCODER_DT_GPIO 20
 
+#define CENTRAL_SWITCH 0
+#define ENCODER 8
+#define CENTRAL_SWITCH_RELEASED_AFTER_SHORT_TIME (1UL << (CENTRAL_SWITCH + static_cast<int>(UIControlEvent::RELEASED_AFTER_SHORT_TIME)))
+#define CENTRAL_SWITCH_TIME_OUT (1UL << (CENTRAL_SWITCH + static_cast<int>(UIControlEvent::TIME_OUT)))
+#define ENCODER_INCREMENT (1UL << (ENCODER + static_cast<int>(UIControlEvent::INCREMENT)))
+#define ENCODER_DECREMENT (1UL << (ENCODER + static_cast<int>(UIControlEvent::DECREMENT)))
+#define ENCODER_TIME_OUT (1UL << (ENCODER + static_cast<int>(UIControlEvent::TIME_OUT)))
 //----------------------------------
 std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::NONE, "NONE"},
@@ -64,7 +71,7 @@ struct_rtosConfigSwitchButton cfg_central_switch{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
     .long_push_delay_ms = 1500,
-    .time_out_delay_ms = 5000};
+    .time_out_delay_ms = 1000};
 rtos_SwitchButton central_switch = rtos_SwitchButton(CENTRAL_SWITCH_GPIO,
                                                      &ky040_encoder_irq_call_back, manager.control_event_input_queue,
                                                      cfg_central_switch);
@@ -78,7 +85,7 @@ struct_rtosConfigSwitchButton cfg_encoder_clk{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
     .long_push_delay_ms = 1000,
-    .time_out_delay_ms = 5000};
+    .time_out_delay_ms = 1000};
 rtos_RotaryEncoder encoder = rtos_RotaryEncoder(ENCODER_CLK_GPIO, ENCODER_DT_GPIO,
                                                 &ky040_encoder_irq_call_back, manager.control_event_input_queue,
                                                 cfg_encoder_clk);
@@ -130,12 +137,24 @@ void UI_control_event_manager_task(void *)
     p1.lo();
 
     struct_ControlEventData local_event_data;
-
+    BaseType_t global_timeout_condtion;
     while (true)
     {
-        xQueueReceive(manager.control_event_input_queue, &local_event_data, portMAX_DELAY);
+        global_timeout_condtion = xQueueReceive(manager.control_event_input_queue, &local_event_data, SYSTEM_TIMEOUT_DELAY_ms);
         p1.hi();
-        manager.process_control_event(local_event_data);
+        if (global_timeout_condtion == errQUEUE_EMPTY)
+        {
+            p5.hi();
+            local_event_data.event = UIControlEvent::TIME_OUT;
+            manager.process_control_event(local_event_data);
+            p5.lo();
+        }
+        else if (local_event_data.event != UIControlEvent::TIME_OUT) // switch and encoder timout is replaced by a global timeout
+        {
+            p6.hi();
+            manager.process_control_event(local_event_data);
+            p6.lo();
+        }
         p1.lo();
     }
 };
@@ -178,19 +197,19 @@ void all_incremental_value_widget_task(void *value_widget)
     }
 }
 
-// void display_gate_keeper_task(void *probe)
-// {
-//     char *text_to_tprint;
+void display_gate_keeper_task(void *probe)
+{
+    char *text_to_tprint;
 
-//     while (true)
-//     {
-//         xQueueReceive(text_buffer_queue, &text_to_tprint, portMAX_DELAY);
-//         p7.hi();
-//         my_serial_monitor.show_from_display_queue(text_to_tprint);
-//         p7.lo();
-//         xSemaphoreGive(data_sent);
-//     }
-// }
+    while (true)
+    {
+        xQueueReceive(text_buffer_queue, &text_to_tprint, portMAX_DELAY);
+        // p7.hi();
+        // my_serial_monitor.show_from_display_queue(text_to_tprint);
+        // p7.lo();
+        xSemaphoreGive(data_sent);
+    }
+}
 
 int main()
 {

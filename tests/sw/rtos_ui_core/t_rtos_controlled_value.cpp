@@ -54,7 +54,6 @@ void my_IncrementalValueModel::process_control_event(struct_ControlEventData con
         if (changed)
             this->notify_all_linked_widget_task();
         break;
-    case UIControlEvent::TIME_OUT:
     default:
         break;
     }

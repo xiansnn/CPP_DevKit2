@@ -95,8 +95,8 @@ size_t rtos_UIModelManager::get_current_focus_index()
 
 void rtos_UIModelManager::make_managed_rtos_model_active()
 {
-    this->current_active_rtos_model = this->managed_rtos_models[this->current_focus_index];
     this->update_rtos_status(ControlledObjectStatus::IS_WAITING);
+    this->current_active_rtos_model = this->managed_rtos_models[this->current_focus_index];
     this->current_active_rtos_model->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
 }
 

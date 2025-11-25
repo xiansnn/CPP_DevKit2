@@ -13,6 +13,11 @@
 #include "pico/stdlib.h"
 #include "sw/widget/canvas.h"
 
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
+
 /// @brief Enumeration of display commands for display task management
 enum class DisplayCommand
 {
@@ -125,9 +130,84 @@ public:
 class rtos_DisplayGateKeeper
 {
 private:
-    /* data */
+    QueueHandle_t text_buffer_queue;  // char * si printdevice ou struct_DataToShow si graphic dispaly
+    SemaphoreHandle_t data_sent; //pour attendre la fin d'utilisation de la resource bus / display
 public:
     rtos_DisplayGateKeeper(/* args */);
     ~rtos_DisplayGateKeeper();
 };
+
+/*
+---------------------------------PrintDevice
+char *text_to_tprint;
+
+    while (true)
+    {
+        xQueueReceive(text_buffer_queue, &text_to_tprint, portMAX_DELAY);
+        p7.hi();
+        my_serial_monitor.show_from_display_queue(text_to_tprint);
+        p7.lo();
+        xSemaphoreGive(data_sent);
+    }
+--------------------SSD1306-------------------------------------------
+    struct_DataToShow received_data_to_show;
+
+    while (true)
+    {
+        xQueueReceive(display_data_queue, &received_data_to_show, portMAX_DELAY);
+        p4.hi();
+        switch (received_data_to_show.command)
+        {
+        case DisplayCommand::SHOW_IMAGE:
+            ((rtos_SSD1306 *)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
+            break;
+        case DisplayCommand::CLEAR_SCREEN:
+            ((rtos_SSD1306 *)received_data_to_show.display)->clear_device_screen_buffer();
+            break;
+        default:
+            break;
+        }
+
+        xSemaphoreGive(data_sent);
+        p4.lo();
+-----------------------SSD1306---------------------------
+    struct_SSD1306DataToShow received_data_to_show;
+
+    while (true)
+    {
+        xQueueReceive(display_data_queue, &received_data_to_show, portMAX_DELAY);
+        p4.hi();
+        ((rtos_SSD1306 *)received_data_to_show.display)->show_render_area(received_data_to_show.data_buffer, 
+                                        received_data_to_show.display_area, 
+                                        received_data_to_show.addressing_mode);
+        xSemaphoreGive(data_sent_to_I2C);
+        p4.lo();
+
+----------------------------ST7735---------------------------
+    struct_DataToShow received_data_to_show;
+
+    while (true)
+    {
+        xQueueReceive(display_queue_to_SPI, &received_data_to_show, portMAX_DELAY);
+        p4.hi();
+        switch (received_data_to_show.command)
+        {
+        case DisplayCommand::SHOW_IMAGE:
+            ((rtos_ST7735 *)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
+            break;
+        case DisplayCommand::CLEAR_SCREEN:
+            ((rtos_ST7735 *)received_data_to_show.display)->clear_device_screen_buffer();
+            break;
+        default:
+            break;
+        }
+
+        xSemaphoreGive(data_sent_to_SPI);
+
+        p4.lo();
+
+
+
+
+*/
 

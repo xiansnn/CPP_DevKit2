@@ -19,6 +19,7 @@
 #include "task.h"
 #include "queue.h"
 #include "semphr.h"
+#include "event_groups.h"
 
 #include <set>
 
@@ -53,7 +54,7 @@ protected:
 public:
     QueueHandle_t control_event_input_queue;
     std::vector<rtos_UIControlledModel *> managed_rtos_models;
-    rtos_UIControlledModel* current_active_rtos_model;
+    rtos_UIControlledModel *current_active_rtos_model;
     rtos_UIControlledModel();
     ~rtos_UIControlledModel();
     void update_rtos_status(ControlledObjectStatus _new_status);
@@ -78,8 +79,8 @@ public:
     size_t get_current_focus_index();
     void make_managed_rtos_model_active();
     void make_rtos_manager_active();
-    void add_managed_rtos_model( rtos_UIControlledModel* new_model);
-    void forward_control_event_to_active_managed_model(struct_ControlEventData* control_event);
+    void add_managed_rtos_model(rtos_UIControlledModel *new_model);
+    void forward_control_event_to_active_managed_model(struct_ControlEventData *control_event);
 };
 
 class core_IncrementControlledModel
@@ -96,6 +97,7 @@ protected:
     /// @brief If true, once the max (resp. min) value is reached, the next one wraps to min (resp*; max) value.
     /// If false values are clipped on min and max values.
     bool is_wrappable;
+
 public:
     /**
      * @brief Construct a new UIControlledIncrementalValue object
@@ -109,7 +111,7 @@ public:
     core_IncrementControlledModel(int min_value = 0, int max_value = 10, bool is_wrappable = false, int increment = 1);
     ~core_IncrementControlledModel();
 
-       /**
+    /**
      * @brief Add "increment" to the current value.
      *
      */
@@ -143,9 +145,4 @@ public:
      * @return int
      */
     int get_max_value();
-
 };
-
-
-
-
