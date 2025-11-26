@@ -65,8 +65,6 @@ void my_IncrementalValueWidgetOnSerialMonitor::draw()
     default:
         break;
     }
-    //====show
-    _display_device->show();
 }
 
 int my_IncrementalValueWidgetOnSerialMonitor::value_to_char_position()
@@ -99,6 +97,5 @@ void my_ManagerWidgetOnSerialMonitor::draw()
                        std::to_string(_actual_display_model->get_current_focus_index()) + "\n";
     //====draw
     sprintf(_display_device->text_buffer, text.c_str());
-    //====show
-    _display_device->show();
+
 }

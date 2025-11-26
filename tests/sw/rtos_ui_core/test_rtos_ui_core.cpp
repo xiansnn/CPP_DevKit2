@@ -22,18 +22,13 @@ Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
 
-#define SYSTEM_TIMEOUT_DELAY_ms 5000
+#define GLOBAL_TIMEOUT_DELAY_ms 5000
+#define SW_TIMEOUT_DELAY_ms 1000
+#define UI_MANAGER_TIMEOUT_DELAY_ms GLOBAL_TIMEOUT_DELAY_ms - SW_TIMEOUT_DELAY_ms
 #define CENTRAL_SWITCH_GPIO 18
 #define ENCODER_CLK_GPIO 19
 #define ENCODER_DT_GPIO 20
 
-#define CENTRAL_SWITCH 0
-#define ENCODER 8
-#define CENTRAL_SWITCH_RELEASED_AFTER_SHORT_TIME (1UL << (CENTRAL_SWITCH + static_cast<int>(UIControlEvent::RELEASED_AFTER_SHORT_TIME)))
-#define CENTRAL_SWITCH_TIME_OUT (1UL << (CENTRAL_SWITCH + static_cast<int>(UIControlEvent::TIME_OUT)))
-#define ENCODER_INCREMENT (1UL << (ENCODER + static_cast<int>(UIControlEvent::INCREMENT)))
-#define ENCODER_DECREMENT (1UL << (ENCODER + static_cast<int>(UIControlEvent::DECREMENT)))
-#define ENCODER_TIME_OUT (1UL << (ENCODER + static_cast<int>(UIControlEvent::TIME_OUT)))
 //----------------------------------
 std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::NONE, "NONE"},
@@ -45,14 +40,16 @@ std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::INCREMENT, "INCREMENT"},
     {UIControlEvent::DECREMENT, "DECREMENT"},
     {UIControlEvent::TIME_OUT, "TIME_OUT"}};
-//----------------------------
+
+//---------------Printer Device-------------
 PrinterDevice my_serial_monitor = PrinterDevice(100, 1);
-/// 2- create 3 incremental value object
+
+//---------------incremental value object--------------
 my_IncrementalValueModel value_0 = my_IncrementalValueModel("val0", 0, 5, true, 1);
 my_IncrementalValueModel value_1 = my_IncrementalValueModel("val1", 0, 10, false, 1);
 my_IncrementalValueModel value_2 = my_IncrementalValueModel("val2", -20, 3, false, 1);
 
-/// 3- create 3 serial terminal widget associated with incremental value objects.
+//---------------serial terminal widget associated with incremental value objects---------------------------
 my_IncrementalValueWidgetOnSerialMonitor value_0_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_0);
 my_IncrementalValueWidgetOnSerialMonitor value_1_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_1);
 my_IncrementalValueWidgetOnSerialMonitor value_2_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_2);
@@ -66,12 +63,13 @@ void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask);
 my_TestManager manager = my_TestManager(true);
 my_ManagerWidgetOnSerialMonitor manager_widget = my_ManagerWidgetOnSerialMonitor(&my_serial_monitor, &manager);
 
-//-----KY040---------rtos_SwitchButton central_switch---------------------
+//-----KY040---------
+//                   rtos_SwitchButton central_switch---------------------
 struct_rtosConfigSwitchButton cfg_central_switch{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
     .long_push_delay_ms = 1500,
-    .time_out_delay_ms = 1000};
+    .time_out_delay_ms = SW_TIMEOUT_DELAY_ms};
 rtos_SwitchButton central_switch = rtos_SwitchButton(CENTRAL_SWITCH_GPIO,
                                                      &ky040_encoder_irq_call_back, manager.control_event_input_queue,
                                                      cfg_central_switch);
@@ -79,13 +77,12 @@ void central_switch_process_irq_event_task(void *)
 {
     central_switch.rtos_process_IRQ_event();
 }
-
-//------KY040-------rtos_RotaryEncoder encoder-------------------------------
+//                   rtos_RotaryEncoder encoder-------------------------------
 struct_rtosConfigSwitchButton cfg_encoder_clk{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
     .long_push_delay_ms = 1000,
-    .time_out_delay_ms = 1000};
+    .time_out_delay_ms = SW_TIMEOUT_DELAY_ms};
 rtos_RotaryEncoder encoder = rtos_RotaryEncoder(ENCODER_CLK_GPIO, ENCODER_DT_GPIO,
                                                 &ky040_encoder_irq_call_back, manager.control_event_input_queue,
                                                 cfg_encoder_clk);
@@ -93,8 +90,7 @@ void encoder_process_irq_event_task(void *)
 {
     encoder.rtos_process_IRQ_event();
 }
-
-//------KY040 -------ky040_encoder_irq_call_back--------------------------------
+//                 ky040_encoder_irq_call_back--------------------------------
 void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask)
 {
     struct_SwitchButtonIRQData data;
@@ -140,20 +136,18 @@ void UI_control_event_manager_task(void *)
     BaseType_t global_timeout_condtion;
     while (true)
     {
-        global_timeout_condtion = xQueueReceive(manager.control_event_input_queue, &local_event_data, SYSTEM_TIMEOUT_DELAY_ms);
+        global_timeout_condtion = xQueueReceive(manager.control_event_input_queue,
+                                                &local_event_data,
+                                                ((manager.get_rtos_status() == ControlledObjectStatus::IS_IDLE) ? portMAX_DELAY : pdMS_TO_TICKS(UI_MANAGER_TIMEOUT_DELAY_ms)));
         p1.hi();
         if (global_timeout_condtion == errQUEUE_EMPTY)
         {
-            p5.hi();
             local_event_data.event = UIControlEvent::TIME_OUT;
             manager.process_control_event(local_event_data);
-            p5.lo();
         }
         else if (local_event_data.event != UIControlEvent::TIME_OUT) // switch and encoder timout is replaced by a global timeout
         {
-            p6.hi();
             manager.process_control_event(local_event_data);
-            p6.lo();
         }
         p1.lo();
     }
@@ -179,6 +173,7 @@ void manager_widget_task(void *)
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         p3.hi();
         manager_widget.draw();
+        ((PrinterDevice*)manager_widget.display_device)->show();
         // manager_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
         p3.lo();
     }
@@ -192,6 +187,7 @@ void all_incremental_value_widget_task(void *value_widget)
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         p4.hi();
         incremental_value_widget->draw();
+        ((PrinterDevice*)incremental_value_widget->display_device)->show();
         // incremental_value_widget->send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
         p4.lo();
     }
