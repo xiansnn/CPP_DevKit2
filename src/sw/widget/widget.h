@@ -498,6 +498,6 @@ public:
 /// @brief Construct a new Dummy Widget object
 /// @param display_device the pointer to the printer display device
 /// @param actual_displayed_model the pointer to the displayed model. Default to nullptr
-PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model = nullptr);
+PrintWidget(TerminalConsole *display_device, Model *actual_displayed_model = nullptr);
 virtual ~PrintWidget();
 };

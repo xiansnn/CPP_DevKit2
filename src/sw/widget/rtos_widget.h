@@ -76,7 +76,7 @@ class rtos_PrintWidget : public rtos_Widget
 private:
     /* data */
 public:
-    rtos_PrintWidget(PrinterDevice *display_device, rtos_Model *actual_displayed_model = nullptr);
+    rtos_PrintWidget(TerminalConsole *display_device, rtos_Model *actual_displayed_model = nullptr);
     ~rtos_PrintWidget();
 };
 

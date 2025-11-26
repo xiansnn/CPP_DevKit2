@@ -42,7 +42,7 @@ std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::TIME_OUT, "TIME_OUT"}};
 
 //---------------Printer Device-------------
-PrinterDevice my_serial_monitor = PrinterDevice(100, 1);
+TerminalConsole my_serial_monitor = TerminalConsole(100, 1);
 
 //---------------incremental value object--------------
 my_IncrementalValueModel value_0 = my_IncrementalValueModel("val0", 0, 5, true, 1);
@@ -173,7 +173,7 @@ void manager_widget_task(void *)
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         p3.hi();
         manager_widget.draw();
-        ((PrinterDevice*)manager_widget.display_device)->show();
+        ((TerminalConsole*)manager_widget.display_device)->show();
         // manager_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
         p3.lo();
     }
@@ -187,7 +187,7 @@ void all_incremental_value_widget_task(void *value_widget)
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         p4.hi();
         incremental_value_widget->draw();
-        ((PrinterDevice*)incremental_value_widget->display_device)->show();
+        ((TerminalConsole*)incremental_value_widget->display_device)->show();
         // incremental_value_widget->send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
         p4.lo();
     }

@@ -101,7 +101,7 @@ public:
  * @brief A class dedicated to pure text display such as console, printer, ASCII character line display
  * \ingroup view
  */
-class PrinterDevice : public DisplayDevice
+class TerminalConsole : public DisplayDevice
 {
 private:
 public:
@@ -119,23 +119,23 @@ public:
      * @param number_of_char_width
      * @param number_of_char_hight
      */
-    PrinterDevice(size_t number_of_char_width,
+    TerminalConsole(size_t number_of_char_width,
                   size_t number_of_char_hight);
-    virtual ~PrinterDevice();
+    virtual ~TerminalConsole();
 
     /// @brief the method that actually print the content of text_buffer on the console
     virtual void show();
 };
 
-class rtos_DisplayGateKeeper
-{
-private:
-    QueueHandle_t text_buffer_queue;  // char * si printdevice ou struct_DataToShow si graphic dispaly
-    SemaphoreHandle_t data_sent; //pour attendre la fin d'utilisation de la resource bus / display
-public:
-    rtos_DisplayGateKeeper(/* args */);
-    ~rtos_DisplayGateKeeper();
-};
+// class rtos_DisplayGateKeeper
+// {
+// private:
+//     QueueHandle_t text_buffer_queue;  // char * si printdevice ou struct_DataToShow si graphic dispaly
+//     SemaphoreHandle_t data_sent; //pour attendre la fin d'utilisation de la resource bus / display
+// public:
+//     rtos_DisplayGateKeeper(/* args */);
+//     ~rtos_DisplayGateKeeper();
+// };
 
 /*
 ---------------------------------PrintDevice

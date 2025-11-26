@@ -35,7 +35,7 @@ private:
 public:
     /// @brief Construct a new Test Cursor Widget With Incremental Value object
     /// @param _actual_displayed_object
-    my_IncrementalValueWidgetOnSerialMonitor(PrinterDevice *my_printer, my_IncrementalValueModel*_actual_displayed_object);
+    my_IncrementalValueWidgetOnSerialMonitor(TerminalConsole *my_printer, my_IncrementalValueModel*_actual_displayed_object);
 
     ~my_IncrementalValueWidgetOnSerialMonitor();
     void send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent);
@@ -52,7 +52,7 @@ public:
     /// @brief Construct a new MyManagerWidget object
     /// @param line_printer
     /// @param manager
-    my_ManagerWidgetOnSerialMonitor(PrinterDevice *my_printer, rtos_UIModelManager *manager);
+    my_ManagerWidgetOnSerialMonitor(TerminalConsole *my_printer, rtos_UIModelManager *manager);
 
     ~my_ManagerWidgetOnSerialMonitor();
     void send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent);

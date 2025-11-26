@@ -683,7 +683,7 @@ void Blinker::clear_blinking_phase_change()
     blink_phase_changed = false;
 }
 
-PrintWidget::PrintWidget(PrinterDevice *display_device, Model *actual_displayed_model)
+PrintWidget::PrintWidget(TerminalConsole *display_device, Model *actual_displayed_model)
     : Widget(actual_displayed_model, display_device)
 {
 }

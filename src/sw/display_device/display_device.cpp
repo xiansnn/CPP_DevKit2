@@ -12,7 +12,7 @@ GraphicDisplayDevice::~GraphicDisplayDevice()
 {
 }
 
-PrinterDevice::PrinterDevice(size_t number_of_char_width, size_t number_of_char_height)
+TerminalConsole::TerminalConsole(size_t number_of_char_width, size_t number_of_char_height)
 {
     this->number_of_line = number_of_char_height;
     this->number_of_column = number_of_char_width;
@@ -21,12 +21,12 @@ PrinterDevice::PrinterDevice(size_t number_of_char_width, size_t number_of_char_
     this->text_buffer = new char[text_buffer_size];
 }
 
-PrinterDevice::~PrinterDevice()
+TerminalConsole::~TerminalConsole()
 {
     delete[] this->text_buffer;
 }
 
-void PrinterDevice::show()
+void TerminalConsole::show()
 {
     stdio_printf(this->text_buffer);
 }

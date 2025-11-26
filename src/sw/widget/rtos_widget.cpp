@@ -36,7 +36,7 @@ void rtos_Widget::set_display_device(DisplayDevice *_new_display_device)
     this->display_device = _new_display_device;
 }
 
-rtos_PrintWidget::rtos_PrintWidget(PrinterDevice *display_device, rtos_Model *actual_displayed_model)
+rtos_PrintWidget::rtos_PrintWidget(TerminalConsole *display_device, rtos_Model *actual_displayed_model)
     : rtos_Widget(actual_displayed_model, display_device)
 {
 }

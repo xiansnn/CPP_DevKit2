@@ -86,7 +86,7 @@ int main()
     /// 1- setup serial terminal that uses printf().
     stdio_init_all();
 
-    PrinterDevice my_serial_monitor = PrinterDevice(100, 1);
+    TerminalConsole my_serial_monitor = TerminalConsole(100, 1);
 
     /// 2- create 3 incremental value object
     MyIncrementalValueModel value_0 = MyIncrementalValueModel("val0", 0, 5, true, 1);
