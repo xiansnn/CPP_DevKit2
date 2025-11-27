@@ -42,7 +42,7 @@ std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::TIME_OUT, "TIME_OUT"}};
 
 //---------------Printer Device-------------
-TerminalConsole my_serial_monitor = TerminalConsole(100, 1);
+my_TerminalConsole my_serial_monitor = my_TerminalConsole(100, 1);
 
 //---------------incremental value object--------------
 my_IncrementalValueModel value_0 = my_IncrementalValueModel("val0", 0, 5, true, 1);
@@ -54,8 +54,8 @@ my_IncrementalValueWidgetOnSerialMonitor value_0_widget = my_IncrementalValueWid
 my_IncrementalValueWidgetOnSerialMonitor value_1_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_1);
 my_IncrementalValueWidgetOnSerialMonitor value_2_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_2);
 
-QueueHandle_t text_buffer_queue = xQueueCreate(3, sizeof(char *));
-SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
+// QueueHandle_t console_line_buffer_queue = xQueueCreate(3, sizeof(char *)); // queue attached to a shared resource (here, the console line printer, could be I2C or SPI busses)
+// SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
 
 void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask);
 
@@ -138,14 +138,16 @@ void UI_control_event_manager_task(void *)
     {
         global_timeout_condtion = xQueueReceive(manager.control_event_input_queue,
                                                 &local_event_data,
-                                                ((manager.get_rtos_status() == ControlledObjectStatus::IS_IDLE) ? portMAX_DELAY : pdMS_TO_TICKS(UI_MANAGER_TIMEOUT_DELAY_ms)));
+                                                ((manager.get_rtos_status() == ControlledObjectStatus::IS_IDLE)
+                                                     ? portMAX_DELAY
+                                                     : pdMS_TO_TICKS(UI_MANAGER_TIMEOUT_DELAY_ms))); // switch and encoder timout is replaced by a global timeout
         p1.hi();
         if (global_timeout_condtion == errQUEUE_EMPTY)
         {
             local_event_data.event = UIControlEvent::TIME_OUT;
             manager.process_control_event(local_event_data);
         }
-        else if (local_event_data.event != UIControlEvent::TIME_OUT) // switch and encoder timout is replaced by a global timeout
+        else if (local_event_data.event != UIControlEvent::TIME_OUT) 
         {
             manager.process_control_event(local_event_data);
         }
@@ -173,8 +175,9 @@ void manager_widget_task(void *)
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         p3.hi();
         manager_widget.draw();
-        ((TerminalConsole*)manager_widget.display_device)->show();
-        // manager_widget.send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+        p3.lo();
+        p3.hi();
+        manager_widget.send_text_to_DisplayGateKeeper(my_serial_monitor.input_queue);
         p3.lo();
     }
 }
@@ -187,8 +190,9 @@ void all_incremental_value_widget_task(void *value_widget)
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         p4.hi();
         incremental_value_widget->draw();
-        ((TerminalConsole*)incremental_value_widget->display_device)->show();
-        // incremental_value_widget->send_text_to_DisplayGateKeeper(text_buffer_queue, data_sent);
+        p4.lo();
+        p4.hi();
+        incremental_value_widget->send_text_to_DisplayGateKeeper(my_serial_monitor.input_queue);
         p4.lo();
     }
 }
@@ -199,11 +203,10 @@ void display_gate_keeper_task(void *probe)
 
     while (true)
     {
-        xQueueReceive(text_buffer_queue, &text_to_tprint, portMAX_DELAY);
-        // p7.hi();
-        // my_serial_monitor.show_from_display_queue(text_to_tprint);
-        // p7.lo();
-        xSemaphoreGive(data_sent);
+        xQueueReceive(my_serial_monitor.input_queue, &text_to_tprint, portMAX_DELAY);
+        p7.hi();
+        my_serial_monitor.show_from_display_queue(text_to_tprint);
+        p7.lo();
     }
 }
 
@@ -213,22 +216,22 @@ int main()
 
     xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
 
-    xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 4, NULL);
-    xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 4, NULL);
+    xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 8, NULL);
+    xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 8, NULL);
 
-    xTaskCreate(UI_control_event_manager_task, "UI_control_event_manager_task", 256, NULL, 3, &manager.task_handle);
+    xTaskCreate(UI_control_event_manager_task, "UI_control_event_manager_task", 256, NULL, 2, &manager.task_handle);
 
     xTaskCreate(all_incremental_value_task, "value_0_task", 256, &value_0, 3, &value_0.task_handle);
     xTaskCreate(all_incremental_value_task, "value_1_task", 256, &value_1, 3, &value_1.task_handle);
     xTaskCreate(all_incremental_value_task, "value_2_task", 256, &value_2, 3, &value_2.task_handle);
 
-    xTaskCreate(manager_widget_task, "manager_widget_task", 256, NULL, 2, &manager_widget.task_handle);
+    xTaskCreate(manager_widget_task, "manager_widget_task", 256, NULL, 6, &manager_widget.task_handle);
 
-    xTaskCreate(all_incremental_value_widget_task, "value_0_widget_task", 256, &value_0_widget, 2, &value_0_widget.task_handle);
-    xTaskCreate(all_incremental_value_widget_task, "value_1_widget_task", 256, &value_1_widget, 2, &value_1_widget.task_handle);
-    xTaskCreate(all_incremental_value_widget_task, "value_2_widget_task", 256, &value_2_widget, 2, &value_2_widget.task_handle);
+    xTaskCreate(all_incremental_value_widget_task, "value_0_widget_task", 256, &value_0_widget, 6, &value_0_widget.task_handle);
+    xTaskCreate(all_incremental_value_widget_task, "value_1_widget_task", 256, &value_1_widget, 6, &value_1_widget.task_handle);
+    xTaskCreate(all_incremental_value_widget_task, "value_2_widget_task", 256, &value_2_widget, 6, &value_2_widget.task_handle);
 
-    // xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, NULL, 6, NULL);
+    xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, NULL, 10, NULL);
 
     vTaskStartScheduler();
 

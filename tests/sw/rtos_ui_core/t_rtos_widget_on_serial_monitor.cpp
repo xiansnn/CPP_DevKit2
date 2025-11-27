@@ -26,11 +26,11 @@ my_IncrementalValueWidgetOnSerialMonitor::~my_IncrementalValueWidgetOnSerialMoni
 {
 }
 
-void my_IncrementalValueWidgetOnSerialMonitor::send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent)
+void my_IncrementalValueWidgetOnSerialMonitor::send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue)
 {
     char *text = ((TerminalConsole *)this->display_device)->text_buffer;
     xQueueSend(text_buffer_queue, &text, portMAX_DELAY); // take 65ms but used fully the CPU
-    xSemaphoreTake(data_sent, portMAX_DELAY);
+
 }
 
 void my_IncrementalValueWidgetOnSerialMonitor::draw()
@@ -81,11 +81,10 @@ my_ManagerWidgetOnSerialMonitor::~my_ManagerWidgetOnSerialMonitor()
 {
 }
 
-void my_ManagerWidgetOnSerialMonitor::send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent)
+void my_ManagerWidgetOnSerialMonitor::send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue)
 {
     char *text = ((TerminalConsole *)this->display_device)->text_buffer;
     xQueueSend(text_buffer_queue, &text, portMAX_DELAY);
-    xSemaphoreTake(data_sent, portMAX_DELAY);
 }
 
 void my_ManagerWidgetOnSerialMonitor::draw()
@@ -97,5 +96,14 @@ void my_ManagerWidgetOnSerialMonitor::draw()
                        std::to_string(_actual_display_model->get_current_focus_index()) + "\n";
     //====draw
     sprintf(_display_device->text_buffer, text.c_str());
+}
 
+my_TerminalConsole::my_TerminalConsole(size_t number_of_char_width,
+                                       size_t number_of_char_hight)
+    : TerminalConsole(number_of_char_width, number_of_char_hight), rtos_TerminalConsole()
+{
+}
+
+my_TerminalConsole::~my_TerminalConsole()
+{
 }

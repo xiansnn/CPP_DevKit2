@@ -38,3 +38,39 @@ DisplayDevice::DisplayDevice()
 DisplayDevice::~DisplayDevice()
 {
 }
+
+rtos_DisplayDevice::rtos_DisplayDevice()
+{
+    this->display_device_mutex = xSemaphoreCreateMutex();
+}
+
+rtos_DisplayDevice::~rtos_DisplayDevice()
+{
+}
+
+rtos_GraphicDisplayDevice::rtos_GraphicDisplayDevice()
+    : rtos_DisplayDevice()
+{
+    this->input_queue = xQueueCreate(5, sizeof(struct_DataToShow));
+}
+
+rtos_GraphicDisplayDevice::~rtos_GraphicDisplayDevice()
+{
+}
+
+void rtos_TerminalConsole::show_from_display_queue(char *text_to_print)
+{
+    xSemaphoreTake(this->display_device_mutex,portMAX_DELAY);
+    stdio_printf(text_to_print);
+    xSemaphoreGive(this->display_device_mutex);
+}
+
+rtos_TerminalConsole::rtos_TerminalConsole()
+    : rtos_DisplayDevice()
+{
+    this->input_queue = xQueueCreate(5, sizeof(char *));
+}
+
+rtos_TerminalConsole::~rtos_TerminalConsole()
+{
+}

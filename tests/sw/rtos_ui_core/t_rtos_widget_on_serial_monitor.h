@@ -1,12 +1,12 @@
 /**
  * @file t_rtos_widget_on_serial_monitor.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-11-11
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 #pragma once
 
@@ -21,6 +21,15 @@
 #include "sw/display_device/display_device.h"
 #include "utilities/probe/probe.h"
 
+class my_TerminalConsole : public TerminalConsole, public rtos_TerminalConsole
+{
+private:
+    /* data */
+public:
+    my_TerminalConsole(size_t number_of_char_width,
+                       size_t number_of_char_hight);
+    ~my_TerminalConsole();
+};
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of test_IncrementalValue on the serial monitor
@@ -35,10 +44,10 @@ private:
 public:
     /// @brief Construct a new Test Cursor Widget With Incremental Value object
     /// @param _actual_displayed_object
-    my_IncrementalValueWidgetOnSerialMonitor(TerminalConsole *my_printer, my_IncrementalValueModel*_actual_displayed_object);
+    my_IncrementalValueWidgetOnSerialMonitor(TerminalConsole *my_printer, my_IncrementalValueModel *_actual_displayed_object);
 
     ~my_IncrementalValueWidgetOnSerialMonitor();
-    void send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent);
+    void send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue);
 
     void draw();
 };
@@ -55,20 +64,7 @@ public:
     my_ManagerWidgetOnSerialMonitor(TerminalConsole *my_printer, rtos_UIModelManager *manager);
 
     ~my_ManagerWidgetOnSerialMonitor();
-    void send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue, SemaphoreHandle_t data_sent);
+    void send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue);
 
     void draw();
 };
-
-
-
-
-
-
-
-
-
-
-
-
-

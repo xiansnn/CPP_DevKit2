@@ -27,7 +27,6 @@ enum class DisplayCommand
     SHOW_IMAGE
 };
 
-
 /// @brief A generic class for all display device
 /// \ingroup view
 class DisplayDevice
@@ -53,7 +52,6 @@ struct struct_DataToShow
     /// @brief the y anchor position of the canvas on the display
     uint8_t anchor_y = 0;
 };
-
 
 /// @brief This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen SSD1306).
 /// \ingroup view
@@ -95,8 +93,6 @@ public:
     virtual ~GraphicDisplayDevice();
 };
 
-
-
 /**
  * @brief A class dedicated to pure text display such as console, printer, ASCII character line display
  * \ingroup view
@@ -120,12 +116,48 @@ public:
      * @param number_of_char_hight
      */
     TerminalConsole(size_t number_of_char_width,
-                  size_t number_of_char_hight);
+                    size_t number_of_char_hight);
     virtual ~TerminalConsole();
 
     /// @brief the method that actually print the content of text_buffer on the console
     virtual void show();
+
+
 };
+
+class rtos_DisplayDevice
+{
+private:
+    /* data */
+public:
+    QueueHandle_t input_queue;
+    SemaphoreHandle_t display_device_mutex;
+    rtos_DisplayDevice(/* args */);
+    ~rtos_DisplayDevice();
+};
+class rtos_GraphicDisplayDevice :public rtos_DisplayDevice
+{
+private:
+    /* data */
+public:
+    rtos_GraphicDisplayDevice(/* args */);
+    ~rtos_GraphicDisplayDevice();
+};
+class rtos_TerminalConsole : public rtos_DisplayDevice
+{
+private:
+    /* data */
+public:
+    /// @brief the method to send text buffer to a queue
+    /// @param text_to_print
+    void show_from_display_queue(char *text_to_print);
+    rtos_TerminalConsole(/* args */);
+    ~rtos_TerminalConsole();
+};
+
+
+
+
 
 // class rtos_DisplayGateKeeper
 // {
@@ -177,8 +209,8 @@ char *text_to_tprint;
     {
         xQueueReceive(display_data_queue, &received_data_to_show, portMAX_DELAY);
         p4.hi();
-        ((rtos_SSD1306 *)received_data_to_show.display)->show_render_area(received_data_to_show.data_buffer, 
-                                        received_data_to_show.display_area, 
+        ((rtos_SSD1306 *)received_data_to_show.display)->show_render_area(received_data_to_show.data_buffer,
+                                        received_data_to_show.display_area,
                                         received_data_to_show.addressing_mode);
         xSemaphoreGive(data_sent_to_I2C);
         p4.lo();
@@ -210,4 +242,3 @@ char *text_to_tprint;
 
 
 */
-
