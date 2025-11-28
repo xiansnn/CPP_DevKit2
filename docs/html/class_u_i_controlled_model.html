@@ -113,7 +113,7 @@ Inheritance diagram for UIControlledModel:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_u_i_controlled_model__inherit__graph.png" border="0" usemap="#a_u_i_controlled_model_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_u_i_controlled_model_inherit__map" id="a_u_i_controlled_model_inherit__map">
-<area shape="rect" title="Class that adds UI Controller to the basic Model class." alt="" coords="131,264,454,437"/>
+<area shape="rect" title="Class that adds UI Controller to the basic Model class." alt="" coords="95,264,491,437"/>
 <area shape="rect" href="class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of Model that have special feature such as a value that ca..." alt="" coords="20,485,565,752"/>
 <area shape="poly" title=" " alt="" coords="295,452,295,485,290,485,290,452"/>
 <area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="153,5,433,216"/>
@@ -127,17 +127,17 @@ Collaboration diagram for UIControlledModel:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_u_i_controlled_model__coll__graph.png" border="0" usemap="#a_u_i_controlled_model_coll__map" alt="Collaboration graph"/></div>
 <map name="a_u_i_controlled_model_coll__map" id="a_u_i_controlled_model_coll__map">
-<area shape="rect" title="Class that adds UI Controller to the basic Model class." alt="" coords="5,264,328,437"/>
-<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="27,5,307,216"/>
-<area shape="poly" title=" " alt="" coords="169,231,169,264,164,264,164,231"/>
+<area shape="rect" title="Class that adds UI Controller to the basic Model class." alt="" coords="5,264,401,437"/>
+<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="63,5,343,216"/>
+<area shape="poly" title=" " alt="" coords="206,231,206,264,201,264,201,231"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4c95a5deec65814e1ea03d6340b8fd42" id="r_a4c95a5deec65814e1ea03d6340b8fd42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c95a5deec65814e1ea03d6340b8fd42">update_status</a> (<a class="el" href="ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112">ControlledObjectStatus</a> _new_status)</td></tr>
-<tr class="memdesc:a4c95a5deec65814e1ea03d6340b8fd42"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if the _new_status change is effective, then change it and set the change_flag to true.  <br /></td></tr>
-<tr class="separator:a4c95a5deec65814e1ea03d6340b8fd42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a7bf862fc49f7bc6d008480bc821567" id="r_a2a7bf862fc49f7bc6d008480bc821567"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a7bf862fc49f7bc6d008480bc821567">update_status</a> (<a class="el" href="ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112">ControlledObjectStatus</a> _new_status)</td></tr>
+<tr class="memdesc:a2a7bf862fc49f7bc6d008480bc821567"><td class="mdescLeft">&#160;</td><td class="mdescRight">update the status of the model object.  <br /></td></tr>
+<tr class="separator:a2a7bf862fc49f7bc6d008480bc821567"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4774f17bc60e1dba71a20f27c32dc4c6" id="r_a4774f17bc60e1dba71a20f27c32dc4c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4774f17bc60e1dba71a20f27c32dc4c6">update_current_controller</a> (<a class="el" href="class_u_i_controller.html">UIController</a> *_new_controller)</td></tr>
 <tr class="memdesc:a4774f17bc60e1dba71a20f27c32dc4c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">if _new_controller is different from the current controller, change the current controller associated to the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a>. the new controller has is member current_controlled_model also changed.  <br /></td></tr>
 <tr class="separator:a4774f17bc60e1dba71a20f27c32dc4c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,9 +147,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a278084ada7122332a7565046d081fe99" id="r_a278084ada7122332a7565046d081fe99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_u_i_controller.html">UIController</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a278084ada7122332a7565046d081fe99">get_current_controller</a> ()</td></tr>
 <tr class="memdesc:a278084ada7122332a7565046d081fe99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current controller object.  <br /></td></tr>
 <tr class="separator:a278084ada7122332a7565046d081fe99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a3ced43000940e31abe314ff6654ea8" id="r_a4a3ced43000940e31abe314ff6654ea8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a3ced43000940e31abe314ff6654ea8">process_control_event</a> (<a class="el" href="ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32">UIControlEvent</a> _event)=0</td></tr>
-<tr class="memdesc:a4a3ced43000940e31abe314ff6654ea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The purpose of this function is to implement the behavior of the implemented model object when a ControlEvent is received.  <br /></td></tr>
-<tr class="separator:a4a3ced43000940e31abe314ff6654ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a678d92a4921d4d5045cb800bd6e89800" id="r_a678d92a4921d4d5045cb800bd6e89800"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a678d92a4921d4d5045cb800bd6e89800">process_control_event</a> (<a class="el" href="structstruct___control_event_data.html">struct_ControlEventData</a> control_event)=0</td></tr>
+<tr class="memdesc:a678d92a4921d4d5045cb800bd6e89800"><td class="mdescLeft">&#160;</td><td class="mdescRight">pure virtual function that process a control event  <br /></td></tr>
+<tr class="separator:a678d92a4921d4d5045cb800bd6e89800"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_model"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_model')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_model.html">Model</a></td></tr>
 <tr class="memitem:ae3b375de5f6df4faf74a95d64748e048 inherit pub_methods_class_model" id="r_ae3b375de5f6df4faf74a95d64748e048"><td class="memItemLeft" align="right" valign="top">
 &#160;</td><td class="memItemRight" valign="bottom"><b>Model</b> ()</td></tr>
@@ -255,8 +255,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a4a3ced43000940e31abe314ff6654ea8" name="a4a3ced43000940e31abe314ff6654ea8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a3ced43000940e31abe314ff6654ea8">&#9670;&#160;</a></span>process_control_event()</h2>
+<a id="a678d92a4921d4d5045cb800bd6e89800" name="a678d92a4921d4d5045cb800bd6e89800"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a678d92a4921d4d5045cb800bd6e89800">&#9670;&#160;</a></span>process_control_event()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -267,7 +267,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">virtual void UIControlledModel::process_control_event </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32">UIControlEvent</a></td>          <td class="paramname"><span class="paramname"><em>_event</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structstruct___control_event_data.html">struct_ControlEventData</a></td>          <td class="paramname"><span class="paramname"><em>control_event</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -278,10 +278,10 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>The purpose of this function is to implement the behavior of the implemented model object when a ControlEvent is received. </p>
+<p>pure virtual function that process a control event </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_event</td><td></td></tr>
+    <tr><td class="paramname">control_event</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -323,14 +323,14 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a4c95a5deec65814e1ea03d6340b8fd42" name="a4c95a5deec65814e1ea03d6340b8fd42"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c95a5deec65814e1ea03d6340b8fd42">&#9670;&#160;</a></span>update_status()</h2>
+<a id="a2a7bf862fc49f7bc6d008480bc821567" name="a2a7bf862fc49f7bc6d008480bc821567"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a7bf862fc49f7bc6d008480bc821567">&#9670;&#160;</a></span>update_status()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void UIControlledModel::update_status </td>
+          <td class="memname">bool UIControlledModel::update_status </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112">ControlledObjectStatus</a></td>          <td class="paramname"><span class="paramname"><em>_new_status</em></span></td><td>)</td>
           <td></td>
@@ -338,19 +338,20 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>check if the _new_status change is effective, then change it and set the change_flag to true. </p>
+<p>update the status of the model object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">_new_status</td><td></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the status has vchanged </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_u_i_controlled_model_a4c95a5deec65814e1ea03d6340b8fd42_cgraph.png" border="0" usemap="#aclass_u_i_controlled_model_a4c95a5deec65814e1ea03d6340b8fd42_cgraph" alt=""/></div>
-<map name="aclass_u_i_controlled_model_a4c95a5deec65814e1ea03d6340b8fd42_cgraph" id="aclass_u_i_controlled_model_a4c95a5deec65814e1ea03d6340b8fd42_cgraph">
-<area shape="rect" title="check if the _new_status change is effective, then change it and set the change_flag to true." alt="" coords="5,5,192,30"/>
+<div class="center"><img src="class_u_i_controlled_model_a2a7bf862fc49f7bc6d008480bc821567_cgraph.png" border="0" usemap="#aclass_u_i_controlled_model_a2a7bf862fc49f7bc6d008480bc821567_cgraph" alt=""/></div>
+<map name="aclass_u_i_controlled_model_a2a7bf862fc49f7bc6d008480bc821567_cgraph" id="aclass_u_i_controlled_model_a2a7bf862fc49f7bc6d008480bc821567_cgraph">
+<area shape="rect" title="update the status of the model object." alt="" coords="5,5,192,30"/>
 <area shape="rect" href="class_model.html#a47406db888c07c179881ce00cbd3937f" title="Set the change flag object to true." alt="" coords="240,5,376,30"/>
 <area shape="poly" title=" " alt="" coords="192,15,224,15,224,20,192,20"/>
 </map>
@@ -358,9 +359,9 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_u_i_controlled_model_a4c95a5deec65814e1ea03d6340b8fd42_icgraph.png" border="0" usemap="#aclass_u_i_controlled_model_a4c95a5deec65814e1ea03d6340b8fd42_icgraph" alt=""/></div>
-<map name="aclass_u_i_controlled_model_a4c95a5deec65814e1ea03d6340b8fd42_icgraph" id="aclass_u_i_controlled_model_a4c95a5deec65814e1ea03d6340b8fd42_icgraph">
-<area shape="rect" title="check if the _new_status change is effective, then change it and set the change_flag to true." alt="" coords="544,55,730,79"/>
+<div class="center"><img src="class_u_i_controlled_model_a2a7bf862fc49f7bc6d008480bc821567_icgraph.png" border="0" usemap="#aclass_u_i_controlled_model_a2a7bf862fc49f7bc6d008480bc821567_icgraph" alt=""/></div>
+<map name="aclass_u_i_controlled_model_a2a7bf862fc49f7bc6d008480bc821567_icgraph" id="aclass_u_i_controlled_model_a2a7bf862fc49f7bc6d008480bc821567_icgraph">
+<area shape="rect" title="update the status of the model object." alt="" coords="544,55,730,79"/>
 <area shape="rect" href="class_u_i_model_manager.html#afab2077757a0cc37c9971e8eba5471ec" title="Construct a new UIModelManager object." alt="" coords="272,5,464,30"/>
 <area shape="poly" title=" " alt="" coords="550,54,439,33,440,28,551,49"/>
 <area shape="rect" href="class_u_i_model_manager.html#a167a525bfab97cddeff303c074f7cd75" title="change the status of model object under focus to IS_ACTIVE" alt="" coords="240,55,496,79"/>

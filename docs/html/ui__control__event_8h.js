@@ -1,6 +1,8 @@
 var ui__control__event_8h =
 [
+    [ "struct_ControlEventData", "structstruct___control_event_data.html", "structstruct___control_event_data" ],
     [ "ControlledObjectStatus", "ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112", [
+      [ "IS_IDLE", "ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112ad065241116a26d0db06c51e2adc552f8", null ],
       [ "IS_WAITING", "ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112a02ca6db02d1c43b09e875c6cc1f51aab", null ],
       [ "HAS_FOCUS", "ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112ac21f0eab1363c0a1274cd38acea090ac", null ],
       [ "IS_ACTIVE", "ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112a70d794d2a66b3ed4d2b0ff57d41b7089", null ]

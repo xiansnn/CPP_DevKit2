@@ -1,5 +1,31 @@
 var group__model =
 [
+    [ "rtos_Model", "classrtos___model.html", [
+      [ "rtos_Model", "classrtos___model.html#ade3c1808a9eb4979d47d6ccab615711d", null ],
+      [ "~rtos_Model", "classrtos___model.html#a12f5877eae3ec06e4c83c92776f0018f", null ],
+      [ "notify_all_linked_widget_task", "classrtos___model.html#a0d24766c16eaffebc86166dc1ce90583", null ],
+      [ "update_attached_rtos_widget", "classrtos___model.html#aa8e2df9fca0d73b8e11a22611e81eebe", null ],
+      [ "task_handle", "classrtos___model.html#a464e71170a383e439b36fd27a5e2c525", null ]
+    ] ],
+    [ "rtos_UIControlledModel", "classrtos___u_i_controlled_model.html", [
+      [ "get_rtos_status", "classrtos___u_i_controlled_model.html#a8c26abbc71484e4f08bb0a9ed2aefa16", null ],
+      [ "process_control_event", "classrtos___u_i_controlled_model.html#ae3967617bca1aead44fad93558498943", null ],
+      [ "update_rtos_status", "classrtos___u_i_controlled_model.html#adfdbebf7c1c5ca38078dd3bbd4e9c366", null ],
+      [ "control_event_input_queue", "classrtos___u_i_controlled_model.html#a94ff669a08622cfa731a0b8f7c523695", null ],
+      [ "current_active_rtos_model", "classrtos___u_i_controlled_model.html#a4bacfa4582381983fe4ca234af45c03d", null ],
+      [ "managed_rtos_models", "classrtos___u_i_controlled_model.html#ae65f82a56aa2398fe85e5686421394df", null ],
+      [ "rtos_status", "classrtos___u_i_controlled_model.html#a9ee6affa87b7608c0198a7737e76790d", null ]
+    ] ],
+    [ "rtos_UIModelManager", "classrtos___u_i_model_manager.html", [
+      [ "rtos_UIModelManager", "classrtos___u_i_model_manager.html#a502b16a41d769bcc0f5fe7379d988349", null ],
+      [ "add_managed_rtos_model", "classrtos___u_i_model_manager.html#a159bedb73ab154f81d16cc8e7bcfd88b", null ],
+      [ "decrement_focus", "classrtos___u_i_model_manager.html#afd83c3a8970423fe26a73395747787af", null ],
+      [ "forward_control_event_to_active_managed_model", "classrtos___u_i_model_manager.html#ae1c549be0513ca742b7b03b725397611", null ],
+      [ "get_current_focus_index", "classrtos___u_i_model_manager.html#afeac01b16f8c8d85f5dddde89c12e19f", null ],
+      [ "increment_focus", "classrtos___u_i_model_manager.html#ab5c3f700ccdbc8ccc64dfd83e3474ec8", null ],
+      [ "make_managed_rtos_model_active", "classrtos___u_i_model_manager.html#a3215edfd65425bc0cd427d1bf5daf4c7", null ],
+      [ "make_rtos_manager_active", "classrtos___u_i_model_manager.html#a089e4095f25dea9324e327ffd57c7b54", null ]
+    ] ],
     [ "Model", "class_model.html", [
       [ "Model", "class_model.html#ae3b375de5f6df4faf74a95d64748e048", null ],
       [ "~Model", "class_model.html#ad6ebd2062a0b823db841a0b88baac4c0", null ],
@@ -15,19 +41,19 @@ var group__model =
     [ "UIControlledModel", "class_u_i_controlled_model.html", [
       [ "get_current_controller", "class_u_i_controlled_model.html#a278084ada7122332a7565046d081fe99", null ],
       [ "get_status", "class_u_i_controlled_model.html#a30d8cff3d0e7637f2939c50c07f4a763", null ],
-      [ "process_control_event", "class_u_i_controlled_model.html#a4a3ced43000940e31abe314ff6654ea8", null ],
+      [ "process_control_event", "class_u_i_controlled_model.html#a678d92a4921d4d5045cb800bd6e89800", null ],
       [ "update_current_controller", "class_u_i_controlled_model.html#a4774f17bc60e1dba71a20f27c32dc4c6", null ],
-      [ "update_status", "class_u_i_controlled_model.html#a4c95a5deec65814e1ea03d6340b8fd42", null ]
+      [ "update_status", "class_u_i_controlled_model.html#a2a7bf862fc49f7bc6d008480bc821567", null ]
     ] ],
     [ "UIControlledIncrementalValue", "class_u_i_controlled_incremental_value.html", [
       [ "UIControlledIncrementalValue", "class_u_i_controlled_incremental_value.html#ac2186659f8715ff9822861415cd38cf7", null ],
       [ "~UIControlledIncrementalValue", "class_u_i_controlled_incremental_value.html#a012cebe64e294c16f901a55530a8b045", null ],
-      [ "decrement_value", "class_u_i_controlled_incremental_value.html#afd999667d7ae68a76cdea8dc062d3652", null ],
+      [ "decrement_value", "class_u_i_controlled_incremental_value.html#a06a89ec01ea3340d031d6adfe3bc1b99", null ],
       [ "get_max_value", "class_u_i_controlled_incremental_value.html#a21d6fb79b326dda133869372a38b9389", null ],
       [ "get_min_value", "class_u_i_controlled_incremental_value.html#a3f246a1b93e1fe11f45716b3ce9a7695", null ],
       [ "get_value", "class_u_i_controlled_incremental_value.html#a7989979c51969bb665d8539636eb9876", null ],
-      [ "increment_value", "class_u_i_controlled_incremental_value.html#a1f2e0d88e66e06576c00531c32cf8175", null ],
-      [ "set_clipped_value", "class_u_i_controlled_incremental_value.html#a428e1f2a8063a48f04ec45c4050af36d", null ],
+      [ "increment_value", "class_u_i_controlled_incremental_value.html#a4ae0f93a89da701b26f5e0a1da61543e", null ],
+      [ "set_clipped_value", "class_u_i_controlled_incremental_value.html#aa9a48d553c99c5bc4c632a87c5669989", null ],
       [ "increment", "class_u_i_controlled_incremental_value.html#a02a7a8031bd9fee1ecaabc5cbcac48c7", null ],
       [ "is_wrappable", "class_u_i_controlled_incremental_value.html#a73b3a10b2774cf4ce94902925ffc9ad9", null ],
       [ "max_value", "class_u_i_controlled_incremental_value.html#a502ecbf045c5f2b4d2015bad04611a7d", null ],

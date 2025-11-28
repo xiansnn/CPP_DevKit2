@@ -1,7 +1,6 @@
 var rtos__switch__button_8h =
 [
     [ "struct_SwitchButtonIRQData", "structstruct___switch_button_i_r_q_data.html", "structstruct___switch_button_i_r_q_data" ],
-    [ "struct_ControlEventData", "structstruct___control_event_data.html", "structstruct___control_event_data" ],
     [ "struct_rtosConfigSwitchButton", "structstruct__rtos_config_switch_button.html", "structstruct__rtos_config_switch_button" ],
     [ "DEBOUNCE_us", "rtos__switch__button_8h.html#a0eed6f3bf0d7d92034a08d90cb0ef58b", null ],
     [ "GPIO_HI", "rtos__switch__button_8h.html#a351026c5378d49b914fb52f066b99b9b", null ],

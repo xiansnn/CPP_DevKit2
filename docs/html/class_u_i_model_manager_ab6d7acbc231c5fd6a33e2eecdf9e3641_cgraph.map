@@ -10,7 +10,7 @@
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="170,127,280,147,279,153,169,132"/>
 <area shape="rect" id="Node000008" href="$class_u_i_controller.html#a9518d3fe3c15e58cd9b6c66be585a03c" title="if the current controlled object is different from _new_controlled_object, change the current control..." alt="" coords="240,203,490,227"/>
 <area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="121,127,174,157,241,187,269,196,268,201,239,192,172,162,119,131"/>
-<area shape="rect" id="Node000006" href="$class_u_i_controlled_model.html#a4c95a5deec65814e1ea03d6340b8fd42" title="check if the _new_status change is effective, then change it and set the change_flag to true." alt="" coords="538,153,724,178"/>
+<area shape="rect" id="Node000006" href="$class_u_i_controlled_model.html#a2a7bf862fc49f7bc6d008480bc821567" title="update the status of the model object." alt="" coords="538,153,724,178"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="475,163,523,163,523,168,475,168"/>
 <area shape="rect" id="Node000007" href="$class_model.html#a47406db888c07c179881ce00cbd3937f" title="Set the change flag object to true." alt="" coords="772,153,909,178"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="725,163,757,163,757,168,725,168"/>

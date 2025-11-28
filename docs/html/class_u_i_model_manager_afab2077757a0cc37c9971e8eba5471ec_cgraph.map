@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="Construct a new UIModelManager object." alt="" coords="5,31,197,55"/>
 <area shape="rect" id="Node000002" href="$class_u_i_controlled_incremental_value.html#ac2186659f8715ff9822861415cd38cf7" title="Construct a new UIControlledIncrementalValue object." alt="" coords="245,5,558,30"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,32,232,29,233,35,197,38"/>
-<area shape="rect" id="Node000003" href="$class_u_i_controlled_model.html#a4c95a5deec65814e1ea03d6340b8fd42" title="check if the _new_status change is effective, then change it and set the change_flag to true." alt="" coords="308,55,494,79"/>
+<area shape="rect" id="Node000003" href="$class_u_i_controlled_model.html#a2a7bf862fc49f7bc6d008480bc821567" title="update the status of the model object." alt="" coords="308,55,494,79"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,48,293,56,292,61,197,53"/>
 <area shape="rect" id="Node000004" href="$class_model.html#a47406db888c07c179881ce00cbd3937f" title="Set the change flag object to true." alt="" coords="606,55,742,79"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="495,64,591,64,591,70,495,70"/>

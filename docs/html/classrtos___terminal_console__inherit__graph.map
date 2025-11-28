@@ -1,0 +1,5 @@
+<map id="rtos_TerminalConsole" name="rtos_TerminalConsole">
+<area shape="rect" id="Node000001" title="The RTOS terminal console is the class for all text display devices that are managed by a dedicated d..." alt="" coords="5,152,279,251"/>
+<area shape="rect" id="Node000002" href="$classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="28,5,256,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,119,145,152,139,152,139,119"/>
+</map>

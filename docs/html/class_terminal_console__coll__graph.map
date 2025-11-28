@@ -1,0 +1,5 @@
+<map id="TerminalConsole" name="TerminalConsole">
+<area shape="rect" id="Node000001" title="A class dedicated to pure text display such as console, printer, ASCII character line display." alt="" coords="5,133,401,288"/>
+<area shape="rect" id="Node000002" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="135,5,271,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,101,206,133,201,133,201,101"/>
+</map>

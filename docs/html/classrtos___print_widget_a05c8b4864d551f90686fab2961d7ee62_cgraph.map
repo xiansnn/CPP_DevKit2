@@ -1,0 +1,7 @@
+<map id="rtos_PrintWidget::rtos_PrintWidget" name="rtos_PrintWidget::rtos_PrintWidget">
+<area shape="rect" id="Node000001" title="Construct a new RTOS Print Widget object." alt="" coords="5,5,197,30"/>
+<area shape="rect" id="Node000002" href="$classrtos___widget.html#ab30c453ca7a89fdc1b01f9271e80cbbd" title="constructor for RTOS widget" alt="" coords="245,5,392,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,15,229,15,229,20,197,20"/>
+<area shape="rect" id="Node000003" href="$classrtos___model.html#aa8e2df9fca0d73b8e11a22611e81eebe" title="link a new widget task to the model" alt="" coords="440,5,668,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="392,15,425,15,425,20,392,20"/>
+</map>

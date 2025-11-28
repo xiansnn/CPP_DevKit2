@@ -4,7 +4,7 @@
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="519,299,485,365,480,363,515,296"/>
 <area shape="rect" id="Node000005" href="$class_s_t7735.html" title="ST7735 driven TFT color display device." alt="" coords="596,332,1055,1005"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="615,296,635,331,631,334,610,298"/>
-<area shape="rect" id="Node000002" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="511,5,615,85"/>
+<area shape="rect" id="Node000002" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="495,5,631,85"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="565,100,565,134,560,134,560,100"/>
 <area shape="rect" id="Node000004" href="$classrtos___s_s_d1306.html" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,1053,549,1227"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="295,988,288,1054,283,1053,290,988"/>

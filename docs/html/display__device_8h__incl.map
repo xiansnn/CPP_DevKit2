@@ -1,9 +1,17 @@
 <map id="display_device.h" name="display_device.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="39,5,138,30"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="251,5,350,30"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,151,84,175"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,32,70,79,54,136,48,135,65,77,81,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="251,28,147,48,99,63,69,80,60,92,54,106,48,136,42,135,49,104,55,89,65,76,97,58,145,43,250,23"/>
 <area shape="rect" id="Node000003" href="$canvas_8h.html" title=" " alt="" coords="79,78,194,103"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="99,29,122,64,118,67,94,32"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="274,33,178,74,176,69,272,28"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="218,78,295,103"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="295,32,274,66,269,63,291,29"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="319,78,370,103"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="310,29,332,63,327,66,306,32"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="394,78,455,103"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="322,28,392,68,390,72,320,33"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="478,78,544,103"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="336,28,465,71,463,76,334,33"/>
 <area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="123,105,73,143,70,139,120,101"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="108,151,162,175"/>
 <area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="139,103,138,135,133,135,134,103"/>

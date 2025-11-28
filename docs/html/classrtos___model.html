@@ -101,33 +101,48 @@ $(function(){initNavTree('classrtos___model.html',''); initResizable(true); });
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classrtos___model-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">rtos_Model Class Reference</div></div>
+  <div class="headertitle"><div class="title">rtos_Model Class Reference<div class="ingroups"><a class="el" href="group__model.html">&quot;Model&quot;</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>RTOS wrapper for <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> class.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="rtos__ui__core_8h_source.html">rtos_ui_core.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for rtos_Model:</div>
+<div class="dyncontent">
+<div class="center"><img src="classrtos___model__inherit__graph.png" border="0" usemap="#artos___model_inherit__map" alt="Inheritance graph"/></div>
+<map name="artos___model_inherit__map" id="artos___model_inherit__map">
+<area shape="rect" title="RTOS wrapper for Model class." alt="" coords="85,5,417,123"/>
+<area shape="rect" href="classrtos___u_i_controlled_model.html" title="RTOS wrapper for UIControlledModel class." alt="" coords="53,171,449,363"/>
+<area shape="poly" title=" " alt="" coords="254,138,254,171,249,171,249,138"/>
+<area shape="rect" href="classrtos___u_i_model_manager.html" title="RTOS wrapper for UIModelManager class." alt="" coords="5,411,497,621"/>
+<area shape="poly" title=" " alt="" coords="254,378,254,411,249,411,249,378"/>
+</map>
+</div>
 <div class="dynheader">
 Collaboration diagram for rtos_Model:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___model__coll__graph.png" border="0" usemap="#artos___model_coll__map" alt="Collaboration graph"/></div>
 <map name="artos___model_coll__map" id="artos___model_coll__map">
-<area shape="rect" title=" " alt="" coords="25,278,265,395"/>
-<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,5,285,216"/>
-<area shape="poly" title=" " alt="" coords="148,216,148,261,143,261,143,216"/>
+<area shape="rect" title="RTOS wrapper for Model class." alt="" coords="5,5,337,123"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a162754d287d17a3c2837e151897adf85" id="r_a162754d287d17a3c2837e151897adf85"><td class="memItemLeft" align="right" valign="top"><a id="a162754d287d17a3c2837e151897adf85" name="a162754d287d17a3c2837e151897adf85"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>link_widget</b> (<a class="el" href="classrtos___widget.html">rtos_Widget</a> *linked_widget)</td></tr>
-<tr class="memdesc:a162754d287d17a3c2837e151897adf85"><td class="mdescLeft">&#160;</td><td class="mdescRight">link a new widget task to the model <br /></td></tr>
-<tr class="separator:a162754d287d17a3c2837e151897adf85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8e2df9fca0d73b8e11a22611e81eebe" id="r_aa8e2df9fca0d73b8e11a22611e81eebe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8e2df9fca0d73b8e11a22611e81eebe">update_attached_rtos_widget</a> (<a class="el" href="classrtos___widget.html">rtos_Widget</a> *linked_widget)</td></tr>
+<tr class="memdesc:aa8e2df9fca0d73b8e11a22611e81eebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">link a new widget task to the model  <br /></td></tr>
+<tr class="separator:aa8e2df9fca0d73b8e11a22611e81eebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d24766c16eaffebc86166dc1ce90583" id="r_a0d24766c16eaffebc86166dc1ce90583"><td class="memItemLeft" align="right" valign="top"><a id="a0d24766c16eaffebc86166dc1ce90583" name="a0d24766c16eaffebc86166dc1ce90583"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>notify_all_linked_widget_task</b> ()</td></tr>
 <tr class="memdesc:a0d24766c16eaffebc86166dc1ce90583"><td class="mdescLeft">&#160;</td><td class="mdescRight">notify all linked widget tasks that the model has changed <br /></td></tr>
 <tr class="separator:a0d24766c16eaffebc86166dc1ce90583"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c27f9193c8c80bedca94cd2e2ca9d99" id="r_a5c27f9193c8c80bedca94cd2e2ca9d99"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c27f9193c8c80bedca94cd2e2ca9d99">rtos_Model</a> (<a class="el" href="class_model.html">Model</a> *<a class="el" href="#a798160ea844e667af34e2d929c39cba3">model</a>=nullptr)</td></tr>
-<tr class="memdesc:a5c27f9193c8c80bedca94cd2e2ca9d99"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for RTOS model  <br /></td></tr>
-<tr class="separator:a5c27f9193c8c80bedca94cd2e2ca9d99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade3c1808a9eb4979d47d6ccab615711d" id="r_ade3c1808a9eb4979d47d6ccab615711d"><td class="memItemLeft" align="right" valign="top"><a id="ade3c1808a9eb4979d47d6ccab615711d" name="ade3c1808a9eb4979d47d6ccab615711d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>rtos_Model</b> ()</td></tr>
+<tr class="memdesc:ade3c1808a9eb4979d47d6ccab615711d"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for RTOS model <br /></td></tr>
+<tr class="separator:ade3c1808a9eb4979d47d6ccab615711d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12f5877eae3ec06e4c83c92776f0018f" id="r_a12f5877eae3ec06e4c83c92776f0018f"><td class="memItemLeft" align="right" valign="top"><a id="a12f5877eae3ec06e4c83c92776f0018f" name="a12f5877eae3ec06e4c83c92776f0018f"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~rtos_Model</b> ()</td></tr>
 <tr class="memdesc:a12f5877eae3ec06e4c83c92776f0018f"><td class="mdescLeft">&#160;</td><td class="mdescRight">destructor for RTOS model <br /></td></tr>
@@ -135,34 +150,48 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>notify_all_linked_wid
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a798160ea844e667af34e2d929c39cba3" id="r_a798160ea844e667af34e2d929c39cba3"><td class="memItemLeft" align="right" valign="top"><a id="a798160ea844e667af34e2d929c39cba3" name="a798160ea844e667af34e2d929c39cba3"></a>
-<a class="el" href="class_model.html">Model</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>model</b></td></tr>
-<tr class="memdesc:a798160ea844e667af34e2d929c39cba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the actual model <br /></td></tr>
-<tr class="separator:a798160ea844e667af34e2d929c39cba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a464e71170a383e439b36fd27a5e2c525" id="r_a464e71170a383e439b36fd27a5e2c525"><td class="memItemLeft" align="right" valign="top"><a id="a464e71170a383e439b36fd27a5e2c525" name="a464e71170a383e439b36fd27a5e2c525"></a>
+TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>task_handle</b></td></tr>
+<tr class="memdesc:a464e71170a383e439b36fd27a5e2c525"><td class="mdescLeft">&#160;</td><td class="mdescRight">the task handle of the model task <br /></td></tr>
+<tr class="separator:a464e71170a383e439b36fd27a5e2c525"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a5c27f9193c8c80bedca94cd2e2ca9d99" name="a5c27f9193c8c80bedca94cd2e2ca9d99"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c27f9193c8c80bedca94cd2e2ca9d99">&#9670;&#160;</a></span>rtos_Model()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>RTOS wrapper for <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> class. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa8e2df9fca0d73b8e11a22611e81eebe" name="aa8e2df9fca0d73b8e11a22611e81eebe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8e2df9fca0d73b8e11a22611e81eebe">&#9670;&#160;</a></span>update_attached_rtos_widget()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">rtos_Model::rtos_Model </td>
+          <td class="memname">void rtos_Model::update_attached_rtos_widget </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_model.html">Model</a> *</td>          <td class="paramname"><span class="paramname"><em>model</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classrtos___widget.html">rtos_Widget</a> *</td>          <td class="paramname"><span class="paramname"><em>linked_widget</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>constructor for RTOS model </p>
+<p>link a new widget task to the model </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">model</td><td>pointer to the actual model </td></tr>
+    <tr><td class="paramname">linked_widget</td><td>the widget to be linked </td></tr>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classrtos___model_aa8e2df9fca0d73b8e11a22611e81eebe_icgraph.png" border="0" usemap="#aclassrtos___model_aa8e2df9fca0d73b8e11a22611e81eebe_icgraph" alt=""/></div>
+<map name="aclassrtos___model_aa8e2df9fca0d73b8e11a22611e81eebe_icgraph" id="aclassrtos___model_aa8e2df9fca0d73b8e11a22611e81eebe_icgraph">
+<area shape="rect" title="link a new widget task to the model" alt="" coords="440,5,668,30"/>
+<area shape="rect" href="classrtos___widget.html#ab30c453ca7a89fdc1b01f9271e80cbbd" title="constructor for RTOS widget" alt="" coords="245,5,392,30"/>
+<area shape="poly" title=" " alt="" coords="425,20,393,20,393,15,425,15"/>
+<area shape="rect" href="classrtos___print_widget.html#a05c8b4864d551f90686fab2961d7ee62" title="Construct a new RTOS Print Widget object." alt="" coords="5,5,197,30"/>
+<area shape="poly" title=" " alt="" coords="229,20,197,20,197,15,229,15"/>
+</map>
+</div>
 
 </div>
 </div>

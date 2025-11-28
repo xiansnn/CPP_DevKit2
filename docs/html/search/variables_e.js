@@ -21,6 +21,5 @@ var searchData=
   ['st7735_5fdevice_5frow_5foffset_18',['ST7735_device_row_offset',['../class_s_t7735.html#a9c6da7953bf51ef46e1da1c97e6625a8',1,'ST7735']]],
   ['start_5fcol_19',['start_col',['../structstruct___render_area.html#aaf82ae38396397c4c819495ea98f7bbe',1,'struct_RenderArea']]],
   ['start_5fpage_20',['start_page',['../structstruct___render_area.html#ad3cf4c69b7461c68c5ad187e11362467',1,'struct_RenderArea']]],
-  ['switch_5fbutton_5fqueue_21',['switch_button_queue',['../classrtos___switch_button.html#acd970e5d886585887d1cbce1987e22d2',1,'rtos_SwitchButton']]],
-  ['sync_5fpin_22',['sync_pin',['../structstruct___config_s_g90.html#a1adfe8bff0e581ebf86b11dd97d7153c',1,'struct_ConfigSG90']]]
+  ['sync_5fpin_21',['sync_pin',['../structstruct___config_s_g90.html#a1adfe8bff0e581ebf86b11dd97d7153c',1,'struct_ConfigSG90']]]
 ];

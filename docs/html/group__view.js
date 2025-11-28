@@ -74,13 +74,13 @@ var group__view =
       [ "TFT_panel_height_in_pixel", "class_graphic_display_device.html#abd9cfe94e10ec94698fa796c0dc9da41", null ],
       [ "TFT_panel_width_in_pixel", "class_graphic_display_device.html#a774a0026a9d21f19c88612f07bcc13ba", null ]
     ] ],
-    [ "PrinterDevice", "class_printer_device.html", [
-      [ "PrinterDevice", "class_printer_device.html#a267186858ec794b04363b495bb9e5816", null ],
-      [ "show", "class_printer_device.html#ac36519bc40779e67778c59d8c6877b77", null ],
-      [ "number_of_column", "class_printer_device.html#aca372413990e542237a9435fd6abd270", null ],
-      [ "number_of_line", "class_printer_device.html#a902ed740216a00839529aa34eddc8a28", null ],
-      [ "text_buffer", "class_printer_device.html#a49e0129f9f7661fa416c9cfe84f6b9b0", null ],
-      [ "text_buffer_size", "class_printer_device.html#a345d45067c1316ac131c01fdb205d6c7", null ]
+    [ "TerminalConsole", "class_terminal_console.html", [
+      [ "TerminalConsole", "class_terminal_console.html#abc419f74fb85be46f8c2a08f760e72aa", null ],
+      [ "show", "class_terminal_console.html#a2426c3eae3866643635104561c3ae923", null ],
+      [ "number_of_column", "class_terminal_console.html#ab139a7fa6b3c9f6d5b5de5028b99afc6", null ],
+      [ "number_of_line", "class_terminal_console.html#a4f74a6ee94951c5066e252e93f2df528", null ],
+      [ "text_buffer", "class_terminal_console.html#adac7691c7a30beeb24e9f5667c936a7a", null ],
+      [ "text_buffer_size", "class_terminal_console.html#a8bce719eefd4e2d03329278d3031ab4c", null ]
     ] ],
     [ "Canvas", "class_canvas.html", [
       [ "Canvas", "class_canvas.html#a61d9d2f38baad8abbee82fb5d8fee291", null ],
@@ -118,6 +118,21 @@ var group__view =
       [ "CanvasHMSB", "class_canvas_h_m_s_b.html#a4e1880c5b1238297ce9d1beaa5f4a8b9", null ],
       [ "draw_pixel", "class_canvas_h_m_s_b.html#a04c0a63d53d9c0db1495827b9fffc79a", null ],
       [ "fill_canvas_with_color", "class_canvas_h_m_s_b.html#a3cf926a9e0d6e6d46aaf755370c9c455", null ]
+    ] ],
+    [ "rtos_Widget", "classrtos___widget.html", [
+      [ "rtos_Widget", "classrtos___widget.html#ab30c453ca7a89fdc1b01f9271e80cbbd", null ],
+      [ "~rtos_Widget", "classrtos___widget.html#a8ae178f2dc1a943df4d7291cc7d6fefe", null ],
+      [ "draw", "classrtos___widget.html#a5c7e7ccb2e74f70769c59a7adfa75352", null ],
+      [ "send_clear_device_command", "classrtos___widget.html#a2ed80983f6b863cef88c42c7040993d3", null ],
+      [ "send_image_to_DisplayGateKeeper", "classrtos___widget.html#aa5629b52bbeb6f5c80325bfa7baa170f", null ],
+      [ "set_display_device", "classrtos___widget.html#a48fd0b524a1c4f5f40b5d38a04c62c70", null ],
+      [ "actual_displayed_model", "classrtos___widget.html#a02b53ed96661e0b4a33ee4bcef4cfd30", null ],
+      [ "data_to_display", "classrtos___widget.html#aebb2efd0f14611086b4ca974c34594b5", null ],
+      [ "display_device", "classrtos___widget.html#a8db5440151d8ec60de6c670dd238c475", null ],
+      [ "task_handle", "classrtos___widget.html#a87d161b1078bc3aa5380703cfdd8c5a8", null ]
+    ] ],
+    [ "rtos_PrintWidget", "classrtos___print_widget.html", [
+      [ "rtos_PrintWidget", "classrtos___print_widget.html#a05c8b4864d551f90686fab2961d7ee62", null ]
     ] ],
     [ "Blinker", "class_blinker.html", [
       [ "clear_blinking_phase_change", "class_blinker.html#ae6a97a7779716d6a9a4954e9491d2985", null ],
@@ -184,7 +199,7 @@ var group__view =
       [ "text_buffer_size", "class_text_widget.html#adfd92491668798cee817a5964823a411", null ]
     ] ],
     [ "PrintWidget", "class_print_widget.html", [
-      [ "PrintWidget", "class_print_widget.html#a7d6894663d351fb3c71235115faf86da", null ]
+      [ "PrintWidget", "class_print_widget.html#af495fd2db88a95de2d354bb91ed6a04e", null ]
     ] ],
     [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html", [
       [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html#a63ba4fb58b7c9059e80fcc051b97c663", null ],

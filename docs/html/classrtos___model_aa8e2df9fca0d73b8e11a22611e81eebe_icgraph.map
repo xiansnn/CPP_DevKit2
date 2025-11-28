@@ -1,0 +1,7 @@
+<map id="rtos_Model::update_attached_rtos_widget" name="rtos_Model::update_attached_rtos_widget">
+<area shape="rect" id="Node000001" title="link a new widget task to the model" alt="" coords="440,5,668,30"/>
+<area shape="rect" id="Node000002" href="$classrtos___widget.html#ab30c453ca7a89fdc1b01f9271e80cbbd" title="constructor for RTOS widget" alt="" coords="245,5,392,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="425,20,393,20,393,15,425,15"/>
+<area shape="rect" id="Node000003" href="$classrtos___print_widget.html#a05c8b4864d551f90686fab2961d7ee62" title="Construct a new RTOS Print Widget object." alt="" coords="5,5,197,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="229,20,197,20,197,15,229,15"/>
+</map>

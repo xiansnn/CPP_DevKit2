@@ -1,5 +1,5 @@
 <map id="UIControlledModel" name="UIControlledModel">
-<area shape="rect" id="Node000001" title="Class that adds UI Controller to the basic Model class." alt="" coords="5,264,328,437"/>
-<area shape="rect" id="Node000002" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="27,5,307,216"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,231,169,264,164,264,164,231"/>
+<area shape="rect" id="Node000001" title="Class that adds UI Controller to the basic Model class." alt="" coords="5,264,401,437"/>
+<area shape="rect" id="Node000002" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="63,5,343,216"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,231,206,264,201,264,201,231"/>
 </map>

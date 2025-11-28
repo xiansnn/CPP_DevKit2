@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="This is an Abstract class that is used to implement the manager of object on a screen." alt="" coords="5,804,580,996"/>
 <area shape="rect" id="Node000002" href="$class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of Model that have special feature such as a value that ca..." alt="" coords="416,488,961,755"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="488,765,430,806,427,802,485,761"/>
-<area shape="rect" id="Node000003" href="$class_u_i_controlled_model.html" title="Class that adds UI Controller to the basic Model class." alt="" coords="131,265,454,439"/>
+<area shape="rect" id="Node000003" href="$class_u_i_controlled_model.html" title="Class that adds UI Controller to the basic Model class." alt="" coords="95,265,491,439"/>
 <area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="293,439,292,488,292,755,293,787,287,787,287,755,287,488,288,438"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="433,444,494,486,491,490,430,449"/>
 <area shape="rect" id="Node000004" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="153,5,433,216"/>

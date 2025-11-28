@@ -1,9 +1,9 @@
 <map id="Widget" name="Widget">
-<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="1379,5,1921,216"/>
+<area shape="rect" id="Node000001" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="1381,5,1924,216"/>
 <area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="1101,264,1676,780"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1578,230,1555,266,1550,263,1573,227"/>
-<area shape="rect" id="Node000010" href="$class_print_widget.html" title="A widget used when we need to simply print but still want to take advantage of the status change mana..." alt="" coords="1700,482,2123,562"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1727,227,1889,481,1884,483,1722,230"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1580,230,1557,266,1552,263,1575,227"/>
+<area shape="rect" id="Node000010" href="$class_print_widget.html" title="A widget used when we need to simply print but still want to take advantage of the status change mana..." alt="" coords="1700,482,2136,562"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1730,227,1895,481,1891,483,1726,230"/>
 <area shape="rect" id="Node000003" href="$class_text_widget.html" title="a dedicated class for text frame only" alt="" coords="5,828,580,1236"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1088,623,843,716,716,771,594,830,581,837,578,833,591,826,714,766,841,711,1086,618"/>
 <area shape="rect" id="Node000004" href="$class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="604,966,1107,1098"/>

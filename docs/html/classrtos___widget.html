@@ -100,62 +100,173 @@ $(function(){initNavTree('classrtos___widget.html',''); initResizable(true); });
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classrtos___widget-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">rtos_Widget Class Reference</div></div>
+  <div class="headertitle"><div class="title">rtos_Widget Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span><div class="ingroups"><a class="el" href="group__view.html">&quot;View&quot;</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
 <p>RTOS wrapper for <a class="el" href="class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW...">Widget</a> class.  
  <a href="#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="rtos__ui__core_8h_source.html">rtos_ui_core.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="rtos__widget_8h_source.html">rtos_widget.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for rtos_Widget:</div>
+<div class="dyncontent">
+<div class="center"><img src="classrtos___widget__inherit__graph.png" border="0" usemap="#artos___widget_inherit__map" alt="Inheritance graph"/></div>
+<map name="artos___widget_inherit__map" id="artos___widget_inherit__map">
+<area shape="rect" title="RTOS wrapper for Widget class." alt="" coords="5,5,548,216"/>
+<area shape="rect" href="classrtos___print_widget.html" title="RTOS wrapper for PrintWidget class." alt="" coords="33,264,520,344"/>
+<area shape="poly" title=" " alt="" coords="279,231,279,264,274,264,274,231"/>
+</map>
+</div>
 <div class="dynheader">
 Collaboration diagram for rtos_Widget:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___widget__coll__graph.png" border="0" usemap="#artos___widget_coll__map" alt="Collaboration graph"/></div>
 <map name="artos___widget_coll__map" id="artos___widget_coll__map">
-<area shape="rect" title="RTOS wrapper for Widget class." alt="" coords="76,861,591,959"/>
-<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="62,644,605,799"/>
-<area shape="poly" title=" " alt="" coords="336,798,336,844,331,844,331,798"/>
-<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,371,285,582"/>
-<area shape="poly" title=" " alt="" coords="171,581,192,619,201,630,197,633,187,621,167,583"/>
-<area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="281,117,385,197"/>
-<area shape="poly" title=" " alt="" coords="336,197,336,627,331,627,331,197"/>
-<area shape="rect" href="structstruct___data_to_show.html" title="data structure used to queue data to send to the display task" alt="" coords="436,427,591,526"/>
-<area shape="poly" title=" " alt="" coords="350,196,372,250,401,308,434,362,469,412,464,415,430,365,396,311,367,252,345,198"/>
-<area shape="poly" title=" " alt="" coords="480,527,402,632,398,629,476,524"/>
-<area shape="rect" href="class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="410,5,875,309"/>
-<area shape="poly" title=" " alt="" coords="584,310,542,413,537,411,579,308"/>
+<area shape="rect" title="RTOS wrapper for Widget class." alt="" coords="115,551,657,705"/>
+<area shape="rect" href="classrtos___model.html" title="RTOS wrapper for Model class." alt="" coords="5,371,337,489"/>
+<area shape="poly" title=" " alt="" coords="211,487,244,525,258,538,255,542,240,529,207,490"/>
+<area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="318,117,454,197"/>
+<area shape="poly" title=" " alt="" coords="389,197,389,534,383,534,383,197"/>
+<area shape="rect" href="structstruct___data_to_show.html" title="data structure used to queue data to send to the display task" alt="" coords="489,381,643,479"/>
+<area shape="poly" title=" " alt="" coords="406,196,435,250,470,308,514,366,510,370,465,311,430,252,402,198"/>
+<area shape="poly" title=" " alt="" coords="524,481,469,540,466,536,520,477"/>
+<area shape="rect" href="class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="479,5,944,309"/>
+<area shape="poly" title=" " alt="" coords="633,310,602,367,597,365,628,308"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:aa5629b52bbeb6f5c80325bfa7baa170f" id="r_aa5629b52bbeb6f5c80325bfa7baa170f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5629b52bbeb6f5c80325bfa7baa170f">send_image_to_DisplayGateKeeper</a> (QueueHandle_t display_queue, SemaphoreHandle_t sending_done)</td></tr>
+<tr class="memdesc:aa5629b52bbeb6f5c80325bfa7baa170f"><td class="mdescLeft">&#160;</td><td class="mdescRight">used with FreeRTOS. send the widget data_to_display structure to the task in charge of the display management  <br /></td></tr>
+<tr class="separator:aa5629b52bbeb6f5c80325bfa7baa170f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ed80983f6b863cef88c42c7040993d3" id="r_a2ed80983f6b863cef88c42c7040993d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ed80983f6b863cef88c42c7040993d3">send_clear_device_command</a> (QueueHandle_t display_queue, SemaphoreHandle_t sending_done)</td></tr>
 <tr class="memdesc:a2ed80983f6b863cef88c42c7040993d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a command to clear the device screen buffer.  <br /></td></tr>
 <tr class="separator:a2ed80983f6b863cef88c42c7040993d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60be17ea5b44b135b42e9d9d810d9e28" id="r_a60be17ea5b44b135b42e9d9d810d9e28"><td class="memItemLeft" align="right" valign="top"><a id="a60be17ea5b44b135b42e9d9d810d9e28" name="a60be17ea5b44b135b42e9d9d810d9e28"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>rtos_Widget</b> (<a class="el" href="class_widget.html">Widget</a> *widget=nullptr)</td></tr>
-<tr class="memdesc:a60be17ea5b44b135b42e9d9d810d9e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for RTOS widget <br /></td></tr>
-<tr class="separator:a60be17ea5b44b135b42e9d9d810d9e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab30c453ca7a89fdc1b01f9271e80cbbd" id="r_ab30c453ca7a89fdc1b01f9271e80cbbd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab30c453ca7a89fdc1b01f9271e80cbbd">rtos_Widget</a> (<a class="el" href="classrtos___model.html">rtos_Model</a> *<a class="el" href="#a02b53ed96661e0b4a33ee4bcef4cfd30">actual_displayed_model</a>, <a class="el" href="class_display_device.html">DisplayDevice</a> *<a class="el" href="#a8db5440151d8ec60de6c670dd238c475">display_device</a>=nullptr)</td></tr>
+<tr class="memdesc:ab30c453ca7a89fdc1b01f9271e80cbbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for RTOS widget  <br /></td></tr>
+<tr class="separator:ab30c453ca7a89fdc1b01f9271e80cbbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ae178f2dc1a943df4d7291cc7d6fefe" id="r_a8ae178f2dc1a943df4d7291cc7d6fefe"><td class="memItemLeft" align="right" valign="top"><a id="a8ae178f2dc1a943df4d7291cc7d6fefe" name="a8ae178f2dc1a943df4d7291cc7d6fefe"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~rtos_Widget</b> ()</td></tr>
 <tr class="memdesc:a8ae178f2dc1a943df4d7291cc7d6fefe"><td class="mdescLeft">&#160;</td><td class="mdescRight">destructor for RTOS widget <br /></td></tr>
 <tr class="separator:a8ae178f2dc1a943df4d7291cc7d6fefe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48fd0b524a1c4f5f40b5d38a04c62c70" id="r_a48fd0b524a1c4f5f40b5d38a04c62c70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48fd0b524a1c4f5f40b5d38a04c62c70">set_display_device</a> (<a class="el" href="class_display_device.html">DisplayDevice</a> *_new_display_device)</td></tr>
+<tr class="memdesc:a48fd0b524a1c4f5f40b5d38a04c62c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the display screen object.  <br /></td></tr>
+<tr class="separator:a48fd0b524a1c4f5f40b5d38a04c62c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c7e7ccb2e74f70769c59a7adfa75352" id="r_a5c7e7ccb2e74f70769c59a7adfa75352"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c7e7ccb2e74f70769c59a7adfa75352">draw</a> ()=0</td></tr>
+<tr class="memdesc:a5c7e7ccb2e74f70769c59a7adfa75352"><td class="mdescLeft">&#160;</td><td class="mdescRight">a pure virtual member that is called to effectively draw the widget.  <br /></td></tr>
+<tr class="separator:a5c7e7ccb2e74f70769c59a7adfa75352"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:abb759f5b6e6aa7f35ad9dfec7295611e" id="r_abb759f5b6e6aa7f35ad9dfec7295611e"><td class="memItemLeft" align="right" valign="top"><a id="abb759f5b6e6aa7f35ad9dfec7295611e" name="abb759f5b6e6aa7f35ad9dfec7295611e"></a>
-<a class="el" href="class_widget.html">Widget</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>widget</b></td></tr>
-<tr class="separator:abb759f5b6e6aa7f35ad9dfec7295611e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8db5440151d8ec60de6c670dd238c475" id="r_a8db5440151d8ec60de6c670dd238c475"><td class="memItemLeft" align="right" valign="top"><a id="a8db5440151d8ec60de6c670dd238c475" name="a8db5440151d8ec60de6c670dd238c475"></a>
+<a class="el" href="class_display_device.html">DisplayDevice</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>display_device</b> {nullptr}</td></tr>
+<tr class="memdesc:a8db5440151d8ec60de6c670dd238c475"><td class="mdescLeft">&#160;</td><td class="mdescRight">the display device where the attached to the frame buffer <br /></td></tr>
+<tr class="separator:a8db5440151d8ec60de6c670dd238c475"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87d161b1078bc3aa5380703cfdd8c5a8" id="r_a87d161b1078bc3aa5380703cfdd8c5a8"><td class="memItemLeft" align="right" valign="top"><a id="a87d161b1078bc3aa5380703cfdd8c5a8" name="a87d161b1078bc3aa5380703cfdd8c5a8"></a>
 TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>task_handle</b></td></tr>
 <tr class="memdesc:a87d161b1078bc3aa5380703cfdd8c5a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">FreeRTOS task handle associated to the widget. <br /></td></tr>
 <tr class="separator:a87d161b1078bc3aa5380703cfdd8c5a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebb2efd0f14611086b4ca974c34594b5" id="r_aebb2efd0f14611086b4ca974c34594b5"><td class="memItemLeft" align="right" valign="top"><a id="aebb2efd0f14611086b4ca974c34594b5" name="aebb2efd0f14611086b4ca974c34594b5"></a>
+<a class="el" href="structstruct___data_to_show.html">struct_DataToShow</a>&#160;</td><td class="memItemRight" valign="bottom"><b>data_to_display</b></td></tr>
+<tr class="memdesc:aebb2efd0f14611086b4ca974c34594b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">the data structure used to send the canvas to the display task when a FreeRTOS queue is used. <br /></td></tr>
+<tr class="separator:aebb2efd0f14611086b4ca974c34594b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a02b53ed96661e0b4a33ee4bcef4cfd30" id="r_a02b53ed96661e0b4a33ee4bcef4cfd30"><td class="memItemLeft" align="right" valign="top"><a id="a02b53ed96661e0b4a33ee4bcef4cfd30" name="a02b53ed96661e0b4a33ee4bcef4cfd30"></a>
+<a class="el" href="classrtos___model.html">rtos_Model</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>actual_displayed_model</b> {nullptr}</td></tr>
+<tr class="memdesc:a02b53ed96661e0b4a33ee4bcef4cfd30"><td class="mdescLeft">&#160;</td><td class="mdescRight">a pointer to the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> actually displayed by the widget <br /></td></tr>
+<tr class="separator:a02b53ed96661e0b4a33ee4bcef4cfd30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>RTOS wrapper for <a class="el" href="class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW...">Widget</a> class. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ab30c453ca7a89fdc1b01f9271e80cbbd" name="ab30c453ca7a89fdc1b01f9271e80cbbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab30c453ca7a89fdc1b01f9271e80cbbd">&#9670;&#160;</a></span>rtos_Widget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rtos_Widget::rtos_Widget </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classrtos___model.html">rtos_Model</a> *</td>          <td class="paramname"><span class="paramname"><em>actual_displayed_model</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_display_device.html">DisplayDevice</a> *</td>          <td class="paramname"><span class="paramname"><em>display_device</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>constructor for RTOS widget </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">actual_displayed_model</td><td>the displayed model of the widget </td></tr>
+    <tr><td class="paramname">display_device</td><td>The display device on which the widget is drawn. This device can be "null". </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classrtos___widget_ab30c453ca7a89fdc1b01f9271e80cbbd_cgraph.png" border="0" usemap="#aclassrtos___widget_ab30c453ca7a89fdc1b01f9271e80cbbd_cgraph" alt=""/></div>
+<map name="aclassrtos___widget_ab30c453ca7a89fdc1b01f9271e80cbbd_cgraph" id="aclassrtos___widget_ab30c453ca7a89fdc1b01f9271e80cbbd_cgraph">
+<area shape="rect" title="constructor for RTOS widget" alt="" coords="5,5,153,30"/>
+<area shape="rect" href="classrtos___model.html#aa8e2df9fca0d73b8e11a22611e81eebe" title="link a new widget task to the model" alt="" coords="201,5,429,30"/>
+<area shape="poly" title=" " alt="" coords="153,15,185,15,185,20,153,20"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classrtos___widget_ab30c453ca7a89fdc1b01f9271e80cbbd_icgraph.png" border="0" usemap="#aclassrtos___widget_ab30c453ca7a89fdc1b01f9271e80cbbd_icgraph" alt=""/></div>
+<map name="aclassrtos___widget_ab30c453ca7a89fdc1b01f9271e80cbbd_icgraph" id="aclassrtos___widget_ab30c453ca7a89fdc1b01f9271e80cbbd_icgraph">
+<area shape="rect" title="constructor for RTOS widget" alt="" coords="245,5,392,30"/>
+<area shape="rect" href="classrtos___print_widget.html#a05c8b4864d551f90686fab2961d7ee62" title="Construct a new RTOS Print Widget object." alt="" coords="5,5,197,30"/>
+<area shape="poly" title=" " alt="" coords="229,20,197,20,197,15,229,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5c7e7ccb2e74f70769c59a7adfa75352" name="a5c7e7ccb2e74f70769c59a7adfa75352"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c7e7ccb2e74f70769c59a7adfa75352">&#9670;&#160;</a></span>draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void rtos_Widget::draw </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>a pure virtual member that is called to effectively draw the widget. </p>
+<dl class="section note"><dt>Note</dt><dd>USAGE: This member function can be called by the draw_refresh_all_attached_widgets() method of the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a>. Refer to the following diagram. <div class="image">
+<object type="image/svg+xml" data="draw.svg" style="pointer-events: none;"></object>
+</div>
+ </dd></dl>
+
+</div>
+</div>
 <a id="a2ed80983f6b863cef88c42c7040993d3" name="a2ed80983f6b863cef88c42c7040993d3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2ed80983f6b863cef88c42c7040993d3">&#9670;&#160;</a></span>send_clear_device_command()</h2>
 
@@ -186,9 +297,64 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>task_handle</
 
 </div>
 </div>
+<a id="aa5629b52bbeb6f5c80325bfa7baa170f" name="aa5629b52bbeb6f5c80325bfa7baa170f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5629b52bbeb6f5c80325bfa7baa170f">&#9670;&#160;</a></span>send_image_to_DisplayGateKeeper()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtos_Widget::send_image_to_DisplayGateKeeper </td>
+          <td>(</td>
+          <td class="paramtype">QueueHandle_t</td>          <td class="paramname"><span class="paramname"><em>display_queue</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SemaphoreHandle_t</td>          <td class="paramname"><span class="paramname"><em>sending_done</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>used with FreeRTOS. send the widget data_to_display structure to the task in charge of the display management </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">display_queue</td><td>the communcation queue with the display gate keeper </td></tr>
+    <tr><td class="paramname">sending_done</td><td>the semaphore triggered when the canvas display is complete. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a48fd0b524a1c4f5f40b5d38a04c62c70" name="a48fd0b524a1c4f5f40b5d38a04c62c70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48fd0b524a1c4f5f40b5d38a04c62c70">&#9670;&#160;</a></span>set_display_device()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtos_Widget::set_display_device </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_display_device.html">DisplayDevice</a> *</td>          <td class="paramname"><span class="paramname"><em>_new_display_device</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the display screen object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_new_display_device</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="rtos__ui__core_8h_source.html">rtos_ui_core.h</a></li>
-<li><b>rtos_ui_core.cpp</b></li>
+<li><a class="el" href="rtos__widget_8h_source.html">rtos_widget.h</a></li>
+<li><b>rtos_widget.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,11 +1,11 @@
 var searchData=
 [
   ['tab_5fsize_0',['tab_size',['../structstruct___config_text_widget.html#aa69d2c7d5f6e4e7530059818c8e26575',1,'struct_ConfigTextWidget']]],
-  ['task_5fhandle_1',['task_handle',['../classrtos___widget.html#a87d161b1078bc3aa5380703cfdd8c5a8',1,'rtos_Widget']]],
+  ['task_5fhandle_1',['task_handle',['../classrtos___model.html#a464e71170a383e439b36fd27a5e2c525',1,'rtos_Model::task_handle'],['../classrtos___widget.html#a87d161b1078bc3aa5380703cfdd8c5a8',1,'rtos_Widget::task_handle']]],
   ['temp_5fcelsius_2',['temp_celsius',['../structstruct___d_h_t_reading.html#abe74b95fa075dd9c612c7d29eb523e12',1,'struct_DHTReading']]],
   ['temp_5fout_3',['temp_out',['../structstruct___raw_data.html#a7df8181b33c2c7f6e7d851a428ea149a',1,'struct_RawData::temp_out'],['../structstruct___m_p_u_data.html#a4ed1209fd2dd8ea2b5c31aea46644ed5',1,'struct_MPUData::temp_out']]],
-  ['text_5fbuffer_4',['text_buffer',['../class_printer_device.html#a49e0129f9f7661fa416c9cfe84f6b9b0',1,'PrinterDevice::text_buffer'],['../class_text_widget.html#ad736dbe25c45386c7c7c02608ba2f3d4',1,'TextWidget::text_buffer']]],
-  ['text_5fbuffer_5fsize_5',['text_buffer_size',['../class_printer_device.html#a345d45067c1316ac131c01fdb205d6c7',1,'PrinterDevice::text_buffer_size'],['../class_text_widget.html#adfd92491668798cee817a5964823a411',1,'TextWidget::text_buffer_size']]],
+  ['text_5fbuffer_4',['text_buffer',['../class_terminal_console.html#adac7691c7a30beeb24e9f5667c936a7a',1,'TerminalConsole::text_buffer'],['../class_text_widget.html#ad736dbe25c45386c7c7c02608ba2f3d4',1,'TextWidget::text_buffer']]],
+  ['text_5fbuffer_5fsize_5',['text_buffer_size',['../class_terminal_console.html#a8bce719eefd4e2d03329278d3031ab4c',1,'TerminalConsole::text_buffer_size'],['../class_text_widget.html#adfd92491668798cee817a5964823a411',1,'TextWidget::text_buffer_size']]],
   ['tft_5fpanel_5fheight_5fin_5fpixel_6',['TFT_panel_height_in_pixel',['../class_graphic_display_device.html#abd9cfe94e10ec94698fa796c0dc9da41',1,'GraphicDisplayDevice']]],
   ['tft_5fpanel_5fstart_5fx_7',['TFT_panel_start_x',['../class_s_t7735.html#a346ad0c11ebd254c3244daed57485176',1,'ST7735']]],
   ['tft_5fpanel_5fstart_5fy_8',['TFT_panel_start_y',['../class_s_t7735.html#a00022ccda97c01d8f2d47b9839ff9f22',1,'ST7735']]],

@@ -11,6 +11,7 @@ var hierarchy =
       [ "CanvasTrueRGB", "class_canvas_true_r_g_b.html", null ],
       [ "CanvasVLSB", "class_canvas_v_l_s_b.html", null ]
     ] ],
+    [ "core_IncrementControlledModel", "classcore___increment_controlled_model.html", null ],
     [ "DHT11", "class_d_h_t11.html", null ],
     [ "DisplayDevice", "class_display_device.html", [
       [ "GraphicDisplayDevice", "class_graphic_display_device.html", [
@@ -21,7 +22,7 @@ var hierarchy =
           [ "rtos_ST7735", "classrtos___s_t7735.html", null ]
         ] ]
       ] ],
-      [ "PrinterDevice", "class_printer_device.html", null ]
+      [ "TerminalConsole", "class_terminal_console.html", null ]
     ] ],
     [ "HCSR04", "class_h_c_s_r04.html", null ],
     [ "HW_DMA", "class_h_w___d_m_a.html", null ],
@@ -46,12 +47,22 @@ var hierarchy =
     [ "PWM", "class_p_w_m.html", null ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],
     [ "rtos_DHT11", "classrtos___d_h_t11.html", null ],
+    [ "rtos_DisplayDevice", "classrtos___display_device.html", [
+      [ "rtos_GraphicDisplayDevice", "classrtos___graphic_display_device.html", null ],
+      [ "rtos_TerminalConsole", "classrtos___terminal_console.html", null ]
+    ] ],
     [ "rtos_HCSR04", "classrtos___h_c_s_r04.html", null ],
-    [ "rtos_Model", "classrtos___model.html", null ],
+    [ "rtos_Model", "classrtos___model.html", [
+      [ "rtos_UIControlledModel", "classrtos___u_i_controlled_model.html", [
+        [ "rtos_UIModelManager", "classrtos___u_i_model_manager.html", null ]
+      ] ]
+    ] ],
     [ "rtos_SwitchButton", "classrtos___switch_button.html", [
       [ "rtos_RotaryEncoder", "classrtos___rotary_encoder.html", null ]
     ] ],
-    [ "rtos_Widget", "classrtos___widget.html", null ],
+    [ "rtos_Widget", "classrtos___widget.html", [
+      [ "rtos_PrintWidget", "classrtos___print_widget.html", null ]
+    ] ],
     [ "SG90", "class_s_g90.html", null ],
     [ "struct_ConfigGraphicWidget", "structstruct___config_graphic_widget.html", null ],
     [ "struct_ConfigMasterI2C", "structstruct___config_master_i2_c.html", null ],

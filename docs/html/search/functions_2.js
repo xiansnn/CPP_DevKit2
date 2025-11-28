@@ -23,7 +23,8 @@ var searchData=
   ['config_5finversion_5fcontrol_20',['config_inversion_control',['../class_s_t7735.html#aef1da358d04fdc120d2cdf0cfcd40fd3',1,'ST7735']]],
   ['config_5fpower_5fcontrol_21',['config_power_control',['../class_s_t7735.html#aadf42de089dbf57671063fb8632aad43',1,'ST7735']]],
   ['copy_22',['copy',['../class_probe.html#a3ca878200b9a6d5744366b23fe0051c9',1,'Probe']]],
-  ['count_5fcycles_23',['count_cycles',['../class_p_w_mgated_measure.html#a4f372aa91b889f792b4eb805d0eb5a46',1,'PWMgatedMeasure']]],
-  ['create_5fcanvas_5fbuffer_24',['create_canvas_buffer',['../class_canvas.html#a16b621ce19c564852d07cee34a7ada8c',1,'Canvas']]],
-  ['create_5ftext_5fbuffer_25',['create_text_buffer',['../class_text_widget.html#a25231a80633db702af090c590d5fabc7',1,'TextWidget']]]
+  ['core_5fincrementcontrolledmodel_23',['core_IncrementControlledModel',['../classcore___increment_controlled_model.html#a50597b951841b6590fafa00b23f6efe2',1,'core_IncrementControlledModel']]],
+  ['count_5fcycles_24',['count_cycles',['../class_p_w_mgated_measure.html#a4f372aa91b889f792b4eb805d0eb5a46',1,'PWMgatedMeasure']]],
+  ['create_5fcanvas_5fbuffer_25',['create_canvas_buffer',['../class_canvas.html#a16b621ce19c564852d07cee34a7ada8c',1,'Canvas']]],
+  ['create_5ftext_5fbuffer_26',['create_text_buffer',['../class_text_widget.html#a25231a80633db702af090c590d5fabc7',1,'TextWidget']]]
 ];

@@ -99,6 +99,7 @@ $(function(){initNavTree('classrtos___switch_button.html',''); initResizable(tru
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classrtos___switch_button-members.html">List of all members</a>  </div>
@@ -115,9 +116,9 @@ Inheritance diagram for rtos_SwitchButton:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___switch_button__inherit__graph.png" border="0" usemap="#artos___switch_button_inherit__map" alt="Inheritance graph"/></div>
 <map name="artos___switch_button_inherit__map" id="artos___switch_button_inherit__map">
-<area shape="rect" title="rtos_SwitchButton is processed by an Interrupt Service Routine (ISR) under control of FreeRTOS routin..." alt="" coords="91,5,547,337"/>
-<area shape="rect" href="classrtos___rotary_encoder.html" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user...." alt="" coords="5,385,633,512"/>
-<area shape="poly" title=" " alt="" coords="322,352,322,386,317,386,317,352"/>
+<area shape="rect" title="rtos_SwitchButton is processed by an Interrupt Service Routine (ISR) under control of FreeRTOS routin..." alt="" coords="5,5,456,337"/>
+<area shape="rect" href="classrtos___rotary_encoder.html" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user...." alt="" coords="10,385,451,512"/>
+<area shape="poly" title=" " alt="" coords="233,352,233,386,228,386,228,352"/>
 </map>
 </div>
 <div class="dynheader">
@@ -125,15 +126,15 @@ Collaboration diagram for rtos_SwitchButton:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___switch_button__coll__graph.png" border="0" usemap="#artos___switch_button_coll__map" alt="Collaboration graph"/></div>
 <map name="artos___switch_button_coll__map" id="artos___switch_button_coll__map">
-<area shape="rect" title="rtos_SwitchButton is processed by an Interrupt Service Routine (ISR) under control of FreeRTOS routin..." alt="" coords="5,5,461,337"/>
+<area shape="rect" title="rtos_SwitchButton is processed by an Interrupt Service Routine (ISR) under control of FreeRTOS routin..." alt="" coords="5,5,456,337"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a25d653657ad8e2509c22b5c08cf92c4c" id="r_a25d653657ad8e2509c22b5c08cf92c4c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25d653657ad8e2509c22b5c08cf92c4c">rtos_SwitchButton</a> (uint <a class="el" href="#a3f74708bda139aa762d375f49b784997">gpio</a>, gpio_irq_callback_t call_back, QueueHandle_t in_switch_button_queue, QueueHandle_t out_control_event_queue, <a class="el" href="structstruct__rtos_config_switch_button.html">struct_rtosConfigSwitchButton</a> conf={}, uint32_t event_mask_config=GPIO_IRQ_EDGE_FALL|GPIO_IRQ_EDGE_RISE)</td></tr>
-<tr class="memdesc:a25d653657ad8e2509c22b5c08cf92c4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new rtos Switch Button object.  <br /></td></tr>
-<tr class="separator:a25d653657ad8e2509c22b5c08cf92c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adedaccfcce4afb5bd51a89a99467998e" id="r_adedaccfcce4afb5bd51a89a99467998e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adedaccfcce4afb5bd51a89a99467998e">rtos_SwitchButton</a> (uint <a class="el" href="#a3f74708bda139aa762d375f49b784997">gpio</a>, gpio_irq_callback_t call_back, QueueHandle_t control_event_destination_queue, <a class="el" href="structstruct__rtos_config_switch_button.html">struct_rtosConfigSwitchButton</a> conf={}, uint32_t event_mask_config=GPIO_IRQ_EDGE_FALL|GPIO_IRQ_EDGE_RISE)</td></tr>
+<tr class="memdesc:adedaccfcce4afb5bd51a89a99467998e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new rtos Switch Button object.  <br /></td></tr>
+<tr class="separator:adedaccfcce4afb5bd51a89a99467998e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acae09836effe96320ee7dcab5212acbe" id="r_acae09836effe96320ee7dcab5212acbe"><td class="memItemLeft" align="right" valign="top"><a id="acae09836effe96320ee7dcab5212acbe" name="acae09836effe96320ee7dcab5212acbe"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~rtos_SwitchButton</b> ()</td></tr>
 <tr class="memdesc:acae09836effe96320ee7dcab5212acbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_switch_button.html" title="SwitchButton status is sampled periodically by software.">SwitchButton</a> object. <br /></td></tr>
@@ -141,6 +142,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa1017a2d9370e64e72b8629dd2a594a3" id="r_aa1017a2d9370e64e72b8629dd2a594a3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1017a2d9370e64e72b8629dd2a594a3">rtos_process_IRQ_event</a> ()</td></tr>
 <tr class="memdesc:aa1017a2d9370e64e72b8629dd2a594a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process IRQ event and sent the resulting event to the event queue.  <br /></td></tr>
 <tr class="separator:aa1017a2d9370e64e72b8629dd2a594a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a50a688ea4a876079b03bfb022b8f5a4b" id="r_a50a688ea4a876079b03bfb022b8f5a4b"><td class="memItemLeft" align="right" valign="top"><a id="a50a688ea4a876079b03bfb022b8f5a4b" name="a50a688ea4a876079b03bfb022b8f5a4b"></a>
+QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>IRQdata_input_queue</b></td></tr>
+<tr class="memdesc:a50a688ea4a876079b03bfb022b8f5a4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the queue from which IRQ data are received <br /></td></tr>
+<tr class="separator:a50a688ea4a876079b03bfb022b8f5a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -186,10 +194,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>previous_switch_pushe
 <a class="el" href="rtos__switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657">ButtonState</a>&#160;</td><td class="memItemRight" valign="bottom"><b>button_status</b> {<a class="el" href="rtos__switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657aa5daf7f2ebbba4975d61dab1c40188c7">ButtonState::IDLE</a>}</td></tr>
 <tr class="memdesc:aa9e4f1cc20b331a32c7459e5ed951f4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the logical button status, required to manage the event returned when the switch is pushed or released. <br /></td></tr>
 <tr class="separator:aa9e4f1cc20b331a32c7459e5ed951f4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd970e5d886585887d1cbce1987e22d2" id="r_acd970e5d886585887d1cbce1987e22d2"><td class="memItemLeft" align="right" valign="top"><a id="acd970e5d886585887d1cbce1987e22d2" name="acd970e5d886585887d1cbce1987e22d2"></a>
-QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>switch_button_queue</b></td></tr>
-<tr class="memdesc:acd970e5d886585887d1cbce1987e22d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the queue from which IRQ data are received <br /></td></tr>
-<tr class="separator:acd970e5d886585887d1cbce1987e22d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb54d0aadd5523c8f46382b4048e6bb1" id="r_adb54d0aadd5523c8f46382b4048e6bb1"><td class="memItemLeft" align="right" valign="top"><a id="adb54d0aadd5523c8f46382b4048e6bb1" name="adb54d0aadd5523c8f46382b4048e6bb1"></a>
 QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>control_event_queue</b></td></tr>
 <tr class="memdesc:adb54d0aadd5523c8f46382b4048e6bb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the queue to which the resulting control event is sent <br /></td></tr>
@@ -209,8 +213,8 @@ QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>control_even
 SwitchButton times references for long release</div></div>
 <p>NOTICE: the test program for rtos switch button is implemented with the rotary encoder device, which is a good example of what can be done with IRQ </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a25d653657ad8e2509c22b5c08cf92c4c" name="a25d653657ad8e2509c22b5c08cf92c4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25d653657ad8e2509c22b5c08cf92c4c">&#9670;&#160;</a></span>rtos_SwitchButton()</h2>
+<a id="adedaccfcce4afb5bd51a89a99467998e" name="adedaccfcce4afb5bd51a89a99467998e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adedaccfcce4afb5bd51a89a99467998e">&#9670;&#160;</a></span>rtos_SwitchButton()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -228,12 +232,7 @@ SwitchButton times references for long release</div></div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">QueueHandle_t</td>          <td class="paramname"><span class="paramname"><em>in_switch_button_queue</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">QueueHandle_t</td>          <td class="paramname"><span class="paramname"><em>out_control_event_queue</em></span>, </td>
+          <td class="paramtype">QueueHandle_t</td>          <td class="paramname"><span class="paramname"><em>control_event_destination_queue</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -253,8 +252,7 @@ SwitchButton times references for long release</div></div>
   <table class="params">
     <tr><td class="paramname">gpio</td><td>The microcontroller GPIO connected to the switch </td></tr>
     <tr><td class="paramname">call_back</td><td>The ISR (interrupt Service Routine) that process IRQ event </td></tr>
-    <tr><td class="paramname">in_switch_button_queue</td><td>the input queue that receives data from IRQ </td></tr>
-    <tr><td class="paramname">out_control_event_queue</td><td>the output queue that receives computed control event </td></tr>
+    <tr><td class="paramname">control_event_destination_queue</td><td>the output queue that receives computed control event </td></tr>
     <tr><td class="paramname">conf</td><td>the configuration value of the switch </td></tr>
     <tr><td class="paramname">event_mask_config</td><td>the rising/falling edge configuratio of the irq </td></tr>
   </table>
@@ -263,10 +261,10 @@ SwitchButton times references for long release</div></div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classrtos___switch_button_a25d653657ad8e2509c22b5c08cf92c4c_icgraph.png" border="0" usemap="#aclassrtos___switch_button_a25d653657ad8e2509c22b5c08cf92c4c_icgraph" alt=""/></div>
-<map name="aclassrtos___switch_button_a25d653657ad8e2509c22b5c08cf92c4c_icgraph" id="aclassrtos___switch_button_a25d653657ad8e2509c22b5c08cf92c4c_icgraph">
+<div class="center"><img src="classrtos___switch_button_adedaccfcce4afb5bd51a89a99467998e_icgraph.png" border="0" usemap="#aclassrtos___switch_button_adedaccfcce4afb5bd51a89a99467998e_icgraph" alt=""/></div>
+<map name="aclassrtos___switch_button_adedaccfcce4afb5bd51a89a99467998e_icgraph" id="aclassrtos___switch_button_adedaccfcce4afb5bd51a89a99467998e_icgraph">
 <area shape="rect" title="Construct a new rtos Switch Button object." alt="" coords="275,5,480,30"/>
-<area shape="rect" href="classrtos___rotary_encoder.html#afef821f6910545235862593614263bc9" title="Construct a new Rotary Encoder object compliant with FreeRTOS." alt="" coords="5,5,227,30"/>
+<area shape="rect" href="classrtos___rotary_encoder.html#ae6e38fe0da2da9c7fcebe7a93c87f588" title="Construct a new Rotary Encoder object compliant with FreeRTOS." alt="" coords="5,5,227,30"/>
 <area shape="poly" title=" " alt="" coords="259,20,227,20,227,15,259,15"/>
 </map>
 </div>

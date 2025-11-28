@@ -1,0 +1,5 @@
+<map id="rtos_GraphicDisplayDevice" name="rtos_GraphicDisplayDevice">
+<area shape="rect" id="Node000001" title="The RTOS graphic display device is the base class for all graphic display devices that are managed by..." alt="" coords="37,152,201,232"/>
+<area shape="rect" id="Node000002" href="$classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="5,5,233,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,119,122,152,117,152,117,119"/>
+</map>
