@@ -96,11 +96,12 @@ private:
 public:
     UIControlledModel(/* args */);
     ~UIControlledModel();
-    /**
-     * @brief check if the _new_status change is effective,
-     * then change it and set the change_flag to true.
-     * @param _new_status
-     */
+
+
+
+    /// @brief  update the status of the model object.
+    /// @param _new_status 
+    /// @return  true if the status has vchanged
     bool update_status(ControlledObjectStatus _new_status);
     /**
      * @brief if _new_controller is different from the current controller, change the current controller associated to the Model.
@@ -124,11 +125,8 @@ public:
      */
     UIController *get_current_controller();
 
-    /**
-     * @brief The purpose of this function is to implement the behavior of the implemented model object when a ControlEvent is received.
-     *
-     * @param _event
-     */
+    /// @brief  pure virtual function that process a control event
+    /// @param control_event 
     virtual void process_control_event(struct_ControlEventData control_event) = 0;
 };
 
@@ -171,21 +169,18 @@ public:
      *
      */
     ~UIControlledIncrementalValue();
-    /**
-     * @brief Add "increment" to the current value.
-     *
-     */
+
+    /// @brief Add "increment" to the current value.
+    /// @return true if the value was changed
     virtual bool increment_value();
-    /**
-     * @brief  Substract "increment" to the current value.
-     *
-     */
+
+    /// @brief  Substract "increment" to the current value.
+    /// @return true if the value was changed
     virtual bool decrement_value();
-    /**
-     * @brief Set value to _new_value, and clip the result to min or max value if needed.
-     *
-     * @param _new_value
-     */
+
+    /// @brief Set value to _new_value, and clip the result to min or max value if needed.
+    /// @param _new_value 
+    /// @return true if the value was changed   
     bool set_clipped_value(int _new_value);
     /**
      * @brief Get the value object

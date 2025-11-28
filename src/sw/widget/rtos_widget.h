@@ -71,11 +71,18 @@ public:
     virtual void draw() = 0;
 };
 
+
+/// @brief RTOS wrapper for PrintWidget class
+/// \ingroup view
 class rtos_PrintWidget : public rtos_Widget
 {
 private:
     /* data */
 public:
+
+    /// @brief Construct a new RTOS Print Widget object
+    /// @param display_device The terminal console device on which the widget is drawn
+    /// @param actual_displayed_model The displayed model of the widget
     rtos_PrintWidget(TerminalConsole *display_device, rtos_Model *actual_displayed_model = nullptr);
     ~rtos_PrintWidget();
 };

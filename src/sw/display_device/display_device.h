@@ -125,16 +125,22 @@ public:
 
 };
 
+
+/// @brief The RTOS display device is the base class for all display devices that are managed by a dedicated display task in an RTOS environment.
 class rtos_DisplayDevice
 {
 private:
     /* data */
 public:
+    /// @brief the queue handle to send data to the display task
     QueueHandle_t input_queue;
+    /// @brief the mutex to protect the display device access   
     SemaphoreHandle_t display_device_mutex;
     rtos_DisplayDevice(/* args */);
     ~rtos_DisplayDevice();
 };
+
+/// @brief The RTOS graphic display device is the base class for all graphic display devices that are managed by a dedicated display task in an RTOS environment.
 class rtos_GraphicDisplayDevice :public rtos_DisplayDevice
 {
 private:
@@ -143,6 +149,7 @@ public:
     rtos_GraphicDisplayDevice(/* args */);
     ~rtos_GraphicDisplayDevice();
 };
+/// @brief The RTOS terminal console is the class for all text display devices that are managed by a dedicated display task in an RTOS environment.
 class rtos_TerminalConsole : public rtos_DisplayDevice
 {
 private:

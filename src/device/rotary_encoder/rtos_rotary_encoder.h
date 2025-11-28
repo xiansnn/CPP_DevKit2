@@ -39,13 +39,12 @@ private:
 public:
 
   /// @brief  Construct a new Rotary Encoder object compliant with FreeRTOS
-  /// @param encoder_clk_gpio  Construct a new Rotary Encoder object
-  /// @param encoder_dt_gpio  Construct a new Rotary Encoder object
-  /// @param call_back the IRQ callbaak
-  /// @param in_switch_button_queue the input queue receiveing IRQ data
-  /// @param out_control_event_queue the output queue receiving control event
-  /// @param conf the clock configutration (as a debounced switch)
-  /// @param event_mask_config the IRQ mask
+  /// @param encoder_clk_gpio   The GPIO pin connected to the Clock pin of the rotary encoder
+  /// @param encoder_dt_gpio The GPIO pin connected to the Data pin of the rotary encoder
+  /// @param call_back The IRQ callback function
+  /// @param out_control_event_queue The output queue receiving control events
+  /// @param conf The clock configuration (as a debounced switch)
+  /// @param event_mask_config The IRQ mask configuration
   rtos_RotaryEncoder(uint encoder_clk_gpio,
                     uint encoder_dt_gpio,
                     gpio_irq_callback_t call_back, QueueHandle_t out_control_event_queue,
