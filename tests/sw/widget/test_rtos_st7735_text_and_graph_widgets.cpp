@@ -45,8 +45,8 @@ QueueHandle_t display_queue_to_SPI = xQueueCreate(8, sizeof(struct_DataToShow));
 SemaphoreHandle_t data_sent_to_SPI = xSemaphoreCreateBinary(); // synchro between display task and sending task
 
 //-------------Model-----
-my_model model = my_model();
-rtos_Model my_rtos_model = rtos_Model(&model);
+// my_model model = my_model();
+rtos_Model my_rtos_model = rtos_Model();
 //-------------SPI drivers----
 struct_ConfigMasterSPI cfg_spi = {
     .spi = spi1,

@@ -8,8 +8,8 @@ target_link_libraries(test_tuning_dial
             sw_widget
             )    
 #-------------------------------------------------------------------------------------
-add_executable(test_text_primitives test_text_primitives.cpp)
-target_link_libraries(test_text_primitives 
+add_executable(test_ssd1306_text_primitives test_ssd1306_text_primitives.cpp)
+target_link_libraries(test_ssd1306_text_primitives 
             pico_stdlib 
             utilities_probe
             hw_i2c 
@@ -18,8 +18,8 @@ target_link_libraries(test_text_primitives
             device_ssd1306 
             )
 #-------------------------------------------------------------------------------------
-add_executable(test_graphic_primitives  test_graphic_primitives.cpp  )
-target_link_libraries(test_graphic_primitives 
+add_executable(test_ssd1306_graphic_primitives  test_ssd1306_graphic_primitives.cpp  )
+target_link_libraries(test_ssd1306_graphic_primitives 
             device_ssd1306 
             pico_stdlib 
             hw_i2c 
@@ -29,8 +29,8 @@ target_link_libraries(test_graphic_primitives
             utilities_probe
             )
 #-------------------------------------------------------------------------------------
-add_executable(test_text_and_graph_widgets test_text_and_graph_widgets.cpp)
-target_link_libraries(test_text_and_graph_widgets 
+add_executable(test_ssd1306_text_and_graph_widgets test_ssd1306_text_and_graph_widgets.cpp)
+target_link_libraries(test_ssd1306_text_and_graph_widgets 
             pico_stdlib 
             utilities_probe
             sw_ui_core

@@ -54,8 +54,6 @@ my_IncrementalValueWidgetOnSerialMonitor value_0_widget = my_IncrementalValueWid
 my_IncrementalValueWidgetOnSerialMonitor value_1_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_1);
 my_IncrementalValueWidgetOnSerialMonitor value_2_widget = my_IncrementalValueWidgetOnSerialMonitor(&my_serial_monitor, &value_2);
 
-// QueueHandle_t console_line_buffer_queue = xQueueCreate(3, sizeof(char *)); // queue attached to a shared resource (here, the console line printer, could be I2C or SPI busses)
-// SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
 
 void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask);
 
