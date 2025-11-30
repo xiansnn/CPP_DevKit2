@@ -35,7 +35,7 @@ private:
 public:
     /// @brief the task handle of the model task
     TaskHandle_t task_handle;
-    /// @brief link a new widget task to the model  
+    /// @brief link a new widget task to the model
     /// @param linked_widget    the widget to be linked
     void update_attached_rtos_widget(rtos_Widget *linked_widget);
     /// @brief notify all linked widget tasks that the model has changed
@@ -56,14 +56,11 @@ protected:
     ControlledObjectStatus rtos_status{ControlledObjectStatus::IS_WAITING};
 
 public:
-/// @brief FreeRTOS queue handle used to receive control events for this model
+    /// @brief FreeRTOS queue handle used to receive control events for this model
     QueueHandle_t control_event_input_queue;
 
     /// @brief A static vector containing all the managed rtos_UIControlledModel objects
     std::vector<rtos_UIControlledModel *> managed_rtos_models;
-
-    /// @brief A static pointer to the current active rtos_UIControlledModel object
-    rtos_UIControlledModel *current_active_rtos_model;
 
     rtos_UIControlledModel();
     ~rtos_UIControlledModel();
@@ -78,15 +75,17 @@ public:
     /// @brief process a control event received from the control event queue
     /// @param control_event the control event to be processed
     virtual void process_control_event(struct_ControlEventData control_event) = 0;
-
 };
 /// @brief RTOS wrapper for UIModelManager class
 /// \ingroup model
 class rtos_UIModelManager : public rtos_UIControlledModel
 {
 private:
+    /// @brief The current focus index among the managed models
     int current_focus_index = 0;
+    /// @brief If true, the focus index wraps around when incremented/decremented beyond the limits
     bool is_wrapable;
+    /// @brief The maximum focus index based on the number of managed models
     int max_focus_index;
 
 protected:
@@ -97,26 +96,28 @@ protected:
 
 public:
     /// @brief Construct a new rtos UIModel Manager object
-    /// @param is_wrapable 
+    /// @param is_wrapable
     rtos_UIModelManager(bool is_wrapable = true);
     ~rtos_UIModelManager();
 
+    /// @brief A static pointer to the current active rtos_UIControlledModel object
+    rtos_UIControlledModel *current_active_rtos_model;
+
     /// @brief  Get the current focus index
-    /// @return The current focus index 
+    /// @return The current focus index
     size_t get_current_focus_index();
 
-    /// @brief Make the current active managed rtos_UIControlledModel the active one    
+    /// @brief Make the current active managed rtos_UIControlledModel the active one
     void make_managed_rtos_model_active();
 
-    /// @brief Make the rtos_UIModelManager the active one      
+    /// @brief Make the rtos_UIModelManager the active one
     void make_rtos_manager_active();
     /// @brief Add a new managed rtos_UIControlledModel
     /// @param new_model The new model to be added
     void add_managed_rtos_model(rtos_UIControlledModel *new_model);
     /// @brief Forward a control event to the current active managed rtos_UIControlledModel
-    /// @param control_event The control event to be forwarded  
+    /// @param control_event The control event to be forwarded
     void forward_control_event_to_active_managed_model(struct_ControlEventData *control_event);
-
 };
 /// @brief A model that holds an integer value that can be incremented or decremented within a defined range
 class core_IncrementControlledModel
@@ -156,7 +157,7 @@ public:
     virtual bool decrement_value();
 
     /// @brief Set value to _new_value, and clip the result to min or max value if needed.
-    /// @param _new_value 
+    /// @param _new_value
     /// @return true if value changed, false if clipped and no change
     bool set_clipped_value(int _new_value);
 

@@ -41,7 +41,7 @@ private:
     QueueHandle_t input_timer_queue;
     /// @brief the queue to which the resulting range is sent
     QueueHandle_t output_range_queue;
-
+    /// @brief Flag indicating if the measurement is completed
     bool measure_completed;
 
 public:

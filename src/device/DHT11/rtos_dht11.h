@@ -41,6 +41,7 @@ private:
     /// @brief the GPIO connected to DHT11
     uint gpio_in;
 
+    /// @brief the output queue that receives readings
     QueueHandle_t dht_reading_queue;
 
 public:
