@@ -99,6 +99,7 @@ $(function(){initNavTree('classrtos___h_c_s_r04.html',''); initResizable(true); 
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classrtos___h_c_s_r04-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">rtos_HCSR04 Class Reference<div class="ingroups"><a class="el" href="group__sensor.html">&quot;Sensor&quot;</a></div></div></div>
 </div><!--header-->
@@ -113,19 +114,46 @@ Collaboration diagram for rtos_HCSR04:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___h_c_s_r04__coll__graph.png" border="0" usemap="#artos___h_c_s_r04_coll__map" alt="Collaboration graph"/></div>
 <map name="artos___h_c_s_r04_coll__map" id="artos___h_c_s_r04_coll__map">
-<area shape="rect" title="class for the ultrasonic ranging module HC&#45;SR04 compliant with FreeRTOS" alt="" coords="5,5,475,113"/>
+<area shape="rect" title="class for the ultrasonic ranging module HC&#45;SR04 compliant with FreeRTOS" alt="" coords="5,5,475,207"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:adf0579071dbb9e870f55841f1d4d6fde" id="r_adf0579071dbb9e870f55841f1d4d6fde"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf0579071dbb9e870f55841f1d4d6fde">rtos_HCSR04</a> (uint trig_pin, uint echo_pin, QueueHandle_t input_timer_queue, QueueHandle_t output_range_queue, gpio_irq_callback_t echo_irq_call_back, uint32_t event_mask_config=GPIO_IRQ_EDGE_FALL|GPIO_IRQ_EDGE_RISE)</td></tr>
+<tr class="memitem:adf0579071dbb9e870f55841f1d4d6fde" id="r_adf0579071dbb9e870f55841f1d4d6fde"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf0579071dbb9e870f55841f1d4d6fde">rtos_HCSR04</a> (uint <a class="el" href="#a22b65cf579eaf5207cb68caaae83fb4b">trig_pin</a>, uint <a class="el" href="#a924ce303106575ff7c4ffb09d09e3b5b">echo_pin</a>, QueueHandle_t <a class="el" href="#a49c6ade69eae0abd0827e2103cf05bc7">input_timer_queue</a>, QueueHandle_t <a class="el" href="#abb8face0ee4299d5c63778b3e073ba4c">output_range_queue</a>, gpio_irq_callback_t echo_irq_call_back, uint32_t event_mask_config=GPIO_IRQ_EDGE_FALL|GPIO_IRQ_EDGE_RISE)</td></tr>
 <tr class="memdesc:adf0579071dbb9e870f55841f1d4d6fde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classrtos___h_c_s_r04.html" title="class for the ultrasonic ranging module HC-SR04 compliant with FreeRTOS">rtos_HCSR04</a> object.  <br /></td></tr>
 <tr class="separator:adf0579071dbb9e870f55841f1d4d6fde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acedf553849f3d6d63b9e38d83a8a97ba" id="r_acedf553849f3d6d63b9e38d83a8a97ba"><td class="memItemLeft" align="right" valign="top"><a id="acedf553849f3d6d63b9e38d83a8a97ba" name="acedf553849f3d6d63b9e38d83a8a97ba"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>get_distance</b> ()</td></tr>
 <tr class="memdesc:acedf553849f3d6d63b9e38d83a8a97ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">request a measure from <a class="el" href="class_h_c_s_r04.html" title="class for the ultrasonic ranging module HC-SR04">HCSR04</a> <br /></td></tr>
 <tr class="separator:acedf553849f3d6d63b9e38d83a8a97ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a22b65cf579eaf5207cb68caaae83fb4b" id="r_a22b65cf579eaf5207cb68caaae83fb4b"><td class="memItemLeft" align="right" valign="top"><a id="a22b65cf579eaf5207cb68caaae83fb4b" name="a22b65cf579eaf5207cb68caaae83fb4b"></a>
+uint&#160;</td><td class="memItemRight" valign="bottom"><b>trig_pin</b></td></tr>
+<tr class="memdesc:a22b65cf579eaf5207cb68caaae83fb4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the GPIO pin that send trigger signal to the HC-SR04 module <br /></td></tr>
+<tr class="separator:a22b65cf579eaf5207cb68caaae83fb4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a924ce303106575ff7c4ffb09d09e3b5b" id="r_a924ce303106575ff7c4ffb09d09e3b5b"><td class="memItemLeft" align="right" valign="top"><a id="a924ce303106575ff7c4ffb09d09e3b5b" name="a924ce303106575ff7c4ffb09d09e3b5b"></a>
+uint&#160;</td><td class="memItemRight" valign="bottom"><b>echo_pin</b></td></tr>
+<tr class="memdesc:a924ce303106575ff7c4ffb09d09e3b5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the GPIO pin where the HC-SR04 return echo signal <br /></td></tr>
+<tr class="separator:a924ce303106575ff7c4ffb09d09e3b5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a8209d963e4dea49bf9be6f109fa801" id="r_a1a8209d963e4dea49bf9be6f109fa801"><td class="memItemLeft" align="right" valign="top"><a id="a1a8209d963e4dea49bf9be6f109fa801" name="a1a8209d963e4dea49bf9be6f109fa801"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>echo_irq_mask_config</b></td></tr>
+<tr class="memdesc:a1a8209d963e4dea49bf9be6f109fa801"><td class="mdescLeft">&#160;</td><td class="mdescRight">A memory slot reserved to store the irq_event_mask. <br /></td></tr>
+<tr class="separator:a1a8209d963e4dea49bf9be6f109fa801"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49c6ade69eae0abd0827e2103cf05bc7" id="r_a49c6ade69eae0abd0827e2103cf05bc7"><td class="memItemLeft" align="right" valign="top"><a id="a49c6ade69eae0abd0827e2103cf05bc7" name="a49c6ade69eae0abd0827e2103cf05bc7"></a>
+QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>input_timer_queue</b></td></tr>
+<tr class="memdesc:a49c6ade69eae0abd0827e2103cf05bc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">the queue from which echo time measurement are received <br /></td></tr>
+<tr class="separator:a49c6ade69eae0abd0827e2103cf05bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb8face0ee4299d5c63778b3e073ba4c" id="r_abb8face0ee4299d5c63778b3e073ba4c"><td class="memItemLeft" align="right" valign="top"><a id="abb8face0ee4299d5c63778b3e073ba4c" name="abb8face0ee4299d5c63778b3e073ba4c"></a>
+QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>output_range_queue</b></td></tr>
+<tr class="memdesc:abb8face0ee4299d5c63778b3e073ba4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the queue to which the resulting range is sent <br /></td></tr>
+<tr class="separator:abb8face0ee4299d5c63778b3e073ba4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcf8878000554402e547da74ea2b74a9" id="r_abcf8878000554402e547da74ea2b74a9"><td class="memItemLeft" align="right" valign="top"><a id="abcf8878000554402e547da74ea2b74a9" name="abcf8878000554402e547da74ea2b74a9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>measure_completed</b></td></tr>
+<tr class="memdesc:abcf8878000554402e547da74ea2b74a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating if the measurement is completed. <br /></td></tr>
+<tr class="separator:abcf8878000554402e547da74ea2b74a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>class for the ultrasonic ranging module HC-SR04 compliant with FreeRTOS </p>

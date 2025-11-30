@@ -99,6 +99,7 @@ $(function(){initNavTree('class_k_y040.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_k_y040-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">KY040 Class Reference<div class="ingroups"><a class="el" href="group__control.html">&quot;Control&quot;</a></div></div></div>
 </div><!--header-->
@@ -113,9 +114,9 @@ Inheritance diagram for KY040:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_k_y040__inherit__graph.png" border="0" usemap="#a_k_y040_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_k_y040_inherit__map" id="a_k_y040_inherit__map">
-<area shape="rect" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt..." alt="" coords="5,152,569,303"/>
+<area shape="rect" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt..." alt="" coords="5,152,569,321"/>
 <area shape="rect" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="73,5,501,104"/>
-<area shape="poly" title=" " alt="" coords="290,119,290,153,285,153,285,119"/>
+<area shape="poly" title=" " alt="" coords="290,119,290,152,285,152,285,119"/>
 </map>
 </div>
 <div class="dynheader">
@@ -123,13 +124,21 @@ Collaboration diagram for KY040:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_k_y040__coll__graph.png" border="0" usemap="#a_k_y040_coll__map" alt="Collaboration graph"/></div>
 <map name="a_k_y040_coll__map" id="a_k_y040_coll__map">
-<area shape="rect" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt..." alt="" coords="5,649,569,799"/>
-<area shape="rect" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="73,501,501,599"/>
-<area shape="poly" title=" " alt="" coords="290,614,290,649,285,649,285,614"/>
-<area shape="rect" href="class_u_i_controlled_model.html" title="Class that adds UI Controller to the basic Model class." alt="" coords="89,265,485,439"/>
-<area shape="poly" title=" " alt="" coords="290,438,290,484,285,484,285,438"/>
-<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="147,5,427,216"/>
-<area shape="poly" title=" " alt="" coords="290,231,290,266,285,266,285,231"/>
+<area shape="rect" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt..." alt="" coords="542,911,1106,1062"/>
+<area shape="rect" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="310,665,738,763"/>
+<area shape="poly" title=" " alt="" coords="590,771,744,909,740,913,587,775"/>
+<area shape="rect" href="class_u_i_controlled_model.html" title="Class that adds UI Controller to the basic Model class." alt="" coords="122,900,518,1073"/>
+<area shape="poly" title=" " alt="" coords="525,764,515,821,505,850,490,877,481,889,477,886,486,875,500,848,510,819,520,763"/>
+<area shape="poly" title=" " alt="" coords="334,899,352,861,390,812,435,772,439,776,394,816,356,863,339,901"/>
+<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,590,285,838"/>
+<area shape="poly" title=" " alt="" coords="235,849,267,899,263,902,231,852"/>
+<area shape="rect" href="class_switch_button.html" title="SwitchButton status is sampled periodically by software." alt="" coords="681,5,989,309"/>
+<area shape="poly" title=" " alt="" coords="835,309,828,894,823,894,830,309"/>
+<area shape="rect" href="class_switch_button_with_i_r_q.html" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="860,359,1308,528"/>
+<area shape="poly" title=" " alt="" coords="979,318,1013,357,1009,361,975,322"/>
+<area shape="rect" href="class_rotary_encoder.html" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user...." alt="" coords="856,629,1320,799"/>
+<area shape="poly" title=" " alt="" coords="1009,800,910,901,906,898,1005,797"/>
+<area shape="poly" title=" " alt="" coords="1088,543,1089,629,1084,629,1083,543"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -159,6 +168,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9518d3fe3c15e58cd9b6c66be585a03c inherit pub_methods_class_u_i_controller" id="r_a9518d3fe3c15e58cd9b6c66be585a03c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_controller.html#a9518d3fe3c15e58cd9b6c66be585a03c">update_current_controlled_object</a> (<a class="el" href="class_u_i_controlled_model.html">UIControlledModel</a> *_new_controlled_object)</td></tr>
 <tr class="memdesc:a9518d3fe3c15e58cd9b6c66be585a03c inherit pub_methods_class_u_i_controller"><td class="mdescLeft">&#160;</td><td class="mdescRight">if the current controlled object is different from _new_controlled_object, change the current controlled object this new one. By he same time, The controller of the new controlled object is updated.  <br /></td></tr>
 <tr class="separator:a9518d3fe3c15e58cd9b6c66be585a03c inherit pub_methods_class_u_i_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aeeacb4eda161ef68b02a2f5799239c64" id="r_aeeacb4eda161ef68b02a2f5799239c64"><td class="memItemLeft" align="right" valign="top"><a id="aeeacb4eda161ef68b02a2f5799239c64" name="aeeacb4eda161ef68b02a2f5799239c64"></a>
+<a class="el" href="class_switch_button.html">SwitchButton</a>&#160;</td><td class="memItemRight" valign="bottom"><b>central_switch</b></td></tr>
+<tr class="memdesc:aeeacb4eda161ef68b02a2f5799239c64"><td class="mdescLeft">&#160;</td><td class="mdescRight">the internal part of <a class="el" href="class_k_y040.html" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt...">KY040</a> that behaves as a simple switch button <br /></td></tr>
+<tr class="separator:aeeacb4eda161ef68b02a2f5799239c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eb8bfa93217c26d2fff46d3d2831be1" id="r_a2eb8bfa93217c26d2fff46d3d2831be1"><td class="memItemLeft" align="right" valign="top"><a id="a2eb8bfa93217c26d2fff46d3d2831be1" name="a2eb8bfa93217c26d2fff46d3d2831be1"></a>
+<a class="el" href="class_rotary_encoder.html">RotaryEncoder</a>&#160;</td><td class="memItemRight" valign="bottom"><b>encoder</b></td></tr>
+<tr class="memdesc:a2eb8bfa93217c26d2fff46d3d2831be1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the internal part of the <a class="el" href="class_k_y040.html" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt...">KY040</a> that behaves as a rotary encoder <br /></td></tr>
+<tr class="separator:a2eb8bfa93217c26d2fff46d3d2831be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>

@@ -1,0 +1,15 @@
+<map id="Canvas::clear_canvas_buffer" name="Canvas::clear_canvas_buffer">
+<area shape="rect" id="Node000001" title="fill the canvas buffer with 0x00" alt="" coords="443,55,600,79"/>
+<area shape="rect" id="Node000002" href="$class_canvas_h_m_s_b.html#a55e35c6f533f9c93eb7eed3b35e8edc9" title="Create a canvas buffer object." alt="" coords="203,5,395,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="447,53,357,33,359,28,448,48"/>
+<area shape="rect" id="Node000004" href="$class_canvas_r_g_b.html#abe4c1a7b209aac4175a06250fe8e6ba0" title="Create a canvas buffer object." alt="" coords="206,55,392,79"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="427,70,392,70,392,64,427,64"/>
+<area shape="rect" id="Node000006" href="$class_canvas_v_l_s_b.html#ac5b44ba51620a5c0aed91b400648defd" title="Create a canvas buffer object." alt="" coords="205,104,393,129"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="448,86,359,106,357,101,447,81"/>
+<area shape="rect" id="Node000003" href="$class_canvas_h_m_s_b.html#a4e1880c5b1238297ce9d1beaa5f4a8b9" title="constructor for CanvasHMSB" alt="" coords="5,5,155,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="187,20,155,20,155,15,187,15"/>
+<area shape="rect" id="Node000005" href="$class_canvas_r_g_b.html#a31311b6281bef7a373398de04b26e459" title="Construct a new Canvas R G B object." alt="" coords="12,55,148,79"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="191,70,148,70,148,64,191,64"/>
+<area shape="rect" id="Node000007" href="$class_canvas_v_l_s_b.html#ab1738fd595e5e3bb2fff7b28c9ae4a80" title="Construct a new Canvas V L S B object." alt="" coords="9,104,151,129"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="189,119,151,119,151,114,189,114"/>
+</map>

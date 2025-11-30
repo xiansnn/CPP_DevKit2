@@ -99,6 +99,8 @@ $(function(){initNavTree('class_h_c_s_r04.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_h_c_s_r04-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">HCSR04 Class Reference<div class="ingroups"><a class="el" href="group__sensor.html">&quot;Sensor&quot;</a></div></div></div>
 </div><!--header-->
@@ -113,18 +115,36 @@ Collaboration diagram for HCSR04:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_h_c_s_r04__coll__graph.png" border="0" usemap="#a_h_c_s_r04_coll__map" alt="Collaboration graph"/></div>
 <map name="a_h_c_s_r04_coll__map" id="a_h_c_s_r04_coll__map">
-<area shape="rect" title="class for the ultrasonic ranging module HC&#45;SR04" alt="" coords="5,5,201,85"/>
+<area shape="rect" title="class for the ultrasonic ranging module HC&#45;SR04" alt="" coords="5,5,201,123"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a036f4e60cdd9c8e6821833a824dbf338" id="r_a036f4e60cdd9c8e6821833a824dbf338"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a036f4e60cdd9c8e6821833a824dbf338">HCSR04</a> (uint trig_pin, uint echo_pin)</td></tr>
+<tr class="memitem:a036f4e60cdd9c8e6821833a824dbf338" id="r_a036f4e60cdd9c8e6821833a824dbf338"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a036f4e60cdd9c8e6821833a824dbf338">HCSR04</a> (uint <a class="el" href="#a48d3d06ac173d1e78c3ac552d32b1b72">trig_pin</a>, uint <a class="el" href="#a92e3ba633462544a710ccb55477a9535">echo_pin</a>)</td></tr>
 <tr class="memdesc:a036f4e60cdd9c8e6821833a824dbf338"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new hc sr04 object.  <br /></td></tr>
 <tr class="separator:a036f4e60cdd9c8e6821833a824dbf338"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa946b0976a5a915bfde3ff51b7359ddb" id="r_aa946b0976a5a915bfde3ff51b7359ddb"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa946b0976a5a915bfde3ff51b7359ddb">get_distance</a> ()</td></tr>
 <tr class="memdesc:aa946b0976a5a915bfde3ff51b7359ddb"><td class="mdescLeft">&#160;</td><td class="mdescRight">request a measure from <a class="el" href="class_h_c_s_r04.html" title="class for the ultrasonic ranging module HC-SR04">HCSR04</a>  <br /></td></tr>
 <tr class="separator:aa946b0976a5a915bfde3ff51b7359ddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a3d06ade5673e079096cd2ce7c0a5678e" id="r_a3d06ade5673e079096cd2ce7c0a5678e"><td class="memItemLeft" align="right" valign="top"><a id="a3d06ade5673e079096cd2ce7c0a5678e" name="a3d06ade5673e079096cd2ce7c0a5678e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>trig</b> ()</td></tr>
+<tr class="memdesc:a3d06ade5673e079096cd2ce7c0a5678e"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a trig signal to <a class="el" href="class_h_c_s_r04.html" title="class for the ultrasonic ranging module HC-SR04">HCSR04</a> <br /></td></tr>
+<tr class="separator:a3d06ade5673e079096cd2ce7c0a5678e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a48d3d06ac173d1e78c3ac552d32b1b72" id="r_a48d3d06ac173d1e78c3ac552d32b1b72"><td class="memItemLeft" align="right" valign="top"><a id="a48d3d06ac173d1e78c3ac552d32b1b72" name="a48d3d06ac173d1e78c3ac552d32b1b72"></a>
+uint&#160;</td><td class="memItemRight" valign="bottom"><b>trig_pin</b></td></tr>
+<tr class="memdesc:a48d3d06ac173d1e78c3ac552d32b1b72"><td class="mdescLeft">&#160;</td><td class="mdescRight">the GPIO pin that send trigger signal to the HC-SR04 module <br /></td></tr>
+<tr class="separator:a48d3d06ac173d1e78c3ac552d32b1b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92e3ba633462544a710ccb55477a9535" id="r_a92e3ba633462544a710ccb55477a9535"><td class="memItemLeft" align="right" valign="top"><a id="a92e3ba633462544a710ccb55477a9535" name="a92e3ba633462544a710ccb55477a9535"></a>
+uint&#160;</td><td class="memItemRight" valign="bottom"><b>echo_pin</b></td></tr>
+<tr class="memdesc:a92e3ba633462544a710ccb55477a9535"><td class="mdescLeft">&#160;</td><td class="mdescRight">the GPIO pin where the HC-SR04 return echo signal <br /></td></tr>
+<tr class="separator:a92e3ba633462544a710ccb55477a9535"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>class for the ultrasonic ranging module HC-SR04 </p>
@@ -177,6 +197,16 @@ Public Member Functions</h2></td></tr>
 
 <p>request a measure from <a class="el" href="class_h_c_s_r04.html" title="class for the ultrasonic ranging module HC-SR04">HCSR04</a> </p>
 <dl class="section return"><dt>Returns</dt><dd>the measured distance in float[cm]. Max = 400cm. If no response, return = -1. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_h_c_s_r04_aa946b0976a5a915bfde3ff51b7359ddb_cgraph.png" border="0" usemap="#aclass_h_c_s_r04_aa946b0976a5a915bfde3ff51b7359ddb_cgraph" alt=""/></div>
+<map name="aclass_h_c_s_r04_aa946b0976a5a915bfde3ff51b7359ddb_cgraph" id="aclass_h_c_s_r04_aa946b0976a5a915bfde3ff51b7359ddb_cgraph">
+<area shape="rect" title="request a measure from HCSR04" alt="" coords="5,5,135,30"/>
+<area shape="rect" href="class_h_c_s_r04.html#a3d06ade5673e079096cd2ce7c0a5678e" title="send a trig signal to HCSR04" alt="" coords="183,5,266,30"/>
+<area shape="poly" title=" " alt="" coords="135,15,167,15,167,20,135,20"/>
+</map>
+</div>
 
 </div>
 </div>

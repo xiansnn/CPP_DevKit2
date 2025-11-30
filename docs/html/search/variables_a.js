@@ -1,12 +1,13 @@
 var searchData=
 [
-  ['managed_5fmodels_0',['managed_models',['../class_u_i_model_manager.html#ae583beb457ebe200d56e14f3eb92296b',1,'UIModelManager']]],
-  ['managed_5frtos_5fmodels_1',['managed_rtos_models',['../classrtos___u_i_controlled_model.html#ae65f82a56aa2398fe85e5686421394df',1,'rtos_UIControlledModel']]],
-  ['max_5fvalue_2',['max_value',['../classcore___increment_controlled_model.html#a84be353fe33d7508654b95f40799dfd5',1,'core_IncrementControlledModel::max_value'],['../class_u_i_controlled_incremental_value.html#a502ecbf045c5f2b4d2015bad04611a7d',1,'UIControlledIncrementalValue::max_value'],['../class_model_bargraph.html#ab5ac71a917bd5563fe3e298e8841a80f',1,'ModelBargraph::max_value']]],
-  ['mem_3',['mem',['../structstruct___slave_memory.html#a541a2516d84c428b9450dc98efdc028d',1,'struct_SlaveMemory']]],
-  ['mem_5faddress_4',['mem_address',['../structstruct___slave_memory.html#a676889062063c62684c4c2bb1f6772ed',1,'struct_SlaveMemory']]],
-  ['mem_5faddress_5fwritten_5',['mem_address_written',['../structstruct___slave_memory.html#a7ffdb875b97e9cb9ca8680e72704621f',1,'struct_SlaveMemory']]],
-  ['min_5fvalue_6',['min_value',['../classcore___increment_controlled_model.html#ae6c8c0770b458bad286f42bcf1abb304',1,'core_IncrementControlledModel::min_value'],['../class_u_i_controlled_incremental_value.html#ae8b0cdfbfe7f3bc120870d7f9e67fb7a',1,'UIControlledIncrementalValue::min_value'],['../class_model_bargraph.html#ab248b727cd4e7023c6bd29259ca60358',1,'ModelBargraph::min_value']]],
-  ['mpu_5faddr_7',['MPU_ADDR',['../structstruct___config_m_p_u6050.html#acf79176ed664b066365717df749cacd7',1,'struct_ConfigMPU6050']]],
-  ['mux_5fratio_5fvalue_8',['mux_ratio_value',['../structstruct___config_s_s_d1306.html#aecebd6411a14e59af2f09302e716bcb9',1,'struct_ConfigSSD1306']]]
+  ['last_5fchange_5ftime_0',['last_change_time',['../class_model.html#ac1e989ec9c1491b4f1b3075ad4d753f7',1,'Model']]],
+  ['led_5fis_5fon_1',['led_is_on',['../class_widget_square_led.html#a48652cb1b822e40375cf7062ac63863e',1,'WidgetSquareLed']]],
+  ['led_5fstatus_2',['led_status',['../class_widget_blinking_square_led.html#af84365c4913a06b4f872ecc8a3420269',1,'WidgetBlinkingSquareLed']]],
+  ['length_3',['length',['../structstruct___t_x___data_queue_s_p_i.html#af34d1fd028968fd0941b289aed5d244d',1,'struct_TX_DataQueueSPI']]],
+  ['level_4',['level',['../class_widget_horizontal_bar.html#a69a11f9c5023f31a453314def6db7202',1,'WidgetHorizontalBar']]],
+  ['level_5fcoef_5',['level_coef',['../class_widget_horizontal_bargraph.html#a2293bf08666a64cca0729ab6e70fab74',1,'WidgetHorizontalBargraph::level_coef'],['../class_widget_vertical_bargraph.html#a52cca56e0eec826ef3f54da12a16ed90',1,'WidgetVerticalBargraph::level_coef'],['../class_widget_horizontal_bar.html#ab056a752ff665d0c8f1ca10527130885',1,'WidgetHorizontalBar::level_coef']]],
+  ['level_5foffset_6',['level_offset',['../class_widget_horizontal_bargraph.html#a88c0d195853bac577f0d951819e6ac85',1,'WidgetHorizontalBargraph::level_offset'],['../class_widget_vertical_bargraph.html#a37b0ff21f1f0879505a431dac8e79d20',1,'WidgetVerticalBargraph::level_offset'],['../class_widget_horizontal_bar.html#a3dac8a9f17d8e944d15332d916dcc034',1,'WidgetHorizontalBar::level_offset']]],
+  ['long_5fpush_5fdelay_5fms_7',['long_push_delay_ms',['../structstruct__rtos_config_switch_button.html#a23d1690b2f98882b44aa61feb5c466e4',1,'struct_rtosConfigSwitchButton::long_push_delay_ms'],['../classrtos___switch_button.html#a430fa348372c8df567193ca9a55ab896',1,'rtos_SwitchButton::long_push_delay_ms']]],
+  ['long_5fpush_5fdelay_5fus_8',['long_push_delay_us',['../structstruct___config_switch_button.html#a27822f74665f955a621feba0af8a8b15',1,'struct_ConfigSwitchButton::long_push_delay_us'],['../class_switch_button.html#ac3efe4e87a09e753245b7b50916169ed',1,'SwitchButton::long_push_delay_us']]],
+  ['long_5frelease_5fdelay_5fus_9',['long_release_delay_us',['../structstruct__rtos_config_switch_button.html#a144ff6e23ba7dcfabb1f659798ba0546',1,'struct_rtosConfigSwitchButton::long_release_delay_us'],['../classrtos___switch_button.html#ac2c7088346c9f1608a09e6708fbc87c4',1,'rtos_SwitchButton::long_release_delay_us'],['../structstruct___config_switch_button.html#a893bd83ff1b69d11b919f7b51a08490e',1,'struct_ConfigSwitchButton::long_release_delay_us'],['../class_switch_button.html#a5cf488e4819df6fd8cc5cd3811d33354',1,'SwitchButton::long_release_delay_us']]]
 ];

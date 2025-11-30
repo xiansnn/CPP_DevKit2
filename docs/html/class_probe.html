@@ -99,6 +99,8 @@ $(function(){initNavTree('class_probe.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_probe-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Probe Class Reference<div class="ingroups"><a class="el" href="group__debug.html">&quot;Utilities/Debug library&quot;</a></div></div></div>
 </div><!--header-->
@@ -113,7 +115,7 @@ Collaboration diagram for Probe:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_probe__coll__graph.png" border="0" usemap="#a_probe_coll__map" alt="Collaboration graph"/></div>
 <map name="a_probe_coll__map" id="a_probe_coll__map">
-<area shape="rect" title="The Probe provides a convenient class that can be used to observe behavior of programs...." alt="" coords="5,5,168,141"/>
+<area shape="rect" title="The Probe provides a convenient class that can be used to observe behavior of programs...." alt="" coords="5,5,193,160"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -136,6 +138,20 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>lo</b> ()</td></tr>
 <tr class="memitem:a3ca878200b9a6d5744366b23fe0051c9" id="r_a3ca878200b9a6d5744366b23fe0051c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ca878200b9a6d5744366b23fe0051c9">copy</a> (bool _value)</td></tr>
 <tr class="memdesc:a3ca878200b9a6d5744366b23fe0051c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to copy the boolean _value on th GPIO.  <br /></td></tr>
 <tr class="separator:a3ca878200b9a6d5744366b23fe0051c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:af1c0c11076e1fc3961ff8e4a68d70e5c" id="r_af1c0c11076e1fc3961ff8e4a68d70e5c"><td class="memItemLeft" align="right" valign="top"><a id="af1c0c11076e1fc3961ff8e4a68d70e5c" name="af1c0c11076e1fc3961ff8e4a68d70e5c"></a>
+uint&#160;</td><td class="memItemRight" valign="bottom"><b>_gpio</b></td></tr>
+<tr class="memdesc:af1c0c11076e1fc3961ff8e4a68d70e5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">this is the GPIO output on wich signals will be generated. The numbers are those of Raspberry Pi Pico. <br /></td></tr>
+<tr class="separator:af1c0c11076e1fc3961ff8e4a68d70e5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a58c5a7fd7eee85cce3850eec5665c9bd" id="r_a58c5a7fd7eee85cce3850eec5665c9bd"><td class="memItemLeft" align="right" valign="top"><a id="a58c5a7fd7eee85cce3850eec5665c9bd" name="a58c5a7fd7eee85cce3850eec5665c9bd"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>_channel_map</b> [8] = {6, 7, 8, 9, 16, 17, 21, 26}</td></tr>
+<tr class="memdesc:a58c5a7fd7eee85cce3850eec5665c9bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">this is the mapping of GPIO number to the logic analyser channel. The choice of GPIO number is arbitrar. It will depends on free outputs on your specific hardware implementation. <br /></td></tr>
+<tr class="separator:a58c5a7fd7eee85cce3850eec5665c9bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="class_probe.html" title="The Probe provides a convenient class that can be used to observe behavior of programs....">Probe</a> provides a convenient class that can be used to observe behavior of programs. It may be used with a logical analyser. The one used here has eight channels, numbered from 0 to 7. </p>

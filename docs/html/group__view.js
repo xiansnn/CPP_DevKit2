@@ -100,22 +100,26 @@ var group__view =
     ] ],
     [ "CanvasVLSB", "class_canvas_v_l_s_b.html", [
       [ "CanvasVLSB", "class_canvas_v_l_s_b.html#ab1738fd595e5e3bb2fff7b28c9ae4a80", null ],
+      [ "create_canvas_buffer", "class_canvas_v_l_s_b.html#ac5b44ba51620a5c0aed91b400648defd", null ],
       [ "draw_pixel", "class_canvas_v_l_s_b.html#ad9730b156e3ca8449b296ad7392d07ee", null ],
       [ "fill_canvas_with_color", "class_canvas_v_l_s_b.html#a40d40c35e6fc2b5cf8a91c7c754dad25", null ]
     ] ],
     [ "CanvasRGB", "class_canvas_r_g_b.html", [
       [ "CanvasRGB", "class_canvas_r_g_b.html#a31311b6281bef7a373398de04b26e459", null ],
+      [ "create_canvas_buffer", "class_canvas_r_g_b.html#abe4c1a7b209aac4175a06250fe8e6ba0", null ],
       [ "draw_pixel", "class_canvas_r_g_b.html#ae9474f2a6680de4013e4493acab82f5b", null ],
       [ "fill_canvas_with_color", "class_canvas_r_g_b.html#a6b75bb954fe7937dbfb3d321054c13dc", null ]
     ] ],
     [ "CanvasTrueRGB", "class_canvas_true_r_g_b.html", [
       [ "CanvasTrueRGB", "class_canvas_true_r_g_b.html#aa1b1ab50cbe8ee85776ad9f7fa686c21", null ],
       [ "clear_canvas_buffer", "class_canvas_true_r_g_b.html#ac7380da04d6d943ad844a7cae36200d6", null ],
+      [ "create_canvas_buffer", "class_canvas_true_r_g_b.html#a0e66740cd696bf1ee882380cb208e66d", null ],
       [ "draw_pixel", "class_canvas_true_r_g_b.html#a0f46bd2b6ad3ae08fd511f871670f47a", null ],
       [ "fill_canvas_with_color", "class_canvas_true_r_g_b.html#a1c1d66bd384772ef43fad0f636c691e3", null ]
     ] ],
     [ "CanvasHMSB", "class_canvas_h_m_s_b.html", [
       [ "CanvasHMSB", "class_canvas_h_m_s_b.html#a4e1880c5b1238297ce9d1beaa5f4a8b9", null ],
+      [ "create_canvas_buffer", "class_canvas_h_m_s_b.html#a55e35c6f533f9c93eb7eed3b35e8edc9", null ],
       [ "draw_pixel", "class_canvas_h_m_s_b.html#a04c0a63d53d9c0db1495827b9fffc79a", null ],
       [ "fill_canvas_with_color", "class_canvas_h_m_s_b.html#a3cf926a9e0d6e6d46aaf755370c9c455", null ]
     ] ],
@@ -138,7 +142,10 @@ var group__view =
       [ "clear_blinking_phase_change", "class_blinker.html#ae6a97a7779716d6a9a4954e9491d2985", null ],
       [ "compute_blinking_phase", "class_blinker.html#a813d28ac666e9d76aebd1385a23b1b54", null ],
       [ "has_blinking_changed", "class_blinker.html#ae36b06b6ad8e5b5e14f5a95c1f4d3471", null ],
-      [ "set_blink_us", "class_blinker.html#a55d1c93f8b1e2492b1948944d1462665", null ]
+      [ "set_blink_us", "class_blinker.html#a55d1c93f8b1e2492b1948944d1462665", null ],
+      [ "blink_period_us", "class_blinker.html#a81ad2798f20758ed7512d98c186d6bd2", null ],
+      [ "blink_phase_changed", "class_blinker.html#a1f19ca4e7fdcfe8d47f068683851f98f", null ],
+      [ "previous_blinking_phase", "class_blinker.html#a3997ad8aaa3381ba09001f31ea758cc5", null ]
     ] ],
     [ "Widget", "class_widget.html", [
       [ "Widget", "class_widget.html#a0d8f98229ae680885d74911bd73c67a1", null ],
@@ -159,6 +166,7 @@ var group__view =
       [ "circle", "class_graphic_widget.html#aeadc616612d2a5ad911c9595073bdb71", null ],
       [ "clear_widget", "class_graphic_widget.html#a7cfe84700b96f442632858a6aad2000d", null ],
       [ "draw_border", "class_graphic_widget.html#ac2a3a4387a699f25407c71a90b55eeab", null ],
+      [ "ellipse", "class_graphic_widget.html#ab499546cc28ee6f5e74051f061b24e30", null ],
       [ "get_graph_frame_config", "class_graphic_widget.html#a49c9ebded2dc14246284662e13713a05", null ],
       [ "get_value_of_interest", "class_graphic_widget.html#a012e42d45d29004e6e93e46782dcb284", null ],
       [ "hline", "class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a", null ],
@@ -181,10 +189,12 @@ var group__view =
       [ "TextWidget", "class_text_widget.html#a8b89d79775e7c1fe86bba60e70232c32", null ],
       [ "TextWidget", "class_text_widget.html#aca120d9a5d48d9f205a0971b826db362", null ],
       [ "~TextWidget", "class_text_widget.html#a5236b5dabb05f7a53ab9a021bc57e413", null ],
+      [ "clear_line", "class_text_widget.html#ad78f8aeaf711b85731d697092bae94b1", null ],
       [ "clear_text_buffer", "class_text_widget.html#ad0eff5956c8b16178e7eb3572a86e57d", null ],
       [ "create_text_buffer", "class_text_widget.html#a25231a80633db702af090c590d5fabc7", null ],
       [ "draw", "class_text_widget.html#a34e2f1558ebd76f1dbfb3cbfdf0e7894", null ],
       [ "draw_border", "class_text_widget.html#ab82666ba03e577d92dc32be8384318cd", null ],
+      [ "draw_glyph", "class_text_widget.html#a47dae71331351e62bb63bc10bc83a7d7", null ],
       [ "get_text_frame_config", "class_text_widget.html#ad59aca3e9c6adb5b24fdbb94c4ccea26", null ],
       [ "next_char", "class_text_widget.html#a3712ffd3288da6a64d22e57177ee4beb", null ],
       [ "next_line", "class_text_widget.html#a8192cc012e92157d8e47b4d8569f9529", null ],
@@ -192,11 +202,18 @@ var group__view =
       [ "update_canvas_buffer_size", "class_text_widget.html#a6b1dbfb205b17dd9404425871f35563e", null ],
       [ "update_text_frame_size", "class_text_widget.html#a90e41e7b1954c812001292dcc8b4dc51", null ],
       [ "write", "class_text_widget.html#a3ce8f540e45844b22efa9f18c3c85eab", null ],
+      [ "write", "class_text_widget.html#a237b451ce7140f32676109f637fb215d", null ],
       [ "write", "class_text_widget.html#ab9524e4f93739352b7fe0915e038c1fb", null ],
+      [ "auto_next_char", "class_text_widget.html#a5fd38fb14e38400bed765a067c9f5a32", null ],
+      [ "current_char_column", "class_text_widget.html#af8251cc036e15a7c182a4b2c156d6686", null ],
+      [ "current_char_line", "class_text_widget.html#acafdf1bdb34e585fe8a2dcabda337deb", null ],
+      [ "font", "class_text_widget.html#a6f9e90b07bdd553e7b0833c2679d513a", null ],
       [ "number_of_column", "class_text_widget.html#ac5dbe29b323b9ca3ec658261bbca54b2", null ],
       [ "number_of_line", "class_text_widget.html#ae87e4aa5aa4076fa0d1f03e08c1d7a9c", null ],
+      [ "tab_size", "class_text_widget.html#a104e81d58512b0c52e50878ad82b3b95", null ],
       [ "text_buffer", "class_text_widget.html#ad736dbe25c45386c7c7c02608ba2f3d4", null ],
-      [ "text_buffer_size", "class_text_widget.html#adfd92491668798cee817a5964823a411", null ]
+      [ "text_buffer_size", "class_text_widget.html#adfd92491668798cee817a5964823a411", null ],
+      [ "wrap", "class_text_widget.html#aeb9b2312bbf201662d7c8ea1691a49b8", null ]
     ] ],
     [ "PrintWidget", "class_print_widget.html", [
       [ "PrintWidget", "class_print_widget.html#af495fd2db88a95de2d354bb91ed6a04e", null ]
@@ -204,25 +221,49 @@ var group__view =
     [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html", [
       [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html#a63ba4fb58b7c9059e80fcc051b97c663", null ],
       [ "~WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html#af60d1b0ba4b8bff1a461c77033a4c619", null ],
+      [ "convert_level_value_to_px", "class_widget_horizontal_bargraph.html#a4409c6d882c92ca3d6974eff0bc8579f", null ],
       [ "draw", "class_widget_horizontal_bargraph.html#ac51fc7454f00e12c47c507b449a1b0b0", null ],
+      [ "draw_bar", "class_widget_horizontal_bargraph.html#ad9095aa605f93b1b988b7c3e497a27aa", null ],
       [ "get_value_of_interest", "class_widget_horizontal_bargraph.html#ab2e10c8e29c33233ec2a78e4a2838e92", null ],
+      [ "bar_height", "class_widget_horizontal_bargraph.html#a28bdd467f4ea6e2f4251b6588467f7f7", null ],
+      [ "bar_spacing", "class_widget_horizontal_bargraph.html#ae63bdc531fe4e89b4061003dcac9b422", null ],
+      [ "bar_width", "class_widget_horizontal_bargraph.html#a7bf503f22c5cff145c183ea0b7edc692", null ],
+      [ "level_coef", "class_widget_horizontal_bargraph.html#a2293bf08666a64cca0729ab6e70fab74", null ],
+      [ "level_offset", "class_widget_horizontal_bargraph.html#a88c0d195853bac577f0d951819e6ac85", null ],
       [ "number_of_bar", "class_widget_horizontal_bargraph.html#a1e7d8db03c625b052cd4e8b54c36a95d", null ],
+      [ "px_max", "class_widget_horizontal_bargraph.html#a1c6bb51b520062edef39d337493215ec", null ],
+      [ "px_min", "class_widget_horizontal_bargraph.html#a14cd2d8640f0c4b8f3d09aabe9ca8588", null ],
       [ "values", "class_widget_horizontal_bargraph.html#a49f9913076330612c4512c12cb22cd53", null ]
     ] ],
     [ "WidgetVerticalBargraph", "class_widget_vertical_bargraph.html", [
       [ "WidgetVerticalBargraph", "class_widget_vertical_bargraph.html#a6c7c092d3d1bd495d29d43e290aa705d", null ],
+      [ "convert_level_value_to_py", "class_widget_vertical_bargraph.html#a99a7d89fcc4b1c62823b74a65d85b807", null ],
       [ "draw", "class_widget_vertical_bargraph.html#a938fef5332131013fe1f7e31f7629f41", null ],
+      [ "draw_bar", "class_widget_vertical_bargraph.html#a51e76d94a406956193c15c09adcde58e", null ],
       [ "get_value_of_interest", "class_widget_vertical_bargraph.html#aa3881be6be2c17e6310e9d4561940054", null ],
       [ "bar_height", "class_widget_vertical_bargraph.html#a66e44b85659f8b4e1a4aaece7d315e9a", null ],
       [ "bar_spacing", "class_widget_vertical_bargraph.html#a6f2b956838b134ded3a14b8de891d909", null ],
       [ "bar_width", "class_widget_vertical_bargraph.html#a1052a305919908ce30531940c1fc9e57", null ],
+      [ "level_coef", "class_widget_vertical_bargraph.html#a52cca56e0eec826ef3f54da12a16ed90", null ],
+      [ "level_offset", "class_widget_vertical_bargraph.html#a37b0ff21f1f0879505a431dac8e79d20", null ],
       [ "number_of_bar", "class_widget_vertical_bargraph.html#af7cccb54e229667c6b08bfeae64bffbb", null ],
+      [ "py_max", "class_widget_vertical_bargraph.html#a27383bd1ab93f3d2a5c3ee8d5c98f021", null ],
+      [ "py_min", "class_widget_vertical_bargraph.html#a4eac7b1da025780d00a6e109f2ad4ff1", null ],
       [ "values", "class_widget_vertical_bargraph.html#a34e7d8ae5dda9f7b377ac7847258e19a", null ]
     ] ],
     [ "WidgetHorizontalBar", "class_widget_horizontal_bar.html", [
       [ "WidgetHorizontalBar", "class_widget_horizontal_bar.html#a7f16e98514b9d0c14a1781c001179b8c", null ],
+      [ "convert_level_value_to_px", "class_widget_horizontal_bar.html#aa94c8372969017f613b39dfcd690b014", null ],
       [ "draw", "class_widget_horizontal_bar.html#a73f6c8198a940ad2803367e5712f3359", null ],
-      [ "set_level", "class_widget_horizontal_bar.html#a463a0d22a9509395fac826be6a8154a4", null ]
+      [ "set_level", "class_widget_horizontal_bar.html#a463a0d22a9509395fac826be6a8154a4", null ],
+      [ "level", "class_widget_horizontal_bar.html#a69a11f9c5023f31a453314def6db7202", null ],
+      [ "level_coef", "class_widget_horizontal_bar.html#ab056a752ff665d0c8f1ca10527130885", null ],
+      [ "level_offset", "class_widget_horizontal_bar.html#a3dac8a9f17d8e944d15332d916dcc034", null ],
+      [ "max_value", "class_widget_horizontal_bar.html#adc3cd2ef29476f94e66b424d380d621e", null ],
+      [ "min_value", "class_widget_horizontal_bar.html#a640d4afcc203d0a32e2139a57e9a1123", null ],
+      [ "px_max", "class_widget_horizontal_bar.html#a0788bbdadefbe54e47963d5d7026b7c6", null ],
+      [ "px_min", "class_widget_horizontal_bar.html#a43c5233ff22243b90aa0b50612352a5a", null ],
+      [ "px_position", "class_widget_horizontal_bar.html#ac8158adb2da94bb265e98c213b8e746b", null ]
     ] ],
     [ "WidgetSquareLed", "class_widget_square_led.html", [
       [ "WidgetSquareLed", "class_widget_square_led.html#ad554a73ba696f1ba0538bd1a47ca7118", null ],

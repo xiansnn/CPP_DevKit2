@@ -99,6 +99,7 @@ $(function(){initNavTree('class_blinker.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_blinker-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Blinker Class Reference<div class="ingroups"><a class="el" href="group__view.html">&quot;View&quot;</a></div></div></div>
 </div><!--header-->
@@ -113,11 +114,11 @@ Inheritance diagram for Blinker:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_blinker__inherit__graph.png" border="0" usemap="#a_blinker_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_blinker_inherit__map" id="a_blinker_inherit__map">
-<area shape="rect" title="A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker..." alt="" coords="98,5,361,160"/>
-<area shape="rect" href="class_widget_blinking_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="5,208,453,321"/>
-<area shape="poly" title=" " alt="" coords="232,175,232,208,227,208,227,175"/>
-<area shape="rect" href="class_widget_focus_indicator.html" title="A specific class dedicated to indicate the status of an UIControlledModel. Not an abstract class,..." alt="" coords="13,369,445,483"/>
-<area shape="poly" title=" " alt="" coords="232,336,232,370,227,370,227,336"/>
+<area shape="rect" title="A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker..." alt="" coords="98,5,361,197"/>
+<area shape="rect" href="class_widget_blinking_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="5,245,453,359"/>
+<area shape="poly" title=" " alt="" coords="232,212,232,246,227,246,227,212"/>
+<area shape="rect" href="class_widget_focus_indicator.html" title="A specific class dedicated to indicate the status of an UIControlledModel. Not an abstract class,..." alt="" coords="13,407,445,520"/>
+<area shape="poly" title=" " alt="" coords="232,373,232,407,227,407,227,373"/>
 </map>
 </div>
 <div class="dynheader">
@@ -125,7 +126,7 @@ Collaboration diagram for Blinker:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_blinker__coll__graph.png" border="0" usemap="#a_blinker_coll__map" alt="Collaboration graph"/></div>
 <map name="a_blinker_coll__map" id="a_blinker_coll__map">
-<area shape="rect" title="A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker..." alt="" coords="5,5,268,160"/>
+<area shape="rect" title="A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker..." alt="" coords="5,5,268,197"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -145,6 +146,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_blinking_phase_
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>compute_blinking_phase</b> ()</td></tr>
 <tr class="memdesc:a813d28ac666e9d76aebd1385a23b1b54"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute if the system clock divided by the blink_period is odd or even and if this has changed since the last cycle. <br /></td></tr>
 <tr class="separator:a813d28ac666e9d76aebd1385a23b1b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a3997ad8aaa3381ba09001f31ea758cc5" id="r_a3997ad8aaa3381ba09001f31ea758cc5"><td class="memItemLeft" align="right" valign="top"><a id="a3997ad8aaa3381ba09001f31ea758cc5" name="a3997ad8aaa3381ba09001f31ea758cc5"></a>
+int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>previous_blinking_phase</b></td></tr>
+<tr class="memdesc:a3997ad8aaa3381ba09001f31ea758cc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">store the value of the previous blinking phase.should be 0 or 1. <br /></td></tr>
+<tr class="separator:a3997ad8aaa3381ba09001f31ea758cc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81ad2798f20758ed7512d98c186d6bd2" id="r_a81ad2798f20758ed7512d98c186d6bd2"><td class="memItemLeft" align="right" valign="top"><a id="a81ad2798f20758ed7512d98c186d6bd2" name="a81ad2798f20758ed7512d98c186d6bd2"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>blink_period_us</b> {1000000}</td></tr>
+<tr class="memdesc:a81ad2798f20758ed7512d98c186d6bd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The period of the blinking, in microseconds. <br /></td></tr>
+<tr class="separator:a81ad2798f20758ed7512d98c186d6bd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f19ca4e7fdcfe8d47f068683851f98f" id="r_a1f19ca4e7fdcfe8d47f068683851f98f"><td class="memItemLeft" align="right" valign="top"><a id="a1f19ca4e7fdcfe8d47f068683851f98f" name="a1f19ca4e7fdcfe8d47f068683851f98f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>blink_phase_changed</b></td></tr>
+<tr class="memdesc:a1f19ca4e7fdcfe8d47f068683851f98f"><td class="mdescLeft">&#160;</td><td class="mdescRight">a flag that indicates the blinking phase has changed <br /></td></tr>
+<tr class="separator:a1f19ca4e7fdcfe8d47f068683851f98f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A base class used to add blinking feature to widgets. To do so, this widget must inherit from <a class="el" href="class_blinker.html" title="A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker...">Blinker</a>. </p>

@@ -1,3 +1,5 @@
 <map id="SG90" name="SG90">
-<area shape="rect" id="Node000001" title="the class that manages the SG90 step motor" alt="" coords="5,5,209,85"/>
+<area shape="rect" id="Node000001" title="the class that manages the SG90 step motor" alt="" coords="115,311,319,466"/>
+<area shape="rect" id="Node000002" href="$class_p_w_m.html" title="The basic PWM function." alt="" coords="5,5,428,249"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,249,219,294,214,294,214,249"/>
 </map>

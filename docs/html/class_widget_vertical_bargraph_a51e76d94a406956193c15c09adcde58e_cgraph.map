@@ -1,0 +1,11 @@
+<map id="WidgetVerticalBargraph::draw_bar" name="WidgetVerticalBargraph::draw_bar">
+<area shape="rect" id="Node000001" title="the function that draw a bar in the widget" alt="" coords="5,31,192,55"/>
+<area shape="rect" id="Node000002" href="$class_widget_vertical_bargraph.html#a99a7d89fcc4b1c62823b74a65d85b807" title="the value to pixel y&#45;coordinate converter" alt="" coords="240,5,507,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,32,224,29,225,34,192,37"/>
+<area shape="rect" id="Node000003" href="$class_graphic_widget.html#ac07cd1a8df25535bea9552de25411f2a" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="314,55,432,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="192,48,299,58,298,63,192,54"/>
+<area shape="rect" id="Node000004" href="$class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="555,29,676,54"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="432,58,539,47,540,52,433,64"/>
+<area shape="rect" id="Node000005" href="$class_graphic_widget.html#a0a6ac5a1610805ec69142fdaa2ec28b1" title="Draw a color vertical line, starting at frame position (x,y), on w number of pixel." alt="" coords="556,79,676,103"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="433,70,541,81,540,86,432,75"/>
+</map>

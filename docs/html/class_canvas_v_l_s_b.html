@@ -99,6 +99,7 @@ $(function(){initNavTree('class_canvas_v_l_s_b.html',''); initResizable(true); }
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="class_canvas_v_l_s_b-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">CanvasVLSB Class Reference<div class="ingroups"><a class="el" href="group__view.html">&quot;View&quot;</a></div></div></div>
 </div><!--header-->
@@ -113,9 +114,9 @@ Inheritance diagram for CanvasVLSB:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_canvas_v_l_s_b__inherit__graph.png" border="0" usemap="#a_canvas_v_l_s_b_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_canvas_v_l_s_b_inherit__map" id="a_canvas_v_l_s_b_inherit__map">
-<area shape="rect" title="A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically." alt="" coords="28,357,448,475"/>
+<area shape="rect" title="A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically." alt="" coords="28,357,448,493"/>
 <area shape="rect" href="class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="5,5,471,309"/>
-<area shape="poly" title=" " alt="" coords="241,324,241,358,235,358,235,324"/>
+<area shape="poly" title=" " alt="" coords="241,324,241,357,235,357,235,324"/>
 </map>
 </div>
 <div class="dynheader">
@@ -123,9 +124,9 @@ Collaboration diagram for CanvasVLSB:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_canvas_v_l_s_b__coll__graph.png" border="0" usemap="#a_canvas_v_l_s_b_coll__map" alt="Collaboration graph"/></div>
 <map name="a_canvas_v_l_s_b_coll__map" id="a_canvas_v_l_s_b_coll__map">
-<area shape="rect" title="A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically." alt="" coords="28,357,448,475"/>
+<area shape="rect" title="A special version of canvas for monochrome widget (and device) with 8pixel/byte arranged vertically." alt="" coords="28,357,448,493"/>
 <area shape="rect" href="class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="5,5,471,309"/>
-<area shape="poly" title=" " alt="" coords="241,324,241,358,235,358,235,324"/>
+<area shape="poly" title=" " alt="" coords="241,324,241,357,235,357,235,324"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -147,6 +148,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac4b13a4015778b278e43b3331460c1a2 inherit pub_methods_class_canvas" id="r_ac4b13a4015778b278e43b3331460c1a2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_canvas.html#ac4b13a4015778b278e43b3331460c1a2">clear_canvas_buffer</a> ()</td></tr>
 <tr class="memdesc:ac4b13a4015778b278e43b3331460c1a2 inherit pub_methods_class_canvas"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill the canvas buffer with 0x00  <br /></td></tr>
 <tr class="separator:ac4b13a4015778b278e43b3331460c1a2 inherit pub_methods_class_canvas"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ac5b44ba51620a5c0aed91b400648defd" id="r_ac5b44ba51620a5c0aed91b400648defd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5b44ba51620a5c0aed91b400648defd">create_canvas_buffer</a> ()</td></tr>
+<tr class="memdesc:ac5b44ba51620a5c0aed91b400648defd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a canvas buffer object.  <br /></td></tr>
+<tr class="separator:ac5b44ba51620a5c0aed91b400648defd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -223,15 +230,68 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_canvas_v_l_s_b_ab1738fd595e5e3bb2fff7b28c9ae4a80_cgraph.png" border="0" usemap="#aclass_canvas_v_l_s_b_ab1738fd595e5e3bb2fff7b28c9ae4a80_cgraph" alt=""/></div>
 <map name="aclass_canvas_v_l_s_b_ab1738fd595e5e3bb2fff7b28c9ae4a80_cgraph" id="aclass_canvas_v_l_s_b_ab1738fd595e5e3bb2fff7b28c9ae4a80_cgraph">
-<area shape="rect" title="Construct a new Canvas V L S B object." alt="" coords="5,5,147,30"/>
-<area shape="rect" href="class_canvas.html#a61d9d2f38baad8abbee82fb5d8fee291" title="Construct a new Canvas object." alt="" coords="195,5,290,30"/>
-<area shape="poly" title=" " alt="" coords="147,15,179,15,179,20,147,20"/>
+<area shape="rect" title="Construct a new Canvas V L S B object." alt="" coords="5,31,147,55"/>
+<area shape="rect" href="class_canvas.html#a61d9d2f38baad8abbee82fb5d8fee291" title="Construct a new Canvas object." alt="" coords="241,5,336,30"/>
+<area shape="poly" title=" " alt="" coords="147,32,225,22,226,28,148,37"/>
+<area shape="rect" href="class_canvas_v_l_s_b.html#ac5b44ba51620a5c0aed91b400648defd" title="Create a canvas buffer object." alt="" coords="195,55,383,79"/>
+<area shape="poly" title=" " alt="" coords="148,48,179,52,179,57,147,54"/>
+<area shape="rect" href="class_canvas.html#ac4b13a4015778b278e43b3331460c1a2" title="fill the canvas buffer with 0x00" alt="" coords="431,55,588,79"/>
+<area shape="poly" title=" " alt="" coords="383,64,415,64,415,70,383,70"/>
 </map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac5b44ba51620a5c0aed91b400648defd" name="ac5b44ba51620a5c0aed91b400648defd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5b44ba51620a5c0aed91b400648defd">&#9670;&#160;</a></span>create_canvas_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CanvasVLSB::create_canvas_buffer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create a canvas buffer object. </p>
+
+<p>Implements <a class="el" href="class_canvas.html#a16b621ce19c564852d07cee34a7ada8c">Canvas</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_canvas_v_l_s_b_ac5b44ba51620a5c0aed91b400648defd_cgraph.png" border="0" usemap="#aclass_canvas_v_l_s_b_ac5b44ba51620a5c0aed91b400648defd_cgraph" alt=""/></div>
+<map name="aclass_canvas_v_l_s_b_ac5b44ba51620a5c0aed91b400648defd_cgraph" id="aclass_canvas_v_l_s_b_ac5b44ba51620a5c0aed91b400648defd_cgraph">
+<area shape="rect" title="Create a canvas buffer object." alt="" coords="5,5,194,30"/>
+<area shape="rect" href="class_canvas.html#ac4b13a4015778b278e43b3331460c1a2" title="fill the canvas buffer with 0x00" alt="" coords="242,5,399,30"/>
+<area shape="poly" title=" " alt="" coords="194,15,226,15,226,20,194,20"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_canvas_v_l_s_b_ac5b44ba51620a5c0aed91b400648defd_icgraph.png" border="0" usemap="#aclass_canvas_v_l_s_b_ac5b44ba51620a5c0aed91b400648defd_icgraph" alt=""/></div>
+<map name="aclass_canvas_v_l_s_b_ac5b44ba51620a5c0aed91b400648defd_icgraph" id="aclass_canvas_v_l_s_b_ac5b44ba51620a5c0aed91b400648defd_icgraph">
+<area shape="rect" title="Create a canvas buffer object." alt="" coords="195,5,383,30"/>
+<area shape="rect" href="class_canvas_v_l_s_b.html#ab1738fd595e5e3bb2fff7b28c9ae4a80" title="Construct a new Canvas V L S B object." alt="" coords="5,5,147,30"/>
+<area shape="poly" title=" " alt="" coords="179,20,147,20,147,15,179,15"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="ad9730b156e3ca8449b296ad7392d07ee" name="ad9730b156e3ca8449b296ad7392d07ee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad9730b156e3ca8449b296ad7392d07ee">&#9670;&#160;</a></span>draw_pixel()</h2>
 

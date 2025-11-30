@@ -1,5 +1,9 @@
 <map id="CanvasRGB::CanvasRGB" name="CanvasRGB::CanvasRGB">
-<area shape="rect" id="Node000001" title="Construct a new Canvas R G B object." alt="" coords="5,5,141,30"/>
-<area shape="rect" id="Node000002" href="$class_canvas.html#a61d9d2f38baad8abbee82fb5d8fee291" title="Construct a new Canvas object." alt="" coords="189,5,284,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,15,173,15,173,20,141,20"/>
+<area shape="rect" id="Node000001" title="Construct a new Canvas R G B object." alt="" coords="5,31,141,55"/>
+<area shape="rect" id="Node000002" href="$class_canvas.html#a61d9d2f38baad8abbee82fb5d8fee291" title="Construct a new Canvas object." alt="" coords="234,5,329,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,32,218,23,218,28,141,37"/>
+<area shape="rect" id="Node000003" href="$class_canvas_r_g_b.html#abe4c1a7b209aac4175a06250fe8e6ba0" title="Create a canvas buffer object." alt="" coords="189,55,374,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="141,48,174,52,173,57,141,53"/>
+<area shape="rect" id="Node000004" href="$class_canvas.html#ac4b13a4015778b278e43b3331460c1a2" title="fill the canvas buffer with 0x00" alt="" coords="422,55,579,79"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="375,64,406,64,406,70,375,70"/>
 </map>

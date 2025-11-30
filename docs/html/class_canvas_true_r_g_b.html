@@ -99,6 +99,7 @@ $(function(){initNavTree('class_canvas_true_r_g_b.html',''); initResizable(true)
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="class_canvas_true_r_g_b-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">CanvasTrueRGB Class Reference<div class="ingroups"><a class="el" href="group__view.html">&quot;View&quot;</a></div></div></div>
 </div><!--header-->
@@ -113,7 +114,7 @@ Inheritance diagram for CanvasTrueRGB:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_canvas_true_r_g_b__inherit__graph.png" border="0" usemap="#a_canvas_true_r_g_b_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_canvas_true_r_g_b_inherit__map" id="a_canvas_true_r_g_b_inherit__map">
-<area shape="rect" title="A special version of canvas for color widget (and device) with true RGB_COLOR_INDEX_8b color coding(i..." alt="" coords="28,357,448,493"/>
+<area shape="rect" title="A special version of canvas for color widget (and device) with true RGB_COLOR_INDEX_8b color coding(i..." alt="" coords="28,357,448,512"/>
 <area shape="rect" href="class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="5,5,471,309"/>
 <area shape="poly" title=" " alt="" coords="241,324,241,357,235,357,235,324"/>
 </map>
@@ -123,7 +124,7 @@ Collaboration diagram for CanvasTrueRGB:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_canvas_true_r_g_b__coll__graph.png" border="0" usemap="#a_canvas_true_r_g_b_coll__map" alt="Collaboration graph"/></div>
 <map name="a_canvas_true_r_g_b_coll__map" id="a_canvas_true_r_g_b_coll__map">
-<area shape="rect" title="A special version of canvas for color widget (and device) with true RGB_COLOR_INDEX_8b color coding(i..." alt="" coords="28,357,448,493"/>
+<area shape="rect" title="A special version of canvas for color widget (and device) with true RGB_COLOR_INDEX_8b color coding(i..." alt="" coords="28,357,448,512"/>
 <area shape="rect" href="class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="5,5,471,309"/>
 <area shape="poly" title=" " alt="" coords="241,324,241,357,235,357,235,324"/>
 </map>
@@ -147,6 +148,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a61d9d2f38baad8abbee82fb5d8fee291 inherit pub_methods_class_canvas" id="r_a61d9d2f38baad8abbee82fb5d8fee291"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_canvas.html#a61d9d2f38baad8abbee82fb5d8fee291">Canvas</a> (uint8_t <a class="el" href="class_canvas.html#ae5cb5bef3ff9ea8e2fd9bda308731c62">canvas_width_pixel</a>, uint8_t <a class="el" href="class_canvas.html#addf98fc4b32946a6c815720de00ebe0e">canvas_height_pixel</a>)</td></tr>
 <tr class="memdesc:a61d9d2f38baad8abbee82fb5d8fee291 inherit pub_methods_class_canvas"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_canvas.html" title="The canvas is a virtual memory in which the widget draws.">Canvas</a> object.  <br /></td></tr>
 <tr class="separator:a61d9d2f38baad8abbee82fb5d8fee291 inherit pub_methods_class_canvas"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a0e66740cd696bf1ee882380cb208e66d" id="r_a0e66740cd696bf1ee882380cb208e66d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e66740cd696bf1ee882380cb208e66d">create_canvas_buffer</a> ()</td></tr>
+<tr class="memdesc:a0e66740cd696bf1ee882380cb208e66d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a canvas buffer object.  <br /></td></tr>
+<tr class="separator:a0e66740cd696bf1ee882380cb208e66d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -223,9 +230,13 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_canvas_true_r_g_b_aa1b1ab50cbe8ee85776ad9f7fa686c21_cgraph.png" border="0" usemap="#aclass_canvas_true_r_g_b_aa1b1ab50cbe8ee85776ad9f7fa686c21_cgraph" alt=""/></div>
 <map name="aclass_canvas_true_r_g_b_aa1b1ab50cbe8ee85776ad9f7fa686c21_cgraph" id="aclass_canvas_true_r_g_b_aa1b1ab50cbe8ee85776ad9f7fa686c21_cgraph">
-<area shape="rect" title="Construct a new Canvas R G B object." alt="" coords="5,5,183,30"/>
-<area shape="rect" href="class_canvas.html#a61d9d2f38baad8abbee82fb5d8fee291" title="Construct a new Canvas object." alt="" coords="231,5,326,30"/>
-<area shape="poly" title=" " alt="" coords="183,15,215,15,215,20,183,20"/>
+<area shape="rect" title="Construct a new Canvas R G B object." alt="" coords="5,31,183,55"/>
+<area shape="rect" href="class_canvas.html#a61d9d2f38baad8abbee82fb5d8fee291" title="Construct a new Canvas object." alt="" coords="286,5,382,30"/>
+<area shape="poly" title=" " alt="" coords="183,31,270,22,271,27,184,36"/>
+<area shape="rect" href="class_canvas_true_r_g_b.html#a0e66740cd696bf1ee882380cb208e66d" title="Create a canvas buffer object." alt="" coords="231,55,437,79"/>
+<area shape="poly" title=" " alt="" coords="184,49,215,52,215,58,183,55"/>
+<area shape="rect" href="class_canvas_true_r_g_b.html#ac7380da04d6d943ad844a7cae36200d6" title="fill the 16bit canvas buffer with 0x00" alt="" coords="485,55,683,79"/>
+<area shape="poly" title=" " alt="" coords="437,64,469,64,469,70,437,70"/>
 </map>
 </div>
 
@@ -258,6 +269,67 @@ Here is the call graph for this function:</div>
 <p>fill the 16bit canvas buffer with 0x00 </p>
 
 <p>Reimplemented from <a class="el" href="class_canvas.html#ac4b13a4015778b278e43b3331460c1a2">Canvas</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_canvas_true_r_g_b_ac7380da04d6d943ad844a7cae36200d6_icgraph.png" border="0" usemap="#aclass_canvas_true_r_g_b_ac7380da04d6d943ad844a7cae36200d6_icgraph" alt=""/></div>
+<map name="aclass_canvas_true_r_g_b_ac7380da04d6d943ad844a7cae36200d6_icgraph" id="aclass_canvas_true_r_g_b_ac7380da04d6d943ad844a7cae36200d6_icgraph">
+<area shape="rect" title="fill the 16bit canvas buffer with 0x00" alt="" coords="485,5,683,30"/>
+<area shape="rect" href="class_canvas_true_r_g_b.html#a0e66740cd696bf1ee882380cb208e66d" title="Create a canvas buffer object." alt="" coords="231,5,437,30"/>
+<area shape="poly" title=" " alt="" coords="470,20,437,20,437,15,470,15"/>
+<area shape="rect" href="class_canvas_true_r_g_b.html#aa1b1ab50cbe8ee85776ad9f7fa686c21" title="Construct a new Canvas R G B object." alt="" coords="5,5,183,30"/>
+<area shape="poly" title=" " alt="" coords="215,20,183,20,183,15,215,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0e66740cd696bf1ee882380cb208e66d" name="a0e66740cd696bf1ee882380cb208e66d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e66740cd696bf1ee882380cb208e66d">&#9670;&#160;</a></span>create_canvas_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CanvasTrueRGB::create_canvas_buffer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create a canvas buffer object. </p>
+
+<p>Implements <a class="el" href="class_canvas.html#a16b621ce19c564852d07cee34a7ada8c">Canvas</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_canvas_true_r_g_b_a0e66740cd696bf1ee882380cb208e66d_cgraph.png" border="0" usemap="#aclass_canvas_true_r_g_b_a0e66740cd696bf1ee882380cb208e66d_cgraph" alt=""/></div>
+<map name="aclass_canvas_true_r_g_b_a0e66740cd696bf1ee882380cb208e66d_cgraph" id="aclass_canvas_true_r_g_b_a0e66740cd696bf1ee882380cb208e66d_cgraph">
+<area shape="rect" title="Create a canvas buffer object." alt="" coords="5,5,212,30"/>
+<area shape="rect" href="class_canvas_true_r_g_b.html#ac7380da04d6d943ad844a7cae36200d6" title="fill the 16bit canvas buffer with 0x00" alt="" coords="260,5,458,30"/>
+<area shape="poly" title=" " alt="" coords="212,15,244,15,244,20,212,20"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_canvas_true_r_g_b_a0e66740cd696bf1ee882380cb208e66d_icgraph.png" border="0" usemap="#aclass_canvas_true_r_g_b_a0e66740cd696bf1ee882380cb208e66d_icgraph" alt=""/></div>
+<map name="aclass_canvas_true_r_g_b_a0e66740cd696bf1ee882380cb208e66d_icgraph" id="aclass_canvas_true_r_g_b_a0e66740cd696bf1ee882380cb208e66d_icgraph">
+<area shape="rect" title="Create a canvas buffer object." alt="" coords="231,5,437,30"/>
+<area shape="rect" href="class_canvas_true_r_g_b.html#aa1b1ab50cbe8ee85776ad9f7fa686c21" title="Construct a new Canvas R G B object." alt="" coords="5,5,183,30"/>
+<area shape="poly" title=" " alt="" coords="215,20,183,20,183,15,215,15"/>
+</map>
+</div>
 
 </div>
 </div>

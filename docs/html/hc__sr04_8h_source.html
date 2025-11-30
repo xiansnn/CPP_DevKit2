@@ -109,17 +109,20 @@ $(function(){initNavTree('hc__sr04_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="class_h_c_s_r04.html">   19</a></span><span class="keyword">class </span><a class="code hl_function" href="class_h_c_s_r04.html#a036f4e60cdd9c8e6821833a824dbf338">HCSR04</a></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    uint trig_pin;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    uint echo_pin;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> trig();</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="class_h_c_s_r04.html#a48d3d06ac173d1e78c3ac552d32b1b72">   23</a></span>    uint <a class="code hl_variable" href="class_h_c_s_r04.html#a48d3d06ac173d1e78c3ac552d32b1b72">trig_pin</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="class_h_c_s_r04.html#a92e3ba633462544a710ccb55477a9535">   25</a></span>    uint <a class="code hl_variable" href="class_h_c_s_r04.html#a92e3ba633462544a710ccb55477a9535">echo_pin</a>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_h_c_s_r04.html#a3d06ade5673e079096cd2ce7c0a5678e">trig</a>();</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_function" href="class_h_c_s_r04.html#a036f4e60cdd9c8e6821833a824dbf338">HCSR04</a>(uint trig_pin, uint echo_pin);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_function" href="class_h_c_s_r04.html#a036f4e60cdd9c8e6821833a824dbf338">HCSR04</a>(uint <a class="code hl_variable" href="class_h_c_s_r04.html#a48d3d06ac173d1e78c3ac552d32b1b72">trig_pin</a>, uint <a class="code hl_variable" href="class_h_c_s_r04.html#a92e3ba633462544a710ccb55477a9535">echo_pin</a>);</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="class_h_c_s_r04.html#aa946b0976a5a915bfde3ff51b7359ddb">get_distance</a>();</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>};</div>
 </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="ttc" id="aclass_h_c_s_r04_html_a036f4e60cdd9c8e6821833a824dbf338"><div class="ttname"><a href="class_h_c_s_r04.html#a036f4e60cdd9c8e6821833a824dbf338">HCSR04::HCSR04</a></div><div class="ttdeci">HCSR04(uint trig_pin, uint echo_pin)</div><div class="ttdoc">Construct a new hc sr04 object.</div><div class="ttdef"><b>Definition</b> hc_sr04.cpp:6</div></div>
+<div class="ttc" id="aclass_h_c_s_r04_html_a3d06ade5673e079096cd2ce7c0a5678e"><div class="ttname"><a href="class_h_c_s_r04.html#a3d06ade5673e079096cd2ce7c0a5678e">HCSR04::trig</a></div><div class="ttdeci">void trig()</div><div class="ttdoc">send a trig signal to HCSR04</div><div class="ttdef"><b>Definition</b> hc_sr04.cpp:17</div></div>
+<div class="ttc" id="aclass_h_c_s_r04_html_a48d3d06ac173d1e78c3ac552d32b1b72"><div class="ttname"><a href="class_h_c_s_r04.html#a48d3d06ac173d1e78c3ac552d32b1b72">HCSR04::trig_pin</a></div><div class="ttdeci">uint trig_pin</div><div class="ttdoc">the GPIO pin that send trigger signal to the HC-SR04 module</div><div class="ttdef"><b>Definition</b> hc_sr04.h:23</div></div>
+<div class="ttc" id="aclass_h_c_s_r04_html_a92e3ba633462544a710ccb55477a9535"><div class="ttname"><a href="class_h_c_s_r04.html#a92e3ba633462544a710ccb55477a9535">HCSR04::echo_pin</a></div><div class="ttdeci">uint echo_pin</div><div class="ttdoc">the GPIO pin where the HC-SR04 return echo signal</div><div class="ttdef"><b>Definition</b> hc_sr04.h:25</div></div>
 <div class="ttc" id="aclass_h_c_s_r04_html_aa946b0976a5a915bfde3ff51b7359ddb"><div class="ttname"><a href="class_h_c_s_r04.html#aa946b0976a5a915bfde3ff51b7359ddb">HCSR04::get_distance</a></div><div class="ttdeci">float get_distance()</div><div class="ttdoc">request a measure from HCSR04</div><div class="ttdef"><b>Definition</b> hc_sr04.cpp:24</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

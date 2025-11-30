@@ -1,5 +1,5 @@
 <map id="rtos_SwitchButton" name="rtos_SwitchButton">
-<area shape="rect" id="Node000001" title="rtos_SwitchButton is processed by an Interrupt Service Routine (ISR) under control of FreeRTOS routin..." alt="" coords="5,5,456,337"/>
-<area shape="rect" id="Node000002" href="$classrtos___rotary_encoder.html" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user...." alt="" coords="10,385,451,512"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,352,233,386,228,386,228,352"/>
+<area shape="rect" id="Node000001" title="rtos_SwitchButton is processed by an Interrupt Service Routine (ISR) under control of FreeRTOS routin..." alt="" coords="5,5,456,356"/>
+<area shape="rect" id="Node000002" href="$classrtos___rotary_encoder.html" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user...." alt="" coords="10,404,451,531"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,371,233,405,228,405,228,371"/>
 </map>

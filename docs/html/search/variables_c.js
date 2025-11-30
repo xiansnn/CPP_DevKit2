@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['pixel_5fframe_5fheight_0',['pixel_frame_height',['../structstruct___config_graphic_widget.html#a772cfec0c962cae99033de09c5bb4c27',1,'struct_ConfigGraphicWidget']]],
-  ['pixel_5fframe_5fwidth_1',['pixel_frame_width',['../structstruct___config_graphic_widget.html#af2bb5cba93a4dc21c75c08c5a2d6792e',1,'struct_ConfigGraphicWidget']]],
-  ['pos_5fmax_5fdegree_2',['pos_max_degree',['../structstruct___config_s_g90.html#a9c349601a83bb7b1a0b42cf927ec4bf5',1,'struct_ConfigSG90']]],
-  ['pos_5fmin_5fdegree_3',['pos_min_degree',['../structstruct___config_s_g90.html#aec659f7a3f081dfbcf34000c9f68d556',1,'struct_ConfigSG90']]],
-  ['previous_5fchange_5ftime_5fus_4',['previous_change_time_us',['../classrtos___switch_button.html#ae32bc8a516d0539face7454f54cee8b9',1,'rtos_SwitchButton::previous_change_time_us'],['../class_switch_button.html#acf1f884508aacadb2bb12ee44e53bf73',1,'SwitchButton::previous_change_time_us']]],
-  ['previous_5fswitch_5fpushed_5fstate_5',['previous_switch_pushed_state',['../classrtos___switch_button.html#afe979e87919059fc502e8efa36926d67',1,'rtos_SwitchButton::previous_switch_pushed_state'],['../class_switch_button.html#a269219187ae2a669ca36aabbb615ce40',1,'SwitchButton::previous_switch_pushed_state']]],
-  ['pwr_5fmgmt_5f1_6',['PWR_MGMT_1',['../structstruct___config_m_p_u6050.html#a69f73e2978403f376143fbabe46b8722',1,'struct_ConfigMPU6050']]]
+  ['number_5fof_5fbar_0',['number_of_bar',['../class_model_bargraph.html#a0ed81ed8f1e8f077ecf9e71447d1c77c',1,'ModelBargraph::number_of_bar'],['../class_widget_horizontal_bargraph.html#a1e7d8db03c625b052cd4e8b54c36a95d',1,'WidgetHorizontalBargraph::number_of_bar'],['../class_widget_vertical_bargraph.html#af7cccb54e229667c6b08bfeae64bffbb',1,'WidgetVerticalBargraph::number_of_bar']]],
+  ['number_5fof_5fcolumn_1',['number_of_column',['../class_terminal_console.html#ab139a7fa6b3c9f6d5b5de5028b99afc6',1,'TerminalConsole::number_of_column'],['../structstruct___config_text_widget.html#aa11cb4c4535e901bc612b742e91d3fbf',1,'struct_ConfigTextWidget::number_of_column'],['../class_text_widget.html#ac5dbe29b323b9ca3ec658261bbca54b2',1,'TextWidget::number_of_column']]],
+  ['number_5fof_5fline_2',['number_of_line',['../class_terminal_console.html#a4f74a6ee94951c5066e252e93f2df528',1,'TerminalConsole::number_of_line'],['../structstruct___config_text_widget.html#ae8ba9d0f0eb78ae9726b387b0a36e24c',1,'struct_ConfigTextWidget::number_of_line'],['../class_text_widget.html#ae87e4aa5aa4076fa0d1f03e08c1d7a9c',1,'TextWidget::number_of_line']]]
 ];

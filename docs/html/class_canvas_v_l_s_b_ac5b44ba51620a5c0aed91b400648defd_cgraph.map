@@ -1,0 +1,5 @@
+<map id="CanvasVLSB::create_canvas_buffer" name="CanvasVLSB::create_canvas_buffer">
+<area shape="rect" id="Node000001" title="Create a canvas buffer object." alt="" coords="5,5,194,30"/>
+<area shape="rect" id="Node000002" href="$class_canvas.html#ac4b13a4015778b278e43b3331460c1a2" title="fill the canvas buffer with 0x00" alt="" coords="242,5,399,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,15,226,15,226,20,194,20"/>
+</map>

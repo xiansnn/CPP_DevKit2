@@ -99,6 +99,7 @@ $(function(){initNavTree('class_u_i_controlled_model.html',''); initResizable(tr
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_u_i_controlled_model-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">UIControlledModel Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span><div class="ingroups"><a class="el" href="group__model.html">&quot;Model&quot;</a></div></div></div>
 </div><!--header-->
@@ -113,13 +114,13 @@ Inheritance diagram for UIControlledModel:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_u_i_controlled_model__inherit__graph.png" border="0" usemap="#a_u_i_controlled_model_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_u_i_controlled_model_inherit__map" id="a_u_i_controlled_model_inherit__map">
-<area shape="rect" title="Class that adds UI Controller to the basic Model class." alt="" coords="95,264,491,437"/>
-<area shape="rect" href="class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of Model that have special feature such as a value that ca..." alt="" coords="20,485,565,752"/>
-<area shape="poly" title=" " alt="" coords="295,452,295,485,290,485,290,452"/>
-<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="153,5,433,216"/>
-<area shape="poly" title=" " alt="" coords="295,231,295,264,290,264,290,231"/>
-<area shape="rect" href="class_u_i_model_manager.html" title="This is an Abstract class that is used to implement the manager of object on a screen." alt="" coords="5,800,580,1011"/>
-<area shape="poly" title=" " alt="" coords="295,767,295,800,290,800,290,767"/>
+<area shape="rect" title="Class that adds UI Controller to the basic Model class." alt="" coords="95,301,491,493"/>
+<area shape="rect" href="class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of Model that have special feature such as a value that ca..." alt="" coords="20,541,565,808"/>
+<area shape="poly" title=" " alt="" coords="295,508,295,542,290,542,290,508"/>
+<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="153,5,433,253"/>
+<area shape="poly" title=" " alt="" coords="295,268,295,301,290,301,290,268"/>
+<area shape="rect" href="class_u_i_model_manager.html" title="This is an Abstract class that is used to implement the manager of object on a screen." alt="" coords="5,856,580,1067"/>
+<area shape="poly" title=" " alt="" coords="295,823,295,856,290,856,290,823"/>
 </map>
 </div>
 <div class="dynheader">
@@ -127,9 +128,12 @@ Collaboration diagram for UIControlledModel:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_u_i_controlled_model__coll__graph.png" border="0" usemap="#a_u_i_controlled_model_coll__map" alt="Collaboration graph"/></div>
 <map name="a_u_i_controlled_model_coll__map" id="a_u_i_controlled_model_coll__map">
-<area shape="rect" title="Class that adds UI Controller to the basic Model class." alt="" coords="5,264,401,437"/>
-<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="63,5,343,216"/>
-<area shape="poly" title=" " alt="" coords="206,231,206,264,201,264,201,231"/>
+<area shape="rect" title="Class that adds UI Controller to the basic Model class." alt="" coords="21,303,417,476"/>
+<area shape="rect" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="5,538,433,637"/>
+<area shape="poly" title=" " alt="" coords="147,477,136,501,134,512,136,523,131,524,129,512,131,499,142,475"/>
+<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="79,5,359,253"/>
+<area shape="poly" title=" " alt="" coords="222,269,222,303,217,303,217,269"/>
+<area shape="poly" title=" " alt="" coords="258,537,270,513,273,492,278,493,275,515,263,540"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -183,6 +187,17 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_widget_done</b> 
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_refresh_all_attached_widgets</b> ()</td></tr>
 <tr class="memdesc:a9038912d8fa59bdfcd8b68f1c22486c2 inherit pub_methods_class_model"><td class="mdescLeft">&#160;</td><td class="mdescRight">update drawing for each attached widgets <br /></td></tr>
 <tr class="separator:a9038912d8fa59bdfcd8b68f1c22486c2 inherit pub_methods_class_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aab01250b265c175d8fad4ef4ef98011c" id="r_aab01250b265c175d8fad4ef4ef98011c"><td class="memItemLeft" align="right" valign="top"><a id="aab01250b265c175d8fad4ef4ef98011c" name="aab01250b265c175d8fad4ef4ef98011c"></a>
+<a class="el" href="ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112">ControlledObjectStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><b>status</b> {<a class="el" href="ui__control__event_8h.html#a57c20ec1ef250b4ad060705786762112a02ca6db02d1c43b09e875c6cc1f51aab">ControlledObjectStatus::IS_WAITING</a>}</td></tr>
+<tr class="memdesc:aab01250b265c175d8fad4ef4ef98011c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The status of the model, indicating if it is waiting, active or just ahs focus (pointed by the object manager) <br /></td></tr>
+<tr class="separator:aab01250b265c175d8fad4ef4ef98011c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e1d89ff522407ec75e2f95ae38c50ee" id="r_a7e1d89ff522407ec75e2f95ae38c50ee"><td class="memItemLeft" align="right" valign="top"><a id="a7e1d89ff522407ec75e2f95ae38c50ee" name="a7e1d89ff522407ec75e2f95ae38c50ee"></a>
+<a class="el" href="class_u_i_controller.html">UIController</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>current_controller</b> {nullptr}</td></tr>
+<tr class="memdesc:a7e1d89ff522407ec75e2f95ae38c50ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the controller of this model. <br /></td></tr>
+<tr class="separator:a7e1d89ff522407ec75e2f95ae38c50ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -310,16 +325,6 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_u_i_controlled_model_a4774f17bc60e1dba71a20f27c32dc4c6_cgraph.png" border="0" usemap="#aclass_u_i_controlled_model_a4774f17bc60e1dba71a20f27c32dc4c6_cgraph" alt=""/></div>
-<map name="aclass_u_i_controlled_model_a4774f17bc60e1dba71a20f27c32dc4c6_cgraph" id="aclass_u_i_controlled_model_a4774f17bc60e1dba71a20f27c32dc4c6_cgraph">
-<area shape="rect" title="if _new_controller is different from the current controller, change the current controller associated..." alt="" coords="5,5,248,30"/>
-<area shape="rect" href="class_u_i_controller.html#a9518d3fe3c15e58cd9b6c66be585a03c" title="if the current controlled object is different from _new_controlled_object, change the current control..." alt="" coords="296,5,546,30"/>
-<area shape="poly" title=" " alt="" coords="248,15,280,15,280,20,248,20"/>
-</map>
-</div>
 
 </div>
 </div>

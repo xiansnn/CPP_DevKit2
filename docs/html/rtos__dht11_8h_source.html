@@ -121,19 +121,21 @@ $(function(){initNavTree('rtos__dht11_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classrtos___d_h_t11.html">   38</a></span><span class="keyword">class </span><a class="code hl_function" href="classrtos___d_h_t11.html#ac3e9f7aed685686d934714ddd28f18e4">rtos_DHT11</a></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    uint gpio_in;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    QueueHandle_t dht_reading_queue;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classrtos___d_h_t11.html#a103945d0b9618eda30176136dc072333">read_from_dht</a>();</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_function" href="classrtos___d_h_t11.html#ac3e9f7aed685686d934714ddd28f18e4">rtos_DHT11</a>(uint gpio_in, QueueHandle_t dht_reading_ouput_queue);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>};</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classrtos___d_h_t11.html#a2ea15ba728dcba150c54a78a5105a2fd">   42</a></span>    uint <a class="code hl_variable" href="classrtos___d_h_t11.html#a2ea15ba728dcba150c54a78a5105a2fd">gpio_in</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classrtos___d_h_t11.html#af756fbcee4244ab04f51a56bcc5ea64f">   45</a></span>    QueueHandle_t <a class="code hl_variable" href="classrtos___d_h_t11.html#af756fbcee4244ab04f51a56bcc5ea64f">dht_reading_queue</a>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classrtos___d_h_t11.html#a103945d0b9618eda30176136dc072333">read_from_dht</a>();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_function" href="classrtos___d_h_t11.html#ac3e9f7aed685686d934714ddd28f18e4">rtos_DHT11</a>(uint <a class="code hl_variable" href="classrtos___d_h_t11.html#a2ea15ba728dcba150c54a78a5105a2fd">gpio_in</a>, QueueHandle_t dht_reading_ouput_queue);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>};</div>
 </div>
 <div class="ttc" id="aclassrtos___d_h_t11_html_a103945d0b9618eda30176136dc072333"><div class="ttname"><a href="classrtos___d_h_t11.html#a103945d0b9618eda30176136dc072333">rtos_DHT11::read_from_dht</a></div><div class="ttdeci">void read_from_dht()</div><div class="ttdoc">the function called by a RTOS periodic task</div><div class="ttdef"><b>Definition</b> rtos_dht11.cpp:10</div></div>
+<div class="ttc" id="aclassrtos___d_h_t11_html_a2ea15ba728dcba150c54a78a5105a2fd"><div class="ttname"><a href="classrtos___d_h_t11.html#a2ea15ba728dcba150c54a78a5105a2fd">rtos_DHT11::gpio_in</a></div><div class="ttdeci">uint gpio_in</div><div class="ttdoc">the GPIO connected to DHT11</div><div class="ttdef"><b>Definition</b> rtos_dht11.h:42</div></div>
 <div class="ttc" id="aclassrtos___d_h_t11_html_ac3e9f7aed685686d934714ddd28f18e4"><div class="ttname"><a href="classrtos___d_h_t11.html#ac3e9f7aed685686d934714ddd28f18e4">rtos_DHT11::rtos_DHT11</a></div><div class="ttdeci">rtos_DHT11(uint gpio_in, QueueHandle_t dht_reading_ouput_queue)</div><div class="ttdoc">the constructor for rtos_DHT11 object</div><div class="ttdef"><b>Definition</b> rtos_dht11.cpp:89</div></div>
+<div class="ttc" id="aclassrtos___d_h_t11_html_af756fbcee4244ab04f51a56bcc5ea64f"><div class="ttname"><a href="classrtos___d_h_t11.html#af756fbcee4244ab04f51a56bcc5ea64f">rtos_DHT11::dht_reading_queue</a></div><div class="ttdeci">QueueHandle_t dht_reading_queue</div><div class="ttdoc">the output queue that receives readings</div><div class="ttdef"><b>Definition</b> rtos_dht11.h:45</div></div>
 <div class="ttc" id="astructstruct___d_h_t_reading_html"><div class="ttname"><a href="structstruct___d_h_t_reading.html">struct_DHTReading</a></div><div class="ttdoc">the sensor result is given according to this structure:</div><div class="ttdef"><b>Definition</b> dht11.h:22</div></div>
 <div class="ttc" id="astructstruct___d_h_t_reading_html_aa43b0d2e8be45ff41c89eb4602699c5c"><div class="ttname"><a href="structstruct___d_h_t_reading.html#aa43b0d2e8be45ff41c89eb4602699c5c">struct_DHTReading::humidity</a></div><div class="ttdeci">float humidity</div><div class="ttdoc">the converted values in % of relative humidity</div><div class="ttdef"><b>Definition</b> dht11.h:26</div></div>
 <div class="ttc" id="astructstruct___d_h_t_reading_html_abe74b95fa075dd9c612c7d29eb523e12"><div class="ttname"><a href="structstruct___d_h_t_reading.html#abe74b95fa075dd9c612c7d29eb523e12">struct_DHTReading::temp_celsius</a></div><div class="ttdeci">float temp_celsius</div><div class="ttdoc">the converted value in °Celsius</div><div class="ttdef"><b>Definition</b> dht11.h:28</div></div>

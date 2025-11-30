@@ -102,6 +102,7 @@ $(function(){initNavTree('classrtos___switch_button.html',''); initResizable(tru
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classrtos___switch_button-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">rtos_SwitchButton Class Reference<div class="ingroups"><a class="el" href="group__control.html">&quot;Control&quot;</a></div></div></div>
 </div><!--header-->
@@ -116,9 +117,9 @@ Inheritance diagram for rtos_SwitchButton:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___switch_button__inherit__graph.png" border="0" usemap="#artos___switch_button_inherit__map" alt="Inheritance graph"/></div>
 <map name="artos___switch_button_inherit__map" id="artos___switch_button_inherit__map">
-<area shape="rect" title="rtos_SwitchButton is processed by an Interrupt Service Routine (ISR) under control of FreeRTOS routin..." alt="" coords="5,5,456,337"/>
-<area shape="rect" href="classrtos___rotary_encoder.html" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user...." alt="" coords="10,385,451,512"/>
-<area shape="poly" title=" " alt="" coords="233,352,233,386,228,386,228,352"/>
+<area shape="rect" title="rtos_SwitchButton is processed by an Interrupt Service Routine (ISR) under control of FreeRTOS routin..." alt="" coords="5,5,456,356"/>
+<area shape="rect" href="classrtos___rotary_encoder.html" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user...." alt="" coords="10,404,451,531"/>
+<area shape="poly" title=" " alt="" coords="233,371,233,405,228,405,228,371"/>
 </map>
 </div>
 <div class="dynheader">
@@ -126,7 +127,7 @@ Collaboration diagram for rtos_SwitchButton:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___switch_button__coll__graph.png" border="0" usemap="#artos___switch_button_coll__map" alt="Collaboration graph"/></div>
 <map name="artos___switch_button_coll__map" id="artos___switch_button_coll__map">
-<area shape="rect" title="rtos_SwitchButton is processed by an Interrupt Service Routine (ISR) under control of FreeRTOS routin..." alt="" coords="5,5,456,337"/>
+<area shape="rect" title="rtos_SwitchButton is processed by an Interrupt Service Routine (ISR) under control of FreeRTOS routin..." alt="" coords="5,5,456,356"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -198,6 +199,13 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>previous_switch_pushe
 QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>control_event_queue</b></td></tr>
 <tr class="memdesc:adb54d0aadd5523c8f46382b4048e6bb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the queue to which the resulting control event is sent <br /></td></tr>
 <tr class="separator:adb54d0aadd5523c8f46382b4048e6bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a525ca734a0af08bd0e0b4a73e9ba3687" id="r_a525ca734a0af08bd0e0b4a73e9ba3687"><td class="memItemLeft" align="right" valign="top"><a id="a525ca734a0af08bd0e0b4a73e9ba3687" name="a525ca734a0af08bd0e0b4a73e9ba3687"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>irq_event_mask_config</b></td></tr>
+<tr class="memdesc:a525ca734a0af08bd0e0b4a73e9ba3687"><td class="mdescLeft">&#160;</td><td class="mdescRight">A memory slot reserved to store the irq_event_mask. <br /></td></tr>
+<tr class="separator:a525ca734a0af08bd0e0b4a73e9ba3687"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classrtos___switch_button.html" title="rtos_SwitchButton is processed by an Interrupt Service Routine (ISR) under control of FreeRTOS routin...">rtos_SwitchButton</a> is processed by an Interrupt Service Routine (ISR) under control of FreeRTOS routines. </p>

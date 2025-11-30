@@ -101,6 +101,8 @@ $(function(){initNavTree('class_text_widget.html',''); initResizable(true); });
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_text_widget-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">TextWidget Class Reference<div class="ingroups"><a class="el" href="group__view.html">&quot;View&quot;</a></div></div></div>
 </div><!--header-->
@@ -115,9 +117,9 @@ Inheritance diagram for TextWidget:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_text_widget__inherit__graph.png" border="0" usemap="#a_text_widget_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_text_widget_inherit__map" id="a_text_widget_inherit__map">
-<area shape="rect" title="a dedicated class for text frame only" alt="" coords="5,828,580,1236"/>
-<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="5,264,580,780"/>
-<area shape="poly" title=" " alt="" coords="295,795,295,828,290,828,290,795"/>
+<area shape="rect" title="a dedicated class for text frame only" alt="" coords="5,861,580,1437"/>
+<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="5,264,580,813"/>
+<area shape="poly" title=" " alt="" coords="295,828,295,862,290,862,290,828"/>
 <area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="21,5,564,216"/>
 <area shape="poly" title=" " alt="" coords="295,231,295,264,290,264,290,231"/>
 </map>
@@ -127,21 +129,21 @@ Collaboration diagram for TextWidget:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_text_widget__coll__graph.png" border="0" usemap="#a_text_widget_coll__map" alt="Collaboration graph"/></div>
 <map name="a_text_widget_coll__map" id="a_text_widget_coll__map">
-<area shape="rect" title="a dedicated class for text frame only" alt="" coords="210,1395,785,1803"/>
-<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="210,848,785,1345"/>
-<area shape="poly" title=" " alt="" coords="500,1360,500,1395,495,1395,495,1360"/>
-<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="70,644,613,799"/>
-<area shape="poly" title=" " alt="" coords="381,811,396,847,391,849,376,814"/>
-<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,371,285,582"/>
-<area shape="poly" title=" " alt="" coords="171,581,192,618,202,630,198,634,187,622,166,583"/>
+<area shape="rect" title="a dedicated class for text frame only" alt="" coords="210,1465,785,2041"/>
+<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="210,885,785,1416"/>
+<area shape="poly" title=" " alt="" coords="500,1431,500,1465,495,1465,495,1431"/>
+<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="70,681,613,836"/>
+<area shape="poly" title=" " alt="" coords="380,849,394,884,389,886,375,851"/>
+<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,371,285,619"/>
+<area shape="poly" title=" " alt="" coords="171,618,192,656,201,667,197,671,187,659,167,620"/>
 <area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="264,117,400,197"/>
-<area shape="poly" title=" " alt="" coords="335,197,342,627,337,627,330,197"/>
-<area shape="rect" href="structstruct___data_to_show.html" title="data structure used to queue data to send to the display task" alt="" coords="436,427,591,526"/>
-<area shape="poly" title=" " alt="" coords="354,196,414,308,476,412,472,414,410,311,349,198"/>
-<area shape="poly" title=" " alt="" coords="482,527,407,632,403,629,477,524"/>
+<area shape="poly" title=" " alt="" coords="335,197,343,664,337,665,330,197"/>
+<area shape="rect" href="structstruct___data_to_show.html" title="data structure used to queue data to send to the display task" alt="" coords="436,446,591,545"/>
+<area shape="poly" title=" " alt="" coords="355,196,414,308,481,430,476,432,410,311,350,198"/>
+<area shape="poly" title=" " alt="" coords="484,546,403,669,398,666,480,543"/>
 <area shape="rect" href="class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="425,5,890,309"/>
-<area shape="poly" title=" " alt="" coords="667,309,668,418,663,541,651,672,628,799,619,833,614,831,623,798,645,671,658,541,663,417,662,309"/>
-<area shape="poly" title=" " alt="" coords="591,310,545,413,540,411,586,308"/>
+<area shape="poly" title=" " alt="" coords="667,309,668,425,664,558,651,698,628,837,620,869,615,868,623,835,646,698,658,558,663,425,662,309"/>
+<area shape="poly" title=" " alt="" coords="595,310,543,432,538,429,590,308"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -160,14 +162,14 @@ Public Member Functions</h2></td></tr>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~TextWidget</b> ()</td></tr>
 <tr class="memdesc:a5236b5dabb05f7a53ab9a021bc57e413"><td class="mdescLeft">&#160;</td><td class="mdescRight">the destructor of <a class="el" href="class_text_widget.html" title="a dedicated class for text frame only">TextWidget</a> <br /></td></tr>
 <tr class="separator:a5236b5dabb05f7a53ab9a021bc57e413"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90e41e7b1954c812001292dcc8b4dc51" id="r_a90e41e7b1954c812001292dcc8b4dc51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90e41e7b1954c812001292dcc8b4dc51">update_text_frame_size</a> (const unsigned char *font)</td></tr>
+<tr class="memitem:a90e41e7b1954c812001292dcc8b4dc51" id="r_a90e41e7b1954c812001292dcc8b4dc51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90e41e7b1954c812001292dcc8b4dc51">update_text_frame_size</a> (const unsigned char *<a class="el" href="#a6f9e90b07bdd553e7b0833c2679d513a">font</a>)</td></tr>
 <tr class="memdesc:a90e41e7b1954c812001292dcc8b4dc51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the text size in column x line according to the size of the font and the size of the frame in pixel. Delete the previous text buffer if any and create a new buffer.  <br /></td></tr>
 <tr class="separator:a90e41e7b1954c812001292dcc8b4dc51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0eff5956c8b16178e7eb3572a86e57d" id="r_ad0eff5956c8b16178e7eb3572a86e57d"><td class="memItemLeft" align="right" valign="top"><a id="ad0eff5956c8b16178e7eb3572a86e57d" name="ad0eff5956c8b16178e7eb3572a86e57d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_text_buffer</b> ()</td></tr>
 <tr class="memdesc:ad0eff5956c8b16178e7eb3572a86e57d"><td class="mdescLeft">&#160;</td><td class="mdescRight">et text buffer memory to "0" and set character current line and column to 0 <br /></td></tr>
 <tr class="separator:ad0eff5956c8b16178e7eb3572a86e57d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b1dbfb205b17dd9404425871f35563e" id="r_a6b1dbfb205b17dd9404425871f35563e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b1dbfb205b17dd9404425871f35563e">update_canvas_buffer_size</a> (const unsigned char *font)</td></tr>
+<tr class="memitem:a6b1dbfb205b17dd9404425871f35563e" id="r_a6b1dbfb205b17dd9404425871f35563e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b1dbfb205b17dd9404425871f35563e">update_canvas_buffer_size</a> (const unsigned char *<a class="el" href="#a6f9e90b07bdd553e7b0833c2679d513a">font</a>)</td></tr>
 <tr class="memdesc:a6b1dbfb205b17dd9404425871f35563e"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute canvas width and height according to the size of the text (column x line ) and the size of the bitmap font. Delete the previous pixel buffer if any and create a new buffer.  <br /></td></tr>
 <tr class="separator:a6b1dbfb205b17dd9404425871f35563e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ce8f540e45844b22efa9f18c3c85eab" id="r_a3ce8f540e45844b22efa9f18c3c85eab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ce8f540e45844b22efa9f18c3c85eab">write</a> ()</td></tr>
@@ -300,6 +302,46 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>create_text_buffer</b
 <tr class="memitem:a012e42d45d29004e6e93e46782dcb284 inherit pro_methods_class_graphic_widget" id="r_a012e42d45d29004e6e93e46782dcb284"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphic_widget.html#a012e42d45d29004e6e93e46782dcb284">get_value_of_interest</a> ()=0</td></tr>
 <tr class="memdesc:a012e42d45d29004e6e93e46782dcb284 inherit pro_methods_class_graphic_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pure virtual method that results in the transfer of the displayed values of the displayed model to the widget.  <br /></td></tr>
 <tr class="separator:a012e42d45d29004e6e93e46782dcb284 inherit pro_methods_class_graphic_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a237b451ce7140f32676109f637fb215d" id="r_a237b451ce7140f32676109f637fb215d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a237b451ce7140f32676109f637fb215d">write</a> (char character, uint8_t char_column, uint8_t char_line)</td></tr>
+<tr class="memdesc:a237b451ce7140f32676109f637fb215d"><td class="mdescLeft">&#160;</td><td class="mdescRight">a graphic primitive to draw a character at a character position  <br /></td></tr>
+<tr class="separator:a237b451ce7140f32676109f637fb215d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad78f8aeaf711b85731d697092bae94b1" id="r_ad78f8aeaf711b85731d697092bae94b1"><td class="memItemLeft" align="right" valign="top"><a id="ad78f8aeaf711b85731d697092bae94b1" name="ad78f8aeaf711b85731d697092bae94b1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_line</b> ()</td></tr>
+<tr class="memdesc:ad78f8aeaf711b85731d697092bae94b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">clean th full current line (writing " " in the text buffer) <br /></td></tr>
+<tr class="separator:ad78f8aeaf711b85731d697092bae94b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47dae71331351e62bb63bc10bc83a7d7" id="r_a47dae71331351e62bb63bc10bc83a7d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47dae71331351e62bb63bc10bc83a7d7">draw_glyph</a> (const char character, const uint8_t anchor_x, const uint8_t anchor_y)</td></tr>
+<tr class="memdesc:a47dae71331351e62bb63bc10bc83a7d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">a graphic primitive to draw a character at a pixel position. Strongly dependent on font memory organisation.  <br /></td></tr>
+<tr class="separator:a47dae71331351e62bb63bc10bc83a7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:acafdf1bdb34e585fe8a2dcabda337deb" id="r_acafdf1bdb34e585fe8a2dcabda337deb"><td class="memItemLeft" align="right" valign="top"><a id="acafdf1bdb34e585fe8a2dcabda337deb" name="acafdf1bdb34e585fe8a2dcabda337deb"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>current_char_line</b> {0}</td></tr>
+<tr class="memdesc:acafdf1bdb34e585fe8a2dcabda337deb"><td class="mdescLeft">&#160;</td><td class="mdescRight">the line number where the next character will be written. <br /></td></tr>
+<tr class="separator:acafdf1bdb34e585fe8a2dcabda337deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8251cc036e15a7c182a4b2c156d6686" id="r_af8251cc036e15a7c182a4b2c156d6686"><td class="memItemLeft" align="right" valign="top"><a id="af8251cc036e15a7c182a4b2c156d6686" name="af8251cc036e15a7c182a4b2c156d6686"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>current_char_column</b> {0}</td></tr>
+<tr class="memdesc:af8251cc036e15a7c182a4b2c156d6686"><td class="mdescLeft">&#160;</td><td class="mdescRight">the column where the next character will be written. <br /></td></tr>
+<tr class="separator:af8251cc036e15a7c182a4b2c156d6686"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f9e90b07bdd553e7b0833c2679d513a" id="r_a6f9e90b07bdd553e7b0833c2679d513a"><td class="memItemLeft" align="right" valign="top"><a id="a6f9e90b07bdd553e7b0833c2679d513a" name="a6f9e90b07bdd553e7b0833c2679d513a"></a>
+const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><b>font</b> {nullptr}</td></tr>
+<tr class="memdesc:a6f9e90b07bdd553e7b0833c2679d513a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The font used. Current font are defined according to IBM CP437. The font files are derived from <a href="https://github.com/Harbys/pico-ssd1306">https://github.com/Harbys/pico-ssd1306</a> works. They come is size 5x8, 8x8, 12x16 and 16x32. <br /></td></tr>
+<tr class="separator:a6f9e90b07bdd553e7b0833c2679d513a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a104e81d58512b0c52e50878ad82b3b95" id="r_a104e81d58512b0c52e50878ad82b3b95"><td class="memItemLeft" align="right" valign="top"><a id="a104e81d58512b0c52e50878ad82b3b95" name="a104e81d58512b0c52e50878ad82b3b95"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>tab_size</b> {2}</td></tr>
+<tr class="memdesc:a104e81d58512b0c52e50878ad82b3b95"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of space that ASCII character HT (aka TAB , "\t", 0x9) generates, default to 2. <br /></td></tr>
+<tr class="separator:a104e81d58512b0c52e50878ad82b3b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb9b2312bbf201662d7c8ea1691a49b8" id="r_aeb9b2312bbf201662d7c8ea1691a49b8"><td class="memItemLeft" align="right" valign="top"><a id="aeb9b2312bbf201662d7c8ea1691a49b8" name="aeb9b2312bbf201662d7c8ea1691a49b8"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>wrap</b> {true}</td></tr>
+<tr class="memdesc:aeb9b2312bbf201662d7c8ea1691a49b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap flag : if true, text wrap to the next line when end of line is reached. <br /></td></tr>
+<tr class="separator:aeb9b2312bbf201662d7c8ea1691a49b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fd38fb14e38400bed765a067c9f5a32" id="r_a5fd38fb14e38400bed765a067c9f5a32"><td class="memItemLeft" align="right" valign="top"><a id="a5fd38fb14e38400bed765a067c9f5a32" name="a5fd38fb14e38400bed765a067c9f5a32"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>auto_next_char</b> {true}</td></tr>
+<tr class="memdesc:a5fd38fb14e38400bed765a067c9f5a32"><td class="mdescLeft">&#160;</td><td class="mdescRight">auto_next_char flag : if true each char steps one position after being written. <br /></td></tr>
+<tr class="separator:a5fd38fb14e38400bed765a067c9f5a32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -593,6 +635,60 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a47dae71331351e62bb63bc10bc83a7d7" name="a47dae71331351e62bb63bc10bc83a7d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47dae71331351e62bb63bc10bc83a7d7">&#9670;&#160;</a></span>draw_glyph()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TextWidget::draw_glyph </td>
+          <td>(</td>
+          <td class="paramtype">const char</td>          <td class="paramname"><span class="paramname"><em>character</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>anchor_y</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>a graphic primitive to draw a character at a pixel position. Strongly dependent on font memory organisation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">character</td><td>the character to draw </td></tr>
+    <tr><td class="paramname">anchor_x</td><td>the pixel position on x-axis to start drawing the character (upper left corner) </td></tr>
+    <tr><td class="paramname">anchor_y</td><td>the pixel position on y-axis to start drawing the character (upper left corner) </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_text_widget_a47dae71331351e62bb63bc10bc83a7d7_icgraph.png" border="0" usemap="#aclass_text_widget_a47dae71331351e62bb63bc10bc83a7d7_icgraph" alt=""/></div>
+<map name="aclass_text_widget_a47dae71331351e62bb63bc10bc83a7d7_icgraph" id="aclass_text_widget_a47dae71331351e62bb63bc10bc83a7d7_icgraph">
+<area shape="rect" title="a graphic primitive to draw a character at a pixel position. Strongly dependent on font memory organi..." alt="" coords="161,5,298,30"/>
+<area shape="rect" href="class_text_widget.html#a237b451ce7140f32676109f637fb215d" title="a graphic primitive to draw a character at a character position" alt="" coords="5,5,113,30"/>
+<area shape="poly" title=" " alt="" coords="145,20,113,20,113,15,145,15"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="ad59aca3e9c6adb5b24fdbb94c4ccea26" name="ad59aca3e9c6adb5b24fdbb94c4ccea26"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad59aca3e9c6adb5b24fdbb94c4ccea26">&#9670;&#160;</a></span>get_text_frame_config()</h2>
 
@@ -649,15 +745,18 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_text_widget_ae7a5603a5a769cad07cd3a102fb808f1_cgraph.png" border="0" usemap="#aclass_text_widget_ae7a5603a5a769cad07cd3a102fb808f1_cgraph" alt=""/></div>
 <map name="aclass_text_widget_ae7a5603a5a769cad07cd3a102fb808f1_cgraph" id="aclass_text_widget_ae7a5603a5a769cad07cd3a102fb808f1_cgraph">
-<area shape="rect" title="interpret the character and draw it into the pixel buffer at the current line and column character po..." alt="" coords="5,55,153,79"/>
-<area shape="rect" href="class_text_widget.html#a3712ffd3288da6a64d22e57177ee4beb" title="character column steps forward one position forward." alt="" coords="201,5,332,30"/>
-<area shape="poly" title=" " alt="" coords="128,51,201,32,203,37,130,57"/>
-<area shape="rect" href="class_text_widget.html#a8192cc012e92157d8e47b4d8569f9529" title="character line steps one position downward." alt="" coords="380,31,506,55"/>
-<area shape="poly" title=" " alt="" coords="153,60,364,45,365,51,153,65"/>
-<area shape="rect" href="class_text_widget.html#a3ce8f540e45844b22efa9f18c3c85eab" title="process characters in the internal text buffer and draw it into the pixel buffer." alt="" coords="213,128,320,153"/>
-<area shape="poly" title=" " alt="" coords="114,77,220,120,218,124,112,82"/>
-<area shape="poly" title=" " alt="" coords="333,24,365,29,364,34,332,30"/>
-<area shape="poly" title=" " alt="" coords="237,129,231,119,234,110,246,104,266,101,288,104,300,111,297,116,287,109,266,107,248,109,238,113,236,119,241,126"/>
+<area shape="rect" title="interpret the character and draw it into the pixel buffer at the current line and column character po..." alt="" coords="5,80,153,105"/>
+<area shape="rect" href="class_text_widget.html#ad78f8aeaf711b85731d697092bae94b1" title="clean th full current line (writing &quot; &quot; in the text buffer)" alt="" coords="202,5,330,30"/>
+<area shape="poly" title=" " alt="" coords="111,77,218,34,220,39,113,82"/>
+<area shape="rect" href="class_text_widget.html#a3ce8f540e45844b22efa9f18c3c85eab" title="process characters in the internal text buffer and draw it into the pixel buffer." alt="" coords="390,43,497,67"/>
+<area shape="poly" title=" " alt="" coords="153,82,374,59,374,65,153,87"/>
+<area shape="rect" href="class_text_widget.html#a3712ffd3288da6a64d22e57177ee4beb" title="character column steps forward one position forward." alt="" coords="201,104,332,129"/>
+<area shape="poly" title=" " alt="" coords="154,99,186,103,185,109,153,104"/>
+<area shape="rect" href="class_text_widget.html#a8192cc012e92157d8e47b4d8569f9529" title="character line steps one position downward." alt="" coords="380,116,506,141"/>
+<area shape="poly" title=" " alt="" coords="106,103,150,122,201,138,243,143,285,144,365,139,365,144,285,150,242,148,200,143,148,127,104,108"/>
+<area shape="poly" title=" " alt="" coords="329,28,375,38,374,43,328,33"/>
+<area shape="poly" title=" " alt="" coords="414,44,408,34,411,24,423,18,443,16,465,19,476,26,474,30,463,24,443,21,425,23,415,28,413,33,418,41"/>
+<area shape="poly" title=" " alt="" coords="333,118,365,120,365,126,332,123"/>
 </map>
 </div>
 <div class="dynheader">
@@ -736,7 +835,7 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <a id="a3ce8f540e45844b22efa9f18c3c85eab" name="a3ce8f540e45844b22efa9f18c3c85eab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ce8f540e45844b22efa9f18c3c85eab">&#9670;&#160;</a></span>write() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ce8f540e45844b22efa9f18c3c85eab">&#9670;&#160;</a></span>write() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -766,21 +865,78 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_text_widget_a3ce8f540e45844b22efa9f18c3c85eab_icgraph.png" border="0" usemap="#aclass_text_widget_a3ce8f540e45844b22efa9f18c3c85eab_icgraph" alt=""/></div>
 <map name="aclass_text_widget_a3ce8f540e45844b22efa9f18c3c85eab_icgraph" id="aclass_text_widget_a3ce8f540e45844b22efa9f18c3c85eab_icgraph">
-<area shape="rect" title="process characters in the internal text buffer and draw it into the pixel buffer." alt="" coords="356,31,463,55"/>
-<area shape="poly" title=" " alt="" coords="440,18,430,12,410,9,391,11,382,16,380,21,385,29,380,32,374,22,378,12,390,6,410,4,432,7,443,14"/>
-<area shape="rect" href="class_text_widget.html#a34e2f1558ebd76f1dbfb3cbfdf0e7894" title="we need draw() to be compliant with the pure virtual draw() inherited from Widget." alt="" coords="181,5,288,30"/>
-<area shape="poly" title=" " alt="" coords="340,36,288,28,288,23,341,30"/>
-<area shape="rect" href="class_text_widget.html#ae7a5603a5a769cad07cd3a102fb808f1" title="interpret the character and draw it into the pixel buffer at the current line and column character po..." alt="" coords="161,55,308,79"/>
-<area shape="poly" title=" " alt="" coords="341,55,309,60,308,54,340,50"/>
-<area shape="rect" href="class_text_widget.html#ab9524e4f93739352b7fe0915e038c1fb" title="process the string c_str and then draw each character into the pixel buffer, without using the text b..." alt="" coords="5,55,113,79"/>
-<area shape="poly" title=" " alt="" coords="145,70,113,70,113,64,145,64"/>
+<area shape="rect" title="process characters in the internal text buffer and draw it into the pixel buffer." alt="" coords="532,55,640,79"/>
+<area shape="poly" title=" " alt="" coords="614,42,605,36,586,33,569,35,560,40,558,45,563,53,558,56,552,46,555,37,567,30,586,28,607,31,617,38"/>
+<area shape="rect" href="class_text_widget.html#ad78f8aeaf711b85731d697092bae94b1" title="clean th full current line (writing &quot; &quot; in the text buffer)" alt="" coords="356,5,484,30"/>
+<area shape="poly" title=" " alt="" coords="526,52,463,33,465,28,528,47"/>
+<area shape="rect" href="class_text_widget.html#ae7a5603a5a769cad07cd3a102fb808f1" title="interpret the character and draw it into the pixel buffer at the current line and column character po..." alt="" coords="161,31,308,55"/>
+<area shape="poly" title=" " alt="" coords="517,65,308,51,308,45,517,60"/>
+<area shape="rect" href="class_text_widget.html#a34e2f1558ebd76f1dbfb3cbfdf0e7894" title="we need draw() to be compliant with the pure virtual draw() inherited from Widget." alt="" coords="367,104,473,129"/>
+<area shape="poly" title=" " alt="" coords="528,87,465,106,463,101,526,82"/>
+<area shape="poly" title=" " alt="" coords="341,31,309,36,308,30,340,26"/>
+<area shape="rect" href="class_text_widget.html#ab9524e4f93739352b7fe0915e038c1fb" title="process the string c_str and then draw each character into the pixel buffer, without using the text b..." alt="" coords="5,31,113,55"/>
+<area shape="poly" title=" " alt="" coords="145,46,113,46,113,40,145,40"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a237b451ce7140f32676109f637fb215d" name="a237b451ce7140f32676109f637fb215d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a237b451ce7140f32676109f637fb215d">&#9670;&#160;</a></span>write() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TextWidget::write </td>
+          <td>(</td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>character</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>char_column</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>char_line</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>a graphic primitive to draw a character at a character position </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">character</td><td>the foreground color of the character. The font is given by the frame_text_config </td></tr>
+    <tr><td class="paramname">char_column</td><td>the column position of the character </td></tr>
+    <tr><td class="paramname">char_line</td><td>the line position of the character </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_text_widget_a237b451ce7140f32676109f637fb215d_cgraph.png" border="0" usemap="#aclass_text_widget_a237b451ce7140f32676109f637fb215d_cgraph" alt=""/></div>
+<map name="aclass_text_widget_a237b451ce7140f32676109f637fb215d_cgraph" id="aclass_text_widget_a237b451ce7140f32676109f637fb215d_cgraph">
+<area shape="rect" title="a graphic primitive to draw a character at a character position" alt="" coords="5,5,113,30"/>
+<area shape="rect" href="class_text_widget.html#a47dae71331351e62bb63bc10bc83a7d7" title="a graphic primitive to draw a character at a pixel position. Strongly dependent on font memory organi..." alt="" coords="161,5,298,30"/>
+<area shape="poly" title=" " alt="" coords="113,15,145,15,145,20,113,20"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="ab9524e4f93739352b7fe0915e038c1fb" name="ab9524e4f93739352b7fe0915e038c1fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9524e4f93739352b7fe0915e038c1fb">&#9670;&#160;</a></span>write() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9524e4f93739352b7fe0915e038c1fb">&#9670;&#160;</a></span>write() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -806,17 +962,20 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_text_widget_ab9524e4f93739352b7fe0915e038c1fb_cgraph.png" border="0" usemap="#aclass_text_widget_ab9524e4f93739352b7fe0915e038c1fb_cgraph" alt=""/></div>
 <map name="aclass_text_widget_ab9524e4f93739352b7fe0915e038c1fb_cgraph" id="aclass_text_widget_ab9524e4f93739352b7fe0915e038c1fb_cgraph">
-<area shape="rect" title="process the string c_str and then draw each character into the pixel buffer, without using the text b..." alt="" coords="5,55,113,79"/>
-<area shape="rect" href="class_text_widget.html#ae7a5603a5a769cad07cd3a102fb808f1" title="interpret the character and draw it into the pixel buffer at the current line and column character po..." alt="" coords="161,55,308,79"/>
-<area shape="poly" title=" " alt="" coords="113,64,145,64,145,70,113,70"/>
-<area shape="rect" href="class_text_widget.html#a3712ffd3288da6a64d22e57177ee4beb" title="character column steps forward one position forward." alt="" coords="356,5,487,30"/>
-<area shape="poly" title=" " alt="" coords="283,51,357,32,358,37,285,57"/>
-<area shape="rect" href="class_text_widget.html#a8192cc012e92157d8e47b4d8569f9529" title="character line steps one position downward." alt="" coords="535,31,662,55"/>
-<area shape="poly" title=" " alt="" coords="308,60,520,45,520,51,309,65"/>
-<area shape="rect" href="class_text_widget.html#a3ce8f540e45844b22efa9f18c3c85eab" title="process characters in the internal text buffer and draw it into the pixel buffer." alt="" coords="368,128,475,153"/>
-<area shape="poly" title=" " alt="" coords="269,77,375,120,373,124,267,82"/>
-<area shape="poly" title=" " alt="" coords="488,24,521,29,520,34,487,30"/>
-<area shape="poly" title=" " alt="" coords="392,129,386,119,389,110,402,104,422,101,444,104,455,111,452,116,442,109,422,107,403,109,393,113,391,119,397,126"/>
+<area shape="rect" title="process the string c_str and then draw each character into the pixel buffer, without using the text b..." alt="" coords="5,80,113,105"/>
+<area shape="rect" href="class_text_widget.html#ae7a5603a5a769cad07cd3a102fb808f1" title="interpret the character and draw it into the pixel buffer at the current line and column character po..." alt="" coords="161,80,308,105"/>
+<area shape="poly" title=" " alt="" coords="113,90,145,90,145,95,113,95"/>
+<area shape="rect" href="class_text_widget.html#ad78f8aeaf711b85731d697092bae94b1" title="clean th full current line (writing &quot; &quot; in the text buffer)" alt="" coords="358,5,486,30"/>
+<area shape="poly" title=" " alt="" coords="266,77,373,34,375,39,268,82"/>
+<area shape="rect" href="class_text_widget.html#a3ce8f540e45844b22efa9f18c3c85eab" title="process characters in the internal text buffer and draw it into the pixel buffer." alt="" coords="545,43,652,67"/>
+<area shape="poly" title=" " alt="" coords="308,82,529,59,530,65,309,87"/>
+<area shape="rect" href="class_text_widget.html#a3712ffd3288da6a64d22e57177ee4beb" title="character column steps forward one position forward." alt="" coords="356,104,487,129"/>
+<area shape="poly" title=" " alt="" coords="309,99,341,103,340,109,308,104"/>
+<area shape="rect" href="class_text_widget.html#a8192cc012e92157d8e47b4d8569f9529" title="character line steps one position downward." alt="" coords="535,116,662,141"/>
+<area shape="poly" title=" " alt="" coords="261,103,305,122,357,138,398,143,441,144,520,139,520,144,441,150,398,148,355,143,303,127,259,108"/>
+<area shape="poly" title=" " alt="" coords="484,28,530,38,529,43,483,33"/>
+<area shape="poly" title=" " alt="" coords="569,44,563,34,566,24,578,18,599,16,621,19,632,26,629,30,619,24,598,21,580,23,570,28,568,33,573,41"/>
+<area shape="poly" title=" " alt="" coords="488,118,520,120,520,126,488,123"/>
 </map>
 </div>
 

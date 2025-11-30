@@ -4,7 +4,6 @@ var classrtos___u_i_controlled_model =
     [ "process_control_event", "classrtos___u_i_controlled_model.html#ae3967617bca1aead44fad93558498943", null ],
     [ "update_rtos_status", "classrtos___u_i_controlled_model.html#adfdbebf7c1c5ca38078dd3bbd4e9c366", null ],
     [ "control_event_input_queue", "classrtos___u_i_controlled_model.html#a94ff669a08622cfa731a0b8f7c523695", null ],
-    [ "current_active_rtos_model", "classrtos___u_i_controlled_model.html#a4bacfa4582381983fe4ca234af45c03d", null ],
     [ "managed_rtos_models", "classrtos___u_i_controlled_model.html#ae65f82a56aa2398fe85e5686421394df", null ],
     [ "rtos_status", "classrtos___u_i_controlled_model.html#a9ee6affa87b7608c0198a7737e76790d", null ]
 ];

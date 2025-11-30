@@ -1,5 +1,8 @@
 <map id="UIControlledModel" name="UIControlledModel">
-<area shape="rect" id="Node000001" title="Class that adds UI Controller to the basic Model class." alt="" coords="5,264,401,437"/>
-<area shape="rect" id="Node000002" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="63,5,343,216"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,231,206,264,201,264,201,231"/>
+<area shape="rect" id="Node000001" title="Class that adds UI Controller to the basic Model class." alt="" coords="21,303,417,476"/>
+<area shape="rect" id="Node000003" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="5,538,433,637"/>
+<area shape="poly" id="edge3_Node000003_Node000001" title=" " alt="" coords="147,477,136,501,134,512,136,523,131,524,129,512,131,499,142,475"/>
+<area shape="rect" id="Node000002" href="$class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="79,5,359,253"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="222,269,222,303,217,303,217,269"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="258,537,270,513,273,492,278,493,275,515,263,540"/>
 </map>

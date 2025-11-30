@@ -4,18 +4,23 @@ var group__control =
       [ "KY040", "class_k_y040.html#a67adb64d0d3d1e2bca7f9c8312c06706", null ],
       [ "process_central_switch_event", "class_k_y040.html#a787379f8042811a0b0adeaea0afb44d7", null ],
       [ "process_encoder_IRQ", "class_k_y040.html#ab2fed8cbecdc0c14ebc43fcd5ae8dd6e", null ],
-      [ "update_UI_control_event_processor", "class_k_y040.html#a303f94b37201d12f91fbb349dc649eef", null ]
+      [ "update_UI_control_event_processor", "class_k_y040.html#a303f94b37201d12f91fbb349dc649eef", null ],
+      [ "central_switch", "class_k_y040.html#aeeacb4eda161ef68b02a2f5799239c64", null ],
+      [ "encoder", "class_k_y040.html#a2eb8bfa93217c26d2fff46d3d2831be1", null ]
     ] ],
     [ "RotaryEncoder", "class_rotary_encoder.html", [
       [ "RotaryEncoder", "class_rotary_encoder.html#a517cabc7498b8b2277c1433142d241a8", null ],
       [ "~RotaryEncoder", "class_rotary_encoder.html#a0956a9ae8731f8e9bae8cb56162237d5", null ],
       [ "interrupt_service_routine", "class_rotary_encoder.html#ae7ad35ae64d2b815c25ac72a51702e6f", null ],
-      [ "update_event_processor", "class_rotary_encoder.html#a20a7d47b8facd264840c4c7e988f5ae3", null ]
+      [ "update_event_processor", "class_rotary_encoder.html#a20a7d47b8facd264840c4c7e988f5ae3", null ],
+      [ "dt_gpio", "class_rotary_encoder.html#adf6c9f3a9e7a9aa8b9dab7a2ca8049e3", null ],
+      [ "event_processor", "class_rotary_encoder.html#a3cc27778f8ec392b57b191540f588478", null ]
     ] ],
     [ "rtos_RotaryEncoder", "classrtos___rotary_encoder.html", [
       [ "rtos_RotaryEncoder", "classrtos___rotary_encoder.html#ae6e38fe0da2da9c7fcebe7a93c87f588", null ],
       [ "~rtos_RotaryEncoder", "classrtos___rotary_encoder.html#a63f1833d9b74ba7f8b838108942d2832", null ],
-      [ "rtos_process_IRQ_event", "classrtos___rotary_encoder.html#a49b161016d8d9a00e322e819218f6c74", null ]
+      [ "rtos_process_IRQ_event", "classrtos___rotary_encoder.html#a49b161016d8d9a00e322e819218f6c74", null ],
+      [ "dt_gpio", "classrtos___rotary_encoder.html#afc21d71e8dbdba7610d85844a3c75c14", null ]
     ] ],
     [ "rtos_SwitchButton", "classrtos___switch_button.html", [
       [ "rtos_SwitchButton", "classrtos___switch_button.html#adedaccfcce4afb5bd51a89a99467998e", null ],
@@ -27,6 +32,7 @@ var group__control =
       [ "control_event_queue", "classrtos___switch_button.html#adb54d0aadd5523c8f46382b4048e6bb1", null ],
       [ "debounce_delay_us", "classrtos___switch_button.html#a59ca740a22b080faf667400a817a9201", null ],
       [ "gpio", "classrtos___switch_button.html#a3f74708bda139aa762d375f49b784997", null ],
+      [ "irq_event_mask_config", "classrtos___switch_button.html#a525ca734a0af08bd0e0b4a73e9ba3687", null ],
       [ "IRQdata_input_queue", "classrtos___switch_button.html#a50a688ea4a876079b03bfb022b8f5a4b", null ],
       [ "long_push_delay_ms", "classrtos___switch_button.html#a430fa348372c8df567193ca9a55ab896", null ],
       [ "long_release_delay_us", "classrtos___switch_button.html#ac2c7088346c9f1608a09e6708fbc87c4", null ],
@@ -54,7 +60,9 @@ var group__control =
       [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html#aafb53c306bcbb5c681caae03b778f517", null ],
       [ "~SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html#a2d4eb41f9e064fd22e68a20c486c7f06", null ],
       [ "irq_enabled", "class_switch_button_with_i_r_q.html#a261dc80eca218e3733c6a0cf637c25e8", null ],
-      [ "process_IRQ_event", "class_switch_button_with_i_r_q.html#a910cf64b0017e10006df24c4bc44a9c8", null ]
+      [ "is_switch_pushed", "class_switch_button_with_i_r_q.html#a36babd7863c8831b6ceee97c884024fc", null ],
+      [ "process_IRQ_event", "class_switch_button_with_i_r_q.html#a910cf64b0017e10006df24c4bc44a9c8", null ],
+      [ "irq_event_mask_config", "class_switch_button_with_i_r_q.html#af239f30220d2d6b8b82789b43d361629", null ]
     ] ],
     [ "UIController", "class_u_i_controller.html", [
       [ "UIController", "class_u_i_controller.html#a74aff896bdb3a03be4fcc2ac0772ef11", null ],

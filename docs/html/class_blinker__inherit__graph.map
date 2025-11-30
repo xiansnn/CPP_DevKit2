@@ -1,7 +1,7 @@
 <map id="Blinker" name="Blinker">
-<area shape="rect" id="Node000001" title="A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker..." alt="" coords="98,5,361,160"/>
-<area shape="rect" id="Node000002" href="$class_widget_blinking_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="5,208,453,321"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,175,232,208,227,208,227,175"/>
-<area shape="rect" id="Node000003" href="$class_widget_focus_indicator.html" title="A specific class dedicated to indicate the status of an UIControlledModel. Not an abstract class,..." alt="" coords="13,369,445,483"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="232,336,232,370,227,370,227,336"/>
+<area shape="rect" id="Node000001" title="A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker..." alt="" coords="98,5,361,197"/>
+<area shape="rect" id="Node000002" href="$class_widget_blinking_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="5,245,453,359"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,212,232,246,227,246,227,212"/>
+<area shape="rect" id="Node000003" href="$class_widget_focus_indicator.html" title="A specific class dedicated to indicate the status of an UIControlledModel. Not an abstract class,..." alt="" coords="13,407,445,520"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="232,373,232,407,227,407,227,373"/>
 </map>

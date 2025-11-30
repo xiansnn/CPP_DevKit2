@@ -1,27 +1,4 @@
 var searchData=
 [
-  ['page_5faddressing_5fmode_0',['PAGE_ADDRESSING_MODE',['../ssd1306_8h.html#a2c0a40b88061866897ed7d527562e764',1,'ssd1306.h']]],
-  ['period_5fus_1',['PERIOD_us',['../sg90_8h.html#a69fd28fa4db77094fb62fd05e86037d9',1,'sg90.h']]],
-  ['phase_5fcorrect_2',['PHASE_CORRECT',['../sg90_8h.html#ac359616a325457c8cad32638b19d4f52',1,'sg90.h']]],
-  ['pixel_5fframe_5fheight_3',['pixel_frame_height',['../structstruct___config_graphic_widget.html#a772cfec0c962cae99033de09c5bb4c27',1,'struct_ConfigGraphicWidget']]],
-  ['pixel_5fframe_5fwidth_4',['pixel_frame_width',['../structstruct___config_graphic_widget.html#af2bb5cba93a4dc21c75c08c5a2d6792e',1,'struct_ConfigGraphicWidget']]],
-  ['pos_5fmax_5fdegree_5',['pos_max_degree',['../structstruct___config_s_g90.html#a9c349601a83bb7b1a0b42cf927ec4bf5',1,'struct_ConfigSG90']]],
-  ['pos_5fmin_5fdegree_6',['pos_min_degree',['../structstruct___config_s_g90.html#aec659f7a3f081dfbcf34000c9f68d556',1,'struct_ConfigSG90']]],
-  ['previous_5fchange_5ftime_5fus_7',['previous_change_time_us',['../classrtos___switch_button.html#ae32bc8a516d0539face7454f54cee8b9',1,'rtos_SwitchButton::previous_change_time_us'],['../class_switch_button.html#acf1f884508aacadb2bb12ee44e53bf73',1,'SwitchButton::previous_change_time_us']]],
-  ['previous_5fswitch_5fpushed_5fstate_8',['previous_switch_pushed_state',['../classrtos___switch_button.html#afe979e87919059fc502e8efa36926d67',1,'rtos_SwitchButton::previous_switch_pushed_state'],['../class_switch_button.html#a269219187ae2a669ca36aabbb615ce40',1,'SwitchButton::previous_switch_pushed_state']]],
-  ['principles_9',['Model-View-Control principles',['../index.html#autotoc_md2',1,'']]],
-  ['printwidget_10',['PrintWidget',['../class_print_widget.html',1,'PrintWidget'],['../class_print_widget.html#af495fd2db88a95de2d354bb91ed6a04e',1,'PrintWidget::PrintWidget()']]],
-  ['probe_11',['Probe',['../class_probe.html',1,'Probe'],['../class_probe.html#a3c4f80fa16e1e5e4721b8c18da8a2b7b',1,'Probe::Probe()']]],
-  ['probe_2eh_12',['probe.h',['../probe_8h.html',1,'']]],
-  ['process_5fcentral_5fswitch_5fevent_13',['process_central_switch_event',['../class_k_y040.html#a787379f8042811a0b0adeaea0afb44d7',1,'KY040']]],
-  ['process_5fchar_14',['process_char',['../class_text_widget.html#ae7a5603a5a769cad07cd3a102fb808f1',1,'TextWidget']]],
-  ['process_5fcontrol_5fevent_15',['process_control_event',['../classrtos___u_i_controlled_model.html#ae3967617bca1aead44fad93558498943',1,'rtos_UIControlledModel::process_control_event()'],['../class_u_i_controlled_model.html#a678d92a4921d4d5045cb800bd6e89800',1,'UIControlledModel::process_control_event()']]],
-  ['process_5fencoder_5firq_16',['process_encoder_IRQ',['../class_k_y040.html#ab2fed8cbecdc0c14ebc43fcd5ae8dd6e',1,'KY040']]],
-  ['process_5firq_5fevent_17',['process_IRQ_event',['../class_switch_button_with_i_r_q.html#a910cf64b0017e10006df24c4bc44a9c8',1,'SwitchButtonWithIRQ']]],
-  ['process_5fsample_5fevent_18',['process_sample_event',['../class_switch_button.html#aa7ebc9b37168b233ff9526f770fed49f',1,'SwitchButton']]],
-  ['pulse_5fus_19',['pulse_us',['../class_probe.html#a090879d096db391e958305e2686b2f45',1,'Probe']]],
-  ['push_20',['PUSH',['../ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32a73dabe4437725eedc05a1824a2c31550',1,'ui_control_event.h']]],
-  ['pwm_21',['PWM',['../class_p_w_m.html',1,'PWM'],['../class_p_w_m.html#a4dedfbb6be96295678d51afffee4a132',1,'PWM::PWM()']]],
-  ['pwmgatedmeasure_22',['PWMgatedMeasure',['../class_p_w_mgated_measure.html',1,'PWMgatedMeasure'],['../class_p_w_mgated_measure.html#a911c1e8d4fa44682c782c5091b4099fe',1,'PWMgatedMeasure::PWMgatedMeasure()']]],
-  ['pwr_5fmgmt_5f1_23',['PWR_MGMT_1',['../structstruct___config_m_p_u6050.html#a69f73e2978403f376143fbabe46b8722',1,'struct_ConfigMPU6050']]]
+  ['output_5frange_5fqueue_0',['output_range_queue',['../classrtos___h_c_s_r04.html#abb8face0ee4299d5c63778b3e073ba4c',1,'rtos_HCSR04']]]
 ];

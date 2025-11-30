@@ -99,6 +99,7 @@ $(function(){initNavTree('classrtos___d_h_t11.html',''); initResizable(true); })
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classrtos___d_h_t11-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">rtos_DHT11 Class Reference<div class="ingroups"><a class="el" href="group__sensor.html">&quot;Sensor&quot;</a></div></div></div>
 </div><!--header-->
@@ -113,7 +114,7 @@ Collaboration diagram for rtos_DHT11:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___d_h_t11__coll__graph.png" border="0" usemap="#artos___d_h_t11_coll__map" alt="Collaboration graph"/></div>
 <map name="artos___d_h_t11_coll__map" id="artos___d_h_t11_coll__map">
-<area shape="rect" title="the Class manages the DHT11 humidity and temperature sensor" alt="" coords="5,5,361,85"/>
+<area shape="rect" title="the Class manages the DHT11 humidity and temperature sensor" alt="" coords="5,5,361,104"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -123,9 +124,20 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>read_from_dht</b> ()</td></tr>
 <tr class="memdesc:a103945d0b9618eda30176136dc072333"><td class="mdescLeft">&#160;</td><td class="mdescRight">the function called by a RTOS periodic task <br /></td></tr>
 <tr class="separator:a103945d0b9618eda30176136dc072333"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3e9f7aed685686d934714ddd28f18e4" id="r_ac3e9f7aed685686d934714ddd28f18e4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3e9f7aed685686d934714ddd28f18e4">rtos_DHT11</a> (uint gpio_in, QueueHandle_t dht_reading_ouput_queue)</td></tr>
+<tr class="memitem:ac3e9f7aed685686d934714ddd28f18e4" id="r_ac3e9f7aed685686d934714ddd28f18e4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3e9f7aed685686d934714ddd28f18e4">rtos_DHT11</a> (uint <a class="el" href="#a2ea15ba728dcba150c54a78a5105a2fd">gpio_in</a>, QueueHandle_t dht_reading_ouput_queue)</td></tr>
 <tr class="memdesc:ac3e9f7aed685686d934714ddd28f18e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the constructor for <a class="el" href="classrtos___d_h_t11.html" title="the Class manages the DHT11 humidity and temperature sensor">rtos_DHT11</a> object  <br /></td></tr>
 <tr class="separator:ac3e9f7aed685686d934714ddd28f18e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a2ea15ba728dcba150c54a78a5105a2fd" id="r_a2ea15ba728dcba150c54a78a5105a2fd"><td class="memItemLeft" align="right" valign="top"><a id="a2ea15ba728dcba150c54a78a5105a2fd" name="a2ea15ba728dcba150c54a78a5105a2fd"></a>
+uint&#160;</td><td class="memItemRight" valign="bottom"><b>gpio_in</b></td></tr>
+<tr class="memdesc:a2ea15ba728dcba150c54a78a5105a2fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">the GPIO connected to <a class="el" href="class_d_h_t11.html" title="the Class manages the DHT11 humidity and temperature sensor">DHT11</a> <br /></td></tr>
+<tr class="separator:a2ea15ba728dcba150c54a78a5105a2fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af756fbcee4244ab04f51a56bcc5ea64f" id="r_af756fbcee4244ab04f51a56bcc5ea64f"><td class="memItemLeft" align="right" valign="top"><a id="af756fbcee4244ab04f51a56bcc5ea64f" name="af756fbcee4244ab04f51a56bcc5ea64f"></a>
+QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>dht_reading_queue</b></td></tr>
+<tr class="memdesc:af756fbcee4244ab04f51a56bcc5ea64f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the output queue that receives readings <br /></td></tr>
+<tr class="separator:af756fbcee4244ab04f51a56bcc5ea64f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>the Class manages the <a class="el" href="class_d_h_t11.html" title="the Class manages the DHT11 humidity and temperature sensor">DHT11</a> humidity and temperature sensor </p>

@@ -9,6 +9,7 @@ var classrtos___switch_button =
     [ "control_event_queue", "classrtos___switch_button.html#adb54d0aadd5523c8f46382b4048e6bb1", null ],
     [ "debounce_delay_us", "classrtos___switch_button.html#a59ca740a22b080faf667400a817a9201", null ],
     [ "gpio", "classrtos___switch_button.html#a3f74708bda139aa762d375f49b784997", null ],
+    [ "irq_event_mask_config", "classrtos___switch_button.html#a525ca734a0af08bd0e0b4a73e9ba3687", null ],
     [ "IRQdata_input_queue", "classrtos___switch_button.html#a50a688ea4a876079b03bfb022b8f5a4b", null ],
     [ "long_push_delay_ms", "classrtos___switch_button.html#a430fa348372c8df567193ca9a55ab896", null ],
     [ "long_release_delay_us", "classrtos___switch_button.html#ac2c7088346c9f1608a09e6708fbc87c4", null ],

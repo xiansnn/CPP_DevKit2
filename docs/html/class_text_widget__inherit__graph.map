@@ -1,7 +1,7 @@
 <map id="TextWidget" name="TextWidget">
-<area shape="rect" id="Node000001" title="a dedicated class for text frame only" alt="" coords="5,828,580,1236"/>
-<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="5,264,580,780"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="295,795,295,828,290,828,290,795"/>
+<area shape="rect" id="Node000001" title="a dedicated class for text frame only" alt="" coords="5,861,580,1437"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="5,264,580,813"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="295,828,295,862,290,862,290,828"/>
 <area shape="rect" id="Node000003" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="21,5,564,216"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="295,231,295,264,290,264,290,231"/>
 </map>

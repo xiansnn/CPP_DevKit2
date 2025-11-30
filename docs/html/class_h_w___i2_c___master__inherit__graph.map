@@ -1,5 +1,5 @@
 <map id="HW_I2C_Master" name="HW_I2C_Master">
-<area shape="rect" id="Node000001" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="33,5,546,245"/>
-<area shape="rect" id="Node000002" href="$classrtos___h_w___i2_c___master.html" title="This is a C++ wrapper for the original pico SDK i2c master API, adapted to FreeRTOS environment." alt="" coords="5,293,573,515"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="292,260,292,294,287,294,287,260"/>
+<area shape="rect" id="Node000001" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="33,5,546,264"/>
+<area shape="rect" id="Node000002" href="$classrtos___h_w___i2_c___master.html" title="This is a C++ wrapper for the original pico SDK i2c master API, adapted to FreeRTOS environment." alt="" coords="5,312,573,533"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="292,279,292,312,287,312,287,279"/>
 </map>

@@ -9,5 +9,7 @@ var class_model =
     [ "has_changed", "class_model.html#a6581f694a68e74228507591a3dbaccdf", null ],
     [ "set_change_flag", "class_model.html#a47406db888c07c179881ce00cbd3937f", null ],
     [ "update_attached_widgets", "class_model.html#a39c2d857bbad88b8fb04eb54820ae08f", null ],
-    [ "attached_widgets", "class_model.html#a764d7bc0d5d7ce1cb6c5cd27410f7425", null ]
+    [ "attached_widgets", "class_model.html#a764d7bc0d5d7ce1cb6c5cd27410f7425", null ],
+    [ "change_flag", "class_model.html#a8f016cc7631ec55f950511a44b8b1327", null ],
+    [ "last_change_time", "class_model.html#ac1e989ec9c1491b4f1b3075ad4d753f7", null ]
 ];

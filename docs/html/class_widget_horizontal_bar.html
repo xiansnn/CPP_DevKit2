@@ -99,6 +99,8 @@ $(function(){initNavTree('class_widget_horizontal_bar.html',''); initResizable(t
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_widget_horizontal_bar-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">WidgetHorizontalBar Class Reference<div class="ingroups"><a class="el" href="group__view.html">&quot;View&quot;</a></div></div></div>
 </div><!--header-->
@@ -113,9 +115,9 @@ Inheritance diagram for WidgetHorizontalBar:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_widget_horizontal_bar__inherit__graph.png" border="0" usemap="#a_widget_horizontal_bar_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_widget_horizontal_bar_inherit__map" id="a_widget_horizontal_bar_inherit__map">
-<area shape="rect" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="41,828,544,960"/>
-<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="5,264,580,780"/>
-<area shape="poly" title=" " alt="" coords="295,795,295,828,290,828,290,795"/>
+<area shape="rect" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="41,861,544,1143"/>
+<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="5,264,580,813"/>
+<area shape="poly" title=" " alt="" coords="295,829,295,861,290,861,290,829"/>
 <area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="21,5,564,216"/>
 <area shape="poly" title=" " alt="" coords="295,231,295,264,290,264,290,231"/>
 </map>
@@ -125,21 +127,21 @@ Collaboration diagram for WidgetHorizontalBar:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_widget_horizontal_bar__coll__graph.png" border="0" usemap="#a_widget_horizontal_bar_coll__map" alt="Collaboration graph"/></div>
 <map name="a_widget_horizontal_bar_coll__map" id="a_widget_horizontal_bar_coll__map">
-<area shape="rect" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="246,1395,749,1527"/>
-<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="210,848,785,1345"/>
-<area shape="poly" title=" " alt="" coords="500,1360,500,1395,495,1395,495,1360"/>
-<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="70,644,613,799"/>
-<area shape="poly" title=" " alt="" coords="381,811,396,847,391,849,376,814"/>
-<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,371,285,582"/>
-<area shape="poly" title=" " alt="" coords="171,581,192,618,202,630,198,634,187,622,166,583"/>
+<area shape="rect" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="246,1465,749,1747"/>
+<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="210,885,785,1416"/>
+<area shape="poly" title=" " alt="" coords="500,1431,500,1465,495,1465,495,1431"/>
+<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="70,681,613,836"/>
+<area shape="poly" title=" " alt="" coords="380,849,394,884,389,886,375,851"/>
+<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,371,285,619"/>
+<area shape="poly" title=" " alt="" coords="171,618,192,656,201,667,197,671,187,659,167,620"/>
 <area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="264,117,400,197"/>
-<area shape="poly" title=" " alt="" coords="335,197,342,627,337,627,330,197"/>
-<area shape="rect" href="structstruct___data_to_show.html" title="data structure used to queue data to send to the display task" alt="" coords="436,427,591,526"/>
-<area shape="poly" title=" " alt="" coords="354,196,414,308,476,412,472,414,410,311,349,198"/>
-<area shape="poly" title=" " alt="" coords="482,527,407,632,403,629,477,524"/>
+<area shape="poly" title=" " alt="" coords="335,197,343,664,337,665,330,197"/>
+<area shape="rect" href="structstruct___data_to_show.html" title="data structure used to queue data to send to the display task" alt="" coords="436,446,591,545"/>
+<area shape="poly" title=" " alt="" coords="355,196,414,308,481,430,476,432,410,311,350,198"/>
+<area shape="poly" title=" " alt="" coords="484,546,403,669,398,666,480,543"/>
 <area shape="rect" href="class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="425,5,890,309"/>
-<area shape="poly" title=" " alt="" coords="667,309,668,418,663,541,651,672,628,799,619,833,614,831,623,798,645,671,658,541,663,417,662,309"/>
-<area shape="poly" title=" " alt="" coords="591,310,545,413,540,411,586,308"/>
+<area shape="poly" title=" " alt="" coords="667,309,668,425,664,558,651,698,628,837,620,869,615,868,623,835,646,698,658,558,663,425,662,309"/>
+<area shape="poly" title=" " alt="" coords="595,310,543,432,538,429,590,308"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -148,7 +150,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a73f6c8198a940ad2803367e5712f3359" id="r_a73f6c8198a940ad2803367e5712f3359"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73f6c8198a940ad2803367e5712f3359">draw</a> ()</td></tr>
 <tr class="memdesc:a73f6c8198a940ad2803367e5712f3359"><td class="mdescLeft">&#160;</td><td class="mdescRight">the draw function of the widget  <br /></td></tr>
 <tr class="separator:a73f6c8198a940ad2803367e5712f3359"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f16e98514b9d0c14a1781c001179b8c" id="r_a7f16e98514b9d0c14a1781c001179b8c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f16e98514b9d0c14a1781c001179b8c">WidgetHorizontalBar</a> (<a class="el" href="class_model.html">Model</a> *bar_value_model, <a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *graphic_display_screen, int max_value, int min_value, <a class="el" href="structstruct___config_graphic_widget.html">struct_ConfigGraphicWidget</a> graph_cfg, <a class="el" href="canvas_8h.html#a436eabe2e5d4a62b78ff8002105c5421">CanvasFormat</a> format)</td></tr>
+<tr class="memitem:a7f16e98514b9d0c14a1781c001179b8c" id="r_a7f16e98514b9d0c14a1781c001179b8c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f16e98514b9d0c14a1781c001179b8c">WidgetHorizontalBar</a> (<a class="el" href="class_model.html">Model</a> *bar_value_model, <a class="el" href="class_graphic_display_device.html">GraphicDisplayDevice</a> *graphic_display_screen, int <a class="el" href="#adc3cd2ef29476f94e66b424d380d621e">max_value</a>, int <a class="el" href="#a640d4afcc203d0a32e2139a57e9a1123">min_value</a>, <a class="el" href="structstruct___config_graphic_widget.html">struct_ConfigGraphicWidget</a> graph_cfg, <a class="el" href="canvas_8h.html#a436eabe2e5d4a62b78ff8002105c5421">CanvasFormat</a> format)</td></tr>
 <tr class="memdesc:a7f16e98514b9d0c14a1781c001179b8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_graphic_widget.html" title="The graphical version of a Widget.">GraphicWidget</a> Horizontal Bar object.  <br /></td></tr>
 <tr class="separator:a7f16e98514b9d0c14a1781c001179b8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a463a0d22a9509395fac826be6a8154a4" id="r_a463a0d22a9509395fac826be6a8154a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a463a0d22a9509395fac826be6a8154a4">set_level</a> (int value)</td></tr>
@@ -209,6 +211,48 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~GraphicWidget</b>
 <tr class="memitem:abce987bca542b6efeaa706c73edbfcc0 inherit pub_methods_class_widget" id="r_abce987bca542b6efeaa706c73edbfcc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_widget.html#abce987bca542b6efeaa706c73edbfcc0">set_display_device</a> (<a class="el" href="class_display_device.html">DisplayDevice</a> *_new_display_device)</td></tr>
 <tr class="memdesc:abce987bca542b6efeaa706c73edbfcc0 inherit pub_methods_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the display screen object.  <br /></td></tr>
 <tr class="separator:abce987bca542b6efeaa706c73edbfcc0 inherit pub_methods_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aa94c8372969017f613b39dfcd690b014" id="r_aa94c8372969017f613b39dfcd690b014"><td class="memItemLeft" align="right" valign="top"><a id="aa94c8372969017f613b39dfcd690b014" name="aa94c8372969017f613b39dfcd690b014"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>convert_level_value_to_px</b> ()</td></tr>
+<tr class="memdesc:aa94c8372969017f613b39dfcd690b014"><td class="mdescLeft">&#160;</td><td class="mdescRight">the conversion fucntion level -&gt; value <br /></td></tr>
+<tr class="separator:aa94c8372969017f613b39dfcd690b014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a69a11f9c5023f31a453314def6db7202" id="r_a69a11f9c5023f31a453314def6db7202"><td class="memItemLeft" align="right" valign="top"><a id="a69a11f9c5023f31a453314def6db7202" name="a69a11f9c5023f31a453314def6db7202"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>level</b></td></tr>
+<tr class="memdesc:a69a11f9c5023f31a453314def6db7202"><td class="mdescLeft">&#160;</td><td class="mdescRight">the filled level of the widget <br /></td></tr>
+<tr class="separator:a69a11f9c5023f31a453314def6db7202"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc3cd2ef29476f94e66b424d380d621e" id="r_adc3cd2ef29476f94e66b424d380d621e"><td class="memItemLeft" align="right" valign="top"><a id="adc3cd2ef29476f94e66b424d380d621e" name="adc3cd2ef29476f94e66b424d380d621e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>max_value</b></td></tr>
+<tr class="memdesc:adc3cd2ef29476f94e66b424d380d621e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the max value of the level <br /></td></tr>
+<tr class="separator:adc3cd2ef29476f94e66b424d380d621e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a640d4afcc203d0a32e2139a57e9a1123" id="r_a640d4afcc203d0a32e2139a57e9a1123"><td class="memItemLeft" align="right" valign="top"><a id="a640d4afcc203d0a32e2139a57e9a1123" name="a640d4afcc203d0a32e2139a57e9a1123"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>min_value</b></td></tr>
+<tr class="memdesc:a640d4afcc203d0a32e2139a57e9a1123"><td class="mdescLeft">&#160;</td><td class="mdescRight">the min value of the level <br /></td></tr>
+<tr class="separator:a640d4afcc203d0a32e2139a57e9a1123"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0788bbdadefbe54e47963d5d7026b7c6" id="r_a0788bbdadefbe54e47963d5d7026b7c6"><td class="memItemLeft" align="right" valign="top"><a id="a0788bbdadefbe54e47963d5d7026b7c6" name="a0788bbdadefbe54e47963d5d7026b7c6"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>px_max</b></td></tr>
+<tr class="memdesc:a0788bbdadefbe54e47963d5d7026b7c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the x-position of the max level value <br /></td></tr>
+<tr class="separator:a0788bbdadefbe54e47963d5d7026b7c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43c5233ff22243b90aa0b50612352a5a" id="r_a43c5233ff22243b90aa0b50612352a5a"><td class="memItemLeft" align="right" valign="top"><a id="a43c5233ff22243b90aa0b50612352a5a" name="a43c5233ff22243b90aa0b50612352a5a"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>px_min</b></td></tr>
+<tr class="memdesc:a43c5233ff22243b90aa0b50612352a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the y-position of the min level value <br /></td></tr>
+<tr class="separator:a43c5233ff22243b90aa0b50612352a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8158adb2da94bb265e98c213b8e746b" id="r_ac8158adb2da94bb265e98c213b8e746b"><td class="memItemLeft" align="right" valign="top"><a id="ac8158adb2da94bb265e98c213b8e746b" name="ac8158adb2da94bb265e98c213b8e746b"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>px_position</b></td></tr>
+<tr class="memdesc:ac8158adb2da94bb265e98c213b8e746b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the converted x-position pixel for the level value <br /></td></tr>
+<tr class="separator:ac8158adb2da94bb265e98c213b8e746b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab056a752ff665d0c8f1ca10527130885" id="r_ab056a752ff665d0c8f1ca10527130885"><td class="memItemLeft" align="right" valign="top"><a id="ab056a752ff665d0c8f1ca10527130885" name="ab056a752ff665d0c8f1ca10527130885"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>level_coef</b></td></tr>
+<tr class="memdesc:ab056a752ff665d0c8f1ca10527130885"><td class="mdescLeft">&#160;</td><td class="mdescRight">the proportional coefficient of the conversion level-&gt; pixel <br /></td></tr>
+<tr class="separator:ab056a752ff665d0c8f1ca10527130885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dac8a9f17d8e944d15332d916dcc034" id="r_a3dac8a9f17d8e944d15332d916dcc034"><td class="memItemLeft" align="right" valign="top"><a id="a3dac8a9f17d8e944d15332d916dcc034" name="a3dac8a9f17d8e944d15332d916dcc034"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>level_offset</b></td></tr>
+<tr class="memdesc:a3dac8a9f17d8e944d15332d916dcc034"><td class="mdescLeft">&#160;</td><td class="mdescRight">the offset of the conversion level-&gt; pixel <br /></td></tr>
+<tr class="separator:a3dac8a9f17d8e944d15332d916dcc034"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -422,6 +466,16 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_widget_horizontal_bar_a463a0d22a9509395fac826be6a8154a4_cgraph.png" border="0" usemap="#aclass_widget_horizontal_bar_a463a0d22a9509395fac826be6a8154a4_cgraph" alt=""/></div>
+<map name="aclass_widget_horizontal_bar_a463a0d22a9509395fac826be6a8154a4_cgraph" id="aclass_widget_horizontal_bar_a463a0d22a9509395fac826be6a8154a4_cgraph">
+<area shape="rect" title="set the level to value" alt="" coords="5,5,175,30"/>
+<area shape="rect" href="class_widget_horizontal_bar.html#aa94c8372969017f613b39dfcd690b014" title="the conversion fucntion level &#45;&gt; value" alt="" coords="223,5,476,30"/>
+<area shape="poly" title=" " alt="" coords="175,15,207,15,207,20,175,20"/>
+</map>
+</div>
 
 </div>
 </div>

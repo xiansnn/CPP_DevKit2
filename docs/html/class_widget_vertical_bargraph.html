@@ -101,6 +101,8 @@ $(function(){initNavTree('class_widget_vertical_bargraph.html',''); initResizabl
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_widget_vertical_bargraph-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">WidgetVerticalBargraph Class Reference<div class="ingroups"><a class="el" href="group__view.html">&quot;View&quot;</a></div></div></div>
 </div><!--header-->
@@ -115,9 +117,9 @@ Inheritance diagram for WidgetVerticalBargraph:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_widget_vertical_bargraph__inherit__graph.png" border="0" usemap="#a_widget_vertical_bargraph_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_widget_vertical_bargraph_inherit__map" id="a_widget_vertical_bargraph_inherit__map">
-<area shape="rect" title="the widget that display a vertical bargraph" alt="" coords="35,828,551,1035"/>
-<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="5,264,580,780"/>
-<area shape="poly" title=" " alt="" coords="295,795,295,828,290,828,290,795"/>
+<area shape="rect" title="the widget that display a vertical bargraph" alt="" coords="35,861,551,1180"/>
+<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="5,264,580,813"/>
+<area shape="poly" title=" " alt="" coords="295,829,295,862,290,862,290,829"/>
 <area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="21,5,564,216"/>
 <area shape="poly" title=" " alt="" coords="295,231,295,264,290,264,290,231"/>
 </map>
@@ -127,21 +129,21 @@ Collaboration diagram for WidgetVerticalBargraph:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_widget_vertical_bargraph__coll__graph.png" border="0" usemap="#a_widget_vertical_bargraph_coll__map" alt="Collaboration graph"/></div>
 <map name="a_widget_vertical_bargraph_coll__map" id="a_widget_vertical_bargraph_coll__map">
-<area shape="rect" title="the widget that display a vertical bargraph" alt="" coords="239,1395,755,1601"/>
-<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="210,848,785,1345"/>
-<area shape="poly" title=" " alt="" coords="500,1360,500,1395,495,1395,495,1360"/>
-<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="70,644,613,799"/>
-<area shape="poly" title=" " alt="" coords="381,811,396,847,391,849,376,814"/>
-<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,371,285,582"/>
-<area shape="poly" title=" " alt="" coords="171,581,192,618,202,630,198,634,187,622,166,583"/>
+<area shape="rect" title="the widget that display a vertical bargraph" alt="" coords="239,1465,755,1784"/>
+<area shape="rect" href="class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="210,885,785,1416"/>
+<area shape="poly" title=" " alt="" coords="500,1431,500,1465,495,1465,495,1431"/>
+<area shape="rect" href="class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="70,681,613,836"/>
+<area shape="poly" title=" " alt="" coords="380,849,394,884,389,886,375,851"/>
+<area shape="rect" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="5,371,285,619"/>
+<area shape="poly" title=" " alt="" coords="171,618,192,656,201,667,197,671,187,659,167,620"/>
 <area shape="rect" href="class_display_device.html" title="A generic class for all display device." alt="" coords="264,117,400,197"/>
-<area shape="poly" title=" " alt="" coords="335,197,342,627,337,627,330,197"/>
-<area shape="rect" href="structstruct___data_to_show.html" title="data structure used to queue data to send to the display task" alt="" coords="436,427,591,526"/>
-<area shape="poly" title=" " alt="" coords="354,196,414,308,476,412,472,414,410,311,349,198"/>
-<area shape="poly" title=" " alt="" coords="482,527,407,632,403,629,477,524"/>
+<area shape="poly" title=" " alt="" coords="335,197,343,664,337,665,330,197"/>
+<area shape="rect" href="structstruct___data_to_show.html" title="data structure used to queue data to send to the display task" alt="" coords="436,446,591,545"/>
+<area shape="poly" title=" " alt="" coords="355,196,414,308,481,430,476,432,410,311,350,198"/>
+<area shape="poly" title=" " alt="" coords="484,546,403,669,398,666,480,543"/>
 <area shape="rect" href="class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="425,5,890,309"/>
-<area shape="poly" title=" " alt="" coords="667,309,668,418,663,541,651,672,628,799,619,833,614,831,623,798,645,671,658,541,663,417,662,309"/>
-<area shape="poly" title=" " alt="" coords="591,310,545,413,540,411,586,308"/>
+<area shape="poly" title=" " alt="" coords="667,309,668,425,664,558,651,698,628,837,620,869,615,868,623,835,646,698,658,558,663,425,662,309"/>
+<area shape="poly" title=" " alt="" coords="595,310,543,432,538,429,590,308"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -292,6 +294,34 @@ std::vector&lt; <a class="el" href="class_widget.html">Widget</a> * &gt;&#160;</
 <tr class="memdesc:af4c3a0de546fdcb1038469f5c592e2b6 inherit pro_attribs_class_widget"><td class="mdescLeft">&#160;</td><td class="mdescRight">A widget can be composed by several widgets. <br /></td></tr>
 <tr class="separator:af4c3a0de546fdcb1038469f5c592e2b6 inherit pro_attribs_class_widget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a99a7d89fcc4b1c62823b74a65d85b807" id="r_a99a7d89fcc4b1c62823b74a65d85b807"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99a7d89fcc4b1c62823b74a65d85b807">convert_level_value_to_py</a> (int level)</td></tr>
+<tr class="memdesc:a99a7d89fcc4b1c62823b74a65d85b807"><td class="mdescLeft">&#160;</td><td class="mdescRight">the value to pixel y-coordinate converter  <br /></td></tr>
+<tr class="separator:a99a7d89fcc4b1c62823b74a65d85b807"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51e76d94a406956193c15c09adcde58e" id="r_a51e76d94a406956193c15c09adcde58e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51e76d94a406956193c15c09adcde58e">draw_bar</a> (uint8_t bin_index)</td></tr>
+<tr class="memdesc:a51e76d94a406956193c15c09adcde58e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the function that draw a bar in the widget  <br /></td></tr>
+<tr class="separator:a51e76d94a406956193c15c09adcde58e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a27383bd1ab93f3d2a5c3ee8d5c98f021" id="r_a27383bd1ab93f3d2a5c3ee8d5c98f021"><td class="memItemLeft" align="right" valign="top"><a id="a27383bd1ab93f3d2a5c3ee8d5c98f021" name="a27383bd1ab93f3d2a5c3ee8d5c98f021"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>py_max</b></td></tr>
+<tr class="memdesc:a27383bd1ab93f3d2a5c3ee8d5c98f021"><td class="mdescLeft">&#160;</td><td class="mdescRight">the computed equivalent of max level value of the bar in y-coordinate <br /></td></tr>
+<tr class="separator:a27383bd1ab93f3d2a5c3ee8d5c98f021"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4eac7b1da025780d00a6e109f2ad4ff1" id="r_a4eac7b1da025780d00a6e109f2ad4ff1"><td class="memItemLeft" align="right" valign="top"><a id="a4eac7b1da025780d00a6e109f2ad4ff1" name="a4eac7b1da025780d00a6e109f2ad4ff1"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>py_min</b></td></tr>
+<tr class="memdesc:a4eac7b1da025780d00a6e109f2ad4ff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the computed equivalent of min level value of the bar in y-coordinate <br /></td></tr>
+<tr class="separator:a4eac7b1da025780d00a6e109f2ad4ff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52cca56e0eec826ef3f54da12a16ed90" id="r_a52cca56e0eec826ef3f54da12a16ed90"><td class="memItemLeft" align="right" valign="top"><a id="a52cca56e0eec826ef3f54da12a16ed90" name="a52cca56e0eec826ef3f54da12a16ed90"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>level_coef</b></td></tr>
+<tr class="memdesc:a52cca56e0eec826ef3f54da12a16ed90"><td class="mdescLeft">&#160;</td><td class="mdescRight">the computed proportional coeficient of the value to pixel converter <br /></td></tr>
+<tr class="separator:a52cca56e0eec826ef3f54da12a16ed90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37b0ff21f1f0879505a431dac8e79d20" id="r_a37b0ff21f1f0879505a431dac8e79d20"><td class="memItemLeft" align="right" valign="top"><a id="a37b0ff21f1f0879505a431dac8e79d20" name="a37b0ff21f1f0879505a431dac8e79d20"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>level_offset</b></td></tr>
+<tr class="memdesc:a37b0ff21f1f0879505a431dac8e79d20"><td class="mdescLeft">&#160;</td><td class="mdescRight">the computed offset of the value to pixel converter <br /></td></tr>
+<tr class="separator:a37b0ff21f1f0879505a431dac8e79d20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_class_graphic_widget"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_graphic_widget')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_graphic_widget.html">GraphicWidget</a></td></tr>
@@ -367,6 +397,52 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a99a7d89fcc4b1c62823b74a65d85b807" name="a99a7d89fcc4b1c62823b74a65d85b807"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99a7d89fcc4b1c62823b74a65d85b807">&#9670;&#160;</a></span>convert_level_value_to_py()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t WidgetVerticalBargraph::convert_level_value_to_py </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>level</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the value to pixel y-coordinate converter </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>the input value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the y-coordinate </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_widget_vertical_bargraph_a99a7d89fcc4b1c62823b74a65d85b807_icgraph.png" border="0" usemap="#aclass_widget_vertical_bargraph_a99a7d89fcc4b1c62823b74a65d85b807_icgraph" alt=""/></div>
+<map name="aclass_widget_vertical_bargraph_a99a7d89fcc4b1c62823b74a65d85b807_icgraph" id="aclass_widget_vertical_bargraph_a99a7d89fcc4b1c62823b74a65d85b807_icgraph">
+<area shape="rect" title="the value to pixel y&#45;coordinate converter" alt="" coords="452,5,719,30"/>
+<area shape="rect" href="class_widget_vertical_bargraph.html#a51e76d94a406956193c15c09adcde58e" title="the function that draw a bar in the widget" alt="" coords="218,5,404,30"/>
+<area shape="poly" title=" " alt="" coords="436,20,404,20,404,15,436,15"/>
+<area shape="rect" href="class_widget_vertical_bargraph.html#a938fef5332131013fe1f7e31f7629f41" title="the function that draw the widget" alt="" coords="5,5,170,30"/>
+<area shape="poly" title=" " alt="" coords="202,20,170,20,170,15,202,15"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a938fef5332131013fe1f7e31f7629f41" name="a938fef5332131013fe1f7e31f7629f41"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a938fef5332131013fe1f7e31f7629f41">&#9670;&#160;</a></span>draw()</h2>
 
@@ -398,21 +474,85 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_widget_vertical_bargraph_a938fef5332131013fe1f7e31f7629f41_cgraph.png" border="0" usemap="#aclass_widget_vertical_bargraph_a938fef5332131013fe1f7e31f7629f41_cgraph" alt=""/></div>
 <map name="aclass_widget_vertical_bargraph_a938fef5332131013fe1f7e31f7629f41_cgraph" id="aclass_widget_vertical_bargraph_a938fef5332131013fe1f7e31f7629f41_cgraph">
-<area shape="rect" title="the function that draw the widget" alt="" coords="5,80,170,105"/>
+<area shape="rect" title="the function that draw the widget" alt="" coords="5,104,170,129"/>
 <area shape="rect" href="class_graphic_widget.html#a7cfe84700b96f442632858a6aad2000d" title="fill the graphic pixel buffer with 0x00." alt="" coords="260,5,420,30"/>
-<area shape="poly" title=" " alt="" coords="118,77,217,40,252,31,253,37,218,46,119,82"/>
-<area shape="rect" href="class_graphic_widget.html#ac2a3a4387a699f25407c71a90b55eeab" title="draw a rectangle around the widget." alt="" coords="260,55,420,79"/>
-<area shape="poly" title=" " alt="" coords="170,81,245,74,245,79,170,87"/>
-<area shape="rect" href="class_widget_vertical_bargraph.html#aa3881be6be2c17e6310e9d4561940054" title="A pure virtual method that results in the transfer of the displayed values of the displayed model to ..." alt="" coords="218,104,463,129"/>
-<area shape="poly" title=" " alt="" coords="170,97,203,101,202,106,170,103"/>
-<area shape="rect" href="class_graphic_widget.html#a83c221250b9dfdeb8ab03b87a783bf10" title="A short way to call GraphicDisplayDevice::show(&amp;canvas, anchor x, anchor y)" alt="" coords="278,153,402,178"/>
-<area shape="poly" title=" " alt="" coords="121,103,218,138,264,149,263,154,217,143,119,108"/>
-<area shape="rect" href="class_graphic_widget.html#ac07cd1a8df25535bea9552de25411f2a" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="511,55,629,79"/>
-<area shape="poly" title=" " alt="" coords="421,64,495,64,495,70,421,70"/>
-<area shape="rect" href="class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="677,29,799,54"/>
-<area shape="poly" title=" " alt="" coords="629,55,661,51,662,56,630,61"/>
-<area shape="rect" href="class_graphic_widget.html#a0a6ac5a1610805ec69142fdaa2ec28b1" title="Draw a color vertical line, starting at frame position (x,y), on w number of pixel." alt="" coords="678,79,798,103"/>
-<area shape="poly" title=" " alt="" coords="630,73,663,78,662,83,629,78"/>
+<area shape="poly" title=" " alt="" coords="106,101,154,71,217,41,244,32,246,37,219,45,157,75,109,106"/>
+<area shape="rect" href="class_widget_vertical_bargraph.html#a51e76d94a406956193c15c09adcde58e" title="the function that draw a bar in the widget" alt="" coords="247,55,434,79"/>
+<area shape="poly" title=" " alt="" coords="154,101,258,80,259,86,155,106"/>
+<area shape="rect" href="class_graphic_widget.html#ac2a3a4387a699f25407c71a90b55eeab" title="draw a rectangle around the widget." alt="" coords="260,104,420,129"/>
+<area shape="poly" title=" " alt="" coords="170,114,245,114,245,119,170,119"/>
+<area shape="rect" href="class_widget_vertical_bargraph.html#aa3881be6be2c17e6310e9d4561940054" title="A pure virtual method that results in the transfer of the displayed values of the displayed model to ..." alt="" coords="218,153,463,178"/>
+<area shape="poly" title=" " alt="" coords="155,127,259,147,258,152,154,132"/>
+<area shape="rect" href="class_graphic_widget.html#a83c221250b9dfdeb8ab03b87a783bf10" title="A short way to call GraphicDisplayDevice::show(&amp;canvas, anchor x, anchor y)" alt="" coords="278,203,402,227"/>
+<area shape="poly" title=" " alt="" coords="109,127,157,157,219,187,264,200,263,206,217,192,154,162,106,131"/>
+<area shape="rect" href="class_widget_vertical_bargraph.html#a99a7d89fcc4b1c62823b74a65d85b807" title="the value to pixel y&#45;coordinate converter" alt="" coords="511,55,778,79"/>
+<area shape="poly" title=" " alt="" coords="434,64,495,64,495,70,434,70"/>
+<area shape="rect" href="class_graphic_widget.html#ac07cd1a8df25535bea9552de25411f2a" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="586,104,704,129"/>
+<area shape="poly" title=" " alt="" coords="421,77,571,102,570,107,420,83"/>
+<area shape="rect" href="class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="826,79,948,103"/>
+<area shape="poly" title=" " alt="" coords="704,108,811,96,811,102,704,113"/>
+<area shape="rect" href="class_graphic_widget.html#a0a6ac5a1610805ec69142fdaa2ec28b1" title="Draw a color vertical line, starting at frame position (x,y), on w number of pixel." alt="" coords="827,128,947,153"/>
+<area shape="poly" title=" " alt="" coords="704,119,812,130,811,136,704,125"/>
+<area shape="poly" title=" " alt="" coords="421,114,570,114,570,119,421,119"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a51e76d94a406956193c15c09adcde58e" name="a51e76d94a406956193c15c09adcde58e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51e76d94a406956193c15c09adcde58e">&#9670;&#160;</a></span>draw_bar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WidgetVerticalBargraph::draw_bar </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>bin_index</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the function that draw a bar in the widget </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bin_index</td><td>the rank of the bar </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_widget_vertical_bargraph_a51e76d94a406956193c15c09adcde58e_cgraph.png" border="0" usemap="#aclass_widget_vertical_bargraph_a51e76d94a406956193c15c09adcde58e_cgraph" alt=""/></div>
+<map name="aclass_widget_vertical_bargraph_a51e76d94a406956193c15c09adcde58e_cgraph" id="aclass_widget_vertical_bargraph_a51e76d94a406956193c15c09adcde58e_cgraph">
+<area shape="rect" title="the function that draw a bar in the widget" alt="" coords="5,31,192,55"/>
+<area shape="rect" href="class_widget_vertical_bargraph.html#a99a7d89fcc4b1c62823b74a65d85b807" title="the value to pixel y&#45;coordinate converter" alt="" coords="240,5,507,30"/>
+<area shape="poly" title=" " alt="" coords="192,32,224,29,225,34,192,37"/>
+<area shape="rect" href="class_graphic_widget.html#ac07cd1a8df25535bea9552de25411f2a" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="314,55,432,79"/>
+<area shape="poly" title=" " alt="" coords="192,48,299,58,298,63,192,54"/>
+<area shape="rect" href="class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="555,29,676,54"/>
+<area shape="poly" title=" " alt="" coords="432,58,539,47,540,52,433,64"/>
+<area shape="rect" href="class_graphic_widget.html#a0a6ac5a1610805ec69142fdaa2ec28b1" title="Draw a color vertical line, starting at frame position (x,y), on w number of pixel." alt="" coords="556,79,676,103"/>
+<area shape="poly" title=" " alt="" coords="433,70,541,81,540,86,432,75"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_widget_vertical_bargraph_a51e76d94a406956193c15c09adcde58e_icgraph.png" border="0" usemap="#aclass_widget_vertical_bargraph_a51e76d94a406956193c15c09adcde58e_icgraph" alt=""/></div>
+<map name="aclass_widget_vertical_bargraph_a51e76d94a406956193c15c09adcde58e_icgraph" id="aclass_widget_vertical_bargraph_a51e76d94a406956193c15c09adcde58e_icgraph">
+<area shape="rect" title="the function that draw a bar in the widget" alt="" coords="218,5,404,30"/>
+<area shape="rect" href="class_widget_vertical_bargraph.html#a938fef5332131013fe1f7e31f7629f41" title="the function that draw the widget" alt="" coords="5,5,170,30"/>
+<area shape="poly" title=" " alt="" coords="202,20,170,20,170,15,202,15"/>
 </map>
 </div>
 

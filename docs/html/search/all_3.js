@@ -11,5 +11,7 @@ var searchData=
   ['_5f4_5fframes_8',['_4_FRAMES',['../ssd1306_8h.html#a0ad99c454a6c9b56d76a7645cd5e7734',1,'ssd1306.h']]],
   ['_5f5_5fframes_9',['_5_FRAMES',['../ssd1306_8h.html#ad1c614ef91f3d8045a524bf44283825e',1,'ssd1306.h']]],
   ['_5f64_5fframes_10',['_64_FRAMES',['../ssd1306_8h.html#a0b2642130eeef03138dec7f002542065',1,'ssd1306.h']]],
-  ['_5f90_11',['_90',['../st7735_8h.html#a059e82c17223f7c3f8f83076a55733f9a94b799ec4e1a0cbcb518d5491a55af4f',1,'st7735.h']]]
+  ['_5f90_11',['_90',['../st7735_8h.html#a059e82c17223f7c3f8f83076a55733f9a94b799ec4e1a0cbcb518d5491a55af4f',1,'st7735.h']]],
+  ['_5fchannel_5fmap_12',['_channel_map',['../class_probe.html#a58c5a7fd7eee85cce3850eec5665c9bd',1,'Probe']]],
+  ['_5fgpio_13',['_gpio',['../class_probe.html#af1c0c11076e1fc3961ff8e4a68d70e5c',1,'Probe']]]
 ];

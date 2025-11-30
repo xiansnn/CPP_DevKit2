@@ -7,5 +7,8 @@ var class_p_w_m =
     [ "set_width_nb_of_step", "class_p_w_m.html#a706b0764d77f3b1bca0ff1bfdc99b336", null ],
     [ "start", "class_p_w_m.html#ae21be3a643267ca4f69be8d99fdfb06a", null ],
     [ "StartTogether", "class_p_w_m.html#abac2f8531ce95dd465b80ae8c3344e39", null ],
-    [ "slice_mask", "class_p_w_m.html#ac95700cb79b54ce3babf273df156b561", null ]
+    [ "period_us", "class_p_w_m.html#a560bc87c44165d760ed6d6eaf05d30e4", null ],
+    [ "slice", "class_p_w_m.html#af68eb4fded848dc321bc6a8e04845b58", null ],
+    [ "slice_mask", "class_p_w_m.html#ac95700cb79b54ce3babf273df156b561", null ],
+    [ "step_ns", "class_p_w_m.html#ae52dbe8505d763130fd840ef83d494f8", null ]
 ];

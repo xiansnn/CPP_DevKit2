@@ -99,6 +99,7 @@ $(function(){initNavTree('class_s_g90.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_s_g90-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SG90 Class Reference<div class="ingroups"><a class="el" href="group__actuator.html">&quot;Actuator&quot;</a></div></div></div>
 </div><!--header-->
@@ -113,7 +114,9 @@ Collaboration diagram for SG90:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_g90__coll__graph.png" border="0" usemap="#a_s_g90_coll__map" alt="Collaboration graph"/></div>
 <map name="a_s_g90_coll__map" id="a_s_g90_coll__map">
-<area shape="rect" title="the class that manages the SG90 step motor" alt="" coords="5,5,209,85"/>
+<area shape="rect" title="the class that manages the SG90 step motor" alt="" coords="115,311,319,466"/>
+<area shape="rect" href="class_p_w_m.html" title="The basic PWM function." alt="" coords="5,5,428,249"/>
+<area shape="poly" title=" " alt="" coords="219,249,219,294,214,294,214,249"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -125,6 +128,33 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0e8036a2f259a972fcb7d0227cb222d6" id="r_a0e8036a2f259a972fcb7d0227cb222d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e8036a2f259a972fcb7d0227cb222d6">set_pos</a> (int pos)</td></tr>
 <tr class="memdesc:a0e8036a2f259a972fcb7d0227cb222d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the command to set the position of the motor.  <br /></td></tr>
 <tr class="separator:a0e8036a2f259a972fcb7d0227cb222d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a322f551fa9075bfd65fbd72cb307569b" id="r_a322f551fa9075bfd65fbd72cb307569b"><td class="memItemLeft" align="right" valign="top"><a id="a322f551fa9075bfd65fbd72cb307569b" name="a322f551fa9075bfd65fbd72cb307569b"></a>
+<a class="el" href="class_p_w_m.html">PWM</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>pwm</b></td></tr>
+<tr class="memdesc:a322f551fa9075bfd65fbd72cb307569b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the <a class="el" href="class_p_w_m.html" title="The basic PWM function.">PWM</a> slice that handle the <a class="el" href="class_s_g90.html" title="the class that manages the SG90 step motor">SG90</a> step motor device <br /></td></tr>
+<tr class="separator:a322f551fa9075bfd65fbd72cb307569b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c327d5958265dc02b03832b05b14eae" id="r_a7c327d5958265dc02b03832b05b14eae"><td class="memItemLeft" align="right" valign="top"><a id="a7c327d5958265dc02b03832b05b14eae" name="a7c327d5958265dc02b03832b05b14eae"></a>
+uint&#160;</td><td class="memItemRight" valign="bottom"><b>command</b></td></tr>
+<tr class="memdesc:a7c327d5958265dc02b03832b05b14eae"><td class="mdescLeft">&#160;</td><td class="mdescRight">the gpio pin used to command the servo motor. Correspond to the B channel of the <a class="el" href="class_p_w_m.html" title="The basic PWM function.">PWM</a> slice <br /></td></tr>
+<tr class="separator:a7c327d5958265dc02b03832b05b14eae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca147d2515d3e09e800a2c49a6671a3d" id="r_aca147d2515d3e09e800a2c49a6671a3d"><td class="memItemLeft" align="right" valign="top"><a id="aca147d2515d3e09e800a2c49a6671a3d" name="aca147d2515d3e09e800a2c49a6671a3d"></a>
+uint&#160;</td><td class="memItemRight" valign="bottom"><b>sync</b></td></tr>
+<tr class="memdesc:aca147d2515d3e09e800a2c49a6671a3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">n auxilliary pulse that can be used as a synchro signal. Correspond to the A channel of the <a class="el" href="class_p_w_m.html" title="The basic PWM function.">PWM</a> slice <br /></td></tr>
+<tr class="separator:aca147d2515d3e09e800a2c49a6671a3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee863b2c2c28d494be5e08c18695fd3b" id="r_aee863b2c2c28d494be5e08c18695fd3b"><td class="memItemLeft" align="right" valign="top"><a id="aee863b2c2c28d494be5e08c18695fd3b" name="aee863b2c2c28d494be5e08c18695fd3b"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>pos_min_deg</b></td></tr>
+<tr class="memdesc:aee863b2c2c28d494be5e08c18695fd3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">minimum position in degrees. Typically 0° or -90°. <br /></td></tr>
+<tr class="separator:aee863b2c2c28d494be5e08c18695fd3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6963c2e0d40f3e574c71f7df014bec85" id="r_a6963c2e0d40f3e574c71f7df014bec85"><td class="memItemLeft" align="right" valign="top"><a id="a6963c2e0d40f3e574c71f7df014bec85" name="a6963c2e0d40f3e574c71f7df014bec85"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>pos_max_deg</b></td></tr>
+<tr class="memdesc:a6963c2e0d40f3e574c71f7df014bec85"><td class="mdescLeft">&#160;</td><td class="mdescRight">maximum position in degrees. Typically 180° or +90°. <br /></td></tr>
+<tr class="separator:a6963c2e0d40f3e574c71f7df014bec85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addf51eee437ac6d1009f158705685d50" id="r_addf51eee437ac6d1009f158705685d50"><td class="memItemLeft" align="right" valign="top"><a id="addf51eee437ac6d1009f158705685d50" name="addf51eee437ac6d1009f158705685d50"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>coef_us_per_degree</b></td></tr>
+<tr class="memdesc:addf51eee437ac6d1009f158705685d50"><td class="mdescLeft">&#160;</td><td class="mdescRight">the coversion coefficient in microseconds per degree <br /></td></tr>
+<tr class="separator:addf51eee437ac6d1009f158705685d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>the class that manages the <a class="el" href="class_s_g90.html" title="the class that manages the SG90 step motor">SG90</a> step motor </p>
