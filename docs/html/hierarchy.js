@@ -48,7 +48,10 @@ var hierarchy =
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],
     [ "rtos_DHT11", "classrtos___d_h_t11.html", null ],
     [ "rtos_DisplayDevice", "classrtos___display_device.html", [
-      [ "rtos_GraphicDisplayDevice", "classrtos___graphic_display_device.html", null ],
+      [ "rtos_GraphicDisplayDevice", "classrtos___graphic_display_device.html", [
+        [ "rtos_SSD1306", "classrtos___s_s_d1306.html", null ],
+        [ "rtos_ST7735", "classrtos___s_t7735.html", null ]
+      ] ],
       [ "rtos_TerminalConsole", "classrtos___terminal_console.html", null ]
     ] ],
     [ "rtos_HCSR04", "classrtos___h_c_s_r04.html", null ],

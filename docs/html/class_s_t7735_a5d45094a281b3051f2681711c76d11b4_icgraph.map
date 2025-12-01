@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="set the RAM write addresses for the display" alt="" coords="540,104,732,129"/>
 <area shape="rect" id="Node000002" href="$class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8" title="Construct a new ST7735 object." alt="" coords="331,5,432,30"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="599,98,549,71,491,46,432,29,433,24,493,40,551,66,602,93"/>
-<area shape="rect" id="Node000004" href="$classrtos___s_t7735.html#a5991340ec2e969c1cd7cf6a6b5af86f7" title="fill the internal ST7735 screen buffer with the given color. Default to BLACK, clear the internal buf..." alt="" coords="271,55,492,79"/>
+<area shape="rect" id="Node000004" href="$classrtos___s_t7735.html#a21eaa334402e42b52b696a88ceedb970" title="Clear the device screen buffer." alt="" coords="271,55,492,79"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="553,103,448,83,449,77,554,98"/>
 <area shape="rect" id="Node000005" href="$class_s_t7735.html#a6ec156ac373534b3d705175d1bc61501" title="fill the internal ST7735 screen buffer with the given color. Default to BLACK, clear the internal buf..." alt="" coords="283,104,480,129"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="524,119,480,119,480,114,524,114"/>
@@ -12,6 +12,6 @@
 <area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="602,139,551,166,493,192,428,210,426,205,491,187,549,162,599,135"/>
 <area shape="rect" id="Node000003" href="$classrtos___s_t7735.html#a66cd3316fdb254d845f5decb6a8b9c36" title="Construct a new rtos_ST7735 object." alt="" coords="38,5,190,30"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="315,20,190,20,190,15,315,15"/>
-<area shape="rect" id="Node000007" href="$classrtos___s_t7735.html#a5dc7c24ffcafc6431e07acd61a025bab" title="Show data from the display queue." alt="" coords="5,153,223,178"/>
+<area shape="rect" id="Node000007" href="$classrtos___s_t7735.html#a237f6d07fc1858dc23f36acb68789894" title="Show data from the display queue." alt="" coords="5,153,223,178"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="308,168,223,168,223,163,308,163"/>
 </map>

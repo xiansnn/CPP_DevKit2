@@ -28,7 +28,7 @@ var annotated_dup =
     [ "RotaryEncoder", "class_rotary_encoder.html", "class_rotary_encoder" ],
     [ "rtos_DHT11", "classrtos___d_h_t11.html", "classrtos___d_h_t11" ],
     [ "rtos_DisplayDevice", "classrtos___display_device.html", "classrtos___display_device" ],
-    [ "rtos_GraphicDisplayDevice", "classrtos___graphic_display_device.html", null ],
+    [ "rtos_GraphicDisplayDevice", "classrtos___graphic_display_device.html", "classrtos___graphic_display_device" ],
     [ "rtos_HCSR04", "classrtos___h_c_s_r04.html", "classrtos___h_c_s_r04" ],
     [ "rtos_HW_I2C_Master", "classrtos___h_w___i2_c___master.html", "classrtos___h_w___i2_c___master" ],
     [ "rtos_HW_SPI_Master", "classrtos___h_w___s_p_i___master.html", "classrtos___h_w___s_p_i___master" ],

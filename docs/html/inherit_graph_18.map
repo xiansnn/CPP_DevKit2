@@ -1,3 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classrtos___h_c_s_r04.html" title="class for the ultrasonic ranging module HC&#45;SR04 compliant with FreeRTOS" alt="" coords="5,5,90,30"/>
+<area shape="rect" id="Node000000" href="$classrtos___model.html" title="RTOS wrapper for Model class." alt="" coords="5,5,80,30"/>
+<area shape="rect" id="Node000001" href="$classrtos___u_i_controlled_model.html" title="RTOS wrapper for UIControlledModel class." alt="" coords="128,5,261,30"/>
+<area shape="poly" id="edge31_Node000000_Node000001" title=" " alt="" coords="96,15,127,15,127,20,96,20"/>
+<area shape="rect" id="Node000002" href="$classrtos___u_i_model_manager.html" title="RTOS wrapper for UIModelManager class." alt="" coords="309,5,436,30"/>
+<area shape="poly" id="edge32_Node000001_Node000002" title=" " alt="" coords="277,15,309,15,309,20,277,20"/>
 </map>

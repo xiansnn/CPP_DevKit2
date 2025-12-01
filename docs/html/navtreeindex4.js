@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"structstruct___config_slave_i2_c.html#a12d1f8b66f10861353bc15b35fc62398":[4,0,52,3],
 "structstruct___config_slave_i2_c.html#a5299e3daf6bc6a745ba7a3d4b70b10ad":[4,0,52,1],
 "structstruct___config_slave_i2_c.html#ac8146b143c39d01408db2e4620b20a94":[4,0,52,2],
 "structstruct___config_slave_i2_c.html#acba8fdbc41345f5fb5012e649615f16a":[4,0,52,4],
