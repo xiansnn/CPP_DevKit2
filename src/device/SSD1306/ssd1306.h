@@ -163,7 +163,6 @@ protected:
     /// @param num refer to SSD1306 data sheet for more details
     void send_cmd_list(uint8_t *cmd_list, int num);
 
-
 public:
     void check_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format);
 
@@ -265,7 +264,7 @@ public:
 };
 
 /// @brief FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface
-class rtos_SSD1306 : public SSD1306
+class rtos_SSD1306 : public SSD1306, public rtos_GraphicDisplayDevice
 {
 private:
 public:
@@ -275,9 +274,8 @@ public:
     rtos_SSD1306(rtos_HW_I2C_Master *master, struct_ConfigSSD1306 device_config);
     ~rtos_SSD1306();
 
-    /// @brief write 0x00 directly into the device framebuffer (GDDRAM).
-    /// @param addressing_mode the way the data is written to the GDDRAM
-    void clear_device_screen_buffer(uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
+    /// @brief Clear the device screen buffer.
+    void clear_device_screen_buffer();
 
     /// @brief Send a clear screen command to the display gate keeper task.
     /// @param display_queue The queue used to send data to the display gate keeper task.
@@ -296,5 +294,4 @@ public:
     /// @param area the location of the area to copy the pattern
     /// @param addressing_mode the way the data is written ti the GDDRAM
     void fill_GDDRAM_with_pattern(uint8_t pattern, struct_RenderArea area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
-
 };

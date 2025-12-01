@@ -176,7 +176,7 @@ public:
 };
 
 /// @brief RTOS version of the ST7735 display device
-class rtos_ST7735 : public ST7735
+class rtos_ST7735 : public ST7735 , public rtos_GraphicDisplayDevice
 {
     private:
     /* data */
@@ -188,10 +188,12 @@ class rtos_ST7735 : public ST7735
     ~rtos_ST7735();
 
     /// @brief Show data from the display queue.
-    /// @param data_t_show The data to display. 
-    void show_from_display_queue(struct_DataToShow data_t_show);
+    /// @param data_to_show The data to display. 
+    void show_from_display_queue(struct_DataToShow data_to_show);
     void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y);
-    void clear_device_screen_buffer(ColorIndex color_index = ColorIndex::BLACK);
+
+    /// @brief Clear the device screen buffer.
+    void clear_device_screen_buffer();
     
     /// @brief Send a clear screen command to the display gate keeper task.
     /// @param display_queue_to_SPI The queue used to send data to the display gate keeper task.

@@ -282,10 +282,16 @@ rtos_SSD1306::~rtos_SSD1306()
 {
 }
 
-void rtos_SSD1306::clear_device_screen_buffer(uint8_t addressing_mode)
+// void rtos_SSD1306::clear_device_screen_buffer(uint8_t addressing_mode)
+// {
+//     struct_RenderArea area = compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
+//     this->fill_GDDRAM_with_pattern(0x00, area, addressing_mode);
+// }
+
+void rtos_SSD1306::clear_device_screen_buffer()
 {
     struct_RenderArea area = compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
-    this->fill_GDDRAM_with_pattern(0x00, area, addressing_mode);
+    this->fill_GDDRAM_with_pattern(0x00, area, HORIZONTAL_ADDRESSING_MODE);
 }
 
 void rtos_SSD1306::send_clear_device_command(QueueHandle_t display_queue, SemaphoreHandle_t sending_done)

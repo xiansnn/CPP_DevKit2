@@ -625,11 +625,13 @@ void rtos_ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anc
     }
 }
 
-void rtos_ST7735::clear_device_screen_buffer(ColorIndex color_index)
+void rtos_ST7735::clear_device_screen_buffer()
 {
 #if defined(TIME_MEASURE)
     pr_D4.hi();
 #endif
+
+    ColorIndex color_index = ColorIndex::BLACK;
     uint8_t xsa = 0;
     uint8_t ysa = 0;
     size_t w = TFT_panel_width_in_pixel;
@@ -654,5 +656,4 @@ void rtos_ST7735::send_clear_device_command(QueueHandle_t display_queue_to_SPI, 
     data_to_display.display = this;
     xQueueSend(display_queue_to_SPI, &data_to_display, portMAX_DELAY); // take 65ms but used fully the CPU
     xSemaphoreTake(sending_done, portMAX_DELAY);
-
 }
