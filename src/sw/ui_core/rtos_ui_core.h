@@ -59,9 +59,6 @@ public:
     /// @brief FreeRTOS queue handle used to receive control events for this model
     QueueHandle_t control_event_input_queue;
 
-    /// @brief A static vector containing all the managed rtos_UIControlledModel objects
-    std::vector<rtos_UIControlledModel *> managed_rtos_models;
-
     rtos_UIControlledModel();
     ~rtos_UIControlledModel();
     /// @brief update the status of the controlled model
@@ -99,6 +96,9 @@ public:
     /// @param is_wrapable
     rtos_UIModelManager(bool is_wrapable = true);
     ~rtos_UIModelManager();
+
+    /// @brief A static vector containing all the managed rtos_UIControlledModel objects
+    std::vector<rtos_UIControlledModel *> managed_rtos_models;
 
     /// @brief A static pointer to the current active rtos_UIControlledModel object
     rtos_UIControlledModel *current_active_rtos_model;
