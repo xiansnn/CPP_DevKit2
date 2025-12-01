@@ -176,6 +176,7 @@ public:
 };
 
 /// @brief RTOS version of the ST7735 display device
+/// \ingroup view
 class rtos_ST7735 : public ST7735 , public rtos_GraphicDisplayDevice
 {
     private:

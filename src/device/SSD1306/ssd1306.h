@@ -264,6 +264,7 @@ public:
 };
 
 /// @brief FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface
+/// \ingroup view
 class rtos_SSD1306 : public SSD1306, public rtos_GraphicDisplayDevice
 {
 private:
