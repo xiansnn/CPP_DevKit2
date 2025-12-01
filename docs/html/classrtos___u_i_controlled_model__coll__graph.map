@@ -1,5 +1,5 @@
 <map id="rtos_UIControlledModel" name="rtos_UIControlledModel">
-<area shape="rect" id="Node000001" title="RTOS wrapper for UIControlledModel class." alt="" coords="5,189,401,363"/>
+<area shape="rect" id="Node000001" title="RTOS wrapper for UIControlledModel class." alt="" coords="5,189,401,344"/>
 <area shape="rect" id="Node000002" href="$classrtos___model.html" title="RTOS wrapper for Model class." alt="" coords="37,5,369,141"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,156,206,190,201,190,201,156"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,156,206,189,201,189,201,156"/>
 </map>

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['managed_5fmodels_0',['managed_models',['../class_u_i_model_manager.html#ae583beb457ebe200d56e14f3eb92296b',1,'UIModelManager']]],
-  ['managed_5frtos_5fmodels_1',['managed_rtos_models',['../classrtos___u_i_controlled_model.html#ae65f82a56aa2398fe85e5686421394df',1,'rtos_UIControlledModel']]],
+  ['managed_5frtos_5fmodels_1',['managed_rtos_models',['../classrtos___u_i_model_manager.html#aa4f3ee71f25cd36bff6438fd1d53de1f',1,'rtos_UIModelManager']]],
   ['master_2',['master',['../class_m_p_u6050.html#ae8bb82d8f3dcde42c69cb9ad9e94614c',1,'MPU6050']]],
   ['max_5ffocus_5findex_3',['max_focus_index',['../classrtos___u_i_model_manager.html#ae8a1e27568b4226ed3d4cd94db6f6a36',1,'rtos_UIModelManager']]],
   ['max_5fvalue_4',['max_value',['../classcore___increment_controlled_model.html#a84be353fe33d7508654b95f40799dfd5',1,'core_IncrementControlledModel::max_value'],['../class_u_i_controlled_incremental_value.html#a502ecbf045c5f2b4d2015bad04611a7d',1,'UIControlledIncrementalValue::max_value'],['../class_model_bargraph.html#ab5ac71a917bd5563fe3e298e8841a80f',1,'ModelBargraph::max_value'],['../class_widget_horizontal_bar.html#adc3cd2ef29476f94e66b424d380d621e',1,'WidgetHorizontalBar::max_value']]],

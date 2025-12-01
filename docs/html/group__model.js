@@ -13,7 +13,6 @@ var group__model =
       [ "process_control_event", "classrtos___u_i_controlled_model.html#ae3967617bca1aead44fad93558498943", null ],
       [ "update_rtos_status", "classrtos___u_i_controlled_model.html#adfdbebf7c1c5ca38078dd3bbd4e9c366", null ],
       [ "control_event_input_queue", "classrtos___u_i_controlled_model.html#a94ff669a08622cfa731a0b8f7c523695", null ],
-      [ "managed_rtos_models", "classrtos___u_i_controlled_model.html#ae65f82a56aa2398fe85e5686421394df", null ],
       [ "rtos_status", "classrtos___u_i_controlled_model.html#a9ee6affa87b7608c0198a7737e76790d", null ]
     ] ],
     [ "rtos_UIModelManager", "classrtos___u_i_model_manager.html", [
@@ -28,6 +27,7 @@ var group__model =
       [ "current_active_rtos_model", "classrtos___u_i_model_manager.html#acde36ea59a22adc3b440b18823336b71", null ],
       [ "current_focus_index", "classrtos___u_i_model_manager.html#a0b4b5aa496aaab4cd8db22f2fe327956", null ],
       [ "is_wrapable", "classrtos___u_i_model_manager.html#a6e752666df35917b8b7b5b579b48c863", null ],
+      [ "managed_rtos_models", "classrtos___u_i_model_manager.html#aa4f3ee71f25cd36bff6438fd1d53de1f", null ],
       [ "max_focus_index", "classrtos___u_i_model_manager.html#ae8a1e27568b4226ed3d4cd94db6f6a36", null ]
     ] ],
     [ "Model", "class_model.html", [

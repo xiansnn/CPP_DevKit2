@@ -116,11 +116,11 @@ Inheritance diagram for rtos_UIModelManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___u_i_model_manager__inherit__graph.png" border="0" usemap="#artos___u_i_model_manager_inherit__map" alt="Inheritance graph"/></div>
 <map name="artos___u_i_model_manager_inherit__map" id="artos___u_i_model_manager_inherit__map">
-<area shape="rect" title="RTOS wrapper for UIModelManager class." alt="" coords="5,411,497,677"/>
-<area shape="rect" href="classrtos___u_i_controlled_model.html" title="RTOS wrapper for UIControlledModel class." alt="" coords="53,189,449,363"/>
-<area shape="poly" title=" " alt="" coords="254,378,254,411,249,411,249,378"/>
+<area shape="rect" title="RTOS wrapper for UIModelManager class." alt="" coords="5,392,497,677"/>
+<area shape="rect" href="classrtos___u_i_controlled_model.html" title="RTOS wrapper for UIControlledModel class." alt="" coords="53,189,449,344"/>
+<area shape="poly" title=" " alt="" coords="254,359,254,392,249,392,249,359"/>
 <area shape="rect" href="classrtos___model.html" title="RTOS wrapper for Model class." alt="" coords="85,5,417,141"/>
-<area shape="poly" title=" " alt="" coords="254,156,254,190,249,190,249,156"/>
+<area shape="poly" title=" " alt="" coords="254,156,254,189,249,189,249,156"/>
 </map>
 </div>
 <div class="dynheader">
@@ -128,12 +128,12 @@ Collaboration diagram for rtos_UIModelManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___u_i_model_manager__coll__graph.png" border="0" usemap="#artos___u_i_model_manager_coll__map" alt="Collaboration graph"/></div>
 <map name="artos___u_i_model_manager_coll__map" id="artos___u_i_model_manager_coll__map">
-<area shape="rect" title="RTOS wrapper for UIModelManager class." alt="" coords="5,426,497,674"/>
-<area shape="rect" href="classrtos___u_i_controlled_model.html" title="RTOS wrapper for UIControlledModel class." alt="" coords="53,191,449,364"/>
-<area shape="poly" title=" " alt="" coords="251,379,251,388,251,426,246,426,246,388,246,378"/>
-<area shape="poly" title=" " alt="" coords="254,364,254,409,249,409,249,364"/>
+<area shape="rect" title="RTOS wrapper for UIModelManager class." alt="" coords="5,407,497,674"/>
+<area shape="rect" href="classrtos___u_i_controlled_model.html" title="RTOS wrapper for UIControlledModel class." alt="" coords="53,191,449,345"/>
+<area shape="poly" title=" " alt="" coords="251,360,251,369,251,408,246,408,246,369,246,360"/>
+<area shape="poly" title=" " alt="" coords="254,345,254,391,249,391,249,345"/>
 <area shape="rect" href="classrtos___model.html" title="RTOS wrapper for Model class." alt="" coords="85,5,417,141"/>
-<area shape="poly" title=" " alt="" coords="254,156,254,191,249,191,249,156"/>
+<area shape="poly" title=" " alt="" coords="254,157,254,191,249,191,249,157"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -188,6 +188,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>notify_all_linked_wid
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:aa4f3ee71f25cd36bff6438fd1d53de1f" id="r_aa4f3ee71f25cd36bff6438fd1d53de1f"><td class="memItemLeft" align="right" valign="top"><a id="aa4f3ee71f25cd36bff6438fd1d53de1f" name="aa4f3ee71f25cd36bff6438fd1d53de1f"></a>
+std::vector&lt; <a class="el" href="classrtos___u_i_controlled_model.html">rtos_UIControlledModel</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>managed_rtos_models</b></td></tr>
+<tr class="memdesc:aa4f3ee71f25cd36bff6438fd1d53de1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A static vector containing all the managed <a class="el" href="classrtos___u_i_controlled_model.html" title="RTOS wrapper for UIControlledModel class.">rtos_UIControlledModel</a> objects. <br /></td></tr>
+<tr class="separator:aa4f3ee71f25cd36bff6438fd1d53de1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acde36ea59a22adc3b440b18823336b71" id="r_acde36ea59a22adc3b440b18823336b71"><td class="memItemLeft" align="right" valign="top"><a id="acde36ea59a22adc3b440b18823336b71" name="acde36ea59a22adc3b440b18823336b71"></a>
 <a class="el" href="classrtos___u_i_controlled_model.html">rtos_UIControlledModel</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>current_active_rtos_model</b></td></tr>
 <tr class="memdesc:acde36ea59a22adc3b440b18823336b71"><td class="mdescLeft">&#160;</td><td class="mdescRight">A static pointer to the current active <a class="el" href="classrtos___u_i_controlled_model.html" title="RTOS wrapper for UIControlledModel class.">rtos_UIControlledModel</a> object. <br /></td></tr>
@@ -197,10 +201,6 @@ Public Attributes</h2></td></tr>
 QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>control_event_input_queue</b></td></tr>
 <tr class="memdesc:a94ff669a08622cfa731a0b8f7c523695 inherit pub_attribs_classrtos___u_i_controlled_model"><td class="mdescLeft">&#160;</td><td class="mdescRight">FreeRTOS queue handle used to receive control events for this model. <br /></td></tr>
 <tr class="separator:a94ff669a08622cfa731a0b8f7c523695 inherit pub_attribs_classrtos___u_i_controlled_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae65f82a56aa2398fe85e5686421394df inherit pub_attribs_classrtos___u_i_controlled_model" id="r_ae65f82a56aa2398fe85e5686421394df"><td class="memItemLeft" align="right" valign="top">
-std::vector&lt; <a class="el" href="classrtos___u_i_controlled_model.html">rtos_UIControlledModel</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>managed_rtos_models</b></td></tr>
-<tr class="memdesc:ae65f82a56aa2398fe85e5686421394df inherit pub_attribs_classrtos___u_i_controlled_model"><td class="mdescLeft">&#160;</td><td class="mdescRight">A static vector containing all the managed <a class="el" href="classrtos___u_i_controlled_model.html" title="RTOS wrapper for UIControlledModel class.">rtos_UIControlledModel</a> objects. <br /></td></tr>
-<tr class="separator:ae65f82a56aa2398fe85e5686421394df inherit pub_attribs_classrtos___u_i_controlled_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classrtos___model"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_classrtos___model')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classrtos___model.html">rtos_Model</a></td></tr>
 <tr class="memitem:a464e71170a383e439b36fd27a5e2c525 inherit pub_attribs_classrtos___model" id="r_a464e71170a383e439b36fd27a5e2c525"><td class="memItemLeft" align="right" valign="top">
 TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>task_handle</b></td></tr>

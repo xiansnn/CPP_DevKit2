@@ -11,5 +11,6 @@ var classrtos___u_i_model_manager =
     [ "current_active_rtos_model", "classrtos___u_i_model_manager.html#acde36ea59a22adc3b440b18823336b71", null ],
     [ "current_focus_index", "classrtos___u_i_model_manager.html#a0b4b5aa496aaab4cd8db22f2fe327956", null ],
     [ "is_wrapable", "classrtos___u_i_model_manager.html#a6e752666df35917b8b7b5b579b48c863", null ],
+    [ "managed_rtos_models", "classrtos___u_i_model_manager.html#aa4f3ee71f25cd36bff6438fd1d53de1f", null ],
     [ "max_focus_index", "classrtos___u_i_model_manager.html#ae8a1e27568b4226ed3d4cd94db6f6a36", null ]
 ];

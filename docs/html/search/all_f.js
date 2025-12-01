@@ -12,7 +12,7 @@ var searchData=
   ['make_5frtos_5fmanager_5factive_9',['make_rtos_manager_active',['../classrtos___u_i_model_manager.html#a089e4095f25dea9324e327ffd57c7b54',1,'rtos_UIModelManager']]],
   ['managed_5fmodels_10',['managed_models',['../class_u_i_model_manager.html#ae583beb457ebe200d56e14f3eb92296b',1,'UIModelManager']]],
   ['managed_5fobject_5finactive_11',['MANAGED_OBJECT_INACTIVE',['../ui__control__event_8h.html#a1b97aab8f67794aef99a8febbf83360faee1548dc30a1a5d758b67a7ce4c3cc77',1,'ui_control_event.h']]],
-  ['managed_5frtos_5fmodels_12',['managed_rtos_models',['../classrtos___u_i_controlled_model.html#ae65f82a56aa2398fe85e5686421394df',1,'rtos_UIControlledModel']]],
+  ['managed_5frtos_5fmodels_12',['managed_rtos_models',['../classrtos___u_i_model_manager.html#aa4f3ee71f25cd36bff6438fd1d53de1f',1,'rtos_UIModelManager']]],
   ['manager_5finactive_13',['MANAGER_INACTIVE',['../ui__control__event_8h.html#a1b97aab8f67794aef99a8febbf83360faa168377e720c2ee7f0be52df4c287497',1,'ui_control_event.h']]],
   ['master_14',['master',['../class_m_p_u6050.html#ae8bb82d8f3dcde42c69cb9ad9e94614c',1,'MPU6050']]],
   ['max_5ffocus_5findex_15',['max_focus_index',['../classrtos___u_i_model_manager.html#ae8a1e27568b4226ed3d4cd94db6f6a36',1,'rtos_UIModelManager']]],
