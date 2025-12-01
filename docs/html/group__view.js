@@ -30,6 +30,14 @@ var group__view =
       [ "device_config", "class_s_s_d1306.html#a8c77fc2b876883b63b9f9d403e368e8d", null ],
       [ "i2c_master", "class_s_s_d1306.html#ac2a0691d558b4b4d8bd51ddbdd3d0809", null ]
     ] ],
+    [ "rtos_SSD1306", "classrtos___s_s_d1306.html", [
+      [ "rtos_SSD1306", "classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8", null ],
+      [ "clear_device_screen_buffer", "classrtos___s_s_d1306.html#aa9cffff74969b41c42fee5c41c630554", null ],
+      [ "fill_GDDRAM_with_pattern", "classrtos___s_s_d1306.html#a8bc4957ee0a73161bfc99ef061c12ad8", null ],
+      [ "send_clear_device_command", "classrtos___s_s_d1306.html#a89b302a02835a2a2374689450342b6e7", null ],
+      [ "show_from_display_queue", "classrtos___s_s_d1306.html#ac4bfafafd6fbfd5a59e2be79268bf317", null ],
+      [ "show_render_area", "classrtos___s_s_d1306.html#aaab62ec700ec39a715d8b27b95f2956a", null ]
+    ] ],
     [ "ST7735", "class_s_t7735.html", [
       [ "ST7735", "class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8", null ],
       [ "check_display_device_compatibility", "class_s_t7735.html#a165458fb8ed2b1998e6bdb9f41a74338", null ],
@@ -64,6 +72,13 @@ var group__view =
       [ "ST7735_device_row_offset", "class_s_t7735.html#a9c6da7953bf51ef46e1da1c97e6625a8", null ],
       [ "TFT_panel_start_x", "class_s_t7735.html#a346ad0c11ebd254c3244daed57485176", null ],
       [ "TFT_panel_start_y", "class_s_t7735.html#a00022ccda97c01d8f2d47b9839ff9f22", null ]
+    ] ],
+    [ "rtos_ST7735", "classrtos___s_t7735.html", [
+      [ "rtos_ST7735", "classrtos___s_t7735.html#a66cd3316fdb254d845f5decb6a8b9c36", null ],
+      [ "clear_device_screen_buffer", "classrtos___s_t7735.html#a21eaa334402e42b52b696a88ceedb970", null ],
+      [ "send_clear_device_command", "classrtos___s_t7735.html#a66986dcf6b99a11beb350a49c6f063b5", null ],
+      [ "show", "classrtos___s_t7735.html#ae773d6c1f1da93a13b5589a20fe4d899", null ],
+      [ "show_from_display_queue", "classrtos___s_t7735.html#a237f6d07fc1858dc23f36acb68789894", null ]
     ] ],
     [ "DisplayDevice", "class_display_device.html", null ],
     [ "GraphicDisplayDevice", "class_graphic_display_device.html", [
