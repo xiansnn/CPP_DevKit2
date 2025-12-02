@@ -124,6 +124,7 @@ public:
 };
 
 /// @brief The RTOS display device is the base class for all display devices that are managed by a dedicated display task in an RTOS environment.
+/// \ingroup view
 class rtos_DisplayDevice
 {
 private:
@@ -138,6 +139,7 @@ public:
 };
 
 /// @brief The RTOS graphic display device is the base class for all graphic display devices that are managed by a dedicated display task in an RTOS environment.
+/// \ingroup view   
 class rtos_GraphicDisplayDevice : public rtos_DisplayDevice
 {
 private:
@@ -152,6 +154,7 @@ public:
     virtual void show_from_display_queue(struct_DataToShow data_to_show) = 0;
 };
 /// @brief The RTOS terminal console is the class for all text display devices that are managed by a dedicated display task in an RTOS environment.
+/// \ingroup view
 class rtos_TerminalConsole : public rtos_DisplayDevice
 {
 private:
