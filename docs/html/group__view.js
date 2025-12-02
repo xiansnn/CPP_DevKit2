@@ -97,6 +97,16 @@ var group__view =
       [ "text_buffer", "class_terminal_console.html#adac7691c7a30beeb24e9f5667c936a7a", null ],
       [ "text_buffer_size", "class_terminal_console.html#a8bce719eefd4e2d03329278d3031ab4c", null ]
     ] ],
+    [ "rtos_DisplayDevice", "classrtos___display_device.html", [
+      [ "display_device_mutex", "classrtos___display_device.html#ab0e6c631e63073522fbbb3192434d7d3", null ],
+      [ "input_queue", "classrtos___display_device.html#a76dc5efe5c21fb9260b007e044e6bc68", null ]
+    ] ],
+    [ "rtos_GraphicDisplayDevice", "classrtos___graphic_display_device.html", [
+      [ "show_from_display_queue", "classrtos___graphic_display_device.html#ae3904e9442b0a72a15242cf4737616a0", null ]
+    ] ],
+    [ "rtos_TerminalConsole", "classrtos___terminal_console.html", [
+      [ "show_from_display_queue", "classrtos___terminal_console.html#a3da87d950b6e7c3f5913d3aed43c22c9", null ]
+    ] ],
     [ "Canvas", "class_canvas.html", [
       [ "Canvas", "class_canvas.html#a61d9d2f38baad8abbee82fb5d8fee291", null ],
       [ "clear_canvas_buffer", "class_canvas.html#ac4b13a4015778b278e43b3331460c1a2", null ],
