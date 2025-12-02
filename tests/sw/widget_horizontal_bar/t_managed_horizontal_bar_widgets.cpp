@@ -84,9 +84,9 @@ My_Horizontal_Bar_Widget_With_Focus::My_Horizontal_Bar_Widget_With_Focus(MyContr
 
     struct_ConfigGraphicWidget h_bar_cfg{
         .pixel_frame_width = graph_cfg.pixel_frame_width - FOCUS_OFFSET,
-        .pixel_frame_height = graph_cfg.pixel_frame_height,
-        .fg_color = ColorIndex::WHITE,
-        .bg_color = ColorIndex::BLACK,
+        .canvas_height_pixel = graph_cfg.pixel_frame_height,
+        .canvas_foreground_color = ColorIndex::WHITE,
+        .canvas_background_color = ColorIndex::BLACK,
         .widget_anchor_x = anchor_x,
         .widget_anchor_y = widget_anchor_y,
         .widget_with_border = true};
@@ -98,9 +98,9 @@ My_Horizontal_Bar_Widget_With_Focus::My_Horizontal_Bar_Widget_With_Focus(MyContr
 
     struct_ConfigGraphicWidget focus_cfg{
         .pixel_frame_width = FOCUS_WIDTH,
-        .pixel_frame_height = graph_cfg.pixel_frame_height,
-        .fg_color = ColorIndex::WHITE,
-        .bg_color = ColorIndex::BLACK,
+        .canvas_height_pixel = graph_cfg.pixel_frame_height,
+        .canvas_foreground_color = ColorIndex::WHITE,
+        .canvas_background_color = ColorIndex::BLACK,
         .widget_anchor_x = widget_anchor_x,
         .widget_anchor_y = widget_anchor_y,
         .widget_with_border = false};

@@ -185,8 +185,8 @@ int main()
         .font = font_12x16};
 
     struct_ConfigGraphicWidget graph_config{
-        .pixel_frame_width = 120,
-        .pixel_frame_height = 56,
+        .canvas_width_pixel = 120,
+        .canvas_height_pixel = 56,
         .widget_anchor_x = 0,
         .widget_anchor_y = 0,
         .widget_with_border = true};

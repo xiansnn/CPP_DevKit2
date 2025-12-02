@@ -469,8 +469,8 @@ void ST7735::check_display_device_compatibility(struct_ConfigGraphicWidget frame
     // check canvas format
     assert(canvas_format != CanvasFormat::MONO_VLSB);
     // check limit of screen
-    assert(framebuffer_cfg.widget_anchor_y + framebuffer_cfg.pixel_frame_height <= TFT_panel_height_in_pixel);
-    assert(framebuffer_cfg.widget_anchor_x + framebuffer_cfg.pixel_frame_width <= TFT_panel_width_in_pixel);
+    assert(framebuffer_cfg.widget_anchor_y + framebuffer_cfg.canvas_height_pixel <= TFT_panel_height_in_pixel);
+    assert(framebuffer_cfg.widget_anchor_x + framebuffer_cfg.canvas_width_pixel <= TFT_panel_width_in_pixel);
 }
 
 void ST7735::clear_device_screen_buffer(ColorIndex color_index)

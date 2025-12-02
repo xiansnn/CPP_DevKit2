@@ -8,10 +8,10 @@ std::map<ControlledObjectStatus, std::string> status_to_string{
     {ControlledObjectStatus::IS_ACTIVE, "IS_ACTIVE"}};
 
 struct_ConfigGraphicWidget default_cfg{
-    .pixel_frame_width = 100,
-    .pixel_frame_height = 8,
-    .fg_color = ColorIndex::WHITE,
-    .bg_color = ColorIndex::BLACK};
+    .canvas_width_pixel = 100,
+    .canvas_height_pixel = 8,
+    .canvas_foreground_color = ColorIndex::WHITE,
+    .canvas_background_color = ColorIndex::BLACK};
 
 my_IncrementalValueWidgetOnSerialMonitor::my_IncrementalValueWidgetOnSerialMonitor(TerminalConsole *my_printer, my_IncrementalValueModel *_actual_displayed_model)
     : rtos_PrintWidget(my_printer, _actual_displayed_model)

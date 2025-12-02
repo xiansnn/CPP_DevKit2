@@ -146,11 +146,11 @@ void SSD1306::check_display_device_compatibility(struct_ConfigGraphicWidget fram
     // check canvas format
     assert(canvas_format == CanvasFormat::MONO_VLSB);
     // check limit of screen
-    assert(framebuffer_cfg.widget_anchor_y + framebuffer_cfg.pixel_frame_height <= SSD1306_HEIGHT);
-    assert(framebuffer_cfg.widget_anchor_x + framebuffer_cfg.pixel_frame_width <= SSD1306_WIDTH);
+    assert(framebuffer_cfg.widget_anchor_y + framebuffer_cfg.canvas_height_pixel <= SSD1306_HEIGHT);
+    assert(framebuffer_cfg.widget_anchor_x + framebuffer_cfg.canvas_width_pixel <= SSD1306_WIDTH);
 
     // check that framebuffer fit on page height boundary
-    assert(framebuffer_cfg.pixel_frame_height % BYTE_SIZE == 0);
+    assert(framebuffer_cfg.canvas_height_pixel % BYTE_SIZE == 0);
     assert(framebuffer_cfg.widget_anchor_y % BYTE_SIZE == 0);
 }
 

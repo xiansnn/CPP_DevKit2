@@ -49,7 +49,7 @@ WidgetHorizontalBar::WidgetHorizontalBar(Model *bar_value_model,
     this->max_value = max_value;
     this->min_value = min_value;
     this->level = 0;
-    this->px_max = graph_cfg.pixel_frame_width;
+    this->px_max = graph_cfg.canvas_width_pixel;
     this->px_min = 0;
     this->level_coef = (float)(px_max - px_min) / (max_value - min_value);
     this->level_offset = px_max - level_coef * max_value;

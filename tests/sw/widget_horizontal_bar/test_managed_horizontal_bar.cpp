@@ -91,26 +91,26 @@ HW_I2C_Master master = HW_I2C_Master(cfg_i2c);
 SSD1306 display = SSD1306(&master, cfg_ssd1306);
 
 struct_ConfigGraphicWidget h_bar1_with_focus_cfg{
-    .pixel_frame_width = 100,
-    .pixel_frame_height = 8,
-    .fg_color = ColorIndex::WHITE,
-    .bg_color = ColorIndex::BLACK,
+    .canvas_width_pixel = 100,
+    .canvas_height_pixel = 8,
+    .canvas_foreground_color = ColorIndex::WHITE,
+    .canvas_background_color = ColorIndex::BLACK,
     .widget_anchor_x = 10,
     .widget_anchor_y = 8,
     .widget_with_border = true};
 struct_ConfigGraphicWidget h_bar2_with_focus_cfg{
-    .pixel_frame_width = 100,
-    .pixel_frame_height = 8,
-    .fg_color = ColorIndex::WHITE,
-    .bg_color = ColorIndex::BLACK,
+    .canvas_width_pixel = 100,
+    .canvas_height_pixel = 8,
+    .canvas_foreground_color = ColorIndex::WHITE,
+    .canvas_background_color = ColorIndex::BLACK,
     .widget_anchor_x = 10,
     .widget_anchor_y = 24,
     .widget_with_border = true};
 struct_ConfigGraphicWidget h_bar3_with_focus_cfg{
-    .pixel_frame_width = 100,
-    .pixel_frame_height = 8,
-    .fg_color = ColorIndex::WHITE,
-    .bg_color = ColorIndex::BLACK,
+    .canvas_width_pixel = 100,
+    .canvas_height_pixel = 8,
+    .canvas_foreground_color = ColorIndex::WHITE,
+    .canvas_background_color = ColorIndex::BLACK,
     .widget_anchor_x = 10,
     .widget_anchor_y = 40,
     .widget_with_border = true};

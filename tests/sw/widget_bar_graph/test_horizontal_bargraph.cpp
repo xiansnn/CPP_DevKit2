@@ -54,10 +54,10 @@ void simulate_values(ModelBargraph *model)
 }
 
 struct_ConfigGraphicWidget horizontal_bargraph_cfg = {
-    .pixel_frame_width = 56,
-    .pixel_frame_height = 56,
-    .fg_color = ColorIndex::WHITE,
-    .bg_color = ColorIndex::BLACK,
+    .canvas_width_pixel = 56,
+    .canvas_height_pixel = 56,
+    .canvas_foreground_color = ColorIndex::WHITE,
+    .canvas_background_color = ColorIndex::BLACK,
     .widget_anchor_x = 20,
     .widget_anchor_y = 0,
     .widget_with_border = true};

@@ -163,18 +163,18 @@ int main()
     SSD1306 display = SSD1306(&master, cfg_ssd1306);
 
     struct_ConfigGraphicWidget controlled_horizontal_bar_cfg = {
-        .pixel_frame_width = 100,
-        .pixel_frame_height = 8,
-        .fg_color = ColorIndex::WHITE,
-        .bg_color = ColorIndex::BLACK,
+        .canvas_width_pixel = 100,
+        .canvas_height_pixel = 8,
+        .canvas_foreground_color = ColorIndex::WHITE,
+        .canvas_background_color = ColorIndex::BLACK,
         .widget_anchor_x = 20,
         .widget_anchor_y = 8,
         .widget_with_border = true};
     struct_ConfigGraphicWidget simple_horizontal_bar_cfg = {
-        .pixel_frame_width = 100,
-        .pixel_frame_height = 8,
-        .fg_color = ColorIndex::WHITE,
-        .bg_color = ColorIndex::BLACK,
+        .canvas_width_pixel = 100,
+        .canvas_height_pixel = 8,
+        .canvas_foreground_color = ColorIndex::WHITE,
+        .canvas_background_color = ColorIndex::BLACK,
         .widget_anchor_x = 20,
         .widget_anchor_y = 32,
         .widget_with_border = true};

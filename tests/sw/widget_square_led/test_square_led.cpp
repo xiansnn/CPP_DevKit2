@@ -48,10 +48,10 @@ struct_ConfigSSD1306 cfg_ssd1306{
     .frequency_factor = 0};
 
 struct_ConfigGraphicWidget square_led_cfg = {
-    .pixel_frame_width = 16,
-    .pixel_frame_height = 16,
-    .fg_color = ColorIndex::WHITE,
-    .bg_color = ColorIndex::BLACK,
+    .canvas_width_pixel = 16,
+    .canvas_height_pixel = 16,
+    .canvas_foreground_color = ColorIndex::WHITE,
+    .canvas_background_color = ColorIndex::BLACK,
     .widget_anchor_x = 60,
     .widget_anchor_y = 32,
     .widget_with_border = true};

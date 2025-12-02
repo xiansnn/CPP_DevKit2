@@ -80,13 +80,13 @@ enum class CanvasFormat
 struct struct_ConfigGraphicWidget
 {
     /// @brief the frame width of the graphic frame
-    size_t pixel_frame_width;
+    size_t canvas_width_pixel;
     /// @brief the frame height of the graphic frame
-    size_t pixel_frame_height;
+    size_t canvas_height_pixel;
     /// @brief the foreground color
-    ColorIndex fg_color{ColorIndex::WHITE};
+    ColorIndex canvas_foreground_color{ColorIndex::WHITE};
     /// @brief  the background color
-    ColorIndex bg_color{ColorIndex::BLACK};
+    ColorIndex canvas_background_color{ColorIndex::BLACK};
     /// @brief the x_axis anchor of the widget
     uint8_t widget_anchor_x{0};
     /// @brief the y-axis anchor of the widget

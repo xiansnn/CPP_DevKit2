@@ -63,8 +63,8 @@ void i2c_irq_handler()
 };
 
 struct_ConfigGraphicWidget SSD1306_framebuffer_cfg{
-    .pixel_frame_width = SSD1306_WIDTH,
-    .pixel_frame_height = SSD1306_HEIGHT,
+    .canvas_width_pixel = SSD1306_WIDTH,
+    .canvas_height_pixel = SSD1306_HEIGHT,
     .widget_anchor_x = 0,
     .widget_anchor_y = 0};
 
@@ -271,8 +271,8 @@ void test_fb_in_fb(rtos_SSD1306 *display)
     vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
 
     struct_ConfigGraphicWidget small_frame_cfg{
-        .pixel_frame_width = 80,
-        .pixel_frame_height = 24,
+        .canvas_width_pixel = 80,
+        .canvas_height_pixel = 24,
         .widget_anchor_x = 24,
         .widget_anchor_y = 24};
 

@@ -69,19 +69,19 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     switch (canvas_format)
     {
     case CanvasFormat::MONO_VLSB:
-        this->canvas = new CanvasVLSB(graph_cfg.pixel_frame_width, graph_cfg.pixel_frame_height);
+        this->canvas = new CanvasVLSB(graph_cfg.canvas_width_pixel, graph_cfg.canvas_height_pixel);
         break;
     case CanvasFormat::RGB_COLOR_INDEX_8b:
-        this->canvas = new CanvasRGB(graph_cfg.pixel_frame_width, graph_cfg.pixel_frame_height);
+        this->canvas = new CanvasRGB(graph_cfg.canvas_width_pixel, graph_cfg.canvas_height_pixel);
         break;
     case CanvasFormat::RGB565_16b:
-        this->canvas = new CanvasTrueRGB(graph_cfg.pixel_frame_width, graph_cfg.pixel_frame_height);
+        this->canvas = new CanvasTrueRGB(graph_cfg.canvas_width_pixel, graph_cfg.canvas_height_pixel);
         break;
     default:
         break;
     }
-    canvas->fg_color = graph_cfg.fg_color;
-    canvas->bg_color = graph_cfg.bg_color;
+    canvas->fg_color = graph_cfg.canvas_foreground_color;
+    canvas->bg_color = graph_cfg.canvas_background_color;
 
     this->widget_anchor_x = graph_cfg.widget_anchor_x;
     this->widget_anchor_y = graph_cfg.widget_anchor_y;
@@ -219,10 +219,10 @@ GraphicWidget::~GraphicWidget()
 struct_ConfigGraphicWidget GraphicWidget::get_graph_frame_config()
 {
     struct_ConfigGraphicWidget cfg = {
-        .pixel_frame_width = canvas->canvas_width_pixel,
-        .pixel_frame_height = canvas->canvas_height_pixel,
-        .fg_color = canvas->fg_color,
-        .bg_color = canvas->bg_color,
+        .canvas_width_pixel = canvas->canvas_width_pixel,
+        .canvas_height_pixel = canvas->canvas_height_pixel,
+        .canvas_foreground_color = canvas->fg_color,
+        .canvas_background_color = canvas->bg_color,
         .widget_anchor_x = this->widget_anchor_x,
         .widget_anchor_y = this->widget_anchor_y,
         .widget_with_border = this->widget_with_border};

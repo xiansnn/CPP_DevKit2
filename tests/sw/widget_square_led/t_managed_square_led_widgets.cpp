@@ -76,20 +76,20 @@ MySquareLEDWidgetWithFocus::MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *
     uint8_t anchor_x = graph_cfg.widget_anchor_x + FOCUS_OFFSET;
 
     struct_ConfigGraphicWidget square_led_cfg{
-        .pixel_frame_width = graph_cfg.pixel_frame_width - FOCUS_OFFSET,
-        .pixel_frame_height = graph_cfg.pixel_frame_height,
-        .fg_color = graph_cfg.fg_color,
-        .bg_color = graph_cfg.bg_color,
+        .canvas_width_pixel = graph_cfg.canvas_width_pixel - FOCUS_OFFSET,
+        .canvas_height_pixel = graph_cfg.canvas_height_pixel,
+        .canvas_foreground_color = graph_cfg.canvas_foreground_color,
+        .canvas_background_color = graph_cfg.canvas_background_color,
         .widget_anchor_x = anchor_x,
         .widget_anchor_y = graph_cfg.widget_anchor_y,
         .widget_with_border = true};
     this->square_led = new my_simple_led_widget(actual_displayed_model, display_screen, square_led_cfg,CANVAS_FORMAT);
 
     struct_ConfigGraphicWidget focus_led_cfg{
-        .pixel_frame_width = FOCUS_WIDTH,
-        .pixel_frame_height = graph_cfg.pixel_frame_height,
-        .fg_color = graph_cfg.fg_color,
-        .bg_color = graph_cfg.bg_color,
+        .canvas_width_pixel = FOCUS_WIDTH,
+        .canvas_height_pixel = graph_cfg.canvas_height_pixel,
+        .canvas_foreground_color = graph_cfg.canvas_foreground_color,
+        .canvas_background_color = graph_cfg.canvas_background_color,
         .widget_anchor_x = FOCUS_OFFSET,
         .widget_anchor_y = graph_cfg.widget_anchor_y,
         .widget_with_border = false};

@@ -68,10 +68,10 @@ struct_ConfigST7735 cfg_st7735{
 };
 
 struct_ConfigGraphicWidget full_screen_cfg = {
-    .pixel_frame_width = 128,
-    .pixel_frame_height = DEVICE_DISPLAY_HEIGHT,
-    .fg_color = ColorIndex::RED,
-    .bg_color = ColorIndex::YELLOW,
+    .canvas_width_pixel = 128,
+    .canvas_height_pixel = DEVICE_DISPLAY_HEIGHT,
+    .canvas_foreground_color = ColorIndex::RED,
+    .canvas_background_color = ColorIndex::YELLOW,
     .widget_anchor_x = 0,
     .widget_anchor_y = 0,
     .widget_with_border = true};
@@ -311,8 +311,8 @@ void test_fb_in_fb(rtos_ST7735 *display)
     vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
     p2.hi();
     struct_ConfigGraphicWidget small_frame_cfg{
-        .pixel_frame_width = 80,
-        .pixel_frame_height = 24,
+        .canvas_width_pixel = 80,
+        .canvas_height_pixel = 24,
         .widget_anchor_x = 24,
         .widget_anchor_y = 24};
     my_full_screen_widget small_frame = my_full_screen_widget(display, small_frame_cfg, CANVAS_FORMAT);

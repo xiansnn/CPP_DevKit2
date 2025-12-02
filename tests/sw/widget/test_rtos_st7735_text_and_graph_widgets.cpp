@@ -92,10 +92,10 @@ my_text_widget values = my_text_widget(&display, values_config, TEXT_CANVAS_FORM
 rtos_Widget my_rtos_values_widget = rtos_Widget(&values);
 //---------------Graph------------
 struct_ConfigGraphicWidget graph_config{
-    .pixel_frame_width = 128,
-    .pixel_frame_height = 56,
-    .fg_color = ColorIndex::CYAN,
-    .bg_color = ColorIndex::MAROON,
+    .canvas_width_pixel = 128,
+    .canvas_height_pixel = 56,
+    .canvas_foreground_color = ColorIndex::CYAN,
+    .canvas_background_color = ColorIndex::MAROON,
     .widget_anchor_x = 0,
     .widget_anchor_y = 0,
     .widget_with_border = true};

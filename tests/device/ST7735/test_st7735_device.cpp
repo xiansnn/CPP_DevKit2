@@ -61,9 +61,9 @@ ST7735 display = ST7735(&spi_master, cfg_st7735);
 
 //===============================================================================
 struct_ConfigGraphicWidget corner_rectangle_cfg = {
-    .pixel_frame_width = 16,
-    .pixel_frame_height = 16,
-    .bg_color = ColorIndex::GRAY,
+    .canvas_width_pixel = 16,
+    .canvas_height_pixel = 16,
+    .canvas_background_color = ColorIndex::GRAY,
     .widget_anchor_x = 1,
     .widget_anchor_y = 1,
     .widget_with_border = true};
@@ -87,10 +87,10 @@ void my_corner_rectangle_widget::draw() {};
 
 //====================================================================================
 struct_ConfigGraphicWidget full_screen_cfg = {
-    .pixel_frame_width = 128,
-    .pixel_frame_height = DEVICE_DISPLAY_HEIGHT, 
-    .fg_color = ColorIndex::WHITE,
-    .bg_color = ColorIndex::BLACK,
+    .canvas_width_pixel = 128,
+    .canvas_height_pixel = DEVICE_DISPLAY_HEIGHT, 
+    .canvas_foreground_color = ColorIndex::WHITE,
+    .canvas_background_color = ColorIndex::BLACK,
     .widget_anchor_x = 0,
     .widget_anchor_y = 0,
     .widget_with_border = true};

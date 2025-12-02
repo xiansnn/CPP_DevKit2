@@ -113,30 +113,30 @@ int main()
     MyManagedSquareLedModel test_model_3 = MyManagedSquareLedModel("TM3");
 
     struct_ConfigGraphicWidget square_led_1_cfg{
-        .pixel_frame_width = 50,
-        .pixel_frame_height = 8,
-        .fg_color = ColorIndex::WHITE,
-        .bg_color = ColorIndex::BLACK,
+        .canvas_width_pixel = 50,
+        .canvas_height_pixel = 8,
+        .canvas_foreground_color = ColorIndex::WHITE,
+        .canvas_background_color = ColorIndex::BLACK,
         .widget_anchor_x = 6,
         .widget_anchor_y = 8,
         .widget_with_border = false};
     MySquareLEDWidgetWithFocus square_led_1 = MySquareLEDWidgetWithFocus(&test_model_1, &display, square_led_1_cfg,CANVAS_FORMAT);
 
     struct_ConfigGraphicWidget square_led_2_cfg{
-        .pixel_frame_width = 50,
-        .pixel_frame_height = 8,
-        .fg_color = ColorIndex::WHITE,
-        .bg_color = ColorIndex::BLACK,
+        .canvas_width_pixel = 50,
+        .canvas_height_pixel = 8,
+        .canvas_foreground_color = ColorIndex::WHITE,
+        .canvas_background_color = ColorIndex::BLACK,
         .widget_anchor_x = 6,
         .widget_anchor_y = 24,
         .widget_with_border = false};
     MySquareLEDWidgetWithFocus square_led_2 = MySquareLEDWidgetWithFocus(&test_model_2, &display, square_led_2_cfg,CANVAS_FORMAT);
 
     struct_ConfigGraphicWidget square_led_3_cfg{
-        .pixel_frame_width = 50,
-        .pixel_frame_height = 8,
-        .fg_color = ColorIndex::WHITE,
-        .bg_color = ColorIndex::BLACK,
+        .canvas_width_pixel = 50,
+        .canvas_height_pixel = 8,
+        .canvas_foreground_color = ColorIndex::WHITE,
+        .canvas_background_color = ColorIndex::BLACK,
         .widget_anchor_x = 6,
         .widget_anchor_y = 40,
         .widget_with_border = false};
