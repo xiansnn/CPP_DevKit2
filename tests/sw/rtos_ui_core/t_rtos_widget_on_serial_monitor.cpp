@@ -14,7 +14,7 @@ struct_ConfigGraphicWidget default_cfg{
     .canvas_background_color = ColorIndex::BLACK};
 
 my_IncrementalValueWidgetOnSerialMonitor::my_IncrementalValueWidgetOnSerialMonitor(TerminalConsole *my_printer, my_IncrementalValueModel *_actual_displayed_model)
-    : rtos_PrintWidget(my_printer, _actual_displayed_model)
+    : rtos_Widget(_actual_displayed_model, my_printer )
 {
     int max_value = _actual_displayed_model->get_max_value();
     int min_value = _actual_displayed_model->get_min_value();
@@ -73,7 +73,7 @@ int my_IncrementalValueWidgetOnSerialMonitor::value_to_char_position()
 }
 
 my_ManagerWidgetOnSerialMonitor::my_ManagerWidgetOnSerialMonitor(TerminalConsole *my_printer, rtos_UIModelManager *manager)
-    : rtos_PrintWidget(my_printer, manager)
+    : rtos_Widget(manager, my_printer)
 {
 }
 

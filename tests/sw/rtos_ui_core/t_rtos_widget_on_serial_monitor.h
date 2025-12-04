@@ -33,7 +33,7 @@ public:
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of test_IncrementalValue on the serial monitor
-class my_IncrementalValueWidgetOnSerialMonitor : public rtos_PrintWidget
+class my_IncrementalValueWidgetOnSerialMonitor : public rtos_Widget
 {
 private:
     float char_position_slope;
@@ -54,7 +54,7 @@ public:
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of MyManager on the serial monitor
-class my_ManagerWidgetOnSerialMonitor : public rtos_PrintWidget
+class my_ManagerWidgetOnSerialMonitor : public rtos_Widget
 {
 private:
 public:
