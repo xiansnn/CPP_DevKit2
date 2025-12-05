@@ -38,7 +38,19 @@ public:
     virtual ~DisplayDevice();
 };
 
-/// @brief data structure used to queue data to send to the display task
+class rtos_DisplayDevice;
+class rtos_GraphicWidget;
+struct struct_WidgetDataToGateKeeper
+{
+    /// @brief the command to be executed by the display task
+    DisplayCommand command{DisplayCommand::SHOW_IMAGE};
+    /// @brief the display device
+    rtos_DisplayDevice *display = nullptr;
+    /// @brief the widget to be displayed
+    rtos_GraphicWidget *widget = nullptr;
+};
+
+/// @brief (obsolete) data structure used to queue data to send to the display task
 struct struct_DataToShow
 {
     /// @brief the command to be executed by the display task
@@ -139,7 +151,7 @@ public:
 };
 
 /// @brief The RTOS graphic display device is the base class for all graphic display devices that are managed by a dedicated display task in an RTOS environment.
-/// \ingroup view   
+/// \ingroup view
 class rtos_GraphicDisplayDevice : public rtos_DisplayDevice
 {
 private:
@@ -147,11 +159,12 @@ private:
 public:
     rtos_GraphicDisplayDevice(/* args */);
     ~rtos_GraphicDisplayDevice();
-    // virtual void clear_device_screen_buffer() = 0;
 
-    /// @brief Show data from the display queue.
-    /// @param data_to_show The data to display.
-    virtual void show_from_display_queue(struct_DataToShow data_to_show) = 0;
+    virtual void show_widget(rtos_GraphicWidget *widget_to_show) = 0;
+
+    virtual void clear_device_screen_buffer() = 0;
+
+    virtual void check_rtos_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format) = 0;
 };
 /// @brief The RTOS terminal console is the class for all text display devices that are managed by a dedicated display task in an RTOS environment.
 /// \ingroup view
@@ -167,15 +180,18 @@ public:
     ~rtos_TerminalConsole();
 };
 
-// class rtos_DisplayGateKeeper
-// {
-// private:
-//     QueueHandle_t text_buffer_queue;  // char * si printdevice ou struct_DataToShow si graphic dispaly
-//     SemaphoreHandle_t data_sent; //pour attendre la fin d'utilisation de la resource bus / display
-// public:
-//     rtos_DisplayGateKeeper(/* args */);
-//     ~rtos_DisplayGateKeeper();
-// };
+class rtos_GraphicDisplayGateKeeper
+{
+private:
+    SemaphoreHandle_t data_sent; // pour attendre la fin d'utilisation de la resource bus / display
+public:
+    QueueHandle_t graphic_widget_data;
+    rtos_GraphicDisplayGateKeeper(/* args */);
+    ~rtos_GraphicDisplayGateKeeper();
+    void send_clear_device_command(rtos_GraphicDisplayDevice *device);
+    void send_widget_data(rtos_GraphicWidget *widget);
+    void receive_widget_data(struct_WidgetDataToGateKeeper received_widget_data);
+};
 
 /*
 ---------------------------------PrintDevice

@@ -1,5 +1,6 @@
 
 #include "display_device.h"
+#include "sw/widget/rtos_widget.h"
 
 GraphicDisplayDevice::GraphicDisplayDevice(size_t screen_width,
                                            size_t screen_height)
@@ -60,7 +61,7 @@ rtos_GraphicDisplayDevice::~rtos_GraphicDisplayDevice()
 
 void rtos_TerminalConsole::show_from_display_queue(char *text_to_print)
 {
-    xSemaphoreTake(this->display_device_mutex,portMAX_DELAY);
+    xSemaphoreTake(this->display_device_mutex, portMAX_DELAY);
     stdio_printf(text_to_print);
     xSemaphoreGive(this->display_device_mutex);
 }
@@ -73,4 +74,46 @@ rtos_TerminalConsole::rtos_TerminalConsole()
 
 rtos_TerminalConsole::~rtos_TerminalConsole()
 {
+}
+
+rtos_GraphicDisplayGateKeeper::rtos_GraphicDisplayGateKeeper()
+{
+    this->graphic_widget_data = xQueueCreate(8, sizeof(struct_WidgetDataToGateKeeper));
+    this->data_sent = xSemaphoreCreateBinary();
+}
+
+rtos_GraphicDisplayGateKeeper::~rtos_GraphicDisplayGateKeeper()
+{
+}
+
+void rtos_GraphicDisplayGateKeeper::send_clear_device_command(rtos_GraphicDisplayDevice *device)
+{
+    struct_WidgetDataToGateKeeper data_to_display;
+    data_to_display.command = DisplayCommand::CLEAR_SCREEN;
+    data_to_display.display = device;
+    xQueueSend(graphic_widget_data, &data_to_display, portMAX_DELAY); // take 65ms but used fully the CPU
+    xSemaphoreTake(data_sent, portMAX_DELAY);
+}
+
+void rtos_GraphicDisplayGateKeeper::send_widget_data(rtos_GraphicWidget *widget)
+{
+    widget->widget_data_to_gatekeeper.command = DisplayCommand::SHOW_IMAGE;
+    xQueueSend(graphic_widget_data, &widget->widget_data_to_gatekeeper, portMAX_DELAY); // take 65ms but used fully the CPU
+    xSemaphoreTake(data_sent, portMAX_DELAY);
+}
+
+void rtos_GraphicDisplayGateKeeper::receive_widget_data(struct_WidgetDataToGateKeeper received_widget_data)
+{
+    switch (received_widget_data.command)
+    {
+    case DisplayCommand::SHOW_IMAGE:
+        ((rtos_GraphicDisplayDevice *)received_widget_data.display)->show_widget(received_widget_data.widget);
+        break;
+    case DisplayCommand::CLEAR_SCREEN:
+        ((rtos_GraphicDisplayDevice *)received_widget_data.display)->clear_device_screen_buffer();
+        break;
+    default:
+        break;
+    }
+    xSemaphoreGive(data_sent);
 }

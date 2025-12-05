@@ -14,6 +14,7 @@
 #include "pico/stdlib.h"
 #include "hw/i2c/rtos_hw_i2c.h"
 #include "sw/display_device/display_device.h"
+#include "sw/widget/rtos_widget.h"
 
 // Time_frame_interval
 /// @brief refer to SSD1306 data sheet
@@ -275,17 +276,17 @@ public:
     rtos_SSD1306(rtos_HW_I2C_Master *master, struct_ConfigSSD1306 device_config);
     ~rtos_SSD1306();
 
+    void check_rtos_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format);
+
     /// @brief Clear the device screen buffer.
     void clear_device_screen_buffer();
 
-    /// @brief Send a clear screen command to the display gate keeper task.
-    /// @param display_queue The queue used to send data to the display gate keeper task.
-    /// @param sending_done A semaphore to signal when the sending is done.
-    void send_clear_device_command(QueueHandle_t display_queue, SemaphoreHandle_t sending_done);
 
     /// @brief Show data from the display queue.
     /// @param data_to_show The data to display.
     void show_from_display_queue(struct_DataToShow data_to_show);
+
+    void show_widget(rtos_GraphicWidget* widget);
 
     void show_render_area(uint8_t *data_buffer, struct_RenderArea display_area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
 

@@ -282,11 +282,10 @@ rtos_SSD1306::~rtos_SSD1306()
 {
 }
 
-// void rtos_SSD1306::clear_device_screen_buffer(uint8_t addressing_mode)
-// {
-//     struct_RenderArea area = compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
-//     this->fill_GDDRAM_with_pattern(0x00, area, addressing_mode);
-// }
+void rtos_SSD1306::check_rtos_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format)
+{
+    this->check_display_device_compatibility(framebuffer_cfg, canvas_format);
+}
 
 void rtos_SSD1306::clear_device_screen_buffer()
 {
@@ -294,18 +293,15 @@ void rtos_SSD1306::clear_device_screen_buffer()
     this->fill_GDDRAM_with_pattern(0x00, area, HORIZONTAL_ADDRESSING_MODE);
 }
 
-void rtos_SSD1306::send_clear_device_command(QueueHandle_t display_queue, SemaphoreHandle_t sending_done)
-{
-    struct_DataToShow data_to_display;
-    data_to_display.command = DisplayCommand::CLEAR_SCREEN;
-    data_to_display.display = this;
-    xQueueSend(display_queue, &data_to_display, portMAX_DELAY); // take 65ms but used fully the CPU
-    xSemaphoreTake(sending_done, portMAX_DELAY);
-}
 
 void rtos_SSD1306::show_from_display_queue(struct_DataToShow data_to_show)
 {
     this->show(data_to_show.canvas, data_to_show.anchor_x, data_to_show.anchor_y);
+}
+
+void rtos_SSD1306::show_widget(rtos_GraphicWidget *widget)
+{
+    this->show(widget->drawer->canvas, widget->widget_anchor_x, widget->widget_anchor_y);
 }
 
 void rtos_SSD1306::show_render_area(uint8_t *data_buffer, const struct_RenderArea display_area, const uint8_t addressing_mode)

@@ -20,8 +20,8 @@ target_link_libraries(test_ssd1306_text_primitives
 #-------------------------------------------------------------------------------------
 add_executable(test_ssd1306_graphic_primitives  test_ssd1306_graphic_primitives.cpp  )
 target_link_libraries(test_ssd1306_graphic_primitives 
-            device_ssd1306 
             pico_stdlib 
+            device_ssd1306 
             hw_i2c 
             sw_widget
             sw_ui_core
@@ -111,7 +111,8 @@ target_link_libraries(test_rtos_ssd1306_graphic_primitives
             pico_stdlib 
             rtos_hw_i2c 
             device_ssd1306 
-            sw_widget
+            # sw_widget
+            rtos_widget
             # sw_ui_core
             sw_display_device
             utilities_probe
