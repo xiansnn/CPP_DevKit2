@@ -73,7 +73,7 @@ target_link_libraries(test_rtos_st7735_graphic_primitives PUBLIC
             pico_stdlib 
             rtos_hw_spi
             device_st7735 
-            sw_widget
+            rtos_widget
             utilities_probe
             
             FreeRTOS-Kernel-Heap4 

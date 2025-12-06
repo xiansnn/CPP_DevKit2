@@ -14,6 +14,7 @@
 #include "commands_ST7735.h"
 #include "hw/spi/rtos_hw_spi.h"
 #include "sw/display_device/display_device.h"
+#include "sw/widget/rtos_widget.h"
 
 /// @brief level defined as command on the data/Command wire
 #define DCX_COMMAND 0
@@ -190,11 +191,14 @@ class rtos_ST7735 : public ST7735 , public rtos_GraphicDisplayDevice
 
     /// @brief Show data from the display queue.
     /// @param data_to_show The data to display. 
-    void show_from_display_queue(struct_DataToShow data_to_show);
+    void show_from_display_queue(struct_WidgetDataToGateKeeper data_to_show);
+    void show_widget(rtos_GraphicWidget* widget);
     void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y);
 
     /// @brief Clear the device screen buffer.
     void clear_device_screen_buffer();
+
+    void check_rtos_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format);
     
     /// @brief Send a clear screen command to the display gate keeper task.
     /// @param display_queue_to_SPI The queue used to send data to the display gate keeper task.

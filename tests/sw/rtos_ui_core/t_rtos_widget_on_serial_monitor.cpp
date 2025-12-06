@@ -35,7 +35,7 @@ void my_IncrementalValueWidgetOnSerialMonitor::send_text_to_DisplayGateKeeper(Qu
 
 void my_IncrementalValueWidgetOnSerialMonitor::draw()
 {
-    my_IncrementalValueModel *_actual_displayed_model = (my_IncrementalValueModel *)this->actual_displayed_model;
+    my_IncrementalValueModel *_actual_displayed_model = (my_IncrementalValueModel *)this->actual_rtos_displayed_model;
     TerminalConsole *_display_device = (TerminalConsole *)this->display_device;
 
     //====get_value_of_interest
@@ -69,7 +69,7 @@ void my_IncrementalValueWidgetOnSerialMonitor::draw()
 
 int my_IncrementalValueWidgetOnSerialMonitor::value_to_char_position()
 {
-    return (char_position_slope * ((my_IncrementalValueModel *)this->actual_displayed_model)->get_value() + char_position_offset);
+    return (char_position_slope * ((my_IncrementalValueModel *)this->actual_rtos_displayed_model)->get_value() + char_position_offset);
 }
 
 my_ManagerWidgetOnSerialMonitor::my_ManagerWidgetOnSerialMonitor(TerminalConsole *my_printer, rtos_UIModelManager *manager)
@@ -89,7 +89,7 @@ void my_ManagerWidgetOnSerialMonitor::send_text_to_DisplayGateKeeper(QueueHandle
 
 void my_ManagerWidgetOnSerialMonitor::draw()
 {
-    my_TestManager *_actual_display_model = (my_TestManager *)this->actual_displayed_model;
+    my_TestManager *_actual_display_model = (my_TestManager *)this->actual_rtos_displayed_model;
     TerminalConsole *_display_device = (TerminalConsole *)this->display_device;
     //====get_value_of_interest
     std::string text = "manager " + status_to_string[_actual_display_model->get_rtos_status()] + " with value=" +

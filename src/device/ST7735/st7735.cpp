@@ -579,9 +579,13 @@ rtos_ST7735::~rtos_ST7735()
 {
 }
 
-void rtos_ST7735::show_from_display_queue(struct_DataToShow data_t_show)
+void rtos_ST7735::show_from_display_queue(struct_WidgetDataToGateKeeper data_t_show)
 {
-    this->show(data_t_show.canvas, data_t_show.anchor_x, data_t_show.anchor_y);
+    this->show(data_t_show.widget->drawer->canvas, data_t_show.widget->widget_anchor_x, data_t_show.widget->widget_anchor_y);
+}
+
+void rtos_ST7735::show_widget(rtos_GraphicWidget *widget)
+{this->show(widget->drawer->canvas, widget->widget_anchor_x, widget->widget_anchor_y);
 }
 
 void rtos_ST7735::show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y)
@@ -647,6 +651,11 @@ void rtos_ST7735::clear_device_screen_buffer()
 #if defined(TIME_MEASURE)
     pr_D5.lo();
 #endif
+}
+
+void rtos_ST7735::check_rtos_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format)
+{
+    check_display_device_compatibility( framebuffer_cfg, canvas_format);
 }
 
 void rtos_ST7735::send_clear_device_command(QueueHandle_t display_queue_to_SPI, SemaphoreHandle_t sending_done)
