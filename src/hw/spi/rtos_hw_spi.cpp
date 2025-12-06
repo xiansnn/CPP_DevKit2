@@ -8,6 +8,7 @@ rtos_HW_SPI_Master::rtos_HW_SPI_Master(struct_ConfigMasterSPI master_config,
 {
     dma_rx = new HW_DMA(dma_rx_irq_number, dma_rx_irq_handler);
     dma_tx = new HW_DMA(dma_tx_irq_number, dma_tx_irq_handler);
+    this->spi_access_mutex = xSemaphoreCreateMutex();
 }
 
 rtos_HW_SPI_Master::~rtos_HW_SPI_Master()
@@ -19,12 +20,15 @@ rtos_HW_SPI_Master::~rtos_HW_SPI_Master()
 
 int rtos_HW_SPI_Master::burst_write_8(uint8_t *src, size_t len)
 {
+    xSemaphoreTake(spi_access_mutex, portMAX_DELAY);
     spi_set_format(spi, 8, SPI_CPOL_0, SPI_CPHA_0, SPI_MSB_FIRST);
+    xSemaphoreGive(spi_access_mutex);
     return spi_write_blocking(spi, src, len);
 }
 
 int rtos_HW_SPI_Master::burst_write_16(uint16_t *src, size_t len)
 {
+    xSemaphoreTake(spi_access_mutex, portMAX_DELAY);
     error_t error = pico_error_codes::PICO_ERROR_NONE;
 
     spi_set_format(spi, 16, SPI_CPOL_0, SPI_CPHA_0, SPI_MSB_FIRST);
@@ -40,11 +44,13 @@ int rtos_HW_SPI_Master::burst_write_16(uint16_t *src, size_t len)
                           len,
                           true);
     xSemaphoreTake(this->dma_tx->end_of_xfer, portMAX_DELAY);
+    xSemaphoreGive(spi_access_mutex);
     return error;
 }
 
 int rtos_HW_SPI_Master::repeat_write_16(uint16_t *src, size_t len)
 {
+    xSemaphoreTake(spi_access_mutex, portMAX_DELAY);
     error_t error = pico_error_codes::PICO_ERROR_NONE;
 
     spi_set_format(spi, 16, SPI_CPOL_0, SPI_CPHA_0, SPI_MSB_FIRST);
@@ -60,11 +66,13 @@ int rtos_HW_SPI_Master::repeat_write_16(uint16_t *src, size_t len)
                           len,
                           true);
     xSemaphoreTake(this->dma_tx->end_of_xfer, portMAX_DELAY);
+    xSemaphoreGive(spi_access_mutex);
     return error;
 }
 
 int rtos_HW_SPI_Master::burst_read_16(uint16_t *dst, size_t len)
 {
+    xSemaphoreTake(spi_access_mutex, portMAX_DELAY);
     error_t error = pico_error_codes::PICO_ERROR_NONE;
 
     spi_set_format(spi, 16, SPI_CPOL_0, SPI_CPHA_0, SPI_MSB_FIRST);
@@ -80,19 +88,28 @@ int rtos_HW_SPI_Master::burst_read_16(uint16_t *dst, size_t len)
                           len,                  // element count (each element is of size transfer_data_size)
                           true);                // immediate start
     xSemaphoreTake(this->dma_rx->end_of_xfer, portMAX_DELAY);
+    xSemaphoreGive(spi_access_mutex);
     return error;
 }
 
 int rtos_HW_SPI_Master::burst_write_read_8(uint8_t *src, uint8_t *dest, size_t len)
 {
+    xSemaphoreTake(spi_access_mutex, portMAX_DELAY);
+    error_t error = pico_error_codes::PICO_ERROR_NONE;
     spi_set_format(spi, 8, SPI_CPOL_0, SPI_CPHA_0, SPI_MSB_FIRST);
-    return spi_write_read_blocking(spi, src, dest, len);
+    spi_write_read_blocking(spi, src, dest, len);
+    xSemaphoreGive(spi_access_mutex);
+    return error;
 }
 
 int rtos_HW_SPI_Master::burst_read_8(uint8_t repeated_tx_data, uint8_t *dest, size_t len)
 {
+    xSemaphoreTake(spi_access_mutex, portMAX_DELAY);
+    error_t error = pico_error_codes::PICO_ERROR_NONE;
     spi_set_format(spi, 8, SPI_CPOL_0, SPI_CPHA_0, SPI_MSB_FIRST);
-    return spi_read_blocking(spi, repeated_tx_data, dest, len);
+    spi_read_blocking(spi, repeated_tx_data, dest, len);
+    xSemaphoreGive(spi_access_mutex);
+    return error;
 }
 
 void rtos_HW_SPI_Master::spi_tx_dma_isr()

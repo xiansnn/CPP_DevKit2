@@ -44,6 +44,9 @@ public:
   /// @brief the DMA channel used for SPI TX
   HW_DMA *dma_tx;
 
+  /// @brief semaphore to protect access to the SPI bus
+  SemaphoreHandle_t spi_access_mutex;
+
   /// @brief Construct a new hw spi master object
   /// @param master_config the data structure that contains SPI configuration
   /// @param dma_tx_irq_number the DMA IRQ number attached to TX DMA

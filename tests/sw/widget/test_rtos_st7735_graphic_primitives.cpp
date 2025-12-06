@@ -87,10 +87,6 @@ struct_ConfigGraphicWidget full_screen_cfg = {
     .widget_anchor_x = 0,
     .widget_anchor_y = 0,
     .widget_with_border = true};
-
-// QueueHandle_t display_queue_to_SPI = xQueueCreate(8, sizeof(struct_DataToShow));
-// SemaphoreHandle_t data_sent_to_SPI = xSemaphoreCreateBinary(); // synchro between display task and sending task
-
 //=========================dummy rtos_GraphicWidget for the whole screen===================
 class my_full_screen_widget : public rtos_GraphicWidget
 {
