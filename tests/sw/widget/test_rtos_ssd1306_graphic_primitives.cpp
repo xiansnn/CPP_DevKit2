@@ -31,12 +31,12 @@ Probe p4 = Probe(4);
 // Probe p6 = Probe(6);
 // Probe p7 = Probe(7);
 
-#define INTER_TASK_DELAY 1000
-#define INTRA_TASK_DELAY 250
+#define INTER_TASK_DELAY 100
+#define INTRA_TASK_DELAY 25
 
-
+//==========================display gatekeeper===============
 rtos_GraphicDisplayGateKeeper display_gate_keeper = rtos_GraphicDisplayGateKeeper();
-//-----------------------------------
+//==========================Master I2C===========================
 void i2c_irq_handler();
 struct_ConfigMasterI2C cfg_i2c{
     .i2c = i2c0,
@@ -49,7 +49,7 @@ void i2c_irq_handler()
 {
     master.i2c_dma_isr();
 };
-//-----------------------------------
+//=============================rtos_SSD1306=====================
 struct_ConfigSSD1306 cfg_ssd1306{
     .i2c_address = 0x3C,
     .vertical_offset = 0,
@@ -59,12 +59,13 @@ struct_ConfigSSD1306 cfg_ssd1306{
     .frequency_divider = 1,
     .frequency_factor = 0};
 rtos_SSD1306 display = rtos_SSD1306(&master, cfg_ssd1306);
-//-----------------------------------
-struct_ConfigGraphicWidget SSD1306_framebuffer_cfg{
+//====================== full SSD1306 graphic configuration====================
+struct_ConfigGraphicWidget full_SSD1306_graphic_widget_cfg{
     .canvas_width_pixel = SSD1306_WIDTH,
     .canvas_height_pixel = SSD1306_HEIGHT,
     .widget_anchor_x = 0,
     .widget_anchor_y = 0};
+//=========================dummy rtos_GraphicWidget for the whole screen===================
 class my_full_screen_widget : public rtos_GraphicWidget
 {
 private:
@@ -76,7 +77,7 @@ public:
     void get_value_of_interest() {};
     void draw() {};
 };
-//--------------------------------------------------------------------------------
+//=====================================TASKS===================================
 void vIdleTask(void *pxProbe)
 {
     while (true)
@@ -89,7 +90,7 @@ void vIdleTask(void *pxProbe)
 void test_outofframe_line(rtos_SSD1306 *display)
 {
     p1.hi();
-    my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
+    my_full_screen_widget frame = my_full_screen_widget(display, full_SSD1306_graphic_widget_cfg);
 
     int y0, x1, y1;
     display_gate_keeper.send_clear_device_command(display);
@@ -114,7 +115,7 @@ void test_fb_line(rtos_SSD1306 *display)
 {
     p1.hi();
     display_gate_keeper.send_clear_device_command(display);
-    my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
+    my_full_screen_widget frame = my_full_screen_widget(display, full_SSD1306_graphic_widget_cfg);
     ColorIndex c = ColorIndex::BLACK;
     for (int i = 0; i < 2; i++)
     {
@@ -135,9 +136,7 @@ void test_fb_line(rtos_SSD1306 *display)
             display_gate_keeper.send_widget_data(&frame);
         }
     }
-
     vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
-
     struct_RenderArea full_screen_area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
     for (int i = 0; i < 2; i++)
     {
@@ -167,19 +166,19 @@ void test_fb_line(rtos_SSD1306 *display)
 void test_fb_hline(rtos_SSD1306 *display)
 {
     p1.hi();
-    my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
+    my_full_screen_widget frame = my_full_screen_widget(display, full_SSD1306_graphic_widget_cfg);
 
     display_gate_keeper.send_clear_device_command(display);
 
     frame.drawer->hline(0, 0, 32);
     display_gate_keeper.send_widget_data(&frame);
-    sleep_ms(1000);
+    vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
     frame.drawer->hline(0, 15, 64);
     display_gate_keeper.send_widget_data(&frame);
-    sleep_ms(1000);
+    vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
     frame.drawer->hline(0, 31, 96);
     display_gate_keeper.send_widget_data(&frame);
-    sleep_ms(1000);
+    vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
     frame.drawer->hline(0, 47, 128);
     frame.drawer->hline(0, 63, 128);
     display_gate_keeper.send_widget_data(&frame);
@@ -190,18 +189,18 @@ void test_fb_hline(rtos_SSD1306 *display)
 void test_fb_vline(rtos_SSD1306 *display)
 {
     p1.hi();
-    my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
+    my_full_screen_widget frame = my_full_screen_widget(display, full_SSD1306_graphic_widget_cfg);
 
     display_gate_keeper.send_clear_device_command(display);
     frame.drawer->vline(0, 0, 16);
     display_gate_keeper.send_widget_data(&frame);
-    sleep_ms(1000);
+    vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
     frame.drawer->vline(15, 0, 32);
     display_gate_keeper.send_widget_data(&frame);
-    sleep_ms(1000);
+    vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
     frame.drawer->vline(31, 0, 48);
     display_gate_keeper.send_widget_data(&frame);
-    sleep_ms(1000);
+    vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
     frame.drawer->vline(64, 0, 64);
     frame.drawer->vline(127, 0, 64);
     display_gate_keeper.send_widget_data(&frame);
@@ -212,12 +211,12 @@ void test_fb_vline(rtos_SSD1306 *display)
 void test_fb_rect(rtos_SSD1306 *display)
 {
     p1.hi();
-    my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
+    my_full_screen_widget frame = my_full_screen_widget(display, full_SSD1306_graphic_widget_cfg);
 
     display_gate_keeper.send_clear_device_command(display);
     frame.drawer->rect(0, 0, 128, 64);
     display_gate_keeper.send_widget_data(&frame);
-    sleep_ms(1000);
+    vTaskDelay(pdMS_TO_TICKS(INTRA_TASK_DELAY));
     frame.drawer->rect(10, 10, 108, 44, true);
     display_gate_keeper.send_widget_data(&frame);
     p1.lo();
@@ -227,7 +226,7 @@ void test_fb_rect(rtos_SSD1306 *display)
 void test_fb_in_fb(rtos_SSD1306 *display)
 {
     p1.hi();
-    my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
+    my_full_screen_widget frame = my_full_screen_widget(display, full_SSD1306_graphic_widget_cfg);
 
     display_gate_keeper.send_clear_device_command(display);
     frame.drawer->rect(0, 0, SSD1306_WIDTH, SSD1306_HEIGHT);
@@ -254,7 +253,7 @@ void test_fb_in_fb(rtos_SSD1306 *display)
 void test_fb_circle(rtos_SSD1306 *display)
 {
     p1.hi();
-    my_full_screen_widget frame = my_full_screen_widget(display, SSD1306_framebuffer_cfg);
+    my_full_screen_widget frame = my_full_screen_widget(display, full_SSD1306_graphic_widget_cfg);
 
     display_gate_keeper.send_clear_device_command(display);
     frame.drawer->circle(50, 63, 31);

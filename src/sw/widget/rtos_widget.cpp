@@ -111,6 +111,7 @@ GraphicDrawer::GraphicDrawer(struct_ConfigGraphicWidget graph_cfg, CanvasFormat 
 
 GraphicDrawer::~GraphicDrawer()
 {
+    delete canvas;
 }
 
 void GraphicDrawer::hline(uint8_t x, uint8_t y, size_t w, ColorIndex color)
