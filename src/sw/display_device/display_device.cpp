@@ -95,7 +95,7 @@ void rtos_GraphicDisplayGateKeeper::send_clear_device_command(rtos_GraphicDispla
     xSemaphoreTake(data_sent, portMAX_DELAY);
 }
 
-void rtos_GraphicDisplayGateKeeper::send_widget_data(rtos_GraphicWidget *widget)
+void rtos_GraphicDisplayGateKeeper::send_widget_data(rtos_Widget *widget)
 {
     widget->widget_data_to_gatekeeper.command = DisplayCommand::SHOW_IMAGE;
     xQueueSend(graphic_widget_data, &widget->widget_data_to_gatekeeper, portMAX_DELAY); // take 65ms but used fully the CPU

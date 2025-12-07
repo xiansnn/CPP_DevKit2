@@ -19,7 +19,6 @@
 #include <iomanip>
 
 #include "device/ST7735/st7735.h"
-// #include "sw/widget/rtos_widget.h"
 
 #include "utilities/probe/probe.h"
 

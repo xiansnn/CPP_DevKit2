@@ -39,7 +39,10 @@ public:
 };
 
 class rtos_DisplayDevice;
-class rtos_GraphicWidget;
+class rtos_Widget;
+// class rtos_GraphicWidget;
+
+/// @brief  data structure used to queue widget data to send to the display task
 struct struct_WidgetDataToGateKeeper
 {
     /// @brief the command to be executed by the display task
@@ -47,7 +50,7 @@ struct struct_WidgetDataToGateKeeper
     /// @brief the display device
     rtos_DisplayDevice *display = nullptr;
     /// @brief the widget to be displayed
-    rtos_GraphicWidget *widget = nullptr;
+    rtos_Widget *widget = nullptr;
 };
 
 /// @brief (obsolete) data structure used to queue data to send to the display task
@@ -160,7 +163,7 @@ public:
     rtos_GraphicDisplayDevice(/* args */);
     ~rtos_GraphicDisplayDevice();
 
-    virtual void show_widget(rtos_GraphicWidget *widget_to_show) = 0;
+    virtual void show_widget(rtos_Widget *widget_to_show) = 0;
 
     virtual void clear_device_screen_buffer() = 0;
 
@@ -189,7 +192,8 @@ public:
     rtos_GraphicDisplayGateKeeper(/* args */);
     ~rtos_GraphicDisplayGateKeeper();
     void send_clear_device_command(rtos_GraphicDisplayDevice *device);
-    void send_widget_data(rtos_GraphicWidget *widget);
+    void send_widget_data(rtos_Widget *widget);
+    // void send_widget_data(rtos_TextWidget *widget);
     void receive_widget_data(struct_WidgetDataToGateKeeper received_widget_data);
 };
 

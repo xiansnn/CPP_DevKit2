@@ -286,7 +286,7 @@ public:
     /// @param data_to_show The data to display.
     void show_from_display_queue(struct_DataToShow data_to_show);
 
-    void show_widget(rtos_GraphicWidget* widget);
+    void show_widget(rtos_Widget* widget);
 
     void show_render_area(uint8_t *data_buffer, struct_RenderArea display_area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
 

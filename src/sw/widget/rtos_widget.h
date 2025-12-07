@@ -13,6 +13,11 @@
 #include "sw/display_device/display_device.h"
 #include "sw/widget/canvas.h"
 
+#include "font/5x8_font.h"
+#include "font/8x8_font.h"
+#include "font/12x16_font.h"
+#include "font/16x32_font.h"
+
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
@@ -23,8 +28,21 @@
 
 #include "pico/stdlib.h"
 
-class rtos_Widget;
+/// @brief character code for BACKSPACE ('BS', 0x08)
+#define BACKSPACE '\b'
+/// @brief character code for HORIZONTAL_TAB ('HT', 0x09)
+#define HORIZONTAL_TAB '\t'
+/// @brief character code for LINE_FEED ('LF', 0x0A)
+#define LINE_FEED '\n'
+/// @brief character code for VERTICAL_TAB ('VT', 0x0B)
+#define VERTICAL_TAB '\v'
+/// @brief character code for FORM_FEED ('FF', 0x0C)
+#define FORM_FEED '\f'
+/// @brief character code for CARRIAGE_RETURN ('CR', 0x0D)
+#define CARRIAGE_RETURN '\r'
 
+
+class rtos_Widget;
 
 class rtos_Model;
 
@@ -47,12 +65,10 @@ public:
     /// @brief location in y of the widget within the hosting framebuffer
     uint8_t widget_anchor_y;
 
-  
     struct_WidgetDataToGateKeeper widget_data_to_gatekeeper;
 
     /// @brief FreeRTOS task handle associated to the widget
     TaskHandle_t task_handle;
-
 
     /// @brief constructor for RTOS widget
     /// @param actual_displayed_model the displayed model of the widget
@@ -82,8 +98,8 @@ public:
     /// @brief A pure virtual method that results in the transfer of the displayed values of the displayed model to the widget.
     virtual void get_value_of_interest() = 0;
 };
-class GraphicDrawer;
 
+class GraphicDrawer;
 class rtos_GraphicWidget : public rtos_Widget
 {
 private:
@@ -92,10 +108,10 @@ public:
     rtos_GraphicWidget(rtos_Model *actual_displayed_model,
                        struct_ConfigGraphicWidget graph_cfg,
                        CanvasFormat canvas_format,
-                       rtos_DisplayDevice *display_device = nullptr);
+                       rtos_DisplayDevice *display_device);
     ~rtos_GraphicWidget();
 
-        /// @brief used with FreeRTOS. send the widget data_to_display structure to the task in charge of the display management
+    /// @brief used with FreeRTOS. send the widget data_to_display structure to the task in charge of the display management
     /// @param display_queue the communcation queue with the display gate keeper
     /// @param sending_done the semaphore triggered when the canvas display is complete.
     void send_image_to_DisplayGateKeeper(QueueHandle_t display_queue, SemaphoreHandle_t sending_done);
@@ -104,15 +120,38 @@ public:
     /// @param display_queue    the communication queue with the display gate keeper
     /// @param sending_done     the semaphore to signal when the sending is done
     void send_clear_device_command(QueueHandle_t display_queue, SemaphoreHandle_t sending_done);
-
 };
 
+class TextWriter;
 class rtos_TextWidget : public rtos_Widget
 {
 private:
 public:
+    TextWriter *writer;
+    /// @brief Construct a new Text Widget object
+    /// \note USAGE: when the text frame is defined by the number of characters width and height.
+    /// @param graphic_display_screen The display device on which the widget is drawn
+    /// @param text_cfg the configuration data for the textual frame
+    /// @param canvas_format the format of the associated canvas (see CanvasFormat)
+    /// @param displayed_object the displayed model of the widget. Default to nullptr
     rtos_TextWidget(rtos_Model *actual_displayed_model,
-                    rtos_DisplayDevice *display_device = nullptr);
+                    struct_ConfigTextWidget text_cfg,
+                    CanvasFormat canvas_format,
+                    rtos_DisplayDevice *display_device);
+
+    /// @brief Construct a new Text Widget object
+    /// \note USAGE: when the text frame is defined by the frame size width and height in pixel.
+    /// @param graphic_display_screen The display device on which the widget is drawn
+    /// @param text_cfg the configuration data for the textual frame
+    /// @param canvas_format the format of the associated canvas (see CanvasFormat)
+    /// @param frame_width the frame size width
+    /// @param frame_height the frame size height
+    /// @param displayed_object the displayed model of the widget. Default to nullptr
+    rtos_TextWidget(rtos_Model *actual_displayed_model,
+                    struct_ConfigTextWidget text_cfg,
+                    CanvasFormat canvas_format,
+                    size_t frame_width, size_t frame_height,
+                    rtos_DisplayDevice *display_device);
     ~rtos_TextWidget();
 };
 
@@ -146,6 +185,11 @@ protected:
 public:
     GraphicDrawer(struct_ConfigGraphicWidget graph_cfg,
                   CanvasFormat canvas_format);
+    GraphicDrawer(struct_ConfigTextWidget text_cfg,
+                  CanvasFormat canvas_format);
+    GraphicDrawer(struct_ConfigTextWidget text_cfg,
+                  CanvasFormat canvas_format, size_t frame_width,
+                  size_t frame_height);
     virtual ~GraphicDrawer();
 
     /// @brief the associated canvas in which the widget writes text and draws graphics
@@ -216,4 +260,150 @@ public:
      * @param color   color of the border of the circle, default to WHITE
      */
     void circle(int radius, int x_center, int y_center, bool fill = false, ColorIndex color = ColorIndex::WHITE);
+
+    /// @brief draw a rectangle around the widget.
+    ///  \note As the border is a rectangle with fill=false, the border width can only be 1 pixel.
+    /// @param color the color of the border
+    virtual void draw_border(ColorIndex color = ColorIndex::WHITE);
+};
+
+class TextWriter : public GraphicDrawer
+{
+private:
+    /// @brief the line number where the next character will be written.
+    uint8_t current_char_line{0};
+
+    /// @brief the column where the next character will be written.
+    uint8_t current_char_column{0};
+
+    /// @brief a graphic primitive to draw a character at a character position
+    /// @param character the foreground color of the character. The font is given by the frame_text_config
+    /// @param char_column the column position of the character
+    /// @param char_line the line position of the character
+    void write(char character, uint8_t char_column, uint8_t char_line);
+
+    /// @brief clean th full current line (writing " " in the text buffer)
+    void clear_line();
+
+    /// @brief The font used. Current font are defined according to IBM CP437.
+    /// The font files are derived from https://github.com/Harbys/pico-ssd1306 works.
+    /// They come is size 5x8, 8x8, 12x16 and 16x32.
+    const unsigned char *font{nullptr};
+
+    /// @brief The number of space that ASCII character HT (aka TAB , "\t", 0x9) generates, default to 2
+    uint8_t tab_size{2};
+
+    /// @brief Wrap flag : if true, text wrap to the next line when end of line is reached.
+    bool wrap{true};
+
+    /// @brief auto_next_char flag : if true each char steps one position after being written.
+    bool auto_next_char{true};
+
+    /// @brief a graphic primitive to draw a character at a pixel position. Strongly dependent on font memory organisation.
+    /// @param character the character to draw
+    /// @param anchor_x the pixel position on x-axis to start drawing the character (upper left corner)
+    /// @param anchor_y the pixel position on y-axis to start drawing the character (upper left corner)
+    void draw_glyph(const char character,
+                    const uint8_t anchor_x, const uint8_t anchor_y);
+
+protected:
+    /// @brief create text buffer and delete the old one if already existing
+    void create_text_buffer();
+
+public:
+    /// @brief Construct a new Text Writer object
+    /// \note USAGE: when the text frame is defined by the number of characters width and height.
+    /// @param text_cfg the configuration data for the textual frame
+    /// @param canvas_format the format of the associated canvas (see CanvasFormat)
+    TextWriter(struct_ConfigTextWidget text_cfg,
+               CanvasFormat canvas_format);
+
+    /// @brief Construct a new Text Widget object
+    /// \note USAGE: when the text frame is defined by the frame size width and height in pixel.
+    /// @param text_cfg the configuration data for the textual frame
+    /// @param canvas_format the format of the associated canvas (see CanvasFormat)
+    /// @param frame_width the frame size width
+    /// @param frame_height the frame size height
+    TextWriter(struct_ConfigTextWidget text_cfg,
+               CanvasFormat canvas_format,
+               size_t frame_width,
+               size_t frame_height);
+    ~TextWriter();
+
+    /// @brief The max number of line with respect to frame height and font height
+    uint8_t number_of_column{0};
+    /// @brief The max number of column with respect to frame width and font width
+    uint8_t number_of_line{0};
+
+    /// @brief size of the buffer that contains text as string of characters.
+    size_t text_buffer_size;
+    /// @brief the buffer where text are written
+    char *text_buffer = nullptr;
+    /// @brief The max number of line with respect to frame height and font height
+
+    /// @brief  Compute the text size in column x line according to the size of the font and the size of the frame in pixel.
+    /// Delete the previous text buffer if any and create a new buffer.
+    /// @param font the new font
+    void update_text_frame_size(const unsigned char *font);
+
+    /// @brief et text buffer memory to "0" and set  character current line and column to 0
+    void clear_text_buffer();
+
+    /// @brief compute canvas width and height according to the size of the text (column x line ) and the size of the bitmap font.
+    /// Delete the previous pixel buffer if any and create a new buffer.
+    /// @param font the new font
+    void update_canvas_buffer_size(const unsigned char *font);
+
+    /// @brief process characters in the internal text buffer and draw it into the pixel buffer.
+    /// \note USAGE: this is useful if we have to fill the text_buffer, e.g. with sprintf and formatted text.
+    void write();
+
+    /// @brief process the string c_str and then draw each character into the pixel buffer, without using the text buffer.
+    /// @param c_str A C_style character string.
+    void write(const char *c_str);
+
+    /**
+     * @brief interpret the character and draw it into the pixel buffer at the current line and column character position.
+     *
+     * Text wrapping is done if wrap flag is true.
+     * Character position steps forward according to auto_next_char flag.
+     *
+     * Some special characters are processed:
+     *
+     *  - "LINE_FEED"       (\\n 0x0A) : line position steps forward, column position is set to 0.
+     *
+     *  - "BACKSPACE"       (\\b  0x08) : column position steps backward, a space (" ") character is overwritten.
+     *
+     *  - "FORM_FEED"       (\\f  0x0C) : the text buffer is cleared.
+     *
+     *  - "CARRIAGE_RETURN" (\\r  0x0D) : column position is set to 0.
+     *
+     *  - "HORIZONTAL_TAB"  (\\t  0x09) : " " characters are added according to tab_size configuration value.
+     * @param character
+     */
+    void process_char(char character);
+
+    /// @brief character line steps one position downward.
+    void next_line();
+
+    /// @brief character column steps forward one position forward.
+    void next_char();
+
+    // /**
+    //  * @brief we need draw() to be compliant with the pure virtual draw() inherited from Widget.
+    //  * \note USAGE: It is called by the draw_refresh method of the Model
+    //  * The draw() member calls the following method :
+    //  * 1)    clear_text_buffer();
+    //  * 2)    get_value_of_interest();
+    //  * 3)    write(); -- transfer characters in text_buffer to pixels in the pixel_buffer
+    //  * 4)    draw_border();
+    //  * 5)    show();
+    //  */
+    // virtual void draw();
+
+    /// @brief draw a one-pixel width around the the frame
+    ///  \note This border can overwrite the characters!
+    /// To be improve with the use of pixel frame memory not based on byte page such as the OLED SSD1306.
+    /// @param color
+    void draw_border(ColorIndex color = ColorIndex::WHITE);
 };
