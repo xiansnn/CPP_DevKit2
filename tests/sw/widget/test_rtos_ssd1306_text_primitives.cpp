@@ -29,7 +29,7 @@ Probe p4 = Probe(4);
 // Probe p6 = Probe(6);
 // Probe p7 = Probe(7);
 
-#define DELAY_ms 500
+#define DELAY_ms 50
 #define LONG_DELAY_ms 1000
 #define INTER_TASK_DELAY_ms 2000
 
@@ -100,19 +100,22 @@ void vIdleTask(void *pxProbe)
 
 void display_gate_keeper_task(void *param)
 {
+    UBaseType_t msg_nb;
     struct_WidgetDataToGateKeeper received_data_to_show;
     while (true)
     {
         xQueueReceive(display_gate_keeper.graphic_widget_data, &received_data_to_show, portMAX_DELAY);
-        p4.hi();
+        msg_nb = uxQueueMessagesWaiting(display_gate_keeper.graphic_widget_data);
+        if (msg_nb != 0)
+            p4.pulse_train(msg_nb);
+
         display_gate_keeper.receive_widget_data(received_data_to_show);
-        p4.lo();
     }
 }
 
 void test_font_size(rtos_SSD1306 *current_display)
 {
-    p1.hi();
+    uint display_id = (current_display == &left_display) ? 0 : 100;
     display_gate_keeper.send_clear_device_command(current_display);
     const unsigned char *current_font[4]{font_5x8, font_8x8, font_12x16, font_16x32};
 
@@ -128,11 +131,10 @@ void test_font_size(rtos_SSD1306 *current_display)
     my_text_widget *font_text_on_screen_0 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
     // draw text directly from a string to the pixel buffer
     font_text_on_screen_0->writer->write(test_string.c_str());
+    p1.pulse_train(display_id + 10);
     display_gate_keeper.send_widget_data(font_text_on_screen_0);
     delete font_text_on_screen_0;
-    p1.lo();
 
-    p1.hi();
     default_text_cfg.widget_anchor_x = 64;
     default_text_cfg.widget_anchor_y = 8;
     default_text_cfg.font = current_font[1];
@@ -140,31 +142,31 @@ void test_font_size(rtos_SSD1306 *current_display)
     // process first text according to sprintf capabilities then copy to text buffer and finally draw text buffer into pixel buffer
     sprintf(font_text_on_screen_1->writer->text_buffer, test_string.c_str());
     font_text_on_screen_1->writer->write();
+    p1.pulse_train(display_id + 20);
     display_gate_keeper.send_widget_data(font_text_on_screen_1);
     delete font_text_on_screen_1;
-    p1.lo();
 
-    p1.hi();
     default_text_cfg.widget_anchor_x = 0;
     default_text_cfg.widget_anchor_y = 16;
+    default_text_cfg.font = current_font[2];
     my_text_widget *font_text_on_screen_2 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
-    font_text_on_screen_2->writer->update_canvas_buffer_size(current_font[2]);
+    // font_text_on_screen_2->writer->update_canvas_buffer_size(current_font[2]);
 
     sprintf(font_text_on_screen_2->writer->text_buffer, test_string.c_str());
     font_text_on_screen_2->writer->write();
+    p1.pulse_train(display_id + 30);
     display_gate_keeper.send_widget_data(font_text_on_screen_2);
     delete font_text_on_screen_2;
-    p1.lo();
 
-    p1.hi();
     my_text_widget *font_text_on_screen_3 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
     font_text_on_screen_3->writer->update_canvas_buffer_size(current_font[3]);
     font_text_on_screen_3->update_widget_anchor(64, 32);
     sprintf(font_text_on_screen_3->writer->text_buffer, test_string.c_str());
     font_text_on_screen_3->writer->write();
+    p1.pulse_train(display_id + 40);
     display_gate_keeper.send_widget_data(font_text_on_screen_3);
     delete font_text_on_screen_3;
-    p1.lo();
+
     vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 
@@ -394,10 +396,10 @@ void main_task(void *display_device)
     while (true)
     {
         test_font_size((rtos_SSD1306 *)display_device);
-        // test_full_screen_text((rtos_SSD1306 *)display_device);
-        // test_auto_next_char((rtos_SSD1306 *)display_device);
-        // test_sprintf_format((rtos_SSD1306 *)display_device);
-        // test_sprintf_format_date((rtos_SSD1306 *)display_device);
+        test_full_screen_text((rtos_SSD1306 *)display_device);
+        test_auto_next_char((rtos_SSD1306 *)display_device);
+        test_sprintf_format((rtos_SSD1306 *)display_device);
+        test_sprintf_format_date((rtos_SSD1306 *)display_device);
     }
 }
 

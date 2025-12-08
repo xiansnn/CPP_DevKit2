@@ -65,7 +65,7 @@ public:
      */
     void copy(bool _value);
 
-    /// @brief Generates a train of pulses on the GPIO.
+    /// @brief Generates a train of 10 us pulses on the GPIO.
     /// @param nb Number of pulses to generate.
     void pulse_train(uint nb);
 };

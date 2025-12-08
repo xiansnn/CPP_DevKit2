@@ -2,8 +2,7 @@
 #include "display_device.h"
 #include "sw/widget/rtos_widget.h"
 
-#define CHECK_PROBE
-#define MAX_DELAY 20
+// #define CHECK_PROBE
 
 #if defined(CHECK_PROBE)
 #include "utilities/probe/probe.h"
@@ -104,10 +103,7 @@ void rtos_GraphicDisplayGateKeeper::send_clear_device_command(rtos_GraphicDispla
 #if defined(CHECK_PROBE)
     p5.pulse_us(10);
 #endif // CHECK_PROBE
-
-    if (xQueueSend(graphic_widget_data, &data_to_display, MAX_DELAY) != pdPASS)
-        printf("send_clear_device_command: queue full\n");
-    // xQueueSend(graphic_widget_data, &data_to_display, portMAX_DELAY); // take 65ms but used fully the CPU
+    xQueueSend(graphic_widget_data, &data_to_display, portMAX_DELAY);
 #if defined(CHECK_PROBE)
     p5.pulse_us(1);
 #endif // CHECK_PROBE
@@ -122,11 +118,8 @@ void rtos_GraphicDisplayGateKeeper::send_widget_data(rtos_Widget *widget)
     widget->widget_data_to_gatekeeper.command = DisplayCommand::SHOW_IMAGE;
 #if defined(CHECK_PROBE)
     p6.pulse_us(10);
-#endif     
-   if (xQueueSend(graphic_widget_data, &widget->widget_data_to_gatekeeper, MAX_DELAY) != pdPASS)
-        printf("send_widget_data: queue full\n");
-                                                                             // CHECK_PROBE
-    // xQueueSend(graphic_widget_data, &widget->widget_data_to_gatekeeper, portMAX_DELAY); // take 65ms but used fully the CPU
+#endif // CHECK_PROBE
+    xQueueSend(graphic_widget_data, &widget->widget_data_to_gatekeeper, portMAX_DELAY); // take 65ms but used fully the CPU
 #if defined(CHECK_PROBE)
     p6.pulse_us();
 #endif // CHECK_PROBE
