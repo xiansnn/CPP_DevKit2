@@ -2,11 +2,15 @@
 #include "display_device.h"
 #include "sw/widget/rtos_widget.h"
 
-// #include "utilities/probe/probe.h"
-// Probe p5 = Probe(5);
-// Probe p6 = Probe(6);
-// Probe p7 = Probe(7);
+#define CHECK_PROBE
+#define MAX_DELAY 20
 
+#if defined(CHECK_PROBE)
+#include "utilities/probe/probe.h"
+Probe p5 = Probe(5);
+Probe p6 = Probe(6);
+Probe p7 = Probe(7);
+#endif // CHECK_PROBE
 
 GraphicDisplayDevice::GraphicDisplayDevice(size_t screen_width,
                                            size_t screen_height)
@@ -97,26 +101,46 @@ void rtos_GraphicDisplayGateKeeper::send_clear_device_command(rtos_GraphicDispla
     struct_WidgetDataToGateKeeper data_to_display;
     data_to_display.command = DisplayCommand::CLEAR_SCREEN;
     data_to_display.display = device;
-    // p5.pulse_us(10);
-    xQueueSend(graphic_widget_data, &data_to_display, portMAX_DELAY); // take 65ms but used fully the CPU
-    // p5.pulse_us();
+#if defined(CHECK_PROBE)
+    p5.pulse_us(10);
+#endif // CHECK_PROBE
+
+    if (xQueueSend(graphic_widget_data, &data_to_display, MAX_DELAY) != pdPASS)
+        printf("send_clear_device_command: queue full\n");
+    // xQueueSend(graphic_widget_data, &data_to_display, portMAX_DELAY); // take 65ms but used fully the CPU
+#if defined(CHECK_PROBE)
+    p5.pulse_us(1);
+#endif // CHECK_PROBE
     xSemaphoreTake(data_sent, portMAX_DELAY);
-    // p5.pulse_us(5);
+#if defined(CHECK_PROBE)
+    p5.pulse_us(5);
+#endif // CHECK_PROBE
 }
 
 void rtos_GraphicDisplayGateKeeper::send_widget_data(rtos_Widget *widget)
 {
     widget->widget_data_to_gatekeeper.command = DisplayCommand::SHOW_IMAGE;
-    // p6.pulse_us(10);
-    xQueueSend(graphic_widget_data, &widget->widget_data_to_gatekeeper, portMAX_DELAY); // take 65ms but used fully the CPU
-    // p6.pulse_us();
+#if defined(CHECK_PROBE)
+    p6.pulse_us(10);
+#endif     
+   if (xQueueSend(graphic_widget_data, &widget->widget_data_to_gatekeeper, MAX_DELAY) != pdPASS)
+        printf("send_widget_data: queue full\n");
+                                                                             // CHECK_PROBE
+    // xQueueSend(graphic_widget_data, &widget->widget_data_to_gatekeeper, portMAX_DELAY); // take 65ms but used fully the CPU
+#if defined(CHECK_PROBE)
+    p6.pulse_us();
+#endif // CHECK_PROBE
     xSemaphoreTake(data_sent, portMAX_DELAY);
-    // p6.pulse_us(5);
+#if defined(CHECK_PROBE)
+    p6.pulse_us(5);
+#endif // CHECK_PROBE
 }
 
 void rtos_GraphicDisplayGateKeeper::receive_widget_data(struct_WidgetDataToGateKeeper received_widget_data)
 {
-    // p7.pulse_us(10);
+#if defined(CHECK_PROBE)
+    p7.pulse_us(10);
+#endif // CHECK_PROBE
     switch (received_widget_data.command)
     {
     case DisplayCommand::SHOW_IMAGE:
@@ -128,7 +152,11 @@ void rtos_GraphicDisplayGateKeeper::receive_widget_data(struct_WidgetDataToGateK
     default:
         break;
     }
-    // p7.pulse_us();
+#if defined(CHECK_PROBE)
+    p7.pulse_us();
+#endif // CHECK_PROBE
     xSemaphoreGive(data_sent);
-    // p7.pulse_us(5);
+#if defined(CHECK_PROBE)
+    p7.pulse_us(5);
+#endif // CHECK_PROBE
 }
