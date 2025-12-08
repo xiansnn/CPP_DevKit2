@@ -16,63 +16,41 @@
 #include <iomanip>
 #include <string>
 
-#include "sw/widget/widget.h"
+#include "sw/widget/rtos_widget.h"
 #include "device/SSD1306/ssd1306.h"
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
 Probe p1 = Probe(1);
-Probe p2 = Probe(2);
-Probe p3 = Probe(3);
+// Probe p2 = Probe(2);
+// Probe p3 = Probe(3);
 Probe p4 = Probe(4);
 // Probe p5 = Probe(5);
 // Probe p6 = Probe(6);
 // Probe p7 = Probe(7);
 
-#define DELAY 10
-#define LONG_DELAY 100
-#define INTER_TASK_DELAY 100
+#define DELAY_ms 500
+#define LONG_DELAY_ms 1000
+#define INTER_TASK_DELAY_ms 2000
 
 #define CANVAS_FORMAT CanvasFormat::MONO_VLSB
 
-class my_text_widget : public TextWidget
-{
-private:
-public:
-    my_text_widget(GraphicDisplayDevice *graphic_display_screen,
-                   struct_ConfigTextWidget text_cfg,
-                   CanvasFormat format);
-    my_text_widget(GraphicDisplayDevice *graphic_display_screen,
-                   struct_ConfigTextWidget text_cfg,
-                   CanvasFormat format,
-                   uint8_t x, uint8_t y);
-    ~my_text_widget();
-    void get_value_of_interest();
-};
-my_text_widget::my_text_widget(GraphicDisplayDevice *graphic_display_screen,
-                               struct_ConfigTextWidget text_cfg,
-                               CanvasFormat format)
-    : TextWidget(graphic_display_screen, text_cfg, format) {}
-my_text_widget::my_text_widget(GraphicDisplayDevice *graphic_display_screen,
-                               struct_ConfigTextWidget text_cfg,
-                               CanvasFormat format,
-                               uint8_t x, uint8_t y)
-    : TextWidget(graphic_display_screen, text_cfg, format, x, y) {}
-my_text_widget::~my_text_widget() {}
-void my_text_widget::get_value_of_interest() {}
-
-QueueHandle_t display_data_queue = xQueueCreate(8, sizeof(struct_DataToShow));
-SemaphoreHandle_t data_sent = xSemaphoreCreateBinary(); // synchro between display task and sending task
-
+//==========================display gatekeeper===============
+rtos_GraphicDisplayGateKeeper display_gate_keeper = rtos_GraphicDisplayGateKeeper();
+//==========================Master I2C========================
 void i2c_irq_handler();
-
 struct_ConfigMasterI2C cfg_i2c{
     .i2c = i2c0,
     .sda_pin = 8,
     .scl_pin = 9,
     .baud_rate = I2C_FAST_MODE,
     .i2c_tx_master_handler = i2c_irq_handler};
-
+rtos_HW_I2C_Master master = rtos_HW_I2C_Master(cfg_i2c);
+void i2c_irq_handler()
+{
+    master.i2c_dma_isr();
+};
+//==================SSD1306 left screen===================
 struct_ConfigSSD1306 cfg_left_screen{
     .i2c_address = 0x3C,
     .vertical_offset = 0,
@@ -81,7 +59,8 @@ struct_ConfigSSD1306 cfg_left_screen{
     .contrast = 128,
     .frequency_divider = 1,
     .frequency_factor = 0};
-
+rtos_SSD1306 left_display = rtos_SSD1306(&master, cfg_left_screen);
+//==================SSD1306 right screen===================
 struct_ConfigSSD1306 cfg_right_screen{
     .i2c_address = 0x3D,
     .vertical_offset = 0,
@@ -90,16 +69,26 @@ struct_ConfigSSD1306 cfg_right_screen{
     .contrast = 128,
     .frequency_divider = 1,
     .frequency_factor = 0};
-
-rtos_HW_I2C_Master master = rtos_HW_I2C_Master(cfg_i2c);
-rtos_SSD1306 left_display = rtos_SSD1306(&master, cfg_left_screen);
 rtos_SSD1306 right_display = rtos_SSD1306(&master, cfg_right_screen);
-
-void i2c_irq_handler()
+///=========================dummy rtos_GraphicWidget for the whole screen===================
+class my_text_widget : public rtos_TextWidget
 {
-    master.i2c_dma_isr();
+private:
+public:
+    my_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+                   struct_ConfigTextWidget text_cfg,
+                   CanvasFormat format)
+        : rtos_TextWidget(nullptr, text_cfg, format, graphic_display_screen) {};
+    my_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+                   struct_ConfigTextWidget text_cfg,
+                   CanvasFormat format,
+                   uint8_t x, uint8_t y)
+        : rtos_TextWidget(nullptr, text_cfg, format, x, y, graphic_display_screen) {};
+    ~my_text_widget() {};
+    void get_value_of_interest() {};
+    void draw() {};
 };
-
+//===============================TASKS===================================================
 void vIdleTask(void *pxProbe)
 {
     while (true)
@@ -111,24 +100,12 @@ void vIdleTask(void *pxProbe)
 
 void display_gate_keeper_task(void *param)
 {
-    struct_DataToShow received_data_to_show;
-
+    struct_WidgetDataToGateKeeper received_data_to_show;
     while (true)
     {
-        xQueueReceive(display_data_queue, &received_data_to_show, portMAX_DELAY);
+        xQueueReceive(display_gate_keeper.graphic_widget_data, &received_data_to_show, portMAX_DELAY);
         p4.hi();
-        switch (received_data_to_show.command)
-        {
-        case DisplayCommand::SHOW_IMAGE:
-            ((rtos_SSD1306 *)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
-            break;
-        case DisplayCommand::CLEAR_SCREEN:
-            ((rtos_SSD1306 *)received_data_to_show.display)->clear_device_screen_buffer();
-            break;
-        default:
-            break;
-        }
-        xSemaphoreGive(data_sent);
+        display_gate_keeper.receive_widget_data(received_data_to_show);
         p4.lo();
     }
 }
@@ -136,7 +113,7 @@ void display_gate_keeper_task(void *param)
 void test_font_size(rtos_SSD1306 *current_display)
 {
     p1.hi();
-    current_display->send_clear_device_command(display_data_queue, data_sent);
+    display_gate_keeper.send_clear_device_command(current_display);
     const unsigned char *current_font[4]{font_5x8, font_8x8, font_12x16, font_16x32};
 
     std::string test_string = "Test";
@@ -150,39 +127,45 @@ void test_font_size(rtos_SSD1306 *current_display)
 
     my_text_widget *font_text_on_screen_0 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
     // draw text directly from a string to the pixel buffer
-    font_text_on_screen_0->write(test_string.c_str());
-    font_text_on_screen_0->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    font_text_on_screen_0->writer->write(test_string.c_str());
+    display_gate_keeper.send_widget_data(font_text_on_screen_0);
     delete font_text_on_screen_0;
+    p1.lo();
 
+    p1.hi();
     default_text_cfg.widget_anchor_x = 64;
     default_text_cfg.widget_anchor_y = 8;
+    default_text_cfg.font = current_font[1];
     my_text_widget *font_text_on_screen_1 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
-    font_text_on_screen_1->update_canvas_buffer_size(current_font[1]);
-
     // process first text according to sprintf capabilities then copy to text buffer and finally draw text buffer into pixel buffer
-    sprintf(font_text_on_screen_1->text_buffer, test_string.c_str());
-    font_text_on_screen_1->write();
-    font_text_on_screen_1->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    sprintf(font_text_on_screen_1->writer->text_buffer, test_string.c_str());
+    font_text_on_screen_1->writer->write();
+    display_gate_keeper.send_widget_data(font_text_on_screen_1);
     delete font_text_on_screen_1;
+    p1.lo();
 
+    p1.hi();
     default_text_cfg.widget_anchor_x = 0;
     default_text_cfg.widget_anchor_y = 16;
     my_text_widget *font_text_on_screen_2 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
-    font_text_on_screen_2->update_canvas_buffer_size(current_font[2]);
+    font_text_on_screen_2->writer->update_canvas_buffer_size(current_font[2]);
 
-    sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
-    font_text_on_screen_2->write();
-    font_text_on_screen_2->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
-
-    font_text_on_screen_2->update_canvas_buffer_size(current_font[3]);
-    font_text_on_screen_2->update_widget_anchor(64, 32);
-    sprintf(font_text_on_screen_2->text_buffer, test_string.c_str());
-    font_text_on_screen_2->write();
-    font_text_on_screen_2->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    sprintf(font_text_on_screen_2->writer->text_buffer, test_string.c_str());
+    font_text_on_screen_2->writer->write();
+    display_gate_keeper.send_widget_data(font_text_on_screen_2);
     delete font_text_on_screen_2;
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
-    current_display->send_clear_device_command(display_data_queue, data_sent);
+
+    p1.hi();
+    my_text_widget *font_text_on_screen_3 = new my_text_widget(current_display, default_text_cfg, CANVAS_FORMAT);
+    font_text_on_screen_3->writer->update_canvas_buffer_size(current_font[3]);
+    font_text_on_screen_3->update_widget_anchor(64, 32);
+    sprintf(font_text_on_screen_3->writer->text_buffer, test_string.c_str());
+    font_text_on_screen_3->writer->write();
+    display_gate_keeper.send_widget_data(font_text_on_screen_3);
+    delete font_text_on_screen_3;
+    p1.lo();
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 
 void test_full_screen_text(rtos_SSD1306 *current_display)
@@ -192,31 +175,28 @@ void test_full_screen_text(rtos_SSD1306 *current_display)
         .wrap = true,
     };
     p1.hi();
-    current_display->send_clear_device_command(display_data_queue, data_sent);
+    display_gate_keeper.send_clear_device_command(current_display);
     my_text_widget text_frame = my_text_widget(current_display, txt_conf, CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
 
-    text_frame.process_char(FORM_FEED); // equiv. clear full screen
-    // current_display->show(text_frame.canvas, 0, 0);
-    text_frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
-    uint16_t nb = text_frame.number_of_line * text_frame.number_of_column;
+    text_frame.writer->process_char(FORM_FEED); // equiv. clear full screen
+    display_gate_keeper.send_widget_data(&text_frame);
+    uint16_t nb = text_frame.writer->number_of_line * text_frame.writer->number_of_column;
 
     uint16_t n{0};
     for (uint16_t c = 32; c < 256; c++)
     {
         n++;
-        text_frame.process_char(c);
-        // current_display->show(text_frame.canvas, 0, 0);
-        text_frame.send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+        text_frame.writer->process_char(c);
+        display_gate_keeper.send_widget_data(&text_frame);
 
         if (n == nb)
         {
-            sleep_ms(500);
-            text_frame.process_char(FORM_FEED);
+            vTaskDelay(pdMS_TO_TICKS(LONG_DELAY_ms));
+            text_frame.writer->process_char(FORM_FEED);
         }
     }
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
-    current_display->send_clear_device_command(display_data_queue, data_sent);
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 
 void test_auto_next_char(rtos_SSD1306 *current_display)
@@ -226,184 +206,146 @@ void test_auto_next_char(rtos_SSD1306 *current_display)
         .wrap = true,
         .auto_next_char = false};
     p1.hi();
-    current_display->send_clear_device_command(display_data_queue, data_sent);
+    display_gate_keeper.send_clear_device_command(current_display);
 
     my_text_widget *text_frame = new my_text_widget(current_display, txt_conf, CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
 
-    text_frame->process_char(FORM_FEED);
+    text_frame->writer->process_char(FORM_FEED);
 
     uint16_t n{0};
     for (uint16_t c = 32; c < 128; c++)
     {
         n++;
-        text_frame->process_char(c);
-        // current_display->show(text_frame->canvas, 0, 0);
-        text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+        text_frame->writer->process_char(c);
+        display_gate_keeper.send_widget_data(text_frame);
 
         if (n % 8 == 0)
-            text_frame->next_char();
+            text_frame->writer->next_char();
     }
-
     delete text_frame;
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
-    current_display->send_clear_device_command(display_data_queue, data_sent);
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 
-/**
- * @brief usage of sprintf when we need to format text (e.g. string, float, dec, oct ...)
- *
- * Otherwise text_frame.print_text is sufficient.
- *
- * @param current_display
- */
 void test_sprintf_format(rtos_SSD1306 *current_display)
 {
-    p1.hi();
-    current_display->send_clear_device_command(display_data_queue, data_sent);
     struct_ConfigTextWidget text_frame_cfg = {
         .font = font_8x8,
         .wrap = true};
+    p1.hi();
+    display_gate_keeper.send_clear_device_command(current_display);
 
     my_text_widget *text_frame = new my_text_widget(current_display, text_frame_cfg, CANVAS_FORMAT, SSD1306_WIDTH, SSD1306_HEIGHT);
 
     const char *s = "Hello";
 
-    text_frame->write("Strings:\n\tpadding:\n");
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->writer->write("Strings:\n\tpadding:\n");
+    display_gate_keeper.send_widget_data(text_frame);
 
-    sprintf(text_frame->text_buffer, "\t[%7s]\n", s);
-    text_frame->write();
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    sprintf(text_frame->writer->text_buffer, "\t[%7s]\n", s);
+    text_frame->writer->write();
+    display_gate_keeper.send_widget_data(text_frame);
 
-    sprintf(text_frame->text_buffer, "\t[%-7s]\n", s);
-    text_frame->write();
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    sprintf(text_frame->writer->text_buffer, "\t[%-7s]\n", s);
+    text_frame->writer->write();
+    display_gate_keeper.send_widget_data(text_frame);
 
-    sprintf(text_frame->text_buffer, "\t[%*s]\n", 7, s);
-    text_frame->write();
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    sprintf(text_frame->writer->text_buffer, "\t[%*s]\n", 7, s);
+    text_frame->writer->write();
+    display_gate_keeper.send_widget_data(text_frame);
 
-    text_frame->write("\ttruncating:\n");
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->writer->write("\ttruncating:\n");
+    display_gate_keeper.send_widget_data(text_frame);
 
-    sprintf(text_frame->text_buffer, "\t%.4s\n", s);
-    text_frame->write();
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    sprintf(text_frame->writer->text_buffer, "\t%.4s\n", s);
+    text_frame->writer->write();
+    display_gate_keeper.send_widget_data(text_frame);
 
-    sprintf(text_frame->text_buffer, "\t\t%.*s\n", 3, s);
-    text_frame->write();
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    sprintf(text_frame->writer->text_buffer, "\t\t%.*s\n", 3, s);
+    text_frame->writer->write();
+    display_gate_keeper.send_widget_data(text_frame);
 
-    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY_ms));
 
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    display_gate_keeper.send_widget_data(text_frame);
 
-    text_frame->clear_text_buffer();
-    // current_display->clear_pixel_buffer(&text_frame->pixel_frame);
-    current_display->send_clear_device_command(display_data_queue, data_sent);
-    sprintf(text_frame->text_buffer, "Characters: %c %%", 'A');
-    text_frame->write();
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->writer->clear_text_buffer();
+    display_gate_keeper.send_clear_device_command(current_display);
+    sprintf(text_frame->writer->text_buffer, "Characters: %c %%", 'A');
+    text_frame->writer->write();
+    display_gate_keeper.send_widget_data(text_frame);
 
-    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY_ms));
 
-    current_display->send_clear_device_command(display_data_queue, data_sent);
+    display_gate_keeper.send_clear_device_command(current_display);
 
-    text_frame->update_text_frame_size(font_5x8);
+    text_frame->writer->update_text_line_column_number(font_5x8);
 
-    text_frame->write("Integers:\n");
-    sprintf(text_frame->text_buffer, "\tDec:  %i %d %.3i %i %.0i %+i %i\n", 1, 2, 3, 0, 0, 4, -4);
-    text_frame->write();
-    sprintf(text_frame->text_buffer, "\tHex:  %x %x %X %#x\n", 5, 10, 10, 6);
-    text_frame->write();
-    sprintf(text_frame->text_buffer, "\tOct:    %o %#o %#o\n", 10, 10, 4);
-    text_frame->write();
-    text_frame->write("Floating point:\n");
-    sprintf(text_frame->text_buffer, "\tRnd:  %f %.0f %.3f\n", 1.5, 1.5, 1.5);
-    text_frame->write();
-    sprintf(text_frame->text_buffer, "\tPad:  %05.2f %.2f %5.2f\n", 1.5, 1.5, 1.5);
-    text_frame->write();
-    sprintf(text_frame->text_buffer, "\tSci:  %.3E %.1e\n", 1.5, 1.5);
-    text_frame->write();
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->writer->write("Integers:\n");
+    sprintf(text_frame->writer->text_buffer, "\tDec:  %i %d %.3i %i %.0i %+i %i\n", 1, 2, 3, 0, 0, 4, -4);
+    text_frame->writer->write();
+    sprintf(text_frame->writer->text_buffer, "\tHex:  %x %x %X %#x\n", 5, 10, 10, 6);
+    text_frame->writer->write();
+    sprintf(text_frame->writer->text_buffer, "\tOct:    %o %#o %#o\n", 10, 10, 4);
+    text_frame->writer->write();
+    text_frame->writer->write("Floating point:\n");
+    sprintf(text_frame->writer->text_buffer, "\tRnd:  %f %.0f %.3f\n", 1.5, 1.5, 1.5);
+    text_frame->writer->write();
+    sprintf(text_frame->writer->text_buffer, "\tPad:  %05.2f %.2f %5.2f\n", 1.5, 1.5, 1.5);
+    text_frame->writer->write();
+    sprintf(text_frame->writer->text_buffer, "\tSci:  %.3E %.1e\n", 1.5, 1.5);
+    text_frame->writer->write();
+    display_gate_keeper.send_widget_data(text_frame);
 
-    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY_ms));
 
-    current_display->send_clear_device_command(display_data_queue, data_sent);
+    display_gate_keeper.send_clear_device_command(current_display);
 
-    text_frame->update_text_frame_size(font_8x8);
+    text_frame->writer->update_text_line_column_number(font_8x8);
 
-    text_frame->process_char(FORM_FEED); // equivalent text_frame->clear_pixel_buffer();
+    text_frame->writer->process_char(FORM_FEED); // equivalent text_frame->clear_pixel_buffer();
 
-    text_frame->write(" !\"#$%&'()*+,-./0123456789:;<=>?");   // ca 1000us -> 2000us
-    text_frame->write("@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_");   // ca 1000us -> 2000us
-    text_frame->write("`abcdefghijklmnopqrstuvwxyz{|}~\x7F"); // ca 1000us-> 2000us
-    text_frame->write("1234567890\n");                        // ca 400us -> 800us
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->writer->write(" !\"#$%&'()*+,-./0123456789:;<=>?");   // ca 1000us -> 2000us
+    text_frame->writer->write("@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_");   // ca 1000us -> 2000us
+    text_frame->writer->write("`abcdefghijklmnopqrstuvwxyz{|}~\x7F"); // ca 1000us-> 2000us
+    text_frame->writer->write("1234567890\n");                        // ca 400us -> 800us
+    display_gate_keeper.send_widget_data(text_frame);
 
-    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY_ms));
 
-    text_frame->process_char(FORM_FEED);
+    text_frame->writer->process_char(FORM_FEED);
 
-    text_frame->write("\t1TAB\n"); // ca 400us -> 800us
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->writer->write("\t1TAB\n"); // ca 400us -> 800us
+    display_gate_keeper.send_widget_data(text_frame);
 
-    vTaskDelay(pdMS_TO_TICKS(DELAY));
+    vTaskDelay(pdMS_TO_TICKS(DELAY_ms));
 
-    text_frame->write("\t\t2TAB\n"); // ca 400us -> 800us
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->writer->write("\t\t2TAB\n"); // ca 400us -> 800us
+    display_gate_keeper.send_widget_data(text_frame);
 
-    vTaskDelay(pdMS_TO_TICKS(DELAY));
+    vTaskDelay(pdMS_TO_TICKS(DELAY_ms));
 
-    text_frame->write("\t\t\t3TAB\n"); // ca 400us -> 800us
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->writer->write("\t\t\t3TAB\n"); // ca 400us -> 800us
+    display_gate_keeper.send_widget_data(text_frame);
 
-    vTaskDelay(pdMS_TO_TICKS(DELAY));
+    vTaskDelay(pdMS_TO_TICKS(DELAY_ms));
 
-    text_frame->write("\t\t\t\t4TAB\n"); // ca 400us -> 800us
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->writer->write("\t\t\t\t4TAB\n"); // ca 400us -> 800us
+    display_gate_keeper.send_widget_data(text_frame);
 
-    vTaskDelay(pdMS_TO_TICKS(DELAY));
+    vTaskDelay(pdMS_TO_TICKS(DELAY_ms));
 
-    text_frame->write("\t\t\t\t\t5TAB\n"); // ca 400us -> 800us
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
+    text_frame->writer->write("\t\t\t\t\t5TAB\n"); // ca 400us -> 800us
+    display_gate_keeper.send_widget_data(text_frame);
 
-    vTaskDelay(pdMS_TO_TICKS(DELAY));
+    vTaskDelay(pdMS_TO_TICKS(DELAY_ms));
 
-    text_frame->write("\t1TAB\t\t\t3TAB\n"); // ca 400us -> 800us
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
-
-    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
-
-    text_frame->process_char(FORM_FEED);
-    text_frame->update_text_frame_size(font_16x32);
-
-    text_frame->write(" 15:06 \n");
-    text_frame->write("03/01/24");
-    text_frame->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
-
-    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY));
-
-    current_display->send_clear_device_command(display_data_queue, data_sent);
+    text_frame->writer->write("\t1TAB\t\t\t3TAB\n"); // ca 400us -> 800us
+    display_gate_keeper.send_widget_data(text_frame);
 
     delete text_frame;
-
-    struct_ConfigTextWidget text_frame2_cfg = {
-        .number_of_column = 7,
-        .number_of_line = 2,
-        .widget_anchor_x = 22,
-        .widget_anchor_y = 16,
-        .font = font_12x16,
-        .wrap = false};
-    my_text_widget *text_frame2 = new my_text_widget(current_display, text_frame2_cfg, CANVAS_FORMAT);
-
-    text_frame2->write(" 09:56\n03JAN24");
-    text_frame2->send_image_to_DisplayGateKeeper(display_data_queue, data_sent);
-    delete text_frame2;
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
-    current_display->send_clear_device_command(display_data_queue, data_sent);
+    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY_ms));
 
     /*
     undefined result for the used compiler
@@ -415,14 +357,47 @@ void test_sprintf_format(rtos_SSD1306 *current_display)
     */
 }
 
+void test_sprintf_format_date(rtos_SSD1306 *current_display)
+{
+    struct_ConfigTextWidget text_frame_cfg = {
+        .number_of_column = 8,
+        .number_of_line = 2,
+        .widget_anchor_x = 0,
+        .widget_anchor_y = 0,
+        .font = font_12x16,
+        .wrap = false};
+    p1.hi();
+    display_gate_keeper.send_clear_device_command(current_display);
+
+    my_text_widget *text_frame = new my_text_widget(current_display, text_frame_cfg, CANVAS_FORMAT);
+
+    text_frame->writer->write(" 15:06 \n");
+    text_frame->writer->write("08/12/25");
+    display_gate_keeper.send_widget_data(text_frame);
+
+    vTaskDelay(pdMS_TO_TICKS(LONG_DELAY_ms));
+
+    text_frame->update_widget_anchor(0, 0);
+    text_frame->writer->update_canvas_buffer_size(font_16x32);
+
+    text_frame->writer->process_char(FORM_FEED);
+
+    text_frame->writer->write(" 10:14 \n08DEC25");
+    display_gate_keeper.send_widget_data(text_frame);
+    delete text_frame;
+    p1.lo();
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
+}
+
 void main_task(void *display_device)
 {
     while (true)
     {
         test_font_size((rtos_SSD1306 *)display_device);
-        test_full_screen_text((rtos_SSD1306 *)display_device);
-        test_auto_next_char((rtos_SSD1306 *)display_device);
-        test_sprintf_format((rtos_SSD1306 *)display_device);
+        // test_full_screen_text((rtos_SSD1306 *)display_device);
+        // test_auto_next_char((rtos_SSD1306 *)display_device);
+        // test_sprintf_format((rtos_SSD1306 *)display_device);
+        // test_sprintf_format_date((rtos_SSD1306 *)display_device);
     }
 }
 

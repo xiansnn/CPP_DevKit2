@@ -26,8 +26,8 @@ Probe pr_D6 = Probe(6);
 Probe pr_D7 = Probe(7);
 
 #define REFRESH_PERIOD 50
-#define DELAY 500
-#define LONG_DELAY 1000
+#define DELAY_ms 500
+#define LONG_DELAY_ms 1000
 #define INTER_TEST_DELAY 2000
 
 // #define CANVAS_FORMAT CanvasFormat::RGB565_16b
@@ -246,7 +246,7 @@ void test_sprintf_format(ST7735 *current_display)
     text_frame->write();
     text_frame->show();
 
-    sleep_ms(LONG_DELAY);
+    sleep_ms(LONG_DELAY_ms);
 
     current_display->clear_device_screen_buffer();
     text_frame->clear_text_buffer();
@@ -254,7 +254,7 @@ void test_sprintf_format(ST7735 *current_display)
     text_frame->write();
     text_frame->show();
 
-    sleep_ms(LONG_DELAY);
+    sleep_ms(LONG_DELAY_ms);
 
     current_display->clear_device_screen_buffer();
 
@@ -276,7 +276,7 @@ void test_sprintf_format(ST7735 *current_display)
     text_frame->write();
     text_frame->show();
 
-    sleep_ms(LONG_DELAY);
+    sleep_ms(LONG_DELAY_ms);
 
     current_display->clear_device_screen_buffer();
 
@@ -290,39 +290,39 @@ void test_sprintf_format(ST7735 *current_display)
     text_frame->write("1234567890\n");                        // ca 400us -> 800us
     text_frame->show();
 
-    sleep_ms(LONG_DELAY);
+    sleep_ms(LONG_DELAY_ms);
 
     text_frame->process_char(FORM_FEED);
 
     text_frame->write("\t1TAB\n"); // ca 400us -> 800us
     text_frame->show();
 
-    sleep_ms(DELAY);
+    sleep_ms(DELAY_ms);
 
     text_frame->write("\t\t2TAB\n"); // ca 400us -> 800us
     text_frame->show();
 
-    sleep_ms(DELAY);
+    sleep_ms(DELAY_ms);
 
     text_frame->write("\t\t\t3TAB\n"); // ca 400us -> 800us
     text_frame->show();
 
-    sleep_ms(DELAY);
+    sleep_ms(DELAY_ms);
 
     text_frame->write("\t\t\t\t4TAB\n"); // ca 400us -> 800us
     text_frame->show();
 
-    sleep_ms(DELAY);
+    sleep_ms(DELAY_ms);
 
     text_frame->write("\t\t\t\t\t5TAB\n"); // ca 400us -> 800us
     text_frame->show();
 
-    sleep_ms(DELAY);
+    sleep_ms(DELAY_ms);
 
     text_frame->write("\t1TAB\t\t\t3TAB\n"); // ca 400us -> 800us
     text_frame->show();
 
-    sleep_ms(LONG_DELAY);
+    sleep_ms(LONG_DELAY_ms);
 
     text_frame->process_char(FORM_FEED);
     text_frame->update_text_frame_size(font_16x32);
@@ -331,7 +331,7 @@ void test_sprintf_format(ST7735 *current_display)
     text_frame->write("03/01/24");
     text_frame->show();
 
-    sleep_ms(LONG_DELAY);
+    sleep_ms(LONG_DELAY_ms);
 
     current_display->clear_device_screen_buffer();
 
@@ -448,14 +448,14 @@ void test_ostringstream_format(ST7735 *current_display)
     text_frame.write(stream0.str().c_str());
 
     current_display->show(text_frame.canvas, 0, 0);
-    sleep_ms(DELAY);
+    sleep_ms(DELAY_ms);
 
     stream1 << std::setw(5) << std::dec << n << "|" << std::setw(5)
             << std::showbase << std::hex << n << "|" << std::showbase << std::setw(5) << std::oct << n << std::endl;
     text_frame.write(stream1.str().c_str());
     current_display->show(text_frame.canvas, 0, 0);
 
-    sleep_ms(DELAY);
+    sleep_ms(DELAY_ms);
 
     stream2 << "PI = " << std::left << f << std::endl;
     text_frame.write(stream2.str().c_str());

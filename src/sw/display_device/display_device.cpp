@@ -2,6 +2,12 @@
 #include "display_device.h"
 #include "sw/widget/rtos_widget.h"
 
+// #include "utilities/probe/probe.h"
+// Probe p5 = Probe(5);
+// Probe p6 = Probe(6);
+// Probe p7 = Probe(7);
+
+
 GraphicDisplayDevice::GraphicDisplayDevice(size_t screen_width,
                                            size_t screen_height)
 {
@@ -91,19 +97,26 @@ void rtos_GraphicDisplayGateKeeper::send_clear_device_command(rtos_GraphicDispla
     struct_WidgetDataToGateKeeper data_to_display;
     data_to_display.command = DisplayCommand::CLEAR_SCREEN;
     data_to_display.display = device;
+    // p5.pulse_us(10);
     xQueueSend(graphic_widget_data, &data_to_display, portMAX_DELAY); // take 65ms but used fully the CPU
+    // p5.pulse_us();
     xSemaphoreTake(data_sent, portMAX_DELAY);
+    // p5.pulse_us(5);
 }
 
 void rtos_GraphicDisplayGateKeeper::send_widget_data(rtos_Widget *widget)
 {
     widget->widget_data_to_gatekeeper.command = DisplayCommand::SHOW_IMAGE;
+    // p6.pulse_us(10);
     xQueueSend(graphic_widget_data, &widget->widget_data_to_gatekeeper, portMAX_DELAY); // take 65ms but used fully the CPU
+    // p6.pulse_us();
     xSemaphoreTake(data_sent, portMAX_DELAY);
+    // p6.pulse_us(5);
 }
 
 void rtos_GraphicDisplayGateKeeper::receive_widget_data(struct_WidgetDataToGateKeeper received_widget_data)
 {
+    // p7.pulse_us(10);
     switch (received_widget_data.command)
     {
     case DisplayCommand::SHOW_IMAGE:
@@ -115,5 +128,7 @@ void rtos_GraphicDisplayGateKeeper::receive_widget_data(struct_WidgetDataToGateK
     default:
         break;
     }
+    // p7.pulse_us();
     xSemaphoreGive(data_sent);
+    // p7.pulse_us(5);
 }

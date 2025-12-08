@@ -1,12 +1,12 @@
 /**
  * @file probe.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-01-11
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 #pragma once
 
@@ -35,7 +35,7 @@ private:
 public:
     /**
      * @brief Construct a new Probe object.
-     * 
+     *
      * The Probe provides a convenient class that can be used to observe behavior of programs.
      * It may be used with a logical analyser. The one used here has eight channel, numbered from 0 to 7.
      *
@@ -55,9 +55,9 @@ public:
     /**
      * @brief Generates a HI level pulse on the GPIO during _duration µs.
      *
-     * @param _duration
+     * @param _duration default to 1
      */
-    void pulse_us(uint _duration);
+    void pulse_us(uint _duration = 1);
     /**
      * @brief Used to copy the boolean _value on th GPIO.
      *

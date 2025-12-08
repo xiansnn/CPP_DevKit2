@@ -13,6 +13,9 @@
 #include "sw/display_device/display_device.h"
 #include "sw/widget/canvas.h"
 
+/// @brief flag used to generate 127 character font or full extended 255 character font.
+/// \note Must be placed before include "...font..."
+#define SSD1306_ASCII_FULL
 #include "font/5x8_font.h"
 #include "font/8x8_font.h"
 #include "font/12x16_font.h"
@@ -110,16 +113,6 @@ public:
                        CanvasFormat canvas_format,
                        rtos_DisplayDevice *display_device);
     ~rtos_GraphicWidget();
-
-    /// @brief used with FreeRTOS. send the widget data_to_display structure to the task in charge of the display management
-    /// @param display_queue the communcation queue with the display gate keeper
-    /// @param sending_done the semaphore triggered when the canvas display is complete.
-    void send_image_to_DisplayGateKeeper(QueueHandle_t display_queue, SemaphoreHandle_t sending_done);
-
-    /// @brief Send a command to clear the device screen buffer
-    /// @param display_queue    the communication queue with the display gate keeper
-    /// @param sending_done     the semaphore to signal when the sending is done
-    void send_clear_device_command(QueueHandle_t display_queue, SemaphoreHandle_t sending_done);
 };
 
 class TextWriter;
@@ -344,7 +337,7 @@ public:
     /// @brief  Compute the text size in column x line according to the size of the font and the size of the frame in pixel.
     /// Delete the previous text buffer if any and create a new buffer.
     /// @param font the new font
-    void update_text_frame_size(const unsigned char *font);
+    void update_text_line_column_number(const unsigned char *font);
 
     /// @brief et text buffer memory to "0" and set  character current line and column to 0
     void clear_text_buffer();
@@ -388,18 +381,6 @@ public:
 
     /// @brief character column steps forward one position forward.
     void next_char();
-
-    // /**
-    //  * @brief we need draw() to be compliant with the pure virtual draw() inherited from Widget.
-    //  * \note USAGE: It is called by the draw_refresh method of the Model
-    //  * The draw() member calls the following method :
-    //  * 1)    clear_text_buffer();
-    //  * 2)    get_value_of_interest();
-    //  * 3)    write(); -- transfer characters in text_buffer to pixels in the pixel_buffer
-    //  * 4)    draw_border();
-    //  * 5)    show();
-    //  */
-    // virtual void draw();
 
     /// @brief draw a one-pixel width around the the frame
     ///  \note This border can overwrite the characters!

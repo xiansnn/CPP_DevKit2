@@ -50,13 +50,6 @@ void GraphicWidget::show()
     ((GraphicDisplayDevice *)display_device)->show(this->canvas, this->widget_anchor_x, this->widget_anchor_y);
 }
 
-void Widget::send_image_to_DisplayGateKeeper(QueueHandle_t display_queue, SemaphoreHandle_t sending_done)
-{
-    this->data_to_display.command = DisplayCommand::SHOW_IMAGE;
-    xQueueSend(display_queue, &(this->data_to_display), portMAX_DELAY); // take 65ms but used fully the CPU
-    xSemaphoreTake(sending_done, portMAX_DELAY);
-}
-
 GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
                              struct_ConfigGraphicWidget graph_cfg,
                              CanvasFormat canvas_format,

@@ -26,7 +26,7 @@ Probe p4 = Probe(4);
 // Probe p7 = Probe(7);
 
 
-#define INTER_TASK_DELAY 200
+#define INTER_TASK_DELAY_ms 200
 
 /// @brief  data structure used to pass multiple parameters to the RTOS task that handles the display update
 struct struct_SSD1306DataToShow
@@ -99,14 +99,14 @@ void test_contrast(rtos_SSD1306 *display)
     for (size_t i = 0; i < 3; i++)
     {
         display->set_contrast(0);
-        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY * 2));
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms * 2));
         display->set_contrast(255);
-        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY * 2));
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms * 2));
         display->set_contrast(127);
-        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY * 2));
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms * 2));
     }
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 };
 
 /**
@@ -123,7 +123,7 @@ void test_addressing_mode(rtos_SSD1306 *display)
     static uint8_t image[128 * 8]{0x00};
     p1.hi();
     display->clear_device_screen_buffer();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 
     // memset(image, 0xFF, sizeof(image));
 
@@ -138,10 +138,10 @@ void test_addressing_mode(rtos_SSD1306 *display)
         xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
         xSemaphoreTake(data_sent_to_I2C, portMAX_DELAY);
 
-        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms / 2));
         display->clear_device_screen_buffer();
     }
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
     // VERTICAL_ADDRESSING_MODE
     for (size_t i = 0; i < 4; i++)
     {
@@ -154,10 +154,10 @@ void test_addressing_mode(rtos_SSD1306 *display)
         xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
         xSemaphoreTake(data_sent_to_I2C, portMAX_DELAY);
 
-        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms / 2));
         display->clear_device_screen_buffer();
     }
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
     // PAGE_ADDRESSING_MODE
     for (size_t i = 0; i < 8; i++)
     {
@@ -169,10 +169,10 @@ void test_addressing_mode(rtos_SSD1306 *display)
         data_to_show.addressing_mode = PAGE_ADDRESSING_MODE;
         xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
         xSemaphoreTake(data_sent_to_I2C, portMAX_DELAY);
-        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms / 2));
     }
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 };
 
 /**
@@ -189,11 +189,11 @@ void test_blink(rtos_SSD1306 *display_device)
     p1.hi();
 
     display_device->clear_device_screen_buffer();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms / 2));
 
     area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
     display_device->fill_GDDRAM_with_pattern(0x81, area);
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms / 2));
 
     area = SSD1306::compute_render_area(64, 96, 15, 40);
     memset(image, 0x7E, area.buflen);
@@ -202,17 +202,17 @@ void test_blink(rtos_SSD1306 *display_device)
     data_to_show.data_buffer = image;
     xQueueSend(display_data_queue, &data_to_show, portMAX_DELAY);
     xSemaphoreTake(data_sent_to_I2C, portMAX_DELAY);
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 
     for (int i = 0; i < 2; i++)
     {
         display_device->set_all_pixel_ON();
-        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 4));
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms / 4));
         display_device->set_display_from_RAM();
-        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 4));
+        vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms / 4));
     }
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 };
 /**
  * @brief tst auto scrolling function of the SSD1306 device
@@ -248,14 +248,14 @@ void test_scrolling(rtos_SSD1306 *display)
         .time_frame_interval = _25_FRAMES,
         .vertical_scrolling_offset = 1};
     display->horizontal_scroll(true, scroll_data);
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY * 4));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms * 4));
     display->horizontal_scroll(false, scroll_data);
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY * 4));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms * 4));
     display->vertical_scroll(true, scroll_data);
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY * 4));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms * 4));
     display->vertical_scroll(false, scroll_data);
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 };
 
 void test_write_GDDRAM(void *display_device)
@@ -267,10 +267,10 @@ void test_write_GDDRAM(void *display_device)
     uint8_t pattern = 0xF0;
 
     ((rtos_SSD1306 *)display_device)->clear_device_screen_buffer();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms / 2));
 
     ((rtos_SSD1306 *)display_device)->fill_GDDRAM_with_pattern(pattern, area);
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY / 2));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms / 2));
 
     pattern = 0xFF;
     area = SSD1306::compute_render_area(0, SSD1306_WIDTH - 1, 0, SSD1306_HEIGHT - 1);
@@ -282,7 +282,7 @@ void test_write_GDDRAM(void *display_device)
     xSemaphoreTake(data_sent_to_I2C, portMAX_DELAY);
 
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 };
 
 void display_gate_keeper_task(void *param)

@@ -34,7 +34,7 @@ Probe p5 = Probe(5);
 #define CANVAS_FORMAT CanvasFormat::RGB565_16b
 
 #define INTRA_TASK_DELAY 500
-#define INTER_TASK_DELAY 1000
+#define INTER_TASK_DELAY_ms 1000
 
 // #define ST7735_128x128
 #define ST7735_128x160
@@ -154,7 +154,7 @@ void test_fb_line(rtos_ST7735 *display)
     }
     p2.lo();
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 
 void test_outofframe_line(rtos_ST7735 *display)
@@ -186,7 +186,7 @@ void test_outofframe_line(rtos_ST7735 *display)
     }
     p2.lo();
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 void test_fb_rect(rtos_ST7735 *display)
 {
@@ -207,7 +207,7 @@ void test_fb_rect(rtos_ST7735 *display)
     display_gate_keeper.send_widget_data(&frame);
     p2.lo();
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 void test_fb_hline(rtos_ST7735 *display)
 {
@@ -228,7 +228,7 @@ void test_fb_hline(rtos_ST7735 *display)
     display_gate_keeper.send_widget_data(&frame);
     p2.lo();
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 void test_fb_vline(rtos_ST7735 *display)
 {
@@ -250,7 +250,7 @@ void test_fb_vline(rtos_ST7735 *display)
     display_gate_keeper.send_widget_data(&frame);
     p2.lo();
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 
 void test_fb_circle(rtos_ST7735 *display)
@@ -272,7 +272,7 @@ void test_fb_circle(rtos_ST7735 *display)
     display_gate_keeper.send_widget_data(&frame);
     p2.lo();
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 
 void test_fb_in_fb(rtos_ST7735 *display)
@@ -305,7 +305,7 @@ void test_fb_in_fb(rtos_ST7735 *display)
     display_gate_keeper.send_widget_data(&small_frame);
     p2.lo();
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 
 void main_task(void *display_device)

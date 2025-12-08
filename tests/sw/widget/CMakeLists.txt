@@ -123,7 +123,7 @@ add_executable(test_rtos_ssd1306_text_primitives test_rtos_ssd1306_text_primitiv
 target_link_libraries(test_rtos_ssd1306_text_primitives 
             pico_stdlib 
             rtos_hw_i2c 
-            sw_widget
+            rtos_widget
             # sw_ui_core
             device_ssd1306 
             utilities_probe

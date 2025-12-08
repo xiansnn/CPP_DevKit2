@@ -31,7 +31,7 @@ Probe p4 = Probe(4);
 // Probe p6 = Probe(6);
 // Probe p7 = Probe(7);
 
-#define INTER_TASK_DELAY 100
+#define INTER_TASK_DELAY_ms 100
 #define INTRA_TASK_DELAY 25
 
 //==========================display gatekeeper===============
@@ -108,7 +108,7 @@ void test_outofframe_line(rtos_SSD1306 *display)
         display_gate_keeper.send_widget_data(&frame);
     }
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 };
 //--------------------------------------------------------------------------------------
 void test_fb_line(rtos_SSD1306 *display)
@@ -160,7 +160,7 @@ void test_fb_line(rtos_SSD1306 *display)
         }
     }
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 };
 //-------------------------------------------------------------------------------
 void test_fb_hline(rtos_SSD1306 *display)
@@ -183,7 +183,7 @@ void test_fb_hline(rtos_SSD1306 *display)
     frame.drawer->hline(0, 63, 128);
     display_gate_keeper.send_widget_data(&frame);
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 //------------------------------------------------------------------------------------
 void test_fb_vline(rtos_SSD1306 *display)
@@ -205,7 +205,7 @@ void test_fb_vline(rtos_SSD1306 *display)
     frame.drawer->vline(127, 0, 64);
     display_gate_keeper.send_widget_data(&frame);
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 //---------------------------------------------------------------------------------
 void test_fb_rect(rtos_SSD1306 *display)
@@ -220,7 +220,7 @@ void test_fb_rect(rtos_SSD1306 *display)
     frame.drawer->rect(10, 10, 108, 44, true);
     display_gate_keeper.send_widget_data(&frame);
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 //------------------------------------------------------------------------------------
 void test_fb_in_fb(rtos_SSD1306 *display)
@@ -247,7 +247,7 @@ void test_fb_in_fb(rtos_SSD1306 *display)
     small_frame.drawer->circle(8, 44, 12);
     display_gate_keeper.send_widget_data(&small_frame);
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 //----------------------------------------------------------------------------------------
 void test_fb_circle(rtos_SSD1306 *display)
@@ -262,7 +262,7 @@ void test_fb_circle(rtos_SSD1306 *display)
     frame.drawer->circle(20, 64, 32, true);
     display_gate_keeper.send_widget_data(&frame);
     p1.lo();
-    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(INTER_TASK_DELAY_ms));
 }
 //------------------------------------------------------------------------------------
 void display_gate_keeper_task(void *param)

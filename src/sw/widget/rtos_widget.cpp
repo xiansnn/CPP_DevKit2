@@ -2,21 +2,6 @@
 #include "sw/ui_core/rtos_ui_core.h"
 #include <cstring>
 
-void rtos_GraphicWidget::send_image_to_DisplayGateKeeper(QueueHandle_t display_queue, SemaphoreHandle_t sending_done)
-{
-    this->widget_data_to_gatekeeper.command = DisplayCommand::SHOW_IMAGE;
-    xQueueSend(display_queue, &(this->widget_data_to_gatekeeper), portMAX_DELAY); // take 65ms but used fully the CPU
-    xSemaphoreTake(sending_done, portMAX_DELAY);
-}
-
-void rtos_GraphicWidget::send_clear_device_command(QueueHandle_t display_queue, SemaphoreHandle_t sending_done)
-{
-    struct_DataToShow data_to_display;
-    data_to_display.command = DisplayCommand::CLEAR_SCREEN;
-    xQueueSend(display_queue, &data_to_display, portMAX_DELAY);
-    xSemaphoreTake(sending_done, portMAX_DELAY);
-}
-
 rtos_Widget::rtos_Widget(rtos_Model *actual_displayed_model, rtos_DisplayDevice *display_device)
 {
     this->display_device = display_device;
@@ -58,7 +43,6 @@ rtos_GraphicWidget::rtos_GraphicWidget(rtos_Model *actual_displayed_model,
 {
     this->widget_anchor_x = graph_cfg.widget_anchor_x;
     this->widget_anchor_y = graph_cfg.widget_anchor_y;
-    // this->widget_data_to_gatekeeper.widget = this;
 
     drawer = new GraphicDrawer(graph_cfg, canvas_format);
     ((rtos_GraphicDisplayDevice *)this->display_device)->check_rtos_display_device_compatibility(graph_cfg, canvas_format);
@@ -76,8 +60,11 @@ rtos_TextWidget::rtos_TextWidget(rtos_Model *actual_displayed_model,
     : rtos_Widget(actual_displayed_model, display_device)
 {
     writer = new TextWriter(text_cfg, canvas_format);
-    // this->widget_data_to_gatekeeper.widget = this;
+    this->widget_anchor_x = text_cfg.widget_anchor_x;
+    this->widget_anchor_y = text_cfg.widget_anchor_y;
 }
+
+
 rtos_TextWidget::rtos_TextWidget(rtos_Model *actual_displayed_model,
                                  struct_ConfigTextWidget text_cfg,
                                  CanvasFormat canvas_format,
@@ -86,8 +73,11 @@ rtos_TextWidget::rtos_TextWidget(rtos_Model *actual_displayed_model,
     : rtos_Widget(actual_displayed_model, display_device)
 {
     writer = new TextWriter(text_cfg, canvas_format, frame_width, frame_height);
-    // this->widget_data_to_gatekeeper.widget = this;
+    this->widget_anchor_x = text_cfg.widget_anchor_x;
+    this->widget_anchor_y = text_cfg.widget_anchor_y;
 }
+
+
 rtos_TextWidget::~rtos_TextWidget()
 {
     delete writer;
@@ -303,9 +293,9 @@ void GraphicDrawer::draw_border(ColorIndex color)
 
 void TextWriter::write(char character, uint8_t char_column, uint8_t char_line)
 {
-    uint8_t anchor_x = char_column * this->font[FONT_WIDTH_INDEX];
-    uint8_t anchor_y = char_line * this->font[FONT_HEIGHT_INDEX];
-    draw_glyph(character, anchor_x, anchor_y);
+    uint8_t position_x = char_column * this->font[FONT_WIDTH_INDEX];
+    uint8_t position_y = char_line * this->font[FONT_HEIGHT_INDEX];
+    draw_glyph(character, position_x, position_y);
 }
 
 void TextWriter::clear_line()
@@ -357,9 +347,11 @@ void TextWriter::create_text_buffer()
 TextWriter::TextWriter(struct_ConfigTextWidget text_cfg, CanvasFormat canvas_format)
     : GraphicDrawer(text_cfg, canvas_format)
 {
+    this->font = text_cfg.font;
+
     this->number_of_column = text_cfg.number_of_column;
     this->number_of_line = text_cfg.number_of_line;
-    this->font = text_cfg.font;
+
     this->tab_size = text_cfg.tab_size;
     this->wrap = text_cfg.wrap;
     this->auto_next_char = text_cfg.auto_next_char;
@@ -372,6 +364,18 @@ TextWriter::TextWriter(struct_ConfigTextWidget text_cfg,
                        size_t frame_width, size_t frame_height)
     : GraphicDrawer(text_cfg, canvas_format, frame_width, frame_height)
 {
+    this->font = text_cfg.font;
+    
+    this->number_of_column = this->canvas->canvas_width_pixel / this->font[FONT_WIDTH_INDEX];
+    this->number_of_line = this->canvas->canvas_height_pixel / this->font[FONT_HEIGHT_INDEX];
+    this->canvas->canvas_buffer_size_pixel = this->canvas->canvas_height_pixel * this->canvas->canvas_width_pixel;
+
+    this->tab_size = text_cfg.tab_size;
+    this->wrap = text_cfg.wrap;
+    this->auto_next_char = text_cfg.auto_next_char;
+
+    create_text_buffer();
+
 }
 
 TextWriter::~TextWriter()
@@ -379,7 +383,7 @@ TextWriter::~TextWriter()
     delete[] this->text_buffer;
 }
 
-void TextWriter::update_text_frame_size(const unsigned char *font)
+void TextWriter::update_text_line_column_number(const unsigned char *font)
 {
     this->font = font;
     // size the text area according to the available room within the frame width and height

@@ -117,11 +117,6 @@ public:
     /// @brief the data structure used to send the canvas to the display task when a FreeRTOS queue is used.
     struct_DataToShow data_to_display;
 
-    /// @brief used with FreeRTOS. send the widget data_to_display structure to the task in charge of the display management
-    /// @param display_queue the communcation queue with the display gate keeper
-    /// @param sending_done the semaphore triggered when the canvas display is complete.
-    void send_image_to_DisplayGateKeeper(QueueHandle_t display_queue, SemaphoreHandle_t sending_done);
-
     /// @brief contructor for generic widget
     /// @param actual_displayed_model the displayed model of the widget
     /// @param display_device The display device on which the widget is drawn. This device can be "null".
@@ -209,11 +204,6 @@ public:
 
     /// @brief A short way to call GraphicDisplayDevice::show(&canvas, anchor x, anchor y)
     void show();
-
-    // /// @brief used with FreeRTOS. send the widget data_to_display structure to the task in charge of the display management
-    // /// @param display_queue the communcation queue with the display gate keeper
-    // /// @param sending_done the semaphore triggered when the canvas display is complete.
-    // void send_image_to_DisplayGateKeeper(QueueHandle_t display_queue, SemaphoreHandle_t sending_done);
 
     /**
      * @brief Construct a new Graphic Widget object
