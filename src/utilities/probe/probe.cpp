@@ -4,7 +4,7 @@
 Probe::Probe(uint _channel)
 {
     /* initialisation of the probe instance
-    */
+     */
     this->_gpio = Probe::_channel_map[_channel];
     gpio_init(this->_gpio);
     gpio_set_dir(this->_gpio, GPIO_OUT);
@@ -30,4 +30,10 @@ void Probe::pulse_us(uint _duration)
 void Probe::copy(bool _value)
 {
     gpio_put(this->_gpio, _value);
+}
+
+void Probe::pulse_train(uint nb)
+{
+    for (size_t i = 0; i < nb; i++)
+        pulse_us(10);
 }
