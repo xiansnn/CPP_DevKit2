@@ -61,9 +61,9 @@ target_link_libraries(test_st7735_text_primitives
 add_executable(test_st7735_text_and_graph_widgets test_st7735_text_and_graph_widgets.cpp)
 target_link_libraries(test_st7735_text_and_graph_widgets 
             pico_stdlib 
-            sw_ui_core
-            hw_spi 
-            sw_widget
+            rtos_ui_core
+            rtos_hw_spi 
+            rtos_widget
             device_st7735 
             utilities_probe
             )
@@ -86,10 +86,9 @@ add_executable(test_rtos_st7735_text_and_graph_widgets
 target_link_libraries(test_rtos_st7735_text_and_graph_widgets 
             pico_stdlib 
             utilities_probe
-            sw_ui_core
             rtos_ui_core
             rtos_hw_spi
-            sw_widget
+            rtos_widget
             device_st7735 
             sw_display_device
             

@@ -7,49 +7,48 @@ my_model::~my_model() {}
 
 void my_model::update_cycle(int i, int sign)
 {
-    this->roll = i ;
-    this->pitch = sign * i  / 4;
-
+    this->roll = i;
+    this->pitch = sign * i / 4;
 }
 
-my_text_widget::my_text_widget(GraphicDisplayDevice *graphic_display_screen,
-                               struct_ConfigTextWidget text_cfg, CanvasFormat format, Model *model)
-    : TextWidget(graphic_display_screen, text_cfg, format, model) {}
+my_text_widget::my_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+                               struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
+    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen) {}
 
-my_text_widget::my_text_widget(GraphicDisplayDevice *graphic_display_screen,
+my_text_widget::my_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
                                struct_ConfigTextWidget text_cfg, CanvasFormat format,
-                               uint8_t x, uint8_t y, Model *model)
-    : TextWidget(graphic_display_screen, text_cfg, format, x, y, model) {}
+                               uint8_t x, uint8_t y, rtos_Model *model)
+    : rtos_TextWidget(model, text_cfg, format, x, y, graphic_display_screen) {}
 
 my_text_widget::~my_text_widget() {}
 
 void my_text_widget::get_value_of_interest()
 {
-    sprintf(this->text_buffer, "%+3d\xF8  %+3d\xF8", ((my_model *)this->actual_displayed_model)->roll, ((my_model *)this->actual_displayed_model)->pitch);
+    sprintf(this->writer->text_buffer, "%+3d\xF8  %+3d\xF8", ((my_model *)this->actual_rtos_displayed_model)->roll, ((my_model *)this->actual_rtos_displayed_model)->pitch);
 }
 
-my_visu_widget::my_visu_widget(GraphicDisplayDevice *graphic_display_screen,
-                               struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, Model *model)
-    : GraphicWidget(graphic_display_screen, graph_cfg, format, model) {}
+my_visu_widget::my_visu_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+                               struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, rtos_Model *model)
+    : rtos_GraphicWidget(model, graph_cfg, format, graphic_display_screen) {}
 
 my_visu_widget::~my_visu_widget() {}
 
 void my_visu_widget::get_value_of_interest()
 {
-    this->roll = ((my_model *)this->actual_displayed_model)->roll;
-    this->pitch = ((my_model *)this->actual_displayed_model)->pitch;
+    this->roll = ((my_model *)this->actual_rtos_displayed_model)->roll;
+    this->pitch = ((my_model *)this->actual_rtos_displayed_model)->pitch;
 }
 
 void my_visu_widget::draw()
 {
-    clear_widget();
+    drawer->clear_widget();
     get_value_of_interest();
 
     // compute and show the graphic representation
-    float xc = widget_width / 2;
-    float yc = widget_height / 2;
-    float yl = widget_height / 2 - pitch;
-    float radius = yc - 2 * widget_border_width; // radius -2 to fit inside the rectangle
+    float xc =drawer->canvas->canvas_width_pixel / 2;
+    float yc =drawer->canvas->canvas_height_pixel / 2;
+    float yl = yc - pitch;
+    float radius = yc - 2 * drawer->widget_border_width; // radius -2 to fit inside the rectangle
     float sin_roll = sin(std::numbers::pi / 180.0 * roll);
     float cos_roll = cos(std::numbers::pi / 180.0 * roll);
     int x0 = xc - radius * cos_roll;
@@ -57,19 +56,18 @@ void my_visu_widget::draw()
     int x1 = xc + radius * cos_roll;
     int y1 = yl + radius * sin_roll;
 
-    this->canvas->fill_canvas_with_color(canvas->bg_color);
+    this->drawer->canvas->fill_canvas_with_color(drawer->canvas->bg_color);
 
-    this->circle(radius, xc, yl, true, ColorIndex::LIME);
-    this->line(x0, y0, x1, y1, ColorIndex::RED);
+    this->drawer->circle(radius, xc, yl, true, ColorIndex::LIME);
+    this->drawer->line(x0, y0, x1, y1, ColorIndex::RED);
 
-    draw_border(canvas->fg_color);
-
+    drawer->draw_border(drawer->canvas->fg_color);
 }
 
 void my_text_widget::draw()
 {
-    clear_text_buffer();
+    this->writer->clear_text_buffer();
     get_value_of_interest();
-    write();
-    draw_border();
+    this->writer->write();
+    this->writer->draw_border();
 }

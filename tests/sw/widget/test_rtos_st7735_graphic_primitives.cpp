@@ -110,7 +110,6 @@ void vIdleTask(void *pxProbe)
 
 void display_gate_keeper_task(void *param)
 {
-
     struct_WidgetDataToGateKeeper received_data_to_show;
 
     while (true)

@@ -41,13 +41,9 @@ Probe p7 = Probe(7);
 #define DEVICE_DISPLAY_HEIGHT 160
 #endif
 
-QueueHandle_t display_queue_to_SPI = xQueueCreate(8, sizeof(struct_DataToShow));
-SemaphoreHandle_t data_sent_to_SPI = xSemaphoreCreateBinary(); // synchro between display task and sending task
-
-//-------------Model-----
-// my_model model = my_model();
-rtos_Model my_rtos_model = rtos_Model();
-//-------------SPI drivers----
+//==========================display gatekeeper===============
+rtos_GraphicDisplayGateKeeper display_gate_keeper = rtos_GraphicDisplayGateKeeper();
+//==========================Master SPI========================
 struct_ConfigMasterSPI cfg_spi = {
     .spi = spi1,
     .sck_pin = 10,
@@ -64,8 +60,7 @@ void end_of_TX_DMA_xfer_handler()
     spi_master.spi_tx_dma_isr();
     p7.lo();
 }
-
-//------------ST7735 display device-----
+//================== ST7735===================
 struct_ConfigST7735 cfg_st7735{
     .display_type = DEVICE_DISPLAY_TYPE,
     .backlight_pin = 5,
@@ -73,6 +68,9 @@ struct_ConfigST7735 cfg_st7735{
     .dc_pin = 14,
     .rotation = DEVICE_DISPLAY_ROTATION};
 rtos_ST7735 display = rtos_ST7735(&spi_master, cfg_st7735);
+
+//-------------Model-----
+my_model my_rtos_model = my_model();
 //-------------Title-text-----
 struct_ConfigTextWidget title_config = {
     .number_of_column = 10,
@@ -88,8 +86,7 @@ struct_ConfigTextWidget values_config = {
     .widget_anchor_x = 0,
     .widget_anchor_y = (uint8_t)(title_config.widget_anchor_y + 2 * title_config.font[FONT_HEIGHT_INDEX]),
     .font = font_12x16};
-my_text_widget values = my_text_widget(&display, values_config, TEXT_CANVAS_FORMAT, &model);
-rtos_Widget my_rtos_values_widget = rtos_Widget(&values);
+my_text_widget my_rtos_values_widget = my_text_widget(&display, values_config, TEXT_CANVAS_FORMAT, &my_rtos_model);
 //---------------Graph------------
 struct_ConfigGraphicWidget graph_config{
     .canvas_width_pixel = 128,
@@ -99,34 +96,8 @@ struct_ConfigGraphicWidget graph_config{
     .widget_anchor_x = 0,
     .widget_anchor_y = 0,
     .widget_with_border = true};
-my_visu_widget graph = my_visu_widget(&display, graph_config, GRAPHICS_CANVAS_FORMAT, &model);
-rtos_Widget my_rtos_graph_widget = rtos_Widget(&graph);
-//--------------------------------
-
-void display_gate_keeper_task(void *probe)
-{
-    struct_DataToShow received_data_to_show;
-
-    while (true)
-    {
-        xQueueReceive(display_queue_to_SPI, &received_data_to_show, portMAX_DELAY);
-        ((Probe *)probe)->hi();
-        switch (received_data_to_show.command)
-        {
-        case DisplayCommand::SHOW_IMAGE:
-            ((rtos_ST7735 *)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
-            break;
-        case DisplayCommand::CLEAR_SCREEN:
-            ((rtos_ST7735 *)received_data_to_show.display)->clear_device_screen_buffer();
-            break;
-        default:
-            break;
-        };
-        ((Probe *)probe)->lo();
-        xSemaphoreGive(data_sent_to_SPI);
-    }
-}
-
+my_visu_widget my_rtos_graph_widget = my_visu_widget(&display, graph_config, GRAPHICS_CANVAS_FORMAT, &my_rtos_model);
+//---------------TASKS-----------------
 void idle_task(void *pxProbe)
 {
     while (true)
@@ -136,25 +107,38 @@ void idle_task(void *pxProbe)
     }
 }
 
+void display_gate_keeper_task(void *probe)
+{
+    struct_WidgetDataToGateKeeper received_data_to_show;
+
+    while (true)
+    {
+        xQueueReceive(display_gate_keeper.graphic_widget_data, &received_data_to_show, portMAX_DELAY);
+        ((Probe *)probe)->hi();
+        display_gate_keeper.receive_widget_data(received_data_to_show);
+        ((Probe *)probe)->lo();
+    }
+}
+
 void my_model_task(void *pxProbe)
 {
     TickType_t xLastWakeTime = xTaskGetTickCount();
     my_rtos_model.update_attached_rtos_widget(&my_rtos_graph_widget);
     my_rtos_model.update_attached_rtos_widget(&my_rtos_values_widget);
-    display.send_clear_device_command(display_queue_to_SPI, data_sent_to_SPI);
+    display_gate_keeper.send_clear_device_command(&display);
     my_text_widget title = my_text_widget(&display, title_config, TEXT_CANVAS_FORMAT);
-    title.write("ROLL PITCH");
-    title.send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
+    title.writer->write("ROLL PITCH");
+    display_gate_keeper.send_widget_data(&title);
 
     ((Probe *)pxProbe)->pulse_us(100);
     int sign = 1;
     while (true)
     {
         sign *= -1;
-        for (int i = -90; i < 90; i+=10)
+        for (int i = -90; i < 90; i += 10)
         {
             ((Probe *)pxProbe)->hi();
-            ((my_model *)my_rtos_model.model)->update_cycle(i, sign); //  cyclic_computation((Probe *)pxProbe);
+            my_rtos_model.update_cycle(i, sign); //  cyclic_computation((Probe *)pxProbe);
             my_rtos_model.notify_all_linked_widget_task();
             ((Probe *)pxProbe)->lo();
             vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(REFRESH_PERIOD_ms));
@@ -163,28 +147,26 @@ void my_model_task(void *pxProbe)
 }
 void values_widget_task(void *probe)
 {
-    p3.pulse_us(100);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         p3.hi();
-        // warning: be sure to complete struct_DataToShow before send_image_to_DisplayGateKeeper
-        ((my_text_widget*)my_rtos_values_widget.widget)->draw();
-        my_rtos_values_widget.widget->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
+        my_rtos_values_widget.draw();
         p3.lo();
+        display_gate_keeper.send_widget_data(&my_rtos_values_widget);
+        p3.pulse_us(10);
     }
 }
 void graph_widget_task(void *probe)
 {
-    p2.pulse_us(100);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         p2.hi();
-        // warning: be sure to complete struct_DataToShow before send_image_to_DisplayGateKeeper
-        ((my_visu_widget*)my_rtos_graph_widget.widget)->draw();
-        ((GraphicWidget *)my_rtos_graph_widget.widget)->send_image_to_DisplayGateKeeper(display_queue_to_SPI, data_sent_to_SPI);
+        my_rtos_graph_widget.draw();
         p2.lo();
+        display_gate_keeper.send_widget_data(&my_rtos_graph_widget);
+        p2.pulse_us(10);
     }
 }
 
@@ -194,11 +176,12 @@ int main()
     stdio_init_all();
 
     xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
+
     xTaskCreate(my_model_task, "main_task", 256, &p1, 15, NULL);
     xTaskCreate(graph_widget_task, "widget_task_1", 256, NULL, 10, &my_rtos_graph_widget.task_handle);
     xTaskCreate(values_widget_task, "widget_task_2", 256, NULL, 10, &my_rtos_values_widget.task_handle);
 
-    xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, &p4, 5, NULL);
+    xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, &p6, 5, NULL);
 
     vTaskStartScheduler();
 
@@ -206,5 +189,4 @@ int main()
         tight_loop_contents();
 
     return 0;
-
 }

@@ -12,7 +12,7 @@
 
 #include "sw/display_device/display_device.h"
 #include "sw/widget/canvas.h"
-
+//TODO extract TextWriter and GraphicDrawer in a separate .h and .cpp file
 /// @brief flag used to generate 127 character font or full extended 255 character font.
 /// \note Must be placed before include "...font..."
 #define SSD1306_ASCII_FULL
@@ -43,7 +43,6 @@
 #define FORM_FEED '\f'
 /// @brief character code for CARRIAGE_RETURN ('CR', 0x0D)
 #define CARRIAGE_RETURN '\r'
-
 
 class rtos_Widget;
 
@@ -168,13 +167,6 @@ protected:
     /// \note when the FramebufferFormat format is MONO_VLSB, works fine only if widget_start_y is a multiple of 8
     uint8_t widget_start_y;
 
-    /// @brief this is the border size of the widget. 0 if no border, 1 if border
-    uint8_t widget_border_width;
-
-    /// @brief fill the graphic pixel buffer with 0x00.
-    /// \note USAGE: used at the begining of the draw() method.
-    void clear_widget();
-
 public:
     GraphicDrawer(struct_ConfigGraphicWidget graph_cfg,
                   CanvasFormat canvas_format);
@@ -185,6 +177,11 @@ public:
                   size_t frame_height);
     virtual ~GraphicDrawer();
 
+    /// @brief this is the border size of the widget. 0 if no border, 1 if border
+    uint8_t widget_border_width;
+    /// @brief fill the graphic pixel buffer with 0x00.
+    /// \note USAGE: used at the begining of the draw() method.
+    void clear_widget();
     /// @brief the associated canvas in which the widget writes text and draws graphics
     Canvas *canvas;
 
