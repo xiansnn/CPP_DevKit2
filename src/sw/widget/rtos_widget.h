@@ -81,7 +81,6 @@ public:
     virtual void get_value_of_interest() = 0;
 };
 
-class GraphicDrawer;
 class rtos_GraphicWidget : public rtos_Widget
 {
 private:
@@ -94,7 +93,6 @@ public:
     ~rtos_GraphicWidget();
 };
 
-class TextWriter;
 class rtos_TextWidget : public rtos_Widget
 {
 private:

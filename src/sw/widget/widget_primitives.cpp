@@ -1,5 +1,4 @@
 #include "widget_primitives.h"
-#include <cstdlib>
 
 void GraphicDrawer::clear_widget()
 {
@@ -452,7 +451,7 @@ void GraphicFramebuffer::byteXOR(int byte_idx, uint8_t byte)
 }
 //==============================================================================================
 
-    /// @brief the graphic primitive to draw an ellipse \bug //FIXME ellipse doesn't work !
+    /// @brief the graphic primitive to draw an ellipse //CAUTION  ellipse doesn't work !
     /// @param x_center the x coordinate of the center
     /// @param y_center the y coordinate of the center
     /// @param x_radius the radius along x axis
