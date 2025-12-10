@@ -24,7 +24,7 @@ Probe pr_D1 = Probe(1);
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
 
-#define REFRESH_PERIOD 20
+#define REFRESH_PERIOD 50
 
 #define DEGREE \xF8
 
@@ -214,6 +214,7 @@ int main()
         sign *= -1;
         for (int i = -90; i < 90; i++)
         {
+            pr_D1.pulse_us(10);
             // compute and show values
             model.update_cycle(i, sign);
             pr_D4.hi();

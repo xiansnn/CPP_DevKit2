@@ -58,8 +58,8 @@ void my_visu_widget::draw()
 
     this->drawer->canvas->fill_canvas_with_color(drawer->canvas->bg_color);
 
-    this->drawer->circle(radius, xc, yl, true, ColorIndex::LIME);
-    this->drawer->line(x0, y0, x1, y1, ColorIndex::RED);
+    this->drawer->circle(radius, xc, yl, true, ColorIndex::WHITE);
+    this->drawer->line(x0, y0, x1, y1, ColorIndex::BLACK);
 
     drawer->draw_border(drawer->canvas->fg_color);
 }

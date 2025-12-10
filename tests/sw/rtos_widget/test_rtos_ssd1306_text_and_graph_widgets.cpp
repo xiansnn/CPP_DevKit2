@@ -1,22 +1,23 @@
 /**
- * @file test_rtos_st7735_text_and_graph_widgets.cpp
+ * @file test_rtos_ssd1306_text_and_graph_widgets.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief
+ * @brief 
  * @version 0.1
- * @date 2025-11-02
- *
+ * @date 2025-12-10
+ * 
  * @copyright Copyright (c) 2025
- *
+ * 
  */
-
-#include "t_rtos_st7735_text_and_graph_widgets.h"
+#include "t_rtos_common_text_and_graph_widgets.h"
 #include "sw/ui_core/rtos_ui_core.h"
+#include "device/SSD1306/ssd1306.h"
+
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
 Probe p1 = Probe(1);
-Probe p2 = Probe(2);
-Probe p3 = Probe(3);
+// Probe p2 = Probe(2);
+// Probe p3 = Probe(3);
 Probe p4 = Probe(4);
 Probe p5 = Probe(5);
 Probe p6 = Probe(6);
@@ -24,51 +25,43 @@ Probe p7 = Probe(7);
 
 #define REFRESH_PERIOD_ms 50
 
-#define GRAPHICS_CANVAS_FORMAT CanvasFormat::RGB565_16b
-#define TEXT_CANVAS_FORMAT CanvasFormat::RGB565_16b
-
-// #define ST7735_128x128
-#define ST7735_128x160
-
-#ifdef ST7735_128x128
-#define DEVICE_DISPLAY_TYPE ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB
-#define DEVICE_DISPLAY_ROTATION ST7735Rotation::_90
-#define DEVICE_DISPLAY_HEIGHT 128
-#endif
-#ifdef ST7735_128x160
-#define DEVICE_DISPLAY_TYPE ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB
-#define DEVICE_DISPLAY_ROTATION ST7735Rotation::_180
-#define DEVICE_DISPLAY_HEIGHT 160
-#endif
+#define CANVAS_FORMAT CanvasFormat::MONO_VLSB
 
 //==========================display gatekeeper===============
 rtos_GraphicDisplayGateKeeper display_gate_keeper = rtos_GraphicDisplayGateKeeper();
-//==========================Master SPI========================
-struct_ConfigMasterSPI cfg_spi = {
-    .spi = spi1,
-    .sck_pin = 10,
-    .tx_pin = 11,
-    .rx_pin = 12,
-    .cs_pin = 13,
-    .baud_rate_Hz = 10 * 1000 * 1000};
-void end_of_TX_DMA_xfer_handler();
-rtos_HW_SPI_Master spi_master = rtos_HW_SPI_Master(cfg_spi,
-                                                   DMA_IRQ_0, end_of_TX_DMA_xfer_handler);
-void end_of_TX_DMA_xfer_handler()
+//==========================Master I2C========================
+void i2c_irq_handler();
+struct_ConfigMasterI2C cfg_i2c{
+    .i2c = i2c0,
+    .sda_pin = 8,
+    .scl_pin = 9,
+    .baud_rate = I2C_FAST_MODE,
+    .i2c_tx_master_handler = i2c_irq_handler};
+rtos_HW_I2C_Master master = rtos_HW_I2C_Master(cfg_i2c);
+void i2c_irq_handler()
 {
-    p7.hi();
-    spi_master.spi_tx_dma_isr();
-    p7.lo();
-}
-//================== ST7735===================
-struct_ConfigST7735 cfg_st7735{
-    .display_type = DEVICE_DISPLAY_TYPE,
-    .backlight_pin = 5,
-    .hw_reset_pin = 15,
-    .dc_pin = 14,
-    .rotation = DEVICE_DISPLAY_ROTATION};
-rtos_ST7735 display = rtos_ST7735(&spi_master, cfg_st7735);
-
+    master.i2c_dma_isr();
+};
+//==================SSD1306 left screen===================
+struct_ConfigSSD1306 cfg_left_screen{
+    .i2c_address = 0x3C,
+    .vertical_offset = 0,
+    .scan_SEG_inverse_direction = true,
+    .scan_COM_inverse_direction = true,
+    .contrast = 128,
+    .frequency_divider = 1,
+    .frequency_factor = 0};
+rtos_SSD1306 left_display = rtos_SSD1306(&master, cfg_left_screen);
+//==================SSD1306 right screen===================
+struct_ConfigSSD1306 cfg_right_screen{
+    .i2c_address = 0x3D,
+    .vertical_offset = 0,
+    .scan_SEG_inverse_direction = true,
+    .scan_COM_inverse_direction = true,
+    .contrast = 128,
+    .frequency_divider = 1,
+    .frequency_factor = 0};
+rtos_SSD1306 right_display = rtos_SSD1306(&master, cfg_right_screen);
 //-------------Model-----
 my_model my_rtos_model = my_model();
 //-------------Title-text-----
@@ -78,7 +71,7 @@ struct_ConfigTextWidget title_config = {
     .widget_anchor_x = 0,
     .widget_anchor_y = 64,
     .font = font_12x16};
-my_text_widget title = my_text_widget(&display, title_config, TEXT_CANVAS_FORMAT);
+my_text_widget title = my_text_widget(&left_display, title_config, CANVAS_FORMAT);
 //--------------Values-text----
 struct_ConfigTextWidget values_config = {
     .number_of_column = 10,
@@ -86,17 +79,17 @@ struct_ConfigTextWidget values_config = {
     .widget_anchor_x = 0,
     .widget_anchor_y = (uint8_t)(title_config.widget_anchor_y + 2 * title_config.font[FONT_HEIGHT_INDEX]),
     .font = font_12x16};
-my_text_widget my_rtos_values_widget = my_text_widget(&display, values_config, TEXT_CANVAS_FORMAT, &my_rtos_model);
+my_text_widget my_rtos_values_widget = my_text_widget(&left_display, values_config, CANVAS_FORMAT, &my_rtos_model);
 //---------------Graph------------
 struct_ConfigGraphicWidget graph_config{
     .canvas_width_pixel = 128,
     .canvas_height_pixel = 56,
-    .canvas_foreground_color = ColorIndex::CYAN,
-    .canvas_background_color = ColorIndex::MAROON,
+    .canvas_foreground_color = ColorIndex::WHITE,
+    .canvas_background_color = ColorIndex::BLACK,
     .widget_anchor_x = 0,
     .widget_anchor_y = 0,
     .widget_with_border = true};
-my_visu_widget my_rtos_graph_widget = my_visu_widget(&display, graph_config, GRAPHICS_CANVAS_FORMAT, &my_rtos_model);
+my_visu_widget my_rtos_graph_widget = my_visu_widget(&right_display, graph_config, CANVAS_FORMAT, &my_rtos_model);
 //---------------TASKS-----------------
 void idle_task(void *pxProbe)
 {
@@ -125,8 +118,9 @@ void my_model_task(void *pxProbe)
     TickType_t xLastWakeTime = xTaskGetTickCount();
     my_rtos_model.update_attached_rtos_widget(&my_rtos_graph_widget);
     my_rtos_model.update_attached_rtos_widget(&my_rtos_values_widget);
-    display_gate_keeper.send_clear_device_command(&display);
-    my_text_widget title = my_text_widget(&display, title_config, TEXT_CANVAS_FORMAT);
+    display_gate_keeper.send_clear_device_command(&right_display);
+    display_gate_keeper.send_clear_device_command(&left_display);
+    my_text_widget title = my_text_widget(&left_display, title_config, CANVAS_FORMAT);
     title.writer->write("ROLL PITCH");
     display_gate_keeper.send_widget_data(&title);
 
@@ -150,11 +144,11 @@ void values_widget_task(void *probe)
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p3.hi();
+        ((Probe *)probe)->hi();
         my_rtos_values_widget.draw();
-        p3.lo();
+        ((Probe *)probe)->lo();
         display_gate_keeper.send_widget_data(&my_rtos_values_widget);
-        p3.pulse_us(10);
+        ((Probe *)probe)->pulse_us(10);
     }
 }
 void graph_widget_task(void *probe)
@@ -162,11 +156,11 @@ void graph_widget_task(void *probe)
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p2.hi();
+        ((Probe *)probe)->hi();
         my_rtos_graph_widget.draw();
-        p2.lo();
+        ((Probe *)probe)->lo();
         display_gate_keeper.send_widget_data(&my_rtos_graph_widget);
-        p2.pulse_us(10);
+        ((Probe *)probe)->pulse_us(10);
     }
 }
 
@@ -178,8 +172,8 @@ int main()
     xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
 
     xTaskCreate(my_model_task, "main_task", 256, &p1, 15, NULL);
-    xTaskCreate(graph_widget_task, "widget_task_1", 256, NULL, 10, &my_rtos_graph_widget.task_handle);
-    xTaskCreate(values_widget_task, "widget_task_2", 256, NULL, 10, &my_rtos_values_widget.task_handle);
+    xTaskCreate(graph_widget_task, "widget_task_1", 256, &p4, 10, &my_rtos_graph_widget.task_handle);
+    xTaskCreate(values_widget_task, "widget_task_2", 256, &p5, 10, &my_rtos_values_widget.task_handle);
 
     xTaskCreate(display_gate_keeper_task, "display_gate_keeper_task", 256, &p6, 5, NULL);
 
