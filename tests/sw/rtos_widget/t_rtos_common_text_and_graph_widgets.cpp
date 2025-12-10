@@ -1,4 +1,4 @@
-#include "t_rtos_st7735_text_and_graph_widgets.h"
+#include "t_rtos_common_text_and_graph_widgets.h"
 
 #define DEGREE \xF8
 

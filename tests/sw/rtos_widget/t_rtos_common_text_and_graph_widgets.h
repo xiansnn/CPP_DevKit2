@@ -10,7 +10,7 @@
 
 #include "sw/widget/rtos_widget.h"
 #include "sw/ui_core/rtos_ui_core.h"
-#include "device/ST7735/st7735.h"
+
 
 class my_model : public rtos_Model
 {
