@@ -8,7 +8,8 @@ target_link_libraries(sw_widget
             )
             
 add_library(rtos_widget   
-            rtos_widget.cpp)
+            rtos_widget.cpp
+            widget_primitives.cpp)
 target_link_libraries(rtos_widget 
             pico_stdlib
             rtos_ui_core

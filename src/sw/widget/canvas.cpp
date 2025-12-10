@@ -256,8 +256,8 @@ void CanvasTrueRGB::draw_pixel(const int x, const int y, const ColorIndex color)
     }
 }
 
-/*
-
+/* Code we may need
+//==================================================================
 static uint8_t reversed[sizeof(font)] = {0};
 
 static uint8_t reverse(uint8_t b)
@@ -273,4 +273,5 @@ static void FillReversedCache()
     for (size_t i = 0; i < sizeof(font); i++)
         reversed[i] = reverse(font[i]);
 }
+//=============================================================
 */

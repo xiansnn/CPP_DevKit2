@@ -572,47 +572,6 @@ void TextWidget::draw_border(ColorIndex color)
         rect(0, 0, canvas->canvas_width_pixel, canvas->canvas_height_pixel, false, color);
 }
 
-void GraphicWidget::ellipse(uint8_t x_center, uint8_t y_center, uint8_t x_radius, uint8_t y_radius, bool fill, uint8_t quadrant, ColorIndex c)
-{
-    int x, y, m;
-    x = 0;
-    y = y_radius;
-    int _xr2 = x_radius * x_radius;
-    int _yr2 = y_radius * y_radius;
-
-    m = 4 * _yr2 - 4 * _xr2 * y_radius + _xr2;
-
-    while (y >= 0)
-    {
-        if (!fill)
-        {
-            canvas->draw_pixel(x_center + x, y_center + y, c);
-            canvas->draw_pixel(x_center - x, y_center + y, c);
-            canvas->draw_pixel(x_center + x, y_center - y, c);
-            canvas->draw_pixel(x_center - x, y_center - y, c);
-        }
-        else
-        {
-            hline(x_center - x, y_center + y, 2 * x + 2, c);
-            hline(x_center - y, y_center + x, 2 * y + 2, c);
-            hline(x_center - y, y_center - x, 2 * y + 2, c);
-            hline(x_center - x, y_center - y, 2 * x + 2, c);
-        }
-
-        if (m > 0)
-        {
-            x += 1;
-            y -= 1;
-            m += 3 * _xr2 - 4 * _xr2 * y;
-        }
-        else
-        {
-            x += 1;
-            m += 4 * _xr2 * y - _xr2;
-        }
-    }
-}
-
 void GraphicWidget::clear_widget()
 {
     canvas->clear_canvas_buffer();
@@ -624,27 +583,7 @@ void GraphicWidget::update_widget_anchor(uint8_t x, uint8_t y)
     this->widget_anchor_y = y;
 }
 
-// void GraphicFramebuffer::byteOR(int byte_idx, uint8_t byte)
-// {
-//     // return if index outside 0 - pixel_buffer length - 1
-//     if (byte_idx > (this->pixel_buffer_size - 1))
-//         return;
-//     this->pixel_buffer[byte_idx] |= byte;
-// }
-// void GraphicFramebuffer::byteAND(int byte_idx, uint8_t byte)
-// {
-//     // return if index outside 0 - pixel_buffer length - 1
-//     if (byte_idx > (this->pixel_buffer_size - 1))
-//         return;
-//     this->pixel_buffer[byte_idx] &= byte;
-// }
-// void GraphicFramebuffer::byteXOR(int byte_idx, uint8_t byte)
-// {
-//     // return if index outside 0 - pixel_buffer length - 1
-//     if (byte_idx > (this->pixel_buffer_size - 1))
-//         return;
-//     this->pixel_buffer[byte_idx] ^= byte;
-// }
+
 
 void Blinker::compute_blinking_phase()
 {
