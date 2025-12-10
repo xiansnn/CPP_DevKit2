@@ -13,12 +13,7 @@
 
 #include "sw/display_device/display_device.h"
 #include "sw/ui_core/ui_core.h"
-#include "sw/widget/canvas.h"
-
-#include "FreeRTOS.h"
-#include "task.h"
-#include "queue.h"
-#include "semphr.h"
+#include "sw/widget/widget_primitives.h"
 
 #include <vector>
 #include <string>
@@ -114,8 +109,6 @@ public:
     /// @brief the display device where the attached to the frame buffer
     DisplayDevice *display_device{nullptr};
 
-    /// @brief the data structure used to send the canvas to the display task when a FreeRTOS queue is used.
-    struct_DataToShow data_to_display;
 
     /// @brief contructor for generic widget
     /// @param actual_displayed_model the displayed model of the widget

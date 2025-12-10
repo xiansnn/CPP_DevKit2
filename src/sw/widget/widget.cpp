@@ -13,7 +13,6 @@ Widget::Widget(Model *actual_displayed_model, DisplayDevice *display_device)
     printf("+ Widget\n");
 #endif // MACRO
     this->display_device = display_device;
-    this->data_to_display.display = this->display_device;
     if (actual_displayed_model != nullptr)
     {
         this->actual_displayed_model = actual_displayed_model;
@@ -87,9 +86,6 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     widget_width = canvas->canvas_width_pixel - 2 * widget_border_width;
     widget_height = canvas->canvas_height_pixel - 2 * widget_border_width;
 
-    this->data_to_display.canvas = this->canvas;
-    this->data_to_display.anchor_x = this->widget_anchor_x;
-    this->data_to_display.anchor_y = this->widget_anchor_y;
 
     ((GraphicDisplayDevice *)display_device)->check_display_device_compatibility(get_graph_frame_config(), canvas_format);
 }
@@ -145,11 +141,6 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     widget_width = canvas->canvas_width_pixel - 2 * widget_border_width;
     widget_height = canvas->canvas_height_pixel - 2 * widget_border_width;
 
-    data_to_display.display = (GraphicDisplayDevice *)display_device;
-    data_to_display.canvas = this->canvas;
-    data_to_display.anchor_x = this->widget_anchor_x;
-    data_to_display.anchor_y = this->widget_anchor_y;
-
     ((GraphicDisplayDevice *)display_device)->check_display_device_compatibility(get_graph_frame_config(), canvas_format);
 }
 
@@ -192,11 +183,6 @@ GraphicWidget::GraphicWidget(GraphicDisplayDevice *graphic_display_screen,
     widget_start_y = widget_border_width;
     widget_width = canvas->canvas_width_pixel - 2 * widget_border_width;
     widget_height = canvas->canvas_height_pixel - 2 * widget_border_width;
-
-    data_to_display.display = (GraphicDisplayDevice *)display_device;
-    data_to_display.canvas = this->canvas;
-    data_to_display.anchor_x = this->widget_anchor_x;
-    data_to_display.anchor_y = this->widget_anchor_y;
 
     ((GraphicDisplayDevice *)display_device)->check_display_device_compatibility(get_graph_frame_config(), canvas_format);
 }
