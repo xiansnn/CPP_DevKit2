@@ -23,7 +23,7 @@ Probe pr_D1 = Probe(1);
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
 
-#define REFRESH_PERIOD 20
+#define WAITING_PERIOD 20
 
 #define DEGREE \xF8
 
@@ -227,7 +227,7 @@ int main()
             pr_D5.hi();
             graph.draw();
             pr_D5.lo(); // 29.6ms
-            sleep_ms(REFRESH_PERIOD);
+            sleep_ms(WAITING_PERIOD);
         }
     }
 }
