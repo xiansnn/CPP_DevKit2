@@ -1,0 +1,7 @@
+<map id="TextWriter::update_text_line_column_number" name="TextWriter::update_text_line_column_number">
+<area shape="rect" id="Node000001" title="The max number of line with respect to frame height and font height." alt="" coords="5,5,249,30"/>
+<area shape="rect" id="Node000002" href="$class_text_writer.html#a71a0b2ab2958de967cbbb890b1ff14a1" title="create text buffer and delete the old one if already existing" alt="" coords="297,5,466,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="249,15,281,15,281,20,249,20"/>
+<area shape="rect" id="Node000003" href="$class_text_writer.html#a9ca2e282a7de0bce688f03a67f9e55a0" title="et text buffer memory to &quot;0&quot; and set character current line and column to 0" alt="" coords="514,5,675,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="467,15,498,15,498,20,467,20"/>
+</map>

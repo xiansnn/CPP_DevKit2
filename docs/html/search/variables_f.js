@@ -6,5 +6,6 @@ var searchData=
   ['rgb_5forder_3',['rgb_order',['../class_s_t7735.html#a9adf53e80c857b33df01bfe1370c3d8d',1,'ST7735']]],
   ['rotation_4',['rotation',['../structstruct___config_s_t7735.html#a3347af0a9646ab6e6e2d6e3d7bc3b252',1,'struct_ConfigST7735']]],
   ['rtos_5fstatus_5',['rtos_status',['../classrtos___u_i_controlled_model.html#a9ee6affa87b7608c0198a7737e76790d',1,'rtos_UIControlledModel']]],
-  ['rx_5fpin_6',['rx_pin',['../structstruct___config_master_s_p_i.html#a706e797e658220957b084d0f3b7c4362',1,'struct_ConfigMasterSPI']]]
+  ['rtos_5fwidgets_6',['rtos_widgets',['../classrtos___widget.html#ab948b28687c25a814b54a23dbabac4fe',1,'rtos_Widget']]],
+  ['rx_5fpin_7',['rx_pin',['../structstruct___config_master_s_p_i.html#a706e797e658220957b084d0f3b7c4362',1,'struct_ConfigMasterSPI']]]
 ];

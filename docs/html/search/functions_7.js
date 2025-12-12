@@ -5,7 +5,7 @@ var searchData=
   ['has_5fchanged_2',['has_changed',['../class_model.html#a6581f694a68e74228507591a3dbaccdf',1,'Model']]],
   ['hcsr04_3',['HCSR04',['../class_h_c_s_r04.html#a036f4e60cdd9c8e6821833a824dbf338',1,'HCSR04']]],
   ['hi_4',['hi',['../class_probe.html#a493e1f46f0123ae6a18d7bd6e79d74f1',1,'Probe']]],
-  ['hline_5',['hline',['../class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a',1,'GraphicWidget']]],
+  ['hline_5',['hline',['../class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a',1,'GraphicWidget::hline()'],['../class_graphic_drawer.html#a41a04598e0bdceeafc9f0d537143b303',1,'GraphicDrawer::hline()']]],
   ['horizontal_5fscroll_6',['horizontal_scroll',['../class_s_s_d1306.html#a3228383e41ea93124a1da0a619dc6b11',1,'SSD1306']]],
   ['hw_5fdma_7',['HW_DMA',['../class_h_w___d_m_a.html#aeb1a6d0b0caff1877e6671838d111cd2',1,'HW_DMA']]],
   ['hw_5fi2c_5fmaster_8',['HW_I2C_Master',['../class_h_w___i2_c___master.html#aec651bc1d3019c6a5d30bbda8bae5846',1,'HW_I2C_Master']]],

@@ -98,9 +98,10 @@ $(function(){initNavTree('classrtos___display_device.html',''); initResizable(tr
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classrtos___display_device-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">rtos_DisplayDevice Class Reference<div class="ingroups"><a class="el" href="group__view.html">&quot;View&quot;</a></div></div></div>
+  <div class="headertitle"><div class="title">rtos_DisplayDevice Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span><div class="ingroups"><a class="el" href="group__view.html">&quot;View&quot;</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -113,15 +114,15 @@ Inheritance diagram for rtos_DisplayDevice:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___display_device__inherit__graph.png" border="0" usemap="#artos___display_device_inherit__map" alt="Inheritance graph"/></div>
 <map name="artos___display_device_inherit__map" id="artos___display_device_inherit__map">
-<area shape="rect" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="627,5,855,104"/>
-<area shape="rect" href="classrtos___graphic_display_device.html" title="The RTOS graphic display device is the base class for all graphic display devices that are managed by..." alt="" coords="367,152,759,251"/>
-<area shape="poly" title=" " alt="" coords="672,115,624,154,620,150,669,111"/>
-<area shape="rect" href="classrtos___terminal_console.html" title="The RTOS terminal console is the class for all text display devices that are managed by a dedicated d..." alt="" coords="783,152,1057,251"/>
-<area shape="poly" title=" " alt="" coords="814,111,862,150,859,154,811,115"/>
-<area shape="rect" href="classrtos___s_s_d1306.html" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,299,549,472"/>
-<area shape="poly" title=" " alt="" coords="476,261,413,301,410,297,473,257"/>
-<area shape="rect" href="classrtos___s_t7735.html" title="RTOS version of the ST7735 display device." alt="" coords="573,308,1125,463"/>
-<area shape="poly" title=" " alt="" coords="652,256,731,306,728,310,650,261"/>
+<area shape="rect" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="612,5,921,123"/>
+<area shape="rect" href="classrtos___graphic_display_device.html" title="The RTOS graphic display device is the base class for all graphic display devices that are managed by..." alt="" coords="301,191,765,305"/>
+<area shape="poly" title=" " alt="" coords="683,134,606,194,603,189,680,129"/>
+<area shape="rect" href="classrtos___terminal_console.html" title="The RTOS terminal console is the class for all text display devices that are managed by a dedicated d..." alt="" coords="789,171,1211,325"/>
+<area shape="poly" title=" " alt="" coords="853,129,904,169,901,173,850,133"/>
+<area shape="rect" href="classrtos___s_s_d1306.html" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,373,549,561"/>
+<area shape="poly" title=" " alt="" coords="459,316,388,375,385,371,455,312"/>
+<area shape="rect" href="classrtos___s_t7735.html" title="RTOS version of the ST7735 display device." alt="" coords="573,373,1005,561"/>
+<area shape="poly" title=" " alt="" coords="612,312,682,371,678,375,608,316"/>
 </map>
 </div>
 <div class="dynheader">
@@ -129,16 +130,21 @@ Collaboration diagram for rtos_DisplayDevice:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___display_device__coll__graph.png" border="0" usemap="#artos___display_device_coll__map" alt="Collaboration graph"/></div>
 <map name="artos___display_device_coll__map" id="artos___display_device_coll__map">
-<area shape="rect" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="5,5,233,104"/>
+<area shape="rect" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="5,5,315,123"/>
 </map>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:aac8dc205b62b94aa6fdb492ae79b60b6" id="r_aac8dc205b62b94aa6fdb492ae79b60b6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac8dc205b62b94aa6fdb492ae79b60b6">show_widget</a> (<a class="el" href="classrtos___widget.html">rtos_Widget</a> *widget_to_show)=0</td></tr>
+<tr class="memdesc:aac8dc205b62b94aa6fdb492ae79b60b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Show the widget on the display device.  <br /></td></tr>
+<tr class="separator:aac8dc205b62b94aa6fdb492ae79b60b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa38b0a9b6f08a6455fe6e20ab783cf4e" id="r_aa38b0a9b6f08a6455fe6e20ab783cf4e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa38b0a9b6f08a6455fe6e20ab783cf4e">clear_device_screen_buffer</a> ()=0</td></tr>
+<tr class="memdesc:aa38b0a9b6f08a6455fe6e20ab783cf4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the device screen buffer.  <br /></td></tr>
+<tr class="separator:aa38b0a9b6f08a6455fe6e20ab783cf4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a76dc5efe5c21fb9260b007e044e6bc68" id="r_a76dc5efe5c21fb9260b007e044e6bc68"><td class="memItemLeft" align="right" valign="top"><a id="a76dc5efe5c21fb9260b007e044e6bc68" name="a76dc5efe5c21fb9260b007e044e6bc68"></a>
-QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>input_queue</b></td></tr>
-<tr class="memdesc:a76dc5efe5c21fb9260b007e044e6bc68"><td class="mdescLeft">&#160;</td><td class="mdescRight">the queue handle to send data to the display task <br /></td></tr>
-<tr class="separator:a76dc5efe5c21fb9260b007e044e6bc68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0e6c631e63073522fbbb3192434d7d3" id="r_ab0e6c631e63073522fbbb3192434d7d3"><td class="memItemLeft" align="right" valign="top"><a id="ab0e6c631e63073522fbbb3192434d7d3" name="ab0e6c631e63073522fbbb3192434d7d3"></a>
 SemaphoreHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>display_device_mutex</b></td></tr>
 <tr class="memdesc:ab0e6c631e63073522fbbb3192434d7d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">the mutex to protect the display device access <br /></td></tr>
@@ -146,7 +152,72 @@ SemaphoreHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>display_
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The RTOS display device is the base class for all display devices that are managed by a dedicated display task in an RTOS environment. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa38b0a9b6f08a6455fe6e20ab783cf4e" name="aa38b0a9b6f08a6455fe6e20ab783cf4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa38b0a9b6f08a6455fe6e20ab783cf4e">&#9670;&#160;</a></span>clear_device_screen_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void rtos_DisplayDevice::clear_device_screen_buffer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Clear the device screen buffer. </p>
+
+<p>Implemented in <a class="el" href="classrtos___s_s_d1306.html#aa9cffff74969b41c42fee5c41c630554">rtos_SSD1306</a>, <a class="el" href="classrtos___s_t7735.html#a21eaa334402e42b52b696a88ceedb970">rtos_ST7735</a>, and <a class="el" href="classrtos___terminal_console.html#a5f3fbd2da4fd86d60566b8946d8d5023">rtos_TerminalConsole</a>.</p>
+
+</div>
+</div>
+<a id="aac8dc205b62b94aa6fdb492ae79b60b6" name="aac8dc205b62b94aa6fdb492ae79b60b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac8dc205b62b94aa6fdb492ae79b60b6">&#9670;&#160;</a></span>show_widget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void rtos_DisplayDevice::show_widget </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classrtos___widget.html">rtos_Widget</a> *</td>          <td class="paramname"><span class="paramname"><em>widget_to_show</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Show the widget on the display device. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">widget_to_show</td><td>the widget to show </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classrtos___s_s_d1306.html#ab4391273a915faa10a75013845800ca3">rtos_SSD1306</a>, <a class="el" href="classrtos___s_t7735.html#ad978278859fbd6cc0c578fe360f79b0f">rtos_ST7735</a>, and <a class="el" href="classrtos___terminal_console.html#a9040e5f77475ebaa1304ffb897d4354a">rtos_TerminalConsole</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="display__device_8h_source.html">display_device.h</a></li>
 <li><b>display_device.cpp</b></li>
 </ul>

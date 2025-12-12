@@ -1,0 +1,9 @@
+<map id="TextWriter::TextWriter" name="TextWriter::TextWriter">
+<area shape="rect" id="Node000001" title="Construct a new Text Widget object." alt="" coords="5,31,135,55"/>
+<area shape="rect" id="Node000002" href="$class_graphic_drawer.html#a7fcdf54a0346363736a4673745f97d55" title="Constructor of the GraphicDrawer class." alt="" coords="183,5,352,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,32,167,28,168,33,135,37"/>
+<area shape="rect" id="Node000003" href="$class_text_writer.html#a71a0b2ab2958de967cbbb890b1ff14a1" title="create text buffer and delete the old one if already existing" alt="" coords="183,55,352,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="135,48,168,52,167,57,135,54"/>
+<area shape="rect" id="Node000004" href="$class_text_writer.html#a9ca2e282a7de0bce688f03a67f9e55a0" title="et text buffer memory to &quot;0&quot; and set character current line and column to 0" alt="" coords="400,55,561,79"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="353,64,384,64,384,70,353,70"/>
+</map>

@@ -4,7 +4,8 @@ var class_probe =
     [ "copy", "class_probe.html#a3ca878200b9a6d5744366b23fe0051c9", null ],
     [ "hi", "class_probe.html#a493e1f46f0123ae6a18d7bd6e79d74f1", null ],
     [ "lo", "class_probe.html#ade2391514faaee5f3acfffc4d3cb2de8", null ],
-    [ "pulse_us", "class_probe.html#a090879d096db391e958305e2686b2f45", null ],
+    [ "pulse_train", "class_probe.html#ac9836762cb7847bc23e7067c1a05ce32", null ],
+    [ "pulse_us", "class_probe.html#a28c69192134167e34477e457c5ceb003", null ],
     [ "_channel_map", "class_probe.html#a58c5a7fd7eee85cce3850eec5665c9bd", null ],
     [ "_gpio", "class_probe.html#af1c0c11076e1fc3961ff8e4a68d70e5c", null ]
 ];

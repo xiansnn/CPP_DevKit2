@@ -1,14 +1,13 @@
 <map id="rtos_PrintWidget" name="rtos_PrintWidget">
-<area shape="rect" id="Node000001" title="RTOS wrapper for PrintWidget class." alt="" coords="143,773,629,853"/>
-<area shape="rect" id="Node000002" href="$classrtos___widget.html" title="RTOS wrapper for Widget class." alt="" coords="115,569,657,724"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="389,739,389,774,383,774,383,739"/>
-<area shape="rect" id="Node000003" href="$classrtos___model.html" title="RTOS wrapper for Model class." alt="" coords="5,371,337,507"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="213,505,244,544,258,556,254,560,240,547,209,509"/>
-<area shape="rect" id="Node000004" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="318,117,454,197"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="389,197,389,552,383,552,383,197"/>
-<area shape="rect" id="Node000005" href="$structstruct___data_to_show.html" title="data structure used to queue data to send to the display task" alt="" coords="489,390,643,489"/>
-<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="407,196,435,250,470,308,518,376,514,379,465,311,430,252,402,198"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="526,490,466,559,462,555,522,487"/>
-<area shape="rect" id="Node000006" href="$class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="479,5,944,309"/>
-<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="636,310,601,376,596,374,631,308"/>
+<area shape="rect" id="Node000001" title="RTOS wrapper for PrintWidget class." alt="" coords="330,495,817,631"/>
+<area shape="rect" id="Node000002" href="$classrtos___widget.html" title="RTOS wrapper for Widget class." alt="" coords="227,203,703,433"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="528,445,533,456,549,494,545,496,528,458,524,447"/>
+<area shape="rect" id="Node000005" href="$structstruct___widget_data_to_gate_keeper.html" title="data structure used to queue widget data to send to the display task" alt="" coords="135,532,305,593"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="289,434,267,458,249,487,236,517,231,515,244,484,263,455,285,431"/>
+<area shape="rect" id="Node000003" href="$classrtos___model.html" title="RTOS wrapper for Model class." alt="" coords="339,5,671,141"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="497,141,489,187,484,186,492,140"/>
+<area shape="rect" id="Node000004" href="$classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="5,15,315,132"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="234,130,310,191,307,195,230,134"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="159,132,158,270,163,351,174,432,186,476,202,516,197,518,181,477,169,433,157,352,152,270,154,132"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="248,530,336,443,340,447,251,534"/>
 </map>

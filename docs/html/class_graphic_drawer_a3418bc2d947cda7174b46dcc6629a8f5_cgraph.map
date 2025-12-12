@@ -1,0 +1,7 @@
+<map id="GraphicDrawer::rect" name="GraphicDrawer::rect">
+<area shape="rect" id="Node000001" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="5,31,124,55"/>
+<area shape="rect" id="Node000002" href="$class_graphic_drawer.html#a41a04598e0bdceeafc9f0d537143b303" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="172,5,293,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,31,156,27,156,32,124,37"/>
+<area shape="rect" id="Node000003" href="$class_graphic_drawer.html#ac53234377fff012cc055e6140aad7f10" title="Draw a color vertical line, starting at frame position (x,y), on w number of pixel." alt="" coords="172,55,292,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="124,49,157,54,156,59,124,54"/>
+</map>

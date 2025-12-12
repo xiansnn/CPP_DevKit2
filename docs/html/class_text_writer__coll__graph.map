@@ -1,0 +1,7 @@
+<map id="TextWriter" name="TextWriter">
+<area shape="rect" id="Node000001" title="A class dedicated to text drawing within a widget." alt="" coords="61,777,509,1301"/>
+<area shape="rect" id="Node000002" href="$class_graphic_drawer.html" title="A class that implements basic graphic drawing primitives for widgets." alt="" coords="5,371,565,727"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="288,742,288,777,283,777,283,742"/>
+<area shape="rect" id="Node000003" href="$class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="53,5,518,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="288,309,288,355,283,355,283,309"/>
+</map>

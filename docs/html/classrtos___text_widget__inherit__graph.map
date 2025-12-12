@@ -1,0 +1,5 @@
+<map id="rtos_TextWidget" name="rtos_TextWidget">
+<area shape="rect" id="Node000001" title="RTOS wrapper for TextWidget class." alt="" coords="5,339,569,467"/>
+<area shape="rect" id="Node000002" href="$classrtos___widget.html" title="RTOS wrapper for Widget class." alt="" coords="49,5,525,291"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="290,306,290,339,285,339,285,306"/>
+</map>

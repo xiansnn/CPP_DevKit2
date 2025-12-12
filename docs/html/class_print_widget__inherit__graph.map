@@ -1,5 +1,5 @@
 <map id="PrintWidget" name="PrintWidget">
-<area shape="rect" id="Node000001" title="A widget used when we need to simply print but still want to take advantage of the status change mana..." alt="" coords="59,264,495,344"/>
-<area shape="rect" id="Node000002" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="5,5,548,216"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="279,231,279,264,274,264,274,231"/>
+<area shape="rect" id="Node000001" title="A widget used when we need to simply print but still want to take advantage of the status change mana..." alt="" coords="5,227,441,307"/>
+<area shape="rect" id="Node000002" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="23,5,424,179"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,193,226,227,221,227,221,193"/>
 </map>

@@ -1,0 +1,5 @@
+<map id="TextWriter::draw_glyph" name="TextWriter::draw_glyph">
+<area shape="rect" id="Node000001" title="a graphic primitive to draw a character at a pixel position. Strongly dependent on font memory organi..." alt="" coords="157,5,290,30"/>
+<area shape="rect" id="Node000002" href="$class_text_writer.html#ad405e53467fe4eb76a6754d247beafed" title="a graphic primitive to draw a character at a character position" alt="" coords="5,5,109,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,20,109,20,109,15,141,15"/>
+</map>

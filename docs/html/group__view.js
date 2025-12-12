@@ -32,11 +32,11 @@ var group__view =
     ] ],
     [ "rtos_SSD1306", "classrtos___s_s_d1306.html", [
       [ "rtos_SSD1306", "classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8", null ],
+      [ "check_rtos_display_device_compatibility", "classrtos___s_s_d1306.html#a70b7adfe86f448c40f27962a76983b1c", null ],
       [ "clear_device_screen_buffer", "classrtos___s_s_d1306.html#aa9cffff74969b41c42fee5c41c630554", null ],
       [ "fill_GDDRAM_with_pattern", "classrtos___s_s_d1306.html#a8bc4957ee0a73161bfc99ef061c12ad8", null ],
-      [ "send_clear_device_command", "classrtos___s_s_d1306.html#a89b302a02835a2a2374689450342b6e7", null ],
-      [ "show_from_display_queue", "classrtos___s_s_d1306.html#ac4bfafafd6fbfd5a59e2be79268bf317", null ],
-      [ "show_render_area", "classrtos___s_s_d1306.html#aaab62ec700ec39a715d8b27b95f2956a", null ]
+      [ "show_render_area", "classrtos___s_s_d1306.html#aaab62ec700ec39a715d8b27b95f2956a", null ],
+      [ "show_widget", "classrtos___s_s_d1306.html#ab4391273a915faa10a75013845800ca3", null ]
     ] ],
     [ "ST7735", "class_s_t7735.html", [
       [ "ST7735", "class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8", null ],
@@ -75,10 +75,11 @@ var group__view =
     ] ],
     [ "rtos_ST7735", "classrtos___s_t7735.html", [
       [ "rtos_ST7735", "classrtos___s_t7735.html#a66cd3316fdb254d845f5decb6a8b9c36", null ],
+      [ "check_rtos_display_device_compatibility", "classrtos___s_t7735.html#aa2accbe7dd33c4bc47e65484dac08511", null ],
       [ "clear_device_screen_buffer", "classrtos___s_t7735.html#a21eaa334402e42b52b696a88ceedb970", null ],
-      [ "send_clear_device_command", "classrtos___s_t7735.html#a66986dcf6b99a11beb350a49c6f063b5", null ],
       [ "show", "classrtos___s_t7735.html#ae773d6c1f1da93a13b5589a20fe4d899", null ],
-      [ "show_from_display_queue", "classrtos___s_t7735.html#a237f6d07fc1858dc23f36acb68789894", null ]
+      [ "show_from_display_queue", "classrtos___s_t7735.html#a943a8e335b60cc47eb437ef3b07bc70a", null ],
+      [ "show_widget", "classrtos___s_t7735.html#ad978278859fbd6cc0c578fe360f79b0f", null ]
     ] ],
     [ "DisplayDevice", "class_display_device.html", null ],
     [ "GraphicDisplayDevice", "class_graphic_display_device.html", [
@@ -90,7 +91,7 @@ var group__view =
       [ "TFT_panel_width_in_pixel", "class_graphic_display_device.html#a774a0026a9d21f19c88612f07bcc13ba", null ]
     ] ],
     [ "TerminalConsole", "class_terminal_console.html", [
-      [ "TerminalConsole", "class_terminal_console.html#abc419f74fb85be46f8c2a08f760e72aa", null ],
+      [ "TerminalConsole", "class_terminal_console.html#a4de9d1d34a8940a415f4f690a6e2af6d", null ],
       [ "show", "class_terminal_console.html#a2426c3eae3866643635104561c3ae923", null ],
       [ "number_of_column", "class_terminal_console.html#ab139a7fa6b3c9f6d5b5de5028b99afc6", null ],
       [ "number_of_line", "class_terminal_console.html#a4f74a6ee94951c5066e252e93f2df528", null ],
@@ -98,14 +99,28 @@ var group__view =
       [ "text_buffer_size", "class_terminal_console.html#a8bce719eefd4e2d03329278d3031ab4c", null ]
     ] ],
     [ "rtos_DisplayDevice", "classrtos___display_device.html", [
-      [ "display_device_mutex", "classrtos___display_device.html#ab0e6c631e63073522fbbb3192434d7d3", null ],
-      [ "input_queue", "classrtos___display_device.html#a76dc5efe5c21fb9260b007e044e6bc68", null ]
+      [ "clear_device_screen_buffer", "classrtos___display_device.html#aa38b0a9b6f08a6455fe6e20ab783cf4e", null ],
+      [ "show_widget", "classrtos___display_device.html#aac8dc205b62b94aa6fdb492ae79b60b6", null ],
+      [ "display_device_mutex", "classrtos___display_device.html#ab0e6c631e63073522fbbb3192434d7d3", null ]
     ] ],
     [ "rtos_GraphicDisplayDevice", "classrtos___graphic_display_device.html", [
-      [ "show_from_display_queue", "classrtos___graphic_display_device.html#ae3904e9442b0a72a15242cf4737616a0", null ]
+      [ "check_rtos_display_device_compatibility", "classrtos___graphic_display_device.html#a058db84b4a5e82d41cee79d7d5e2f8de", null ]
     ] ],
     [ "rtos_TerminalConsole", "classrtos___terminal_console.html", [
-      [ "show_from_display_queue", "classrtos___terminal_console.html#a3da87d950b6e7c3f5913d3aed43c22c9", null ]
+      [ "rtos_TerminalConsole", "classrtos___terminal_console.html#ae65e6b962eb2f9340951756a4fbd3108", null ],
+      [ "clear_device_screen_buffer", "classrtos___terminal_console.html#a5f3fbd2da4fd86d60566b8946d8d5023", null ],
+      [ "show_widget", "classrtos___terminal_console.html#a9040e5f77475ebaa1304ffb897d4354a", null ],
+      [ "number_of_column", "classrtos___terminal_console.html#a35162a3d62d86e5aa0b2ceae4b7a734a", null ],
+      [ "number_of_line", "classrtos___terminal_console.html#a895d0b80b66e89fa5171c54ed2f011b2", null ],
+      [ "text_buffer_size", "classrtos___terminal_console.html#af200f089cac6698e5f16477fe3629b48", null ]
+    ] ],
+    [ "rtos_GraphicDisplayGateKeeper", "classrtos___graphic_display_gate_keeper.html", [
+      [ "rtos_GraphicDisplayGateKeeper", "classrtos___graphic_display_gate_keeper.html#a8871eff6bdf60627e83e1b3825e80db7", null ],
+      [ "receive_widget_data", "classrtos___graphic_display_gate_keeper.html#a7cac23a47c0452147b49de4cc0524ed8", null ],
+      [ "send_clear_device_command", "classrtos___graphic_display_gate_keeper.html#a0088b4369b889ab24f9d722200a8e831", null ],
+      [ "send_widget_data", "classrtos___graphic_display_gate_keeper.html#ac6f7d7e73655b8812b494181773bae18", null ],
+      [ "data_sent", "classrtos___graphic_display_gate_keeper.html#a2d6d03a26e858485a6301e93015eb848", null ],
+      [ "graphic_widget_data", "classrtos___graphic_display_gate_keeper.html#ad7e03f9ab449190fdd813ee0ec89808a", null ]
     ] ],
     [ "Canvas", "class_canvas.html", [
       [ "Canvas", "class_canvas.html#a61d9d2f38baad8abbee82fb5d8fee291", null ],
@@ -149,19 +164,37 @@ var group__view =
       [ "fill_canvas_with_color", "class_canvas_h_m_s_b.html#a3cf926a9e0d6e6d46aaf755370c9c455", null ]
     ] ],
     [ "rtos_Widget", "classrtos___widget.html", [
-      [ "rtos_Widget", "classrtos___widget.html#ab30c453ca7a89fdc1b01f9271e80cbbd", null ],
+      [ "rtos_Widget", "classrtos___widget.html#a206bf3a6d0927044128458b11271f41c", null ],
       [ "~rtos_Widget", "classrtos___widget.html#a8ae178f2dc1a943df4d7291cc7d6fefe", null ],
+      [ "add_widget", "classrtos___widget.html#af6ed14469e8e458b99c7f53a15378050", null ],
       [ "draw", "classrtos___widget.html#a5c7e7ccb2e74f70769c59a7adfa75352", null ],
-      [ "send_clear_device_command", "classrtos___widget.html#a2ed80983f6b863cef88c42c7040993d3", null ],
-      [ "send_image_to_DisplayGateKeeper", "classrtos___widget.html#aa5629b52bbeb6f5c80325bfa7baa170f", null ],
-      [ "set_display_device", "classrtos___widget.html#a48fd0b524a1c4f5f40b5d38a04c62c70", null ],
-      [ "actual_displayed_model", "classrtos___widget.html#a02b53ed96661e0b4a33ee4bcef4cfd30", null ],
-      [ "data_to_display", "classrtos___widget.html#aebb2efd0f14611086b4ca974c34594b5", null ],
-      [ "display_device", "classrtos___widget.html#a8db5440151d8ec60de6c670dd238c475", null ],
-      [ "task_handle", "classrtos___widget.html#a87d161b1078bc3aa5380703cfdd8c5a8", null ]
+      [ "get_value_of_interest", "classrtos___widget.html#a477573dd452a728fd8cdacd400af9acd", null ],
+      [ "set_display_device", "classrtos___widget.html#a44efd1730a6316f6ce93bb9aa0ef648a", null ],
+      [ "update_widget_anchor", "classrtos___widget.html#aa0c0f9a28d85b1806c9af3ad0b4f0cb1", null ],
+      [ "actual_rtos_displayed_model", "classrtos___widget.html#a6dc7846aaa06a9dfcb10a034505554a8", null ],
+      [ "display_device", "classrtos___widget.html#a8e80e477a71cf85e3947236c2f8a0a6f", null ],
+      [ "rtos_widgets", "classrtos___widget.html#ab948b28687c25a814b54a23dbabac4fe", null ],
+      [ "task_handle", "classrtos___widget.html#a87d161b1078bc3aa5380703cfdd8c5a8", null ],
+      [ "widget_anchor_x", "classrtos___widget.html#acf532daad7d220d714f053e251051cc5", null ],
+      [ "widget_anchor_y", "classrtos___widget.html#a98e52006ee89c8feba38b4b8d321036f", null ],
+      [ "widget_data_to_gatekeeper", "classrtos___widget.html#aeb8992feeae73b395fce5f42fd550d77", null ]
+    ] ],
+    [ "rtos_GraphicWidget", "classrtos___graphic_widget.html", [
+      [ "rtos_GraphicWidget", "classrtos___graphic_widget.html#a64d842df67c4bfc83f15d6cc88bba91e", null ],
+      [ "~rtos_GraphicWidget", "classrtos___graphic_widget.html#a6fa05cd64eb075e13fd753566552a975", null ],
+      [ "drawer", "classrtos___graphic_widget.html#aea3e073c8b44ae9f06eb85f6a0804097", null ]
+    ] ],
+    [ "rtos_TextWidget", "classrtos___text_widget.html", [
+      [ "rtos_TextWidget", "classrtos___text_widget.html#a2960605129fe5aaf9ebbe1654a2875d3", null ],
+      [ "rtos_TextWidget", "classrtos___text_widget.html#a478fd95a27ab909988e31b30c03cf388", null ],
+      [ "writer", "classrtos___text_widget.html#aaf9852e09680d29a086a1f803b5798a6", null ]
     ] ],
     [ "rtos_PrintWidget", "classrtos___print_widget.html", [
-      [ "rtos_PrintWidget", "classrtos___print_widget.html#a05c8b4864d551f90686fab2961d7ee62", null ]
+      [ "rtos_PrintWidget", "classrtos___print_widget.html#a0b2410d187ac06c257bf204ed4f8fc07", null ],
+      [ "number_of_column", "classrtos___print_widget.html#ac896a71abe0055a0ca4a80707a3c5135", null ],
+      [ "number_of_line", "classrtos___print_widget.html#a9d405a8f67ac81f58f22027cec9099bc", null ],
+      [ "text_buffer", "classrtos___print_widget.html#a9d1fce086f67bc8f519cc7664fce5aa7", null ],
+      [ "text_buffer_size", "classrtos___print_widget.html#a699aab62158d7f0fd552b6858f2dce06", null ]
     ] ],
     [ "Blinker", "class_blinker.html", [
       [ "clear_blinking_phase_change", "class_blinker.html#ae6a97a7779716d6a9a4954e9491d2985", null ],
@@ -176,10 +209,8 @@ var group__view =
       [ "Widget", "class_widget.html#a0d8f98229ae680885d74911bd73c67a1", null ],
       [ "add_widget", "class_widget.html#a6d08d01ec5ea290b39ae26963ae7e460", null ],
       [ "draw", "class_widget.html#ae48262adfd76a5df4fcc892485d942a6", null ],
-      [ "send_image_to_DisplayGateKeeper", "class_widget.html#aad1983916e09bbc926b078adb910d5d6", null ],
       [ "set_display_device", "class_widget.html#abce987bca542b6efeaa706c73edbfcc0", null ],
       [ "actual_displayed_model", "class_widget.html#a41ae2c77c95867d80f15cc722d32ce86", null ],
-      [ "data_to_display", "class_widget.html#a15a74a79fd45a3cd03cb0de4a7366216", null ],
       [ "display_device", "class_widget.html#a85aa072690bb7cad227ea2c810e5b4b3", null ],
       [ "widgets", "class_widget.html#af4c3a0de546fdcb1038469f5c592e2b6", null ]
     ] ],
@@ -191,7 +222,6 @@ var group__view =
       [ "circle", "class_graphic_widget.html#aeadc616612d2a5ad911c9595073bdb71", null ],
       [ "clear_widget", "class_graphic_widget.html#a7cfe84700b96f442632858a6aad2000d", null ],
       [ "draw_border", "class_graphic_widget.html#ac2a3a4387a699f25407c71a90b55eeab", null ],
-      [ "ellipse", "class_graphic_widget.html#ab499546cc28ee6f5e74051f061b24e30", null ],
       [ "get_graph_frame_config", "class_graphic_widget.html#a49c9ebded2dc14246284662e13713a05", null ],
       [ "get_value_of_interest", "class_graphic_widget.html#a012e42d45d29004e6e93e46782dcb284", null ],
       [ "hline", "class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a", null ],
@@ -242,6 +272,33 @@ var group__view =
     ] ],
     [ "PrintWidget", "class_print_widget.html", [
       [ "PrintWidget", "class_print_widget.html#af495fd2db88a95de2d354bb91ed6a04e", null ]
+    ] ],
+    [ "TextWriter", "class_text_writer.html", [
+      [ "TextWriter", "class_text_writer.html#a12775fd2d883e7fbf08d2bd7baa9fb4b", null ],
+      [ "TextWriter", "class_text_writer.html#ac603e1121efe0b1e2291a87902e64fbc", null ],
+      [ "clear_line", "class_text_writer.html#a725b82c94524bf13c680bad12bff218f", null ],
+      [ "clear_text_buffer", "class_text_writer.html#a9ca2e282a7de0bce688f03a67f9e55a0", null ],
+      [ "create_text_buffer", "class_text_writer.html#a71a0b2ab2958de967cbbb890b1ff14a1", null ],
+      [ "draw_border", "class_text_writer.html#ad0ca9f2dcfd5fbe1089fd0486353f69d", null ],
+      [ "draw_glyph", "class_text_writer.html#a5534d7936889cf46be6c1e300020a501", null ],
+      [ "next_char", "class_text_writer.html#aae5b1be1d238cf388106caa738d8278e", null ],
+      [ "next_line", "class_text_writer.html#adc6541935c8c05a0c14710fdbd4589fa", null ],
+      [ "process_char", "class_text_writer.html#abd496b2f73d09a3cf4c2f07d1471e4d4", null ],
+      [ "update_canvas_buffer_size", "class_text_writer.html#a838fa3e052d49600ff2eade17ced971d", null ],
+      [ "update_text_line_column_number", "class_text_writer.html#a5d6eaf0c7388a1e1b2370f17467c39f3", null ],
+      [ "write", "class_text_writer.html#a2f9c27532288183e67a6ea9293fd9e79", null ],
+      [ "write", "class_text_writer.html#ad405e53467fe4eb76a6754d247beafed", null ],
+      [ "write", "class_text_writer.html#aa0013f500c16bd933a95c7b38dabcb26", null ],
+      [ "auto_next_char", "class_text_writer.html#ab18eef49a06077741cb551844de2a489", null ],
+      [ "current_char_column", "class_text_writer.html#ac1ea32bbdf99b3385497f92699dccd3d", null ],
+      [ "current_char_line", "class_text_writer.html#a20c4606351edccaaa32922ddf4d94e42", null ],
+      [ "font", "class_text_writer.html#aecc608762ad7fa16abfd0b5ce952522c", null ],
+      [ "number_of_column", "class_text_writer.html#ac1be6bdc2f6e40ca80a4c5fbbb9a1728", null ],
+      [ "number_of_line", "class_text_writer.html#ab7afd42a6e25b2ea90a7c9a913b2df6e", null ],
+      [ "tab_size", "class_text_writer.html#a93d4d8fc5272071c2d3b3b99007eb907", null ],
+      [ "text_buffer", "class_text_writer.html#a59ee4062cd698a68e4583ac196458aee", null ],
+      [ "text_buffer_size", "class_text_writer.html#a10b9e4a4dc900bae84467082036340c1", null ],
+      [ "wrap", "class_text_writer.html#afd10bc7edb9f363d61a07b4357fa46a5", null ]
     ] ],
     [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html", [
       [ "WidgetHorizontalBargraph", "class_widget_horizontal_bargraph.html#a63ba4fb58b7c9059e80fcc051b97c663", null ],

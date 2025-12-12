@@ -1,0 +1,11 @@
+<map id="struct_WidgetDataToGateKeeper" name="struct_WidgetDataToGateKeeper">
+<area shape="rect" id="Node000001" title="data structure used to queue widget data to send to the display task" alt="" coords="57,222,227,283"/>
+<area shape="rect" id="Node000003" href="$classrtos___widget.html" title="RTOS wrapper for Widget class." alt="" coords="5,383,481,612"/>
+<area shape="poly" id="edge5_Node000003_Node000001" title=" " alt="" coords="76,285,54,301,36,318,28,337,32,358,38,367,34,370,28,360,23,336,32,315,50,297,73,281"/>
+<area shape="rect" id="Node000002" href="$classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="54,5,363,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,124,161,207,156,205,186,122"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="229,122,242,184,250,276,251,365,246,365,244,276,237,185,224,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,384,181,346,161,300,165,298,186,344,202,382"/>
+<area shape="rect" id="Node000004" href="$classrtos___model.html" title="RTOS wrapper for Model class." alt="" coords="379,185,711,321"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="464,323,399,374,396,370,460,318"/>
+</map>

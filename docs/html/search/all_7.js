@@ -1,7 +1,7 @@
 var searchData=
 [
   ['data_0',['data',['../class_m_p_u6050.html#a524c486b1dc1716814f62dea03a62577',1,'MPU6050::data'],['../structstruct___t_x___data_queue_s_p_i.html#a14d1c30a30a41d0b3e14793857628582',1,'struct_TX_DataQueueSPI::data']]],
-  ['data_5fto_5fdisplay_1',['data_to_display',['../classrtos___widget.html#aebb2efd0f14611086b4ca974c34594b5',1,'rtos_Widget::data_to_display'],['../class_widget.html#a15a74a79fd45a3cd03cb0de4a7366216',1,'Widget::data_to_display']]],
+  ['data_5fsent_1',['data_sent',['../classrtos___graphic_display_gate_keeper.html#a2d6d03a26e858485a6301e93015eb848',1,'rtos_GraphicDisplayGateKeeper']]],
   ['dc_5fpin_2',['dc_pin',['../structstruct___config_s_t7735.html#a7f1508e4852977176ee2b9ac0c6f2758',1,'struct_ConfigST7735::dc_pin'],['../class_s_t7735.html#af03d425f6b34b3692ba032530b969e7f',1,'ST7735::dc_pin']]],
   ['dcx_5fcommand_3',['DCX_COMMAND',['../st7735_8h.html#abd8eb27d364a32890e54dcc50dbedb66',1,'st7735.h']]],
   ['dcx_5fdata_4',['DCX_DATA',['../st7735_8h.html#acdfd958913e851196c73b8ac8052679a',1,'st7735.h']]],
@@ -17,8 +17,8 @@ var searchData=
   ['dht11_14',['DHT11',['../class_d_h_t11.html',1,'DHT11'],['../class_d_h_t11.html#abdb9b9dbfeb00fac3826752fff347c16',1,'DHT11::DHT11()']]],
   ['dht11_2eh_15',['dht11.h',['../dht11_8h.html',1,'']]],
   ['dht_5freading_5fqueue_16',['dht_reading_queue',['../classrtos___d_h_t11.html#af756fbcee4244ab04f51a56bcc5ea64f',1,'rtos_DHT11']]],
-  ['display_17',['display',['../structstruct___data_to_show.html#af1f8ea37e64060da654156d2a3119a44',1,'struct_DataToShow']]],
-  ['display_5fdevice_18',['display_device',['../classrtos___widget.html#a8db5440151d8ec60de6c670dd238c475',1,'rtos_Widget::display_device'],['../class_widget.html#a85aa072690bb7cad227ea2c810e5b4b3',1,'Widget::display_device']]],
+  ['display_17',['display',['../structstruct___widget_data_to_gate_keeper.html#a2719f2c89870d579f8ae6220dd19d6ce',1,'struct_WidgetDataToGateKeeper']]],
+  ['display_5fdevice_18',['display_device',['../classrtos___widget.html#a8e80e477a71cf85e3947236c2f8a0a6f',1,'rtos_Widget::display_device'],['../class_widget.html#a85aa072690bb7cad227ea2c810e5b4b3',1,'Widget::display_device']]],
   ['display_5fdevice_2eh_19',['display_device.h',['../display__device_8h.html',1,'']]],
   ['display_5fdevice_5fmutex_20',['display_device_mutex',['../classrtos___display_device.html#ab0e6c631e63073522fbbb3192434d7d3',1,'rtos_DisplayDevice']]],
   ['display_5ftype_21',['display_type',['../structstruct___config_s_t7735.html#ace8c802f5f1afb38d68bed3840a4698b',1,'struct_ConfigST7735']]],
@@ -31,10 +31,11 @@ var searchData=
   ['double_5fpush_28',['DOUBLE_PUSH',['../ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32a7f9117be5ae4af6fadbf2c87f360c120',1,'ui_control_event.h']]],
   ['draw_29',['draw',['../classrtos___widget.html#a5c7e7ccb2e74f70769c59a7adfa75352',1,'rtos_Widget::draw()'],['../class_widget.html#ae48262adfd76a5df4fcc892485d942a6',1,'Widget::draw()'],['../class_text_widget.html#a34e2f1558ebd76f1dbfb3cbfdf0e7894',1,'TextWidget::draw()'],['../class_widget_horizontal_bargraph.html#ac51fc7454f00e12c47c507b449a1b0b0',1,'WidgetHorizontalBargraph::draw()'],['../class_widget_vertical_bargraph.html#a938fef5332131013fe1f7e31f7629f41',1,'WidgetVerticalBargraph::draw()'],['../class_widget_horizontal_bar.html#a73f6c8198a940ad2803367e5712f3359',1,'WidgetHorizontalBar::draw()'],['../class_widget_square_led.html#a73764f45091e9a4dde223262cd63256b',1,'WidgetSquareLed::draw()'],['../class_widget_blinking_square_led.html#a61b2b883fa16f46dbdc510133b378459',1,'WidgetBlinkingSquareLed::draw()']]],
   ['draw_5fbar_30',['draw_bar',['../class_widget_horizontal_bargraph.html#ad9095aa605f93b1b988b7c3e497a27aa',1,'WidgetHorizontalBargraph::draw_bar()'],['../class_widget_vertical_bargraph.html#a51e76d94a406956193c15c09adcde58e',1,'WidgetVerticalBargraph::draw_bar()']]],
-  ['draw_5fborder_31',['draw_border',['../class_graphic_widget.html#ac2a3a4387a699f25407c71a90b55eeab',1,'GraphicWidget::draw_border()'],['../class_text_widget.html#ab82666ba03e577d92dc32be8384318cd',1,'TextWidget::draw_border(ColorIndex color=ColorIndex::WHITE)']]],
-  ['draw_5fglyph_32',['draw_glyph',['../class_text_widget.html#a47dae71331351e62bb63bc10bc83a7d7',1,'TextWidget']]],
+  ['draw_5fborder_31',['draw_border',['../class_graphic_widget.html#ac2a3a4387a699f25407c71a90b55eeab',1,'GraphicWidget::draw_border()'],['../class_text_widget.html#ab82666ba03e577d92dc32be8384318cd',1,'TextWidget::draw_border()'],['../class_graphic_drawer.html#a985581e90ce14a3190bcbea2692c8451',1,'GraphicDrawer::draw_border()'],['../class_text_writer.html#ad0ca9f2dcfd5fbe1089fd0486353f69d',1,'TextWriter::draw_border()']]],
+  ['draw_5fglyph_32',['draw_glyph',['../class_text_widget.html#a47dae71331351e62bb63bc10bc83a7d7',1,'TextWidget::draw_glyph()'],['../class_text_writer.html#a5534d7936889cf46be6c1e300020a501',1,'TextWriter::draw_glyph()']]],
   ['draw_5fpixel_33',['draw_pixel',['../class_canvas.html#a5b11b9d081c76790cf195964fface64b',1,'Canvas::draw_pixel()'],['../class_canvas_v_l_s_b.html#ad9730b156e3ca8449b296ad7392d07ee',1,'CanvasVLSB::draw_pixel()'],['../class_canvas_r_g_b.html#ae9474f2a6680de4013e4493acab82f5b',1,'CanvasRGB::draw_pixel()'],['../class_canvas_true_r_g_b.html#a0f46bd2b6ad3ae08fd511f871670f47a',1,'CanvasTrueRGB::draw_pixel()'],['../class_canvas_h_m_s_b.html#a04c0a63d53d9c0db1495827b9fffc79a',1,'CanvasHMSB::draw_pixel()']]],
   ['draw_5frefresh_5fall_5fattached_5fwidgets_34',['draw_refresh_all_attached_widgets',['../class_model.html#a9038912d8fa59bdfcd8b68f1c22486c2',1,'Model']]],
   ['draw_5fwidget_5fdone_35',['draw_widget_done',['../class_model.html#a617d6bc4132350008952369a96cdc4d0',1,'Model']]],
-  ['dt_5fgpio_36',['dt_gpio',['../class_rotary_encoder.html#adf6c9f3a9e7a9aa8b9dab7a2ca8049e3',1,'RotaryEncoder::dt_gpio'],['../classrtos___rotary_encoder.html#afc21d71e8dbdba7610d85844a3c75c14',1,'rtos_RotaryEncoder::dt_gpio']]]
+  ['drawer_36',['drawer',['../classrtos___graphic_widget.html#aea3e073c8b44ae9f06eb85f6a0804097',1,'rtos_GraphicWidget']]],
+  ['dt_5fgpio_37',['dt_gpio',['../class_rotary_encoder.html#adf6c9f3a9e7a9aa8b9dab7a2ca8049e3',1,'RotaryEncoder::dt_gpio'],['../classrtos___rotary_encoder.html#afc21d71e8dbdba7610d85844a3c75c14',1,'rtos_RotaryEncoder::dt_gpio']]]
 ];

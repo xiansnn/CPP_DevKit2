@@ -74,6 +74,7 @@ var group__hw =
       [ "spi_rx_dma_isr", "classrtos___h_w___s_p_i___master.html#aa46e5565740e6e7496cd6483b57af5c9", null ],
       [ "spi_tx_dma_isr", "classrtos___h_w___s_p_i___master.html#a34b181ea40187a33060f02b5ecf0fb3a", null ],
       [ "dma_rx", "classrtos___h_w___s_p_i___master.html#add80821952b0fde7bba7f9f2f19b568d", null ],
-      [ "dma_tx", "classrtos___h_w___s_p_i___master.html#ac33eeb96d3e8e0e0ead1a03650964063", null ]
+      [ "dma_tx", "classrtos___h_w___s_p_i___master.html#ac33eeb96d3e8e0e0ead1a03650964063", null ],
+      [ "spi_access_mutex", "classrtos___h_w___s_p_i___master.html#a7d6e14fcb39158cccc66bbcfc3851212", null ]
     ] ]
 ];

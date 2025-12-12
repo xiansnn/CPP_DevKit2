@@ -1,5 +1,9 @@
 <map id="rtos_Widget" name="rtos_Widget">
-<area shape="rect" id="Node000001" title="RTOS wrapper for Widget class." alt="" coords="5,5,548,216"/>
-<area shape="rect" id="Node000002" href="$classrtos___print_widget.html" title="RTOS wrapper for PrintWidget class." alt="" coords="33,264,520,344"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="279,231,279,264,274,264,274,231"/>
+<area shape="rect" id="Node000001" title="RTOS wrapper for Widget class." alt="" coords="473,5,949,291"/>
+<area shape="rect" id="Node000002" href="$classrtos___graphic_widget.html" title="RTOS wrapper for GraphicWidget class." alt="" coords="5,359,443,454"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="460,284,312,362,310,357,458,279"/>
+<area shape="rect" id="Node000003" href="$classrtos___print_widget.html" title="RTOS wrapper for PrintWidget class." alt="" coords="467,339,954,475"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="713,306,713,339,708,339,708,306"/>
+<area shape="rect" id="Node000004" href="$classrtos___text_widget.html" title="RTOS wrapper for TextWidget class." alt="" coords="978,343,1542,471"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="963,264,1127,340,1125,345,961,269"/>
 </map>

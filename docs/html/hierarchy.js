@@ -24,6 +24,9 @@ var hierarchy =
       ] ],
       [ "TerminalConsole", "class_terminal_console.html", null ]
     ] ],
+    [ "GraphicDrawer", "class_graphic_drawer.html", [
+      [ "TextWriter", "class_text_writer.html", null ]
+    ] ],
     [ "HCSR04", "class_h_c_s_r04.html", null ],
     [ "HW_DMA", "class_h_w___d_m_a.html", null ],
     [ "HW_I2C_Master", "class_h_w___i2_c___master.html", [
@@ -54,6 +57,7 @@ var hierarchy =
       ] ],
       [ "rtos_TerminalConsole", "classrtos___terminal_console.html", null ]
     ] ],
+    [ "rtos_GraphicDisplayGateKeeper", "classrtos___graphic_display_gate_keeper.html", null ],
     [ "rtos_HCSR04", "classrtos___h_c_s_r04.html", null ],
     [ "rtos_Model", "classrtos___model.html", [
       [ "rtos_UIControlledModel", "classrtos___u_i_controlled_model.html", [
@@ -64,7 +68,9 @@ var hierarchy =
       [ "rtos_RotaryEncoder", "classrtos___rotary_encoder.html", null ]
     ] ],
     [ "rtos_Widget", "classrtos___widget.html", [
-      [ "rtos_PrintWidget", "classrtos___print_widget.html", null ]
+      [ "rtos_GraphicWidget", "classrtos___graphic_widget.html", null ],
+      [ "rtos_PrintWidget", "classrtos___print_widget.html", null ],
+      [ "rtos_TextWidget", "classrtos___text_widget.html", null ]
     ] ],
     [ "SG90", "class_s_g90.html", null ],
     [ "struct_ConfigGraphicWidget", "structstruct___config_graphic_widget.html", null ],
@@ -80,7 +86,6 @@ var hierarchy =
     [ "struct_ConfigSwitchButton", "structstruct___config_switch_button.html", null ],
     [ "struct_ConfigTextWidget", "structstruct___config_text_widget.html", null ],
     [ "struct_ControlEventData", "structstruct___control_event_data.html", null ],
-    [ "struct_DataToShow", "structstruct___data_to_show.html", null ],
     [ "struct_DHTReading", "structstruct___d_h_t_reading.html", null ],
     [ "struct_HCSR04IRQData", "structstruct___h_c_s_r04_i_r_q_data.html", null ],
     [ "struct_I2CXferResult", "structstruct___i2_c_xfer_result.html", null ],
@@ -91,6 +96,7 @@ var hierarchy =
     [ "struct_SlaveMemory", "structstruct___slave_memory.html", null ],
     [ "struct_SwitchButtonIRQData", "structstruct___switch_button_i_r_q_data.html", null ],
     [ "struct_TX_DataQueueSPI", "structstruct___t_x___data_queue_s_p_i.html", null ],
+    [ "struct_WidgetDataToGateKeeper", "structstruct___widget_data_to_gate_keeper.html", null ],
     [ "SwitchButton", "class_switch_button.html", [
       [ "SwitchButtonWithIRQ", "class_switch_button_with_i_r_q.html", [
         [ "RotaryEncoder", "class_rotary_encoder.html", null ]

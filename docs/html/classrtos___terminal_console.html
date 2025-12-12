@@ -99,6 +99,7 @@ $(function(){initNavTree('classrtos___terminal_console.html',''); initResizable(
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classrtos___terminal_console-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">rtos_TerminalConsole Class Reference<div class="ingroups"><a class="el" href="group__view.html">&quot;View&quot;</a></div></div></div>
 </div><!--header-->
@@ -113,9 +114,9 @@ Inheritance diagram for rtos_TerminalConsole:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___terminal_console__inherit__graph.png" border="0" usemap="#artos___terminal_console_inherit__map" alt="Inheritance graph"/></div>
 <map name="artos___terminal_console_inherit__map" id="artos___terminal_console_inherit__map">
-<area shape="rect" title="The RTOS terminal console is the class for all text display devices that are managed by a dedicated d..." alt="" coords="5,152,279,251"/>
-<area shape="rect" href="classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="28,5,256,104"/>
-<area shape="poly" title=" " alt="" coords="145,119,145,152,139,152,139,119"/>
+<area shape="rect" title="The RTOS terminal console is the class for all text display devices that are managed by a dedicated d..." alt="" coords="5,171,427,325"/>
+<area shape="rect" href="classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="61,5,371,123"/>
+<area shape="poly" title=" " alt="" coords="219,137,219,171,213,171,213,137"/>
 </map>
 </div>
 <div class="dynheader">
@@ -123,25 +124,39 @@ Collaboration diagram for rtos_TerminalConsole:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___terminal_console__coll__graph.png" border="0" usemap="#artos___terminal_console_coll__map" alt="Collaboration graph"/></div>
 <map name="artos___terminal_console_coll__map" id="artos___terminal_console_coll__map">
-<area shape="rect" title="The RTOS terminal console is the class for all text display devices that are managed by a dedicated d..." alt="" coords="5,152,279,251"/>
-<area shape="rect" href="classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="28,5,256,104"/>
-<area shape="poly" title=" " alt="" coords="145,119,145,152,139,152,139,119"/>
+<area shape="rect" title="The RTOS terminal console is the class for all text display devices that are managed by a dedicated d..." alt="" coords="5,171,427,325"/>
+<area shape="rect" href="classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="61,5,371,123"/>
+<area shape="poly" title=" " alt="" coords="219,137,219,171,213,171,213,137"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3da87d950b6e7c3f5913d3aed43c22c9" id="r_a3da87d950b6e7c3f5913d3aed43c22c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3da87d950b6e7c3f5913d3aed43c22c9">show_from_display_queue</a> (char *text_to_print)</td></tr>
-<tr class="memdesc:a3da87d950b6e7c3f5913d3aed43c22c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">the method to send text buffer to a queue  <br /></td></tr>
-<tr class="separator:a3da87d950b6e7c3f5913d3aed43c22c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9040e5f77475ebaa1304ffb897d4354a" id="r_a9040e5f77475ebaa1304ffb897d4354a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9040e5f77475ebaa1304ffb897d4354a">show_widget</a> (<a class="el" href="classrtos___widget.html">rtos_Widget</a> *widget_to_show)</td></tr>
+<tr class="memdesc:a9040e5f77475ebaa1304ffb897d4354a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classrtos___terminal_console.html" title="The RTOS terminal console is the class for all text display devices that are managed by a dedicated d...">rtos_TerminalConsole</a> object.  <br /></td></tr>
+<tr class="separator:a9040e5f77475ebaa1304ffb897d4354a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f3fbd2da4fd86d60566b8946d8d5023" id="r_a5f3fbd2da4fd86d60566b8946d8d5023"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f3fbd2da4fd86d60566b8946d8d5023">clear_device_screen_buffer</a> ()</td></tr>
+<tr class="memdesc:a5f3fbd2da4fd86d60566b8946d8d5023"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the device screen buffer.  <br /></td></tr>
+<tr class="separator:a5f3fbd2da4fd86d60566b8946d8d5023"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae65e6b962eb2f9340951756a4fbd3108" id="r_ae65e6b962eb2f9340951756a4fbd3108"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae65e6b962eb2f9340951756a4fbd3108">rtos_TerminalConsole</a> (size_t number_of_char_width, size_t number_of_char_hight)</td></tr>
+<tr class="memdesc:ae65e6b962eb2f9340951756a4fbd3108"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classrtos___terminal_console.html" title="The RTOS terminal console is the class for all text display devices that are managed by a dedicated d...">rtos_TerminalConsole</a> object.  <br /></td></tr>
+<tr class="separator:ae65e6b962eb2f9340951756a4fbd3108"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a35162a3d62d86e5aa0b2ceae4b7a734a" id="r_a35162a3d62d86e5aa0b2ceae4b7a734a"><td class="memItemLeft" align="right" valign="top"><a id="a35162a3d62d86e5aa0b2ceae4b7a734a" name="a35162a3d62d86e5aa0b2ceae4b7a734a"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>number_of_column</b></td></tr>
+<tr class="memdesc:a35162a3d62d86e5aa0b2ceae4b7a734a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the size, in number of character of a line <br /></td></tr>
+<tr class="separator:a35162a3d62d86e5aa0b2ceae4b7a734a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a895d0b80b66e89fa5171c54ed2f011b2" id="r_a895d0b80b66e89fa5171c54ed2f011b2"><td class="memItemLeft" align="right" valign="top"><a id="a895d0b80b66e89fa5171c54ed2f011b2" name="a895d0b80b66e89fa5171c54ed2f011b2"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>number_of_line</b></td></tr>
+<tr class="memdesc:a895d0b80b66e89fa5171c54ed2f011b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the number of line <br /></td></tr>
+<tr class="separator:a895d0b80b66e89fa5171c54ed2f011b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af200f089cac6698e5f16477fe3629b48" id="r_af200f089cac6698e5f16477fe3629b48"><td class="memItemLeft" align="right" valign="top"><a id="af200f089cac6698e5f16477fe3629b48" name="af200f089cac6698e5f16477fe3629b48"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>text_buffer_size</b></td></tr>
+<tr class="memdesc:af200f089cac6698e5f16477fe3629b48"><td class="mdescLeft">&#160;</td><td class="mdescRight">the number of characters <br /></td></tr>
+<tr class="separator:af200f089cac6698e5f16477fe3629b48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classrtos___display_device"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_classrtos___display_device')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classrtos___display_device.html">rtos_DisplayDevice</a></td></tr>
-<tr class="memitem:a76dc5efe5c21fb9260b007e044e6bc68 inherit pub_attribs_classrtos___display_device" id="r_a76dc5efe5c21fb9260b007e044e6bc68"><td class="memItemLeft" align="right" valign="top">
-QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>input_queue</b></td></tr>
-<tr class="memdesc:a76dc5efe5c21fb9260b007e044e6bc68 inherit pub_attribs_classrtos___display_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">the queue handle to send data to the display task <br /></td></tr>
-<tr class="separator:a76dc5efe5c21fb9260b007e044e6bc68 inherit pub_attribs_classrtos___display_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0e6c631e63073522fbbb3192434d7d3 inherit pub_attribs_classrtos___display_device" id="r_ab0e6c631e63073522fbbb3192434d7d3"><td class="memItemLeft" align="right" valign="top">
 SemaphoreHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>display_device_mutex</b></td></tr>
 <tr class="memdesc:ab0e6c631e63073522fbbb3192434d7d3 inherit pub_attribs_classrtos___display_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">the mutex to protect the display device access <br /></td></tr>
@@ -149,29 +164,99 @@ SemaphoreHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>display_
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The RTOS terminal console is the class for all text display devices that are managed by a dedicated display task in an RTOS environment. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3da87d950b6e7c3f5913d3aed43c22c9" name="a3da87d950b6e7c3f5913d3aed43c22c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3da87d950b6e7c3f5913d3aed43c22c9">&#9670;&#160;</a></span>show_from_display_queue()</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae65e6b962eb2f9340951756a4fbd3108" name="ae65e6b962eb2f9340951756a4fbd3108"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae65e6b962eb2f9340951756a4fbd3108">&#9670;&#160;</a></span>rtos_TerminalConsole()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void rtos_TerminalConsole::show_from_display_queue </td>
+          <td class="memname">rtos_TerminalConsole::rtos_TerminalConsole </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>text_to_print</em></span></td><td>)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>number_of_char_width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>number_of_char_hight</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>the method to send text buffer to a queue </p>
+<p>Construct a new <a class="el" href="classrtos___terminal_console.html" title="The RTOS terminal console is the class for all text display devices that are managed by a dedicated d...">rtos_TerminalConsole</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">text_to_print</td><td></td></tr>
+    <tr><td class="paramname">number_of_char_width</td><td>the size, in number of character of a line </td></tr>
+    <tr><td class="paramname">number_of_char_hight</td><td>the number of line </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5f3fbd2da4fd86d60566b8946d8d5023" name="a5f3fbd2da4fd86d60566b8946d8d5023"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f3fbd2da4fd86d60566b8946d8d5023">&#9670;&#160;</a></span>clear_device_screen_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtos_TerminalConsole::clear_device_screen_buffer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Clear the device screen buffer. </p>
+
+<p>Implements <a class="el" href="classrtos___display_device.html#aa38b0a9b6f08a6455fe6e20ab783cf4e">rtos_DisplayDevice</a>.</p>
+
+</div>
+</div>
+<a id="a9040e5f77475ebaa1304ffb897d4354a" name="a9040e5f77475ebaa1304ffb897d4354a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9040e5f77475ebaa1304ffb897d4354a">&#9670;&#160;</a></span>show_widget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtos_TerminalConsole::show_widget </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classrtos___widget.html">rtos_Widget</a> *</td>          <td class="paramname"><span class="paramname"><em>widget_to_show</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classrtos___terminal_console.html" title="The RTOS terminal console is the class for all text display devices that are managed by a dedicated d...">rtos_TerminalConsole</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">widget_to_show</td><td>the widget to show </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classrtos___display_device.html#aac8dc205b62b94aa6fdb492ae79b60b6">rtos_DisplayDevice</a>.</p>
 
 </div>
 </div>

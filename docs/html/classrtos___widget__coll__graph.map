@@ -1,12 +1,11 @@
 <map id="rtos_Widget" name="rtos_Widget">
-<area shape="rect" id="Node000001" title="RTOS wrapper for Widget class." alt="" coords="115,569,657,724"/>
-<area shape="rect" id="Node000002" href="$classrtos___model.html" title="RTOS wrapper for Model class." alt="" coords="5,371,337,507"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,505,244,544,258,556,254,560,240,547,209,509"/>
-<area shape="rect" id="Node000003" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="318,117,454,197"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="389,197,389,552,383,552,383,197"/>
-<area shape="rect" id="Node000004" href="$structstruct___data_to_show.html" title="data structure used to queue data to send to the display task" alt="" coords="489,390,643,489"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="407,196,435,250,470,308,518,376,514,379,465,311,430,252,402,198"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="526,490,466,559,462,555,522,487"/>
-<area shape="rect" id="Node000005" href="$class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="479,5,944,309"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="636,310,601,376,596,374,631,308"/>
+<area shape="rect" id="Node000001" title="RTOS wrapper for Widget class." alt="" coords="227,203,703,433"/>
+<area shape="rect" id="Node000004" href="$structstruct___widget_data_to_gate_keeper.html" title="data structure used to queue widget data to send to the display task" alt="" coords="201,495,372,556"/>
+<area shape="poly" id="edge5_Node000004_Node000001" title=" " alt="" coords="460,434,451,454,438,472,415,492,389,506,387,502,412,488,434,469,446,451,455,431"/>
+<area shape="rect" id="Node000002" href="$classrtos___model.html" title="RTOS wrapper for Model class." alt="" coords="339,5,671,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="497,141,489,187,484,186,492,140"/>
+<area shape="rect" id="Node000003" href="$classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="5,15,315,132"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="234,130,310,191,307,195,230,134"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="151,132,142,196,139,273,148,355,159,394,174,431,194,460,220,483,216,487,190,463,169,434,154,396,143,356,134,274,137,196,145,131"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="279,495,280,475,286,456,291,445,296,448,290,458,285,476,285,495"/>
 </map>

@@ -7,7 +7,6 @@ var class_graphic_widget =
     [ "circle", "class_graphic_widget.html#aeadc616612d2a5ad911c9595073bdb71", null ],
     [ "clear_widget", "class_graphic_widget.html#a7cfe84700b96f442632858a6aad2000d", null ],
     [ "draw_border", "class_graphic_widget.html#ac2a3a4387a699f25407c71a90b55eeab", null ],
-    [ "ellipse", "class_graphic_widget.html#ab499546cc28ee6f5e74051f061b24e30", null ],
     [ "get_graph_frame_config", "class_graphic_widget.html#a49c9ebded2dc14246284662e13713a05", null ],
     [ "get_value_of_interest", "class_graphic_widget.html#a012e42d45d29004e6e93e46782dcb284", null ],
     [ "hline", "class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a", null ],
