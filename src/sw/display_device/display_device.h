@@ -108,12 +108,10 @@ public:
     size_t text_buffer_size;
     /// @brief the effective character buffer
     char *text_buffer = nullptr;
-    /**
-     * @brief Construct a new Printer Device object
-     *
-     * @param number_of_char_width
-     * @param number_of_char_height
-     */
+
+    /// @brief  Construct a new Terminal Console object
+    /// @param number_of_char_width     the size, in number of character of a line
+    /// @param number_of_char_hieght    the number of line
     TerminalConsole(size_t number_of_char_width,
                     size_t number_of_char_hieght);
     virtual ~TerminalConsole();
@@ -133,8 +131,12 @@ public:
     SemaphoreHandle_t display_device_mutex;
     rtos_DisplayDevice(/* args */);
     ~rtos_DisplayDevice();
+
+    /// @brief  Show the widget on the display device.
+    /// @param widget_to_show   the widget to show
     virtual void show_widget(rtos_Widget *widget_to_show) = 0;
 
+    /// @brief Clear the device screen buffer.
     virtual void clear_device_screen_buffer() = 0;
 };
 
@@ -148,6 +150,9 @@ public:
     rtos_GraphicDisplayDevice(/* args */);
     ~rtos_GraphicDisplayDevice();
 
+    /// @brief Check the compatibility of the framebuffer configuration with the display device physical limitations.
+    /// @param framebuffer_cfg  the widget configuration data
+    /// @param canvas_format    the format of the canvas
     virtual void check_rtos_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format) = 0;
 };
 /// @brief The RTOS terminal console is the class for all text display devices that are managed by a dedicated display task in an RTOS environment.
@@ -164,24 +169,41 @@ public:
     /// @brief  the number of characters
     size_t text_buffer_size;
 
-
+    /// @brief  Construct a new rtos_TerminalConsole object
+    /// @param widget_to_show   the widget to show
     void show_widget(rtos_Widget *widget_to_show);
 
+    /// @brief Clear the device screen buffer                    
     void clear_device_screen_buffer();
+
+    /// @brief  Construct a new rtos_TerminalConsole object
+    /// @param number_of_char_width     the size, in number of character of a line
+    /// @param number_of_char_hight     the number of line
     rtos_TerminalConsole(size_t number_of_char_width,
                          size_t number_of_char_hight);
     virtual ~rtos_TerminalConsole();
 };
-
+/// @brief The RTOS graphic display gatekeeper is the class that manages the access to the graphic display device in an RTOS environment.
+/// \ingroup view   
 class rtos_GraphicDisplayGateKeeper
 {
 private:
+/// @brief Semaphore to signal that data has been sent to the display
     SemaphoreHandle_t data_sent; // pour attendre la fin d'utilisation de la resource bus / display
 public:
+/// @brief Queue to send widget data to the display task
     QueueHandle_t graphic_widget_data;
-    rtos_GraphicDisplayGateKeeper(/* args */);
+
+    /// @brief constructor for rtos_GraphicDisplayGateKeeper
+    rtos_GraphicDisplayGateKeeper(/* args */);  
     ~rtos_GraphicDisplayGateKeeper();
+    /// @brief  Send the clear device command to the display task.
+    /// @param device   the display device
     void send_clear_device_command(rtos_GraphicDisplayDevice *device);
+    /// @brief  Send the widget data to the display task.
+    /// @param widget   the widget to show
     void send_widget_data(rtos_Widget *widget);
+    /// @brief  Receive the widget data from the display task.
+    /// @param received_widget_data   the received widget data  
     void receive_widget_data(struct_WidgetDataToGateKeeper received_widget_data);
 };

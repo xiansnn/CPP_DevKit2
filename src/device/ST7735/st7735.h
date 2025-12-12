@@ -192,12 +192,17 @@ class rtos_ST7735 : public ST7735 , public rtos_GraphicDisplayDevice
     /// @brief Show data from the display queue.
     /// @param data_to_show The data to display. 
     void show_from_display_queue(struct_WidgetDataToGateKeeper data_to_show);
+
+    /// @brief  Show the widget on the display device.
+    /// @param widget   the widget to show
     void show_widget(rtos_Widget* widget);
     void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y);
 
     /// @brief Clear the device screen buffer.
     void clear_device_screen_buffer();
-
+    /// @brief  Check the compatibility of the framebuffer configuration with the display device physical limitations.
+    /// @param framebuffer_cfg  the widget configuration data
+    /// @param canvas_format    the format of the canvas
     void check_rtos_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format);
 
 };

@@ -1,7 +1,7 @@
 /**
  * @file widget_primitives.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief
+ * @brief   Basic drawing primitives for widgets
  * @version 0.1
  * @date 2025-12-10
  *
@@ -38,6 +38,8 @@
 /// @brief character code for CARRIAGE_RETURN ('CR', 0x0D)
 #define CARRIAGE_RETURN '\r'
 
+
+/// @brief A class that implements basic graphic drawing primitives for widgets
 class GraphicDrawer
 {
 protected:
@@ -59,10 +61,23 @@ protected:
     uint8_t widget_start_y;
 
 public:
+    /// @brief  Constructor of the GraphicDrawer class
+    /// @param graph_cfg    the configuration data for the graphical frame
+    /// @param canvas_format    the format of the associated canvas (see CanvasFormat)
     GraphicDrawer(struct_ConfigGraphicWidget graph_cfg,
                   CanvasFormat canvas_format);
+
+    /// @brief  Constructor of the GraphicDrawer class
+    /// @param text_cfg     the configuration data for the textual frame
+    /// @param canvas_format    the format of the associated canvas (see CanvasFormat)
     GraphicDrawer(struct_ConfigTextWidget text_cfg,
                   CanvasFormat canvas_format);
+
+    /// @brief  Constructor of the GraphicDrawer class
+    /// @param text_cfg     the configuration data for the textual frame
+    /// @param canvas_format        the format of the associated canvas (see CanvasFormat)
+    /// @param frame_width  the frame width in pixel
+    /// @param frame_height     the frame height in pixel
     GraphicDrawer(struct_ConfigTextWidget text_cfg,
                   CanvasFormat canvas_format, size_t frame_width,
                   size_t frame_height);
@@ -148,6 +163,8 @@ public:
     virtual void draw_border(ColorIndex color = ColorIndex::WHITE);
 };
 
+/// @brief A class dedicated to text drawing within a widget
+/// \ingroup view
 class TextWriter : public GraphicDrawer
 {
 private:

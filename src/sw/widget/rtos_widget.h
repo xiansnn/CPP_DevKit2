@@ -44,6 +44,7 @@ public:
     /// @brief location in y of the widget within the hosting framebuffer
     uint8_t widget_anchor_y;
 
+    /// @brief data structure used to queue widget data to send to the display task
     struct_WidgetDataToGateKeeper widget_data_to_gatekeeper;
 
     /// @brief FreeRTOS task handle associated to the widget
@@ -78,29 +79,41 @@ public:
     virtual void get_value_of_interest() = 0;
 };
 
+
+//// @brief RTOS wrapper for GraphicWidget class
+/// \ingroup view
 class rtos_GraphicWidget : public rtos_Widget
 {
 private:
 public:
+/// @brief the graphic drawer associated to the widget      
     GraphicDrawer *drawer;
+    /// @brief  Constructor of the RTOS graphic widget  
+    /// @param actual_displayed_model   the displayed model of the widget
+    /// @param graph_cfg    the configuration data for the graphical frame
+    /// @param canvas_format    the format of the associated canvas (see CanvasFormat)
+    /// @param display_device   the display device on which the widget is drawn
     rtos_GraphicWidget(rtos_Model *actual_displayed_model,
                        struct_ConfigGraphicWidget graph_cfg,
                        CanvasFormat canvas_format,
                        rtos_DisplayDevice *display_device);
+    /// @brief Destructor of the RTOS graphic widget
     virtual ~rtos_GraphicWidget();
 };
-
+/// @brief RTOS wrapper for TextWidget class
+/// \ingroup view   
 class rtos_TextWidget : public rtos_Widget
 {
 private:
 public:
+    /// @brief the text writer associated to the widget
     TextWriter *writer;
     /// @brief Construct a new Text Widget object
-    /// \note USAGE: when the text frame is defined by the number of characters width and height.
-    /// @param graphic_display_screen The display device on which the widget is drawn
-    /// @param text_cfg the configuration data for the textual frame
+    /// \note USAGE: when the text frame is defined by the number of characters width and height. 
+    /// @param actual_displayed_model   the displayed model of the widget       
+    /// @param text_cfg the configuration data for the textual frame            
     /// @param canvas_format the format of the associated canvas (see CanvasFormat)
-    /// @param displayed_object the displayed model of the widget. Default to nullptr
+    /// @param display_device   the display device on which the widget is drawn
     rtos_TextWidget(rtos_Model *actual_displayed_model,
                     struct_ConfigTextWidget text_cfg,
                     CanvasFormat canvas_format,
@@ -108,12 +121,12 @@ public:
 
     /// @brief Construct a new Text Widget object
     /// \note USAGE: when the text frame is defined by the frame size width and height in pixel.
-    /// @param graphic_display_screen The display device on which the widget is drawn
+    /// @param actual_displayed_model   the displayed model of the widget        
     /// @param text_cfg the configuration data for the textual frame
     /// @param canvas_format the format of the associated canvas (see CanvasFormat)
     /// @param frame_width the frame size width
     /// @param frame_height the frame size height
-    /// @param displayed_object the displayed model of the widget. Default to nullptr
+    /// @param display_device   the display device on which the widget is drawn
     rtos_TextWidget(rtos_Model *actual_displayed_model,
                     struct_ConfigTextWidget text_cfg,
                     CanvasFormat canvas_format,
@@ -121,7 +134,8 @@ public:
                     rtos_DisplayDevice *display_device);
     virtual ~rtos_TextWidget();
 };
-
+/// @brief RTOS wrapper for PrintWidget class
+/// \ingroup view
 class rtos_PrintWidget : public rtos_Widget
 {
 protected:
@@ -135,6 +149,9 @@ protected:
 public:
     /// @brief the effective character buffer
     char *text_buffer = nullptr;
+    /// @brief      
+    /// @param actual_displayed_model   the displayed model of the widget
+    /// @param terminal_console     the terminal console associated to the print widget
     rtos_PrintWidget(rtos_Model *actual_displayed_model,
                      rtos_TerminalConsole *terminal_console);
     virtual ~rtos_PrintWidget();

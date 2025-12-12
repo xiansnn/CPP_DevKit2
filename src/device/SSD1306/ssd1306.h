@@ -276,11 +276,16 @@ public:
     rtos_SSD1306(rtos_HW_I2C_Master *master, struct_ConfigSSD1306 device_config);
     ~rtos_SSD1306();
 
+    /// @brief  Check the compatibility of the framebuffer configuration with the display device physical limitations.
+    /// @param framebuffer_cfg  the widget configuration data
+    /// @param canvas_format    the format of the canvas
     void check_rtos_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format);
 
     /// @brief Clear the device screen buffer.
     void clear_device_screen_buffer();
 
+    /// @brief  Show the widget on the display device.
+    /// @param widget   the widget to show
     void show_widget(rtos_Widget* widget);
 
     void show_render_area(uint8_t *data_buffer, struct_RenderArea display_area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
