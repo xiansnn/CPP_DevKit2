@@ -61,24 +61,33 @@ rtos_DisplayDevice::~rtos_DisplayDevice()
 rtos_GraphicDisplayDevice::rtos_GraphicDisplayDevice()
     : rtos_DisplayDevice()
 {
-    this->input_queue = xQueueCreate(5, sizeof(struct_DataToShow));
 }
 
 rtos_GraphicDisplayDevice::~rtos_GraphicDisplayDevice()
 {
 }
 
-void rtos_TerminalConsole::show_from_display_queue(char *text_to_print)
+void rtos_TerminalConsole::show_widget(rtos_Widget *widget_to_show)
 {
     xSemaphoreTake(this->display_device_mutex, portMAX_DELAY);
-    stdio_printf(text_to_print);
+    stdio_printf(((rtos_PrintWidget *)widget_to_show)->text_buffer);
     xSemaphoreGive(this->display_device_mutex);
 }
 
-rtos_TerminalConsole::rtos_TerminalConsole()
+void rtos_TerminalConsole::clear_device_screen_buffer()
+{
+    xSemaphoreTake(this->display_device_mutex, portMAX_DELAY);
+    stdio_printf("\n");
+    xSemaphoreGive(this->display_device_mutex);
+
+}
+
+rtos_TerminalConsole::rtos_TerminalConsole(size_t number_of_char_width, size_t number_of_char_height)
     : rtos_DisplayDevice()
 {
-    this->input_queue = xQueueCreate(5, sizeof(char *));
+    this->number_of_line = number_of_char_height;
+    this->number_of_column = number_of_char_width;
+    this->text_buffer_size = number_of_char_width * number_of_char_height + 1; // +1 because this is a C-style char[] ended with \x0
 }
 
 rtos_TerminalConsole::~rtos_TerminalConsole()
@@ -118,7 +127,7 @@ void rtos_GraphicDisplayGateKeeper::send_widget_data(rtos_Widget *widget)
     widget->widget_data_to_gatekeeper.command = DisplayCommand::SHOW_IMAGE;
 #if defined(CHECK_PROBE)
     p6.pulse_us(10);
-#endif // CHECK_PROBE
+#endif                                                                                  // CHECK_PROBE
     xQueueSend(graphic_widget_data, &widget->widget_data_to_gatekeeper, portMAX_DELAY); // take 65ms but used fully the CPU
 #if defined(CHECK_PROBE)
     p6.pulse_us();
@@ -137,10 +146,10 @@ void rtos_GraphicDisplayGateKeeper::receive_widget_data(struct_WidgetDataToGateK
     switch (received_widget_data.command)
     {
     case DisplayCommand::SHOW_IMAGE:
-        ((rtos_GraphicDisplayDevice *)received_widget_data.display)->show_widget(received_widget_data.widget);
+        ((rtos_DisplayDevice *)received_widget_data.display)->show_widget(received_widget_data.widget);
         break;
     case DisplayCommand::CLEAR_SCREEN:
-        ((rtos_GraphicDisplayDevice *)received_widget_data.display)->clear_device_screen_buffer();
+        ((rtos_DisplayDevice *)received_widget_data.display)->clear_device_screen_buffer();
         break;
     default:
         break;

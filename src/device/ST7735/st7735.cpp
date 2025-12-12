@@ -658,12 +658,3 @@ void rtos_ST7735::check_rtos_display_device_compatibility(struct_ConfigGraphicWi
 {
     check_display_device_compatibility(framebuffer_cfg, canvas_format);
 }
-
-void rtos_ST7735::send_clear_device_command(QueueHandle_t display_queue_to_SPI, SemaphoreHandle_t sending_done)
-{
-    struct_DataToShow data_to_display;
-    data_to_display.command = DisplayCommand::CLEAR_SCREEN;
-    data_to_display.display = this;
-    xQueueSend(display_queue_to_SPI, &data_to_display, portMAX_DELAY); // take 65ms but used fully the CPU
-    xSemaphoreTake(sending_done, portMAX_DELAY);
-}

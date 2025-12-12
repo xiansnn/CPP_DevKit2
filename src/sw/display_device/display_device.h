@@ -40,7 +40,6 @@ public:
 
 class rtos_DisplayDevice;
 class rtos_Widget;
-// class rtos_GraphicWidget;
 
 /// @brief  data structure used to queue widget data to send to the display task
 struct struct_WidgetDataToGateKeeper
@@ -51,21 +50,6 @@ struct struct_WidgetDataToGateKeeper
     rtos_DisplayDevice *display = nullptr;
     /// @brief the widget to be displayed
     rtos_Widget *widget = nullptr;
-};
-
-/// @brief (obsolete) data structure used to queue data to send to the display task
-struct struct_DataToShow
-{
-    /// @brief the command to be executed by the display task
-    DisplayCommand command{DisplayCommand::SHOW_IMAGE};
-    /// @brief the display device
-    DisplayDevice *display = nullptr;
-    /// @brief the canvas to be displayed
-    Canvas *canvas = nullptr;
-    /// @brief the x anchor position of the canvas on the display
-    uint8_t anchor_x = 0;
-    /// @brief the y anchor position of the canvas on the display
-    uint8_t anchor_y = 0;
 };
 
 /// @brief This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen SSD1306).
@@ -128,10 +112,10 @@ public:
      * @brief Construct a new Printer Device object
      *
      * @param number_of_char_width
-     * @param number_of_char_hight
+     * @param number_of_char_height
      */
     TerminalConsole(size_t number_of_char_width,
-                    size_t number_of_char_hight);
+                    size_t number_of_char_hieght);
     virtual ~TerminalConsole();
 
     /// @brief the method that actually print the content of text_buffer on the console
@@ -145,12 +129,13 @@ class rtos_DisplayDevice
 private:
     /* data */
 public:
-    /// @brief the queue handle to send data to the display task
-    QueueHandle_t input_queue;
     /// @brief the mutex to protect the display device access
     SemaphoreHandle_t display_device_mutex;
     rtos_DisplayDevice(/* args */);
     ~rtos_DisplayDevice();
+    virtual void show_widget(rtos_Widget *widget_to_show) = 0;
+
+    virtual void clear_device_screen_buffer() = 0;
 };
 
 /// @brief The RTOS graphic display device is the base class for all graphic display devices that are managed by a dedicated display task in an RTOS environment.
@@ -163,10 +148,6 @@ public:
     rtos_GraphicDisplayDevice(/* args */);
     ~rtos_GraphicDisplayDevice();
 
-    virtual void show_widget(rtos_Widget *widget_to_show) = 0;
-
-    virtual void clear_device_screen_buffer() = 0;
-
     virtual void check_rtos_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format) = 0;
 };
 /// @brief The RTOS terminal console is the class for all text display devices that are managed by a dedicated display task in an RTOS environment.
@@ -176,11 +157,20 @@ class rtos_TerminalConsole : public rtos_DisplayDevice
 private:
     /* data */
 public:
-    /// @brief the method to send text buffer to a queue
-    /// @param text_to_print
-    void show_from_display_queue(char *text_to_print);
-    rtos_TerminalConsole(/* args */);
-    ~rtos_TerminalConsole();
+    /// @brief the size, in number of character of a line
+    size_t number_of_column;
+    /// @brief the number of line
+    size_t number_of_line;
+    /// @brief  the number of characters
+    size_t text_buffer_size;
+
+
+    void show_widget(rtos_Widget *widget_to_show);
+
+    void clear_device_screen_buffer();
+    rtos_TerminalConsole(size_t number_of_char_width,
+                         size_t number_of_char_hight);
+    virtual ~rtos_TerminalConsole();
 };
 
 class rtos_GraphicDisplayGateKeeper
@@ -193,80 +183,5 @@ public:
     ~rtos_GraphicDisplayGateKeeper();
     void send_clear_device_command(rtos_GraphicDisplayDevice *device);
     void send_widget_data(rtos_Widget *widget);
-    // void send_widget_data(rtos_TextWidget *widget);
     void receive_widget_data(struct_WidgetDataToGateKeeper received_widget_data);
 };
-
-/*
----------------------------------PrintDevice
-char *text_to_tprint;
-
-    while (true)
-    {
-        xQueueReceive(text_buffer_queue, &text_to_tprint, portMAX_DELAY);
-        p7.hi();
-        my_serial_monitor.show_from_display_queue(text_to_tprint);
-        p7.lo();
-        xSemaphoreGive(data_sent);
-    }
---------------------SSD1306-------------------------------------------
-    struct_DataToShow received_data_to_show;
-
-    while (true)
-    {
-        xQueueReceive(display_data_queue, &received_data_to_show, portMAX_DELAY);
-        p4.hi();
-        switch (received_data_to_show.command)
-        {
-        case DisplayCommand::SHOW_IMAGE:
-            ((rtos_SSD1306 *)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
-            break;
-        case DisplayCommand::CLEAR_SCREEN:
-            ((rtos_SSD1306 *)received_data_to_show.display)->clear_device_screen_buffer();
-            break;
-        default:
-            break;
-        }
-
-        xSemaphoreGive(data_sent);
-        p4.lo();
------------------------SSD1306---------------------------
-    struct_SSD1306DataToShow received_data_to_show;
-
-    while (true)
-    {
-        xQueueReceive(display_data_queue, &received_data_to_show, portMAX_DELAY);
-        p4.hi();
-        ((rtos_SSD1306 *)received_data_to_show.display)->show_render_area(received_data_to_show.data_buffer,
-                                        received_data_to_show.display_area,
-                                        received_data_to_show.addressing_mode);
-        xSemaphoreGive(data_sent_to_I2C);
-        p4.lo();
-
-----------------------------ST7735---------------------------
-    struct_DataToShow received_data_to_show;
-
-    while (true)
-    {
-        xQueueReceive(display_queue_to_SPI, &received_data_to_show, portMAX_DELAY);
-        p4.hi();
-        switch (received_data_to_show.command)
-        {
-        case DisplayCommand::SHOW_IMAGE:
-            ((rtos_ST7735 *)received_data_to_show.display)->show_from_display_queue(received_data_to_show);
-            break;
-        case DisplayCommand::CLEAR_SCREEN:
-            ((rtos_ST7735 *)received_data_to_show.display)->clear_device_screen_buffer();
-            break;
-        default:
-            break;
-        }
-
-        xSemaphoreGive(data_sent_to_SPI);
-
-        p4.lo();
-
-
-
-
-*/

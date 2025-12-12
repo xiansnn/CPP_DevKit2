@@ -13,8 +13,8 @@ struct_ConfigGraphicWidget default_cfg{
     .canvas_foreground_color = ColorIndex::WHITE,
     .canvas_background_color = ColorIndex::BLACK};
 
-my_IncrementalValueWidgetOnSerialMonitor::my_IncrementalValueWidgetOnSerialMonitor(TerminalConsole *my_printer, my_IncrementalValueModel *_actual_displayed_model)
-    : rtos_Widget(_actual_displayed_model, my_printer )
+my_IncrementalValueWidgetOnSerialMonitor::my_IncrementalValueWidgetOnSerialMonitor(rtos_TerminalConsole *my_printer, my_IncrementalValueModel *_actual_displayed_model)
+    : rtos_PrintWidget(_actual_displayed_model, my_printer)
 {
     int max_value = _actual_displayed_model->get_max_value();
     int min_value = _actual_displayed_model->get_min_value();
@@ -26,39 +26,24 @@ my_IncrementalValueWidgetOnSerialMonitor::~my_IncrementalValueWidgetOnSerialMoni
 {
 }
 
-void my_IncrementalValueWidgetOnSerialMonitor::send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue)
-{
-    char *text = ((TerminalConsole *)this->display_device)->text_buffer;
-    xQueueSend(text_buffer_queue, &text, portMAX_DELAY); // take 65ms but used fully the CPU
-
-}
-
 void my_IncrementalValueWidgetOnSerialMonitor::draw()
 {
-    my_IncrementalValueModel *_actual_displayed_model = (my_IncrementalValueModel *)this->actual_rtos_displayed_model;
-    TerminalConsole *_display_device = (TerminalConsole *)this->display_device;
-
-    //====get_value_of_interest
-    std::string name = _actual_displayed_model->get_name();
-    int value = _actual_displayed_model->get_value();
-    ControlledObjectStatus model_status = _actual_displayed_model->get_rtos_status();
-    std::string status = status_to_string[model_status];
-
+    this->get_value_of_interest();
     //====draw
     switch (model_status)
     {
     case ControlledObjectStatus::IS_WAITING:
-        sprintf(_display_device->text_buffer,
+        sprintf(this->text_buffer,
                 "[%s] %s with value=%d\n",
                 name.c_str(), status.c_str(), value);
         break;
     case ControlledObjectStatus::HAS_FOCUS:
-        sprintf(_display_device->text_buffer,
+        sprintf(this->text_buffer,
                 "[%s] %s with value=%d\n",
                 name.c_str(), status.c_str(), value);
         break;
     case ControlledObjectStatus::IS_ACTIVE:
-        sprintf(_display_device->text_buffer,
+        sprintf(this->text_buffer,
                 "[%s] %s with value= %d %*c\n",
                 name.c_str(), status.c_str(), value, value_to_char_position(), '|');
         break;
@@ -67,13 +52,23 @@ void my_IncrementalValueWidgetOnSerialMonitor::draw()
     }
 }
 
+void my_IncrementalValueWidgetOnSerialMonitor::get_value_of_interest()
+{
+    my_IncrementalValueModel *_actual_displayed_model = (my_IncrementalValueModel *)this->actual_rtos_displayed_model;
+
+    this->name = _actual_displayed_model->get_name();
+    this->value = _actual_displayed_model->get_value();
+    this->model_status = _actual_displayed_model->get_rtos_status();
+    this->status = status_to_string[model_status];
+}
+
 int my_IncrementalValueWidgetOnSerialMonitor::value_to_char_position()
 {
     return (char_position_slope * ((my_IncrementalValueModel *)this->actual_rtos_displayed_model)->get_value() + char_position_offset);
 }
 
-my_ManagerWidgetOnSerialMonitor::my_ManagerWidgetOnSerialMonitor(TerminalConsole *my_printer, rtos_UIModelManager *manager)
-    : rtos_Widget(manager, my_printer)
+my_ManagerWidgetOnSerialMonitor::my_ManagerWidgetOnSerialMonitor(rtos_TerminalConsole *my_printer, rtos_UIModelManager *manager)
+    : rtos_PrintWidget(manager, my_printer)
 {
 }
 
@@ -81,29 +76,19 @@ my_ManagerWidgetOnSerialMonitor::~my_ManagerWidgetOnSerialMonitor()
 {
 }
 
-void my_ManagerWidgetOnSerialMonitor::send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue)
-{
-    char *text = ((TerminalConsole *)this->display_device)->text_buffer;
-    xQueueSend(text_buffer_queue, &text, portMAX_DELAY);
-}
-
 void my_ManagerWidgetOnSerialMonitor::draw()
 {
-    my_TestManager *_actual_display_model = (my_TestManager *)this->actual_rtos_displayed_model;
     TerminalConsole *_display_device = (TerminalConsole *)this->display_device;
-    //====get_value_of_interest
-    std::string text = "manager " + status_to_string[_actual_display_model->get_rtos_status()] + " with value=" +
-                       std::to_string(_actual_display_model->get_current_focus_index()) + "\n";
+    get_value_of_interest();
+    std::string text = "manager " + status + " with value=" +
+                       std::to_string(this->current_focus_index) + "\n";
     //====draw
-    sprintf(_display_device->text_buffer, text.c_str());
+    sprintf(this->text_buffer, text.c_str());
 }
 
-my_TerminalConsole::my_TerminalConsole(size_t number_of_char_width,
-                                       size_t number_of_char_hight)
-    : TerminalConsole(number_of_char_width, number_of_char_hight), rtos_TerminalConsole()
+void my_ManagerWidgetOnSerialMonitor::get_value_of_interest()
 {
-}
-
-my_TerminalConsole::~my_TerminalConsole()
-{
+    my_TestManager *_actual_displayed_model = (my_TestManager *)this->actual_rtos_displayed_model;
+    this->current_focus_index = _actual_displayed_model->get_current_focus_index();
+    this->status = status_to_string[_actual_displayed_model->get_rtos_status()];
 }

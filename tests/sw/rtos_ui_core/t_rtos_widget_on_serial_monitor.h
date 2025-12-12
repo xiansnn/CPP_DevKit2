@@ -21,19 +21,10 @@
 #include "sw/display_device/display_device.h"
 #include "utilities/probe/probe.h"
 
-class my_TerminalConsole : public TerminalConsole, public rtos_TerminalConsole
-{
-private:
-    /* data */
-public:
-    my_TerminalConsole(size_t number_of_char_width,
-                       size_t number_of_char_hight);
-    ~my_TerminalConsole();
-};
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of test_IncrementalValue on the serial monitor
-class my_IncrementalValueWidgetOnSerialMonitor : public rtos_Widget
+class my_IncrementalValueWidgetOnSerialMonitor : public rtos_PrintWidget
 {
 private:
     float char_position_slope;
@@ -41,30 +32,38 @@ private:
     uint8_t max_line_width = 21;
     int value_to_char_position();
 
+    std::string name;
+    int value;
+    std::string status;
+    ControlledObjectStatus model_status;
+
 public:
     /// @brief Construct a new Test Cursor Widget With Incremental Value object
     /// @param _actual_displayed_object
-    my_IncrementalValueWidgetOnSerialMonitor(TerminalConsole *my_printer, my_IncrementalValueModel *_actual_displayed_object);
+    my_IncrementalValueWidgetOnSerialMonitor(rtos_TerminalConsole *my_printer, my_IncrementalValueModel *_actual_displayed_object);
 
     ~my_IncrementalValueWidgetOnSerialMonitor();
-    void send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue);
-
     void draw();
+    void get_value_of_interest();
 };
 
 /// @brief This is an implementation of a pseudo-widget for test_ui_core program.
 /// It write status and value of MyManager on the serial monitor
-class my_ManagerWidgetOnSerialMonitor : public rtos_Widget
+class my_ManagerWidgetOnSerialMonitor : public rtos_PrintWidget
 {
 private:
+    int current_focus_index;
+    std::string status;
+    ControlledObjectStatus model_status;
+
+
 public:
     /// @brief Construct a new MyManagerWidget object
     /// @param line_printer
     /// @param manager
-    my_ManagerWidgetOnSerialMonitor(TerminalConsole *my_printer, rtos_UIModelManager *manager);
+    my_ManagerWidgetOnSerialMonitor(rtos_TerminalConsole *my_printer, rtos_UIModelManager *manager);
 
     ~my_ManagerWidgetOnSerialMonitor();
-    void send_text_to_DisplayGateKeeper(QueueHandle_t text_buffer_queue);
-
     void draw();
+    void get_value_of_interest();
 };

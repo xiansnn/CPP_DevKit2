@@ -6,12 +6,8 @@ add_executable(test_rtos_ui_core
             )               
 target_link_libraries(test_rtos_ui_core 
             pico_stdlib
-            # rtos_hw_spi
-            sw_ui_core
             rtos_ui_core
             dev_rtos_rotary_encoder
-            # device_st7735
-            sw_widget
             rtos_widget
             sw_display_device
             utilities_probe

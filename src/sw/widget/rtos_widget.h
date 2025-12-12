@@ -23,9 +23,6 @@
 #include "queue.h"
 #include "semphr.h"
 
-
-class rtos_Widget;
-
 class rtos_Model;
 
 /// @brief RTOS wrapper for Widget class
@@ -90,7 +87,7 @@ public:
                        struct_ConfigGraphicWidget graph_cfg,
                        CanvasFormat canvas_format,
                        rtos_DisplayDevice *display_device);
-    ~rtos_GraphicWidget();
+    virtual ~rtos_GraphicWidget();
 };
 
 class rtos_TextWidget : public rtos_Widget
@@ -122,5 +119,23 @@ public:
                     CanvasFormat canvas_format,
                     size_t frame_width, size_t frame_height,
                     rtos_DisplayDevice *display_device);
-    ~rtos_TextWidget();
+    virtual ~rtos_TextWidget();
+};
+
+class rtos_PrintWidget : public rtos_Widget
+{
+protected:
+    /// @brief the size, in number of character of a line
+    size_t number_of_column;
+    /// @brief the number of line
+    size_t number_of_line;
+    /// @brief  the number of characters
+    size_t text_buffer_size;
+
+public:
+    /// @brief the effective character buffer
+    char *text_buffer = nullptr;
+    rtos_PrintWidget(rtos_Model *actual_displayed_model,
+                     rtos_TerminalConsole *terminal_console);
+    virtual ~rtos_PrintWidget();
 };

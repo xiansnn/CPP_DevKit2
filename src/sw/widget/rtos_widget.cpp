@@ -64,7 +64,6 @@ rtos_TextWidget::rtos_TextWidget(rtos_Model *actual_displayed_model,
     this->widget_anchor_y = text_cfg.widget_anchor_y;
 }
 
-
 rtos_TextWidget::rtos_TextWidget(rtos_Model *actual_displayed_model,
                                  struct_ConfigTextWidget text_cfg,
                                  CanvasFormat canvas_format,
@@ -77,8 +76,19 @@ rtos_TextWidget::rtos_TextWidget(rtos_Model *actual_displayed_model,
     this->widget_anchor_y = text_cfg.widget_anchor_y;
 }
 
-
 rtos_TextWidget::~rtos_TextWidget()
 {
     delete writer;
+}
+
+rtos_PrintWidget::rtos_PrintWidget(rtos_Model *actual_displayed_model,
+                                   rtos_TerminalConsole *terminal_console)
+    : rtos_Widget(actual_displayed_model, terminal_console)
+{
+    this->text_buffer = new char[terminal_console->text_buffer_size];
+}
+
+rtos_PrintWidget::~rtos_PrintWidget()
+{
+    delete[] text_buffer;
 }

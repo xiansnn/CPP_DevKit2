@@ -40,10 +40,10 @@ std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::INCREMENT, "INCREMENT"},
     {UIControlEvent::DECREMENT, "DECREMENT"},
     {UIControlEvent::TIME_OUT, "TIME_OUT"}};
-
+//==========================display gatekeeper===============
+rtos_GraphicDisplayGateKeeper display_gate_keeper = rtos_GraphicDisplayGateKeeper();
 //---------------Printer Device-------------
-my_TerminalConsole my_serial_monitor = my_TerminalConsole(100, 1);
-
+rtos_TerminalConsole my_serial_monitor = rtos_TerminalConsole(100, 1);
 //---------------incremental value object--------------
 my_IncrementalValueModel value_0 = my_IncrementalValueModel("val0", 0, 5, true, 1);
 my_IncrementalValueModel value_1 = my_IncrementalValueModel("val1", 0, 10, false, 1);
@@ -175,7 +175,7 @@ void manager_widget_task(void *)
         manager_widget.draw();
         p3.lo();
         p3.hi();
-        manager_widget.send_text_to_DisplayGateKeeper(my_serial_monitor.input_queue);
+        display_gate_keeper.send_widget_data(&manager_widget);
         p3.lo();
     }
 }
@@ -190,23 +190,26 @@ void all_incremental_value_widget_task(void *value_widget)
         incremental_value_widget->draw();
         p4.lo();
         p4.hi();
-        incremental_value_widget->send_text_to_DisplayGateKeeper(my_serial_monitor.input_queue);
+        display_gate_keeper.send_widget_data(incremental_value_widget);
         p4.lo();
     }
 }
 
-void display_gate_keeper_task(void *probe)
+
+
+    void display_gate_keeper_task(void *probe)
 {
-    char *text_to_tprint;
+    struct_WidgetDataToGateKeeper received_data_to_show;
 
     while (true)
     {
-        xQueueReceive(my_serial_monitor.input_queue, &text_to_tprint, portMAX_DELAY);
-        p7.hi();
-        my_serial_monitor.show_from_display_queue(text_to_tprint);
-        p7.lo();
+        xQueueReceive(display_gate_keeper.graphic_widget_data, &received_data_to_show, portMAX_DELAY);
+        p4.hi();
+        display_gate_keeper.receive_widget_data(received_data_to_show);
+        p4.lo();
     }
 }
+
 
 int main()
 {

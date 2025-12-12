@@ -468,6 +468,8 @@ class PrintWidget : public Widget
 {
 private:
 protected:
+
+
 public:
 
 /// @brief Construct a new Dummy Widget object
