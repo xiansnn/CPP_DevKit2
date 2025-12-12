@@ -125,10 +125,8 @@ void UI_control_event_manager_task(void *)
     manager.add_managed_rtos_model(&value_0);
     manager.add_managed_rtos_model(&value_1);
     manager.add_managed_rtos_model(&value_2);
-
-    p1.hi();
     manager.notify_all_linked_widget_task();
-    p1.lo();
+
 
     struct_ControlEventData local_event_data;
     BaseType_t global_timeout_condtion;
@@ -173,8 +171,8 @@ void manager_widget_task(void *)
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         p3.hi();
         manager_widget.draw();
-        p3.lo();
-        p3.hi();
+        // p3.lo();
+        // p3.hi();
         display_gate_keeper.send_widget_data(&manager_widget);
         p3.lo();
     }
@@ -188,8 +186,8 @@ void all_incremental_value_widget_task(void *value_widget)
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         p4.hi();
         incremental_value_widget->draw();
-        p4.lo();
-        p4.hi();
+        // p4.lo();
+        // p4.hi();
         display_gate_keeper.send_widget_data(incremental_value_widget);
         p4.lo();
     }
@@ -204,9 +202,9 @@ void all_incremental_value_widget_task(void *value_widget)
     while (true)
     {
         xQueueReceive(display_gate_keeper.graphic_widget_data, &received_data_to_show, portMAX_DELAY);
-        p4.hi();
+        p5.hi();
         display_gate_keeper.receive_widget_data(received_data_to_show);
-        p4.lo();
+        p5.lo();
     }
 }
 
