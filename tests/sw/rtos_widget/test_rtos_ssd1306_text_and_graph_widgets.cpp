@@ -11,7 +11,7 @@
 #include "t_rtos_common_text_and_graph_widgets.h"
 #include "sw/ui_core/rtos_ui_core.h"
 #include "device/SSD1306/ssd1306.h"
-
+//TODO un model et 4 Widget sur 3 ecrans
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
