@@ -32,8 +32,8 @@ void Probe::copy(bool _value)
     gpio_put(this->_gpio, _value);
 }
 
-void Probe::pulse_train(uint nb)
+void Probe::pulse_train(uint nb, uint duration_us)
 {
     for (size_t i = 0; i < nb; i++)
-        pulse_us(10);
+        pulse_us(duration_us);
 }

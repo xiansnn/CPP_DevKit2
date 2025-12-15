@@ -67,5 +67,6 @@ public:
 
     /// @brief Generates a train of 10 us pulses on the GPIO.
     /// @param nb Number of pulses to generate.
-    void pulse_train(uint nb);
+    /// @param duration_us Duration of each pulse in microseconds. Default to 1 us.
+    void pulse_train(uint nb, uint duration_us = 1);
 };
