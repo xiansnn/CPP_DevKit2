@@ -61,6 +61,11 @@ public:
     /// @brief Set the display screen object
     /// @param _new_display_device
     void set_display_device(rtos_DisplayDevice *_new_display_device);
+
+    /// @brief  Set the actual displayed model object
+    /// @param new_displayed_model  the new displayed model
+    void set_actual_displayed_model(rtos_Model * new_displayed_model);
+    
     /// @brief Modify the anchor of the widget on the display screen
     /// @param x anchor x coordinate
     /// @param y anchor y coordinate

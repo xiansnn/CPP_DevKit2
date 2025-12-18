@@ -25,6 +25,11 @@ void rtos_Widget::set_display_device(rtos_DisplayDevice *_new_display_device)
     this->widget_data_to_gatekeeper.display = this->display_device;
 }
 
+void rtos_Widget::set_actual_displayed_model(rtos_Model *new_displayed_model)
+{
+    this->actual_rtos_displayed_model = new_displayed_model;
+}
+
 void rtos_Widget::update_widget_anchor(uint8_t x, uint8_t y)
 {
     this->widget_anchor_x = x;

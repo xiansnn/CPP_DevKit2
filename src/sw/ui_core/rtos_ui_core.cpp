@@ -4,6 +4,7 @@
 void rtos_Model::update_attached_rtos_widget(rtos_Widget *linked_widget)
 {
     this->attached_rtos_widget.insert(linked_widget);
+    linked_widget->set_actual_displayed_model(this);
 }
 
 void rtos_Model::notify_all_linked_widget_task()
