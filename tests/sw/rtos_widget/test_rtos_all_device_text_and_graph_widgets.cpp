@@ -167,17 +167,18 @@ void my_model_task(void *probe)
 
     while (true)
     {
-        sign *= -1;
-        for (int i = -90; i < 90; i += ROLL_INCREMENT)
-        {
-            if (probe != NULL)
-                ((Probe *)probe)->hi();
-            my_rtos_model.update_cycle(i, sign); //  cyclic_computation((Probe *)pxProbe);
-            my_rtos_model.notify_all_linked_widget_task();
-            if (probe != NULL)
-                ((Probe *)probe)->lo();
-            vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(REFRESH_PERIOD_ms));
-        }
+        uint cycle = 0;
+            for (;;)
+            {
+                cycle += ROLL_INCREMENT;
+                if (probe != NULL)
+                    ((Probe *)probe)->hi();
+                my_rtos_model.update_cycle(cycle); //  cyclic_computation((Probe *)pxProbe);
+                my_rtos_model.notify_all_linked_widget_task();
+                if (probe != NULL)
+                    ((Probe *)probe)->lo();
+                vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(REFRESH_PERIOD_ms));
+            }
     }
 }
 
@@ -202,11 +203,9 @@ void SPI_graph_widget_task(void *probe)
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        if (probe != NULL)
-            ((Probe *)probe)->hi();
+        p4.pulse_us();
         my_rtos_graph_widget.draw();
-        if (probe != NULL)
-            ((Probe *)probe)->lo();
+        p5.pulse_us();
         SPI_display_gate_keeper.send_widget_data(&my_rtos_graph_widget);
     }
 }
@@ -220,11 +219,9 @@ void SPI_values_widget_task(void *probe)
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        if (probe != NULL)
-            ((Probe *)probe)->hi();
+        p4.pulse_us();
         my_rtos_values_widget.draw();
-        if (probe != NULL)
-            ((Probe *)probe)->lo();
+        p5.pulse_us();
         SPI_display_gate_keeper.send_widget_data(&my_rtos_values_widget);
     }
 }
@@ -251,11 +248,9 @@ void I2C_right_graph_widget_task(void *probe)
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        if (probe != NULL)
-            ((Probe *)probe)->hi();
+        p4.pulse_us();
         my_rtos_right_graph_widget.draw();
-        if (probe != NULL)
-            ((Probe *)probe)->lo();
+        p5.pulse_us();
         I2C_display_gate_keeper.send_widget_data(&my_rtos_right_graph_widget);
     }
 }
@@ -269,27 +264,26 @@ void I2C_left_values_widget_task(void *probe)
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        if (probe != NULL)
-            ((Probe *)probe)->hi();
+        p4.pulse_us();
         my_rtos_left_values_widget.draw();
-        if (probe != NULL)
-            ((Probe *)probe)->lo();
+        p5.pulse_us();
         I2C_display_gate_keeper.send_widget_data(&my_rtos_left_values_widget);
     }
 }
 
-int main(){
+int main()
+{
     stdio_init_all();
 
     xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
 
     xTaskCreate(my_model_task, "main_task", 256, &p1, 15, NULL); // 4us pour SPI_graph_widget_task, 12us SPI_values_widget_task, I2C_right_graph_widget_task, 16us pour I2C_left_values_widget_task
 
-    xTaskCreate(I2C_left_values_widget_task, "left_values_widget_task", 256, &p4, 10, &my_rtos_left_values_widget.task_handle);// 2.69ms + 6.5ms xfer I2C
-    xTaskCreate(SPI_values_widget_task, "values_widget_task", 256, &p4, 10, &my_rtos_values_widget.task_handle); // durée 5,6 ms + 3,8ms xfer SPI
-    
-    xTaskCreate(I2C_right_graph_widget_task, "right_graph_widget_task", 256, &p5, 10, &my_rtos_right_graph_widget.task_handle);// 368us + 22.2ms xfer I2C
-    xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, &p5, 10, &my_rtos_graph_widget.task_handle);    // durée: 8.23ms + 14ms xfer SPI
+    xTaskCreate(I2C_left_values_widget_task, "left_values_widget_task", 256, NULL, 10, &my_rtos_left_values_widget.task_handle); // 2.69ms + 6.5ms xfer I2C
+    xTaskCreate(SPI_values_widget_task, "values_widget_task", 256, NULL, 10, &my_rtos_values_widget.task_handle);                // durée 5,6 ms + 3,8ms xfer SPI
+
+    xTaskCreate(I2C_right_graph_widget_task, "right_graph_widget_task", 256, NULL, 10, &my_rtos_right_graph_widget.task_handle); // 368us + 22.2ms xfer I2C
+    xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, NULL, 10, &my_rtos_graph_widget.task_handle);                   // durée: 8.23ms + 14ms xfer SPI
 
     xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p6, 5, NULL);
     xTaskCreate(I2C_display_gate_keeper_task, "I2C_gate_keeper_task", 256, &p7, 5, NULL);

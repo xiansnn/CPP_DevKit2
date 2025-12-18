@@ -5,10 +5,10 @@
 my_model::my_model() {}
 my_model::~my_model() {}
 
-void my_model::update_cycle(int i, int sign)
+void my_model::update_cycle(uint i)
 {
-    this->roll = i;
-    this->pitch = sign * i / 4;
+    this->roll = i % 360 ;
+    this->pitch =  0;//roll / 4;
 }
 
 my_text_widget::my_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
@@ -24,7 +24,7 @@ my_text_widget::~my_text_widget() {}
 
 void my_text_widget::get_value_of_interest()
 {
-    sprintf(this->writer->text_buffer, "%+3d\xF8  %+3d\xF8", ((my_model *)this->actual_rtos_displayed_model)->roll, ((my_model *)this->actual_rtos_displayed_model)->pitch);
+    sprintf(this->writer->text_buffer, "%+4d\xF8%+4d\xF8", ((my_model *)this->actual_rtos_displayed_model)->roll, ((my_model *)this->actual_rtos_displayed_model)->pitch);
 }
 
 my_visu_widget::my_visu_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
@@ -45,8 +45,8 @@ void my_visu_widget::draw()
     get_value_of_interest();
 
     // compute and show the graphic representation
-    float xc =drawer->canvas->canvas_width_pixel / 2;
-    float yc =drawer->canvas->canvas_height_pixel / 2;
+    float xc = drawer->canvas->canvas_width_pixel / 2;
+    float yc = drawer->canvas->canvas_height_pixel / 2;
     float yl = yc - pitch;
     float radius = yc - 2 * drawer->widget_border_width; // radius -2 to fit inside the rectangle
     float sin_roll = sin(std::numbers::pi / 180.0 * roll);

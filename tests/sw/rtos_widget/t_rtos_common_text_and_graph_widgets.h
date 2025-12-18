@@ -22,7 +22,7 @@ public:
     int roll{0};
     int pitch{0};
     int cycle{0};
-    void update_cycle(int i, int sign);
+    void update_cycle(uint i);
 };
 
 
