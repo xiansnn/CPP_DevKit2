@@ -127,7 +127,7 @@ void rtos_GraphicDisplayGateKeeper::send_widget_data(rtos_Widget *widget)
     widget->widget_data_to_gatekeeper.command = DisplayCommand::SHOW_IMAGE;
 #if defined(CHECK_PROBE)
     p6.pulse_us(10);
-#endif                                                                                  // CHECK_PROBE
+#endif // CHECK_PROBE
     xQueueSend(graphic_widget_data, &widget->widget_data_to_gatekeeper, portMAX_DELAY); // take 65ms but used fully the CPU
 #if defined(CHECK_PROBE)
     p6.pulse_us();
