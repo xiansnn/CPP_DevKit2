@@ -34,7 +34,7 @@ private:
 
 public:
     /// @brief the task handle of the model task
-    TaskHandle_t task_handle;
+    TaskHandle_t task_handle {nullptr};
     /// @brief link a new widget task to the model
     /// @param linked_widget    the widget to be linked
     void update_attached_rtos_widget(rtos_Widget *linked_widget);

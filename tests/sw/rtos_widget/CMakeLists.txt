@@ -77,6 +77,7 @@ target_link_libraries(test_rtos_ssd1306_text_and_graph_widgets
 add_executable(test_rtos_all_device_text_and_graph_widgets 
                 test_rtos_all_device_text_and_graph_widgets.cpp
                 t_rtos_common_text_and_graph_widgets.cpp
+                t_rtos_all_device_roll_control.cpp
                 )
 target_link_libraries(test_rtos_all_device_text_and_graph_widgets 
             pico_stdlib 

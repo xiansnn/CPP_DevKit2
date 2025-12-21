@@ -7,8 +7,9 @@ my_model::~my_model() {}
 
 void my_model::update_cycle(uint i)
 {
-    this->roll = i % 360 ;
-    this->pitch =  0;//roll / 4;
+    this->angle = i % 360;
+    this->x_pos = 0;
+    this->y_pos = 0;
 }
 
 my_text_widget::my_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
@@ -24,7 +25,9 @@ my_text_widget::~my_text_widget() {}
 
 void my_text_widget::get_value_of_interest()
 {
-    sprintf(this->writer->text_buffer, "%+4d\xF8%+4d\xF8", ((my_model *)this->actual_rtos_displayed_model)->roll, ((my_model *)this->actual_rtos_displayed_model)->pitch);
+    this->value_angle = ((my_model *)this->actual_rtos_displayed_model)->angle;
+    this->value_x_pos = ((my_model *)this->actual_rtos_displayed_model)->x_pos;
+    this->value_y_pos = ((my_model *)this->actual_rtos_displayed_model)->y_pos;
 }
 
 my_visu_widget::my_visu_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
@@ -35,8 +38,9 @@ my_visu_widget::~my_visu_widget() {}
 
 void my_visu_widget::get_value_of_interest()
 {
-    this->roll = ((my_model *)this->actual_rtos_displayed_model)->roll;
-    this->pitch = ((my_model *)this->actual_rtos_displayed_model)->pitch;
+    this->graph_angle = ((my_model *)this->actual_rtos_displayed_model)->angle;
+    this->graph_vertical_pos = ((my_model *)this->actual_rtos_displayed_model)->y_pos;
+    this->graph_horizontal_pos = ((my_model *)this->actual_rtos_displayed_model)->x_pos;
 }
 
 void my_visu_widget::draw()
@@ -44,21 +48,25 @@ void my_visu_widget::draw()
     drawer->clear_widget();
     get_value_of_interest();
 
-    // compute and show the graphic representation
-    float xc = drawer->canvas->canvas_width_pixel / 2;
-    float yc = drawer->canvas->canvas_height_pixel / 2;
-    float yl = yc - pitch;
-    float radius = yc - 2 * drawer->widget_border_width; // radius -2 to fit inside the rectangle
-    float sin_roll = sin(std::numbers::pi / 180.0 * roll);
-    float cos_roll = cos(std::numbers::pi / 180.0 * roll);
-    int x0 = xc - radius * cos_roll;
-    int y0 = yl - radius * sin_roll;
-    int x1 = xc + radius * cos_roll;
-    int y1 = yl + radius * sin_roll;
+    // compute cercle center
+    float widget_horizontal_center = drawer->canvas->canvas_width_pixel / 2;
+    float widget_vertical_center = drawer->canvas->canvas_height_pixel / 2;
+    float radius = widget_vertical_center - 2 * drawer->widget_border_width; // radius -2 to fit inside the rectangle
+    float circle_vertical_center = widget_vertical_center - graph_vertical_pos;
+    float circle_horizontal_center = widget_horizontal_center - graph_horizontal_pos;
+    // compute radius line
+    float sin_angle = sin(std::numbers::pi / 180.0 * graph_angle);
+    float cos_angle = cos(std::numbers::pi / 180.0 * graph_angle);
+    // int x0 = circle_horizontal_center - radius * cos_angle;
+    // int y0 = circle_vertical_center + radius * sin_angle;
+    int x0 = circle_horizontal_center;
+    int y0 = circle_vertical_center;
+    int x1 = circle_horizontal_center + radius * cos_angle;
+    int y1 = circle_vertical_center - radius * sin_angle;
 
     this->drawer->canvas->fill_canvas_with_color(drawer->canvas->bg_color);
 
-    this->drawer->circle(radius, xc, yl, false, ColorIndex::WHITE);
+    this->drawer->circle(radius, circle_horizontal_center, circle_vertical_center, false, ColorIndex::WHITE);
     this->drawer->line(x0, y0, x1, y1, ColorIndex::WHITE);
 
     drawer->draw_border(drawer->canvas->fg_color);
@@ -68,6 +76,8 @@ void my_text_widget::draw()
 {
     this->writer->clear_text_buffer();
     get_value_of_interest();
+    // draw
+    sprintf(this->writer->text_buffer, "%3d\xF8\n%+3d\n%+3d", value_angle, value_x_pos, value_y_pos);
     this->writer->write();
     this->writer->draw_border();
 }

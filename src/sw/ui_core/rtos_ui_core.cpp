@@ -1,5 +1,4 @@
 #include "rtos_ui_core.h"
-// #include "sw/ui_core/ui_control_event.h"
 
 void rtos_Model::update_attached_rtos_widget(rtos_Widget *linked_widget)
 {
@@ -13,16 +12,11 @@ void rtos_Model::notify_all_linked_widget_task()
     {
         for (auto &&widget : attached_rtos_widget)
         {
-            xTaskNotifyGive(widget->task_handle);
+            if (widget->task_handle != nullptr)
+                xTaskNotifyGive(widget->task_handle);
         }
     }
 }
-
-// void rtos_Model::draw_refresh_all_attached_widgets()
-// {
-//     for (auto &&widget : attached_rtos_widget)
-//         ((Widget *)widget)->draw();
-// }
 
 rtos_Model::rtos_Model()
 {
