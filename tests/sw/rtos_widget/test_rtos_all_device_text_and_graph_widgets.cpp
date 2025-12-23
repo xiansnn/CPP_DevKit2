@@ -26,7 +26,6 @@ Probe p6 = Probe(6);
 Probe p7 = Probe(7);
 
 #define REFRESH_PERIOD_ms 60
-#define ROLL_INCREMENT 10
 
 #define GLOBAL_TIMEOUT_DELAY_ms 5000
 #define SW_TIMEOUT_DELAY_ms 1000
@@ -34,6 +33,7 @@ Probe p7 = Probe(7);
 #define CENTRAL_SWITCH_GPIO 18
 #define ENCODER_CLK_GPIO 19
 #define ENCODER_DT_GPIO 20
+#define DUMMY_GPIO_FOR_PERIODIC_EVOLUTION 100
 
 #define SSD1306_CANVAS_FORMAT CanvasFormat::MONO_VLSB
 #define ST7735_GRAPHICS_CANVAS_FORMAT CanvasFormat::RGB565_16b
@@ -178,7 +178,6 @@ void idle_task(void *pxProbe)
     }
 }
 
-
 void SPI_display_gate_keeper_task(void *probe)
 {
     struct_WidgetDataToGateKeeper received_data_to_show;
@@ -212,7 +211,7 @@ void SPI_values_widget_task(void *probe)
     my_text_widget title = my_text_widget(&color_display, ST7735_title_config, ST7735_TEXT_CANVAS_FORMAT);
     title.writer->write("ANGLEH_POSV_POS");
     SPI_display_gate_keeper.send_widget_data(&title);
-    
+
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -257,7 +256,7 @@ void I2C_left_values_widget_task(void *probe)
     my_text_widget left_title = my_text_widget(&left_display, SSD1306_title_config, SSD1306_CANVAS_FORMAT);
     left_title.writer->write("ANGLEH_POSV_POS");
     I2C_display_gate_keeper.send_widget_data(&left_title);
-    
+
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -267,6 +266,22 @@ void I2C_left_values_widget_task(void *probe)
         I2C_display_gate_keeper.send_widget_data(&my_rtos_left_values_widget);
     }
 }
+void angle_evolution_task(void *probe)
+{
+    struct_ControlEventData data;
+    data.gpio_number = DUMMY_GPIO_FOR_PERIODIC_EVOLUTION;
+    data.event = UIControlEvent::INCREMENT;
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+
+    while (true)
+    {
+        if (probe != NULL)
+            ((Probe *)probe)->pulse_us();
+        xQueueSend(my_rtos_model.control_event_input_queue, &data, portMAX_DELAY);
+        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(REFRESH_PERIOD_ms));
+    }
+}
+
 void my_model_task(void *probe)
 {
     my_rtos_model.update_attached_rtos_widget(&my_rtos_right_graph_widget);
@@ -274,22 +289,17 @@ void my_model_task(void *probe)
     my_rtos_model.update_attached_rtos_widget(&my_rtos_graph_widget);
     my_rtos_model.update_attached_rtos_widget(&my_rtos_values_widget);
 
-    int sign = 1;
-    TickType_t xLastWakeTime = xTaskGetTickCount();
-
     while (true)
     {
-        uint cycle = 0;
-        for (;;)
+        struct_ControlEventData data;
+        while (true)
         {
-            cycle += ROLL_INCREMENT;
+            xQueueReceive(my_rtos_model.control_event_input_queue, &data, portMAX_DELAY);
             if (probe != NULL)
                 ((Probe *)probe)->hi();
-            my_rtos_model.update_cycle(cycle); //  cyclic_computation((Probe *)pxProbe);
-            my_rtos_model.notify_all_linked_widget_task();
+            my_rtos_model.process_control_event(data);
             if (probe != NULL)
                 ((Probe *)probe)->lo();
-            vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(REFRESH_PERIOD_ms));
         }
     }
 }
@@ -298,19 +308,18 @@ int main()
 {
     stdio_init_all();
 
-    xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
+    xTaskCreate(angle_evolution_task, "periodic_task", 256, &p1, 20, NULL);
+    xTaskCreate(my_model_task, "main_task", 256, &p1, 20, NULL); // 4us pour SPI_graph_widget_task, 12us SPI_values_widget_task, I2C_right_graph_widget_task, 16us pour I2C_left_values_widget_task
 
-    xTaskCreate(my_model_task, "main_task", 256, &p1, 15, NULL); // 4us pour SPI_graph_widget_task, 12us SPI_values_widget_task, I2C_right_graph_widget_task, 16us pour I2C_left_values_widget_task
-
+    xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, NULL, 13, &my_rtos_graph_widget.task_handle);                   // durée: 8.23ms + 14ms xfer SPI
+    xTaskCreate(SPI_values_widget_task, "values_widget_task", 256, NULL, 12, &my_rtos_values_widget.task_handle);                // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)
+    xTaskCreate(I2C_right_graph_widget_task, "right_graph_widget_task", 256, NULL, 11, &my_rtos_right_graph_widget.task_handle); // 368us + 22.2ms xfer I2C
     xTaskCreate(I2C_left_values_widget_task, "left_values_widget_task", 256, NULL, 10, &my_rtos_left_values_widget.task_handle); // 2.69ms + 6.5ms xfer I2C (depends on font size)
-    xTaskCreate(SPI_values_widget_task, "values_widget_task", 256, NULL, 10, &my_rtos_values_widget.task_handle);                // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)
-
-    xTaskCreate(I2C_right_graph_widget_task, "right_graph_widget_task", 256, NULL, 10, &my_rtos_right_graph_widget.task_handle); // 368us + 22.2ms xfer I2C
-    xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, NULL, 10, &my_rtos_graph_widget.task_handle);                   // durée: 8.23ms + 14ms xfer SPI 
 
     xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p6, 5, NULL);
     xTaskCreate(I2C_display_gate_keeper_task, "I2C_gate_keeper_task", 256, &p7, 5, NULL);
 
+    xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
     vTaskStartScheduler();
 
     while (true)

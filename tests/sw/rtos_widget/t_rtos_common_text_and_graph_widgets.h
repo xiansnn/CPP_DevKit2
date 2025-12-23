@@ -10,18 +10,17 @@
 #include "sw/widget/rtos_widget.h"
 #include "sw/ui_core/rtos_ui_core.h"
 
-class my_model : public rtos_Model
+class my_model : public rtos_UIControlledModel
 {
-private:
+    private:
     /* data */
-public:
+    public:
     my_model();
     ~my_model();
-    int angle{0};
+    core_IncrementControlledModel angle;
     int x_pos{0};
     int y_pos{0};
-    int cycle{0};
-    void update_cycle(uint i);
+    void process_control_event(struct_ControlEventData control_event);
 };
 
 class my_text_widget : public rtos_TextWidget

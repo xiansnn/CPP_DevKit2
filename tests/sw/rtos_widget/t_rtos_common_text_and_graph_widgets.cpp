@@ -1,15 +1,33 @@
 #include "t_rtos_common_text_and_graph_widgets.h"
 
 #define DEGREE \xF8
+#define ANGLE_INCREMENT 10
 
-my_model::my_model() {}
-my_model::~my_model() {}
-
-void my_model::update_cycle(uint i)
+my_model::my_model()
+    : rtos_UIControlledModel()
 {
-    this->angle = i % 360;
+    this->angle = core_IncrementControlledModel(0, 359, true, ANGLE_INCREMENT);
     this->x_pos = 0;
     this->y_pos = 0;
+}
+my_model::~my_model()
+{
+}
+
+void my_model::process_control_event(struct_ControlEventData control_event)
+{
+    bool changed;
+    switch (control_event.event)
+    {
+    case UIControlEvent::INCREMENT:
+        changed = this->angle.increment_value();
+        break;
+
+    default:
+        break;
+    }
+    if (changed)
+        notify_all_linked_widget_task();
 }
 
 my_text_widget::my_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
@@ -25,7 +43,7 @@ my_text_widget::~my_text_widget() {}
 
 void my_text_widget::get_value_of_interest()
 {
-    this->value_angle = ((my_model *)this->actual_rtos_displayed_model)->angle;
+    this->value_angle = ((my_model *)this->actual_rtos_displayed_model)->angle.get_value();
     this->value_x_pos = ((my_model *)this->actual_rtos_displayed_model)->x_pos;
     this->value_y_pos = ((my_model *)this->actual_rtos_displayed_model)->y_pos;
 }
@@ -38,7 +56,7 @@ my_visu_widget::~my_visu_widget() {}
 
 void my_visu_widget::get_value_of_interest()
 {
-    this->graph_angle = ((my_model *)this->actual_rtos_displayed_model)->angle;
+    this->graph_angle = ((my_model *)this->actual_rtos_displayed_model)->angle.get_value();
     this->graph_vertical_pos = ((my_model *)this->actual_rtos_displayed_model)->y_pos;
     this->graph_horizontal_pos = ((my_model *)this->actual_rtos_displayed_model)->x_pos;
 }
@@ -57,8 +75,6 @@ void my_visu_widget::draw()
     // compute radius line
     float sin_angle = sin(std::numbers::pi / 180.0 * graph_angle);
     float cos_angle = cos(std::numbers::pi / 180.0 * graph_angle);
-    // int x0 = circle_horizontal_center - radius * cos_angle;
-    // int y0 = circle_vertical_center + radius * sin_angle;
     int x0 = circle_horizontal_center;
     int y0 = circle_vertical_center;
     int x1 = circle_horizontal_center + radius * cos_angle;
