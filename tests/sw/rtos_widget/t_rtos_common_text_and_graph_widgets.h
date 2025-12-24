@@ -18,8 +18,8 @@ class my_model : public rtos_UIControlledModel
     my_model();
     ~my_model();
     core_IncrementControlledModel angle;
-    int x_pos{0};
-    int y_pos{0};
+    core_IncrementControlledModel x_pos;
+    core_IncrementControlledModel y_pos;
     void process_control_event(struct_ControlEventData control_event);
 };
 

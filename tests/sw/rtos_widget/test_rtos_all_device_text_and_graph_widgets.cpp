@@ -8,13 +8,14 @@
  * @copyright Copyright (c) 2025
  *
  */
-#include "t_rtos_common_text_and_graph_widgets.h"
-#include "t_rtos_all_device_roll_control.h"
 #include "sw/ui_core/rtos_ui_core.h"
+#include "sw/widget/rtos_widget.h"
 #include "device/SSD1306/ssd1306.h"
 #include "device/ST7735/st7735.h"
-#include "sw/widget/rtos_widget.h"
 #include "device/rotary_encoder/rtos_rotary_encoder.h"
+#include "t_rtos_common_text_and_graph_widgets.h"
+#include "t_rtos_all_device_roll_control.h"
+#include "t_rtos_all_device_defines.h"
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
@@ -26,37 +27,13 @@ Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
 
-#define REFRESH_PERIOD_ms 500
 
-#define GLOBAL_TIMEOUT_DELAY_ms 5000
-#define SW_TIMEOUT_DELAY_ms 1000
-#define UI_MANAGER_TIMEOUT_DELAY_ms GLOBAL_TIMEOUT_DELAY_ms - SW_TIMEOUT_DELAY_ms
-#define CENTRAL_SWITCH_GPIO 18
-#define ENCODER_CLK_GPIO 19
-#define ENCODER_DT_GPIO 20
-#define DUMMY_GPIO_FOR_PERIODIC_EVOLUTION 100
 
-#define SSD1306_CANVAS_FORMAT CanvasFormat::MONO_VLSB
-#define ST7735_GRAPHICS_CANVAS_FORMAT CanvasFormat::RGB565_16b
-#define ST7735_TEXT_CANVAS_FORMAT CanvasFormat::RGB565_16b
-
-// #define ST7735_128x128
-#define ST7735_128x160
-
-#ifdef ST7735_128x128
-#define DEVICE_DISPLAY_TYPE ST7735DisplayType::ST7735_144_128_RGB_128_GREENTAB
-#define DEVICE_DISPLAY_ROTATION ST7735Rotation::_90
-#define DEVICE_DISPLAY_HEIGHT 128
-#endif
-#ifdef ST7735_128x160
-#define DEVICE_DISPLAY_TYPE ST7735DisplayType::ST7735_177_160_RGB_128_GREENTAB
-#define DEVICE_DISPLAY_ROTATION ST7735Rotation::_180
-#define DEVICE_DISPLAY_HEIGHT 160
-#endif
 
 //==========================display gatekeeper===============
 rtos_GraphicDisplayGateKeeper I2C_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
 rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
+
 //==========================Master I2C========================
 void i2c_irq_handler();
 struct_ConfigMasterI2C cfg_i2c{
@@ -70,6 +47,7 @@ void i2c_irq_handler()
 {
     master.i2c_dma_isr();
 };
+
 //==================SSD1306 left screen===================
 struct_ConfigSSD1306 cfg_left_screen{
     .i2c_address = 0x3C,
@@ -80,6 +58,7 @@ struct_ConfigSSD1306 cfg_left_screen{
     .frequency_divider = 1,
     .frequency_factor = 0};
 rtos_SSD1306 left_display = rtos_SSD1306(&master, cfg_left_screen);
+
 //==================SSD1306 right screen===================
 struct_ConfigSSD1306 cfg_right_screen{
     .i2c_address = 0x3D,
@@ -90,6 +69,7 @@ struct_ConfigSSD1306 cfg_right_screen{
     .frequency_divider = 1,
     .frequency_factor = 0};
 rtos_SSD1306 right_display = rtos_SSD1306(&master, cfg_right_screen);
+
 //==========================Master SPI========================
 struct_ConfigMasterSPI cfg_spi = {
     .spi = spi1,
@@ -105,6 +85,7 @@ void end_of_TX_DMA_xfer_handler()
 {
     spi_master.spi_tx_dma_isr();
 }
+
 //================== ST7735===================
 struct_ConfigST7735 cfg_st7735{
     .display_type = DEVICE_DISPLAY_TYPE,
@@ -113,8 +94,10 @@ struct_ConfigST7735 cfg_st7735{
     .dc_pin = 14,
     .rotation = DEVICE_DISPLAY_ROTATION};
 rtos_ST7735 color_display = rtos_ST7735(&spi_master, cfg_st7735);
+
 //-------------Model-----
 my_model my_rtos_model = my_model();
+
 //-------------ST7735-widgets-----
 struct_ConfigTextWidget ST7735_title_config = {
     .number_of_column = 5,
@@ -169,8 +152,12 @@ struct_ConfigGraphicWidget ssd1306_graph_config{
     .widget_with_border = true};
 my_visu_widget my_rtos_right_graph_widget = my_visu_widget(&right_display, ssd1306_graph_config, SSD1306_CANVAS_FORMAT, nullptr);
 
-//---------------my_PositionController------------------------------
+//---------------H V and angle Position Controller------------------------------
 my_PositionController position_controller = my_PositionController(true);
+my_ControlledRollPosition horizontal_position = my_ControlledRollPosition("H_POS");
+my_ControlledRollPosition vertical_position = my_ControlledRollPosition("V_POS");
+my_ControlledRollPosition angle_position = my_ControlledRollPosition("ANGLE");
+
 //-----KY040---------
 //                   rtos_SwitchButton central_switch---------------------
 struct_rtosConfigSwitchButton cfg_central_switch{
@@ -234,7 +221,9 @@ void idle_task(void *pxProbe)
 
 void position_controller_task(void *probe)
 {
-    position_controller.add_managed_rtos_model(&my_rtos_model);
+    position_controller.add_managed_rtos_model(&horizontal_position);
+    position_controller.add_managed_rtos_model(&vertical_position);
+    position_controller.add_managed_rtos_model(&angle_position);
     position_controller.notify_all_linked_widget_task();
 
     struct_ControlEventData local_event_data;
@@ -358,7 +347,7 @@ void I2C_left_values_widget_task(void *probe)
         I2C_display_gate_keeper.send_widget_data(&my_rtos_left_values_widget);
     }
 }
-void angle_evolution_task(void *probe)
+void angle_evolution_task(void *probe) // periodic task
 {
     struct_ControlEventData data;
     data.gpio_number = DUMMY_GPIO_FOR_PERIODIC_EVOLUTION;
@@ -396,6 +385,18 @@ void my_model_task(void *probe)
     }
 }
 
+void controlled_position_task(void *position)
+{
+    struct_ControlEventData received_control_event;
+    my_ControlledRollPosition *center_position = (my_ControlledRollPosition *)position;
+    while (true)
+    {
+        xQueueReceive(center_position->control_event_input_queue, &received_control_event, portMAX_DELAY);
+        center_position->process_control_event(received_control_event);
+    }
+}
+
+
 int main()
 {
     stdio_init_all();
@@ -403,10 +404,13 @@ int main()
     xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 25, NULL);
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 25, NULL);
 
-    xTaskCreate(angle_evolution_task, "periodic_task", 256, &p1, 20, NULL);
-    xTaskCreate(my_model_task, "main_task", 256, &p1, 20, NULL); // 4us pour SPI_graph_widget_task, 12us SPI_values_widget_task, I2C_right_graph_widget_task, 16us pour I2C_left_values_widget_task
+    // xTaskCreate(angle_evolution_task, "periodic_task", 256, &p1, 20, NULL);
+    xTaskCreate(my_model_task, "model_task", 256, &p1, 20, NULL); // 4us pour SPI_graph_widget_task, 12us SPI_values_widget_task, I2C_right_graph_widget_task, 16us pour I2C_left_values_widget_task
 
     xTaskCreate(position_controller_task, "position_controller_task", 256, &p5, 8, &position_controller.task_handle);
+    xTaskCreate(controlled_position_task, "H_task", 256, &horizontal_position, 8, &horizontal_position.task_handle);
+    xTaskCreate(controlled_position_task, "V_task", 256, &vertical_position, 8, &vertical_position.task_handle);
+    xTaskCreate(controlled_position_task, "angle_task", 256, &angle_position, 8, &angle_position.task_handle);
 
     xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, &p4, 13, &my_rtos_graph_widget.task_handle);                   // durée: 8.23ms + 14ms xfer SPI
     xTaskCreate(SPI_values_widget_task, "values_widget_task", 256, &p4, 12, &my_rtos_values_widget.task_handle);                // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)
