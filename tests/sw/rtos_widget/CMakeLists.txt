@@ -88,6 +88,7 @@ target_link_libraries(test_rtos_all_device_text_and_graph_widgets
             rtos_widget
             device_ssd1306
             device_st7735 
+            dev_rtos_rotary_encoder
             sw_display_device
             FreeRTOS-Kernel-Heap4
             )

@@ -14,6 +14,7 @@
 #include "device/SSD1306/ssd1306.h"
 #include "device/ST7735/st7735.h"
 #include "sw/widget/rtos_widget.h"
+#include "device/rotary_encoder/rtos_rotary_encoder.h"
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
@@ -25,7 +26,7 @@ Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
 
-#define REFRESH_PERIOD_ms 60
+#define REFRESH_PERIOD_ms 500
 
 #define GLOBAL_TIMEOUT_DELAY_ms 5000
 #define SW_TIMEOUT_DELAY_ms 1000
@@ -168,6 +169,59 @@ struct_ConfigGraphicWidget ssd1306_graph_config{
     .widget_with_border = true};
 my_visu_widget my_rtos_right_graph_widget = my_visu_widget(&right_display, ssd1306_graph_config, SSD1306_CANVAS_FORMAT, nullptr);
 
+//---------------my_PositionController------------------------------
+my_PositionController position_controller = my_PositionController(true);
+//-----KY040---------
+//                   rtos_SwitchButton central_switch---------------------
+struct_rtosConfigSwitchButton cfg_central_switch{
+    .debounce_delay_us = 5000,
+    .long_release_delay_us = 1000000,
+    .long_push_delay_ms = 1500,
+    .time_out_delay_ms = SW_TIMEOUT_DELAY_ms};
+void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask);
+rtos_SwitchButton central_switch = rtos_SwitchButton(CENTRAL_SWITCH_GPIO,
+                                                     &ky040_encoder_irq_call_back, position_controller.control_event_input_queue,
+                                                     cfg_central_switch);
+void central_switch_process_irq_event_task(void *)
+{
+    central_switch.rtos_process_IRQ_event();
+}
+//                   rtos_RotaryEncoder encoder-------------------------------
+struct_rtosConfigSwitchButton cfg_encoder_clk{
+    .debounce_delay_us = 5000,
+    .long_release_delay_us = 1000000,
+    .long_push_delay_ms = 1000,
+    .time_out_delay_ms = SW_TIMEOUT_DELAY_ms};
+rtos_RotaryEncoder encoder = rtos_RotaryEncoder(ENCODER_CLK_GPIO, ENCODER_DT_GPIO,
+                                                &ky040_encoder_irq_call_back, position_controller.control_event_input_queue,
+                                                cfg_encoder_clk);
+void encoder_process_irq_event_task(void *)
+{
+    encoder.rtos_process_IRQ_event();
+}
+//                 ky040_encoder_irq_call_back--------------------------------
+void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask)
+{
+    struct_SwitchButtonIRQData data;
+    gpio_set_irq_enabled(gpio, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, false);
+    data.current_time_us = time_us_32();
+    data.event_mask = event_mask;
+    BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
+    switch (gpio)
+    {
+    case CENTRAL_SWITCH_GPIO:
+        xQueueSendFromISR(central_switch.IRQdata_input_queue, &data, &pxHigherPriorityTaskWoken);
+        break;
+    case ENCODER_CLK_GPIO:
+        xQueueSendFromISR(encoder.IRQdata_input_queue, &data, &pxHigherPriorityTaskWoken);
+        break;
+    default:
+        break;
+    }
+    portYIELD_FROM_ISR(&pxHigherPriorityTaskWoken);
+    gpio_set_irq_enabled(gpio, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true);
+};
+
 //---------------TASKS-----------------
 void idle_task(void *pxProbe)
 {
@@ -177,6 +231,36 @@ void idle_task(void *pxProbe)
         ((Probe *)pxProbe)->lo();
     }
 }
+
+void position_controller_task(void *probe)
+{
+    position_controller.add_managed_rtos_model(&my_rtos_model);
+    position_controller.notify_all_linked_widget_task();
+
+    struct_ControlEventData local_event_data;
+    BaseType_t global_timeout_condtion;
+    while (true)
+    {
+        global_timeout_condtion = xQueueReceive(position_controller.control_event_input_queue,
+                                                &local_event_data,
+                                                ((position_controller.get_rtos_status() == ControlledObjectStatus::IS_IDLE)
+                                                     ? portMAX_DELAY
+                                                     : pdMS_TO_TICKS(UI_MANAGER_TIMEOUT_DELAY_ms))); // switch and encoder timout is replaced by a global timeout
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
+        if (global_timeout_condtion == errQUEUE_EMPTY)
+        {
+            local_event_data.event = UIControlEvent::TIME_OUT;
+            position_controller.process_control_event(local_event_data);
+        }
+        else if (local_event_data.event != UIControlEvent::TIME_OUT)
+        {
+            position_controller.process_control_event(local_event_data);
+        }
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
+    }
+};
 
 void SPI_display_gate_keeper_task(void *probe)
 {
@@ -199,9 +283,11 @@ void SPI_graph_widget_task(void *probe)
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p4.pulse_us();
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
         my_rtos_graph_widget.draw();
-        p5.pulse_us();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
         SPI_display_gate_keeper.send_widget_data(&my_rtos_graph_widget);
     }
 }
@@ -215,9 +301,11 @@ void SPI_values_widget_task(void *probe)
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p4.pulse_us();
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
         my_rtos_values_widget.draw();
-        p5.pulse_us();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
         SPI_display_gate_keeper.send_widget_data(&my_rtos_values_widget);
     }
 }
@@ -244,9 +332,11 @@ void I2C_right_graph_widget_task(void *probe)
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p4.pulse_us();
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
         my_rtos_right_graph_widget.draw();
-        p5.pulse_us();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
         I2C_display_gate_keeper.send_widget_data(&my_rtos_right_graph_widget);
     }
 }
@@ -260,9 +350,11 @@ void I2C_left_values_widget_task(void *probe)
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        p4.pulse_us();
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
         my_rtos_left_values_widget.draw();
-        p5.pulse_us();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
         I2C_display_gate_keeper.send_widget_data(&my_rtos_left_values_widget);
     }
 }
@@ -308,13 +400,18 @@ int main()
 {
     stdio_init_all();
 
+    xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 25, NULL);
+    xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 25, NULL);
+
     xTaskCreate(angle_evolution_task, "periodic_task", 256, &p1, 20, NULL);
     xTaskCreate(my_model_task, "main_task", 256, &p1, 20, NULL); // 4us pour SPI_graph_widget_task, 12us SPI_values_widget_task, I2C_right_graph_widget_task, 16us pour I2C_left_values_widget_task
 
-    xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, NULL, 13, &my_rtos_graph_widget.task_handle);                   // durée: 8.23ms + 14ms xfer SPI
-    xTaskCreate(SPI_values_widget_task, "values_widget_task", 256, NULL, 12, &my_rtos_values_widget.task_handle);                // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)
-    xTaskCreate(I2C_right_graph_widget_task, "right_graph_widget_task", 256, NULL, 11, &my_rtos_right_graph_widget.task_handle); // 368us + 22.2ms xfer I2C
-    xTaskCreate(I2C_left_values_widget_task, "left_values_widget_task", 256, NULL, 10, &my_rtos_left_values_widget.task_handle); // 2.69ms + 6.5ms xfer I2C (depends on font size)
+    xTaskCreate(position_controller_task, "position_controller_task", 256, &p5, 8, &position_controller.task_handle);
+
+    xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, &p4, 13, &my_rtos_graph_widget.task_handle);                   // durée: 8.23ms + 14ms xfer SPI
+    xTaskCreate(SPI_values_widget_task, "values_widget_task", 256, &p4, 12, &my_rtos_values_widget.task_handle);                // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)
+    xTaskCreate(I2C_right_graph_widget_task, "right_graph_widget_task", 256, &p4, 11, &my_rtos_right_graph_widget.task_handle); // 368us + 22.2ms xfer I2C
+    xTaskCreate(I2C_left_values_widget_task, "left_values_widget_task", 256, &p4, 10, &my_rtos_left_values_widget.task_handle); // 2.69ms + 6.5ms xfer I2C (depends on font size)
 
     xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p6, 5, NULL);
     xTaskCreate(I2C_display_gate_keeper_task, "I2C_gate_keeper_task", 256, &p7, 5, NULL);
