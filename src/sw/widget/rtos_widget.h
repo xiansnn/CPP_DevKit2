@@ -23,6 +23,8 @@
 #include "queue.h"
 #include "semphr.h"
 
+//TODO consider Blinker rtos implementation
+
 class rtos_Model;
 
 /// @brief RTOS wrapper for Widget class
