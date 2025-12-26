@@ -358,7 +358,7 @@ void angle_evolution_task(void *probe) // periodic task
     {
         if (probe != NULL)
             ((Probe *)probe)->pulse_us();
-        xQueueSend(my_rtos_model.control_event_input_queue, &data, portMAX_DELAY);
+        xQueueSend(my_rtos_model.angle.control_event_input_queue, &data, portMAX_DELAY);
         vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(REFRESH_PERIOD_ms));
     }
 }
@@ -404,7 +404,7 @@ int main()
     xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 25, NULL);
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 25, NULL);
 
-    // xTaskCreate(angle_evolution_task, "periodic_task", 256, &p1, 20, NULL);
+    xTaskCreate(angle_evolution_task, "periodic_task", 256, &p1, 20, NULL);
     xTaskCreate(my_model_task, "model_task", 256, &p1, 20, NULL); // 4us pour SPI_graph_widget_task, 12us SPI_values_widget_task, I2C_right_graph_widget_task, 16us pour I2C_left_values_widget_task
 
     xTaskCreate(position_controller_task, "position_controller_task", 256, &p5, 8, &position_controller.task_handle);

@@ -2,32 +2,6 @@
 #include "t_rtos_all_device_roll_control.h"
 #include "t_rtos_all_device_defines.h"
 
-my_model::my_model()
-    : rtos_UIControlledModel(),
-      angle("ANGLE", this, 0, 359, true, ANGLE_INCREMENT),
-      x_pos("H_POS", this, -64, +63, false, 1),
-      y_pos("V_POS", this, -28, +27, false, 1)
-{
-}
-my_model::~my_model()
-{
-}
-
-void my_model::process_control_event(struct_ControlEventData control_event)
-{
-    bool changed;
-    switch (control_event.event)
-    {
-    case UIControlEvent::INCREMENT:
-        changed = this->angle.increment_value();
-        break;
-
-    default:
-        break;
-    }
-    if (changed)
-        notify_all_linked_widget_task();
-}
 
 my_text_widget::my_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
                                struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)

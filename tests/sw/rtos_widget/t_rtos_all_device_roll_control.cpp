@@ -13,6 +13,22 @@ std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::DECREMENT, "DECREMENT"},
     {UIControlEvent::TIME_OUT, "TIME_OUT"}};
 
+my_model::my_model()
+    : rtos_UIControlledModel(),
+      angle("ANGLE", this, 0, 360, true, ANGLE_INCREMENT),
+      x_pos("H_POS", this, -64, +63, false, 1),
+      y_pos("V_POS", this, -28, +27, false, 1)
+{
+}
+my_model::~my_model()
+{
+}
+
+void my_model::process_control_event(struct_ControlEventData control_event)
+{
+    printf("my_model::process_control_event: %s", event_to_string[control_event.event].c_str());
+}
+
 my_ControlledRollPosition::my_ControlledRollPosition(std::string name, my_model *parent_model,
                                                      int min_value, int max_value, bool is_wrappable, int increment)
     : rtos_UIControlledModel(), core_IncrementControlledModel(min_value, max_value, is_wrappable, increment)
@@ -29,6 +45,10 @@ void my_ControlledRollPosition::process_control_event(struct_ControlEventData co
 {
     switch (control_event.event)
     {
+    case UIControlEvent::LONG_PUSH:
+        this->set_clipped_value(0);
+        this->parent_model->notify_all_linked_widget_task();
+        break;
     case UIControlEvent::INCREMENT:
         this->increment_value();
         this->parent_model->notify_all_linked_widget_task();
@@ -65,7 +85,10 @@ void my_PositionController::process_control_event(struct_ControlEventData contro
             switch (control_event.event)
             {
             case UIControlEvent::LONG_PUSH:
-                // TODO reset all values
+                printf("position_controller: LONG_PUSH\n");
+                for (auto &&i : managed_rtos_models)
+                    ((my_ControlledRollPosition *)i)->set_clipped_value(0);
+                ((my_ControlledRollPosition *)managed_rtos_models[0])->parent_model->notify_all_linked_widget_task();
                 break;
             case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
                 printf("position_controller focus on [%s]: RELEASED_AFTER_SHORT_TIME\n", ((my_ControlledRollPosition *)managed_rtos_models[get_current_focus_index()])->name.c_str());
@@ -135,19 +158,19 @@ void my_position_controller_widget::draw()
     switch (manager_status)
     {
     case ControlledObjectStatus::HAS_FOCUS:
-        printf("manager HAS_FOCUS\n");
+        printf("(my_position_controller_widget)manager HAS_FOCUS\n");
         break;
     case ControlledObjectStatus::IS_ACTIVE:
-        printf("manager IS_ACTIVE\n");
+        printf("(my_position_controller_widget)manager IS_ACTIVE\n");
         sprintf(this->writer->text_buffer, "%5s", focus_on_value_name.c_str());
         this->writer->write();
         // this->writer->draw_border();
         break;
     case ControlledObjectStatus::IS_IDLE:
-        printf("manager IS_IDLE\n");
+        printf("(my_position_controller_widget)manager IS_IDLE\n");
         break;
     case ControlledObjectStatus::IS_WAITING:
-        printf("manager IS_WAITING\n");
+        printf("(my_position_controller_widget)manager IS_WAITING\n");
         sprintf(this->writer->text_buffer, "%5s", focus_on_value_name.c_str());
         this->writer->write();
         this->writer->draw_border();

@@ -1,9 +1,9 @@
 #pragma once
 
-#define REFRESH_PERIOD_ms 500
+#define REFRESH_PERIOD_ms 60
 //-------------main
 #define DEGREE \xF8
-#define ANGLE_INCREMENT 10
+#define ANGLE_INCREMENT 1
 #define DUMMY_GPIO_FOR_PERIODIC_EVOLUTION 100
 //-------------encoder
 #define GLOBAL_TIMEOUT_DELAY_ms 5000
