@@ -103,6 +103,11 @@ public:
     /// @brief A static pointer to the current active rtos_UIControlledModel object
     rtos_UIControlledModel *current_active_rtos_model;
 
+    /// @brief  Process a time out condition for the manager
+    /// @param manager   The manager to process the timeout for
+    /// @param time_out_ms  The timeout in milliseconds
+    void process_event_and_time_out_condition(rtos_UIModelManager * manager, uint time_out_ms);
+
     /// @brief  Get the current focus index
     /// @return The current focus index
     size_t get_current_focus_index();

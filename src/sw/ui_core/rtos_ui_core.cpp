@@ -83,6 +83,27 @@ rtos_UIModelManager::~rtos_UIModelManager()
 {
 }
 
+void rtos_UIModelManager::process_event_and_time_out_condition(rtos_UIModelManager *manager, uint time_out_ms)
+{
+    struct_ControlEventData local_event_data;
+    BaseType_t global_timeout_condtion;
+    global_timeout_condtion = xQueueReceive(manager->control_event_input_queue,
+                                            &local_event_data,
+                                            ((manager->get_rtos_status() == ControlledObjectStatus::IS_IDLE)
+                                                 ? portMAX_DELAY
+                                                 : pdMS_TO_TICKS(time_out_ms))); // switch and encoder timout is replaced by a global timeout
+
+    if (global_timeout_condtion == errQUEUE_EMPTY)
+    {
+        local_event_data.event = UIControlEvent::TIME_OUT;
+        manager->process_control_event(local_event_data);
+    }
+    else if (local_event_data.event != UIControlEvent::TIME_OUT)
+    {
+        manager->process_control_event(local_event_data);
+    }
+}
+
 size_t rtos_UIModelManager::get_current_focus_index()
 {
     return current_focus_index;
