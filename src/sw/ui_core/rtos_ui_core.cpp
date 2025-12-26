@@ -148,7 +148,7 @@ core_IncrementControlledModel::~core_IncrementControlledModel()
 }
 
 bool core_IncrementControlledModel::increment_value()
-{
+{//TODO consider circular periodic function where max_value = min_value e.g. O° and 360°
     bool changed = false;
     int previous_value = value;
     value += increment;
@@ -161,7 +161,7 @@ bool core_IncrementControlledModel::increment_value()
 }
 
 bool core_IncrementControlledModel::decrement_value()
-{
+{//TODO consider circular periodic function where max_value = min_value e.g. O° and 360°
     bool changed = false;
     int previous_value = value;
     value -= increment;

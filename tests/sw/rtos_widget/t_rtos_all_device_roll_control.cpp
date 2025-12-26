@@ -23,10 +23,20 @@ my_model::my_model()
 my_model::~my_model()
 {
 }
-
+/// @brief  this is used only with the periodic task
+/// @param control_event 
 void my_model::process_control_event(struct_ControlEventData control_event)
 {
-    printf("my_model::process_control_event: %s", event_to_string[control_event.event].c_str());
+    switch (control_event.event)
+    {
+    case UIControlEvent::INCREMENT:
+        angle.increment_value();
+        notify_all_linked_widget_task();
+        break;
+
+    default:
+        break;
+    }
 }
 
 my_ControlledRollPosition::my_ControlledRollPosition(std::string name, my_model *parent_model,
@@ -72,7 +82,7 @@ my_PositionController::~my_PositionController()
 }
 
 void my_PositionController::process_control_event(struct_ControlEventData control_event)
-{
+{// TODO consider an other policy where short release wakeup manager and changes the focus 
     if (this->get_rtos_status() == ControlledObjectStatus::IS_IDLE)
     {
         printf("position_controller: WAKE_UP\n");

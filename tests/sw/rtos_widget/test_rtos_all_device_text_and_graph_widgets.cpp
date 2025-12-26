@@ -27,6 +27,9 @@ Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
 
+
+//TODO consider distributing all declaration/definition in several consistant files
+
 //==========================display gatekeeper===============
 rtos_GraphicDisplayGateKeeper I2C_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
 rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
@@ -358,7 +361,7 @@ void angle_evolution_task(void *probe) // periodic task
     {
         if (probe != NULL)
             ((Probe *)probe)->pulse_us();
-        xQueueSend(my_rtos_model.angle.control_event_input_queue, &data, portMAX_DELAY);
+        xQueueSend(my_rtos_model.control_event_input_queue, &data, portMAX_DELAY);
         vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(REFRESH_PERIOD_ms));
     }
 }
