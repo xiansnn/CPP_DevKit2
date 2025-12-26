@@ -10,18 +10,6 @@
 #include "sw/widget/rtos_widget.h"
 #include "sw/ui_core/rtos_ui_core.h"
 
-class my_model : public rtos_UIControlledModel
-{
-    private:
-    /* data */
-    public:
-    my_model();
-    ~my_model();
-    core_IncrementControlledModel angle;
-    core_IncrementControlledModel x_pos;
-    core_IncrementControlledModel y_pos;
-    void process_control_event(struct_ControlEventData control_event);
-};
 
 class my_text_widget : public rtos_TextWidget
 {
@@ -55,3 +43,4 @@ public:
     void get_value_of_interest();
     void draw();
 };
+

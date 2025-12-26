@@ -27,9 +27,6 @@ Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
 
-
-
-
 //==========================display gatekeeper===============
 rtos_GraphicDisplayGateKeeper I2C_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
 rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
@@ -154,10 +151,14 @@ my_visu_widget my_rtos_right_graph_widget = my_visu_widget(&right_display, ssd13
 
 //---------------H V and angle Position Controller------------------------------
 my_PositionController position_controller = my_PositionController(true);
-my_ControlledRollPosition horizontal_position = my_ControlledRollPosition("H_POS");
-my_ControlledRollPosition vertical_position = my_ControlledRollPosition("V_POS");
-my_ControlledRollPosition angle_position = my_ControlledRollPosition("ANGLE");
-
+struct_ConfigTextWidget position_controller_focus_config = {
+    .number_of_column = 10,
+    .number_of_line = 1,
+    .widget_anchor_x = 4,
+    .widget_anchor_y = 140,
+    .font = font_12x16,
+    .widget_with_border = true};
+my_position_controller_widget focus_indicator = my_position_controller_widget(&color_display,position_controller_focus_config,ST7735_TEXT_CANVAS_FORMAT,&position_controller);
 //-----KY040---------
 //                   rtos_SwitchButton central_switch---------------------
 struct_rtosConfigSwitchButton cfg_central_switch{
@@ -221,33 +222,18 @@ void idle_task(void *pxProbe)
 
 void position_controller_task(void *probe)
 {
-    position_controller.add_managed_rtos_model(&horizontal_position);
-    position_controller.add_managed_rtos_model(&vertical_position);
-    position_controller.add_managed_rtos_model(&angle_position);
+    position_controller.add_managed_rtos_model(&my_rtos_model.angle);
+    position_controller.add_managed_rtos_model(&my_rtos_model.y_pos);
+    position_controller.add_managed_rtos_model(&my_rtos_model.x_pos);
     position_controller.notify_all_linked_widget_task();
 
     struct_ControlEventData local_event_data;
     BaseType_t global_timeout_condtion;
     while (true)
     {
-        global_timeout_condtion = xQueueReceive(position_controller.control_event_input_queue,
-                                                &local_event_data,
-                                                ((position_controller.get_rtos_status() == ControlledObjectStatus::IS_IDLE)
-                                                     ? portMAX_DELAY
-                                                     : pdMS_TO_TICKS(UI_MANAGER_TIMEOUT_DELAY_ms))); // switch and encoder timout is replaced by a global timeout
         if (probe != NULL)
-            ((Probe *)probe)->hi();
-        if (global_timeout_condtion == errQUEUE_EMPTY)
-        {
-            local_event_data.event = UIControlEvent::TIME_OUT;
-            position_controller.process_control_event(local_event_data);
-        }
-        else if (local_event_data.event != UIControlEvent::TIME_OUT)
-        {
-            position_controller.process_control_event(local_event_data);
-        }
-        if (probe != NULL)
-            ((Probe *)probe)->lo();
+            ((Probe *)probe)->pulse_us(10);
+        position_controller.process_event_and_time_out_condition(&position_controller, UI_MANAGER_TIMEOUT_DELAY_ms);
     }
 };
 
@@ -296,6 +282,20 @@ void SPI_values_widget_task(void *probe)
         if (probe != NULL)
             ((Probe *)probe)->lo();
         SPI_display_gate_keeper.send_widget_data(&my_rtos_values_widget);
+    }
+}
+void SPI_focus_widget_task(void *probe)
+{
+
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
+        focus_indicator.draw();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
+        SPI_display_gate_keeper.send_widget_data(&focus_indicator);
     }
 }
 
@@ -369,6 +369,7 @@ void my_model_task(void *probe)
     my_rtos_model.update_attached_rtos_widget(&my_rtos_left_values_widget);
     my_rtos_model.update_attached_rtos_widget(&my_rtos_graph_widget);
     my_rtos_model.update_attached_rtos_widget(&my_rtos_values_widget);
+    my_rtos_model.notify_all_linked_widget_task();
 
     while (true)
     {
@@ -396,7 +397,6 @@ void controlled_position_task(void *position)
     }
 }
 
-
 int main()
 {
     stdio_init_all();
@@ -408,12 +408,13 @@ int main()
     xTaskCreate(my_model_task, "model_task", 256, &p1, 20, NULL); // 4us pour SPI_graph_widget_task, 12us SPI_values_widget_task, I2C_right_graph_widget_task, 16us pour I2C_left_values_widget_task
 
     xTaskCreate(position_controller_task, "position_controller_task", 256, &p5, 8, &position_controller.task_handle);
-    xTaskCreate(controlled_position_task, "H_task", 256, &horizontal_position, 8, &horizontal_position.task_handle);
-    xTaskCreate(controlled_position_task, "V_task", 256, &vertical_position, 8, &vertical_position.task_handle);
-    xTaskCreate(controlled_position_task, "angle_task", 256, &angle_position, 8, &angle_position.task_handle);
+    xTaskCreate(controlled_position_task, "H_task", 256, &my_rtos_model.x_pos, 8, &my_rtos_model.x_pos.task_handle);
+    xTaskCreate(controlled_position_task, "V_task", 256, &my_rtos_model.y_pos, 8, &my_rtos_model.y_pos.task_handle);
+    xTaskCreate(controlled_position_task, "angle_task", 256, &my_rtos_model.angle, 8, &my_rtos_model.angle.task_handle);
 
     xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, &p4, 13, &my_rtos_graph_widget.task_handle);                   // durée: 8.23ms + 14ms xfer SPI
     xTaskCreate(SPI_values_widget_task, "values_widget_task", 256, &p4, 12, &my_rtos_values_widget.task_handle);                // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)
+    xTaskCreate(SPI_focus_widget_task, "focus_widget_task", 256, &p4, 12, &focus_indicator.task_handle);                // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)
     xTaskCreate(I2C_right_graph_widget_task, "right_graph_widget_task", 256, &p4, 11, &my_rtos_right_graph_widget.task_handle); // 368us + 22.2ms xfer I2C
     xTaskCreate(I2C_left_values_widget_task, "left_values_widget_task", 256, &p4, 10, &my_rtos_left_values_widget.task_handle); // 2.69ms + 6.5ms xfer I2C (depends on font size)
 

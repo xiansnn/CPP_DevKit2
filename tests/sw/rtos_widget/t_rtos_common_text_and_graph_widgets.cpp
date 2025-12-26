@@ -1,14 +1,13 @@
-#include "t_rtos_common_text_and_graph_widgets.h"
+
+#include "t_rtos_all_device_roll_control.h"
 #include "t_rtos_all_device_defines.h"
 
-
-
 my_model::my_model()
-    : rtos_UIControlledModel()
+    : rtos_UIControlledModel(),
+      angle("ANGLE", this, 0, 359, true, ANGLE_INCREMENT),
+      x_pos("H_POS", this, -64, +63, false, 1),
+      y_pos("V_POS", this, -28, +27, false, 1)
 {
-    this->angle = core_IncrementControlledModel(0, 359, true, ANGLE_INCREMENT);
-    this->x_pos = 0;
-    this->y_pos = 0;
 }
 my_model::~my_model()
 {
@@ -71,7 +70,7 @@ void my_visu_widget::draw()
     float widget_vertical_center = drawer->canvas->canvas_height_pixel / 2;
     float radius = widget_vertical_center - 2 * drawer->widget_border_width; // radius -2 to fit inside the rectangle
     float circle_vertical_center = widget_vertical_center - graph_vertical_pos;
-    float circle_horizontal_center = widget_horizontal_center - graph_horizontal_pos;
+    float circle_horizontal_center = widget_horizontal_center + graph_horizontal_pos;
     // compute radius line
     float sin_angle = sin(std::numbers::pi / 180.0 * graph_angle);
     float cos_angle = cos(std::numbers::pi / 180.0 * graph_angle);

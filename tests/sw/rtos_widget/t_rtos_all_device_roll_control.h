@@ -12,16 +12,34 @@
 #pragma once
 
 #include "sw/ui_core/rtos_ui_core.h"
+#include "t_rtos_common_text_and_graph_widgets.h"
 #include "t_rtos_all_device_defines.h"
 
+class my_model;
+
 /// @brief Construct an implementation of UIControlledIncrementalValue for test_ui_core program.
-class my_ControlledRollPosition : public rtos_UIControlledModel
+class my_ControlledRollPosition : public rtos_UIControlledModel, public core_IncrementControlledModel
 {
 private:
 public:
+    my_model *parent_model;
     std::string name;
-    my_ControlledRollPosition(std::string name);
+    my_ControlledRollPosition(std::string name, my_model *controlled_model,
+                              int min_value = 0, int max_value = 10, bool is_wrappable = false, int increment = 1);
     ~my_ControlledRollPosition();
+    void process_control_event(struct_ControlEventData control_event);
+};
+
+class my_model : public rtos_UIControlledModel
+{
+private:
+    /* data */
+public:
+    my_model();
+    ~my_model();
+    my_ControlledRollPosition angle;
+    my_ControlledRollPosition x_pos;
+    my_ControlledRollPosition y_pos;
     void process_control_event(struct_ControlEventData control_event);
 };
 
@@ -32,4 +50,18 @@ public:
     my_PositionController(bool is_wrapable = false);
     ~my_PositionController();
     void process_control_event(struct_ControlEventData control_event);
+};
+
+class my_position_controller_widget : public rtos_TextWidget
+{
+private:
+    std::string focus_on_value_name;
+    ControlledObjectStatus manager_status;
+
+public:
+    my_position_controller_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+                                  struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_UIModelManager *manager);
+    ~my_position_controller_widget();
+    void get_value_of_interest();
+    void draw();
 };

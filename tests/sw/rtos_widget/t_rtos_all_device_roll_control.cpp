@@ -13,10 +13,12 @@ std::map<UIControlEvent, std::string> event_to_string{
     {UIControlEvent::DECREMENT, "DECREMENT"},
     {UIControlEvent::TIME_OUT, "TIME_OUT"}};
 
-my_ControlledRollPosition::my_ControlledRollPosition(std::string name)
-    : rtos_UIControlledModel()
+my_ControlledRollPosition::my_ControlledRollPosition(std::string name, my_model *parent_model,
+                                                     int min_value, int max_value, bool is_wrappable, int increment)
+    : rtos_UIControlledModel(), core_IncrementControlledModel(min_value, max_value, is_wrappable, increment)
 {
     this->name = name;
+    this->parent_model = parent_model;
 }
 
 my_ControlledRollPosition::~my_ControlledRollPosition()
@@ -25,16 +27,15 @@ my_ControlledRollPosition::~my_ControlledRollPosition()
 
 void my_ControlledRollPosition::process_control_event(struct_ControlEventData control_event)
 {
-    switch (control_event.gpio_number)
+    switch (control_event.event)
     {
-    case DUMMY_GPIO_FOR_PERIODIC_EVOLUTION:
-        printf("[%s]: %s from DUMMY_GPIO_FOR_PERIODIC_EVOLUTION\n", this->name.c_str(), event_to_string[control_event.event].c_str());
+    case UIControlEvent::INCREMENT:
+        this->increment_value();
+        this->parent_model->notify_all_linked_widget_task();
         break;
-    case ENCODER_CLK_GPIO:
-        printf("[%s]: %s from ENCODER_CLK_GPIO\n", this->name.c_str(), event_to_string[control_event.event].c_str());
-        break;
-    case CENTRAL_SWITCH_GPIO:
-        printf("[%s]: %s from CENTRAL_SWITCH_GPIO\n", this->name.c_str(), event_to_string[control_event.event].c_str());
+    case UIControlEvent::DECREMENT:
+        this->decrement_value();
+        this->parent_model->notify_all_linked_widget_task();
         break;
     default:
         break;
@@ -63,6 +64,9 @@ void my_PositionController::process_control_event(struct_ControlEventData contro
         {
             switch (control_event.event)
             {
+            case UIControlEvent::LONG_PUSH:
+                // TODO reset all values
+                break;
             case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
                 printf("position_controller focus on [%s]: RELEASED_AFTER_SHORT_TIME\n", ((my_ControlledRollPosition *)managed_rtos_models[get_current_focus_index()])->name.c_str());
                 this->make_managed_rtos_model_active();
@@ -103,5 +107,53 @@ void my_PositionController::process_control_event(struct_ControlEventData contro
                 break;
             }
         }
+    }
+}
+
+my_position_controller_widget::my_position_controller_widget(rtos_GraphicDisplayDevice *graphic_display_screen, struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_UIModelManager *manager)
+    : rtos_TextWidget(manager, text_cfg, format, graphic_display_screen)
+{
+}
+
+my_position_controller_widget::~my_position_controller_widget()
+{
+}
+
+void my_position_controller_widget::get_value_of_interest()
+{
+    uint idx = ((my_PositionController *)actual_rtos_displayed_model)->get_current_focus_index();
+    rtos_UIControlledModel *position = ((my_PositionController *)actual_rtos_displayed_model)->managed_rtos_models[idx];
+    focus_on_value_name = ((my_ControlledRollPosition *)position)->name;
+    manager_status = ((my_PositionController *)actual_rtos_displayed_model)->get_rtos_status();
+}
+
+void my_position_controller_widget::draw()
+{
+    this->writer->clear_text_buffer();
+    get_value_of_interest();
+    // draw
+    switch (manager_status)
+    {
+    case ControlledObjectStatus::HAS_FOCUS:
+        printf("manager HAS_FOCUS\n");
+        break;
+    case ControlledObjectStatus::IS_ACTIVE:
+        printf("manager IS_ACTIVE\n");
+        sprintf(this->writer->text_buffer, "%5s", focus_on_value_name.c_str());
+        this->writer->write();
+        // this->writer->draw_border();
+        break;
+    case ControlledObjectStatus::IS_IDLE:
+        printf("manager IS_IDLE\n");
+        break;
+    case ControlledObjectStatus::IS_WAITING:
+        printf("manager IS_WAITING\n");
+        sprintf(this->writer->text_buffer, "%5s", focus_on_value_name.c_str());
+        this->writer->write();
+        this->writer->draw_border();
+
+        break;
+    default:
+        break;
     }
 }
