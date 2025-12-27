@@ -1,4 +1,13 @@
-
+/**
+ * @file t_rtos_extended_text_and_graph_widgets.cpp
+ * @author xiansnn (xiansnn@hotmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-12-27
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "t_rtos_extended_defines.h"
 #include "t_rtos_extended_roll_control.h"
 

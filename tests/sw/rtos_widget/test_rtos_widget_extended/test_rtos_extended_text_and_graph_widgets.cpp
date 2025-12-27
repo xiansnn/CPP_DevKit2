@@ -1,12 +1,12 @@
 /**
  * @file test_rtos_extended_text_and_graph_widgets.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief
+ * @brief 
  * @version 0.1
  * @date 2025-12-27
- *
+ * 
  * @copyright Copyright (c) 2025
- *
+ * 
  */
 #include "sw/ui_core/rtos_ui_core.h"
 #include "sw/widget/rtos_widget.h"
@@ -125,69 +125,6 @@ struct_ConfigST7735 cfg_st7735{
     .rotation = DEVICE_DISPLAY_ROTATION};
 rtos_ST7735 color_display = rtos_ST7735(&spi_master, cfg_st7735);
 
-// #######################main model and tasks#######################################################################################################
-//-------------Model-----
-
-void idle_task(void *pxProbe)
-{
-    while (true)
-    {
-        ((Probe *)pxProbe)->hi();
-        ((Probe *)pxProbe)->lo();
-    }
-}
-
-my_model my_rtos_model = my_model();
-
-void my_model_task(void *probe)
-{
-    my_rtos_model.update_attached_rtos_widget(&SSD1306_graph_widget);
-    my_rtos_model.update_attached_rtos_widget(&SSD1306_values_widget);
-    my_rtos_model.update_attached_rtos_widget(&ST7735_graph_widget);
-    my_rtos_model.update_attached_rtos_widget(&ST7735_values_widget);
-    my_rtos_model.notify_all_linked_widget_task();
-
-    while (true)
-    {
-        struct_ControlEventData data;
-        while (true)
-        {
-            xQueueReceive(my_rtos_model.control_event_input_queue, &data, portMAX_DELAY);
-            if (probe != NULL)
-                ((Probe *)probe)->hi();
-            my_rtos_model.process_control_event(data);
-            if (probe != NULL)
-                ((Probe *)probe)->lo();
-        }
-    }
-}
-
-void angle_evolution_task(void *probe) // periodic task
-{
-    struct_ControlEventData data;
-    data.gpio_number = DUMMY_GPIO_FOR_PERIODIC_EVOLUTION;
-    data.event = UIControlEvent::INCREMENT;
-    TickType_t xLastWakeTime = xTaskGetTickCount();
-
-    while (true)
-    {
-        if (probe != NULL)
-            ((Probe *)probe)->pulse_us();
-        xQueueSend(my_rtos_model.control_event_input_queue, &data, portMAX_DELAY);
-        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(REFRESH_PERIOD_ms));
-    }
-}
-
-void controlled_position_task(void *position)
-{
-    struct_ControlEventData received_control_event;
-    my_ControlledRollPosition *center_position = (my_ControlledRollPosition *)position;
-    while (true)
-    {
-        xQueueReceive(center_position->control_event_input_queue, &received_control_event, portMAX_DELAY);
-        center_position->process_control_event(received_control_event);
-    }
-}
 
 // ##################ST7735 widgets##################################################################################################################################
 //-------------ST7735 title and value widgets-----
@@ -320,10 +257,22 @@ void I2C_right_graph_widget_task(void *probe)
     }
 }
 
-// #####################################################################################################################################################
-//---------------H V and angle Position Controller------------------------------
-my_PositionController position_controller = my_PositionController(true);
 
+// #######################main model and tasks#######################################################################################################
+//-------------Model-----
+
+void idle_task(void *pxProbe)
+{
+    while (true)
+    {
+        ((Probe *)pxProbe)->hi();
+        ((Probe *)pxProbe)->lo();
+    }
+}
+
+//---------------H V and angle Position Controller------------------------------
+my_model my_rtos_model = my_model();
+my_PositionController position_controller = my_PositionController(true);
 void position_controller_task(void *probe)
 {
     position_controller.add_managed_rtos_model(&my_rtos_model.angle);
@@ -340,6 +289,58 @@ void position_controller_task(void *probe)
         position_controller.process_event_and_time_out_condition(&position_controller, UI_MANAGER_TIMEOUT_DELAY_ms);
     }
 };
+
+
+void my_model_task(void *probe)
+{
+    my_rtos_model.update_attached_rtos_widget(&SSD1306_graph_widget);
+    my_rtos_model.update_attached_rtos_widget(&SSD1306_values_widget);
+    my_rtos_model.update_attached_rtos_widget(&ST7735_graph_widget);
+    my_rtos_model.update_attached_rtos_widget(&ST7735_values_widget);
+    my_rtos_model.notify_all_linked_widget_task();
+
+    while (true)
+    {
+        struct_ControlEventData data;
+        while (true)
+        {
+            xQueueReceive(my_rtos_model.control_event_input_queue, &data, portMAX_DELAY);
+            if (probe != NULL)
+                ((Probe *)probe)->hi();
+            my_rtos_model.process_control_event(data);
+            if (probe != NULL)
+                ((Probe *)probe)->lo();
+        }
+    }
+}
+
+void angle_evolution_task(void *probe) // periodic task
+{
+    struct_ControlEventData data;
+    data.gpio_number = DUMMY_GPIO_FOR_PERIODIC_EVOLUTION;
+    data.event = UIControlEvent::INCREMENT;
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+
+    while (true)
+    {
+        if (probe != NULL)
+            ((Probe *)probe)->pulse_us();
+        xQueueSend(my_rtos_model.control_event_input_queue, &data, portMAX_DELAY);
+        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(REFRESH_PERIOD_ms));
+    }
+}
+
+void controlled_position_task(void *position)
+{
+    struct_ControlEventData received_control_event;
+    my_ControlledRollPosition *center_position = (my_ControlledRollPosition *)position;
+    while (true)
+    {
+        xQueueReceive(center_position->control_event_input_queue, &received_control_event, portMAX_DELAY);
+        center_position->process_control_event(received_control_event);
+    }
+}
+// #####################################################################################################################################################
 //------------------------
 
 struct_ConfigTextWidget focus_indicator_config = {

@@ -1,3 +1,13 @@
+/**
+ * @file t_rtos_extended_roll_control.h
+ * @author xiansnn (xiansnn@hotmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-12-27
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #pragma once
 
 #include "sw/ui_core/rtos_ui_core.h"

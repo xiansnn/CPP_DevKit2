@@ -1,3 +1,13 @@
+/**
+ * @file t_rtos_extended_defines.h
+ * @author xiansnn (xiansnn@hotmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-12-27
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #pragma once
 
 #define REFRESH_PERIOD_ms 100
