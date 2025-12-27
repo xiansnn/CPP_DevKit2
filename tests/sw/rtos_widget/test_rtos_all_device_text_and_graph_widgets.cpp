@@ -27,8 +27,7 @@ Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
 
-
-//TODO consider distributing all declaration/definition in several consistant files
+// TODO consider distributing all declaration/definition in several consistant files
 
 //==========================display gatekeeper===============
 rtos_GraphicDisplayGateKeeper I2C_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
@@ -104,7 +103,8 @@ struct_ConfigTextWidget ST7735_title_config = {
     .number_of_line = 3,
     .widget_anchor_x = 0,
     .widget_anchor_y = 64,
-    .font = font_12x16};
+    .font = font_12x16,
+    .auto_next_char = true};
 my_text_widget title = my_text_widget(&color_display, ST7735_title_config, ST7735_TEXT_CANVAS_FORMAT);
 
 struct_ConfigTextWidget ST7735_values_config = {
@@ -131,7 +131,8 @@ struct_ConfigTextWidget SSD1306_title_config = {
     .number_of_line = 3,
     .widget_anchor_x = 0,
     .widget_anchor_y = 0,
-    .font = font_12x16};
+    .font = font_12x16,
+    .auto_next_char = true};
 my_text_widget left_title = my_text_widget(&left_display, SSD1306_title_config, SSD1306_CANVAS_FORMAT);
 
 struct_ConfigTextWidget SSD1306_values_config = {
@@ -161,7 +162,7 @@ struct_ConfigTextWidget position_controller_focus_config = {
     .widget_anchor_y = 140,
     .font = font_12x16,
     .widget_with_border = true};
-my_position_controller_widget focus_indicator = my_position_controller_widget(&color_display,position_controller_focus_config,ST7735_TEXT_CANVAS_FORMAT,&position_controller);
+my_position_controller_widget focus_indicator = my_position_controller_widget(&color_display, position_controller_focus_config, ST7735_TEXT_CANVAS_FORMAT, &position_controller);
 //-----KY040---------
 //                   rtos_SwitchButton central_switch---------------------
 struct_rtosConfigSwitchButton cfg_central_switch{
@@ -417,7 +418,7 @@ int main()
 
     xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, &p4, 13, &my_rtos_graph_widget.task_handle);                   // durée: 8.23ms + 14ms xfer SPI
     xTaskCreate(SPI_values_widget_task, "values_widget_task", 256, &p4, 12, &my_rtos_values_widget.task_handle);                // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)
-    xTaskCreate(SPI_focus_widget_task, "focus_widget_task", 256, &p4, 12, &focus_indicator.task_handle);                // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)
+    xTaskCreate(SPI_focus_widget_task, "focus_widget_task", 256, &p4, 12, &focus_indicator.task_handle);                        // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)
     xTaskCreate(I2C_right_graph_widget_task, "right_graph_widget_task", 256, &p4, 11, &my_rtos_right_graph_widget.task_handle); // 368us + 22.2ms xfer I2C
     xTaskCreate(I2C_left_values_widget_task, "left_values_widget_task", 256, &p4, 10, &my_rtos_left_values_widget.task_handle); // 2.69ms + 6.5ms xfer I2C (depends on font size)
 

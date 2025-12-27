@@ -195,6 +195,7 @@ private:
     bool wrap{true};
 
     /// @brief auto_next_char flag : if true each char steps one position after being written.
+    //TODO consider case where \n is conflicting with auto_next_char when the string is right the same cahr number than the widget
     bool auto_next_char{true};
 
     /// @brief a graphic primitive to draw a character at a pixel position. Strongly dependent on font memory organisation.
