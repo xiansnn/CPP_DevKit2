@@ -1,19 +1,8 @@
-/**
- * @file t_rtos_all_device_roll_control.h
- * @author xiansnn (xiansnn@hotmail.com)
- * @brief
- * @version 0.1
- * @date 2025-12-19
- *
- * @copyright Copyright (c) 2025
- *
- */
-
 #pragma once
 
 #include "sw/ui_core/rtos_ui_core.h"
-#include "t_rtos_common_text_and_graph_widgets.h"
-#include "t_rtos_all_device_defines.h"
+#include "t_rtos_extended_defines.h"
+#include "t_rtos_extended_text_and_graph_widgets.h"
 
 class my_model;
 

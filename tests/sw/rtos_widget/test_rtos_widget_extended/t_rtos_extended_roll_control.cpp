@@ -1,5 +1,5 @@
-#include "t_rtos_all_device_roll_control.h"
-#include "t_rtos_all_device_defines.h"
+#include "t_rtos_extended_defines.h"
+#include "t_rtos_extended_roll_control.h"
 
 #include <map>
 std::map<UIControlEvent, std::string> event_to_string{

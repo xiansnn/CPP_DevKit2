@@ -1,21 +1,21 @@
 /**
- * @file test_rtos_ssd1306_text_and_graph_widgets.cpp
+ * @file test_rtos_extended_text_and_graph_widgets.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief
+ * @brief 
  * @version 0.1
- * @date 2025-12-10
- *
+ * @date 2025-12-27
+ * 
  * @copyright Copyright (c) 2025
- *
+ * 
  */
 #include "sw/ui_core/rtos_ui_core.h"
 #include "sw/widget/rtos_widget.h"
 #include "device/SSD1306/ssd1306.h"
 #include "device/ST7735/st7735.h"
 #include "device/rotary_encoder/rtos_rotary_encoder.h"
-#include "t_rtos_common_text_and_graph_widgets.h"
-#include "t_rtos_all_device_roll_control.h"
-#include "t_rtos_all_device_defines.h"
+#include "t_rtos_extended_text_and_graph_widgets.h"
+#include "t_rtos_extended_roll_control.h"
+#include "t_rtos_extended_defines.h"
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);

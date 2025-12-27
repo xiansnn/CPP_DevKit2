@@ -73,23 +73,25 @@ target_link_libraries(test_rtos_ssd1306_text_and_graph_widgets
             sw_display_device
             FreeRTOS-Kernel-Heap4  
             )
+
+add_subdirectory(test_rtos_widget_extended)
 #-------------------------------------------------------------------------------------
-add_executable(test_rtos_all_device_text_and_graph_widgets 
-                test_rtos_all_device_text_and_graph_widgets.cpp
-                t_rtos_common_text_and_graph_widgets.cpp
-                t_rtos_all_device_roll_control.cpp
-                )
-target_link_libraries(test_rtos_all_device_text_and_graph_widgets 
-            pico_stdlib 
-            utilities_probe
-            rtos_ui_core
-            rtos_hw_spi
-            rtos_hw_i2c
-            rtos_widget
-            device_ssd1306
-            device_st7735 
-            dev_rtos_rotary_encoder
-            sw_display_device
-            FreeRTOS-Kernel-Heap4
-            )
+# add_executable(test_rtos_all_device_text_and_graph_widgets 
+#                 test_rtos_all_device_text_and_graph_widgets.cpp
+#                 t_rtos_common_text_and_graph_widgets.cpp
+#                 t_rtos_all_device_roll_control.cpp
+#                 )
+# target_link_libraries(test_rtos_all_device_text_and_graph_widgets 
+#             pico_stdlib 
+#             utilities_probe
+#             rtos_ui_core
+#             rtos_hw_spi
+#             rtos_hw_i2c
+#             rtos_widget
+#             device_ssd1306
+#             device_st7735 
+#             dev_rtos_rotary_encoder
+#             sw_display_device
+#             FreeRTOS-Kernel-Heap4
+#             )
            
