@@ -13,6 +13,7 @@
 #include "t_rtos_extended_text_and_graph_widgets.h"
 #include "t_rtos_extended_roll_control.h"
 #include "t_rtos_extended_config.h"
+#include "t_rtos_extended_encoder_controller.h"
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
@@ -235,7 +236,6 @@ void controlled_position_task(void *position)
         center_position->process_control_event(received_control_event);
     }
 }
-// ############################### SPI focus indicator widget ######################################################################################################################
 my_position_controller_widget SPI_focus_indicator_widget = my_position_controller_widget(&color_display, focus_indicator_config, ST7735_TEXT_CANVAS_FORMAT, &position_controller);
 
 void SPI_focus_widget_task(void *probe)
@@ -252,46 +252,14 @@ void SPI_focus_widget_task(void *probe)
     }
 }
 
-// ############################## encoder controller setup ##############################################################################
-//-----KY040---------
-void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask);
+// ############################## KY040 encoder controller setup ##############################################################################
 rtos_SwitchButton central_switch = rtos_SwitchButton(CENTRAL_SWITCH_GPIO,
                                                      &ky040_encoder_irq_call_back, position_controller.control_event_input_queue,
                                                      cfg_central_switch);
-void central_switch_process_irq_event_task(void *)
-{
-    central_switch.rtos_process_IRQ_event();
-}
-//                   rtos_RotaryEncoder encoder-------------------------------
+
 rtos_RotaryEncoder encoder = rtos_RotaryEncoder(ENCODER_CLK_GPIO, ENCODER_DT_GPIO,
                                                 &ky040_encoder_irq_call_back, position_controller.control_event_input_queue,
                                                 cfg_encoder_clk);
-void encoder_process_irq_event_task(void *)
-{
-    encoder.rtos_process_IRQ_event();
-}
-//                 ky040_encoder_irq_call_back--------------------------------
-void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask)
-{
-    struct_SwitchButtonIRQData data;
-    gpio_set_irq_enabled(gpio, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, false);
-    data.current_time_us = time_us_32();
-    data.event_mask = event_mask;
-    BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
-    switch (gpio)
-    {
-    case CENTRAL_SWITCH_GPIO:
-        xQueueSendFromISR(central_switch.IRQdata_input_queue, &data, &pxHigherPriorityTaskWoken);
-        break;
-    case ENCODER_CLK_GPIO:
-        xQueueSendFromISR(encoder.IRQdata_input_queue, &data, &pxHigherPriorityTaskWoken);
-        break;
-    default:
-        break;
-    }
-    portYIELD_FROM_ISR(&pxHigherPriorityTaskWoken);
-    gpio_set_irq_enabled(gpio, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true);
-};
 
 // ############################### main() ####################
 int main()

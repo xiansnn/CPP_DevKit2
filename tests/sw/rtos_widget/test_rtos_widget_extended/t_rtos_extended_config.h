@@ -136,19 +136,6 @@ inline struct_ConfigGraphicWidget ST7735_graph_config{
     .widget_anchor_y = 0,
     .widget_with_border = true};
 
-// ######################### KY040 encoder setup ########################################
-inline struct_rtosConfigSwitchButton cfg_central_switch{
-    .debounce_delay_us = 5000,
-    .long_release_delay_us = 1000000,
-    .long_push_delay_ms = 1500,
-    .time_out_delay_ms = SW_TIMEOUT_DELAY_ms};
-
-inline struct_rtosConfigSwitchButton cfg_encoder_clk{
-    .debounce_delay_us = 5000,
-    .long_release_delay_us = 1000000,
-    .long_push_delay_ms = 1000,
-    .time_out_delay_ms = SW_TIMEOUT_DELAY_ms};
-
 // ######################### Focus indicator widget setup ########################################
 inline struct_ConfigTextWidget focus_indicator_config = {
     .number_of_column = 10,
