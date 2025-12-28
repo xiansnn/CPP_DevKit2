@@ -136,11 +136,3 @@ inline struct_ConfigGraphicWidget ST7735_graph_config{
     .widget_anchor_y = 0,
     .widget_with_border = true};
 
-// ######################### Focus indicator widget setup ########################################
-inline struct_ConfigTextWidget focus_indicator_config = {
-    .number_of_column = 10,
-    .number_of_line = 1,
-    .widget_anchor_x = 4,
-    .widget_anchor_y = 140,
-    .font = font_12x16,
-    .widget_with_border = true};
