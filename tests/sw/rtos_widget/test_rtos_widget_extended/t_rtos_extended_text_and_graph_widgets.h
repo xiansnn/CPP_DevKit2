@@ -20,7 +20,7 @@
 #include "sw/widget/rtos_widget.h"
 #include "sw/ui_core/rtos_ui_core.h"
 
-
+/// @brief Construct an implementation of TextWidget for test_ui_core program.
 class my_text_widget : public rtos_TextWidget
 {
 private:
@@ -39,6 +39,7 @@ public:
     void draw();
 };
 
+/// @brief Construct an implementation of GraphicWidget for test_ui_core program.
 class my_visu_widget : public rtos_GraphicWidget
 {
 private:

@@ -14,6 +14,7 @@
 #include "t_rtos_extended_defines.h"
 #include "t_rtos_extended_text_and_graph_widgets.h"
 
+
 class my_model;
 
 /// @brief Construct an implementation of UIControlledIncrementalValue for test_ui_core program.
@@ -29,6 +30,7 @@ public:
     void process_control_event(struct_ControlEventData control_event);
 };
 
+/// @brief Construct an implementation of UIModelManager for test_ui_core program.
 class my_model : public rtos_UIControlledModel
 {
 private:
@@ -42,6 +44,7 @@ public:
     void process_control_event(struct_ControlEventData control_event);
 };
 
+/// @brief Construct an implementation of UIModelManager for test_ui_core program.
 class my_PositionController : public rtos_UIModelManager
 {
 private:
@@ -51,6 +54,7 @@ public:
     void process_control_event(struct_ControlEventData control_event);
 };
 
+/// @brief Construct an implementation of TextWidget for test_ui_core program.
 class my_position_controller_widget : public rtos_TextWidget
 {
 private:
