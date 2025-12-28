@@ -15,6 +15,7 @@
 #include "t_rtos_extended_config.h"
 #include "t_rtos_extended_encoder_controller.h"
 #include "t_rtos_extended_main_models.h"
+#include "t_rtos_extended_ST7735_display_setup.h"
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
@@ -54,27 +55,10 @@ rtos_SSD1306 right_display = rtos_SSD1306(&i2c_master, cfg_right_screen);
 
 // ######################### ST7735 setup ########################################
 rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
-void SPI_display_gate_keeper_task(void *probe)
-{
-    struct_WidgetDataToGateKeeper received_data_to_show;
 
-    while (true)
-    {
-        xQueueReceive(SPI_display_gate_keeper.graphic_widget_data, &received_data_to_show, portMAX_DELAY);
-        if (probe != NULL)
-            ((Probe *)probe)->hi();
-        SPI_display_gate_keeper.receive_widget_data(received_data_to_show);
-        if (probe != NULL)
-            ((Probe *)probe)->lo();
-    }
-}
-void end_of_TX_DMA_xfer_handler();
 rtos_HW_SPI_Master spi_master = rtos_HW_SPI_Master(cfg_spi,
                                                    DMA_IRQ_0, end_of_TX_DMA_xfer_handler);
-void end_of_TX_DMA_xfer_handler()
-{
-    spi_master.spi_tx_dma_isr();
-}
+
 rtos_ST7735 color_display = rtos_ST7735(&spi_master, cfg_st7735);
 
 // ################## ST7735 widgets ###############################################
@@ -157,7 +141,7 @@ void I2C_right_graph_widget_task(void *probe)
     }
 }
 
-// // ####################### main model and tasks ##########################
+// ####################### main model and tasks ##########################
 my_model my_rtos_model = my_model();
 
 my_PositionController position_controller = my_PositionController(true);

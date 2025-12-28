@@ -6,6 +6,7 @@ add_executable(test_rtos_extended_text_and_graph_widgets
                 t_rtos_extended_roll_control.cpp
                 t_rtos_extended_encoder_controller.cpp
                 t_rtos_extended_main_models.cpp
+                t_rtos_extended_ST7735_display_setup.cpp
                 )
 target_link_libraries(test_rtos_extended_text_and_graph_widgets 
             pico_stdlib 
