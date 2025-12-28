@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#include "t_rtos_extended_defines.h"
+#include "t_rtos_extended_config.h"
 #include "t_rtos_extended_roll_control.h"
 
 #include <map>
@@ -184,7 +184,6 @@ void my_position_controller_widget::draw()
         printf("(my_position_controller_widget)manager IS_ACTIVE\n");
         sprintf(this->writer->text_buffer, "%5s", focus_on_value_name.c_str());
         this->writer->write();
-        // this->writer->draw_border();
         break;
     case ControlledObjectStatus::IS_IDLE:
         printf("(my_position_controller_widget)manager IS_IDLE\n");

@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#include "t_rtos_extended_defines.h"
+#include "t_rtos_extended_config.h"
 #include "t_rtos_extended_roll_control.h"
 
 

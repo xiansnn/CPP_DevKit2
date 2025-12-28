@@ -11,7 +11,7 @@
 #pragma once
 
 #include "sw/ui_core/rtos_ui_core.h"
-#include "t_rtos_extended_defines.h"
+#include "t_rtos_extended_config.h"
 #include "t_rtos_extended_text_and_graph_widgets.h"
 
 
