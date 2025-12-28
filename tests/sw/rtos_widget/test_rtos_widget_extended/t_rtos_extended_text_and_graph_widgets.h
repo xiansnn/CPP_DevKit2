@@ -12,10 +12,6 @@
 
 #include <pico/stdio.h>
 #include <math.h>
-#include <numbers>
-#include <sstream>
-#include <iomanip>
-#include <string>
 
 #include "sw/widget/rtos_widget.h"
 #include "sw/ui_core/rtos_ui_core.h"

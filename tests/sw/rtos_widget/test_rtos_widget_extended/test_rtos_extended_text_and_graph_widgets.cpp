@@ -16,6 +16,7 @@
 #include "t_rtos_extended_encoder_controller.h"
 #include "t_rtos_extended_main_models.h"
 #include "t_rtos_extended_ST7735_display_setup.h"
+#include "t_rtos_extended_SSD1306_display_setup.h"
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
@@ -27,39 +28,17 @@ Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
 
-// ######################### SSD1306 setup ########################################
-rtos_GraphicDisplayGateKeeper I2C_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
-
-void I2C_display_gate_keeper_task(void *probe)
-{
-    struct_WidgetDataToGateKeeper received_data_to_show;
-
-    while (true)
-    {
-        xQueueReceive(I2C_display_gate_keeper.graphic_widget_data, &received_data_to_show, portMAX_DELAY);
-        if (probe != NULL)
-            ((Probe *)probe)->hi();
-        I2C_display_gate_keeper.receive_widget_data(received_data_to_show);
-        if (probe != NULL)
-            ((Probe *)probe)->lo();
-    }
-}
-
+//  SSD1306 setup
 rtos_HW_I2C_Master i2c_master = rtos_HW_I2C_Master(cfg_i2c);
-void i2c_irq_handler()
-{
-    i2c_master.i2c_dma_isr();
-};
 rtos_SSD1306 left_display = rtos_SSD1306(&i2c_master, cfg_left_screen);
 rtos_SSD1306 right_display = rtos_SSD1306(&i2c_master, cfg_right_screen);
+rtos_GraphicDisplayGateKeeper I2C_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
 
-// ######################### ST7735 setup ########################################
-rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
-
+//  ST7735 setup
 rtos_HW_SPI_Master spi_master = rtos_HW_SPI_Master(cfg_spi,
                                                    DMA_IRQ_0, end_of_TX_DMA_xfer_handler);
-
 rtos_ST7735 color_display = rtos_ST7735(&spi_master, cfg_st7735);
+rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
 
 // ################## ST7735 widgets ###############################################
 //------------------------- ST7735 value widget---------------------
@@ -141,23 +120,20 @@ void I2C_right_graph_widget_task(void *probe)
     }
 }
 
-// ####################### main model and tasks ##########################
+//  main model and tasks
 my_model my_rtos_model = my_model();
-
 my_PositionController position_controller = my_PositionController(true);
-
 my_position_controller_widget SPI_focus_indicator_widget = my_position_controller_widget(&color_display, focus_indicator_config, ST7735_TEXT_CANVAS_FORMAT, &position_controller);
 
-// ############################## KY040 encoder controller setup ##############################################################################
+//  KY040 encoder controller setup
 rtos_SwitchButton central_switch = rtos_SwitchButton(CENTRAL_SWITCH_GPIO,
                                                      &ky040_encoder_irq_call_back, position_controller.control_event_input_queue,
                                                      cfg_central_switch);
-
 rtos_RotaryEncoder encoder = rtos_RotaryEncoder(ENCODER_CLK_GPIO, ENCODER_DT_GPIO,
                                                 &ky040_encoder_irq_call_back, position_controller.control_event_input_queue,
                                                 cfg_encoder_clk);
 
-// ############################### main() ####################
+//  ------------------------------- main() -------------------------------------------------------------------
 int main()
 {
     stdio_init_all();
