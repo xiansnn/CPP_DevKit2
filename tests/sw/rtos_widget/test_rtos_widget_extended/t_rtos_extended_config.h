@@ -1,12 +1,12 @@
 /**
- * @file t_rtos_extended_defines.h
+ * @file t_rtos_extended_config.h
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief
+ * @brief 
  * @version 0.1
- * @date 2025-12-27
- *
+ * @date 2025-12-30
+ * 
  * @copyright Copyright (c) 2025
- *
+ * 
  */
 #pragma once
 
@@ -14,10 +14,10 @@
 #include "device/ST7735/st7735.h"
 #include "device/rotary_encoder/rtos_rotary_encoder.h"
 
-#define REFRESH_PERIOD_ms 100
 //-------------main
+#define REFRESH_PERIOD_ms 100
 #define DEGREE \xF8
-#define ANGLE_INCREMENT 10
+#define ANGLE_INCREMENT 1
 #define DUMMY_GPIO_FOR_PERIODIC_EVOLUTION 100
 //-------------encoder
 #define GLOBAL_TIMEOUT_DELAY_ms 5000

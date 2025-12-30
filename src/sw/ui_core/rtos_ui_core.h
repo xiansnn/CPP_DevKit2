@@ -34,7 +34,7 @@ private:
 
 public:
     /// @brief the task handle of the model task
-    TaskHandle_t task_handle {nullptr};
+    TaskHandle_t task_handle{nullptr};
     /// @brief link a new widget task to the model
     /// @param linked_widget    the widget to be linked
     void update_attached_rtos_widget(rtos_Widget *linked_widget);
@@ -106,7 +106,7 @@ public:
     /// @brief  Process a time out condition for the manager
     /// @param manager   The manager to process the timeout for
     /// @param time_out_ms  The timeout in milliseconds
-    void process_event_and_time_out_condition(rtos_UIModelManager * manager, uint time_out_ms);
+    void process_event_and_time_out_condition(rtos_UIModelManager *manager, uint time_out_ms);
 
     /// @brief  Get the current focus index
     /// @return The current focus index
@@ -177,4 +177,24 @@ public:
     /// @brief Get the max value object
     /// @return int
     int get_max_value();
+};
+
+/// @brief A model that holds an integer value that can be incremented or decremented within a defined range in a circular manner.
+/// For example, incrementing beyond the max value wraps around to the min value, and decrementing below the min value wraps around to the max value.
+/// This is particularly useful for representing circular quantities such as angles (0 to 360 degrees). In such case 360 = 0.
+class core_CircularIncremetalControlledModel : public core_IncrementControlledModel
+{
+private:
+    /* data */
+public:
+    core_CircularIncremetalControlledModel(int increment = 1, int min_value = 0, int max_value = 360);
+    ~core_CircularIncremetalControlledModel();
+
+    /// @brief Increment the current value by the increment amount
+    /// @return true if value changed, false if clipped and no change
+    virtual bool increment_value();
+
+    /// @brief  Decrement the current value by the increment amount
+    /// @return true if value changed, false if clipped and no change
+    virtual bool decrement_value();
 };
