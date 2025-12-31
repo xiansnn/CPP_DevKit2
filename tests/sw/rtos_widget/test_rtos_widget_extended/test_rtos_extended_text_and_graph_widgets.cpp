@@ -79,9 +79,8 @@ int main()
     xTaskCreate(position_controller_task, "position_controller_task", 256, &p5, 8, &position_controller.task_handle);
     xTaskCreate(controlled_position_task, "H_task", 256, &my_rtos_model.x_pos, 8, &my_rtos_model.x_pos.task_handle);
     xTaskCreate(controlled_position_task, "V_task", 256, &my_rtos_model.y_pos, 8, &my_rtos_model.y_pos.task_handle);
-    // xTaskCreate(controlled_position_task, "angle_task", 256, &my_rtos_model.angle, 8, &my_rtos_model.angle.task_handle);
-    xTaskCreate(controlled_angle_task, "angle_task", 256, &my_rtos_model.angle, 8, &my_rtos_model.angle.task_handle);
-
+    xTaskCreate(controlled_position_task, "angle_task", 256, &my_rtos_model.angle, 8, &my_rtos_model.angle.task_handle);
+    
     xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, &p4, 13, &ST7735_graph_widget.task_handle);               // durée: 8.23ms + 14ms xfer SPI
     xTaskCreate(SPI_values_widget_task, "values_widget_task", 256, &p4, 12, &ST7735_values_widget.task_handle);            // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)
     xTaskCreate(SPI_focus_widget_task, "focus_widget_task", 256, &p4, 12, &SPI_focus_indicator_widget.task_handle);        // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)

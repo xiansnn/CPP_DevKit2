@@ -27,7 +27,6 @@ void position_controller_task(void *probe);
 void my_model_task(void *probe);
 void angle_evolution_task(void *probe);
 void controlled_position_task(void *position);
-void controlled_angle_task(void *position);
 
 void SPI_focus_widget_task(void *probe);
 void SPI_values_widget_task(void *probe);

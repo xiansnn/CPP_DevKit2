@@ -203,12 +203,12 @@ void my_position_controller_widget::draw()
     }
 }
 
-my_ControlledAnglePosition::my_ControlledAnglePosition(std::string name, my_model *controlled_model,
+my_ControlledAnglePosition::my_ControlledAnglePosition(std::string name, my_model *parent_model,
                                                        int min_value, int max_value, int increment)
     : rtos_UIControlledModel(), core_CircularIncremetalControlledModel(increment, min_value, max_value)
 {
     this->name = name;
-    this->parent_model = controlled_model;
+    this->parent_model = parent_model;
 }
 
 my_ControlledAnglePosition::~my_ControlledAnglePosition()
