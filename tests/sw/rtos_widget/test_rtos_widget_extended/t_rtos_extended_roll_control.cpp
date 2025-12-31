@@ -25,7 +25,7 @@ std::map<UIControlEvent, std::string> event_to_string{
 
 my_model::my_model()
     : rtos_UIControlledModel(),
-      angle("ANGLE", this, 0, 360, ANGLE_INCREMENT),  // angle position
+      angle("ANGLE", this, -180, 180, ANGLE_INCREMENT),  // angle position
       x_pos("H_POS", this, -64, +63, false, 1),
       y_pos("V_POS", this, -28, +27, false, 1)
 {

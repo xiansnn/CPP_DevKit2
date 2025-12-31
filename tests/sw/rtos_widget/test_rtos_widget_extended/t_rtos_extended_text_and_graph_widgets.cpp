@@ -75,7 +75,7 @@ void my_text_widget::draw()
     this->writer->clear_text_buffer();
     get_value_of_interest();
     // draw
-    sprintf(this->writer->text_buffer, "%3d\xF8\n%+3d\n%+3d", value_angle, value_x_pos, value_y_pos);
+    sprintf(this->writer->text_buffer, "%4d\n%+4d\n%+4d", value_angle, value_x_pos, value_y_pos);
     this->writer->write();
     this->writer->draw_border();
 }
