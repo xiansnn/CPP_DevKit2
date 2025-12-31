@@ -1,12 +1,12 @@
 /**
  * @file t_rtos_extended_roll_control.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-12-27
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 #include "t_rtos_extended_config.h"
 #include "t_rtos_extended_roll_control.h"
@@ -25,7 +25,8 @@ std::map<UIControlEvent, std::string> event_to_string{
 
 my_model::my_model()
     : rtos_UIControlledModel(),
-      angle("ANGLE", this, 0, 360, true, ANGLE_INCREMENT),
+    //   angle("ANGLE", this, ANGLE_INCREMENT, 0, 360),  // angle position
+      angle("ANGLE", this, 0, 360,true, ANGLE_INCREMENT), // center position
       x_pos("H_POS", this, -64, +63, false, 1),
       y_pos("V_POS", this, -28, +27, false, 1)
 {
@@ -33,8 +34,10 @@ my_model::my_model()
 my_model::~my_model()
 {
 }
+
+
 /// @brief  this is used only with the periodic task
-/// @param control_event 
+/// @param control_event
 void my_model::process_control_event(struct_ControlEventData control_event)
 {
     switch (control_event.event)
@@ -49,19 +52,19 @@ void my_model::process_control_event(struct_ControlEventData control_event)
     }
 }
 
-my_ControlledRollPosition::my_ControlledRollPosition(std::string name, my_model *parent_model,
-                                                     int min_value, int max_value, bool is_wrappable, int increment)
+my_ControlledCenterPosition::my_ControlledCenterPosition(std::string name, my_model *parent_model,
+                                                         int min_value, int max_value, bool is_wrappable, int increment)
     : rtos_UIControlledModel(), core_IncrementControlledModel(min_value, max_value, is_wrappable, increment)
 {
     this->name = name;
     this->parent_model = parent_model;
 }
 
-my_ControlledRollPosition::~my_ControlledRollPosition()
+my_ControlledCenterPosition::~my_ControlledCenterPosition()
 {
 }
 
-void my_ControlledRollPosition::process_control_event(struct_ControlEventData control_event)
+void my_ControlledCenterPosition::process_control_event(struct_ControlEventData control_event)
 {
     switch (control_event.event)
     {
@@ -92,7 +95,7 @@ my_PositionController::~my_PositionController()
 }
 
 void my_PositionController::process_control_event(struct_ControlEventData control_event)
-{// TODO consider an other policy where short release wakeup manager and changes the focus 
+{ // TODO consider an other policy where short release wakeup manager and changes the focus
     if (this->get_rtos_status() == ControlledObjectStatus::IS_IDLE)
     {
         printf("position_controller: WAKE_UP\n");
@@ -107,24 +110,24 @@ void my_PositionController::process_control_event(struct_ControlEventData contro
             case UIControlEvent::LONG_PUSH:
                 printf("position_controller: LONG_PUSH\n");
                 for (auto &&i : managed_rtos_models)
-                    ((my_ControlledRollPosition *)i)->set_clipped_value(0);
-                ((my_ControlledRollPosition *)managed_rtos_models[0])->parent_model->notify_all_linked_widget_task();
+                    ((my_ControlledCenterPosition *)i)->set_clipped_value(0);
+                ((my_ControlledCenterPosition *)managed_rtos_models[0])->parent_model->notify_all_linked_widget_task();
                 break;
             case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
-                printf("position_controller focus on [%s]: RELEASED_AFTER_SHORT_TIME\n", ((my_ControlledRollPosition *)managed_rtos_models[get_current_focus_index()])->name.c_str());
+                printf("position_controller focus on [%s]: RELEASED_AFTER_SHORT_TIME\n", ((my_ControlledCenterPosition *)managed_rtos_models[get_current_focus_index()])->name.c_str());
                 this->make_managed_rtos_model_active();
                 this->forward_control_event_to_active_managed_model(&control_event);
                 break;
             case UIControlEvent::INCREMENT:
                 this->increment_focus();
-                printf("position_controller focus on [%s]: INCREMENT\n", ((my_ControlledRollPosition *)managed_rtos_models[get_current_focus_index()])->name.c_str());
+                printf("position_controller focus on [%s]: INCREMENT\n", ((my_ControlledCenterPosition *)managed_rtos_models[get_current_focus_index()])->name.c_str());
                 break;
             case UIControlEvent::DECREMENT:
                 this->decrement_focus();
-                printf("position_controller focus on [%s]: DECREMENT\n", ((my_ControlledRollPosition *)managed_rtos_models[get_current_focus_index()])->name.c_str());
+                printf("position_controller focus on [%s]: DECREMENT\n", ((my_ControlledCenterPosition *)managed_rtos_models[get_current_focus_index()])->name.c_str());
                 break;
             case UIControlEvent::TIME_OUT:
-                printf("position_controller focus on [%s]: TIME_OUT\n", ((my_ControlledRollPosition *)managed_rtos_models[get_current_focus_index()])->name.c_str());
+                printf("position_controller focus on [%s]: TIME_OUT\n", ((my_ControlledCenterPosition *)managed_rtos_models[get_current_focus_index()])->name.c_str());
                 this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
                 break;
             default:
@@ -166,7 +169,7 @@ void my_position_controller_widget::get_value_of_interest()
 {
     uint idx = ((my_PositionController *)actual_rtos_displayed_model)->get_current_focus_index();
     rtos_UIControlledModel *position = ((my_PositionController *)actual_rtos_displayed_model)->managed_rtos_models[idx];
-    focus_on_value_name = ((my_ControlledRollPosition *)position)->name;
+    focus_on_value_name = ((my_ControlledCenterPosition *)position)->name;
     manager_status = ((my_PositionController *)actual_rtos_displayed_model)->get_rtos_status();
 }
 
@@ -194,6 +197,39 @@ void my_position_controller_widget::draw()
         this->writer->write();
         this->writer->draw_border();
 
+        break;
+    default:
+        break;
+    }
+}
+
+my_ControlledAnglePosition::my_ControlledAnglePosition(std::string name, my_model *controlled_model,
+                                                       int min_value, int max_value, int increment)
+    : rtos_UIControlledModel(), core_CircularIncremetalControlledModel(increment, min_value, max_value)
+{
+    this->name = name;
+    this->parent_model = parent_model;
+}
+
+my_ControlledAnglePosition::~my_ControlledAnglePosition()
+{
+}
+
+void my_ControlledAnglePosition::process_control_event(struct_ControlEventData control_event)
+{
+    switch (control_event.event)
+    {
+    case UIControlEvent::LONG_PUSH:
+        this->set_clipped_value(0);
+        this->parent_model->notify_all_linked_widget_task();
+        break;
+    case UIControlEvent::INCREMENT:
+        this->increment_value();
+        this->parent_model->notify_all_linked_widget_task();
+        break;
+    case UIControlEvent::DECREMENT:
+        this->decrement_value();
+        this->parent_model->notify_all_linked_widget_task();
         break;
     default:
         break;

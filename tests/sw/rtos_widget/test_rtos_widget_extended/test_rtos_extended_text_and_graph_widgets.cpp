@@ -14,10 +14,9 @@
 #include "t_rtos_extended_roll_control.h"
 #include "t_rtos_extended_config.h"
 #include "t_rtos_extended_encoder_controller.h"
-#include "t_rtos_extended_main_models.h"
+#include "t_rtos_extended_main_model_tasks.h"
 #include "t_rtos_extended_ST7735_display_setup.h"
 #include "t_rtos_extended_SSD1306_display_setup.h"
-#include "t_rtos_extended_widgets.h"
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);

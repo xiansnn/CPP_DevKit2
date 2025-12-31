@@ -18,15 +18,28 @@
 class my_model;
 
 /// @brief Construct an implementation of UIControlledIncrementalValue for test_ui_core program.
-class my_ControlledRollPosition : public rtos_UIControlledModel, public core_IncrementControlledModel
+class my_ControlledCenterPosition : public rtos_UIControlledModel, public core_IncrementControlledModel
 {
 private:
 public:
     my_model *parent_model;
     std::string name;
-    my_ControlledRollPosition(std::string name, my_model *controlled_model,
+    my_ControlledCenterPosition(std::string name, my_model *controlled_model,
                               int min_value = 0, int max_value = 10, bool is_wrappable = false, int increment = 1);
-    ~my_ControlledRollPosition();
+    ~my_ControlledCenterPosition();
+    void process_control_event(struct_ControlEventData control_event);
+};
+
+
+class my_ControlledAnglePosition : public rtos_UIControlledModel, public core_CircularIncremetalControlledModel
+{
+private:
+public:
+    my_model *parent_model;
+    std::string name;
+    my_ControlledAnglePosition(std::string name, my_model *controlled_model,
+                              int min_value = 0, int max_value = 360, int increment = 1);
+    ~my_ControlledAnglePosition();
     void process_control_event(struct_ControlEventData control_event);
 };
 
@@ -38,9 +51,9 @@ private:
 public:
     my_model();
     ~my_model();
-    my_ControlledRollPosition angle;
-    my_ControlledRollPosition x_pos;
-    my_ControlledRollPosition y_pos;
+    my_ControlledCenterPosition angle;
+    my_ControlledCenterPosition x_pos;
+    my_ControlledCenterPosition y_pos;
     void process_control_event(struct_ControlEventData control_event);
 };
 
