@@ -214,11 +214,12 @@ bool core_CircularIncremetalControlledModel::increment_value()
     bool changed = false;
     int previous_value = value;
     value += increment;
+
     if (value >= max_value)
-        value =  min_value ;
+        value = min_value;
+
     if (value != previous_value)
         changed = true;
-
     return changed;
 }
 
@@ -227,10 +228,11 @@ bool core_CircularIncremetalControlledModel::decrement_value()
     bool changed = false;
     int previous_value = value;
     value -= increment;
+
     if (value < min_value)
-        value =  max_value - increment;
+        value = max_value - increment;
+
     if (value != previous_value)
         changed = true;
-
     return changed;
 }
