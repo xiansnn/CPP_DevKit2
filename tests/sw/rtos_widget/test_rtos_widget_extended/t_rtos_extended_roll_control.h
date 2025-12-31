@@ -43,6 +43,8 @@ public:
     void process_control_event(struct_ControlEventData control_event);
 };
 
+
+
 /// @brief Construct an implementation of UIModelManager for test_ui_core program.
 class my_model : public rtos_UIControlledModel
 {
@@ -51,7 +53,8 @@ private:
 public:
     my_model();
     ~my_model();
-    my_ControlledCenterPosition angle;
+    // my_ControlledCenterPosition angle;
+    my_ControlledAnglePosition angle;
     my_ControlledCenterPosition x_pos;
     my_ControlledCenterPosition y_pos;
     void process_control_event(struct_ControlEventData control_event);

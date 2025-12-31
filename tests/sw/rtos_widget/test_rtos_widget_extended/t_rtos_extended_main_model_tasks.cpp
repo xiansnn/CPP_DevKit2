@@ -87,6 +87,18 @@ void controlled_position_task(void *position)
     }
 }
 
+void controlled_angle_task(void *position)
+{
+    struct_ControlEventData received_control_event;
+    // my_ControlledAnglePosition *center_position = (my_ControlledAnglePosition *)position;
+    my_ControlledAnglePosition *angle_position = (my_ControlledAnglePosition *)position;
+    while (true)
+    {
+        xQueueReceive(angle_position->control_event_input_queue, &received_control_event, portMAX_DELAY);
+        angle_position->process_control_event(received_control_event);
+    }
+}
+
 void SPI_focus_widget_task(void *probe)
 {
     while (true)

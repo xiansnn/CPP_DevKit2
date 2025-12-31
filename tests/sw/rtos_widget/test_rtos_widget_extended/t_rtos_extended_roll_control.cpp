@@ -25,8 +25,8 @@ std::map<UIControlEvent, std::string> event_to_string{
 
 my_model::my_model()
     : rtos_UIControlledModel(),
-    //   angle("ANGLE", this, ANGLE_INCREMENT, 0, 360),  // angle position
-      angle("ANGLE", this, 0, 360,true, ANGLE_INCREMENT), // center position
+      angle("ANGLE", this, ANGLE_INCREMENT, 0, 360),  // angle position
+    //   angle("ANGLE", this, 0, 360,true, ANGLE_INCREMENT), // center position
       x_pos("H_POS", this, -64, +63, false, 1),
       y_pos("V_POS", this, -28, +27, false, 1)
 {
@@ -208,7 +208,7 @@ my_ControlledAnglePosition::my_ControlledAnglePosition(std::string name, my_mode
     : rtos_UIControlledModel(), core_CircularIncremetalControlledModel(increment, min_value, max_value)
 {
     this->name = name;
-    this->parent_model = parent_model;
+    this->parent_model = controlled_model;
 }
 
 my_ControlledAnglePosition::~my_ControlledAnglePosition()

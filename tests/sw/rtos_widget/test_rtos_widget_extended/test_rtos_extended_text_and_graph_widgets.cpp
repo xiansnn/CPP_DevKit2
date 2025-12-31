@@ -40,7 +40,7 @@ rtos_HW_SPI_Master spi_master = rtos_HW_SPI_Master(cfg_spi,
 rtos_ST7735 color_display = rtos_ST7735(&spi_master, cfg_st7735);
 rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
 
-//   widgets 
+//   widgets
 
 my_text_widget ST7735_values_widget = my_text_widget(&color_display, ST7735_values_config,
                                                      ST7735_TEXT_CANVAS_FORMAT, nullptr);
@@ -50,7 +50,6 @@ my_text_widget SSD1306_values_widget = my_text_widget(&left_display, SSD1306_val
                                                       SSD1306_CANVAS_FORMAT, nullptr);
 my_visu_widget SSD1306_graph_widget = my_visu_widget(&right_display, SSD1306_graph_config,
                                                      SSD1306_CANVAS_FORMAT, nullptr);
-
 
 //  main model and tasks
 my_model my_rtos_model = my_model();
@@ -80,7 +79,8 @@ int main()
     xTaskCreate(position_controller_task, "position_controller_task", 256, &p5, 8, &position_controller.task_handle);
     xTaskCreate(controlled_position_task, "H_task", 256, &my_rtos_model.x_pos, 8, &my_rtos_model.x_pos.task_handle);
     xTaskCreate(controlled_position_task, "V_task", 256, &my_rtos_model.y_pos, 8, &my_rtos_model.y_pos.task_handle);
-    xTaskCreate(controlled_position_task, "angle_task", 256, &my_rtos_model.angle, 8, &my_rtos_model.angle.task_handle);
+    // xTaskCreate(controlled_position_task, "angle_task", 256, &my_rtos_model.angle, 8, &my_rtos_model.angle.task_handle);
+    xTaskCreate(controlled_angle_task, "angle_task", 256, &my_rtos_model.angle, 8, &my_rtos_model.angle.task_handle);
 
     xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, &p4, 13, &ST7735_graph_widget.task_handle);               // durée: 8.23ms + 14ms xfer SPI
     xTaskCreate(SPI_values_widget_task, "values_widget_task", 256, &p4, 12, &ST7735_values_widget.task_handle);            // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)
