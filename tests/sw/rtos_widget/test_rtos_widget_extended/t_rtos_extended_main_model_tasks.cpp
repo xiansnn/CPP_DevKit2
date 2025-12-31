@@ -32,7 +32,7 @@ void position_controller_task(void *probe)
     {
         if (probe != NULL)
             ((Probe *)probe)->pulse_us(10);
-        position_controller.process_event_and_time_out_condition(&position_controller, UI_MANAGER_TIMEOUT_DELAY_ms);
+        position_controller.process_event_and_time_out_condition(&position_controller, TIMEOUT_UI_MANAGER_DELAY_ms);
     }
 };
 
@@ -62,7 +62,7 @@ void my_model_task(void *probe)
 void angle_evolution_task(void *probe) // periodic task
 {
     struct_ControlEventData data;
-    data.gpio_number = DUMMY_GPIO_FOR_PERIODIC_EVOLUTION;
+    data.gpio_number = GPIO_FOR_PERIODIC_EVOLUTION;
     data.event = UIControlEvent::INCREMENT;
     TickType_t xLastWakeTime = xTaskGetTickCount();
 
@@ -71,7 +71,7 @@ void angle_evolution_task(void *probe) // periodic task
         if (probe != NULL)
             ((Probe *)probe)->pulse_us();
         xQueueSend(my_rtos_model.control_event_input_queue, &data, portMAX_DELAY);
-        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(REFRESH_PERIOD_ms));
+        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(PERIOD_REFRESH_ms));
     }
 }
 

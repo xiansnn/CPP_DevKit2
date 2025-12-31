@@ -58,10 +58,10 @@ my_PositionController position_controller = my_PositionController(true);
 my_position_controller_widget SPI_focus_indicator_widget = my_position_controller_widget(&color_display, focus_indicator_config, ST7735_TEXT_CANVAS_FORMAT, &position_controller);
 
 //  KY040 encoder controller setup
-rtos_SwitchButton central_switch = rtos_SwitchButton(CENTRAL_SWITCH_GPIO,
+rtos_SwitchButton central_switch = rtos_SwitchButton(GPIO_CENTRAL_SWITCH,
                                                      &ky040_encoder_irq_call_back, position_controller.control_event_input_queue,
                                                      cfg_central_switch);
-rtos_RotaryEncoder encoder = rtos_RotaryEncoder(ENCODER_CLK_GPIO, ENCODER_DT_GPIO,
+rtos_RotaryEncoder encoder = rtos_RotaryEncoder(GPIO_ENCODER_CLK, GPIO_ENCODER_DT,
                                                 &ky040_encoder_irq_call_back, position_controller.control_event_input_queue,
                                                 cfg_encoder_clk);
 

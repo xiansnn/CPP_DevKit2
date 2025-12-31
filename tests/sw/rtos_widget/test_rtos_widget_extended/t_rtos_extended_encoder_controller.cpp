@@ -4,13 +4,13 @@ struct_rtosConfigSwitchButton cfg_central_switch{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
     .long_push_delay_ms = 1500,
-    .time_out_delay_ms = SW_TIMEOUT_DELAY_ms};
+    .time_out_delay_ms = TIMEOUT_SWITCH_DELAY_ms};
 
 struct_rtosConfigSwitchButton cfg_encoder_clk{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
     .long_push_delay_ms = 1000,
-    .time_out_delay_ms = SW_TIMEOUT_DELAY_ms};
+    .time_out_delay_ms = TIMEOUT_SWITCH_DELAY_ms};
 
 
 void central_switch_process_irq_event_task(void *)
@@ -32,10 +32,10 @@ void ky040_encoder_irq_call_back(uint gpio, uint32_t event_mask)
     BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
     switch (gpio)
     {
-    case CENTRAL_SWITCH_GPIO:
+    case GPIO_CENTRAL_SWITCH:
         xQueueSendFromISR(central_switch.IRQdata_input_queue, &data, &pxHigherPriorityTaskWoken);
         break;
-    case ENCODER_CLK_GPIO:
+    case GPIO_ENCODER_CLK:
         xQueueSendFromISR(encoder.IRQdata_input_queue, &data, &pxHigherPriorityTaskWoken);
         break;
     default:

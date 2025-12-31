@@ -15,17 +15,17 @@
 #include "device/rotary_encoder/rtos_rotary_encoder.h"
 
 //-------------main
-#define REFRESH_PERIOD_ms 100
-#define DEGREE \xF8
+#define PERIOD_REFRESH_ms 100
+#define CHAR_DEGREE \xF8
 #define ANGLE_INCREMENT 1
-#define DUMMY_GPIO_FOR_PERIODIC_EVOLUTION 100
+#define GPIO_FOR_PERIODIC_EVOLUTION 100
 //-------------encoder
-#define GLOBAL_TIMEOUT_DELAY_ms 5000
-#define SW_TIMEOUT_DELAY_ms 1000
-#define UI_MANAGER_TIMEOUT_DELAY_ms GLOBAL_TIMEOUT_DELAY_ms - SW_TIMEOUT_DELAY_ms
-#define CENTRAL_SWITCH_GPIO 18
-#define ENCODER_CLK_GPIO 19
-#define ENCODER_DT_GPIO 20
+#define TIMEOUT_GLOBAL_DELAY_ms 5000
+#define TIMEOUT_SWITCH_DELAY_ms 1000
+#define TIMEOUT_UI_MANAGER_DELAY_ms TIMEOUT_GLOBAL_DELAY_ms - TIMEOUT_SWITCH_DELAY_ms
+#define GPIO_CENTRAL_SWITCH 18
+#define GPIO_ENCODER_CLK 19
+#define GPIO_ENCODER_DT 20
 //--------------display
 #define SSD1306_CANVAS_FORMAT CanvasFormat::MONO_VLSB
 #define ST7735_GRAPHICS_CANVAS_FORMAT CanvasFormat::RGB565_16b
