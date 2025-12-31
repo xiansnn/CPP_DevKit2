@@ -97,5 +97,6 @@
         "typeinfo": "cpp",
         "variant": "cpp"
     },
-    "cortex-debug.variableUseNaturalFormat": true
+    "cortex-debug.variableUseNaturalFormat": true,
+    "todo-tree.tree.scanMode": "workspace only"
 }

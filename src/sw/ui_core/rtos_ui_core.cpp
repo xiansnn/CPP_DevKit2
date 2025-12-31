@@ -1,5 +1,4 @@
 #include "rtos_ui_core.h"
-// #include "sw/ui_core/ui_control_event.h"
 
 void rtos_Model::update_attached_rtos_widget(rtos_Widget *linked_widget)
 {
@@ -13,16 +12,11 @@ void rtos_Model::notify_all_linked_widget_task()
     {
         for (auto &&widget : attached_rtos_widget)
         {
-            xTaskNotifyGive(widget->task_handle);
+            if (widget->task_handle != nullptr)
+                xTaskNotifyGive(widget->task_handle);
         }
     }
 }
-
-// void rtos_Model::draw_refresh_all_attached_widgets()
-// {
-//     for (auto &&widget : attached_rtos_widget)
-//         ((Widget *)widget)->draw();
-// }
 
 rtos_Model::rtos_Model()
 {
@@ -87,6 +81,27 @@ rtos_UIModelManager::rtos_UIModelManager(bool is_wrapable)
 
 rtos_UIModelManager::~rtos_UIModelManager()
 {
+}
+
+void rtos_UIModelManager::process_event_and_time_out_condition(rtos_UIModelManager *manager, uint time_out_ms)
+{
+    struct_ControlEventData local_event_data;
+    BaseType_t global_timeout_condtion;
+    global_timeout_condtion = xQueueReceive(manager->control_event_input_queue,
+                                            &local_event_data,
+                                            ((manager->get_rtos_status() == ControlledObjectStatus::IS_IDLE)
+                                                 ? portMAX_DELAY
+                                                 : pdMS_TO_TICKS(time_out_ms))); // switch and encoder timout is replaced by a global timeout
+
+    if (global_timeout_condtion == errQUEUE_EMPTY)
+    {
+        local_event_data.event = UIControlEvent::TIME_OUT;
+        manager->process_control_event(local_event_data);
+    }
+    else if (local_event_data.event != UIControlEvent::TIME_OUT)
+    {
+        manager->process_control_event(local_event_data);
+    }
 }
 
 size_t rtos_UIModelManager::get_current_focus_index()
@@ -183,4 +198,41 @@ int core_IncrementControlledModel::get_min_value()
 int core_IncrementControlledModel::get_max_value()
 {
     return max_value;
+}
+
+core_CircularIncremetalControlledModel::core_CircularIncremetalControlledModel(int increment, int min_value, int max_value)
+    : core_IncrementControlledModel(min_value, max_value, true, increment)
+{
+}
+
+core_CircularIncremetalControlledModel::~core_CircularIncremetalControlledModel()
+{
+}
+
+bool core_CircularIncremetalControlledModel::increment_value()
+{
+    bool changed = false;
+    int previous_value = value;
+    value += increment;
+
+    if (value >= max_value)
+        value = min_value;
+
+    if (value != previous_value)
+        changed = true;
+    return changed;
+}
+
+bool core_CircularIncremetalControlledModel::decrement_value()
+{
+    bool changed = false;
+    int previous_value = value;
+    value -= increment;
+
+    if (value < min_value)
+        value = max_value - increment;
+
+    if (value != previous_value)
+        changed = true;
+    return changed;
 }
