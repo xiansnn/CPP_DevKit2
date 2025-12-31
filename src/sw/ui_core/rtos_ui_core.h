@@ -187,6 +187,10 @@ class core_CircularIncremetalControlledModel : public core_IncrementControlledMo
 private:
     /* data */
 public:
+    /// @brief  Construct a new core Circular Incremetal Controlled Model object
+    /// @param increment        
+    /// @param min_value 
+    /// @param max_value 
     core_CircularIncremetalControlledModel(int increment = 1, int min_value = 0, int max_value = 360);
     ~core_CircularIncremetalControlledModel();
 
