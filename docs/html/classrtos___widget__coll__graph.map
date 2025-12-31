@@ -1,11 +1,11 @@
 <map id="rtos_Widget" name="rtos_Widget">
-<area shape="rect" id="Node000001" title="RTOS wrapper for Widget class." alt="" coords="227,203,703,433"/>
-<area shape="rect" id="Node000004" href="$structstruct___widget_data_to_gate_keeper.html" title="data structure used to queue widget data to send to the display task" alt="" coords="201,495,372,556"/>
-<area shape="poly" id="edge5_Node000004_Node000001" title=" " alt="" coords="460,434,451,454,438,472,415,492,389,506,387,502,412,488,434,469,446,451,455,431"/>
+<area shape="rect" id="Node000001" title="RTOS wrapper for Widget class." alt="" coords="227,203,703,451"/>
+<area shape="rect" id="Node000004" href="$structstruct___widget_data_to_gate_keeper.html" title="data structure used to queue widget data to send to the display task" alt="" coords="201,513,372,575"/>
+<area shape="poly" id="edge5_Node000004_Node000001" title=" " alt="" coords="460,452,451,473,438,491,416,511,389,525,387,520,413,507,434,488,446,470,455,450"/>
 <area shape="rect" id="Node000002" href="$classrtos___model.html" title="RTOS wrapper for Model class." alt="" coords="339,5,671,141"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="497,141,489,187,484,186,492,140"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="497,141,490,187,485,186,492,140"/>
 <area shape="rect" id="Node000003" href="$classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="5,15,315,132"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="234,130,310,191,307,195,230,134"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="151,132,142,196,139,273,148,355,159,394,174,431,194,460,220,483,216,487,190,463,169,434,154,396,143,356,134,274,137,196,145,131"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="279,495,280,475,286,456,291,445,296,448,290,458,285,476,285,495"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="231,130,305,191,302,195,228,134"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="150,132,141,200,138,282,140,325,147,368,158,410,174,450,194,478,220,502,216,505,190,482,169,453,153,412,142,369,135,326,132,282,136,200,145,132"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="279,513,280,494,286,474,291,464,295,467,290,476,285,495,285,514"/>
 </map>

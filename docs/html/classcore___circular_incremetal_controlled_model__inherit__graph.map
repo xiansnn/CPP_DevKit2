@@ -1,0 +1,5 @@
+<map id="core_CircularIncremetalControlledModel" name="core_CircularIncremetalControlledModel">
+<area shape="rect" id="Node000001" title="A model that holds an integer value that can be incremented or decremented within a defined range in ..." alt="" coords="45,320,522,437"/>
+<area shape="rect" id="Node000002" href="$classcore___increment_controlled_model.html" title="A model that holds an integer value that can be incremented or decremented within a defined range." alt="" coords="5,5,561,272"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="286,287,286,321,281,321,281,287"/>
+</map>

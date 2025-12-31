@@ -6,6 +6,7 @@ var annotated_dup =
     [ "CanvasRGB", "class_canvas_r_g_b.html", "class_canvas_r_g_b" ],
     [ "CanvasTrueRGB", "class_canvas_true_r_g_b.html", "class_canvas_true_r_g_b" ],
     [ "CanvasVLSB", "class_canvas_v_l_s_b.html", "class_canvas_v_l_s_b" ],
+    [ "core_CircularIncremetalControlledModel", "classcore___circular_incremetal_controlled_model.html", "classcore___circular_incremetal_controlled_model" ],
     [ "core_IncrementControlledModel", "classcore___increment_controlled_model.html", "classcore___increment_controlled_model" ],
     [ "DHT11", "class_d_h_t11.html", "class_d_h_t11" ],
     [ "DisplayDevice", "class_display_device.html", null ],

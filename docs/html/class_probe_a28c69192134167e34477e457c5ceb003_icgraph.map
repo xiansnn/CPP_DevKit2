@@ -1,6 +1,6 @@
 <map id="Probe::pulse_us" name="Probe::pulse_us">
 <area shape="rect" id="Node000001" title="Generates a HI level pulse on the GPIO during _duration µs." alt="" coords="374,80,473,105"/>
-<area shape="rect" id="Node000002" href="$class_probe.html#ac9836762cb7847bc23e7067c1a05ce32" title="Generates a train of 10 us pulses on the GPIO." alt="" coords="110,5,221,30"/>
+<area shape="rect" id="Node000002" href="$class_probe.html#a4a3358bb6e56b79dd81af47c7cd8066b" title="Generates a train of 10 us pulses on the GPIO." alt="" coords="110,5,221,30"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="387,74,325,46,272,32,221,25,222,19,273,27,327,40,389,69"/>
 <area shape="rect" id="Node000003" href="$classrtos___graphic_display_gate_keeper.html#a7cac23a47c0452147b49de4cc0524ed8" title="Receive the widget data from the display task." alt="" coords="26,55,305,79"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="358,89,297,83,298,77,359,83"/>

@@ -5,6 +5,7 @@ var classrtos___widget =
     [ "add_widget", "classrtos___widget.html#af6ed14469e8e458b99c7f53a15378050", null ],
     [ "draw", "classrtos___widget.html#a5c7e7ccb2e74f70769c59a7adfa75352", null ],
     [ "get_value_of_interest", "classrtos___widget.html#a477573dd452a728fd8cdacd400af9acd", null ],
+    [ "set_actual_displayed_model", "classrtos___widget.html#a2891846b2477965f74f8828b80df2ce2", null ],
     [ "set_display_device", "classrtos___widget.html#a44efd1730a6316f6ce93bb9aa0ef648a", null ],
     [ "update_widget_anchor", "classrtos___widget.html#aa0c0f9a28d85b1806c9af3ad0b4f0cb1", null ],
     [ "actual_rtos_displayed_model", "classrtos___widget.html#a6dc7846aaa06a9dfcb10a034505554a8", null ],

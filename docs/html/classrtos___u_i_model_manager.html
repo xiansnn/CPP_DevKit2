@@ -116,7 +116,7 @@ Inheritance diagram for rtos_UIModelManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___u_i_model_manager__inherit__graph.png" border="0" usemap="#artos___u_i_model_manager_inherit__map" alt="Inheritance graph"/></div>
 <map name="artos___u_i_model_manager_inherit__map" id="artos___u_i_model_manager_inherit__map">
-<area shape="rect" title="RTOS wrapper for UIModelManager class." alt="" coords="5,392,497,677"/>
+<area shape="rect" title="RTOS wrapper for UIModelManager class." alt="" coords="5,392,497,696"/>
 <area shape="rect" href="classrtos___u_i_controlled_model.html" title="RTOS wrapper for UIControlledModel class." alt="" coords="53,189,449,344"/>
 <area shape="poly" title=" " alt="" coords="254,359,254,392,249,392,249,359"/>
 <area shape="rect" href="classrtos___model.html" title="RTOS wrapper for Model class." alt="" coords="85,5,417,141"/>
@@ -128,7 +128,7 @@ Collaboration diagram for rtos_UIModelManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtos___u_i_model_manager__coll__graph.png" border="0" usemap="#artos___u_i_model_manager_coll__map" alt="Collaboration graph"/></div>
 <map name="artos___u_i_model_manager_coll__map" id="artos___u_i_model_manager_coll__map">
-<area shape="rect" title="RTOS wrapper for UIModelManager class." alt="" coords="5,407,497,674"/>
+<area shape="rect" title="RTOS wrapper for UIModelManager class." alt="" coords="5,407,497,693"/>
 <area shape="rect" href="classrtos___u_i_controlled_model.html" title="RTOS wrapper for UIControlledModel class." alt="" coords="53,191,449,345"/>
 <area shape="poly" title=" " alt="" coords="251,360,251,369,251,408,246,408,246,369,246,360"/>
 <area shape="poly" title=" " alt="" coords="254,345,254,391,249,391,249,345"/>
@@ -142,6 +142,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a502b16a41d769bcc0f5fe7379d988349" id="r_a502b16a41d769bcc0f5fe7379d988349"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a502b16a41d769bcc0f5fe7379d988349">rtos_UIModelManager</a> (bool <a class="el" href="#a6e752666df35917b8b7b5b579b48c863">is_wrapable</a>=true)</td></tr>
 <tr class="memdesc:a502b16a41d769bcc0f5fe7379d988349"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new rtos UIModel Manager object.  <br /></td></tr>
 <tr class="separator:a502b16a41d769bcc0f5fe7379d988349"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c0a7bbfc476beba2c1c51cd08059e45" id="r_a8c0a7bbfc476beba2c1c51cd08059e45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c0a7bbfc476beba2c1c51cd08059e45">process_event_and_time_out_condition</a> (<a class="el" href="classrtos___u_i_model_manager.html">rtos_UIModelManager</a> *manager, uint time_out_ms)</td></tr>
+<tr class="memdesc:a8c0a7bbfc476beba2c1c51cd08059e45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process a time out condition for the manager.  <br /></td></tr>
+<tr class="separator:a8c0a7bbfc476beba2c1c51cd08059e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afeac01b16f8c8d85f5dddde89c12e19f" id="r_afeac01b16f8c8d85f5dddde89c12e19f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afeac01b16f8c8d85f5dddde89c12e19f">get_current_focus_index</a> ()</td></tr>
 <tr class="memdesc:afeac01b16f8c8d85f5dddde89c12e19f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current focus index.  <br /></td></tr>
 <tr class="separator:afeac01b16f8c8d85f5dddde89c12e19f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -203,7 +206,7 @@ QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>control_even
 <tr class="separator:a94ff669a08622cfa731a0b8f7c523695 inherit pub_attribs_classrtos___u_i_controlled_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classrtos___model"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_classrtos___model')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classrtos___model.html">rtos_Model</a></td></tr>
 <tr class="memitem:a464e71170a383e439b36fd27a5e2c525 inherit pub_attribs_classrtos___model" id="r_a464e71170a383e439b36fd27a5e2c525"><td class="memItemLeft" align="right" valign="top">
-TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>task_handle</b></td></tr>
+TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>task_handle</b> {nullptr}</td></tr>
 <tr class="memdesc:a464e71170a383e439b36fd27a5e2c525 inherit pub_attribs_classrtos___model"><td class="mdescLeft">&#160;</td><td class="mdescRight">the task handle of the model task <br /></td></tr>
 <tr class="separator:a464e71170a383e439b36fd27a5e2c525 inherit pub_attribs_classrtos___model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -278,6 +281,16 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="532,15,563,15,563,20,532,20"/>
 </map>
 </div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classrtos___u_i_model_manager_a502b16a41d769bcc0f5fe7379d988349_icgraph.png" border="0" usemap="#aclassrtos___u_i_model_manager_a502b16a41d769bcc0f5fe7379d988349_icgraph" alt=""/></div>
+<map name="aclassrtos___u_i_model_manager_a502b16a41d769bcc0f5fe7379d988349_icgraph" id="aclassrtos___u_i_model_manager_a502b16a41d769bcc0f5fe7379d988349_icgraph">
+<area shape="rect" title="Construct a new rtos UIModel Manager object." alt="" coords="381,5,622,30"/>
+<area shape="rect" href="classrtos___u_i_model_manager.html#a8c0a7bbfc476beba2c1c51cd08059e45" title="Process a time out condition for the manager." alt="" coords="5,5,333,30"/>
+<area shape="poly" title=" " alt="" coords="365,20,333,20,333,15,365,15"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -349,6 +362,54 @@ Here is the call graph for this function:</div>
 
 <p>Get the current focus index. </p>
 <dl class="section return"><dt>Returns</dt><dd>The current focus index </dd></dl>
+
+</div>
+</div>
+<a id="a8c0a7bbfc476beba2c1c51cd08059e45" name="a8c0a7bbfc476beba2c1c51cd08059e45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c0a7bbfc476beba2c1c51cd08059e45">&#9670;&#160;</a></span>process_event_and_time_out_condition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtos_UIModelManager::process_event_and_time_out_condition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classrtos___u_i_model_manager.html">rtos_UIModelManager</a> *</td>          <td class="paramname"><span class="paramname"><em>manager</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint</td>          <td class="paramname"><span class="paramname"><em>time_out_ms</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Process a time out condition for the manager. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">manager</td><td>The manager to process the timeout for </td></tr>
+    <tr><td class="paramname">time_out_ms</td><td>The timeout in milliseconds </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classrtos___u_i_model_manager_a8c0a7bbfc476beba2c1c51cd08059e45_cgraph.png" border="0" usemap="#aclassrtos___u_i_model_manager_a8c0a7bbfc476beba2c1c51cd08059e45_cgraph" alt=""/></div>
+<map name="aclassrtos___u_i_model_manager_a8c0a7bbfc476beba2c1c51cd08059e45_cgraph" id="aclassrtos___u_i_model_manager_a8c0a7bbfc476beba2c1c51cd08059e45_cgraph">
+<area shape="rect" title="Process a time out condition for the manager." alt="" coords="5,55,333,79"/>
+<area shape="rect" href="classrtos___u_i_model_manager.html#a502b16a41d769bcc0f5fe7379d988349" title="Construct a new rtos UIModel Manager object." alt="" coords="385,5,626,30"/>
+<area shape="poly" title=" " alt="" coords="258,51,402,30,402,35,259,57"/>
+<area shape="rect" href="classrtos___u_i_controlled_model.html#a8c26abbc71484e4f08bb0a9ed2aefa16" title="Get the current status of the controlled model." alt="" coords="397,55,615,79"/>
+<area shape="poly" title=" " alt="" coords="333,64,381,64,381,70,333,70"/>
+<area shape="rect" href="classrtos___u_i_controlled_model.html#ae3967617bca1aead44fad93558498943" title="process a control event received from the control event queue" alt="" coords="381,104,631,129"/>
+<area shape="poly" title=" " alt="" coords="259,77,402,99,402,104,258,83"/>
+<area shape="rect" href="classrtos___u_i_controlled_model.html#adfdbebf7c1c5ca38078dd3bbd4e9c366" title="update the status of the controlled model" alt="" coords="679,5,915,30"/>
+<area shape="poly" title=" " alt="" coords="627,15,663,15,663,20,627,20"/>
+<area shape="rect" href="classrtos___model.html#a0d24766c16eaffebc86166dc1ce90583" title="notify all linked widget tasks that the model has changed" alt="" coords="963,5,1185,30"/>
+<area shape="poly" title=" " alt="" coords="916,15,948,15,948,20,916,20"/>
+</map>
+</div>
 
 </div>
 </div>

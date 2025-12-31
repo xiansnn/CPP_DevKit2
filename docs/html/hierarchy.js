@@ -11,7 +11,9 @@ var hierarchy =
       [ "CanvasTrueRGB", "class_canvas_true_r_g_b.html", null ],
       [ "CanvasVLSB", "class_canvas_v_l_s_b.html", null ]
     ] ],
-    [ "core_IncrementControlledModel", "classcore___increment_controlled_model.html", null ],
+    [ "core_IncrementControlledModel", "classcore___increment_controlled_model.html", [
+      [ "core_CircularIncremetalControlledModel", "classcore___circular_incremetal_controlled_model.html", null ]
+    ] ],
     [ "DHT11", "class_d_h_t11.html", null ],
     [ "DisplayDevice", "class_display_device.html", [
       [ "GraphicDisplayDevice", "class_graphic_display_device.html", [

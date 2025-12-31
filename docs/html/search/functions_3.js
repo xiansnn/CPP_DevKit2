@@ -1,7 +1,7 @@
 var searchData=
 [
   ['decrement_5ffocus_0',['decrement_focus',['../classrtos___u_i_model_manager.html#afd83c3a8970423fe26a73395747787af',1,'rtos_UIModelManager::decrement_focus()'],['../class_u_i_model_manager.html#ad1ebe8f2e4895b735d21e9cd41258992',1,'UIModelManager::decrement_focus()']]],
-  ['decrement_5fvalue_1',['decrement_value',['../classcore___increment_controlled_model.html#aa27b2b5ad0b378ed0dd679127b9d98ab',1,'core_IncrementControlledModel::decrement_value()'],['../class_u_i_controlled_incremental_value.html#a06a89ec01ea3340d031d6adfe3bc1b99',1,'UIControlledIncrementalValue::decrement_value()']]],
+  ['decrement_5fvalue_1',['decrement_value',['../classcore___increment_controlled_model.html#aa27b2b5ad0b378ed0dd679127b9d98ab',1,'core_IncrementControlledModel::decrement_value()'],['../classcore___circular_incremetal_controlled_model.html#aa566073797e9c538fc31b47c7a6b8ba6',1,'core_CircularIncremetalControlledModel::decrement_value()'],['../class_u_i_controlled_incremental_value.html#a06a89ec01ea3340d031d6adfe3bc1b99',1,'UIControlledIncrementalValue::decrement_value()']]],
   ['device_5fis_5fconnected_2',['device_is_connected',['../class_h_w___i2_c___master.html#ad767e0f547fe485ffdfe0b37678a64f9',1,'HW_I2C_Master::device_is_connected()'],['../class_h_w___s_p_i___master.html#a860b5f5a07b99bd787ab3936abec15b3',1,'HW_SPI_Master::device_is_connected()']]],
   ['device_5fwakeup_3',['device_wakeup',['../class_s_t7735.html#ae3756f2b5a896be7a93e765a5fc88bfa',1,'ST7735']]],
   ['dht11_4',['DHT11',['../class_d_h_t11.html#abdb9b9dbfeb00fac3826752fff347c16',1,'DHT11']]],

@@ -1,15 +1,15 @@
 <map id="rtos_GraphicWidget" name="rtos_GraphicWidget">
 <area shape="rect" id="Node000001" title="RTOS wrapper for GraphicWidget class." alt="" coords="495,789,932,884"/>
-<area shape="rect" id="Node000002" href="$classrtos___widget.html" title="RTOS wrapper for Widget class." alt="" coords="227,435,703,664"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="576,674,675,788,671,791,572,677"/>
+<area shape="rect" id="Node000002" href="$classrtos___widget.html" title="RTOS wrapper for Widget class." alt="" coords="227,425,703,673"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="584,682,675,788,671,791,580,686"/>
 <area shape="rect" id="Node000005" href="$structstruct___widget_data_to_gate_keeper.html" title="data structure used to queue widget data to send to the display task" alt="" coords="201,806,372,867"/>
-<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="473,664,462,718,452,743,438,767,416,790,388,808,385,803,412,786,434,764,447,741,457,716,468,663"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="472,673,461,722,451,745,438,767,416,790,388,808,385,803,412,786,434,764,446,743,456,721,467,672"/>
 <area shape="rect" id="Node000003" href="$classrtos___model.html" title="RTOS wrapper for Model class." alt="" coords="339,89,671,225"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="501,225,481,418,476,418,496,225"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="501,225,482,409,477,408,496,225"/>
 <area shape="rect" id="Node000004" href="$classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="5,99,315,216"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="207,214,368,420,364,423,203,217"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="207,214,361,411,357,414,203,217"/>
 <area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="150,216,134,317,125,447,127,517,135,589,150,659,174,726,198,763,230,794,226,798,194,767,169,729,145,661,130,590,122,518,120,447,129,316,145,215"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="280,806,279,779,285,750,304,712,329,676,333,678,309,714,291,752,285,779,285,806"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="280,806,279,779,285,750,301,717,321,685,326,688,306,720,291,752,285,779,285,806"/>
 <area shape="rect" id="Node000006" href="$class_graphic_drawer.html" title="A class that implements basic graphic drawing primitives for widgets." alt="" coords="728,371,1288,727"/>
 <area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="827,729,775,780,771,776,823,725"/>
 <area shape="rect" id="Node000007" href="$class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="775,5,1241,309"/>

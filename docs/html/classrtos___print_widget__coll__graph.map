@@ -1,13 +1,13 @@
 <map id="rtos_PrintWidget" name="rtos_PrintWidget">
-<area shape="rect" id="Node000001" title="RTOS wrapper for PrintWidget class." alt="" coords="330,495,817,631"/>
-<area shape="rect" id="Node000002" href="$classrtos___widget.html" title="RTOS wrapper for Widget class." alt="" coords="227,203,703,433"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="528,445,533,456,549,494,545,496,528,458,524,447"/>
-<area shape="rect" id="Node000005" href="$structstruct___widget_data_to_gate_keeper.html" title="data structure used to queue widget data to send to the display task" alt="" coords="135,532,305,593"/>
-<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="289,434,267,458,249,487,236,517,231,515,244,484,263,455,285,431"/>
+<area shape="rect" id="Node000001" title="RTOS wrapper for PrintWidget class." alt="" coords="330,513,817,649"/>
+<area shape="rect" id="Node000002" href="$classrtos___widget.html" title="RTOS wrapper for Widget class." alt="" coords="227,203,703,451"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="529,464,533,474,549,512,544,514,528,476,524,466"/>
+<area shape="rect" id="Node000005" href="$structstruct___widget_data_to_gate_keeper.html" title="data structure used to queue widget data to send to the display task" alt="" coords="135,551,305,612"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="288,453,267,477,249,505,236,536,231,533,244,503,263,474,284,450"/>
 <area shape="rect" id="Node000003" href="$classrtos___model.html" title="RTOS wrapper for Model class." alt="" coords="339,5,671,141"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="497,141,489,187,484,186,492,140"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="497,141,490,187,485,186,492,140"/>
 <area shape="rect" id="Node000004" href="$classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="5,15,315,132"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="234,130,310,191,307,195,230,134"/>
-<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="159,132,158,270,163,351,174,432,186,476,202,516,197,518,181,477,169,433,157,352,152,270,154,132"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="248,530,336,443,340,447,251,534"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="231,130,305,191,302,195,228,134"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="159,132,157,277,162,364,174,451,186,494,202,535,197,536,181,496,169,452,157,365,151,277,153,131"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="247,549,332,461,336,465,250,553"/>
 </map>

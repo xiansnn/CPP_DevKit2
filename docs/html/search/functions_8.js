@@ -2,7 +2,7 @@ var searchData=
 [
   ['i2c_5fdma_5fisr_0',['i2c_dma_isr',['../classrtos___h_w___i2_c___master.html#acb27f7573d7f42d396dfec10c1fc326f',1,'rtos_HW_I2C_Master']]],
   ['increment_5ffocus_1',['increment_focus',['../classrtos___u_i_model_manager.html#ab5c3f700ccdbc8ccc64dfd83e3474ec8',1,'rtos_UIModelManager::increment_focus()'],['../class_u_i_model_manager.html#a597bbdca9fe8907be8ba78f555612f97',1,'UIModelManager::increment_focus()']]],
-  ['increment_5fvalue_2',['increment_value',['../classcore___increment_controlled_model.html#a011887e0cda1fc927af450c902a2d9a0',1,'core_IncrementControlledModel::increment_value()'],['../class_u_i_controlled_incremental_value.html#a4ae0f93a89da701b26f5e0a1da61543e',1,'UIControlledIncrementalValue::increment_value()']]],
+  ['increment_5fvalue_2',['increment_value',['../classcore___increment_controlled_model.html#a011887e0cda1fc927af450c902a2d9a0',1,'core_IncrementControlledModel::increment_value()'],['../classcore___circular_incremetal_controlled_model.html#a09abb73ea049fbe040bf73d1c2ffcc1b',1,'core_CircularIncremetalControlledModel::increment_value()'],['../class_u_i_controlled_incremental_value.html#a4ae0f93a89da701b26f5e0a1da61543e',1,'UIControlledIncrementalValue::increment_value()']]],
   ['init_3',['init',['../class_s_s_d1306.html#a3e0efaaaf70d9712057b3fdbc1ee069f',1,'SSD1306']]],
   ['init_5fcharge_5fpump_5fenabled_4',['init_charge_pump_enabled',['../class_s_s_d1306.html#a80df9a8d75ab48e4e848a77b5e2c1194',1,'SSD1306']]],
   ['init_5fclock_5ffrequency_5',['init_clock_frequency',['../class_s_s_d1306.html#a79b1c2ff4a7842aad1ea1c475d766bfe',1,'SSD1306']]],
