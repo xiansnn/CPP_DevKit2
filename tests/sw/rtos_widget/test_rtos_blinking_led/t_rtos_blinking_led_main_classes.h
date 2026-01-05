@@ -18,13 +18,12 @@ public:
 class myMainClock : public rtos_UIControlledModel
 {
 private:
-    /* data */
 public:
     myMainClock(/* args */);
     ~myMainClock();
-    myControlledClockTime hour{"hour", this, 0, 24};
-    myControlledClockTime minute{"minute", this, 0, 60, 1};
-    myControlledClockTime second{"second", this, 0, 10, 1}; 
+    myControlledClockTime hour;
+    myControlledClockTime minute;
+    myControlledClockTime second; 
     
     void process_control_event(struct_ControlEventData control_event);
 };

@@ -2,7 +2,6 @@
 
 //-------------main
 #define PERIOD_REFRESH_ms 1000
-// #define ANGLE_INCREMENT 1
 #define GPIO_dummy_FOR_PERIODIC_EVOLUTION 100
 //-------------encoder
 #define TIMEOUT_GLOBAL_DELAY_ms 5000

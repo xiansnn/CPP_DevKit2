@@ -6,10 +6,7 @@ add_executable(test_rtos_blinking_led
                 t_rtos_blinking_led_encoder_controller.cpp
                 t_rtos_blinking_led_main_classes.cpp
                 t_rtos_blinking_led_main_tasks.cpp
-                # t_rtos_extended_text_and_graph_widgets.cpp
-                # t_rtos_extended_roll_control.cpp
-                # t_rtos_extended_main_model_tasks.cpp
-                # t_rtos_extended_SSD1306_display_setup.cpp
+                t_rtos_blinking_led_dummy_widgets.cpp
                 )
 target_link_libraries(test_rtos_blinking_led 
             pico_stdlib 

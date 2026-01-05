@@ -2,6 +2,7 @@
 
 #include "t_rtos_blinking_led_config.h"
 #include "t_rtos_blinking_led_main_classes.h"
+#include "t_rtos_blinking_led_dummy_widgets.h"
 
 
 // #include "t_rtos_extended_text_and_graph_widgets.h"
@@ -10,7 +11,6 @@
 // extern struct_ConfigTextWidget focus_indicator_config;
 
 
-// extern my_visu_widget SSD1306_graph_widget;
 // extern my_text_widget SSD1306_values_widget;
 // extern my_visu_widget ST7735_graph_widget;
 // extern my_text_widget ST7735_values_widget;
@@ -25,14 +25,21 @@
 
 extern myMainClock my_clock;
 extern myFocusManager focus_led_manager;
+extern focus_dummy_widget my_focus_manager_dummy_widget;
+extern clock_dummy_widget my_main_clock_dummy_widget;
 
 void idle_task(void *pxProbe);
 void focus_led_manager_task(void *probe);
 void my_main_clock_task(void *probe);
+void my_main_clock_hour_task(void* probe);
+void my_main_clock_minute_task(void* probe);
+void my_main_clock_second_task(void* probe);
 void one_second_timer_task(void *probe);
-// void controlled_position_task(void *position);
 
-// void SPI_focus_widget_task(void *probe);
+void focus_led_manager_dummy_widget_task(void* probe);
+void main_clock_dummy_widget_task(void* probe);
+
+
 // void SPI_values_widget_task(void *probe);
 // void SPI_graph_widget_task(void *probe);
 // void I2C_right_graph_widget_task(void *probe);
