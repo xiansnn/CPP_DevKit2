@@ -12,7 +12,7 @@ class focus_dummy_widget : public rtos_Widget
 {
 private:
     int current_focus_index;
-    std::string status;
+    std::string status_string;
 
 public:
     focus_dummy_widget(rtos_Model *actual_displayed_model,
@@ -25,10 +25,10 @@ public:
 class clock_dummy_widget : public rtos_Widget
 {
 private:
-    std::string status;
-    int hour;
-    int minute;
-    int second;
+    std::string status_string;
+    int hour_value;
+    int minute_value;
+    int second_value;
 
 public:
     clock_dummy_widget(rtos_Model *actual_displayed_model,rtos_DisplayDevice *display_device);

@@ -42,7 +42,7 @@ rtos_RotaryEncoder encoder = rtos_RotaryEncoder(GPIO_ENCODER_CLK, GPIO_ENCODER_D
 
 // Widgets
 focus_dummy_widget my_focus_manager_dummy_widget = focus_dummy_widget(&focus_led_manager, nullptr);
-clock_dummy_widget my_main_clock_dummy_widget = clock_dummy_widget(&my_clock,nullptr);
+clock_dummy_widget my_main_clock_dummy_widget = clock_dummy_widget(&my_clock, nullptr);
 
 int main()
 {

@@ -154,16 +154,16 @@ void myControlledClockTime::process_control_event(struct_ControlEventData contro
         break;
     case UIControlEvent::INCREMENT:
         this->increment_value();
-        printf("managed_clock:\tINCREMENT %s to %d\n", name.c_str(), get_value());
+        printf("managed_clock(%s):\tINCREMENT to %d\n", name.c_str(), get_value());
         this->notify_all_linked_widget_task();
         break;
     case UIControlEvent::DECREMENT:
         this->decrement_value();
-        printf("managed_clock:\tDECREMENT %s to %d\n", name.c_str(), get_value());
+        printf("managed_clock(%s):\tINCREMENT to %d\n", name.c_str(), get_value());
         this->notify_all_linked_widget_task();
         break;
     case UIControlEvent::TIME_OUT:
-        printf("managed_clock:\t\tTIME_OUT %s \n", name.c_str());
+        printf("managed_clock(%s):\t\tTIME_OUT\n", name.c_str());
         this->parent_model->process_control_event(control_event);
         break;
     default:
