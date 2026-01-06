@@ -57,10 +57,10 @@ int main()
     xTaskCreate(my_main_clock_minute_task, "minute_task", 256, &p1, 20, NULL);
     xTaskCreate(my_main_clock_second_task, "second_task", 256, &p1, 20, NULL);
 
-    xTaskCreate(focus_led_manager_task, "focus_led_manager_task", 256, &p5, 8, &focus_led_manager.task_handle);
+    xTaskCreate(focus_led_manager_task, "focus_led_manager_task", 256, &p6, 8, &focus_led_manager.task_handle);
 
     xTaskCreate(focus_led_manager_dummy_widget_task, "manager_widget_task", 256, &p4, 13, &my_focus_manager_dummy_widget.task_handle);
-    xTaskCreate(main_clock_dummy_widget_task, "main_clock_widget_task", 256, &p4, 12, &my_main_clock_dummy_widget.task_handle);
+    xTaskCreate(main_clock_dummy_widget_task, "main_clock_widget_task", 256, &p5, 12, &my_main_clock_dummy_widget.task_handle);
 
     // xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p6, 5, NULL);
     // xTaskCreate(I2C_display_gate_keeper_task, "I2C_gate_keeper_task", 256, &p7, 5, NULL);
