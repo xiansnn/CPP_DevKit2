@@ -15,6 +15,7 @@ void myFocusManager::process_control_event(struct_ControlEventData control_event
     {
         if (control_event.event == UIControlEvent::LONG_PUSH)
         {
+            this->reset_current_focus_index();
             this->managed_rtos_models[0]->process_control_event(control_event);
             this->make_managed_rtos_model_active();
         }
@@ -40,6 +41,10 @@ void myFocusManager::process_control_event(struct_ControlEventData control_event
         {
             switch (control_event.event)
             {
+            case UIControlEvent::LONG_PUSH:
+                this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
+                this->forward_control_event_to_active_managed_model(&control_event);
+                break;
             case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
                 this->make_rtos_manager_active();
                 increment_focus();
@@ -47,7 +52,7 @@ void myFocusManager::process_control_event(struct_ControlEventData control_event
                 break;
             case UIControlEvent::TIME_OUT:
                 this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
-                ((myControlledClockTime*)this->current_active_rtos_model)->parent_model->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
+                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
                 break;
             default:
                 this->forward_control_event_to_active_managed_model(&control_event);
@@ -134,7 +139,7 @@ void myControlledClockTime::process_control_event(struct_ControlEventData contro
         break;
     case UIControlEvent::DECREMENT:
         this->decrement_value();
-        printf("managed_clock(%s):\tINCREMENT to %d\n", name.c_str(), get_value());
+        printf("managed_clock(%s):\tDECREMENT to %d\n", name.c_str(), get_value());
         this->notify_all_linked_widget_task();
         break;
     case UIControlEvent::TIME_OUT:
