@@ -16,7 +16,7 @@ void myFocusManager::process_control_event(struct_ControlEventData control_event
         if (control_event.event == UIControlEvent::LONG_PUSH)
         {
             this->managed_rtos_models[0]->process_control_event(control_event);
-            this->make_rtos_manager_active();
+            this->make_managed_rtos_model_active();
         }
     }
     else
@@ -30,12 +30,7 @@ void myFocusManager::process_control_event(struct_ControlEventData control_event
                 ((myControlledClockTime *)this->managed_rtos_models[0])->parent_model->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
                 break;
             case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
-                increment_focus();
                 this->make_managed_rtos_model_active();
-                break;
-            case UIControlEvent::TIME_OUT:
-                this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
-                ((myControlledClockTime *)this->managed_rtos_models[0])->parent_model->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
                 break;
             default:
                 break;
@@ -47,6 +42,12 @@ void myFocusManager::process_control_event(struct_ControlEventData control_event
             {
             case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
                 this->make_rtos_manager_active();
+                increment_focus();
+                this->make_managed_rtos_model_active();
+                break;
+            case UIControlEvent::TIME_OUT:
+                this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
+                ((myControlledClockTime*)this->current_active_rtos_model)->parent_model->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
                 break;
             default:
                 this->forward_control_event_to_active_managed_model(&control_event);
@@ -135,6 +136,10 @@ void myControlledClockTime::process_control_event(struct_ControlEventData contro
         this->decrement_value();
         printf("managed_clock(%s):\tINCREMENT to %d\n", name.c_str(), get_value());
         this->notify_all_linked_widget_task();
+        break;
+    case UIControlEvent::TIME_OUT:
+        printf("myControlledClockTime : timeout\n");
+
         break;
     default:
         break;

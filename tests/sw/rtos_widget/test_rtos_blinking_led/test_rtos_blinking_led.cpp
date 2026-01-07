@@ -16,23 +16,23 @@ Probe p7 = Probe(7);
 
 // TODO classes LED ;  blinker; model attaché à LED; widget attaché à focus manager
 
-// main classes
+// ##### main classes #####
 myFocusManager focus_led_manager = myFocusManager(true);
 myMainClock my_clock = myMainClock();
 
-//  ST7735 setup
+// ##### ST7735 setup #####
 rtos_HW_SPI_Master spi_master = rtos_HW_SPI_Master(cfg_spi,
                                                    DMA_IRQ_0, end_of_TX_DMA_xfer_handler);
 rtos_ST7735 color_display = rtos_ST7735(&spi_master, cfg_st7735);
 rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
 
-//  SSD1306 setup
+// ##### SSD1306 setup #####
 // rtos_HW_I2C_Master i2c_master = rtos_HW_I2C_Master(cfg_i2c);
 // rtos_SSD1306 left_display = rtos_SSD1306(&i2c_master, cfg_left_screen);
 // rtos_SSD1306 right_display = rtos_SSD1306(&i2c_master, cfg_right_screen);
 // rtos_GraphicDisplayGateKeeper I2C_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
 
-//  KY040 encoder controller setup
+// ##### KY040 encoder controller setup #####
 rtos_SwitchButton central_switch = rtos_SwitchButton(GPIO_CENTRAL_SWITCH,
                                                      &ky040_encoder_irq_call_back, focus_led_manager.control_event_input_queue,
                                                      cfg_central_switch);
@@ -40,10 +40,11 @@ rtos_RotaryEncoder encoder = rtos_RotaryEncoder(GPIO_ENCODER_CLK, GPIO_ENCODER_D
                                                 &ky040_encoder_irq_call_back, focus_led_manager.control_event_input_queue,
                                                 cfg_encoder_clk);
 
-// Widgets
+// ##### Widgets #####
 focus_dummy_widget my_focus_manager_dummy_widget = focus_dummy_widget(&focus_led_manager, nullptr);
 clock_dummy_widget my_main_clock_dummy_widget = clock_dummy_widget(&my_clock, nullptr);
 
+// ####################
 int main()
 {
     stdio_init_all();
