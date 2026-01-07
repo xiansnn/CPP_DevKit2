@@ -115,6 +115,9 @@ public:
     /// @brief Make the current active managed rtos_UIControlledModel the active one
     void make_managed_rtos_model_active();
 
+    /// @brief Reset the current focus index to zero
+    void reset_current_focus_index();
+
     /// @brief Make the rtos_UIModelManager the active one
     void make_rtos_manager_active();
     /// @brief Add a new managed rtos_UIControlledModel

@@ -116,6 +116,11 @@ void rtos_UIModelManager::make_managed_rtos_model_active()
     this->current_active_rtos_model->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
 }
 
+void rtos_UIModelManager::reset_current_focus_index()
+{
+    this->current_focus_index = 0;
+}
+
 void rtos_UIModelManager::make_rtos_manager_active()
 {
     current_active_rtos_model->update_rtos_status(ControlledObjectStatus::IS_WAITING);
