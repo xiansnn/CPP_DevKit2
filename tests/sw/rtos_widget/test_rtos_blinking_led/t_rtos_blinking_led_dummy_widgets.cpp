@@ -21,7 +21,7 @@ void focus_dummy_widget::draw()
     get_value_of_interest();
     rtos_UIControlledModel *clock_time = ((myFocusManager *)this->actual_rtos_displayed_model)->managed_rtos_models[current_focus_index];
     std::string name = ((myControlledClockTime *)clock_time)->name;
-    printf("focus manager status is [%s], focus is on <%s>\n", status_string.c_str(), name.c_str());
+    printf("manager status is [%s], focus is on <%s>\n", status_string.c_str(), name.c_str());
 }
 
 void focus_dummy_widget::get_value_of_interest()
@@ -43,7 +43,7 @@ clock_dummy_widget::~clock_dummy_widget()
 void clock_dummy_widget::draw()
 {
     get_value_of_interest();
-    printf("clock status is [%s], values are < %2d : %2d : %2d >\n", status_string.c_str(), this->hour_value, this->minute_value, this->second_value);
+    printf("\t\t\t\t\t\t\t\t\t\tclock is [%s], time is < %2d : %2d : %2d >\n", status_string.c_str(), this->hour_value, this->minute_value, this->second_value);
 }
 
 void clock_dummy_widget::get_value_of_interest()
@@ -55,66 +55,27 @@ void clock_dummy_widget::get_value_of_interest()
     status_string = status_to_string[clock->get_rtos_status()];
 }
 
-hour_dummy_widget::hour_dummy_widget(rtos_Model *actual_displayed_model, rtos_DisplayDevice *display_device)
+clock_hand_dummy_widget::clock_hand_dummy_widget(rtos_Model *actual_displayed_model, rtos_DisplayDevice *display_device)
     : rtos_Widget(actual_displayed_model, display_device)
 {
 }
 
-hour_dummy_widget::~hour_dummy_widget()
+clock_hand_dummy_widget::~clock_hand_dummy_widget()
 {
 }
 
-void hour_dummy_widget::draw()
+void clock_hand_dummy_widget::draw()
 {
     get_value_of_interest();
-    printf("hour status is [%s], values are < %2d :    :    >\n", status_string.c_str(), this->hour_value);
+    printf("%s [%s] : value is < %2d >\n",name.c_str(), status_string.c_str(), this->value);
+
 }
 
-void hour_dummy_widget::get_value_of_interest()
+void clock_hand_dummy_widget::get_value_of_interest()
 {
     myControlledClockTime *time_hand = (myControlledClockTime *)this->actual_rtos_displayed_model;
-    hour_value = time_hand->get_value();
-}
-
-minute_dummy_widget::minute_dummy_widget(rtos_Model *actual_displayed_model, rtos_DisplayDevice *display_device)
-    : rtos_Widget(actual_displayed_model, display_device)
-{
-}
-
-minute_dummy_widget::~minute_dummy_widget()
-{
-}
-
-void minute_dummy_widget::draw()
-{
-    get_value_of_interest();
-    printf("minute status is [%s], values are <    : %2d :    >\n", status_string.c_str(), this->minute_value);
-}
-
-void minute_dummy_widget::get_value_of_interest()
-{
-    myControlledClockTime *time_hand = (myControlledClockTime *)this->actual_rtos_displayed_model;
-    minute_value = time_hand->get_value();
-}
-
-second_dummy_widget::second_dummy_widget(rtos_Model *actual_displayed_model, rtos_DisplayDevice *display_device)
-    : rtos_Widget(actual_displayed_model, display_device)
-{
-}
-
-second_dummy_widget::~second_dummy_widget()
-{
-}
-
-void second_dummy_widget::draw()
-{
-    get_value_of_interest();
-    printf("second status is [%s], values are <    :    : %2d >\n", status_string.c_str(), this->second_value);
-}
-
-void second_dummy_widget::get_value_of_interest()
-{
-    myControlledClockTime *time_hand = (myControlledClockTime *)this->actual_rtos_displayed_model;
-    second_value = time_hand->get_value();
+    this->value = time_hand->get_value();
+    this->status_string = status_to_string[time_hand->get_rtos_status()];
+    this->name = time_hand->name;
 
 }

@@ -36,8 +36,10 @@ void my_main_clock_minute_task(void* probe);
 void my_main_clock_second_task(void* probe);
 void one_second_timer_task(void *probe);
 
+
 void focus_led_manager_dummy_widget_task(void* probe);
 void main_clock_dummy_widget_task(void* probe);
+void main_clock_hand_widget_task(void* widget);
 
 
 // void SPI_values_widget_task(void *probe);

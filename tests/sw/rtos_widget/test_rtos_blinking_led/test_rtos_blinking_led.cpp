@@ -43,6 +43,9 @@ rtos_RotaryEncoder encoder = rtos_RotaryEncoder(GPIO_ENCODER_CLK, GPIO_ENCODER_D
 // ##### Widgets #####
 focus_dummy_widget my_focus_manager_dummy_widget = focus_dummy_widget(&focus_led_manager, nullptr);
 clock_dummy_widget my_main_clock_dummy_widget = clock_dummy_widget(&my_clock, nullptr);
+clock_hand_dummy_widget hour_hand_dummy_widget = clock_hand_dummy_widget(&my_clock.hour, nullptr);
+clock_hand_dummy_widget minute_hand_dummy_widget = clock_hand_dummy_widget(&my_clock.minute, nullptr);
+clock_hand_dummy_widget second_hand_dummy_widget = clock_hand_dummy_widget(&my_clock.second, nullptr);
 
 // ####################
 int main()
@@ -62,6 +65,9 @@ int main()
 
     xTaskCreate(focus_led_manager_dummy_widget_task, "manager_widget_task", 256, &p4, 13, &my_focus_manager_dummy_widget.task_handle);
     xTaskCreate(main_clock_dummy_widget_task, "main_clock_widget_task", 256, &p5, 12, &my_main_clock_dummy_widget.task_handle);
+    xTaskCreate(main_clock_hand_widget_task, "hour_widget_task", 256, &hour_hand_dummy_widget, 11, &hour_hand_dummy_widget.task_handle);
+    xTaskCreate(main_clock_hand_widget_task, "minute_widget_task", 256, &minute_hand_dummy_widget, 11, &minute_hand_dummy_widget.task_handle);
+    xTaskCreate(main_clock_hand_widget_task, "hour_widget_task", 256, &second_hand_dummy_widget, 11, &second_hand_dummy_widget.task_handle);
 
     // xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p6, 5, NULL);
     // xTaskCreate(I2C_display_gate_keeper_task, "I2C_gate_keeper_task", 256, &p7, 5, NULL);

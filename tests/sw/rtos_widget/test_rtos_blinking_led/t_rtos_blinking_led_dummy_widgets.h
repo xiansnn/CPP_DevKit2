@@ -32,39 +32,16 @@ public:
     void get_value_of_interest();
 };
 
-class hour_dummy_widget : public rtos_Widget
+class clock_hand_dummy_widget : public rtos_Widget
 {
 private:
+    std::string name;
     std::string status_string;
-    int hour_value;
+    int value;
 
 public:
-    hour_dummy_widget(rtos_Model *actual_displayed_model, rtos_DisplayDevice *display_device);
-    ~hour_dummy_widget();
-    void draw();
-    void get_value_of_interest();
-};
-class minute_dummy_widget : public rtos_Widget
-{
-private:
-    std::string status_string;
-    int minute_value;
-
-public:
-    minute_dummy_widget(rtos_Model *actual_displayed_model, rtos_DisplayDevice *display_device);
-    ~minute_dummy_widget();
-    void draw();
-    void get_value_of_interest();
-};
-class second_dummy_widget : public rtos_Widget
-{
-private:
-    std::string status_string;
-    int second_value;
-
-public:
-    second_dummy_widget(rtos_Model *actual_displayed_model, rtos_DisplayDevice *display_device);
-    ~second_dummy_widget();
+    clock_hand_dummy_widget(rtos_Model *actual_displayed_model, rtos_DisplayDevice *display_device);
+    ~clock_hand_dummy_widget();
     void draw();
     void get_value_of_interest();
 };

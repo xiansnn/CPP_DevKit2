@@ -29,11 +29,6 @@ void focus_led_manager_task(void *probe)
 
 void my_main_clock_task(void *probe)
 {
-    // my_rtos_model.update_attached_rtos_widget(&SSD1306_graph_widget);
-    // my_rtos_model.update_attached_rtos_widget(&SSD1306_values_widget);
-    // my_rtos_model.update_attached_rtos_widget(&ST7735_graph_widget);
-    // my_rtos_model.update_attached_rtos_widget(&ST7735_values_widget);
-    // my_clock.hour.update_attached_rtos_widget(&my_main_clock_dummy_widget);
     my_clock.notify_all_linked_widget_task();
 
     while (true)
@@ -119,7 +114,7 @@ void one_second_timer_task(void *probe) // periodic task
 }
 
 void focus_led_manager_dummy_widget_task(void *probe)
-{    
+{
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -132,7 +127,7 @@ void focus_led_manager_dummy_widget_task(void *probe)
 }
 
 void main_clock_dummy_widget_task(void *probe)
-{    
+{
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -141,5 +136,14 @@ void main_clock_dummy_widget_task(void *probe)
         my_main_clock_dummy_widget.draw();
         if (probe != NULL)
             ((Probe *)probe)->lo();
+    }
+}
+
+void main_clock_hand_widget_task(void *widget)
+{
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        ((clock_hand_dummy_widget *)widget)->draw();
     }
 }

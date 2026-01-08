@@ -3,7 +3,7 @@
 struct_rtosConfigSwitchButton cfg_central_switch{
     .debounce_delay_us = 5000,
     .long_release_delay_us = 1000000,
-    .long_push_delay_ms = 1500,
+    .long_push_delay_ms = 1000,
     .time_out_delay_ms = TIMEOUT_SWITCH_DELAY_ms};
 
 struct_rtosConfigSwitchButton cfg_encoder_clk{
