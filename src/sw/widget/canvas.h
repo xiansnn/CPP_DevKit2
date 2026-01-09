@@ -39,7 +39,8 @@ enum class ColorIndex
 
     NAVY,     //     {ColorIndex::NAVY, {0x00, 0x00, 0x80}},
     GREEN,    //     {ColorIndex::GREEN, {0x00, 0x80, 0x00}},
-    TEAL,     //     {ColorIndex::TEAL, {0x00, 0x80, 0x80}},
+    PHOSPHOR, //     {ColorIndex::PHOSPHOR, {0x00, 0x80, 0x00}},
+    TEAL,     //     {ColorIndex::TEAL, {0xAA, 0xFF, 0x00}},
     BURGUNDY, //     {ColorIndex::BURGUNDY, {0x80, 0x00, 0x00}},
     PURPLE,   //     {ColorIndex::PURPLE, {0x80, 0x00, 0x80}},
     OLIVE,    //     {ColorIndex::OLIVE, {0x80, 0x80, 0x00}},
