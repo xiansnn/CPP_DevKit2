@@ -19,14 +19,14 @@ focus_dummy_widget::~focus_dummy_widget()
 void focus_dummy_widget::draw()
 {
     get_value_of_interest();
-    rtos_UIControlledModel *clock_time = ((myFocusManager *)this->actual_rtos_displayed_model)->managed_rtos_models[current_focus_index];
+    rtos_UIControlledModel *clock_time = ((myClockController *)this->actual_rtos_displayed_model)->managed_rtos_models[current_focus_index];
     std::string name = ((myControlledClockTime *)clock_time)->name;
     printf("manager status is [%s], focus is on <%s>\n", status_string.c_str(), name.c_str());
 }
 
 void focus_dummy_widget::get_value_of_interest()
 {
-    myFocusManager *focus_manager = (myFocusManager *)this->actual_rtos_displayed_model;
+    myClockController *focus_manager = (myClockController *)this->actual_rtos_displayed_model;
     this->current_focus_index = focus_manager->get_current_focus_index();
     this->status_string = status_to_string[focus_manager->get_rtos_status()];
 }

@@ -10,12 +10,12 @@ void idle_task(void *pxProbe)
     }
 }
 
-void focus_led_manager_task(void *probe)
+void my_clock_controller_task(void *probe)
 {
-    focus_led_manager.add_managed_rtos_model(&my_clock.hour);
-    focus_led_manager.add_managed_rtos_model(&my_clock.minute);
-    focus_led_manager.add_managed_rtos_model(&my_clock.second);
-    focus_led_manager.notify_all_linked_widget_task();
+    my_clock_controller.add_managed_rtos_model(&my_clock.hour);
+    my_clock_controller.add_managed_rtos_model(&my_clock.minute);
+    my_clock_controller.add_managed_rtos_model(&my_clock.second);
+    my_clock_controller.notify_all_linked_widget_task();
 
     struct_ControlEventData local_event_data;
     BaseType_t global_timeout_condtion;
@@ -23,12 +23,16 @@ void focus_led_manager_task(void *probe)
     {
         if (probe != NULL)
             ((Probe *)probe)->pulse_us(10);
-        focus_led_manager.process_event_and_time_out_condition(&focus_led_manager, TIMEOUT_UI_MANAGER_DELAY_ms);
+        my_clock_controller.process_event_and_time_out_condition(&my_clock_controller, TIMEOUT_UI_MANAGER_DELAY_ms);
     }
 };
 
 void my_main_clock_task(void *probe)
 {
+    // my_clock.hour.update_attached_rtos_widget(&clock_monitoring_widget);
+    // my_clock.minute.update_attached_rtos_widget(&clock_monitoring_widget);
+    // my_clock.second.update_attached_rtos_widget(&clock_monitoring_widget);
+    
     my_clock.notify_all_linked_widget_task();
 
     while (true)
@@ -48,6 +52,7 @@ void my_main_clock_task(void *probe)
 
 void my_main_clock_hour_task(void *probe)
 {
+
     while (true)
     {
         struct_ControlEventData data;
@@ -113,7 +118,7 @@ void one_second_timer_task(void *probe) // periodic task
     }
 }
 
-void focus_led_manager_dummy_widget_task(void *probe)
+void clock_controller_dummy_widget_task(void *probe)
 {
     while (true)
     {
@@ -145,5 +150,29 @@ void main_clock_hand_widget_task(void *widget)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         ((clock_hand_dummy_widget *)widget)->draw();
+    }
+}
+
+void controller_monitoring_widget_task(void *widget)
+{
+    my_controller_monitoring_widget *w = (my_controller_monitoring_widget *)widget;
+
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        w->draw();
+        I2C_display_gate_keeper.send_widget_data(w);
+    }
+}
+
+void clock_monitoring_widget_task(void *widget)
+{
+    my_controller_monitoring_widget *w = (my_controller_monitoring_widget *)widget;
+
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        w->draw();
+        I2C_display_gate_keeper.send_widget_data(w);
     }
 }

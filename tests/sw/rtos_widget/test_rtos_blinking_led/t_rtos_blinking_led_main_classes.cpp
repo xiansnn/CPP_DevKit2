@@ -1,15 +1,15 @@
 #include "t_rtos_blinking_led_main_classes.h"
 
-myFocusManager::myFocusManager(bool is_wrapable)
+myClockController::myClockController(bool is_wrapable)
     : rtos_UIModelManager(is_wrapable)
 {
 }
 
-myFocusManager::~myFocusManager()
+myClockController::~myClockController()
 {
 }
 
-void myFocusManager::process_control_event(struct_ControlEventData control_event)
+void myClockController::process_control_event(struct_ControlEventData control_event)
 {
     if (this->get_rtos_status() == ControlledObjectStatus::IS_IDLE) // wake up focus manager
     {
@@ -53,7 +53,7 @@ void myFocusManager::process_control_event(struct_ControlEventData control_event
             case UIControlEvent::TIME_OUT:
             printf("myFocusManager as not active : timeout\n");
                 this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
-                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
+                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->process_control_event(control_event);
                 break;
             default:
                 this->forward_control_event_to_active_managed_model(&control_event);
@@ -90,15 +90,15 @@ void myMainClock::process_control_event(struct_ControlEventData control_event)
             break;
         case UIControlEvent::INCREMENT:
             second.increment_value();
-            second.notify_all_linked_widget_task();
+            // second.notify_all_linked_widget_task();
             if (second.get_value() == 0)
             {
                 minute.increment_value();
-                minute.notify_all_linked_widget_task();
+                // minute.notify_all_linked_widget_task();
                 if (minute.get_value() == 0)
                 {
                     hour.increment_value();
-                    hour.notify_all_linked_widget_task();
+                    // hour.notify_all_linked_widget_task();
                 }
             }
             notify_all_linked_widget_task();
@@ -112,9 +112,14 @@ void myMainClock::process_control_event(struct_ControlEventData control_event)
         switch (control_event.event)
         {
         case UIControlEvent::LONG_PUSH:
-            this->hour.update_rtos_status(ControlledObjectStatus::IS_IDLE);
-            this->minute.update_rtos_status(ControlledObjectStatus::IS_IDLE);
-            this->second.update_rtos_status(ControlledObjectStatus::IS_IDLE);
+            this->hour.update_rtos_status(ControlledObjectStatus::IS_WAITING);
+            this->minute.update_rtos_status(ControlledObjectStatus::IS_WAITING);
+            this->second.update_rtos_status(ControlledObjectStatus::IS_WAITING);
+            this->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
+        case UIControlEvent::TIME_OUT:
+            this->hour.update_rtos_status(ControlledObjectStatus::IS_WAITING);
+            this->minute.update_rtos_status(ControlledObjectStatus::IS_WAITING);
+            this->second.update_rtos_status(ControlledObjectStatus::IS_WAITING);
             this->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
             break;
         default:
@@ -128,6 +133,7 @@ myControlledClockTime::myControlledClockTime(std::string name, myMainClock *pare
 {
     this->name = name;
     this->parent_model = parent_model;
+    this->update_rtos_status(ControlledObjectStatus::IS_WAITING);
 }
 
 myControlledClockTime::~myControlledClockTime()
@@ -144,10 +150,12 @@ void myControlledClockTime::process_control_event(struct_ControlEventData contro
         break;
     case UIControlEvent::INCREMENT:
         this->increment_value();
+        this->parent_model->notify_all_linked_widget_task();
         this->notify_all_linked_widget_task();
         break;
     case UIControlEvent::DECREMENT:
         this->decrement_value();
+        this->parent_model->notify_all_linked_widget_task();
         this->notify_all_linked_widget_task();
         break;
     default:

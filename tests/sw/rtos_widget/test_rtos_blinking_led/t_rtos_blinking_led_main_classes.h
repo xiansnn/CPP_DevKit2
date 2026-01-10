@@ -28,11 +28,11 @@ public:
     void process_control_event(struct_ControlEventData control_event);
 };
 
-class myFocusManager : public rtos_UIModelManager
+class myClockController : public rtos_UIModelManager
 {
 private:
 public:
-    myFocusManager(bool is_wrapable = false);
-    ~myFocusManager();
+    myClockController(bool is_wrapable = false);
+    ~myClockController();
     void process_control_event(struct_ControlEventData control_event);
 };

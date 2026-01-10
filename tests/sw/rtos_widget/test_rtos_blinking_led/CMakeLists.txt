@@ -7,6 +7,7 @@ add_executable(test_rtos_blinking_led
                 t_rtos_blinking_led_main_classes.cpp
                 t_rtos_blinking_led_main_tasks.cpp
                 t_rtos_blinking_led_dummy_widgets.cpp
+                t_rtos_blinking_led_monitoring_widgets.cpp
                 )
 target_link_libraries(test_rtos_blinking_led 
             pico_stdlib 
