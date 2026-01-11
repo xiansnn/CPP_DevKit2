@@ -5,6 +5,8 @@
 #include "t_rtos_blinking_led_main_tasks.h"
 #include "t_rtos_blinking_led_monitoring_widgets.h"
 
+// #define SHOW_DUMMY_WIDGET
+
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
 Probe p1 = Probe(1);
@@ -42,18 +44,33 @@ rtos_RotaryEncoder encoder = rtos_RotaryEncoder(GPIO_ENCODER_CLK, GPIO_ENCODER_D
                                                 cfg_encoder_clk);
 
 // ##### Widgets #####
+#ifdef SHOW_DUMMY_WIDGET
 focus_dummy_widget my_focus_manager_dummy_widget = focus_dummy_widget(&my_clock_controller, nullptr);
 clock_dummy_widget my_main_clock_dummy_widget = clock_dummy_widget(&my_clock, nullptr);
 clock_hand_dummy_widget hour_hand_dummy_widget = clock_hand_dummy_widget(&my_clock.hour, nullptr);
 clock_hand_dummy_widget minute_hand_dummy_widget = clock_hand_dummy_widget(&my_clock.minute, nullptr);
 clock_hand_dummy_widget second_hand_dummy_widget = clock_hand_dummy_widget(&my_clock.second, nullptr);
+#endif
 my_controller_monitoring_widget controller_monitoring_widget = my_controller_monitoring_widget(&right_display, monitoring_text_cfg, CanvasFormat::MONO_VLSB, &my_clock_controller);
 my_clock_monitoring_widget clock_monitoring_widget = my_clock_monitoring_widget(&left_display, monitoring_text_cfg, CanvasFormat::MONO_VLSB, &my_clock);
 
 // ####################
 int main()
 {
+#ifdef SHOW_DUMMY_WIDGET
     stdio_init_all();
+    xTaskCreate(clock_controller_dummy_widget_task, "manager_widget_task", 256, &p4, 13, &my_focus_manager_dummy_widget.task_handle);
+    xTaskCreate(main_clock_dummy_widget_task, "main_clock_widget_task", 256, &p5, 12, &my_main_clock_dummy_widget.task_handle);
+    xTaskCreate(main_clock_hand_widget_task, "hour_widget_task", 256, &hour_hand_dummy_widget, 11, &hour_hand_dummy_widget.task_handle);
+    xTaskCreate(main_clock_hand_widget_task, "minute_widget_task", 256, &minute_hand_dummy_widget, 11, &minute_hand_dummy_widget.task_handle);
+    xTaskCreate(main_clock_hand_widget_task, "hour_widget_task", 256, &second_hand_dummy_widget, 11, &second_hand_dummy_widget.task_handle);
+
+    xTaskCreate(clock_controller_dummy_widget_task, "manager_widget_task", 256, &p4, 13, &my_focus_manager_dummy_widget.task_handle);
+    xTaskCreate(main_clock_dummy_widget_task, "main_clock_widget_task", 256, &p5, 12, &my_main_clock_dummy_widget.task_handle);
+    xTaskCreate(main_clock_hand_widget_task, "hour_widget_task", 256, &hour_hand_dummy_widget, 11, &hour_hand_dummy_widget.task_handle);
+    xTaskCreate(main_clock_hand_widget_task, "minute_widget_task", 256, &minute_hand_dummy_widget, 11, &minute_hand_dummy_widget.task_handle);
+    xTaskCreate(main_clock_hand_widget_task, "hour_widget_task", 256, &second_hand_dummy_widget, 11, &second_hand_dummy_widget.task_handle);
+#endif
 
     xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 25, NULL);
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 25, NULL);
@@ -65,12 +82,6 @@ int main()
     xTaskCreate(my_main_clock_second_task, "second_task", 256, &p1, 20, NULL);
 
     xTaskCreate(my_clock_controller_task, "focus_led_manager_task", 256, &p6, 8, &my_clock_controller.task_handle);
-
-    xTaskCreate(clock_controller_dummy_widget_task, "manager_widget_task", 256, &p4, 13, &my_focus_manager_dummy_widget.task_handle);
-    xTaskCreate(main_clock_dummy_widget_task, "main_clock_widget_task", 256, &p5, 12, &my_main_clock_dummy_widget.task_handle);
-    xTaskCreate(main_clock_hand_widget_task, "hour_widget_task", 256, &hour_hand_dummy_widget, 11, &hour_hand_dummy_widget.task_handle);
-    xTaskCreate(main_clock_hand_widget_task, "minute_widget_task", 256, &minute_hand_dummy_widget, 11, &minute_hand_dummy_widget.task_handle);
-    xTaskCreate(main_clock_hand_widget_task, "hour_widget_task", 256, &second_hand_dummy_widget, 11, &second_hand_dummy_widget.task_handle);
 
     xTaskCreate(controller_monitoring_widget_task, "ctrl_monit", 256, &controller_monitoring_widget, 10, &controller_monitoring_widget.task_handle);
     xTaskCreate(clock_monitoring_widget_task, "clk_monit", 256, &clock_monitoring_widget, 10, &clock_monitoring_widget.task_handle);
