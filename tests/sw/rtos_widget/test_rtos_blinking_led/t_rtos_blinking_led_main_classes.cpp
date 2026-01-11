@@ -16,8 +16,8 @@ void myClockController::process_control_event(struct_ControlEventData control_ev
         if (control_event.event == UIControlEvent::LONG_PUSH)
         {
             this->reset_current_focus_index();
-            this->managed_rtos_models[0]->process_control_event(control_event);
             this->make_managed_rtos_model_active();
+            this->managed_rtos_models[0]->process_control_event(control_event);
         }
     }
     else
@@ -30,30 +30,26 @@ void myClockController::process_control_event(struct_ControlEventData control_ev
                 this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
                 ((myControlledClockTime *)this->managed_rtos_models[0])->parent_model->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
                 break;
-            case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
-                this->make_managed_rtos_model_active();
-                break;
-            default:
-                break;
             }
         }
         else
         {
             switch (control_event.event)
             {
-            case UIControlEvent::LONG_PUSH:
-                this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
-                this->forward_control_event_to_active_managed_model(&control_event);
-                break;
             case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
                 this->make_rtos_manager_active();
                 increment_focus();
                 this->make_managed_rtos_model_active();
+                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->notify_all_linked_widget_task();
                 break;
+            case UIControlEvent::LONG_PUSH:
             case UIControlEvent::TIME_OUT:
-            printf("myFocusManager as not active : timeout\n");
                 this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
-                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->process_control_event(control_event);
+                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->hour.update_rtos_status(ControlledObjectStatus::IS_WAITING);
+                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->minute.update_rtos_status(ControlledObjectStatus::IS_WAITING);
+                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->second.update_rtos_status(ControlledObjectStatus::IS_WAITING);
+                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
+
                 break;
             default:
                 this->forward_control_event_to_active_managed_model(&control_event);
@@ -70,9 +66,9 @@ myMainClock::myMainClock()
       second("second", this, 0, 60, 1)
 {
     this->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
-    this->hour.update_rtos_status(ControlledObjectStatus::IS_IDLE);
-    this->minute.update_rtos_status(ControlledObjectStatus::IS_IDLE);
-    this->second.update_rtos_status(ControlledObjectStatus::IS_IDLE);
+    this->hour.update_rtos_status(ControlledObjectStatus::IS_WAITING);
+    this->minute.update_rtos_status(ControlledObjectStatus::IS_WAITING);
+    this->second.update_rtos_status(ControlledObjectStatus::IS_WAITING);
 }
 
 myMainClock::~myMainClock()
@@ -90,41 +86,22 @@ void myMainClock::process_control_event(struct_ControlEventData control_event)
             break;
         case UIControlEvent::INCREMENT:
             second.increment_value();
-            // second.notify_all_linked_widget_task();
+            // second.notify_all_linked_widget_task();  // if second has a attached widgets
             if (second.get_value() == 0)
             {
                 minute.increment_value();
-                // minute.notify_all_linked_widget_task();
+                // minute.notify_all_linked_widget_task(); // if minute has a attached widgets
                 if (minute.get_value() == 0)
                 {
                     hour.increment_value();
-                    // hour.notify_all_linked_widget_task();
+                    // hour.notify_all_linked_widget_task(); // if hour has a attached widgets
                 }
             }
-            notify_all_linked_widget_task();
             break;
         default:
             break;
         }
-    }
-    else
-    {
-        switch (control_event.event)
-        {
-        case UIControlEvent::LONG_PUSH:
-            this->hour.update_rtos_status(ControlledObjectStatus::IS_WAITING);
-            this->minute.update_rtos_status(ControlledObjectStatus::IS_WAITING);
-            this->second.update_rtos_status(ControlledObjectStatus::IS_WAITING);
-            this->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
-        case UIControlEvent::TIME_OUT:
-            this->hour.update_rtos_status(ControlledObjectStatus::IS_WAITING);
-            this->minute.update_rtos_status(ControlledObjectStatus::IS_WAITING);
-            this->second.update_rtos_status(ControlledObjectStatus::IS_WAITING);
-            this->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
-            break;
-        default:
-            break;
-        }
+        notify_all_linked_widget_task(); // notify the main clock attached widgets
     }
 }
 
@@ -145,18 +122,17 @@ void myControlledClockTime::process_control_event(struct_ControlEventData contro
     switch (control_event.event)
     {
     case UIControlEvent::LONG_PUSH:
-        this->update_rtos_status(ControlledObjectStatus::HAS_FOCUS);
         this->parent_model->process_control_event(control_event);
         break;
     case UIControlEvent::INCREMENT:
         this->increment_value();
-        this->parent_model->notify_all_linked_widget_task();
-        this->notify_all_linked_widget_task();
+        this->parent_model->notify_all_linked_widget_task(); // if the controlled clock time has no attached widgets
+        // this->notify_all_linked_widget_task(); // if the controlled clock time has attached widgets
         break;
     case UIControlEvent::DECREMENT:
         this->decrement_value();
-        this->parent_model->notify_all_linked_widget_task();
-        this->notify_all_linked_widget_task();
+        this->parent_model->notify_all_linked_widget_task(); // if the controlled clock time has no attached widgets
+        // this->notify_all_linked_widget_task(); // if the controlled clock time has attached widgets
         break;
     default:
         break;
