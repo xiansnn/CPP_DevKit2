@@ -1,5 +1,7 @@
 
 #-------------------------------------------------------------------------------------
+include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
+
 add_executable(test_rtos_blinking_led 
                 test_rtos_blinking_led.cpp
                 t_rtos_blinking_led_display_setup.cpp
@@ -8,6 +10,7 @@ add_executable(test_rtos_blinking_led
                 t_rtos_blinking_led_main_tasks.cpp
                 t_rtos_blinking_led_dummy_widgets.cpp
                 t_rtos_blinking_led_monitoring_widgets.cpp
+                t_rtos_blinking_led_main_widgets.cpp
                 )
 target_link_libraries(test_rtos_blinking_led 
             pico_stdlib 
