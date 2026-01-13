@@ -1,12 +1,12 @@
 #include "t_rtos_blinking_led_main_tasks.h"
 #include "utilities/probe/probe.h"
 
-void idle_task(void *pxProbe)
+void idle_task(void *probe)
 {
     while (true)
     {
-        ((Probe *)pxProbe)->hi();
-        ((Probe *)pxProbe)->lo();
+        ((Probe *)probe)->hi();
+        ((Probe *)probe)->lo();
     }
 }
 
@@ -16,7 +16,6 @@ void my_clock_controller_task(void *probe)
     my_clock_controller.add_managed_rtos_model(&my_clock.minute);
     my_clock_controller.add_managed_rtos_model(&my_clock.second);
     my_clock_controller.notify_all_linked_widget_task();
-
     struct_ControlEventData local_event_data;
     BaseType_t global_timeout_condtion;
     while (true)
@@ -27,13 +26,12 @@ void my_clock_controller_task(void *probe)
     }
 };
 
-void my_main_clock_task(void *probe)
+void my_clock_main_task(void *probe)
 {
     my_clock.notify_all_linked_widget_task();
     my_clock.hour.notify_all_linked_widget_task();
     my_clock.minute.notify_all_linked_widget_task();
     my_clock.second.notify_all_linked_widget_task();
-
     while (true)
     {
         struct_ControlEventData data;
@@ -49,9 +47,8 @@ void my_main_clock_task(void *probe)
     }
 }
 
-void my_main_clock_hour_task(void *probe)
+void my_clock_controlled_hour_task(void *probe)
 {
-
     while (true)
     {
         struct_ControlEventData data;
@@ -67,7 +64,7 @@ void my_main_clock_hour_task(void *probe)
     }
 }
 
-void my_main_clock_minute_task(void *probe)
+void my_clock_controlled_minute_task(void *probe)
 {
     while (true)
     {
@@ -84,7 +81,7 @@ void my_main_clock_minute_task(void *probe)
     }
 }
 
-void my_main_clock_second_task(void *probe)
+void my_clock_controlled_second_task(void *probe)
 {
     while (true)
     {
@@ -143,66 +140,75 @@ void main_clock_dummy_widget_task(void *probe)
     }
 }
 
-void main_clock_hand_widget_task(void *widget)
+void controller_monitoring_widget_task(void *probe)
 {
+    I2C_display_gate_keeper.send_clear_device_command(&right_display);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        ((clock_hand_dummy_widget *)widget)->draw();
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
+        controller_monitoring_widget.draw();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
+        I2C_display_gate_keeper.send_widget_data(&controller_monitoring_widget);
     }
 }
 
-void controller_monitoring_widget_task(void *widget)
+void clock_monitoring_widget_task(void *probe)
 {
-    my_controller_monitoring_widget *w = (my_controller_monitoring_widget *)widget;
-
+    I2C_display_gate_keeper.send_clear_device_command(&left_display);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        w->draw();
-        I2C_display_gate_keeper.send_widget_data(w);
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
+        clock_monitoring_widget.draw();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
+        I2C_display_gate_keeper.send_widget_data(&clock_monitoring_widget);
     }
 }
 
-void clock_monitoring_widget_task(void *widget)
-{
-    my_controller_monitoring_widget *w = (my_controller_monitoring_widget *)widget;
-
-    while (true)
-    {
-        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        w->draw();
-        I2C_display_gate_keeper.send_widget_data(w);
-    }
-}
-
-void SPI_hour_text_widget_task(void *)
+void SPI_hour_text_widget_task(void *probe)
 {
     SPI_display_gate_keeper.send_clear_device_command(&color_display);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
         hour_text_widget.draw();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
         SPI_display_gate_keeper.send_widget_data(&hour_text_widget);
     }
 }
 
-void SPI_minute_text_widget_task(void *)
+void SPI_minute_text_widget_task(void *probe)
 {
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
         minute_text_widget.draw();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
         SPI_display_gate_keeper.send_widget_data(&minute_text_widget);
     }
 }
 
-void SPI_second_text_widget_task(void *)
+void SPI_second_text_widget_task(void *probe)
 {
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
         second_text_widget.draw();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
         SPI_display_gate_keeper.send_widget_data(&second_text_widget);
     }
 }

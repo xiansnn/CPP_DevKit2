@@ -20,26 +20,25 @@ extern myClockController my_clock_controller;
 extern focus_dummy_widget my_focus_manager_dummy_widget;
 extern clock_dummy_widget my_main_clock_dummy_widget;
 extern my_clock_monitoring_widget clock_monitoring_widget;
+extern my_controller_monitoring_widget controller_monitoring_widget;
 
 extern my_hour_text_widget hour_text_widget;
 extern my_minute_text_widget minute_text_widget;
 extern my_second_text_widget second_text_widget;
 
-
 void idle_task(void *pxProbe);
 void my_clock_controller_task(void *probe);
-void my_main_clock_task(void *probe);
-void my_main_clock_hour_task(void *probe);
-void my_main_clock_minute_task(void *probe);
-void my_main_clock_second_task(void *probe);
+void my_clock_main_task(void *probe);
+void my_clock_controlled_hour_task(void *probe);
+void my_clock_controlled_minute_task(void *probe);
+void my_clock_controlled_second_task(void *probe);
 void one_second_timer_task(void *probe);
 
 void clock_controller_dummy_widget_task(void *probe);
 void main_clock_dummy_widget_task(void *probe);
-void main_clock_hand_widget_task(void *widget);
-void controller_monitoring_widget_task(void *widget);
-void clock_monitoring_widget_task(void *widget);
+void controller_monitoring_widget_task(void *probe);
+void clock_monitoring_widget_task(void *probe);
 
-void SPI_hour_text_widget_task (void*);
-void SPI_minute_text_widget_task (void*);
-void SPI_second_text_widget_task (void*);
+void SPI_hour_text_widget_task(void *probe);
+void SPI_minute_text_widget_task(void *probe);
+void SPI_second_text_widget_task(void *probe);

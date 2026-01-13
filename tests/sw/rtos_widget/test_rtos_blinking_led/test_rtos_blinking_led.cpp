@@ -81,10 +81,10 @@ int main()
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 25, NULL);
 
     xTaskCreate(one_second_timer_task, "one_second_timer_task", 256, &p1, 20, NULL);
-    xTaskCreate(my_main_clock_task, "clock_task", 256, &p1, 20, NULL);
-    xTaskCreate(my_main_clock_hour_task, "hour_task", 256, &p1, 20, NULL);
-    xTaskCreate(my_main_clock_minute_task, "minute_task", 256, &p1, 20, NULL);
-    xTaskCreate(my_main_clock_second_task, "second_task", 256, &p1, 20, NULL);
+    xTaskCreate(my_clock_main_task, "clock_task", 256, &p1, 20, NULL);
+    xTaskCreate(my_clock_controlled_hour_task, "hour_task", 256, &p1, 20, NULL);
+    xTaskCreate(my_clock_controlled_minute_task, "minute_task", 256, &p1, 20, NULL);
+    xTaskCreate(my_clock_controlled_second_task, "second_task", 256, &p1, 20, NULL);
     xTaskCreate(my_clock_controller_task, "focus_led_manager_task", 256, &p6, 8, &my_clock_controller.task_handle);
 
     xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p6, 5, NULL);
@@ -95,8 +95,8 @@ int main()
     xTaskCreate(SPI_second_text_widget_task, "SPI_second", 256, NULL, 25, &second_text_widget.task_handle);
 
 
-    xTaskCreate(controller_monitoring_widget_task, "ctrl_monit", 256, &controller_monitoring_widget, 10, &controller_monitoring_widget.task_handle);
-    xTaskCreate(clock_monitoring_widget_task, "clk_monit", 256, &clock_monitoring_widget, 10, &clock_monitoring_widget.task_handle);
+    xTaskCreate(controller_monitoring_widget_task, "ctrl_monit", 256, NULL, 10, &controller_monitoring_widget.task_handle);
+    xTaskCreate(clock_monitoring_widget_task, "clk_monit", 256, NULL, 10, &clock_monitoring_widget.task_handle);
 
 
     xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
