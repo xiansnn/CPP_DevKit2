@@ -4,6 +4,7 @@
 #include "t_rtos_blinking_led_main_classes.h"
 #include "t_rtos_blinking_led_main_tasks.h"
 #include "t_rtos_blinking_led_monitoring_widgets.h"
+#include "t_rtos_blinking_led_main_widgets.h"
 
 // #define SHOW_DUMMY_WIDGET
 
@@ -51,8 +52,12 @@ clock_hand_dummy_widget hour_hand_dummy_widget = clock_hand_dummy_widget(&my_clo
 clock_hand_dummy_widget minute_hand_dummy_widget = clock_hand_dummy_widget(&my_clock.minute, nullptr);
 clock_hand_dummy_widget second_hand_dummy_widget = clock_hand_dummy_widget(&my_clock.second, nullptr);
 #endif
-my_controller_monitoring_widget controller_monitoring_widget = my_controller_monitoring_widget(&right_display, monitoring_text_cfg, CanvasFormat::MONO_VLSB, &my_clock_controller);
-my_clock_monitoring_widget clock_monitoring_widget = my_clock_monitoring_widget(&left_display, monitoring_text_cfg, CanvasFormat::MONO_VLSB, &my_clock);
+my_controller_monitoring_widget controller_monitoring_widget = my_controller_monitoring_widget(&right_display, controller_monitoring_text_cfg, CanvasFormat::MONO_VLSB, &my_clock_controller);
+my_clock_monitoring_widget clock_monitoring_widget = my_clock_monitoring_widget(&left_display, clock_monitoring_text_cfg, CanvasFormat::MONO_VLSB, &my_clock);
+
+my_hour_text_widget hour_text_widget = my_hour_text_widget(&color_display, clock_hour_text_cfg, CanvasFormat::RGB565_16b, &my_clock.hour);
+my_minute_text_widget minute_text_widget = my_minute_text_widget(&color_display, clock_minute_text_cfg, CanvasFormat::RGB565_16b, &my_clock.minute);
+my_second_text_widget second_text_widget = my_second_text_widget(&color_display, clock_second_text_cfg, CanvasFormat::RGB565_16b, &my_clock.second);
 
 // ####################
 int main()
@@ -80,14 +85,19 @@ int main()
     xTaskCreate(my_main_clock_hour_task, "hour_task", 256, &p1, 20, NULL);
     xTaskCreate(my_main_clock_minute_task, "minute_task", 256, &p1, 20, NULL);
     xTaskCreate(my_main_clock_second_task, "second_task", 256, &p1, 20, NULL);
-
     xTaskCreate(my_clock_controller_task, "focus_led_manager_task", 256, &p6, 8, &my_clock_controller.task_handle);
+
+    xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p6, 5, NULL);
+    xTaskCreate(I2C_display_gate_keeper_task, "I2C_gate_keeper_task", 256, &p7, 5, NULL);
+
+    xTaskCreate(SPI_hour_text_widget_task, "SPI_hour", 256, NULL, 25, &hour_text_widget.task_handle);
+    xTaskCreate(SPI_minute_text_widget_task, "SPI_minute", 256, NULL, 25, &minute_text_widget.task_handle);
+    xTaskCreate(SPI_second_text_widget_task, "SPI_second", 256, NULL, 25, &second_text_widget.task_handle);
+
 
     xTaskCreate(controller_monitoring_widget_task, "ctrl_monit", 256, &controller_monitoring_widget, 10, &controller_monitoring_widget.task_handle);
     xTaskCreate(clock_monitoring_widget_task, "clk_monit", 256, &clock_monitoring_widget, 10, &clock_monitoring_widget.task_handle);
 
-    // xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p6, 5, NULL);
-    xTaskCreate(I2C_display_gate_keeper_task, "I2C_gate_keeper_task", 256, &p7, 5, NULL);
 
     xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
     vTaskStartScheduler();

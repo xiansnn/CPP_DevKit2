@@ -86,15 +86,15 @@ void myMainClock::process_control_event(struct_ControlEventData control_event)
             break;
         case UIControlEvent::INCREMENT:
             second.increment_value();
-            // second.notify_all_linked_widget_task();  // if second has a attached widgets
+            second.notify_all_linked_widget_task();  // if second has a attached widgets
             if (second.get_value() == 0)
             {
                 minute.increment_value();
-                // minute.notify_all_linked_widget_task(); // if minute has a attached widgets
+                minute.notify_all_linked_widget_task(); // if minute has a attached widgets
                 if (minute.get_value() == 0)
                 {
                     hour.increment_value();
-                    // hour.notify_all_linked_widget_task(); // if hour has a attached widgets
+                    hour.notify_all_linked_widget_task(); // if hour has a attached widgets
                 }
             }
             break;
@@ -127,12 +127,12 @@ void myControlledClockTime::process_control_event(struct_ControlEventData contro
     case UIControlEvent::INCREMENT:
         this->increment_value();
         this->parent_model->notify_all_linked_widget_task(); // if the controlled clock time has no attached widgets
-        // this->notify_all_linked_widget_task(); // if the controlled clock time has attached widgets
+        this->notify_all_linked_widget_task(); // if the controlled clock time has attached widgets
         break;
     case UIControlEvent::DECREMENT:
         this->decrement_value();
         this->parent_model->notify_all_linked_widget_task(); // if the controlled clock time has no attached widgets
-        // this->notify_all_linked_widget_task(); // if the controlled clock time has attached widgets
+        this->notify_all_linked_widget_task(); // if the controlled clock time has attached widgets
         break;
     default:
         break;

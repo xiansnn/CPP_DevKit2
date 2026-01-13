@@ -3,7 +3,8 @@
 #include "sw/widget/rtos_widget.h"
 #include "sw/ui_core/rtos_ui_core.h"
 
-extern struct_ConfigTextWidget monitoring_text_cfg;
+extern struct_ConfigTextWidget clock_monitoring_text_cfg;
+extern struct_ConfigTextWidget controller_monitoring_text_cfg;
 extern rtos_GraphicDisplayGateKeeper I2C_display_gate_keeper;
 
 class my_controller_monitoring_widget : public rtos_TextWidget

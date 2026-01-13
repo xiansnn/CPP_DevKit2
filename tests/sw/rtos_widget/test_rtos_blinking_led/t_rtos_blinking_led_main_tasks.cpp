@@ -29,11 +29,10 @@ void my_clock_controller_task(void *probe)
 
 void my_main_clock_task(void *probe)
 {
-    // my_clock.hour.update_attached_rtos_widget(&clock_monitoring_widget);
-    // my_clock.minute.update_attached_rtos_widget(&clock_monitoring_widget);
-    // my_clock.second.update_attached_rtos_widget(&clock_monitoring_widget);
-    
     my_clock.notify_all_linked_widget_task();
+    my_clock.hour.notify_all_linked_widget_task();
+    my_clock.minute.notify_all_linked_widget_task();
+    my_clock.second.notify_all_linked_widget_task();
 
     while (true)
     {
@@ -174,5 +173,36 @@ void clock_monitoring_widget_task(void *widget)
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         w->draw();
         I2C_display_gate_keeper.send_widget_data(w);
+    }
+}
+
+void SPI_hour_text_widget_task(void *)
+{
+    SPI_display_gate_keeper.send_clear_device_command(&color_display);
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        hour_text_widget.draw();
+        SPI_display_gate_keeper.send_widget_data(&hour_text_widget);
+    }
+}
+
+void SPI_minute_text_widget_task(void *)
+{
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        minute_text_widget.draw();
+        SPI_display_gate_keeper.send_widget_data(&minute_text_widget);
+    }
+}
+
+void SPI_second_text_widget_task(void *)
+{
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        second_text_widget.draw();
+        SPI_display_gate_keeper.send_widget_data(&second_text_widget);
     }
 }

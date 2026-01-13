@@ -4,9 +4,20 @@
 
 extern std::map<ControlledObjectStatus, std::string> status_to_string;
 
-struct_ConfigTextWidget monitoring_text_cfg{
+struct_ConfigTextWidget clock_monitoring_text_cfg{
     .number_of_column = 16,
     .number_of_line = 8,
+    .widget_anchor_x = 0,
+    .widget_anchor_y = 0,
+    .font = font_8x8,
+    .fg_color = ColorIndex::WHITE,
+    .bg_color = ColorIndex::BLACK,
+    .wrap = true,
+    .widget_with_border = false};
+
+struct_ConfigTextWidget controller_monitoring_text_cfg{
+    .number_of_column = 16,
+    .number_of_line = 4,
     .widget_anchor_x = 0,
     .widget_anchor_y = 0,
     .font = font_8x8,
