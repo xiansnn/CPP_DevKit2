@@ -3,11 +3,16 @@
 #include "t_rtos_blinking_led_encoder_controller.h"
 #include "t_rtos_blinking_led_main_classes.h"
 #include "t_rtos_blinking_led_main_tasks.h"
-#include "t_rtos_blinking_led_monitoring_widgets.h"
 #include "t_rtos_blinking_led_main_widgets.h"
 
+#include "t_rtos_blinking_led_monitoring_tasks.h"
+#include "t_rtos_blinking_led_monitoring_widgets.h"
+
+#include "t_rtos_blinking_led_console_tasks.h"
+#include "t_rtos_blinking_led_console_widgets.h"
+
 // #define SHOW_DUMMY_WIDGET
-// #define SHOW_MONITRING_WIDGET
+// #define SHOW_MONITORING_WIDGET
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
@@ -50,13 +55,10 @@ rtos_RotaryEncoder encoder = rtos_RotaryEncoder(GPIO_ENCODER_CLK, GPIO_ENCODER_D
 
 // ##### Widgets #####
 #ifdef SHOW_DUMMY_WIDGET
-focus_dummy_widget my_focus_manager_dummy_widget = focus_dummy_widget(&my_clock_controller, nullptr);
-clock_dummy_widget my_main_clock_dummy_widget = clock_dummy_widget(&my_clock, nullptr);
-clock_hand_dummy_widget hour_hand_dummy_widget = clock_hand_dummy_widget(&my_clock.hour, nullptr);
-clock_hand_dummy_widget minute_hand_dummy_widget = clock_hand_dummy_widget(&my_clock.minute, nullptr);
-clock_hand_dummy_widget second_hand_dummy_widget = clock_hand_dummy_widget(&my_clock.second, nullptr);
+focus_console_widget my_focus_manager_console_widget = focus_console_widget(&my_clock_controller, nullptr);
+clock_console_widget my_main_clock_console_widget = clock_console_widget(&my_clock, nullptr);
 #endif
-#ifdef SHOW_MONITORINg_WIDGET
+#ifdef SHOW_MONITORING_WIDGET
 my_controller_monitoring_widget controller_monitoring_widget = my_controller_monitoring_widget(&right_display, controller_monitoring_text_cfg, CanvasFormat::MONO_VLSB, &my_clock_controller);
 my_clock_monitoring_widget clock_monitoring_widget = my_clock_monitoring_widget(&left_display, clock_monitoring_text_cfg, CanvasFormat::MONO_VLSB, &my_clock);
 #endif
@@ -69,17 +71,9 @@ int main()
 {
 #ifdef SHOW_DUMMY_WIDGET
     stdio_init_all();
-    xTaskCreate(clock_controller_dummy_widget_task, "manager_widget_task", 256, NULL, 13, &my_focus_manager_dummy_widget.task_handle);
-    xTaskCreate(main_clock_dummy_widget_task, "main_clock_widget_task", 256, NULL, 12, &my_main_clock_dummy_widget.task_handle);
-    xTaskCreate(main_clock_hand_widget_task, "hour_widget_task", 256, &hour_hand_dummy_widget, 11, &hour_hand_dummy_widget.task_handle);
-    xTaskCreate(main_clock_hand_widget_task, "minute_widget_task", 256, &minute_hand_dummy_widget, 11, &minute_hand_dummy_widget.task_handle);
-    xTaskCreate(main_clock_hand_widget_task, "hour_widget_task", 256, &second_hand_dummy_widget, 11, &second_hand_dummy_widget.task_handle);
+    xTaskCreate(clock_controller_console_widget_task, "manager_widget_task", 256, NULL, 13, &my_focus_manager_console_widget.task_handle);
+    xTaskCreate(main_clock_console_widget_task, "main_clock_widget_task", 256, NULL, 12, &my_main_clock_console_widget.task_handle);
 
-    xTaskCreate(clock_controller_dummy_widget_task, "manager_widget_task", 256, NULL, 13, &my_focus_manager_dummy_widget.task_handle);
-    xTaskCreate(main_clock_dummy_widget_task, "main_clock_widget_task", 256, NULL, 12, &my_main_clock_dummy_widget.task_handle);
-    xTaskCreate(main_clock_hand_widget_task, "hour_widget_task", 256, &hour_hand_dummy_widget, 11, &hour_hand_dummy_widget.task_handle);
-    xTaskCreate(main_clock_hand_widget_task, "minute_widget_task", 256, &minute_hand_dummy_widget, 11, &minute_hand_dummy_widget.task_handle);
-    xTaskCreate(main_clock_hand_widget_task, "hour_widget_task", 256, &second_hand_dummy_widget, 11, &second_hand_dummy_widget.task_handle);
 #endif
 #ifdef SHOW_MONITORING_WIDGET
     xTaskCreate(I2C_display_gate_keeper_task, "I2C_gate_keeper_task", 256, NULL, 5, NULL);

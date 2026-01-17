@@ -8,7 +8,9 @@ add_executable(test_rtos_blinking_led
                 t_rtos_blinking_led_encoder_controller.cpp
                 t_rtos_blinking_led_main_classes.cpp
                 t_rtos_blinking_led_main_tasks.cpp
-                t_rtos_blinking_led_dummy_widgets.cpp
+                t_rtos_blinking_led_console_tasks.cpp
+                t_rtos_blinking_led_monitoring_tasks.cpp
+                t_rtos_blinking_led_console_widgets.cpp
                 t_rtos_blinking_led_monitoring_widgets.cpp
                 t_rtos_blinking_led_main_widgets.cpp
                 )
