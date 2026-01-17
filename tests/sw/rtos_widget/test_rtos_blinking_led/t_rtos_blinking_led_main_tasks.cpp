@@ -114,6 +114,20 @@ void one_second_timer_task(void *probe) // periodic task
     }
 }
 
+void blinker_task(void *probe)
+{
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+    while (true)
+    {
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
+        my_blinker.refresh_blinking();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
+        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(my_blinker.blink_period_ms));
+    }
+}
+
 void clock_controller_dummy_widget_task(void *probe)
 {
     while (true)
@@ -121,7 +135,7 @@ void clock_controller_dummy_widget_task(void *probe)
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         if (probe != NULL)
             ((Probe *)probe)->hi();
-        my_focus_manager_dummy_widget.draw();
+        my_blinker.refresh_blinking();
         if (probe != NULL)
             ((Probe *)probe)->lo();
     }

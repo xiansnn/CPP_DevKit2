@@ -22,6 +22,8 @@ extern clock_dummy_widget my_main_clock_dummy_widget;
 extern my_clock_monitoring_widget clock_monitoring_widget;
 extern my_controller_monitoring_widget controller_monitoring_widget;
 
+extern rtos_Blinker my_blinker;
+
 extern my_hour_text_widget hour_text_widget;
 extern my_minute_text_widget minute_text_widget;
 extern my_second_text_widget second_text_widget;
@@ -33,6 +35,8 @@ void my_clock_controlled_hour_task(void *probe);
 void my_clock_controlled_minute_task(void *probe);
 void my_clock_controlled_second_task(void *probe);
 void one_second_timer_task(void *probe);
+
+void blinker_task(void* probe);
 
 void clock_controller_dummy_widget_task(void *probe);
 void main_clock_dummy_widget_task(void *probe);
