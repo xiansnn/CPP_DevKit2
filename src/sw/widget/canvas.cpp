@@ -27,7 +27,7 @@ std::map<ColorIndex, uint16_t> color565_palette{
     {ColorIndex::PURPLE, RGB_TO_565(128, 0, 128)},
     {ColorIndex::TEAL, RGB_TO_565(0, 128, 128)},
     {ColorIndex::NAVY, RGB_TO_565(0, 0, 128)},
-    {ColorIndex::ORANGE, RGB_TO_565(255, 165, 0)},
+    {ColorIndex::ORANGE, RGB_TO_565(255, 180, 90)},
     {ColorIndex::GOLD, RGB_TO_565(255, 215, 0)},
     {ColorIndex::FOREST, RGB_TO_565(34, 139, 34)}};
 

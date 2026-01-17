@@ -50,10 +50,11 @@ struct struct_ControlEventData
     int gpio_number;
 };
 
-/// @brief The list of status that a Model can have.
-/// (0) IS_WAITING
-/// (1) HAS_FOCUS
-/// (2) IS_ACTIVE
+/// @brief The list of status that a Model can have when it has to be controlled by UI device.
+/// (0) IS_IDLE
+/// (1) IS_WAITING
+/// (2) HAS_FOCUS
+/// (3) IS_ACTIVE
 enum class ControlledObjectStatus
 {
     /// @brief The object is in idle state, waiting to be activated.
