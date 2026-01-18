@@ -11,14 +11,14 @@
 #include "t_rtos_blinking_led_console_tasks.h"
 #include "t_rtos_blinking_led_console_widgets.h"
 
-// #define SHOW_DUMMY_WIDGET
+// #define SHOW_CONSOLE_WIDGET
 // #define SHOW_MONITORING_WIDGET
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
 Probe p1 = Probe(1);
-Probe p2 = Probe(2);
-Probe p3 = Probe(3);
+// Probe p2 = Probe(2); //used by I2C
+// Probe p3 = Probe(3); //used by I2C
 Probe p4 = Probe(4);
 Probe p5 = Probe(5);
 Probe p6 = Probe(6);
@@ -54,7 +54,7 @@ rtos_RotaryEncoder encoder = rtos_RotaryEncoder(GPIO_ENCODER_CLK, GPIO_ENCODER_D
                                                 cfg_encoder_clk);
 
 // ##### Widgets #####
-#ifdef SHOW_DUMMY_WIDGET
+#ifdef SHOW_CONSOLE_WIDGET
 focus_console_widget my_focus_manager_console_widget = focus_console_widget(&my_clock_controller, nullptr);
 clock_console_widget my_main_clock_console_widget = clock_console_widget(&my_clock, nullptr);
 #endif
@@ -69,8 +69,8 @@ my_second_text_widget second_text_widget = my_second_text_widget(&color_display,
 // ####################
 int main()
 {
-#ifdef SHOW_DUMMY_WIDGET
     stdio_init_all();
+#ifdef SHOW_CONSOLE_WIDGET
     xTaskCreate(clock_controller_console_widget_task, "manager_widget_task", 256, NULL, 13, &my_focus_manager_console_widget.task_handle);
     xTaskCreate(main_clock_console_widget_task, "main_clock_widget_task", 256, NULL, 12, &my_main_clock_console_widget.task_handle);
 
@@ -91,14 +91,13 @@ int main()
     xTaskCreate(my_clock_controlled_second_task, "second_task", 256, NULL, 20, NULL);
     xTaskCreate(my_clock_controller_task, "clock_controller_task", 256, NULL, 8, &my_clock_controller.task_handle);
 
-    xTaskCreate(blinker_task,"blinker",256,&p4,25,NULL);
+    xTaskCreate(blinker_task, "blinker", 256, &p4, 25, NULL);
 
     xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p7, 5, NULL);
 
     xTaskCreate(SPI_hour_text_widget_task, "SPI_hour", 256, &p4, 25, &hour_text_widget.task_handle);
     xTaskCreate(SPI_minute_text_widget_task, "SPI_minute", 256, &p5, 25, &minute_text_widget.task_handle);
     xTaskCreate(SPI_second_text_widget_task, "SPI_second", 256, &p6, 25, &second_text_widget.task_handle);
-
 
     xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
     vTaskStartScheduler();

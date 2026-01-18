@@ -7,7 +7,7 @@ extern struct_ConfigTextWidget clock_hour_text_cfg;
 extern struct_ConfigTextWidget clock_minute_text_cfg;
 extern struct_ConfigTextWidget clock_second_text_cfg;
 
-class my_hour_text_widget : public rtos_TextWidget
+class my_hour_text_widget : public rtos_TextWidget, public rtos_BlinkingWidget
 {
 private:
     ControlledObjectStatus hour_status;
@@ -19,8 +19,13 @@ public:
     ~my_hour_text_widget();
     void get_value_of_interest();
     void draw();
+    void blink();
+    void save_canvas_color();
+    void restore_canvas_color();
+    void show_focus();
+
 };
-class my_minute_text_widget : public rtos_TextWidget
+class my_minute_text_widget : public rtos_TextWidget, public rtos_BlinkingWidget
 {
 private:
     ControlledObjectStatus minute_status;
@@ -32,8 +37,13 @@ public:
     ~my_minute_text_widget();
     void get_value_of_interest();
     void draw();
+    void blink();
+    void save_canvas_color();
+    void restore_canvas_color();
+    void show_focus();
+
 };
-class my_second_text_widget : public rtos_TextWidget
+class my_second_text_widget : public rtos_TextWidget, public rtos_BlinkingWidget
 {
 private:
     ControlledObjectStatus second_status;
@@ -45,18 +55,10 @@ public:
     ~my_second_text_widget();
     void get_value_of_interest();
     void draw();
+    void save_canvas_color();
+    void restore_canvas_color();
+    void blink();
+    void show_focus();
+
 };
 
-class my_controller_focus_graphic_widget : public rtos_GraphicWidget
-{
-private:
-    ControlledObjectStatus controller_status;
-    int focus_index;
-
-public:
-    my_controller_focus_graphic_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
-                                       struct_ConfigGraphicWidget focus_cfg, CanvasFormat format, rtos_Model *model);
-    ~my_controller_focus_graphic_widget();
-    void get_value_of_interest();
-    void draw();
-};

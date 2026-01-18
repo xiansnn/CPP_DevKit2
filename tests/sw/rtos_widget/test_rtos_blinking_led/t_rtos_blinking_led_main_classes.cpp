@@ -71,7 +71,6 @@ myMainClock::myMainClock()
     this->hour.update_rtos_status(ControlledObjectStatus::IS_WAITING);
     this->minute.update_rtos_status(ControlledObjectStatus::IS_WAITING);
     this->second.update_rtos_status(ControlledObjectStatus::IS_WAITING);
-
 }
 
 myMainClock::~myMainClock()
@@ -142,13 +141,6 @@ void myControlledClockTime::process_control_event(struct_ControlEventData contro
     }
 }
 
-// void myControlledClockTime::blink()
-// {
-//     this->current_blink_phase = !this->current_blink_phase;
-//     std::string phase_str = this->current_blink_phase ? "ON" : "OFF";
-//     printf("BlinkingModel blink(): current_blink_phase(%s)=%s\n",this->name.c_str(), phase_str.c_str());
-// }
-
 rtos_Blinker::rtos_Blinker(uint32_t blink_period_ms)
 {
     this->blink_period_ms = blink_period_ms;
@@ -158,22 +150,21 @@ rtos_Blinker::~rtos_Blinker()
 {
 }
 
-void rtos_Blinker::add_blinking_model(rtos_BlinkingWidget *widget)
+void rtos_Blinker::add_blinking_widget(rtos_BlinkingWidget *widget)
 {
     this->blinking_widgets.insert(widget);
 }
 
-void rtos_Blinker::remove_blinking_model(rtos_BlinkingWidget *widget)
+void rtos_Blinker::remove_blinking_widget(rtos_BlinkingWidget *widget)
 {
     this->blinking_widgets.extract(widget);
 }
 
 void rtos_Blinker::refresh_blinking()
 {
+    this->current_blink_phase = !this->current_blink_phase;
     for (auto &&widget : blinking_widgets)
-    {
         widget->blink();
-    }
 }
 
 rtos_BlinkingWidget::rtos_BlinkingWidget()
@@ -186,15 +177,17 @@ rtos_BlinkingWidget::~rtos_BlinkingWidget()
 
 void rtos_BlinkingWidget::start_blinking()
 {
-    this->blinker->add_blinking_model(this);
+    this->blinker->add_blinking_widget(this);
 }
 
 void rtos_BlinkingWidget::stop_blinking()
 {
-    this->blinker->remove_blinking_model(this);
+    restore_canvas_color();
+    this->blinker->remove_blinking_widget(this);
 }
 
-void rtos_BlinkingWidget::setup_blinker(rtos_Blinker *blinker)
+void rtos_BlinkingWidget::setup_blinking(rtos_Blinker *blinker)
 {
+    save_canvas_color();
     this->blinker = blinker;
 }

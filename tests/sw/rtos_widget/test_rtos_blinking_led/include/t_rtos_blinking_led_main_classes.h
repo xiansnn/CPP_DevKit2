@@ -2,17 +2,6 @@
 #include "sw/ui_core/rtos_ui_core.h"
 #include <set>
 
-/// @brief The status of a blinking widget
-enum class BlinkingWidgetStatus
-{
-    /// @brief The widget is in OFF state : Not displayed
-    IS_OFF,
-    /// @brief The widget is in ON state : Continuously displayed
-    IS_ON,
-    /// @brief The widget is blinking : alternates between ON and OFF states, or inverting foregound and background colors
-    IS_BLINKING,
-};
-
 class rtos_BlinkingWidget;
 class rtos_Blinker
 {
@@ -22,29 +11,33 @@ private:
 
 public:
     uint32_t blink_period_ms;
+    bool current_blink_phase{false};
     rtos_Blinker(uint32_t blink_period_ms);
     ~rtos_Blinker();
-    void add_blinking_model(rtos_BlinkingWidget *model);
-    void remove_blinking_model(rtos_BlinkingWidget *model);
+    void add_blinking_widget(rtos_BlinkingWidget *widget);
+    void remove_blinking_widget(rtos_BlinkingWidget *widget);
     void refresh_blinking();
 };
 
 class rtos_BlinkingWidget
 {
 private:
-    rtos_Blinker *blinker;
-    BlinkingWidgetStatus blinking_status{BlinkingWidgetStatus::IS_OFF};
 
 protected:
-    bool current_blink_phase{false};
+    rtos_Blinker *blinker;
+    ColorIndex fg_color_backup;
+    ColorIndex bg_color_backup;
 
 public:
     rtos_BlinkingWidget();
     ~rtos_BlinkingWidget();
     void start_blinking();
     void stop_blinking();
-    void setup_blinker(rtos_Blinker *blinker);
+    void setup_blinking(rtos_Blinker *blinker);
+    virtual void save_canvas_color() = 0;
+    virtual void restore_canvas_color() = 0;
     virtual void blink() = 0;
+    virtual void show_focus() = 0;
 };
 
 class myMainClock;
@@ -59,7 +52,6 @@ public:
                           int min_value = 0, int max_value = 60, int increment = 1);
     ~myControlledClockTime();
     void process_control_event(struct_ControlEventData control_event);
-
 };
 
 class myMainClock : public rtos_UIControlledModel

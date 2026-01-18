@@ -53,17 +53,44 @@ void my_hour_text_widget::draw()
 {
     this->writer->clear_text_buffer();
     get_value_of_interest();
-    // draw
+
+    // prepare to blink 
+    if (hour_status == ControlledObjectStatus::IS_ACTIVE)
+        this->start_blinking();
+    else
+        this->stop_blinking();
+
+    // effective draw
     sprintf(this->writer->text_buffer, "%02d", hour_value);
     this->writer->write();
-    if (hour_status == ControlledObjectStatus::IS_ACTIVE)
-    {
-        this->writer->draw_border(this->writer->canvas->fg_color);
-    }
-    else
-    {
-        this->writer->draw_border(this->writer->canvas->bg_color);
-    }
+}
+
+void my_hour_text_widget::blink()
+{
+    //process effective blinking
+    this->writer->canvas->fg_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
+    this->writer->canvas->bg_color = (blinker->current_blink_phase) ? this->fg_color_backup : this->bg_color_backup;
+
+    if (this->task_handle != nullptr)
+        xTaskNotifyGive(this->task_handle);
+}
+
+void my_hour_text_widget::save_canvas_color()
+{
+    this->fg_color_backup = this->writer->canvas->fg_color;
+    this->bg_color_backup = this->writer->canvas->bg_color;
+}
+
+void my_hour_text_widget::restore_canvas_color()
+{
+    this->writer->canvas->fg_color = this->fg_color_backup;
+    this->writer->canvas->bg_color = this->bg_color_backup;
+}
+
+void my_hour_text_widget::show_focus()
+{
+    this->writer->canvas->fg_color = this->bg_color_backup;
+    this->writer->canvas->bg_color = this->fg_color_backup;
 }
 
 my_minute_text_widget::my_minute_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
@@ -86,17 +113,39 @@ void my_minute_text_widget::draw()
 {
     this->writer->clear_text_buffer();
     get_value_of_interest();
+    if (minute_status == ControlledObjectStatus::IS_ACTIVE)
+        this->start_blinking();
+    else
+        this->stop_blinking();
+
     // draw
     sprintf(this->writer->text_buffer, ":%02d", minute_value);
     this->writer->write();
-    if (minute_status == ControlledObjectStatus::IS_ACTIVE)
-    {
-        this->writer->draw_border(this->writer->canvas->fg_color);
-    }
-    else
-    {
-        this->writer->draw_border(this->writer->canvas->bg_color);
-    }
+}
+
+void my_minute_text_widget::blink()
+{
+    this->writer->canvas->fg_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
+    if (this->task_handle != nullptr)
+        xTaskNotifyGive(this->task_handle);
+}
+
+void my_minute_text_widget::save_canvas_color()
+{
+    this->fg_color_backup = this->writer->canvas->fg_color;
+    this->bg_color_backup = this->writer->canvas->bg_color;
+}
+
+void my_minute_text_widget::restore_canvas_color()
+{
+    this->writer->canvas->fg_color = this->fg_color_backup;
+    this->writer->canvas->bg_color = this->bg_color_backup;
+}
+
+void my_minute_text_widget::show_focus()
+{
+    this->writer->canvas->fg_color = this->bg_color_backup;
+    this->writer->canvas->bg_color = this->fg_color_backup;
 }
 
 my_second_text_widget::my_second_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
@@ -119,15 +168,36 @@ void my_second_text_widget::draw()
 {
     this->writer->clear_text_buffer();
     get_value_of_interest();
+    if (second_status == ControlledObjectStatus::IS_ACTIVE)
+        this->start_blinking();
+    else
+        this->stop_blinking();
     // draw
     sprintf(this->writer->text_buffer, ":%02d", second_value);
     this->writer->write();
-    if (second_status == ControlledObjectStatus::IS_ACTIVE)
-    {
-        this->writer->draw_border(this->writer->canvas->fg_color);
-    }
-    else
-    {
-        this->writer->draw_border(this->writer->canvas->bg_color);
-    }
+    this->writer->draw_border();
+}
+
+void my_second_text_widget::save_canvas_color()
+{
+    this->fg_color_backup = this->writer->canvas->fg_color;
+    this->bg_color_backup = this->writer->canvas->bg_color;
+}
+
+void my_second_text_widget::restore_canvas_color()
+{
+    this->writer->canvas->fg_color = this->fg_color_backup;
+    this->writer->canvas->bg_color = this->bg_color_backup;
+    this->writer->widget_with_border = false;
+}
+
+void my_second_text_widget::blink()
+{
+    this->writer->widget_with_border = blinker->current_blink_phase;
+    if (this->task_handle != nullptr)
+        xTaskNotifyGive(this->task_handle);
+}
+
+void my_second_text_widget::show_focus()
+{
 }

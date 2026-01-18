@@ -130,6 +130,7 @@ void blinker_task(void *probe)
 
 void SPI_hour_text_widget_task(void *probe)
 {
+    hour_text_widget.setup_blinking(&my_blinker);
     SPI_display_gate_keeper.send_clear_device_command(&color_display);
     while (true)
     {
@@ -145,6 +146,8 @@ void SPI_hour_text_widget_task(void *probe)
 
 void SPI_minute_text_widget_task(void *probe)
 {
+    minute_text_widget.setup_blinking(&my_blinker);
+
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -159,6 +162,7 @@ void SPI_minute_text_widget_task(void *probe)
 
 void SPI_second_text_widget_task(void *probe)
 {
+    second_text_widget.setup_blinking(&my_blinker);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
