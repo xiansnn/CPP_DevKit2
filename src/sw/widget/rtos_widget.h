@@ -26,6 +26,10 @@
 #include <set>
 
 class rtos_BlinkingWidget;
+
+
+/// @brief Class that manages blinking widgets
+/// \ingroup view
 class rtos_Blinker
 {
 private:
@@ -33,33 +37,60 @@ private:
     std::set<rtos_BlinkingWidget *> blinking_widgets;
 
 public:
+    /// @brief The period of the blinking, in milliseconds
     uint32_t blink_period_ms;
+    /// @brief The current phase of the blinking
     bool current_blink_phase{false};
+    /// @brief  Constructor of the RTOS blinker
+    /// @param blink_period_ms  the period of the blinking, in milliseconds
     rtos_Blinker(uint32_t blink_period_ms);
+    /// @brief Destructor of the RTOS blinker
     ~rtos_Blinker();
+    /// @brief  Add a blinking widget to the blinker
+    /// @param widget   the blinking widget to add
     void add_blinking_widget(rtos_BlinkingWidget *widget);
+    /// @brief  Remove a blinking widget from the blinker
+    /// @param widget   the blinking widget to remove
     void remove_blinking_widget(rtos_BlinkingWidget *widget);
+    /// @brief  Refresh the blinking state of all blinking widgets  
     void refresh_blinking();
 };
 
+/// @brief Class that represents a blinking widget  
+/// \ingroup view
 class rtos_BlinkingWidget
 {
 private:
 
 protected:
+    /// @brief the blinker associated to the blinking widget
     rtos_Blinker *blinker;
+    /// @brief the blinking state of the widget
+    bool is_blinking{false};
+    /// @brief backup of the canvas colors
     ColorIndex fg_color_backup;
+    /// @brief backup of the canvas background colors
     ColorIndex bg_color_backup;
 
 public:
+/// @brief Constructor of the RTOS blinking widget
     rtos_BlinkingWidget();
+    /// @brief Destructor of the RTOS blinking widget
     ~rtos_BlinkingWidget();
+    /// @brief  Start the blinking of the widget
     void start_blinking();
-    void stop_blinking();
+    /// @brief  Stop the blinking of the widget
+    void stop_blinking();   
+    /// @brief  Setup the blinker for the blinking widget
+    /// @param blinker   the blinker to setup   
     void setup_blinking(rtos_Blinker *blinker);
+    /// @brief  Save the current canvas colors  
     virtual void save_canvas_color() = 0;
+    /// @brief  Restore the saved canvas colors
     virtual void restore_canvas_color() = 0;
+    /// @brief  Blink the widget
     virtual void blink() = 0;
+    /// @brief  Show the focus of the widget
     virtual void show_focus() = 0;
 };
 
