@@ -1,5 +1,5 @@
 <map id="rtos_UIModelManager" name="rtos_UIModelManager">
-<area shape="rect" id="Node000001" title="RTOS wrapper for UIModelManager class." alt="" coords="5,392,497,696"/>
+<area shape="rect" id="Node000001" title="RTOS wrapper for UIModelManager class." alt="" coords="5,392,497,715"/>
 <area shape="rect" id="Node000002" href="$classrtos___u_i_controlled_model.html" title="RTOS wrapper for UIControlledModel class." alt="" coords="53,189,449,344"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="254,359,254,392,249,392,249,359"/>
 <area shape="rect" id="Node000003" href="$classrtos___model.html" title="RTOS wrapper for Model class." alt="" coords="85,5,417,141"/>

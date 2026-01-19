@@ -51,6 +51,8 @@ var hierarchy =
     [ "Probe", "class_probe.html", null ],
     [ "PWM", "class_p_w_m.html", null ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", null ],
+    [ "rtos_Blinker", "classrtos___blinker.html", null ],
+    [ "rtos_BlinkingWidget", "classrtos___blinking_widget.html", null ],
     [ "rtos_DHT11", "classrtos___d_h_t11.html", null ],
     [ "rtos_DisplayDevice", "classrtos___display_device.html", [
       [ "rtos_GraphicDisplayDevice", "classrtos___graphic_display_device.html", [

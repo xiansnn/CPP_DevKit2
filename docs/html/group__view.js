@@ -163,6 +163,31 @@ var group__view =
       [ "draw_pixel", "class_canvas_h_m_s_b.html#a04c0a63d53d9c0db1495827b9fffc79a", null ],
       [ "fill_canvas_with_color", "class_canvas_h_m_s_b.html#a3cf926a9e0d6e6d46aaf755370c9c455", null ]
     ] ],
+    [ "rtos_Blinker", "classrtos___blinker.html", [
+      [ "rtos_Blinker", "classrtos___blinker.html#a8976a9476b2f4ebc910dccad6f66e8cc", null ],
+      [ "~rtos_Blinker", "classrtos___blinker.html#aafc524efa4d0add7ff801016b561ed32", null ],
+      [ "add_blinking_widget", "classrtos___blinker.html#adb8c85f907df29c64f8cd9af1911c87d", null ],
+      [ "refresh_blinking", "classrtos___blinker.html#afd9934303258923c2ac235bfadd943ce", null ],
+      [ "remove_blinking_widget", "classrtos___blinker.html#aaca51f70f38cb9625a82ca675581087f", null ],
+      [ "blink_period_ms", "classrtos___blinker.html#ab8c4c76b59031d33794efc88c8f5817c", null ],
+      [ "blinking_widgets", "classrtos___blinker.html#ac034d01ec8a43eece3bd0000500edea3", null ],
+      [ "current_blink_phase", "classrtos___blinker.html#ae5ba86e52b28991eb49615cff13c37bc", null ]
+    ] ],
+    [ "rtos_BlinkingWidget", "classrtos___blinking_widget.html", [
+      [ "rtos_BlinkingWidget", "classrtos___blinking_widget.html#a21df5757a098c27e3f88dfaea913da31", null ],
+      [ "~rtos_BlinkingWidget", "classrtos___blinking_widget.html#aab5b82c4247cf2c5dc07be63eb226cd3", null ],
+      [ "blink", "classrtos___blinking_widget.html#a02fcf73148295f3de2b71821dff79345", null ],
+      [ "restore_canvas_color", "classrtos___blinking_widget.html#a5c387fc41b9f73e6f2cb66209799ea44", null ],
+      [ "save_canvas_color", "classrtos___blinking_widget.html#a2609581657111eef487b3d01606605b8", null ],
+      [ "setup_blinking", "classrtos___blinking_widget.html#a841df810985955cafad9d3156b52e100", null ],
+      [ "show_focus", "classrtos___blinking_widget.html#aa694eb801cb6f299afcb2b267a2d7ab5", null ],
+      [ "start_blinking", "classrtos___blinking_widget.html#a1e2329f9a3da427c92052cebf7de037b", null ],
+      [ "stop_blinking", "classrtos___blinking_widget.html#adff9663deab3755d28b37715bd82c066", null ],
+      [ "bg_color_backup", "classrtos___blinking_widget.html#acc31d5b1eb95c4689317e1384523f8a0", null ],
+      [ "blinker", "classrtos___blinking_widget.html#ac3f5d01756ea7eb05f51c675e8952b57", null ],
+      [ "fg_color_backup", "classrtos___blinking_widget.html#acdcd64526d7832985d53c52fead9302a", null ],
+      [ "is_blinking", "classrtos___blinking_widget.html#a5471de7eb6af735caff4c8f1d34b7b23", null ]
+    ] ],
     [ "rtos_Widget", "classrtos___widget.html", [
       [ "rtos_Widget", "classrtos___widget.html#a206bf3a6d0927044128458b11271f41c", null ],
       [ "~rtos_Widget", "classrtos___widget.html#a8ae178f2dc1a943df4d7291cc7d6fefe", null ],

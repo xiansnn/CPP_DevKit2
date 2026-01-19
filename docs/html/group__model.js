@@ -25,6 +25,7 @@ var group__model =
       [ "make_managed_rtos_model_active", "classrtos___u_i_model_manager.html#a3215edfd65425bc0cd427d1bf5daf4c7", null ],
       [ "make_rtos_manager_active", "classrtos___u_i_model_manager.html#a089e4095f25dea9324e327ffd57c7b54", null ],
       [ "process_event_and_time_out_condition", "classrtos___u_i_model_manager.html#a8c0a7bbfc476beba2c1c51cd08059e45", null ],
+      [ "reset_current_focus_index", "classrtos___u_i_model_manager.html#a6ef084b86263ae4dfc88f50edc7c0622", null ],
       [ "current_active_rtos_model", "classrtos___u_i_model_manager.html#acde36ea59a22adc3b440b18823336b71", null ],
       [ "current_focus_index", "classrtos___u_i_model_manager.html#a0b4b5aa496aaab4cd8db22f2fe327956", null ],
       [ "is_wrapable", "classrtos___u_i_model_manager.html#a6e752666df35917b8b7b5b579b48c863", null ],
