@@ -1,4 +1,4 @@
-#include "t_rtos_blinking_led_display_setup.h"
+#include "t_rtos_blinker_display_setup.h"
 #include "utilities/probe/probe.h"
 
 // ############ ST7735 TFT COlor display #######################################

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "t_rtos_blinking_led_config.h"
-#include "t_rtos_blinking_led_monitoring_widgets.h"
+#include "t_rtos_blinker_config.h"
+#include "t_rtos_blinker_monitoring_widgets.h"
 #include "device/SSD1306/ssd1306.h"
 
 extern rtos_GraphicDisplayGateKeeper I2C_display_gate_keeper;

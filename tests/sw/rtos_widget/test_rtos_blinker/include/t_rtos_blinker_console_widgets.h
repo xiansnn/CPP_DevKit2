@@ -1,5 +1,5 @@
 #pragma once
-#include "t_rtos_blinking_led_config.h"
+#include "t_rtos_blinker_config.h"
 #include "sw/widget/rtos_widget.h"
 #include "sw/ui_core/rtos_ui_core.h"
 

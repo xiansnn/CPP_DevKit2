@@ -1,6 +1,6 @@
 #pragma once
 
-#include "t_rtos_blinking_led_config.h"
+#include "t_rtos_blinker_config.h"
 
 #include "device/ST7735/st7735.h"
 #include "device/SSD1306/ssd1306.h"

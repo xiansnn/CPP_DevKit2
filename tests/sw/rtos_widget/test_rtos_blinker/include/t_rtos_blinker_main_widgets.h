@@ -1,7 +1,7 @@
 #pragma once
 #include "sw/widget/rtos_widget.h"
 #include "sw/ui_core/rtos_ui_core.h"
-#include "t_rtos_blinking_led_main_classes.h"
+#include "t_rtos_blinker_main_classes.h"
 
 extern struct_ConfigTextWidget clock_hour_text_cfg;
 extern struct_ConfigTextWidget clock_minute_text_cfg;

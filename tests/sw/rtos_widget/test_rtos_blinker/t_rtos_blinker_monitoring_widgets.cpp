@@ -1,6 +1,5 @@
-#include "t_rtos_blinking_led_monitoring_widgets.h"
-
-#include "t_rtos_blinking_led_main_classes.h"
+#include "t_rtos_blinker_monitoring_widgets.h"
+#include "t_rtos_blinker_main_classes.h"
 
 extern std::map<ControlledObjectStatus, std::string> status_to_string;
 

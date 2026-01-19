@@ -1,5 +1,5 @@
-#include "t_rtos_blinking_led_console_widgets.h"
-#include "t_rtos_blinking_led_main_classes.h"
+#include "t_rtos_blinker_console_widgets.h"
+#include "t_rtos_blinker_main_classes.h"
 
 std::map<ControlledObjectStatus, std::string> status_to_string{
     {ControlledObjectStatus::IS_IDLE, "IS_IDLE"},

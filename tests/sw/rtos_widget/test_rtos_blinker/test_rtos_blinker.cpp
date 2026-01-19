@@ -1,15 +1,13 @@
-#include "t_rtos_blinking_led_config.h"
-#include "t_rtos_blinking_led_display_setup.h"
-#include "t_rtos_blinking_led_encoder_controller.h"
-#include "t_rtos_blinking_led_main_classes.h"
-#include "t_rtos_blinking_led_main_tasks.h"
-#include "t_rtos_blinking_led_main_widgets.h"
-
-#include "t_rtos_blinking_led_monitoring_tasks.h"
-#include "t_rtos_blinking_led_monitoring_widgets.h"
-
-#include "t_rtos_blinking_led_console_tasks.h"
-#include "t_rtos_blinking_led_console_widgets.h"
+#include "t_rtos_blinker_config.h"
+#include "t_rtos_blinker_display_setup.h"
+#include "t_rtos_blinker_encoder_controller.h"
+#include "t_rtos_blinker_main_classes.h"
+#include "t_rtos_blinker_main_tasks.h"
+#include "t_rtos_blinker_main_widgets.h"
+#include "t_rtos_blinker_monitoring_tasks.h"
+#include "t_rtos_blinker_monitoring_widgets.h"
+#include "t_rtos_blinker_console_tasks.h"
+#include "t_rtos_blinker_console_widgets.h"
 
 // #define SHOW_CONSOLE_WIDGET
 // #define SHOW_MONITORING_WIDGET
@@ -23,8 +21,6 @@ Probe p4 = Probe(4);
 Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
-
-// TODO classes LED ;  blinker; model attaché à LED; widget attaché à focus manager
 
 // ##### main classes #####
 myClockController my_clock_controller = myClockController(true);

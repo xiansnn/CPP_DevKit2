@@ -1,6 +1,6 @@
 #pragma once
 
-#include "t_rtos_blinking_led_config.h"
+#include "t_rtos_blinker_config.h"
 #include "device/rotary_encoder/rtos_rotary_encoder.h"
 
 

@@ -1,4 +1,4 @@
-#include "t_rtos_blinking_led_main_widgets.h"
+#include "t_rtos_blinker_main_widgets.h"
 
 struct_ConfigTextWidget clock_hour_text_cfg{
     .number_of_column = 2,

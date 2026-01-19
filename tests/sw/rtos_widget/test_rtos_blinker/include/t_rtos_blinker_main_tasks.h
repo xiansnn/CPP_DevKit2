@@ -1,9 +1,9 @@
 #pragma once
 
-#include "t_rtos_blinking_led_config.h"
-#include "t_rtos_blinking_led_main_classes.h"
-#include "t_rtos_blinking_led_console_widgets.h"
-#include "t_rtos_blinking_led_main_widgets.h"
+#include "t_rtos_blinker_config.h"
+#include "t_rtos_blinker_main_classes.h"
+#include "t_rtos_blinker_console_widgets.h"
+#include "t_rtos_blinker_main_widgets.h"
 #include "device/ST7735/st7735.h"
 #include "device/SSD1306/ssd1306.h"
 
