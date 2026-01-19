@@ -28,6 +28,8 @@ var annotated_dup =
     [ "PWM", "class_p_w_m.html", "class_p_w_m" ],
     [ "PWMgatedMeasure", "class_p_w_mgated_measure.html", "class_p_w_mgated_measure" ],
     [ "RotaryEncoder", "class_rotary_encoder.html", "class_rotary_encoder" ],
+    [ "rtos_Blinker", "classrtos___blinker.html", "classrtos___blinker" ],
+    [ "rtos_BlinkingWidget", "classrtos___blinking_widget.html", "classrtos___blinking_widget" ],
     [ "rtos_DHT11", "classrtos___d_h_t11.html", "classrtos___d_h_t11" ],
     [ "rtos_DisplayDevice", "classrtos___display_device.html", "classrtos___display_device" ],
     [ "rtos_GraphicDisplayDevice", "classrtos___graphic_display_device.html", "classrtos___graphic_display_device" ],

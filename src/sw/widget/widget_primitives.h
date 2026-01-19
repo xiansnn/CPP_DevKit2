@@ -24,7 +24,6 @@
 #include "font/16x32_font.h"
 #include <cstdint>
 
-
 /// @brief character code for BACKSPACE ('BS', 0x08)
 #define BACKSPACE '\b'
 /// @brief character code for HORIZONTAL_TAB ('HT', 0x09)
@@ -38,14 +37,10 @@
 /// @brief character code for CARRIAGE_RETURN ('CR', 0x0D)
 #define CARRIAGE_RETURN '\r'
 
-
 /// @brief A class that implements basic graphic drawing primitives for widgets
 class GraphicDrawer
 {
 protected:
-    /// @brief if true, the widget is surrounded by a one-pixel border
-    bool widget_with_border{false};
-
     /// @brief As a widget can be surrounded by a border, the actual widget width is not the associated framebuffer width.
     size_t widget_width{128};
 
@@ -61,6 +56,9 @@ protected:
     uint8_t widget_start_y;
 
 public:
+    /// @brief if true, the widget is surrounded by a one-pixel border
+    bool widget_with_border{false};
+    
     /// @brief  Constructor of the GraphicDrawer class
     /// @param graph_cfg    the configuration data for the graphical frame
     /// @param canvas_format    the format of the associated canvas (see CanvasFormat)
@@ -195,7 +193,7 @@ private:
     bool wrap{true};
 
     /// @brief auto_next_char flag : if true each char steps one position after being written.
-    //TODO consider case where \n is conflicting with auto_next_char when the string is right the same cahr number than the widget
+    // TODO consider case where \n is conflicting with auto_next_char when the string is right the same cahr number than the widget
     bool auto_next_char{true};
 
     /// @brief a graphic primitive to draw a character at a pixel position. Strongly dependent on font memory organisation.

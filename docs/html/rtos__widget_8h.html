@@ -112,32 +112,35 @@ $(function(){initNavTree('rtos__widget_8h.html',''); initResizable(true); });
 <code>#include &quot;task.h&quot;</code><br />
 <code>#include &quot;queue.h&quot;</code><br />
 <code>#include &quot;semphr.h&quot;</code><br />
+<code>#include &lt;set&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for rtos_widget.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="rtos__widget_8h__incl.png" border="0" usemap="#artos__widget_8h" alt=""/></div>
 <map name="artos__widget_8h" id="artos__widget_8h">
-<area shape="rect" title=" " alt="" coords="841,5,928,30"/>
+<area shape="rect" title=" " alt="" coords="866,5,953,30"/>
 <area shape="rect" title=" " alt="" coords="315,78,366,103"/>
-<area shape="poly" title=" " alt="" coords="840,24,645,41,516,58,382,80,381,75,515,52,644,36,840,19"/>
+<area shape="poly" title=" " alt="" coords="866,24,660,40,523,57,381,80,380,75,522,52,659,35,865,19"/>
 <area shape="rect" title=" " alt="" coords="390,78,438,103"/>
-<area shape="poly" title=" " alt="" coords="841,25,675,44,566,60,454,81,453,75,566,55,674,39,840,20"/>
+<area shape="poly" title=" " alt="" coords="866,25,690,43,574,59,454,81,453,75,573,54,689,38,865,20"/>
 <area shape="rect" title=" " alt="" coords="850,223,929,248"/>
-<area shape="poly" title=" " alt="" coords="887,31,892,208,886,208,882,31"/>
+<area shape="poly" title=" " alt="" coords="911,31,895,208,889,208,906,30"/>
 <area shape="rect" href="display__device_8h.html" title=" " alt="" coords="947,78,1134,103"/>
-<area shape="poly" title=" " alt="" coords="911,28,1002,69,1000,74,909,33"/>
+<area shape="poly" title=" " alt="" coords="933,28,1007,68,1004,73,930,33"/>
 <area shape="rect" href="canvas_8h.html" title=" " alt="" coords="737,151,853,175"/>
-<area shape="poly" title=" " alt="" coords="877,32,843,79,810,138,805,136,838,77,873,29"/>
+<area shape="poly" title=" " alt="" coords="894,33,868,53,842,80,823,109,808,138,803,135,818,106,838,76,865,49,891,29"/>
 <area shape="rect" title=" " alt="" coords="927,151,1004,175"/>
-<area shape="poly" title=" " alt="" coords="893,29,954,136,949,138,888,32"/>
+<area shape="poly" title=" " alt="" coords="915,30,937,102,954,136,949,138,933,104,910,31"/>
 <area shape="rect" title=" " alt="" coords="1080,151,1131,175"/>
-<area shape="poly" title=" " alt="" coords="929,20,987,26,1053,37,1111,54,1133,64,1148,76,1154,93,1151,110,1131,141,1127,138,1146,108,1149,93,1144,80,1130,69,1109,59,1052,43,987,32,928,25"/>
+<area shape="poly" title=" " alt="" coords="954,21,1065,40,1115,55,1135,65,1148,76,1154,93,1151,110,1131,141,1127,138,1146,108,1149,93,1143,80,1132,70,1113,60,1063,45,953,26"/>
 <area shape="rect" title=" " alt="" coords="1156,151,1216,175"/>
-<area shape="poly" title=" " alt="" coords="928,20,991,27,1062,38,1126,54,1151,64,1169,76,1179,89,1185,104,1189,135,1184,135,1180,106,1174,92,1165,80,1149,69,1125,59,1061,43,990,32,928,25"/>
+<area shape="poly" title=" " alt="" coords="954,21,1074,40,1131,56,1153,65,1169,76,1179,89,1185,105,1189,135,1184,136,1180,106,1174,92,1165,80,1151,70,1130,61,1073,45,953,26"/>
 <area shape="rect" title=" " alt="" coords="1240,151,1305,175"/>
-<area shape="poly" title=" " alt="" coords="929,17,984,20,1052,29,1125,47,1194,76,1231,104,1259,137,1254,140,1227,108,1191,80,1123,52,1051,35,984,25,928,22"/>
+<area shape="poly" title=" " alt="" coords="954,18,1005,22,1067,32,1132,49,1194,76,1231,105,1258,137,1254,140,1227,108,1191,80,1130,54,1065,37,1004,27,953,23"/>
 <area shape="rect" href="widget__primitives_8h.html" title="Basic drawing primitives for widgets." alt="" coords="462,78,629,103"/>
-<area shape="poly" title=" " alt="" coords="841,31,617,77,616,72,840,26"/>
+<area shape="poly" title=" " alt="" coords="866,30,621,77,620,72,865,25"/>
+<area shape="rect" title=" " alt="" coords="1309,78,1348,103"/>
+<area shape="poly" title=" " alt="" coords="954,21,1104,41,1292,75,1295,76,1294,81,1290,81,1103,47,953,26"/>
 <area shape="poly" title=" " alt="" coords="1043,103,1037,138,1030,159,1018,177,984,205,945,223,943,218,981,200,1014,174,1025,156,1032,137,1037,102"/>
 <area shape="poly" title=" " alt="" coords="1001,106,851,148,850,143,999,101"/>
 <area shape="poly" title=" " alt="" coords="1030,105,991,142,987,138,1026,101"/>
@@ -185,6 +188,12 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtos___blinker.html">rtos_Blinker</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class that manages blinking widgets.  <a href="classrtos___blinker.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtos___blinking_widget.html">rtos_BlinkingWidget</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class that represents a blinking widget.  <a href="classrtos___blinking_widget.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtos___widget.html">rtos_Widget</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RTOS wrapper for <a class="el" href="class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW...">Widget</a> class.  <a href="classrtos___widget.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>

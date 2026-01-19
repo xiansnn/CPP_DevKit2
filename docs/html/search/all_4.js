@@ -10,10 +10,11 @@ var searchData=
   ['actual_5fdisplayed_5fmodel_7',['actual_displayed_model',['../class_widget.html#a41ae2c77c95867d80f15cc722d32ce86',1,'Widget']]],
   ['actual_5frtos_5fdisplayed_5fmodel_8',['actual_rtos_displayed_model',['../classrtos___widget.html#a6dc7846aaa06a9dfcb10a034505554a8',1,'rtos_Widget']]],
   ['actuator_9',['&quot;Actuator&quot;',['../group__actuator.html',1,'']]],
-  ['add_5fmanaged_5fmodel_10',['add_managed_model',['../class_u_i_model_manager.html#a24dec688218673e7d38a5a6cfaa305ad',1,'UIModelManager']]],
-  ['add_5fmanaged_5frtos_5fmodel_11',['add_managed_rtos_model',['../classrtos___u_i_model_manager.html#a159bedb73ab154f81d16cc8e7bcfd88b',1,'rtos_UIModelManager']]],
-  ['add_5fwidget_12',['add_widget',['../classrtos___widget.html#af6ed14469e8e458b99c7f53a15378050',1,'rtos_Widget::add_widget()'],['../class_widget.html#a6d08d01ec5ea290b39ae26963ae7e460',1,'Widget::add_widget()']]],
-  ['attached_5frtos_5fwidget_13',['attached_rtos_widget',['../classrtos___model.html#a5cfc55133d0a39c123605c88e640ad24',1,'rtos_Model']]],
-  ['attached_5fwidgets_14',['attached_widgets',['../class_model.html#a764d7bc0d5d7ce1cb6c5cd27410f7425',1,'Model']]],
-  ['auto_5fnext_5fchar_15',['auto_next_char',['../structstruct___config_text_widget.html#af2a22b977a5c017e07e3a5dc11d9f46c',1,'struct_ConfigTextWidget::auto_next_char'],['../class_text_widget.html#a5fd38fb14e38400bed765a067c9f5a32',1,'TextWidget::auto_next_char'],['../class_text_writer.html#ab18eef49a06077741cb551844de2a489',1,'TextWriter::auto_next_char']]]
+  ['add_5fblinking_5fwidget_10',['add_blinking_widget',['../classrtos___blinker.html#adb8c85f907df29c64f8cd9af1911c87d',1,'rtos_Blinker']]],
+  ['add_5fmanaged_5fmodel_11',['add_managed_model',['../class_u_i_model_manager.html#a24dec688218673e7d38a5a6cfaa305ad',1,'UIModelManager']]],
+  ['add_5fmanaged_5frtos_5fmodel_12',['add_managed_rtos_model',['../classrtos___u_i_model_manager.html#a159bedb73ab154f81d16cc8e7bcfd88b',1,'rtos_UIModelManager']]],
+  ['add_5fwidget_13',['add_widget',['../classrtos___widget.html#af6ed14469e8e458b99c7f53a15378050',1,'rtos_Widget::add_widget()'],['../class_widget.html#a6d08d01ec5ea290b39ae26963ae7e460',1,'Widget::add_widget()']]],
+  ['attached_5frtos_5fwidget_14',['attached_rtos_widget',['../classrtos___model.html#a5cfc55133d0a39c123605c88e640ad24',1,'rtos_Model']]],
+  ['attached_5fwidgets_15',['attached_widgets',['../class_model.html#a764d7bc0d5d7ce1cb6c5cd27410f7425',1,'Model']]],
+  ['auto_5fnext_5fchar_16',['auto_next_char',['../structstruct___config_text_widget.html#af2a22b977a5c017e07e3a5dc11d9f46c',1,'struct_ConfigTextWidget::auto_next_char'],['../class_text_widget.html#a5fd38fb14e38400bed765a067c9f5a32',1,'TextWidget::auto_next_char'],['../class_text_writer.html#ab18eef49a06077741cb551844de2a489',1,'TextWriter::auto_next_char']]]
 ];
