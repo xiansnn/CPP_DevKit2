@@ -1,4 +1,4 @@
-#include "t_rtos_extended_SSD1306_display_setup.h"
+#include "t_rtos_widget_SSD1306_display_setup.h"
 #include "utilities/probe/probe.h"
 
 struct_ConfigMasterI2C cfg_i2c{

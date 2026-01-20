@@ -1,6 +1,6 @@
 #pragma once
 
-#include "t_rtos_extended_config.h"
+#include "t_rtos_widget_config.h"
 
 
 extern rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper ;

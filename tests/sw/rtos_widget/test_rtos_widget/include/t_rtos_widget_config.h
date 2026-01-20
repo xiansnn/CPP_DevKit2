@@ -45,6 +45,4 @@
 #define DEVICE_DISPLAY_HEIGHT 160
 #endif
 
-void i2c_irq_handler();
-
 

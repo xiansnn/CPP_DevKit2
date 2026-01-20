@@ -1,10 +1,10 @@
 #pragma once
 
-#include "t_rtos_extended_config.h"
-#include "t_rtos_extended_roll_control.h"
+#include "t_rtos_widget_config.h"
+#include "t_rtos_widget_main_model_classes.h"
 
 extern rtos_SwitchButton central_switch;
-extern my_PositionController position_controller;
+// extern my_PositionController position_controller;
 extern rtos_RotaryEncoder encoder;
 
 extern struct_rtosConfigSwitchButton cfg_central_switch;

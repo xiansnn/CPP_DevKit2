@@ -1,6 +1,6 @@
-#include "t_rtos_extended_main_model_tasks.h"
-#include "t_rtos_extended_SSD1306_display_setup.h"
-#include "t_rtos_extended_ST7735_display_setup.h"
+#include "t_rtos_widget_main_model_tasks.h"
+#include "t_rtos_widget_SSD1306_display_setup.h"
+#include "t_rtos_widget_ST7735_display_setup.h"
 
 #include "utilities/probe/probe.h"
 

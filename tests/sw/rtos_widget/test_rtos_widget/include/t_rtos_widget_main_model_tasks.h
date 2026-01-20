@@ -1,8 +1,8 @@
 #pragma once
 
-#include "t_rtos_extended_config.h"
-#include "t_rtos_extended_text_and_graph_widgets.h"
-#include "t_rtos_extended_roll_control.h"
+#include "t_rtos_widget_config.h"
+#include "t_rtos_widget_text_and_graph_widgets.h"
+#include "t_rtos_widget_main_model_classes.h"
 
 extern struct_ConfigTextWidget focus_indicator_config;
 

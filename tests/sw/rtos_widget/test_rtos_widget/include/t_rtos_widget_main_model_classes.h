@@ -11,8 +11,8 @@
 #pragma once
 
 #include "sw/ui_core/rtos_ui_core.h"
-#include "t_rtos_extended_config.h"
-#include "t_rtos_extended_text_and_graph_widgets.h"
+#include "t_rtos_widget_config.h"
+#include "t_rtos_widget_text_and_graph_widgets.h"
 
 
 class my_model;

@@ -8,15 +8,20 @@
  * @copyright Copyright (c) 2025
  *
  */
+
+ //TODO add blinking features
+ //TODO make conditional compilation for focus indicator widget
+
+
 #include "sw/ui_core/rtos_ui_core.h"
 #include "sw/widget/rtos_widget.h"
-#include "t_rtos_extended_text_and_graph_widgets.h"
-#include "t_rtos_extended_roll_control.h"
-#include "t_rtos_extended_config.h"
-#include "t_rtos_extended_encoder_controller.h"
-#include "t_rtos_extended_main_model_tasks.h"
-#include "t_rtos_extended_ST7735_display_setup.h"
-#include "t_rtos_extended_SSD1306_display_setup.h"
+#include "t_rtos_widget_text_and_graph_widgets.h"
+#include "t_rtos_widget_main_model_classes.h"
+#include "t_rtos_widget_config.h"
+#include "t_rtos_widget_encoder_controller.h"
+#include "t_rtos_widget_main_model_tasks.h"
+#include "t_rtos_widget_ST7735_display_setup.h"
+#include "t_rtos_widget_SSD1306_display_setup.h"
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);

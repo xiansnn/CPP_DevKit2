@@ -1,4 +1,4 @@
-#include "t_rtos_extended_encoder_controller.h"
+#include "t_rtos_widget_encoder_controller.h"
 
 struct_rtosConfigSwitchButton cfg_central_switch{
     .debounce_delay_us = 5000,
