@@ -111,29 +111,29 @@ void my_text_widget::get_value_of_interest()
     sprintf(this->text_buffer, "%+3d\xF8  %+3d\xF8", ((my_model *)this->actual_displayed_model)->roll, ((my_model *)this->actual_displayed_model)->pitch);
 }
 
-class my_visu_widget : public GraphicWidget
+class my_graphic_widget : public GraphicWidget
 {
 private:
     int roll{0};
     int pitch{0};
 
 public:
-    my_visu_widget(GraphicDisplayDevice *graphic_display_screen,
+    my_graphic_widget(GraphicDisplayDevice *graphic_display_screen,
                    struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, Model *model);
-    ~my_visu_widget();
+    ~my_graphic_widget();
     void get_value_of_interest();
     void draw();
 };
-my_visu_widget::my_visu_widget(GraphicDisplayDevice *graphic_display_screen,
+my_graphic_widget::my_graphic_widget(GraphicDisplayDevice *graphic_display_screen,
                                struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, Model *model)
     : GraphicWidget(graphic_display_screen, graph_cfg, format, model) {}
-my_visu_widget::~my_visu_widget() {}
-void my_visu_widget::get_value_of_interest()
+my_graphic_widget::~my_graphic_widget() {}
+void my_graphic_widget::get_value_of_interest()
 {
     this->roll = ((my_model *)this->actual_displayed_model)->roll;
     this->pitch = ((my_model *)this->actual_displayed_model)->pitch;
 }
-void my_visu_widget::draw()
+void my_graphic_widget::draw()
 {
     if (actual_displayed_model->has_changed())
     {
@@ -200,7 +200,7 @@ int main()
     my_text_widget values = my_text_widget(&display, values_config, CANVAS_FORMAT, &model);
     values.process_char(FORM_FEED);
 
-    my_visu_widget graph = my_visu_widget(&display, graph_config, CANVAS_FORMAT, &model);
+    my_graphic_widget graph = my_graphic_widget(&display, graph_config, CANVAS_FORMAT, &model);
     pr_D1.hi();
     display.clear_device_screen_buffer(); 
     pr_D1.lo();                           // 51ms

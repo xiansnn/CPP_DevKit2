@@ -9,9 +9,9 @@ extern struct_ConfigTextWidget focus_indicator_config;
 extern my_model my_rtos_model;
 extern my_PositionController position_controller;
 
-extern my_visu_widget SSD1306_graph_widget;
+extern my_graphic_widget SSD1306_graph_widget;
 extern my_text_widget SSD1306_values_widget;
-extern my_visu_widget ST7735_graph_widget;
+extern my_graphic_widget ST7735_graph_widget;
 extern my_text_widget ST7735_values_widget;
 extern my_position_controller_widget SPI_focus_indicator_widget;
 

@@ -45,7 +45,7 @@ public:
 };
 
 /// @brief Construct an implementation of GraphicWidget for test_ui_core program.
-class my_visu_widget : public rtos_GraphicWidget
+class my_graphic_widget : public rtos_GraphicWidget
 {
 private:
     int graph_angle{0};
@@ -53,9 +53,9 @@ private:
     int graph_horizontal_pos{0};
 
 public:
-    my_visu_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+    my_graphic_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
                    struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, rtos_Model *model);
-    ~my_visu_widget();
+    ~my_graphic_widget();
     void get_value_of_interest();
     void draw();
 };

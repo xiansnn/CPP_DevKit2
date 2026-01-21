@@ -81,20 +81,20 @@ void my_text_widget::get_value_of_interest()
     this->value_y_pos = ((my_model *)this->actual_rtos_displayed_model)->y_pos.get_value();
 }
 
-my_visu_widget::my_visu_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+my_graphic_widget::my_graphic_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
                                struct_ConfigGraphicWidget graph_cfg, CanvasFormat format, rtos_Model *model)
     : rtos_GraphicWidget(model, graph_cfg, format, graphic_display_screen) {}
 
-my_visu_widget::~my_visu_widget() {}
+my_graphic_widget::~my_graphic_widget() {}
 
-void my_visu_widget::get_value_of_interest()
+void my_graphic_widget::get_value_of_interest()
 {
     this->graph_angle = ((my_model *)this->actual_rtos_displayed_model)->angle.get_value();
     this->graph_vertical_pos = ((my_model *)this->actual_rtos_displayed_model)->y_pos.get_value();
     this->graph_horizontal_pos = ((my_model *)this->actual_rtos_displayed_model)->x_pos.get_value();
 }
 
-void my_visu_widget::draw()
+void my_graphic_widget::draw()
 {
     drawer->clear_widget();
     get_value_of_interest();

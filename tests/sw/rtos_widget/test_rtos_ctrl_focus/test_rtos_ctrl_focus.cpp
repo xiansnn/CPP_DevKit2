@@ -49,11 +49,11 @@ rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper = rtos_GraphicDisplayGateK
 
 my_text_widget ST7735_values_widget = my_text_widget(&color_display, ST7735_values_config,
                                                      ST7735_TEXT_CANVAS_FORMAT, nullptr);
-my_visu_widget ST7735_graph_widget = my_visu_widget(&color_display, ST7735_graph_config,
+my_graphic_widget ST7735_graph_widget = my_graphic_widget(&color_display, ST7735_graph_config,
                                                     ST7735_GRAPHICS_CANVAS_FORMAT, nullptr);
 my_text_widget SSD1306_values_widget = my_text_widget(&left_display, SSD1306_values_config,
                                                       SSD1306_CANVAS_FORMAT, nullptr);
-my_visu_widget SSD1306_graph_widget = my_visu_widget(&right_display, SSD1306_graph_config,
+my_graphic_widget SSD1306_graph_widget = my_graphic_widget(&right_display, SSD1306_graph_config,
                                                      SSD1306_CANVAS_FORMAT, nullptr);
 rtos_Blinker my_blinker = rtos_Blinker(250);
 
