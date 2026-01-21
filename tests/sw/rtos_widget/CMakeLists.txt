@@ -39,7 +39,7 @@ target_link_libraries(test_rtos_ssd1306_text_primitives
             FreeRTOS-Kernel-Heap4 
             )
 
-add_subdirectory(test_rtos_widget)
+add_subdirectory(test_rtos_ctrl_focus)
 add_subdirectory(test_rtos_blinker)
 
            

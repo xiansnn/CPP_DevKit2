@@ -1,6 +1,6 @@
-#include "t_rtos_widget_main_model_tasks.h"
-#include "t_rtos_widget_SSD1306_display_setup.h"
-#include "t_rtos_widget_ST7735_display_setup.h"
+#include "t_rtos_ctrl_focus_main_model_tasks.h"
+#include "t_rtos_ctrl_focus_SSD1306_display_setup.h"
+#include "t_rtos_ctrl_focus_ST7735_display_setup.h"
 
 #include "utilities/probe/probe.h"
 
@@ -110,6 +110,10 @@ void SPI_values_widget_task(void *probe)
                                                         ST7735_TEXT_CANVAS_FORMAT);
     ST7735_title_widget.writer->write("ANGLEH_POSV_POS");
     SPI_display_gate_keeper.send_widget_data(&ST7735_title_widget);
+
+    ST7735_values_widget.setup_blinking(&my_blinker);
+
+
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -169,5 +173,19 @@ void I2C_right_graph_widget_task(void *probe)
         if (probe != NULL)
             ((Probe *)probe)->lo();
         I2C_display_gate_keeper.send_widget_data(&SSD1306_graph_widget);
+    }
+}
+
+void blinker_task(void *probe)
+{
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+    while (true)
+    {
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
+        my_blinker.refresh_blinking();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
+        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(my_blinker.blink_period_ms));
     }
 }

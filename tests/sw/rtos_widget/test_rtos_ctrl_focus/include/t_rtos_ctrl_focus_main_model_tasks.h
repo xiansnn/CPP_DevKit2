@@ -1,8 +1,8 @@
 #pragma once
 
-#include "t_rtos_widget_config.h"
-#include "t_rtos_widget_text_and_graph_widgets.h"
-#include "t_rtos_widget_main_model_classes.h"
+#include "t_rtos_ctrl_focus_config.h"
+#include "t_rtos_ctrl_focus_text_and_graph_widgets.h"
+#include "t_rtos_ctrl_focus_main_model_classes.h"
 
 extern struct_ConfigTextWidget focus_indicator_config;
 
@@ -22,6 +22,8 @@ extern rtos_ST7735 color_display;
 extern rtos_SSD1306 left_display;
 extern rtos_SSD1306 right_display;
 
+extern rtos_Blinker my_blinker;
+
 void idle_task(void *pxProbe);
 void position_controller_task(void *probe);
 void my_model_task(void *probe);
@@ -33,3 +35,5 @@ void SPI_values_widget_task(void *probe);
 void SPI_graph_widget_task(void *probe);
 void I2C_right_graph_widget_task(void *probe);
 void I2C_left_values_widget_task(void *probe);
+
+void blinker_task(void* probe);

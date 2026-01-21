@@ -1,20 +1,23 @@
 /**
  * @file t_rtos_extended_text_and_graph_widgets.cpp
  * @author xiansnn (xiansnn@hotmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-12-27
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
-#include "t_rtos_widget_config.h"
-#include "t_rtos_widget_main_model_classes.h"
-
+#include "t_rtos_ctrl_focus_config.h"
+#include "t_rtos_ctrl_focus_main_model_classes.h"
+#include "t_rtos_ctrl_focus_text_and_graph_widgets.h"
 
 my_text_widget::my_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
                                struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
-    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen) {}
+    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen)
+
+{
+}
 
 my_text_widget::my_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
                                struct_ConfigTextWidget text_cfg, CanvasFormat format,
@@ -78,4 +81,33 @@ void my_text_widget::draw()
     sprintf(this->writer->text_buffer, "%4d\xF8%+4d\n%+4d", value_angle, value_x_pos, value_y_pos);
     this->writer->write();
     this->writer->draw_border();
+}
+void my_text_widget::save_canvas_color()
+{
+    this->fg_color_backup = this->writer->canvas->fg_color;
+    this->bg_color_backup = this->writer->canvas->bg_color;
+}
+
+void my_text_widget::restore_canvas_color()
+{
+    this->writer->canvas->fg_color = this->fg_color_backup;
+    this->writer->canvas->bg_color = this->bg_color_backup;
+}
+
+void my_text_widget::blink()
+{
+    //process effective blinking
+    this->writer->canvas->fg_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
+    this->writer->canvas->bg_color = (blinker->current_blink_phase) ? this->fg_color_backup : this->bg_color_backup;
+
+    if (this->task_handle != nullptr)
+        xTaskNotifyGive(this->task_handle);
+
+}
+
+void my_text_widget::show_focus()
+{
+    this->writer->canvas->fg_color = this->bg_color_backup;
+    this->writer->canvas->bg_color = this->fg_color_backup;
+
 }

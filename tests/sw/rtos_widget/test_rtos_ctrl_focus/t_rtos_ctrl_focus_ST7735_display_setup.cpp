@@ -1,4 +1,4 @@
-#include "t_rtos_widget_ST7735_display_setup.h"
+#include "t_rtos_ctrl_focus_ST7735_display_setup.h"
 #include "utilities/probe/probe.h"
 
 struct_ConfigMasterSPI cfg_spi = {

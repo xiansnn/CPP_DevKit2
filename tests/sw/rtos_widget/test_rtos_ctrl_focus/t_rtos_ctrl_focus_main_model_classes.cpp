@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2025
  *
  */
-#include "t_rtos_widget_config.h"
-#include "t_rtos_widget_main_model_classes.h"
+#include "t_rtos_ctrl_focus_config.h"
+#include "t_rtos_ctrl_focus_main_model_classes.h"
 
 #include <map>
 std::map<UIControlEvent, std::string> event_to_string{

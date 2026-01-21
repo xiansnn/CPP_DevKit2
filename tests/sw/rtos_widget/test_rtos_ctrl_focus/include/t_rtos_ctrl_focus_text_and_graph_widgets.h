@@ -17,7 +17,7 @@
 #include "sw/ui_core/rtos_ui_core.h"
 
 /// @brief Construct an implementation of TextWidget for test_ui_core program.
-class my_text_widget : public rtos_TextWidget
+class my_text_widget : public rtos_TextWidget, public rtos_BlinkingWidget
 {
 private:
     int value_angle{0};
@@ -33,6 +33,10 @@ public:
     ~my_text_widget();
     void get_value_of_interest();
     void draw();
+    void save_canvas_color();
+    void restore_canvas_color();    
+    void blink();
+    void show_focus();
 };
 
 /// @brief Construct an implementation of GraphicWidget for test_ui_core program.

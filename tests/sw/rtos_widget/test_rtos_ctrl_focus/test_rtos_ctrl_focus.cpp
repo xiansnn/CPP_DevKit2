@@ -15,13 +15,13 @@
 
 #include "sw/ui_core/rtos_ui_core.h"
 #include "sw/widget/rtos_widget.h"
-#include "t_rtos_widget_text_and_graph_widgets.h"
-#include "t_rtos_widget_main_model_classes.h"
-#include "t_rtos_widget_config.h"
-#include "t_rtos_widget_encoder_controller.h"
-#include "t_rtos_widget_main_model_tasks.h"
-#include "t_rtos_widget_ST7735_display_setup.h"
-#include "t_rtos_widget_SSD1306_display_setup.h"
+#include "t_rtos_ctrl_focus_text_and_graph_widgets.h"
+#include "t_rtos_ctrl_focus_main_model_classes.h"
+#include "t_rtos_ctrl_focus_config.h"
+#include "t_rtos_ctrl_focus_encoder_controller.h"
+#include "t_rtos_ctrl_focus_main_model_tasks.h"
+#include "t_rtos_ctrl_focus_ST7735_display_setup.h"
+#include "t_rtos_ctrl_focus_SSD1306_display_setup.h"
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
@@ -55,9 +55,11 @@ my_text_widget SSD1306_values_widget = my_text_widget(&left_display, SSD1306_val
                                                       SSD1306_CANVAS_FORMAT, nullptr);
 my_visu_widget SSD1306_graph_widget = my_visu_widget(&right_display, SSD1306_graph_config,
                                                      SSD1306_CANVAS_FORMAT, nullptr);
+rtos_Blinker my_blinker = rtos_Blinker(250);
 
 //  main model and tasks
 my_model my_rtos_model = my_model();
+
 
 my_PositionController position_controller = my_PositionController(true);
 my_position_controller_widget SPI_focus_indicator_widget = my_position_controller_widget(&color_display, focus_indicator_config, ST7735_TEXT_CANVAS_FORMAT, &position_controller);
@@ -86,6 +88,8 @@ int main()
     xTaskCreate(controlled_position_task, "V_task", 256, &my_rtos_model.y_pos, 8, &my_rtos_model.y_pos.task_handle);
     xTaskCreate(controlled_position_task, "angle_task", 256, &my_rtos_model.angle, 8, &my_rtos_model.angle.task_handle);
     
+    xTaskCreate(blinker_task, "blinker", 256, &p5, 25, NULL);
+
     xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, &p4, 13, &ST7735_graph_widget.task_handle);               // durée: 8.23ms + 14ms xfer SPI
     xTaskCreate(SPI_values_widget_task, "values_widget_task", 256, &p4, 12, &ST7735_values_widget.task_handle);            // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)
     xTaskCreate(SPI_focus_widget_task, "focus_widget_task", 256, &p4, 12, &SPI_focus_indicator_widget.task_handle);        // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)

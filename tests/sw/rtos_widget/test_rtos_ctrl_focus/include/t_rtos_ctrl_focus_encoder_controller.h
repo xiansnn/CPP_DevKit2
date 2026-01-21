@@ -1,7 +1,7 @@
 #pragma once
 
-#include "t_rtos_widget_config.h"
-#include "t_rtos_widget_main_model_classes.h"
+#include "t_rtos_ctrl_focus_config.h"
+#include "t_rtos_ctrl_focus_main_model_classes.h"
 
 extern rtos_SwitchButton central_switch;
 // extern my_PositionController position_controller;
