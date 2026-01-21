@@ -16,8 +16,16 @@
 #include "sw/widget/rtos_widget.h"
 #include "sw/ui_core/rtos_ui_core.h"
 
+extern struct_ConfigTextWidget ST7735_title_config;
+extern struct_ConfigTextWidget ST7735_values_config;    
+extern struct_ConfigGraphicWidget ST7735_graph_config;
+extern struct_ConfigTextWidget SSD1306_title_config;
+extern struct_ConfigTextWidget SSD1306_values_config;   
+extern struct_ConfigGraphicWidget SSD1306_graph_config;
+
+
 /// @brief Construct an implementation of TextWidget for test_ui_core program.
-class my_text_widget : public rtos_TextWidget, public rtos_BlinkingWidget
+class my_text_widget : public rtos_TextWidget
 {
 private:
     int value_angle{0};
@@ -33,10 +41,7 @@ public:
     ~my_text_widget();
     void get_value_of_interest();
     void draw();
-    void save_canvas_color();
-    void restore_canvas_color();    
-    void blink();
-    void show_focus();
+
 };
 
 /// @brief Construct an implementation of GraphicWidget for test_ui_core program.

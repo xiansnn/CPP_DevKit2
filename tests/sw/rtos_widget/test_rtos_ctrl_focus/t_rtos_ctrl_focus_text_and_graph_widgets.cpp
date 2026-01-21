@@ -12,6 +12,54 @@
 #include "t_rtos_ctrl_focus_main_model_classes.h"
 #include "t_rtos_ctrl_focus_text_and_graph_widgets.h"
 
+struct_ConfigTextWidget SSD1306_title_config = {
+    .number_of_column = 5,
+    .number_of_line = 3,
+    .widget_anchor_x = 0,
+    .widget_anchor_y = 0,
+    .font = font_12x16,
+    .auto_next_char = true};
+
+struct_ConfigTextWidget SSD1306_values_config = {
+    .number_of_column = 5,
+    .number_of_line = 3,
+    .widget_anchor_x = 68,
+    .widget_anchor_y = 0,
+    .font = font_12x16};
+
+struct_ConfigGraphicWidget SSD1306_graph_config{
+    .canvas_width_pixel = 128,
+    .canvas_height_pixel = 56,
+    .canvas_foreground_color = ColorIndex::WHITE,
+    .canvas_background_color = ColorIndex::BLACK,
+    .widget_anchor_x = 0,
+    .widget_anchor_y = 0,
+    .widget_with_border = true};
+
+struct_ConfigTextWidget ST7735_title_config = {
+    .number_of_column = 5,
+    .number_of_line = 3,
+    .widget_anchor_x = 0,
+    .widget_anchor_y = 64,
+    .font = font_12x16,
+    .auto_next_char = true};
+
+struct_ConfigTextWidget ST7735_values_config = {
+    .number_of_column = 5,
+    .number_of_line = 3,
+    .widget_anchor_x = 68,
+    .widget_anchor_y = 64,
+    .font = font_12x16};
+
+struct_ConfigGraphicWidget ST7735_graph_config{
+    .canvas_width_pixel = 128,
+    .canvas_height_pixel = 56,
+    .canvas_foreground_color = ColorIndex::YELLOW,
+    .canvas_background_color = ColorIndex::RED,
+    .widget_anchor_x = 0,
+    .widget_anchor_y = 0,
+    .widget_with_border = true};
+
 my_text_widget::my_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
                                struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
     : rtos_TextWidget(model, text_cfg, format, graphic_display_screen)
@@ -82,32 +130,32 @@ void my_text_widget::draw()
     this->writer->write();
     this->writer->draw_border();
 }
-void my_text_widget::save_canvas_color()
-{
-    this->fg_color_backup = this->writer->canvas->fg_color;
-    this->bg_color_backup = this->writer->canvas->bg_color;
-}
+// void my_text_widget::save_canvas_color()
+// {
+//     this->fg_color_backup = this->writer->canvas->fg_color;
+//     this->bg_color_backup = this->writer->canvas->bg_color;
+// }
 
-void my_text_widget::restore_canvas_color()
-{
-    this->writer->canvas->fg_color = this->fg_color_backup;
-    this->writer->canvas->bg_color = this->bg_color_backup;
-}
+// void my_text_widget::restore_canvas_color()
+// {
+//     this->writer->canvas->fg_color = this->fg_color_backup;
+//     this->writer->canvas->bg_color = this->bg_color_backup;
+// }
 
-void my_text_widget::blink()
-{
-    //process effective blinking
-    this->writer->canvas->fg_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
-    this->writer->canvas->bg_color = (blinker->current_blink_phase) ? this->fg_color_backup : this->bg_color_backup;
+// void my_text_widget::blink()
+// {
+//     //process effective blinking
+//     this->writer->canvas->fg_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
+//     this->writer->canvas->bg_color = (blinker->current_blink_phase) ? this->fg_color_backup : this->bg_color_backup;
 
-    if (this->task_handle != nullptr)
-        xTaskNotifyGive(this->task_handle);
+//     if (this->task_handle != nullptr)
+//         xTaskNotifyGive(this->task_handle);
 
-}
+// }
 
-void my_text_widget::show_focus()
-{
-    this->writer->canvas->fg_color = this->bg_color_backup;
-    this->writer->canvas->bg_color = this->fg_color_backup;
+// void my_text_widget::show_focus()
+// {
+//     this->writer->canvas->fg_color = this->bg_color_backup;
+//     this->writer->canvas->bg_color = this->fg_color_backup;
 
-}
+// }

@@ -111,8 +111,6 @@ void SPI_values_widget_task(void *probe)
     ST7735_title_widget.writer->write("ANGLEH_POSV_POS");
     SPI_display_gate_keeper.send_widget_data(&ST7735_title_widget);
 
-    ST7735_values_widget.setup_blinking(&my_blinker);
-
 
     while (true)
     {
