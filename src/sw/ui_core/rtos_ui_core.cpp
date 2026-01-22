@@ -59,6 +59,7 @@ void rtos_UIModelManager::increment_focus()
         current_focus_index = is_wrapable ? 0 : max_focus_index;
     if (current_focus_index != previous_focus_index)
     {
+        managed_rtos_models[previous_focus_index]->update_rtos_status(ControlledObjectStatus::IS_WAITING);
         managed_rtos_models[current_focus_index]->update_rtos_status(ControlledObjectStatus::HAS_FOCUS);
         notify_all_linked_widget_task();
     }
@@ -72,6 +73,7 @@ void rtos_UIModelManager::decrement_focus()
         current_focus_index = is_wrapable ? max_focus_index : 0;
     if (current_focus_index != previous_focus_index)
     {
+        managed_rtos_models[previous_focus_index]->update_rtos_status(ControlledObjectStatus::IS_WAITING);
         managed_rtos_models[current_focus_index]->update_rtos_status(ControlledObjectStatus::HAS_FOCUS);
         notify_all_linked_widget_task();
     }
