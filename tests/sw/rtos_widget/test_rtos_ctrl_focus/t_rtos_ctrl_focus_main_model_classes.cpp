@@ -70,14 +70,17 @@ void my_ControlledCenterPosition::process_control_event(struct_ControlEventData 
     case UIControlEvent::LONG_PUSH:
         this->set_clipped_value(0);
         notify_all_linked_widget_task();
+        this->parent_model->notify_all_linked_widget_task();
         break;
     case UIControlEvent::INCREMENT:
         this->increment_value();
         notify_all_linked_widget_task();
+        this->parent_model->notify_all_linked_widget_task();
         break;
     case UIControlEvent::DECREMENT:
         this->decrement_value();
         notify_all_linked_widget_task();
+        this->parent_model->notify_all_linked_widget_task();
         break;
     default:
         break;
@@ -234,14 +237,17 @@ void my_ControlledAnglePosition::process_control_event(struct_ControlEventData c
     case UIControlEvent::LONG_PUSH:
         this->set_clipped_value(0);
         notify_all_linked_widget_task();
+        this->parent_model->notify_all_linked_widget_task();
         break;
     case UIControlEvent::INCREMENT:
         this->increment_value();
         notify_all_linked_widget_task();
+        this->parent_model->notify_all_linked_widget_task();
         break;
     case UIControlEvent::DECREMENT:
         this->decrement_value();
         notify_all_linked_widget_task();
+        this->parent_model->notify_all_linked_widget_task();
         break;
     default:
         break;

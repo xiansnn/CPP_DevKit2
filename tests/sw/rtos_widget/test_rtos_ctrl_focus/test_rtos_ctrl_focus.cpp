@@ -9,7 +9,7 @@
  *
  */
 
-// TODO add blinking features
+// TODO add a common fonction for managing blinking behavior
 // TODO make conditional compilation for focus indicator widget, abd text on console
 
 #include "sw/ui_core/rtos_ui_core.h"
@@ -47,7 +47,7 @@ rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper = rtos_GraphicDisplayGateK
 //  main model
 my_model my_rtos_model = my_model();
 my_PositionController position_controller = my_PositionController(true);
-rtos_Blinker my_blinker = rtos_Blinker(250);
+rtos_Blinker my_blinker = rtos_Blinker(150);
 
 //   widgets
 //..........................
@@ -83,7 +83,7 @@ int main()
     xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 25, NULL);
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 25, NULL);
 
-    xTaskCreate(angle_evolution_task, "periodic_task", 256, &p1, 20, NULL);
+    // xTaskCreate(angle_evolution_task, "periodic_task", 256, &p1, 20, NULL);
     xTaskCreate(my_model_task, "model_task", 256, &p1, 20, NULL); // 4us pour SPI_graph_widget_task, 12us SPI_values_widget_task, I2C_right_graph_widget_task, 16us pour I2C_left_values_widget_task
 
     xTaskCreate(position_controller_task, "position_controller_task", 256, &p5, 8, &position_controller.task_handle);

@@ -73,7 +73,6 @@ struct_ConfigGraphicWidget ST7735_graph_config{
 my_text_widget::my_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
                                struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
     : rtos_TextWidget(model, text_cfg, format, graphic_display_screen)
-
 {
 }
 
@@ -157,9 +156,26 @@ void my_angle_widget::get_value_of_interest()
 }
 
 void my_angle_widget::draw()
-{ 
+{
     this->writer->clear_text_buffer();
     get_value_of_interest();
+    switch (this->status)
+    {
+    case ControlledObjectStatus::HAS_FOCUS:
+        show_focus();
+        break;
+    case ControlledObjectStatus::IS_ACTIVE:
+        start_blinking();
+        break;
+    case ControlledObjectStatus::IS_WAITING:
+        stop_blinking();
+        break;
+    case ControlledObjectStatus::IS_IDLE:
+        restore_canvas_color();
+        break;
+    default:
+        break;
+    }
     // draw
     sprintf(this->writer->text_buffer, "ANGLE%4d\xF8", value_angle);
     this->writer->write();
@@ -168,22 +184,34 @@ void my_angle_widget::draw()
 
 void my_angle_widget::save_canvas_color()
 {
+    this->fg_color_backup = this->writer->canvas->fg_color;
+    this->bg_color_backup = this->writer->canvas->bg_color;
 }
 
 void my_angle_widget::restore_canvas_color()
 {
+    this->writer->canvas->fg_color = this->fg_color_backup;
+    this->writer->canvas->bg_color = this->bg_color_backup;
 }
 
 void my_angle_widget::blink()
 {
+    // process effective blinking
+    this->writer->canvas->fg_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
+    this->writer->canvas->bg_color = (blinker->current_blink_phase) ? this->fg_color_backup : this->bg_color_backup;
+
+    if (this->task_handle != nullptr)
+        xTaskNotifyGive(this->task_handle);
 }
 
 void my_angle_widget::show_focus()
 {
+    this->writer->canvas->fg_color = this->bg_color_backup;
+    this->writer->canvas->bg_color = this->fg_color_backup;
 }
 
 my_H_position_widget::my_H_position_widget(rtos_GraphicDisplayDevice *graphic_display_screen, struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
-: rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget()
+    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget()
 {
 }
 
@@ -198,9 +226,27 @@ void my_H_position_widget::get_value_of_interest()
 }
 
 void my_H_position_widget::draw()
-{ 
+{
     this->writer->clear_text_buffer();
     get_value_of_interest();
+    switch (this->status)
+    {
+    case ControlledObjectStatus::HAS_FOCUS:
+        show_focus();
+        break;
+    case ControlledObjectStatus::IS_ACTIVE:
+        start_blinking();
+        break;
+    case ControlledObjectStatus::IS_WAITING:
+        stop_blinking();
+        break;
+    case ControlledObjectStatus::IS_IDLE:
+        restore_canvas_color();
+        break;
+    default:
+        break;
+    }
+
     // draw
     sprintf(this->writer->text_buffer, "H_POS%4d", value_H_pos);
     this->writer->write();
@@ -208,22 +254,34 @@ void my_H_position_widget::draw()
 
 void my_H_position_widget::save_canvas_color()
 {
+    this->fg_color_backup = this->writer->canvas->fg_color;
+    this->bg_color_backup = this->writer->canvas->bg_color;
 }
 
 void my_H_position_widget::restore_canvas_color()
 {
+    this->writer->canvas->fg_color = this->fg_color_backup;
+    this->writer->canvas->bg_color = this->bg_color_backup;
 }
 
 void my_H_position_widget::blink()
 {
+    // process effective blinking
+    this->writer->canvas->fg_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
+    this->writer->canvas->bg_color = (blinker->current_blink_phase) ? this->fg_color_backup : this->bg_color_backup;
+
+    if (this->task_handle != nullptr)
+        xTaskNotifyGive(this->task_handle);
 }
 
 void my_H_position_widget::show_focus()
 {
+    this->writer->canvas->fg_color = this->bg_color_backup;
+    this->writer->canvas->bg_color = this->fg_color_backup;
 }
 
 my_V_position_widget::my_V_position_widget(rtos_GraphicDisplayDevice *graphic_display_screen, struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
-: rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget()
+    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget()
 {
 }
 
@@ -238,9 +296,27 @@ void my_V_position_widget::get_value_of_interest()
 }
 
 void my_V_position_widget::draw()
-{ 
+{
     this->writer->clear_text_buffer();
     get_value_of_interest();
+    switch (this->status)
+    {
+    case ControlledObjectStatus::HAS_FOCUS:
+        show_focus();
+        break;
+    case ControlledObjectStatus::IS_ACTIVE:
+        start_blinking();
+        break;
+    case ControlledObjectStatus::IS_WAITING:
+        stop_blinking();
+        break;
+    case ControlledObjectStatus::IS_IDLE:
+        restore_canvas_color();
+        break;
+    default:
+        break;
+    }
+
     // draw
     sprintf(this->writer->text_buffer, "V_POS%4d", value_V_pos);
     this->writer->write();
@@ -248,16 +324,28 @@ void my_V_position_widget::draw()
 
 void my_V_position_widget::save_canvas_color()
 {
+    this->fg_color_backup = this->writer->canvas->fg_color;
+    this->bg_color_backup = this->writer->canvas->bg_color;
 }
 
 void my_V_position_widget::restore_canvas_color()
 {
+    this->writer->canvas->fg_color = this->fg_color_backup;
+    this->writer->canvas->bg_color = this->bg_color_backup;
 }
 
 void my_V_position_widget::blink()
 {
+    // process effective blinking
+    this->writer->canvas->fg_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
+    this->writer->canvas->bg_color = (blinker->current_blink_phase) ? this->fg_color_backup : this->bg_color_backup;
+
+    if (this->task_handle != nullptr)
+        xTaskNotifyGive(this->task_handle);
 }
 
 void my_V_position_widget::show_focus()
 {
+    this->writer->canvas->fg_color = this->bg_color_backup;
+    this->writer->canvas->bg_color = this->fg_color_backup;
 }

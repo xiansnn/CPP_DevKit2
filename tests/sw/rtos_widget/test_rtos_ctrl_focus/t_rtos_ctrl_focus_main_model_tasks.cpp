@@ -43,10 +43,11 @@ void my_model_task(void *probe)
     my_rtos_model.update_attached_rtos_widget(&SSD1306_graph_widget);
     my_rtos_model.update_attached_rtos_widget(&SSD1306_values_widget);
     my_rtos_model.update_attached_rtos_widget(&ST7735_graph_widget);
+    my_rtos_model.notify_all_linked_widget_task();
+    
     my_rtos_model.angle.notify_all_linked_widget_task();
     my_rtos_model.x_pos.notify_all_linked_widget_task();
     my_rtos_model.y_pos.notify_all_linked_widget_task();
-    my_rtos_model.notify_all_linked_widget_task();
 
     while (true)
     {
@@ -90,7 +91,6 @@ void controlled_position_task(void *position)
     }
 }
 
-
 void SPI_focus_widget_task(void *probe)
 {
     while (true)
@@ -107,6 +107,7 @@ void SPI_focus_widget_task(void *probe)
 
 void SPI_angle_widget_task(void *probe)
 {
+    ST7735_angle_widget.setup_blinking(&my_blinker);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -117,11 +118,11 @@ void SPI_angle_widget_task(void *probe)
             ((Probe *)probe)->lo();
         SPI_display_gate_keeper.send_widget_data(&ST7735_angle_widget);
     }
-
 }
 
 void SPI_H_position_widget_task(void *probe)
 {
+    ST7735_H_position_widget.setup_blinking(&my_blinker);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -132,11 +133,11 @@ void SPI_H_position_widget_task(void *probe)
             ((Probe *)probe)->lo();
         SPI_display_gate_keeper.send_widget_data(&ST7735_H_position_widget);
     }
-
 }
 
 void SPI_V_position_widget_task(void *probe)
 {
+    ST7735_V_position_widget.setup_blinking(&my_blinker);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -147,7 +148,6 @@ void SPI_V_position_widget_task(void *probe)
             ((Probe *)probe)->lo();
         SPI_display_gate_keeper.send_widget_data(&ST7735_V_position_widget);
     }
-
 }
 
 //------------------------- ST7735 graph widget---------------------
