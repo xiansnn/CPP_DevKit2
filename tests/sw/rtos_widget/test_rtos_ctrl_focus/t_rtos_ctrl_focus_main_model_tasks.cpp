@@ -43,7 +43,9 @@ void my_model_task(void *probe)
     my_rtos_model.update_attached_rtos_widget(&SSD1306_graph_widget);
     my_rtos_model.update_attached_rtos_widget(&SSD1306_values_widget);
     my_rtos_model.update_attached_rtos_widget(&ST7735_graph_widget);
-    my_rtos_model.update_attached_rtos_widget(&ST7735_values_widget);
+    my_rtos_model.angle.notify_all_linked_widget_task();
+    my_rtos_model.x_pos.notify_all_linked_widget_task();
+    my_rtos_model.y_pos.notify_all_linked_widget_task();
     my_rtos_model.notify_all_linked_widget_task();
 
     while (true)
@@ -103,26 +105,51 @@ void SPI_focus_widget_task(void *probe)
     }
 }
 
-//------------------------- ST7735 value widget---------------------
-void SPI_values_widget_task(void *probe)
+void SPI_angle_widget_task(void *probe)
 {
-    my_text_widget ST7735_title_widget = my_text_widget(&color_display, ST7735_title_config,
-                                                        ST7735_TEXT_CANVAS_FORMAT);
-    ST7735_title_widget.writer->write("ANGLEH_POSV_POS");
-    SPI_display_gate_keeper.send_widget_data(&ST7735_title_widget);
-
-
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         if (probe != NULL)
             ((Probe *)probe)->hi();
-        ST7735_values_widget.draw();
+        ST7735_angle_widget.draw();
         if (probe != NULL)
             ((Probe *)probe)->lo();
-        SPI_display_gate_keeper.send_widget_data(&ST7735_values_widget);
+        SPI_display_gate_keeper.send_widget_data(&ST7735_angle_widget);
     }
+
 }
+
+void SPI_H_position_widget_task(void *probe)
+{
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
+        ST7735_H_position_widget.draw();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
+        SPI_display_gate_keeper.send_widget_data(&ST7735_H_position_widget);
+    }
+
+}
+
+void SPI_V_position_widget_task(void *probe)
+{
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
+        ST7735_V_position_widget.draw();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
+        SPI_display_gate_keeper.send_widget_data(&ST7735_V_position_widget);
+    }
+
+}
+
 //------------------------- ST7735 graph widget---------------------
 void SPI_graph_widget_task(void *probe)
 {

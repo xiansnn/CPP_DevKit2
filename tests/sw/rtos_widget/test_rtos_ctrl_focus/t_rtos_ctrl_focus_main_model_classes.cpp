@@ -25,7 +25,7 @@ std::map<UIControlEvent, std::string> event_to_string{
 
 my_model::my_model()
     : rtos_UIControlledModel(),
-      angle("ANGLE", this, -180, 180, ANGLE_INCREMENT),  // angle position
+      angle("ANGLE", this, -180, 180, ANGLE_INCREMENT), // angle position
       x_pos("H_POS", this, -64, +63, false, 1),
       y_pos("V_POS", this, -28, +27, false, 1)
 {
@@ -33,7 +33,6 @@ my_model::my_model()
 my_model::~my_model()
 {
 }
-
 
 /// @brief  this is used only with the periodic task
 /// @param control_event
@@ -43,6 +42,7 @@ void my_model::process_control_event(struct_ControlEventData control_event)
     {
     case UIControlEvent::INCREMENT:
         angle.increment_value();
+        angle.notify_all_linked_widget_task();
         notify_all_linked_widget_task();
         break;
 
@@ -69,15 +69,15 @@ void my_ControlledCenterPosition::process_control_event(struct_ControlEventData 
     {
     case UIControlEvent::LONG_PUSH:
         this->set_clipped_value(0);
-        this->parent_model->notify_all_linked_widget_task();
+        notify_all_linked_widget_task();
         break;
     case UIControlEvent::INCREMENT:
         this->increment_value();
-        this->parent_model->notify_all_linked_widget_task();
+        notify_all_linked_widget_task();
         break;
     case UIControlEvent::DECREMENT:
         this->decrement_value();
-        this->parent_model->notify_all_linked_widget_task();
+        notify_all_linked_widget_task();
         break;
     default:
         break;
@@ -94,11 +94,24 @@ my_PositionController::~my_PositionController()
 }
 
 void my_PositionController::process_control_event(struct_ControlEventData control_event)
-{ // TODO consider an other policy where short release wakeup manager and changes the focus
+{
     if (this->get_rtos_status() == ControlledObjectStatus::IS_IDLE)
     {
-        printf("position_controller: WAKE_UP\n");
-        this->make_rtos_manager_active();
+        switch (control_event.event)
+        {
+        case UIControlEvent::PUSH:
+        case UIControlEvent::RELEASED_AFTER_LONG_TIME:
+            break;
+        case UIControlEvent::LONG_PUSH:
+            printf("position_controller: LONG_PUSH\n");
+            for (auto &&i : managed_rtos_models)
+                i->process_control_event(control_event);
+            break;
+        default:
+            printf("position_controller: WAKE_UP\n");
+            this->make_rtos_manager_active();
+            break;
+        }
     }
     else
     {
@@ -109,8 +122,8 @@ void my_PositionController::process_control_event(struct_ControlEventData contro
             case UIControlEvent::LONG_PUSH:
                 printf("position_controller: LONG_PUSH\n");
                 for (auto &&i : managed_rtos_models)
-                    ((my_ControlledCenterPosition *)i)->set_clipped_value(0);
-                ((my_ControlledCenterPosition *)managed_rtos_models[0])->parent_model->notify_all_linked_widget_task();
+                    i->process_control_event(control_event);
+
                 break;
             case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
                 printf("position_controller focus on [%s]: RELEASED_AFTER_SHORT_TIME\n", ((my_ControlledCenterPosition *)managed_rtos_models[get_current_focus_index()])->name.c_str());
@@ -220,15 +233,15 @@ void my_ControlledAnglePosition::process_control_event(struct_ControlEventData c
     {
     case UIControlEvent::LONG_PUSH:
         this->set_clipped_value(0);
-        this->parent_model->notify_all_linked_widget_task();
+        notify_all_linked_widget_task();
         break;
     case UIControlEvent::INCREMENT:
         this->increment_value();
-        this->parent_model->notify_all_linked_widget_task();
+        notify_all_linked_widget_task();
         break;
     case UIControlEvent::DECREMENT:
         this->decrement_value();
-        this->parent_model->notify_all_linked_widget_task();
+        notify_all_linked_widget_task();
         break;
     default:
         break;

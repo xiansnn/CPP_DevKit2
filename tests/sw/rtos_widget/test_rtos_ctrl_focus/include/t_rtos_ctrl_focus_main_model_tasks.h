@@ -12,7 +12,9 @@ extern my_PositionController position_controller;
 extern my_graphic_widget SSD1306_graph_widget;
 extern my_text_widget SSD1306_values_widget;
 extern my_graphic_widget ST7735_graph_widget;
-extern my_text_widget ST7735_values_widget;
+extern my_angle_widget ST7735_angle_widget;
+extern my_H_position_widget ST7735_H_position_widget;
+extern my_V_position_widget ST7735_V_position_widget;
 extern my_position_controller_widget SPI_focus_indicator_widget;
 
 extern rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper;
@@ -31,9 +33,11 @@ void angle_evolution_task(void *probe);
 void controlled_position_task(void *position);
 
 void SPI_focus_widget_task(void *probe);
-void SPI_values_widget_task(void *probe);
+void SPI_angle_widget_task(void *probe);
+void SPI_H_position_widget_task(void *probe);
+void SPI_V_position_widget_task(void *probe);
 void SPI_graph_widget_task(void *probe);
 void I2C_right_graph_widget_task(void *probe);
 void I2C_left_values_widget_task(void *probe);
 
-void blinker_task(void* probe);
+void blinker_task(void *probe);

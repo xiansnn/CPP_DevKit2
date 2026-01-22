@@ -9,9 +9,8 @@
  *
  */
 
- //TODO add blinking features
- //TODO make conditional compilation for focus indicator widget
-
+// TODO add blinking features
+// TODO make conditional compilation for focus indicator widget, abd text on console
 
 #include "sw/ui_core/rtos_ui_core.h"
 #include "sw/widget/rtos_widget.h"
@@ -45,23 +44,27 @@ rtos_HW_SPI_Master spi_master = rtos_HW_SPI_Master(cfg_spi,
 rtos_ST7735 color_display = rtos_ST7735(&spi_master, cfg_st7735);
 rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
 
-//   widgets
+//  main model
+my_model my_rtos_model = my_model();
+my_PositionController position_controller = my_PositionController(true);
+rtos_Blinker my_blinker = rtos_Blinker(250);
 
-my_text_widget ST7735_values_widget = my_text_widget(&color_display, ST7735_values_config,
-                                                     ST7735_TEXT_CANVAS_FORMAT, nullptr);
+//   widgets
+//..........................
+my_angle_widget ST7735_angle_widget = my_angle_widget(&color_display, ST7735_angle_config,
+                                                   ST7735_TEXT_CANVAS_FORMAT, &my_rtos_model.angle);
+my_H_position_widget ST7735_H_position_widget = my_H_position_widget(&color_display, ST7735_H_position_config,
+                                                                  ST7735_TEXT_CANVAS_FORMAT, &my_rtos_model.x_pos);
+my_V_position_widget ST7735_V_position_widget = my_V_position_widget(&color_display, ST7735_V_position_config,
+                                                                  ST7735_TEXT_CANVAS_FORMAT, &my_rtos_model.y_pos);
 my_graphic_widget ST7735_graph_widget = my_graphic_widget(&color_display, ST7735_graph_config,
-                                                    ST7735_GRAPHICS_CANVAS_FORMAT, nullptr);
+                                                          ST7735_GRAPHICS_CANVAS_FORMAT, nullptr);
+//..........................
 my_text_widget SSD1306_values_widget = my_text_widget(&left_display, SSD1306_values_config,
                                                       SSD1306_CANVAS_FORMAT, nullptr);
 my_graphic_widget SSD1306_graph_widget = my_graphic_widget(&right_display, SSD1306_graph_config,
-                                                     SSD1306_CANVAS_FORMAT, nullptr);
-rtos_Blinker my_blinker = rtos_Blinker(250);
-
-//  main model and tasks
-my_model my_rtos_model = my_model();
-
-
-my_PositionController position_controller = my_PositionController(true);
+                                                           SSD1306_CANVAS_FORMAT, nullptr);
+//..........................
 my_position_controller_widget SPI_focus_indicator_widget = my_position_controller_widget(&color_display, focus_indicator_config, ST7735_TEXT_CANVAS_FORMAT, &position_controller);
 
 //  KY040 encoder controller setup
@@ -87,14 +90,18 @@ int main()
     xTaskCreate(controlled_position_task, "H_task", 256, &my_rtos_model.x_pos, 8, &my_rtos_model.x_pos.task_handle);
     xTaskCreate(controlled_position_task, "V_task", 256, &my_rtos_model.y_pos, 8, &my_rtos_model.y_pos.task_handle);
     xTaskCreate(controlled_position_task, "angle_task", 256, &my_rtos_model.angle, 8, &my_rtos_model.angle.task_handle);
-    
+
     xTaskCreate(blinker_task, "blinker", 256, &p5, 25, NULL);
 
-    xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, &p4, 13, &ST7735_graph_widget.task_handle);               // durée: 8.23ms + 14ms xfer SPI
-    xTaskCreate(SPI_values_widget_task, "values_widget_task", 256, &p4, 12, &ST7735_values_widget.task_handle);            // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)
-    xTaskCreate(SPI_focus_widget_task, "focus_widget_task", 256, &p4, 12, &SPI_focus_indicator_widget.task_handle);        // durée 5,6 ms + 3,8ms xfer SPI (depends on font size)
-    xTaskCreate(I2C_right_graph_widget_task, "right_graph_widget_task", 256, &p4, 11, &SSD1306_graph_widget.task_handle);  // 368us + 22.2ms xfer I2C
-    xTaskCreate(I2C_left_values_widget_task, "left_values_widget_task", 256, &p4, 10, &SSD1306_values_widget.task_handle); // 2.69ms + 6.5ms xfer I2C (depends on font size)
+    xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, &p4, 13, &ST7735_graph_widget.task_handle); 
+    xTaskCreate(SPI_angle_widget_task, "angle_widget_task", 256, &p5, 12, &ST7735_angle_widget.task_handle);        
+    xTaskCreate(SPI_H_position_widget_task, "H_position_widget_task", 256, &p5, 12, &ST7735_H_position_widget.task_handle);
+    xTaskCreate(SPI_V_position_widget_task, "V_position_widget_task", 256, &p5, 12, &ST7735_V_position_widget.task_handle);
+    
+
+    xTaskCreate(SPI_focus_widget_task, "focus_widget_task", 256, &p4, 12, &SPI_focus_indicator_widget.task_handle);        
+    xTaskCreate(I2C_right_graph_widget_task, "right_graph_widget_task", 256, &p4, 11, &SSD1306_graph_widget.task_handle);  
+    xTaskCreate(I2C_left_values_widget_task, "left_values_widget_task", 256, &p4, 10, &SSD1306_values_widget.task_handle); 
 
     xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p6, 5, NULL);
     xTaskCreate(I2C_display_gate_keeper_task, "I2C_gate_keeper_task", 256, &p7, 5, NULL);
