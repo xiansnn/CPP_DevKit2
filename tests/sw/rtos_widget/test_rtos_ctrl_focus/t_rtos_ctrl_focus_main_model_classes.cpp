@@ -82,6 +82,9 @@ void my_ControlledCenterPosition::process_control_event(struct_ControlEventData 
         notify_all_linked_widget_task();
         this->parent_model->notify_all_linked_widget_task();
         break;
+    case UIControlEvent::TIME_OUT:
+        this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
+        break;
     default:
         break;
     }
@@ -143,6 +146,7 @@ void my_PositionController::process_control_event(struct_ControlEventData contro
                 break;
             case UIControlEvent::TIME_OUT:
                 printf("position_controller focus on [%s]: TIME_OUT\n", ((my_ControlledCenterPosition *)managed_rtos_models[get_current_focus_index()])->name.c_str());
+                this->managed_rtos_models [get_current_focus_index()]->update_rtos_status(ControlledObjectStatus::IS_IDLE);
                 this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
                 break;
             default:
@@ -211,7 +215,6 @@ void my_position_controller_widget::draw()
         sprintf(this->writer->text_buffer, "%5s", focus_on_value_name.c_str());
         this->writer->write();
         this->writer->draw_border();
-
         break;
     default:
         break;
@@ -248,6 +251,9 @@ void my_ControlledAnglePosition::process_control_event(struct_ControlEventData c
         this->decrement_value();
         notify_all_linked_widget_task();
         this->parent_model->notify_all_linked_widget_task();
+        break;
+    case UIControlEvent::TIME_OUT:
+        this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
         break;
     default:
         break;

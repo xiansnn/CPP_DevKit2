@@ -10,6 +10,7 @@
  */
 
 // TODO add a common fonction for managing blinking behavior
+// TODO create an Example directory
 // TODO make conditional compilation for focus indicator widget, abd text on console
 
 #include "sw/ui_core/rtos_ui_core.h"
@@ -31,6 +32,9 @@ Probe p4 = Probe(4);
 Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
+
+#define SHOW_I2C_DISPLAY
+#define SHOW_SPI_FOCUS_INDICATOR
 
 //  SSD1306 setup
 rtos_HW_I2C_Master i2c_master = rtos_HW_I2C_Master(cfg_i2c);
@@ -84,27 +88,27 @@ int main()
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 25, NULL);
 
     // xTaskCreate(angle_evolution_task, "periodic_task", 256, &p1, 20, NULL);
-    xTaskCreate(my_model_task, "model_task", 256, &p1, 20, NULL); // 4us pour SPI_graph_widget_task, 12us SPI_values_widget_task, I2C_right_graph_widget_task, 16us pour I2C_left_values_widget_task
+    xTaskCreate(my_model_task, "model_task", 256, NULL, 20, NULL); // 4us pour SPI_graph_widget_task, 12us SPI_values_widget_task, I2C_right_graph_widget_task, 16us pour I2C_left_values_widget_task
 
-    xTaskCreate(position_controller_task, "position_controller_task", 256, &p5, 8, &position_controller.task_handle);
+    xTaskCreate(position_controller_task, "position_controller_task", 256, NULL, 8, &position_controller.task_handle);
     xTaskCreate(controlled_position_task, "H_task", 256, &my_rtos_model.x_pos, 8, &my_rtos_model.x_pos.task_handle);
     xTaskCreate(controlled_position_task, "V_task", 256, &my_rtos_model.y_pos, 8, &my_rtos_model.y_pos.task_handle);
     xTaskCreate(controlled_position_task, "angle_task", 256, &my_rtos_model.angle, 8, &my_rtos_model.angle.task_handle);
 
-    xTaskCreate(blinker_task, "blinker", 256, &p5, 25, NULL);
+    xTaskCreate(blinker_task, "blinker", 256, &p1, 25, NULL);
 
-    xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, &p4, 13, &ST7735_graph_widget.task_handle); 
-    xTaskCreate(SPI_angle_widget_task, "angle_widget_task", 256, &p5, 12, &ST7735_angle_widget.task_handle);        
-    xTaskCreate(SPI_H_position_widget_task, "H_position_widget_task", 256, &p5, 12, &ST7735_H_position_widget.task_handle);
-    xTaskCreate(SPI_V_position_widget_task, "V_position_widget_task", 256, &p5, 12, &ST7735_V_position_widget.task_handle);
+    xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, NULL, 13, &ST7735_graph_widget.task_handle); 
+    xTaskCreate(SPI_angle_widget_task, "angle_widget_task", 256, &p4, 12, &ST7735_angle_widget.task_handle);        
+    xTaskCreate(SPI_H_position_widget_task, "H_widget_task", 256, &p5, 12, &ST7735_H_position_widget.task_handle);
+    xTaskCreate(SPI_V_position_widget_task, "V_widget_task", 256, &p6, 12, &ST7735_V_position_widget.task_handle);
     
 
-    xTaskCreate(SPI_focus_widget_task, "focus_widget_task", 256, &p4, 12, &SPI_focus_indicator_widget.task_handle);        
-    xTaskCreate(I2C_right_graph_widget_task, "right_graph_widget_task", 256, &p4, 11, &SSD1306_graph_widget.task_handle);  
-    xTaskCreate(I2C_left_values_widget_task, "left_values_widget_task", 256, &p4, 10, &SSD1306_values_widget.task_handle); 
+    xTaskCreate(SPI_focus_widget_task, "focus_widget_task", 256, NULL, 12, &SPI_focus_indicator_widget.task_handle);        
+    xTaskCreate(I2C_right_graph_widget_task, "right_graph_widget_task", 256, NULL, 11, &SSD1306_graph_widget.task_handle);  
+    xTaskCreate(I2C_left_values_widget_task, "left_values_widget_task", 256, NULL, 10, &SSD1306_values_widget.task_handle); 
 
-    xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p6, 5, NULL);
-    xTaskCreate(I2C_display_gate_keeper_task, "I2C_gate_keeper_task", 256, &p7, 5, NULL);
+    xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p7, 5, NULL);
+    xTaskCreate(I2C_display_gate_keeper_task, "I2C_gate_keeper_task", 256, NULL, 5, NULL);
 
     xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
     vTaskStartScheduler();

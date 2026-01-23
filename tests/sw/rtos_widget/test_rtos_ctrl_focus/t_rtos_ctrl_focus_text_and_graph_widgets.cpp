@@ -37,6 +37,15 @@ struct_ConfigTextWidget ST7735_V_position_config{
     .fg_color = ColorIndex::PHOSPHOR,
     .bg_color = ColorIndex::BLACK};
 
+    struct_ConfigGraphicWidget ST7735_graph_config{
+    .canvas_width_pixel = 128,
+    .canvas_height_pixel = 56,
+    .canvas_foreground_color = ColorIndex::BLACK,
+    .canvas_background_color = ColorIndex::ORANGE,
+    .widget_anchor_x = 0,
+    .widget_anchor_y = 0,
+    .widget_with_border = true};
+
 struct_ConfigTextWidget SSD1306_title_config = {
     .number_of_column = 5,
     .number_of_line = 3,
@@ -59,16 +68,9 @@ struct_ConfigGraphicWidget SSD1306_graph_config{
     .canvas_background_color = ColorIndex::BLACK,
     .widget_anchor_x = 0,
     .widget_anchor_y = 0,
-    .widget_with_border = true};
+    .widget_with_border = false};
 
-struct_ConfigGraphicWidget ST7735_graph_config{
-    .canvas_width_pixel = 128,
-    .canvas_height_pixel = 56,
-    .canvas_foreground_color = ColorIndex::YELLOW,
-    .canvas_background_color = ColorIndex::RED,
-    .widget_anchor_x = 0,
-    .widget_anchor_y = 0,
-    .widget_with_border = true};
+
 
 my_text_widget::my_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
                                struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
@@ -124,8 +126,8 @@ void my_graphic_widget::draw()
 
     this->drawer->canvas->fill_canvas_with_color(drawer->canvas->bg_color);
 
-    this->drawer->circle(radius, circle_horizontal_center, circle_vertical_center, false, ColorIndex::WHITE);
-    this->drawer->line(x0, y0, x1, y1, ColorIndex::WHITE);
+    this->drawer->circle(radius, circle_horizontal_center, circle_vertical_center, false, this->drawer->canvas->fg_color);
+    this->drawer->line(x0, y0, x1, y1, this->drawer->canvas->fg_color);
 
     drawer->draw_border(drawer->canvas->fg_color);
 }

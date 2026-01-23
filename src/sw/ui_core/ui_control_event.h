@@ -60,6 +60,7 @@ enum class ControlledObjectStatus
     /// @brief The object is in idle state, waiting to be activated.
     IS_IDLE,
     /// @brief the object has done its job and is waiting for the next activation
+    ///@note obsolete when using FreeRTOS 
     IS_WAITING,
 
     /// @brief The widget or object manager is pointing to this model
