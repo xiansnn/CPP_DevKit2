@@ -159,23 +159,7 @@ void my_angle_widget::draw()
 {
     this->writer->clear_text_buffer();
     get_value_of_interest();
-    switch (this->status)
-    {
-    case ControlledObjectStatus::HAS_FOCUS:
-        show_focus();
-        break;
-    case ControlledObjectStatus::IS_ACTIVE:
-        start_blinking();
-        break;
-    case ControlledObjectStatus::IS_WAITING:
-        stop_blinking();
-        break;
-    case ControlledObjectStatus::IS_IDLE:
-        restore_canvas_color();
-        break;
-    default:
-        break;
-    }
+    convert_status_to_blinking_behavior(this->status);
     // draw
     sprintf(this->writer->text_buffer, "ANGLE%4d\xF8", value_angle);
     this->writer->write();
@@ -229,23 +213,7 @@ void my_H_position_widget::draw()
 {
     this->writer->clear_text_buffer();
     get_value_of_interest();
-    switch (this->status)
-    {
-    case ControlledObjectStatus::HAS_FOCUS:
-        show_focus();
-        break;
-    case ControlledObjectStatus::IS_ACTIVE:
-        start_blinking();
-        break;
-    case ControlledObjectStatus::IS_WAITING:
-        stop_blinking();
-        break;
-    case ControlledObjectStatus::IS_IDLE:
-        restore_canvas_color();
-        break;
-    default:
-        break;
-    }
+    convert_status_to_blinking_behavior(this->status);
 
     // draw
     sprintf(this->writer->text_buffer, "H_POS%4d", value_H_pos);
@@ -299,24 +267,7 @@ void my_V_position_widget::draw()
 {
     this->writer->clear_text_buffer();
     get_value_of_interest();
-    switch (this->status)
-    {
-    case ControlledObjectStatus::HAS_FOCUS:
-        show_focus();
-        break;
-    case ControlledObjectStatus::IS_ACTIVE:
-        start_blinking();
-        break;
-    case ControlledObjectStatus::IS_WAITING:
-        stop_blinking();
-        break;
-    case ControlledObjectStatus::IS_IDLE:
-        restore_canvas_color();
-        break;
-    default:
-        break;
-    }
-
+    convert_status_to_blinking_behavior(this->status);
     // draw
     sprintf(this->writer->text_buffer, "V_POS%4d", value_V_pos);
     this->writer->write();
