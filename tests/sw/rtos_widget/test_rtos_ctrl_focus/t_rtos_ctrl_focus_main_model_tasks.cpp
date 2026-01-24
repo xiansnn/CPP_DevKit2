@@ -40,8 +40,10 @@ void position_controller_task(void *probe)
 
 void my_model_task(void *probe)
 {
+    #ifdef SHOW_I2C_DISPLAY
     my_rtos_model.update_attached_rtos_widget(&SSD1306_graph_widget);
     my_rtos_model.update_attached_rtos_widget(&SSD1306_values_widget);
+    #endif
     my_rtos_model.update_attached_rtos_widget(&ST7735_graph_widget);
     my_rtos_model.notify_all_linked_widget_task();
     
@@ -166,6 +168,21 @@ void SPI_graph_widget_task(void *probe)
     }
 }
 
+void blinker_task(void *probe)
+{
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+    while (true)
+    {
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
+        my_blinker.refresh_blinking();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
+        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(my_blinker.blink_period_ms));
+    }
+}
+
+#ifdef SHOW_I2C_DISPLAY
 //-------------SSD1306  value widgets-----
 void I2C_left_values_widget_task(void *probe)
 {
@@ -200,17 +217,4 @@ void I2C_right_graph_widget_task(void *probe)
         I2C_display_gate_keeper.send_widget_data(&SSD1306_graph_widget);
     }
 }
-
-void blinker_task(void *probe)
-{
-    TickType_t xLastWakeTime = xTaskGetTickCount();
-    while (true)
-    {
-        if (probe != NULL)
-            ((Probe *)probe)->hi();
-        my_blinker.refresh_blinking();
-        if (probe != NULL)
-            ((Probe *)probe)->lo();
-        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(my_blinker.blink_period_ms));
-    }
-}
+#endif

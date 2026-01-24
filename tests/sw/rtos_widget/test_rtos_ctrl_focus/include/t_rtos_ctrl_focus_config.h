@@ -10,7 +10,13 @@
  */
 #pragma once
 
+// #define SHOW_I2C_DISPLAY
+#define SHOW_SPI_FOCUS_INDICATOR
+
+
+#ifdef SHOW_I2C_DISPLAY
 #include "device/SSD1306/ssd1306.h"
+#endif
 #include "device/ST7735/st7735.h"
 #include "device/rotary_encoder/rtos_rotary_encoder.h"
 

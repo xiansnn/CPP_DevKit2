@@ -11,7 +11,8 @@
 
 // TODO add a common fonction for managing blinking behavior
 // TODO create an Example directory
-// TODO make conditional compilation for focus indicator widget, abd text on console
+
+
 
 #include "sw/ui_core/rtos_ui_core.h"
 #include "sw/widget/rtos_widget.h"
@@ -21,7 +22,7 @@
 #include "t_rtos_ctrl_focus_encoder_controller.h"
 #include "t_rtos_ctrl_focus_main_model_tasks.h"
 #include "t_rtos_ctrl_focus_ST7735_display_setup.h"
-#include "t_rtos_ctrl_focus_SSD1306_display_setup.h"
+
 
 #include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
@@ -33,14 +34,15 @@ Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
 
-#define SHOW_I2C_DISPLAY
-#define SHOW_SPI_FOCUS_INDICATOR
 
+#ifdef SHOW_I2C_DISPLAY
 //  SSD1306 setup
+#include "t_rtos_ctrl_focus_SSD1306_display_setup.h"
 rtos_HW_I2C_Master i2c_master = rtos_HW_I2C_Master(cfg_i2c);
 rtos_SSD1306 left_display = rtos_SSD1306(&i2c_master, cfg_left_screen);
 rtos_SSD1306 right_display = rtos_SSD1306(&i2c_master, cfg_right_screen);
 rtos_GraphicDisplayGateKeeper I2C_display_gate_keeper = rtos_GraphicDisplayGateKeeper();
+#endif
 
 //  ST7735 setup
 rtos_HW_SPI_Master spi_master = rtos_HW_SPI_Master(cfg_spi,
@@ -56,18 +58,20 @@ rtos_Blinker my_blinker = rtos_Blinker(150);
 //   widgets
 //..........................
 my_angle_widget ST7735_angle_widget = my_angle_widget(&color_display, ST7735_angle_config,
-                                                   ST7735_TEXT_CANVAS_FORMAT, &my_rtos_model.angle);
+                                                      ST7735_TEXT_CANVAS_FORMAT, &my_rtos_model.angle);
 my_H_position_widget ST7735_H_position_widget = my_H_position_widget(&color_display, ST7735_H_position_config,
-                                                                  ST7735_TEXT_CANVAS_FORMAT, &my_rtos_model.x_pos);
+                                                                     ST7735_TEXT_CANVAS_FORMAT, &my_rtos_model.x_pos);
 my_V_position_widget ST7735_V_position_widget = my_V_position_widget(&color_display, ST7735_V_position_config,
-                                                                  ST7735_TEXT_CANVAS_FORMAT, &my_rtos_model.y_pos);
+                                                                     ST7735_TEXT_CANVAS_FORMAT, &my_rtos_model.y_pos);
 my_graphic_widget ST7735_graph_widget = my_graphic_widget(&color_display, ST7735_graph_config,
                                                           ST7735_GRAPHICS_CANVAS_FORMAT, nullptr);
 //..........................
+#ifdef SHOW_I2C_DISPLAY
 my_text_widget SSD1306_values_widget = my_text_widget(&left_display, SSD1306_values_config,
                                                       SSD1306_CANVAS_FORMAT, nullptr);
 my_graphic_widget SSD1306_graph_widget = my_graphic_widget(&right_display, SSD1306_graph_config,
                                                            SSD1306_CANVAS_FORMAT, nullptr);
+#endif
 //..........................
 my_position_controller_widget SPI_focus_indicator_widget = my_position_controller_widget(&color_display, focus_indicator_config, ST7735_TEXT_CANVAS_FORMAT, &position_controller);
 
@@ -83,10 +87,11 @@ rtos_RotaryEncoder encoder = rtos_RotaryEncoder(GPIO_ENCODER_CLK, GPIO_ENCODER_D
 int main()
 {
     stdio_init_all();
-
+    xTaskCreate(SPI_focus_widget_task, "focus_widget_task", 256, NULL, 12, &SPI_focus_indicator_widget.task_handle);
+// controller tasks
     xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 25, NULL);
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 25, NULL);
-
+//main models tasks
     // xTaskCreate(angle_evolution_task, "periodic_task", 256, &p1, 20, NULL);
     xTaskCreate(my_model_task, "model_task", 256, NULL, 20, NULL); // 4us pour SPI_graph_widget_task, 12us SPI_values_widget_task, I2C_right_graph_widget_task, 16us pour I2C_left_values_widget_task
 
@@ -94,21 +99,19 @@ int main()
     xTaskCreate(controlled_position_task, "H_task", 256, &my_rtos_model.x_pos, 8, &my_rtos_model.x_pos.task_handle);
     xTaskCreate(controlled_position_task, "V_task", 256, &my_rtos_model.y_pos, 8, &my_rtos_model.y_pos.task_handle);
     xTaskCreate(controlled_position_task, "angle_task", 256, &my_rtos_model.angle, 8, &my_rtos_model.angle.task_handle);
-
+// widgets tasks
     xTaskCreate(blinker_task, "blinker", 256, &p1, 25, NULL);
-
-    xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, NULL, 13, &ST7735_graph_widget.task_handle); 
-    xTaskCreate(SPI_angle_widget_task, "angle_widget_task", 256, &p4, 12, &ST7735_angle_widget.task_handle);        
+    xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, NULL, 13, &ST7735_graph_widget.task_handle);
+    xTaskCreate(SPI_angle_widget_task, "angle_widget_task", 256, &p4, 12, &ST7735_angle_widget.task_handle);
     xTaskCreate(SPI_H_position_widget_task, "H_widget_task", 256, &p5, 12, &ST7735_H_position_widget.task_handle);
     xTaskCreate(SPI_V_position_widget_task, "V_widget_task", 256, &p6, 12, &ST7735_V_position_widget.task_handle);
-    
-
-    xTaskCreate(SPI_focus_widget_task, "focus_widget_task", 256, NULL, 12, &SPI_focus_indicator_widget.task_handle);        
-    xTaskCreate(I2C_right_graph_widget_task, "right_graph_widget_task", 256, NULL, 11, &SSD1306_graph_widget.task_handle);  
-    xTaskCreate(I2C_left_values_widget_task, "left_values_widget_task", 256, NULL, 10, &SSD1306_values_widget.task_handle); 
-
     xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p7, 5, NULL);
+
+#ifdef SHOW_I2C_DISPLAY
+    xTaskCreate(I2C_right_graph_widget_task, "right_graph_widget_task", 256, NULL, 11, &SSD1306_graph_widget.task_handle);
+    xTaskCreate(I2C_left_values_widget_task, "left_values_widget_task", 256, NULL, 10, &SSD1306_values_widget.task_handle);
     xTaskCreate(I2C_display_gate_keeper_task, "I2C_gate_keeper_task", 256, NULL, 5, NULL);
+#endif
 
     xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
     vTaskStartScheduler();

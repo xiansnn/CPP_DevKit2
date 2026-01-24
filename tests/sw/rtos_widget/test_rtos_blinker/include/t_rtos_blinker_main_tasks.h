@@ -12,7 +12,6 @@ extern rtos_ST7735 color_display;
 
 extern myMainClock my_clock;
 extern myClockController my_clock_controller;
-// extern focus_dummy_widget my_focus_manager_dummy_widget;
 extern clock_console_widget my_main_clock_console_widget;
 
 extern rtos_Blinker my_blinker;

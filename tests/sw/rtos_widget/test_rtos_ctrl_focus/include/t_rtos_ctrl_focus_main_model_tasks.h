@@ -6,11 +6,16 @@
 
 extern struct_ConfigTextWidget focus_indicator_config;
 
+#ifdef SHOW_I2C_DISPLAY
+extern my_graphic_widget SSD1306_graph_widget;
+extern my_text_widget SSD1306_values_widget;
+extern rtos_SSD1306 left_display;
+extern rtos_SSD1306 right_display;
+#endif
+
 extern my_model my_rtos_model;
 extern my_PositionController position_controller;
 
-extern my_graphic_widget SSD1306_graph_widget;
-extern my_text_widget SSD1306_values_widget;
 extern my_graphic_widget ST7735_graph_widget;
 extern my_angle_widget ST7735_angle_widget;
 extern my_H_position_widget ST7735_H_position_widget;
@@ -21,8 +26,6 @@ extern rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper;
 extern rtos_GraphicDisplayGateKeeper I2C_display_gate_keeper;
 
 extern rtos_ST7735 color_display;
-extern rtos_SSD1306 left_display;
-extern rtos_SSD1306 right_display;
 
 extern rtos_Blinker my_blinker;
 
@@ -37,7 +40,9 @@ void SPI_angle_widget_task(void *probe);
 void SPI_H_position_widget_task(void *probe);
 void SPI_V_position_widget_task(void *probe);
 void SPI_graph_widget_task(void *probe);
+void blinker_task(void *probe);
+
+#ifdef SHOW_I2C_DISPLAY
 void I2C_right_graph_widget_task(void *probe);
 void I2C_left_values_widget_task(void *probe);
-
-void blinker_task(void *probe);
+#endif
