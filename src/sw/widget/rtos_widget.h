@@ -108,7 +108,7 @@ public:
     virtual void blink() = 0;
 
     /// @brief  Show the focus of the widget
-    virtual void show_focus() = 0;
+    virtual void set_focus_color() = 0;
 };
 
 class rtos_Model;
