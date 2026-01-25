@@ -9,14 +9,15 @@
 #include "t_rtos_blinker_console_tasks.h"
 #include "t_rtos_blinker_console_widgets.h"
 
-// #define SHOW_CONSOLE_WIDGET
-// #define SHOW_MONITORING_WIDGET
-
-#include "utilities/probe/probe.h"
+// ##### Configuration structures #####
 Probe p0 = Probe(0);
 Probe p1 = Probe(1);
-// Probe p2 = Probe(2); //used by I2C
-// Probe p3 = Probe(3); //used by I2C
+
+#if !defined(SHOW_MONITORING_WIDGET)
+Probe p2 = Probe(2); //used by I2C
+Probe p3 = Probe(3); //used by I2C
+#endif 
+
 Probe p4 = Probe(4);
 Probe p5 = Probe(5);
 Probe p6 = Probe(6);
@@ -25,7 +26,7 @@ Probe p7 = Probe(7);
 // ##### main classes #####
 myClockController my_clock_controller = myClockController(true);
 myMainClock my_clock = myMainClock();
-rtos_Blinker my_blinker = rtos_Blinker(250);
+rtos_Blinker my_blinker = rtos_Blinker(150);
 
 // ##### ST7735 setup #####
 rtos_HW_SPI_Master spi_master = rtos_HW_SPI_Master(cfg_spi,
@@ -81,13 +82,13 @@ int main()
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 25, NULL);
 
     xTaskCreate(one_second_timer_task, "one_second_timer_task", 256, &p1, 20, NULL);
-    xTaskCreate(my_clock_main_task, "clock_task", 256, &p1, 20, NULL);
-    xTaskCreate(my_clock_controlled_hour_task, "hour_task", 256, NULL, 20, NULL);
-    xTaskCreate(my_clock_controlled_minute_task, "minute_task", 256, NULL, 20, NULL);
-    xTaskCreate(my_clock_controlled_second_task, "second_task", 256, NULL, 20, NULL);
+    xTaskCreate(my_clock_main_task, "clock_task", 256, &p1, 21, NULL);
+    xTaskCreate(my_clock_controlled_hour_task, "hour_task", 256, NULL, 22, NULL);
+    xTaskCreate(my_clock_controlled_minute_task, "minute_task", 256, NULL, 22, NULL);
+    xTaskCreate(my_clock_controlled_second_task, "second_task", 256, NULL, 22, NULL);
     xTaskCreate(my_clock_controller_task, "clock_controller_task", 256, NULL, 8, &my_clock_controller.task_handle);
 
-    xTaskCreate(blinker_task, "blinker", 256, &p4, 25, NULL);
+    xTaskCreate(blinker_task, "blinker", 256, &p1, 25, NULL);
 
     xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p7, 5, NULL);
 
