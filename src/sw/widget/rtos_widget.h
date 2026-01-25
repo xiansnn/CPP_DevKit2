@@ -33,7 +33,7 @@ class rtos_BlinkingWidget;
 class rtos_Blinker
 {
 private:
-    /// @brief The period of the blinking, in milliseconds
+    /// @brief set of blinking widgets managed by the blinker
     std::set<rtos_BlinkingWidget *> blinking_widgets;
 
 public:
@@ -41,13 +41,14 @@ public:
     uint32_t blink_period_ms;
 
     /// @brief The current phase of the blinking
+    /// @usage: used to define if the widgets must be shown or hidden when blinking
     bool current_blink_phase{false};
 
-    /// @brief  Add a blinking widget to the blinker
+    /// @brief  Add a blinking widget to the blinker. This widget will receive notification each blink period
     /// @param widget   the blinking widget to add
     void add_blinking_widget(rtos_BlinkingWidget *widget);
 
-    /// @brief  Remove a blinking widget from the blinker
+    /// @brief  Remove a blinking widget from the blinker. this widget will no longer receive notification each blink period
     /// @param widget   the blinking widget to remove
     void remove_blinking_widget(rtos_BlinkingWidget *widget);
 
@@ -59,6 +60,7 @@ public:
     ~rtos_Blinker();
 
     /// @brief  Refresh the blinking state of all blinking widgets
+    /// @note This method is called each blink period, and toggles the blink phase
     void refresh_blinking();
 };
 
@@ -70,11 +72,13 @@ private:
 protected:
     /// @brief the blinker associated to the blinking widget
     rtos_Blinker *blinker;
-    /// @brief the blinking state of the widget
-    bool is_blinking{false};
-    /// @brief backup of the canvas colors
+
+    /// @brief backup of the canvas colors.
+    /// @note used to restore the foreground color after blinking
     ColorIndex fg_color_backup;
+
     /// @brief backup of the canvas background colors
+    /// @note used to restore the background color after blinking
     ColorIndex bg_color_backup;
 
 public:
@@ -85,29 +89,37 @@ public:
     ~rtos_BlinkingWidget();
 
     /// @brief  Start the blinking of the widget
+    /// @note  the widget is registered to the blinker
     void start_blinking();
 
     /// @brief  Stop the blinking of the widget
+    /// @note  the widget is unregistered from the blinker
     void stop_blinking();
 
-    /// @brief  Setup the blinker for the blinking widget
+    /// @brief  Setup the blinker for the blinking widget and store the current canvas colors
     /// @param blinker   the blinker to setup
     void setup_blinking(rtos_Blinker *blinker);
 
     /// @brief  Convert the status to blinking behavior
+    /// @note  this method defines how the widget will blink according to the status. It can be overloaded if needed.
     /// @param status
     virtual void convert_status_to_blinking_behavior(ControlledObjectStatus status);
 
     /// @brief  Save the current canvas colors
+    /// @note  this method must be overloaded to save the canvas colors of the specific text or graphic widget
     virtual void save_canvas_color() = 0;
 
     /// @brief  Restore the saved canvas colors
+    /// @note  this method must be overloaded to restore the canvas colors of the specific text or graphic widget
     virtual void restore_canvas_color() = 0;
 
     /// @brief  Blink the widget
+    /// @note  this method must be overloaded to define how the widget blinks.
+    /// @note  typically, the widget will switch between the foreground and background color, or repalce foregroung by background.
     virtual void blink() = 0;
 
     /// @brief  Show the focus of the widget
+    /// @note  this method must be overloaded to define how the widget shows focus.
     virtual void set_focus_color() = 0;
 };
 
@@ -168,7 +180,7 @@ public:
 
     /// @brief a pure virtual member that is called to effectively draw the widget.
     /// \note USAGE: This member function can be called by the draw_refresh_all_attached_widgets() method of the Model.
-    /// Refer to the following diagram.
+    /// \note valid only when FreeRTOS is not used. In RTOS mode, the drawing is done differently (still to be documented).
     /// \image html draw.svg
     virtual void draw() = 0;
 
