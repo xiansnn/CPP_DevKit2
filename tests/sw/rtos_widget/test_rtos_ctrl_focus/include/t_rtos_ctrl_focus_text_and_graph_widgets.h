@@ -42,7 +42,7 @@ public:
     void save_canvas_color() override;
     void restore_canvas_color() override;
     void blink() override;
-    void show_focus() override;
+    void set_focus_color() override;
 };
 class my_H_position_widget : public rtos_TextWidget, public rtos_BlinkingWidget
 {
@@ -59,7 +59,7 @@ public:
     void save_canvas_color() override;
     void restore_canvas_color() override;
     void blink() override;
-    void show_focus() override;
+    void set_focus_color() override;
 };
 class my_V_position_widget : public rtos_TextWidget, public rtos_BlinkingWidget
 {
@@ -76,7 +76,7 @@ public:
     void save_canvas_color() override;
     void restore_canvas_color() override;
     void blink() override;
-    void show_focus() override;
+    void set_focus_color() override;
 };
 
 /// @brief Construct an implementation of TextWidget for test_ui_core program.

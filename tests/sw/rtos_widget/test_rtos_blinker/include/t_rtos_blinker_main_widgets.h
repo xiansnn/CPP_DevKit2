@@ -22,7 +22,7 @@ public:
     void blink();
     void save_canvas_color();
     void restore_canvas_color();
-    void show_focus();
+    void set_focus_color();
 
 };
 class my_minute_text_widget : public rtos_TextWidget, public rtos_BlinkingWidget
@@ -40,7 +40,7 @@ public:
     void blink();
     void save_canvas_color();
     void restore_canvas_color();
-    void show_focus();
+    void set_focus_color();
 
 };
 class my_second_text_widget : public rtos_TextWidget, public rtos_BlinkingWidget
@@ -58,7 +58,7 @@ public:
     void save_canvas_color();
     void restore_canvas_color();
     void blink();
-    void show_focus();
+    void set_focus_color();
 
 };
 

@@ -190,7 +190,7 @@ void my_angle_widget::blink()
         xTaskNotifyGive(this->task_handle);
 }
 
-void my_angle_widget::show_focus()
+void my_angle_widget::set_focus_color()
 {
     this->writer->canvas->fg_color = this->bg_color_backup;
     this->writer->canvas->bg_color = this->fg_color_backup;
@@ -244,7 +244,7 @@ void my_H_position_widget::blink()
         xTaskNotifyGive(this->task_handle);
 }
 
-void my_H_position_widget::show_focus()
+void my_H_position_widget::set_focus_color()
 {
     this->writer->canvas->fg_color = this->bg_color_backup;
     this->writer->canvas->bg_color = this->fg_color_backup;
@@ -297,7 +297,7 @@ void my_V_position_widget::blink()
         xTaskNotifyGive(this->task_handle);
 }
 
-void my_V_position_widget::show_focus()
+void my_V_position_widget::set_focus_color()
 {
     this->writer->canvas->fg_color = this->bg_color_backup;
     this->writer->canvas->bg_color = this->fg_color_backup;

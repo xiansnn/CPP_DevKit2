@@ -87,7 +87,7 @@ void my_hour_text_widget::restore_canvas_color()
     this->writer->canvas->bg_color = this->bg_color_backup;
 }
 
-void my_hour_text_widget::show_focus()
+void my_hour_text_widget::set_focus_color()
 {
     this->writer->canvas->fg_color = this->bg_color_backup;
     this->writer->canvas->bg_color = this->fg_color_backup;
@@ -142,7 +142,7 @@ void my_minute_text_widget::restore_canvas_color()
     this->writer->canvas->bg_color = this->bg_color_backup;
 }
 
-void my_minute_text_widget::show_focus()
+void my_minute_text_widget::set_focus_color()
 {
     this->writer->canvas->fg_color = this->bg_color_backup;
     this->writer->canvas->bg_color = this->fg_color_backup;
@@ -198,6 +198,6 @@ void my_second_text_widget::blink()
         xTaskNotifyGive(this->task_handle);
 }
 
-void my_second_text_widget::show_focus()
+void my_second_text_widget::set_focus_color()
 {
 }
