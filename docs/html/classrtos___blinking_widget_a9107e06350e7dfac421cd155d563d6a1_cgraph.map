@@ -1,0 +1,11 @@
+<map id="rtos_BlinkingWidget::convert_status_to_blinking_behavior" name="rtos_BlinkingWidget::convert_status_to_blinking_behavior">
+<area shape="rect" id="Node000001" title="Convert the status to blinking behavior." alt="" coords="5,80,305,105"/>
+<area shape="rect" id="Node000002" href="$classrtos___blinking_widget.html#a5c387fc41b9f73e6f2cb66209799ea44" title="Restore the saved canvas colors." alt="" coords="353,5,578,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,77,352,40,391,31,392,37,353,46,207,82"/>
+<area shape="rect" id="Node000003" href="$classrtos___blinking_widget.html#a9550a029f6b4603fea3fce8efbb22100" title="Show the focus of the widget." alt="" coords="366,55,564,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="305,77,350,74,351,79,305,83"/>
+<area shape="rect" id="Node000004" href="$classrtos___blinking_widget.html#a1e2329f9a3da427c92052cebf7de037b" title="Start the blinking of the widget." alt="" coords="372,104,559,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="305,101,357,105,356,111,305,107"/>
+<area shape="rect" id="Node000005" href="$classrtos___blinking_widget.html#adff9663deab3755d28b37715bd82c066" title="Stop the blinking of the widget." alt="" coords="373,153,558,178"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="209,103,353,138,392,147,391,152,352,143,208,108"/>
+</map>

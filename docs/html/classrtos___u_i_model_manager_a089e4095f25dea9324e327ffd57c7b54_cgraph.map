@@ -1,0 +1,7 @@
+<map id="rtos_UIModelManager::make_rtos_manager_active" name="rtos_UIModelManager::make_rtos_manager_active">
+<area shape="rect" id="Node000001" title="Make the rtos_UIModelManager the active one." alt="" coords="5,5,275,30"/>
+<area shape="rect" id="Node000002" href="$classrtos___u_i_controlled_model.html#adfdbebf7c1c5ca38078dd3bbd4e9c366" title="update the status of the controlled model" alt="" coords="323,5,559,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="275,15,307,15,307,20,275,20"/>
+<area shape="rect" id="Node000003" href="$classrtos___model.html#a0d24766c16eaffebc86166dc1ce90583" title="notify all linked widget tasks that the model has changed" alt="" coords="607,5,828,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="560,15,591,15,591,20,560,20"/>
+</map>

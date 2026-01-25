@@ -16,8 +16,7 @@ var searchData=
   ['irq_5fevent_5fmask_5fconfig_13',['irq_event_mask_config',['../classrtos___switch_button.html#a525ca734a0af08bd0e0b4a73e9ba3687',1,'rtos_SwitchButton::irq_event_mask_config'],['../class_switch_button_with_i_r_q.html#af239f30220d2d6b8b82789b43d361629',1,'SwitchButtonWithIRQ::irq_event_mask_config']]],
   ['irq_5fnumber_14',['irq_number',['../class_h_w___d_m_a.html#a40b855940b730c2ac0d583f9e4d41be3',1,'HW_DMA']]],
   ['irqdata_5finput_5fqueue_15',['IRQdata_input_queue',['../classrtos___switch_button.html#a50a688ea4a876079b03bfb022b8f5a4b',1,'rtos_SwitchButton']]],
-  ['is_5fblinking_16',['is_blinking',['../classrtos___blinking_widget.html#a5471de7eb6af735caff4c8f1d34b7b23',1,'rtos_BlinkingWidget']]],
-  ['is_5fvalid_17',['is_valid',['../structstruct___d_h_t_reading.html#ac02a8974d21885a59e1e3552921ccd1b',1,'struct_DHTReading']]],
-  ['is_5fwrapable_18',['is_wrapable',['../classrtos___u_i_model_manager.html#a6e752666df35917b8b7b5b579b48c863',1,'rtos_UIModelManager']]],
-  ['is_5fwrappable_19',['is_wrappable',['../classcore___increment_controlled_model.html#ae86a33125ea8e57b5b4c18cccee2aa0d',1,'core_IncrementControlledModel::is_wrappable'],['../class_u_i_controlled_incremental_value.html#a73b3a10b2774cf4ce94902925ffc9ad9',1,'UIControlledIncrementalValue::is_wrappable']]]
+  ['is_5fvalid_16',['is_valid',['../structstruct___d_h_t_reading.html#ac02a8974d21885a59e1e3552921ccd1b',1,'struct_DHTReading']]],
+  ['is_5fwrapable_17',['is_wrapable',['../classrtos___u_i_model_manager.html#a6e752666df35917b8b7b5b579b48c863',1,'rtos_UIModelManager']]],
+  ['is_5fwrappable_18',['is_wrappable',['../classcore___increment_controlled_model.html#ae86a33125ea8e57b5b4c18cccee2aa0d',1,'core_IncrementControlledModel::is_wrappable'],['../class_u_i_controlled_incremental_value.html#a73b3a10b2774cf4ce94902925ffc9ad9',1,'UIControlledIncrementalValue::is_wrappable']]]
 ];
