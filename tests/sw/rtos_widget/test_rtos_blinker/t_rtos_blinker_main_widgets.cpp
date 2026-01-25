@@ -54,12 +54,8 @@ void my_hour_text_widget::draw()
     this->writer->clear_text_buffer();
     get_value_of_interest();
 
-    // prepare to blink 
-    if (hour_status == ControlledObjectStatus::IS_ACTIVE)
-        this->start_blinking();
-    else
-        this->stop_blinking();
-
+    // prepare to blink
+    convert_status_to_blinking_behavior(hour_status);
     // effective draw
     sprintf(this->writer->text_buffer, "%02d", hour_value);
     this->writer->write();
@@ -67,7 +63,7 @@ void my_hour_text_widget::draw()
 
 void my_hour_text_widget::blink()
 {
-    //process effective blinking
+    // process effective blinking
     this->writer->canvas->fg_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
     this->writer->canvas->bg_color = (blinker->current_blink_phase) ? this->fg_color_backup : this->bg_color_backup;
 
@@ -113,11 +109,7 @@ void my_minute_text_widget::draw()
 {
     this->writer->clear_text_buffer();
     get_value_of_interest();
-    if (minute_status == ControlledObjectStatus::IS_ACTIVE)
-        this->start_blinking();
-    else
-        this->stop_blinking();
-
+    convert_status_to_blinking_behavior(minute_status);
     // draw
     sprintf(this->writer->text_buffer, ":%02d", minute_value);
     this->writer->write();
@@ -168,14 +160,12 @@ void my_second_text_widget::draw()
 {
     this->writer->clear_text_buffer();
     get_value_of_interest();
-    if (second_status == ControlledObjectStatus::IS_ACTIVE)
-        this->start_blinking();
-    else
-        this->stop_blinking();
+    convert_status_to_blinking_behavior(second_status);
+
     // draw
     sprintf(this->writer->text_buffer, ":%02d", second_value);
     this->writer->write();
-    this->writer->draw_border();
+    this->writer->draw_border(this->writer->canvas->fg_color);
 }
 
 void my_second_text_widget::save_canvas_color()
@@ -200,4 +190,5 @@ void my_second_text_widget::blink()
 
 void my_second_text_widget::set_focus_color()
 {
+    this->writer->canvas->fg_color = ColorIndex::RED;
 }

@@ -68,9 +68,9 @@ myMainClock::myMainClock()
       second("second", this, 0, 60, 1)
 {
     this->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
-    this->hour.update_rtos_status(ControlledObjectStatus::IS_WAITING);
-    this->minute.update_rtos_status(ControlledObjectStatus::IS_WAITING);
-    this->second.update_rtos_status(ControlledObjectStatus::IS_WAITING);
+    this->hour.update_rtos_status(ControlledObjectStatus::IS_IDLE);
+    this->minute.update_rtos_status(ControlledObjectStatus::IS_IDLE);
+    this->second.update_rtos_status(ControlledObjectStatus::IS_IDLE);
 }
 
 myMainClock::~myMainClock()

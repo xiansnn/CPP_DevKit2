@@ -1,4 +1,21 @@
 #pragma once
+// #define SHOW_CONSOLE_WIDGET
+// #define SHOW_MONITORING_WIDGET
+
+#include "utilities/probe/probe.h"
+extern Probe p0;
+extern Probe p1;
+
+#if !defined(SHOW_MONITORING_WIDGET)
+extern Probe p2; // I2C SDA
+extern Probe p3; // I2C SCL
+#endif 
+
+extern Probe p4;    
+extern Probe p5;
+extern Probe p6;
+extern Probe p7;
+
 
 //-------------main
 #define PERIOD_REFRESH_ms 1000
