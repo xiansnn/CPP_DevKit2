@@ -13,8 +13,6 @@
 // TODO create a monitoring widget for the angle and positions values and for the controller status and focused object
 // TODO create an Example directory
 
-
-
 #include "sw/ui_core/rtos_ui_core.h"
 #include "sw/widget/rtos_widget.h"
 #include "t_rtos_ctrl_focus_text_and_graph_widgets.h"
@@ -24,14 +22,17 @@
 #include "t_rtos_ctrl_focus_main_model_tasks.h"
 #include "t_rtos_ctrl_focus_ST7735_display_setup.h"
 
-
 Probe p0 = Probe(0);
 Probe p1 = Probe(1);
+#if !defined(SHOW_I2C_DISPLAY)
+Probe p2 = Probe(2);
+Probe p3 = Probe(3);
+#endif // SHOW_I2C8DISPLA
+
 Probe p4 = Probe(4);
 Probe p5 = Probe(5);
 Probe p6 = Probe(6);
 Probe p7 = Probe(7);
-
 
 #ifdef SHOW_I2C_DISPLAY
 //  SSD1306 setup
@@ -87,22 +88,22 @@ rtos_RotaryEncoder encoder = rtos_RotaryEncoder(GPIO_ENCODER_CLK, GPIO_ENCODER_D
 //  ------------------------------- main() -------------------------------------------------------------------
 int main()
 {
-    #ifdef SHOW_SPI_FOCUS_INDICATOR
+#ifdef SHOW_SPI_FOCUS_INDICATOR
     stdio_init_all();
     xTaskCreate(SPI_focus_widget_task, "focus_widget_task", 256, NULL, 12, &SPI_focus_indicator_widget.task_handle);
-    #endif
-// controller tasks
+#endif
+    // controller tasks
     xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 25, NULL);
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 25, NULL);
-//main models tasks
-    // xTaskCreate(angle_evolution_task, "periodic_task", 256, &p1, 20, NULL);
+    // main models tasks
+    //  xTaskCreate(angle_evolution_task, "periodic_task", 256, &p1, 20, NULL);
     xTaskCreate(my_model_task, "model_task", 256, NULL, 20, NULL); // 4us pour SPI_graph_widget_task, 12us SPI_values_widget_task, I2C_right_graph_widget_task, 16us pour I2C_left_values_widget_task
 
     xTaskCreate(position_controller_task, "position_controller_task", 256, NULL, 8, &position_controller.task_handle);
     xTaskCreate(controlled_position_task, "H_task", 256, &my_rtos_model.x_pos, 8, &my_rtos_model.x_pos.task_handle);
     xTaskCreate(controlled_position_task, "V_task", 256, &my_rtos_model.y_pos, 8, &my_rtos_model.y_pos.task_handle);
     xTaskCreate(controlled_position_task, "angle_task", 256, &my_rtos_model.angle, 8, &my_rtos_model.angle.task_handle);
-// widgets tasks
+    // widgets tasks
     xTaskCreate(blinker_task, "blinker", 256, &p1, 25, NULL);
     xTaskCreate(SPI_graph_widget_task, "graph_widget_task", 256, NULL, 13, &ST7735_graph_widget.task_handle);
     xTaskCreate(SPI_angle_widget_task, "angle_widget_task", 256, &p4, 12, &ST7735_angle_widget.task_handle);
