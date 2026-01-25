@@ -9,9 +9,6 @@
  *
  */
 
-// TODO add a common fonction for managing blinking behavior
-// TODO create a monitoring widget for the angle and positions values and for the controller status and focused object
-// TODO create an Example directory
 
 #include "sw/ui_core/rtos_ui_core.h"
 #include "sw/widget/rtos_widget.h"
