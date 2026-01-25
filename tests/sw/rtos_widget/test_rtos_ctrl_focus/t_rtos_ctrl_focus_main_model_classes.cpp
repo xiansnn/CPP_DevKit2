@@ -134,7 +134,6 @@ void my_PositionController::process_control_event(struct_ControlEventData contro
             case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
                 printf("position_controller focus on [%s]: RELEASED_AFTER_SHORT_TIME\n", ((my_ControlledCenterPosition *)managed_rtos_models[get_current_focus_index()])->name.c_str());
                 this->make_managed_rtos_model_active();
-                this->forward_control_event_to_active_managed_model(&control_event);
                 break;
             case UIControlEvent::INCREMENT:
                 this->increment_focus();
@@ -146,7 +145,7 @@ void my_PositionController::process_control_event(struct_ControlEventData contro
                 break;
             case UIControlEvent::TIME_OUT:
                 printf("position_controller focus on [%s]: TIME_OUT\n", ((my_ControlledCenterPosition *)managed_rtos_models[get_current_focus_index()])->name.c_str());
-                this->managed_rtos_models [get_current_focus_index()]->update_rtos_status(ControlledObjectStatus::IS_IDLE);
+                this->managed_rtos_models[get_current_focus_index()]->update_rtos_status(ControlledObjectStatus::IS_IDLE);
                 this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
                 break;
             default:

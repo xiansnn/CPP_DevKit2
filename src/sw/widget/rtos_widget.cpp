@@ -114,7 +114,7 @@ void rtos_Blinker::add_blinking_widget(rtos_BlinkingWidget *widget)
 
 void rtos_Blinker::remove_blinking_widget(rtos_BlinkingWidget *widget)
 {
-    this->blinking_widgets.extract(widget);
+    this->blinking_widgets.erase(widget);
 }
 
 void rtos_Blinker::refresh_blinking()
@@ -140,7 +140,6 @@ void rtos_BlinkingWidget::start_blinking()
 void rtos_BlinkingWidget::stop_blinking()
 {
     this->blinker->remove_blinking_widget(this);
-    restore_canvas_color();
 }
 
 void rtos_BlinkingWidget::setup_blinking(rtos_Blinker *blinker)
@@ -154,15 +153,18 @@ void rtos_BlinkingWidget::convert_status_to_blinking_behavior(ControlledObjectSt
     switch (status)
     {
     case ControlledObjectStatus::HAS_FOCUS:
-        show_focus();
+        stop_blinking();
+        set_focus_color();
         break;
     case ControlledObjectStatus::IS_ACTIVE:
         start_blinking();
         break;
     case ControlledObjectStatus::IS_WAITING:
         stop_blinking();
+        restore_canvas_color();
         break;
     case ControlledObjectStatus::IS_IDLE:
+        stop_blinking();
         restore_canvas_color();
         break;
     default:

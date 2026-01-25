@@ -119,6 +119,7 @@ public:
     void reset_current_focus_index();
 
     /// @brief Make the rtos_UIModelManager the active one
+    /// @note This will set the manager status to IS_ACTIVE leave set the previous active managed model to HAS_FOCUS
     void make_rtos_manager_active();
     /// @brief Add a new managed rtos_UIControlledModel
     /// @param new_model The new model to be added
