@@ -20,11 +20,14 @@ extern my_graphic_widget ST7735_graph_widget;
 extern my_angle_widget ST7735_angle_widget;
 extern my_H_position_widget ST7735_H_position_widget;
 extern my_V_position_widget ST7735_V_position_widget;
+#ifdef SHOW_SPI_FOCUS_INDICATOR
 extern my_position_controller_widget SPI_focus_indicator_widget;
+#endif
 
 extern rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper;
+#ifdef SHOW_I2C_DISPLAY
 extern rtos_GraphicDisplayGateKeeper I2C_display_gate_keeper;
-
+#endif
 extern rtos_ST7735 color_display;
 
 extern rtos_Blinker my_blinker;
@@ -35,7 +38,9 @@ void my_model_task(void *probe);
 void angle_evolution_task(void *probe);
 void controlled_position_task(void *position);
 
+#ifdef SHOW_SPI_FOCUS_INDICATOR
 void SPI_focus_widget_task(void *probe);
+#endif
 void SPI_angle_widget_task(void *probe);
 void SPI_H_position_widget_task(void *probe);
 void SPI_V_position_widget_task(void *probe);

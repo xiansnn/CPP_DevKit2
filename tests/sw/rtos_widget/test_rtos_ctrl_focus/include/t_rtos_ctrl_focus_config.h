@@ -10,8 +10,20 @@
  */
 #pragma once
 
+#include "utilities/probe/probe.h"
+extern Probe p0;
+extern Probe p1;
+// extern Probe p2; // I2C SDA
+// extern Probe p3; // I2C SCL
+extern Probe p4;    
+extern Probe p5;
+extern Probe p6;
+extern Probe p7;
+
+
+
 // #define SHOW_I2C_DISPLAY
-#define SHOW_SPI_FOCUS_INDICATOR
+// #define SHOW_SPI_FOCUS_INDICATOR
 
 
 #ifdef SHOW_I2C_DISPLAY

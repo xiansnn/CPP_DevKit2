@@ -17,9 +17,11 @@
 #include "sw/ui_core/rtos_ui_core.h"
 
 extern struct_ConfigGraphicWidget ST7735_graph_config;
+#ifdef SHOW_I2C_DISPLAY
 extern struct_ConfigTextWidget SSD1306_title_config;
 extern struct_ConfigTextWidget SSD1306_values_config;
 extern struct_ConfigGraphicWidget SSD1306_graph_config;
+#endif
 
 extern struct_ConfigTextWidget ST7735_angle_config;
 extern struct_ConfigTextWidget ST7735_H_position_config;

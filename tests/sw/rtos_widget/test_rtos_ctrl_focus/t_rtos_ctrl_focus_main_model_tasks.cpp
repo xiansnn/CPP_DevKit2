@@ -92,7 +92,8 @@ void controlled_position_task(void *position)
         center_position->process_control_event(received_control_event);
     }
 }
-
+#ifdef SHOW_SPI_FOCUS_INDICATOR
+//------------------------- SPI focus indicator widget---------------------
 void SPI_focus_widget_task(void *probe)
 {
     while (true)
@@ -106,7 +107,7 @@ void SPI_focus_widget_task(void *probe)
         SPI_display_gate_keeper.send_widget_data(&SPI_focus_indicator_widget);
     }
 }
-
+#endif
 void SPI_angle_widget_task(void *probe)
 {
     ST7735_angle_widget.setup_blinking(&my_blinker);

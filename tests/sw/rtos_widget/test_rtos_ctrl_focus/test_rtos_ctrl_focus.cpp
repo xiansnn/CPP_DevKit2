@@ -10,6 +10,7 @@
  */
 
 // TODO add a common fonction for managing blinking behavior
+// TODO create a monitoring widget for the angle and positions values and for the controller status and focused object
 // TODO create an Example directory
 
 
@@ -24,11 +25,8 @@
 #include "t_rtos_ctrl_focus_ST7735_display_setup.h"
 
 
-#include "utilities/probe/probe.h"
 Probe p0 = Probe(0);
 Probe p1 = Probe(1);
-// Probe p2 = Probe(2);
-// Probe p3 = Probe(3);
 Probe p4 = Probe(4);
 Probe p5 = Probe(5);
 Probe p6 = Probe(6);
@@ -73,7 +71,10 @@ my_graphic_widget SSD1306_graph_widget = my_graphic_widget(&right_display, SSD13
                                                            SSD1306_CANVAS_FORMAT, nullptr);
 #endif
 //..........................
+#ifdef SHOW_SPI_FOCUS_INDICATOR
+// focus indicator widget
 my_position_controller_widget SPI_focus_indicator_widget = my_position_controller_widget(&color_display, focus_indicator_config, ST7735_TEXT_CANVAS_FORMAT, &position_controller);
+#endif
 
 //  KY040 encoder controller setup
 rtos_SwitchButton central_switch = rtos_SwitchButton(GPIO_CENTRAL_SWITCH,
@@ -86,8 +87,10 @@ rtos_RotaryEncoder encoder = rtos_RotaryEncoder(GPIO_ENCODER_CLK, GPIO_ENCODER_D
 //  ------------------------------- main() -------------------------------------------------------------------
 int main()
 {
+    #ifdef SHOW_SPI_FOCUS_INDICATOR
     stdio_init_all();
     xTaskCreate(SPI_focus_widget_task, "focus_widget_task", 256, NULL, 12, &SPI_focus_indicator_widget.task_handle);
+    #endif
 // controller tasks
     xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 25, NULL);
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 25, NULL);
