@@ -13,6 +13,7 @@ add_executable(test_rtos_blinker
                 t_rtos_blinker_console_widgets.cpp
                 t_rtos_blinker_monitoring_widgets.cpp
                 t_rtos_blinker_main_widgets.cpp
+                t_rtos_blinker_clock_widget.cpp
                 )
 target_link_libraries(test_rtos_blinker 
             pico_stdlib 

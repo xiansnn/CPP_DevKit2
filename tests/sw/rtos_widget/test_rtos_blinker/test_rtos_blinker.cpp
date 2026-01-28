@@ -8,6 +8,7 @@
 #include "t_rtos_blinker_monitoring_widgets.h"
 #include "t_rtos_blinker_console_tasks.h"
 #include "t_rtos_blinker_console_widgets.h"
+#include "t_rtos_blinker_clock_widget.h"
 
 // ##### Configuration structures #####
 Probe p0 = Probe(0);
@@ -63,6 +64,8 @@ my_hour_text_widget hour_text_widget = my_hour_text_widget(&color_display, clock
 my_minute_text_widget minute_text_widget = my_minute_text_widget(&color_display, clock_minute_text_cfg, CanvasFormat::RGB565_16b, &my_clock.minute);
 my_second_text_widget second_text_widget = my_second_text_widget(&color_display, clock_second_text_cfg, CanvasFormat::RGB565_16b, &my_clock.second);
 
+ClockWidget clock_widget = ClockWidget(&my_clock, clock_widget_config, CanvasFormat::RGB565_16b, &color_display);
+
 // ####################
 int main()
 {
@@ -95,6 +98,7 @@ int main()
     xTaskCreate(SPI_hour_text_widget_task, "SPI_hour", 256, &p4, 25, &hour_text_widget.task_handle);
     xTaskCreate(SPI_minute_text_widget_task, "SPI_minute", 256, &p5, 25, &minute_text_widget.task_handle);
     xTaskCreate(SPI_second_text_widget_task, "SPI_second", 256, &p6, 25, &second_text_widget.task_handle);
+    xTaskCreate(clock_widget_task, "clock_widget_task", 256, &p7, 24, &clock_widget.task_handle);
 
     xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
     vTaskStartScheduler();

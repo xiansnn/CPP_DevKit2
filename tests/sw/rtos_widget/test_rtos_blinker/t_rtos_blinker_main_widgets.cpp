@@ -183,7 +183,8 @@ void my_second_text_widget::restore_canvas_color()
 
 void my_second_text_widget::blink()
 {
-    this->writer->widget_with_border = blinker->current_blink_phase;
+    // this->writer->widget_with_border = blinker->current_blink_phase;
+    this->writer->canvas->fg_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
     if (this->task_handle != nullptr)
         xTaskNotifyGive(this->task_handle);
 }

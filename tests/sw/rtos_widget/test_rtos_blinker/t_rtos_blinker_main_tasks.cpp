@@ -114,6 +114,20 @@ void one_second_timer_task(void *probe) // periodic task
     }
 }
 
+void clock_widget_task(void *probe)
+{
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
+        clock_widget.draw();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
+        SPI_display_gate_keeper.send_widget_data(&clock_widget);
+    }
+}
+
 void blinker_task(void *probe)
 {
     TickType_t xLastWakeTime = xTaskGetTickCount();
