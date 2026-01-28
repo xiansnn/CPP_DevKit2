@@ -191,5 +191,6 @@ void my_second_text_widget::blink()
 
 void my_second_text_widget::set_focus_color()
 {
-    this->writer->canvas->fg_color = ColorIndex::RED;
+    this->writer->canvas->fg_color = this->bg_color_backup;
+    this->writer->canvas->bg_color = this->fg_color_backup;
 }

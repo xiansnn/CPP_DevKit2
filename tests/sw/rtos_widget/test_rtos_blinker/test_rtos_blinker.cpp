@@ -98,7 +98,7 @@ int main()
     xTaskCreate(SPI_hour_text_widget_task, "SPI_hour", 256, &p4, 25, &hour_text_widget.task_handle);
     xTaskCreate(SPI_minute_text_widget_task, "SPI_minute", 256, &p5, 25, &minute_text_widget.task_handle);
     xTaskCreate(SPI_second_text_widget_task, "SPI_second", 256, &p6, 25, &second_text_widget.task_handle);
-    xTaskCreate(clock_widget_task, "clock_widget_task", 256, &p7, 24, &clock_widget.task_handle);
+    xTaskCreate(clock_widget_task, "clock_widget_task", 256, &p3, 24, &clock_widget.task_handle);
 
     xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
     vTaskStartScheduler();

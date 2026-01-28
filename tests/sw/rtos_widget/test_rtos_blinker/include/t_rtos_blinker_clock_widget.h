@@ -7,12 +7,12 @@ extern struct_ConfigGraphicWidget clock_widget_config;
 class ClockWidget : public rtos_GraphicWidget
 {
 private:
-    int hour_angle;
+    int hour_angle_degree;
     int hour_length;
     int minute_length;
     uint second_length;
-    uint minute_angle;
-    uint second_angle;
+    uint minute_angle_degree;
+    uint second_angle_degree;
     uint radius;
     ColorIndex face_color{ColorIndex::WHITE};
     ColorIndex hour_color{ColorIndex::YELLOW};
@@ -22,7 +22,7 @@ private:
     uint y_center;
 
     void draw_dial(uint number_of_divisions, uint number_of_subdivisions);
-    void draw_clock_hands(int angle, uint length, ColorIndex color);
+    void draw_clock_hands(int angle_degree, uint length, ColorIndex color);
 
 public:
     ClockWidget(rtos_Model *actual_displayed_model,

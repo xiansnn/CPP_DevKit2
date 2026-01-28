@@ -33,9 +33,9 @@ void ClockWidget::draw_dial(uint number_of_divisions, uint number_of_subdivision
     this->drawer->circle(this->radius, this->x_center, this->y_center, false, face_color);
 }
 
-void ClockWidget::draw_clock_hands(int angle, uint length, ColorIndex color)
+void ClockWidget::draw_clock_hands(int angle_degree, uint length, ColorIndex color)
 {
-    float angle_rad = (90 - angle) * 3.14159f / 180.0f;
+    float angle_rad = (90 - angle_degree) * 3.14159f / 180.0f;
     uint x_end = this->x_center + static_cast<int>(length * cosf(angle_rad));
     uint y_end = this->y_center - static_cast<int>(length * sinf(angle_rad));
     this->drawer->line(this->x_center, this->y_center, x_end, y_end, color);
@@ -66,9 +66,9 @@ void ClockWidget::draw()
     get_value_of_interest();
     this->drawer->clear_widget();
     draw_dial(12, 5);
-    draw_clock_hands(second_angle, second_length, second_color);
-    draw_clock_hands(minute_angle, minute_length, minute_color);
-    draw_clock_hands(hour_angle, hour_length, hour_color);
+    draw_clock_hands(second_angle_degree, second_length, second_color);
+    draw_clock_hands(minute_angle_degree, minute_length, minute_color);
+    draw_clock_hands(hour_angle_degree, hour_length, hour_color);
     this->drawer->draw_border();
 }
 void ClockWidget::get_value_of_interest()
@@ -76,8 +76,16 @@ void ClockWidget::get_value_of_interest()
     myMainClock *actual_model = (myMainClock *)this->actual_rtos_displayed_model;
     if (actual_rtos_displayed_model != nullptr)
     {
-        hour_angle = (actual_model->hour.get_value() % 12) * 30 + (actual_model->minute.get_value() * 30) / 60;
-        minute_angle = actual_model->minute.get_value() * 6 + (actual_model->second.get_value() * 6) / 60;
-        second_angle = actual_model->second.get_value() * 6;
+        if (actual_model->get_rtos_status() == ControlledObjectStatus::IS_ACTIVE)
+        {
+            hour_angle_degree = (actual_model->hour.get_value() % 12) * 30 + (actual_model->minute.get_value() * 30) / 60;
+            minute_angle_degree = actual_model->minute.get_value() * 6 + (actual_model->second.get_value() * 6) / 60;
+        }
+        else
+        {
+            hour_angle_degree = (actual_model->hour.get_value() % 12) * 30;
+            minute_angle_degree = actual_model->minute.get_value() * 6;
+        }
+        second_angle_degree = actual_model->second.get_value() * 6;
     }
 }
