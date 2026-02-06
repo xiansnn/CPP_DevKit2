@@ -19,7 +19,7 @@ void myClockController::process_control_event(struct_ControlEventData control_ev
         {
             this->reset_current_focus_index();
             this->make_managed_rtos_model_active();
-            this->managed_rtos_models[0]->process_control_event(control_event);
+            this->current_active_rtos_model->process_control_event(control_event);
         }
     }
     else
@@ -47,9 +47,9 @@ void myClockController::process_control_event(struct_ControlEventData control_ev
             case UIControlEvent::LONG_PUSH:
             case UIControlEvent::TIME_OUT:
                 this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
-                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->hour.update_rtos_status(ControlledObjectStatus::IS_WAITING);
-                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->minute.update_rtos_status(ControlledObjectStatus::IS_WAITING);
-                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->second.update_rtos_status(ControlledObjectStatus::IS_WAITING);
+                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->hour.update_rtos_status(ControlledObjectStatus::IS_IDLE);
+                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->minute.update_rtos_status(ControlledObjectStatus::IS_IDLE);
+                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->second.update_rtos_status(ControlledObjectStatus::IS_IDLE);
                 ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
 
                 break;

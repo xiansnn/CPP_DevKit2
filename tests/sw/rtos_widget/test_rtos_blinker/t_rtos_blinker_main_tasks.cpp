@@ -32,6 +32,10 @@ void my_clock_main_task(void *probe)
     my_clock.hour.notify_all_linked_widget_task();
     my_clock.minute.notify_all_linked_widget_task();
     my_clock.second.notify_all_linked_widget_task();
+
+    // my_clock.hour.update_attached_rtos_widget(&clock_widget);
+    // my_clock.minute.update_attached_rtos_widget(&clock_widget);
+    // my_clock.second.update_attached_rtos_widget(&clock_widget);
     while (true)
     {
         struct_ControlEventData data;
@@ -116,6 +120,7 @@ void one_second_timer_task(void *probe) // periodic task
 
 void clock_widget_task(void *probe)
 {
+    clock_widget.setup_blinking(&my_blinker);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
