@@ -204,7 +204,7 @@ public:
                     const ColorIndex color = ColorIndex::WHITE);
 };
 
-/// @brief A special version of canvas for color widget (and device) with 1 pixel/byte according to 565 RGB color coding
+/// @brief A special version of canvas for color widget (and device) with 1 pixel/byte according to ColorIndex coding
 ///\ingroup view
 class CanvasRGB : public Canvas
 {
@@ -212,7 +212,7 @@ private:
     void create_canvas_buffer();
 
 public:
-    /// @brief Construct a new Canvas R G B object
+    /// @brief Construct a new Canvas object according to ColorIndex coding
     /// @param canvas_width_pixel
     /// @param canvas_height_pixel
     CanvasRGB(uint8_t canvas_width_pixel,
