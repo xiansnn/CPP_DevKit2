@@ -4,16 +4,7 @@
 
 extern struct_ConfigGraphicWidget clock_widget_config;
 
-enum class CurrentControlledHand
-{
-    none,
-    hour,
-    minute,
-    second
-};
-
-class ClockWidget : public rtos_GraphicWidget,
-    public rtos_BlinkingWidget
+class ClockWidget : public rtos_GraphicWidget//,    public rtos_BlinkingWidget
 {
 private:
     int hour_angle_degree;
@@ -27,13 +18,9 @@ private:
     ColorIndex hour_color{ColorIndex::YELLOW};
     ColorIndex minute_color{ColorIndex::YELLOW};
     ColorIndex second_color{ColorIndex::RED};
-    ColorIndex hour_color_bckup;
-    ColorIndex minute_color_bckup;
-    ColorIndex second_color_bckup;
+
     uint x_center;
     uint y_center;
-
-    CurrentControlledHand current_controlled_hand;
 
     ControlledObjectStatus clock_status;
 
@@ -49,8 +36,4 @@ public:
 
     void draw() override;
     void get_value_of_interest() override;
-    void save_canvas_color();
-    void restore_canvas_color();
-    void blink();
-    void set_focus_color();
 };

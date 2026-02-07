@@ -120,7 +120,7 @@ void one_second_timer_task(void *probe) // periodic task
 
 void clock_widget_task(void *probe)
 {
-    clock_widget.setup_blinking(&my_blinker);
+    // clock_widget.setup_blinking(&my_blinker);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);

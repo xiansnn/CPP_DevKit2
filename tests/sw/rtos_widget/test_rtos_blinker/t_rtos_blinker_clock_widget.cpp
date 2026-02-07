@@ -66,7 +66,6 @@ void ClockWidget::draw()
     this->drawer->clear_widget();
     get_value_of_interest();
     draw_dial(12, 5);
-    convert_status_to_blinking_behavior(this->clock_status);
     draw_clock_hands(second_angle_degree, second_length, second_color);
     draw_clock_hands(minute_angle_degree, minute_length, minute_color);
     draw_clock_hands(hour_angle_degree, hour_length, hour_color);
@@ -74,17 +73,9 @@ void ClockWidget::draw()
 }
 void ClockWidget::get_value_of_interest()
 {
-    current_controlled_hand = CurrentControlledHand::none;
     if (actual_rtos_displayed_model != nullptr)
     {
         myMainClock *actual_model = (myMainClock *)this->actual_rtos_displayed_model;
-        if (actual_model->hour.get_rtos_status() == ControlledObjectStatus::IS_ACTIVE)
-            current_controlled_hand = CurrentControlledHand::hour;
-        else if (actual_model->minute.get_rtos_status() == ControlledObjectStatus::IS_ACTIVE)
-            current_controlled_hand = CurrentControlledHand::minute;
-        else if (actual_model->second.get_rtos_status() == ControlledObjectStatus::IS_ACTIVE)
-            current_controlled_hand = CurrentControlledHand::second;
-
         this->clock_status = actual_model->get_rtos_status();
         if (this->clock_status == ControlledObjectStatus::IS_ACTIVE)
         {
@@ -98,54 +89,4 @@ void ClockWidget::get_value_of_interest()
         }
         second_angle_degree = actual_model->second.get_value() * 6;
     }
-}
-
-void ClockWidget::save_canvas_color()
-{
-    this->fg_color_backup = this->drawer->canvas->fg_color;
-    this->bg_color_backup = this->drawer->canvas->bg_color;
-    this->hour_color_bckup = this->hour_color;
-    this->minute_color_bckup = this->minute_color;
-    this->second_color_bckup = this->second_color;
-}
-
-void ClockWidget::restore_canvas_color()
-{
-    this->drawer->canvas->fg_color = this->fg_color_backup;
-    this->drawer->canvas->bg_color = this->bg_color_backup;
-    this->hour_color = this->hour_color_bckup;
-    this->minute_color = this->minute_color_bckup;
-    this->second_color = this->second_color_bckup;
-}
-
-void ClockWidget::blink()
-{
-    this->drawer->canvas->fg_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
-    // this->drawer->canvas->bg_color = (blinker->current_blink_phase) ? this->fg_color_backup : this->bg_color_backup;
-    switch (current_controlled_hand)
-    {
-    case CurrentControlledHand::hour:
-        this->hour_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->hour_color_bckup;
-        break;
-    case CurrentControlledHand::minute:
-        this->minute_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->minute_color_bckup;
-        break;
-    case CurrentControlledHand::second:
-        this->second_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->second_color_bckup;
-        break;
-
-    default:
-        break;
-    }
-    if (this->task_handle != nullptr)
-        xTaskNotifyGive(this->task_handle);
-}
-
-void ClockWidget::set_focus_color()
-{
-    this->drawer->canvas->fg_color = this->bg_color_backup;
-    this->drawer->canvas->bg_color = this->fg_color_backup;
-    this->hour_color = this->bg_color_backup;
-    this->minute_color = this->bg_color_backup;
-    this->second_color = this->bg_color_backup;
 }
