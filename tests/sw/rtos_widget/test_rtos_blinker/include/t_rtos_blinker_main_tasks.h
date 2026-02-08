@@ -24,6 +24,10 @@ extern my_hour_text_widget hour_text_widget;
 extern my_minute_text_widget minute_text_widget;
 extern my_second_text_widget second_text_widget;
 
+extern WidgetElement clock_hour_widget_element;
+extern WidgetElement clock_minute_widget_element;   
+extern WidgetElement clock_second_widget_element;
+
 extern ClockWidget clock_widget;
 
 void idle_task(void *pxProbe);
@@ -45,3 +49,7 @@ void main_clock_console_widget_task(void *probe);
 void SPI_hour_text_widget_task(void *probe);
 void SPI_minute_text_widget_task(void *probe);
 void SPI_second_text_widget_task(void *probe);
+
+void  SPI_clock_hour_widget_element_task(void* probe);
+void  SPI_clock_minute_widget_element_task(void* probe);
+void  SPI_clock_second_widget_element_task(void* probe);

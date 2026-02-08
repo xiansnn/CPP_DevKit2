@@ -1,6 +1,7 @@
 #include "t_rtos_blinker_clock_widget.h"
-
 #include "t_rtos_blinker_main_classes.h"
+
+#include "t_rtos_blinker_console_widgets.h"
 
 #include <cmath>
 
@@ -89,4 +90,51 @@ void ClockWidget::get_value_of_interest()
         }
         second_angle_degree = actual_model->second.get_value() * 6;
     }
+}
+
+WidgetElement::WidgetElement(rtos_GraphicWidget *host_widget, rtos_Model *actual_displayed_model, rtos_DisplayDevice *display_device)
+    : rtos_Widget(actual_displayed_model, display_device)
+{
+    this->host_widget = host_widget;
+}
+
+WidgetElement::~WidgetElement()
+{
+}
+
+void WidgetElement::draw()
+{
+    get_value_of_interest();
+    convert_status_to_blinking_behavior(status);
+    if (status == ControlledObjectStatus::IS_ACTIVE)
+    {
+        printf("WidgetElement draw(%s) called with status %s\n", name.c_str(), status_to_string[status].c_str());
+    }
+    
+}
+
+void WidgetElement::get_value_of_interest()
+{
+    name = ((myControlledClockTime *)this->actual_rtos_displayed_model)->name;
+    status = ((myControlledClockTime *)this->actual_rtos_displayed_model)->get_rtos_status();
+}
+
+void WidgetElement::save_canvas_color()
+{
+    
+    // this->fg_color_backup = ((ClockWidget*)this->host_widget).              ->writer->canvas->fg_color;
+    // this->bg_color_backup = this->writer->canvas->bg_color;
+
+}
+
+void WidgetElement::restore_canvas_color()
+{
+}
+
+void WidgetElement::blink()
+{
+}
+
+void WidgetElement::set_focus_color()
+{
 }

@@ -3,8 +3,31 @@
 #include "sw/widget/rtos_widget.h"
 
 extern struct_ConfigGraphicWidget clock_widget_config;
+extern std::map<ControlledObjectStatus, std::string> status_to_string;
 
-class ClockWidget : public rtos_GraphicWidget//,    public rtos_BlinkingWidget
+class WidgetElement : public rtos_Widget, public rtos_BlinkingWidget
+{
+protected:
+    std::string name;
+    ControlledObjectStatus status;
+
+public:
+    rtos_GraphicWidget *host_widget;
+    WidgetElement(rtos_GraphicWidget *host_widget,
+                  rtos_Model *actual_displayed_model,
+                  rtos_DisplayDevice *display_device = nullptr);
+    ~WidgetElement();
+
+    void draw();
+    void get_value_of_interest();
+
+    void save_canvas_color() override;
+    void restore_canvas_color() override;
+    void blink() override;
+    void set_focus_color() override;
+};
+
+class ClockWidget : public rtos_GraphicWidget
 {
 private:
     int hour_angle_degree;
@@ -15,9 +38,6 @@ private:
     uint second_angle_degree;
     uint radius;
     ColorIndex face_color{ColorIndex::WHITE};
-    ColorIndex hour_color{ColorIndex::YELLOW};
-    ColorIndex minute_color{ColorIndex::YELLOW};
-    ColorIndex second_color{ColorIndex::RED};
 
     uint x_center;
     uint y_center;
@@ -28,6 +48,9 @@ private:
     void draw_clock_hands(int angle_degree, uint length, ColorIndex color);
 
 public:
+    ColorIndex hour_color{ColorIndex::YELLOW};
+    ColorIndex minute_color{ColorIndex::YELLOW};
+    ColorIndex second_color{ColorIndex::RED};
     ClockWidget(rtos_Model *actual_displayed_model,
                 struct_ConfigGraphicWidget graph_cfg,
                 CanvasFormat canvas_format,

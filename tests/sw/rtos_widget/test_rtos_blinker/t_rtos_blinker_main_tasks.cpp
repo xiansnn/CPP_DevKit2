@@ -193,3 +193,53 @@ void SPI_second_text_widget_task(void *probe)
         SPI_display_gate_keeper.send_widget_data(&second_text_widget);
     }
 }
+
+void SPI_clock_hour_widget_element_task(void *probe)
+{
+    clock_hour_widget_element.setup_blinking(&my_blinker);
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
+        clock_hour_widget_element.draw();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
+        SPI_display_gate_keeper.send_widget_data(clock_hour_widget_element.host_widget);
+    }
+
+}
+
+void SPI_clock_minute_widget_element_task(void *probe)
+{
+    clock_minute_widget_element.setup_blinking(&my_blinker);
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
+        clock_minute_widget_element.draw();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
+        SPI_display_gate_keeper.send_widget_data(clock_minute_widget_element.host_widget);
+    }
+
+
+}
+
+void SPI_clock_second_widget_element_task(void *probe)
+{
+    clock_second_widget_element.setup_blinking(&my_blinker);
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
+        clock_second_widget_element.draw();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
+        SPI_display_gate_keeper.send_widget_data(clock_second_widget_element.host_widget);
+    }
+
+
+}
