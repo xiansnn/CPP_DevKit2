@@ -5,15 +5,34 @@
 
 #include <cmath>
 
+#define CLOCK_SIZE_PIXEL 100
+#define CLOCK_RADIUS_PIXEL (CLOCK_SIZE_PIXEL / 2 - 2)
+
+
 struct_ConfigGraphicWidget clock_widget_config = {
-    .canvas_width_pixel = 100,
-    .canvas_height_pixel = 100,
+    .canvas_width_pixel = CLOCK_SIZE_PIXEL,
+    .canvas_height_pixel = CLOCK_SIZE_PIXEL,
     .canvas_foreground_color = ColorIndex::YELLOW,
     .canvas_background_color = ColorIndex::BLACK,
     .widget_anchor_x = 14,
     .widget_anchor_y = 0,
     .widget_with_border = false,
 };
+
+struct_ConfigClockWidgetElement hour_widget_element_config{
+    .length = CLOCK_RADIUS_PIXEL * 50 / 100,
+    .color = ColorIndex::YELLOW,
+};
+struct_ConfigClockWidgetElement minute_widget_element_config{
+    .length = CLOCK_RADIUS_PIXEL * 70 / 100,
+    .color = ColorIndex::YELLOW,
+};
+struct_ConfigClockWidgetElement second_widget_element_config{
+    .length = CLOCK_RADIUS_PIXEL * 90 / 100,
+    .color = ColorIndex::RED,
+};
+
+
 
 void ClockWidget::draw_dial(uint number_of_divisions, uint number_of_subdivisions)
 {
@@ -54,8 +73,8 @@ ClockWidget::ClockWidget(rtos_Model *actual_displayed_model, struct_ConfigGraphi
     this->widget_anchor_x = graph_cfg.widget_anchor_x;
     this->widget_anchor_y = graph_cfg.widget_anchor_y;
 
-    uint max_dimension = (this->drawer->canvas->canvas_height_pixel > this->drawer->canvas->canvas_width_pixel ? this->drawer->canvas->canvas_height_pixel : this->drawer->canvas->canvas_width_pixel);
-    this->radius = (max_dimension / 2) - 2;
+    uint clock_size_pixel = this->drawer->canvas->canvas_height_pixel ;
+    this->radius = (clock_size_pixel / 2) - 2;
     this->x_center = this->radius;
     this->y_center = this->radius;
     this->hour_length = this->radius * 50 / 100;
@@ -92,49 +111,137 @@ void ClockWidget::get_value_of_interest()
     }
 }
 
-WidgetElement::WidgetElement(rtos_GraphicWidget *host_widget, rtos_Model *actual_displayed_model, rtos_DisplayDevice *display_device)
-    : rtos_Widget(actual_displayed_model, display_device)
+ClockWidgetElement::ClockWidgetElement(rtos_GraphicWidget *host_widget, struct_ConfigClockWidgetElement element_cfg)
 {
     this->host_widget = host_widget;
+    this->color = element_cfg.color;
+    this->length = element_cfg.length;
 }
 
-WidgetElement::~WidgetElement()
+ClockWidgetElement::~ClockWidgetElement()
 {
 }
 
-void WidgetElement::draw()
-{
-    get_value_of_interest();
-    convert_status_to_blinking_behavior(status);
-    if (status == ControlledObjectStatus::IS_ACTIVE)
-    {
-        printf("WidgetElement draw(%s) called with status %s\n", name.c_str(), status_to_string[status].c_str());
-    }
-    
-}
+// void ClockWidgetElement::draw()
+// {
+//     get_value_of_interest();
+//     convert_status_to_blinking_behavior(status);
+//     ((ClockWidget*)host_widget)->draw_clock_hands(  second_angle_degree, this->length, this->color);
+//     switch (status)
+//     {
+//     case ControlledObjectStatus::IS_ACTIVE:
+//         printf("ClockWidgetElement draw(%s) called with status %s\n", name.c_str(), status_to_string[status].c_str());
+//         break;
+//     case ControlledObjectStatus::IS_IDLE:
+//         printf("ClockWidgetElement draw(%s) called with status %s\n", name.c_str(), status_to_string[status].c_str());
+//         break;
 
-void WidgetElement::get_value_of_interest()
-{
-    name = ((myControlledClockTime *)this->actual_rtos_displayed_model)->name;
-    status = ((myControlledClockTime *)this->actual_rtos_displayed_model)->get_rtos_status();
-}
+//     default:
+//         break;
+//     }
+// }
 
-void WidgetElement::save_canvas_color()
-{
-    
-    // this->fg_color_backup = ((ClockWidget*)this->host_widget).              ->writer->canvas->fg_color;
-    // this->bg_color_backup = this->writer->canvas->bg_color;
+// void ClockWidgetElement::get_value_of_interest()
+// {
+//     name = ((myControlledClockTime *)this->actual_rtos_displayed_model)->name;
+//     status = ((myControlledClockTime *)this->actual_rtos_displayed_model)->get_rtos_status();
+// }
 
-}
-
-void WidgetElement::restore_canvas_color()
-{
-}
-
-void WidgetElement::blink()
+MinuteWidgetElement::MinuteWidgetElement(rtos_GraphicWidget *host_widget, rtos_Model *actual_displayed_model, struct_ConfigClockWidgetElement element_cfg)
+    : rtos_Widget(actual_displayed_model, host_widget->display_device), ClockWidgetElement(host_widget, element_cfg)
 {
 }
 
-void WidgetElement::set_focus_color()
+MinuteWidgetElement::~MinuteWidgetElement()
+{
+}
+
+void MinuteWidgetElement::draw()
+{
+}
+
+void MinuteWidgetElement::get_value_of_interest()
+{
+}
+
+void MinuteWidgetElement::save_canvas_color()
+{
+}
+
+void MinuteWidgetElement::restore_canvas_color()
+{
+}
+
+void MinuteWidgetElement::blink()
+{
+}
+
+void MinuteWidgetElement::set_focus_color()
+{
+}
+
+SecondWidgetElement::SecondWidgetElement(rtos_GraphicWidget *host_widget, rtos_Model *actual_displayed_model, struct_ConfigClockWidgetElement element_cfg)
+    : rtos_Widget(actual_displayed_model, host_widget->display_device), ClockWidgetElement(host_widget, element_cfg)
+{
+}
+
+SecondWidgetElement::~SecondWidgetElement()
+{
+}
+
+void SecondWidgetElement::draw()
+{
+}
+
+void SecondWidgetElement::get_value_of_interest()
+{
+}
+
+void SecondWidgetElement::save_canvas_color()
+{
+}
+
+void SecondWidgetElement::restore_canvas_color()
+{
+}
+
+void SecondWidgetElement::blink()
+{
+}
+
+void SecondWidgetElement::set_focus_color()
+{
+}
+
+HourWidgetElement::HourWidgetElement(rtos_GraphicWidget *host_widget, rtos_Model *actual_displayed_model, struct_ConfigClockWidgetElement element_cfg)
+    : rtos_Widget(actual_displayed_model, host_widget->display_device), ClockWidgetElement(host_widget, element_cfg)
+{
+}
+
+HourWidgetElement::~HourWidgetElement()
+{
+}
+
+void HourWidgetElement::draw()
+{
+}
+
+void HourWidgetElement::get_value_of_interest()
+{
+}
+
+void HourWidgetElement::save_canvas_color()
+{
+}
+
+void HourWidgetElement::restore_canvas_color()
+{
+}
+
+void HourWidgetElement::blink()
+{
+}
+
+void HourWidgetElement::set_focus_color()
 {
 }

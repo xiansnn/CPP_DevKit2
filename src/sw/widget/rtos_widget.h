@@ -130,13 +130,12 @@ class rtos_Model;
 class rtos_Widget
 {
 protected:
-    /// @brief a pointer to the Model actually displayed by the widget
-    rtos_Model *actual_rtos_displayed_model{nullptr};
-
     /// @brief A rtos_widget can be composed by several rtos_widgets.
     std::vector<rtos_Widget *> rtos_widgets;
 
 public:
+    /// @brief a pointer to the Model actually displayed by the widget
+    rtos_Model *actual_rtos_displayed_model{nullptr};
     /// @brief the display device where the attached to the frame buffer
     rtos_DisplayDevice *display_device{nullptr};
 

@@ -66,9 +66,9 @@ my_second_text_widget second_text_widget = my_second_text_widget(&color_display,
 
 ClockWidget clock_widget = ClockWidget(&my_clock, clock_widget_config, CanvasFormat::RGB565_16b, &color_display);
 
-WidgetElement clock_hour_widget_element = WidgetElement(&clock_widget, &my_clock.hour, &color_display);
-WidgetElement clock_minute_widget_element = WidgetElement(&clock_widget, &my_clock.minute, &color_display);
-WidgetElement clock_second_widget_element = WidgetElement(&clock_widget, &my_clock.second, &color_display);
+HourWidgetElement clock_hour_widget_element = HourWidgetElement(&clock_widget, &my_clock.hour, hour_widget_element_config);
+MinuteWidgetElement clock_minute_widget_element = MinuteWidgetElement(&clock_widget,&my_clock.minute, minute_widget_element_config);
+SecondWidgetElement clock_second_widget_element = SecondWidgetElement(&clock_widget,&my_clock.second, second_widget_element_config);
 
 // ####################
 int main()
