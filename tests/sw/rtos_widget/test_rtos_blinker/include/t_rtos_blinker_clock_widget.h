@@ -8,8 +8,10 @@ struct struct_ConfigClockWidgetElement
     int length;
     ColorIndex color{ColorIndex::WHITE};
 };
-extern struct_ConfigGraphicWidget clock_widget_config;
+
 extern std::map<ControlledObjectStatus, std::string> status_to_string;
+
+extern struct_ConfigGraphicWidget clock_widget_config;
 extern struct_ConfigClockWidgetElement hour_widget_element_config;
 extern struct_ConfigClockWidgetElement minute_widget_element_config;
 extern struct_ConfigClockWidgetElement second_widget_element_config;

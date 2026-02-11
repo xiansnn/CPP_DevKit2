@@ -66,14 +66,20 @@ my_second_text_widget second_text_widget = my_second_text_widget(&color_display,
 
 ClockWidget clock_widget = ClockWidget(&my_clock, clock_widget_config, CanvasFormat::RGB565_16b, &color_display);
 
+
 HourWidgetElement clock_hour_widget_element = HourWidgetElement(&clock_widget, &my_clock.hour, hour_widget_element_config);
 MinuteWidgetElement clock_minute_widget_element = MinuteWidgetElement(&clock_widget,&my_clock.minute, minute_widget_element_config);
 SecondWidgetElement clock_second_widget_element = SecondWidgetElement(&clock_widget,&my_clock.second, second_widget_element_config);
+
+
 
 // ####################
 int main()
 {
     stdio_init_all();
+    // clock_widget.add_widget(&clock_hour_widget_element);
+    // clock_widget.add_widget(&clock_minute_widget_element);
+    // clock_widget.add_widget(&clock_second_widget_element);
 #ifdef SHOW_CONSOLE_WIDGET
     xTaskCreate(clock_controller_console_widget_task, "manager_widget_task", 256, NULL, 13, &my_focus_manager_console_widget.task_handle);
     xTaskCreate(main_clock_console_widget_task, "main_clock_widget_task", 256, NULL, 12, &my_main_clock_console_widget.task_handle);
@@ -88,27 +94,27 @@ int main()
     xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 25, NULL);
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 25, NULL);
 
-    xTaskCreate(one_second_timer_task, "one_second_timer_task", 256, &p1, 20, NULL);
+    xTaskCreate(one_second_timer_task, "one_second_timer_task", 256, NULL, 20, NULL);
     xTaskCreate(my_clock_main_task, "clock_task", 256, &p1, 21, NULL);
     xTaskCreate(my_clock_controlled_hour_task, "hour_task", 256, NULL, 22, NULL);
     xTaskCreate(my_clock_controlled_minute_task, "minute_task", 256, NULL, 22, NULL);
     xTaskCreate(my_clock_controlled_second_task, "second_task", 256, NULL, 22, NULL);
     xTaskCreate(my_clock_controller_task, "clock_controller_task", 256, NULL, 8, &my_clock_controller.task_handle);
 
-    xTaskCreate(blinker_task, "blinker", 256, &p1, 25, NULL);
+    xTaskCreate(blinker_task, "blinker", 256, &p0, 25, NULL);
 
     xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p7, 5, NULL);
 
-    xTaskCreate(SPI_hour_text_widget_task, "SPI_hour", 256, &p4, 25, &hour_text_widget.task_handle);
-    xTaskCreate(SPI_minute_text_widget_task, "SPI_minute", 256, &p5, 25, &minute_text_widget.task_handle);
-    xTaskCreate(SPI_second_text_widget_task, "SPI_second", 256, &p6, 25, &second_text_widget.task_handle);
-    xTaskCreate(clock_widget_task, "clock_widget_task", 256, NULL, 24, &clock_widget.task_handle);
+    xTaskCreate(SPI_hour_text_widget_task, "SPI_hour", 256, NULL, 25, &hour_text_widget.task_handle);
+    xTaskCreate(SPI_minute_text_widget_task, "SPI_minute", 256, NULL, 25, &minute_text_widget.task_handle);
+    xTaskCreate(SPI_second_text_widget_task, "SPI_second", 256, NULL, 25, &second_text_widget.task_handle);
 
-    xTaskCreate(SPI_clock_hour_widget_element_task, "SPI_hour_widget_element", 256, NULL, 25, &clock_hour_widget_element.task_handle);
-    xTaskCreate(SPI_clock_minute_widget_element_task, "SPI_minute_widget_element", 256, NULL, 25, &clock_minute_widget_element.task_handle);
-    xTaskCreate(SPI_clock_second_widget_element_task, "SP_second_widget_element", 256, NULL, 25, &clock_second_widget_element.task_handle);
+    xTaskCreate(clock_widget_task, "clock_widget_task", 256, &p4, 24, &clock_widget.task_handle);
+    xTaskCreate(SPI_clock_hour_widget_element_task, "SPI_hour_widget_element", 256, &p7, 20, &clock_hour_widget_element.task_handle);
+    xTaskCreate(SPI_clock_minute_widget_element_task, "SPI_minute_widget_element", 256, &p6, 20, &clock_minute_widget_element.task_handle);
+    xTaskCreate(SPI_clock_second_widget_element_task, "SP_second_widget_element", 256, &p5, 20, &clock_second_widget_element.task_handle);
 
-    xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
+    xTaskCreate(idle_task, "idle_task", 256, NULL, 0, NULL);
     vTaskStartScheduler();
 
     while (true)

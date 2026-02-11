@@ -5,8 +5,12 @@ void idle_task(void *probe)
 {
     while (true)
     {
-        ((Probe *)probe)->hi();
-        ((Probe *)probe)->lo();
+        if (probe!=NULL)
+        {
+            ((Probe *)probe)->hi();
+            ((Probe *)probe)->lo();
+        }
+        
     }
 }
 
