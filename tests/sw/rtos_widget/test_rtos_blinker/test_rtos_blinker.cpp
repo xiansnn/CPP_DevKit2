@@ -77,9 +77,7 @@ SecondWidgetElement clock_second_widget_element = SecondWidgetElement(&clock_wid
 int main()
 {
     stdio_init_all();
-    // clock_widget.add_widget(&clock_hour_widget_element);
-    // clock_widget.add_widget(&clock_minute_widget_element);
-    // clock_widget.add_widget(&clock_second_widget_element);
+
 #ifdef SHOW_CONSOLE_WIDGET
     xTaskCreate(clock_controller_console_widget_task, "manager_widget_task", 256, NULL, 13, &my_focus_manager_console_widget.task_handle);
     xTaskCreate(main_clock_console_widget_task, "main_clock_widget_task", 256, NULL, 12, &my_main_clock_console_widget.task_handle);
