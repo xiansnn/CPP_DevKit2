@@ -18,8 +18,9 @@ extern Probe p7;
 
 
 //-------------main
-#define PERIOD_REFRESH_ms 100
+#define CLOCK_REFRESH_PERIOD_ms 500
 #define GPIO_dummy_FOR_PERIODIC_EVOLUTION 100
+#define BLINKING_PERIOD_ms 200
 //-------------encoder
 #define TIMEOUT_GLOBAL_DELAY_ms 5000
 #define TIMEOUT_SWITCH_DELAY_ms 1000

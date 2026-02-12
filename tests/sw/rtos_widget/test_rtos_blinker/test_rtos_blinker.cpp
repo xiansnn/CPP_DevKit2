@@ -27,7 +27,7 @@ Probe p7 = Probe(7);
 // ##### main classes #####
 myClockController my_clock_controller = myClockController(true);
 myMainClock my_clock = myMainClock();
-rtos_Blinker my_blinker = rtos_Blinker(150);
+rtos_Blinker my_blinker = rtos_Blinker(BLINKING_PERIOD_ms/2);
 
 // ##### ST7735 setup #####
 rtos_HW_SPI_Master spi_master = rtos_HW_SPI_Master(cfg_spi,
@@ -101,7 +101,7 @@ int main()
 
     xTaskCreate(blinker_task, "blinker", 256, &p0, 25, NULL);
 
-    xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p7, 5, NULL);
+    xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p3, 5, NULL);
 
     xTaskCreate(SPI_hour_text_widget_task, "SPI_hour", 256, NULL, 25, &hour_text_widget.task_handle);
     xTaskCreate(SPI_minute_text_widget_task, "SPI_minute", 256, NULL, 25, &minute_text_widget.task_handle);

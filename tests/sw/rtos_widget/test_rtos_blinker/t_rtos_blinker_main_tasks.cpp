@@ -118,7 +118,7 @@ void one_second_timer_task(void *probe) // periodic task
         if (probe != NULL)
             ((Probe *)probe)->pulse_us();
         xQueueSend(my_clock.control_event_input_queue, &data, portMAX_DELAY);
-        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(PERIOD_REFRESH_ms));
+        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(CLOCK_REFRESH_PERIOD_ms));
     }
 }
 

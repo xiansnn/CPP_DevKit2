@@ -137,7 +137,7 @@ void MinuteWidgetElement::get_value_of_interest()
     myControlledClockTime *actual_model = (myControlledClockTime *)this->actual_rtos_displayed_model;
     name = actual_model->name;
     status = actual_model->get_rtos_status();
-    
+
     myMainClock *main_clock_model = actual_model->parent_model;
     ControlledObjectStatus clock_status = main_clock_model->get_rtos_status();
     if (clock_status == ControlledObjectStatus::IS_ACTIVE)
@@ -187,7 +187,6 @@ void SecondWidgetElement::draw()
 {
     get_value_of_interest();
     convert_status_to_blinking_behavior(status);
-    
     ((ClockWidget *)host_widget)->draw_clock_hands(angle_degree, this->length, this->color);
 }
 
@@ -196,7 +195,7 @@ void SecondWidgetElement::get_value_of_interest()
     myControlledClockTime *actual_model = (myControlledClockTime *)this->actual_rtos_displayed_model;
     name = actual_model->name;
     status = actual_model->get_rtos_status();
-    
+
     myMainClock *main_clock_model = actual_model->parent_model;
     ControlledObjectStatus clock_status = main_clock_model->get_rtos_status();
     angle_degree = actual_model->get_value() * 6;
@@ -247,7 +246,7 @@ void HourWidgetElement::get_value_of_interest()
     myControlledClockTime *actual_model = (myControlledClockTime *)this->actual_rtos_displayed_model;
     name = actual_model->name;
     status = actual_model->get_rtos_status();
-    
+
     myMainClock *main_clock_model = actual_model->parent_model;
     ControlledObjectStatus clock_status = main_clock_model->get_rtos_status();
     if (clock_status == ControlledObjectStatus::IS_ACTIVE)
@@ -256,9 +255,8 @@ void HourWidgetElement::get_value_of_interest()
     }
     else
     {
-        angle_degree = (main_clock_model->hour.get_value() % 12) * 30;  
+        angle_degree = (main_clock_model->hour.get_value() % 12) * 30;
     }
-
 }
 
 void HourWidgetElement::save_canvas_color()

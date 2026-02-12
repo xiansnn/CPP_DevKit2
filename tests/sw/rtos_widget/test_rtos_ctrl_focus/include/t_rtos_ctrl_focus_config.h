@@ -37,7 +37,7 @@ extern Probe p7;
 #include "device/rotary_encoder/rtos_rotary_encoder.h"
 
 //-------------main
-#define PERIOD_REFRESH_ms 100
+#define CLOCK_REFRESH_PERIOD_ms 100
 #define CHAR_DEGREE \xF8
 #define ANGLE_INCREMENT 1
 #define GPIO_FOR_PERIODIC_EVOLUTION 100
