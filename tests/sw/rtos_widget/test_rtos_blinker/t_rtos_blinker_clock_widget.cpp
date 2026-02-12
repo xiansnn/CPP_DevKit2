@@ -1,14 +1,35 @@
 #include "t_rtos_blinker_clock_widget.h"
 
 #include <cmath>
+//--------------- clock related constant--------------------
+constexpr uint CLOCK_SIZE_pixel = 100;
+constexpr uint CLOCK_RADIUS_pixel = (CLOCK_SIZE_pixel / 2 - 2);
+constexpr uint CLOCK_X_CENTER = CLOCK_RADIUS_pixel;
+constexpr uint CLOCK_Y_CENTER = CLOCK_RADIUS_pixel;
 
-#define CLOCK_SIZE_PIXEL 100
-#define CLOCK_RADIUS_PIXEL (CLOCK_SIZE_PIXEL / 2 - 2)
+constexpr uint HOUR_HAND_LENGTH = CLOCK_RADIUS_pixel * 50 / 100;
+constexpr ColorIndex HOUR_HAND_COLOR_index = ColorIndex::YELLOW;
+
+constexpr uint MINUTE_HAND_LENGTH = CLOCK_RADIUS_pixel * 70 / 100;
+constexpr ColorIndex MINUTE_HAND_COLOR_index = ColorIndex::YELLOW;
+
+constexpr uint SECOND_HAND_LENGTH = CLOCK_RADIUS_pixel * 90 / 100;
+constexpr ColorIndex SECOND_HAND_COLOR_index = ColorIndex::RED;
+
+constexpr uint DIAL_NUMBER_OF_DIVISION = 12;
+constexpr uint DIAL_NUMBER_OF_SUBDIVISION = 5;
+constexpr uint DIAL_NUMBER_OF_MARKS = DIAL_NUMBER_OF_DIVISION * DIAL_NUMBER_OF_SUBDIVISION;
+constexpr ColorIndex DIAL_FOREGROUND_COLOR_index = ColorIndex::WHITE;
+constexpr ColorIndex DIAL_BACKGROUND_COLOR_index = ColorIndex::BLACK;
+
+constexpr float DEG_TO_RAD = 3.14159f / 180.0f;
+//--------------------------------------------------------------
+
 
 struct_ConfigGraphicWidget clock_widget_config = {
-    .canvas_width_pixel = CLOCK_SIZE_PIXEL,
-    .canvas_height_pixel = CLOCK_SIZE_PIXEL,
-    .canvas_foreground_color = ColorIndex::YELLOW,
+    .canvas_width_pixel = CLOCK_SIZE_pixel,
+    .canvas_height_pixel = CLOCK_SIZE_pixel,
+    .canvas_foreground_color = ColorIndex::WHITE,
     .canvas_background_color = ColorIndex::BLACK,
     .widget_anchor_x = 14,
     .widget_anchor_y = 0,
@@ -16,43 +37,40 @@ struct_ConfigGraphicWidget clock_widget_config = {
 };
 
 struct_ConfigClockWidgetElement hour_widget_element_config{
-    .length = CLOCK_RADIUS_PIXEL * 50 / 100,
-    .color = ColorIndex::YELLOW,
+    .length = HOUR_HAND_LENGTH,
+    .color = HOUR_HAND_COLOR_index,
 };
 struct_ConfigClockWidgetElement minute_widget_element_config{
-    .length = CLOCK_RADIUS_PIXEL * 70 / 100,
-    .color = ColorIndex::YELLOW,
+    .length = MINUTE_HAND_LENGTH,
+    .color = MINUTE_HAND_COLOR_index,
 };
 struct_ConfigClockWidgetElement second_widget_element_config{
-    .length = CLOCK_RADIUS_PIXEL * 90 / 100,
-    .color = ColorIndex::RED,
+    .length = SECOND_HAND_LENGTH,
+    .color = SECOND_HAND_COLOR_index,
 };
 
-void ClockWidget::draw_dial(uint number_of_divisions, uint number_of_subdivisions)
+void ClockWidget::draw_dial()
 {
-    const float deg_to_rad = 3.14159f / 180.0f;
-    const uint number_of_marks = number_of_divisions * number_of_subdivisions;
     float mark_start = 0.0f;
-
-    for (size_t i = 0; i < number_of_marks; i++)
+    for (size_t i = 0; i < DIAL_NUMBER_OF_MARKS; i++)
     {
-        float angle_rad = (90 - i * (360.0f / number_of_marks)) * deg_to_rad;
-        mark_start = (i % number_of_subdivisions == 0) ? minute_length : second_length;
-        uint x_start = this->x_center + static_cast<int>(mark_start * cosf(angle_rad));
-        uint y_start = this->y_center - static_cast<int>(mark_start * sinf(angle_rad));
-        uint x_end = this->x_center + static_cast<int>(this->radius * cosf(angle_rad));
-        uint y_end = this->y_center - static_cast<int>(this->radius * sinf(angle_rad));
-        this->drawer->line(x_start, y_start, x_end, y_end, face_color);
+        float angle_rad = (90 - i * (360.0f / DIAL_NUMBER_OF_MARKS)) * DEG_TO_RAD;
+        mark_start = (i % DIAL_NUMBER_OF_SUBDIVISION == 0) ? MINUTE_HAND_LENGTH : SECOND_HAND_LENGTH;
+        uint x_start = CLOCK_X_CENTER + static_cast<int>(mark_start * cosf(angle_rad));
+        uint y_start = CLOCK_Y_CENTER - static_cast<int>(mark_start * sinf(angle_rad));
+        uint x_end = CLOCK_X_CENTER + static_cast<int>(CLOCK_RADIUS_pixel * cosf(angle_rad));
+        uint y_end = CLOCK_Y_CENTER - static_cast<int>(CLOCK_RADIUS_pixel * sinf(angle_rad));
+        this->drawer->line(x_start, y_start, x_end, y_end, DIAL_FOREGROUND_COLOR_index);
     }
-    this->drawer->circle(this->radius, this->x_center, this->y_center, false, face_color);
+    this->drawer->circle(CLOCK_RADIUS_pixel, CLOCK_X_CENTER, CLOCK_Y_CENTER, false, DIAL_FOREGROUND_COLOR_index);
 }
 
 void ClockWidget::draw_clock_hands(int angle_degree, uint length, ColorIndex color)
 {
-    float angle_rad = (90 - angle_degree) * 3.14159f / 180.0f;
-    uint x_end = this->x_center + static_cast<int>(length * cosf(angle_rad));
-    uint y_end = this->y_center - static_cast<int>(length * sinf(angle_rad));
-    this->drawer->line(this->x_center, this->y_center, x_end, y_end, color);
+    float angle_rad = (90 - angle_degree) * DEG_TO_RAD;
+    uint x_end = CLOCK_X_CENTER + static_cast<int>(length * cosf(angle_rad));
+    uint y_end = CLOCK_Y_CENTER - static_cast<int>(length * sinf(angle_rad));
+    this->drawer->line(CLOCK_X_CENTER, CLOCK_Y_CENTER, x_end, y_end, color);
 }
 
 ClockWidget::~ClockWidget()
@@ -69,20 +87,23 @@ ClockWidget::ClockWidget(rtos_Model *actual_displayed_model, struct_ConfigGraphi
 
     uint clock_size_pixel = this->drawer->canvas->canvas_height_pixel;
     this->radius = (clock_size_pixel / 2) - 2;
-    this->x_center = this->radius;
-    this->y_center = this->radius;
-    this->hour_length = this->radius * 50 / 100;
-    this->minute_length = this->radius * 70 / 100;
-    this->second_length = this->radius * 90 / 100;
+    this->x_center = CLOCK_RADIUS_pixel;
+    this->y_center = CLOCK_RADIUS_pixel;
+    this->hour_length = HOUR_HAND_LENGTH;
+    this->minute_length = MINUTE_HAND_LENGTH;
+    this->second_length = SECOND_HAND_LENGTH;
+    this->hour_color = HOUR_HAND_COLOR_index;
+    this->minute_color = MINUTE_HAND_COLOR_index;
+    this->second_color = SECOND_HAND_COLOR_index;
 }
 void ClockWidget::draw()
 {
     this->drawer->clear_widget();
     get_value_of_interest();
-    draw_dial(12, 5);
-    draw_clock_hands(second_angle_degree, second_length, second_color);
-    draw_clock_hands(minute_angle_degree, minute_length, minute_color);
-    draw_clock_hands(hour_angle_degree, hour_length, hour_color);
+    draw_dial();
+    draw_clock_hands(second_angle_degree, SECOND_HAND_LENGTH, SECOND_HAND_COLOR_index);
+    draw_clock_hands(minute_angle_degree, MINUTE_HAND_LENGTH, MINUTE_HAND_COLOR_index);
+    draw_clock_hands(hour_angle_degree, HOUR_HAND_LENGTH, HOUR_HAND_COLOR_index);
     this->drawer->draw_border();
 }
 void ClockWidget::get_value_of_interest()

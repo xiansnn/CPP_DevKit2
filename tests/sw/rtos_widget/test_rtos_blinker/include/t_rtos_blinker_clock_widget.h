@@ -16,7 +16,7 @@ extern struct_ConfigClockWidgetElement hour_widget_element_config;
 extern struct_ConfigClockWidgetElement minute_widget_element_config;
 extern struct_ConfigClockWidgetElement second_widget_element_config;
 
-class ClockWidgetElement 
+class ClockWidgetElement
 {
 protected:
     std::string name;
@@ -30,7 +30,6 @@ public:
     rtos_GraphicWidget *host_widget;
     ClockWidgetElement(rtos_GraphicWidget *host_widget, struct_ConfigClockWidgetElement element_cfg);
     ~ClockWidgetElement();
-
 };
 
 class HourWidgetElement : public rtos_Widget, public ClockWidgetElement, public rtos_BlinkingWidget
@@ -94,16 +93,16 @@ private:
 
     ControlledObjectStatus clock_status;
 
-    void draw_dial(uint number_of_divisions, uint number_of_subdivisions);
-    
-    public:
+    void draw_dial();
+
+public:
     void draw_clock_hands(int angle_degree, uint length, ColorIndex color);
     int hour_angle_degree;
     uint minute_angle_degree;
     uint second_angle_degree;
-    ColorIndex hour_color{ColorIndex::YELLOW};
-    ColorIndex minute_color{ColorIndex::YELLOW};
-    ColorIndex second_color{ColorIndex::RED};
+    ColorIndex hour_color;
+    ColorIndex minute_color;
+    ColorIndex second_color;
     ClockWidget(rtos_Model *actual_displayed_model,
                 struct_ConfigGraphicWidget graph_cfg,
                 CanvasFormat canvas_format,
