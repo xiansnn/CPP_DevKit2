@@ -25,7 +25,6 @@ constexpr ColorIndex DIAL_BACKGROUND_COLOR_index = ColorIndex::BLACK;
 constexpr float DEG_TO_RAD = 3.14159f / 180.0f;
 //--------------------------------------------------------------
 
-
 struct_ConfigGraphicWidget clock_widget_config = {
     .canvas_width_pixel = CLOCK_SIZE_pixel,
     .canvas_height_pixel = CLOCK_SIZE_pixel,
@@ -36,18 +35,11 @@ struct_ConfigGraphicWidget clock_widget_config = {
     .widget_with_border = false,
 };
 
-struct_ConfigClockWidgetElement hour_widget_element_config{
-    .length = HOUR_HAND_LENGTH,
-    .color = HOUR_HAND_COLOR_index,
-};
-struct_ConfigClockWidgetElement minute_widget_element_config{
-    .length = MINUTE_HAND_LENGTH,
-    .color = MINUTE_HAND_COLOR_index,
-};
-struct_ConfigClockWidgetElement second_widget_element_config{
-    .length = SECOND_HAND_LENGTH,
-    .color = SECOND_HAND_COLOR_index,
-};
+std::map<ClockElementType, std::string> clock_element_to_string{
+    {ClockElementType::HOUR, "HOUR"},
+    {ClockElementType::MINUTE, "MINUTE"},
+    {ClockElementType::SECOND, "SECOND"}};
+
 
 void ClockWidget::draw_dial()
 {
@@ -84,17 +76,6 @@ ClockWidget::ClockWidget(rtos_Model *actual_displayed_model, struct_ConfigGraphi
     this->display_device = display_device;
     this->widget_anchor_x = graph_cfg.widget_anchor_x;
     this->widget_anchor_y = graph_cfg.widget_anchor_y;
-
-    uint clock_size_pixel = this->drawer->canvas->canvas_height_pixel;
-    this->radius = (clock_size_pixel / 2) - 2;
-    this->x_center = CLOCK_RADIUS_pixel;
-    this->y_center = CLOCK_RADIUS_pixel;
-    this->hour_length = HOUR_HAND_LENGTH;
-    this->minute_length = MINUTE_HAND_LENGTH;
-    this->second_length = SECOND_HAND_LENGTH;
-    this->hour_color = HOUR_HAND_COLOR_index;
-    this->minute_color = MINUTE_HAND_COLOR_index;
-    this->second_color = SECOND_HAND_COLOR_index;
 }
 void ClockWidget::draw()
 {
@@ -126,180 +107,108 @@ void ClockWidget::get_value_of_interest()
     }
 }
 
-ClockWidgetElement::ClockWidgetElement(rtos_GraphicWidget *host_widget, struct_ConfigClockWidgetElement element_cfg)
+ClockWidgetElement::ClockWidgetElement(rtos_GraphicWidget *host_widget,
+                                       rtos_Model *actual_displayed_model,
+                                       ClockElementType clock_element_type)
+    : rtos_Widget(actual_displayed_model, host_widget->display_device), rtos_BlinkingWidget()
 {
     this->host_widget = host_widget;
-    this->color = element_cfg.color;
-    this->length = element_cfg.length;
+    this->bg_element_color = DIAL_BACKGROUND_COLOR_index;
+    this->clock_element_type = clock_element_type;
+
+    switch (this->clock_element_type)
+    {
+    case ClockElementType::HOUR:
+        this->fg_element_color = HOUR_HAND_COLOR_index;
+        this->length = HOUR_HAND_LENGTH;
+        break;
+    case ClockElementType::MINUTE:
+        this->fg_element_color = MINUTE_HAND_COLOR_index;
+        this->length = MINUTE_HAND_LENGTH;
+        break;
+    case ClockElementType::SECOND:
+        this->fg_element_color = SECOND_HAND_COLOR_index;
+        this->length = SECOND_HAND_LENGTH;
+        break;
+    default:
+        break;
+    }
 }
 
 ClockWidgetElement::~ClockWidgetElement()
 {
 }
 
-MinuteWidgetElement::MinuteWidgetElement(rtos_GraphicWidget *host_widget, rtos_Model *actual_displayed_model, struct_ConfigClockWidgetElement element_cfg)
-    : rtos_Widget(actual_displayed_model, host_widget->display_device), ClockWidgetElement(host_widget, element_cfg)
-{
-}
-
-MinuteWidgetElement::~MinuteWidgetElement()
-{
-}
-
-void MinuteWidgetElement::draw()
+void ClockWidgetElement::draw()
 {
     get_value_of_interest();
     convert_status_to_blinking_behavior(status);
-    ((ClockWidget *)host_widget)->draw_clock_hands(this->angle_degree, this->length, this->color);
+    switch (this->clock_element_type)
+    {
+    case ClockElementType::HOUR:
+        ((ClockWidget *)host_widget)->draw_clock_hands(this->angle_degree, HOUR_HAND_LENGTH, this->fg_element_color);
+        break;
+    case ClockElementType::MINUTE:
+        ((ClockWidget *)host_widget)->draw_clock_hands(this->angle_degree, MINUTE_HAND_LENGTH, this->fg_element_color);
+        break;
+    case ClockElementType::SECOND:
+        ((ClockWidget *)host_widget)->draw_clock_hands(this->angle_degree, SECOND_HAND_LENGTH, this->fg_element_color);
+        break;
+    default:
+        break;
+    }
 }
 
-void MinuteWidgetElement::get_value_of_interest()
+void ClockWidgetElement::get_value_of_interest()
 {
     myControlledClockTime *actual_model = (myControlledClockTime *)this->actual_rtos_displayed_model;
-    name = actual_model->name;
     status = actual_model->get_rtos_status();
-
     myMainClock *main_clock_model = actual_model->parent_model;
     ControlledObjectStatus clock_status = main_clock_model->get_rtos_status();
-    if (clock_status == ControlledObjectStatus::IS_ACTIVE)
+
+    switch (this->clock_element_type)
     {
-        angle_degree = main_clock_model->minute.get_value() * 6 + (main_clock_model->second.get_value() * 6) / 60;
+    case ClockElementType::HOUR:
+        if (clock_status == ControlledObjectStatus::IS_ACTIVE)
+            angle_degree = (main_clock_model->hour.get_value() % 12) * 30 + (main_clock_model->minute.get_value() * 30) / 60;
+        else
+            angle_degree = (main_clock_model->hour.get_value() % 12) * 30;
+        break;
+    case ClockElementType::MINUTE:
+        if (clock_status == ControlledObjectStatus::IS_ACTIVE)
+            angle_degree = main_clock_model->minute.get_value() * 6 + (main_clock_model->second.get_value() * 6) / 60;
+        else
+            angle_degree = main_clock_model->minute.get_value() * 6;
+        break;
+    case ClockElementType::SECOND:
+        angle_degree = main_clock_model->second.get_value() * 6;
+        break;
+
+    default:
+        break;
     }
-    else
-    {
-        angle_degree = main_clock_model->minute.get_value() * 6;
-    }
 }
 
-void MinuteWidgetElement::save_canvas_color()
+void ClockWidgetElement::save_canvas_color()
 {
-    this->fg_color_backup = this->color;
-    this->bg_color_backup = ColorIndex::BLACK; // assuming black background for simplicity, this should be retrieved from the actual canvas in a real implementation
+    this->fg_color_backup = this->fg_element_color;
+    this->bg_color_backup = DIAL_BACKGROUND_COLOR_index; // assuming black background for simplicity, this should be retrieved from the actual canvas in a real implementation
+
 }
 
-void MinuteWidgetElement::restore_canvas_color()
+void ClockWidgetElement::restore_canvas_color()
 {
-    this->color = this->fg_color_backup;
+    this->fg_element_color = this->fg_color_backup;
 }
 
-void MinuteWidgetElement::blink()
+void ClockWidgetElement::blink()
 {
-    this->color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
-
+    this->fg_element_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
     if (this->task_handle != nullptr)
         xTaskNotifyGive(this->task_handle);
 }
 
-void MinuteWidgetElement::set_focus_color()
+void ClockWidgetElement::set_focus_color()
 {
-    this->color = ColorIndex::CYAN; // example focus color, this can be customized
-}
-
-SecondWidgetElement::SecondWidgetElement(rtos_GraphicWidget *host_widget, rtos_Model *actual_displayed_model, struct_ConfigClockWidgetElement element_cfg)
-    : rtos_Widget(actual_displayed_model, host_widget->display_device), ClockWidgetElement(host_widget, element_cfg)
-{
-}
-
-SecondWidgetElement::~SecondWidgetElement()
-{
-}
-
-void SecondWidgetElement::draw()
-{
-    get_value_of_interest();
-    convert_status_to_blinking_behavior(status);
-    ((ClockWidget *)host_widget)->draw_clock_hands(angle_degree, this->length, this->color);
-}
-
-void SecondWidgetElement::get_value_of_interest()
-{
-    myControlledClockTime *actual_model = (myControlledClockTime *)this->actual_rtos_displayed_model;
-    name = actual_model->name;
-    status = actual_model->get_rtos_status();
-
-    myMainClock *main_clock_model = actual_model->parent_model;
-    ControlledObjectStatus clock_status = main_clock_model->get_rtos_status();
-    angle_degree = actual_model->get_value() * 6;
-}
-
-void SecondWidgetElement::save_canvas_color()
-{
-    this->fg_color_backup = this->color;
-    this->bg_color_backup = ColorIndex::BLACK; // assuming black background for simplicity, this should be retrieved from the actual canvas in a real implementation
-}
-
-void SecondWidgetElement::restore_canvas_color()
-{
-    this->color = this->fg_color_backup;
-}
-
-void SecondWidgetElement::blink()
-{
-    this->color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
-
-    if (this->task_handle != nullptr)
-        xTaskNotifyGive(this->task_handle);
-}
-
-void SecondWidgetElement::set_focus_color()
-{
-    this->color = ColorIndex::CYAN; // example focus color, this can be customized
-}
-
-HourWidgetElement::HourWidgetElement(rtos_GraphicWidget *host_widget, rtos_Model *actual_displayed_model, struct_ConfigClockWidgetElement element_cfg)
-    : rtos_Widget(actual_displayed_model, host_widget->display_device), ClockWidgetElement(host_widget, element_cfg)
-{
-}
-
-HourWidgetElement::~HourWidgetElement()
-{
-}
-
-void HourWidgetElement::draw()
-{
-    get_value_of_interest();
-    convert_status_to_blinking_behavior(status);
-    ((ClockWidget *)host_widget)->draw_clock_hands(angle_degree, this->length, this->color);
-}
-
-void HourWidgetElement::get_value_of_interest()
-{
-    myControlledClockTime *actual_model = (myControlledClockTime *)this->actual_rtos_displayed_model;
-    name = actual_model->name;
-    status = actual_model->get_rtos_status();
-
-    myMainClock *main_clock_model = actual_model->parent_model;
-    ControlledObjectStatus clock_status = main_clock_model->get_rtos_status();
-    if (clock_status == ControlledObjectStatus::IS_ACTIVE)
-    {
-        angle_degree = (main_clock_model->hour.get_value() % 12) * 30 + (main_clock_model->minute.get_value() * 30) / 60;
-    }
-    else
-    {
-        angle_degree = (main_clock_model->hour.get_value() % 12) * 30;
-    }
-}
-
-void HourWidgetElement::save_canvas_color()
-{
-    this->fg_color_backup = this->color;
-    this->bg_color_backup = ColorIndex::BLACK; // assuming black background for simplicity, this should be retrieved from the actual canvas in a real implementation
-}
-
-void HourWidgetElement::restore_canvas_color()
-{
-    this->color = this->fg_color_backup;
-}
-
-void HourWidgetElement::blink()
-{
-    this->color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
-
-    if (this->task_handle != nullptr)
-        xTaskNotifyGive(this->task_handle);
-}
-
-void HourWidgetElement::set_focus_color()
-{
-    this->color = ColorIndex::CYAN; // example focus color, this can be customized
+    this->fg_element_color = ColorIndex::CYAN; // example focus color, this can be customized
 }
