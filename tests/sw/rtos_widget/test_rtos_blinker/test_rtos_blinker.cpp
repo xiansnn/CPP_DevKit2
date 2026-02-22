@@ -67,12 +67,6 @@ my_second_text_widget second_text_widget = my_second_text_widget(&color_display,
 ClockWidget clock_widget = ClockWidget(&my_clock, clock_widget_config, CanvasFormat::RGB565_16b, &color_display);
 
 
-ClockWidgetElement clock_hour_widget_element = ClockWidgetElement(&clock_widget, my_clock.hour, ClockElementType::HOUR);
-ClockWidgetElement clock_minute_widget_element = ClockWidgetElement(&clock_widget,my_clock.minute, ClockElementType::MINUTE);
-ClockWidgetElement clock_second_widget_element = ClockWidgetElement(&clock_widget,my_clock.second, ClockElementType::SECOND);
-
-
-
 // ####################
 int main()
 {
@@ -108,9 +102,9 @@ int main()
     xTaskCreate(SPI_second_text_widget_task, "SPI_second", 256, NULL, 25, &second_text_widget.task_handle);
 
     xTaskCreate(clock_widget_task, "clock_widget_task", 256, &p4, 24, &clock_widget.task_handle);
-    xTaskCreate(SPI_clock_hour_widget_element_task, "SPI_hour_widget_element", 256, &p7, 20, &clock_hour_widget_element.task_handle);
-    xTaskCreate(SPI_clock_minute_widget_element_task, "SPI_minute_widget_element", 256, &p6, 20, &clock_minute_widget_element.task_handle);
-    xTaskCreate(SPI_clock_second_widget_element_task, "SP_second_widget_element", 256, &p5, 20, &clock_second_widget_element.task_handle);
+    xTaskCreate(SPI_clock_hour_widget_element_task, "SPI_hour_widget_element", 256, &p7, 20, &clock_widget.clock_hour_widget_element->task_handle);
+    xTaskCreate(SPI_clock_minute_widget_element_task, "SPI_minute_widget_element", 256, &p6, 20, &clock_widget.clock_minute_widget_element->task_handle);
+    xTaskCreate(SPI_clock_second_widget_element_task, "SP_second_widget_element", 256, &p5, 20, &clock_widget.clock_second_widget_element->task_handle);
 
     xTaskCreate(idle_task, "idle_task", 256, NULL, 0, NULL);
     vTaskStartScheduler();

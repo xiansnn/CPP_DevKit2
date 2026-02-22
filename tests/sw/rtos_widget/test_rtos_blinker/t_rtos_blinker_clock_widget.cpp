@@ -40,7 +40,6 @@ std::map<ClockElementType, std::string> clock_element_to_string{
     {ClockElementType::MINUTE, "MINUTE"},
     {ClockElementType::SECOND, "SECOND"}};
 
-
 void ClockWidget::draw_dial()
 {
     float mark_start = 0.0f;
@@ -67,11 +66,18 @@ void ClockWidget::draw_clock_hands(int angle_degree, uint length, ColorIndex col
 
 ClockWidget::~ClockWidget()
 {
+    delete clock_hour_widget_element;
+    delete clock_minute_widget_element;
+    delete clock_second_widget_element;
 }
 
 ClockWidget::ClockWidget(rtos_Model *actual_displayed_model, struct_ConfigGraphicWidget graph_cfg, CanvasFormat canvas_format, rtos_DisplayDevice *display_device)
     : rtos_GraphicWidget(actual_displayed_model, graph_cfg, canvas_format, display_device)
 {
+    clock_hour_widget_element = new ClockWidgetElement(this, ((myMainClock *)actual_displayed_model)->hour, ClockElementType::HOUR);
+    clock_minute_widget_element = new ClockWidgetElement(this, ((myMainClock *)actual_displayed_model)->minute, ClockElementType::MINUTE);
+    clock_second_widget_element = new ClockWidgetElement(this, ((myMainClock *)actual_displayed_model)->second, ClockElementType::SECOND);
+
     this->actual_rtos_displayed_model = actual_displayed_model;
     this->display_device = display_device;
     this->widget_anchor_x = graph_cfg.widget_anchor_x;
@@ -193,7 +199,6 @@ void ClockWidgetElement::save_canvas_color()
 {
     this->fg_color_backup = this->fg_element_color;
     this->bg_color_backup = DIAL_BACKGROUND_COLOR_index; // assuming black background for simplicity, this should be retrieved from the actual canvas in a real implementation
-
 }
 
 void ClockWidgetElement::restore_canvas_color()

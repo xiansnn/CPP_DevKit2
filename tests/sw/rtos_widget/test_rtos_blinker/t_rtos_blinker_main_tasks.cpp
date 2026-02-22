@@ -10,7 +10,6 @@ void idle_task(void *probe)
             ((Probe *)probe)->hi();
             ((Probe *)probe)->lo();
         }
-        
     }
 }
 
@@ -37,9 +36,6 @@ void my_clock_main_task(void *probe)
     my_clock.minute->notify_all_linked_widget_task();
     my_clock.second->notify_all_linked_widget_task();
 
-    // my_clock.hour.update_attached_rtos_widget(&clock_widget);
-    // my_clock.minute.update_attached_rtos_widget(&clock_widget);
-    // my_clock.second.update_attached_rtos_widget(&clock_widget);
     while (true)
     {
         struct_ControlEventData data;
@@ -199,50 +195,46 @@ void SPI_second_text_widget_task(void *probe)
 
 void SPI_clock_hour_widget_element_task(void *probe)
 {
-    clock_hour_widget_element.setup_blinking(&my_blinker);
+    clock_widget.clock_hour_widget_element->setup_blinking(&my_blinker);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         if (probe != NULL)
             ((Probe *)probe)->hi();
-        clock_hour_widget_element.draw();
+        clock_widget.clock_hour_widget_element->draw();
         if (probe != NULL)
             ((Probe *)probe)->lo();
-        SPI_display_gate_keeper.send_widget_data(clock_hour_widget_element.host_widget);
+        SPI_display_gate_keeper.send_widget_data(&clock_widget);
     }
 
 }
 
 void SPI_clock_minute_widget_element_task(void *probe)
 {
-    clock_minute_widget_element.setup_blinking(&my_blinker);
+    clock_widget.clock_minute_widget_element->setup_blinking(&my_blinker);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         if (probe != NULL)
             ((Probe *)probe)->hi();
-        clock_minute_widget_element.draw();
+        clock_widget.clock_minute_widget_element->draw();
         if (probe != NULL)
             ((Probe *)probe)->lo();
-        SPI_display_gate_keeper.send_widget_data(clock_minute_widget_element.host_widget);
+        SPI_display_gate_keeper.send_widget_data(&clock_widget);
     }
-
-
 }
 
 void SPI_clock_second_widget_element_task(void *probe)
 {
-    clock_second_widget_element.setup_blinking(&my_blinker);
+    clock_widget.clock_second_widget_element->setup_blinking(&my_blinker);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         if (probe != NULL)
             ((Probe *)probe)->hi();
-        clock_second_widget_element.draw();
+        clock_widget.clock_second_widget_element->draw();
         if (probe != NULL)
             ((Probe *)probe)->lo();
-        SPI_display_gate_keeper.send_widget_data(clock_second_widget_element.host_widget);
+        SPI_display_gate_keeper.send_widget_data(&clock_widget);
     }
-
-
 }

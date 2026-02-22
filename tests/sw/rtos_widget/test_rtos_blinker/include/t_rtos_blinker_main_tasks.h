@@ -25,9 +25,6 @@ extern my_minute_text_widget minute_text_widget;
 extern my_second_text_widget second_text_widget;
 
 extern ClockWidget clock_widget;
-extern ClockWidgetElement clock_hour_widget_element;
-extern ClockWidgetElement clock_minute_widget_element;
-extern ClockWidgetElement clock_second_widget_element;
 
 void idle_task(void *pxProbe);
 void one_second_timer_task(void *probe);

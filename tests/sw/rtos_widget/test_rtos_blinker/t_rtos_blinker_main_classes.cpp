@@ -63,9 +63,6 @@ void myClockController::process_control_event(struct_ControlEventData control_ev
 
 myMainClock::myMainClock()
     : rtos_UIControlledModel()
-//   hour("hour", this, 0, 24, 1),
-//   minute("minute", this, 0, 60, 1),
-//   second("second", this, 0, 60, 1)
 {
     this->hour = new myControlledClockTime("hour", this, 0, 24, 1);
     this->minute = new myControlledClockTime("minute", this, 0, 60, 1);
