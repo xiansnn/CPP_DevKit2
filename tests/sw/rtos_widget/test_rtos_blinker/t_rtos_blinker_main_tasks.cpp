@@ -16,9 +16,9 @@ void idle_task(void *probe)
 
 void my_clock_controller_task(void *probe)
 {
-    my_clock_controller.add_managed_rtos_model(&my_clock.hour);
-    my_clock_controller.add_managed_rtos_model(&my_clock.minute);
-    my_clock_controller.add_managed_rtos_model(&my_clock.second);
+    my_clock_controller.add_managed_rtos_model(my_clock.hour);
+    my_clock_controller.add_managed_rtos_model(my_clock.minute);
+    my_clock_controller.add_managed_rtos_model(my_clock.second);
     my_clock_controller.notify_all_linked_widget_task();
     struct_ControlEventData local_event_data;
     BaseType_t global_timeout_condtion;
@@ -33,9 +33,9 @@ void my_clock_controller_task(void *probe)
 void my_clock_main_task(void *probe)
 {
     my_clock.notify_all_linked_widget_task();
-    my_clock.hour.notify_all_linked_widget_task();
-    my_clock.minute.notify_all_linked_widget_task();
-    my_clock.second.notify_all_linked_widget_task();
+    my_clock.hour->notify_all_linked_widget_task();
+    my_clock.minute->notify_all_linked_widget_task();
+    my_clock.second->notify_all_linked_widget_task();
 
     // my_clock.hour.update_attached_rtos_widget(&clock_widget);
     // my_clock.minute.update_attached_rtos_widget(&clock_widget);
@@ -62,10 +62,10 @@ void my_clock_controlled_hour_task(void *probe)
         struct_ControlEventData data;
         while (true)
         {
-            xQueueReceive(my_clock.hour.control_event_input_queue, &data, portMAX_DELAY);
+            xQueueReceive(my_clock.hour->control_event_input_queue, &data, portMAX_DELAY);
             if (probe != NULL)
                 ((Probe *)probe)->hi();
-            my_clock.hour.process_control_event(data);
+            my_clock.hour->process_control_event(data);
             if (probe != NULL)
                 ((Probe *)probe)->lo();
         }
@@ -79,10 +79,10 @@ void my_clock_controlled_minute_task(void *probe)
         struct_ControlEventData data;
         while (true)
         {
-            xQueueReceive(my_clock.minute.control_event_input_queue, &data, portMAX_DELAY);
+            xQueueReceive(my_clock.minute->control_event_input_queue, &data, portMAX_DELAY);
             if (probe != NULL)
                 ((Probe *)probe)->hi();
-            my_clock.minute.process_control_event(data);
+            my_clock.minute->process_control_event(data);
             if (probe != NULL)
                 ((Probe *)probe)->lo();
         }
@@ -96,10 +96,10 @@ void my_clock_controlled_second_task(void *probe)
         struct_ControlEventData data;
         while (true)
         {
-            xQueueReceive(my_clock.second.control_event_input_queue, &data, portMAX_DELAY);
+            xQueueReceive(my_clock.second->control_event_input_queue, &data, portMAX_DELAY);
             if (probe != NULL)
                 ((Probe *)probe)->hi();
-            my_clock.second.process_control_event(data);
+            my_clock.second->process_control_event(data);
             if (probe != NULL)
                 ((Probe *)probe)->lo();
         }
@@ -124,7 +124,6 @@ void one_second_timer_task(void *probe) // periodic task
 
 void clock_widget_task(void *probe)
 {
-    // clock_widget.setup_blinking(&my_blinker);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);

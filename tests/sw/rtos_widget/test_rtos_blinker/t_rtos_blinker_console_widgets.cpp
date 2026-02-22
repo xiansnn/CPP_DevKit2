@@ -49,8 +49,8 @@ void clock_console_widget::draw()
 void clock_console_widget::get_value_of_interest()
 {
     myMainClock *clock = (myMainClock *)this->actual_rtos_displayed_model;
-    hour_value = clock->hour.get_value();
-    minute_value = clock->minute.get_value();
-    second_value = clock->second.get_value();
+    hour_value = clock->hour->get_value();
+    minute_value = clock->minute->get_value();
+    second_value = clock->second->get_value();
     status_string = status_to_string[clock->get_rtos_status()];
 }

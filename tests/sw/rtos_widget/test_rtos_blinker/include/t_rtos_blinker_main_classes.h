@@ -21,9 +21,9 @@ private:
 public:
     myMainClock(/* args */);
     ~myMainClock();
-    myControlledClockTime hour;
-    myControlledClockTime minute;
-    myControlledClockTime second;
+    myControlledClockTime* hour;
+    myControlledClockTime* minute;
+    myControlledClockTime* second;
 
     void process_control_event(struct_ControlEventData control_event);
 };

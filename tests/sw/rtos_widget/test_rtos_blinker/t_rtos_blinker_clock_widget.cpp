@@ -95,15 +95,15 @@ void ClockWidget::get_value_of_interest()
         this->clock_status = actual_model->get_rtos_status();
         if (this->clock_status == ControlledObjectStatus::IS_ACTIVE)
         {
-            hour_angle_degree = (actual_model->hour.get_value() % 12) * 30 + (actual_model->minute.get_value() * 30) / 60;
-            minute_angle_degree = actual_model->minute.get_value() * 6 + (actual_model->second.get_value() * 6) / 60;
+            hour_angle_degree = (actual_model->hour->get_value() % 12) * 30 + (actual_model->minute->get_value() * 30) / 60;
+            minute_angle_degree = actual_model->minute->get_value() * 6 + (actual_model->second->get_value() * 6) / 60;
         }
         else
         {
-            hour_angle_degree = (actual_model->hour.get_value() % 12) * 30;
-            minute_angle_degree = actual_model->minute.get_value() * 6;
+            hour_angle_degree = (actual_model->hour->get_value() % 12) * 30;
+            minute_angle_degree = actual_model->minute->get_value() * 6;
         }
-        second_angle_degree = actual_model->second.get_value() * 6;
+        second_angle_degree = actual_model->second->get_value() * 6;
     }
 }
 
@@ -170,18 +170,18 @@ void ClockWidgetElement::get_value_of_interest()
     {
     case ClockElementType::HOUR:
         if (clock_status == ControlledObjectStatus::IS_ACTIVE)
-            angle_degree = (main_clock_model->hour.get_value() % 12) * 30 + (main_clock_model->minute.get_value() * 30) / 60;
+            angle_degree = (main_clock_model->hour->get_value() % 12) * 30 + (main_clock_model->minute->get_value() * 30) / 60;
         else
-            angle_degree = (main_clock_model->hour.get_value() % 12) * 30;
+            angle_degree = (main_clock_model->hour->get_value() % 12) * 30;
         break;
     case ClockElementType::MINUTE:
         if (clock_status == ControlledObjectStatus::IS_ACTIVE)
-            angle_degree = main_clock_model->minute.get_value() * 6 + (main_clock_model->second.get_value() * 6) / 60;
+            angle_degree = main_clock_model->minute->get_value() * 6 + (main_clock_model->second->get_value() * 6) / 60;
         else
-            angle_degree = main_clock_model->minute.get_value() * 6;
+            angle_degree = main_clock_model->minute->get_value() * 6;
         break;
     case ClockElementType::SECOND:
-        angle_degree = main_clock_model->second.get_value() * 6;
+        angle_degree = main_clock_model->second->get_value() * 6;
         break;
 
     default:

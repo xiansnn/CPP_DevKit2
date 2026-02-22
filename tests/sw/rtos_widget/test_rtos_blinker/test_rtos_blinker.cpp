@@ -60,16 +60,16 @@ clock_console_widget my_main_clock_console_widget = clock_console_widget(&my_clo
 my_controller_monitoring_widget controller_monitoring_widget = my_controller_monitoring_widget(&right_display, controller_monitoring_text_cfg, CanvasFormat::MONO_VLSB, &my_clock_controller);
 my_clock_monitoring_widget clock_monitoring_widget = my_clock_monitoring_widget(&left_display, clock_monitoring_text_cfg, CanvasFormat::MONO_VLSB, &my_clock);
 #endif
-my_hour_text_widget hour_text_widget = my_hour_text_widget(&color_display, clock_hour_text_cfg, CanvasFormat::RGB565_16b, &my_clock.hour);
-my_minute_text_widget minute_text_widget = my_minute_text_widget(&color_display, clock_minute_text_cfg, CanvasFormat::RGB565_16b, &my_clock.minute);
-my_second_text_widget second_text_widget = my_second_text_widget(&color_display, clock_second_text_cfg, CanvasFormat::RGB565_16b, &my_clock.second);
+my_hour_text_widget hour_text_widget = my_hour_text_widget(&color_display, clock_hour_text_cfg, CanvasFormat::RGB565_16b, my_clock.hour);
+my_minute_text_widget minute_text_widget = my_minute_text_widget(&color_display, clock_minute_text_cfg, CanvasFormat::RGB565_16b, my_clock.minute);
+my_second_text_widget second_text_widget = my_second_text_widget(&color_display, clock_second_text_cfg, CanvasFormat::RGB565_16b, my_clock.second);
 
 ClockWidget clock_widget = ClockWidget(&my_clock, clock_widget_config, CanvasFormat::RGB565_16b, &color_display);
 
 
-ClockWidgetElement clock_hour_widget_element = ClockWidgetElement(&clock_widget, &my_clock.hour, ClockElementType::HOUR);
-ClockWidgetElement clock_minute_widget_element = ClockWidgetElement(&clock_widget,&my_clock.minute, ClockElementType::MINUTE);
-ClockWidgetElement clock_second_widget_element = ClockWidgetElement(&clock_widget,&my_clock.second, ClockElementType::SECOND);
+ClockWidgetElement clock_hour_widget_element = ClockWidgetElement(&clock_widget, my_clock.hour, ClockElementType::HOUR);
+ClockWidgetElement clock_minute_widget_element = ClockWidgetElement(&clock_widget,my_clock.minute, ClockElementType::MINUTE);
+ClockWidgetElement clock_second_widget_element = ClockWidgetElement(&clock_widget,my_clock.second, ClockElementType::SECOND);
 
 
 

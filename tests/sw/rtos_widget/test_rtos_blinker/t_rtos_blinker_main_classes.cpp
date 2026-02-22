@@ -47,9 +47,9 @@ void myClockController::process_control_event(struct_ControlEventData control_ev
             case UIControlEvent::LONG_PUSH:
             case UIControlEvent::TIME_OUT:
                 this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
-                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->hour.update_rtos_status(ControlledObjectStatus::IS_IDLE);
-                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->minute.update_rtos_status(ControlledObjectStatus::IS_IDLE);
-                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->second.update_rtos_status(ControlledObjectStatus::IS_IDLE);
+                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->hour->update_rtos_status(ControlledObjectStatus::IS_IDLE);
+                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->minute->update_rtos_status(ControlledObjectStatus::IS_IDLE);
+                ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->second->update_rtos_status(ControlledObjectStatus::IS_IDLE);
                 ((myControlledClockTime *)this->current_active_rtos_model)->parent_model->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
 
                 break;
@@ -62,19 +62,24 @@ void myClockController::process_control_event(struct_ControlEventData control_ev
 }
 
 myMainClock::myMainClock()
-    : rtos_UIControlledModel(),
-      hour("hour", this, 0, 24, 1),
-      minute("minute", this, 0, 60, 1),
-      second("second", this, 0, 60, 1)
+    : rtos_UIControlledModel()
+//   hour("hour", this, 0, 24, 1),
+//   minute("minute", this, 0, 60, 1),
+//   second("second", this, 0, 60, 1)
 {
+    this->hour = new myControlledClockTime("hour", this, 0, 24, 1);
+    this->minute = new myControlledClockTime("minute", this, 0, 60, 1);
+    this->second = new myControlledClockTime("second", this, 0, 60, 1);
+
     this->update_rtos_status(ControlledObjectStatus::IS_ACTIVE);
-    this->hour.update_rtos_status(ControlledObjectStatus::IS_IDLE);
-    this->minute.update_rtos_status(ControlledObjectStatus::IS_IDLE);
-    this->second.update_rtos_status(ControlledObjectStatus::IS_IDLE);
+    this->hour->update_rtos_status(ControlledObjectStatus::IS_IDLE);
+    this->minute->update_rtos_status(ControlledObjectStatus::IS_IDLE);
+    this->second->update_rtos_status(ControlledObjectStatus::IS_IDLE);
 }
 
 myMainClock::~myMainClock()
 {
+    delete hour;
 }
 
 void myMainClock::process_control_event(struct_ControlEventData control_event)
@@ -87,16 +92,16 @@ void myMainClock::process_control_event(struct_ControlEventData control_event)
             this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
             break;
         case UIControlEvent::INCREMENT:
-            second.increment_value();
-            second.notify_all_linked_widget_task(); // if second has a attached widgets
-            if (second.get_value() == 0)
+            second->increment_value();
+            second->notify_all_linked_widget_task(); // if second has a attached widgets
+            if (second->get_value() == 0)
             {
-                minute.increment_value();
-                minute.notify_all_linked_widget_task(); // if minute has a attached widgets
-                if (minute.get_value() == 0)
+                minute->increment_value();
+                minute->notify_all_linked_widget_task(); // if minute has a attached widgets
+                if (minute->get_value() == 0)
                 {
-                    hour.increment_value();
-                    hour.notify_all_linked_widget_task(); // if hour has a attached widgets
+                    hour->increment_value();
+                    hour->notify_all_linked_widget_task(); // if hour has a attached widgets
                 }
             }
             break;
