@@ -94,7 +94,8 @@ void myMainClock::process_control_event(struct_ControlEventData control_event)
             if (second->get_value() == 0)
             {
                 minute->increment_value();
-                minute->notify_all_linked_widget_task(); // trig the textual widget and the analog clock widget  if (minute->get_value() == 0)
+                minute->notify_all_linked_widget_task(); // trig the textual widget and the analog clock widget  
+                if (minute->get_value() == 0)
                 {
                     hour->increment_value();
                     hour->notify_all_linked_widget_task(); // trig the textual widget and the analog clock widget
