@@ -1,4 +1,4 @@
-#include "t_rtos_blinker_clock_widget.h"
+#include "t_rtos_blinker_analog_clock_widget.h"
 
 #include <cmath>
 //--------------- clock related constant--------------------

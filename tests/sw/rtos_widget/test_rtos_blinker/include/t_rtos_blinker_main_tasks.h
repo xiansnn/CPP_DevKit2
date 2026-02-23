@@ -8,8 +8,8 @@
 #include "device/SSD1306/ssd1306.h"
 
 #include "t_rtos_blinker_console_widgets.h"
-#include "t_rtos_blinker_main_widgets.h"
-#include "t_rtos_blinker_clock_widget.h"
+#include "t_rtos_blinker_digital_clock_widgets.h"
+#include "t_rtos_blinker_analog_clock_widget.h"
 
 extern rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper;
 extern rtos_ST7735 color_display;

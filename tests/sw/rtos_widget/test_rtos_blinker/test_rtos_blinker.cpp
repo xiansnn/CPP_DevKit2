@@ -3,12 +3,12 @@
 #include "t_rtos_blinker_encoder_controller.h"
 #include "t_rtos_blinker_main_classes.h"
 #include "t_rtos_blinker_main_tasks.h"
-#include "t_rtos_blinker_main_widgets.h"
 #include "t_rtos_blinker_monitoring_tasks.h"
-#include "t_rtos_blinker_monitoring_widgets.h"
 #include "t_rtos_blinker_console_tasks.h"
+#include "t_rtos_blinker_digital_clock_widgets.h"
+#include "t_rtos_blinker_analog_clock_widget.h"
 #include "t_rtos_blinker_console_widgets.h"
-#include "t_rtos_blinker_clock_widget.h"
+#include "t_rtos_blinker_monitoring_widgets.h"
 
 // ##### Configuration structures #####
 Probe p0 = Probe(0);
