@@ -5,7 +5,7 @@ void idle_task(void *probe)
 {
     while (true)
     {
-        if (probe!=NULL)
+        if (probe != NULL)
         {
             ((Probe *)probe)->hi();
             ((Probe *)probe)->lo();
@@ -201,12 +201,11 @@ void SPI_clock_hour_widget_element_task(void *probe)
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         if (probe != NULL)
             ((Probe *)probe)->hi();
-        clock_widget.clock_hour_widget_element->draw();
+        clock_widget.draw();
         if (probe != NULL)
             ((Probe *)probe)->lo();
         SPI_display_gate_keeper.send_widget_data(&clock_widget);
     }
-
 }
 
 void SPI_clock_minute_widget_element_task(void *probe)
@@ -217,7 +216,7 @@ void SPI_clock_minute_widget_element_task(void *probe)
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         if (probe != NULL)
             ((Probe *)probe)->hi();
-        clock_widget.clock_minute_widget_element->draw();
+        clock_widget.draw();
         if (probe != NULL)
             ((Probe *)probe)->lo();
         SPI_display_gate_keeper.send_widget_data(&clock_widget);
@@ -232,7 +231,7 @@ void SPI_clock_second_widget_element_task(void *probe)
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         if (probe != NULL)
             ((Probe *)probe)->hi();
-        clock_widget.clock_second_widget_element->draw();
+        clock_widget.draw();
         if (probe != NULL)
             ((Probe *)probe)->lo();
         SPI_display_gate_keeper.send_widget_data(&clock_widget);

@@ -88,9 +88,9 @@ void ClockWidget::draw()
     this->drawer->clear_widget();
     get_value_of_interest();
     draw_dial();
-    draw_clock_hands(second_angle_degree, SECOND_HAND_LENGTH, SECOND_HAND_COLOR_index);
-    draw_clock_hands(minute_angle_degree, MINUTE_HAND_LENGTH, MINUTE_HAND_COLOR_index);
-    draw_clock_hands(hour_angle_degree, HOUR_HAND_LENGTH, HOUR_HAND_COLOR_index);
+    this->clock_hour_widget_element->draw();
+    this->clock_minute_widget_element->draw();
+    this->clock_second_widget_element->draw();
     this->drawer->draw_border();
 }
 void ClockWidget::get_value_of_interest()
