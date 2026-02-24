@@ -143,12 +143,6 @@ void rtos_BlinkingWidget::stop_blinking()
     this->blinker->remove_blinking_widget(this);
 }
 
-void rtos_BlinkingWidget::setup_blinking(rtos_Blinker *blinker)
-{
-    save_canvas_color();
-    this->blinker = blinker;
-}
-
 void rtos_BlinkingWidget::convert_status_to_blinking_behavior(ControlledObjectStatus status)
 {
     switch (status)
