@@ -33,10 +33,11 @@ struct_ConfigTextWidget clock_second_text_cfg{
     .wrap = false,
     .widget_with_border = true};
 
-my_hour_text_widget::my_hour_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+my_hour_text_widget::my_hour_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,rtos_Blinker *blinker,
                                          struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
-    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen)
+    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget(blinker)
 {
+    save_canvas_color();
 }
 
 my_hour_text_widget::~my_hour_text_widget()
@@ -89,10 +90,11 @@ void my_hour_text_widget::set_focus_color()
     this->writer->canvas->bg_color = this->fg_color_backup;
 }
 
-my_minute_text_widget::my_minute_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+my_minute_text_widget::my_minute_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,rtos_Blinker *blinker,
                                              struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
-    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen)
+    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget(blinker)
 {
+    save_canvas_color();
 }
 
 my_minute_text_widget::~my_minute_text_widget()
@@ -140,10 +142,11 @@ void my_minute_text_widget::set_focus_color()
     this->writer->canvas->bg_color = this->fg_color_backup;
 }
 
-my_second_text_widget::my_second_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+my_second_text_widget::my_second_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,rtos_Blinker *blinker,
                                              struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
-    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen)
+    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget(blinker)
 {
+    save_canvas_color();
 }
 
 my_second_text_widget::~my_second_text_widget()

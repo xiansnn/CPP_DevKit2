@@ -15,9 +15,9 @@ Probe p0 = Probe(0);
 Probe p1 = Probe(1);
 
 #if !defined(SHOW_MONITORING_WIDGET)
-Probe p2 = Probe(2); //used by I2C
-Probe p3 = Probe(3); //used by I2C
-#endif 
+Probe p2 = Probe(2); // used by I2C
+Probe p3 = Probe(3); // used by I2C
+#endif
 
 Probe p4 = Probe(4);
 Probe p5 = Probe(5);
@@ -27,7 +27,7 @@ Probe p7 = Probe(7);
 // ##### main classes #####
 myClockController my_clock_controller = myClockController(true);
 myMainClock my_clock = myMainClock();
-rtos_Blinker my_blinker = rtos_Blinker(BLINKING_PERIOD_ms/2);
+rtos_Blinker my_blinker = rtos_Blinker(BLINKING_PERIOD_ms / 2);
 
 // ##### ST7735 setup #####
 rtos_HW_SPI_Master spi_master = rtos_HW_SPI_Master(cfg_spi,
@@ -60,12 +60,11 @@ clock_console_widget my_main_clock_console_widget = clock_console_widget(&my_clo
 my_controller_monitoring_widget controller_monitoring_widget = my_controller_monitoring_widget(&right_display, controller_monitoring_text_cfg, CanvasFormat::MONO_VLSB, &my_clock_controller);
 my_clock_monitoring_widget clock_monitoring_widget = my_clock_monitoring_widget(&left_display, clock_monitoring_text_cfg, CanvasFormat::MONO_VLSB, &my_clock);
 #endif
-my_hour_text_widget hour_text_widget = my_hour_text_widget(&color_display, clock_hour_text_cfg, CanvasFormat::RGB565_16b, my_clock.hour);
-my_minute_text_widget minute_text_widget = my_minute_text_widget(&color_display, clock_minute_text_cfg, CanvasFormat::RGB565_16b, my_clock.minute);
-my_second_text_widget second_text_widget = my_second_text_widget(&color_display, clock_second_text_cfg, CanvasFormat::RGB565_16b, my_clock.second);
+my_hour_text_widget hour_text_widget = my_hour_text_widget(&color_display, &my_blinker, clock_hour_text_cfg, CanvasFormat::RGB565_16b, my_clock.hour);
+my_minute_text_widget minute_text_widget = my_minute_text_widget(&color_display, &my_blinker, clock_minute_text_cfg, CanvasFormat::RGB565_16b, my_clock.minute);
+my_second_text_widget second_text_widget = my_second_text_widget(&color_display, &my_blinker, clock_second_text_cfg, CanvasFormat::RGB565_16b, my_clock.second);
 
-ClockWidget clock_widget = ClockWidget(&my_clock, clock_widget_config, CanvasFormat::RGB565_16b, &color_display);
-
+ClockWidget clock_widget = ClockWidget(&my_clock, &my_blinker, clock_widget_config, CanvasFormat::RGB565_16b, &color_display);
 
 // ####################
 int main()

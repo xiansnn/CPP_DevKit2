@@ -14,7 +14,7 @@ private:
     int hour_value;
 
 public:
-    my_hour_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+    my_hour_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,rtos_Blinker *blinker,
                         struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model);
     ~my_hour_text_widget();
     void get_value_of_interest();
@@ -32,7 +32,7 @@ private:
     int minute_value;
 
 public:
-    my_minute_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+    my_minute_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,rtos_Blinker *blinker,
                           struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model);
     ~my_minute_text_widget();
     void get_value_of_interest();
@@ -50,7 +50,7 @@ private:
     int second_value;
 
 public:
-    my_second_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+    my_second_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,rtos_Blinker *blinker,
                           struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model);
     ~my_second_text_widget();
     void get_value_of_interest();

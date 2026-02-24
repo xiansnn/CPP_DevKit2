@@ -28,7 +28,7 @@ protected:
 
 public:
     rtos_GraphicWidget *host_widget;
-    ClockWidgetElement(rtos_GraphicWidget *host_widget, rtos_Model *actual_displayed_model, ClockElementType clock_element_type);
+    ClockWidgetElement(rtos_GraphicWidget *host_widget, rtos_Blinker *blinker, rtos_Model *actual_displayed_model, ClockElementType clock_element_type);
     ~ClockWidgetElement();
 
     void draw();
@@ -52,11 +52,12 @@ public:
     uint minute_angle_degree;
     uint second_angle_degree;
 
-    ClockWidgetElement* clock_hour_widget_element;
-    ClockWidgetElement* clock_minute_widget_element;
-    ClockWidgetElement* clock_second_widget_element;
+    ClockWidgetElement *clock_hour_widget_element;
+    ClockWidgetElement *clock_minute_widget_element;
+    ClockWidgetElement *clock_second_widget_element;
 
     ClockWidget(rtos_Model *actual_displayed_model,
+                rtos_Blinker *blinker,
                 struct_ConfigGraphicWidget graph_cfg,
                 CanvasFormat canvas_format,
                 rtos_DisplayDevice *display_device);

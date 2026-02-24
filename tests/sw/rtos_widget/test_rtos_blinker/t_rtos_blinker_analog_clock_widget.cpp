@@ -71,12 +71,12 @@ ClockWidget::~ClockWidget()
     delete clock_second_widget_element;
 }
 
-ClockWidget::ClockWidget(rtos_Model *actual_displayed_model, struct_ConfigGraphicWidget graph_cfg, CanvasFormat canvas_format, rtos_DisplayDevice *display_device)
+ClockWidget::ClockWidget(rtos_Model *actual_displayed_model,rtos_Blinker *blinker, struct_ConfigGraphicWidget graph_cfg, CanvasFormat canvas_format, rtos_DisplayDevice *display_device)
     : rtos_GraphicWidget(actual_displayed_model, graph_cfg, canvas_format, display_device)
 {
-    clock_hour_widget_element = new ClockWidgetElement(this, ((myMainClock *)actual_displayed_model)->hour, ClockElementType::HOUR);
-    clock_minute_widget_element = new ClockWidgetElement(this, ((myMainClock *)actual_displayed_model)->minute, ClockElementType::MINUTE);
-    clock_second_widget_element = new ClockWidgetElement(this, ((myMainClock *)actual_displayed_model)->second, ClockElementType::SECOND);
+    clock_hour_widget_element = new ClockWidgetElement(this, blinker, ((myMainClock *)actual_displayed_model)->hour, ClockElementType::HOUR);
+    clock_minute_widget_element = new ClockWidgetElement(this, blinker, ((myMainClock *)actual_displayed_model)->minute, ClockElementType::MINUTE);
+    clock_second_widget_element = new ClockWidgetElement(this, blinker, ((myMainClock *)actual_displayed_model)->second, ClockElementType::SECOND);
 
     this->actual_rtos_displayed_model = actual_displayed_model;
     this->display_device = display_device;
@@ -113,10 +113,10 @@ void ClockWidget::get_value_of_interest()
     }
 }
 
-ClockWidgetElement::ClockWidgetElement(rtos_GraphicWidget *host_widget,
+ClockWidgetElement::ClockWidgetElement(rtos_GraphicWidget *host_widget,rtos_Blinker *blinker,
                                        rtos_Model *actual_displayed_model,
                                        ClockElementType clock_element_type)
-    : rtos_Widget(actual_displayed_model, host_widget->display_device), rtos_BlinkingWidget()
+    : rtos_Widget(actual_displayed_model, host_widget->display_device), rtos_BlinkingWidget(blinker)
 {
     this->host_widget = host_widget;
     this->bg_element_color = DIAL_BACKGROUND_COLOR_index;

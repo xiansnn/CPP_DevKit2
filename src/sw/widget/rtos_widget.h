@@ -83,7 +83,7 @@ protected:
 
 public:
     /// @brief Constructor of the RTOS blinking widget
-    rtos_BlinkingWidget();
+    rtos_BlinkingWidget(rtos_Blinker *blinker);
 
     /// @brief Destructor of the RTOS blinking widget
     ~rtos_BlinkingWidget();

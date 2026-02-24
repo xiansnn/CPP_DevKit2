@@ -124,8 +124,9 @@ void rtos_Blinker::refresh_blinking()
         widget->blink();
 }
 
-rtos_BlinkingWidget::rtos_BlinkingWidget()
+rtos_BlinkingWidget::rtos_BlinkingWidget(rtos_Blinker *blinker)
 {
+    this->blinker = blinker;
 }
 
 rtos_BlinkingWidget::~rtos_BlinkingWidget()
