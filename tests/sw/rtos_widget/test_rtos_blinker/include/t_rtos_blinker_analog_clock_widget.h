@@ -48,9 +48,7 @@ private:
 
 public:
     void draw_clock_hands(int angle_degree, uint length, ColorIndex color);
-    int hour_angle_degree;
-    uint minute_angle_degree;
-    uint second_angle_degree;
+
 
     ClockWidgetElement *clock_hour_widget_element;
     ClockWidgetElement *clock_minute_widget_element;

@@ -113,7 +113,7 @@ myControlledClockTime::myControlledClockTime(std::string name, myMainClock *pare
 {
     this->name = name;
     this->parent_model = parent_model;
-    this->update_rtos_status(ControlledObjectStatus::IS_WAITING);
+    this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
 }
 
 myControlledClockTime::~myControlledClockTime()
