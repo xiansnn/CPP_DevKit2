@@ -14,8 +14,8 @@
 #include "device/switch_button/rtos_switch_button.h"
 #include "utilities/probe/probe.h"
 
-#define CENTRAL_SWITCH_GPIO 17
-#define ENCODER_CLK_GPIO 21
+#define CENTRAL_SWITCH_GPIO 18
+#define ENCODER_CLK_GPIO 19
 
 Probe p0 = Probe(0);
 Probe p1 = Probe(1);
@@ -68,10 +68,10 @@ struct_rtosConfigSwitchButton cfg_encoder_clk{
     .time_out_delay_ms = 3000};
 
 rtos_SwitchButton encoder_clk = rtos_SwitchButton(ENCODER_CLK_GPIO, &test_switch_irq_call_back,
-                                                              encoder_clk_isr_queue, ui_control_event_queue,
+                                                              encoder_clk_isr_queue, 
                                                               cfg_encoder_clk);
 rtos_SwitchButton central_switch = rtos_SwitchButton(CENTRAL_SWITCH_GPIO, &test_switch_irq_call_back,
-                                                                 central_switch_isr_queue, ui_control_event_queue,
+                                                                 central_switch_isr_queue,
                                                                  cfg_central_switch);
 
 void vIdleTask(void *pxProbe)

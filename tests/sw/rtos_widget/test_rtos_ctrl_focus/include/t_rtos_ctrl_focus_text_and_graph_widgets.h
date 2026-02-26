@@ -34,7 +34,7 @@ private:
     ControlledObjectStatus status;
 
 public:
-    my_angle_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+    my_angle_widget(rtos_GraphicDisplayDevice *graphic_display_screen, rtos_Blinker* blinker,
                     struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model = nullptr);
     ~my_angle_widget();
     void get_value_of_interest();
@@ -51,7 +51,7 @@ private:
     ControlledObjectStatus status;
 
 public:
-    my_H_position_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+    my_H_position_widget(rtos_GraphicDisplayDevice *graphic_display_screen, rtos_Blinker* blinker,
                          struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model = nullptr);
     ~my_H_position_widget();
     void get_value_of_interest();
@@ -68,7 +68,7 @@ private:
     ControlledObjectStatus status;
 
 public:
-    my_V_position_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
+    my_V_position_widget(rtos_GraphicDisplayDevice *graphic_display_screen,rtos_Blinker* blinker,
                          struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model = nullptr);
     ~my_V_position_widget();
     void get_value_of_interest();
