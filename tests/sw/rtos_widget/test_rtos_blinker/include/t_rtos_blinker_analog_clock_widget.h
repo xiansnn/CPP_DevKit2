@@ -3,12 +3,6 @@
 #include "sw/widget/rtos_widget.h"
 #include "t_rtos_blinker_main_classes.h"
 
-enum class ClockElementType
-{
-    HOUR,
-    MINUTE,
-    SECOND
-};
 
 extern std::map<ControlledObjectStatus, std::string> status_to_string;
 extern std::map<ClockElementType, std::string> clock_element_to_string;
@@ -28,7 +22,7 @@ protected:
 
 public:
     rtos_GraphicWidget *host_widget;
-    ClockWidgetElement(rtos_GraphicWidget *host_widget, rtos_Model *actual_displayed_model, ClockElementType clock_element_type);
+    ClockWidgetElement(rtos_GraphicWidget *host_widget, rtos_Blinker *blinker, rtos_Model *actual_displayed_model, ClockElementType clock_element_type);
     ~ClockWidgetElement();
 
     void draw();
@@ -48,15 +42,14 @@ private:
 
 public:
     void draw_clock_hands(int angle_degree, uint length, ColorIndex color);
-    int hour_angle_degree;
-    uint minute_angle_degree;
-    uint second_angle_degree;
 
-    ClockWidgetElement* clock_hour_widget_element;
-    ClockWidgetElement* clock_minute_widget_element;
-    ClockWidgetElement* clock_second_widget_element;
+
+    ClockWidgetElement *clock_hour_widget_element;
+    ClockWidgetElement *clock_minute_widget_element;
+    ClockWidgetElement *clock_second_widget_element;
 
     ClockWidget(rtos_Model *actual_displayed_model,
+                rtos_Blinker *blinker,
                 struct_ConfigGraphicWidget graph_cfg,
                 CanvasFormat canvas_format,
                 rtos_DisplayDevice *display_device);

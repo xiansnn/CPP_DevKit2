@@ -1,4 +1,5 @@
 #include "t_rtos_blinker_main_classes.h"
+#include "t_rtos_blinker_config.h"
 
 extern rtos_Blinker my_blinker;
 
@@ -94,7 +95,7 @@ void myMainClock::process_control_event(struct_ControlEventData control_event)
             if (second->get_value() == 0)
             {
                 minute->increment_value();
-                minute->notify_all_linked_widget_task(); // trig the textual widget and the analog clock widget  
+                minute->notify_all_linked_widget_task(); // trig the textual widget and the analog clock widget
                 if (minute->get_value() == 0)
                 {
                     hour->increment_value();
@@ -106,6 +107,9 @@ void myMainClock::process_control_event(struct_ControlEventData control_event)
             break;
         }
     }
+#ifdef SHOW_MONITORING_WIDGET
+    notify_all_linked_widget_task();  // trig the monitoring widget, the counterpart is that the analog clock widget is execute twice :-(
+#endif // SHOW_MONITORING_WIDGET
 }
 
 myControlledClockTime::myControlledClockTime(std::string name, myMainClock *parent_model, int min_value, int max_value, int increment)
@@ -113,7 +117,7 @@ myControlledClockTime::myControlledClockTime(std::string name, myMainClock *pare
 {
     this->name = name;
     this->parent_model = parent_model;
-    this->update_rtos_status(ControlledObjectStatus::IS_WAITING);
+    this->update_rtos_status(ControlledObjectStatus::IS_IDLE);
 }
 
 myControlledClockTime::~myControlledClockTime()

@@ -1,4 +1,4 @@
-#include "t_rtos_blinker_clock_widget.h"
+#include "t_rtos_blinker_analog_clock_widget.h"
 
 #include <cmath>
 //--------------- clock related constant--------------------
@@ -71,12 +71,12 @@ ClockWidget::~ClockWidget()
     delete clock_second_widget_element;
 }
 
-ClockWidget::ClockWidget(rtos_Model *actual_displayed_model, struct_ConfigGraphicWidget graph_cfg, CanvasFormat canvas_format, rtos_DisplayDevice *display_device)
+ClockWidget::ClockWidget(rtos_Model *actual_displayed_model, rtos_Blinker *blinker, struct_ConfigGraphicWidget graph_cfg, CanvasFormat canvas_format, rtos_DisplayDevice *display_device)
     : rtos_GraphicWidget(actual_displayed_model, graph_cfg, canvas_format, display_device)
 {
-    clock_hour_widget_element = new ClockWidgetElement(this, ((myMainClock *)actual_displayed_model)->hour, ClockElementType::HOUR);
-    clock_minute_widget_element = new ClockWidgetElement(this, ((myMainClock *)actual_displayed_model)->minute, ClockElementType::MINUTE);
-    clock_second_widget_element = new ClockWidgetElement(this, ((myMainClock *)actual_displayed_model)->second, ClockElementType::SECOND);
+    clock_hour_widget_element = new ClockWidgetElement(this, blinker, ((myMainClock *)actual_displayed_model)->hour, ClockElementType::HOUR);
+    clock_minute_widget_element = new ClockWidgetElement(this, blinker, ((myMainClock *)actual_displayed_model)->minute, ClockElementType::MINUTE);
+    clock_second_widget_element = new ClockWidgetElement(this, blinker, ((myMainClock *)actual_displayed_model)->second, ClockElementType::SECOND);
 
     this->actual_rtos_displayed_model = actual_displayed_model;
     this->display_device = display_device;
@@ -94,34 +94,23 @@ void ClockWidget::draw()
     this->drawer->draw_border();
 }
 void ClockWidget::get_value_of_interest()
-{
-    if (actual_rtos_displayed_model != nullptr)
-    {
-        myMainClock *actual_model = (myMainClock *)this->actual_rtos_displayed_model;
-        this->clock_status = actual_model->get_rtos_status();
-        if (this->clock_status == ControlledObjectStatus::IS_ACTIVE)
-        {
-            hour_angle_degree = (actual_model->hour->get_value() % 12) * 30 + (actual_model->minute->get_value() * 30) / 60;
-            minute_angle_degree = actual_model->minute->get_value() * 6 + (actual_model->second->get_value() * 6) / 60;
-        }
-        else
-        {
-            hour_angle_degree = (actual_model->hour->get_value() % 12) * 30;
-            minute_angle_degree = actual_model->minute->get_value() * 6;
-        }
-        second_angle_degree = actual_model->second->get_value() * 6;
-    }
+{   /*
+       mandatory because of abstract class implementation, but in this case the clock widget itself does not have a value of interest to retrieve, 
+       as it is the clock widget elements that retrieve the values of interest (hour, minute, second) from the model. 
+       So this method can be left empty or used to retrieve any additional information needed for drawing the clock 
+       that is not already retrieved by the clock widget elements.
+     */
+    
 }
 
-ClockWidgetElement::ClockWidgetElement(rtos_GraphicWidget *host_widget,
+ClockWidgetElement::ClockWidgetElement(rtos_GraphicWidget *host_widget, rtos_Blinker *blinker,
                                        rtos_Model *actual_displayed_model,
                                        ClockElementType clock_element_type)
-    : rtos_Widget(actual_displayed_model, host_widget->display_device), rtos_BlinkingWidget()
+    : rtos_Widget(actual_displayed_model, host_widget->display_device), rtos_BlinkingWidget(blinker)
 {
     this->host_widget = host_widget;
-    this->bg_element_color = DIAL_BACKGROUND_COLOR_index;
-    this->clock_element_type = clock_element_type;
 
+    this->clock_element_type = clock_element_type;
     switch (this->clock_element_type)
     {
     case ClockElementType::HOUR:
@@ -139,6 +128,8 @@ ClockWidgetElement::ClockWidgetElement(rtos_GraphicWidget *host_widget,
     default:
         break;
     }
+    this->bg_element_color = DIAL_BACKGROUND_COLOR_index;
+    save_canvas_color();
 }
 
 ClockWidgetElement::~ClockWidgetElement()
@@ -149,20 +140,7 @@ void ClockWidgetElement::draw()
 {
     get_value_of_interest();
     convert_status_to_blinking_behavior(status);
-    switch (this->clock_element_type)
-    {
-    case ClockElementType::HOUR:
-        ((ClockWidget *)host_widget)->draw_clock_hands(this->angle_degree, HOUR_HAND_LENGTH, this->fg_element_color);
-        break;
-    case ClockElementType::MINUTE:
-        ((ClockWidget *)host_widget)->draw_clock_hands(this->angle_degree, MINUTE_HAND_LENGTH, this->fg_element_color);
-        break;
-    case ClockElementType::SECOND:
-        ((ClockWidget *)host_widget)->draw_clock_hands(this->angle_degree, SECOND_HAND_LENGTH, this->fg_element_color);
-        break;
-    default:
-        break;
-    }
+    ((ClockWidget *)host_widget)->draw_clock_hands(this->angle_degree, this->length, this->fg_element_color);
 }
 
 void ClockWidgetElement::get_value_of_interest()
@@ -175,6 +153,7 @@ void ClockWidgetElement::get_value_of_interest()
     switch (this->clock_element_type)
     {
     case ClockElementType::HOUR:
+
         if (clock_status == ControlledObjectStatus::IS_ACTIVE)
             angle_degree = (main_clock_model->hour->get_value() % 12) * 30 + (main_clock_model->minute->get_value() * 30) / 60;
         else

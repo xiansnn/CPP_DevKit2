@@ -8,8 +8,8 @@
 #include "device/SSD1306/ssd1306.h"
 
 #include "t_rtos_blinker_console_widgets.h"
-#include "t_rtos_blinker_main_widgets.h"
-#include "t_rtos_blinker_clock_widget.h"
+#include "t_rtos_blinker_digital_clock_widgets.h"
+#include "t_rtos_blinker_analog_clock_widget.h"
 
 extern rtos_GraphicDisplayGateKeeper SPI_display_gate_keeper;
 extern rtos_ST7735 color_display;
@@ -20,9 +20,9 @@ extern clock_console_widget my_main_clock_console_widget;
 
 extern rtos_Blinker my_blinker;
 
-extern my_hour_text_widget hour_text_widget;
-extern my_minute_text_widget minute_text_widget;
-extern my_second_text_widget second_text_widget;
+extern my_digital_clock_widget hour_text_widget;
+extern my_digital_clock_widget minute_text_widget;
+extern my_digital_clock_widget second_text_widget;
 
 extern ClockWidget clock_widget;
 

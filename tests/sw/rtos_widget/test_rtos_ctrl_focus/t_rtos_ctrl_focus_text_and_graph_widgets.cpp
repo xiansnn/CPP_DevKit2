@@ -37,7 +37,7 @@ struct_ConfigTextWidget ST7735_V_position_config{
     .fg_color = ColorIndex::PHOSPHOR,
     .bg_color = ColorIndex::BLACK};
 
-    struct_ConfigGraphicWidget ST7735_graph_config{
+struct_ConfigGraphicWidget ST7735_graph_config{
     .canvas_width_pixel = 128,
     .canvas_height_pixel = 56,
     .canvas_foreground_color = ColorIndex::BLACK,
@@ -69,8 +69,6 @@ struct_ConfigGraphicWidget SSD1306_graph_config{
     .widget_anchor_x = 0,
     .widget_anchor_y = 0,
     .widget_with_border = false};
-
-
 
 my_text_widget::my_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,
                                struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
@@ -142,9 +140,11 @@ void my_text_widget::draw()
     this->writer->draw_border();
 }
 
-my_angle_widget::my_angle_widget(rtos_GraphicDisplayDevice *graphic_display_screen, struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
-    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget()
+my_angle_widget::my_angle_widget(rtos_GraphicDisplayDevice *graphic_display_screen, rtos_Blinker *blinker, struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
+    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget(blinker)
 {
+    this->blinker = blinker;
+    save_canvas_color();
 }
 
 my_angle_widget::~my_angle_widget()
@@ -196,9 +196,11 @@ void my_angle_widget::set_focus_color()
     this->writer->canvas->bg_color = this->fg_color_backup;
 }
 
-my_H_position_widget::my_H_position_widget(rtos_GraphicDisplayDevice *graphic_display_screen, struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
-    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget()
+my_H_position_widget::my_H_position_widget(rtos_GraphicDisplayDevice *graphic_display_screen,rtos_Blinker* blinker, struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
+    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget(blinker)
 {
+    this->blinker = blinker;
+    save_canvas_color();
 }
 
 my_H_position_widget::~my_H_position_widget()
@@ -250,9 +252,11 @@ void my_H_position_widget::set_focus_color()
     this->writer->canvas->bg_color = this->fg_color_backup;
 }
 
-my_V_position_widget::my_V_position_widget(rtos_GraphicDisplayDevice *graphic_display_screen, struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
-    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget()
+my_V_position_widget::my_V_position_widget(rtos_GraphicDisplayDevice *graphic_display_screen,rtos_Blinker* blinker, struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
+    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget(blinker)
 {
+    this->blinker = blinker;
+    save_canvas_color();
 }
 
 my_V_position_widget::~my_V_position_widget()

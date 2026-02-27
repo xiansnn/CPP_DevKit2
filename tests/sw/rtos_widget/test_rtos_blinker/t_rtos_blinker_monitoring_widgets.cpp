@@ -65,18 +65,15 @@ my_clock_monitoring_widget::~my_clock_monitoring_widget()
 void my_clock_monitoring_widget::get_value_of_interest()
 {
     myMainClock *main_clock = (myMainClock *)actual_rtos_displayed_model;
-    myControlledClockTime* clock_hh = main_clock->hour;
-    myControlledClockTime* clock_mm = main_clock->minute;
-    myControlledClockTime* clock_ss = main_clock->second;
 
     clock_status = status_to_string[main_clock->get_rtos_status()];
-    hour_status = status_to_string[clock_hh->get_rtos_status()];
-    minute_status = status_to_string[clock_mm->get_rtos_status()];
-    second_status = status_to_string[clock_ss->get_rtos_status()];
+    hour_status = status_to_string[main_clock->hour->get_rtos_status()];
+    minute_status = status_to_string[main_clock->minute->get_rtos_status()];
+    second_status = status_to_string[main_clock->second->get_rtos_status()];
 
-    hh = clock_hh->get_value();
-    mm = clock_mm->get_value();
-    ss = clock_ss->get_value();
+    hh = main_clock->hour->get_value();
+    mm = main_clock->minute->get_value();
+    ss = main_clock->second->get_value();
 }
 
 void my_clock_monitoring_widget::draw()
