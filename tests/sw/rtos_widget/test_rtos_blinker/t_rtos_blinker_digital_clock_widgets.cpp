@@ -33,36 +33,52 @@ struct_ConfigTextWidget clock_second_text_cfg{
     .wrap = false,
     .widget_with_border = true};
 
-my_hour_text_widget::my_hour_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,rtos_Blinker *blinker,
-                                         struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
+
+my_digital_clock_widget::my_digital_clock_widget(ClockElementType clock_element_type, rtos_GraphicDisplayDevice *graphic_display_screen,
+                                                 rtos_Blinker *blinker, struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
     : rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget(blinker)
 {
+    this->clock_element_type = clock_element_type;
     save_canvas_color();
 }
 
-my_hour_text_widget::~my_hour_text_widget()
+my_digital_clock_widget::~my_digital_clock_widget()
 {
 }
 
-void my_hour_text_widget::get_value_of_interest()
-{
-    this->hour_status = ((myControlledClockTime *)actual_rtos_displayed_model)->get_rtos_status();
-    this->hour_value = ((myControlledClockTime *)actual_rtos_displayed_model)->get_value();
+void my_digital_clock_widget::get_value_of_interest()
+{ 
+    this->digital_clock_status = ((myControlledClockTime *)actual_rtos_displayed_model)->get_rtos_status();
+    this->digital_clock_value = ((myControlledClockTime *)actual_rtos_displayed_model)->get_value();
 }
 
-void my_hour_text_widget::draw()
+void my_digital_clock_widget::draw()
 {
     this->writer->clear_text_buffer();
     get_value_of_interest();
 
     // prepare to blink
-    convert_status_to_blinking_behavior(hour_status);
+    convert_status_to_blinking_behavior(digital_clock_status);
     // effective draw
-    sprintf(this->writer->text_buffer, "%02d", hour_value);
+    switch (clock_element_type)
+    {
+    case ClockElementType::HOUR:
+        sprintf(this->writer->text_buffer, "%02d", digital_clock_value);
+        break;
+   case ClockElementType::MINUTE:
+        sprintf(this->writer->text_buffer, ":%02d", digital_clock_value);
+        break;
+   case ClockElementType::SECOND:
+        sprintf(this->writer->text_buffer, ":%02d", digital_clock_value);
+        break;
+    default:
+        break;
+    }
     this->writer->write();
+
 }
 
-void my_hour_text_widget::blink()
+void my_digital_clock_widget::blink()
 {
     // process effective blinking
     this->writer->canvas->fg_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
@@ -72,127 +88,19 @@ void my_hour_text_widget::blink()
         xTaskNotifyGive(this->task_handle);
 }
 
-void my_hour_text_widget::save_canvas_color()
+void my_digital_clock_widget::save_canvas_color()
 {
     this->fg_color_backup = this->writer->canvas->fg_color;
     this->bg_color_backup = this->writer->canvas->bg_color;
 }
 
-void my_hour_text_widget::restore_canvas_color()
+void my_digital_clock_widget::restore_canvas_color()
 {
     this->writer->canvas->fg_color = this->fg_color_backup;
     this->writer->canvas->bg_color = this->bg_color_backup;
 }
 
-void my_hour_text_widget::set_focus_color()
-{
-    this->writer->canvas->fg_color = this->bg_color_backup;
-    this->writer->canvas->bg_color = this->fg_color_backup;
-}
-
-my_minute_text_widget::my_minute_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,rtos_Blinker *blinker,
-                                             struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
-    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget(blinker)
-{
-    save_canvas_color();
-}
-
-my_minute_text_widget::~my_minute_text_widget()
-{
-}
-
-void my_minute_text_widget::get_value_of_interest()
-{
-    this->minute_status = ((myControlledClockTime *)actual_rtos_displayed_model)->get_rtos_status();
-    this->minute_value = ((myControlledClockTime *)actual_rtos_displayed_model)->get_value();
-}
-
-void my_minute_text_widget::draw()
-{
-    this->writer->clear_text_buffer();
-    get_value_of_interest();
-    convert_status_to_blinking_behavior(minute_status);
-    // draw
-    sprintf(this->writer->text_buffer, ":%02d", minute_value);
-    this->writer->write();
-}
-
-void my_minute_text_widget::blink()
-{
-    this->writer->canvas->fg_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
-    if (this->task_handle != nullptr)
-        xTaskNotifyGive(this->task_handle);
-}
-
-void my_minute_text_widget::save_canvas_color()
-{
-    this->fg_color_backup = this->writer->canvas->fg_color;
-    this->bg_color_backup = this->writer->canvas->bg_color;
-}
-
-void my_minute_text_widget::restore_canvas_color()
-{
-    this->writer->canvas->fg_color = this->fg_color_backup;
-    this->writer->canvas->bg_color = this->bg_color_backup;
-}
-
-void my_minute_text_widget::set_focus_color()
-{
-    this->writer->canvas->fg_color = this->bg_color_backup;
-    this->writer->canvas->bg_color = this->fg_color_backup;
-}
-
-my_second_text_widget::my_second_text_widget(rtos_GraphicDisplayDevice *graphic_display_screen,rtos_Blinker *blinker,
-                                             struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model)
-    : rtos_TextWidget(model, text_cfg, format, graphic_display_screen), rtos_BlinkingWidget(blinker)
-{
-    save_canvas_color();
-}
-
-my_second_text_widget::~my_second_text_widget()
-{
-}
-
-void my_second_text_widget::get_value_of_interest()
-{
-    this->second_status = ((myControlledClockTime *)actual_rtos_displayed_model)->get_rtos_status();
-    this->second_value = ((myControlledClockTime *)actual_rtos_displayed_model)->get_value();
-}
-
-void my_second_text_widget::draw()
-{
-    this->writer->clear_text_buffer();
-    get_value_of_interest();
-    convert_status_to_blinking_behavior(second_status);
-
-    // draw
-    sprintf(this->writer->text_buffer, ":%02d", second_value);
-    this->writer->write();
-    this->writer->draw_border(this->writer->canvas->fg_color);
-}
-
-void my_second_text_widget::save_canvas_color()
-{
-    this->fg_color_backup = this->writer->canvas->fg_color;
-    this->bg_color_backup = this->writer->canvas->bg_color;
-}
-
-void my_second_text_widget::restore_canvas_color()
-{
-    this->writer->canvas->fg_color = this->fg_color_backup;
-    this->writer->canvas->bg_color = this->bg_color_backup;
-    this->writer->widget_with_border = false;
-}
-
-void my_second_text_widget::blink()
-{
-    // this->writer->widget_with_border = blinker->current_blink_phase;
-    this->writer->canvas->fg_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
-    if (this->task_handle != nullptr)
-        xTaskNotifyGive(this->task_handle);
-}
-
-void my_second_text_widget::set_focus_color()
+void my_digital_clock_widget::set_focus_color()
 {
     this->writer->canvas->fg_color = this->bg_color_backup;
     this->writer->canvas->bg_color = this->fg_color_backup;

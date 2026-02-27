@@ -1,6 +1,13 @@
 #pragma once
 #include "sw/ui_core/rtos_ui_core.h"
 
+enum class ClockElementType
+{
+    HOUR,
+    MINUTE,
+    SECOND
+};
+
 class myMainClock;
 class myControlledClockTime : public rtos_UIControlledModel, public core_CircularIncremetalControlledModel
 {

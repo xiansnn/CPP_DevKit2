@@ -20,9 +20,9 @@ extern clock_console_widget my_main_clock_console_widget;
 
 extern rtos_Blinker my_blinker;
 
-extern my_hour_text_widget hour_text_widget;
-extern my_minute_text_widget minute_text_widget;
-extern my_second_text_widget second_text_widget;
+extern my_digital_clock_widget hour_text_widget;
+extern my_digital_clock_widget minute_text_widget;
+extern my_digital_clock_widget second_text_widget;
 
 extern ClockWidget clock_widget;
 

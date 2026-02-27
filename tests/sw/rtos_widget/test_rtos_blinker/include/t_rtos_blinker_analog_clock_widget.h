@@ -3,12 +3,6 @@
 #include "sw/widget/rtos_widget.h"
 #include "t_rtos_blinker_main_classes.h"
 
-enum class ClockElementType
-{
-    HOUR,
-    MINUTE,
-    SECOND
-};
 
 extern std::map<ControlledObjectStatus, std::string> status_to_string;
 extern std::map<ClockElementType, std::string> clock_element_to_string;
