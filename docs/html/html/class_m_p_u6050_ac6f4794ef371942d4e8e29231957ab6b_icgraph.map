@@ -1,0 +1,7 @@
+<map id="MPU6050::is_data_ready" name="MPU6050::is_data_ready">
+<area shape="rect" id="Node000001" title="the flag that indicates if sensors data are ready" alt="" coords="336,5,478,30"/>
+<area shape="rect" id="Node000002" href="$class_m_p_u6050.html#a35657154dd30e206e09ea6407ede106c" title="start the calibration of the MPU and compute gyro and accellero offset and conversion factor" alt="" coords="173,5,288,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="318,18,288,20,288,15,323,18"/>
+<area shape="rect" id="Node000003" href="$class_m_p_u6050.html#a69ff7760846ab8f9b33ab07aa57709cf" title="Construct a new MPU6050 object." alt="" coords="5,5,125,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="154,18,125,20,125,15,159,17"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="HCSR04::get_distance" name="HCSR04::get_distance">
+<area shape="rect" id="Node000001" title="request a measure from HCSR04" alt="" coords="5,5,135,30"/>
+<area shape="rect" id="Node000002" href="$class_h_c_s_r04.html#a3d06ade5673e079096cd2ce7c0a5678e" title="send a trig signal to HCSR04" alt="" coords="183,5,266,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,15,170,18,164,18,135,20"/>
+</map>

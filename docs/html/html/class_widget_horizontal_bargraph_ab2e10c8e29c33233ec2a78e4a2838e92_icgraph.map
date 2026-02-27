@@ -1,0 +1,5 @@
+<map id="WidgetHorizontalBargraph::get_value_of_interest" name="WidgetHorizontalBargraph::get_value_of_interest">
+<area shape="rect" id="Node000001" title="A pure virtual method that results in the transfer of the displayed values of the displayed model to ..." alt="" coords="232,5,491,30"/>
+<area shape="rect" id="Node000002" href="$class_widget_horizontal_bargraph.html#ac51fc7454f00e12c47c507b449a1b0b0" title="the function that draw the widget" alt="" coords="5,5,184,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,18,184,20,184,15,218,18"/>
+</map>

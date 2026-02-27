@@ -1,0 +1,5 @@
+<map id="rtos_HW_I2C_Master::rtos_HW_I2C_Master" name="rtos_HW_I2C_Master::rtos_HW_I2C_Master">
+<area shape="rect" id="Node000001" title="Constructor of the class." alt="" coords="5,5,241,30"/>
+<area shape="rect" id="Node000002" href="$class_h_w___i2_c___master.html#aec651bc1d3019c6a5d30bbda8bae5846" title="Construct a new hw i2c master object." alt="" coords="289,5,474,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="241,15,276,18,270,18,241,20"/>
+</map>

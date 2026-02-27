@@ -1,0 +1,5 @@
+<map id="rtos_Model::update_attached_rtos_widget" name="rtos_Model::update_attached_rtos_widget">
+<area shape="rect" id="Node000001" title="link a new widget task to the model" alt="" coords="5,5,234,30"/>
+<area shape="rect" id="Node000002" href="$classrtos___widget.html#a2891846b2477965f74f8828b80df2ce2" title="Set the actual displayed model object." alt="" coords="282,5,505,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,15,269,18,264,18,234,20"/>
+</map>

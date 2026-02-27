@@ -1,0 +1,5 @@
+<map id="GraphicDrawer::circle" name="GraphicDrawer::circle">
+<area shape="rect" id="Node000001" title="draw a cercle of size radius, centered at (x_center, y_center) https://fr.wikipedia...." alt="" coords="5,5,129,30"/>
+<area shape="rect" id="Node000002" href="$class_graphic_drawer.html#a41a04598e0bdceeafc9f0d537143b303" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="177,5,298,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,15,164,17,158,18,129,20"/>
+</map>

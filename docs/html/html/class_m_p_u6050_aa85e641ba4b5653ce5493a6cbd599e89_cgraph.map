@@ -1,0 +1,7 @@
+<map id="MPU6050::get_measures" name="MPU6050::get_measures">
+<area shape="rect" id="Node000001" title="Get the raw data, fill the internal struct_RawData, converts raw data to real measures according to o..." alt="" coords="5,31,149,55"/>
+<area shape="rect" id="Node000002" href="$class_m_p_u6050.html#ac1a94f4e63bb11e66159832b3b6fb46c" title="fill the internal measures by converting the raw data" alt="" coords="204,5,401,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,32,191,30,186,31,149,38"/>
+<area shape="rect" id="Node000003" href="$class_m_p_u6050.html#aaca71fa3f6e0b72c49dd70544f8fef72" title="fill the internal data with raw values from sensors" alt="" coords="197,55,408,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="149,48,184,54,178,54,149,53"/>
+</map>

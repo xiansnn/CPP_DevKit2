@@ -1,0 +1,5 @@
+<map id="UIController::update_current_controlled_object" name="UIController::update_current_controlled_object">
+<area shape="rect" id="Node000001" title="if the current controlled object is different from _new_controlled_object, change the current control..." alt="" coords="240,5,490,30"/>
+<area shape="rect" id="Node000002" href="$class_u_i_model_manager.html#ab6d7acbc231c5fd6a33e2eecdf9e3641" title="check if there is a time out either on the managed models or the manager itself." alt="" coords="5,5,192,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="221,18,192,20,192,15,227,18"/>
+</map>

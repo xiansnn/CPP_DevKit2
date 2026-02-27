@@ -1,0 +1,7 @@
+<map id="WidgetVerticalBargraph::convert_level_value_to_py" name="WidgetVerticalBargraph::convert_level_value_to_py">
+<area shape="rect" id="Node000001" title="the value to pixel y&#45;coordinate converter" alt="" coords="452,5,719,30"/>
+<area shape="rect" id="Node000002" href="$class_widget_vertical_bargraph.html#a51e76d94a406956193c15c09adcde58e" title="the function that draw a bar in the widget" alt="" coords="218,5,404,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="433,18,404,20,404,15,439,18"/>
+<area shape="rect" id="Node000003" href="$class_widget_vertical_bargraph.html#a938fef5332131013fe1f7e31f7629f41" title="the function that draw the widget" alt="" coords="5,5,170,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="199,18,170,20,170,15,205,18"/>
+</map>

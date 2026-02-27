@@ -1,0 +1,7 @@
+<map id="ST7735::set_RAM_write_addresses" name="ST7735::set_RAM_write_addresses">
+<area shape="rect" id="Node000001" title="set the RAM write addresses for the display" alt="" coords="5,5,198,30"/>
+<area shape="rect" id="Node000002" href="$class_s_t7735.html#a352d97b36c32932b43f891bdf41fb371" title="send a command to the ST7735 device" alt="" coords="246,5,360,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,15,233,18,227,18,198,20"/>
+<area shape="rect" id="Node000003" href="$class_s_t7735.html#abbc613fffe458c261881c56d8be0afa7" title="enable or disable the command mode (DC pin low or high)" alt="" coords="408,5,578,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="360,15,395,18,389,18,361,20"/>
+</map>

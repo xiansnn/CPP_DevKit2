@@ -1,0 +1,7 @@
+<map id="Probe::pulse_us" name="Probe::pulse_us">
+<area shape="rect" id="Node000001" title="Generates a HI level pulse on the GPIO during _duration µs." alt="" coords="5,31,105,55"/>
+<area shape="rect" id="Node000002" href="$class_probe.html#a493e1f46f0123ae6a18d7bd6e79d74f1" title="Generates a HI logical level on the GPIO." alt="" coords="153,5,218,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,31,140,26,135,28,106,36"/>
+<area shape="rect" id="Node000003" href="$class_probe.html#ade2391514faaee5f3acfffc4d3cb2de8" title="Generates a LO logical level on the GPIO." alt="" coords="153,55,218,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="105,50,140,58,135,59,105,55"/>
+</map>

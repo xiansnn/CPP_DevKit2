@@ -1,0 +1,7 @@
+<map id="WidgetHorizontalBargraph::convert_level_value_to_px" name="WidgetHorizontalBargraph::convert_level_value_to_px">
+<area shape="rect" id="Node000001" title="the value to pixel x&#45;coordinate converter" alt="" coords="480,5,761,30"/>
+<area shape="rect" id="Node000002" href="$class_widget_horizontal_bargraph.html#ad9095aa605f93b1b988b7c3e497a27aa" title="the function that draw a bar in the widget" alt="" coords="232,5,432,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="462,18,433,20,433,15,467,18"/>
+<area shape="rect" id="Node000003" href="$class_widget_horizontal_bargraph.html#ac51fc7454f00e12c47c507b449a1b0b0" title="the function that draw the widget" alt="" coords="5,5,184,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="214,18,184,20,184,15,219,18"/>
+</map>

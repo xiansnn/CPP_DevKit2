@@ -1,0 +1,5 @@
+<map id="WidgetVerticalBargraph::draw_bar" name="WidgetVerticalBargraph::draw_bar">
+<area shape="rect" id="Node000001" title="the function that draw a bar in the widget" alt="" coords="218,5,404,30"/>
+<area shape="rect" id="Node000002" href="$class_widget_vertical_bargraph.html#a938fef5332131013fe1f7e31f7629f41" title="the function that draw the widget" alt="" coords="5,5,170,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,18,170,20,170,15,205,18"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="MPU6050::read_registers_all_raw_data" name="MPU6050::read_registers_all_raw_data">
+<area shape="rect" id="Node000001" title="fill the internal data with raw values from sensors" alt="" coords="364,31,575,55"/>
+<area shape="rect" id="Node000002" href="$class_m_p_u6050.html#a35657154dd30e206e09ea6407ede106c" title="start the calibration of the MPU and compute gyro and accellero offset and conversion factor" alt="" coords="187,5,302,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="346,30,303,27,303,21,351,29"/>
+<area shape="rect" id="Node000004" href="$class_m_p_u6050.html#aa85e641ba4b5653ce5493a6cbd599e89" title="Get the raw data, fill the internal struct_RawData, converts raw data to real measures according to o..." alt="" coords="173,55,316,79"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="351,56,316,62,316,57,346,56"/>
+<area shape="rect" id="Node000003" href="$class_m_p_u6050.html#a69ff7760846ab8f9b33ab07aa57709cf" title="Construct a new MPU6050 object." alt="" coords="5,5,125,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="169,19,125,20,125,15,174,17"/>
+</map>

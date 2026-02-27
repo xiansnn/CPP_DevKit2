@@ -1,0 +1,12 @@
+<map id="rtos_ST7735::show_widget" name="rtos_ST7735::show_widget">
+<area shape="rect" id="Node000001" title="Show the widget on the display device." alt="" coords="5,5,159,30"/>
+<area shape="rect" id="Node000002" href="$classrtos___s_t7735.html#ae773d6c1f1da93a13b5589a20fe4d899" title="A pure virtual member function. It transfers the pixel buffer to the a part of display screen buffer ..." alt="" coords="207,5,322,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,15,194,17,189,18,159,20"/>
+<area shape="rect" id="Node000003" href="$class_s_t7735.html#a352d97b36c32932b43f891bdf41fb371" title="send a command to the ST7735 device" alt="" coords="610,5,725,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="323,15,598,17,593,19,323,20"/>
+<area shape="rect" id="Node000005" href="$class_s_t7735.html#a5d45094a281b3051f2681711c76d11b4" title="set the RAM write addresses for the display" alt="" coords="370,29,562,54"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="322,22,357,28,352,28,322,27"/>
+<area shape="rect" id="Node000004" href="$class_s_t7735.html#abbc613fffe458c261881c56d8be0afa7" title="enable or disable the command mode (DC pin low or high)" alt="" coords="773,5,943,30"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="725,15,759,18,754,18,725,20"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="563,28,592,26,598,26,563,33"/>
+</map>

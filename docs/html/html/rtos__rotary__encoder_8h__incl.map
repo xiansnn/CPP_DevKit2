@@ -1,0 +1,21 @@
+<map id="rtos_rotary_encoder.h" name="rtos_rotary_encoder.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="366,5,494,30"/>
+<area shape="rect" id="Node000002" href="$rtos__switch__button_8h.html" title=" " alt="" coords="316,78,545,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="432,29,432,64,428,61,428,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,151,82,175"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="360,106,97,153,96,148,359,101"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="106,151,184,175"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="385,104,200,151,199,146,381,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="209,151,313,175"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="405,103,304,147,302,142,400,104"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="337,151,390,175"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="422,102,386,142,383,137,417,104"/>
+<area shape="rect" id="Node000007" href="$ui__control__event_8h.html" title=" " alt="" coords="414,151,580,175"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="442,101,478,140,473,139,440,106"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="604,151,681,175"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="466,101,596,145,590,145,465,106"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="705,151,766,175"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="484,101,693,150,687,150,484,106"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="790,151,841,175"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="516,101,635,120,778,150,773,150,634,125,516,106"/>
+</map>

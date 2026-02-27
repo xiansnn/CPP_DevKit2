@@ -1,0 +1,5 @@
+<map id="UIControlledIncrementalValue::increment_value" name="UIControlledIncrementalValue::increment_value">
+<area shape="rect" id="Node000001" title="Add &quot;increment&quot; to the current value." alt="" coords="5,5,255,30"/>
+<area shape="rect" id="Node000002" href="$class_model.html#a47406db888c07c179881ce00cbd3937f" title="Set the change flag object to true." alt="" coords="303,5,439,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="255,15,290,18,285,18,255,20"/>
+</map>

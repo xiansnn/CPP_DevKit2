@@ -1,0 +1,7 @@
+<map id="ST7735::device_wakeup" name="ST7735::device_wakeup">
+<area shape="rect" id="Node000001" title="wake up the device from sleep mode" alt="" coords="354,5,492,30"/>
+<area shape="rect" id="Node000002" href="$class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8" title="Construct a new ST7735 object." alt="" coords="205,5,306,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="336,18,307,20,306,15,341,18"/>
+<area shape="rect" id="Node000003" href="$classrtos___s_t7735.html#a66cd3316fdb254d845f5decb6a8b9c36" title="Construct a new rtos_ST7735 object." alt="" coords="5,5,157,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="187,18,157,20,157,15,192,18"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="rtos_SSD1306::check_rtos_display_device_compatibility" name="rtos_SSD1306::check_rtos_display_device_compatibility">
+<area shape="rect" id="Node000001" title="Check the compatibility of the framebuffer configuration with the display device physical limitations..." alt="" coords="5,5,294,30"/>
+<area shape="rect" id="Node000002" href="$class_s_s_d1306.html#a97d4903cd5f1bce0d8314f41c077f14b" title="A pure virtual member function. Each device must implement this method and check the compatibility of..." alt="" coords="342,5,580,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="294,15,329,18,323,18,294,20"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="CanvasTrueRGB::clear_canvas_buffer" name="CanvasTrueRGB::clear_canvas_buffer">
+<area shape="rect" id="Node000001" title="fill the 16bit canvas buffer with 0x00" alt="" coords="485,5,683,30"/>
+<area shape="rect" id="Node000002" href="$class_canvas_true_r_g_b.html#a0e66740cd696bf1ee882380cb208e66d" title="Create a canvas buffer object." alt="" coords="231,5,437,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="467,18,437,20,437,15,472,18"/>
+<area shape="rect" id="Node000003" href="$class_canvas_true_r_g_b.html#aa1b1ab50cbe8ee85776ad9f7fa686c21" title="Construct a new Canvas R G B object." alt="" coords="5,5,183,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="212,18,183,20,183,15,218,18"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="TextWriter::write" name="TextWriter::write">
+<area shape="rect" id="Node000001" title="process characters in the internal text buffer and draw it into the pixel buffer." alt="" coords="520,31,624,55"/>
+<area shape="poly" id="edge5_Node000001_Node000001" title=" " alt="" coords="598,15,590,12,572,9,555,11,546,16,544,21,549,32,545,29,539,22,542,13,553,6,572,4,592,7,603,16"/>
+<area shape="rect" id="Node000002" href="$class_text_writer.html#a725b82c94524bf13c680bad12bff218f" title="clean th full current line (writing &quot; &quot; in the text buffer)" alt="" coords="348,5,472,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="502,32,473,30,473,25,507,33"/>
+<area shape="rect" id="Node000003" href="$class_text_writer.html#abd496b2f73d09a3cf4c2f07d1471e4d4" title="interpret the character and draw it into the pixel buffer at the current line and column character po..." alt="" coords="157,31,300,55"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="502,43,300,46,300,40,508,43"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="335,28,301,36,300,30,330,29"/>
+<area shape="rect" id="Node000004" href="$class_text_writer.html#aa0013f500c16bd933a95c7b38dabcb26" title="process the string c_str and then draw each character into the pixel buffer, without using the text b..." alt="" coords="5,31,109,55"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="139,43,109,46,109,40,144,43"/>
+</map>

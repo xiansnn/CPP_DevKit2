@@ -1,0 +1,5 @@
+<map id="PWMgatedMeasure::count_cycles" name="PWMgatedMeasure::count_cycles">
+<area shape="rect" id="Node000001" title="gives the number of step while the signal on channel B is HI" alt="" coords="274,5,457,30"/>
+<area shape="rect" id="Node000002" href="$class_p_w_mgated_measure.html#a11067dc47c6d0cf8a2314fd947db1abf" title="compute the time the channel B is HI over the time of observation" alt="" coords="5,5,226,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="255,18,226,20,226,15,260,18"/>
+</map>

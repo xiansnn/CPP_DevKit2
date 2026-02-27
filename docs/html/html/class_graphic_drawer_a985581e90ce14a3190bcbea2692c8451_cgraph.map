@@ -1,0 +1,9 @@
+<map id="GraphicDrawer::draw_border" name="GraphicDrawer::draw_border">
+<area shape="rect" id="Node000001" title="draw a rectangle around the widget." alt="" coords="5,31,166,55"/>
+<area shape="rect" id="Node000002" href="$class_graphic_drawer.html#a3418bc2d947cda7174b46dcc6629a8f5" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="214,31,332,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,40,201,43,196,43,166,46"/>
+<area shape="rect" id="Node000003" href="$class_graphic_drawer.html#a41a04598e0bdceeafc9f0d537143b303" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="380,5,501,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="332,31,362,30,367,29,333,37"/>
+<area shape="rect" id="Node000004" href="$class_graphic_drawer.html#ac53234377fff012cc055e6140aad7f10" title="Draw a color vertical line, starting at frame position (x,y), on w number of pixel." alt="" coords="380,55,501,79"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="333,49,367,56,362,56,332,54"/>
+</map>

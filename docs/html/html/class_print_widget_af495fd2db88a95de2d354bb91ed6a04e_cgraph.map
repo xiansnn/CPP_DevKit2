@@ -1,0 +1,7 @@
+<map id="PrintWidget::PrintWidget" name="PrintWidget::PrintWidget">
+<area shape="rect" id="Node000001" title="Construct a new Dummy Widget object." alt="" coords="5,5,147,30"/>
+<area shape="rect" id="Node000002" href="$class_widget.html#a0d8f98229ae680885d74911bd73c67a1" title="contructor for generic widget" alt="" coords="195,5,292,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,15,182,18,177,18,147,20"/>
+<area shape="rect" id="Node000003" href="$class_model.html#a39c2d857bbad88b8fb04eb54820ae08f" title="add a new widget to the set of attached_widgets" alt="" coords="340,5,523,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="292,15,327,18,322,18,293,20"/>
+</map>
