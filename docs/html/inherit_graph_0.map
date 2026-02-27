@@ -1,23 +1,23 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="Node000000" href="$class_blinker.html" title="A base class used to add blinking feature to widgets. To do so, this widget must inherit from Blinker..." alt="" coords="296,5,348,30"/>
 <area shape="rect" id="Node000001" href="$class_widget_blinking_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="443,104,585,129"/>
-<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="364,27,396,41,452,72,497,101,494,106,449,76,394,45,362,32"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="363,27,396,41,452,72,498,104,492,104,449,76,394,45,363,33"/>
 <area shape="rect" id="Node000002" href="$class_widget_focus_indicator.html" title="A specific class dedicated to indicate the status of an UIControlledModel. Not an abstract class,..." alt="" coords="633,104,758,129"/>
-<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="600,114,632,114,632,119,600,119"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="600,114,635,116,630,117,600,119"/>
 <area shape="rect" id="Node000009" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="5,179,61,203"/>
 <area shape="rect" id="Node000004" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="109,153,200,178"/>
-<area shape="poly" id="edge3_Node000009_Node000004" title=" " alt="" coords="76,179,107,173,109,178,77,185"/>
+<area shape="poly" id="edge3_Node000009_Node000004" title=" " alt="" coords="75,180,110,174,106,177,77,184"/>
 <area shape="rect" id="Node000010" href="$class_print_widget.html" title="A widget used when we need to simply print but still want to take advantage of the status change mana..." alt="" coords="116,203,193,227"/>
-<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="77,197,116,205,115,210,76,202"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="76,197,118,206,113,209,76,202"/>
 <area shape="rect" id="Node000005" href="$class_text_widget.html" title="a dedicated class for text frame only" alt="" coords="284,55,359,79"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="178,141,209,115,247,90,283,75,285,80,249,95,212,119,181,145"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="178,141,209,115,247,90,286,76,281,79,249,95,212,119,181,145"/>
 <area shape="rect" id="Node000006" href="$class_widget_horizontal_bar.html" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="262,104,381,129"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="212,146,277,127,278,132,214,151"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="212,146,280,128,275,130,214,151"/>
 <area shape="rect" id="Node000007" href="$class_widget_horizontal_bargraph.html" title="the widget that display an horizontal bargraph" alt="" coords="248,153,395,178"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="216,163,248,163,248,168,216,168"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="215,163,250,165,245,166,216,168"/>
 <area shape="rect" id="Node000003" href="$class_widget_square_led.html" title="A widget that show a square (it can be a rectangle) on the display." alt="" coords="268,203,375,227"/>
-<area shape="poly" id="edge7_Node000004_Node000003" title=" " alt="" coords="214,180,278,200,277,205,212,185"/>
+<area shape="poly" id="edge7_Node000004_Node000003" title=" " alt="" coords="213,180,280,202,275,203,213,186"/>
 <area shape="rect" id="Node000008" href="$class_widget_vertical_bargraph.html" title="the widget that display a vertical bargraph" alt="" coords="255,252,388,277"/>
-<area shape="poly" id="edge9_Node000004_Node000008" title=" " alt="" coords="195,184,202,189,225,214,235,225,249,237,275,249,272,254,247,241,231,229,221,218,198,193,192,189"/>
-<area shape="poly" id="edge8_Node000003_Node000001" title=" " alt="" coords="378,194,394,187,449,156,494,127,497,131,452,161,397,192,380,199"/>
+<area shape="poly" id="edge9_Node000004_Node000008" title=" " alt="" coords="194,184,202,189,225,214,235,225,249,237,276,252,271,251,247,241,231,229,221,218,198,193,193,189"/>
+<area shape="poly" id="edge8_Node000003_Node000001" title=" " alt="" coords="378,194,394,187,449,156,493,130,498,128,452,161,397,192,380,199"/>
 </map>

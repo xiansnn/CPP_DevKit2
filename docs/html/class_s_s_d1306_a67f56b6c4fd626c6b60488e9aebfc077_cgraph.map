@@ -1,5 +1,0 @@
-<map id="SSD1306::show" name="SSD1306::show">
-<area shape="rect" id="Node000001" title="the SSD1306 implementation of the show function. Used when we need to show a framebuffer in a given r..." alt="" coords="5,5,103,30"/>
-<area shape="rect" id="Node000002" href="$class_framebuffer.html#ac28f79253302885a03149ca7ed75c357" title="Construct a new Framebuffer object when frame width and height are given." alt="" coords="151,5,298,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,15,135,15,135,20,103,20"/>
-</map>

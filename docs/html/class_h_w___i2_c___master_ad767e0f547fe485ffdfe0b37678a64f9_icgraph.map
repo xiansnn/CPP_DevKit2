@@ -1,5 +1,5 @@
 <map id="HW_I2C_Master::device_is_connected" name="HW_I2C_Master::device_is_connected">
 <area shape="rect" id="Node000001" title="utility to know if a device is connected" alt="" coords="206,5,412,30"/>
 <area shape="rect" id="Node000002" href="$class_h_w___i2_c___master.html#a81b01ac8db26400774c892f76b1917de" title="A utility that scan the I2C bus and return the set of answering devices." alt="" coords="5,5,158,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,20,158,20,158,15,190,15"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,18,158,20,158,15,193,18"/>
 </map>

@@ -1,5 +1,0 @@
-<map id="UIControlledModel::update_current_controller" name="UIControlledModel::update_current_controller">
-<area shape="rect" id="Node000001" title="if _new_controller is different from the current controller, change the current controller associated..." alt="" coords="5,5,248,30"/>
-<area shape="rect" id="Node000002" href="$class_u_i_controller.html#a9518d3fe3c15e58cd9b6c66be585a03c" title="if the current controlled object is different from _new_controlled_object, change the current control..." alt="" coords="296,5,546,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="248,15,280,15,280,20,248,20"/>
-</map>

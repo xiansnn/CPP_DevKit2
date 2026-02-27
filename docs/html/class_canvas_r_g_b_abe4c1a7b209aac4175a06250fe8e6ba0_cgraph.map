@@ -1,5 +1,5 @@
 <map id="CanvasRGB::create_canvas_buffer" name="CanvasRGB::create_canvas_buffer">
 <area shape="rect" id="Node000001" title="Create a canvas buffer object." alt="" coords="5,5,191,30"/>
 <area shape="rect" id="Node000002" href="$class_canvas.html#ac4b13a4015778b278e43b3331460c1a2" title="fill the canvas buffer with 0x00" alt="" coords="239,5,396,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,15,223,15,223,20,191,20"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,15,226,18,220,18,191,20"/>
 </map>

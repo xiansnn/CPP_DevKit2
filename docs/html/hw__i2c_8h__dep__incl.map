@@ -1,16 +1,16 @@
 <map id="hw_i2c.h" name="hw_i2c.h">
 <area shape="rect" id="Node000001" title=" " alt="" coords="91,5,154,30"/>
 <area shape="rect" id="Node000002" href="$hw__dma_8h.html" title=" " alt="" coords="87,78,158,103"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,46,126,78,120,78,120,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,43,125,78,120,77,122,48"/>
 <area shape="rect" id="Node000003" href="$rtos__hw__i2c_8h.html" title=" " alt="" coords="5,151,94,175"/>
-<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="103,43,77,79,62,118,54,151,49,150,57,116,72,77,99,40"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="99,44,77,79,62,118,54,151,49,150,57,116,72,77,102,40"/>
 <area shape="rect" id="Node000007" href="$mpu6050_8h.html" title=" " alt="" coords="182,78,258,103"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="153,37,206,75,203,80,150,42"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="102,115,63,152,60,148,98,112"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="151,37,207,77,202,78,151,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="99,116,63,152,59,149,101,111"/>
 <area shape="rect" id="Node000005" href="$rtos__hw__spi_8h.html" title=" " alt="" coords="117,151,206,175"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="139,115,158,149,153,152,134,118"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="137,114,158,150,153,150,136,119"/>
 <area shape="rect" id="Node000004" href="$ssd1306_8h.html" title=" " alt="" coords="14,223,85,248"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="52,191,52,223,47,223,47,191"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="52,189,52,224,47,222,47,193"/>
 <area shape="rect" id="Node000006" href="$st7735_8h.html" title="inspired from various code source, including https://github.com/adafruit/Adafruit&#45;ST7735&#45;Library" alt="" coords="130,223,193,248"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="164,191,164,223,159,223,159,191"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="163,189,164,224,159,222,160,193"/>
 </map>

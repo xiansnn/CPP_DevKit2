@@ -1,5 +1,0 @@
-<map id="rtos_Widget::add_widget" name="rtos_Widget::add_widget">
-<area shape="rect" id="Node000001" title="add sub_widget to the current widget" alt="" coords="5,5,150,30"/>
-<area shape="rect" id="Node000002" href="$classrtos___widget.html#a206bf3a6d0927044128458b11271f41c" title="constructor for RTOS widget" alt="" coords="198,5,345,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,15,185,18,180,18,150,20"/>
-</map>

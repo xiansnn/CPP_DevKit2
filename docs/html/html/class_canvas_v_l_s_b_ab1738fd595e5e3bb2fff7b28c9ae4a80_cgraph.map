@@ -1,9 +1,0 @@
-<map id="CanvasVLSB::CanvasVLSB" name="CanvasVLSB::CanvasVLSB">
-<area shape="rect" id="Node000001" title="Construct a new Canvas V L S B object." alt="" coords="5,31,147,55"/>
-<area shape="rect" id="Node000002" href="$class_canvas.html#a61d9d2f38baad8abbee82fb5d8fee291" title="Construct a new Canvas object." alt="" coords="241,5,336,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,32,228,24,223,26,148,37"/>
-<area shape="rect" id="Node000003" href="$class_canvas_v_l_s_b.html#ac5b44ba51620a5c0aed91b400648defd" title="Create a canvas buffer object." alt="" coords="195,55,383,79"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="147,48,182,54,176,55,147,54"/>
-<area shape="rect" id="Node000004" href="$class_canvas.html#ac4b13a4015778b278e43b3331460c1a2" title="fill the canvas buffer with 0x00" alt="" coords="431,55,588,79"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="383,64,418,67,413,67,383,70"/>
-</map>

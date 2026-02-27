@@ -1,7 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classrtos___model.html" title="RTOS wrapper for Model class This class represents the base model in the RTOS&#45;based UI framework...." alt="" coords="5,5,80,30"/>
-<area shape="rect" id="Node000001" href="$classrtos___u_i_controlled_model.html" title="RTOS wrapper for UIControlledModel class This class represents a model that can be controlled by user..." alt="" coords="128,5,261,30"/>
-<area shape="poly" id="edge33_Node000000_Node000001" title=" " alt="" coords="96,15,130,17,125,18,96,20"/>
-<area shape="rect" id="Node000002" href="$classrtos___u_i_model_manager.html" title="RTOS wrapper for UIModelManager class This class represents a manager that can manage multiple contro..." alt="" coords="309,5,436,30"/>
-<area shape="poly" id="edge34_Node000001_Node000002" title=" " alt="" coords="277,15,311,18,306,18,277,20"/>
-</map>

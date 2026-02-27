@@ -1,5 +1,5 @@
 <map id="rtos_ST7735::check_rtos_display_device_compatibility" name="rtos_ST7735::check_rtos_display_device_compatibility">
 <area shape="rect" id="Node000001" title="Check the compatibility of the framebuffer configuration with the display device physical limitations..." alt="" coords="5,5,287,30"/>
 <area shape="rect" id="Node000002" href="$class_s_t7735.html#a165458fb8ed2b1998e6bdb9f41a74338" title="A pure virtual member function. Each device must implement this method and check the compatibility of..." alt="" coords="335,5,566,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="287,15,319,15,319,20,287,20"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="287,15,321,18,316,18,287,20"/>
 </map>

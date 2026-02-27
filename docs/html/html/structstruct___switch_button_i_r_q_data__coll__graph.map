@@ -1,3 +1,0 @@
-<map id="struct_SwitchButtonIRQData" name="struct_SwitchButtonIRQData">
-<area shape="rect" id="Node000001" title="this is the structure used to send irq data though the queue" alt="" coords="5,5,155,88"/>
-</map>

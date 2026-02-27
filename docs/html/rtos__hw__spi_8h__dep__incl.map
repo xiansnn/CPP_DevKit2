@@ -1,5 +1,5 @@
 <map id="rtos_hw_spi.h" name="rtos_hw_spi.h">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,5,94,30"/>
 <area shape="rect" id="Node000002" href="$st7735_8h.html" title="inspired from various code source, including https://github.com/adafruit/Adafruit&#45;ST7735&#45;Library" alt="" coords="18,78,81,103"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="52,46,52,78,47,78,47,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="52,44,52,78,47,77,47,48"/>
 </map>

@@ -1,5 +1,5 @@
 <map id="rtos_SSD1306::fill_GDDRAM_with_pattern" name="rtos_SSD1306::fill_GDDRAM_with_pattern">
 <area shape="rect" id="Node000001" title="fill a pattern in the device framebuffer (GDDRAM). This is shown on display as soon as the GDDRAM buf..." alt="" coords="5,5,228,30"/>
 <area shape="rect" id="Node000002" href="$class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="276,5,397,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,15,260,15,260,20,228,20"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,15,263,18,257,18,228,20"/>
 </map>

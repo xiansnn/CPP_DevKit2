@@ -1,5 +1,0 @@
-<map id="UIControlledIncrementalValue::decrement_value" name="UIControlledIncrementalValue::decrement_value">
-<area shape="rect" id="Node000001" title="Substract &quot;increment&quot; to the current value." alt="" coords="5,5,259,30"/>
-<area shape="rect" id="Node000002" href="$class_model.html#a47406db888c07c179881ce00cbd3937f" title="Set the change flag object to true." alt="" coords="307,5,443,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="259,15,294,18,289,18,259,20"/>
-</map>

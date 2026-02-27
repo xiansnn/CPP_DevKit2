@@ -1,5 +1,0 @@
-<map id="ST7735::set_rotation_and_color" name="ST7735::set_rotation_and_color">
-<area shape="rect" id="Node000001" title="set the actual position of the display" alt="" coords="155,5,332,30"/>
-<area shape="rect" id="Node000002" href="$class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8" title="Construct a new ST7735 object." alt="" coords="5,5,107,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,20,107,20,107,15,139,15"/>
-</map>

@@ -1,5 +1,5 @@
 <map id="KY040::KY040" name="KY040::KY040">
 <area shape="rect" id="Node000001" title="Construct a new KY040 object." alt="" coords="5,5,95,30"/>
 <area shape="rect" id="Node000002" href="$class_u_i_controller.html#a74aff896bdb3a03be4fcc2ac0772ef11" title="create a UIController object" alt="" coords="143,5,286,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,15,127,15,127,20,95,20"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,15,130,17,125,18,95,20"/>
 </map>

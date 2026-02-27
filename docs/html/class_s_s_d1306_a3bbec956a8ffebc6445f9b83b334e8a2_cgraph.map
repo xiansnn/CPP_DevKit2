@@ -1,5 +1,0 @@
-<map id="SSD1306::draw_char_into_pixel" name="SSD1306::draw_char_into_pixel">
-<area shape="rect" id="Node000001" title="a graphic primitive to draw a character at a pixel position" alt="" coords="5,5,179,30"/>
-<area shape="rect" id="Node000002" href="$class_s_s_d1306.html#a4dab9e96f0d0be41f73d2b556f629554" title="the graphic primitive to draw a pixel" alt="" coords="227,5,320,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,15,211,15,211,20,179,20"/>
-</map>

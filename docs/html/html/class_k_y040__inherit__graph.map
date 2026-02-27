@@ -1,5 +1,0 @@
-<map id="KY040" name="KY040">
-<area shape="rect" id="Node000001" title="This class implement the module device KY040 which is a rotary encoder with a centrl switch push butt..." alt="" coords="5,155,570,329"/>
-<area shape="rect" id="Node000002" href="$class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model&#45;View&#45;Controll design..." alt="" coords="73,5,502,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="289,120,290,157,285,155,286,125"/>
-</map>

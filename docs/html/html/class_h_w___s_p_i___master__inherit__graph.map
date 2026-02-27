@@ -1,5 +1,0 @@
-<map id="HW_SPI_Master" name="HW_SPI_Master">
-<area shape="rect" id="Node000001" title="this is a C++ wrapper for the original pico SDK spi master API" alt="" coords="67,5,424,243"/>
-<area shape="rect" id="Node000002" href="$classrtos___h_w___s_p_i___master.html" title="This is a C++ wrapper for the original pico SDK spi master API, adapted to FreeRTOS environment." alt="" coords="5,291,485,595"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="246,255,248,292,243,290,244,260"/>
-</map>

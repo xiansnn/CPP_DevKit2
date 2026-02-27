@@ -1,9 +1,9 @@
 <map id="rtos_widget.h" name="rtos_widget.h">
 <area shape="rect" id="Node000001" title=" " alt="" coords="111,5,198,30"/>
 <area shape="rect" id="Node000002" href="$rtos__ui__core_8h.html" title=" " alt="" coords="5,78,96,103"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,41,69,80,66,75,123,37"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,40,69,80,66,75,122,38"/>
 <area shape="rect" id="Node000003" href="$ssd1306_8h.html" title=" " alt="" coords="119,78,190,103"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="157,46,157,78,152,78,152,46"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="156,44,157,79,152,76,153,48"/>
 <area shape="rect" id="Node000004" href="$st7735_8h.html" title="inspired from various code source, including https://github.com/adafruit/Adafruit&#45;ST7735&#45;Library" alt="" coords="214,78,277,103"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="183,38,232,76,229,80,180,42"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="182,37,233,78,228,78,180,42"/>
 </map>

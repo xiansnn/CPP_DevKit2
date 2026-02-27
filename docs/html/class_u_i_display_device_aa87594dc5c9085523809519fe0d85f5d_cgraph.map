@@ -1,5 +1,0 @@
-<map id="UIDisplayDevice::show" name="UIDisplayDevice::show">
-<area shape="rect" id="Node000001" title="This is an pure virtual member function that all final derived class must implement...." alt="" coords="5,5,135,30"/>
-<area shape="rect" id="Node000002" href="$class_framebuffer.html#a25c9cadebb3531112c5085e981962407" title="Construct a new Framebuffer object." alt="" coords="183,5,330,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,15,167,15,167,20,135,20"/>
-</map>

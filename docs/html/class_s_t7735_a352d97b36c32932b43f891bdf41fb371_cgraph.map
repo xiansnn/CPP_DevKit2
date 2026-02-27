@@ -1,5 +1,5 @@
 <map id="ST7735::send_cmd" name="ST7735::send_cmd">
 <area shape="rect" id="Node000001" title="send a command to the ST7735 device" alt="" coords="5,5,120,30"/>
 <area shape="rect" id="Node000002" href="$class_s_t7735.html#abbc613fffe458c261881c56d8be0afa7" title="enable or disable the command mode (DC pin low or high)" alt="" coords="168,5,338,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,15,152,15,152,20,120,20"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,15,154,17,149,18,120,20"/>
 </map>

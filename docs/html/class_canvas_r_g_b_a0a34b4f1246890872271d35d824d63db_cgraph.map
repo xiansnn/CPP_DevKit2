@@ -1,5 +1,0 @@
-<map id="CanvasRGB::draw_glyph" name="CanvasRGB::draw_glyph">
-<area shape="rect" id="Node000001" title="a graphic primitive to draw a character at a pixel position" alt="" coords="5,5,142,30"/>
-<area shape="rect" id="Node000002" href="$class_canvas_r_g_b.html#ae9474f2a6680de4013e4493acab82f5b" title="the graphic primitive to draw a pixel" alt="" coords="190,5,322,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,15,174,15,174,20,142,20"/>
-</map>

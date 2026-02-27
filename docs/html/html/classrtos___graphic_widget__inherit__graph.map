@@ -1,5 +1,0 @@
-<map id="rtos_GraphicWidget" name="rtos_GraphicWidget">
-<area shape="rect" id="Node000001" title="RTOS wrapper for GraphicWidget class." alt="" coords="25,368,463,465"/>
-<area shape="rect" id="Node000002" href="$classrtos___widget.html" title="RTOS wrapper for Widget class." alt="" coords="5,5,482,320"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="245,333,246,369,241,367,242,337"/>
-</map>

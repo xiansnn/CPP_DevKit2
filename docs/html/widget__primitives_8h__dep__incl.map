@@ -1,27 +1,27 @@
 <map id="widget_primitives.h" name="widget_primitives.h">
 <area shape="rect" id="Node000001" title="Basic drawing primitives for widgets." alt="" coords="249,5,362,30"/>
 <area shape="rect" id="Node000002" href="$rtos__widget_8h.html" title=" " alt="" coords="431,78,518,103"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="348,34,448,75,446,80,346,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="348,34,449,77,444,78,347,39"/>
 <area shape="rect" id="Node000006" href="$widget_8h.html" title=" " alt="" coords="176,78,238,103"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="278,41,225,80,222,75,275,37"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="275,41,225,80,222,75,279,38"/>
 <area shape="rect" id="Node000003" href="$rtos__ui__core_8h.html" title=" " alt="" coords="390,223,480,248"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="470,118,441,224,436,222,465,117"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="470,116,440,225,436,221,465,119"/>
 <area shape="rect" id="Node000004" href="$ssd1306_8h.html" title=" " alt="" coords="476,151,546,175"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="490,115,507,149,503,152,485,118"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="489,114,507,151,503,149,486,119"/>
 <area shape="rect" id="Node000005" href="$st7735_8h.html" title="inspired from various code source, including https://github.com/adafruit/Adafruit&#45;ST7735&#45;Library" alt="" coords="570,151,633,175"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="510,108,582,148,579,152,508,113"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="510,108,583,150,578,150,508,113"/>
 <area shape="rect" id="Node000007" href="$ui__core_8h.html" title=" " alt="" coords="138,151,204,175"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="188,117,172,151,167,149,183,115"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="188,114,172,152,168,149,184,118"/>
 <area shape="rect" id="Node000009" href="$widget__bargraph_8h.html" title=" " alt="" coords="5,223,118,248"/>
-<area shape="poly" id="edge12_Node000006_Node000009" title=" " alt="" coords="178,114,129,153,95,191,71,224,67,221,91,187,125,149,174,109"/>
+<area shape="poly" id="edge12_Node000006_Node000009" title=" " alt="" coords="174,113,129,153,95,191,71,225,67,221,91,187,125,149,178,110"/>
 <area shape="rect" id="Node000010" href="$widget__horizontal__bar_8h.html" title=" " alt="" coords="224,223,360,248"/>
-<area shape="poly" id="edge13_Node000006_Node000010" title=" " alt="" coords="224,114,288,221,283,224,219,117"/>
+<area shape="poly" id="edge13_Node000006_Node000010" title=" " alt="" coords="223,114,288,223,283,223,220,118"/>
 <area shape="rect" id="Node000011" href="$widget__square__led_8h.html" title=" " alt="" coords="280,151,401,175"/>
-<area shape="poly" id="edge14_Node000006_Node000011" title=" " alt="" coords="244,108,319,148,317,152,241,113"/>
-<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="219,174,392,220,390,225,217,179"/>
-<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="189,137,205,102,210,104,194,139"/>
+<area shape="poly" id="edge14_Node000006_Node000011" title=" " alt="" coords="243,108,321,150,315,151,242,113"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="218,174,393,221,389,224,218,179"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="190,136,206,105,210,101,194,139"/>
 <area shape="rect" id="Node000008" href="$ky040_8h.html" title=" " alt="" coords="142,223,200,248"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="174,191,174,223,168,223,168,191"/>
-<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="142,186,81,225,78,221,139,182"/>
-<area shape="poly" id="edge11_Node000007_Node000010" title=" " alt="" coords="205,181,273,220,271,225,203,186"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="173,189,173,224,169,222,169,193"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="143,184,81,225,78,220,138,184"/>
+<area shape="poly" id="edge11_Node000007_Node000010" title=" " alt="" coords="205,181,275,223,269,223,203,186"/>
 </map>

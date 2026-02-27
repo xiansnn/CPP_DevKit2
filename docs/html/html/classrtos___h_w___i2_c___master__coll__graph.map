@@ -1,7 +1,0 @@
-<map id="rtos_HW_I2C_Master" name="rtos_HW_I2C_Master">
-<area shape="rect" id="Node000001" title="This is a C++ wrapper for the original pico SDK i2c master API, adapted to FreeRTOS environment." alt="" coords="230,341,798,548"/>
-<area shape="rect" id="Node000002" href="$class_h_w___i2_c___master.html" title="this is a C++ wrapper for the original pico SDK i2c master API" alt="" coords="5,5,519,271"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="381,279,432,341,427,341,380,285"/>
-<area shape="rect" id="Node000003" href="$class_h_w___d_m_a.html" title="Class to manage a DMA channel." alt="" coords="544,41,992,235"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="690,233,612,330,609,326,686,236"/>
-</map>

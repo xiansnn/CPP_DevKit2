@@ -1,9 +1,9 @@
 <map id="SwitchButton::is_switch_pushed" name="SwitchButton::is_switch_pushed">
 <area shape="rect" id="Node000001" title="return the status of the switch." alt="" coords="551,31,727,55"/>
 <area shape="rect" id="Node000002" href="$class_switch_button_with_i_r_q.html#a910cf64b0017e10006df24c4bc44a9c8" title="Process IRQ event and return the resulting event." alt="" coords="275,5,503,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="535,35,503,32,504,27,536,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="533,33,504,32,504,27,538,33"/>
 <area shape="rect" id="Node000004" href="$class_switch_button.html#aa7ebc9b37168b233ff9526f770fed49f" title="the periodic routine that process deboucing, push and release of the switch." alt="" coords="288,55,490,79"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="536,56,491,60,490,55,535,50"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="538,53,491,60,490,55,533,53"/>
 <area shape="rect" id="Node000003" href="$class_rotary_encoder.html#ae7ad35ae64d2b815c25ac72a51702e6f" title="the ISR that process the IRQ and send UIControlEvent to the Model currentControlledObject." alt="" coords="5,5,227,30"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="259,20,227,20,227,15,259,15"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="256,18,227,20,227,15,262,17"/>
 </map>

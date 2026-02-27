@@ -1,5 +1,5 @@
 <map id="rtos_hw_i2c.h" name="rtos_hw_i2c.h">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,5,94,30"/>
 <area shape="rect" id="Node000002" href="$ssd1306_8h.html" title=" " alt="" coords="14,78,85,103"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="52,46,52,78,47,78,47,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="52,44,52,78,47,77,47,48"/>
 </map>

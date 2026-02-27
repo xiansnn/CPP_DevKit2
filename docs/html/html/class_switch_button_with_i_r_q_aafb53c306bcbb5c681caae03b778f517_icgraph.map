@@ -1,5 +1,0 @@
-<map id="SwitchButtonWithIRQ::SwitchButtonWithIRQ" name="SwitchButtonWithIRQ::SwitchButtonWithIRQ">
-<area shape="rect" id="Node000001" title="Construct a new SwitchButtonWithIRQ object." alt="" coords="225,5,462,30"/>
-<area shape="rect" id="Node000002" href="$class_rotary_encoder.html#a517cabc7498b8b2277c1433142d241a8" title="Construct a new Rotary Encoder object." alt="" coords="5,5,177,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,18,177,20,177,15,211,18"/>
-</map>

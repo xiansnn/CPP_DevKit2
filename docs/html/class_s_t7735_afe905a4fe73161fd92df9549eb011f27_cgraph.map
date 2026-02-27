@@ -1,7 +1,7 @@
 <map id="ST7735::config_frame_rate_control" name="ST7735::config_frame_rate_control">
 <area shape="rect" id="Node000001" title="config framerate control" alt="" coords="5,5,198,30"/>
 <area shape="rect" id="Node000002" href="$class_s_t7735.html#a0f7130dfeabb86eb7373cb816a3cb1ad" title="send a list of command to the ST7735 device" alt="" coords="246,5,379,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,15,230,15,230,20,198,20"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,15,233,18,227,18,198,20"/>
 <area shape="rect" id="Node000003" href="$class_s_t7735.html#abbc613fffe458c261881c56d8be0afa7" title="enable or disable the command mode (DC pin low or high)" alt="" coords="427,5,597,30"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="379,15,411,15,411,20,379,20"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="379,15,414,18,409,18,379,20"/>
 </map>

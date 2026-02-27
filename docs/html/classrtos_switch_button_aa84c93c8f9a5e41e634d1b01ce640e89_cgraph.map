@@ -1,5 +1,0 @@
-<map id="rtosSwitchButton::rtos_process_IRQ_event" name="rtosSwitchButton::rtos_process_IRQ_event">
-<area shape="rect" id="Node000001" title="Process IRQ event and sent the resulting event to the event queue." alt="" coords="5,5,237,30"/>
-<area shape="rect" id="Node000002" href="$classrtos_switch_button.html#add2f018aa5d077d68a9bc7c6bb4c4d38" title="return the logical status of the switch. It process rising and falling edges of the interrupt,..." alt="" coords="285,5,480,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,15,269,15,269,20,237,20"/>
-</map>

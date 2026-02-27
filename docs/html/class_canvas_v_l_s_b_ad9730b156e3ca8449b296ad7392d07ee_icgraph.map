@@ -1,5 +1,0 @@
-<map id="CanvasVLSB::draw_pixel" name="CanvasVLSB::draw_pixel">
-<area shape="rect" id="Node000001" title="the graphic primitive to draw a pixel" alt="" coords="193,5,328,30"/>
-<area shape="rect" id="Node000002" href="$class_canvas_v_l_s_b.html#a298c8e8bfceace2287df0d5cbad92b4d" title="a graphic primitive to draw a character at a pixel position" alt="" coords="5,5,145,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,20,145,20,145,15,177,15"/>
-</map>

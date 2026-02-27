@@ -1,5 +1,5 @@
 <map id="rtos_switch_button.h" name="rtos_switch_button.h">
 <area shape="rect" id="Node000001" title=" " alt="" coords="8,5,131,30"/>
 <area shape="rect" id="Node000002" href="$rtos__rotary__encoder_8h.html" title=" " alt="" coords="5,78,134,103"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,46,72,78,67,78,67,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,44,72,78,67,77,68,48"/>
 </map>

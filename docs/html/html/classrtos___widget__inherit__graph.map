@@ -1,9 +1,0 @@
-<map id="rtos_Widget" name="rtos_Widget">
-<area shape="rect" id="Node000001" title="RTOS wrapper for Widget class." alt="" coords="472,5,950,320"/>
-<area shape="rect" id="Node000002" href="$classrtos___graphic_widget.html" title="RTOS wrapper for GraphicWidget class." alt="" coords="5,390,443,487"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="462,304,309,393,307,388,457,306"/>
-<area shape="rect" id="Node000003" href="$classrtos___print_widget.html" title="RTOS wrapper for PrintWidget class." alt="" coords="468,368,954,509"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="713,333,713,370,709,367,709,337"/>
-<area shape="rect" id="Node000004" href="$classrtos___text_widget.html" title="RTOS wrapper for TextWidget class." alt="" coords="978,373,1542,503"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="963,287,1135,374,1130,373,962,292"/>
-</map>

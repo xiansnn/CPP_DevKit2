@@ -1,7 +1,7 @@
 <map id="WidgetHorizontalBar" name="WidgetHorizontalBar">
-<area shape="rect" id="Node000001" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="41,791,544,1072"/>
-<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="5,227,580,743"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="295,757,295,791,290,791,290,757"/>
-<area shape="rect" id="Node000003" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="92,5,493,179"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="295,194,295,227,290,227,290,194"/>
+<area shape="rect" id="Node000001" title="a widget that draw an horizontal bar, filled up to the given level value" alt="" coords="41,811,544,1101"/>
+<area shape="rect" id="Node000002" href="$class_graphic_widget.html" title="The graphical version of a Widget." alt="" coords="5,233,580,763"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="294,776,295,812,290,811,292,781"/>
+<area shape="rect" id="Node000003" href="$class_widget.html" title="A widget is a displayed object on a device screen. This is the base widget, it is derived as GraphicW..." alt="" coords="92,5,494,185"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="293,197,295,233,290,233,292,202"/>
 </map>

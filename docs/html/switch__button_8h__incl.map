@@ -1,11 +1,11 @@
 <map id="switch_button.h" name="switch_button.h">
 <area shape="rect" id="Node000001" title=" " alt="" coords="140,5,238,30"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,78,82,103"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,33,82,73,80,68,164,28"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,33,82,73,80,68,163,28"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="106,78,184,103"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,32,162,66,158,63,179,29"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,29,162,67,158,63,179,32"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="208,78,261,103"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="199,29,221,63,216,66,194,32"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="198,28,221,65,216,64,195,33"/>
 <area shape="rect" id="Node000005" href="$ui__control__event_8h.html" title=" " alt="" coords="284,78,451,103"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="219,28,325,69,323,74,217,33"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="219,28,326,71,321,72,218,33"/>
 </map>

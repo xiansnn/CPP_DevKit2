@@ -1,5 +1,5 @@
 <map id="HW_SPI_Master::HW_SPI_Master" name="HW_SPI_Master::HW_SPI_Master">
 <area shape="rect" id="Node000001" title="Construct a new hw spi master object." alt="" coords="289,5,474,30"/>
 <area shape="rect" id="Node000002" href="$classrtos___h_w___s_p_i___master.html#ab0b4f66cb858ddc73fe008496cd0f2f1" title="Construct a new hw spi master object." alt="" coords="5,5,241,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="273,20,241,20,241,15,273,15"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="270,18,241,20,241,15,276,18"/>
 </map>

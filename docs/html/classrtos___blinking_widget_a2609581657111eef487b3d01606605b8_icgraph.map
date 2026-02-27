@@ -1,5 +1,0 @@
-<map id="rtos_BlinkingWidget::save_canvas_color" name="rtos_BlinkingWidget::save_canvas_color">
-<area shape="rect" id="Node000001" title="Save the current canvas colors." alt="" coords="245,5,457,30"/>
-<area shape="rect" id="Node000002" href="$classrtos___blinking_widget.html#a841df810985955cafad9d3156b52e100" title="Setup the blinker for the blinking widget and store the current canvas colors." alt="" coords="5,5,197,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="229,20,197,20,197,15,229,15"/>
-</map>

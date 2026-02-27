@@ -1,5 +1,0 @@
-<map id="TextWidget::draw_border" name="TextWidget::draw_border">
-<area shape="rect" id="Node000001" title="draw a one&#45;pixel width around the the frame" alt="" coords="160,5,304,30"/>
-<area shape="rect" id="Node000002" href="$class_text_widget.html#a34e2f1558ebd76f1dbfb3cbfdf0e7894" title="we need draw() to be compliant with the pure virtual draw() inherited from Widget." alt="" coords="5,5,112,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,18,112,20,112,15,147,17"/>
-</map>

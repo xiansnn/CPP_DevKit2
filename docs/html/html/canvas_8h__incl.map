@@ -1,9 +1,0 @@
-<map id="canvas.h" name="canvas.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="103,5,165,30"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,78,84,103"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,30,72,71,69,66,116,31"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="107,78,160,103"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="136,29,136,64,131,61,132,33"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="185,78,227,103"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="147,28,186,67,181,67,145,33"/>
-</map>

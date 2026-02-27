@@ -1,5 +1,0 @@
-<map id="WidgetText::WidgetText" name="WidgetText::WidgetText">
-<area shape="rect" id="Node000001" title="Construct a new Widget Text object." alt="" coords="193,5,330,30"/>
-<area shape="rect" id="Node000002" href="$class_widget_text.html#a09ef73d8b1fa413b42ac4185857736e7" title="add sub_widget to the current widget" alt="" coords="5,5,145,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,20,145,20,145,15,177,15"/>
-</map>

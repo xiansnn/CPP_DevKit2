@@ -1,9 +1,9 @@
 <map id="CanvasTrueRGB::CanvasTrueRGB" name="CanvasTrueRGB::CanvasTrueRGB">
 <area shape="rect" id="Node000001" title="Construct a new Canvas R G B object." alt="" coords="5,31,183,55"/>
 <area shape="rect" id="Node000002" href="$class_canvas.html#a61d9d2f38baad8abbee82fb5d8fee291" title="Construct a new Canvas object." alt="" coords="286,5,382,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="183,31,270,22,271,27,184,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="183,31,273,24,268,25,184,36"/>
 <area shape="rect" id="Node000003" href="$class_canvas_true_r_g_b.html#a0e66740cd696bf1ee882380cb208e66d" title="Create a canvas buffer object." alt="" coords="231,55,437,79"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,49,215,52,215,58,183,55"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="183,49,218,55,212,55,183,55"/>
 <area shape="rect" id="Node000004" href="$class_canvas_true_r_g_b.html#ac7380da04d6d943ad844a7cae36200d6" title="fill the 16bit canvas buffer with 0x00" alt="" coords="485,55,683,79"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="437,64,469,64,469,70,437,70"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="437,64,472,67,467,67,437,70"/>
 </map>

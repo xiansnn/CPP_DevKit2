@@ -1,6 +1,0 @@
-<map id="UIWidget::UIWidget" name="UIWidget::UIWidget">
-<area shape="rect" id="Node000001" title="Construct a new UIWidget object." alt="" coords="184,29,303,54"/>
-<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="273,17,263,10,243,8,225,10,216,15,214,20,219,28,214,30,208,21,212,11,224,5,243,3,265,5,276,12"/>
-<area shape="rect" id="Node000002" href="$class_u_i_widget.html#a77b60ee8bae791e3239fdc6c27472b83" title="add sub_widget to the current widget" alt="" coords="5,29,136,54"/>
-<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="168,44,136,44,136,39,168,39"/>
-</map>

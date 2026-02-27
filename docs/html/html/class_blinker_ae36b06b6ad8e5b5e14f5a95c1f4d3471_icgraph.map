@@ -1,5 +1,0 @@
-<map id="Blinker::has_blinking_changed" name="Blinker::has_blinking_changed">
-<area shape="rect" id="Node000001" title="return the status of the flag blink_phase_changed" alt="" coords="226,5,391,30"/>
-<area shape="rect" id="Node000002" href="$class_widget_blinking_square_led.html#a61b2b883fa16f46dbdc510133b378459" title="a pure virtual member that is called to effectively draw the widget." alt="" coords="5,5,178,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,18,178,20,178,15,213,18"/>
-</map>

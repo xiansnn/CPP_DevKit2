@@ -1,11 +1,11 @@
 <map id="WidgetVerticalBargraph::WidgetVerticalBargraph" name="WidgetVerticalBargraph::WidgetVerticalBargraph">
 <area shape="rect" id="Node000001" title="Construct a new GraphicWidget Vertical Bargraph object." alt="" coords="5,31,259,55"/>
 <area shape="rect" id="Node000002" href="$class_graphic_widget.html#af3b9275226b4bc13d2e7a9cb6ba83f2c" title="Construct a new Graphic Widget object." alt="" coords="307,31,476,55"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="259,40,291,40,291,46,259,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="259,40,294,43,288,43,259,46"/>
 <area shape="rect" id="Node000003" href="$class_widget.html#a0d8f98229ae680885d74911bd73c67a1" title="contructor for generic widget" alt="" coords="584,5,681,30"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="476,31,568,22,569,27,477,37"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="476,31,566,25,571,24,477,37"/>
 <area shape="rect" id="Node000005" href="$class_graphic_widget.html#a49c9ebded2dc14246284662e13713a05" title="Get the graphic frame config object." alt="" coords="524,55,741,79"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="477,49,509,52,508,57,476,54"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="477,49,511,55,506,55,476,54"/>
 <area shape="rect" id="Node000004" href="$class_model.html#a39c2d857bbad88b8fb04eb54820ae08f" title="add a new widget to the set of attached_widgets" alt="" coords="789,5,973,30"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="682,15,774,15,774,20,682,20"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="682,15,777,18,771,18,682,20"/>
 </map>

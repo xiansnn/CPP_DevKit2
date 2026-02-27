@@ -1,9 +1,0 @@
-<map id="rtos_SSD1306::show_from_display_queue" name="rtos_SSD1306::show_from_display_queue">
-<area shape="rect" id="Node000001" title="Show data from the display queue." alt="" coords="5,5,230,30"/>
-<area shape="rect" id="Node000002" href="$class_s_s_d1306.html#a0856911564cd155a68bdb5cd4ba090e8" title=" " alt="" coords="278,5,375,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,15,262,15,262,20,230,20"/>
-<area shape="rect" id="Node000003" href="$class_s_s_d1306.html#ad26a211970f779290c9a97335fb023fc" title="when we need to show a render area with a given framebuffer" alt="" coords="423,5,586,30"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="375,15,407,15,407,20,375,20"/>
-<area shape="rect" id="Node000004" href="$class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="634,5,756,30"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="587,15,619,15,619,20,587,20"/>
-</map>

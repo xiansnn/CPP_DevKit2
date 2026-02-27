@@ -1,5 +1,5 @@
 <map id="rtos_TerminalConsole" name="rtos_TerminalConsole">
-<area shape="rect" id="Node000001" title="The RTOS terminal console is the class for all text display devices that are managed by a dedicated d..." alt="" coords="5,171,427,325"/>
-<area shape="rect" id="Node000002" href="$classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="61,5,371,123"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,137,219,171,213,171,213,137"/>
+<area shape="rect" id="Node000001" title="The RTOS terminal console is the class for all text display devices that are managed by a dedicated d..." alt="" coords="5,175,427,335"/>
+<area shape="rect" id="Node000002" href="$classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="61,5,371,127"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,139,219,176,214,174,215,144"/>
 </map>

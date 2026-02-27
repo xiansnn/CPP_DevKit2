@@ -1,5 +1,5 @@
 <map id="CanvasTrueRGB::create_canvas_buffer" name="CanvasTrueRGB::create_canvas_buffer">
 <area shape="rect" id="Node000001" title="Create a canvas buffer object." alt="" coords="5,5,212,30"/>
 <area shape="rect" id="Node000002" href="$class_canvas_true_r_g_b.html#ac7380da04d6d943ad844a7cae36200d6" title="fill the 16bit canvas buffer with 0x00" alt="" coords="260,5,458,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,15,244,15,244,20,212,20"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,15,247,18,241,18,212,20"/>
 </map>

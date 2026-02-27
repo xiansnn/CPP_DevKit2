@@ -1,5 +1,5 @@
 <map id="SSD1306::show" name="SSD1306::show">
 <area shape="rect" id="Node000001" title=" " alt="" coords="214,5,311,30"/>
 <area shape="rect" id="Node000002" href="$classrtos___s_s_d1306.html#ab4391273a915faa10a75013845800ca3" title="Show the widget on the display device." alt="" coords="5,5,166,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,20,166,20,166,15,198,15"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,18,166,20,166,15,201,18"/>
 </map>

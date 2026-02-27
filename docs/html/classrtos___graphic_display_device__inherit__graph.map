@@ -1,9 +1,9 @@
 <map id="rtos_GraphicDisplayDevice" name="rtos_GraphicDisplayDevice">
-<area shape="rect" id="Node000001" title="The RTOS graphic display device is the base class for all graphic display devices that are managed by..." alt="" coords="301,171,765,284"/>
-<area shape="rect" id="Node000003" href="$classrtos___s_s_d1306.html" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,332,549,520"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="451,295,400,334,397,330,448,291"/>
-<area shape="rect" id="Node000004" href="$classrtos___s_t7735.html" title="RTOS version of the ST7735 display device." alt="" coords="573,332,1005,520"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="619,291,670,330,667,334,615,295"/>
-<area shape="rect" id="Node000002" href="$classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="379,5,688,123"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="536,137,536,171,531,171,531,137"/>
+<area shape="rect" id="Node000001" title="The RTOS graphic display device is the base class for all graphic display devices that are managed by..." alt="" coords="301,175,766,291"/>
+<area shape="rect" id="Node000003" href="$classrtos___s_s_d1306.html" title="FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface." alt="" coords="5,339,550,532"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="452,299,401,341,398,337,447,301"/>
+<area shape="rect" id="Node000004" href="$classrtos___s_t7735.html" title="RTOS version of the ST7735 display device." alt="" coords="575,339,1008,532"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="619,297,672,339,666,339,618,303"/>
+<area shape="rect" id="Node000002" href="$classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="379,5,689,127"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="535,139,536,176,531,174,533,144"/>
 </map>

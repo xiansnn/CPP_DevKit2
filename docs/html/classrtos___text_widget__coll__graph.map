@@ -4,7 +4,7 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="605,1235,780,1439,775,1439,603,1240"/>
 <area shape="rect" id="Node000005" href="$structstruct___widget_data_to_gate_keeper.html" title="data structure used to queue widget data to send to the display task" alt="" coords="216,1472,385,1535"/>
 <area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="500,1224,500,1274,493,1323,479,1372,457,1416,432,1445,401,1467,398,1462,428,1441,453,1413,474,1370,488,1322,494,1273,497,1228"/>
-<area shape="rect" id="Node000003" href="$classrtos___model.html" title="RTOS wrapper for Model class This class represents the base model in the RTOS&#45;based UI framework...." alt="" coords="339,503,672,644"/>
+<area shape="rect" id="Node000003" href="$classrtos___model.html" title="RTOS wrapper for Model class This class represents the base model in the RTOS&#45;based UI framework." alt="" coords="339,503,672,644"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="504,641,493,953,488,952,502,646"/>
 <area shape="rect" id="Node000004" href="$classrtos___display_device.html" title="The RTOS display device is the base class for all display devices that are managed by a dedicated dis..." alt="" coords="5,513,315,634"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="198,631,399,954,394,956,196,636"/>

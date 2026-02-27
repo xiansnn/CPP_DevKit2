@@ -1,7 +1,7 @@
 <map id="GraphicDrawer::GraphicDrawer" name="GraphicDrawer::GraphicDrawer">
 <area shape="rect" id="Node000001" title="Constructor of the GraphicDrawer class." alt="" coords="183,31,352,55"/>
 <area shape="rect" id="Node000002" href="$class_text_writer.html#a12775fd2d883e7fbf08d2bd7baa9fb4b" title="Construct a new Text Writer object." alt="" coords="5,5,135,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,33,135,29,135,23,168,28"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,31,135,29,135,23,170,30"/>
 <area shape="rect" id="Node000003" href="$class_text_writer.html#ac603e1121efe0b1e2291a87902e64fbc" title="Construct a new Text Widget object." alt="" coords="5,55,135,79"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="168,58,135,62,135,57,167,53"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,56,135,62,135,57,170,55"/>
 </map>

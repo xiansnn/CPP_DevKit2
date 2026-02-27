@@ -1,5 +1,0 @@
-<map id="rtos_BlinkingWidget" name="rtos_BlinkingWidget">
-<area shape="rect" id="Node000001" title="Class that represents a blinking widget." alt="" coords="5,255,411,492"/>
-<area shape="rect" id="Node000002" href="$classrtos___blinker.html" title="Class that manages blinking widgets." alt="" coords="56,5,360,185"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="209,182,211,238,206,237,207,187"/>
-</map>

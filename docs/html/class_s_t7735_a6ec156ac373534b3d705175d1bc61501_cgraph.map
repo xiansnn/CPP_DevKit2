@@ -1,14 +1,14 @@
 <map id="ST7735::clear_device_screen_buffer" name="ST7735::clear_device_screen_buffer">
 <area shape="rect" id="Node000001" title="fill the internal ST7735 screen buffer with the given color. Default to BLACK, clear the internal buf..." alt="" coords="5,80,202,105"/>
 <area shape="rect" id="Node000002" href="$class_probe.html#a493e1f46f0123ae6a18d7bd6e79d74f1" title="Generates a HI logical level on the GPIO." alt="" coords="313,5,378,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,77,249,40,297,27,299,32,250,46,141,82"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,77,249,40,300,28,296,30,250,46,141,82"/>
 <area shape="rect" id="Node000003" href="$class_probe.html#ade2391514faaee5f3acfffc4d3cb2de8" title="Generates a LO logical level on the GPIO." alt="" coords="313,55,378,79"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="202,79,297,69,298,75,203,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="202,79,300,71,295,73,203,85"/>
 <area shape="rect" id="Node000004" href="$class_s_t7735.html#a352d97b36c32932b43f891bdf41fb371" title="send a command to the ST7735 device" alt="" coords="490,129,604,154"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="202,101,475,131,474,136,202,106"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="202,101,476,131,473,136,202,106"/>
 <area shape="rect" id="Node000006" href="$class_s_t7735.html#a5d45094a281b3051f2681711c76d11b4" title="set the RAM write addresses for the display" alt="" coords="250,153,442,178"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="148,103,288,146,287,151,146,108"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="148,103,290,147,286,150,147,108"/>
 <area shape="rect" id="Node000005" href="$class_s_t7735.html#abbc613fffe458c261881c56d8be0afa7" title="enable or disable the command mode (DC pin low or high)" alt="" coords="652,129,823,154"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="605,139,636,139,636,144,605,144"/>
-<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="442,152,474,148,475,153,443,157"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="605,139,639,142,634,142,605,144"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="442,152,472,150,477,150,443,157"/>
 </map>

@@ -1,5 +1,0 @@
-<map id="HW_DMA::xfer_i2c2dma" name="HW_DMA::xfer_i2c2dma">
-<area shape="rect" id="Node000001" title="the function member used to move data from I2C peripheral to memory" alt="" coords="5,5,143,30"/>
-<area shape="rect" id="Node000002" href="$class_h_w___d_m_a.html#afa7dde1515be72e4adc96002774ec270" title="clean up and free the allocated DMA channel" alt="" coords="191,5,420,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,15,175,15,175,20,143,20"/>
-</map>

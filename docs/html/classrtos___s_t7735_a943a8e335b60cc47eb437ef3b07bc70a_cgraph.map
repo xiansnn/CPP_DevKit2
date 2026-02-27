@@ -1,12 +1,12 @@
 <map id="rtos_ST7735::show_from_display_queue" name="rtos_ST7735::show_from_display_queue">
 <area shape="rect" id="Node000001" title="Show data from the display queue." alt="" coords="5,5,223,30"/>
 <area shape="rect" id="Node000002" href="$classrtos___s_t7735.html#ae773d6c1f1da93a13b5589a20fe4d899" title="A pure virtual member function. It transfers the pixel buffer to the a part of display screen buffer ..." alt="" coords="271,5,386,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,15,255,15,255,20,223,20"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,15,258,17,252,18,223,20"/>
 <area shape="rect" id="Node000003" href="$class_s_t7735.html#a352d97b36c32932b43f891bdf41fb371" title="send a command to the ST7735 device" alt="" coords="674,5,789,30"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="387,15,659,15,659,20,387,20"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="387,15,662,17,657,18,387,20"/>
 <area shape="rect" id="Node000005" href="$class_s_t7735.html#a5d45094a281b3051f2681711c76d11b4" title="set the RAM write addresses for the display" alt="" coords="434,29,626,54"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="387,22,419,26,418,31,386,27"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="386,22,421,28,416,28,386,27"/>
 <area shape="rect" id="Node000004" href="$class_s_t7735.html#abbc613fffe458c261881c56d8be0afa7" title="enable or disable the command mode (DC pin low or high)" alt="" coords="837,5,1007,30"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="789,15,821,15,821,20,789,20"/>
-<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="626,28,659,24,659,29,627,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="789,15,823,18,818,18,789,20"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="627,28,656,26,662,26,627,33"/>
 </map>

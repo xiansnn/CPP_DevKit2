@@ -1,5 +1,5 @@
 <map id="UIControlledIncrementalValue::decrement_value" name="UIControlledIncrementalValue::decrement_value">
 <area shape="rect" id="Node000001" title="Substract &quot;increment&quot; to the current value." alt="" coords="247,5,500,30"/>
 <area shape="rect" id="Node000002" href="$class_u_i_model_manager.html#ad1ebe8f2e4895b735d21e9cd41258992" title="set focus on the previous model in the list." alt="" coords="5,5,199,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,20,199,20,199,15,231,15"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,18,199,20,199,15,234,18"/>
 </map>

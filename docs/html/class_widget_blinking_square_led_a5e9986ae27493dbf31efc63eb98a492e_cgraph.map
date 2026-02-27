@@ -1,13 +1,13 @@
 <map id="WidgetBlinkingSquareLed::WidgetBlinkingSquareLed" name="WidgetBlinkingSquareLed::WidgetBlinkingSquareLed">
 <area shape="rect" id="Node000001" title="Construct a new GraphicWidget Square Led object." alt="" coords="5,31,275,55"/>
 <area shape="rect" id="Node000002" href="$class_widget_square_led.html#ad554a73ba696f1ba0538bd1a47ca7118" title="Construct a new GraphicWidget Square Led object." alt="" coords="323,31,522,55"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="275,40,307,40,307,46,275,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="275,40,310,43,304,43,275,46"/>
 <area shape="rect" id="Node000003" href="$class_graphic_widget.html#af3b9275226b4bc13d2e7a9cb6ba83f2c" title="Construct a new Graphic Widget object." alt="" coords="570,31,739,55"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="522,40,554,40,554,46,522,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="522,40,557,43,552,43,522,46"/>
 <area shape="rect" id="Node000004" href="$class_widget.html#a0d8f98229ae680885d74911bd73c67a1" title="contructor for generic widget" alt="" coords="847,5,945,30"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="740,31,832,22,832,27,740,37"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="740,31,829,25,834,24,740,37"/>
 <area shape="rect" id="Node000006" href="$class_graphic_widget.html#a49c9ebded2dc14246284662e13713a05" title="Get the graphic frame config object." alt="" coords="787,55,1005,79"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="740,49,772,52,771,57,740,54"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="740,49,774,55,769,55,740,54"/>
 <area shape="rect" id="Node000005" href="$class_model.html#a39c2d857bbad88b8fb04eb54820ae08f" title="add a new widget to the set of attached_widgets" alt="" coords="1053,5,1236,30"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="945,15,1037,15,1037,20,945,20"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="945,15,1040,18,1035,18,945,20"/>
 </map>

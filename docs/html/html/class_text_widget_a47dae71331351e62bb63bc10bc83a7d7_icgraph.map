@@ -1,5 +1,0 @@
-<map id="TextWidget::draw_glyph" name="TextWidget::draw_glyph">
-<area shape="rect" id="Node000001" title="a graphic primitive to draw a character at a pixel position. Strongly dependent on font memory organi..." alt="" coords="161,5,298,30"/>
-<area shape="rect" id="Node000002" href="$class_text_widget.html#a237b451ce7140f32676109f637fb215d" title="a graphic primitive to draw a character at a character position" alt="" coords="5,5,113,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,18,113,20,113,15,148,17"/>
-</map>

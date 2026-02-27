@@ -1,7 +1,7 @@
 <map id="SSD1306::vertical_scroll" name="SSD1306::vertical_scroll">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,5,142,30"/>
 <area shape="rect" id="Node000002" href="$class_s_s_d1306.html#abba4af0c315a9fdcab52d32acc11ab97" title="refer to SSD1306 data sheet for more details" alt="" coords="190,5,330,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,15,174,15,174,20,142,20"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,15,177,18,172,18,142,20"/>
 <area shape="rect" id="Node000003" href="$class_s_s_d1306.html#ad2d5544f63b5b15c62f74ebf78570d08" title="refer to SSD1306 data sheet for more details" alt="" coords="378,5,499,30"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="330,15,362,15,362,20,330,20"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="330,15,365,18,360,18,330,20"/>
 </map>

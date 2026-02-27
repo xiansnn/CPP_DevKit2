@@ -1,5 +1,0 @@
-<map id="CanvasRGB" name="CanvasRGB">
-<area shape="rect" id="Node000001" title="A special version of canvas for color widget (and device) with 1 pixel/byte according to ColorIndex c..." alt="" coords="28,368,448,509"/>
-<area shape="rect" id="Node000002" href="$class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="5,5,471,320"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="240,332,241,369,236,367,237,337"/>
-</map>

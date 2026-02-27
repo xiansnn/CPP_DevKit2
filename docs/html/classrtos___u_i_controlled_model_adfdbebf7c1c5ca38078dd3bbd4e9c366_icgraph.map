@@ -1,11 +1,11 @@
 <map id="rtos_UIControlledModel::update_rtos_status" name="rtos_UIControlledModel::update_rtos_status">
 <area shape="rect" id="Node000001" title="update the status of the controlled model" alt="" coords="735,55,971,79"/>
 <area shape="rect" id="Node000002" href="$classrtos___u_i_model_manager.html#a502b16a41d769bcc0f5fe7379d988349" title="Construct a new rtos UIModel Manager object." alt="" coords="413,5,654,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="753,54,618,33,619,28,754,49"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="751,52,618,33,618,28,756,52"/>
 <area shape="rect" id="Node000004" href="$classrtos___u_i_model_manager.html#a3215edfd65425bc0cd427d1bf5daf4c7" title="Make the current active managed rtos_UIControlledModel the active one." alt="" coords="381,55,687,79"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="719,70,687,70,687,64,719,64"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="716,67,688,70,687,64,722,67"/>
 <area shape="rect" id="Node000005" href="$classrtos___u_i_model_manager.html#a089e4095f25dea9324e327ffd57c7b54" title="Make the rtos_UIModelManager the active one." alt="" coords="399,104,668,129"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="754,85,619,106,618,101,753,80"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="756,82,619,106,618,101,751,83"/>
 <area shape="rect" id="Node000003" href="$classrtos___u_i_model_manager.html#a8c0a7bbfc476beba2c1c51cd08059e45" title="Process a time out condition for the manager." alt="" coords="5,5,333,30"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="398,20,333,20,333,15,398,15"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="395,18,333,20,333,15,400,17"/>
 </map>

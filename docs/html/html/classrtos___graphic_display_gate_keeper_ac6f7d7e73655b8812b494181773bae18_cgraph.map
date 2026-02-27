@@ -1,9 +1,0 @@
-<map id="rtos_GraphicDisplayGateKeeper::send_widget_data" name="rtos_GraphicDisplayGateKeeper::send_widget_data">
-<area shape="rect" id="Node000001" title="Send the widget data to the display task." alt="" coords="5,31,274,55"/>
-<area shape="rect" id="Node000002" href="$class_probe.html#a28c69192134167e34477e457c5ceb003" title="Generates a HI level pulse on the GPIO during _duration µs." alt="" coords="322,31,421,55"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="274,40,309,43,303,43,274,46"/>
-<area shape="rect" id="Node000003" href="$class_probe.html#a493e1f46f0123ae6a18d7bd6e79d74f1" title="Generates a HI logical level on the GPIO." alt="" coords="469,5,534,30"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="421,31,451,27,457,26,422,36"/>
-<area shape="rect" id="Node000004" href="$class_probe.html#ade2391514faaee5f3acfffc4d3cb2de8" title="Generates a LO logical level on the GPIO." alt="" coords="469,55,534,79"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="422,50,457,58,451,58,421,55"/>
-</map>

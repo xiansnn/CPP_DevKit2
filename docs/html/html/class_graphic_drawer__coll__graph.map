@@ -1,5 +1,0 @@
-<map id="GraphicDrawer" name="GraphicDrawer">
-<area shape="rect" id="Node000001" title="A class that implements basic graphic drawing primitives for widgets." alt="" coords="5,390,565,757"/>
-<area shape="rect" id="Node000002" href="$class_canvas.html" title="The canvas is a virtual memory in which the widget draws." alt="" coords="52,5,518,320"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="286,317,288,374,283,372,284,322"/>
-</map>

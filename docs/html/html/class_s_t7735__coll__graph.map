@@ -1,9 +1,0 @@
-<map id="ST7735" name="ST7735">
-<area shape="rect" id="Node000001" title="ST7735 driven TFT color display device." alt="" coords="206,445,666,1121"/>
-<area shape="rect" id="Node000002" href="$class_graphic_display_device.html" title="This is the abstract class to handle all generic behavior of physical graphic display devices (e...." alt="" coords="5,179,445,333"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="262,344,303,445,298,445,261,350"/>
-<area shape="rect" id="Node000003" href="$class_display_device.html" title="A generic class for all display device." alt="" coords="157,5,293,88"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="226,101,228,179,223,179,225,106"/>
-<area shape="rect" id="Node000004" href="$class_h_w___s_p_i___master.html" title="this is a C++ wrapper for the original pico SDK spi master API" alt="" coords="470,137,826,375"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="602,372,581,431,576,428,599,377"/>
-</map>

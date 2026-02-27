@@ -1,5 +1,5 @@
 <map id="rtos_UIModelManager::rtos_UIModelManager" name="rtos_UIModelManager::rtos_UIModelManager">
 <area shape="rect" id="Node000001" title="Construct a new rtos UIModel Manager object." alt="" coords="381,5,622,30"/>
 <area shape="rect" id="Node000002" href="$classrtos___u_i_model_manager.html#a8c0a7bbfc476beba2c1c51cd08059e45" title="Process a time out condition for the manager." alt="" coords="5,5,333,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="365,20,333,20,333,15,365,15"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="362,18,333,20,333,15,368,18"/>
 </map>

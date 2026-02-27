@@ -1,5 +1,5 @@
 <map id="commands_ST7735.h" name="commands_ST7735.h">
 <area shape="rect" id="Node000001" title="These commands are those for either the ST7735 TFT 1.44&quot; 128x128 pixels or the ST7735 TFT 1...." alt="" coords="5,5,130,30"/>
 <area shape="rect" id="Node000002" href="$st7735_8h.html" title="inspired from various code source, including https://github.com/adafruit/Adafruit&#45;ST7735&#45;Library" alt="" coords="36,78,99,103"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,46,70,78,65,78,65,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,44,70,78,65,77,66,48"/>
 </map>

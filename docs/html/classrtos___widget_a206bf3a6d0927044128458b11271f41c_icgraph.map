@@ -1,13 +1,13 @@
 <map id="rtos_Widget::rtos_Widget" name="rtos_Widget::rtos_Widget">
 <area shape="rect" id="Node000001" title="constructor for RTOS widget" alt="" coords="273,104,420,129"/>
 <area shape="rect" id="Node000002" href="$classrtos___graphic_widget.html#a64d842df67c4bfc83f15d6cc88bba91e" title="Constructor of the RTOS graphic widget." alt="" coords="5,5,225,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="314,97,272,70,224,45,185,33,187,28,226,41,275,65,317,92"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="313,95,272,70,224,45,186,33,186,28,226,41,275,65,318,95"/>
 <area shape="rect" id="Node000003" href="$classrtos___print_widget.html#a0b2410d187ac06c257bf204ed4f8fc07" title=" " alt="" coords="19,55,211,79"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="269,103,176,83,177,77,271,98"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="268,101,177,83,176,77,272,99"/>
 <area shape="rect" id="Node000004" href="$classrtos___text_widget.html#a2960605129fe5aaf9ebbe1654a2875d3" title="Construct a new Text Widget object." alt="" coords="21,104,209,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="257,119,209,119,209,114,257,114"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="254,117,210,119,209,114,259,116"/>
 <area shape="rect" id="Node000005" href="$classrtos___text_widget.html#a478fd95a27ab909988e31b30c03cf388" title="Construct a new Text Widget object." alt="" coords="21,153,209,178"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="271,135,177,155,176,150,269,130"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="268,134,177,155,176,150,272,131"/>
 <area shape="rect" id="Node000006" href="$classrtos___widget.html#af6ed14469e8e458b99c7f53a15378050" title="add sub_widget to the current widget" alt="" coords="43,203,187,227"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="317,140,275,167,226,192,187,205,185,200,224,187,272,163,314,136"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="318,137,275,167,226,192,187,205,185,200,224,187,272,163,313,139"/>
 </map>

@@ -23,25 +23,18 @@
 
 #include <set>
 
-/// @brief RTOS wrapper for Model class
-/// This class represents the base model in the RTOS-based UI framework. It manages a set of linked widget tasks and provides mechanisms to notify them of changes.
-/// The model is designed to be extended by more specific models that represent different types of data or functionality in the UI.
-/// The rtos_Model class maintains a set of attached rtos_Widget pointers, which represent the widgets that are linked to this model. 
-/// When the model changes, it can notify all linked widget tasks to update their display accordingly.
-/// The rtos_Model class also includes a FreeRTOS task handle, which can be used to manage the model's own task if needed.
-/// The rtos_UIControlledModel class extends rtos_Model and adds functionality for handling control events. 
-/// It includes a FreeRTOS queue for receiving control events and a status to indicate whether the model is active, waiting, or has focus.
-/// The rtos_UIModelManager class extends rtos_UIControlledModel and manages a collection of controlled models.
-/// It provides functionality to manage focus among the controlled models and to forward control events to the currently active model. 
-/// It also includes mechanisms for handling timeouts and managing the focus index among the controlled models.
-/// The core_IncrementControlledModel class represents a model that holds an integer value that can be incremented or decremented within a defined range.
-/// It includes functionality for wrapping values around the minimum and maximum limits if desired.
-/// The core_CircularIncremetalControlledModel class extends core_IncrementControlledModel and is designed for representing circular quantities, such as angles.
-/// It overrides the increment and decrement methods to wrap values around the defined range, making it suitable for use cases where values should loop back to the beginning after reaching a certain limit (e.g., 360 degrees wrapping back to 0).
-/// \note The rtos_UIModelManager class is particularly useful for managing multiple controlled models and handling user interactions that may affect which model is currently active or has focus. 
-/// \note The core_IncrementControlledModel and core_CircularIncremetalControlledModel classes provide basic functionality for managing incrementable values, which can be used in various UI components that require such behavior (e.g., sliders, counters, etc.).
-/// \note The design of these classes allows for flexibility and extensibility, enabling developers to create complex UI models that can interact with various widgets and handle user input effectively in an RTOS environment.
-/// \note The use of FreeRTOS features such as queues and task handles allows for efficient communication and task management within the UI framework, enabling responsive and interactive user interfaces even in resource-constrained environments.
+ /// @brief RTOS wrapper for Model class
+ /// This class represents the base model in the RTOS-based UI framework.
+ /// 
+ /// It manages a set of linked widget tasks and provides mechanisms to notify them of changes.
+ /// The model is designed to be extended by more specific models that represent different types of data or functionality in the UI.
+ /// The rtos_Model class maintains a set of attached rtos_Widget pointers, which represent the widgets that are linked to this model.
+ /// When the model changes, it can notify all linked widget tasks to update their display accordingly.
+ /// 
+ /// The rtos_Model class also includes a FreeRTOS task handle, which can be used to manage the model's own task if needed.
+ /// 
+ /// The rtos_UIControlledModel class extends rtos_Model and adds functionality for handling control events. 
+ /// 
 /// \ingroup model
 class rtos_Model
 {

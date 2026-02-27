@@ -1,5 +1,0 @@
-<map id="GraphicWidget::rect" name="GraphicWidget::rect">
-<area shape="rect" id="Node000001" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="5,5,124,30"/>
-<area shape="rect" id="Node000002" href="$group__sw.html#ga44156ede281f3c11dd89756f4bbd4ebb" title="Write all pixel buffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)" alt="" coords="172,5,280,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,15,156,15,156,20,124,20"/>
-</map>

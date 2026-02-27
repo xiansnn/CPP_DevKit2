@@ -1,7 +1,0 @@
-<map id="rtos_ST7735::show" name="rtos_ST7735::show">
-<area shape="rect" id="Node000001" title="A pure virtual member function. It transfers the pixel buffer to the a part of display screen buffer ..." alt="" coords="271,31,386,55"/>
-<area shape="rect" id="Node000002" href="$classrtos___s_t7735.html#a943a8e335b60cc47eb437ef3b07bc70a" title="Show data from the display queue." alt="" coords="5,5,223,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="252,35,223,33,223,28,258,34"/>
-<area shape="rect" id="Node000003" href="$classrtos___s_t7735.html#ad978278859fbd6cc0c578fe360f79b0f" title="Show the widget on the display device." alt="" coords="37,55,191,79"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="258,51,192,61,191,56,253,51"/>
-</map>

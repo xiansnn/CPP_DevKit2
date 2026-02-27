@@ -1,5 +1,0 @@
-<map id="rtos_UIControlledModel" name="rtos_UIControlledModel">
-<area shape="rect" id="Node000001" title="RTOS wrapper for UIControlledModel class This class represents a model that can be controlled by user..." alt="" coords="5,194,401,354"/>
-<area shape="rect" id="Node000002" href="$classrtos___model.html" title="RTOS wrapper for Model class This class represents the base model in the RTOS&#45;based UI framework...." alt="" coords="37,5,370,146"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,159,206,195,201,193,202,164"/>
-</map>

@@ -1,13 +1,13 @@
 <map id="GraphicWidget::draw_border" name="GraphicWidget::draw_border">
 <area shape="rect" id="Node000001" title="draw a rectangle around the widget." alt="" coords="232,104,392,129"/>
 <area shape="rect" id="Node000002" href="$class_widget_blinking_square_led.html#a61b2b883fa16f46dbdc510133b378459" title="a pure virtual member that is called to effectively draw the widget." alt="" coords="8,5,181,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="277,97,233,71,183,45,148,33,149,28,185,41,236,66,280,93"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="276,95,233,71,183,45,149,33,148,28,185,41,236,66,281,95"/>
 <area shape="rect" id="Node000003" href="$class_widget_horizontal_bar.html#a73f6c8198a940ad2803367e5712f3359" title="the draw function of the widget" alt="" coords="19,55,170,79"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="239,103,152,83,153,77,240,97"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="237,101,152,83,152,77,242,99"/>
 <area shape="rect" id="Node000004" href="$class_widget_horizontal_bargraph.html#ac51fc7454f00e12c47c507b449a1b0b0" title="the function that draw the widget" alt="" coords="5,104,184,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="216,119,184,119,184,114,216,114"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="213,117,185,119,184,114,218,115"/>
 <area shape="rect" id="Node000005" href="$class_widget_square_led.html#a73764f45091e9a4dde223262cd63256b" title="a pure virtual member that is called to effectively draw the widget." alt="" coords="26,153,163,178"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="240,135,153,155,152,150,239,130"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="237,134,153,155,151,150,242,131"/>
 <area shape="rect" id="Node000006" href="$class_widget_vertical_bargraph.html#a938fef5332131013fe1f7e31f7629f41" title="the function that draw the widget" alt="" coords="12,203,177,227"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="280,140,236,167,185,192,149,205,148,200,183,187,233,162,277,135"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="281,137,236,167,185,192,149,205,148,199,183,187,233,162,276,139"/>
 </map>

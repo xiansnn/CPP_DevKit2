@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['font_5fheight_5findex_0',['FONT_HEIGHT_INDEX',['../canvas_8h.html#a4ab86d883782b831584c91476841456f',1,'canvas.h']]],
-  ['font_5fwidth_5findex_1',['FONT_WIDTH_INDEX',['../canvas_8h.html#a1b5e690c2929f80821d04e8414fec2c5',1,'canvas.h']]],
-  ['form_5ffeed_2',['FORM_FEED',['../widget_8h.html#aeaf983986deb16c93fa0bd38080281f8',1,'FORM_FEED:&#160;widget.h'],['../widget__primitives_8h.html#aeaf983986deb16c93fa0bd38080281f8',1,'FORM_FEED:&#160;widget_primitives.h']]]
-];

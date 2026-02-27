@@ -2,6 +2,6 @@
 <area shape="rect" id="Node000001" title="RTOS wrapper for UIControlledModel class This class represents a model that can be controlled by user..." alt="" coords="54,194,450,354"/>
 <area shape="rect" id="Node000003" href="$classrtos___u_i_model_manager.html" title="RTOS wrapper for UIModelManager class This class represents a manager that can manage multiple contro..." alt="" coords="5,402,498,736"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="253,366,254,403,249,401,251,371"/>
-<area shape="rect" id="Node000002" href="$classrtos___model.html" title="RTOS wrapper for Model class This class represents the base model in the RTOS&#45;based UI framework...." alt="" coords="85,5,418,146"/>
+<area shape="rect" id="Node000002" href="$classrtos___model.html" title="RTOS wrapper for Model class This class represents the base model in the RTOS&#45;based UI framework." alt="" coords="85,5,418,146"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="252,159,254,195,249,194,251,164"/>
 </map>

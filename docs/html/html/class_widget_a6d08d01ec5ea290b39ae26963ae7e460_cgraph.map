@@ -1,7 +1,0 @@
-<map id="Widget::add_widget" name="Widget::add_widget">
-<area shape="rect" id="Node000001" title="add sub_widget to the current widget" alt="" coords="5,5,125,30"/>
-<area shape="rect" id="Node000002" href="$class_widget.html#a0d8f98229ae680885d74911bd73c67a1" title="contructor for generic widget" alt="" coords="173,5,270,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,15,160,17,155,18,125,20"/>
-<area shape="rect" id="Node000003" href="$class_model.html#a39c2d857bbad88b8fb04eb54820ae08f" title="add a new widget to the set of attached_widgets" alt="" coords="318,5,501,30"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="270,15,305,18,300,18,271,20"/>
-</map>

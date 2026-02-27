@@ -1,9 +1,0 @@
-<map id="UIModelObject" name="UIModelObject">
-<area shape="rect" id="Node000001" title="This is the Model abstract class of Model_View_Control design pattern." alt="" coords="277,5,599,365"/>
-<area shape="rect" id="Node000002" href="$class_model_bargraph.html" title="the UIModelObject used by Bargraph GraphicWidget" alt="" coords="5,469,385,624"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="311,379,249,471,244,468,307,376"/>
-<area shape="rect" id="Node000003" href="$class_u_i_controlled_incremental_value.html" title="The UIControlledIncrementalValue is a kind of UIModelObject that have special feature such as a value..." alt="" coords="409,413,955,680"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="570,376,595,412,590,415,566,379"/>
-<area shape="rect" id="Node000004" href="$class_u_i_object_manager.html" title="This is an Abstract class that is used to implement the manager of object on a screen." alt="" coords="395,728,969,939"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="685,695,685,728,679,728,679,695"/>
-</map>

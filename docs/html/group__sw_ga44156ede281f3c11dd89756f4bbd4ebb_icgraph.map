@@ -1,7 +1,0 @@
-<map id="GraphicWidget::fill" name="GraphicWidget::fill">
-<area shape="rect" id="Node000001" title="Write all pixel buffer memory with &quot;0&quot; (or &quot;1&quot;) if color c is BLACK (resp. WHITE)" alt="" coords="177,31,285,55"/>
-<area shape="rect" id="Node000002" href="$group__sw.html#ga2f4bf7831c9c22c2a13daa2acf4d71e4" title="draw a cercle of size radius, centered at (x_center, y_center) https://fr.wikipedia...." alt="" coords="5,5,129,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,35,129,30,130,25,162,30"/>
-<area shape="rect" id="Node000003" href="$group__sw.html#gac2bb85ff122ed402b8467e179611eda2" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="8,55,126,79"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="162,56,127,61,126,56,161,51"/>
-</map>

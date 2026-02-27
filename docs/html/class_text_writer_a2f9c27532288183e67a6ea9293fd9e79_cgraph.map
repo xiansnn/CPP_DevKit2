@@ -1,4 +1,4 @@
 <map id="TextWriter::write" name="TextWriter::write">
 <area shape="rect" id="Node000001" title="process characters in the internal text buffer and draw it into the pixel buffer." alt="" coords="5,29,109,54"/>
-<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="39,30,35,21,37,12,45,5,57,3,70,5,77,12,74,16,68,10,57,8,47,10,42,14,40,20,44,28"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="38,29,35,21,37,12,45,5,57,3,70,5,78,14,73,14,68,10,57,8,47,10,42,14,40,20,44,29"/>
 </map>

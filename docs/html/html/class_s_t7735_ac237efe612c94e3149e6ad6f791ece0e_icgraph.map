@@ -1,9 +1,0 @@
-<map id="ST7735::enable_sleep" name="ST7735::enable_sleep">
-<area shape="rect" id="Node000001" title="turn the display in sleep mode on/off" alt="" coords="540,5,669,30"/>
-<area shape="rect" id="Node000002" href="$class_s_t7735.html#ae3756f2b5a896be7a93e765a5fc88bfa" title="wake up the device from sleep mode" alt="" coords="354,5,492,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="522,18,493,20,493,15,527,18"/>
-<area shape="rect" id="Node000003" href="$class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8" title="Construct a new ST7735 object." alt="" coords="205,5,306,30"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="336,18,307,20,306,15,341,18"/>
-<area shape="rect" id="Node000004" href="$classrtos___s_t7735.html#a66cd3316fdb254d845f5decb6a8b9c36" title="Construct a new rtos_ST7735 object." alt="" coords="5,5,157,30"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="187,18,157,20,157,15,192,18"/>
-</map>

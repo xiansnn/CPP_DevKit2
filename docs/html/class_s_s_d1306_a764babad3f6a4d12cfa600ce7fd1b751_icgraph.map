@@ -1,5 +1,5 @@
 <map id="SSD1306::fill_pattern_and_show_GDDRAM" name="SSD1306::fill_pattern_and_show_GDDRAM">
 <area shape="rect" id="Node000001" title="fill a pattern in the device framebuffer. this make it visible as soon as the device transfer the fra..." alt="" coords="257,5,483,30"/>
 <area shape="rect" id="Node000002" href="$class_s_s_d1306.html#a646463128f966a04b1746e3389819711" title="write 0x00 directly into the device framebuffer. Uses fill_pattern_and_show_GDDRAM command." alt="" coords="5,5,209,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="241,20,209,20,209,15,241,15"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,18,209,20,209,15,244,18"/>
 </map>

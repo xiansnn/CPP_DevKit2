@@ -1,5 +1,0 @@
-<map id="rtos_SwitchButton::rtos_SwitchButton" name="rtos_SwitchButton::rtos_SwitchButton">
-<area shape="rect" id="Node000001" title="Construct a new rtos Switch Button object." alt="" coords="275,5,480,30"/>
-<area shape="rect" id="Node000002" href="$classrtos___rotary_encoder.html#afef821f6910545235862593614263bc9" title="Construct a new Rotary Encoder object compliant with FreeRTOS." alt="" coords="5,5,227,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="259,20,227,20,227,15,259,15"/>
-</map>

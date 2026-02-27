@@ -1,7 +1,0 @@
-<map id="GraphicWidget::rect" name="GraphicWidget::rect">
-<area shape="rect" id="Node000001" title="Draw a rectangle, starting at frame position (x,y), w wide and h high." alt="" coords="5,31,124,55"/>
-<area shape="rect" id="Node000002" href="$class_graphic_widget.html#aa98c1549ea5fb625cfd27e13769fba9a" title="Draw a color horizontal line, starting at frame position (x,y), on w number of pixel." alt="" coords="172,5,293,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,31,159,28,154,30,125,37"/>
-<area shape="rect" id="Node000003" href="$class_graphic_widget.html#a0a6ac5a1610805ec69142fdaa2ec28b1" title="Draw a color vertical line, starting at frame position (x,y), on w number of pixel." alt="" coords="172,55,292,79"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="124,49,159,56,154,56,124,54"/>
-</map>

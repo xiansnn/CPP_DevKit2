@@ -47,7 +47,7 @@ if(PROJECT_IS_TOP_LEVEL)
     # Find Doxygen 
     find_package(Doxygen) 
     if(DOXYGEN_FOUND) # Set input and output files 
-        set(DOXYGEN_CNF ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile_cnf) 
+        set(DOXYGEN_CNF ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile2) 
         add_custom_target(doc_doxygen 
         COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_CNF}        
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}

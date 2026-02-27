@@ -1,5 +1,0 @@
-<map id="SwitchButtonWithIRQ::irq_enabled" name="SwitchButtonWithIRQ::irq_enabled">
-<area shape="rect" id="Node000001" title="&quot;AND&quot; function used to enable/disable interrupt during Interrupt Service Routine (ISR)" alt="" coords="275,5,464,30"/>
-<area shape="rect" id="Node000002" href="$class_rotary_encoder.html#ae7ad35ae64d2b815c25ac72a51702e6f" title="the ISR that process the IRQ and send UIControlEvent to the Model currentControlledObject." alt="" coords="5,5,227,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="257,18,227,20,227,15,262,18"/>
-</map>

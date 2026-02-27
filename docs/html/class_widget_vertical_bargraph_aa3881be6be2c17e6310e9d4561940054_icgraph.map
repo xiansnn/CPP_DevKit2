@@ -1,5 +1,5 @@
 <map id="WidgetVerticalBargraph::get_value_of_interest" name="WidgetVerticalBargraph::get_value_of_interest">
 <area shape="rect" id="Node000001" title="A pure virtual method that results in the transfer of the displayed values of the displayed model to ..." alt="" coords="218,5,463,30"/>
 <area shape="rect" id="Node000002" href="$class_widget_vertical_bargraph.html#a938fef5332131013fe1f7e31f7629f41" title="the function that draw the widget" alt="" coords="5,5,170,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,20,170,20,170,15,202,15"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,18,170,20,170,15,205,18"/>
 </map>

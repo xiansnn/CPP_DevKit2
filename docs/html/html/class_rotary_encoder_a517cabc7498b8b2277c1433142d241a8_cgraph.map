@@ -1,7 +1,0 @@
-<map id="RotaryEncoder::RotaryEncoder" name="RotaryEncoder::RotaryEncoder">
-<area shape="rect" id="Node000001" title="Construct a new Rotary Encoder object." alt="" coords="5,5,177,30"/>
-<area shape="rect" id="Node000002" href="$class_switch_button_with_i_r_q.html#aafb53c306bcbb5c681caae03b778f517" title="Construct a new SwitchButtonWithIRQ object." alt="" coords="225,5,462,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,15,212,18,206,18,177,20"/>
-<area shape="rect" id="Node000003" href="$class_switch_button.html#a750d21f333405881df2ef91495885a29" title="Construct a new SwitchButton object." alt="" coords="510,5,665,30"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="462,15,497,18,492,18,462,20"/>
-</map>
