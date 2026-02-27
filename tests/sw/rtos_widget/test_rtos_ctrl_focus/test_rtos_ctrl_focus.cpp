@@ -9,7 +9,6 @@
  *
  */
 
-
 #include "sw/ui_core/rtos_ui_core.h"
 #include "sw/widget/rtos_widget.h"
 #include "t_rtos_ctrl_focus_text_and_graph_widgets.h"
@@ -53,11 +52,11 @@ rtos_Blinker my_blinker = rtos_Blinker(150);
 
 //   widgets
 //..........................
-my_angle_widget ST7735_angle_widget = my_angle_widget(&color_display, ST7735_angle_config,
+my_angle_widget ST7735_angle_widget = my_angle_widget(&color_display, &my_blinker, ST7735_angle_config,
                                                       ST7735_TEXT_CANVAS_FORMAT, &my_rtos_model.angle);
-my_H_position_widget ST7735_H_position_widget = my_H_position_widget(&color_display, ST7735_H_position_config,
+my_H_position_widget ST7735_H_position_widget = my_H_position_widget(&color_display, &my_blinker, ST7735_H_position_config,
                                                                      ST7735_TEXT_CANVAS_FORMAT, &my_rtos_model.x_pos);
-my_V_position_widget ST7735_V_position_widget = my_V_position_widget(&color_display, ST7735_V_position_config,
+my_V_position_widget ST7735_V_position_widget = my_V_position_widget(&color_display, &my_blinker, ST7735_V_position_config,
                                                                      ST7735_TEXT_CANVAS_FORMAT, &my_rtos_model.y_pos);
 my_graphic_widget ST7735_graph_widget = my_graphic_widget(&color_display, ST7735_graph_config,
                                                           ST7735_GRAPHICS_CANVAS_FORMAT, nullptr);

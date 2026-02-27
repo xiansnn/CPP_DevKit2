@@ -83,7 +83,7 @@ protected:
 
 public:
     /// @brief Constructor of the RTOS blinking widget
-    rtos_BlinkingWidget();
+    rtos_BlinkingWidget(rtos_Blinker *blinker);
 
     /// @brief Destructor of the RTOS blinking widget
     ~rtos_BlinkingWidget();
@@ -96,9 +96,6 @@ public:
     /// @note  the widget is unregistered from the blinker
     void stop_blinking();
 
-    /// @brief  Setup the blinker for the blinking widget and store the current canvas colors
-    /// @param blinker   the blinker to setup
-    void setup_blinking(rtos_Blinker *blinker);
 
     /// @brief  Convert the status to blinking behavior
     /// @note  this method defines how the widget will blink according to the status. It can be overloaded if needed.

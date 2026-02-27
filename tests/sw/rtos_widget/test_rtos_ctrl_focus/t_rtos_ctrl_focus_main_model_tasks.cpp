@@ -110,7 +110,7 @@ void SPI_focus_widget_task(void *probe)
 #endif
 void SPI_angle_widget_task(void *probe)
 {
-    ST7735_angle_widget.setup_blinking(&my_blinker);
+    // ST7735_angle_widget.setup_blinking(&my_blinker);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -125,7 +125,7 @@ void SPI_angle_widget_task(void *probe)
 
 void SPI_H_position_widget_task(void *probe)
 {
-    ST7735_H_position_widget.setup_blinking(&my_blinker);
+    // ST7735_H_position_widget.setup_blinking(&my_blinker);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -140,7 +140,7 @@ void SPI_H_position_widget_task(void *probe)
 
 void SPI_V_position_widget_task(void *probe)
 {
-    ST7735_V_position_widget.setup_blinking(&my_blinker);
+    // ST7735_V_position_widget.setup_blinking(&my_blinker);
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);

@@ -124,8 +124,9 @@ void rtos_Blinker::refresh_blinking()
         widget->blink();
 }
 
-rtos_BlinkingWidget::rtos_BlinkingWidget()
+rtos_BlinkingWidget::rtos_BlinkingWidget(rtos_Blinker *blinker)
 {
+    this->blinker = blinker;
 }
 
 rtos_BlinkingWidget::~rtos_BlinkingWidget()
@@ -140,12 +141,6 @@ void rtos_BlinkingWidget::start_blinking()
 void rtos_BlinkingWidget::stop_blinking()
 {
     this->blinker->remove_blinking_widget(this);
-}
-
-void rtos_BlinkingWidget::setup_blinking(rtos_Blinker *blinker)
-{
-    save_canvas_color();
-    this->blinker = blinker;
 }
 
 void rtos_BlinkingWidget::convert_status_to_blinking_behavior(ControlledObjectStatus status)
