@@ -1,6 +1,6 @@
 #pragma once
 // #define SHOW_CONSOLE_WIDGET
-// #define SHOW_MONITORING_WIDGET
+#define SHOW_MONITORING_WIDGET
 
 #include "utilities/probe/probe.h"
 extern Probe p0;

@@ -94,7 +94,7 @@ int main()
 
     xTaskCreate(blinker_task, "blinker", 256, &p0, 25, NULL);
 
-    xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p3, 5, NULL);
+    xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p7, 5, NULL);
 
     xTaskCreate(SPI_hour_text_widget_task, "SPI_hour", 256, NULL, 25, &hour_text_widget.task_handle);
     xTaskCreate(SPI_minute_text_widget_task, "SPI_minute", 256, NULL, 25, &minute_text_widget.task_handle);
