@@ -3,13 +3,12 @@
 #include "sw/widget/rtos_widget.h"
 #include "t_rtos_blinker_main_classes.h"
 
-
 extern std::map<ControlledObjectStatus, std::string> status_to_string;
 extern std::map<ClockElementType, std::string> clock_element_to_string;
 
-extern struct_ConfigGraphicWidget clock_widget_config;
+extern struct_ConfigGraphicWidget analog_clock_widget_config;
 
-class ClockWidgetElement : public rtos_Widget, public rtos_BlinkingWidget
+class AnalogClockWidgetElement : public rtos_Widget, public rtos_BlinkingWidget
 {
 protected:
     ControlledObjectStatus status;
@@ -22,8 +21,8 @@ protected:
 
 public:
     rtos_GraphicWidget *host_widget;
-    ClockWidgetElement(rtos_GraphicWidget *host_widget, rtos_Blinker *blinker, rtos_Model *actual_displayed_model, ClockElementType clock_element_type);
-    ~ClockWidgetElement();
+    AnalogClockWidgetElement(rtos_GraphicWidget *host_widget, rtos_Blinker *blinker, rtos_Model *actual_displayed_model, ClockElementType clock_element_type);
+    ~AnalogClockWidgetElement();
 
     void draw();
     void get_value_of_interest();
@@ -34,7 +33,7 @@ public:
     void set_focus_color() override;
 };
 
-class ClockWidget : public rtos_GraphicWidget
+class AnalogClockWidget : public rtos_GraphicWidget
 {
 private:
     ControlledObjectStatus clock_status;
@@ -43,17 +42,16 @@ private:
 public:
     void draw_clock_hands(int angle_degree, uint length, ColorIndex color);
 
+    AnalogClockWidgetElement *clock_hour_widget_element;
+    AnalogClockWidgetElement *clock_minute_widget_element;
+    AnalogClockWidgetElement *clock_second_widget_element;
 
-    ClockWidgetElement *clock_hour_widget_element;
-    ClockWidgetElement *clock_minute_widget_element;
-    ClockWidgetElement *clock_second_widget_element;
-
-    ClockWidget(rtos_Model *actual_displayed_model,
-                rtos_Blinker *blinker,
-                struct_ConfigGraphicWidget graph_cfg,
-                CanvasFormat canvas_format,
-                rtos_DisplayDevice *display_device);
-    ~ClockWidget();
+    AnalogClockWidget(rtos_Model *actual_displayed_model,
+                      rtos_Blinker *blinker,
+                      struct_ConfigGraphicWidget graph_cfg,
+                      CanvasFormat canvas_format,
+                      rtos_DisplayDevice *display_device);
+    ~AnalogClockWidget();
 
     void draw() override;
     void get_value_of_interest() override;

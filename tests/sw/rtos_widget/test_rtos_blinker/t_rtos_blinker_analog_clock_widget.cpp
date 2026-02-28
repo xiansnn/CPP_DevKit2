@@ -25,7 +25,7 @@ constexpr ColorIndex DIAL_BACKGROUND_COLOR_index = ColorIndex::BLACK;
 constexpr float DEG_TO_RAD = 3.14159f / 180.0f;
 //--------------------------------------------------------------
 
-struct_ConfigGraphicWidget clock_widget_config = {
+struct_ConfigGraphicWidget analog_clock_widget_config = {
     .canvas_width_pixel = CLOCK_SIZE_pixel,
     .canvas_height_pixel = CLOCK_SIZE_pixel,
     .canvas_foreground_color = ColorIndex::WHITE,
@@ -40,7 +40,7 @@ std::map<ClockElementType, std::string> clock_element_to_string{
     {ClockElementType::MINUTE, "MINUTE"},
     {ClockElementType::SECOND, "SECOND"}};
 
-void ClockWidget::draw_dial()
+void AnalogClockWidget::draw_dial()
 {
     float mark_start = 0.0f;
     for (size_t i = 0; i < DIAL_NUMBER_OF_MARKS; i++)
@@ -56,7 +56,7 @@ void ClockWidget::draw_dial()
     this->drawer->circle(CLOCK_RADIUS_pixel, CLOCK_X_CENTER, CLOCK_Y_CENTER, false, DIAL_FOREGROUND_COLOR_index);
 }
 
-void ClockWidget::draw_clock_hands(int angle_degree, uint length, ColorIndex color)
+void AnalogClockWidget::draw_clock_hands(int angle_degree, uint length, ColorIndex color)
 {
     float angle_rad = (90 - angle_degree) * DEG_TO_RAD;
     uint x_end = CLOCK_X_CENTER + static_cast<int>(length * cosf(angle_rad));
@@ -64,26 +64,26 @@ void ClockWidget::draw_clock_hands(int angle_degree, uint length, ColorIndex col
     this->drawer->line(CLOCK_X_CENTER, CLOCK_Y_CENTER, x_end, y_end, color);
 }
 
-ClockWidget::~ClockWidget()
+AnalogClockWidget::~AnalogClockWidget()
 {
     delete clock_hour_widget_element;
     delete clock_minute_widget_element;
     delete clock_second_widget_element;
 }
 
-ClockWidget::ClockWidget(rtos_Model *actual_displayed_model, rtos_Blinker *blinker, struct_ConfigGraphicWidget graph_cfg, CanvasFormat canvas_format, rtos_DisplayDevice *display_device)
+AnalogClockWidget::AnalogClockWidget(rtos_Model *actual_displayed_model, rtos_Blinker *blinker, struct_ConfigGraphicWidget graph_cfg, CanvasFormat canvas_format, rtos_DisplayDevice *display_device)
     : rtos_GraphicWidget(actual_displayed_model, graph_cfg, canvas_format, display_device)
 {
-    clock_hour_widget_element = new ClockWidgetElement(this, blinker, ((myMainClock *)actual_displayed_model)->hour, ClockElementType::HOUR);
-    clock_minute_widget_element = new ClockWidgetElement(this, blinker, ((myMainClock *)actual_displayed_model)->minute, ClockElementType::MINUTE);
-    clock_second_widget_element = new ClockWidgetElement(this, blinker, ((myMainClock *)actual_displayed_model)->second, ClockElementType::SECOND);
+    clock_hour_widget_element = new AnalogClockWidgetElement(this, blinker, ((myMainClock *)actual_displayed_model)->hour, ClockElementType::HOUR);
+    clock_minute_widget_element = new AnalogClockWidgetElement(this, blinker, ((myMainClock *)actual_displayed_model)->minute, ClockElementType::MINUTE);
+    clock_second_widget_element = new AnalogClockWidgetElement(this, blinker, ((myMainClock *)actual_displayed_model)->second, ClockElementType::SECOND);
 
     this->actual_rtos_displayed_model = actual_displayed_model;
     this->display_device = display_device;
     this->widget_anchor_x = graph_cfg.widget_anchor_x;
     this->widget_anchor_y = graph_cfg.widget_anchor_y;
 }
-void ClockWidget::draw()
+void AnalogClockWidget::draw()
 {
     this->drawer->clear_widget();
     get_value_of_interest();
@@ -93,7 +93,7 @@ void ClockWidget::draw()
     this->clock_second_widget_element->draw();
     this->drawer->draw_border();
 }
-void ClockWidget::get_value_of_interest()
+void AnalogClockWidget::get_value_of_interest()
 {   /*
        mandatory because of abstract class implementation, but in this case the clock widget itself does not have a value of interest to retrieve, 
        as it is the clock widget elements that retrieve the values of interest (hour, minute, second) from the model. 
@@ -103,7 +103,7 @@ void ClockWidget::get_value_of_interest()
     
 }
 
-ClockWidgetElement::ClockWidgetElement(rtos_GraphicWidget *host_widget, rtos_Blinker *blinker,
+AnalogClockWidgetElement::AnalogClockWidgetElement(rtos_GraphicWidget *host_widget, rtos_Blinker *blinker,
                                        rtos_Model *actual_displayed_model,
                                        ClockElementType clock_element_type)
     : rtos_Widget(actual_displayed_model, host_widget->display_device), rtos_BlinkingWidget(blinker)
@@ -132,18 +132,18 @@ ClockWidgetElement::ClockWidgetElement(rtos_GraphicWidget *host_widget, rtos_Bli
     save_canvas_color();
 }
 
-ClockWidgetElement::~ClockWidgetElement()
+AnalogClockWidgetElement::~AnalogClockWidgetElement()
 {
 }
 
-void ClockWidgetElement::draw()
+void AnalogClockWidgetElement::draw()
 {
     get_value_of_interest();
     convert_status_to_blinking_behavior(status);
-    ((ClockWidget *)host_widget)->draw_clock_hands(this->angle_degree, this->length, this->fg_element_color);
+    ((AnalogClockWidget *)host_widget)->draw_clock_hands(this->angle_degree, this->length, this->fg_element_color);
 }
 
-void ClockWidgetElement::get_value_of_interest()
+void AnalogClockWidgetElement::get_value_of_interest()
 {
     myControlledClockTime *actual_model = (myControlledClockTime *)this->actual_rtos_displayed_model;
     status = actual_model->get_rtos_status();
@@ -174,25 +174,25 @@ void ClockWidgetElement::get_value_of_interest()
     }
 }
 
-void ClockWidgetElement::save_canvas_color()
+void AnalogClockWidgetElement::save_canvas_color()
 {
     this->fg_color_backup = this->fg_element_color;
     this->bg_color_backup = DIAL_BACKGROUND_COLOR_index; // assuming black background for simplicity, this should be retrieved from the actual canvas in a real implementation
 }
 
-void ClockWidgetElement::restore_canvas_color()
+void AnalogClockWidgetElement::restore_canvas_color()
 {
     this->fg_element_color = this->fg_color_backup;
 }
 
-void ClockWidgetElement::blink()
+void AnalogClockWidgetElement::blink()
 {
     this->fg_element_color = (blinker->current_blink_phase) ? this->bg_color_backup : this->fg_color_backup;
     if (this->task_handle != nullptr)
         xTaskNotifyGive(this->task_handle);
 }
 
-void ClockWidgetElement::set_focus_color()
+void AnalogClockWidgetElement::set_focus_color()
 {
     this->fg_element_color = ColorIndex::CYAN; // example focus color, this can be customized
 }

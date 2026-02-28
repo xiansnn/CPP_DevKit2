@@ -20,11 +20,8 @@ extern clock_console_widget my_main_clock_console_widget;
 
 extern rtos_Blinker my_blinker;
 
-extern my_digital_clock_widget hour_text_widget;
-extern my_digital_clock_widget minute_text_widget;
-extern my_digital_clock_widget second_text_widget;
-
-extern ClockWidget clock_widget;
+extern DigitalClockWidget digital_clock_widget;
+extern AnalogClockWidget analog_clock_widget;
 
 void idle_task(void *pxProbe);
 void one_second_timer_task(void *probe);
@@ -37,14 +34,15 @@ void my_clock_controlled_second_task(void *probe);
 void clock_controller_console_widget_task(void *probe);
 void main_clock_console_widget_task(void *probe);
 
-void clock_widget_task(void *probe);
 
 void blinker_task(void *probe);
 
-void SPI_hour_text_widget_task(void *probe);
-void SPI_minute_text_widget_task(void *probe);
-void SPI_second_text_widget_task(void *probe);
+void SPI_digital_clock_widget_task(void *probe);
+void SPI_hour_digital_widget_task(void *probe);
+void SPI_minute_digital_widget_task(void *probe);
+void SPI_second_digital_widget_task(void *probe);
 
-void SPI_clock_hour_widget_element_task(void *probe);
-void SPI_clock_minute_widget_element_task(void *probe);
-void SPI_clock_second_widget_element_task(void *probe);
+void SPI_analog_clock_widget_task(void *probe);
+void SPI_hour_analog_widget_task(void *probe);
+void SPI_minute_analog_widget_task(void *probe);
+void SPI_second_analog_widget_task(void *probe);

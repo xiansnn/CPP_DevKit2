@@ -118,17 +118,17 @@ void one_second_timer_task(void *probe) // periodic task
     }
 }
 
-void clock_widget_task(void *probe)
+void SPI_analog_clock_widget_task(void *probe)
 {
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         if (probe != NULL)
             ((Probe *)probe)->hi();
-        clock_widget.draw();
+        analog_clock_widget.draw();
         if (probe != NULL)
             ((Probe *)probe)->lo();
-        SPI_display_gate_keeper.send_widget_data(&clock_widget);
+        SPI_display_gate_keeper.send_widget_data(&analog_clock_widget);
     }
 }
 
@@ -146,7 +146,23 @@ void blinker_task(void *probe)
     }
 }
 
-void SPI_hour_text_widget_task(void *probe)
+void SPI_digital_clock_widget_task(void *probe)
+{
+    while (true)
+    {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        if (probe != NULL)
+            ((Probe *)probe)->hi();
+        digital_clock_widget.draw();
+        if (probe != NULL)
+            ((Probe *)probe)->lo();
+        SPI_display_gate_keeper.send_widget_data(digital_clock_widget.clock_hour_widget_element);
+        SPI_display_gate_keeper.send_widget_data(digital_clock_widget.clock_minute_widget_element);
+        SPI_display_gate_keeper.send_widget_data(digital_clock_widget.clock_second_widget_element);
+    }
+}
+
+void SPI_hour_digital_widget_task(void *probe)
 {
     SPI_display_gate_keeper.send_clear_device_command(&color_display);
     while (true)
@@ -154,14 +170,14 @@ void SPI_hour_text_widget_task(void *probe)
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         if (probe != NULL)
             ((Probe *)probe)->hi();
-        hour_text_widget.draw();
+        digital_clock_widget.clock_hour_widget_element->draw();
         if (probe != NULL)
             ((Probe *)probe)->lo();
-        SPI_display_gate_keeper.send_widget_data(&hour_text_widget);
+        SPI_display_gate_keeper.send_widget_data(digital_clock_widget.clock_hour_widget_element);
     }
 }
 
-void SPI_minute_text_widget_task(void *probe)
+void SPI_minute_digital_widget_task(void *probe)
 {
 
     while (true)
@@ -169,65 +185,65 @@ void SPI_minute_text_widget_task(void *probe)
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         if (probe != NULL)
             ((Probe *)probe)->hi();
-        minute_text_widget.draw();
+        digital_clock_widget.clock_minute_widget_element->draw();
         if (probe != NULL)
             ((Probe *)probe)->lo();
-        SPI_display_gate_keeper.send_widget_data(&minute_text_widget);
+        SPI_display_gate_keeper.send_widget_data(digital_clock_widget.clock_minute_widget_element);
     }
 }
 
-void SPI_second_text_widget_task(void *probe)
+void SPI_second_digital_widget_task(void *probe)
 {
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         if (probe != NULL)
             ((Probe *)probe)->hi();
-        second_text_widget.draw();
+        digital_clock_widget.clock_second_widget_element->draw();
         if (probe != NULL)
             ((Probe *)probe)->lo();
-        SPI_display_gate_keeper.send_widget_data(&second_text_widget);
+        SPI_display_gate_keeper.send_widget_data(digital_clock_widget.clock_second_widget_element);
     }
 }
 
-void SPI_clock_hour_widget_element_task(void *probe)
+void SPI_hour_analog_widget_task(void *probe)
 {
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         if (probe != NULL)
             ((Probe *)probe)->hi();
-        clock_widget.draw();
+        analog_clock_widget.draw();
         if (probe != NULL)
             ((Probe *)probe)->lo();
-        SPI_display_gate_keeper.send_widget_data(&clock_widget);
+        SPI_display_gate_keeper.send_widget_data(&analog_clock_widget);
     }
 }
 
-void SPI_clock_minute_widget_element_task(void *probe)
+void SPI_minute_analog_widget_task(void *probe)
 {
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         if (probe != NULL)
             ((Probe *)probe)->hi();
-        clock_widget.draw();
+        analog_clock_widget.draw();
         if (probe != NULL)
             ((Probe *)probe)->lo();
-        SPI_display_gate_keeper.send_widget_data(&clock_widget);
+        SPI_display_gate_keeper.send_widget_data(&analog_clock_widget);
     }
 }
 
-void SPI_clock_second_widget_element_task(void *probe)
+void SPI_second_analog_widget_task(void *probe)
 {
     while (true)
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         if (probe != NULL)
             ((Probe *)probe)->hi();
-        clock_widget.draw();
+        analog_clock_widget.draw();
         if (probe != NULL)
             ((Probe *)probe)->lo();
-        SPI_display_gate_keeper.send_widget_data(&clock_widget);
+        SPI_display_gate_keeper.send_widget_data(&analog_clock_widget);
     }
 }

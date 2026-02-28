@@ -62,11 +62,8 @@ my_controller_monitoring_widget controller_monitoring_widget = my_controller_mon
 my_clock_monitoring_widget clock_monitoring_widget = my_clock_monitoring_widget(&left_display, clock_monitoring_text_cfg, CanvasFormat::MONO_VLSB, &my_clock);
 #endif // SHOW_MONITORING_WIDGET
 
-my_digital_clock_widget hour_text_widget = my_digital_clock_widget(ClockElementType::HOUR, &color_display, &my_blinker, clock_hour_text_cfg, CanvasFormat::RGB565_16b, my_clock.hour);
-my_digital_clock_widget minute_text_widget = my_digital_clock_widget(ClockElementType::MINUTE, &color_display, &my_blinker, clock_minute_text_cfg, CanvasFormat::RGB565_16b, my_clock.minute);
-my_digital_clock_widget second_text_widget = my_digital_clock_widget(ClockElementType::SECOND, &color_display, &my_blinker, clock_second_text_cfg, CanvasFormat::RGB565_16b, my_clock.second);
-
-ClockWidget clock_widget = ClockWidget(&my_clock, &my_blinker, clock_widget_config, CanvasFormat::RGB565_16b, &color_display);
+DigitalClockWidget digital_clock_widget = DigitalClockWidget(&my_clock, &my_blinker, CanvasFormat::RGB565_16b, &color_display);
+AnalogClockWidget analog_clock_widget = AnalogClockWidget(&my_clock, &my_blinker, analog_clock_widget_config, CanvasFormat::RGB565_16b, &color_display);
 
 // ####################
 int main()
@@ -88,23 +85,24 @@ int main()
 
     xTaskCreate(one_second_timer_task, "one_second_timer_task", 256, NULL, 20, NULL);
     xTaskCreate(my_clock_main_task, "clock_task", 256, &p1, 21, NULL);
-    xTaskCreate(my_clock_controlled_hour_task, "hour_task", 256, NULL, 22, NULL);
-    xTaskCreate(my_clock_controlled_minute_task, "minute_task", 256, NULL, 22, NULL);
-    xTaskCreate(my_clock_controlled_second_task, "second_task", 256, NULL, 22, NULL);
+    xTaskCreate(my_clock_controlled_hour_task, "controlled_hour_task", 256, NULL, 22, NULL);
+    xTaskCreate(my_clock_controlled_minute_task, "controlled_minute_task", 256, NULL, 22, NULL);
+    xTaskCreate(my_clock_controlled_second_task, "controlled_second_task", 256, NULL, 22, NULL);
     xTaskCreate(my_clock_controller_task, "clock_controller_task", 256, NULL, 8, &my_clock_controller.task_handle);
 
     xTaskCreate(blinker_task, "blinker", 256, &p2, 25, NULL);
 
     xTaskCreate(SPI_display_gate_keeper_task, "SPI_gate_keeper_task", 256, &p3, 5, NULL);
 
-    xTaskCreate(SPI_hour_text_widget_task, "SPI_hour", 256, NULL, 25, &hour_text_widget.task_handle);
-    xTaskCreate(SPI_minute_text_widget_task, "SPI_minute", 256, NULL, 25, &minute_text_widget.task_handle);
-    xTaskCreate(SPI_second_text_widget_task, "SPI_second", 256, NULL, 25, &second_text_widget.task_handle);
+    xTaskCreate(SPI_digital_clock_widget_task, "digital_clock_widget_task", 256, &p4, 24, &digital_clock_widget.task_handle);
+    xTaskCreate(SPI_hour_digital_widget_task, "hour_digital_widget", 256, NULL, 25, &digital_clock_widget.clock_hour_widget_element->task_handle);
+    xTaskCreate(SPI_minute_digital_widget_task, "minute_digital_widget", 256, NULL, 25, &digital_clock_widget.clock_minute_widget_element->task_handle);
+    xTaskCreate(SPI_second_digital_widget_task, "second_digital_widget", 256, NULL, 25, &digital_clock_widget.clock_second_widget_element->task_handle);
 
-    xTaskCreate(clock_widget_task, "clock_widget_task", 256, &p4, 24, &clock_widget.task_handle);
-    xTaskCreate(SPI_clock_hour_widget_element_task, "SPI_hour_widget_element", 256, &p7, 20, &clock_widget.clock_hour_widget_element->task_handle);
-    xTaskCreate(SPI_clock_minute_widget_element_task, "SPI_minute_widget_element", 256, &p6, 20, &clock_widget.clock_minute_widget_element->task_handle);
-    xTaskCreate(SPI_clock_second_widget_element_task, "SP_second_widget_element", 256, &p5, 20, &clock_widget.clock_second_widget_element->task_handle);
+    xTaskCreate(SPI_analog_clock_widget_task, "analog_clock_widget_task", 256, &p4, 24, &analog_clock_widget.task_handle);
+    xTaskCreate(SPI_hour_analog_widget_task, "hour_analog_widget", 256, &p7, 20, &analog_clock_widget.clock_hour_widget_element->task_handle);
+    xTaskCreate(SPI_minute_analog_widget_task, "minute_analog_widget", 256, &p6, 20, &analog_clock_widget.clock_minute_widget_element->task_handle);
+    xTaskCreate(SPI_second_analog_widget_task, "second_analog_widget", 256, &p5, 20, &analog_clock_widget.clock_second_widget_element->task_handle);
 
     xTaskCreate(idle_task, "idle_task", 256, &p0, 0, NULL);
     vTaskStartScheduler();
