@@ -91,25 +91,20 @@ void myMainClock::process_control_event(struct_ControlEventData control_event)
             break;
         case UIControlEvent::INCREMENT:
             second->increment_value();
-            second->notify_all_linked_widget_task(); // trig the textual widget and the analog clock widget
             if (second->get_value() == 0)
             {
                 minute->increment_value();
-                minute->notify_all_linked_widget_task(); // trig the textual widget and the analog clock widget
                 if (minute->get_value() == 0)
                 {
                     hour->increment_value();
-                    hour->notify_all_linked_widget_task(); // trig the textual widget and the analog clock widget
-                }
+                    }
             }
             break;
         default:
             break;
         }
     }
-#ifdef SHOW_MONITORING_WIDGET
     notify_all_linked_widget_task();  // trig the monitoring widget, the counterpart is that the analog clock widget is execute twice :-(
-#endif // SHOW_MONITORING_WIDGET
 }
 
 myControlledClockTime::myControlledClockTime(std::string name, myMainClock *parent_model, int min_value, int max_value, int increment)
