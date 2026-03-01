@@ -25,8 +25,8 @@ Probe p6 = Probe(6);
 Probe p7 = Probe(7);
 
 // ##### main classes #####
-myClockController my_clock_controller = myClockController(true);
 myMainClock my_clock = myMainClock();
+myClockController my_clock_controller = myClockController(true);
 rtos_Blinker my_blinker = rtos_Blinker(BLINKING_PERIOD_ms / 2);
 
 // ##### ST7735 setup #####
@@ -58,12 +58,24 @@ clock_console_widget my_main_clock_console_widget = clock_console_widget(&my_clo
 #endif // SHOW_CONSOLE_WIDGET
 
 #if defined(SHOW_MONITORING_WIDGET)
-my_controller_monitoring_widget controller_monitoring_widget = my_controller_monitoring_widget(&right_display, controller_monitoring_text_cfg, CanvasFormat::MONO_VLSB, &my_clock_controller);
-my_clock_monitoring_widget clock_monitoring_widget = my_clock_monitoring_widget(&left_display, clock_monitoring_text_cfg, CanvasFormat::MONO_VLSB, &my_clock);
+my_controller_monitoring_widget controller_monitoring_widget = my_controller_monitoring_widget(&right_display,
+                                                                                               controller_monitoring_text_cfg,
+                                                                                               CanvasFormat::MONO_VLSB,
+                                                                                               &my_clock_controller);
+my_clock_monitoring_widget clock_monitoring_widget = my_clock_monitoring_widget(&left_display,
+                                                                                clock_monitoring_text_cfg,
+                                                                                CanvasFormat::MONO_VLSB, &my_clock);
 #endif // SHOW_MONITORING_WIDGET
 
-DigitalClockWidget digital_clock_widget = DigitalClockWidget(&my_clock, &my_blinker, CanvasFormat::RGB565_16b, &color_display);
-AnalogClockWidget analog_clock_widget = AnalogClockWidget(&my_clock, &my_blinker, analog_clock_widget_config, CanvasFormat::RGB565_16b, &color_display);
+DigitalClockWidget digital_clock_widget = DigitalClockWidget(&my_clock,
+                                                             &my_blinker,
+                                                             CanvasFormat::RGB565_16b,
+                                                             &color_display);
+AnalogClockWidget analog_clock_widget = AnalogClockWidget(&my_clock,
+                                                          &my_blinker,
+                                                          analog_clock_widget_config,
+                                                          CanvasFormat::RGB565_16b,
+                                                          &color_display);
 
 // ####################
 int main()
@@ -83,12 +95,12 @@ int main()
     xTaskCreate(central_switch_process_irq_event_task, "central_switch_process_irq_event_task", 256, NULL, 25, NULL);
     xTaskCreate(encoder_process_irq_event_task, "encoder_process_irq_event_task", 256, NULL, 25, NULL);
 
-    xTaskCreate(one_second_timer_task, "one_second_timer_task", 256, NULL, 20, NULL);
+    xTaskCreate(my_clock_timer_task, "timer_task", 256, NULL, 20, NULL);
     xTaskCreate(my_clock_main_task, "clock_task", 256, &p1, 21, NULL);
+    xTaskCreate(my_clock_controller_task, "clock_controller_task", 256, NULL, 8, &my_clock_controller.task_handle);
     xTaskCreate(my_clock_controlled_hour_task, "controlled_hour_task", 256, NULL, 22, NULL);
     xTaskCreate(my_clock_controlled_minute_task, "controlled_minute_task", 256, NULL, 22, NULL);
     xTaskCreate(my_clock_controlled_second_task, "controlled_second_task", 256, NULL, 22, NULL);
-    xTaskCreate(my_clock_controller_task, "clock_controller_task", 256, NULL, 8, &my_clock_controller.task_handle);
 
     xTaskCreate(blinker_task, "blinker", 256, &p2, 25, NULL);
 

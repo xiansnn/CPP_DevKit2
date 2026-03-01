@@ -71,12 +71,28 @@ AnalogClockWidget::~AnalogClockWidget()
     delete clock_second_widget_element;
 }
 
-AnalogClockWidget::AnalogClockWidget(rtos_Model *actual_displayed_model, rtos_Blinker *blinker, struct_ConfigGraphicWidget graph_cfg, CanvasFormat canvas_format, rtos_DisplayDevice *display_device)
-    : rtos_GraphicWidget(actual_displayed_model, graph_cfg, canvas_format, display_device)
+AnalogClockWidget::AnalogClockWidget(rtos_Model *actual_displayed_model,
+                                     rtos_Blinker *blinker,
+                                     struct_ConfigGraphicWidget graph_cfg,
+                                     CanvasFormat canvas_format,
+                                     rtos_DisplayDevice *display_device)
+    : rtos_GraphicWidget(actual_displayed_model,
+                         graph_cfg,
+                         canvas_format,
+                         display_device)
 {
-    clock_hour_widget_element = new AnalogClockWidgetElement(this, blinker, ((myMainClock *)actual_displayed_model)->hour, ClockElementType::HOUR);
-    clock_minute_widget_element = new AnalogClockWidgetElement(this, blinker, ((myMainClock *)actual_displayed_model)->minute, ClockElementType::MINUTE);
-    clock_second_widget_element = new AnalogClockWidgetElement(this, blinker, ((myMainClock *)actual_displayed_model)->second, ClockElementType::SECOND);
+    clock_hour_widget_element = new AnalogClockWidgetElement(this,
+                                                             blinker,
+                                                             ((myMainClock *)actual_displayed_model)->hour,
+                                                             ClockElementType::HOUR);
+    clock_minute_widget_element = new AnalogClockWidgetElement(this,
+                                                               blinker,
+                                                               ((myMainClock *)actual_displayed_model)->minute,
+                                                               ClockElementType::MINUTE);
+    clock_second_widget_element = new AnalogClockWidgetElement(this,
+                                                               blinker,
+                                                               ((myMainClock *)actual_displayed_model)->second,
+                                                               ClockElementType::SECOND);
 
     this->actual_rtos_displayed_model = actual_displayed_model;
     this->display_device = display_device;
@@ -94,19 +110,21 @@ void AnalogClockWidget::draw()
     this->drawer->draw_border();
 }
 void AnalogClockWidget::get_value_of_interest()
-{   /*
-       mandatory because of abstract class implementation, but in this case the clock widget itself does not have a value of interest to retrieve, 
-       as it is the clock widget elements that retrieve the values of interest (hour, minute, second) from the model. 
-       So this method can be left empty or used to retrieve any additional information needed for drawing the clock 
-       that is not already retrieved by the clock widget elements.
-     */
-    
+{ /*
+     mandatory because of abstract class implementation, but in this case the clock widget itself does not have a value of interest to retrieve,
+     as it is the clock widget elements that retrieve the values of interest (hour, minute, second) from the model.
+     So this method can be left empty or used to retrieve any additional information needed for drawing the clock
+     that is not already retrieved by the clock widget elements.
+   */
 }
 
-AnalogClockWidgetElement::AnalogClockWidgetElement(rtos_GraphicWidget *host_widget, rtos_Blinker *blinker,
-                                       rtos_Model *actual_displayed_model,
-                                       ClockElementType clock_element_type)
-    : rtos_Widget(actual_displayed_model, host_widget->display_device), rtos_BlinkingWidget(blinker)
+AnalogClockWidgetElement::AnalogClockWidgetElement(rtos_GraphicWidget *host_widget,
+                                                   rtos_Blinker *blinker,
+                                                   rtos_Model *actual_displayed_model,
+                                                   ClockElementType clock_element_type)
+    : rtos_Widget(actual_displayed_model,
+                  host_widget->display_device),
+      rtos_BlinkingWidget(blinker)
 {
     this->host_widget = host_widget;
 

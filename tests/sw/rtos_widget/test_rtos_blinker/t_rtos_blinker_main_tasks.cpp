@@ -102,7 +102,7 @@ void my_clock_controlled_second_task(void *probe)
     }
 }
 
-void one_second_timer_task(void *probe) // periodic task
+void my_clock_timer_task(void *probe) // periodic task
 {
     struct_ControlEventData data;
     data.gpio_number = GPIO_dummy_FOR_PERIODIC_EVOLUTION;

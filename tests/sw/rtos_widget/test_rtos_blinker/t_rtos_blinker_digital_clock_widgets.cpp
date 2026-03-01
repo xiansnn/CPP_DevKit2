@@ -111,12 +111,24 @@ DigitalClockWidget::DigitalClockWidget(rtos_Model *model,
     : rtos_Widget(model)
 {
 
-    clock_hour_widget_element = new DigitalClockWidgetElement(ClockElementType::HOUR, graphic_display_screen, blinker,
-                                                              clock_hour_text_cfg, format, ((myMainClock *)model)->hour);
-    clock_minute_widget_element = new DigitalClockWidgetElement(ClockElementType::MINUTE, graphic_display_screen, blinker,
-                                                                clock_minute_text_cfg, format, ((myMainClock *)model)->minute);
-    clock_second_widget_element = new DigitalClockWidgetElement(ClockElementType::SECOND, graphic_display_screen, blinker,
-                                                                clock_second_text_cfg, format, ((myMainClock *)model)->second);
+    clock_hour_widget_element = new DigitalClockWidgetElement(ClockElementType::HOUR,
+                                                              graphic_display_screen,
+                                                              blinker,
+                                                              clock_hour_text_cfg,
+                                                              format,
+                                                              ((myMainClock *)model)->hour);
+    clock_minute_widget_element = new DigitalClockWidgetElement(ClockElementType::MINUTE,
+                                                                graphic_display_screen,
+                                                                blinker,
+                                                                clock_minute_text_cfg,
+                                                                format,
+                                                                ((myMainClock *)model)->minute);
+    clock_second_widget_element = new DigitalClockWidgetElement(ClockElementType::SECOND,
+                                                                graphic_display_screen,
+                                                                blinker,
+                                                                clock_second_text_cfg,
+                                                                format,
+                                                                ((myMainClock *)model)->second);
 }
 
 DigitalClockWidget::~DigitalClockWidget()

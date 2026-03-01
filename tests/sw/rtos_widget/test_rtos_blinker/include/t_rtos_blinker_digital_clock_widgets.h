@@ -12,8 +12,11 @@ private:
     ClockElementType clock_element_type;
 
 public:
-    DigitalClockWidgetElement(ClockElementType clock_element_type, rtos_GraphicDisplayDevice *graphic_display_screen, rtos_Blinker *blinker,
-                              struct_ConfigTextWidget text_cfg, CanvasFormat format, rtos_Model *model);
+    DigitalClockWidgetElement(ClockElementType clock_element_type,
+                              rtos_GraphicDisplayDevice *graphic_display_screen,
+                              rtos_Blinker *blinker,
+                              struct_ConfigTextWidget text_cfg,
+                              CanvasFormat format, rtos_Model *model);
     ~DigitalClockWidgetElement();
     void get_value_of_interest();
     void draw();

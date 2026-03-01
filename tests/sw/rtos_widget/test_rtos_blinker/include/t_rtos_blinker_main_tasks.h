@@ -24,7 +24,7 @@ extern DigitalClockWidget digital_clock_widget;
 extern AnalogClockWidget analog_clock_widget;
 
 void idle_task(void *pxProbe);
-void one_second_timer_task(void *probe);
+void my_clock_timer_task(void *probe);
 void my_clock_main_task(void *probe);
 void my_clock_controller_task(void *probe);
 void my_clock_controlled_hour_task(void *probe);
