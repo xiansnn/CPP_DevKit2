@@ -63,6 +63,5 @@ if(PROJECT_IS_TOP_LEVEL)
     include(${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
     add_subdirectory(src)
     add_subdirectory(tests)
-    add_subdirectory(tests_freeRTOS)
 endif()
 #-------------------------------------------------------------------------------------

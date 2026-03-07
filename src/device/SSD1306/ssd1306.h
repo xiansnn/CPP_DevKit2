@@ -14,7 +14,6 @@
 #include "pico/stdlib.h"
 #include "hw/i2c/rtos_hw_i2c.h"
 #include "sw/display_device/display_device.h"
-#include "sw/widget/rtos_widget.h"
 
 // Time_frame_interval
 /// @brief refer to SSD1306 data sheet
@@ -262,38 +261,4 @@ public:
      * @param scroll_data
      */
     void vertical_scroll(bool on, struct_ConfigScrollSSD1306 scroll_data);
-};
-
-/// @brief FreeRTOS compliant SSD1306 128x64 pixel OLED display device driver with I2C interface
-/// \ingroup view
-class rtos_SSD1306 : public SSD1306, public rtos_GraphicDisplayDevice
-{
-private:
-public:
-    /// @brief constructor for FreeRTOS compliant SSD1306 device driver.
-    /// @param master the I2C master controller, compliant with FreeRTOS.
-    /// @param device_config The configuration data of the display device.
-    rtos_SSD1306(rtos_HW_I2C_Master *master, struct_ConfigSSD1306 device_config);
-    ~rtos_SSD1306();
-
-    /// @brief  Check the compatibility of the framebuffer configuration with the display device physical limitations.
-    /// @param framebuffer_cfg  the widget configuration data
-    /// @param canvas_format    the format of the canvas
-    void check_rtos_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format);
-
-    /// @brief Clear the device screen buffer.
-    void clear_device_screen_buffer();
-
-    /// @brief  Show the widget on the display device.
-    /// @param widget   the widget to show
-    void show_widget(rtos_Widget* widget);
-
-    void show_render_area(uint8_t *data_buffer, struct_RenderArea display_area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
-
-    /// @brief fill a pattern in the device framebuffer (GDDRAM). This is shown on display as soon as the GDDRAM buffer is transfered to the pixels.
-    /// The pattern is a vertical byte representing 8 vertical pixels (refer to MONO_VLSB framebuffer format)
-    /// @param pattern the vertical pattern to copy in a set of 8 vertical pixel
-    /// @param area the location of the area to copy the pattern
-    /// @param addressing_mode the way the data is written ti the GDDRAM
-    void fill_GDDRAM_with_pattern(uint8_t pattern, struct_RenderArea area, uint8_t addressing_mode = HORIZONTAL_ADDRESSING_MODE);
 };

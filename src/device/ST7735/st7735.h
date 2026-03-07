@@ -175,34 +175,3 @@ public:
     
     virtual void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y);
 };
-
-/// @brief RTOS version of the ST7735 display device
-/// \ingroup view
-class rtos_ST7735 : public ST7735 , public rtos_GraphicDisplayDevice
-{
-    private:
-    /* data */
-    public:
-    /// @brief Construct a new rtos_ST7735 object
-    /// @param spi the rtos_HW_SPI_Master associated driver
-    /// @param device_config    the device configuration file
-    rtos_ST7735(rtos_HW_SPI_Master *spi, struct_ConfigST7735 device_config);
-    ~rtos_ST7735();
-
-    /// @brief Show data from the display queue.
-    /// @param data_to_show The data to display. 
-    void show_from_display_queue(struct_WidgetDataToGateKeeper data_to_show);
-
-    /// @brief  Show the widget on the display device.
-    /// @param widget   the widget to show
-    void show_widget(rtos_Widget* widget);
-    void show(Canvas *canvas, const uint8_t anchor_x, const uint8_t anchor_y);
-
-    /// @brief Clear the device screen buffer.
-    void clear_device_screen_buffer();
-    /// @brief  Check the compatibility of the framebuffer configuration with the display device physical limitations.
-    /// @param framebuffer_cfg  the widget configuration data
-    /// @param canvas_format    the format of the canvas
-    void check_rtos_display_device_compatibility(struct_ConfigGraphicWidget framebuffer_cfg, CanvasFormat canvas_format);
-
-};
