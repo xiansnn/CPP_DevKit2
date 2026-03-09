@@ -6,5 +6,3 @@
 #             FreeRTOS-Kernel-Heap4
 #             hw_i2c
 #             )
-
-

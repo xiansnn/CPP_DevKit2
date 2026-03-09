@@ -12,9 +12,9 @@
 
 #include "pico/stdlib.h"
 #include "commands_ST7735.h"
-#include "hw/spi/rtos_hw_spi.h"
+#include "hw/spi/hw_spi.h"
 #include "sw/display_device/display_device.h"
-#include "sw/widget/rtos_widget.h"
+#include "sw/widget/widget.h"
 
 /// @brief level defined as command on the data/Command wire
 #define DCX_COMMAND 0
