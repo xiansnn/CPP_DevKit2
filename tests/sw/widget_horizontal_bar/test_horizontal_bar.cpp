@@ -93,7 +93,7 @@ private:
 public:
     MyControlledHorizontalBarModel(int _min_value, int _max_value, bool _is_wrappable, int _increment);
     ~MyControlledHorizontalBarModel();
-    void process_control_event(UIControlEvent _event);
+    void process_control_event(struct_ControlEventData control_event);
 };
 
 class MyControlledHorizontalBarWidget : public WidgetHorizontalBar
@@ -137,13 +137,10 @@ MyControlledHorizontalBarModel::MyControlledHorizontalBarModel(int _min_value, i
 {
 }
 
-MyControlledHorizontalBarModel::~MyControlledHorizontalBarModel()
+void MyControlledHorizontalBarModel::process_control_event(struct_ControlEventData control_event)
 {
-}
-
-void MyControlledHorizontalBarModel::process_control_event(UIControlEvent _event)
-{
-    switch (_event)
+    
+    switch (control_event.event)
     {
     case UIControlEvent::INCREMENT:
         this->increment_value();
@@ -154,7 +151,13 @@ void MyControlledHorizontalBarModel::process_control_event(UIControlEvent _event
     default:
         break;
     }
+
 }
+
+MyControlledHorizontalBarModel::~MyControlledHorizontalBarModel()
+{
+}
+
 
 int main()
 {
