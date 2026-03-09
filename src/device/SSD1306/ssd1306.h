@@ -12,7 +12,7 @@
 
 #include "commands_SSD1306.h"
 #include "pico/stdlib.h"
-#include "hw/i2c/rtos_hw_i2c.h"
+#include "hw/i2c/hw_i2c.h"
 #include "sw/display_device/display_device.h"
 
 // Time_frame_interval

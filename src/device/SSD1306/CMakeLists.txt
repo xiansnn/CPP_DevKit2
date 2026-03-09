@@ -1,6 +1,6 @@
 add_library(device_ssd1306 ssd1306.cpp  )
 target_link_libraries(device_ssd1306 
             pico_stdlib 
-            rtos_hw_i2c 
+            hw_i2c 
             sw_display_device 
             )
