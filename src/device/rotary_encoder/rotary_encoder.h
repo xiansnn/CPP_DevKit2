@@ -14,7 +14,7 @@
 #include "device/switch_button/switch_button.h"
 
 /// @brief this is a function pointer used as rotary encoder constructor paramater
-typedef void (*control_event_processor_t)(UIControlEvent event);
+typedef void (*control_event_processor_t)(struct_ControlEventData event);
 
 /**
  * @brief The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user.

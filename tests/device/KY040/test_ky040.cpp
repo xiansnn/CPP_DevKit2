@@ -14,9 +14,9 @@
 #include "device/KY040/ky040.h"
 #include "utilities/probe/probe.h"
 
-#define CENTRAL_SWITCH_GPIO 6
-#define ENCODER_CLK_GPIO 26
-#define ENCODER_DT_GPIO 21
+#define CENTRAL_SWITCH_GPIO 18
+#define ENCODER_CLK_GPIO 19
+#define ENCODER_DT_GPIO 20
 
 // channel 0 : central switch pin
 Probe pr_D3 = Probe(3); //
@@ -47,9 +47,9 @@ std::map<UIControlEvent, std::string> event_to_string{
 
 int value_inc_dec = 0;
 
-void manager_process_control_event(UIControlEvent event)
+void manager_process_control_event(struct_ControlEventData control_event)
 {
-    printf("Encoder event(%s) #%d \n", event_to_string[event].c_str(), value_inc_dec);
+    printf("Encoder event(%s) #%d \n", event_to_string[control_event.event].c_str(), value_inc_dec);
     value_inc_dec++;
 };
 
