@@ -24,7 +24,7 @@ if (EXISTS ${picoVscode})
 endif()
 # ====================================================================================
 set(PICO_BOARD pico CACHE STRING "Board type")
-SET(FREERTOS_KERNEL_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lib/FreeRTOS-Kernel)
+# SET(FREERTOS_KERNEL_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lib/FreeRTOS-Kernel)
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
@@ -57,10 +57,10 @@ if(PROJECT_IS_TOP_LEVEL)
     set(CPP_DEVKIT_INC_PATH ${CMAKE_CURRENT_LIST_DIR}/src)
     include_directories(
         ${CPP_DEVKIT_INC_PATH} 
-        ${CMAKE_CURRENT_LIST_DIR}
-        ${FREERTOS_KERNEL_PATH}/include
-        ${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/include)
-    include(${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
+        ${CMAKE_CURRENT_LIST_DIR})
+    #     ${FREERTOS_KERNEL_PATH}/include
+    #     ${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/include)
+    # include(${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
     add_subdirectory(src)
     add_subdirectory(tests)
 endif()
