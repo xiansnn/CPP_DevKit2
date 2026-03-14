@@ -1,32 +1,4 @@
-/**
- * @file t_controlled_value.cpp
- * @author xiansnn (xiansnn@hotmail.com)
- * @brief
- * @version 0.1
- * @date 2025-01-11
- *
- * @copyright Copyright (c) 2025
- *
- */
-
-#pragma once
-#include "sw/ui_core/ui_core.h"
-
-/// @brief Construct an implementation of UIControlledIncrementalValue for test_ui_core program.
-class MyIncrementalValueModel : public UIControlledIncrementalValue
-{
-private:
-public:
-    std::string name;
-    MyIncrementalValueModel(std::string _name,
-                            int _min_value = 0,
-                            int _max_value = 10,
-                            bool _is_wrappable = false,
-                            int increment = 1);
-    ~MyIncrementalValueModel();
-    void process_control_event(UIControlEvent _event);
-    std::string get_name();
-};
+#include "t_controlled_value.h"
 
 MyIncrementalValueModel::MyIncrementalValueModel(std::string _name,
                                                  int _min_value,
@@ -47,9 +19,9 @@ MyIncrementalValueModel::~MyIncrementalValueModel()
 /// - INCREMENT:
 /// - DECREMENT:
 /// @param _event
-void MyIncrementalValueModel::process_control_event(UIControlEvent _event)
+void MyIncrementalValueModel::process_control_event(struct_ControlEventData control_event)
 {
-    switch (_event)
+    switch (control_event.event)
     {
     case UIControlEvent::LONG_PUSH:
         this->set_clipped_value(0);

@@ -1,28 +1,5 @@
-/**
- * @file t_manager.cpp
- * @author xiansnn (xiansnn@hotmail.com)
- * @brief
- * @version 0.1
- * @date 2025-01-11
- *
- * @copyright Copyright (c) 2025
- *
- */
-#pragma once
+#include "t_manager.h"
 
-#include "sw/ui_core/ui_core.h"
-
-/// @brief implement a UIModelManager for test_ui_core program
-class MyManager : public UIModelManager
-{
-private:
-public:
-    /// @brief Construct a new MyManager object
-    /// @param _controller
-    MyManager(UIController *_controller);
-    ~MyManager();
-    void process_control_event(UIControlEvent _event);
-};
 
 MyManager::MyManager(UIController *_controller)
     : UIModelManager()
@@ -41,16 +18,16 @@ MyManager::~MyManager()
 /// - INCREMENT: focus to next model
 /// - DECREMENT: focus to previous model
 /// @param _event
-void MyManager::process_control_event(UIControlEvent _event)
+void MyManager::process_control_event(struct_ControlEventData control_event)
 {
-    switch (_event)
+    switch (control_event.event)
     {
     case UIControlEvent::NONE:
         /* code */
         break;
     case UIControlEvent::LONG_PUSH:
         if (current_active_model != this)
-            current_active_model->process_control_event(_event);
+            current_active_model->process_control_event(control_event);
         break;
     case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
         if (current_active_model == this)
@@ -65,7 +42,7 @@ void MyManager::process_control_event(UIControlEvent _event)
             this->set_change_flag();
         }
         else
-            current_active_model->process_control_event(_event);
+            current_active_model->process_control_event(control_event);
         break;
     case UIControlEvent::DECREMENT:
         if (current_active_model == this)
@@ -74,7 +51,7 @@ void MyManager::process_control_event(UIControlEvent _event)
             this->set_change_flag();
         }
         else
-            current_active_model->process_control_event(_event);
+            current_active_model->process_control_event(control_event);
         break;
     default:
         break;

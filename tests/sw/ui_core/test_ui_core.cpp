@@ -14,13 +14,19 @@
  * @copyright Copyright (c) 2024
  *
  */
-#include <map>
-#include <string>
-#include "t_controlled_value.cpp"
-#include "t_manager.cpp"
-#include "t_widget_on_serial_monitor.cpp"
+// #include <map>
+// #include <string>
+#include "t_controlled_value.h"
+#include "t_manager.h"
+#include "t_widget_on_serial_monitor.h"
 
 #include "device/KY040/ky040.h"
+#include "utilities/probe/probe.h"
+
+/// @brief  3 probes are create to observe the time execution with a logic analyser
+Probe pr_D1 = Probe(1);
+Probe pr_D4 = Probe(4);
+Probe pr_D5 = Probe(5);
 
 
 #define CENTRAL_SWITCH_GPIO 18
@@ -68,16 +74,21 @@ void shared_irq_call_back(uint gpio, uint32_t event_mask)
         break;
     };
 }
-void manager_process_control_event(UIControlEvent event);
+
+
+/// 4- create a manager connected to the rotary encoder.
+MyManager manager = MyManager(&ky040);
+
+void manager_process_control_event(struct_ControlEventData control_event)
+{
+    manager.process_control_event(control_event);
+};
 
 /**
  * @brief main test and example program about ui_core, with serial terminal as widget substitute.
  *
  * @return int
  */
-
-/// 4- create a manager connected to the rotary encoder.
-MyManager manager = MyManager(&ky040);
 
 int main()
 {
@@ -123,10 +134,11 @@ int main()
     {
 
         /// - sample the rotary encoder central switch
-        UIControlEvent event = ky040.process_central_switch_event();
+        struct_ControlEventData control_event;
+        control_event.event = ky040.process_central_switch_event();
 
         /// - give the sampled event to the manager, to let it process the event
-        manager.process_control_event(event);
+        manager.process_control_event(control_event);
 
         /// - let the set_of_widget execute refresh
         for (auto &&widget : all_widgets)
@@ -137,7 +149,4 @@ int main()
     }
     return 0;
 }
-void manager_process_control_event(UIControlEvent event)
-{
-    manager.process_control_event(event);
-};
+

@@ -8,57 +8,12 @@
  * @copyright Copyright (c) 2025
  *
  */
-#include <sstream>
-#include <string>
 
-#include "t_controlled_value.cpp"
-#include "t_manager.cpp"
+#include "t_widget_on_serial_monitor.h"
 
-#include "sw/ui_core/ui_core.h"
-#include "sw/widget/widget.h"
-#include "sw/display_device/display_device.h"
 #include "utilities/probe/probe.h"
-
-/// @brief  3 probes are create to observe the time execution with a logic analyser
-Probe pr_D1 = Probe(1);
-Probe pr_D4 = Probe(4);
-Probe pr_D5 = Probe(5);
-
-/// @brief This is an implementation of a pseudo-widget for test_ui_core program.
-/// It write status and value of test_IncrementalValue on the serial monitor
-class MyIncrementalValueWidgetOnSerialMonitor : public PrintWidget
-{
-private:
-    float char_position_slope;
-    float char_position_offset;
-    uint8_t max_line_width = 21;
-    int value_to_char_position();
-
-public:
-    /// @brief Construct a new Test Cursor Widget With Incremental Value object
-    /// @param _actual_displayed_object
-    MyIncrementalValueWidgetOnSerialMonitor(TerminalConsole *my_printer, MyIncrementalValueModel *_actual_displayed_object);
-
-    ~MyIncrementalValueWidgetOnSerialMonitor();
-
-    void draw();
-};
-
-/// @brief This is an implementation of a pseudo-widget for test_ui_core program.
-/// It write status and value of MyManager on the serial monitor
-class MyManagerWidget : public PrintWidget
-{
-private:
-public:
-    /// @brief Construct a new MyManagerWidget object
-    /// @param line_printer
-    /// @param manager
-    MyManagerWidget(TerminalConsole *my_printer, MyManager *manager);
-
-    ~MyManagerWidget();
-
-    void draw();
-};
+extern Probe pr_D4 ;
+extern Probe pr_D1 ;
 
 std::map<ControlledObjectStatus, std::string> status_to_string{
     {ControlledObjectStatus::IS_WAITING, "IS_WAITING"},
@@ -66,10 +21,10 @@ std::map<ControlledObjectStatus, std::string> status_to_string{
     {ControlledObjectStatus::IS_ACTIVE, "IS_ACTIVE"}};
 
 struct_ConfigGraphicWidget default_cfg{
-    .pixel_frame_width = 100,
-    .pixel_frame_height = 8,
-    .fg_color = ColorIndex::WHITE,
-    .bg_color = ColorIndex::BLACK};
+    .canvas_width_pixel = 100,
+    .canvas_height_pixel = 8,
+    .canvas_foreground_color = ColorIndex::WHITE,
+    .canvas_background_color = ColorIndex::BLACK};
 
 MyIncrementalValueWidgetOnSerialMonitor::MyIncrementalValueWidgetOnSerialMonitor(TerminalConsole *my_printer, MyIncrementalValueModel *_actual_displayed_object)
     : PrintWidget(my_printer, _actual_displayed_object)
