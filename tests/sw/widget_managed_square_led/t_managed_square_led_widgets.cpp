@@ -9,44 +9,12 @@
  *
  */
 
-#pragma once
 
-#include "sw/ui_core/ui_core.h"
-#include "sw/widget_square_led/widget_square_led.h"
-#include "t_managed_square_led_models.cpp"
 #include "utilities/probe/probe.h"
+#include "t_managed_square_led_widgets.h"
 
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
-
-#define CANVAS_FORMAT CanvasFormat::MONO_VLSB
-
-class my_simple_led_widget : public WidgetSquareLed
-{
-private:
-public:
-    my_simple_led_widget(MyManagedSquareLedModel *actual_displayed_model,
-                         GraphicDisplayDevice *graphic_display_screen,
-                         struct_ConfigGraphicWidget graph_cfg,
-                         CanvasFormat format);
-    ~my_simple_led_widget();
-    void get_value_of_interest();
-};
-class MySquareLEDWidgetWithFocus : public GraphicWidget
-{
-private:
-    my_simple_led_widget *square_led;
-    WidgetFocusIndicator *focus_led;
-
-public:
-    MySquareLEDWidgetWithFocus(MyManagedSquareLedModel *actual_displayed_model,
-                               GraphicDisplayDevice *display_screen,
-                               struct_ConfigGraphicWidget graph_cfg,
-                               CanvasFormat format);
-    ~MySquareLEDWidgetWithFocus();
-    void draw();
-    void get_value_of_interest();
-};
 
 my_simple_led_widget::my_simple_led_widget(MyManagedSquareLedModel *actual_displayed_model,
                                            GraphicDisplayDevice *graphic_display_screen,

@@ -12,19 +12,19 @@
 #include "device/SSD1306/ssd1306.h"
 #include "device/KY040/ky040.h"
 #include "sw/widget_square_led/widget_square_led.h"
-#include "t_managed_square_led_models.cpp"
-#include "t_managed_square_led_manager.cpp"
-#include "t_managed_square_led_widgets.cpp"
+#include "t_managed_square_led_models.h"
+#include "t_managed_square_led_manager.h"
+#include "t_managed_square_led_widgets.h"
 #include "utilities/probe/probe.h"
 
-#define CENTRAL_SWITCH_GPIO 6
-#define ENCODER_CLK_GPIO 26
-#define ENCODER_DT_GPIO 21
+#define CENTRAL_SWITCH_GPIO 18
+#define ENCODER_CLK_GPIO 19
+#define ENCODER_DT_GPIO 20
 #define CENTRAL_SWITCH_TIME_OUT_us 2000000
 
 /// @brief ########## Debug/Observer Probe for logic analyser section ##########
 
-// Probe pr_D1 = Probe(1);
+Probe pr_D1 = Probe(1);
 
 /// @brief ########## configuration section ##########
 
@@ -73,7 +73,7 @@ KY040 ky040 = KY040(CENTRAL_SWITCH_GPIO,
 /// @param event_mask the IRQ mask, default to GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE
 void shared_irq_call_back(uint gpio, uint32_t event_mask)
 {
-    // pr_D1.pulse_us(10);
+    pr_D1.pulse_us(10);
     switch (gpio)
     {
     case ENCODER_CLK_GPIO:
@@ -90,9 +90,9 @@ MyManager manager = MyManager(&ky040);
 
 /// @brief global function necessary to convert bound fonction for control_event_processor_t
 /// @param event
-void manager_process_control_event(UIControlEvent event)
+void manager_process_control_event(struct_ControlEventData control_event)
 {
-    manager.process_control_event(event);
+    manager.process_control_event(control_event);
 };
 
 /**
@@ -150,15 +150,17 @@ int main()
 
     while (true)
     {
-        // pr_D1.hi();
+        pr_D1.hi();
         /// - get central_switch event and give it to the manager .
-        manager.process_control_event(ky040.process_central_switch_event());
+        struct_ControlEventData control_event;
+        control_event.event = ky040.process_central_switch_event();
+        manager.process_control_event(control_event);
         /// - refresh the widgets
         square_led_1.draw();
         square_led_2.draw();
         square_led_3.draw();
 
-        // pr_D1.lo();
+        pr_D1.lo();
         /// - sleep for 20ms
         sleep_ms(20);
     }

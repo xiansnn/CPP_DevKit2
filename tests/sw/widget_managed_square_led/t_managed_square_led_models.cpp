@@ -9,30 +9,11 @@
  *
  */
 
-#pragma once
 
-#include "sw/ui_core/ui_control_event.h"    
-#include "sw/ui_core/ui_core.h"
+#include "t_managed_square_led_models.h"
 
 #define PRINT_DEBUG
 
-/**
- * @brief MyManagedSquareLedModel : Example of final implementation of ModelObject
- */
-class MyManagedSquareLedModel : public UIControlledModel
-{
-protected:
-public:
-    /// @brief gives a name to the model. Useful to identify the active model via printf on the serial monitor.
-    std::string name;
-    /// @brief a bool value, visualised by the associated LED widget as on or off.
-    bool my_bool_value = false;
-    MyManagedSquareLedModel(std::string name);
-    ~MyManagedSquareLedModel();
-    /// @brief the implementation of the pure virtual member.
-    /// @param _event the signal send by the controller
-    void process_control_event(UIControlEvent _event);
-};
 MyManagedSquareLedModel::MyManagedSquareLedModel(std::string _name)
     : UIControlledModel()
 {
@@ -43,13 +24,13 @@ MyManagedSquareLedModel::~MyManagedSquareLedModel()
 {
 }
 
-void MyManagedSquareLedModel::process_control_event(UIControlEvent _event)
+void MyManagedSquareLedModel::process_control_event(struct_ControlEventData control_event)
 {
     /**
      * @brief only the event INCREMENT and DECREMENT are processed.
      * They both toggle the boolean my_bool_value of the test_managed_square_led_model, and set the change flag in order to trig the effective display.
      */
-    switch (_event)
+    switch (control_event.event)
     {
     case UIControlEvent::INCREMENT:
     case UIControlEvent::DECREMENT:

@@ -9,10 +9,10 @@
  *
  */
 
-#pragma once
 
-#include "sw/ui_core/ui_core.h"
-#include "t_managed_square_led_models.cpp"
+ #include "t_managed_square_led_manager.h"
+
+
 
 #define MODEL_OBJECT_STATUS_TIME_OUT_us 3000000
 
@@ -21,27 +21,6 @@ std::map<ControlledObjectStatusTimeOutReason, std::string> reason_to_string{
     {ControlledObjectStatusTimeOutReason::MANAGER_INACTIVE, "MANAGER_INACTIVE"},
     {ControlledObjectStatusTimeOutReason::MANAGED_OBJECT_INACTIVE, "MANAGED_OBJECT_INACTIVE"}};
 
-/**
- * @brief MyManager : Example of final implementation of UIModelManager
- */
-class MyManager : public UIModelManager
-{
-private:
-public:
-    /**
-     * @brief Construct a new MyManager object
-     *
-     * @param _controller
-     */
-    MyManager(UIController *_controller);
-    /**
-     * @brief Destroy the Test_Manager object
-     */
-    ~MyManager();
-    /// @brief function that interprets the event send by the controller.
-    /// @param _event
-    void process_control_event(UIControlEvent _event);
-};
 
 MyManager::MyManager(UIController *_controller)
     : UIModelManager()
@@ -52,9 +31,9 @@ MyManager::MyManager(UIController *_controller)
 MyManager::~MyManager()
 {
 }
-void MyManager::process_control_event(UIControlEvent _event)
+void MyManager::process_control_event(struct_ControlEventData control_event)
 {
-    switch (_event)
+    switch (control_event.event)
     {
     case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
         if (current_active_model == this)
@@ -82,7 +61,7 @@ void MyManager::process_control_event(UIControlEvent _event)
 #endif
         }
         else
-            current_active_model->process_control_event(_event);
+            current_active_model->process_control_event(control_event);
         break;
     case UIControlEvent::DECREMENT:
         if (current_active_model == this)
@@ -94,7 +73,7 @@ void MyManager::process_control_event(UIControlEvent _event)
 #endif
         }
         else
-            current_active_model->process_control_event(_event);
+            current_active_model->process_control_event(control_event);
         break;
     case UIControlEvent::TIME_OUT:
 #ifdef PRINT_DEBUG
