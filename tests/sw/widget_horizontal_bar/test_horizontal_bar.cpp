@@ -8,10 +8,10 @@
  * @copyright Copyright (c) 2025
  *
  */
-
+#include "test_horizontal_bar_models.h"
+#include "test_horizontal_bar_widgets.h"
 #include "device/SSD1306/ssd1306.h"
-#include "sw/ui_core/ui_core.h"
-#include "sw/widget_horizontal_bar/widget_horizontal_bar.h"
+
 #include "utilities/probe/probe.h"
 
 Probe pr_D4 = Probe(4);
@@ -35,128 +35,6 @@ struct_ConfigSSD1306 cfg_ssd1306{
     .contrast = 128,
     .frequency_divider = 1,
     .frequency_factor = 0};
-
-class MySimpleHorizontalBarModel : public Model
-{
-private:
-    int value;
-    int min_value;
-    int max_value;
-    bool is_wrappable;
-    int increment;
-
-public:
-    MySimpleHorizontalBarModel(int _min_value, int _max_value, bool _is_wrappable, int _increment);
-    ~MySimpleHorizontalBarModel();
-    void increment_value();
-    int get_value();
-};
-
-class MySimpleHorizontalBarWidget : public WidgetHorizontalBar
-{
-private:
-    /* data */
-    void get_value_of_interest();
-
-public:
-    MySimpleHorizontalBarWidget(MySimpleHorizontalBarModel *bar_value_model,
-                                GraphicDisplayDevice *graphic_display_screen,
-                                int max_value, int min_value,
-                                struct_ConfigGraphicWidget graph_cfg, CanvasFormat format);
-    ~MySimpleHorizontalBarWidget();
-};
-
-MySimpleHorizontalBarWidget::MySimpleHorizontalBarWidget(MySimpleHorizontalBarModel *bar_value_model,
-                                                         GraphicDisplayDevice *graphic_display_screen,
-                                                         int max_value, int min_value,
-                                                         struct_ConfigGraphicWidget graph_cfg, CanvasFormat format)
-    : WidgetHorizontalBar(bar_value_model,
-                          graphic_display_screen,
-                          max_value, min_value,
-                          graph_cfg, format)
-{
-}
-
-MySimpleHorizontalBarWidget::~MySimpleHorizontalBarWidget()
-{
-}
-
-void MySimpleHorizontalBarWidget::get_value_of_interest()
-{
-    set_level(((MySimpleHorizontalBarModel *)actual_displayed_model)->get_value());
-}
-
-class MyControlledHorizontalBarModel : public UIControlledIncrementalValue
-{
-private:
-    /* data */
-public:
-    MyControlledHorizontalBarModel(int _min_value, int _max_value, bool _is_wrappable, int _increment);
-    ~MyControlledHorizontalBarModel();
-    void process_control_event(struct_ControlEventData control_event);
-};
-
-class MyControlledHorizontalBarWidget : public WidgetHorizontalBar
-{
-private:
-    /* data */
-    void get_value_of_interest();
-
-public:
-    MyControlledHorizontalBarWidget(MyControlledHorizontalBarModel *bar_value_model,
-                                    GraphicDisplayDevice *graphic_display_screen,
-                                    int max_value, int min_value,
-                                    struct_ConfigGraphicWidget graph_cfg,
-                                    CanvasFormat format);
-    ~MyControlledHorizontalBarWidget();
-};
-
-MyControlledHorizontalBarWidget::MyControlledHorizontalBarWidget(MyControlledHorizontalBarModel *bar_value_model,
-                                                                 GraphicDisplayDevice *graphic_display_screen,
-                                                                 int max_value, int min_value,
-                                                                 struct_ConfigGraphicWidget graph_cfg,
-                                                                 CanvasFormat format)
-    : WidgetHorizontalBar(bar_value_model,
-                          graphic_display_screen,
-                          max_value, min_value,
-                          graph_cfg, format)
-{
-}
-
-MyControlledHorizontalBarWidget::~MyControlledHorizontalBarWidget()
-{
-}
-
-void MyControlledHorizontalBarWidget::get_value_of_interest()
-{
-    set_level(((MyControlledHorizontalBarModel *)actual_displayed_model)->get_value());
-}
-
-MyControlledHorizontalBarModel::MyControlledHorizontalBarModel(int _min_value, int _max_value, bool _is_wrappable, int _increment)
-    : UIControlledIncrementalValue(_min_value, _max_value, _is_wrappable, _increment)
-{
-}
-
-void MyControlledHorizontalBarModel::process_control_event(struct_ControlEventData control_event)
-{
-    
-    switch (control_event.event)
-    {
-    case UIControlEvent::INCREMENT:
-        this->increment_value();
-        break;
-    case UIControlEvent::DECREMENT:
-        this->decrement_value();
-        break;
-    default:
-        break;
-    }
-
-}
-
-MyControlledHorizontalBarModel::~MyControlledHorizontalBarModel()
-{
-}
 
 
 int main()
@@ -212,30 +90,4 @@ int main()
     }
 
     return 0;
-}
-
-MySimpleHorizontalBarModel::MySimpleHorizontalBarModel(int _min_value, int _max_value, bool _is_wrappable, int _increment)
-{
-    this->min_value = _min_value;
-    this->max_value = _max_value;
-    this->is_wrappable = _is_wrappable;
-    this->increment = _increment;
-    this->value = min_value;
-}
-
-MySimpleHorizontalBarModel::~MySimpleHorizontalBarModel()
-{
-}
-
-void MySimpleHorizontalBarModel::increment_value()
-{
-    value += increment;
-    if (value > max_value)
-        value = (is_wrappable) ? min_value : max_value;
-    set_change_flag();
-}
-
-int MySimpleHorizontalBarModel::get_value()
-{
-    return value;
 }
