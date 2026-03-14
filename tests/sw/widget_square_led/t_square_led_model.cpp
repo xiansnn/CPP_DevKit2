@@ -8,20 +8,7 @@
  * @copyright Copyright (c) 2025
  *
  */
-
-#include "sw/ui_core/ui_core.h"
-#include "sw/ui_core/ui_control_event.h"
-
-/// @brief MySquareLedModel : Example of final implementation of Model
-class MySquareLedModel : public UIControlledModel
-{
-protected:
-
-public:
-    MySquareLedModel();
-    ~MySquareLedModel();
-    void process_control_event(UIControlEvent _event);
-};
+ #include "t_square_led_model.h"
 
 MySquareLedModel::MySquareLedModel()
     : UIControlledModel()
@@ -33,9 +20,9 @@ MySquareLedModel::~MySquareLedModel()
 {
 }
 
-void MySquareLedModel::process_control_event(UIControlEvent _event)
+void MySquareLedModel::process_control_event(struct_ControlEventData control_event)
 {
-    switch (_event)
+    switch (control_event.event)
     {
     case UIControlEvent::RELEASED_AFTER_SHORT_TIME:
         switch (this->get_status())

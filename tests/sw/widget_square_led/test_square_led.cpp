@@ -10,8 +10,8 @@
  */
 #include "device/SSD1306/ssd1306.h"
 #include "utilities/probe/probe.h"
-#include "t_switch_button_controller.cpp"
-#include "t_square_led_widget.cpp"
+#include "t_switch_button_controller.h"
+#include "t_square_led_widget.h"
 
 #define CANVAS_FORMAT CanvasFormat::MONO_VLSB
 
@@ -19,7 +19,6 @@
 /// @brief ########## Debug/Observer Probe for logic analyser section ##########
 Probe pr_D4 = Probe(4);
 Probe pr_D5 = Probe(5);
-// Probe pr_D1 = Probe(1);
 
 /// @brief ########## configuration section ##########
 
@@ -29,7 +28,7 @@ struct_ConfigSwitchButton cfg_central_switch{
     .long_release_delay_us = 1000000,
     .long_push_delay_us = 1000000,
     .active_lo = true};
-#define CENTRAL_SWITCH_GPIO 6
+#define CENTRAL_SWITCH_GPIO 18
 
 /// @brief  define i2c config
 struct_ConfigMasterI2C cfg_i2c{
@@ -86,8 +85,9 @@ int main()
         pr_D5.hi();
 
         // UIControlEvent event = ((MySwitchButton *)my_model.get_current_controller())->process_sample_event(); // first alternative code
-        UIControlEvent event = central_switch.process_sample_event(); // second alternative code
-        my_model.process_control_event(event);
+        struct_ControlEventData control_event;
+        control_event.event = central_switch.process_sample_event(); // second alternative code
+        my_model.process_control_event(control_event);
 
         square_led.draw();
 
