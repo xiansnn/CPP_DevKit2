@@ -9,21 +9,13 @@
  *
  */
 
-#include "t_tuning_dial_model.cpp"
-#include "t_tuning_dial_widget.cpp"
+#include "t_tuning_dial_models.h"
+#include "t_tuning_dial_widgets.h"
 
 #include "device/SSD1306/ssd1306.h"
 #include "device/switch_button/switch_button.h"
 
 #define CANVAS_FORMAT CanvasFormat::MONO_VLSB
-
-/// @brief define central switch config
-struct_ConfigSwitchButton cfg_central_switch{
-    .debounce_delay_us = 5000,
-    .long_release_delay_us = 1000000,
-    .long_push_delay_us = 1000000,
-    .active_lo = true};
-#define CENTRAL_SWITCH_GPIO 6
 
 /// @brief  define i2c config
 struct_ConfigMasterI2C cfg_i2c{
