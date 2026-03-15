@@ -1,13 +1,3 @@
-add_executable(test_tuning_dial test_tuning_dial.cpp)
-target_link_libraries(test_tuning_dial
-            pico_stdlib
-            hw_i2c
-            device_ssd1306
-            sw_ui_core
-            utilities_probe
-            sw_widget
-            )    
-#-------------------------------------------------------------------------------------
 add_executable(test_ssd1306_text_primitives test_ssd1306_text_primitives.cpp)
 target_link_libraries(test_ssd1306_text_primitives 
             pico_stdlib 
