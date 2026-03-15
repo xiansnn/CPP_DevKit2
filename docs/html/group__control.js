@@ -16,30 +16,6 @@ var group__control =
       [ "dt_gpio", "class_rotary_encoder.html#adf6c9f3a9e7a9aa8b9dab7a2ca8049e3", null ],
       [ "event_processor", "class_rotary_encoder.html#a3cc27778f8ec392b57b191540f588478", null ]
     ] ],
-    [ "rtos_RotaryEncoder", "classrtos___rotary_encoder.html", [
-      [ "rtos_RotaryEncoder", "classrtos___rotary_encoder.html#ae6e38fe0da2da9c7fcebe7a93c87f588", null ],
-      [ "~rtos_RotaryEncoder", "classrtos___rotary_encoder.html#a63f1833d9b74ba7f8b838108942d2832", null ],
-      [ "rtos_process_IRQ_event", "classrtos___rotary_encoder.html#a49b161016d8d9a00e322e819218f6c74", null ],
-      [ "dt_gpio", "classrtos___rotary_encoder.html#afc21d71e8dbdba7610d85844a3c75c14", null ]
-    ] ],
-    [ "rtos_SwitchButton", "classrtos___switch_button.html", [
-      [ "rtos_SwitchButton", "classrtos___switch_button.html#adedaccfcce4afb5bd51a89a99467998e", null ],
-      [ "~rtos_SwitchButton", "classrtos___switch_button.html#acae09836effe96320ee7dcab5212acbe", null ],
-      [ "is_switch_pushed", "classrtos___switch_button.html#a9c29dcafb8a7521d1ea0a193b6034db8", null ],
-      [ "rtos_process_IRQ_event", "classrtos___switch_button.html#aa1017a2d9370e64e72b8629dd2a594a3", null ],
-      [ "active_lo", "classrtos___switch_button.html#a151d319918c2e2b22b21278959151558", null ],
-      [ "button_status", "classrtos___switch_button.html#aa9e4f1cc20b331a32c7459e5ed951f4d", null ],
-      [ "control_event_queue", "classrtos___switch_button.html#adb54d0aadd5523c8f46382b4048e6bb1", null ],
-      [ "debounce_delay_us", "classrtos___switch_button.html#a59ca740a22b080faf667400a817a9201", null ],
-      [ "gpio", "classrtos___switch_button.html#a3f74708bda139aa762d375f49b784997", null ],
-      [ "irq_event_mask_config", "classrtos___switch_button.html#a525ca734a0af08bd0e0b4a73e9ba3687", null ],
-      [ "IRQdata_input_queue", "classrtos___switch_button.html#a50a688ea4a876079b03bfb022b8f5a4b", null ],
-      [ "long_push_delay_ms", "classrtos___switch_button.html#a430fa348372c8df567193ca9a55ab896", null ],
-      [ "long_release_delay_us", "classrtos___switch_button.html#ac2c7088346c9f1608a09e6708fbc87c4", null ],
-      [ "previous_change_time_us", "classrtos___switch_button.html#ae32bc8a516d0539face7454f54cee8b9", null ],
-      [ "previous_switch_pushed_state", "classrtos___switch_button.html#afe979e87919059fc502e8efa36926d67", null ],
-      [ "time_out_delay_ms", "classrtos___switch_button.html#a8db8335323878ced9f28b4f801ca9126", null ]
-    ] ],
     [ "SwitchButton", "class_switch_button.html", [
       [ "SwitchButton", "class_switch_button.html#a750d21f333405881df2ef91495885a29", null ],
       [ "~SwitchButton", "class_switch_button.html#a3aaf08da555f8418572d502e8221fcec", null ],

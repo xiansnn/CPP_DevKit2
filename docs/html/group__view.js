@@ -30,14 +30,6 @@ var group__view =
       [ "device_config", "class_s_s_d1306.html#a8c77fc2b876883b63b9f9d403e368e8d", null ],
       [ "i2c_master", "class_s_s_d1306.html#ac2a0691d558b4b4d8bd51ddbdd3d0809", null ]
     ] ],
-    [ "rtos_SSD1306", "classrtos___s_s_d1306.html", [
-      [ "rtos_SSD1306", "classrtos___s_s_d1306.html#a35f8759cc22312dfa059a0f2520d1ca8", null ],
-      [ "check_rtos_display_device_compatibility", "classrtos___s_s_d1306.html#a70b7adfe86f448c40f27962a76983b1c", null ],
-      [ "clear_device_screen_buffer", "classrtos___s_s_d1306.html#aa9cffff74969b41c42fee5c41c630554", null ],
-      [ "fill_GDDRAM_with_pattern", "classrtos___s_s_d1306.html#a8bc4957ee0a73161bfc99ef061c12ad8", null ],
-      [ "show_render_area", "classrtos___s_s_d1306.html#aaab62ec700ec39a715d8b27b95f2956a", null ],
-      [ "show_widget", "classrtos___s_s_d1306.html#ab4391273a915faa10a75013845800ca3", null ]
-    ] ],
     [ "ST7735", "class_s_t7735.html", [
       [ "ST7735", "class_s_t7735.html#add6c307568c3286090dc44cf9c2b64d8", null ],
       [ "check_display_device_compatibility", "class_s_t7735.html#a165458fb8ed2b1998e6bdb9f41a74338", null ],
@@ -73,14 +65,6 @@ var group__view =
       [ "TFT_panel_start_x", "class_s_t7735.html#a346ad0c11ebd254c3244daed57485176", null ],
       [ "TFT_panel_start_y", "class_s_t7735.html#a00022ccda97c01d8f2d47b9839ff9f22", null ]
     ] ],
-    [ "rtos_ST7735", "classrtos___s_t7735.html", [
-      [ "rtos_ST7735", "classrtos___s_t7735.html#a66cd3316fdb254d845f5decb6a8b9c36", null ],
-      [ "check_rtos_display_device_compatibility", "classrtos___s_t7735.html#aa2accbe7dd33c4bc47e65484dac08511", null ],
-      [ "clear_device_screen_buffer", "classrtos___s_t7735.html#a21eaa334402e42b52b696a88ceedb970", null ],
-      [ "show", "classrtos___s_t7735.html#ae773d6c1f1da93a13b5589a20fe4d899", null ],
-      [ "show_from_display_queue", "classrtos___s_t7735.html#a943a8e335b60cc47eb437ef3b07bc70a", null ],
-      [ "show_widget", "classrtos___s_t7735.html#ad978278859fbd6cc0c578fe360f79b0f", null ]
-    ] ],
     [ "DisplayDevice", "class_display_device.html", null ],
     [ "GraphicDisplayDevice", "class_graphic_display_device.html", [
       [ "GraphicDisplayDevice", "class_graphic_display_device.html#adcb1b9fe5ab993b41374db60766e8fa1", null ],
@@ -97,30 +81,6 @@ var group__view =
       [ "number_of_line", "class_terminal_console.html#a4f74a6ee94951c5066e252e93f2df528", null ],
       [ "text_buffer", "class_terminal_console.html#adac7691c7a30beeb24e9f5667c936a7a", null ],
       [ "text_buffer_size", "class_terminal_console.html#a8bce719eefd4e2d03329278d3031ab4c", null ]
-    ] ],
-    [ "rtos_DisplayDevice", "classrtos___display_device.html", [
-      [ "clear_device_screen_buffer", "classrtos___display_device.html#aa38b0a9b6f08a6455fe6e20ab783cf4e", null ],
-      [ "show_widget", "classrtos___display_device.html#aac8dc205b62b94aa6fdb492ae79b60b6", null ],
-      [ "display_device_mutex", "classrtos___display_device.html#ab0e6c631e63073522fbbb3192434d7d3", null ]
-    ] ],
-    [ "rtos_GraphicDisplayDevice", "classrtos___graphic_display_device.html", [
-      [ "check_rtos_display_device_compatibility", "classrtos___graphic_display_device.html#a058db84b4a5e82d41cee79d7d5e2f8de", null ]
-    ] ],
-    [ "rtos_TerminalConsole", "classrtos___terminal_console.html", [
-      [ "rtos_TerminalConsole", "classrtos___terminal_console.html#ae65e6b962eb2f9340951756a4fbd3108", null ],
-      [ "clear_device_screen_buffer", "classrtos___terminal_console.html#a5f3fbd2da4fd86d60566b8946d8d5023", null ],
-      [ "show_widget", "classrtos___terminal_console.html#a9040e5f77475ebaa1304ffb897d4354a", null ],
-      [ "number_of_column", "classrtos___terminal_console.html#a35162a3d62d86e5aa0b2ceae4b7a734a", null ],
-      [ "number_of_line", "classrtos___terminal_console.html#a895d0b80b66e89fa5171c54ed2f011b2", null ],
-      [ "text_buffer_size", "classrtos___terminal_console.html#af200f089cac6698e5f16477fe3629b48", null ]
-    ] ],
-    [ "rtos_GraphicDisplayGateKeeper", "classrtos___graphic_display_gate_keeper.html", [
-      [ "rtos_GraphicDisplayGateKeeper", "classrtos___graphic_display_gate_keeper.html#a8871eff6bdf60627e83e1b3825e80db7", null ],
-      [ "receive_widget_data", "classrtos___graphic_display_gate_keeper.html#a7cac23a47c0452147b49de4cc0524ed8", null ],
-      [ "send_clear_device_command", "classrtos___graphic_display_gate_keeper.html#a0088b4369b889ab24f9d722200a8e831", null ],
-      [ "send_widget_data", "classrtos___graphic_display_gate_keeper.html#ac6f7d7e73655b8812b494181773bae18", null ],
-      [ "data_sent", "classrtos___graphic_display_gate_keeper.html#a2d6d03a26e858485a6301e93015eb848", null ],
-      [ "graphic_widget_data", "classrtos___graphic_display_gate_keeper.html#ad7e03f9ab449190fdd813ee0ec89808a", null ]
     ] ],
     [ "Canvas", "class_canvas.html", [
       [ "Canvas", "class_canvas.html#a61d9d2f38baad8abbee82fb5d8fee291", null ],
@@ -162,64 +122,6 @@ var group__view =
       [ "create_canvas_buffer", "class_canvas_h_m_s_b.html#a55e35c6f533f9c93eb7eed3b35e8edc9", null ],
       [ "draw_pixel", "class_canvas_h_m_s_b.html#a04c0a63d53d9c0db1495827b9fffc79a", null ],
       [ "fill_canvas_with_color", "class_canvas_h_m_s_b.html#a3cf926a9e0d6e6d46aaf755370c9c455", null ]
-    ] ],
-    [ "rtos_Blinker", "classrtos___blinker.html", [
-      [ "rtos_Blinker", "classrtos___blinker.html#a8976a9476b2f4ebc910dccad6f66e8cc", null ],
-      [ "~rtos_Blinker", "classrtos___blinker.html#aafc524efa4d0add7ff801016b561ed32", null ],
-      [ "add_blinking_widget", "classrtos___blinker.html#adb8c85f907df29c64f8cd9af1911c87d", null ],
-      [ "refresh_blinking", "classrtos___blinker.html#afd9934303258923c2ac235bfadd943ce", null ],
-      [ "remove_blinking_widget", "classrtos___blinker.html#aaca51f70f38cb9625a82ca675581087f", null ],
-      [ "blink_period_ms", "classrtos___blinker.html#ab8c4c76b59031d33794efc88c8f5817c", null ],
-      [ "blinking_widgets", "classrtos___blinker.html#ac034d01ec8a43eece3bd0000500edea3", null ],
-      [ "current_blink_phase", "classrtos___blinker.html#ae5ba86e52b28991eb49615cff13c37bc", null ]
-    ] ],
-    [ "rtos_BlinkingWidget", "classrtos___blinking_widget.html", [
-      [ "rtos_BlinkingWidget", "classrtos___blinking_widget.html#a70754e18438f766e7aa0ae8dcf74071d", null ],
-      [ "~rtos_BlinkingWidget", "classrtos___blinking_widget.html#aab5b82c4247cf2c5dc07be63eb226cd3", null ],
-      [ "blink", "classrtos___blinking_widget.html#a02fcf73148295f3de2b71821dff79345", null ],
-      [ "convert_status_to_blinking_behavior", "classrtos___blinking_widget.html#a9107e06350e7dfac421cd155d563d6a1", null ],
-      [ "restore_canvas_color", "classrtos___blinking_widget.html#a5c387fc41b9f73e6f2cb66209799ea44", null ],
-      [ "save_canvas_color", "classrtos___blinking_widget.html#a2609581657111eef487b3d01606605b8", null ],
-      [ "set_focus_color", "classrtos___blinking_widget.html#a9550a029f6b4603fea3fce8efbb22100", null ],
-      [ "start_blinking", "classrtos___blinking_widget.html#a1e2329f9a3da427c92052cebf7de037b", null ],
-      [ "stop_blinking", "classrtos___blinking_widget.html#adff9663deab3755d28b37715bd82c066", null ],
-      [ "bg_color_backup", "classrtos___blinking_widget.html#acc31d5b1eb95c4689317e1384523f8a0", null ],
-      [ "blinker", "classrtos___blinking_widget.html#ac3f5d01756ea7eb05f51c675e8952b57", null ],
-      [ "fg_color_backup", "classrtos___blinking_widget.html#acdcd64526d7832985d53c52fead9302a", null ]
-    ] ],
-    [ "rtos_Widget", "classrtos___widget.html", [
-      [ "rtos_Widget", "classrtos___widget.html#a206bf3a6d0927044128458b11271f41c", null ],
-      [ "~rtos_Widget", "classrtos___widget.html#a8ae178f2dc1a943df4d7291cc7d6fefe", null ],
-      [ "add_widget", "classrtos___widget.html#af6ed14469e8e458b99c7f53a15378050", null ],
-      [ "draw", "classrtos___widget.html#a5c7e7ccb2e74f70769c59a7adfa75352", null ],
-      [ "get_value_of_interest", "classrtos___widget.html#a477573dd452a728fd8cdacd400af9acd", null ],
-      [ "set_actual_displayed_model", "classrtos___widget.html#a2891846b2477965f74f8828b80df2ce2", null ],
-      [ "set_display_device", "classrtos___widget.html#a44efd1730a6316f6ce93bb9aa0ef648a", null ],
-      [ "update_widget_anchor", "classrtos___widget.html#aa0c0f9a28d85b1806c9af3ad0b4f0cb1", null ],
-      [ "actual_rtos_displayed_model", "classrtos___widget.html#a6dc7846aaa06a9dfcb10a034505554a8", null ],
-      [ "display_device", "classrtos___widget.html#a8e80e477a71cf85e3947236c2f8a0a6f", null ],
-      [ "rtos_widgets", "classrtos___widget.html#ab948b28687c25a814b54a23dbabac4fe", null ],
-      [ "task_handle", "classrtos___widget.html#a87d161b1078bc3aa5380703cfdd8c5a8", null ],
-      [ "widget_anchor_x", "classrtos___widget.html#acf532daad7d220d714f053e251051cc5", null ],
-      [ "widget_anchor_y", "classrtos___widget.html#a98e52006ee89c8feba38b4b8d321036f", null ],
-      [ "widget_data_to_gatekeeper", "classrtos___widget.html#aeb8992feeae73b395fce5f42fd550d77", null ]
-    ] ],
-    [ "rtos_GraphicWidget", "classrtos___graphic_widget.html", [
-      [ "rtos_GraphicWidget", "classrtos___graphic_widget.html#a64d842df67c4bfc83f15d6cc88bba91e", null ],
-      [ "~rtos_GraphicWidget", "classrtos___graphic_widget.html#a6fa05cd64eb075e13fd753566552a975", null ],
-      [ "drawer", "classrtos___graphic_widget.html#aea3e073c8b44ae9f06eb85f6a0804097", null ]
-    ] ],
-    [ "rtos_TextWidget", "classrtos___text_widget.html", [
-      [ "rtos_TextWidget", "classrtos___text_widget.html#a2960605129fe5aaf9ebbe1654a2875d3", null ],
-      [ "rtos_TextWidget", "classrtos___text_widget.html#a478fd95a27ab909988e31b30c03cf388", null ],
-      [ "writer", "classrtos___text_widget.html#aaf9852e09680d29a086a1f803b5798a6", null ]
-    ] ],
-    [ "rtos_PrintWidget", "classrtos___print_widget.html", [
-      [ "rtos_PrintWidget", "classrtos___print_widget.html#a0b2410d187ac06c257bf204ed4f8fc07", null ],
-      [ "number_of_column", "classrtos___print_widget.html#ac896a71abe0055a0ca4a80707a3c5135", null ],
-      [ "number_of_line", "classrtos___print_widget.html#a9d405a8f67ac81f58f22027cec9099bc", null ],
-      [ "text_buffer", "classrtos___print_widget.html#a9d1fce086f67bc8f519cc7664fce5aa7", null ],
-      [ "text_buffer_size", "classrtos___print_widget.html#a699aab62158d7f0fd552b6858f2dce06", null ]
     ] ],
     [ "Blinker", "class_blinker.html", [
       [ "clear_blinking_phase_change", "class_blinker.html#ae6a97a7779716d6a9a4954e9491d2985", null ],

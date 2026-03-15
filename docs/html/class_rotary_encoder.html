@@ -86,24 +86,26 @@ Collaboration diagram for RotaryEncoder:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_rotary_encoder__coll__graph.png" border="0" usemap="#a_rotary_encoder_coll__map" loading="lazy" alt="Collaboration graph"/></div>
 <map name="a_rotary_encoder_coll__map" id="a_rotary_encoder_coll__map">
-<area shape="rect" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user...." alt="" coords="5,590,469,764"/>
-<area shape="rect" href="class_switch_button_with_i_r_q.html" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="13,368,461,542"/>
-<area shape="poly" title=" " alt="" coords="239,554,240,591,235,589,236,559"/>
-<area shape="rect" href="class_switch_button.html" title="SwitchButton status is sampled periodically by software." alt="" coords="83,5,392,320"/>
-<area shape="poly" title=" " alt="" coords="238,332,240,369,235,368,237,338"/>
+<area shape="rect" title="The RotaryEncoder is a device used to control a value the can be incremented/decremented by the user...." alt="" coords="231,613,695,768"/>
+<area shape="rect" href="class_switch_button_with_i_r_q.html" title="SwitchButtonWithIRQ status is processed by an Interrupt Service Routine. It is derived from SwithButt..." alt="" coords="5,369,453,543"/>
+<area shape="poly" title=" " alt="" coords="327,551,389,614,384,614,325,556"/>
+<area shape="rect" href="class_switch_button.html" title="SwitchButton status is sampled periodically by software." alt="" coords="75,5,384,320"/>
+<area shape="poly" title=" " alt="" coords="230,332,232,370,227,369,229,337"/>
+<area shape="rect" href="structstruct___control_event_data.html" title="this is the structure used to transmit control event through a RTOS queue" alt="" coords="477,415,606,498"/>
+<area shape="poly" title=" " alt="" coords="530,496,496,599,492,596,526,499"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a517cabc7498b8b2277c1433142d241a8" id="r_a517cabc7498b8b2277c1433142d241a8"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a517cabc7498b8b2277c1433142d241a8">RotaryEncoder</a> (uint encoder_clk_gpio, uint encoder_dt_gpio, gpio_irq_callback_t call_back, <a class="el" href="rotary__encoder_8h.html#a787371d828d2ed06a5d1842695d04497">control_event_processor_t</a> <a class="el" href="#a3cc27778f8ec392b57b191540f588478">event_processor</a>, <a class="el" href="structstruct___config_switch_button.html">struct_ConfigSwitchButton</a> clk_conf={})</td></tr>
+<tr class="memitem:a517cabc7498b8b2277c1433142d241a8" id="r_a517cabc7498b8b2277c1433142d241a8"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a517cabc7498b8b2277c1433142d241a8">RotaryEncoder</a> (uint encoder_clk_gpio, uint encoder_dt_gpio, gpio_irq_callback_t call_back, <a class="el" href="rotary__encoder_8h.html#a39aa3a91523d565a66bdcdc18a15f07d">control_event_processor_t</a> <a class="el" href="#a3cc27778f8ec392b57b191540f588478">event_processor</a>, <a class="el" href="structstruct___config_switch_button.html">struct_ConfigSwitchButton</a> clk_conf={})</td></tr>
 <tr class="memdesc:a517cabc7498b8b2277c1433142d241a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Rotary Encoder object.  <br /></td></tr>
 <tr class="memitem:a0956a9ae8731f8e9bae8cb56162237d5" id="r_a0956a9ae8731f8e9bae8cb56162237d5"><td class="memItemLeft"><a id="a0956a9ae8731f8e9bae8cb56162237d5" name="a0956a9ae8731f8e9bae8cb56162237d5"></a>
 &#160;</td><td class="memItemRight"><b>~RotaryEncoder</b> ()</td></tr>
 <tr class="memdesc:a0956a9ae8731f8e9bae8cb56162237d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the Rotary Encoder object. <br /></td></tr>
 <tr class="memitem:ae7ad35ae64d2b815c25ac72a51702e6f" id="r_ae7ad35ae64d2b815c25ac72a51702e6f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae7ad35ae64d2b815c25ac72a51702e6f">interrupt_service_routine</a> (uint32_t irq_event_mask)</td></tr>
 <tr class="memdesc:ae7ad35ae64d2b815c25ac72a51702e6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the ISR that process the IRQ and send <a class="el" href="ui__control__event_8h.html#a537c416f59cd523d6cbc94634bb3dd32" title="The list of predefined events that a button, or more generally an User Interface Controller,...">UIControlEvent</a> to the <a class="el" href="class_model.html" title="This is the Model abstract class of Model_View_Control design pattern.">Model</a> currentControlledObject.  <br /></td></tr>
-<tr class="memitem:a20a7d47b8facd264840c4c7e988f5ae3" id="r_a20a7d47b8facd264840c4c7e988f5ae3"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a20a7d47b8facd264840c4c7e988f5ae3">update_event_processor</a> (<a class="el" href="rotary__encoder_8h.html#a787371d828d2ed06a5d1842695d04497">control_event_processor_t</a> <a class="el" href="#a3cc27778f8ec392b57b191540f588478">event_processor</a>)</td></tr>
+<tr class="memitem:a20a7d47b8facd264840c4c7e988f5ae3" id="r_a20a7d47b8facd264840c4c7e988f5ae3"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a20a7d47b8facd264840c4c7e988f5ae3">update_event_processor</a> (<a class="el" href="rotary__encoder_8h.html#a39aa3a91523d565a66bdcdc18a15f07d">control_event_processor_t</a> <a class="el" href="#a3cc27778f8ec392b57b191540f588478">event_processor</a>)</td></tr>
 <tr class="memdesc:a20a7d47b8facd264840c4c7e988f5ae3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This member is used to update the function pointer to the <a class="el" href="class_u_i_controller.html" title="UIController is the abstract class that hosts all controller object in the Model-View-Controll design...">UIController</a>.  <br /></td></tr>
 <tr class="inherit_header pub_methods_class_switch_button_with_i_r_q"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_switch_button_with_i_r_q')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="class_switch_button_with_i_r_q.html">SwitchButtonWithIRQ</a></td></tr>
 <tr class="memitem:a261dc80eca218e3733c6a0cf637c25e8 inherit pub_methods_class_switch_button_with_i_r_q" id="r_a261dc80eca218e3733c6a0cf637c25e8"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_switch_button_with_i_r_q.html#a261dc80eca218e3733c6a0cf637c25e8">irq_enabled</a> (bool enabled)</td></tr>
@@ -132,7 +134,7 @@ Private Attributes</h2></td></tr>
 uint&#160;</td><td class="memItemRight"><b>dt_gpio</b></td></tr>
 <tr class="memdesc:adf6c9f3a9e7a9aa8b9dab7a2ca8049e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">the GPIO pin connected to the Data pin of the rotary encoder <br /></td></tr>
 <tr class="memitem:a3cc27778f8ec392b57b191540f588478" id="r_a3cc27778f8ec392b57b191540f588478"><td class="memItemLeft"><a id="a3cc27778f8ec392b57b191540f588478" name="a3cc27778f8ec392b57b191540f588478"></a>
-<a class="el" href="rotary__encoder_8h.html#a787371d828d2ed06a5d1842695d04497">control_event_processor_t</a>&#160;</td><td class="memItemRight"><b>event_processor</b></td></tr>
+<a class="el" href="rotary__encoder_8h.html#a39aa3a91523d565a66bdcdc18a15f07d">control_event_processor_t</a>&#160;</td><td class="memItemRight"><b>event_processor</b></td></tr>
 <tr class="memdesc:a3cc27778f8ec392b57b191540f588478"><td class="mdescLeft">&#160;</td><td class="mdescRight">the function pointer that will processes the event such as PUSH, RELEASE, INCREMENT, DECREMENT etc. <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
@@ -166,7 +168,7 @@ uint&#160;</td><td class="memItemRight"><b>previous_change_time_us</b></td></tr>
 bool&#160;</td><td class="memItemRight"><b>previous_switch_pushed_state</b></td></tr>
 <tr class="memdesc:a269219187ae2a669ca36aabbb615ce40 inherit pro_attribs_class_switch_button"><td class="mdescLeft">&#160;</td><td class="mdescRight">The previous state read during the previous period. <br /></td></tr>
 <tr class="memitem:a4b5680f86c7354637f0d7eb77e1edbec inherit pro_attribs_class_switch_button" id="r_a4b5680f86c7354637f0d7eb77e1edbec"><td class="memItemLeft">
-<a class="el" href="switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657">ButtonState</a>&#160;</td><td class="memItemRight"><b>button_status</b> {<a class="el" href="rtos__switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657aa5daf7f2ebbba4975d61dab1c40188c7">ButtonState::IDLE</a>}</td></tr>
+<a class="el" href="switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657">ButtonState</a>&#160;</td><td class="memItemRight"><b>button_status</b> {<a class="el" href="switch__button_8h.html#aa46074d34fe2d6631c6bd9dc74633657aa5daf7f2ebbba4975d61dab1c40188c7">ButtonState::IDLE</a>}</td></tr>
 <tr class="memdesc:a4b5680f86c7354637f0d7eb77e1edbec inherit pro_attribs_class_switch_button"><td class="mdescLeft">&#160;</td><td class="mdescRight">the logical button status, required to manage the event returned when the switch is pushed or released. <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
@@ -200,7 +202,7 @@ bool&#160;</td><td class="memItemRight"><b>previous_switch_pushed_state</b></td>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="rotary__encoder_8h.html#a787371d828d2ed06a5d1842695d04497">control_event_processor_t</a></td>          <td class="paramname"><span class="paramname"><em>event_processor</em></span>, </td>
+          <td class="paramtype"><a class="el" href="rotary__encoder_8h.html#a39aa3a91523d565a66bdcdc18a15f07d">control_event_processor_t</a></td>          <td class="paramname"><span class="paramname"><em>event_processor</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -285,7 +287,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void RotaryEncoder::update_event_processor </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="rotary__encoder_8h.html#a787371d828d2ed06a5d1842695d04497">control_event_processor_t</a></td>          <td class="paramname"><span class="paramname"><em>event_processor</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="rotary__encoder_8h.html#a39aa3a91523d565a66bdcdc18a15f07d">control_event_processor_t</a></td>          <td class="paramname"><span class="paramname"><em>event_processor</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

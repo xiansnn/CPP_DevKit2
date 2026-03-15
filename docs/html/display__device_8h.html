@@ -66,28 +66,16 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &quot;pico/stdlib.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="canvas_8h_source.html">sw/widget/canvas.h</a>&quot;</code><br />
-<code>#include &quot;FreeRTOS.h&quot;</code><br />
-<code>#include &quot;task.h&quot;</code><br />
-<code>#include &quot;queue.h&quot;</code><br />
-<code>#include &quot;semphr.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for display_device.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="display__device_8h__incl.png" border="0" usemap="#adisplay__device_8h" loading="lazy" alt=""/></div>
 <map name="adisplay__device_8h" id="adisplay__device_8h">
-<area shape="rect" title=" " alt="" coords="251,5,350,30"/>
+<area shape="rect" title=" " alt="" coords="39,5,138,30"/>
 <area shape="rect" title=" " alt="" coords="5,151,84,175"/>
-<area shape="poly" title=" " alt="" coords="249,27,147,48,99,63,69,80,60,92,54,106,47,136,42,134,49,104,55,89,65,76,97,58,145,43,253,24"/>
+<area shape="poly" title=" " alt="" coords="85,28,70,79,53,137,48,135,65,77,83,33"/>
 <area shape="rect" href="canvas_8h.html" title=" " alt="" coords="79,78,194,103"/>
-<area shape="poly" title=" " alt="" coords="271,32,179,74,176,69,276,29"/>
-<area shape="rect" title=" " alt="" coords="218,78,295,103"/>
-<area shape="poly" title=" " alt="" coords="295,29,274,67,270,63,291,32"/>
-<area shape="rect" title=" " alt="" coords="319,78,370,103"/>
-<area shape="poly" title=" " alt="" coords="309,28,332,65,327,64,307,33"/>
-<area shape="rect" title=" " alt="" coords="394,78,455,103"/>
-<area shape="poly" title=" " alt="" coords="321,28,394,70,388,70,320,33"/>
-<area shape="rect" title=" " alt="" coords="478,78,544,103"/>
-<area shape="poly" title=" " alt="" coords="336,28,467,73,461,74,335,33"/>
+<area shape="poly" title=" " alt="" coords="97,28,123,65,118,65,96,33"/>
 <area shape="poly" title=" " alt="" coords="124,103,73,143,70,139,119,104"/>
 <area shape="rect" title=" " alt="" coords="108,151,162,175"/>
 <area shape="poly" title=" " alt="" coords="138,101,138,136,133,134,134,105"/>
@@ -100,36 +88,30 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="display__device_8h__dep__incl.png" border="0" usemap="#adisplay__device_8hdep" loading="lazy" alt=""/></div>
 <map name="adisplay__device_8hdep" id="adisplay__device_8hdep">
-<area shape="rect" title=" " alt="" coords="361,5,459,30"/>
-<area shape="rect" href="rtos__widget_8h.html" title=" " alt="" coords="184,78,271,103"/>
-<area shape="poly" title=" " alt="" coords="363,37,258,80,256,75,368,35"/>
-<area shape="rect" href="ssd1306_8h.html" title=" " alt="" coords="5,151,76,175"/>
-<area shape="poly" title=" " alt="" coords="343,27,250,46,198,61,148,80,119,97,93,117,53,152,49,149,89,112,117,92,146,76,196,56,249,41,347,24"/>
-<area shape="rect" href="st7735_8h.html" title="inspired from various code source, including https://github.com/adafruit/Adafruit&#45;ST7735&#45;Library" alt="" coords="100,151,163,175"/>
-<area shape="poly" title=" " alt="" coords="342,21,303,28,258,38,213,55,173,80,158,96,147,116,136,152,131,149,143,114,154,93,169,76,211,50,256,33,302,23,347,19"/>
-<area shape="rect" href="ui__core_8h.html" title=" " alt="" coords="377,78,442,103"/>
-<area shape="poly" title=" " alt="" coords="411,44,412,79,408,76,408,48"/>
-<area shape="rect" href="widget_8h.html" title=" " alt="" coords="485,151,548,175"/>
-<area shape="poly" title=" " alt="" coords="429,40,457,76,511,151,506,150,453,80,427,45"/>
-<area shape="rect" href="widget__bargraph_8h.html" title=" " alt="" coords="460,223,573,248"/>
-<area shape="poly" title=" " alt="" coords="446,35,477,55,510,81,539,113,562,150,564,171,557,192,531,225,528,221,552,190,559,171,557,152,535,116,506,85,474,60,445,41"/>
-<area shape="rect" href="widget__square__led_8h.html" title=" " alt="" coords="597,223,718,248"/>
-<area shape="poly" title=" " alt="" coords="458,34,497,52,534,76,574,114,609,155,654,224,649,222,604,158,570,117,531,80,495,57,458,39"/>
-<area shape="rect" href="rtos__ui__core_8h.html" title=" " alt="" coords="187,151,278,175"/>
-<area shape="poly" title=" " alt="" coords="231,116,234,151,229,149,228,121"/>
-<area shape="poly" title=" " alt="" coords="181,111,73,152,70,148,183,106"/>
-<area shape="poly" title=" " alt="" coords="201,111,148,152,145,148,197,114"/>
-<area shape="poly" title=" " alt="" coords="369,108,263,153,261,148,364,110"/>
-<area shape="rect" href="ky040_8h.html" title=" " alt="" coords="302,151,360,175"/>
-<area shape="poly" title=" " alt="" coords="388,112,345,153,343,148,383,114"/>
-<area shape="poly" title=" " alt="" coords="433,109,495,150,489,150,432,115"/>
-<area shape="poly" title=" " alt="" coords="429,113,511,223,505,222,426,117"/>
-<area shape="rect" href="widget__horizontal__bar_8h.html" title=" " alt="" coords="300,223,437,248"/>
-<area shape="poly" title=" " alt="" coords="405,116,374,224,370,221,400,119"/>
-<area shape="poly" title=" " alt="" coords="491,141,434,106,435,101,497,142"/>
-<area shape="poly" title=" " alt="" coords="518,189,519,225,514,221,515,193"/>
-<area shape="poly" title=" " alt="" coords="481,182,394,225,392,220,476,183"/>
-<area shape="poly" title=" " alt="" coords="554,180,637,223,632,222,553,185"/>
+<area shape="rect" title=" " alt="" coords="173,5,271,30"/>
+<area shape="rect" href="ssd1306_8h.html" title=" " alt="" coords="5,78,76,103"/>
+<area shape="poly" title=" " alt="" coords="177,38,72,80,69,75,179,34"/>
+<area shape="rect" href="st7735_8h.html" title="inspired from various code source, including https://github.com/adafruit/Adafruit&#45;ST7735&#45;Library" alt="" coords="193,223,256,248"/>
+<area shape="poly" title=" " alt="" coords="225,44,227,223,222,222,220,47"/>
+<area shape="rect" href="ui__core_8h.html" title=" " alt="" coords="264,78,329,103"/>
+<area shape="poly" title=" " alt="" coords="246,38,287,77,282,78,245,43"/>
+<area shape="rect" href="widget_8h.html" title=" " alt="" coords="384,151,446,175"/>
+<area shape="poly" title=" " alt="" coords="267,34,306,52,343,76,382,114,410,151,405,149,378,117,340,80,304,57,267,39"/>
+<area shape="rect" href="widget__bargraph_8h.html" title=" " alt="" coords="56,223,169,248"/>
+<area shape="poly" title=" " alt="" coords="212,44,121,224,116,221,207,43"/>
+<area shape="rect" href="widget__square__led_8h.html" title=" " alt="" coords="441,223,562,248"/>
+<area shape="poly" title=" " alt="" coords="277,33,326,51,375,76,422,107,460,149,484,188,500,224,495,221,480,190,456,152,418,111,372,80,324,56,277,38"/>
+<area shape="rect" href="ky040_8h.html" title=" " alt="" coords="251,151,310,175"/>
+<area shape="poly" title=" " alt="" coords="292,116,285,152,281,149,289,120"/>
+<area shape="poly" title=" " alt="" coords="322,109,391,150,386,150,321,114"/>
+<area shape="poly" title=" " alt="" coords="272,114,129,225,126,221,268,111"/>
+<area shape="rect" href="widget__horizontal__bar_8h.html" title=" " alt="" coords="280,223,417,248"/>
+<area shape="poly" title=" " alt="" coords="309,115,324,150,348,224,343,222,319,152,307,120"/>
+<area shape="poly" title=" " alt="" coords="372,181,257,225,255,220,367,181"/>
+<area shape="poly" title=" " alt="" coords="387,142,322,106,323,101,393,142"/>
+<area shape="poly" title=" " alt="" coords="370,178,163,225,162,220,368,173"/>
+<area shape="poly" title=" " alt="" coords="396,186,361,225,358,221,391,188"/>
+<area shape="poly" title=" " alt="" coords="442,183,490,224,485,222,440,188"/>
 </map>
 </div>
 </div>
@@ -145,14 +127,6 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the abstract class to handle all generic behavior of physical graphic display devices (e.g. OLED screen <a class="el" href="class_s_s_d1306.html" title="SSD1306 128x64 pixel OLED display device driver with I2C interface.">SSD1306</a>).  <a href="class_graphic_display_device.html#details">More...</a><br /></td></tr>
 <tr class="memitem:TerminalConsole" id="r_TerminalConsole"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="class_terminal_console.html">TerminalConsole</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class dedicated to pure text display such as console, printer, ASCII character line display.  <a href="class_terminal_console.html#details">More...</a><br /></td></tr>
-<tr class="memitem:rtos_5FDisplayDevice" id="r_rtos_5FDisplayDevice"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classrtos___display_device.html">rtos_DisplayDevice</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The RTOS display device is the base class for all display devices that are managed by a dedicated display task in an RTOS environment.  <a href="classrtos___display_device.html#details">More...</a><br /></td></tr>
-<tr class="memitem:rtos_5FGraphicDisplayDevice" id="r_rtos_5FGraphicDisplayDevice"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classrtos___graphic_display_device.html">rtos_GraphicDisplayDevice</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The RTOS graphic display device is the base class for all graphic display devices that are managed by a dedicated display task in an RTOS environment.  <a href="classrtos___graphic_display_device.html#details">More...</a><br /></td></tr>
-<tr class="memitem:rtos_5FTerminalConsole" id="r_rtos_5FTerminalConsole"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classrtos___terminal_console.html">rtos_TerminalConsole</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The RTOS terminal console is the class for all text display devices that are managed by a dedicated display task in an RTOS environment.  <a href="classrtos___terminal_console.html#details">More...</a><br /></td></tr>
-<tr class="memitem:rtos_5FGraphicDisplayGateKeeper" id="r_rtos_5FGraphicDisplayGateKeeper"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classrtos___graphic_display_gate_keeper.html">rtos_GraphicDisplayGateKeeper</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The RTOS graphic display gatekeeper is the class that manages the access to the graphic display device in an RTOS environment.  <a href="classrtos___graphic_display_gate_keeper.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>

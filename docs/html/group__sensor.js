@@ -5,28 +5,12 @@ var group__sensor =
       [ "read_from_dht", "class_d_h_t11.html#ad72fb9614e231616cc6c3c28cafafca3", null ],
       [ "gpio_in", "class_d_h_t11.html#ae8073a2b99881697c11ee1a059e57d46", null ]
     ] ],
-    [ "rtos_DHT11", "classrtos___d_h_t11.html", [
-      [ "rtos_DHT11", "classrtos___d_h_t11.html#ac3e9f7aed685686d934714ddd28f18e4", null ],
-      [ "read_from_dht", "classrtos___d_h_t11.html#a103945d0b9618eda30176136dc072333", null ],
-      [ "dht_reading_queue", "classrtos___d_h_t11.html#af756fbcee4244ab04f51a56bcc5ea64f", null ],
-      [ "gpio_in", "classrtos___d_h_t11.html#a2ea15ba728dcba150c54a78a5105a2fd", null ]
-    ] ],
     [ "HCSR04", "class_h_c_s_r04.html", [
       [ "HCSR04", "class_h_c_s_r04.html#a036f4e60cdd9c8e6821833a824dbf338", null ],
       [ "get_distance", "class_h_c_s_r04.html#aa946b0976a5a915bfde3ff51b7359ddb", null ],
       [ "trig", "class_h_c_s_r04.html#a3d06ade5673e079096cd2ce7c0a5678e", null ],
       [ "echo_pin", "class_h_c_s_r04.html#a92e3ba633462544a710ccb55477a9535", null ],
       [ "trig_pin", "class_h_c_s_r04.html#a48d3d06ac173d1e78c3ac552d32b1b72", null ]
-    ] ],
-    [ "rtos_HCSR04", "classrtos___h_c_s_r04.html", [
-      [ "rtos_HCSR04", "classrtos___h_c_s_r04.html#adf0579071dbb9e870f55841f1d4d6fde", null ],
-      [ "get_distance", "classrtos___h_c_s_r04.html#acedf553849f3d6d63b9e38d83a8a97ba", null ],
-      [ "echo_irq_mask_config", "classrtos___h_c_s_r04.html#a1a8209d963e4dea49bf9be6f109fa801", null ],
-      [ "echo_pin", "classrtos___h_c_s_r04.html#a924ce303106575ff7c4ffb09d09e3b5b", null ],
-      [ "input_timer_queue", "classrtos___h_c_s_r04.html#a49c6ade69eae0abd0827e2103cf05bc7", null ],
-      [ "measure_completed", "classrtos___h_c_s_r04.html#abcf8878000554402e547da74ea2b74a9", null ],
-      [ "output_range_queue", "classrtos___h_c_s_r04.html#abb8face0ee4299d5c63778b3e073ba4c", null ],
-      [ "trig_pin", "classrtos___h_c_s_r04.html#a22b65cf579eaf5207cb68caaae83fb4b", null ]
     ] ],
     [ "MPU6050", "class_m_p_u6050.html", [
       [ "MPU6050", "class_m_p_u6050.html#a69ff7760846ab8f9b33ab07aa57709cf", null ],
